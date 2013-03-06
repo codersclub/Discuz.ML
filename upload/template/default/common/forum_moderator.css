@@ -3,7 +3,7 @@ Moderator CSS file for Discuz! X
 (C) Comsenz Inc.
 http://www.comsenz.com
 */
-/* ----------- 版主管理  modlayer modcount------------------- */
+/* ----------- 鐗堜富绠＄悊  modlayer modcount------------------- */
 
 #mdly { position: absolute; right: 0; margin-top: -16px; padding: 10px 25px; width: 250px; height: 100px; background: url({IMGDIR}/mdly.png) no-repeat 0 0; line-height: 32px; overflow: hidden; }
 	#mdly a { color: #06C; }

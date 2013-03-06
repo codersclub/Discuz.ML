@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'detector_name' => 'Ì½²âÆ÷',
-	'detector_desc' => 'Ì½²âÂñÁËºì°üµÄ»áÔ±¿Õ¼ä',
-	'detector_num' => '×î´óÌ½²âÊý',
-	'detector_info' => 'Ì½²â(×î¶à {num} ¸ö)ÂñÁËºì°üµÄ»áÔ±¿Õ¼ä',
+	'detector_name' => 'æŽ¢æµ‹å™¨',
+	'detector_desc' => 'æŽ¢æµ‹åŸ‹äº†çº¢åŒ…çš„ä¼šå‘˜ç©ºé—´',
+	'detector_num' => 'æœ€å¤§æŽ¢æµ‹æ•°',
+	'detector_info' => 'æŽ¢æµ‹(æœ€å¤š {num} ä¸ª)åŸ‹äº†çº¢åŒ…çš„ä¼šå‘˜ç©ºé—´',
 );
 
 ?>

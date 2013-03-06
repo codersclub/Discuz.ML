@@ -47,7 +47,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." id > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." id > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	$allowcusbbcodes = array();
 	$query = $db_target->query("SELECT * FROM $table_target_usergroup_field");

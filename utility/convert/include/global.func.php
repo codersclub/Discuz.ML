@@ -73,7 +73,7 @@ function cutstr($string, $length, $dot = '') {
 	return $strcut.$dot;
 }
 
-function parseqqicq($qqicq, $minlen = 5, $maxlen = 12) {// qq ×ª»»
+function parseqqicq($qqicq, $minlen = 5, $maxlen = 12) {// qq è½¬æ¢
 	return $qqicq ? (preg_match("/^([0-9]+)$/", $qqicq) && strlen($qqicq) >= $minlen && strlen($qqicq) <= $maxlen ? $qqicq : '') : '';
 }
 
@@ -133,7 +133,7 @@ function parsesign($sign) {
 	return daddslashes(str_replace($searcharray, $replacearray, preg_replace($pregfind, $pregreplace, $sign)));
 }
 
-function bbcodeurl($url, $tags) {//url ×ª»»
+function bbcodeurl($url, $tags) {//url è½¬æ¢
 	if(!preg_match("/<.+?>/s", $url)) {
 		if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'ftp://', 'rtsp:/', 'mms://'))) {
 			$url = 'http://'.$url;
@@ -158,9 +158,9 @@ function timetounix($time) {
 	if($time > 100000000) {
 		return $time;
 	}
-	$time = str_replace(array(' Ò»ÔÂ ',' ¶şÔÂ ',' ÈıÔÂ ',' ËÄÔÂ ',' ÎåÔÂ ',' ÁùÔÂ ',' ÆßÔÂ ',' °ËÔÂ ',' ¾ÅÔÂ ',' Ê®ÔÂ ',' Ê®Ò»ÔÂ ',' Ê®¶şÔÂ ', ' ÉÏÎç '), array('-1-','-2-','-3-','-4-','-5-','-6-','-7-','-8-','-9-','-10-','-11-','-12-', ' '), $time);
-	if(strrchr($time, 'ÏÂÎç') !== false) {
-		return strtotime(str_replace(' ÏÂÎç ', ' ', $time)) + 43200;
+	$time = str_replace(array(' ä¸€æœˆ ',' äºŒæœˆ ',' ä¸‰æœˆ ',' å››æœˆ ',' äº”æœˆ ',' å…­æœˆ ',' ä¸ƒæœˆ ',' å…«æœˆ ',' ä¹æœˆ ',' åæœˆ ',' åä¸€æœˆ ',' åäºŒæœˆ ', ' ä¸Šåˆ '), array('-1-','-2-','-3-','-4-','-5-','-6-','-7-','-8-','-9-','-10-','-11-','-12-', ' '), $time);
+	if(strrchr($time, 'ä¸‹åˆ') !== false) {
+		return strtotime(str_replace(' ä¸‹åˆ ', ' ', $time)) + 43200;
 	} else {
 		return strtotime($time);
 	}
@@ -227,7 +227,7 @@ function showmessage($message, $url_forward = '', $vars = array(), $timeout = 1)
 
 	echo <<<EOT
 <table class="showtable">
-	<tbody><tr class="title"><td style="color: white">ÏµÍ³ÌáÊ¾</td></tr>
+	<tbody><tr class="title"><td style="color: white">ç³»ç»Ÿæç¤º</td></tr>
 		<tr><td style="padding: 10px; background-color: #fefefe;font-size: 14px "><br>$message<br><br></td></tr>
 		<tr><td>$messageadd</td></tr>
 	</tbody>
@@ -249,7 +249,7 @@ echo <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Discuz! X ÏµÁĞ²úÆ·Éı¼¶×ª»»</title>
+<title>Discuz! X ç³»åˆ—äº§å“å‡çº§è½¬æ¢</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <style type="text/css">
 body,td { font-family: Tahoma; font-size: 12px; line-height: 150%;}
@@ -327,15 +327,15 @@ function checkAll(type, form, value, checkall, changestyle) {
 </head>
 <body style="table-layout:fixed; word-break:break-all; margin-top: 4px;">
 <div class="main">
-<h1>Discuz! X ÏµÁĞ²úÆ·Éı¼¶/×ª»» Ïòµ¼ $titleadd</h1>
+<h1>Discuz! X ç³»åˆ—äº§å“å‡çº§/è½¬æ¢ å‘å¯¼ $titleadd</h1>
 <div class="content">
 <table id="menu">
 	<tr>
-	<td $class[source]>1.Ñ¡Ôñ²úÆ·×ª»»³ÌĞò </td>
-	<td $class[config]>2.ÉèÖÃ·şÎñÆ÷ĞÅÏ¢ </td>
-	<td $class[select]>3.ÅäÖÃ×ª»»¹ı³Ì </td>
-	<td $class[convert]>4.Ö´ĞĞÊı¾İ×ª»» </td>
-	<td $class[finish]>5.×ª»»Íê³É </td>
+	<td $class[source]>1.é€‰æ‹©äº§å“è½¬æ¢ç¨‹åº </td>
+	<td $class[config]>2.è®¾ç½®æœåŠ¡å™¨ä¿¡æ¯ </td>
+	<td $class[select]>3.é…ç½®è½¬æ¢è¿‡ç¨‹ </td>
+	<td $class[convert]>4.æ‰§è¡Œæ•°æ®è½¬æ¢ </td>
+	<td $class[finish]>5.è½¬æ¢å®Œæˆ </td>
 	</tr>
 </table>
 

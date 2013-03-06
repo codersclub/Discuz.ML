@@ -26,12 +26,12 @@
 		showError(msg);
 	}
 	function succeedhandle_followcollection(url, msg, collectiondata) {
-		if(collectiondata['status'] == 1) { //关注成功
+		if(collectiondata['status'] == 1) { //鍏虫敞鎴愬姛
 			followstatus = 1;
 			$("followlink").innerHTML = '<i class="u">{lang collection_unfollow}</i>';
 			$("followlink").href = followcollectionurl();
 			$("rightcolfollownum").innerHTML = $("follownum_display").innerHTML = parseInt($("follownum_display").innerHTML) + 1;
-		} else if(collectiondata['status'] == 2) { //取消关注成功
+		} else if(collectiondata['status'] == 2) { //鍙栨秷鍏虫敞鎴愬姛
 			followstatus = 0;
 			$("followlink").innerHTML = '<i>{lang collection_follow}</i>';
 			$("followlink").href = followcollectionurl();

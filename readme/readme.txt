@@ -1,48 +1,48 @@
 +----------------------------------+
- Discuz! X ÉçÇøÈí¼þÏµÍ³¼ò½é
+ Discuz! X ç¤¾åŒºè½¯ä»¶ç³»ç»Ÿç®€ä»‹
 +----------------------------------+
-Crossday Discuz! Board£¨ÒÔÏÂ¼ò³Æ Discuz!£¬ÖÐ¹ú¹ú¼Ò°æÈ¨¾ÖÖø×÷È¨µÇ¼ÇºÅ 2008SR11708
-£©ÊÇ¿µÊ¢´´Ïë(±±¾©)¿Æ¼¼ÓÐÏÞ¹«Ë¾£¨Ó¢ÎÄ¼ò³ÆComsenz£©ÍÆ³öµÄÒ»Ì×Í¨ÓÃµÄÉçÇøÂÛÌ³Èí¼þÏµ
-Í³¡£×÷Îª¹úÄÚ×î´óµÄÉçÇøÈí¼þ¼°·þÎñÌá¹©ÉÌ£¬ComsenzÆìÏÂµÄ Discuz! ²úÆ·£¬ÎÞÂÛÔÚ¹¦ÄÜ¡¢
-ÎÈ¶¨ÐÔ¡¢¸ºÔØÄÜÁ¦¡¢°²È«±£ÕÏµÈ·½Ãæ¶¼¾ÓÓÚ¹úÄÚÍâÍ¬Àà²úÆ·ÁìÏÈµØÎ»£¬ÊÇÈ«Çò³ÉÊì¶È×î¸ß¡¢
-¸²¸ÇÂÊ×î´óµÄÂÛÌ³Èí¼þÏµÍ³Ö®Ò»¡£
+Crossday Discuz! Boardï¼ˆä»¥ä¸‹ç®€ç§° Discuz!ï¼Œä¸­å›½å›½å®¶ç‰ˆæƒå±€è‘—ä½œæƒç™»è®°å· 2008SR11708
+ï¼‰æ˜¯åº·ç››åˆ›æƒ³(åŒ—äº¬)ç§‘æŠ€æœ‰é™å…¬å¸ï¼ˆè‹±æ–‡ç®€ç§°Comsenzï¼‰æŽ¨å‡ºçš„ä¸€å¥—é€šç”¨çš„ç¤¾åŒºè®ºå›è½¯ä»¶ç³»
+ç»Ÿã€‚ä½œä¸ºå›½å†…æœ€å¤§çš„ç¤¾åŒºè½¯ä»¶åŠæœåŠ¡æä¾›å•†ï¼ŒComsenzæ——ä¸‹çš„ Discuz! äº§å“ï¼Œæ— è®ºåœ¨åŠŸèƒ½ã€
+ç¨³å®šæ€§ã€è´Ÿè½½èƒ½åŠ›ã€å®‰å…¨ä¿éšœç­‰æ–¹é¢éƒ½å±…äºŽå›½å†…å¤–åŒç±»äº§å“é¢†å…ˆåœ°ä½ï¼Œæ˜¯å…¨çƒæˆç†Ÿåº¦æœ€é«˜ã€
+è¦†ç›–çŽ‡æœ€å¤§çš„è®ºå›è½¯ä»¶ç³»ç»Ÿä¹‹ä¸€ã€‚
 
 +----------------------------------+
- Discuz! X ÉçÇøÈí¼þµÄÏÂÔØ
+ Discuz! X ç¤¾åŒºè½¯ä»¶çš„ä¸‹è½½
 +----------------------------------+
-Äú¿ÉÒÔËæÊ±´ÓÎÒÃÇµÄ¹Ù·½ÏÂÔØÕ¾ÏÂÔØµ½×îÐÂ°æ±¾£¬ÒÔ¼°¸÷ÖÖ²¹¶¡
+æ‚¨å¯ä»¥éšæ—¶ä»Žæˆ‘ä»¬çš„å®˜æ–¹ä¸‹è½½ç«™ä¸‹è½½åˆ°æœ€æ–°ç‰ˆæœ¬ï¼Œä»¥åŠå„ç§è¡¥ä¸
 http://download.comsenz.com/DiscuzX/
 
 +----------------------------------+
- Discuz! X ÉçÇøÈí¼þµÄ»·¾³ÐèÇó
+ Discuz! X ç¤¾åŒºè½¯ä»¶çš„çŽ¯å¢ƒéœ€æ±‚
 +----------------------------------+
-1. ¿ÉÓÃµÄ www ·þÎñÆ÷£¬Èç Apache¡¢Zeus¡¢IIS µÈ
-2. php 4.3.0 ¼°ÒÔÉÏ
-3. Zend Optimizer 2.5.7 ¼°ÒÔÉÏ
-4. MySQL 3.23 ¼°ÒÔÉÏ£¬½öÕë¶Ô MySQL °æ
+1. å¯ç”¨çš„ www æœåŠ¡å™¨ï¼Œå¦‚ Apacheã€Zeusã€IIS ç­‰
+2. php 4.3.0 åŠä»¥ä¸Š
+3. Zend Optimizer 2.5.7 åŠä»¥ä¸Š
+4. MySQL 3.23 åŠä»¥ä¸Šï¼Œä»…é’ˆå¯¹ MySQL ç‰ˆ
 
 +----------------------------------+
- Discuz! X ÉçÇøÈí¼þµÄ°²×°
+ Discuz! X ç¤¾åŒºè½¯ä»¶çš„å®‰è£…
 +----------------------------------+
-1. ÉÏ´« upload Ä¿Â¼ÖÐµÄÎÄ¼þµ½·þÎñÆ÷
-2. ÉèÖÃÄ¿Â¼ÊôÐÔ£¨windows ·þÎñÆ÷¿ÉºöÂÔÕâÒ»²½£©
-	ÒÔÏÂÕâÐ©Ä¿Â¼ÐèÒª¿É¶ÁÐ´È¨ÏÞ
+1. ä¸Šä¼  upload ç›®å½•ä¸­çš„æ–‡ä»¶åˆ°æœåŠ¡å™¨
+2. è®¾ç½®ç›®å½•å±žæ€§ï¼ˆwindows æœåŠ¡å™¨å¯å¿½ç•¥è¿™ä¸€æ­¥ï¼‰
+	ä»¥ä¸‹è¿™äº›ç›®å½•éœ€è¦å¯è¯»å†™æƒé™
 	./config
-	./data º¬×ÓÄ¿Â¼
-3. Ö´ÐÐ°²×°½Å±¾ /install/
-   ÇëÔÚä¯ÀÀÆ÷ÖÐÔËÐÐ install ³ÌÐò£¬¼´·ÃÎÊ http://ÄúµÄÓòÃû/ÂÛÌ³Ä¿Â¼/install/
-4. ²ÎÕÕÒ³ÃæÌáÊ¾£¬½øÐÐ°²×°£¬Ö±ÖÁ°²×°Íê±Ï
+	./data å«å­ç›®å½•
+3. æ‰§è¡Œå®‰è£…è„šæœ¬ /install/
+   è¯·åœ¨æµè§ˆå™¨ä¸­è¿è¡Œ install ç¨‹åºï¼Œå³è®¿é—® http://æ‚¨çš„åŸŸå/è®ºå›ç›®å½•/install/
+4. å‚ç…§é¡µé¢æç¤ºï¼Œè¿›è¡Œå®‰è£…ï¼Œç›´è‡³å®‰è£…å®Œæ¯•
 
 +----------------------------------+
- Discuz! X Èí¼þµÄ¼¼ÊõÖ§³Ö
+ Discuz! X è½¯ä»¶çš„æŠ€æœ¯æ”¯æŒ
 +----------------------------------+
-µ±ÄúÔÚ°²×°¡¢Éý¼¶¡¢ÈÕ³£Ê¹ÓÃµ±ÖÐÓöµ½ÒÉÄÑ£¬ÇëÄúµ½ÒÔÏÂÕ¾µã»ñÈ¡¼¼ÊõÖ§³Ö¡£
+å½“æ‚¨åœ¨å®‰è£…ã€å‡çº§ã€æ—¥å¸¸ä½¿ç”¨å½“ä¸­é‡åˆ°ç–‘éš¾ï¼Œè¯·æ‚¨åˆ°ä»¥ä¸‹ç«™ç‚¹èŽ·å–æŠ€æœ¯æ”¯æŒã€‚
 
-Discuz! ÌÖÂÛÇø£º          http://www.discuz.net
-Discuz! Ê¹ÓÃÊÖ²á:         http://faq.comsenz.com/usersguide/discuz
-Discuz! ·ç¸ñÏÂÔØ£º        http://www.comsenz.com/downloads/styles/discuz
-Discuz! ²å¼þÏÂÔØ£º        http://www.comsenz.com/downloads/plugins/discuz
-Discuz! Ïà¹Ø²úÆ·:         http://www.comsenz.com/downloads/install
+Discuz! è®¨è®ºåŒºï¼š          http://www.discuz.net
+Discuz! ä½¿ç”¨æ‰‹å†Œ:         http://faq.comsenz.com/usersguide/discuz
+Discuz! é£Žæ ¼ä¸‹è½½ï¼š        http://www.comsenz.com/downloads/styles/discuz
+Discuz! æ’ä»¶ä¸‹è½½ï¼š        http://www.comsenz.com/downloads/plugins/discuz
+Discuz! ç›¸å…³äº§å“:         http://www.comsenz.com/downloads/install
 
-Discuz! ÉÌÒµÊÚÈ¨¹ºÂò£º    http://www.comsenz.com/purchase/discuz
-Discuz! ÉÌÒµÓÃ»§Ö§³Ö£º    http://www.comsenz.com/customer/
+Discuz! å•†ä¸šæŽˆæƒè´­ä¹°ï¼š    http://www.comsenz.com/purchase/discuz
+Discuz! å•†ä¸šç”¨æˆ·æ”¯æŒï¼š    http://www.comsenz.com/customer/

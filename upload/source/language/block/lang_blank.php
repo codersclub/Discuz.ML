@@ -13,6 +13,6 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'blank_content' => 'HTML´úÂë',
+	'blank_content' => 'HTMLä»£ç ',
 );
 ?>

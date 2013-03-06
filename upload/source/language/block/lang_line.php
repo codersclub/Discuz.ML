@@ -13,8 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'line_style' => '·Ö¸îÏßÑùÊ½',
-	'line_style_line' => 'ÊµÏß',
-	'line_style_dash' => 'ÐéÏß',
+	'line_style' => 'åˆ†å‰²çº¿æ ·å¼',
+	'line_style_line' => 'å®žçº¿',
+	'line_style_dash' => 'è™šçº¿',
 );
 ?>

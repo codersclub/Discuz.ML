@@ -38,7 +38,7 @@ if($pass) {
 	}
 
 	if($nextid) {
-		showmessage("¼ÌĞø×ª»»Êı¾İ±í ".$table_source." $start ÖÁ ".($start+$limit)." ĞĞ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+		showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." $start è‡³ ".($start+$limit)." è¡Œ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 	}
 }
 

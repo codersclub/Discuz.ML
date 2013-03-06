@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'attachsize_name' => '¸½¼þÔöÈÝ¿¨',
-	'attachsize_desc' => 'Ôö¼Ó¸½¼þÈÝÁ¿ÉÏÏÞ',
-	'attachsize_info' => '¶îÍâÔö¼Ó {num} M ¸½¼þÈÝÁ¿ÉÏÏÞ',
-	'attachsize_addsize' => 'Ôö¼ÓÈÝÁ¿',
+	'attachsize_name' => 'é™„ä»¶å¢žå®¹å¡',
+	'attachsize_desc' => 'å¢žåŠ é™„ä»¶å®¹é‡ä¸Šé™',
+	'attachsize_info' => 'é¢å¤–å¢žåŠ  {num} M é™„ä»¶å®¹é‡ä¸Šé™',
+	'attachsize_addsize' => 'å¢žåŠ å®¹é‡',
 );
 
 ?>

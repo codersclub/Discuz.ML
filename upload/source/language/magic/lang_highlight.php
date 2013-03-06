@@ -13,23 +13,23 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'highlight_name' => '±äÉ«¿¨',
-	'highlight_desc' => '¿ÉÒÔ½«Ìû×Ó»òÈÕÖ¾µÄ±êÌâ¸ßÁÁ£¬±ä¸üÑÕÉ«',
-	'highlight_expiration' => '¸ßÁÁÓĞĞ§ÆÚ',
-	'highlight_expiration_comment' => 'ÉèÖÃ±êÌâ¿ÉÒÔ±»¸ßÁÁ¶à³¤Ê±¼ä£¬Ä¬ÈÏ 24 Ğ¡Ê±¡£×÷ÓÃÓÚÈÕÖ¾Ê±ÎŞÓĞĞ§ÆÚ¡£',
-	'highlight_forum' => 'ÔÊĞíÊ¹ÓÃ±¾µÀ¾ßµÄ°æ¿é',
-	'highlight_info_tid' => '¸ßÁÁÖ÷ÌâµÄ±êÌâ {expiration} Ğ¡Ê±',
-	'highlight_info_blogid' => '¿ÉÒÔ½«ÈÕÖ¾»òÌû×ÓµÄ±êÌâ¸ßÁÁ£¬±ä¸üÑÕÉ«',
-	'highlight_color' => 'ÑÕÉ«',
-	'highlight_info_nonexistence_tid' => 'ÇëÖ¸¶¨Òª¸ßÁÁµÄÌû×Ó',
-	'highlight_info_nonexistence_blogid' => 'ÇëÖ¸¶¨Òª¸ßÁÁµÄÈÕÖ¾',
-	'highlight_succeed_tid' => 'Äú²Ù×÷µÄÌû×ÓÒÑ¸ßÁÁ',
-	'highlight_succeed_blogid' => 'Äú²Ù×÷µÄÈÕÖ¾ÒÑ¸ßÁÁ',
-	'highlight_info_noperm' => '¶Ô²»Æğ£¬Ö÷ÌâËùÔÚ°æ¿é²»ÔÊĞíÊ¹ÓÃ±¾µÀ¾ß',
-	'highlight_info_notype' => '²ÎÊı´íÎó£¬Ã»ÓĞÖ¸¶¨²Ù×÷ÀàĞÍ¡£',
+	'highlight_name' => 'å˜è‰²å¡',
+	'highlight_desc' => 'å¯ä»¥å°†å¸–å­æˆ–æ—¥å¿—çš„æ ‡é¢˜é«˜äº®ï¼Œå˜æ›´é¢œè‰²',
+	'highlight_expiration' => 'é«˜äº®æœ‰æ•ˆæœŸ',
+	'highlight_expiration_comment' => 'è®¾ç½®æ ‡é¢˜å¯ä»¥è¢«é«˜äº®å¤šé•¿æ—¶é—´ï¼Œé»˜è®¤ 24 å°æ—¶ã€‚ä½œç”¨äºæ—¥å¿—æ—¶æ— æœ‰æ•ˆæœŸã€‚',
+	'highlight_forum' => 'å…è®¸ä½¿ç”¨æœ¬é“å…·çš„ç‰ˆå—',
+	'highlight_info_tid' => 'é«˜äº®ä¸»é¢˜çš„æ ‡é¢˜ {expiration} å°æ—¶',
+	'highlight_info_blogid' => 'å¯ä»¥å°†æ—¥å¿—æˆ–å¸–å­çš„æ ‡é¢˜é«˜äº®ï¼Œå˜æ›´é¢œè‰²',
+	'highlight_color' => 'é¢œè‰²',
+	'highlight_info_nonexistence_tid' => 'è¯·æŒ‡å®šè¦é«˜äº®çš„å¸–å­',
+	'highlight_info_nonexistence_blogid' => 'è¯·æŒ‡å®šè¦é«˜äº®çš„æ—¥å¿—',
+	'highlight_succeed_tid' => 'æ‚¨æ“ä½œçš„å¸–å­å·²é«˜äº®',
+	'highlight_succeed_blogid' => 'æ‚¨æ“ä½œçš„æ—¥å¿—å·²é«˜äº®',
+	'highlight_info_noperm' => 'å¯¹ä¸èµ·ï¼Œä¸»é¢˜æ‰€åœ¨ç‰ˆå—ä¸å…è®¸ä½¿ç”¨æœ¬é“å…·',
+	'highlight_info_notype' => 'å‚æ•°é”™è¯¯ï¼Œæ²¡æœ‰æŒ‡å®šæ“ä½œç±»å‹ã€‚',
 
-	'highlight_notification' => 'ÄúµÄÖ÷Ìâ {subject} ±» {actor} Ê¹ÓÃÁË{magicname}£¬<a href="forum.php?mod=viewthread&tid={tid}">¿ìÈ¥¿´¿´°É£¡</a>',
-	'highlight_notification_blogid' => 'ÄúµÄÈÕÖ¾ {subject} ±» {actor} Ê¹ÓÃÁË{magicname}£¬<a href="home.php?mod=space&do=blog&id={blogid}">¿ìÈ¥¿´¿´°É£¡</a>',
+	'highlight_notification' => 'æ‚¨çš„ä¸»é¢˜ {subject} è¢« {actor} ä½¿ç”¨äº†{magicname}ï¼Œ<a href="forum.php?mod=viewthread&tid={tid}">å¿«å»çœ‹çœ‹å§ï¼</a>',
+	'highlight_notification_blogid' => 'æ‚¨çš„æ—¥å¿— {subject} è¢« {actor} ä½¿ç”¨äº†{magicname}ï¼Œ<a href="home.php?mod=space&do=blog&id={blogid}">å¿«å»çœ‹çœ‹å§ï¼</a>',
 );
 
 ?>

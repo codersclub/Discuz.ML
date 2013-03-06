@@ -7,84 +7,84 @@ Created & Modified by Lushnis, Pony, Dfox & DragonLee.
 
 ----------------------------------
 
-½á¹¹Ä¿Â¼£º
-	1. ÖØ¶¨Òåä¯ÀÀÆ÷Ä¬ÈÏÑùÊ½
-	2. È«¾Ö³£ÓÃ CSS ÑùÊ½
-	3. ±íµ¥¼°±íµ¥ÔªËØ
-	4. Ò³Ãæ²¼¾ÖÒÔ¼°Í¨ÓÃµÄÇø¿éÑùÊ½
-	5. ÁĞ±íÑùÊ½vwmy
-	6. ÆäËûÌØ¶¨¹¦ÄÜ¿é
-		1. ¸öÈËÖĞĞÄÃæ°å
-		2. ¼òÒ×±à¼­Æ÷
-		3. µ¯³ö²Ëµ¥¡¢µ¯³ö²ã¼°µ¯³ö´°¿Ú
-		4. ÁªÏµÈËÁĞ±í¡¢¶ÌÏûÏ¢´°¿Ú
-		5. µÇÂ¼ºÍ×¢²á
-		6. ÆäËû
-	7. ÍÏ×§¼°Ò³Ãæ DIY
+ç»“æ„ç›®å½•ï¼š
+	1. é‡å®šä¹‰æµè§ˆå™¨é»˜è®¤æ ·å¼
+	2. å…¨å±€å¸¸ç”¨ CSS æ ·å¼
+	3. è¡¨å•åŠè¡¨å•å…ƒç´ 
+	4. é¡µé¢å¸ƒå±€ä»¥åŠé€šç”¨çš„åŒºå—æ ·å¼
+	5. åˆ—è¡¨æ ·å¼vwmy
+	6. å…¶ä»–ç‰¹å®šåŠŸèƒ½å—
+		1. ä¸ªäººä¸­å¿ƒé¢æ¿
+		2. ç®€æ˜“ç¼–è¾‘å™¨
+		3. å¼¹å‡ºèœå•ã€å¼¹å‡ºå±‚åŠå¼¹å‡ºçª—å£
+		4. è”ç³»äººåˆ—è¡¨ã€çŸ­æ¶ˆæ¯çª—å£
+		5. ç™»å½•å’Œæ³¨å†Œ
+		6. å…¶ä»–
+	7. æ‹–æ‹½åŠé¡µé¢ DIY
 
-	*  ÆäËûÒ³Ãæ×¨ÓÃÑùÊ½²Î¼û module.css
-
-----------------------------------
-
-³£ÓÃ±äÁ¿ËµÃ÷£º
-
-	Í¨ÓÃ±ß¿òÑÕÉ«£º		{COMMONBORDER}		#CDCDCD
-	Í¨ÓÃ±³¾°Ìî³äÉ«£º		{COMMONBG}			#F2F2F2
-	ÌØÊâ±ß¿òÑÕÉ«£º		{SPECIALBORDER}		#D1D9DF
-	ÌØÊâ±³¾°Ìî³äÉ«£º		{SPECIALBG}			#E9F2F9
+	*  å…¶ä»–é¡µé¢ä¸“ç”¨æ ·å¼å‚è§ module.css
 
 ----------------------------------
 
-CSS ÑùÊ½Ä£¿éµÄ¸ñÊ½Ê¾Àı£º
+å¸¸ç”¨å˜é‡è¯´æ˜ï¼š
 
-	Name:			Ä£¿éÃû³Æ
-	Level:			¼¶±ğ£¨Global, Channel, Function£©
-	Dependent:		ÒÀÀµ¹ØÏµ£¬¸ÃÄ£¿é±ØĞëÒÀÀµÓÚºÎÖÖÄ£¿é
-	Sample:			ÓÃ·¨Ê¾Àı£¬»òÖ¸³ö¸ÄÄ£¿éËù×÷ÓÃµÄÖ±½ÓÒ³Ãæ
-	Explain:		¸½¼ÓËµÃ÷
-	Author:			´´½¨Õß ÈÕÆÚ(Á½Î»ÊıÄêÔÂÈÕÊ±)
-	Last Modify:	×îÖÕĞŞ¸ÄÕß ÈÕÆÚ(Á½Î»ÊıÄêÔÂÈÕÊ±)
+	é€šç”¨è¾¹æ¡†é¢œè‰²ï¼š		{COMMONBORDER}		#CDCDCD
+	é€šç”¨èƒŒæ™¯å¡«å……è‰²ï¼š		{COMMONBG}			#F2F2F2
+	ç‰¹æ®Šè¾¹æ¡†é¢œè‰²ï¼š		{SPECIALBORDER}		#D1D9DF
+	ç‰¹æ®ŠèƒŒæ™¯å¡«å……è‰²ï¼š		{SPECIALBG}			#E9F2F9
 
 ----------------------------------
 
-CSS Ğ´×÷×¢ÒâÊÂÏî£º
-	1. ÊôĞÔĞ´ÔÚÒ»ĞĞÄÚ£¬ÊôĞÔÖ®¼ä¡¢ÊôĞÔÃûºÍÖµÖ®¼äÒÔ¼°ÊôĞÔÓë¡°{}¡±Ö®¼äĞëÓĞ¿Õ¸ñ£¬ÀıÈç£º.class { width: 400px; height: 300px; }
-	2. ÊôĞÔµÄÊéĞ´Ë³Ğò£º
-		2.1. °´ÕÕÔªËØÄ£ĞÍÓÉÍâ¼°ÄÚ£¬ÓÉÕûÌåµ½Ï¸½ÚÊéĞ´£¬´óÖÂ·ÖÎªÎå×é£º
-			Î»ÖÃ£ºposition,left,right,float
-			ºĞÄ£ĞÍÊôĞÔ£ºdisplay,margin,padding,width,height
-			±ß¿òÓë±³¾°£ºborder,background
-			¶ÎÂäÓëÎÄ±¾£ºline-height,text-indent,font,color,text-decoration,...
-			ÆäËûÊôĞÔ£ºoverflow,cursor,visibility,...
-		2.2. Õë¶ÔÌØÊâä¯ÀÀÆ÷µÄÊôĞÔ£¬Ó¦Ğ´ÔÚ±ê×¼ÊôĞÔÖ®Ç°£¬ÀıÈç£º-webkit-box-shadow:; -moz-box-shadow:; box-shaow:;
-	3. ½÷É÷Ìí¼ÓĞÂµÄÑ¡Ôñ·û¹æÔò£¬ÓÈÆä²»¿ÉÀÄÓÃ id£¬¾¡¿ÉÄÜ¼Ì³ĞºÍ¸´ÓÃÒÑÓĞÑùÊ½
-	4. Ñ¡Ôñ·û¡¢ÊôĞÔ¡¢Öµ¾ùÓÃĞ¡Ğ´£¨¸ñÊ½µÄÑÕÉ«Öµ³ıÍâ£©£¬ËõĞ´µÄÑ¡Ôñ·ûÃû³ÆĞëËµÃ÷ËõĞ´Ç°µÄÈ«³Æ£¬ÀıÈç .cl -> Clearfix
-	5. ±ÜÃâÊ¹ÓÃ¸÷ÖÖ CSS Hack£¬ÈçĞè¶Ô IE ½øĞĞÌØÊâ¶¨Òå£¬Çë²ÎÔÄÏÂ½Ú¡°¹ØÓÚ CSS Hack µÄËµÃ÷¡±
-	6. ÎğÊ¹ÓÃÈßÓàµÍĞ§µÄ CSS Ğ´·¨£¬ÀıÈç£º
+CSS æ ·å¼æ¨¡å—çš„æ ¼å¼ç¤ºä¾‹ï¼š
+
+	Name:			æ¨¡å—åç§°
+	Level:			çº§åˆ«ï¼ˆGlobal, Channel, Functionï¼‰
+	Dependent:		ä¾èµ–å…³ç³»ï¼Œè¯¥æ¨¡å—å¿…é¡»ä¾èµ–äºä½•ç§æ¨¡å—
+	Sample:			ç”¨æ³•ç¤ºä¾‹ï¼Œæˆ–æŒ‡å‡ºæ”¹æ¨¡å—æ‰€ä½œç”¨çš„ç›´æ¥é¡µé¢
+	Explain:		é™„åŠ è¯´æ˜
+	Author:			åˆ›å»ºè€… æ—¥æœŸ(ä¸¤ä½æ•°å¹´æœˆæ—¥æ—¶)
+	Last Modify:	æœ€ç»ˆä¿®æ”¹è€… æ—¥æœŸ(ä¸¤ä½æ•°å¹´æœˆæ—¥æ—¶)
+
+----------------------------------
+
+CSS å†™ä½œæ³¨æ„äº‹é¡¹ï¼š
+	1. å±æ€§å†™åœ¨ä¸€è¡Œå†…ï¼Œå±æ€§ä¹‹é—´ã€å±æ€§åå’Œå€¼ä¹‹é—´ä»¥åŠå±æ€§ä¸â€œ{}â€ä¹‹é—´é¡»æœ‰ç©ºæ ¼ï¼Œä¾‹å¦‚ï¼š.class { width: 400px; height: 300px; }
+	2. å±æ€§çš„ä¹¦å†™é¡ºåºï¼š
+		2.1. æŒ‰ç…§å…ƒç´ æ¨¡å‹ç”±å¤–åŠå†…ï¼Œç”±æ•´ä½“åˆ°ç»†èŠ‚ä¹¦å†™ï¼Œå¤§è‡´åˆ†ä¸ºäº”ç»„ï¼š
+			ä½ç½®ï¼šposition,left,right,float
+			ç›’æ¨¡å‹å±æ€§ï¼šdisplay,margin,padding,width,height
+			è¾¹æ¡†ä¸èƒŒæ™¯ï¼šborder,background
+			æ®µè½ä¸æ–‡æœ¬ï¼šline-height,text-indent,font,color,text-decoration,...
+			å…¶ä»–å±æ€§ï¼šoverflow,cursor,visibility,...
+		2.2. é’ˆå¯¹ç‰¹æ®Šæµè§ˆå™¨çš„å±æ€§ï¼Œåº”å†™åœ¨æ ‡å‡†å±æ€§ä¹‹å‰ï¼Œä¾‹å¦‚ï¼š-webkit-box-shadow:; -moz-box-shadow:; box-shaow:;
+	3. è°¨æ…æ·»åŠ æ–°çš„é€‰æ‹©ç¬¦è§„åˆ™ï¼Œå°¤å…¶ä¸å¯æ»¥ç”¨ idï¼Œå°½å¯èƒ½ç»§æ‰¿å’Œå¤ç”¨å·²æœ‰æ ·å¼
+	4. é€‰æ‹©ç¬¦ã€å±æ€§ã€å€¼å‡ç”¨å°å†™ï¼ˆæ ¼å¼çš„é¢œè‰²å€¼é™¤å¤–ï¼‰ï¼Œç¼©å†™çš„é€‰æ‹©ç¬¦åç§°é¡»è¯´æ˜ç¼©å†™å‰çš„å…¨ç§°ï¼Œä¾‹å¦‚ .cl -> Clearfix
+	5. é¿å…ä½¿ç”¨å„ç§ CSS Hackï¼Œå¦‚éœ€å¯¹ IE è¿›è¡Œç‰¹æ®Šå®šä¹‰ï¼Œè¯·å‚é˜…ä¸‹èŠ‚â€œå…³äº CSS Hack çš„è¯´æ˜â€
+	6. å‹¿ä½¿ç”¨å†—ä½™ä½æ•ˆçš„ CSS å†™æ³•ï¼Œä¾‹å¦‚ï¼š
 		ul li a span { ... }
-	7. É÷ÓÃ !important
-	8. ½¨ÒéÊ¹ÓÃÔÚ class/id Ãû³ÆÖĞµÄ´ÊÓï
-		6.1. ±íÊ¾×´Ì¬£ºa->active
-		6.2. ±íÊ¾½á¹¹£ºh->header,c->content,f->footer
-		6.3. ±íÊ¾ÇøÓò£ºmn->main,sd->side,nv-navigation,mu->menu
-		6.4. ±íÊ¾ÑùÊ½£ºl-list,tab,p_pop
-	9. ¿ª·¢¹ı³ÌÖĞµÄÎ´¶¨ÊÂÏî£¬ĞëÓÃ [!] ±ê³ö£¬ÒÔ±ãÓÚºóĞøÌÖÂÛÕûÀí
+	7. æ…ç”¨ !important
+	8. å»ºè®®ä½¿ç”¨åœ¨ class/id åç§°ä¸­çš„è¯è¯­
+		6.1. è¡¨ç¤ºçŠ¶æ€ï¼ša->active
+		6.2. è¡¨ç¤ºç»“æ„ï¼šh->header,c->content,f->footer
+		6.3. è¡¨ç¤ºåŒºåŸŸï¼šmn->main,sd->side,nv-navigation,mu->menu
+		6.4. è¡¨ç¤ºæ ·å¼ï¼šl-list,tab,p_pop
+	9. å¼€å‘è¿‡ç¨‹ä¸­çš„æœªå®šäº‹é¡¹ï¼Œé¡»ç”¨ [!] æ ‡å‡ºï¼Œä»¥ä¾¿äºåç»­è®¨è®ºæ•´ç†
 
 ----------------------------------
 
-¹ØÓÚ CSS Hack µÄËµÃ÷£º
+å…³äº CSS Hack çš„è¯´æ˜ï¼š
 
-	ËùÓĞ IEä¯ÀÀÆ÷ÊÊÓÃ£º	.ie_all .foo { ... }
-	IE6 ×¨ÓÃ£º			.ie6 .foo { ... }
-	IE7 ×¨ÓÃ£º			.ie7 .foo { ... }
-	IE8 ×¨ÓÃ£º			.ie8 .foo { ... }
+	æ‰€æœ‰ IEæµè§ˆå™¨é€‚ç”¨ï¼š	.ie_all .foo { ... }
+	IE6 ä¸“ç”¨ï¼š			.ie6 .foo { ... }
+	IE7 ä¸“ç”¨ï¼š			.ie7 .foo { ... }
+	IE8 ä¸“ç”¨ï¼š			.ie8 .foo { ... }
 
 ---------------------------------- */
 
 /*
 	Name:			mod_reset
 	Level:			Global
-	Explain:		ÖØ¶¨Òåä¯ÀÀÆ÷Ä¬ÈÏÑùÊ½
+	Explain:		é‡å®šä¹‰æµè§ˆå™¨é»˜è®¤æ ·å¼
 	Last Modify:	Pony
 */
 	* { word-wrap: break-word; }
@@ -105,7 +105,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_float
 	Level:			Global
 	Sample:			class="z/y"
-	Explain:		.z/.y ¸¡¶¯ left/right
+	Explain:		.z/.y æµ®åŠ¨ left/right
 	Last Modify:	lushnis
 */
 	.z { float: left; } .y { float: right; }
@@ -114,12 +114,12 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_clearfix
 	Level:			Global
 	Sample:			class="cl"
-	Explain:		Clearfix,±ÜÃâÒò×ÓÔªËØ¸¡¶¯¶øµ¼ÖÂµÄ¸¸ÔªËØ¸ß¶ÈÈ±Ê§ÄÜÎÊÌâ
+	Explain:		Clearfix,é¿å…å› å­å…ƒç´ æµ®åŠ¨è€Œå¯¼è‡´çš„çˆ¶å…ƒç´ é«˜åº¦ç¼ºå¤±èƒ½é—®é¢˜
 	Last Modify:	lushnis
 */
 	.cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; } .cl { zoom: 1; }
 /*
-	ÔªËØ»ñÈ¡½¹µãÊ±Òş²ØÍâ±ß¿ò
+	å…ƒç´ è·å–ç„¦ç‚¹æ—¶éšè—å¤–è¾¹æ¡†
 */
 	.hidefocus { outline: none; }
 
@@ -127,7 +127,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_hr
 	Level:			Global
 	Sample:			<hr />
-	Explain:		ÖØ¶¨Òå <hr /> ÔªËØµÄÑùÊ½£¬È¥³ıÄ¬ÈÏ±ß¾à
+	Explain:		é‡å®šä¹‰ <hr /> å…ƒç´ çš„æ ·å¼ï¼Œå»é™¤é»˜è®¤è¾¹è·
 	Last Modify:	lushnis
 */
 	hr { display: block; clear: both; *margin-top: -8px !important; *margin-bottom: -8px !important; }
@@ -138,7 +138,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Level:			Global
 	Dependent:		mod_hr
 	Sample:			<hr class="l" />
-	Explain:		¶¨Òå 1px ¸ß¶ÈÊµÏßÑùÊ½µÄ <hr /> ÔªËØ£¬¾ßÓĞÁ½¸ö¸öÀ©Õ¹ÑùÊ½£¬.l2 ºÍ .l3£¬·Ö±ğÊµÏÖ 2px ºÍ 3px µÄÊµÏß·Ö¸îÏß
+	Explain:		å®šä¹‰ 1px é«˜åº¦å®çº¿æ ·å¼çš„ <hr /> å…ƒç´ ï¼Œå…·æœ‰ä¸¤ä¸ªä¸ªæ‰©å±•æ ·å¼ï¼Œ.l2 å’Œ .l3ï¼Œåˆ†åˆ«å®ç° 2px å’Œ 3px çš„å®çº¿åˆ†å‰²çº¿
 	Last Modify:	lushnis
 */
 	hr.l { height: 1px; border: none; background: {COMMONBORDER}; color: {COMMONBORDER}; }
@@ -149,37 +149,37 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Level:			Global
 	Dependent:		mod_hr
 	Sample:			<hr class="da" />
-	Explain:		¶¨Òå 1px ¸ß¶ÈĞéÏßÑùÊ½µÄ <hr /> ÔªËØ
+	Explain:		å®šä¹‰ 1px é«˜åº¦è™šçº¿æ ·å¼çš„ <hr /> å…ƒç´ 
 	Last Modify:	lushnis
 */
 	hr.da { height: 0; border: none; border-top: 1px dashed {COMMONBORDER}; background: transparent; color: transparent; }
 
-	/* [!]Ê¹ÓÃ×¢Òâ */
+	/* [!]ä½¿ç”¨æ³¨æ„ */
 	hr.bk { margin-bottom: 10px !important; *margin-bottom: 2px !important; height: 0; border: none; border-top: 1px solid {WRAPBG}; background: transparent; color: transparent; }
 		.n .sd hr.bk { border-top-color: #F9F9F9; }
-	/* Çå³ıMargin */
+	/* æ¸…é™¤Margin */
 	hr.m0 { margin-left: 0; margin-right: 0; }
 
 /*
 	Name:			mod_page_header
 	Level:			Global
 	Sample:			<h1 class="ph">Text</h1>
-	Explain:		Ò³ÃæÖĞ±êÌâ¼¶±ğµÄÎÄ×Ö [!]´Ë´¦ĞëÕûºÏÎªÒ»¸öµ¥¶À class
+	Explain:		é¡µé¢ä¸­æ ‡é¢˜çº§åˆ«çš„æ–‡å­— [!]æ­¤å¤„é¡»æ•´åˆä¸ºä¸€ä¸ªå•ç‹¬ class
 	Last Modify:	lushnis
 */
-	/* .wx --> weight text ´ÖÌå×Ö£¬Í¨³£ÓÃÓÚ´ó±êÌâ */
+	/* .wx --> weight text ç²—ä½“å­—ï¼Œé€šå¸¸ç”¨äºå¤§æ ‡é¢˜ */
 	.wx, .ph { font-family: 'Microsoft YaHei', 'Hiragino Sans GB', 'STHeiti', Tahoma, 'SimHei', sans-serif; font-weight: 100; }
 	/* Page header */ .ph { font-size: 20px; }
 	/* Main title */ .mt { padding: 10px 0; font-size: 16px; }
 
-/* ĞĞÄÚ·Ö¸îÊúÏß */ .pipe { margin: 0 5px; color: #CCC; }
+/* è¡Œå†…åˆ†å‰²ç«–çº¿ */ .pipe { margin: 0 5px; color: #CCC; }
 
-/* ÎÄ±¾ÊôĞÔ£º×ÖºÅ¡¢ÑÕÉ«¡¢´ÖÏ¸ */
+/* æ–‡æœ¬å±æ€§ï¼šå­—å·ã€é¢œè‰²ã€ç²—ç»† */
 /*
 	Name:			mod_text_size
 	Level:			Global
 	Sample:			class="xs*"
-	Explain:		ÎÄ×Ö×ÖºÅ£¬·ÖÎªËÄ¸ö¼¶±ğ
+	Explain:		æ–‡å­—å­—å·ï¼Œåˆ†ä¸ºå››ä¸ªçº§åˆ«
 	Last Modify:	lushnis
 */
 	.xs0 { font-family: {SMFONT}; font-size: {SMFONTSIZE}; -webkit-text-size-adjust: none; }
@@ -191,7 +191,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Level:			Global
 	Dependent:		-
 	Sample:			class="xs[*]"
-	Explain:		ÎÄ×Ö×ÖºÅ£¬·ÖÎªËÄ¸ö¼¶±ğ
+	Explain:		æ–‡å­—å­—å·ï¼Œåˆ†ä¸ºå››ä¸ªçº§åˆ«
 	Last Modify:	lushnis
 */
 	.xg1, .xg1 a { color: {LIGHTTEXT} !important; }
@@ -201,7 +201,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_text_importance_level
 	Level:			Global
 	Sample:			class="xs[*]"
-	Explain:		ÎÄ×ÖÌáÁÁ¼¶±ğ£¬·ÖÎªÁ½¼¶£¬Ä¬ÈÏÄ£°åÖĞ£¬1Îª³ÈÉ«£¬2ÎªÀ¶É«
+	Explain:		æ–‡å­—æäº®çº§åˆ«ï¼Œåˆ†ä¸ºä¸¤çº§ï¼Œé»˜è®¤æ¨¡æ¿ä¸­ï¼Œ1ä¸ºæ©™è‰²ï¼Œ2ä¸ºè“è‰²
 	Last Modify:	lushnis
 */
 	.xi1, .onerror { color: {NOTICETEXT}; }
@@ -210,7 +210,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_text_weight_level
 	Level:			Global
 	Sample:			class="xs[*]"
-	Explain:		ÎÄ×Ö×ÖºÅ£¬·ÖÎªËÄ¸ö¼¶±ğ
+	Explain:		æ–‡å­—å­—å·ï¼Œåˆ†ä¸ºå››ä¸ªçº§åˆ«
 	Last Modify:	lushnis
 */
 	.xw0 { font-weight: 400; }
@@ -220,7 +220,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Level:			Global
 	Dependent:		-
 	Sample:			class="bbda/bbs"
-	Explain:		±ß¿òÑùÊ½£¬¸ÃÄ£¿é½ö×÷ÓÃÓÚÔªËØµÄÏÂ±ß¿ò£¬·ÖÎªĞéÏßºÍÊµÏßÁ½ÖÖ£¬¿í¶È¾ùÎª 1px
+	Explain:		è¾¹æ¡†æ ·å¼ï¼Œè¯¥æ¨¡å—ä»…ä½œç”¨äºå…ƒç´ çš„ä¸‹è¾¹æ¡†ï¼Œåˆ†ä¸ºè™šçº¿å’Œå®çº¿ä¸¤ç§ï¼Œå®½åº¦å‡ä¸º 1px
 	Last Modify:	lushnis
 */
 	.bbda { border-bottom: 1px dashed {COMMONBORDER}; }
@@ -231,7 +231,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_border_reset
 	Level:			Global
 	Sample:			class="bw0/bw0_all"
-	Explain:		È¥³ı±ß¿ò
+	Explain:		å»é™¤è¾¹æ¡†
 	Last Modify:	lushnis
 */
 	.bw0 { border: none !important; }
@@ -240,7 +240,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_background_reset
 	Level:			Global
 	Sample:			class="bg0_c/bg0_i/bg0_all"
-	Explain:		È¥³ı±³¾°£¬bg0_c¡¢bg0_i ºÍ bg0_all ·Ö±ğÎªÈ¥³ı±³¾°ÑÕÉ«¡¢È¥³ı±³¾°Í¼Æ¬ºÍÈ¥³ıËùÓĞ±³¾°ÔªËØ
+	Explain:		å»é™¤èƒŒæ™¯ï¼Œbg0_cã€bg0_i å’Œ bg0_all åˆ†åˆ«ä¸ºå»é™¤èƒŒæ™¯é¢œè‰²ã€å»é™¤èƒŒæ™¯å›¾ç‰‡å’Œå»é™¤æ‰€æœ‰èƒŒæ™¯å…ƒç´ 
 	Last Modify:	Pony
 */
 	.bg0_c { background-color: transparent !important; }
@@ -251,14 +251,14 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_notice_line
 	Level:			Global
 	Sample:			<div class="ntc_l">
-	Explain:		»ÆÉ«±³¾°µÄÌáÊ¾Ìõ£¬Ò»°ãÓÃÔÚµ¥ĞĞĞÑÄ¿ÌáÊ¾£¬²»¿ÉÓÃÓÚ¶àĞĞ¿é¼¶ÇøÓò
+	Explain:		é»„è‰²èƒŒæ™¯çš„æç¤ºæ¡ï¼Œä¸€èˆ¬ç”¨åœ¨å•è¡Œé†’ç›®æç¤ºï¼Œä¸å¯ç”¨äºå¤šè¡Œå—çº§åŒºåŸŸ
 	Last Modify:	lushnis
 */
 	.ntc_l { padding: 5px 10px; background: #FEFEE9; }
 		.ntc_l .d { width: 20px; height: 20px; background: url({IMGDIR}/op.png) no-repeat 0 0; line-height: 9999px; overflow: hidden; }
 			.ntc_l .d:hover { background-position: 0 -20px; }
 
-/* Ô²½Ç [!]´Ë´¦¿¼ÂÇÆúÓÃ */
+/* åœ†è§’ [!]æ­¤å¤„è€ƒè™‘å¼ƒç”¨ */
 	.brs, .avt img, .oshr { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
 	.brm { -moz-border-radius: 10px; -webkit-border-radius: 10px;  border-radius: 10px; }
 	.brw { -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px;  }
@@ -266,7 +266,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_margin
 	Level:			Global
 	Sample:			class="mtn/mtm/mtw/..."
-	Explain:		Íâ±ß¾àÑùÊ½£¬×÷ÓÃÓÚÔªËØµÄÉÏÏÂÍâ±ß¾à£¬ÉÏÏÂ¸÷¾ßÓĞ n, m, w Èı¸ö¼¶±ğ
+	Explain:		å¤–è¾¹è·æ ·å¼ï¼Œä½œç”¨äºå…ƒç´ çš„ä¸Šä¸‹å¤–è¾¹è·ï¼Œä¸Šä¸‹å„å…·æœ‰ n, m, w ä¸‰ä¸ªçº§åˆ«
 	Last Modify:	lushnis
 */
 	.mtn { margin-top: 5px !important; }
@@ -279,7 +279,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_padding
 	Level:			Global
 	Sample:			class="ptn/ptm/ptw/..."
-	Explain:		ÄÚ±ß¾àÑùÊ½£¬×÷ÓÃÓÚÔªËØµÄÉÏÏÂÄÚ±ß¾à£¬ÉÏÏÂ¸÷¾ßÓĞ n, m, w Èı¸ö¼¶±ğ
+	Explain:		å†…è¾¹è·æ ·å¼ï¼Œä½œç”¨äºå…ƒç´ çš„ä¸Šä¸‹å†…è¾¹è·ï¼Œä¸Šä¸‹å„å…·æœ‰ n, m, w ä¸‰ä¸ªçº§åˆ«
 	Last Modify:	lushnis
 */
 	.ptn { padding-top: 5px !important; }
@@ -292,7 +292,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_avatar
 	Level:			Global
 	Sample:			<div class="avt"><img src="avatar source" alt="username" /></div>
-	Explain:		±ê×¼³ß´çÍ·ÏñÑùÊ½£¬Ä¬ÈÏÎª 48px*48px£¬´ø±ß¿ò
+	Explain:		æ ‡å‡†å°ºå¯¸å¤´åƒæ ·å¼ï¼Œé»˜è®¤ä¸º 48px*48pxï¼Œå¸¦è¾¹æ¡†
 	Last Modify:	lushnis
 */
 	.avt img { padding: 2px; width: 48px; height: 48px; background: {WRAPBG}; border: 1px solid; border-color: {COMMONBG} {COMMONBORDER} {COMMONBORDER} {COMMONBG}; }
@@ -300,7 +300,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_avatar_middle, mod_avatar_small
 	Level:			Global
 	Sample:			<div class="avtm/avts"><img src="avatar source" alt="username" /></div>
-	Explain:		ÖĞµÈ³ß´çºÍĞ¡³ß´çÍ·ÏñÑùÊ½£¬ÖĞµÈ³ß´çÎª¿í¶È 120px£¬¸ß¶È°´±ÈÀı£»Ğ¡³ß´çÎª 24px*24px
+	Explain:		ä¸­ç­‰å°ºå¯¸å’Œå°å°ºå¯¸å¤´åƒæ ·å¼ï¼Œä¸­ç­‰å°ºå¯¸ä¸ºå®½åº¦ 120pxï¼Œé«˜åº¦æŒ‰æ¯”ä¾‹ï¼›å°å°ºå¯¸ä¸º 24px*24px
 	Last Modify:	lushnis
 */
 	.avtm img { width: 120px; height: auto; }
@@ -308,8 +308,8 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 /*
 	Name:			mod_emp
 	Level:			Global
-	Sample:			<p class="emp">ÔİÎŞÊı¾İ</p>
-	Explain:		Ò³ÃæÖĞÎŞÊı¾İÊä³öÊ±£¬ÓÃ´ËÑùÊ½ÏÔÊ¾Ïà¹ØÌáÊ¾£¬ÈçÎŞÌØÊâ±ØÒª£¬½¨ÒéÊ¹ÓÃ <p> ¶ø²»ÊÇ <div>
+	Sample:			<p class="emp">æš‚æ— æ•°æ®</p>
+	Explain:		é¡µé¢ä¸­æ— æ•°æ®è¾“å‡ºæ—¶ï¼Œç”¨æ­¤æ ·å¼æ˜¾ç¤ºç›¸å…³æç¤ºï¼Œå¦‚æ— ç‰¹æ®Šå¿…è¦ï¼Œå»ºè®®ä½¿ç”¨ <p> è€Œä¸æ˜¯ <div>
 	Last Modify:	lushnis
 */
 	.emp { padding: 20px 10px; }
@@ -318,7 +318,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_align
 	Level:			Global
 	Sample:			class="vm/hm"
-	Explain:		×İÏò¼°ºáÏò¶ÔÆë·½Ê½
+	Explain:		çºµå‘åŠæ¨ªå‘å¯¹é½æ–¹å¼
 	Last Modify:	lushnis
 */
 	.vm { vertical-align: middle; }
@@ -328,7 +328,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_alt
 	Level:			Global
 	Sample:			class="{echo swapclass('alt');}"
-	Explain:		¸ôĞĞ»»É«Ê±ÉîÉ«±³¾°
+	Explain:		éš”è¡Œæ¢è‰²æ—¶æ·±è‰²èƒŒæ™¯
 	Last Modify:	lushnis
 */
 	.alt, .alt th, .alt td { background-color: {COMMONBG}; }
@@ -336,7 +336,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_notice
 	Level:			Global
 	Sample:			class="notice"
-	Explain:		ÀàËÆÍ³¼ÆÖĞĞè×¢ÒâµÄÎÄ×ÖÑùÊ½ [!]´Ë´¦Ğë¿¼ÂÇÃû³Æ¼òĞ´Îª ntc
+	Explain:		ç±»ä¼¼ç»Ÿè®¡ä¸­éœ€æ³¨æ„çš„æ–‡å­—æ ·å¼ [!]æ­¤å¤„é¡»è€ƒè™‘åç§°ç®€å†™ä¸º ntc
 	Last Modify:	lushnis
 */
 	.notice { clear: both; margin: 5px 0; padding: 3px 5px 3px 20px; background: url({IMGDIR}/notice.gif) no-repeat 2px 6px; }
@@ -344,7 +344,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_ajax_wait_info
 	Level:			Global
 	Sample:			id="ajaxwaitid"
-	Explain:		ÏàÓ¦Ò³ÃæÖĞ AJAX ÇëÇóÊ±µÄ×´Ì¬ÏÔÊ¾
+	Explain:		ç›¸åº”é¡µé¢ä¸­ AJAX è¯·æ±‚æ—¶çš„çŠ¶æ€æ˜¾ç¤º
 	Last Modify:	lushnis
 */
 	#ajaxwaitid { display: none; position: absolute; right: 0; top: 0; z-index: 1; padding: 0 5px; background: #D00; color: {LIGHTLINK}; }
@@ -352,7 +352,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_showmenu
 	Level:			Global
 	Sample:			class="showmenu"
-	Explain:		ÏÂÀ­²Ëµ¥
+	Explain:		ä¸‹æ‹‰èœå•
 	Last Modify:	lushnis
 */
 	.showmenu { padding-right: 16px; background: url({IMGDIR}/arrwd.gif) no-repeat 100% 50%; cursor: pointer; white-space: nowrap; }
@@ -362,16 +362,16 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_cursor
 	Level:			Global
 	Sample:			class="cur1"
-	Explain:		Êó±êÑùÊ½£¬¿ÉÒÔ¸ù¾İĞèÒª°´ĞòÌí¼Ó
+	Explain:		é¼ æ ‡æ ·å¼ï¼Œå¯ä»¥æ ¹æ®éœ€è¦æŒ‰åºæ·»åŠ 
 	Last Modify:	Pony
 */
 	.cur1 { cursor: pointer; }
 
-/* Èç¹ûÑéÖ¤ÂëÓĞ´íÂÒ£¬¿ÉÌí¼Ó´ËÑùÊ½.sec£¨È«¾Ö£¬ĞŞ¸ÄÊ±ÒªĞ¡ĞÄ£¬»áÉæ¼°·ÖÏí¡¢¿ìËÙ»Ø¸´ºÍ feedÈÕÖ¾Ïà²áÖĞµÄÆÀÂÛµÈµØ·½£© by Pony */
+/* å¦‚æœéªŒè¯ç æœ‰é”™ä¹±ï¼Œå¯æ·»åŠ æ­¤æ ·å¼.secï¼ˆå…¨å±€ï¼Œä¿®æ”¹æ—¶è¦å°å¿ƒï¼Œä¼šæ¶‰åŠåˆ†äº«ã€å¿«é€Ÿå›å¤å’Œ feedæ—¥å¿—ç›¸å†Œä¸­çš„è¯„è®ºç­‰åœ°æ–¹ï¼‰ by Pony */
 .ie6 .sec .p_pop { white-space: expression(this.offsetWidth >= 220 ? 'normal' : 'nowrap'); width: expression(this.offsetWidth >= 220 ? 200 : 'auto'); }
 
 
-/* ------------------------------------------------------------------------ ±íµ¥¼°±íµ¥ÔªËØ */
+/* ------------------------------------------------------------------------ è¡¨å•åŠè¡¨å•å…ƒç´  */
 		/*
 		.pn				button
 			.pnc		button with light color
@@ -387,13 +387,13 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.oivt			invite button with oshr
 		*/
 
-/* ±ØÌîÏî */ .rq { color: red; }
+/* å¿…å¡«é¡¹ */ .rq { color: red; }
 
 /*
 	Name:			mod_input[text]_textarea_select
 	Level:			Global
 	Sample:			class="px/pt/ps"
-	Explain:		µ¥ĞĞÊäÈë¿ò£¨px£©¡¢¶àĞĞÎÄ±¾¿ò£¨pt£©ºÍÑ¡Ôñ¿ò(ps/select)
+	Explain:		å•è¡Œè¾“å…¥æ¡†ï¼ˆpxï¼‰ã€å¤šè¡Œæ–‡æœ¬æ¡†ï¼ˆptï¼‰å’Œé€‰æ‹©æ¡†(ps/select)
 	Last Modify:	Pony
 */
 	.px, .pt, .ps, select { border: 1px solid; border-color: {INPUTBORDERDARKCOLOR} {INPUTBORDER} {INPUTBORDER} {INPUTBORDERDARKCOLOR}; background: {INPUTBG} url({IMGDIR}/px.png) repeat-x 0 0; color: {TEXT}; }
@@ -406,7 +406,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.pt { overflow-y: auto; }
 			div.pt { height: 100px; line-height: 100px; }
 		.ps, select { padding: 2px 2px 2px 1px; }
-		/* ×Ô¶¯µ÷Õû¸ß¶ÈµÄ textarea by Pony */
+		/* è‡ªåŠ¨è°ƒæ•´é«˜åº¦çš„ textarea by Pony */
 		.pts { vertical-align: top; overflow: hidden; }
 		.cmt .pts { width: 60%; }
 
@@ -414,7 +414,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_button
 	Level:			Global
 	Sample:			<button class="pn">Submit</button>
-	Explain:		°´Å¥ÑùÊ½
+	Explain:		æŒ‰é’®æ ·å¼
 	Last Modify:	Pony
 */
 	button::-moz-focus-inner { border: 0; padding: 0; }
@@ -441,7 +441,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_input[radio]_input[checkbox]_label
 	Level:			Global
 	Sample:			class="pr/pc/lb"
-	Explain:		µ¥Ñ¡°´Å¥(pr)¡¢¶àÑ¡¿ò(pc)ºÍ<label>(lb)
+	Explain:		å•é€‰æŒ‰é’®(pr)ã€å¤šé€‰æ¡†(pc)å’Œ<label>(lb)
 	Last Modify:	Pony
 */
 	.pr, .pc { vertical-align: middle; margin: 0 5px 1px 0; padding: 0; }
@@ -453,7 +453,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	Name:			mod_narrow_input
 	Level:			Global
 	Sample:			<div class="pns"></div>
-	Explain:		Ğ¡³ß´çµÄÊäÈë¿òºÍ°´Å¥ÑùÊ½¡£¸ÃÑùÊ½ÔÚÄ£°åÖĞ±£Áô£¬Ä¿Ç°ÑùÊ½Îª¿Õ¡£
+	Explain:		å°å°ºå¯¸çš„è¾“å…¥æ¡†å’ŒæŒ‰é’®æ ·å¼ã€‚è¯¥æ ·å¼åœ¨æ¨¡æ¿ä¸­ä¿ç•™ï¼Œç›®å‰æ ·å¼ä¸ºç©ºã€‚
 	Last Modify:	Pony
 */
 	.pns .px {}
@@ -467,7 +467,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 							<option>Option</option>
 						</select>
 					</div>
-	Explain:		Ä£ÄâÏÂÀ­²Ëµ¥ÑùÊ½
+	Explain:		æ¨¡æ‹Ÿä¸‹æ‹‰èœå•æ ·å¼
 	Last Modify:	Pony
 */
 .ftid { float: left; margin-right: 6px; }
@@ -484,10 +484,10 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.sltm li:hover { color: {HIGHLIGHTLINK}; }
 		.sltm li.current { color: {NOTICETEXT}; }
 
-/* ·ÖÏí°´Å¥ */ .oshr { float: right; margin-left: 5px; padding: 0 5px 0 22px; border: 1px solid; border-color: #CCC #A9A9A9 #A9A9A9 #CCC; background: {WRAPBG} url({IMGDIR}/oshr.png) no-repeat 5px 50%; }
+/* åˆ†äº«æŒ‰é’® */ .oshr { float: right; margin-left: 5px; padding: 0 5px 0 22px; border: 1px solid; border-color: #CCC #A9A9A9 #A9A9A9 #CCC; background: {WRAPBG} url({IMGDIR}/oshr.png) no-repeat 5px 50%; }
 				.oshr:hover { text-decoration: none; }
-/* ÊÕ²Ø°´Å¥ with oshr */ .ofav { background-image: url({IMGDIR}/fav.gif); }
-/* ÑûÇë°´Å¥ with oshr */ .oivt { background-image: url({IMGDIR}/activitysmall.gif); }
+/* æ”¶è—æŒ‰é’® with oshr */ .ofav { background-image: url({IMGDIR}/fav.gif); }
+/* é‚€è¯·æŒ‰é’® with oshr */ .oivt { background-image: url({IMGDIR}/activitysmall.gif); }
 
 
 /*
@@ -501,7 +501,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 							</tr>
 						</table>
 					</form>
-	Explain:		±íµ¥ÑùÊ½
+	Explain:		è¡¨å•æ ·å¼
 	Last Modify:	Pony
 */
 	.tfm { width: 100%; }
@@ -525,14 +525,14 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 /*
 	Name:			mod_postboxtitle
 	Level:			Function
-	Explain:		·¢ÌûÒ³Ãæ¡¢µ¯´°µÈµÄ±êÌâÀ¸
+	Explain:		å‘å¸–é¡µé¢ã€å¼¹çª—ç­‰çš„æ ‡é¢˜æ 
 	Last Modify:	Pony
 */
 .pbt { margin-bottom: 10px; }
 	.ie6 .pbt .ftid a, .ie7 .pbt .ftid a { margin-top: 1px; }
 	#custominfo.mtn { margin-bottom: -5px; }
 
-/* ÌáÊ¾ĞÅÏ¢ alert_win £­ altw*/
+/* æç¤ºä¿¡æ¯ alert_win ï¼ altw*/
 .altw { width: 350px; }
 	.altw .fltc { margin-bottom: 0; padding: 8px; }
 		.alert_right, .alert_error, .alert_info { padding: 6px 0 6px 58px; min-height: 40px; height: auto !important; height: 40px; line-height: 160%; background:url({IMGDIR}/right.gif) no-repeat 8px 8px; font-size: 14px; }
@@ -543,7 +543,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.alert_btn { margin-top: 20px; text-align: center; }
 		.alert_act { margin-top: 20px; padding-left: 58px; }
 
-/* ·¢Ìûµ¼º½ by lushnis */
+/* å‘å¸–å¯¼èˆª by lushnis */
 .pbnv { float: left; white-space: nowrap; overflow: hidden; width: 400px; padding: 7px 0; }
 .pbl { overflow: hidden; margin: 9px 0; width: 621px; border-width: 1px 0 1px 1px; border-style: solid; border-color: #CCC; background: {WRAPBG}; }
 	.pbl li { float: left; overflow-x: hidden; overflow-y: auto; padding: 5px; width: 196px; height: 300px; border-right: 1px solid #CCC; }
@@ -554,7 +554,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.pbls a, .pbls a:hover { background-color: #EEE; color: {MIDTEXT}; font-weight: 700; }
 		.pbsb { background: url({IMGDIR}/arrow.gif) right -33px no-repeat; }
 
-/* ------------------------------------------------------------------------ Ò³Ãæ²¼¾Ö */
+/* ------------------------------------------------------------------------ é¡µé¢å¸ƒå±€ */
 		/*
 		#hd				Header
 			#nv			Navigation
@@ -574,9 +574,9 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.pmfl			PM friend list (Window)
 		*/
 
-/* Í¨ÓÃÈİÆ÷£¬¶¨ÒåÒ³Ãæ¿í¶È */ .wp { margin: 0 auto; width: 960px; } #wp .wp { width: auto; }
+/* é€šç”¨å®¹å™¨ï¼Œå®šä¹‰é¡µé¢å®½åº¦ */ .wp { margin: 0 auto; width: 960px; } #wp .wp { width: auto; }
 
-/* Ò³Í· */
+/* é¡µå¤´ */
 	#toptb { min-width: 960px; border-bottom: 1px solid {COMMONBORDER}; background: {COMMONBG}; line-height: 28px; }
 		#toptb a { float: left; padding: 0 4px; height: 28px; }
 		#toptb a.showmenu { padding-right: 15px; }
@@ -630,7 +630,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 				#um .avt { display: inline; margin-right: -60px; }
 				.vwmy { padding-left: 16px; background: url({IMGDIR}/user_online.gif) no-repeat 0 2px; }
 					.vwmy.qq { background: url({IMGDIR}/connect_qq.gif) no-repeat scroll 0 0; padding-left: 20px; }
-				/* .topnav .new, .sch .new ·Ö±ğÎªÎª¸öÈËÖĞĞÄºÍËÑË÷Ò³ÃæÍ·²¿ĞÂÏûÏ¢ÑùÊ½ */
+				/* .topnav .new, .sch .new åˆ†åˆ«ä¸ºä¸ºä¸ªäººä¸­å¿ƒå’Œæœç´¢é¡µé¢å¤´éƒ¨æ–°æ¶ˆæ¯æ ·å¼ */
 				#um .new, .topnav .new, .sch .new, #toptb .new { padding-left: 20px; background-repeat: no-repeat; background-position: 0 50%; color: {HIGHLIGHTLINK}; font-weight: 700; }
 					#myprompt.new { background-image: url({IMGDIR}/notice.gif); background-position: 3px 50%; }
 					#pm_ntc.new { background-image: url({IMGDIR}/new_pm.gif); }
@@ -656,7 +656,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 				#shortcut { position: relative; display: none; height: 30px; line-height: 30px; background-color: #3A83F1; color: white; text-align: center; }
 					#shortcuttip { padding: 2px 8px; background: url({IMGDIR}/search.gif) repeat-x 0 -1px; border-radius: 3px; color: #3A83F1; font-weight: 700; }
 					#shortcutcloseid { position: absolute; right: 8px; top: 8px; display: block; width: 12px; height: 12px; background: url({IMGDIR}/close.gif) no-repeat 0 -12px; text-indent: -999em; }
-/* Ò³ÃæÖ÷ÇøÓò */
+/* é¡µé¢ä¸»åŒºåŸŸ */
 	#ct { min-height: 300px; }
 		.ie6 #ct { height: 300px; }
 		.mn { overflow: hidden; }
@@ -683,7 +683,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.mnw { clear: both; border-top: 1px solid #CCC; }
 		.mnh { width: 643px; background: {COMMONBG}; margin-bottom: 0; }
 
-/* Ò³Î² */
+/* é¡µå°¾ */
 	#ft { padding: 10px 0 50px; border-top: 1px solid {COMMONBORDER}; line-height: 1.8; color: {FOOTERTEXT}; }
 		#flk { text-align: right; }
 			#flk img { vertical-align: middle; }
@@ -700,13 +700,13 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 
 		#nv_home #ft, .pg_announcement #ft, .pg_modcp #ft, .pg_portalcp #ft, .pg_ranklist #ft, #nv_userapp #ft { border-top: none; }
 
-/* Í¨ÓÃµÄÇøÓò¿é */
+/* é€šç”¨çš„åŒºåŸŸå— */
 	/*
-	.bm ÊÇ×î³£ÓÃµÄÇø¿éÔªËØ£¬Ä¬ÈÏ´øÓĞ 1px µÄ±ß¿òºÍ 10px µÄÏÂ±ß¾à¡£Ò»°ãÇé¿öÏÂ£¬.bm ÄÚÓ¦°üÀ¨Á½¸ö×ÓÈİÆ÷£º.bm_h ºÍ .bm_c£¬Ç°Õß´ú±íÇø¿éÍ·²¿£¬´øÓĞ»ÒÉ«±³¾°ºÍÏÂ±ß¿ò£»ºóÕßÊÇÈİÆ÷Ö÷Ìå£¬Ä¬ÈÏ´øÓĞ 10px µÄÄÚ±ß¾à¡£
-	.bm ÁíÓĞÈıÖÖ×ÓÑùÊ½
-		.bmw	Weight		Í·²¿Îª²ÊÉ«±³¾°
-		.bml	Lite		Í·²¿ÎŞ±³¾°Ìî³ä
-		.bmn	Notice		ÕûÌå´øÓĞ²ÊÉ«±³¾°£¬³£ÓÃÓÚÌáÊ¾ĞÅÏ¢
+	.bm æ˜¯æœ€å¸¸ç”¨çš„åŒºå—å…ƒç´ ï¼Œé»˜è®¤å¸¦æœ‰ 1px çš„è¾¹æ¡†å’Œ 10px çš„ä¸‹è¾¹è·ã€‚ä¸€èˆ¬æƒ…å†µä¸‹ï¼Œ.bm å†…åº”åŒ…æ‹¬ä¸¤ä¸ªå­å®¹å™¨ï¼š.bm_h å’Œ .bm_cï¼Œå‰è€…ä»£è¡¨åŒºå—å¤´éƒ¨ï¼Œå¸¦æœ‰ç°è‰²èƒŒæ™¯å’Œä¸‹è¾¹æ¡†ï¼›åè€…æ˜¯å®¹å™¨ä¸»ä½“ï¼Œé»˜è®¤å¸¦æœ‰ 10px çš„å†…è¾¹è·ã€‚
+	.bm å¦æœ‰ä¸‰ç§å­æ ·å¼
+		.bmw	Weight		å¤´éƒ¨ä¸ºå½©è‰²èƒŒæ™¯
+		.bml	Lite		å¤´éƒ¨æ— èƒŒæ™¯å¡«å……
+		.bmn	Notice		æ•´ä½“å¸¦æœ‰å½©è‰²èƒŒæ™¯ï¼Œå¸¸ç”¨äºæç¤ºä¿¡æ¯
 	*/
 	.bm, .bn { margin-bottom: 10px; }
 		.bm { border: 1px solid {COMMONBORDER}; background: {WRAPBG}; }
@@ -732,13 +732,13 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.bm2 .bm2_b_y { float: right; }
 	.bw0 { background: transparent; }
 
-	/* ¿í²¼¾ÖÏÂµÄÍ¨ÓÃ¿é */.bw { padding: 0 15px; }
+	/* å®½å¸ƒå±€ä¸‹çš„é€šç”¨å— */.bw { padding: 0 15px; }
 
 /*
 	Name:			mod_path
 	Level:			Global
 	Sample:			<div id="pt"><div class="z">Path here</div></div>
-	Explain:		Ãæ°üĞ¼µ¼º½
+	Explain:		é¢åŒ…å±‘å¯¼èˆª
 	Last Modify:	lushnis
 */
 	#pt { margin: 2px 0; height: 29px; border:none; background: transparent; line-height: 29px; }
@@ -746,14 +746,14 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		#pt .z a, #pt .z em, #pt .z span { float: left; height: 29px; }
 		#pt .z em { width: 20px; background: url({IMGDIR}/pt_item.png) no-repeat 3px 10px; line-height: 200px; overflow: hidden; }
 		.nvhm { width: 16px; background: url({IMGDIR}/search.png) no-repeat 0 0; line-height: 200px; overflow: hidden; }
-			/* XP »ò Windows 7£¬IE ×î¸ß°æ±¾Îª 8 »ò 9£¬Õâ¼¸ÖÖ×éºÏÇé¿ö¶Ô×ÖÌåµÄäÖÈ¾´æÔÚ²îÒì£¬ËùÒÔĞèÒª¶Ô±³¾°½øĞĞÎ¢µ÷£¬ÒÔÊÊÓ¦¸ü¶àÇé¿ö by Pony 11050511 */
+			/* XP æˆ– Windows 7ï¼ŒIE æœ€é«˜ç‰ˆæœ¬ä¸º 8 æˆ– 9ï¼Œè¿™å‡ ç§ç»„åˆæƒ…å†µå¯¹å­—ä½“çš„æ¸²æŸ“å­˜åœ¨å·®å¼‚ï¼Œæ‰€ä»¥éœ€è¦å¯¹èƒŒæ™¯è¿›è¡Œå¾®è°ƒï¼Œä»¥é€‚åº”æ›´å¤šæƒ…å†µ by Pony 11050511 */
 			.ie_all #pt .z em { background-position: 3px 9px; }
 			.ie_all .nvhm { background-position: 0 -1px; }
 /*
 	Name:			mod_userheader
 	Level:			Global
 	Sample:			div id="uhd"
-	Explain:		ÂÛÌ³Æ¤·ôÏÂÓÃ»§Ò³ÃæÍ·²¿
+	Explain:		è®ºå›çš®è‚¤ä¸‹ç”¨æˆ·é¡µé¢å¤´éƒ¨
 	Last Modify:	lushnis
 */
 #uhd { padding-top: 10px;border: 1px solid #CCC; border-bottom: none; background: {SPECIALBG}; }
@@ -772,7 +772,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	#uhd .flw_hd { float: right; width: 260px; margin-right: 10px; margin-bottom: -30px; }
 		#uhd .tns th, #uhd .tns td { padding-left: 20px; text-align: left; }
 		#uhd .flw_hd .o { padding-left: 20px; }
-/* Í³¼ÆÊı¾İ */
+/* ç»Ÿè®¡æ•°æ® */
 .tns { padding: 10px 0; }
 	.tns table { width: 100%; }
 		.tns th, .tns td { text-align: center; font-size: 12px; }
@@ -782,7 +782,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.pls .tns { padding: 0 10px 10px; }
 		.pls .tns th p, .pls .tns td p { font-size: 12px; margin: 0; }
 
-/* ´øÍ¼±êÒ³ÃæÍ·²¿ ih. --> icon header */
+/* å¸¦å›¾æ ‡é¡µé¢å¤´éƒ¨ ih. --> icon header */
 	.ih .icn { float: left; width: 60px; }
 	.ih dl { margin-left: 60px; }
 		.ih dt { font-size: 14px; font-weight: 700; }
@@ -797,7 +797,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 						<li class="a"><a href="#">Active Tab Item</a></li>
 						<li><a href="#">Tab Item</a></li>
 					</ul>
-	Explain:		±êÇ©ÑùÊ½
+	Explain:		æ ‡ç­¾æ ·å¼
 	Last Modify:	lushnis
 */
 .tb { margin-top: 10px; padding-left: 5px; line-height: 30px; border-bottom: 1px solid {COMMONBORDER}; }
@@ -818,46 +818,46 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.tb_h .o { margin-top: 2px; }
 	.tb_s { margin-top: 0; line-height: 26px; }
 
-	/* ÀàËÆmenuµÄTab */
+	/* ç±»ä¼¼menuçš„Tab */
 .tbmu { padding: 8px 10px 8px 0; border-bottom: 1px dashed {COMMONBORDER}; }
 	.tbmu a { color: {HIGHLIGHTLINK}; }
 	.tbmu .a { color: {LINK}; font-weight: 700; }
-	/* tabµÄÇ¿µ÷ĞÅÏ¢ÌáÊ¾ */
+	/* tabçš„å¼ºè°ƒä¿¡æ¯æç¤º */
 .tbms { padding: 10px 10px 10px 26px; border: 1px dashed #FF9A9A; background: url({IMGDIR}/notice.gif) no-repeat 10px 50%; }
 .tbms_r { background-image: url({IMGDIR}/data_valid.gif); }
-	/* ¼«¼ò Tab */
+	/* æç®€ Tab */
 .tbx { margin: 10px 0; }
 	.tbx span { margin-right: 10px; cursor: pointer; }
 	.tbx .a { padding: 3px 5px; border: solid #999; border-width: 0 1px 1px 0; background: {COMMONBG} url({IMGDIR}/thead.png) repeat-x 0 -20px; }
 	.tbx strong { color: {NOTICETEXT}; }
-/* ÀàËÆÏà²á²à±ßÇĞ»»Ò³ÃæÓÃµÄ */
+/* ç±»ä¼¼ç›¸å†Œä¾§è¾¹åˆ‡æ¢é¡µé¢ç”¨çš„ */
 .obn { border-bottom: 1px solid {COMMONBORDER}; }
 	.obn select { width: 100%; margin-bottom: 5px; }
 
-/* ¹ã¸æ */
-	/* Ò³Í·¹ã¸æ */ .a_h { padding-top: 5px; }
-	/* ¶ş¼¶µ¼º½¹ã¸æ */ .a_mu { border: solid {COMMONBORDER}; border-width: 0 1px 1px; background: {COMMONBG}; }
-	/* Ò³Î²¹ã¸æ */ .a_f { margin: 5px auto; }
-	/* ÈÕÖ¾ÄÚÈİ¹ã¸æ */ .a_b { float: right; margin: 0 0 5px 5px; }
-	/* ¸ñ×Ó¹ã¸æ */ .a_t { margin-bottom: 10px; }
+/* å¹¿å‘Š */
+	/* é¡µå¤´å¹¿å‘Š */ .a_h { padding-top: 5px; }
+	/* äºŒçº§å¯¼èˆªå¹¿å‘Š */ .a_mu { border: solid {COMMONBORDER}; border-width: 0 1px 1px; background: {COMMONBG}; }
+	/* é¡µå°¾å¹¿å‘Š */ .a_f { margin: 5px auto; }
+	/* æ—¥å¿—å†…å®¹å¹¿å‘Š */ .a_b { float: right; margin: 0 0 5px 5px; }
+	/* æ ¼å­å¹¿å‘Š */ .a_t { margin-bottom: 10px; }
 		.a_t table { width: 100%; }
 		.a_t td { padding: 4px 15px; border: 1px solid {COMMONBORDER}; }
-	/* ÌûÄÚ¹ã¸æ */ .a_pr { float: right; overflow: hidden; }
+	/* å¸–å†…å¹¿å‘Š */ .a_pr { float: right; overflow: hidden; }
 		.a_pt, .a_pb { background: url({IMGDIR}/ad.gif) no-repeat 0 50%; margin-bottom: 6px; padding-left: 20px; zoom: 1; }
-	/* Æ¯¸¡¹ã¸æ */ .a_fl, .a_fr { float: right; position: fixed; top: 350px; z-index: 100; }
+	/* æ¼‚æµ®å¹¿å‘Š */ .a_fl, .a_fr { float: right; position: fixed; top: 350px; z-index: 100; }
 		.a_fl { left: 0; }
 		.a_fr { right: 0; text-align: right; }
 		* html .a_fl, * html .a_fr { position: absolute; top: expression(offsetParent.scrollTop+350); }
-	/* ¶ÔÁª¹ã¸æ */ .a_cb { top: 20px }
+	/* å¯¹è”å¹¿å‘Š */ .a_cb { top: 20px }
 		* html .a_cb { top: expression(offsetParent.scrollTop+20); }
-	/* ÎÄÕÂÆ¯¸¡¹ã¸æ */ .a_af { float:left; margin-right: 10px; margin-bottom: 10px; }
-	/* ÓÒÏÂ½Ç¹ã¸æ */ .a_cn { position: fixed; right: 10px; bottom: 10px; z-index: 300; }
+	/* æ–‡ç« æ¼‚æµ®å¹¿å‘Š */ .a_af { float:left; margin-right: 10px; margin-bottom: 10px; }
+	/* å³ä¸‹è§’å¹¿å‘Š */ .a_cn { position: fixed; right: 10px; bottom: 10px; z-index: 300; }
 		* html .a_cn { position: absolute; top: expression(offsetParent.scrollTop+document.documentElement.clientHeight-this.offsetHeight); }
 		.a_cn .close { text-align: right; }
 
 	.a_h, .a_mu, .a_c, .a_p, .a_f, .a_t { text-align: center; }
 
-/* ------------------------------------------------------------------------ ÁĞ±íÑùÊ½ */
+/* ------------------------------------------------------------------------ åˆ—è¡¨æ ·å¼ */
 		/*
 		.xl				Text list
 			.xl1		1 line list ( wrap text will be hidden );
@@ -870,7 +870,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.al				Application list
 		*/
 
-/* ÎÄ±¾ÁĞ±í */
+/* æ–‡æœ¬åˆ—è¡¨ */
 .xl li { margin: 2px 0; }
 	.xl em { float: right; padding-left: 5px; }
 		.xl em, .xl em a { color: {LIGHTTEXT}; }
@@ -902,7 +902,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.xlda dd a { color: {HIGHLIGHTLINK}; }
 		.xlda dd .hot { color: {NOTICETEXT}; }
 
-/* Í¼Æ¬ÁĞ±í */
+/* å›¾ç‰‡åˆ—è¡¨ */
 .ml {}
 	.ml li { float: left; padding: 0 5px 5px; text-align: center; overflow: hidden; }
 		.ml img { display: block; margin: 0 auto; }
@@ -925,13 +925,13 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.mlp img { padding: 2px; max-width: 120px; max-height: 120px; border: 1px solid #CCC; background: {WRAPBG}; }
 		* html .mlp img { width: expression(this.width > 120 && this.width>=this.height ? 120 : true); height: expression(this.height > 120 && this.width<=this.height ? 120 : true); }
 
-/* ÓÃ»§Í·ÏñÁĞ±íÊ±£¬¸÷ÖÖ×´Ì¬Í¼±ê¡£.gm -> ¹ÜÀíÔ±; .gs -> Ã÷ĞÇ»áÔ± ; .gol -> ÔÚÏß»áÔ±; .god -> É¾³ı±ê¼Ç */
+/* ç”¨æˆ·å¤´åƒåˆ—è¡¨æ—¶ï¼Œå„ç§çŠ¶æ€å›¾æ ‡ã€‚.gm -> ç®¡ç†å‘˜; .gs -> æ˜æ˜Ÿä¼šå‘˜ ; .gol -> åœ¨çº¿ä¼šå‘˜; .god -> åˆ é™¤æ ‡è®° */
 .gm, .gs, .gol, .god { position: absolute; overflow: hidden; margin: -3px 0 0 -3px; width: 60px; height: 18px; background: url({IMGDIR}/gst.gif) no-repeat 0 0; display: block;/* ie6 */ }
 .gs { background-position: 0 -18px; }
 .gol { background-position: 0 -36px; }
 .god { margin: -5px 0px 0px 45px;background: url({IMGDIR}/access_disallow.gif) no-repeat 0 0;}
 
-/* Ó¦ÓÃÁĞ±í*/
+/* åº”ç”¨åˆ—è¡¨*/
 	.appl ul { margin: 3px 0; }
 	.appl li { display: block; height: 28px; line-height: 28px; white-space: nowrap; word-wrap: normal; font-size: 14px; text-overflow: ellipsis; overflow: hidden; }
 	.appl li a { text-decoration: none !important; }
@@ -939,11 +939,11 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.appl span { float: right; font-size: 12px; }
 		.appl span a { color: {LIGHTTEXT}; }
 			.appl span a:hover { color: {HIGHLIGHTLINK}; }
-	/* Ó¦ÓÃ²à±ß by Pony */
+	/* åº”ç”¨ä¾§è¾¹ by Pony */
 	.myo li { height: auto; line-height: 1.5; }
 	.myo img { margin-bottom: -1px; }
 	.myo a { color: {HIGHLIGHTLINK}; }
-	/* ²à±ß¹ÜÀíÁĞ±í */
+	/* ä¾§è¾¹ç®¡ç†åˆ—è¡¨ */
 	.tbn { margin: -6px -10px 0; }
 		.tbn ul { margin: 0; }
 			.tbn li { margin: 0 10px; height: 33px; border-bottom: 1px dashed #CCC; }
@@ -959,7 +959,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.notice_manage { background-position:  0 -135px; }
 		.notice_app { background-position:  0 -169px; }
 
-/* µÀ¾ß magic */
+/* é“å…· magic */
 .mg_img { padding: 10px; width: 76px; height: 76px; background: url({IMGDIR}/magic_imgbg.gif) no-repeat 0 0; }
 
 /*
@@ -970,7 +970,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 						<li class="a"><a href="#">Active Tab Item</a></li>
 						<li><a href="#">Tab Item</a></li>
 					</ul>
-	Explain:		ÓÑÇéÁ´½Ó
+	Explain:		å‹æƒ…é“¾æ¥
 	Last Modify:	lushnis
 */
 	.lk img { float: left; margin-right: 5px; margin-bottom: 5px; width: 88px; height: 31px; }
@@ -980,8 +980,8 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.lk .x li { float: left; margin-right: 5px; width: 88px; height: 1.5em; overflow: hidden; }
 	.lk_logo .lk_content { float: left; }
 
-/* ------------------------------------------------------------------------ ÆäËûÌØ¶¨¹¦ÄÜ¿é */
-/* ¼òÒ×±à¼­Æ÷ Tiny Editor */
+/* ------------------------------------------------------------------------ å…¶ä»–ç‰¹å®šåŠŸèƒ½å— */
+/* ç®€æ˜“ç¼–è¾‘å™¨ Tiny Editor */
 	.tedt { width: 98%; border: 1px solid; border-color: #999 #CCC #CCC #999; }
 		.tedt .bar { padding: 0 10px 0 0; height: 25px; line-height: 25px; border-bottom: 1px solid {COMMONBORDER}; background: {COMMONBG}; }
 			.fpd a { float: left; margin: 2px 5px 0 0; width: 20px; height: 20px; background: url({STATICURL}image/editor/editor.gif) no-repeat; text-indent: -9999px; line-height: 20px; overflow: hidden; }
@@ -998,7 +998,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 			.tedt .pt:focus { outline: none; -moz-box-shadow: none; }
 	.m_c .tedt { width: 600px; }
 
-/* ±íÇé */
+/* è¡¨æƒ… */
 .sllt { padding: 10px 5px 5px !important; }
 	.sllt td { padding: 8px; border: none; cursor: pointer; }
 	.sllt_p { *float: left; text-align: right; }
@@ -1009,7 +1009,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 /*
 	Name:			mod_diy_button
 	Level:			Fuction
-	Explain:		Ò³ÃæÍ·²¿µÄ DIY °´Å¥
+	Explain:		é¡µé¢å¤´éƒ¨çš„ DIY æŒ‰é’®
 	Last Modify:	Pony 1207021442
 */
 	#diy-tg { float: right; padding: 0 !important; width: 56px; background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 4px; text-indent: -9999px; overflow: hidden; }
@@ -1020,8 +1020,8 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 /*
 	Name:			mod_switch_button
 	Level:			Fuction
-	Dependent:		sslct_menu ĞèÒª class mod_popupmenu
-	Explain:		·ç¸ñ/¿íÕ­ÇĞ»»²Ëµ¥
+	Dependent:		sslct_menu éœ€è¦ class mod_popupmenu
+	Explain:		é£æ ¼/å®½çª„åˆ‡æ¢èœå•
 	Last Modify:	Pony 1207021458
 */
 	#toptb a#sslct, .switchwidth, #toptb a.switchblind { margin-top: 5px; padding: 0 !important; width: 23px; height: 18px !important; background: url({IMGDIR}/switch_style.png) no-repeat 100% 0; text-indent: -9999px; overflow: hidden; }
@@ -1030,7 +1030,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		 .sslct_btn { float: left; margin: 4px 4px 0 0; width: 12px; height: 12px; border: 1px solid {COMMONBORDER}; cursor: pointer; }
 			.sslct_btn i { float: left; display: inline; margin: 1px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
 	#toptb a.switchblind{ width: 10px; background-image: none ; }
-/* µ¯³ö²Ëµ¥¡¢µ¯³ö²ã¼°µ¯³ö´°¿Ú */
+/* å¼¹å‡ºèœå•ã€å¼¹å‡ºå±‚åŠå¼¹å‡ºçª—å£ */
 	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 1px 2px 2px rgba(0,0,0,0.3); }
 		.ie6 .p_pop { width: 100px; }
 		.p_pof .p_pop { padding: 0; border: none; box-shadow: none; }
@@ -1050,24 +1050,24 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 			.ignore_notice { background-position: 0 -293px; }
 			.p_pop .notice_interactive, .p_pop .notice_system, .p_pop .notice_manage, .p_pop .notice_app, .p_pop .notice_mypost { margin: 3px 2px 5px 0; }
 
-		/* .blk -> block ÄÚÈİ½ÏÎª¸´ÔÓµÄµ¯³ö²ãÊ¹ÓÃ .blk µÄ class£¬ÄÚ²¿µÄ a ±êÇ©ÖØĞÂ¶¨Òå */
+		/* .blk -> block å†…å®¹è¾ƒä¸ºå¤æ‚çš„å¼¹å‡ºå±‚ä½¿ç”¨ .blk çš„ classï¼Œå†…éƒ¨çš„ a æ ‡ç­¾é‡æ–°å®šä¹‰ */
 		.blk a, .inlinelist a { display: inline; padding: 0; border: none; }
 			.blk a:hover { background: none; color: {LINK}; text-shadow: none; text-decoration: underline; }
 		.inlinelist { padding: 5px; }
 			.inlinelist a { float: left; width: 5em; height: 2em; overflow: hidden; text-align: center; line-height: 2em; }
 	.h_pop { min-width: 120px; border-top: none; }
-/* .txt ºÍ .textarea ÊôÓÚ¾ÉµÄÃüÃû¹æ·¶£¬´ıÕûÀí by lushnis */.p_opt .txt, .p_opt .txtarea { margin: 5px 0; }
+/* .txt å’Œ .textarea å±äºæ—§çš„å‘½åè§„èŒƒï¼Œå¾…æ•´ç† by lushnis */.p_opt .txt, .p_opt .txtarea { margin: 5px 0; }
 
 	.p_pop .flbc, .p_pof .flbc { margin-right: 8px; margin-top: 4px; }
 
-/* µ¯³ö²ã ÒÔÏÂ class ¶¼¿ÉÒÔ·Ö¿ªĞ´£¬µ¥¶À¶¨Òå£¬ÒÔ±ã¸öĞÔ»¯ */
-	/* ËÄÌõ±ß¡¢ËÄ¸ö½ÇµÄ¹«ÓÃÑùÊ½ */
+/* å¼¹å‡ºå±‚ ä»¥ä¸‹ class éƒ½å¯ä»¥åˆ†å¼€å†™ï¼Œå•ç‹¬å®šä¹‰ï¼Œä»¥ä¾¿ä¸ªæ€§åŒ– */
+	/* å››æ¡è¾¹ã€å››ä¸ªè§’çš„å…¬ç”¨æ ·å¼ */
 	.t_l, .t_c, .t_r, .m_l, .m_r, .b_l, .b_c, .b_r { overflow: hidden; {FLOATMASKBGCODE}; opacity: 0.2; filter: alpha(opacity=20); }
-	/* ËÄ¸ö½Ç */
+	/* å››ä¸ªè§’ */
 	.t_l, .t_r, .b_l, .b_r { width: 8px; height: 8px; }
-	/* ÉÏÏÂÁ½Ìõ±ß */
+	/* ä¸Šä¸‹ä¸¤æ¡è¾¹ */
 	.t_c, .b_c { height: 8px; }
-	/* ×óÓÒÁ½Ìõ±ß */
+	/* å·¦å³ä¸¤æ¡è¾¹ */
 	.m_l, .m_r { width: 8px; }
 
 	.t_l { -moz-border-radius: 8px 0 0 0; -webkit-border-radius: 8px 0 0 0; border-radius: 8px 0 0 0; }
@@ -1076,15 +1076,15 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.b_r { -moz-border-radius: 0 0 8px 0; -webkit-border-radius: 0 0 8px 0; border-radius: 0 0 8px 0; }
 	.m_c { {FLOATBGCODE}; }
 
-/* µ¯³ö²ãÄÚÈİÇø by Pony */
+/* å¼¹å‡ºå±‚å†…å®¹åŒº by Pony */
 	.m_c .tb { margin: 0 0 10px; padding: 0 10px; }
 	.m_c .c { padding: 0 10px 10px; }
 	.m_c .o { padding: 8px 10px; height: 26px; text-align: right; border-top: 1px solid #CCC; background: {COMMONBG}; }
-		/* ·ÖÏíÊ±»áÓÃµ½ */
+		/* åˆ†äº«æ—¶ä¼šç”¨åˆ° */
 	.m_c .el { width: 420px; }
 		.m_c .el li { padding: 0; border: none; }
 
-/* .flb µ¯³ö²ãheader */
+/* .flb å¼¹å‡ºå±‚header */
 	.flb { padding: 10px 10px 8px; height: 20px; line-height: 20px; }
 		.flb em { float: left; font-size: 14px; font-weight: 700; color: {HIGHLIGHTLINK}; }
 			.flb em a { text-decoration: none; }
@@ -1111,13 +1111,13 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 				.f_c .th th, .f_c .th td { padding: 10px 0; }
 				.f_c .list th { background: none; }
 
-/* µ¯´°Î´¿ªÆôÊ± nofloat */
+/* å¼¹çª—æœªå¼€å¯æ—¶ nofloat */
 .nfl { height: auto !important; height: 320px; min-height: 320px; }
 	.nfl .f_c { margin: 60px auto; padding: 20px; width: 580px; border: 3px solid {COMMONBG}; background: {WRAPBG}; }
 	.nfl .loginform { height: auto; }
 	.nfl .clause { width: auto; height: auto; }
 
-/* dropdownbtn ÏÂÀ­²Ëµ¥ */
+/* dropdownbtn ä¸‹æ‹‰èœå• */
 .hasd {}
 	.hasd input { float: left; width: 121px; }
 		.hasd input.crl { padding: 0; width: 20px; height: 20px; background: none; border-style: solid; border-color: {INPUTBORDERDARKCOLOR} {INPUTBORDER} {INPUTBORDER} {INPUTBORDERDARKCOLOR}; border-width: 1px 0 1px 1px; }
@@ -1128,24 +1128,24 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 		.tpclg h4 a.dpbtn { float: right; border-width: 1px; }
 		.tpclg h4 { font-weight: 400; }
 		.tpclg .pt { margin: 5px 0; width: 212px; overflow: hidden; }
-		/* ÏÂÃæÁ½ĞĞÎªÆÀ·ÖÊ±ÓÃµ½µÄ */
+		/* ä¸‹é¢ä¸¤è¡Œä¸ºè¯„åˆ†æ—¶ç”¨åˆ°çš„ */
 		.mark .dt, .mark .tpclg h4 { width: 270px; }
 		.mark .tpclg .pt { width: 260px; }
 	#postbox dd.hasd input { width: 99px; margin-right: 0; }
 
-/*µ¯´° ±à¼­Æ÷ ÑÕÉ«¿ò colorbox*/
+/*å¼¹çª— ç¼–è¾‘å™¨ é¢œè‰²æ¡† colorbox*/
 .colorbox{ width: 130px !important; }
 .colorbox input { float: left; margin: 2px; padding: 0; width: 12px; height: 12px; border: 0; cursor: pointer; }
 
-/*µ¯´° ±à¼­Æ÷ ·Ö¸îÏßÑ¡Ôñ hrbox*/
+/*å¼¹çª— ç¼–è¾‘å™¨ åˆ†å‰²çº¿é€‰æ‹© hrbox*/
 .hrbox{ width: 500px !important; }
 .hrbox input { float: left; margin: 2px; padding: 0; width: 495px; height: 25px; border: 0; cursor: pointer;background: #FFFFFF; }
 
-/*µ¯´° ±à¼­Æ÷ ±³¾°Ñ¡Ôñ postbgbox*/
+/*å¼¹çª— ç¼–è¾‘å™¨ èƒŒæ™¯é€‰æ‹© postbgbox*/
 .postbgbox{ width: 325px !important; }
 .postbgbox input { float: left; margin: 2px; padding: 0; width: 50px; height: 50px; border: 1px solid; border-color: #F7F7F7 #EFEFEF #EFEFEF #F7F7F7; cursor: pointer;background: #FFFFFF; }
 
-/* ¶ÌÏûÏ¢¶Ô»°¿ò .pm -> personal_message (window) by Pony */
+/* çŸ­æ¶ˆæ¯å¯¹è¯æ¡† .pm -> personal_message (window) by Pony */
 	.pm { overflow: hidden; width: 400px; }
 		.pm .flb { margin-bottom: 0; padding: 1px 5px 4px; background: #CCC url({IMGDIR}/pm.png) repeat-x 0 -101px; }
 			* html .pm .flb { padding: 4px 5px 1px; }
@@ -1160,7 +1160,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 					.pmd, .pmd img { max-width: 292px; }
 					* html .pmd { width: expression(this.offsetWidth > 292 ? 292+'px':'auto'); }
 						* html .pmd img { width: expression(this.width > 292 ? 292 : true); }
-					/* ¶ÌÏûÏ¢ÏÂµÄÒıÓÃºÍ´úÂëÑùÊ½ */
+					/* çŸ­æ¶ˆæ¯ä¸‹çš„å¼•ç”¨å’Œä»£ç æ ·å¼ */
 					.pmd .quote { overflow: hidden; margin: 0; padding-left: 16px; background: url({IMGDIR}/qa.gif) no-repeat 0 0; color: {MIDTEXT}; }
 						.pmd .quote blockquote { display: inline; margin: 0; padding-right: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
 					.pmd .blockcode { overflow: hidden; margin: 0; padding: 0; background: transparent; color: {MIDTEXT}; }
@@ -1175,7 +1175,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 			.pmfm .pn { float: right; }
 			.pma a { margin-right: 5px; }
 
-/* ¶ÌÏûÏ¢ÁªÏµÈËÁĞ±í by Pony */
+/* çŸ­æ¶ˆæ¯è”ç³»äººåˆ—è¡¨ by Pony */
 	.pmo { position: absolute; top: 8px; right: 10px; overflow: hidden; padding-left: 10px; width: 130px; height: 31px; line-height: 24px; line-height /*\**/: 26px\9; background: url({IMGDIR}/pn.png) repeat-x 0 -320px; text-shadow: 1px 1px 1px {WRAPBG}; }
 		.pmo em { display: block; padding: 3px 5px 4px 0; background: url({IMGDIR}/pn.png) no-repeat 100% -360px; }
 		.pmo a { overflow: hidden; white-space: nowrap; display: block; padding-right: 10px; background: url({IMGDIR}/pm.png) no-repeat 100% -222px; outline: none; }
@@ -1191,16 +1191,16 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 			.pmfl li { padding: 5px; height: 24px; }
 			.pmfl .avt { float: left; width: 29px; height: 29px; }
 				.pmfl .avt img { padding: 0; width: 24px; height: 24px; border: none; }
-				/* Ìø¶¯µÄÍ·ÏñÑùÊ½ by Pony */
+				/* è·³åŠ¨çš„å¤´åƒæ ·å¼ by Pony */
 				.pmfl .newpm img { margin: 1px 0 0 1px; }
 			.pmfl p { overflow: hidden; white-space: nowrap; width: 78px; }
-				/* µ±Ç°½»Ì¸µÄÓÃ»§ */
+				/* å½“å‰äº¤è°ˆçš„ç”¨æˆ· */
 				.pmfl p .a { color: red; }
-				/* ÔÚÏßµÄÓÃ»§ */
+				/* åœ¨çº¿çš„ç”¨æˆ· */
 				.pmfl p .ol { color: {LINK}; }
 				.pmfl strong { color: #000; }
 
-/* µÇÂ¼ºÍ×¢²á */
+/* ç™»å½•å’Œæ³¨å†Œ */
 
 .rfm { margin: 0 auto; width: 760px; border-bottom: 1px dotted {COMMONBORDER}; }
 		.rfm a { color: {HIGHLIGHTLINK}; }
@@ -1227,7 +1227,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 /*
 	Name:			mod_passlevel
 	Level:			Function
-	Explain:		ÃÜÂëÇ¿¶È¼ì²â
+	Explain:		å¯†ç å¼ºåº¦æ£€æµ‹
 	Last Modify:	lushnis
 */
 	.passlevel { padding-left: 70px; background: url({IMGDIR}/passlevel.png) no-repeat 0 5px; }
@@ -1240,7 +1240,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 .lgfm { font: {FONTSIZE} {FONT}; float: left; margin-bottom: 10px; *margin-bottom: -10px; padding: 20px 0; width: 280px; border-right: 1px solid #CCC; }
 	.rgs { margin-bottom: 10px; }
 	.lgfm label, .lgfm p, .reginfo { clear: both; overflow: hidden; display: block; margin-bottom: 10px; line-height: 22px; }
-		/* ×Ô¶¨ÒåµÄ×¢²áĞÅÏ¢ */
+		/* è‡ªå®šä¹‰çš„æ³¨å†Œä¿¡æ¯ */
 		.reginfo label { display: inline; }
 		.reg_c { float: left; width: 200px; }
 	.lgfm .txt, .lgfm .px { padding: 2px 4px; height: 16px; border: 1px solid; border-color: {INPUTBORDERDARKCOLOR} {INPUTBORDER} {INPUTBORDER} {INPUTBORDERDARKCOLOR}; background-image: none; }
@@ -1272,7 +1272,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 /*
 	Name:			mod_messagelogin
 	Level:			Global
-	Explain:		showmessage ´¦µÄµÇÂ¼¿ò
+	Explain:		showmessage å¤„çš„ç™»å½•æ¡†
 	Last Modify:	lushnis
 */
 #messagelogin { margin-top: 5px; border-top: 1px solid {COMMONBORDER}; }
@@ -1285,7 +1285,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 /*
 	Name:			mod_fast_login
 	Level:			Global
-	Explain:		Ò³ÃæÍ·²¿µÄ¿ìËÙµÇÂ¼
+	Explain:		é¡µé¢å¤´éƒ¨çš„å¿«é€Ÿç™»å½•
 	Last Modify:	Pony 11061011
 */
 .fastlg { line-height: 24px; }
@@ -1297,22 +1297,22 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 
 	.fastlg_l { padding-right: 4px !important; border-right: 1px solid {SPECIALBG}; }
 
-/* ´òÕĞºô by Pony */
+/* æ‰“æ‹›å‘¼ by Pony */
 	.poke { margin-bottom: 10px; }
 		.poke li { float: left; margin: 0 1% 5px 0; width: 32%; height: 22px; }
 		.poke img { vertical-align: middle; }
 
-/* ÆÕÍ¨Êı¾İÁĞ±í datatable by michael */
+/* æ™®é€šæ•°æ®åˆ—è¡¨ datatable by michael */
 .dt { border-top: 1px solid {COMMONBORDER}; width: 100%; }
 	.dt th { background: {COMMONBG}; }
 	.dt td, .dt th { padding: 7px 4px; border-bottom: 1px solid {COMMONBORDER}; }
 	.dt .c { width: 50px; }
 
-	/* ÓÃÀ´Õ¹Ê¾Êı¾İµÄ±í¸ñ */
+	/* ç”¨æ¥å±•ç¤ºæ•°æ®çš„è¡¨æ ¼ */
 .tdat { width: 100%; border: 1px solid {COMMONBORDER}; }
 	.tdat th, .tdat td { padding: 4px 5px; border: 1px solid {COMMONBORDER}; }
 
-/* ==  um ¹«¸æ °ïÖú message Í¨ÓÃÁĞ±í  lum -- um list == */
+/* ==  um å…¬å‘Š å¸®åŠ© message é€šç”¨åˆ—è¡¨  lum -- um list == */
 .um { margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px dashed {COMMONBORDER}; clear: left; }
 	.umh { margin-bottom: 10px; overflow: hidden; }
 		.umh h2, .umh h3 { clear: left; font-size:  14px; float: left; background: {WRAPBG} url({IMGDIR}/arrow.gif) no-repeat right 6px;  padding-right: 14px; cursor: pointer; }
@@ -1332,7 +1332,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.lum ul { padding: 1em 0 1em 2em; margin-bottom: 1em; border-bottom: 1px dashed {COMMONBORDER}; }
 		.lum ul li { padding: 0.2em 0; }
 
-/* pgs --> pages & postbutton ·ÖÒ³¡¢·¢Ìû°´Å¥, pgb -->·µ»ØÊ×Ò³, nxt -->ÏÂÒ»Ò³ */
+/* pgs --> pages & postbutton åˆ†é¡µã€å‘å¸–æŒ‰é’®, pgb -->è¿”å›é¦–é¡µ, nxt -->ä¸‹ä¸€é¡µ */
 .pgs {}
 	.pgs #newspecial, .pgs #newspecialtmp, .pgs #post_reply, .pgs #post_replytmp { float: left; margin-right: 5px; }
 	.pg { float: right; }
@@ -1348,13 +1348,13 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 			.ie6 .pg label { padding-top: 3px; height: 23px; }
 			.pg label .px { padding: 0; width: 25px; height: 16px; line-height: 16px; }
 	#pgt .pg, #pgt .pgb { margin-top: 5px; }
-/* ÓÃÓÚĞĞ¶¯µÄ°´Å¥ button action */
+/* ç”¨äºè¡ŒåŠ¨çš„æŒ‰é’® button action */
 .bac {margin: 0; padding: 0; width: 70px; height: 30px;line-height: 30px; color: {LINK}; overflow: hidden; text-decoration: none; background: url({IMGDIR}/pg_arw.png) no-repeat 0 0; text-align: center; text-indent: -7px; display: block;}
 
 #psd .bn .mbn input, #postbox input { margin-right: 4px; }
 #postbox .mbn, #psd .mbn { height: 1.6em; line-height: 1.6em; }
 
-/* ÓÃÓÚ»ı·Ö½±ÀøÌáÊ¾µÈµ¯³ö²ãÌáÊ¾ */
+/* ç”¨äºç§¯åˆ†å¥–åŠ±æç¤ºç­‰å¼¹å‡ºå±‚æç¤º */
 .popupcredit {}
 	.pc_l, .pc_c, .pc_inner, .pc_r { width: 29px; height: 56px; line-height: 56px; background: url({IMGDIR}/popupcredit_bg.gif) no-repeat 0 0; }
 	.pc_c { width: 200px; background-position: 0 -56px; background-repeat: repeat-x; }
@@ -1370,7 +1370,7 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 				.pc_btn:hover img { opacity: 1; }
 	.pc_r { background-position: -30px 0; }
 
-/* ¿ìËÙÌø×ª²Ëµ¥ */
+/* å¿«é€Ÿè·³è½¬èœå• */
 #fjump_menu { padding: 7px 0 10px 10px; }
 	.ie6 #fjump_menu { width: expression(this.getElementsByTagName('li')[2] ? '600px' : (this.getElementsByTagName('li')[1] ? '400px' : '200px')); }
 	#fjump_menu .sch { position: absolute; top: 6px; right: 10px; }
@@ -1384,17 +1384,17 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.jump_bdl a { display: block; position: static !important; padding: 0 4px; text-decoration: none; color: {TABLETEXT}; }
 	.jump_bdl .a a, .jump_bdl .a a:hover { background-color: {SPECIALBG}; }
 
-/* ¿ÉÓÃµÀ¾ßÁĞ±í by lushnis */
+/* å¯ç”¨é“å…·åˆ—è¡¨ by lushnis */
 	.mgcmn { width: 100px; }
 		.mgcmn a { padding-left: 25px; line-height: 16px !important; }
 			.mgcmn img { position: absolute; margin-left: -20px; }
 
-/* ¸ßÁÁµÀ¾ßÓÃµ½µÄ */
+/* é«˜äº®é“å…·ç”¨åˆ°çš„ */
 .cmen { overflow: hidden; width: 63px; }
 	.cmen a { overflow: hidden; float:left; width: 20px; height: 20px; }
 
 
-/* ÈÈµã£ºÕ¾³¤ÍÆ¼öÄÚÈİ£¬ÔÚÒ³ÃæÓÒÏÂ½Çµ¯³ö */
+/* çƒ­ç‚¹ï¼šç«™é•¿æ¨èå†…å®¹ï¼Œåœ¨é¡µé¢å³ä¸‹è§’å¼¹å‡º */
 .focus { position: fixed; right: 10px; bottom: 0; z-index: 300; overflow: hidden; width: 270px; background: {WRAPBG}; }
 	* html .focus { position: absolute; top: expression(offsetParent.scrollTop+document.documentElement.clientHeight-this.offsetHeight); }
 	.fctrl { margin-left: 10px; font-weight: 400; }
@@ -1403,13 +1403,13 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 	.focus .m img { width: 60px; height: 60px; }
 	.focus dt { padding-top: 0; }
 
-/* ·ÖÏíµÄÑéÖ¤Âë£¨È«¾Ö£© by Pony */
+/* åˆ†äº«çš„éªŒè¯ç ï¼ˆå…¨å±€ï¼‰ by Pony */
 .m_c .sec .secq { display: block; margin: 5px 0 10px; }
 
 /*
 	Name:			mod_reason_select
 	Level:			Global
-	Explain:		ÀàËÆÆÀ·Ö´°¿ÚÖĞµÄÆÀ·ÖÔ­ÒòÑ¡ÔñµÄÑùÊ½
+	Explain:		ç±»ä¼¼è¯„åˆ†çª—å£ä¸­çš„è¯„åˆ†åŸå› é€‰æ‹©çš„æ ·å¼
 	Last Modify:	Pony
 */
 .reason_slct {}
@@ -1425,20 +1425,20 @@ CSS Ğ´×÷×¢ÒâÊÂÏî£º
 						<input type="file" class="pf cur1" size="1" />
 						<button type="button" class="pn pnc"><strong>{lang}</strong></button>
 					</div>
-	Explain:		Ä£Äâ <input type="file" />£¬×¢Òâ²»ÒªÈÃ button Ì«¿í
+	Explain:		æ¨¡æ‹Ÿ <input type="file" />ï¼Œæ³¨æ„ä¸è¦è®© button å¤ªå®½
 	Last Modify:	Pony
 */
 .filebtn { position: relative; margin: 0 auto; width: 60px; overflow: hidden; }
 	.filebtn .pf { position: absolute; right: 0; height: 23px; opacity: 0; filter:alpha(opacity=0); }
 
-/* ÉÏ´«µ¯³ö²ã */
+/* ä¸Šä¼ å¼¹å‡ºå±‚ */
 .upfile { width: 220px; }
 	.uploadform { padding: 0 10px; border: 1px dashed {COMMONBORDER}; background: {COMMONBG}; }
 
 /*
 	Name:			mod_flashupload
 	Level:			Global
-	Explain:		Flash ÉÏ´«Ê±µÄ´¦Àí½çÃæ£¬½á¹¹²Î¼û /static/js/fileprogress.js
+	Explain:		Flash ä¸Šä¼ æ—¶çš„å¤„ç†ç•Œé¢ï¼Œç»“æ„å‚è§ /static/js/fileprogress.js
 	Last Modify:	Pony 2012022813
 */
 .progressWrapper { overflow: hidden; width: 100%; }
@@ -1457,12 +1457,12 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 .swfupload { vertical-align: top; }
 
 
-/* ------------------------------------------------------------------------ ÍÏ×§¼°Ò³Ãæ DIY */
+/* ------------------------------------------------------------------------ æ‹–æ‹½åŠé¡µé¢ DIY */
 .frame, .frame-tab { margin-bottom: 10px; border: 1px solid {WRAPBORDERCOLOR}; background: {WRAPBG}; }
 	.title { padding: 0 10px; height: 32px; font-size: 14px; font-weight: 700; line-height: 32px; overflow: hidden; }
 		.frame-title, .frametitle, .tab-title { background: {COMMONBG} url({IMGDIR}/title.png) repeat-x 0 100%; }
 
-	/* ĞÂµÄ¿ò¼Ü½á¹¹ */
+	/* æ–°çš„æ¡†æ¶ç»“æ„ */
 	.frame-1-1-l, .frame-1-1-1-l, .frame-1-1-1-c, .frame-2-1-l, .frame-1-2-l, .frame-3-1-l, .frame-1-3-l { float: left; }
 	.frame-1-1-r, .frame-1-1-1-r, .frame-2-1-r, .frame-1-2-r, .frame-3-1-r, .frame-1-3-r { float: right; }
 	.frame-1-1-l, .frame-1-1-r { width: 49.9% }
@@ -1472,7 +1472,7 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 	.frame-3-1-r, .frame-1-3-l { width: 24.9%; }
 	/* End */
 
-	/* X1 Ö®Ç°µÄ¿ò¼Ü½á¹¹ */
+	/* X1 ä¹‹å‰çš„æ¡†æ¶ç»“æ„ */
 	.frame .mn { margin-bottom: 0; }
 	.frame .sd { min-height: 0; _height: auto; }
 
@@ -1514,16 +1514,16 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 	.frame-1-2 .mn .block, .col-r .block, .frame-2-1 .sd .block, .frame-1-1-1 .col-c .block, .frame-1-3 .mn .block, .frame-3-1 .sd .block { margin-left: 10px; }
 	body#space .block { margin: 0 5px 10px; }
 .temp {margin:1px;}
-/* ÖØ¶¨Òå frame */
+/* é‡å®šä¹‰ frame */
 	#ct .frame { margin: 0; border: none; }
 	.bx { border: none; }
 		.bx .frame-1-1-1 { background: transparent url({IMGDIR}/vline2.png) repeat-y 320px 0; }
 		.bx .frame-2-1 { background: transparent url({IMGDIR}/vline.png) repeat-y 645px 0; }
 
-/* ÍÏ¶¯Éú³ÉµÄÒ³ÃæÔªËØ by lushnis */
+/* æ‹–åŠ¨ç”Ÿæˆçš„é¡µé¢å…ƒç´  by lushnis */
 .drag .block .title { margin-bottom: 0; padding-left: 0; font-size: 14px; font-weight: 700; }
 
-/* ÖØ¶¨Òå block */
+/* é‡å®šä¹‰ block */
 #ct .sd .block { margin: 0; }
 
 .block .xl1 ul li { padding-left: 10px; background: url({IMGDIR}/dot.gif) no-repeat 0 50%; }
@@ -1603,7 +1603,7 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 	.fcs dt { font-size: 18px; font-weight: 100; }
 	.fcs dd, .fcs dd a { color: {MIDTEXT}; }
 
-/* »ÃµÆÆ¬ */
+/* å¹»ç¯ç‰‡ */
 .slideblock { position: relative; }
 	.slideshow { clear: both; }
 		.slideshow li { position: relative; overflow: hidden; }
@@ -1612,13 +1612,13 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 			.slidebar li { float: left; margin-right: 1px; width: 20px; height: 20px; line-height: 20px; text-align: center; font-size: 10px; cursor: pointer; }
 				.slidebar li.on { background: rgba(255, 255, 255, 0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr = #50FFFFFF, endColorstr = #50FFFFFF); color: #000; font-weight: 700; }
 
-/* Çå³ıDIY²úÉúµÄ¶àÓàÑùÊ½Ê¹ÓÃµÄ¹«¹²ÑùÊ½ */
+/* æ¸…é™¤DIYäº§ç”Ÿçš„å¤šä½™æ ·å¼ä½¿ç”¨çš„å…¬å…±æ ·å¼ */
 .cl_frame_bm { margin: 0 !important; border: 0 !important;}
 .cl_block_bm { margin: 0 !important; border: 0 !important;}
 .cl_block_bm .dxb_bc { margin: 0 !important;}
 
-/* ²à±ßµ÷ÓÃ */
-	/* Í¶Æ± */
+/* ä¾§è¾¹è°ƒç”¨ */
+	/* æŠ•ç¥¨ */
 	.b_poll dt { padding-left: 20px; background: url({IMGDIR}/pollsmall.gif) no-repeat 0 9px; }
 	.b_poll dd li { padding: 0 0 4px 20px; }
 		.b_poll dd li .pc { float: left; margin: 4px 0 0 -20px; }
@@ -1636,7 +1636,7 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 /*
 	Name:			mod_tip
 	Level:			Global
-	Explain:		µ¯³öµÄÆøÅİĞÅÏ¢£¬1¡¢2¡¢3¡¢4 ·Ö±ğÖ¸ÆøÅİ¼â½Ç´Ó×óÉÏµ½×óĞ¡Ë³Ê±Õë·½ÏòµÄÎ»ÖÃ
+	Explain:		å¼¹å‡ºçš„æ°”æ³¡ä¿¡æ¯ï¼Œ1ã€2ã€3ã€4 åˆ†åˆ«æŒ‡æ°”æ³¡å°–è§’ä»å·¦ä¸Šåˆ°å·¦å°é¡ºæ—¶é’ˆæ–¹å‘çš„ä½ç½®
 	Last Modify:	lushnis
 */
 .tip { position: absolute; padding: 10px; width: 260px; border: 1px solid #B1B1B1; background: #FEFEE9; }
@@ -1650,16 +1650,16 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 		.tip_js .tip_horn { right: 61px; bottom: -6px; background: url({IMGDIR}/tip_bottom.png); }
 	.aimg_tip { margin-top: 0; }
 
-/* ÍÆ¼öÉÌÆ· by dfox */
+/* æ¨èå•†å“ by dfox */
 em.hot { position: absolute; left: -2px; top: -2px; text-indent: -9999px; overflow: hidden; background: url({IMGDIR}/hot.png) no-repeat 0 0; }
 
-/* °å¿é¡¢Èº×é¡¢¿Õ¼äÖ÷ÇøÓò/²à±ßËÑË÷ by dfox */
+/* æ¿å—ã€ç¾¤ç»„ã€ç©ºé—´ä¸»åŒºåŸŸ/ä¾§è¾¹æœç´¢ by dfox */
 .gsh { text-align: center; }
 	.gsh h1 { margin: 1em 0 0.5em -60px; font-size: 16px; font-weight: 100; }
 	.gsh .px { width: 272px; }
 	.gsh .pns .px { margin-right: 3px; width: 190px; }
 
-/* ÃûÆ¬ */
+/* åç‰‡ */
 .card { padding: 0; width: 295px !important; border-color: {SPECIALBORDER}; background: #FDFEFF; }
 	.card .p_opt { padding: 0; }
 	.card .avt { position: absolute; display: inline; margin-left: -70px; width: 70px; }
@@ -1682,7 +1682,7 @@ em.hot { position: absolute; left: -2px; top: -2px; text-indent: -9999px; overfl
 /*
 	Name:			mod_BIUC
 	Level:			Global
-	Explain:		Ä£¿éÖĞ±à¼­µ¥ÌõÊı¾İBIU¡¢ÑÕÉ«Ñ¡ÔñÆ÷ÆäÖĞ colorwd ÒªÅäºÏ pn Ê¹ÓÃ£¨²»ÒªºÏ²¢ colorwd µÄ background£¬ÒòÎªÆäËûÅäÉ«»áÊÜÓ°Ïì£©
+	Explain:		æ¨¡å—ä¸­ç¼–è¾‘å•æ¡æ•°æ®BIUã€é¢œè‰²é€‰æ‹©å™¨å…¶ä¸­ colorwd è¦é…åˆ pn ä½¿ç”¨ï¼ˆä¸è¦åˆå¹¶ colorwd çš„ backgroundï¼Œå› ä¸ºå…¶ä»–é…è‰²ä¼šå—å½±å“ï¼‰
 	Last Modify:	Pony
 */
 .ss em { display: block; float: left; margin-right: 2px; padding-left: 7px; width: 16px; line-height: 23px; background: #EEE; cursor: pointer; }
@@ -1697,7 +1697,7 @@ em.hot { position: absolute; left: -2px; top: -2px; text-indent: -9999px; overfl
 .colorpx { margin: 0 -3px 0 3px; border-right: none; }
 
 /*
-DIYÍ¼Æ¬»ÃµÆÆ¬Î´¼ÓÔØÊ±Òş²Ø,Ä£¿é±êÊ¶Òş²Ø
+DIYå›¾ç‰‡å¹»ç¯ç‰‡æœªåŠ è½½æ—¶éšè—,æ¨¡å—æ ‡è¯†éšè—
 */
 .slidebox, .block-name {display: none; }
 

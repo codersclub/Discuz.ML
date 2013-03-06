@@ -10,19 +10,19 @@
  */
 
 $lang = array (
-  'no_tag' => '��û���κα�ǩ',
-  'tag' => '��ǩ',
-  'blog_read' => '���Ķ�',
-  'blog_replay' => '������',
-  'empty_tags' => 'û�д˱�ǩ�������Լ�����������<a href="misc.php?mod=tag" title="���ر�ǩ��ҳ">���ر�ǩ��ҳ</a>',
-  'forum' => '���',
-  'hot' => '�ȶ�',
-  'lastpost' => '��󷢱�',
-  'no_content' => 'û���������',
-  'personal_category' => '���˷���',
-  'related_blog' => '�����־',
-  'related_thread' => '�������',
-  'replies' => '�ظ�/�鿴',
+  'no_tag' => '还没有任何标签',
+  'tag' => '标签',
+  'blog_read' => '次阅读',
+  'blog_replay' => '个评论',
+  'empty_tags' => '没有此标签，您可以继续搜索或者<a href="misc.php?mod=tag" title="返回标签首页">返回标签首页</a>',
+  'forum' => '版块',
+  'hot' => '热度',
+  'lastpost' => '最后发表',
+  'no_content' => '没有相关内容',
+  'personal_category' => '个人分类',
+  'related_blog' => '相关日志',
+  'related_thread' => '相关帖子',
+  'replies' => '回复/查看',
 );
 
 ?>

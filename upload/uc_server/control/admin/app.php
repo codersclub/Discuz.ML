@@ -164,7 +164,7 @@ class control extends adminbase {
 					preg_match("/define\(\'UC_CLIENT_VERSION\'\, \'([^\']+?)\'\)/i", $s, $m);
 					$uc_client_version = @$m[1];
 
-					//�жϰ汾
+					//判断版本
 					if(!$uc_client_version || $uc_client_version <= '1.0.0') {
 						$this->message('app_apifile_too_low', 'BACK', 0, array('$apifile' => $apifile));
 					}

@@ -13,15 +13,15 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'repent_name' => '»ÚÎò¿¨',
-	'repent_desc' => '¿ÉÒÔÉ¾³ý×Ô¼ºµÄÌû×Ó',
-	'repent_forum' => 'ÔÊÐíÊ¹ÓÃ±¾µÀ¾ßµÄ°æ¿é',
-	'repent_info' => 'É¾³ý×Ô¼ºµÄÌû×Ó£¬ÇëÊäÈëÌû×ÓµÄ ID',
-	'repent_info_nonexistence' => 'ÇëÖ¸¶¨ÒªÉ¾³ýµÄÌû×Ó',
-	'repent_succeed' => 'Äú²Ù×÷µÄÌû×ÓÒÑÉ¾³ý',
-	'repent_info_noperm' => '¶Ô²»Æð£¬Ö÷ÌâËùÔÚ°æ¿é²»ÔÊÐíÊ¹ÓÃ±¾µÀ¾ß',
-	'repent_info_user_noperm' => '¶Ô²»Æð£¬ÄúÖ»ÄÜÉ¾³ý×Ô¼ºµÄÌû×Ó',
-	'repent_do_not_rushreply' => '²»ÄÜÔÚÇÀÂ¥ÌûÖÐÊ¹ÓÃ´ËµÀ¾ß',
+	'repent_name' => 'æ‚”æ‚Ÿå¡',
+	'repent_desc' => 'å¯ä»¥åˆ é™¤è‡ªå·±çš„å¸–å­',
+	'repent_forum' => 'å…è®¸ä½¿ç”¨æœ¬é“å…·çš„ç‰ˆå—',
+	'repent_info' => 'åˆ é™¤è‡ªå·±çš„å¸–å­ï¼Œè¯·è¾“å…¥å¸–å­çš„ ID',
+	'repent_info_nonexistence' => 'è¯·æŒ‡å®šè¦åˆ é™¤çš„å¸–å­',
+	'repent_succeed' => 'æ‚¨æ“ä½œçš„å¸–å­å·²åˆ é™¤',
+	'repent_info_noperm' => 'å¯¹ä¸èµ·ï¼Œä¸»é¢˜æ‰€åœ¨ç‰ˆå—ä¸å…è®¸ä½¿ç”¨æœ¬é“å…·',
+	'repent_info_user_noperm' => 'å¯¹ä¸èµ·ï¼Œæ‚¨åªèƒ½åˆ é™¤è‡ªå·±çš„å¸–å­',
+	'repent_do_not_rushreply' => 'ä¸èƒ½åœ¨æŠ¢æ¥¼å¸–ä¸­ä½¿ç”¨æ­¤é“å…·',
 );
 
 ?>

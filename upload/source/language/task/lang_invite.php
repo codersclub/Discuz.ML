@@ -13,12 +13,12 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'invite_message' => '<p style="color:red;">ÍÛ£¬À÷º¦£¡ÄúÏÖÔÚÒÑ¾­ÑûÇëÁË {count} ¸öºÃÓÑ£¬Çë¼ÌÐøÅ¬Á¦£¡</p><br>',
-	'invite_guide' => '<strong>Çë°´ÕÕÒÔÏÂµÄËµÃ÷À´Íê³É±¾ÈÎÎñ£º</strong>
+	'invite_message' => '<p style="color:red;">å“‡ï¼ŒåŽ‰å®³ï¼æ‚¨çŽ°åœ¨å·²ç»é‚€è¯·äº† {count} ä¸ªå¥½å‹ï¼Œè¯·ç»§ç»­åŠªåŠ›ï¼</p><br>',
+	'invite_guide' => '<strong>è¯·æŒ‰ç…§ä»¥ä¸‹çš„è¯´æ˜Žæ¥å®Œæˆæœ¬ä»»åŠ¡ï¼š</strong>
 		<ul class="task">
-		<li>ÔÚÐÂ´°¿ÚÖÐ´ò¿ª<a href="home.php?mod=spacecp&ac=invite" target="_blank">ºÃÓÑÑûÇëÒ³Ãæ</a></li>
-		<li>Í¨¹ý QQ¡¢MSN µÈ IM ¹¤¾ß£¬»òÕß·¢ËÍÓÊ¼þ£¬°ÑÑûÇëÁ´½Ó¸æËßÄúµÄºÃÓÑ£¬ÑûÇëËûÃÇ¼ÓÈë½øÀ´°É</li>
-		<li>ÄúÐèÒªÑûÇë 10 ¸öºÃÓÑ²ÅËãÍê³É</li>
+		<li>åœ¨æ–°çª—å£ä¸­æ‰“å¼€<a href="home.php?mod=spacecp&ac=invite" target="_blank">å¥½å‹é‚€è¯·é¡µé¢</a></li>
+		<li>é€šè¿‡ QQã€MSN ç­‰ IM å·¥å…·ï¼Œæˆ–è€…å‘é€é‚®ä»¶ï¼ŒæŠŠé‚€è¯·é“¾æŽ¥å‘Šè¯‰æ‚¨çš„å¥½å‹ï¼Œé‚€è¯·ä»–ä»¬åŠ å…¥è¿›æ¥å§</li>
+		<li>æ‚¨éœ€è¦é‚€è¯· 10 ä¸ªå¥½å‹æ‰ç®—å®Œæˆ</li>
 		</ul>',
 
 );

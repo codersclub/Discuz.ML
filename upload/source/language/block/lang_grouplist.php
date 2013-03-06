@@ -13,27 +13,27 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'grouplist_gtids' => 'Èº×éÀà±ð',
-	'grouplist_gtids_comment' => 'Ñ¡ÔñÈº×éÀà±ð',
-	'grouplist_fids' => 'Ö¸¶¨Èº×é',
-	'grouplist_fids_comment' => 'ÊäÈëÖ¸¶¨Èº×éµÄID£¬¶à¸öIDÖ®¼äÓÃ¶ººÅ·Ö¸ô',
-	'grouplist_startrow' => 'ÆðÊ¼Êý¾ÝÐÐÊý',
-	'grouplist_startrow_comment' => 'ÈçÐèÉè¶¨ÆðÊ¼µÄÊý¾ÝÐÐÊý£¬ÇëÊäÈë¾ßÌåÊýÖµ£¬0 Îª´ÓµÚÒ»ÐÐ¿ªÊ¼£¬ÒÔ´ËÀàÍÆ',
-	'grouplist_titlelength' => 'Ãû³Æ³¤¶È',
-	'grouplist_titlelength' => 'ÉèÖÃÈº×éÃû³Æ×î´ó³¤¶È',
-	'grouplist_summarylength' => '½éÉÜ³¤¶È',
-	'grouplist_summarylength_comment' => 'ÉèÖÃÈº×é½éÉÜ×î´ó³¤¶È',
-	'grouplist_orderby' => 'Èº×éÅÅÐò·½Ê½',
-	'grouplist_orderby_comment' => 'ÉèÖÃÒÔÄÄÒ»×Ö¶Î»ò·½Ê½¶ÔÈº×é½øÐÐÅÅÐò',
-	'grouplist_orderby_dateline' => '°´´´½¨Ê±¼äµ¹Ðò',
-	'grouplist_orderby_posts' => '°´×Ü·¢ÌûÊýµ¹Ðò',
-	'grouplist_orderby_todayposts' => '°´½ñÈÕ·¢ÌûÊýµ¹Ðò',
-	'grouplist_orderby_threads' => '°´»°ÌâÊýµ¹Ðò',
-	'grouplist_orderby_level' => '°´µÈ¼¶µ¹Ðò',
-	'grouplist_orderby_membernum' => '°´³ÉÔ±Êýµ¹Ðò',
-	'grouplist_orderby_activity' => '°´»îÔ¾¶Èµ¹Ðò',
-	'grouplist_orderby_commoncredits' => '°´¹²Í¬»ý·Öµ¹Ðò',
-	'grouplist_orderby_displayorder' => '°´Ä¬ÈÏË³Ðò'
+	'grouplist_gtids' => 'ç¾¤ç»„ç±»åˆ«',
+	'grouplist_gtids_comment' => 'é€‰æ‹©ç¾¤ç»„ç±»åˆ«',
+	'grouplist_fids' => 'æŒ‡å®šç¾¤ç»„',
+	'grouplist_fids_comment' => 'è¾“å…¥æŒ‡å®šç¾¤ç»„çš„IDï¼Œå¤šä¸ªIDä¹‹é—´ç”¨é€—å·åˆ†éš”',
+	'grouplist_startrow' => 'èµ·å§‹æ•°æ®è¡Œæ•°',
+	'grouplist_startrow_comment' => 'å¦‚éœ€è®¾å®šèµ·å§‹çš„æ•°æ®è¡Œæ•°ï¼Œè¯·è¾“å…¥å…·ä½“æ•°å€¼ï¼Œ0 ä¸ºä»Žç¬¬ä¸€è¡Œå¼€å§‹ï¼Œä»¥æ­¤ç±»æŽ¨',
+	'grouplist_titlelength' => 'åç§°é•¿åº¦',
+	'grouplist_titlelength' => 'è®¾ç½®ç¾¤ç»„åç§°æœ€å¤§é•¿åº¦',
+	'grouplist_summarylength' => 'ä»‹ç»é•¿åº¦',
+	'grouplist_summarylength_comment' => 'è®¾ç½®ç¾¤ç»„ä»‹ç»æœ€å¤§é•¿åº¦',
+	'grouplist_orderby' => 'ç¾¤ç»„æŽ’åºæ–¹å¼',
+	'grouplist_orderby_comment' => 'è®¾ç½®ä»¥å“ªä¸€å­—æ®µæˆ–æ–¹å¼å¯¹ç¾¤ç»„è¿›è¡ŒæŽ’åº',
+	'grouplist_orderby_dateline' => 'æŒ‰åˆ›å»ºæ—¶é—´å€’åº',
+	'grouplist_orderby_posts' => 'æŒ‰æ€»å‘å¸–æ•°å€’åº',
+	'grouplist_orderby_todayposts' => 'æŒ‰ä»Šæ—¥å‘å¸–æ•°å€’åº',
+	'grouplist_orderby_threads' => 'æŒ‰è¯é¢˜æ•°å€’åº',
+	'grouplist_orderby_level' => 'æŒ‰ç­‰çº§å€’åº',
+	'grouplist_orderby_membernum' => 'æŒ‰æˆå‘˜æ•°å€’åº',
+	'grouplist_orderby_activity' => 'æŒ‰æ´»è·ƒåº¦å€’åº',
+	'grouplist_orderby_commoncredits' => 'æŒ‰å…±åŒç§¯åˆ†å€’åº',
+	'grouplist_orderby_displayorder' => 'æŒ‰é»˜è®¤é¡ºåº'
 );
 
 ?>

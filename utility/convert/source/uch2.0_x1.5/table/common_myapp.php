@@ -32,7 +32,7 @@ while ($app = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." appid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." appid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	$db_target->query("TRUNCATE ".$db_target->table('common_myapp_count'));
 	$db_target->query('INSERT INTO '.$db_target->table('common_myapp_count').' (appid) SELECT appid FROM '.$db_target->table('common_myapp'));

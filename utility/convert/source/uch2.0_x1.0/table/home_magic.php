@@ -80,7 +80,7 @@ if($op=='magic') {
 	}
 
 	$table_source = $db_source->tablepre.'magic';
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." ÓÃ»§µÀ¾ß", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=0");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." ç”¨æˆ·é“å…·", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=0");
 
 } elseif($op == 'usermagic') {
 
@@ -120,9 +120,9 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'usermagic';
 	if($done == false) {
-		showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." ÓÃ»§µÀ¾ß-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=$nextid");
+		showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." ç”¨æˆ·é“å…·-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=$nextid");
 	} else {
-		showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." µÀ¾ßÊÕÈë¼ÇÂ¼->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=0");
+		showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." é“å…·æ”¶å…¥è®°å½•->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=0");
 	}
 
 } elseif($op == 'magicinlog') {
@@ -151,9 +151,9 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'magicinlog';
 	if($done == false) {
-		showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." µÀ¾ßÊÕÈë¼ÇÂ¼-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=$nextid");
+		showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." é“å…·æ”¶å…¥è®°å½•-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=$nextid");
 	} else {
-		showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." µÀ¾ßÊ¹ÓÃ¼ÇÂ¼->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=0");
+		showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." é“å…·ä½¿ç”¨è®°å½•->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=0");
 	}
 
 } elseif($op == 'magicuselog') {
@@ -178,7 +178,7 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'magicuselog';
 	if($done == false) {
-		showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." µÀ¾ßÊ¹ÓÃ¼ÇÂ¼-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=$nextid");
+		showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." é“å…·ä½¿ç”¨è®°å½•-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=$nextid");
 	}
 }
 

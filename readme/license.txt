@@ -1,50 +1,50 @@
-ÖĞÎÄ°æÊÚÈ¨Ğ­Òé ÊÊÓÃÓÚÖĞÎÄÓÃ»§
+ä¸­æ–‡ç‰ˆæˆæƒåè®® é€‚ç”¨äºä¸­æ–‡ç”¨æˆ·
 
-°æÈ¨ËùÓĞ (c) 2001-2012£¬±±¾©¿µÊ¢ĞÂ´´¿Æ¼¼ÓĞÏŞÔğÈÎ¹«Ë¾
-±£ÁôËùÓĞÈ¨Àû¡£
+ç‰ˆæƒæ‰€æœ‰ (c) 2001-2012ï¼ŒåŒ—äº¬åº·ç››æ–°åˆ›ç§‘æŠ€æœ‰é™è´£ä»»å…¬å¸
+ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
 
-¸ĞĞ»ÄúÑ¡Ôñ¿µÊ¢²úÆ·¡£Ï£ÍûÎÒÃÇµÄÅ¬Á¦ÄÜÎªÄúÌá¹©Ò»¸ö¸ßĞ§¿ìËÙ¡¢Ç¿´óµÄÕ¾µã½â¾ö·½°¸£¬ºÍÇ¿´óµÄÉçÇøÂÛÌ³½â¾ö·½°¸¡£¿µÊ¢¹«Ë¾ÍøÖ·Îª http://www.comsenz.com£¬²úÆ·¹Ù·½ÌÖÂÛÇøÍøÖ·Îª http://www.discuz.net¡£
+æ„Ÿè°¢æ‚¨é€‰æ‹©åº·ç››äº§å“ã€‚å¸Œæœ›æˆ‘ä»¬çš„åŠªåŠ›èƒ½ä¸ºæ‚¨æä¾›ä¸€ä¸ªé«˜æ•ˆå¿«é€Ÿã€å¼ºå¤§çš„ç«™ç‚¹è§£å†³æ–¹æ¡ˆï¼Œå’Œå¼ºå¤§çš„ç¤¾åŒºè®ºå›è§£å†³æ–¹æ¡ˆã€‚åº·ç››å…¬å¸ç½‘å€ä¸º http://www.comsenz.comï¼Œäº§å“å®˜æ–¹è®¨è®ºåŒºç½‘å€ä¸º http://www.discuz.netã€‚
 
-ÓÃ»§ĞëÖª£º±¾Ğ­ÒéÊÇÄúÓë¿µÊ¢¹«Ë¾Ö®¼ä¹ØÓÚÄúÊ¹ÓÃ¿µÊ¢¹«Ë¾Ìá¹©µÄ¸÷ÖÖÈí¼ş²úÆ·¼°·şÎñµÄ·¨ÂÉĞ­Òé¡£ÎŞÂÛÄúÊÇ¸öÈË»ò×éÖ¯¡¢Ó¯ÀûÓë·ñ¡¢ÓÃÍ¾ÈçºÎ£¨°üÀ¨ÒÔÑ§Ï°ºÍÑĞ¾¿ÎªÄ¿µÄ£©£¬¾ùĞè×ĞÏ¸ÔÄ¶Á±¾Ğ­Òé£¬°üÀ¨Ãâ³ı»òÕßÏŞÖÆ¿µÊ¢ÔğÈÎµÄÃâÔğÌõ¿î¼°¶ÔÄúµÄÈ¨ÀûÏŞÖÆ¡£ÇëÄúÉóÔÄ²¢½ÓÊÜ»ò²»½ÓÊÜ±¾·şÎñÌõ¿î¡£ÈçÄú²»Í¬Òâ±¾·şÎñÌõ¿î¼°/»ò¿µÊ¢ËæÊ±¶ÔÆäµÄĞŞ¸Ä£¬ÄúÓ¦²»Ê¹ÓÃ»òÖ÷¶¯È¡Ïû¿µÊ¢¹«Ë¾Ìá¹©µÄ¿µÊ¢²úÆ·¡£·ñÔò£¬ÄúµÄÈÎºÎ¶Ô¿µÊ¢²úÆ·ÖĞµÄÏà¹Ø·şÎñµÄ×¢²á¡¢µÇÂ½¡¢ÏÂÔØ¡¢²é¿´µÈÊ¹ÓÃĞĞÎª½«±»ÊÓÎªÄú¶Ô±¾·şÎñÌõ¿îÈ«²¿µÄÍêÈ«½ÓÊÜ£¬°üÀ¨½ÓÊÜ¿µÊ¢¶Ô·şÎñÌõ¿îËæÊ±Ëù×öµÄÈÎºÎĞŞ¸Ä¡£
-±¾·şÎñÌõ¿îÒ»µ©·¢Éú±ä¸ü, ¿µÊ¢½«ÔÚÍøÒ³ÉÏ¹«²¼ĞŞ¸ÄÄÚÈİ¡£ĞŞ¸ÄºóµÄ·şÎñÌõ¿îÒ»µ©ÔÚÍøÕ¾¹ÜÀíºóÌ¨ÉÏ¹«²¼¼´ÓĞĞ§´úÌæÔ­À´µÄ·şÎñÌõ¿î¡£Äú¿ÉËæÊ±µÇÂ½¿µÊ¢¹Ù·½ÂÛÌ³²éÔÄ×îĞÂ°æ·şÎñÌõ¿î¡£Èç¹ûÄúÑ¡Ôñ½ÓÊÜ±¾Ìõ¿î£¬¼´±íÊ¾ÄúÍ¬Òâ½ÓÊÜĞ­Òé¸÷ÏîÌõ¼şµÄÔ¼Êø¡£Èç¹ûÄú²»Í¬Òâ±¾·şÎñÌõ¿î£¬Ôò²»ÄÜ»ñµÃÊ¹ÓÃ±¾·şÎñµÄÈ¨Àû¡£ÄúÈôÓĞÎ¥·´±¾Ìõ¿î¹æ¶¨£¬¿µÊ¢¹«Ë¾ÓĞÈ¨ËæÊ±ÖĞÖ¹»òÖÕÖ¹Äú¶Ô¿µÊ¢²úÆ·µÄÊ¹ÓÃ×Ê¸ñ²¢±£Áô×·¾¿Ïà¹Ø·¨ÂÉÔğÈÎµÄÈ¨Àû¡£
-ÔÚÀí½â¡¢Í¬Òâ¡¢²¢×ñÊØ±¾Ğ­ÒéµÄÈ«²¿Ìõ¿îºó£¬·½¿É¿ªÊ¼Ê¹ÓÃ¿µÊ¢²úÆ·¡£Äú¿ÉÄÜÓë¿µÊ¢¹«Ë¾Ö±½ÓÇ©¶©ÁíÒ»ÊéÃæĞ­Òé£¬ÒÔ²¹³ä»òÕßÈ¡´ú±¾Ğ­ÒéµÄÈ«²¿»òÕßÈÎºÎ²¿·Ö¡£
+ç”¨æˆ·é¡»çŸ¥ï¼šæœ¬åè®®æ˜¯æ‚¨ä¸åº·ç››å…¬å¸ä¹‹é—´å…³äºæ‚¨ä½¿ç”¨åº·ç››å…¬å¸æä¾›çš„å„ç§è½¯ä»¶äº§å“åŠæœåŠ¡çš„æ³•å¾‹åè®®ã€‚æ— è®ºæ‚¨æ˜¯ä¸ªäººæˆ–ç»„ç»‡ã€ç›ˆåˆ©ä¸å¦ã€ç”¨é€”å¦‚ä½•ï¼ˆåŒ…æ‹¬ä»¥å­¦ä¹ å’Œç ”ç©¶ä¸ºç›®çš„ï¼‰ï¼Œå‡éœ€ä»”ç»†é˜…è¯»æœ¬åè®®ï¼ŒåŒ…æ‹¬å…é™¤æˆ–è€…é™åˆ¶åº·ç››è´£ä»»çš„å…è´£æ¡æ¬¾åŠå¯¹æ‚¨çš„æƒåˆ©é™åˆ¶ã€‚è¯·æ‚¨å®¡é˜…å¹¶æ¥å—æˆ–ä¸æ¥å—æœ¬æœåŠ¡æ¡æ¬¾ã€‚å¦‚æ‚¨ä¸åŒæ„æœ¬æœåŠ¡æ¡æ¬¾åŠ/æˆ–åº·ç››éšæ—¶å¯¹å…¶çš„ä¿®æ”¹ï¼Œæ‚¨åº”ä¸ä½¿ç”¨æˆ–ä¸»åŠ¨å–æ¶ˆåº·ç››å…¬å¸æä¾›çš„åº·ç››äº§å“ã€‚å¦åˆ™ï¼Œæ‚¨çš„ä»»ä½•å¯¹åº·ç››äº§å“ä¸­çš„ç›¸å…³æœåŠ¡çš„æ³¨å†Œã€ç™»é™†ã€ä¸‹è½½ã€æŸ¥çœ‹ç­‰ä½¿ç”¨è¡Œä¸ºå°†è¢«è§†ä¸ºæ‚¨å¯¹æœ¬æœåŠ¡æ¡æ¬¾å…¨éƒ¨çš„å®Œå…¨æ¥å—ï¼ŒåŒ…æ‹¬æ¥å—åº·ç››å¯¹æœåŠ¡æ¡æ¬¾éšæ—¶æ‰€åšçš„ä»»ä½•ä¿®æ”¹ã€‚
+æœ¬æœåŠ¡æ¡æ¬¾ä¸€æ—¦å‘ç”Ÿå˜æ›´, åº·ç››å°†åœ¨ç½‘é¡µä¸Šå…¬å¸ƒä¿®æ”¹å†…å®¹ã€‚ä¿®æ”¹åçš„æœåŠ¡æ¡æ¬¾ä¸€æ—¦åœ¨ç½‘ç«™ç®¡ç†åå°ä¸Šå…¬å¸ƒå³æœ‰æ•ˆä»£æ›¿åŸæ¥çš„æœåŠ¡æ¡æ¬¾ã€‚æ‚¨å¯éšæ—¶ç™»é™†åº·ç››å®˜æ–¹è®ºå›æŸ¥é˜…æœ€æ–°ç‰ˆæœåŠ¡æ¡æ¬¾ã€‚å¦‚æœæ‚¨é€‰æ‹©æ¥å—æœ¬æ¡æ¬¾ï¼Œå³è¡¨ç¤ºæ‚¨åŒæ„æ¥å—åè®®å„é¡¹æ¡ä»¶çš„çº¦æŸã€‚å¦‚æœæ‚¨ä¸åŒæ„æœ¬æœåŠ¡æ¡æ¬¾ï¼Œåˆ™ä¸èƒ½è·å¾—ä½¿ç”¨æœ¬æœåŠ¡çš„æƒåˆ©ã€‚æ‚¨è‹¥æœ‰è¿åæœ¬æ¡æ¬¾è§„å®šï¼Œåº·ç››å…¬å¸æœ‰æƒéšæ—¶ä¸­æ­¢æˆ–ç»ˆæ­¢æ‚¨å¯¹åº·ç››äº§å“çš„ä½¿ç”¨èµ„æ ¼å¹¶ä¿ç•™è¿½ç©¶ç›¸å…³æ³•å¾‹è´£ä»»çš„æƒåˆ©ã€‚
+åœ¨ç†è§£ã€åŒæ„ã€å¹¶éµå®ˆæœ¬åè®®çš„å…¨éƒ¨æ¡æ¬¾åï¼Œæ–¹å¯å¼€å§‹ä½¿ç”¨åº·ç››äº§å“ã€‚æ‚¨å¯èƒ½ä¸åº·ç››å…¬å¸ç›´æ¥ç­¾è®¢å¦ä¸€ä¹¦é¢åè®®ï¼Œä»¥è¡¥å……æˆ–è€…å–ä»£æœ¬åè®®çš„å…¨éƒ¨æˆ–è€…ä»»ä½•éƒ¨åˆ†ã€‚
 
-¿µÊ¢ÓµÓĞ±¾Èí¼şµÄÈ«²¿ÖªÊ¶²úÈ¨¡£±¾Èí¼şÖ»¹©Ğí¿ÉĞ­Òé£¬²¢·Ç³öÊÛ¡£¿µÊ¢Ö»ÔÊĞíÄúÔÚ×ñÊØ±¾Ğ­Òé¸÷ÏîÌõ¿îµÄÇé¿öÏÂ¸´ÖÆ¡¢ÏÂÔØ¡¢°²×°¡¢Ê¹ÓÃ»òÕßÒÔÆäËû·½Ê½ÊÜÒæÓÚ±¾Èí¼şµÄ¹¦ÄÜ»òÕßÖªÊ¶²úÈ¨¡£
+åº·ç››æ‹¥æœ‰æœ¬è½¯ä»¶çš„å…¨éƒ¨çŸ¥è¯†äº§æƒã€‚æœ¬è½¯ä»¶åªä¾›è®¸å¯åè®®ï¼Œå¹¶éå‡ºå”®ã€‚åº·ç››åªå…è®¸æ‚¨åœ¨éµå®ˆæœ¬åè®®å„é¡¹æ¡æ¬¾çš„æƒ…å†µä¸‹å¤åˆ¶ã€ä¸‹è½½ã€å®‰è£…ã€ä½¿ç”¨æˆ–è€…ä»¥å…¶ä»–æ–¹å¼å—ç›Šäºæœ¬è½¯ä»¶çš„åŠŸèƒ½æˆ–è€…çŸ¥è¯†äº§æƒã€‚
 
-I. Ğ­ÒéĞí¿ÉµÄÈ¨Àû
+I. åè®®è®¸å¯çš„æƒåˆ©
 
-   1. Äú¿ÉÒÔÔÚÍêÈ«×ñÊØ±¾Ğí¿ÉĞ­ÒéµÄ»ù´¡ÉÏ£¬½«±¾Èí¼şÓ¦ÓÃÓÚ·ÇÉÌÒµÓÃÍ¾£¬¶ø²»±ØÖ§¸¶Èí¼ş°æÈ¨Ğí¿É·ÑÓÃ¡£
-   2. Äú¿ÉÒÔÔÚĞ­Òé¹æ¶¨µÄÔ¼ÊøºÍÏŞÖÆ·¶Î§ÄÚĞŞ¸Ä¿µÊ¢²úÆ·Ô´´úÂë(Èç¹û±»Ìá¹©µÄ»°)»ò½çÃæ·ç¸ñÒÔÊÊÓ¦ÄúµÄÍøÕ¾ÒªÇó¡£
-   3. ÄúÓµÓĞÊ¹ÓÃ±¾Èí¼ş¹¹½¨µÄÍøÕ¾ÖĞÈ«²¿»áÔ±×ÊÁÏ¡¢ÎÄÕÂ¼°Ïà¹ØĞÅÏ¢µÄËùÓĞÈ¨£¬²¢¶ÀÁ¢³Ğµ£ÓëÊ¹ÓÃ±¾Èí¼ş¹¹½¨µÄÍøÕ¾ÄÚÈİµÄÉóºË¡¢×¢ÒâÒåÎñ£¬È·±£Æä²»ÇÖ·¸ÈÎºÎÈËµÄºÏ·¨È¨Òæ£¬¶ÀÁ¢³Ğµ£ÒòÊ¹ÓÃ¿µÊ¢Èí¼şºÍ·şÎñ´øÀ´µÄÈ«²¿ÔğÈÎ£¬ÈôÔì³É¿µÊ¢¹«Ë¾»òÓÃ»§ËğÊ§µÄ£¬ÄúÓ¦ÓèÒÔÈ«²¿Åâ³¥¡£
-   4. ÈôÄúĞè½«¿µÊ¢Èí¼ş»ò·şÎñÓÃ»§ÉÌÒµÓÃÍ¾£¬±ØĞëÁíĞĞ»ñµÃ¿µÊ¢µÄÊéÃæĞí¿É£¬ÄúÔÚ»ñµÃÉÌÒµÊÚÈ¨Ö®ºó£¬Äú¿ÉÒÔ½«±¾Èí¼şÓ¦ÓÃÓÚÉÌÒµÓÃÍ¾£¬Í¬Ê±ÒÀ¾İËù¹ºÂòµÄÊÚÈ¨ÀàĞÍÖĞÈ·¶¨µÄ¼¼ÊõÖ§³ÖÆÚÏŞ¡¢¼¼ÊõÖ§³Ö·½Ê½ºÍ¼¼ÊõÖ§³ÖÄÚÈİ£¬×Ô¹ºÂòÊ±¿ÌÆğ£¬ÔÚ¼¼ÊõÖ§³ÖÆÚÏŞÄÚÓµÓĞÍ¨¹ıÖ¸¶¨µÄ·½Ê½»ñµÃÖ¸¶¨·¶Î§ÄÚµÄ¼¼ÊõÖ§³Ö·şÎñ¡£ÉÌÒµÊÚÈ¨ÓÃ»§ÏíÓĞ·´Ó³ºÍÌá³öÒâ¼ûµÄÈ¨Á¦£¬Ïà¹ØÒâ¼û½«±»×÷ÎªÊ×Òª¿¼ÂÇ£¬µ«Ã»ÓĞÒ»¶¨±»²ÉÄÉµÄ³ĞÅµ»ò±£Ö¤¡£
-   5. Äú¿ÉÒÔ´Ó¿µÊ¢Ìá¹©µÄÓ¦ÓÃÖĞĞÄ·şÎñÖĞÏÂÔØÊÊºÏÄúÍøÕ¾µÄÓ¦ÓÃ³ÌĞò£¬µ«Ó¦ÏòÓ¦ÓÃ³ÌĞò¿ª·¢Õß/ËùÓĞÕßÖ§¸¶ÏàÓ¦µÄ·ÑÓÃ¡£
+   1. æ‚¨å¯ä»¥åœ¨å®Œå…¨éµå®ˆæœ¬è®¸å¯åè®®çš„åŸºç¡€ä¸Šï¼Œå°†æœ¬è½¯ä»¶åº”ç”¨äºéå•†ä¸šç”¨é€”ï¼Œè€Œä¸å¿…æ”¯ä»˜è½¯ä»¶ç‰ˆæƒè®¸å¯è´¹ç”¨ã€‚
+   2. æ‚¨å¯ä»¥åœ¨åè®®è§„å®šçš„çº¦æŸå’Œé™åˆ¶èŒƒå›´å†…ä¿®æ”¹åº·ç››äº§å“æºä»£ç (å¦‚æœè¢«æä¾›çš„è¯)æˆ–ç•Œé¢é£æ ¼ä»¥é€‚åº”æ‚¨çš„ç½‘ç«™è¦æ±‚ã€‚
+   3. æ‚¨æ‹¥æœ‰ä½¿ç”¨æœ¬è½¯ä»¶æ„å»ºçš„ç½‘ç«™ä¸­å…¨éƒ¨ä¼šå‘˜èµ„æ–™ã€æ–‡ç« åŠç›¸å…³ä¿¡æ¯çš„æ‰€æœ‰æƒï¼Œå¹¶ç‹¬ç«‹æ‰¿æ‹…ä¸ä½¿ç”¨æœ¬è½¯ä»¶æ„å»ºçš„ç½‘ç«™å†…å®¹çš„å®¡æ ¸ã€æ³¨æ„ä¹‰åŠ¡ï¼Œç¡®ä¿å…¶ä¸ä¾µçŠ¯ä»»ä½•äººçš„åˆæ³•æƒç›Šï¼Œç‹¬ç«‹æ‰¿æ‹…å› ä½¿ç”¨åº·ç››è½¯ä»¶å’ŒæœåŠ¡å¸¦æ¥çš„å…¨éƒ¨è´£ä»»ï¼Œè‹¥é€ æˆåº·ç››å…¬å¸æˆ–ç”¨æˆ·æŸå¤±çš„ï¼Œæ‚¨åº”äºˆä»¥å…¨éƒ¨èµ”å¿ã€‚
+   4. è‹¥æ‚¨éœ€å°†åº·ç››è½¯ä»¶æˆ–æœåŠ¡ç”¨æˆ·å•†ä¸šç”¨é€”ï¼Œå¿…é¡»å¦è¡Œè·å¾—åº·ç››çš„ä¹¦é¢è®¸å¯ï¼Œæ‚¨åœ¨è·å¾—å•†ä¸šæˆæƒä¹‹åï¼Œæ‚¨å¯ä»¥å°†æœ¬è½¯ä»¶åº”ç”¨äºå•†ä¸šç”¨é€”ï¼ŒåŒæ—¶ä¾æ®æ‰€è´­ä¹°çš„æˆæƒç±»å‹ä¸­ç¡®å®šçš„æŠ€æœ¯æ”¯æŒæœŸé™ã€æŠ€æœ¯æ”¯æŒæ–¹å¼å’ŒæŠ€æœ¯æ”¯æŒå†…å®¹ï¼Œè‡ªè´­ä¹°æ—¶åˆ»èµ·ï¼Œåœ¨æŠ€æœ¯æ”¯æŒæœŸé™å†…æ‹¥æœ‰é€šè¿‡æŒ‡å®šçš„æ–¹å¼è·å¾—æŒ‡å®šèŒƒå›´å†…çš„æŠ€æœ¯æ”¯æŒæœåŠ¡ã€‚å•†ä¸šæˆæƒç”¨æˆ·äº«æœ‰åæ˜ å’Œæå‡ºæ„è§çš„æƒåŠ›ï¼Œç›¸å…³æ„è§å°†è¢«ä½œä¸ºé¦–è¦è€ƒè™‘ï¼Œä½†æ²¡æœ‰ä¸€å®šè¢«é‡‡çº³çš„æ‰¿è¯ºæˆ–ä¿è¯ã€‚
+   5. æ‚¨å¯ä»¥ä»åº·ç››æä¾›çš„åº”ç”¨ä¸­å¿ƒæœåŠ¡ä¸­ä¸‹è½½é€‚åˆæ‚¨ç½‘ç«™çš„åº”ç”¨ç¨‹åºï¼Œä½†åº”å‘åº”ç”¨ç¨‹åºå¼€å‘è€…/æ‰€æœ‰è€…æ”¯ä»˜ç›¸åº”çš„è´¹ç”¨ã€‚
 
-II. Ğ­Òé¹æ¶¨µÄÔ¼ÊøºÍÏŞÖÆ
+II. åè®®è§„å®šçš„çº¦æŸå’Œé™åˆ¶
 
-   1. Î´»ñ¿µÊ¢¹«Ë¾ÊéÃæÉÌÒµÊÚÈ¨Ö®Ç°£¬²»µÃ½«±¾Èí¼şÓÃÓÚÉÌÒµÓÃÍ¾£¨°üÀ¨µ«²»ÏŞÓÚÆóÒµÍøÕ¾¡¢¾­ÓªĞÔÍøÕ¾¡¢ÒÔÓªÀûÎªÄ¿»òÊµÏÖÓ¯ÀûµÄÍøÕ¾£©¡£¹ºÂòÉÌÒµÊÚÈ¨ÇëµÇÂ½http://www.discuz.com²Î¿¼Ïà¹ØËµÃ÷£¬Ò²¿ÉÒÔÖÂµç8610-51282255ÁË½âÏêÇé¡£
-   2. ²»µÃ¶Ô±¾Èí¼ş»òÓëÖ®¹ØÁªµÄÉÌÒµÊÚÈ¨½øĞĞ³ö×â¡¢³öÊÛ¡¢µÖÑº»ò·¢·Å×ÓĞí¿ÉÖ¤¡£
-   3. ÎŞÂÛÈçºÎ£¬¼´ÎŞÂÛÓÃÍ¾ÈçºÎ¡¢ÊÇ·ñ¾­¹ıĞŞ¸Ä»òÃÀ»¯¡¢ĞŞ¸Ä³Ì¶ÈÈçºÎ£¬Ö»ÒªÊ¹ÓÃ¿µÊ¢²úÆ·µÄÕûÌå»òÈÎºÎ²¿·Ö£¬Î´¾­ÊéÃæĞí¿É£¬Ò³ÃæÒ³½Å´¦µÄ¿µÊ¢²úÆ·Ãû³ÆºÍ¿µÊ¢¹«Ë¾ÏÂÊôÍøÕ¾£¨http://www.comsenz.com¡¢»ò http://www.discuz.net£© µÄÁ´½Ó¶¼±ØĞë±£Áô£¬¶ø²»ÄÜÇå³ı»òĞŞ¸Ä¡£
-   4. ½ûÖ¹ÔÚ¿µÊ¢²úÆ·µÄÕûÌå»òÈÎºÎ²¿·Ö»ù´¡ÉÏÒÔ·¢Õ¹ÈÎºÎÅÉÉú°æ±¾¡¢ĞŞ¸Ä°æ±¾»òµÚÈı·½°æ±¾ÓÃÓÚÖØĞÂ·Ö·¢¡£
-   5. Äú´ÓÓ¦ÓÃÖĞĞÄÏÂÔØµÄÓ¦ÓÃ³ÌĞò£¬Î´¾­Ó¦ÓÃ³ÌĞò¿ª·¢Õß/ËùÓĞÕßµÄÊéÃæĞí¿É£¬²»µÃ¶ÔÆä½øĞĞ·´Ïò¹¤³Ì¡¢·´Ïò»ã±à¡¢·´Ïò±àÒëµÈ£¬²»µÃÉÃ×Ô¸´ÖÆ¡¢ĞŞ¸Ä¡¢Á´½Ó¡¢×ªÔØ¡¢»ã±à¡¢·¢±í¡¢³ö°æ¡¢·¢Õ¹ÓëÖ®ÓĞ¹ØµÄÑÜÉú²úÆ·¡¢×÷Æ·µÈ¡£
-   6. Èç¹ûÄúÎ´ÄÜ×ñÊØ±¾Ğ­ÒéµÄÌõ¿î£¬ÄúµÄÊÚÈ¨½«±»ÖÕÖ¹£¬ËùĞí¿ÉµÄÈ¨Àû½«±»ÊÕ»Ø£¬Í¬Ê±ÄúÓ¦³Ğµ£ÏàÓ¦·¨ÂÉÔğÈÎ¡£
+   1. æœªè·åº·ç››å…¬å¸ä¹¦é¢å•†ä¸šæˆæƒä¹‹å‰ï¼Œä¸å¾—å°†æœ¬è½¯ä»¶ç”¨äºå•†ä¸šç”¨é€”ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºä¼ä¸šç½‘ç«™ã€ç»è¥æ€§ç½‘ç«™ã€ä»¥è¥åˆ©ä¸ºç›®æˆ–å®ç°ç›ˆåˆ©çš„ç½‘ç«™ï¼‰ã€‚è´­ä¹°å•†ä¸šæˆæƒè¯·ç™»é™†http://www.discuz.comå‚è€ƒç›¸å…³è¯´æ˜ï¼Œä¹Ÿå¯ä»¥è‡´ç”µ8610-51282255äº†è§£è¯¦æƒ…ã€‚
+   2. ä¸å¾—å¯¹æœ¬è½¯ä»¶æˆ–ä¸ä¹‹å…³è”çš„å•†ä¸šæˆæƒè¿›è¡Œå‡ºç§Ÿã€å‡ºå”®ã€æŠµæŠ¼æˆ–å‘æ”¾å­è®¸å¯è¯ã€‚
+   3. æ— è®ºå¦‚ä½•ï¼Œå³æ— è®ºç”¨é€”å¦‚ä½•ã€æ˜¯å¦ç»è¿‡ä¿®æ”¹æˆ–ç¾åŒ–ã€ä¿®æ”¹ç¨‹åº¦å¦‚ä½•ï¼Œåªè¦ä½¿ç”¨åº·ç››äº§å“çš„æ•´ä½“æˆ–ä»»ä½•éƒ¨åˆ†ï¼Œæœªç»ä¹¦é¢è®¸å¯ï¼Œé¡µé¢é¡µè„šå¤„çš„åº·ç››äº§å“åç§°å’Œåº·ç››å…¬å¸ä¸‹å±ç½‘ç«™ï¼ˆhttp://www.comsenz.comã€æˆ– http://www.discuz.netï¼‰ çš„é“¾æ¥éƒ½å¿…é¡»ä¿ç•™ï¼Œè€Œä¸èƒ½æ¸…é™¤æˆ–ä¿®æ”¹ã€‚
+   4. ç¦æ­¢åœ¨åº·ç››äº§å“çš„æ•´ä½“æˆ–ä»»ä½•éƒ¨åˆ†åŸºç¡€ä¸Šä»¥å‘å±•ä»»ä½•æ´¾ç”Ÿç‰ˆæœ¬ã€ä¿®æ”¹ç‰ˆæœ¬æˆ–ç¬¬ä¸‰æ–¹ç‰ˆæœ¬ç”¨äºé‡æ–°åˆ†å‘ã€‚
+   5. æ‚¨ä»åº”ç”¨ä¸­å¿ƒä¸‹è½½çš„åº”ç”¨ç¨‹åºï¼Œæœªç»åº”ç”¨ç¨‹åºå¼€å‘è€…/æ‰€æœ‰è€…çš„ä¹¦é¢è®¸å¯ï¼Œä¸å¾—å¯¹å…¶è¿›è¡Œåå‘å·¥ç¨‹ã€åå‘æ±‡ç¼–ã€åå‘ç¼–è¯‘ç­‰ï¼Œä¸å¾—æ“…è‡ªå¤åˆ¶ã€ä¿®æ”¹ã€é“¾æ¥ã€è½¬è½½ã€æ±‡ç¼–ã€å‘è¡¨ã€å‡ºç‰ˆã€å‘å±•ä¸ä¹‹æœ‰å…³çš„è¡ç”Ÿäº§å“ã€ä½œå“ç­‰ã€‚
+   6. å¦‚æœæ‚¨æœªèƒ½éµå®ˆæœ¬åè®®çš„æ¡æ¬¾ï¼Œæ‚¨çš„æˆæƒå°†è¢«ç»ˆæ­¢ï¼Œæ‰€è®¸å¯çš„æƒåˆ©å°†è¢«æ”¶å›ï¼ŒåŒæ—¶æ‚¨åº”æ‰¿æ‹…ç›¸åº”æ³•å¾‹è´£ä»»ã€‚
 
-III. ÓĞÏŞµ£±£ºÍÃâÔğÉùÃ÷
+III. æœ‰é™æ‹…ä¿å’Œå…è´£å£°æ˜
 
-   1. ±¾Èí¼ş¼°Ëù¸½´øµÄÎÄ¼şÊÇ×÷Îª²»Ìá¹©ÈÎºÎÃ÷È·µÄ»òÒşº¬µÄÅâ³¥»òµ£±£µÄĞÎÊ½Ìá¹©µÄ¡£
-   2. ÓÃ»§³öÓÚ×ÔÔ¸¶øÊ¹ÓÃ±¾Èí¼ş£¬Äú±ØĞëÁË½âÊ¹ÓÃ±¾Èí¼şµÄ·çÏÕ£¬ÔÚÉĞÎ´¹ºÂò²úÆ·¼¼Êõ·şÎñÖ®Ç°£¬ÎÒÃÇ²»³ĞÅµÌá¹©ÈÎºÎĞÎÊ½µÄ¼¼ÊõÖ§³Ö¡¢Ê¹ÓÃµ£±££¬Ò²²»³Ğµ£ÈÎºÎÒòÊ¹ÓÃ±¾Èí¼ş¶ø²úÉúÎÊÌâµÄÏà¹ØÔğÈÎ¡£
-   3. ¿µÊ¢¹«Ë¾²»¶ÔÊ¹ÓÃ±¾Èí¼ş¹¹½¨µÄÍøÕ¾ÖĞ»òÕßÂÛÌ³ÖĞµÄÎÄÕÂ»òĞÅÏ¢³Ğµ£ÔğÈÎ£¬È«²¿ÔğÈÎÓÉÄú×ÔĞĞ³Ğµ£¡£
-   4. ¿µÊ¢¹«Ë¾ÎŞ·¨È«Ãæ¼à¿ØÓÉµÚÈı·½ÉÏ´«ÖÁÓ¦ÓÃÖĞĞÄµÄÓ¦ÓÃ³ÌĞò£¬Òò´Ë²»±£Ö¤Ó¦ÓÃ³ÌĞòµÄºÏ·¨ĞÔ¡¢°²È«ĞÔ¡¢ÍêÕûĞÔ¡¢ÕæÊµĞÔ»òÆ·ÖÊµÈ£»Äú´ÓÓ¦ÓÃÖĞĞÄÏÂÔØÓ¦ÓÃ³ÌĞòÊ±£¬Í¬Òâ×ÔĞĞÅĞ¶Ï²¢³Ğµ£ËùÓĞ·çÏÕ£¬¶ø²»ÒÀÀµÓÚ¿µÊ¢¹«Ë¾¡£µ«ÔÚÈÎºÎÇé¿öÏÂ£¬¿µÊ¢¹«Ë¾ÓĞÈ¨ÒÀ·¨Í£Ö¹Ó¦ÓÃÖĞĞÄ·şÎñ²¢²ÉÈ¡ÏàÓ¦ĞĞ¶¯£¬°üÀ¨µ«²»ÏŞÓÚ¶ÔÓÚÏà¹ØÓ¦ÓÃ³ÌĞò½øĞĞĞ¶ÔØ£¬ÔİÍ£·şÎñµÄÈ«²¿»ò²¿·Ö£¬±£´æÓĞ¹Ø¼ÇÂ¼£¬²¢ÏòÓĞ¹Ø»ú¹Ø±¨¸æ¡£ÓÉ´Ë¶ÔÄú¼°µÚÈıÈË¿ÉÄÜÔì³ÉµÄËğÊ§£¬¿µÊ¢¹«Ë¾²»³Ğµ£ÈÎºÎÖ±½Ó¡¢¼ä½Ó»òÕßÁ¬´øµÄÔğÈÎ¡£
-   5. ¿µÊ¢¹«Ë¾¶Ô¿µÊ¢Ìá¹©µÄÈí¼şºÍ·şÎñÖ®¼°Ê±ĞÔ¡¢°²È«ĞÔ¡¢×¼È·ĞÔ²»×÷µ£±££¬ÓÉÓÚ²»¿É¿¹Á¦ÒòËØ¡¢¿µÊ¢¹«Ë¾ÎŞ·¨¿ØÖÆµÄÒòËØ£¨°üÀ¨ºÚ¿Í¹¥»÷¡¢Í£¶ÏµçµÈ£©µÈÔì³ÉÈí¼şÊ¹ÓÃºÍ·şÎñÖĞÖ¹»òÖÕÖ¹£¬¶ø¸øÄúÔì³ÉËğÊ§µÄ£¬ÄúÍ¬Òâ·ÅÆú×·¾¿¿µÊ¢¹«Ë¾ÔğÈÎµÄÈ«²¿È¨Àû¡£   6.¿µÊ¢¹«Ë¾ÌØ±ğÌáÇëÄú×¢Òâ£¬¿µÊ¢¹«Ë¾ÎªÁË±£ÕÏ¹«Ë¾ÒµÎñ·¢Õ¹ºÍµ÷ÕûµÄ×ÔÖ÷È¨£¬¿µÊ¢¹«Ë¾ÓµÓĞËæÊ±¾­»òÎ´¾­ÊÂÏÈÍ¨Öª¶øĞŞ¸Ä·şÎñÄÚÈİ¡¢ÖĞÖ¹»òÖÕÖ¹²¿·Ö»òÈ«²¿Èí¼şÊ¹ÓÃºÍ·şÎñµÄÈ¨Àû£¬ĞŞ¸Ä»á¹«²¼ÓÚ¿µÊ¢¹«Ë¾ÍøÕ¾Ïà¹ØÒ³ÃæÉÏ£¬Ò»¾­¹«²¼ÊÓÎªÍ¨Öª¡£ ¿µÊ¢¹«Ë¾ĞĞÊ¹ĞŞ¸Ä»òÖĞÖ¹¡¢ÖÕÖ¹²¿·Ö»òÈ«²¿Èí¼şÊ¹ÓÃºÍ·şÎñµÄÈ¨Àû¶øÔì³ÉËğÊ§µÄ£¬¿µÊ¢¹«Ë¾²»Ğè¶ÔÄú»òÈÎºÎµÚÈı·½¸ºÔğ¡£
+   1. æœ¬è½¯ä»¶åŠæ‰€é™„å¸¦çš„æ–‡ä»¶æ˜¯ä½œä¸ºä¸æä¾›ä»»ä½•æ˜ç¡®çš„æˆ–éšå«çš„èµ”å¿æˆ–æ‹…ä¿çš„å½¢å¼æä¾›çš„ã€‚
+   2. ç”¨æˆ·å‡ºäºè‡ªæ„¿è€Œä½¿ç”¨æœ¬è½¯ä»¶ï¼Œæ‚¨å¿…é¡»äº†è§£ä½¿ç”¨æœ¬è½¯ä»¶çš„é£é™©ï¼Œåœ¨å°šæœªè´­ä¹°äº§å“æŠ€æœ¯æœåŠ¡ä¹‹å‰ï¼Œæˆ‘ä»¬ä¸æ‰¿è¯ºæä¾›ä»»ä½•å½¢å¼çš„æŠ€æœ¯æ”¯æŒã€ä½¿ç”¨æ‹…ä¿ï¼Œä¹Ÿä¸æ‰¿æ‹…ä»»ä½•å› ä½¿ç”¨æœ¬è½¯ä»¶è€Œäº§ç”Ÿé—®é¢˜çš„ç›¸å…³è´£ä»»ã€‚
+   3. åº·ç››å…¬å¸ä¸å¯¹ä½¿ç”¨æœ¬è½¯ä»¶æ„å»ºçš„ç½‘ç«™ä¸­æˆ–è€…è®ºå›ä¸­çš„æ–‡ç« æˆ–ä¿¡æ¯æ‰¿æ‹…è´£ä»»ï¼Œå…¨éƒ¨è´£ä»»ç”±æ‚¨è‡ªè¡Œæ‰¿æ‹…ã€‚
+   4. åº·ç››å…¬å¸æ— æ³•å…¨é¢ç›‘æ§ç”±ç¬¬ä¸‰æ–¹ä¸Šä¼ è‡³åº”ç”¨ä¸­å¿ƒçš„åº”ç”¨ç¨‹åºï¼Œå› æ­¤ä¸ä¿è¯åº”ç”¨ç¨‹åºçš„åˆæ³•æ€§ã€å®‰å…¨æ€§ã€å®Œæ•´æ€§ã€çœŸå®æ€§æˆ–å“è´¨ç­‰ï¼›æ‚¨ä»åº”ç”¨ä¸­å¿ƒä¸‹è½½åº”ç”¨ç¨‹åºæ—¶ï¼ŒåŒæ„è‡ªè¡Œåˆ¤æ–­å¹¶æ‰¿æ‹…æ‰€æœ‰é£é™©ï¼Œè€Œä¸ä¾èµ–äºåº·ç››å…¬å¸ã€‚ä½†åœ¨ä»»ä½•æƒ…å†µä¸‹ï¼Œåº·ç››å…¬å¸æœ‰æƒä¾æ³•åœæ­¢åº”ç”¨ä¸­å¿ƒæœåŠ¡å¹¶é‡‡å–ç›¸åº”è¡ŒåŠ¨ï¼ŒåŒ…æ‹¬ä½†ä¸é™äºå¯¹äºç›¸å…³åº”ç”¨ç¨‹åºè¿›è¡Œå¸è½½ï¼Œæš‚åœæœåŠ¡çš„å…¨éƒ¨æˆ–éƒ¨åˆ†ï¼Œä¿å­˜æœ‰å…³è®°å½•ï¼Œå¹¶å‘æœ‰å…³æœºå…³æŠ¥å‘Šã€‚ç”±æ­¤å¯¹æ‚¨åŠç¬¬ä¸‰äººå¯èƒ½é€ æˆçš„æŸå¤±ï¼Œåº·ç››å…¬å¸ä¸æ‰¿æ‹…ä»»ä½•ç›´æ¥ã€é—´æ¥æˆ–è€…è¿å¸¦çš„è´£ä»»ã€‚
+   5. åº·ç››å…¬å¸å¯¹åº·ç››æä¾›çš„è½¯ä»¶å’ŒæœåŠ¡ä¹‹åŠæ—¶æ€§ã€å®‰å…¨æ€§ã€å‡†ç¡®æ€§ä¸ä½œæ‹…ä¿ï¼Œç”±äºä¸å¯æŠ—åŠ›å› ç´ ã€åº·ç››å…¬å¸æ— æ³•æ§åˆ¶çš„å› ç´ ï¼ˆåŒ…æ‹¬é»‘å®¢æ”»å‡»ã€åœæ–­ç”µç­‰ï¼‰ç­‰é€ æˆè½¯ä»¶ä½¿ç”¨å’ŒæœåŠ¡ä¸­æ­¢æˆ–ç»ˆæ­¢ï¼Œè€Œç»™æ‚¨é€ æˆæŸå¤±çš„ï¼Œæ‚¨åŒæ„æ”¾å¼ƒè¿½ç©¶åº·ç››å…¬å¸è´£ä»»çš„å…¨éƒ¨æƒåˆ©ã€‚   6.åº·ç››å…¬å¸ç‰¹åˆ«æè¯·æ‚¨æ³¨æ„ï¼Œåº·ç››å…¬å¸ä¸ºäº†ä¿éšœå…¬å¸ä¸šåŠ¡å‘å±•å’Œè°ƒæ•´çš„è‡ªä¸»æƒï¼Œåº·ç››å…¬å¸æ‹¥æœ‰éšæ—¶ç»æˆ–æœªç»äº‹å…ˆé€šçŸ¥è€Œä¿®æ”¹æœåŠ¡å†…å®¹ã€ä¸­æ­¢æˆ–ç»ˆæ­¢éƒ¨åˆ†æˆ–å…¨éƒ¨è½¯ä»¶ä½¿ç”¨å’ŒæœåŠ¡çš„æƒåˆ©ï¼Œä¿®æ”¹ä¼šå…¬å¸ƒäºåº·ç››å…¬å¸ç½‘ç«™ç›¸å…³é¡µé¢ä¸Šï¼Œä¸€ç»å…¬å¸ƒè§†ä¸ºé€šçŸ¥ã€‚ åº·ç››å…¬å¸è¡Œä½¿ä¿®æ”¹æˆ–ä¸­æ­¢ã€ç»ˆæ­¢éƒ¨åˆ†æˆ–å…¨éƒ¨è½¯ä»¶ä½¿ç”¨å’ŒæœåŠ¡çš„æƒåˆ©è€Œé€ æˆæŸå¤±çš„ï¼Œåº·ç››å…¬å¸ä¸éœ€å¯¹æ‚¨æˆ–ä»»ä½•ç¬¬ä¸‰æ–¹è´Ÿè´£ã€‚
 
-ÓĞ¹Ø¿µÊ¢²úÆ·×îÖÕÓÃ»§ÊÚÈ¨Ğ­Òé¡¢ÉÌÒµÊÚÈ¨Óë¼¼Êõ·şÎñµÄÏêÏ¸ÄÚÈİ£¬¾ùÓÉ¿µÊ¢¹«Ë¾¶À¼ÒÌá¹©¡£¿µÊ¢¹«Ë¾ÓµÓĞÔÚ²»ÊÂÏÈÍ¨ÖªµÄÇé¿öÏÂ£¬ĞŞ¸ÄÊÚÈ¨Ğ­ÒéºÍ·şÎñ¼ÛÄ¿±íµÄÈ¨Àû£¬ĞŞ¸ÄºóµÄĞ­Òé»ò¼ÛÄ¿±í¶Ô×Ô¸Ä±äÖ®ÈÕÆğµÄĞÂÊÚÈ¨ÓÃ»§ÉúĞ§¡£
+æœ‰å…³åº·ç››äº§å“æœ€ç»ˆç”¨æˆ·æˆæƒåè®®ã€å•†ä¸šæˆæƒä¸æŠ€æœ¯æœåŠ¡çš„è¯¦ç»†å†…å®¹ï¼Œå‡ç”±åº·ç››å…¬å¸ç‹¬å®¶æä¾›ã€‚åº·ç››å…¬å¸æ‹¥æœ‰åœ¨ä¸äº‹å…ˆé€šçŸ¥çš„æƒ…å†µä¸‹ï¼Œä¿®æ”¹æˆæƒåè®®å’ŒæœåŠ¡ä»·ç›®è¡¨çš„æƒåˆ©ï¼Œä¿®æ”¹åçš„åè®®æˆ–ä»·ç›®è¡¨å¯¹è‡ªæ”¹å˜ä¹‹æ—¥èµ·çš„æ–°æˆæƒç”¨æˆ·ç”Ÿæ•ˆã€‚
 
-Ò»µ©Äú¿ªÊ¼°²×°¿µÊ¢²úÆ·£¬¼´±»ÊÓÎªÍêÈ«Àí½â²¢½ÓÊÜ±¾Ğ­ÒéµÄ¸÷ÏîÌõ¿î£¬ÔÚÏíÓĞÉÏÊöÌõ¿îÊÚÓèµÄÈ¨ÀûµÄÍ¬Ê±£¬ÊÜµ½Ïà¹ØµÄÔ¼ÊøºÍÏŞÖÆ¡£Ğ­ÒéĞí¿É·¶Î§ÒÔÍâµÄĞĞÎª£¬½«Ö±½ÓÎ¥·´±¾ÊÚÈ¨Ğ­Òé²¢¹¹³ÉÇÖÈ¨£¬ÎÒÃÇÓĞÈ¨ËæÊ±ÖÕÖ¹ÊÚÈ¨£¬ÔğÁîÍ£Ö¹Ëğº¦£¬²¢±£Áô×·¾¿Ïà¹ØÔğÈÎµÄÈ¨Á¦¡£
+ä¸€æ—¦æ‚¨å¼€å§‹å®‰è£…åº·ç››äº§å“ï¼Œå³è¢«è§†ä¸ºå®Œå…¨ç†è§£å¹¶æ¥å—æœ¬åè®®çš„å„é¡¹æ¡æ¬¾ï¼Œåœ¨äº«æœ‰ä¸Šè¿°æ¡æ¬¾æˆäºˆçš„æƒåˆ©çš„åŒæ—¶ï¼Œå—åˆ°ç›¸å…³çš„çº¦æŸå’Œé™åˆ¶ã€‚åè®®è®¸å¯èŒƒå›´ä»¥å¤–çš„è¡Œä¸ºï¼Œå°†ç›´æ¥è¿åæœ¬æˆæƒåè®®å¹¶æ„æˆä¾µæƒï¼Œæˆ‘ä»¬æœ‰æƒéšæ—¶ç»ˆæ­¢æˆæƒï¼Œè´£ä»¤åœæ­¢æŸå®³ï¼Œå¹¶ä¿ç•™è¿½ç©¶ç›¸å…³è´£ä»»çš„æƒåŠ›ã€‚
 
-±¾Ğí¿ÉĞ­ÒéÌõ¿îµÄ½âÊÍ£¬Ğ§Á¦¼°¾À·×µÄ½â¾ö£¬ÊÊÓÃÓÚÖĞ»ªÈËÃñ¹²ºÍ¹ú´óÂ½·¨ÂÉ¡£
+æœ¬è®¸å¯åè®®æ¡æ¬¾çš„è§£é‡Šï¼Œæ•ˆåŠ›åŠçº çº·çš„è§£å†³ï¼Œé€‚ç”¨äºä¸­åäººæ°‘å…±å’Œå›½å¤§é™†æ³•å¾‹ã€‚
 
-ÈôÄúºÍ¿µÊ¢Ö®¼ä·¢ÉúÈÎºÎ¾À·×»òÕùÒé£¬Ê×ÏÈÓ¦ÓÑºÃĞ­ÉÌ½â¾ö£¬Ğ­ÉÌ²»³ÉµÄ£¬ÄúÔÚ´ËÍêÈ«Í¬Òâ½«¾À·×»òÕùÒéÌá½»¿µÊ¢ËùÔÚµØ±±¾©ÊĞº£µíÇøÈËÃñ·¨Ôº¹ÜÏ½¡£¿µÊ¢¹«Ë¾ÓµÓĞ¶ÔÒÔÉÏ¸÷ÏîÌõ¿îÄÚÈİµÄ½âÊÍÈ¨¼°ĞŞ¸ÄÈ¨¡££¨ÕıÎÄÍê£©
+è‹¥æ‚¨å’Œåº·ç››ä¹‹é—´å‘ç”Ÿä»»ä½•çº çº·æˆ–äº‰è®®ï¼Œé¦–å…ˆåº”å‹å¥½åå•†è§£å†³ï¼Œåå•†ä¸æˆçš„ï¼Œæ‚¨åœ¨æ­¤å®Œå…¨åŒæ„å°†çº çº·æˆ–äº‰è®®æäº¤åº·ç››æ‰€åœ¨åœ°åŒ—äº¬å¸‚æµ·æ·€åŒºäººæ°‘æ³•é™¢ç®¡è¾–ã€‚åº·ç››å…¬å¸æ‹¥æœ‰å¯¹ä»¥ä¸Šå„é¡¹æ¡æ¬¾å†…å®¹çš„è§£é‡ŠæƒåŠä¿®æ”¹æƒã€‚ï¼ˆæ­£æ–‡å®Œï¼‰
 
-¿µÊ¢¹«Ë¾
+åº·ç››å…¬å¸
 
 -----------------------------------------------------------------------------
 
@@ -53,25 +53,25 @@ English Version of EULA, for non-Chinese-Speaking Users Only
 Copyright (c) 2001-2012, Comsenz Inc.
 All Rights Reserved.
 
-This software license agreement (hereinafter the ¡°Agreement¡±) is a legal agreement between the user (hereinafter ¡°You¡± or the ¡°User¡±) and Beijing Comsenz Technology Limited (¡°Comsenz¡±) for the software products (hereinafter the ¡°Software¡±) and related services (hereinafter the ¡°Service¡±) that accompanies this Agreement, as may be updated or replaced by feature enhancements, software updates or maintenance releases and any services that may be provided by Comsenz under this Agreement. You are not allowed to download, install or use the Software or to use Services unless you accept all the terms and conditions of this Agreement. Your download, installation and use of the Software shall be regarded as your acceptance of the Agreement and your agreement to be bound by all the terms and conditions of this Agreement.
+This software license agreement (hereinafter the â€œAgreementâ€) is a legal agreement between the user (hereinafter â€œYouâ€ or the â€œUserâ€) and Beijing Comsenz Technology Limited (â€œComsenzâ€) for the software products (hereinafter the â€œSoftwareâ€) and related services (hereinafter the â€œServiceâ€) that accompanies this Agreement, as may be updated or replaced by feature enhancements, software updates or maintenance releases and any services that may be provided by Comsenz under this Agreement. You are not allowed to download, install or use the Software or to use Services unless you accept all the terms and conditions of this Agreement. Your download, installation and use of the Software shall be regarded as your acceptance of the Agreement and your agreement to be bound by all the terms and conditions of this Agreement.
 This Agreement, between the User and Comsenz, is an agreement regarding the User's downloading, installation, use and copying of the Software, and the use of Services provided by Comsenz. This Agreement stipulates the rights and duties of You and Comsenz regarding the licensed use and related services. "The User" or "You" refers to a person (who is 18 years of age or older, any parent or guardian of a person under the age of 18 may accept this Agreement on behalf of a user) or entity who obtains the Software authorization license and/or the Software products by means of the Software license and the account registration as provided by Comsenz.
 
 This Agreement may be updated by Comsenz at any time and without prior notice to the User. After the updated Agreement is issued, it shall replace the original Agreement effectively. Users can read the updated Agreement by logging in the Software or checking on the Website at any time. After Comsenz has updated the clauses of Agreement, the User should stop using software and services provided by Comsenz if he/she does not agree with the clauses amended, otherwise it will be deemed that the user has accepted the Agreement as amended.
 
-Except those explicitly stated in the Agreement, the Agreement does not stipulate the terms of service for other services offered by Comsenz which the User visits when using the ¡°Software¡±. Those services are usually regulated by other separate terms of service and the User should be familiar with and confirm his/her acceptance of those terms of service when using the relevant services. If there are conflicts between separate terms of service and this Agreement, the separate terms of service will govern. By using those services, the User shall be regarded as having accepted the relevant terms of service.
+Except those explicitly stated in the Agreement, the Agreement does not stipulate the terms of service for other services offered by Comsenz which the User visits when using the â€œSoftwareâ€. Those services are usually regulated by other separate terms of service and the User should be familiar with and confirm his/her acceptance of those terms of service when using the relevant services. If there are conflicts between separate terms of service and this Agreement, the separate terms of service will govern. By using those services, the User shall be regarded as having accepted the relevant terms of service.
 
 1. Grant of License
 Subject to the terms and conditions of this Agreement, Comsenz grants to you a limited, non-exclusive, worldwide license to install, download and use a single instance of the Software on a single website server through a single installation for non-commercial purposes for free.
 
 You can modify the source code (if being provided) or interface of the Software if your modification is strictly under the Agreement and to beautify your website.
 
-When using the Software, the User shall comply with the relevant national laws and policies, protect the national interests, safeguard the national security and comply with this Agreement. The User, but not Comsenz, shall be fully responsible for all liabilities resulting from the illegal use of the Software or breach of the Agreement. If the User's misbehavior causes loss to Comsenz, Comsenz is entitled to demand the User to provide compensation, cease provision of the service immediately and keep relevant records. Moreover, if the User violates laws or the Agreement and correlative clauses of services stipulated in other services of Comsenz by using the Software, Comsenz has the right to take these measures including, but not limited to, interruption of use license, stopping of services, restriction of use, legal investigation, etc. considering the nature of the User¡¯s behaviors and without a prior notice to the User.
+When using the Software, the User shall comply with the relevant national laws and policies, protect the national interests, safeguard the national security and comply with this Agreement. The User, but not Comsenz, shall be fully responsible for all liabilities resulting from the illegal use of the Software or breach of the Agreement. If the User's misbehavior causes loss to Comsenz, Comsenz is entitled to demand the User to provide compensation, cease provision of the service immediately and keep relevant records. Moreover, if the User violates laws or the Agreement and correlative clauses of services stipulated in other services of Comsenz by using the Software, Comsenz has the right to take these measures including, but not limited to, interruption of use license, stopping of services, restriction of use, legal investigation, etc. considering the nature of the Userâ€™s behaviors and without a prior notice to the User.
 
-You have the entire property of all the members¡¯ data, information and articles in your website which is powered by the Software; that is to say, you must assume solely all the relevant liabilities concerns to the contents in your website.
+You have the entire property of all the membersâ€™ data, information and articles in your website which is powered by the Software; that is to say, you must assume solely all the relevant liabilities concerns to the contents in your website.
 
 You may use the Software for commercial means after purchase of the commercial license. Moreover, according to the license you purchase you will get technical support from Comsenz in specified term and manner. Commercial users are prior to submitting ideas and opinions to Comsenz, but without any guarantee of acceptance.
 
-You can download application(s) for your website from Comsenz¡¯s Application Center after you have paid appropriate fee to the developer/owner of the application(s).
+You can download application(s) for your website from Comsenzâ€™s Application Center after you have paid appropriate fee to the developer/owner of the application(s).
 2. License Restrictions
 You cannot use the Software for commercial or profit purposes (include but are not limited to company websites, operating websites or other for-profit websites) unless you have been licensed to. To purchase the license, please visit http://www.comsenz.com or dial 8610-5165 7885 for more information.
 
@@ -81,16 +81,16 @@ You may not use the Software to engage in or allow others to engage in any illeg
 
 You cannot remove or modify the copyright information and relevant links under any circumstances, such as http://www.comsenz.com, and http://www.discuz.net, in the foot of web pages without the prior written consent of Comsenz.
 
-You cannot reverse engineer, decompile or disassemble, copy, modify, link, reproduce, publish or develop derivative products of the applications that you download from Comsenz¡¯s Application Center without the prior written permission from the application developer/owner.
+You cannot reverse engineer, decompile or disassemble, copy, modify, link, reproduce, publish or develop derivative products of the applications that you download from Comsenzâ€™s Application Center without the prior written permission from the application developer/owner.
 
 3. Disclaimer of Warranties and Limitations of Liabilities
-The software and the accompanying files are provided ¡°as-is¡±, and to the maximum extent permitted by applicable law, Comsenz disclaims all other warranties, express or implied, by statute or otherwise, regarding the software and any related materials, including their fitness for a particular purpose, their quality, their merchantability, or any related services or content is secure, or is free from bugs, viruses, errors, or other program limitations nor does it warrant access to the internet or to any other services through the software.
+The software and the accompanying files are provided â€œas-isâ€, and to the maximum extent permitted by applicable law, Comsenz disclaims all other warranties, express or implied, by statute or otherwise, regarding the software and any related materials, including their fitness for a particular purpose, their quality, their merchantability, or any related services or content is secure, or is free from bugs, viruses, errors, or other program limitations nor does it warrant access to the internet or to any other services through the software.
 
-To the maximum extent permitted by applicable law, Comsenz will not be liable for any indirect, special, incidental, or consequential damages(including damages for loss of business, loss of profits, or the like), whatever based on breach of contract, tort(including negligence), product liability or otherwise, even Comsenz has been advised of the possibility of such damages. Comsenz¡¯ total liability to you for actual damages for any cause whatsoever will be limited to the purchase price amount paid by you for the software.
+To the maximum extent permitted by applicable law, Comsenz will not be liable for any indirect, special, incidental, or consequential damages(including damages for loss of business, loss of profits, or the like), whatever based on breach of contract, tort(including negligence), product liability or otherwise, even Comsenz has been advised of the possibility of such damages. Comsenzâ€™ total liability to you for actual damages for any cause whatsoever will be limited to the purchase price amount paid by you for the software.
 
 Comsenz is not liable for the content of any message in the websites powered by the Software.
 
-Comsenz does not guarantee the legality, safety, integrity, authenticity and quality of the applications which uploaded into Comsenz¡¯s Application Center by any third party. You agree to judge on yourself and take fully responsibilities to the action of download from Comsenz¡¯s Application Center. But in any case, Comsenz may stop the Store¡¯s service and take appropriate actions, including but not limited to uninstall the associated applications, suspend the Store¡¯s service in whole or in part, keep the relevant records to the relevant authorities, and Comsenz will not undertake any direct, indirect or consequential liability to the actions thereof.
+Comsenz does not guarantee the legality, safety, integrity, authenticity and quality of the applications which uploaded into Comsenzâ€™s Application Center by any third party. You agree to judge on yourself and take fully responsibilities to the action of download from Comsenzâ€™s Application Center. But in any case, Comsenz may stop the Storeâ€™s service and take appropriate actions, including but not limited to uninstall the associated applications, suspend the Storeâ€™s service in whole or in part, keep the relevant records to the relevant authorities, and Comsenz will not undertake any direct, indirect or consequential liability to the actions thereof.
 4. Termination
 The License is effective until terminated. You may terminate the License at any time by uninstalling the Software and destroying all copies of the Software in any media. This Agreement may be terminated by Comsenz immediately and without notice if you fail to comply with any term or condition of the License or this Agreement. Upon such termination, you must immediately cease using the Software, and assume relevant liabilities.
 

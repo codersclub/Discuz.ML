@@ -41,6 +41,6 @@ while($row = $db_source->fetch_array($query)) {
 
 $nextpstep = $pstep + 1;
 if($continue) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source."£¬ÒÑ×ª»» $total Ìõ¼ÇÂ¼¡£", "index.php?a=$action&source=$source&prg=$curprg&pstep=$nextpstep&total=$total");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source."ï¼Œå·²è½¬æ¢ $total æ¡è®°å½•ã€‚", "index.php?a=$action&source=$source&prg=$curprg&pstep=$nextpstep&total=$total");
 }
 ?>

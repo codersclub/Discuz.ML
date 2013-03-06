@@ -57,7 +57,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." magicid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." magicid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	if(!$db_target->result_first("SELECT COUNT(*) FROM $table_target WHERE credit>'0'")) {
 		$settings_creditstrans = $db_target->result_first("SELECT svalue FROM $table_target_setting WHERE skey='creditstrans'");
@@ -65,9 +65,9 @@ if($nextid) {
 		$creditstran = $creditstranssi[3] ? $creditstranssi[3] : $creditstranssi[0];
 		$db_target->query("UPDATE $table_target SET credit='$creditstran'");
 	}
-	$db_target->query("UPDATE $table_target SET name='±äÉ«¿¨', description='¿ÉÒÔ½«Ìû×Ó»òÈÕÖ¾µÄ±êÌâ¸ßÁÁ£¬±ä¸üÑÕÉ«' WHERE identifier='highlight'");
-	$db_target->query("UPDATE $table_target SET name='ÏÔÉí¿¨', description='¿ÉÒÔ²é¿´Ò»´ÎÄäÃûÓÃ»§µÄÕæÊµÉí·Ý¡£' WHERE identifier='namepost'");
-	$db_target->query("UPDATE $table_target SET name='ÄäÃû¿¨', description='ÔÚÖ¸¶¨µÄµØ·½£¬ÈÃ×Ô¼ºµÄÃû×ÖÏÔÊ¾ÎªÄäÃû¡£' WHERE identifier='anonymouspost'");
+	$db_target->query("UPDATE $table_target SET name='å˜è‰²å¡', description='å¯ä»¥å°†å¸–å­æˆ–æ—¥å¿—çš„æ ‡é¢˜é«˜äº®ï¼Œå˜æ›´é¢œè‰²' WHERE identifier='highlight'");
+	$db_target->query("UPDATE $table_target SET name='æ˜¾èº«å¡', description='å¯ä»¥æŸ¥çœ‹ä¸€æ¬¡åŒ¿åç”¨æˆ·çš„çœŸå®žèº«ä»½ã€‚' WHERE identifier='namepost'");
+	$db_target->query("UPDATE $table_target SET name='åŒ¿åå¡', description='åœ¨æŒ‡å®šçš„åœ°æ–¹ï¼Œè®©è‡ªå·±çš„åå­—æ˜¾ç¤ºä¸ºåŒ¿åã€‚' WHERE identifier='anonymouspost'");
 }
 
 ?>

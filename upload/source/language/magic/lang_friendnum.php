@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'friendnum_name' => 'ºÃÓÑÔöÈÝ¿¨',
-	'friendnum_desc' => 'Ôö¼ÓºÃÓÑÈÝÁ¿ÉÏÏÞ',
-	'friendnum_info' => '¶îÍâÔö¼Ó {num} ¸öºÃÓÑÉÏÏÞ',
-	'friendnum_addnum' => 'Ôö¼ÓºÃÓÑÊý',
+	'friendnum_name' => 'å¥½å‹å¢žå®¹å¡',
+	'friendnum_desc' => 'å¢žåŠ å¥½å‹å®¹é‡ä¸Šé™',
+	'friendnum_info' => 'é¢å¤–å¢žåŠ  {num} ä¸ªå¥½å‹ä¸Šé™',
+	'friendnum_addnum' => 'å¢žåŠ å¥½å‹æ•°',
 );
 
 ?>

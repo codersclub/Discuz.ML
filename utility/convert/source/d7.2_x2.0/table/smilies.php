@@ -32,10 +32,10 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." id > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." id > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
-	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('83','4','9','stamp','±à¼­²ÉÓÃ','010.gif')");
-	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('84','0','18','stamplist','±à¼­²ÉÓÃ','010.small.gif')");
+	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('83','4','9','stamp','ç¼–è¾‘é‡‡ç”¨','010.gif')");
+	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('84','0','18','stamplist','ç¼–è¾‘é‡‡ç”¨','010.small.gif')");
 
 }
 

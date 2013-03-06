@@ -44,7 +44,7 @@ if(submitcheck()) {
 	}
 }
 
-showtips('如果无法显示设置项目，请删除文件 data/config.inc.php');
+showtips('濡傛灉鏃犳硶鏄剧ず璁剧疆椤圭洰锛岃鍒犻櫎鏂囦欢 data/config.inc.php');
 $config = loadconfig('config.inc.php');
 if(empty($config)) {
 	$config = $config_default;

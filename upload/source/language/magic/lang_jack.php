@@ -13,19 +13,19 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'jack_name' => 'ǧ�ﶥ',
-	'jack_desc' => '���Խ����ⶥ��һ��ʱ�䣬�ظ�ʹ�ÿ��ӳ����ӱ������ʱ��',
-	'jack_expiration' => 'ʱ��',
-	'jack_expiration_comment' => '����������Ա�����೤ʱ�䣬Ĭ�� 1 Сʱ',
-	'jack_forum' => '����ʹ�ñ����ߵİ��',
-	'jack_info' => '<p class="mtn xw0 mbn">����ָ��������<span class="xi1 xw1 xs2"> {expiration} </span> Сʱ��</p> <p class="mtn xw0 mbn">��������<span class="xi1 xw1 xs2"> {magicnum} </span>��ǧ�ﶥ����ʹ�á�</p>',
-	'jack_num' => '����ʹ������:',
-	'jack_num_not_enough' => '�������������û����дʹ��������',
-	'jack_info_nonexistence' => '��ָ��Ҫ���������',
-	'jack_succeed' => 'ǧ�ﶥ�ɹ������ⶥ��',
-	'jack_info_noperm' => '�Բ����������ڰ�鲻����ʹ�ñ�����',
+	'jack_name' => '千斤顶',
+	'jack_desc' => '可以将主题顶起一段时间，重复使用可延长帖子被顶起的时间',
+	'jack_expiration' => '时长',
+	'jack_expiration_comment' => '设置主题可以被顶起多长时间，默认 1 小时',
+	'jack_forum' => '允许使用本道具的版块',
+	'jack_info' => '<p class="mtn xw0 mbn">顶起指定的主题<span class="xi1 xw1 xs2"> {expiration} </span> 小时。</p> <p class="mtn xw0 mbn">您现在有<span class="xi1 xw1 xs2"> {magicnum} </span>个千斤顶可以使用。</p>',
+	'jack_num' => '本次使用数量:',
+	'jack_num_not_enough' => '道具数量不足或没有填写使用数量。',
+	'jack_info_nonexistence' => '请指定要顶起的主题',
+	'jack_succeed' => '千斤顶成功将主题顶起',
+	'jack_info_noperm' => '对不起，主题所在版块不允许使用本道具',
 
-	'jack_notification' => '�������� {subject} �� {actor} ʹ����{magicname}��<a href="forum.php?mod=viewthread&tid={tid}">��ȥ�����ɣ�</a>',
+	'jack_notification' => '您的主题 {subject} 被 {actor} 使用了{magicname}，<a href="forum.php?mod=viewthread&tid={tid}">快去看看吧！</a>',
 );
 
 ?>

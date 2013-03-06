@@ -14,269 +14,269 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'hello' => 'ÄúºÃ',
-	'moderate_member_invalidate' => '·ñ¾ö',
-	'moderate_member_delete' => 'É¾³ý',
-	'moderate_member_validate' => 'Í¨¹ý',
+	'hello' => 'æ‚¨å¥½',
+	'moderate_member_invalidate' => 'å¦å†³',
+	'moderate_member_delete' => 'åˆ é™¤',
+	'moderate_member_validate' => 'é€šè¿‡',
 
 
-	'get_passwd_subject' =>		'È¡»ØÃÜÂëËµÃ÷',
+	'get_passwd_subject' =>		'å–å›žå¯†ç è¯´æ˜Ž',
 	'get_passwd_message' =>		'
-<p>{username}£¬
-Õâ·âÐÅÊÇÓÉ {bbname} ·¢ËÍµÄ¡£</p>
+<p>{username}ï¼Œ
+è¿™å°ä¿¡æ˜¯ç”± {bbname} å‘é€çš„ã€‚</p>
 
-<p>ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚÕâ¸öÓÊÏäµØÖ·ÔÚ {bbname} ±»µÇ¼ÇÎªÓÃ»§ÓÊÏä£¬
-ÇÒ¸ÃÓÃ»§ÇëÇóÊ¹ÓÃ Email ÃÜÂëÖØÖÃ¹¦ÄÜËùÖÂ¡£</p>
+<p>æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽè¿™ä¸ªé‚®ç®±åœ°å€åœ¨ {bbname} è¢«ç™»è®°ä¸ºç”¨æˆ·é‚®ç®±ï¼Œ
+ä¸”è¯¥ç”¨æˆ·è¯·æ±‚ä½¿ç”¨ Email å¯†ç é‡ç½®åŠŸèƒ½æ‰€è‡´ã€‚</p>
 <p>
 ----------------------------------------------------------------------<br />
-<strong>ÖØÒª£¡</strong><br />
+<strong>é‡è¦ï¼</strong><br />
 ----------------------------------------------------------------------</p>
 
-<p>Èç¹ûÄúÃ»ÓÐÌá½»ÃÜÂëÖØÖÃµÄÇëÇó»ò²»ÊÇ {bbname} µÄ×¢²áÓÃ»§£¬ÇëÁ¢¼´ºöÂÔ
-²¢É¾³ýÕâ·âÓÊ¼þ¡£Ö»ÓÐÔÚÄúÈ·ÈÏÐèÒªÖØÖÃÃÜÂëµÄÇé¿öÏÂ£¬²ÅÐèÒª¼ÌÐøÔÄ¶ÁÏÂÃæµÄ
-ÄÚÈÝ¡£</p>
+<p>å¦‚æžœæ‚¨æ²¡æœ‰æäº¤å¯†ç é‡ç½®çš„è¯·æ±‚æˆ–ä¸æ˜¯ {bbname} çš„æ³¨å†Œç”¨æˆ·ï¼Œè¯·ç«‹å³å¿½ç•¥
+å¹¶åˆ é™¤è¿™å°é‚®ä»¶ã€‚åªæœ‰åœ¨æ‚¨ç¡®è®¤éœ€è¦é‡ç½®å¯†ç çš„æƒ…å†µä¸‹ï¼Œæ‰éœ€è¦ç»§ç»­é˜…è¯»ä¸‹é¢çš„
+å†…å®¹ã€‚</p>
 <p>
 ----------------------------------------------------------------------<br />
-<strong>ÃÜÂëÖØÖÃËµÃ÷</strong><br />
+<strong>å¯†ç é‡ç½®è¯´æ˜Ž</strong><br />
 ----------------------------------------------------------------------</p>
 </p>
-ÄúÖ»ÐèÔÚÌá½»ÇëÇóºóµÄÈýÌìÄÚ£¬Í¨¹ýµã»÷ÏÂÃæµÄÁ´½ÓÖØÖÃÄúµÄÃÜÂë£º<br />
+æ‚¨åªéœ€åœ¨æäº¤è¯·æ±‚åŽçš„ä¸‰å¤©å†…ï¼Œé€šè¿‡ç‚¹å‡»ä¸‹é¢çš„é“¾æŽ¥é‡ç½®æ‚¨çš„å¯†ç ï¼š<br />
 
 <a href="{siteurl}member.php?mod=getpasswd&amp;uid={uid}&amp;id={idstring}" target="_blank">{siteurl}member.php?mod=getpasswd&amp;uid={uid}&amp;id={idstring}</a>
 <br />
-(Èç¹ûÉÏÃæ²»ÊÇÁ´½ÓÐÎÊ½£¬Çë½«¸ÃµØÖ·ÊÖ¹¤Õ³Ìùµ½ä¯ÀÀÆ÷µØÖ·À¸ÔÙ·ÃÎÊ)</p>
+(å¦‚æžœä¸Šé¢ä¸æ˜¯é“¾æŽ¥å½¢å¼ï¼Œè¯·å°†è¯¥åœ°å€æ‰‹å·¥ç²˜è´´åˆ°æµè§ˆå™¨åœ°å€æ å†è®¿é—®)</p>
 
-<p>ÔÚÉÏÃæµÄÁ´½ÓËù´ò¿ªµÄÒ³ÃæÖÐÊäÈëÐÂµÄÃÜÂëºóÌá½»£¬Äú¼´¿ÉÊ¹ÓÃÐÂµÄÃÜÂëµÇÂ¼ÍøÕ¾ÁË¡£Äú¿ÉÒÔÔÚÓÃ»§¿ØÖÆÃæ°åÖÐËæÊ±ÐÞ¸ÄÄúµÄÃÜÂë¡£</p>
+<p>åœ¨ä¸Šé¢çš„é“¾æŽ¥æ‰€æ‰“å¼€çš„é¡µé¢ä¸­è¾“å…¥æ–°çš„å¯†ç åŽæäº¤ï¼Œæ‚¨å³å¯ä½¿ç”¨æ–°çš„å¯†ç ç™»å½•ç½‘ç«™äº†ã€‚æ‚¨å¯ä»¥åœ¨ç”¨æˆ·æŽ§åˆ¶é¢æ¿ä¸­éšæ—¶ä¿®æ”¹æ‚¨çš„å¯†ç ã€‚</p>
 
-<p>±¾ÇëÇóÌá½»ÕßµÄ IP Îª {clientip}</p>
+<p>æœ¬è¯·æ±‚æäº¤è€…çš„ IP ä¸º {clientip}</p>
 
 
 <p>
-´ËÖÂ<br />
+æ­¤è‡´<br />
 </p>
-<p>{bbname} ¹ÜÀíÍÅ¶Ó.
+<p>{bbname} ç®¡ç†å›¢é˜Ÿ.
 {siteurl}</p>',
 
 
-	'email_verify_subject' =>	'Email µØÖ·ÑéÖ¤',
+	'email_verify_subject' =>	'Email åœ°å€éªŒè¯',
 	'email_verify_message' =>	'<br />
-<p>{username}£¬<br />
-Õâ·âÐÅÊÇÓÉ {bbname} ·¢ËÍµÄ¡£</p>
+<p>{username}ï¼Œ<br />
+è¿™å°ä¿¡æ˜¯ç”± {bbname} å‘é€çš„ã€‚</p>
 
-<p>ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚÔÚ {bbname} ½øÐÐÁËÐÂÓÃ»§×¢²á£¬»òÓÃ»§ÐÞ¸Ä Email Ê¹ÓÃ
-ÁËÕâ¸öÓÊÏäµØÖ·¡£Èç¹ûÄú²¢Ã»ÓÐ·ÃÎÊ¹ý {bbname}£¬»òÃ»ÓÐ½øÐÐÉÏÊö²Ù×÷£¬Çëºö
-ÂÔÕâ·âÓÊ¼þ¡£Äú²»ÐèÒªÍË¶©»ò½øÐÐÆäËû½øÒ»²½µÄ²Ù×÷¡£</p>
+<p>æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽåœ¨ {bbname} è¿›è¡Œäº†æ–°ç”¨æˆ·æ³¨å†Œï¼Œæˆ–ç”¨æˆ·ä¿®æ”¹ Email ä½¿ç”¨
+äº†è¿™ä¸ªé‚®ç®±åœ°å€ã€‚å¦‚æžœæ‚¨å¹¶æ²¡æœ‰è®¿é—®è¿‡ {bbname}ï¼Œæˆ–æ²¡æœ‰è¿›è¡Œä¸Šè¿°æ“ä½œï¼Œè¯·å¿½
+ç•¥è¿™å°é‚®ä»¶ã€‚æ‚¨ä¸éœ€è¦é€€è®¢æˆ–è¿›è¡Œå…¶ä»–è¿›ä¸€æ­¥çš„æ“ä½œã€‚</p>
 <br />
 ----------------------------------------------------------------------<br />
-<strong>ÕÊºÅ¼¤»îËµÃ÷</strong><br />
+<strong>å¸å·æ¿€æ´»è¯´æ˜Ž</strong><br />
 ----------------------------------------------------------------------<br />
 <br />
-<p>Èç¹ûÄúÊÇ {bbname} µÄÐÂÓÃ»§£¬»òÔÚÐÞ¸ÄÄúµÄ×¢²á Email Ê±Ê¹ÓÃÁË±¾µØÖ·£¬ÎÒÃÇÐè
-Òª¶ÔÄúµÄµØÖ·ÓÐÐ§ÐÔ½øÐÐÑéÖ¤ÒÔ±ÜÃâÀ¬»øÓÊ¼þ»òµØÖ·±»ÀÄÓÃ¡£</p>
+<p>å¦‚æžœæ‚¨æ˜¯ {bbname} çš„æ–°ç”¨æˆ·ï¼Œæˆ–åœ¨ä¿®æ”¹æ‚¨çš„æ³¨å†Œ Email æ—¶ä½¿ç”¨äº†æœ¬åœ°å€ï¼Œæˆ‘ä»¬éœ€
+è¦å¯¹æ‚¨çš„åœ°å€æœ‰æ•ˆæ€§è¿›è¡ŒéªŒè¯ä»¥é¿å…åžƒåœ¾é‚®ä»¶æˆ–åœ°å€è¢«æ»¥ç”¨ã€‚</p>
 
-<p>ÄúÖ»Ðèµã»÷ÏÂÃæµÄÁ´½Ó¼´¿É¼¤»îÄúµÄÕÊºÅ£º<br />
+<p>æ‚¨åªéœ€ç‚¹å‡»ä¸‹é¢çš„é“¾æŽ¥å³å¯æ¿€æ´»æ‚¨çš„å¸å·ï¼š<br />
 
 <a href="{url}" target="_blank">{url}</a>
 <br />
-(Èç¹ûÉÏÃæ²»ÊÇÁ´½ÓÐÎÊ½£¬Çë½«¸ÃµØÖ·ÊÖ¹¤Õ³Ìùµ½ä¯ÀÀÆ÷µØÖ·À¸ÔÙ·ÃÎÊ)</p>
+(å¦‚æžœä¸Šé¢ä¸æ˜¯é“¾æŽ¥å½¢å¼ï¼Œè¯·å°†è¯¥åœ°å€æ‰‹å·¥ç²˜è´´åˆ°æµè§ˆå™¨åœ°å€æ å†è®¿é—®)</p>
 
-<p>¸ÐÐ»ÄúµÄ·ÃÎÊ£¬×£ÄúÊ¹ÓÃÓä¿ì£¡</p>
+<p>æ„Ÿè°¢æ‚¨çš„è®¿é—®ï¼Œç¥æ‚¨ä½¿ç”¨æ„‰å¿«ï¼</p>
 
 
 <p>
-´ËÖÂ<br />
+æ­¤è‡´<br />
 
-{bbname} ¹ÜÀíÍÅ¶Ó.<br />
+{bbname} ç®¡ç†å›¢é˜Ÿ.<br />
 {siteurl}</p>',
 
-	'email_register_subject' =>	'ÂÛÌ³×¢²áµØÖ·',
+	'email_register_subject' =>	'è®ºå›æ³¨å†Œåœ°å€',
 	'email_register_message' =>	'<br />
-<p>Õâ·âÐÅÊÇÓÉ {bbname} ·¢ËÍµÄ¡£</p>
+<p>è¿™å°ä¿¡æ˜¯ç”± {bbname} å‘é€çš„ã€‚</p>
 
-<p>ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚÔÚ {bbname} »ñÈ¡ÁËÐÂÓÃ»§×¢²áµØÖ·Ê¹ÓÃ
-ÁËÕâ¸öÓÊÏäµØÖ·¡£Èç¹ûÄú²¢Ã»ÓÐ·ÃÎÊ¹ý {bbname}£¬»òÃ»ÓÐ½øÐÐÉÏÊö²Ù×÷£¬Çëºö
-ÂÔÕâ·âÓÊ¼þ¡£Äú²»ÐèÒªÍË¶©»ò½øÐÐÆäËû½øÒ»²½µÄ²Ù×÷¡£</p>
+<p>æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽåœ¨ {bbname} èŽ·å–äº†æ–°ç”¨æˆ·æ³¨å†Œåœ°å€ä½¿ç”¨
+äº†è¿™ä¸ªé‚®ç®±åœ°å€ã€‚å¦‚æžœæ‚¨å¹¶æ²¡æœ‰è®¿é—®è¿‡ {bbname}ï¼Œæˆ–æ²¡æœ‰è¿›è¡Œä¸Šè¿°æ“ä½œï¼Œè¯·å¿½
+ç•¥è¿™å°é‚®ä»¶ã€‚æ‚¨ä¸éœ€è¦é€€è®¢æˆ–è¿›è¡Œå…¶ä»–è¿›ä¸€æ­¥çš„æ“ä½œã€‚</p>
 <br />
 ----------------------------------------------------------------------<br />
-<strong>ÐÂÓÃ»§×¢²áËµÃ÷</strong><br />
+<strong>æ–°ç”¨æˆ·æ³¨å†Œè¯´æ˜Ž</strong><br />
 ----------------------------------------------------------------------<br />
 <br />
-<p>Èç¹ûÄúÊÇ {bbname} µÄÐÂÓÃ»§£¬»òÔÚÐÞ¸ÄÄúµÄ×¢²á Email Ê±Ê¹ÓÃÁË±¾µØÖ·£¬ÎÒÃÇÐè
-Òª¶ÔÄúµÄµØÖ·ÓÐÐ§ÐÔ½øÐÐÑéÖ¤ÒÔ±ÜÃâÀ¬»øÓÊ¼þ»òµØÖ·±»ÀÄÓÃ¡£</p>
+<p>å¦‚æžœæ‚¨æ˜¯ {bbname} çš„æ–°ç”¨æˆ·ï¼Œæˆ–åœ¨ä¿®æ”¹æ‚¨çš„æ³¨å†Œ Email æ—¶ä½¿ç”¨äº†æœ¬åœ°å€ï¼Œæˆ‘ä»¬éœ€
+è¦å¯¹æ‚¨çš„åœ°å€æœ‰æ•ˆæ€§è¿›è¡ŒéªŒè¯ä»¥é¿å…åžƒåœ¾é‚®ä»¶æˆ–åœ°å€è¢«æ»¥ç”¨ã€‚</p>
 
-<p>ÄúÖ»Ðèµã»÷ÏÂÃæµÄÁ´½Ó¼´¿É½øÐÐÓÃ»§×¢²á£¬ÒÔÏÂÁ´½ÓÓÐÐ§ÆÚÎª3Ìì¡£¹ýÆÚ¿ÉÒÔÖØÐÂÇëÇó·¢ËÍÒ»·âÐÂµÄÓÊ¼þÑéÖ¤£º<br />
+<p>æ‚¨åªéœ€ç‚¹å‡»ä¸‹é¢çš„é“¾æŽ¥å³å¯è¿›è¡Œç”¨æˆ·æ³¨å†Œï¼Œä»¥ä¸‹é“¾æŽ¥æœ‰æ•ˆæœŸä¸º3å¤©ã€‚è¿‡æœŸå¯ä»¥é‡æ–°è¯·æ±‚å‘é€ä¸€å°æ–°çš„é‚®ä»¶éªŒè¯ï¼š<br />
 
 <a href="{url}" target="_blank">{url}</a>
 <br />
-(Èç¹ûÉÏÃæ²»ÊÇÁ´½ÓÐÎÊ½£¬Çë½«¸ÃµØÖ·ÊÖ¹¤Õ³Ìùµ½ä¯ÀÀÆ÷µØÖ·À¸ÔÙ·ÃÎÊ)</p>
+(å¦‚æžœä¸Šé¢ä¸æ˜¯é“¾æŽ¥å½¢å¼ï¼Œè¯·å°†è¯¥åœ°å€æ‰‹å·¥ç²˜è´´åˆ°æµè§ˆå™¨åœ°å€æ å†è®¿é—®)</p>
 
-<p>¸ÐÐ»ÄúµÄ·ÃÎÊ£¬×£ÄúÊ¹ÓÃÓä¿ì£¡</p>
+<p>æ„Ÿè°¢æ‚¨çš„è®¿é—®ï¼Œç¥æ‚¨ä½¿ç”¨æ„‰å¿«ï¼</p>
 
 
 <p>
-´ËÖÂ<br />
+æ­¤è‡´<br />
 
-{bbname} ¹ÜÀíÍÅ¶Ó.<br />
+{bbname} ç®¡ç†å›¢é˜Ÿ.<br />
 {siteurl}</p>',
 
 
-	'add_member_subject' =>		'Äú±»Ìí¼Ó³ÉÎª»áÔ±',
+	'add_member_subject' =>		'æ‚¨è¢«æ·»åŠ æˆä¸ºä¼šå‘˜',
 	'add_member_message' => 	'
-{newusername} £¬
-Õâ·âÐÅÊÇÓÉ {bbname} ·¢ËÍµÄ¡£<br />
+{newusername} ï¼Œ
+è¿™å°ä¿¡æ˜¯ç”± {bbname} å‘é€çš„ã€‚<br />
 <br />
-ÎÒÊÇ {adminusername} £¬{bbname} µÄ¹ÜÀíÕßÖ®Ò»¡£ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚÄú<br />
-¸Õ¸Õ±»Ìí¼Ó³ÉÎª {bbname} µÄ»áÔ±£¬µ±Ç° Email ¼´ÊÇÎÒÃÇÎªÄú×¢²áµÄÓÊÏäµØÖ·¡£<br />
-<br />
-----------------------------------------------------------------------<br />
-ÖØÒª£¡<br />
-----------------------------------------------------------------------<br />
-<br />
-Èç¹ûÄú¶Ô {bbname} ²»¸ÐÐËÈ¤»òÎÞÒâ³ÉÎª»áÔ±£¬ÇëºöÂÔÕâ·âÓÊ¼þ¡£<br />
+æˆ‘æ˜¯ {adminusername} ï¼Œ{bbname} çš„ç®¡ç†è€…ä¹‹ä¸€ã€‚æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽæ‚¨<br />
+åˆšåˆšè¢«æ·»åŠ æˆä¸º {bbname} çš„ä¼šå‘˜ï¼Œå½“å‰ Email å³æ˜¯æˆ‘ä»¬ä¸ºæ‚¨æ³¨å†Œçš„é‚®ç®±åœ°å€ã€‚<br />
 <br />
 ----------------------------------------------------------------------<br />
-ÕÊºÅÐÅÏ¢<br />
+é‡è¦ï¼<br />
 ----------------------------------------------------------------------<br />
 <br />
-ÍøÕ¾Ãû³Æ£º{bbname}<br />
-ÍøÕ¾µØÖ·£º{siteurl}<br />
+å¦‚æžœæ‚¨å¯¹ {bbname} ä¸æ„Ÿå…´è¶£æˆ–æ— æ„æˆä¸ºä¼šå‘˜ï¼Œè¯·å¿½ç•¥è¿™å°é‚®ä»¶ã€‚<br />
 <br />
-ÓÃ»§Ãû£º{newusername}<br />
-ÃÜÂë£º{newpassword}<br />
+----------------------------------------------------------------------<br />
+å¸å·ä¿¡æ¯<br />
+----------------------------------------------------------------------<br />
 <br />
-´ÓÏÖÔÚÆðÄú¿ÉÒÔÊ¹ÓÃÄúµÄÕÊºÅµÇÂ¼ {bbname}£¬×£ÄúÊ¹ÓÃÓä¿ì£¡<br />
+ç½‘ç«™åç§°ï¼š{bbname}<br />
+ç½‘ç«™åœ°å€ï¼š{siteurl}<br />
+<br />
+ç”¨æˆ·åï¼š{newusername}<br />
+å¯†ç ï¼š{newpassword}<br />
+<br />
+ä»ŽçŽ°åœ¨èµ·æ‚¨å¯ä»¥ä½¿ç”¨æ‚¨çš„å¸å·ç™»å½• {bbname}ï¼Œç¥æ‚¨ä½¿ç”¨æ„‰å¿«ï¼<br />
 <br />
 <br />
 <br />
-´ËÖÂ<br />
+æ­¤è‡´<br />
 <br />
-{bbname} ¹ÜÀíÍÅ¶Ó.<br />
+{bbname} ç®¡ç†å›¢é˜Ÿ.<br />
 {siteurl}',
 
 
-	'birthday_subject' =>		'×£ÄúÉúÈÕ¿ìÀÖ',
+	'birthday_subject' =>		'ç¥æ‚¨ç”Ÿæ—¥å¿«ä¹',
 	'birthday_message' => 		'<br />
-{username}£¬<br />
-Õâ·âÐÅÊÇÓÉ {bbname} ·¢ËÍµÄ¡£<br />
+{username}ï¼Œ<br />
+è¿™å°ä¿¡æ˜¯ç”± {bbname} å‘é€çš„ã€‚<br />
 <br />
-ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚÕâ¸öÓÊÏäµØÖ·ÔÚ {bbname} ±»µÇ¼ÇÎªÓÃ»§ÓÊÏä£¬<br />
-²¢ÇÒ°´ÕÕÄúÌîÐ´µÄÐÅÏ¢£¬½ñÌìÊÇÄúµÄÉúÈÕ¡£ºÜ¸ßÐËÄÜÔÚ´ËÊ±ÎªÄúÏ×ÉÏÒ»·Ý<br />
-ÉúÈÕ×£¸££¬ÎÒ½÷´ú±í{bbname}¹ÜÀíÍÅ¶Ó£¬ÖÔÐÄ×£¸£ÄúÉúÈÕ¿ìÀÖ¡£<br />
+æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽè¿™ä¸ªé‚®ç®±åœ°å€åœ¨ {bbname} è¢«ç™»è®°ä¸ºç”¨æˆ·é‚®ç®±ï¼Œ<br />
+å¹¶ä¸”æŒ‰ç…§æ‚¨å¡«å†™çš„ä¿¡æ¯ï¼Œä»Šå¤©æ˜¯æ‚¨çš„ç”Ÿæ—¥ã€‚å¾ˆé«˜å…´èƒ½åœ¨æ­¤æ—¶ä¸ºæ‚¨çŒ®ä¸Šä¸€ä»½<br />
+ç”Ÿæ—¥ç¥ç¦ï¼Œæˆ‘è°¨ä»£è¡¨{bbname}ç®¡ç†å›¢é˜Ÿï¼Œè¡·å¿ƒç¥ç¦æ‚¨ç”Ÿæ—¥å¿«ä¹ã€‚<br />
 <br />
-Èç¹ûÄú²¢·Ç {bbname} µÄ»áÔ±£¬»ò½ñÌì²¢·ÇÄúµÄÉúÈÕ£¬¿ÉÄÜÊÇÓÐÈËÎóÓÃÁËÄúµÄÓÊ<br />
-¼þµØÖ·£¬»ò´íÎóµÄÌîÐ´ÁËÉúÈÕÐÅÏ¢¡£±¾ÓÊ¼þ²»»á¶à´ÎÖØ¸´·¢ËÍ£¬ÇëºöÂÔÕâ·âÓÊ¼þ¡£<br />
+å¦‚æžœæ‚¨å¹¶éž {bbname} çš„ä¼šå‘˜ï¼Œæˆ–ä»Šå¤©å¹¶éžæ‚¨çš„ç”Ÿæ—¥ï¼Œå¯èƒ½æ˜¯æœ‰äººè¯¯ç”¨äº†æ‚¨çš„é‚®<br />
+ä»¶åœ°å€ï¼Œæˆ–é”™è¯¯çš„å¡«å†™äº†ç”Ÿæ—¥ä¿¡æ¯ã€‚æœ¬é‚®ä»¶ä¸ä¼šå¤šæ¬¡é‡å¤å‘é€ï¼Œè¯·å¿½ç•¥è¿™å°é‚®ä»¶ã€‚<br />
 <br />
 <br />
-´ËÖÂ<br />
+æ­¤è‡´<br />
 <br />
-{bbname} ¹ÜÀíÍÅ¶Ó.<br />
+{bbname} ç®¡ç†å›¢é˜Ÿ.<br />
 {siteurl}',
 
-	'email_to_friend_subject' =>	'{$_G[member][username]} ÍÆ¼ö¸øÄú: $thread[subject]',
+	'email_to_friend_subject' =>	'{$_G[member][username]} æŽ¨èç»™æ‚¨: $thread[subject]',
 	'email_to_friend_message' =>	'<br />
-Õâ·âÐÅÊÇÓÉ {$_G[setting][bbname]} µÄ {$_G[member][username]} ·¢ËÍµÄ¡£<br />
+è¿™å°ä¿¡æ˜¯ç”± {$_G[setting][bbname]} çš„ {$_G[member][username]} å‘é€çš„ã€‚<br />
 <br />
-ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚÔÚ {$_G[member][username]} Í¨¹ý {$_G[setting][bbname]} µÄ¡°ÍÆ¼ö¸øÅóÓÑ¡±<br />
-¹¦ÄÜÍÆ¼öÁËÈçÏÂµÄÄÚÈÝ¸øÄú¡£Èç¹ûÄú¶Ô´Ë²»¸ÐÐËÈ¤£¬ÇëºöÂÔÕâ·âÓÊ¼þ¡£Äú²»ÐèÒªÍË¶©»ò½øÐÐÆäËû½øÒ»²½µÄ²Ù×÷¡£<br />
+æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽåœ¨ {$_G[member][username]} é€šè¿‡ {$_G[setting][bbname]} çš„â€œæŽ¨èç»™æœ‹å‹â€<br />
+åŠŸèƒ½æŽ¨èäº†å¦‚ä¸‹çš„å†…å®¹ç»™æ‚¨ã€‚å¦‚æžœæ‚¨å¯¹æ­¤ä¸æ„Ÿå…´è¶£ï¼Œè¯·å¿½ç•¥è¿™å°é‚®ä»¶ã€‚æ‚¨ä¸éœ€è¦é€€è®¢æˆ–è¿›è¡Œå…¶ä»–è¿›ä¸€æ­¥çš„æ“ä½œã€‚<br />
 <br />
 ----------------------------------------------------------------------<br />
-ÐÅ¼þÔ­ÎÄ¿ªÊ¼<br />
+ä¿¡ä»¶åŽŸæ–‡å¼€å§‹<br />
 ----------------------------------------------------------------------<br />
 <br />
 $message<br />
 <br />
 ----------------------------------------------------------------------<br />
-ÐÅ¼þÔ­ÎÄ½áÊø<br />
+ä¿¡ä»¶åŽŸæ–‡ç»“æŸ<br />
 ----------------------------------------------------------------------<br />
 <br />
-Çë×¢ÒâÕâ·âÐÅ½ö½öÊÇÓÉÓÃ»§Ê¹ÓÃ ¡°ÍÆ¼ö¸øÅóÓÑ¡±·¢ËÍµÄ£¬²»ÊÇÍøÕ¾¹Ù·½ÓÊ¼þ£¬<br />
-ÍøÕ¾¹ÜÀíÍÅ¶Ó²»»á¶ÔÕâÀàÓÊ¼þ¸ºÔð¡£<br />
+è¯·æ³¨æ„è¿™å°ä¿¡ä»…ä»…æ˜¯ç”±ç”¨æˆ·ä½¿ç”¨ â€œæŽ¨èç»™æœ‹å‹â€å‘é€çš„ï¼Œä¸æ˜¯ç½‘ç«™å®˜æ–¹é‚®ä»¶ï¼Œ<br />
+ç½‘ç«™ç®¡ç†å›¢é˜Ÿä¸ä¼šå¯¹è¿™ç±»é‚®ä»¶è´Ÿè´£ã€‚<br />
 <br />
-»¶Ó­Äú·ÃÎÊ {$_G[setting][bbname]}<br />
+æ¬¢è¿Žæ‚¨è®¿é—® {$_G[setting][bbname]}<br />
 $_G[siteurl]',
 
-	'email_to_invite_subject' =>	'ÄúµÄÅóÓÑ {$_G[member][username]} ·¢ËÍ {$_G[setting][bbname]} ÍøÕ¾×¢²áÑûÇëÂë¸øÄú',
+	'email_to_invite_subject' =>	'æ‚¨çš„æœ‹å‹ {$_G[member][username]} å‘é€ {$_G[setting][bbname]} ç½‘ç«™æ³¨å†Œé‚€è¯·ç ç»™æ‚¨',
 	'email_to_invite_message' =>	'<br />
 $sendtoname,<br />
-Õâ·âÐÅÊÇÓÉ {$_G[setting][bbname]} µÄ {$_G[member][username]} ·¢ËÍµÄ¡£<br />
+è¿™å°ä¿¡æ˜¯ç”± {$_G[setting][bbname]} çš„ {$_G[member][username]} å‘é€çš„ã€‚<br />
 <br />
-ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚ {$_G[member][username]} Í¨¹ý {bbname} µÄ¡°·¢ËÍÑûÇëÂë¸øÅóÓÑ¡±<br />
-¹¦ÄÜÍÆ¼öÁËÈçÏÂµÄÄÚÈÝ¸øÄú¡£Èç¹ûÄú¶Ô´Ë²»¸ÐÐËÈ¤£¬ÇëºöÂÔÕâ·âÓÊ¼þ¡£Äú²»ÐèÒªÍË¶©»ò½øÐÐÆäËû½ø<br />
-Ò»²½µÄ²Ù×÷¡£<br />
+æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽ {$_G[member][username]} é€šè¿‡ {bbname} çš„â€œå‘é€é‚€è¯·ç ç»™æœ‹å‹â€<br />
+åŠŸèƒ½æŽ¨èäº†å¦‚ä¸‹çš„å†…å®¹ç»™æ‚¨ã€‚å¦‚æžœæ‚¨å¯¹æ­¤ä¸æ„Ÿå…´è¶£ï¼Œè¯·å¿½ç•¥è¿™å°é‚®ä»¶ã€‚æ‚¨ä¸éœ€è¦é€€è®¢æˆ–è¿›è¡Œå…¶ä»–è¿›<br />
+ä¸€æ­¥çš„æ“ä½œã€‚<br />
 <br />
 ----------------------------------------------------------------------<br />
-ÐÅ¼þÔ­ÎÄ¿ªÊ¼<br />
+ä¿¡ä»¶åŽŸæ–‡å¼€å§‹<br />
 ----------------------------------------------------------------------<br />
 <br />
 $message<br />
 <br />
 ----------------------------------------------------------------------<br />
-ÐÅ¼þÔ­ÎÄ½áÊø<br />
+ä¿¡ä»¶åŽŸæ–‡ç»“æŸ<br />
 ----------------------------------------------------------------------<br />
 <br />
-Çë×¢ÒâÕâ·âÐÅ½ö½öÊÇÓÉÓÃ»§Ê¹ÓÃ ¡°·¢ËÍÑûÇëÂë¸øÅóÓÑ¡±·¢ËÍµÄ£¬²»ÊÇÍøÕ¾¹Ù·½ÓÊ¼þ£¬<br />
-ÍøÕ¾¹ÜÀíÍÅ¶Ó²»»á¶ÔÕâÀàÓÊ¼þ¸ºÔð¡£<br />
+è¯·æ³¨æ„è¿™å°ä¿¡ä»…ä»…æ˜¯ç”±ç”¨æˆ·ä½¿ç”¨ â€œå‘é€é‚€è¯·ç ç»™æœ‹å‹â€å‘é€çš„ï¼Œä¸æ˜¯ç½‘ç«™å®˜æ–¹é‚®ä»¶ï¼Œ<br />
+ç½‘ç«™ç®¡ç†å›¢é˜Ÿä¸ä¼šå¯¹è¿™ç±»é‚®ä»¶è´Ÿè´£ã€‚<br />
 <br />
-»¶Ó­Äú·ÃÎÊ {$_G[setting][bbname]}<br />
+æ¬¢è¿Žæ‚¨è®¿é—® {$_G[setting][bbname]}<br />
 $_G[siteurl]',
 
 
-	'moderate_member_subject' =>	'ÓÃ»§ÉóºË½á¹ûÍ¨Öª',
+	'moderate_member_subject' =>	'ç”¨æˆ·å®¡æ ¸ç»“æžœé€šçŸ¥',
 	'moderate_member_message' =>	'<br />
 <p>{username},
-Õâ·âÐÅÊÇÓÉ {bbname} ·¢ËÍµÄ¡£</p>
+è¿™å°ä¿¡æ˜¯ç”± {bbname} å‘é€çš„ã€‚</p>
 
-<p>ÄúÊÕµ½Õâ·âÓÊ¼þ£¬ÊÇÓÉÓÚÕâ¸öÓÊÏäµØÖ·ÔÚ {bbname} ±»ÐÂÓÃ»§×¢²áÊ±Ëù
-Ê¹ÓÃ£¬ÇÒ¹ÜÀíÔ±ÉèÖÃÁË¶ÔÐÂÓÃ»§ÐèÒª½øÐÐÈË¹¤ÉóºË£¬±¾ÓÊ¼þ½«Í¨ÖªÄúÌá½»
-ÉêÇëµÄÉóºË½á¹û¡£</p>
+<p>æ‚¨æ”¶åˆ°è¿™å°é‚®ä»¶ï¼Œæ˜¯ç”±äºŽè¿™ä¸ªé‚®ç®±åœ°å€åœ¨ {bbname} è¢«æ–°ç”¨æˆ·æ³¨å†Œæ—¶æ‰€
+ä½¿ç”¨ï¼Œä¸”ç®¡ç†å‘˜è®¾ç½®äº†å¯¹æ–°ç”¨æˆ·éœ€è¦è¿›è¡Œäººå·¥å®¡æ ¸ï¼Œæœ¬é‚®ä»¶å°†é€šçŸ¥æ‚¨æäº¤
+ç”³è¯·çš„å®¡æ ¸ç»“æžœã€‚</p>
 <br />
 ----------------------------------------------------------------------<br />
-<strong>×¢²áÐÅÏ¢ÓëÉóºË½á¹û</strong><br />
+<strong>æ³¨å†Œä¿¡æ¯ä¸Žå®¡æ ¸ç»“æžœ</strong><br />
 ----------------------------------------------------------------------<br />
 <br />
-ÓÃ»§Ãû: {username}<br />
-×¢²áÊ±¼ä: {regdate}<br />
-Ìá½»Ê±¼ä: {submitdate}<br />
-Ìá½»´ÎÊý: {submittimes}<br />
-×¢²áÔ­Òò: {message}<br />
+ç”¨æˆ·å: {username}<br />
+æ³¨å†Œæ—¶é—´: {regdate}<br />
+æäº¤æ—¶é—´: {submitdate}<br />
+æäº¤æ¬¡æ•°: {submittimes}<br />
+æ³¨å†ŒåŽŸå› : {message}<br />
 <br />
-ÉóºË½á¹û: {modresult}<br />
-ÉóºËÊ±¼ä: {moddate}<br />
-ÉóºË¹ÜÀíÔ±: {adminusername}<br />
-¹ÜÀíÔ±ÁôÑÔ: {remark}<br />
+å®¡æ ¸ç»“æžœ: {modresult}<br />
+å®¡æ ¸æ—¶é—´: {moddate}<br />
+å®¡æ ¸ç®¡ç†å‘˜: {adminusername}<br />
+ç®¡ç†å‘˜ç•™è¨€: {remark}<br />
 <br />
 ----------------------------------------------------------------------<br />
-<strong>ÉóºË½á¹ûËµÃ÷</strong><br />
+<strong>å®¡æ ¸ç»“æžœè¯´æ˜Ž</strong><br />
 ----------------------------------------------------------------------<br />
 
-<p>Í¨¹ý: ÄúµÄ×¢²áÒÑÍ¨¹ýÉóºË£¬ÄúÒÑ³ÉÎª {bbname} µÄÕýÊ½ÓÃ»§¡£</p>
+<p>é€šè¿‡: æ‚¨çš„æ³¨å†Œå·²é€šè¿‡å®¡æ ¸ï¼Œæ‚¨å·²æˆä¸º {bbname} çš„æ­£å¼ç”¨æˆ·ã€‚</p>
 
-<p>·ñ¾ö: ÄúµÄ×¢²áÐÅÏ¢²»ÍêÕû£¬»òÎ´Âú×ãÎÒÃÇ¶ÔÐÂÓÃ»§µÄÄ³Ð©ÒªÇó£¬Äú¿ÉÒÔ
-	  ¸ù¾Ý¹ÜÀíÔ±ÁôÑÔ£¬<a href="home.php?mod=spacecp&ac=profile" target="_blank">ÍêÉÆÄúµÄ×¢²áÐÅÏ¢</a>£¬È»ºóÔÙ´ÎÌá½»¡£</p>
+<p>å¦å†³: æ‚¨çš„æ³¨å†Œä¿¡æ¯ä¸å®Œæ•´ï¼Œæˆ–æœªæ»¡è¶³æˆ‘ä»¬å¯¹æ–°ç”¨æˆ·çš„æŸäº›è¦æ±‚ï¼Œæ‚¨å¯ä»¥
+	  æ ¹æ®ç®¡ç†å‘˜ç•™è¨€ï¼Œ<a href="home.php?mod=spacecp&ac=profile" target="_blank">å®Œå–„æ‚¨çš„æ³¨å†Œä¿¡æ¯</a>ï¼Œç„¶åŽå†æ¬¡æäº¤ã€‚</p>
 
-<p>É¾³ý£ºÄúµÄ×¢²áÓÉÓÚÓëÎÒÃÇµÄÒªÇóÆ«²î½Ï´ó£¬»ò±¾Õ¾µÄÐÂ×¢²áÈËÊýÒÑ
-	  ³¬¹ýÔ¤ÆÚ£¬ÉêÇëÒÑ±»·ñ¾ö¡£ÄúµÄÕÊºÅÒÑ´ÓÊý¾Ý¿âÖÐÉ¾³ý£¬½«ÎÞ·¨
-	  ÔÙÊ¹ÓÃÆäµÇÂ¼»òÌá½»ÔÙ´ÎÉóºË£¬ÇëÄúÁÂ½â¡£</p>
+<p>åˆ é™¤ï¼šæ‚¨çš„æ³¨å†Œç”±äºŽä¸Žæˆ‘ä»¬çš„è¦æ±‚åå·®è¾ƒå¤§ï¼Œæˆ–æœ¬ç«™çš„æ–°æ³¨å†Œäººæ•°å·²
+	  è¶…è¿‡é¢„æœŸï¼Œç”³è¯·å·²è¢«å¦å†³ã€‚æ‚¨çš„å¸å·å·²ä»Žæ•°æ®åº“ä¸­åˆ é™¤ï¼Œå°†æ— æ³•
+	  å†ä½¿ç”¨å…¶ç™»å½•æˆ–æäº¤å†æ¬¡å®¡æ ¸ï¼Œè¯·æ‚¨è°…è§£ã€‚</p>
 
 <br />
 <br />
-´ËÖÂ<br />
+æ­¤è‡´<br />
 <br />
-{bbname} ¹ÜÀíÍÅ¶Ó.<br />
+{bbname} ç®¡ç†å›¢é˜Ÿ.<br />
 {siteurl}',
 
-	'adv_expiration_subject' =>	'ÄúÕ¾µãµÄ¹ã¸æ½«ÓÚ {day} Ììºóµ½ÆÚ£¬Çë¼°Ê±´¦Àí',
-	'adv_expiration_message' =>	'ÄúÕ¾µãµÄÒÔÏÂ¹ã¸æ½«ÓÚ {day} Ììºóµ½ÆÚ£¬Çë¼°Ê±´¦Àí£º<br /><br />{advs}',
+	'adv_expiration_subject' =>	'æ‚¨ç«™ç‚¹çš„å¹¿å‘Šå°†äºŽ {day} å¤©åŽåˆ°æœŸï¼Œè¯·åŠæ—¶å¤„ç†',
+	'adv_expiration_message' =>	'æ‚¨ç«™ç‚¹çš„ä»¥ä¸‹å¹¿å‘Šå°†äºŽ {day} å¤©åŽåˆ°æœŸï¼Œè¯·åŠæ—¶å¤„ç†ï¼š<br /><br />{advs}',
 	'invite_payment_email_message' => '
-»¶Ó­Äú¹âÁÙ{bbname}£¨{siteurl}£©£¬ÄúµÄ¶©µ¥{orderid}ÒÑ¾­Ö§¸¶Íê³É£¬¶©µ¥ÒÑÈ·ÈÏÓÐÐ§¡£<br />
+æ¬¢è¿Žæ‚¨å…‰ä¸´{bbname}ï¼ˆ{siteurl}ï¼‰ï¼Œæ‚¨çš„è®¢å•{orderid}å·²ç»æ”¯ä»˜å®Œæˆï¼Œè®¢å•å·²ç¡®è®¤æœ‰æ•ˆã€‚<br />
 <br />----------------------------------------------------------------------<br />
-ÒÔÏÂÊÇÄú»ñµÃµÄÑûÇëÂë
+ä»¥ä¸‹æ˜¯æ‚¨èŽ·å¾—çš„é‚€è¯·ç 
 <br />----------------------------------------------------------------------<br />
 
 {codetext}
 
 <br />----------------------------------------------------------------------<br />
-ÖØÒª£¡
+é‡è¦ï¼
 <br />----------------------------------------------------------------------<br />',
 );
 

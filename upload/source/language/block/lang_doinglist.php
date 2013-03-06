@@ -13,16 +13,16 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'doinglist_uids' => 'ÓÃ»§UID',
-	'doinglist_uids_comment' => 'ÌîÈëÖ¸¶¨ÓÃ»§µÄID(uid)£¬¶à¸öÓÃ»§Ö®¼äÓÃ¶ººÅ(,)·Ö¸ô',
-	'doinglist_startrow' => 'ÆðÊ¼Êý¾ÝÐÐÊý',
-	'doinglist_startrow_comment' => 'ÈçÐèÉè¶¨ÆðÊ¼µÄÊý¾ÝÐÐÊý£¬ÇëÊäÈë¾ßÌåÊýÖµ£¬0 Îª´ÓµÚÒ»ÐÐ¿ªÊ¼£¬ÒÔ´ËÀàÍÆ',
-	'doinglist_titlelength' => '¼ÇÂ¼³¤¶È',
-	'doinglist_titlelength_comment' => 'Ö¸¶¨¼ÇÂ¼µÄ×î´ó³¤¶È£¬ÉèÖÃÎª0ÔòÖ§³Ö±íÇéÍ¼Æ¬',
-	'doinglist_orderby' => '¶¯Ì¬ÅÅÐò·½Ê½',
-	'doinglist_orderby_comment' => 'ÉèÖÃÒÔÄÄÒ»×Ö¶Î»ò·½Ê½¶Ô¶¯Ì¬½øÐÐÅÅÐò',
-	'doinglist_orderby_dateline' => '°´·¢²¼Ê±¼äµ¹Ðò',
-	'doinglist_orderby_replynum' => '°´»Ø¸´Êýµ¹Ðò'
+	'doinglist_uids' => 'ç”¨æˆ·UID',
+	'doinglist_uids_comment' => 'å¡«å…¥æŒ‡å®šç”¨æˆ·çš„ID(uid)ï¼Œå¤šä¸ªç”¨æˆ·ä¹‹é—´ç”¨é€—å·(,)åˆ†éš”',
+	'doinglist_startrow' => 'èµ·å§‹æ•°æ®è¡Œæ•°',
+	'doinglist_startrow_comment' => 'å¦‚éœ€è®¾å®šèµ·å§‹çš„æ•°æ®è¡Œæ•°ï¼Œè¯·è¾“å…¥å…·ä½“æ•°å€¼ï¼Œ0 ä¸ºä»Žç¬¬ä¸€è¡Œå¼€å§‹ï¼Œä»¥æ­¤ç±»æŽ¨',
+	'doinglist_titlelength' => 'è®°å½•é•¿åº¦',
+	'doinglist_titlelength_comment' => 'æŒ‡å®šè®°å½•çš„æœ€å¤§é•¿åº¦ï¼Œè®¾ç½®ä¸º0åˆ™æ”¯æŒè¡¨æƒ…å›¾ç‰‡',
+	'doinglist_orderby' => 'åŠ¨æ€æŽ’åºæ–¹å¼',
+	'doinglist_orderby_comment' => 'è®¾ç½®ä»¥å“ªä¸€å­—æ®µæˆ–æ–¹å¼å¯¹åŠ¨æ€è¿›è¡ŒæŽ’åº',
+	'doinglist_orderby_dateline' => 'æŒ‰å‘å¸ƒæ—¶é—´å€’åº',
+	'doinglist_orderby_replynum' => 'æŒ‰å›žå¤æ•°å€’åº'
 );
 
 ?>

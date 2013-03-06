@@ -26,7 +26,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[½ñÈÕ]]></item>
+									<item id="text"><![CDATA[ä»Šæ—¥]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -68,7 +68,7 @@
 										</item>
 										<item id="style"><![CDATA[]]></item>
 										<item id="first">
-											<item id="text"><![CDATA[½ñÈÕ¾«²ÊÍÆ¼ö]]></item>
+											<item id="text"><![CDATA[ä»Šæ—¥ç²¾å½©æŽ¨è]]></item>
 											<item id="href"><![CDATA[]]></item>
 											<item id="color"><![CDATA[]]></item>
 											<item id="float"><![CDATA[]]></item>
@@ -90,7 +90,7 @@
 										</item>
 										<item id="style"><![CDATA[]]></item>
 										<item id="first">
-											<item id="text"><![CDATA[¸ü¶à¾«²Ê×¨Ìâ]]></item>
+											<item id="text"><![CDATA[æ›´å¤šç²¾å½©ä¸“é¢˜]]></item>
 											<item id="href"><![CDATA[]]></item>
 											<item id="color"><![CDATA[]]></item>
 											<item id="float"><![CDATA[]]></item>
@@ -189,7 +189,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[ÈÈÒé]]></item>
+									<item id="text"><![CDATA[çƒ­è®®]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -267,7 +267,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[´ðÎÊÌâ ×¬»ý·Ö]]></item>
+									<item id="text"><![CDATA[ç­”é—®é¢˜ èµšç§¯åˆ†]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -303,7 +303,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[¹ã³¡]]></item>
+									<item id="text"><![CDATA[å¹¿åœº]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -345,7 +345,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[ÍÅ¶ÓÈÕÖ¾]]></item>
+									<item id="text"><![CDATA[å›¢é˜Ÿæ—¥å¿—]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[rgb(51, 51, 51)]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -374,7 +374,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[ÎÊÌâ·´À¡]]></item>
+									<item id="text"><![CDATA[é—®é¢˜åé¦ˆ]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[rgb(51, 51, 51)]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -403,7 +403,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[Õ¾³¤½»Á÷]]></item>
+									<item id="text"><![CDATA[ç«™é•¿äº¤æµ]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[rgb(51, 51, 51)]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -459,7 +459,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[Èº×é]]></item>
+									<item id="text"><![CDATA[ç¾¤ç»„]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -501,7 +501,7 @@
 										</item>
 										<item id="style"><![CDATA[]]></item>
 										<item id="first">
-											<item id="text"><![CDATA[×îÐÂ³ÉÁ¢]]></item>
+											<item id="text"><![CDATA[æœ€æ–°æˆç«‹]]></item>
 											<item id="href"><![CDATA[]]></item>
 											<item id="color"><![CDATA[]]></item>
 											<item id="float"><![CDATA[]]></item>
@@ -523,7 +523,7 @@
 										</item>
 										<item id="style"><![CDATA[]]></item>
 										<item id="first">
-											<item id="text"><![CDATA[½ñÈÕ»îÔ¾Èº×é]]></item>
+											<item id="text"><![CDATA[ä»Šæ—¥æ´»è·ƒç¾¤ç»„]]></item>
 											<item id="href"><![CDATA[]]></item>
 											<item id="color"><![CDATA[]]></item>
 											<item id="float"><![CDATA[]]></item>
@@ -643,7 +643,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[¿Õ¼ä]]></item>
+									<item id="text"><![CDATA[ç©ºé—´]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -653,7 +653,7 @@
 									<item id="src"><![CDATA[]]></item>
 								</item>
 								<item id="0">
-									<item id="text"><![CDATA[ | Ð´ÕæÍ¼¼¯]]></item>
+									<item id="text"><![CDATA[ | å†™çœŸå›¾é›†]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[rgb(102, 102, 102)]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -682,7 +682,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[ÐÄÇé¼ÇÂ¼]]></item>
+									<item id="text"><![CDATA[å¿ƒæƒ…è®°å½•]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -759,7 +759,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[¾«²Ê·ÖÏí]]></item>
+									<item id="text"><![CDATA[ç²¾å½©åˆ†äº«]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -787,7 +787,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[ÕÒÅóÓÑ]]></item>
+									<item id="text"><![CDATA[æ‰¾æœ‹å‹]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -809,7 +809,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[°ñÉÏÓÐÃû]]></item>
+									<item id="text"><![CDATA[æ¦œä¸Šæœ‰å]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -845,7 +845,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[ÉÌÆ·]]></item>
+									<item id="text"><![CDATA[å•†å“]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -907,7 +907,7 @@
 								</item>
 								<item id="style"><![CDATA[]]></item>
 								<item id="first">
-									<item id="text"><![CDATA[ÍÆ¼öÉÌÆÌ]]></item>
+									<item id="text"><![CDATA[æŽ¨èå•†é“º]]></item>
 									<item id="href"><![CDATA[]]></item>
 									<item id="color"><![CDATA[]]></item>
 									<item id="float"><![CDATA[]]></item>
@@ -964,8 +964,8 @@
 				<item id="bid"><![CDATA[3]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
-				<item id="name"><![CDATA[½ñÈÕÍÆ¼ö]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">½ñÈÕ</span></div>]]></item>
+				<item id="name"><![CDATA[ä»Šæ—¥æŽ¨è]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ä»Šæ—¥</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1293,7 +1293,7 @@
 				<item id="blockclass"><![CDATA[forum_attachment]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">½ñÈÕ¾«²ÊÍÆ¼ö</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ä»Šæ—¥ç²¾å½©æŽ¨è</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1333,7 +1333,7 @@
 				<item id="blockclass"><![CDATA[portal_topic]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">¸ü¶à¾«²Ê×¨Ìâ</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">æ›´å¤šç²¾å½©ä¸“é¢˜</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1366,7 +1366,7 @@
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div style="" class="blocktitle title"><span style="" class="titletext">¹ã³¡</span></div>]]></item>
+				<item id="title"><![CDATA[<div style="" class="blocktitle title"><span style="" class="titletext">å¹¿åœº</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1482,7 +1482,7 @@
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="color: rgb(51, 51, 51);" class="titletext">ÍÅ¶ÓÈÕÖ¾</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="color: rgb(51, 51, 51);" class="titletext">å›¢é˜Ÿæ—¥å¿—</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1522,7 +1522,7 @@
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="color: rgb(51, 51, 51);" class="titletext">ÎÊÌâ·´À¡</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="color: rgb(51, 51, 51);" class="titletext">é—®é¢˜åé¦ˆ</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1561,7 +1561,7 @@
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="color: rgb(51, 51, 51);" class="titletext">Õ¾³¤½»Á÷</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="color: rgb(51, 51, 51);" class="titletext">ç«™é•¿äº¤æµ</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1690,9 +1690,9 @@
 				<item id="bid"><![CDATA[23]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
-				<item id="name"><![CDATA[ÐüÉÍ]]></item>
+				<item id="name"><![CDATA[æ‚¬èµ]]></item>
 				<item id="title"><![CDATA[
-<DIV class="blocktitle title"><SPAN class=titletext>´ðÎÊÌâ ×¬»ý·Ö</SPAN></DIV>]]></item>
+<DIV class="blocktitle title"><SPAN class=titletext>ç­”é—®é¢˜ èµšç§¯åˆ†</SPAN></DIV>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1831,7 +1831,7 @@
 				<item id="blockclass"><![CDATA[html_html]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ÈÈÒé</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">çƒ­è®®</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -1930,12 +1930,12 @@
 				<item id="bid"><![CDATA[30]]></item>
 				<item id="blockclass"><![CDATA[html_html]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
-				<item id="name"><![CDATA[ÎÄ×Ö¹ã¸æÁ´½Ó]]></item>
+				<item id="name"><![CDATA[æ–‡å­—å¹¿å‘Šé“¾æŽ¥]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<ul class="xl xl1 cl">
-<li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
-<li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
+<li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
+<li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
 </ul>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
@@ -1949,8 +1949,8 @@
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
 					<item id="content"><![CDATA[<ul class=\"xl xl1 cl\">
-<li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
-<li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
+<li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
+<li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
 </ul>]]></item>
 					<item id="items"><![CDATA[10]]></item>
 				</item>
@@ -1967,7 +1967,7 @@
 				<item id="blockclass"><![CDATA[group_group]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">Èº×é</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ç¾¤ç»„</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -2000,7 +2000,7 @@
 				<item id="blockclass"><![CDATA[group_group]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">×îÐÂ³ÉÁ¢</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">æœ€æ–°æˆç«‹</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -2033,7 +2033,7 @@
 				<item id="blockclass"><![CDATA[group_group]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">½ñÈÕ»îÔ¾Èº×é</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ä»Šæ—¥æ´»è·ƒç¾¤ç»„</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -2446,7 +2446,7 @@
 				<item id="blockclass"><![CDATA[space_pic]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">¿Õ¼ä</span><span style="color: rgb(102, 102, 102);" class="subtitle"> | Ð´ÕæÍ¼¼¯</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ç©ºé—´</span><span style="color: rgb(102, 102, 102);" class="subtitle"> | å†™çœŸå›¾é›†</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -2507,7 +2507,7 @@
 				<item id="blockclass"><![CDATA[space_doing]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ÐÄÇé¼ÇÂ¼</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">å¿ƒæƒ…è®°å½•</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -2645,37 +2645,37 @@
 				<item id="blockclass"><![CDATA[html_html]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="margin-left: 10px;" class="titletext">ÕÒÅóÓÑ</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="margin-left: 10px;" class="titletext">æ‰¾æœ‹å‹</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<form action="home.php" method="get">
 	<table cellpadding="0" cellspacing="0" class="pns">
 		<tr>
-			<th width="70" class="ptm">ÐÔ±ð</th>
+			<th width="70" class="ptm">æ€§åˆ«</th>
 			<td class="ptm">
 				<select id="gender" name="gender">
-					<option value="0">ÈÎÒâ</option>
-					<option value="1">ÄÐ</option>
-					<option value="2" selected="selected">Å®</option>
+					<option value="0">ä»»æ„</option>
+					<option value="1">ç”·</option>
+					<option value="2" selected="selected">å¥³</option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<th class="ptm">ÄêÁä¶Î</th>
+			<th class="ptm">å¹´é¾„æ®µ</th>
 			<td class="ptm"><input type="text" name="startage" value="18" size="1" class="px p_fre" /> ~ <input type="text" name="endage" value="23" size="1" class="px p_fre" /></td>
 		</tr>
 		<tr>
 			<th>&nbsp;</th>
-			<td class="ptm"><label><input type="checkbox" name="avatarstatus" value="1" class="pc" /> ÒÑ¾­ÉÏ´«Í·Ïñ</label></td>
+			<td class="ptm"><label><input type="checkbox" name="avatarstatus" value="1" class="pc" /> å·²ç»ä¸Šä¼ å¤´åƒ</label></td>
 		</tr>
 		<tr>
-			<th class="ptm">ÓÃ»§Ãû</th>
+			<th class="ptm">ç”¨æˆ·å</th>
 			<td class="ptm"><input type="text" name="username" value="" size="10" class="px p_fre" /></td>
 		</tr>
 		<tr>
 			<th>&nbsp;</th>
 			<td class="ptm">
-				<button type="submit" class="pn"><em>²éÕÒ</em></button>
-				<a href="home.php?mod=spacecp&ac=search&all=yes" class="lit">¸ß¼¶²éÕÒ &rsaquo;</a>
+				<button type="submit" class="pn"><em>æŸ¥æ‰¾</em></button>
+				<a href="home.php?mod=spacecp&ac=search&all=yes" class="lit">é«˜çº§æŸ¥æ‰¾ &rsaquo;</a>
 			</td>
 		</tr>
 	</table>
@@ -2698,32 +2698,32 @@
 					<item id="content"><![CDATA[<form action="home.php" method="get">
 	<table cellpadding="0" cellspacing="0" class="pns">
 		<tr>
-			<th width="70" class="ptm">ÐÔ±ð</th>
+			<th width="70" class="ptm">æ€§åˆ«</th>
 			<td class="ptm">
 				<select id="gender" name="gender">
-					<option value="0">ÈÎÒâ</option>
-					<option value="1">ÄÐ</option>
-					<option value="2" selected="selected">Å®</option>
+					<option value="0">ä»»æ„</option>
+					<option value="1">ç”·</option>
+					<option value="2" selected="selected">å¥³</option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<th class="ptm">ÄêÁä¶Î</th>
+			<th class="ptm">å¹´é¾„æ®µ</th>
 			<td class="ptm"><input type="text" name="startage" value="18" size="1" class="px p_fre" /> ~ <input type="text" name="endage" value="23" size="1" class="px p_fre" /></td>
 		</tr>
 		<tr>
 			<th>&nbsp;</th>
-			<td class="ptm"><label><input type="checkbox" name="avatarstatus" value="1" class="pc" /> ÒÑ¾­ÉÏ´«Í·Ïñ</label></td>
+			<td class="ptm"><label><input type="checkbox" name="avatarstatus" value="1" class="pc" /> å·²ç»ä¸Šä¼ å¤´åƒ</label></td>
 		</tr>
 		<tr>
-			<th class="ptm">ÓÃ»§Ãû</th>
+			<th class="ptm">ç”¨æˆ·å</th>
 			<td class="ptm"><input type="text" name="username" value="" size="10" class="px p_fre" /></td>
 		</tr>
 		<tr>
 			<th>&nbsp;</th>
 			<td class="ptm">
-				<button type="submit" class="pn"><em>²éÕÒ</em></button>
-				<a href="home.php?mod=spacecp&ac=search&all=yes" class="lit">¸ß¼¶²éÕÒ &rsaquo;</a>
+				<button type="submit" class="pn"><em>æŸ¥æ‰¾</em></button>
+				<a href="home.php?mod=spacecp&ac=search&all=yes" class="lit">é«˜çº§æŸ¥æ‰¾ &rsaquo;</a>
 			</td>
 		</tr>
 	</table>
@@ -2747,7 +2747,7 @@
 				<item id="blockclass"><![CDATA[member_member]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">°ñÉÏÓÐÃû</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">æ¦œä¸Šæœ‰å</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -2941,15 +2941,15 @@
 				<item id="blockclass"><![CDATA[html_html]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">¾«²Ê·ÖÏí</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ç²¾å½©åˆ†äº«</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
-				<item id="summary"><![CDATA[<a href="home.php?mod=space&do=share&type=video">ÊÓÆµ</a><span class="pipe">|</span>
-<a href="home.php?mod=space&do=share&type=music">ÒôÀÖ</a><span class="pipe">|</span>
+				<item id="summary"><![CDATA[<a href="home.php?mod=space&do=share&type=video">è§†é¢‘</a><span class="pipe">|</span>
+<a href="home.php?mod=space&do=share&type=music">éŸ³ä¹</a><span class="pipe">|</span>
 <a href="home.php?mod=space&do=share&type=flash">Flash</a><span class="pipe">|</span>
-<a href="home.php?mod=space&do=share&type=blog">ÈÕÖ¾</a><span class="pipe">|</span>
-<a href="home.php?mod=space&do=share&type=album">Ïà²á</a><span class="pipe">|</span>
-<a href="home.php?mod=space&do=share&type=pic">Í¼Æ¬</a><span class="pipe">|</span>
-<a href="home.php?mod=space&do=share&type=poll">Í¶Æ±</a>]]></item>
+<a href="home.php?mod=space&do=share&type=blog">æ—¥å¿—</a><span class="pipe">|</span>
+<a href="home.php?mod=space&do=share&type=album">ç›¸å†Œ</a><span class="pipe">|</span>
+<a href="home.php?mod=space&do=share&type=pic">å›¾ç‰‡</a><span class="pipe">|</span>
+<a href="home.php?mod=space&do=share&type=poll">æŠ•ç¥¨</a>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
 				<item id="styleid"><![CDATA[0]]></item>
@@ -2961,13 +2961,13 @@
 				<item id="dateuformat"><![CDATA[0]]></item>
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
-					<item id="content"><![CDATA[<a href=\"home.php?mod=space&do=share&type=video\">ÊÓÆµ</a><span class=\"pipe\">|</span>
-<a href=\"home.php?mod=space&do=share&type=music\">ÒôÀÖ</a><span class=\"pipe\">|</span>
+					<item id="content"><![CDATA[<a href=\"home.php?mod=space&do=share&type=video\">è§†é¢‘</a><span class=\"pipe\">|</span>
+<a href=\"home.php?mod=space&do=share&type=music\">éŸ³ä¹</a><span class=\"pipe\">|</span>
 <a href=\"home.php?mod=space&do=share&type=flash\">Flash</a><span class=\"pipe\">|</span>
-<a href=\"home.php?mod=space&do=share&type=blog\">ÈÕÖ¾</a><span class=\"pipe\">|</span>
-<a href=\"home.php?mod=space&do=share&type=album\">Ïà²á</a><span class=\"pipe\">|</span>
-<a href=\"home.php?mod=space&do=share&type=pic\">Í¼Æ¬</a><span class=\"pipe\">|</span>
-<a href=\"home.php?mod=space&do=share&type=poll\">Í¶Æ±</a>]]></item>
+<a href=\"home.php?mod=space&do=share&type=blog\">æ—¥å¿—</a><span class=\"pipe\">|</span>
+<a href=\"home.php?mod=space&do=share&type=album\">ç›¸å†Œ</a><span class=\"pipe\">|</span>
+<a href=\"home.php?mod=space&do=share&type=pic\">å›¾ç‰‡</a><span class=\"pipe\">|</span>
+<a href=\"home.php?mod=space&do=share&type=poll\">æŠ•ç¥¨</a>]]></item>
 					<item id="items"><![CDATA[10]]></item>
 				</item>
 				<item id="shownum"><![CDATA[10]]></item>
@@ -2983,7 +2983,7 @@
 				<item id="blockclass"><![CDATA[forum_trade]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ÉÌÆ·</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">å•†å“</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[]]></item>
 				<item id="uid"><![CDATA[1]]></item>
@@ -3024,21 +3024,21 @@
 				<item id="blockclass"><![CDATA[html_html]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
 				<item id="name"><![CDATA[]]></item>
-				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">ÍÆ¼öÉÌÆÌ</span></div>]]></item>
+				<item id="title"><![CDATA[<div class="blocktitle title"><span style="" class="titletext">æŽ¨èå•†é“º</span></div>]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<ul class="xl xl2 cl">
-<li>¼Î¼Î¿¨ÃË [ÈÏÖ¤]</li>
-<li>ÃÀåû·»</li>
-<li>¼ÒÃÀÀÖ×¨Âôµê</li>
+<li>å˜‰å˜‰å¡ç›Ÿ [è®¤è¯]</li>
+<li>ç¾Žå¦åŠ</li>
+<li>å®¶ç¾Žä¹ä¸“å–åº—</li>
 <li>Shining Beauty</li>
-<li>ÉÏº£Ãû±í³Ç</li>
-<li>Å¬Á¦ÌúÒÕ¼Ò¾Óµê</li>
-<li>ÉÏº£Ãû±í³Ç</li>
-<li>Å¬Á¦ÌúÒÕ¼Ò¾Óµê</li>
-<li>2046¿ãÍõ»áËù</li>
-<li>´©Ô½»ðÏß</li>
-<li>ÌÔÒÂÐ¡ÆÌ</li>
-<li>ÐÄ¶¯ÕÛ¿Ûµê</li>
+<li>ä¸Šæµ·åè¡¨åŸŽ</li>
+<li>åŠªåŠ›é“è‰ºå®¶å±…åº—</li>
+<li>ä¸Šæµ·åè¡¨åŸŽ</li>
+<li>åŠªåŠ›é“è‰ºå®¶å±…åº—</li>
+<li>2046è£¤çŽ‹ä¼šæ‰€</li>
+<li>ç©¿è¶Šç«çº¿</li>
+<li>æ·˜è¡£å°é“º</li>
+<li>å¿ƒåŠ¨æŠ˜æ‰£åº—</li>
 </ul>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
@@ -3052,18 +3052,18 @@
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
 					<item id="content"><![CDATA[<ul class=\"xl xl2 cl\">
-<li>¼Î¼Î¿¨ÃË [ÈÏÖ¤]</li>
-<li>ÃÀåû·»</li>
-<li>¼ÒÃÀÀÖ×¨Âôµê</li>
+<li>å˜‰å˜‰å¡ç›Ÿ [è®¤è¯]</li>
+<li>ç¾Žå¦åŠ</li>
+<li>å®¶ç¾Žä¹ä¸“å–åº—</li>
 <li>Shining Beauty</li>
-<li>ÉÏº£Ãû±í³Ç</li>
-<li>Å¬Á¦ÌúÒÕ¼Ò¾Óµê</li>
-<li>ÉÏº£Ãû±í³Ç</li>
-<li>Å¬Á¦ÌúÒÕ¼Ò¾Óµê</li>
-<li>2046¿ãÍõ»áËù</li>
-<li>´©Ô½»ðÏß</li>
-<li>ÌÔÒÂÐ¡ÆÌ</li>
-<li>ÐÄ¶¯ÕÛ¿Ûµê</li>
+<li>ä¸Šæµ·åè¡¨åŸŽ</li>
+<li>åŠªåŠ›é“è‰ºå®¶å±…åº—</li>
+<li>ä¸Šæµ·åè¡¨åŸŽ</li>
+<li>åŠªåŠ›é“è‰ºå®¶å±…åº—</li>
+<li>2046è£¤çŽ‹ä¼šæ‰€</li>
+<li>ç©¿è¶Šç«çº¿</li>
+<li>æ·˜è¡£å°é“º</li>
+<li>å¿ƒåŠ¨æŠ˜æ‰£åº—</li>
 </ul>]]></item>
 					<item id="items"><![CDATA[0]]></item>
 				</item>
@@ -3109,12 +3109,12 @@
 				<item id="bid"><![CDATA[62]]></item>
 				<item id="blockclass"><![CDATA[html_html]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
-				<item id="name"><![CDATA[Ê×Ò³µ×²¿ÎÄ×Ö¹ã¸æÁ´½Ó×ó]]></item>
+				<item id="name"><![CDATA[é¦–é¡µåº•éƒ¨æ–‡å­—å¹¿å‘Šé“¾æŽ¥å·¦]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<ul class="xl xl2 cl">
-<li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
-<li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
+<li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
+<li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
 </ul>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
@@ -3128,8 +3128,8 @@
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
 					<item id="content"><![CDATA[<ul class=\"xl xl2 cl\">
-<li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
-<li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
+<li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
+<li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
 </ul>]]></item>
 					<item id="items"><![CDATA[10]]></item>
 				</item>
@@ -3145,11 +3145,11 @@
 				<item id="bid"><![CDATA[63]]></item>
 				<item id="blockclass"><![CDATA[html_html]]></item>
 				<item id="blocktype"><![CDATA[0]]></item>
-				<item id="name"><![CDATA[Ê×Ò³µ×²¿ÎÄ×Ö¹ã¸æÁ´½ÓÓÒ]]></item>
+				<item id="name"><![CDATA[é¦–é¡µåº•éƒ¨æ–‡å­—å¹¿å‘Šé“¾æŽ¥å³]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<ul class="xl xl2 cl">
-<li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href="http://www.discuz.net/">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
+<li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href="http://www.discuz.net/">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
 </ul>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
@@ -3163,7 +3163,7 @@
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
 					<item id="content"><![CDATA[<ul class=\"xl xl2 cl\">
-<li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li><li><a href=\"http://www.discuz.net/\">ÕâÀïÊÇÎÄ×Ö¹ã¸æÁ´½Ó</a></li>
+<li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li><li><a href=\"http://www.discuz.net/\">è¿™é‡Œæ˜¯æ–‡å­—å¹¿å‘Šé“¾æŽ¥</a></li>
 </ul>]]></item>
 					<item id="items"><![CDATA[10]]></item>
 				</item>
@@ -3182,7 +3182,7 @@
 				<item id="name"><![CDATA[]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
-				<item id="summary"><![CDATA[<div class="bn lk"><ul class="x cl"><li><a target="_blank" href="http://www.discuz.net">¹Ù·½ÂÛÌ³</a></li><li><a target="_blank" href="http://www.comsenz.com">Comsenz</a></li><li><a target="_blank" href="http://www.manyou.com/">ÂþÓÎÆ½Ì¨</a></li><li><a target="_blank" href="http://www.yeswan.com">Yeswan</a></li><li><a target="_blank" href="http://www.5d6d.com/">ÎÒµÄÁìµØ</a></li><li><a target="_blank" href="http://www.phpchina.com">PHPchina</a></li></ul></div>]]></item>
+				<item id="summary"><![CDATA[<div class="bn lk"><ul class="x cl"><li><a target="_blank" href="http://www.discuz.net">å®˜æ–¹è®ºå›</a></li><li><a target="_blank" href="http://www.comsenz.com">Comsenz</a></li><li><a target="_blank" href="http://www.manyou.com/">æ¼«æ¸¸å¹³å°</a></li><li><a target="_blank" href="http://www.yeswan.com">Yeswan</a></li><li><a target="_blank" href="http://www.5d6d.com/">æˆ‘çš„é¢†åœ°</a></li><li><a target="_blank" href="http://www.phpchina.com">PHPchina</a></li></ul></div>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
 				<item id="styleid"><![CDATA[0]]></item>
@@ -3218,7 +3218,7 @@
 				<item id="name"><![CDATA[]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
-				<item id="summary"><![CDATA[<div class="tns"><table cellspacing="0" cellpadding="4" border="0"><tbody><tr><th><p>0</p>Ìû×Ó</th><th><p>0</p>Èº×é</th><th class="bbn"><p>1</p>»áÔ±</th></tr></tbody></table></div>]]></item>
+				<item id="summary"><![CDATA[<div class="tns"><table cellspacing="0" cellpadding="4" border="0"><tbody><tr><th><p>0</p>å¸–å­</th><th><p>0</p>ç¾¤ç»„</th><th class="bbn"><p>1</p>ä¼šå‘˜</th></tr></tbody></table></div>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
 				<item id="styleid"><![CDATA[0]]></item>
@@ -3327,7 +3327,7 @@
 			<item id="9">
 				<item id="styleid"><![CDATA[9]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Ìû×Ó±êÌâ]]></item>
+				<item id="name"><![CDATA[[X1.5]å¸–å­æ ‡é¢˜]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -3363,7 +3363,7 @@
 			<item id="17">
 				<item id="styleid"><![CDATA[17]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Ìû×Ó±êÌâ+ÕªÒª]]></item>
+				<item id="name"><![CDATA[[X1.5]å¸–å­æ ‡é¢˜+æ‘˜è¦]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -3404,7 +3404,7 @@
 			<item id="20">
 				<item id="styleid"><![CDATA[20]]></item>
 				<item id="blockclass"><![CDATA[forum_attachment]]></item>
-				<item id="name"><![CDATA[[X1.5]Ìû×Ó±êÌâ+ÕªÒª+¸½¼þËõÂÔÍ¼]]></item>
+				<item id="name"><![CDATA[[X1.5]å¸–å­æ ‡é¢˜+æ‘˜è¦+é™„ä»¶ç¼©ç•¥å›¾]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -3448,7 +3448,7 @@
 			<item id="24">
 				<item id="styleid"><![CDATA[24]]></item>
 				<item id="blockclass"><![CDATA[group_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Ìû×Ó±êÌâ]]></item>
+				<item id="name"><![CDATA[[X1.5]å¸–å­æ ‡é¢˜]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -3484,7 +3484,7 @@
 			<item id="33">
 				<item id="styleid"><![CDATA[33]]></item>
 				<item id="blockclass"><![CDATA[group_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]½¹µãÄ£Ê½]]></item>
+				<item id="name"><![CDATA[[X1.5]ç„¦ç‚¹æ¨¡å¼]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld fcs">
 [loop]
@@ -3525,7 +3525,7 @@
 			<item id="45">
 				<item id="styleid"><![CDATA[45]]></item>
 				<item id="blockclass"><![CDATA[group_group]]></item>
-				<item id="name"><![CDATA[[X1.5]Èº×éÍ¼±êÁÐ±í]]></item>
+				<item id="name"><![CDATA[[X1.5]ç¾¤ç»„å›¾æ ‡åˆ—è¡¨]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl ml mls">
 <ul>
@@ -3562,7 +3562,7 @@
 			<item id="46">
 				<item id="styleid"><![CDATA[46]]></item>
 				<item id="blockclass"><![CDATA[group_group]]></item>
-				<item id="name"><![CDATA[[X1.5]Èº×éÃû³Æ£¨Á½ÁÐ£©]]></item>
+				<item id="name"><![CDATA[[X1.5]ç¾¤ç»„åç§°ï¼ˆä¸¤åˆ—ï¼‰]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl2">
 <ul>
@@ -3598,7 +3598,7 @@
 			<item id="47">
 				<item id="styleid"><![CDATA[47]]></item>
 				<item id="blockclass"><![CDATA[portal_article]]></item>
-				<item id="name"><![CDATA[[X1.5]ÎÄÕÂ±êÌâ]]></item>
+				<item id="name"><![CDATA[[X1.5]æ–‡ç« æ ‡é¢˜]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -3634,7 +3634,7 @@
 			<item id="52">
 				<item id="styleid"><![CDATA[52]]></item>
 				<item id="blockclass"><![CDATA[portal_article]]></item>
-				<item id="name"><![CDATA[[X1.5]½¹µãÄ£Ê½]]></item>
+				<item id="name"><![CDATA[[X1.5]ç„¦ç‚¹æ¨¡å¼]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld fcs">
 [loop]
@@ -3675,7 +3675,7 @@
 			<item id="53">
 				<item id="styleid"><![CDATA[53]]></item>
 				<item id="blockclass"><![CDATA[portal_article]]></item>
-				<item id="name"><![CDATA[[X1.5]ÎÄÕÂÍ¼Æ¬»ÃµÆ]]></item>
+				<item id="name"><![CDATA[[X1.5]æ–‡ç« å›¾ç‰‡å¹»ç¯]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl slidebox">
 <ul class="slideshow">
@@ -3715,7 +3715,7 @@ runslideshow();
 			<item id="58">
 				<item id="styleid"><![CDATA[58]]></item>
 				<item id="blockclass"><![CDATA[portal_topic]]></item>
-				<item id="name"><![CDATA[[X1.5]×¨ÌâÃû³Æ£¨Á½ÁÐ£©]]></item>
+				<item id="name"><![CDATA[[X1.5]ä¸“é¢˜åç§°ï¼ˆä¸¤åˆ—ï¼‰]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl2">
 <ul>
@@ -3751,7 +3751,7 @@ runslideshow();
 			<item id="62">
 				<item id="styleid"><![CDATA[62]]></item>
 				<item id="blockclass"><![CDATA[space_doing]]></item>
-				<item id="name"><![CDATA[[X1.5]×÷Õß+ÄÚÈÝ]]></item>
+				<item id="name"><![CDATA[[X1.5]ä½œè€…+å†…å®¹]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -3789,7 +3789,7 @@ runslideshow();
 			<item id="65">
 				<item id="styleid"><![CDATA[65]]></item>
 				<item id="blockclass"><![CDATA[space_blog]]></item>
-				<item id="name"><![CDATA[[X1.5]ÈÕÖ¾±êÌâ]]></item>
+				<item id="name"><![CDATA[[X1.5]æ—¥å¿—æ ‡é¢˜]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -3825,7 +3825,7 @@ runslideshow();
 			<item id="72">
 				<item id="styleid"><![CDATA[72]]></item>
 				<item id="blockclass"><![CDATA[space_blog]]></item>
-				<item id="name"><![CDATA[[X1.5]½¹µãÄ£Ê½]]></item>
+				<item id="name"><![CDATA[[X1.5]ç„¦ç‚¹æ¨¡å¼]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld fcs">
 [loop]
@@ -3866,7 +3866,7 @@ runslideshow();
 			<item id="77">
 				<item id="styleid"><![CDATA[77]]></item>
 				<item id="blockclass"><![CDATA[member_member]]></item>
-				<item id="name"><![CDATA[[X1.5]»áÔ±Í·ÏñÁÐ±í]]></item>
+				<item id="name"><![CDATA[[X1.5]ä¼šå‘˜å¤´åƒåˆ—è¡¨]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl ml mls">
 <ul>
@@ -3909,7 +3909,7 @@ runslideshow();
 			<item id="81">
 				<item id="styleid"><![CDATA[81]]></item>
 				<item id="blockclass"><![CDATA[forum_trade]]></item>
-				<item id="name"><![CDATA[[X1.5]ÉÌÆ·ÁÐ±í]]></item>
+				<item id="name"><![CDATA[[X1.5]å•†å“åˆ—è¡¨]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl ml">
 <ul>
@@ -3955,7 +3955,7 @@ runslideshow();
 			<item id="85">
 				<item id="styleid"><![CDATA[85]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Ìû×Ó×÷Õß£«±êÌâ+ÕªÒª£¨´øÍ·Ïñ£©]]></item>
+				<item id="name"><![CDATA[[X1.5]å¸–å­ä½œè€…ï¼‹æ ‡é¢˜+æ‘˜è¦ï¼ˆå¸¦å¤´åƒï¼‰]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld xlda">
 [loop]
@@ -3963,7 +3963,7 @@ runslideshow();
 <dd class="m"><a href="home.php?mod=space&uid={authorid}" c="1"{target}><img src="{avatar}" width="48" height="48" alt="{author}" /></a></dd>
 <dt style="padding-bottom: 0;"><a href="{url}" title="{title}"{target}>{title}</a></dt>
 <dd style="margin-bottom: 0;">{summary}</dd>
-<dd style="margin-bottom: 0;">×÷Õß: <a href="home.php?mod=space&uid={authorid}"{target}>{author}</a></dd>
+<dd style="margin-bottom: 0;">ä½œè€…: <a href="home.php?mod=space&uid={authorid}"{target}>{author}</a></dd>
 </dl>
 [/loop]
 </div>]]></item>
@@ -3983,7 +3983,7 @@ runslideshow();
 <dd class="m"><a href="home.php?mod=space&uid={authorid}" c="1"{target}><img src="{avatar}" width="48" height="48" alt="{author}" /></a></dd>
 <dt style="padding-bottom: 0;"><a href="{url}" title="{title}"{target}>{title}</a></dt>
 <dd style="margin-bottom: 0;">{summary}</dd>
-<dd style="margin-bottom: 0;">×÷Õß: <a href="home.php?mod=space&uid={authorid}"{target}>{author}</a></dd>
+<dd style="margin-bottom: 0;">ä½œè€…: <a href="home.php?mod=space&uid={authorid}"{target}>{author}</a></dd>
 </dl>]]></item>
 				</item>
 				<item id="hash"><![CDATA[87d533ea]]></item>
@@ -4003,7 +4003,7 @@ runslideshow();
 			<item id="86">
 				<item id="styleid"><![CDATA[86]]></item>
 				<item id="blockclass"><![CDATA[portal_article]]></item>
-				<item id="name"><![CDATA[[X1.5]ÆµµÀÀ¸Ä¿+±êÌâ]]></item>
+				<item id="name"><![CDATA[[X1.5]é¢‘é“æ ç›®+æ ‡é¢˜]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -4041,7 +4041,7 @@ runslideshow();
 			<item id="87">
 				<item id="styleid"><![CDATA[87]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]ÐüÉÍÖ÷Ìâ×¨ÓÃÑùÊ½]]></item>
+				<item id="name"><![CDATA[[X1.5]æ‚¬èµä¸»é¢˜ä¸“ç”¨æ ·å¼]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -4078,7 +4078,7 @@ runslideshow();
 			<item id="88">
 				<item id="styleid"><![CDATA[88]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Ê×Ò³ÈÈÒé-Ìû×Ó]]></item>
+				<item id="name"><![CDATA[[X1.5]é¦–é¡µçƒ­è®®-å¸–å­]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -4122,7 +4122,7 @@ runslideshow();
 			<item id="89">
 				<item id="styleid"><![CDATA[89]]></item>
 				<item id="blockclass"><![CDATA[group_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Ê×Ò³ÈÈÒé-Èº×éÌû×Ó]]></item>
+				<item id="name"><![CDATA[[X1.5]é¦–é¡µçƒ­è®®-ç¾¤ç»„å¸–å­]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -4166,7 +4166,7 @@ runslideshow();
 			<item id="90">
 				<item id="styleid"><![CDATA[90]]></item>
 				<item id="blockclass"><![CDATA[space_blog]]></item>
-				<item id="name"><![CDATA[[X1.5]Ê×Ò³ÈÈÒé-ÈÕÖ¾]]></item>
+				<item id="name"><![CDATA[[X1.5]é¦–é¡µçƒ­è®®-æ—¥å¿—]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -4210,7 +4210,7 @@ runslideshow();
 			<item id="91">
 				<item id="styleid"><![CDATA[91]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Í¶Æ±Ö÷Ìâ×¨ÓÃÑùÊ½]]></item>
+				<item id="name"><![CDATA[[X1.5]æŠ•ç¥¨ä¸»é¢˜ä¸“ç”¨æ ·å¼]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld b_poll">
 [loop]
@@ -4251,7 +4251,7 @@ runslideshow();
 			<item id="92">
 				<item id="styleid"><![CDATA[92]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]±çÂÛÖ÷Ìâ×¨ÓÃÑùÊ½]]></item>
+				<item id="name"><![CDATA[[X1.5]è¾©è®ºä¸»é¢˜ä¸“ç”¨æ ·å¼]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld b_debate">
 [loop]
@@ -4292,7 +4292,7 @@ runslideshow();
 			<item id="93">
 				<item id="styleid"><![CDATA[93]]></item>
 				<item id="blockclass"><![CDATA[group_activity]]></item>
-				<item id="name"><![CDATA[[X1.5]Èº×é»î¶¯:´óÍ¼£«ÕªÒª]]></item>
+				<item id="name"><![CDATA[[X1.5]ç¾¤ç»„æ´»åŠ¨:å¤§å›¾ï¼‹æ‘˜è¦]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -4302,8 +4302,8 @@ runslideshow();
 <dd>
 <p class="pbn">{summary}</p>
 <p>{place} {class}</p>
-<p>Ê±¼ä: {time}</p>
-<p>{applynumber} ÈË¹Ø×¢</p>
+<p>æ—¶é—´: {time}</p>
+<p>{applynumber} äººå…³æ³¨</p>
 </dd>
 </dl>
 [/loop]
@@ -4326,8 +4326,8 @@ runslideshow();
 <dd>
 <p class="pbn">{summary}</p>
 <p>{place} {class}</p>
-<p>Ê±¼ä: {time}</p>
-<p>{applynumber} ÈË¹Ø×¢</p>
+<p>æ—¶é—´: {time}</p>
+<p>{applynumber} äººå…³æ³¨</p>
 </dd>
 </dl>]]></item>
 				</item>
@@ -4350,15 +4350,15 @@ runslideshow();
 			<item id="94">
 				<item id="styleid"><![CDATA[94]]></item>
 				<item id="blockclass"><![CDATA[group_activity]]></item>
-				<item id="name"><![CDATA[[X1.5]Èº×é»î¶¯:Ð¡Í¼£«±êÌâ]]></item>
+				<item id="name"><![CDATA[[X1.5]ç¾¤ç»„æ´»åŠ¨:å°å›¾ï¼‹æ ‡é¢˜]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
 <dl class="cl">
-<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48¡° alt="{title}" /></a></dd>
+<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48â€œ alt="{title}" /></a></dd>
 <dt style="padding-bottom: 0;"><a href="{url}" title="{title}"{target}>{title}</a></dt>
 <dd style="margin: 0;"> {time} {place}</dd>
-<dd class="xg1" style="margin: 0;">{applynumber} ÈË¹Ø×¢</dd>
+<dd class="xg1" style="margin: 0;">{applynumber} äººå…³æ³¨</dd>
 </dl>
 [/loop]
 </div>]]></item>
@@ -4375,10 +4375,10 @@ runslideshow();
 					<item id="loopplus">
 					</item>
 					<item id="loop"><![CDATA[<dl class="cl">
-<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48¡° alt="{title}" /></a></dd>
+<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48â€œ alt="{title}" /></a></dd>
 <dt style="padding-bottom: 0;"><a href="{url}" title="{title}"{target}>{title}</a></dt>
 <dd style="margin: 0;"> {time} {place}</dd>
-<dd class="xg1" style="margin: 0;">{applynumber} ÈË¹Ø×¢</dd>
+<dd class="xg1" style="margin: 0;">{applynumber} äººå…³æ³¨</dd>
 </dl>]]></item>
 				</item>
 				<item id="hash"><![CDATA[51658dfa]]></item>
@@ -4398,7 +4398,7 @@ runslideshow();
 			<item id="96">
 				<item id="styleid"><![CDATA[96]]></item>
 				<item id="blockclass"><![CDATA[space_pic]]></item>
-				<item id="name"><![CDATA[[X1.5]Í¼Æ¬ÁÐ±í£¨ÊúÏß·Ö¸ô£©]]></item>
+				<item id="name"><![CDATA[[X1.5]å›¾ç‰‡åˆ—è¡¨ï¼ˆç«–çº¿åˆ†éš”ï¼‰]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl ml">
 <ul>
@@ -4451,7 +4451,7 @@ runslideshow();
 			<item id="97">
 				<item id="styleid"><![CDATA[97]]></item>
 				<item id="blockclass"><![CDATA[portal_article]]></item>
-				<item id="name"><![CDATA[[X1.5]ËéÆ¬Ê½ÎÄÕÂ±êÌâÁÐ±í]]></item>
+				<item id="name"><![CDATA[[X1.5]ç¢Žç‰‡å¼æ–‡ç« æ ‡é¢˜åˆ—è¡¨]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -4491,7 +4491,7 @@ runslideshow();
 			<item id="111">
 				<item id="styleid"><![CDATA[111]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]Ìû×ÓËõÂÔÍ¼£«Ö÷Ìâ£«ÕªÒª]]></item>
+				<item id="name"><![CDATA[[X1.5]å¸–å­ç¼©ç•¥å›¾ï¼‹ä¸»é¢˜ï¼‹æ‘˜è¦]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]

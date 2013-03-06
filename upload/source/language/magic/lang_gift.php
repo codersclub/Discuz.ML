@@ -13,18 +13,18 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'gift_name' => 'ºì°ü¿¨',
-	'gift_desc' => '½«×Ô¼ºµÄÒ»²¿·Ö»ý·ÖÂñÔÚ¿Õ¼ä£¬À´·ÃÕß¿ÉÒÔµã»÷»ñÈ¡',
-	'gift_info' => '½«»ý·Ö×÷Îªºì°ü£¨¿É·Ö³É¶à·Ý£©ÂñÔÚ×Ô¼º¿Õ¼ä£¬<br />Ã¿¸öÀ´·ÃÕß×î¶à¿ÉÒÔ»ñÈ¡ÆäÖÐÒ»·Ý',
-	'gift_succeed' => 'ÂñÉèºì°ü³É¹¦ ',
-	'gift_bad_credits_input' => 'ÊäÈëµÄ»ý·Ö×ÜÊýÓÐÎó',
-	'gift_bad_percredit_input' => 'ÊäÈëµÄÃ¿·Ý»ý·ÖÊýÓÐÎó',
-	'gift_bad_credittype_input' => 'Ö¸¶¨µÄ»ý·ÖÀàÐÍÓÐÎó',
-	'gift_credits_out_of_own' => 'ÊäÈëµÄ»ý·ÖÊý³¬³öÄúÓµÓÐµÄ»ý·ÖÊý',
-	'gift_gc' => '»ØÊÕºì°ü',
-	'gift_use' => 'Âñ¸öºì°ü',
+	'gift_name' => 'çº¢åŒ…å¡',
+	'gift_desc' => 'å°†è‡ªå·±çš„ä¸€éƒ¨åˆ†ç§¯åˆ†åŸ‹åœ¨ç©ºé—´ï¼Œæ¥è®¿è€…å¯ä»¥ç‚¹å‡»èŽ·å–',
+	'gift_info' => 'å°†ç§¯åˆ†ä½œä¸ºçº¢åŒ…ï¼ˆå¯åˆ†æˆå¤šä»½ï¼‰åŸ‹åœ¨è‡ªå·±ç©ºé—´ï¼Œ<br />æ¯ä¸ªæ¥è®¿è€…æœ€å¤šå¯ä»¥èŽ·å–å…¶ä¸­ä¸€ä»½',
+	'gift_succeed' => 'åŸ‹è®¾çº¢åŒ…æˆåŠŸ ',
+	'gift_bad_credits_input' => 'è¾“å…¥çš„ç§¯åˆ†æ€»æ•°æœ‰è¯¯',
+	'gift_bad_percredit_input' => 'è¾“å…¥çš„æ¯ä»½ç§¯åˆ†æ•°æœ‰è¯¯',
+	'gift_bad_credittype_input' => 'æŒ‡å®šçš„ç§¯åˆ†ç±»åž‹æœ‰è¯¯',
+	'gift_credits_out_of_own' => 'è¾“å…¥çš„ç§¯åˆ†æ•°è¶…å‡ºæ‚¨æ‹¥æœ‰çš„ç§¯åˆ†æ•°',
+	'gift_gc' => 'å›žæ”¶çº¢åŒ…',
+	'gift_use' => 'åŸ‹ä¸ªçº¢åŒ…',
 
-	'gift_receive_gift' => 'ÁìÈ¡ºì°ü {percredit} {credittype}',
+	'gift_receive_gift' => 'é¢†å–çº¢åŒ… {percredit} {credittype}',
 );
 
 ?>

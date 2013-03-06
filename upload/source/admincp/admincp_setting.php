@@ -664,9 +664,9 @@ if(!submitcheck('settingsubmit')) {
 		echo '<table><tr><td valign="top" width="350">';
 
 		showtableheader('setting_styles_threadprofile_group', 'nobottom');
-		showsubtitle(array('Ãû³Æ', '·½°¸'));
+		showsubtitle(array('åç§°', 'æ–¹æ¡ˆ'));
 		foreach($_G['cache']['usergroups'] as $gid => $usergroup) {
-			$select = '<select name="threadprofile['.$gid.']"><option value="0">È«¾Ö</option>';
+			$select = '<select name="threadprofile['.$gid.']"><option value="0">å…¨å±€</option>';
 			foreach($threadprofiles as $id => $threadprofile) {
 				$select .= '<option value="'.$id.'"'.($threadprofile_group[$gid]['tpid'] == $id ? ' selected' : '').'>'.$threadprofile['name'].'</option>';
 			}
@@ -676,7 +676,7 @@ if(!submitcheck('settingsubmit')) {
 		if($_G['setting']['verify']['enabled']) {
 			foreach($_G['setting']['verify'] as $gid => $verify) {
 				if($verify['available']) {
-					$select = '<select name="threadprofile[-'.$gid.']"><option value="0">È«¾Ö</option>';
+					$select = '<select name="threadprofile[-'.$gid.']"><option value="0">å…¨å±€</option>';
 					foreach($threadprofiles as $id => $threadprofile) {
 						$select .= '<option value="'.$id.'"'.($threadprofile_group[-$gid]['tpid'] == $id ? ' selected' : '').'>'.$threadprofile['name'].'</option>';
 					}
@@ -691,7 +691,7 @@ if(!submitcheck('settingsubmit')) {
 
 		showtableheader('setting_styles_threadprofile_project', 'nobottom');
 		$setting['threadprofile'] = !empty($setting['threadprofile']) ? dunserialize($setting['threadprofile']) : array();
-		showsubtitle(array('Ãû³Æ', 'È«¾Ö', ''));
+		showsubtitle(array('åç§°', 'å…¨å±€', ''));
 		foreach($threadprofiles as $id => $threadprofile) {
 			showtablerow('', array('style="width:200px"', 'style="width:50px"', ''), array(
 				$threadprofile['name'],
@@ -700,7 +700,7 @@ if(!submitcheck('settingsubmit')) {
 				($id > 1 ? '&nbsp;<a href="'.ADMINSCRIPT.'?action=setting&operation=threadprofile&do=delete&id='.$id.'">'.cplang('delete').'</a>' : ''),
 			));
 		}
-		echo '<tr><td colspan="3"><a href="'.ADMINSCRIPT.'?action=setting&operation=threadprofile&do=add" class="addtr">Ìí¼ÓĞÂ·½°¸</td></tr>';
+		echo '<tr><td colspan="3"><a href="'.ADMINSCRIPT.'?action=setting&operation=threadprofile&do=add" class="addtr">æ·»åŠ æ–°æ–¹æ¡ˆ</td></tr>';
 		showtablefooter();
 
 		echo '</td></tr></table>';
@@ -754,12 +754,12 @@ if(!submitcheck('settingsubmit')) {
 
 		$authorinfoitems = array();
 		$authorinfoitems = array(
-			'{numbercard}' => 'ÊôĞÔÃûÆ¬',
-			'{groupicon}<p>{*}</p>{/groupicon}' => 'ÓÃ»§×éÍ¼±ê',
-			'{authortitle}<p><em>{*}</em></p>{/authortitle}' => 'ÓÃ»§×éÃû³Æ',
-			'{customstatus}<p class=xg1>{*}</p>{/customstatus}' => 'êÇ³Æ',
-			'{star}<p>{*}</p>{/star}' => 'µÈ¼¶Í¼±ê',
-			'{upgradeprogress}' => 'µÈ¼¶½ø¶È',
+			'{numbercard}' => 'å±æ€§åç‰‡',
+			'{groupicon}<p>{*}</p>{/groupicon}' => 'ç”¨æˆ·ç»„å›¾æ ‡',
+			'{authortitle}<p><em>{*}</em></p>{/authortitle}' => 'ç”¨æˆ·ç»„åç§°',
+			'{customstatus}<p class=xg1>{*}</p>{/customstatus}' => 'æ˜µç§°',
+			'{star}<p>{*}</p>{/star}' => 'ç­‰çº§å›¾æ ‡',
+			'{upgradeprogress}' => 'ç­‰çº§è¿›åº¦',
 		);
 		if(!empty($_G['setting']['extcredits'])) {
 			foreach($_G['setting']['extcredits'] as $key => $value) {
@@ -782,8 +782,8 @@ if(!submitcheck('settingsubmit')) {
 			'regtime' => $lang['setting_styles_viewthread_userinfo_regtime'],
 			'lastdate' => $lang['setting_styles_viewthread_userinfo_lastdate'],
 			'oltime' => $lang['setting_styles_viewthread_userinfo_oltime'],
-			'eccredit_seller' => 'Âô¼ÒĞÅÓÃ',
-			'eccredit_buyer' => 'Âò¼ÒĞÅÓÃ',
+			'eccredit_seller' => 'å–å®¶ä¿¡ç”¨',
+			'eccredit_buyer' => 'ä¹°å®¶ä¿¡ç”¨',
 			'follower' => $lang['setting_styles_viewthread_userinfo_follower'],
 			'following' => $lang['setting_styles_viewthread_userinfo_following']
 		));
@@ -814,7 +814,7 @@ if(!submitcheck('settingsubmit')) {
 			showtips('setting_threadprofile_tpl_tpls');
 			showtableheader('');
 			showhiddenfields(array('do' => 'add'));
-			showsetting('Ãû³Æ', 'namenew', '', 'text');
+			showsetting('åç§°', 'namenew', '', 'text');
 			showsetting_threadprfile($authorinfoitems);
 			showtagfooter('tbody');
 			showtablefooter();
@@ -828,7 +828,7 @@ if(!submitcheck('settingsubmit')) {
 			showtableheader('');
 			showhiddenfields(array('do' => 'edit', 'id' => $id));
 			$threadprofile['template'] = dunserialize($threadprofile['template']);
-			showsetting('Ãû³Æ', 'namenew', $threadprofile['name'], 'text');
+			showsetting('åç§°', 'namenew', $threadprofile['name'], 'text');
 			showsetting_threadprfile($authorinfoitems, $threadprofile['template']);
 			showtagfooter('tbody');
 			showtablefooter();
@@ -2361,18 +2361,18 @@ EOT;
 								"<input type=\"checkbox\" class=\"checkbox\" name=\"ips[]\" value=\"$value[ip]\">",
 								"$ip ".convertip($ip),
 								$value['view'],
-								"<a href=\"$mpurl&optype=white&ips[]=$value[ip]&antitheftsubmit=yes\">¼ÓÈë°×Ãûµ¥</a> |
-								 <a href=\"$mpurl&optype=black&ips[]=$value[ip]&antitheftsubmit=yes\">¼ÓÈëºÚÃûµ¥</a> |
-								 <a href=\"$mpurl&optype=delete&ips[]=$value[ip]&antitheftsubmit=yes\">É¾³ı</a>
+								"<a href=\"$mpurl&optype=white&ips[]=$value[ip]&antitheftsubmit=yes\">åŠ å…¥ç™½åå•</a> |
+								 <a href=\"$mpurl&optype=black&ips[]=$value[ip]&antitheftsubmit=yes\">åŠ å…¥é»‘åå•</a> |
+								 <a href=\"$mpurl&optype=delete&ips[]=$value[ip]&antitheftsubmit=yes\">åˆ é™¤</a>
 								",
 							));
 					}
 					$multipage = multi($count, $perpage, $page, $mpurl);
 				}
 
-				$batchradio = '<input type="radio" name="optype" value="white" id="op_white" class="radio" /><label for="op_white">'.cplang('¼ÓÈë°×Ãûµ¥').'</label>&nbsp;&nbsp;';
-				$batchradio .= '<input type="radio" name="optype" value="black" id="op_black" class="radio" /><label for="op_black">'.cplang('¼ÓÈëºÚÃûµ¥').'</label>&nbsp;&nbsp;';
-				$batchradio .= '<input type="radio" name="optype" value="delete" id="op_remove" class="radio" /><label for="op_remove">'.cplang('É¾³ı').'</label>&nbsp;&nbsp;<input type="hidden" name="antitheftsubmit" value="yes" />';
+				$batchradio = '<input type="radio" name="optype" value="white" id="op_white" class="radio" /><label for="op_white">'.cplang('åŠ å…¥ç™½åå•').'</label>&nbsp;&nbsp;';
+				$batchradio .= '<input type="radio" name="optype" value="black" id="op_black" class="radio" /><label for="op_black">'.cplang('åŠ å…¥é»‘åå•').'</label>&nbsp;&nbsp;';
+				$batchradio .= '<input type="radio" name="optype" value="delete" id="op_remove" class="radio" /><label for="op_remove">'.cplang('åˆ é™¤').'</label>&nbsp;&nbsp;<input type="hidden" name="antitheftsubmit" value="yes" />';
 				showsubmit('', '', '', '<input type="checkbox" name="chkall" id="chkall" class="checkbox" onclick="checkAll(\'prefix\', this.form, \'ips\')" /><label for="chkall">'.cplang('select_all').'</label>&nbsp;&nbsp;'
 							.$batchradio.'<input type="submit" class="btn" name="antitheftbutton" value="'.cplang('submit').'" />', $multipage);
 				showtablefooter();
@@ -3509,7 +3509,7 @@ function threadprofile_buttons($id, $authorinfoitems) {
 			$buttons .= '<a href="###" onclick="insertunit($(\''.$id.'\'), \''.$code.'\')">'.$name.'</a>';
 			$i++;
 		} else {
-			$buttons .= $name ? '<a href="javascript:;" onclick="display(\''.$id.'more\')" class="light">¸ü¶à</a><div id="'.$id.'more" style="display:none">' : '<br />';
+			$buttons .= $name ? '<a href="javascript:;" onclick="display(\''.$id.'more\')" class="light">æ›´å¤š</a><div id="'.$id.'more" style="display:none">' : '<br />';
 			$i = 0;
 		}
 	}
@@ -3520,11 +3520,11 @@ function threadprofile_buttons($id, $authorinfoitems) {
 function showsetting_threadprfile($authorinfoitems, $template = array()) {
 	$template_left = dhtmlspecialchars($template['left']);
 	$buttons = threadprofile_buttons('tleft', $authorinfoitems);
-	echo '<tr><td class="td27" colspan="2">×ó²àĞÅÏ¢Ä£°å:</td></tr>
+	echo '<tr><td class="td27" colspan="2">å·¦ä¾§ä¿¡æ¯æ¨¡æ¿:</td></tr>
 		<tr><td colspan="2"><div class="threadprofilenode">'.$buttons.'</div><textarea name="templatenew[left]" id="tleft" class="marginbot" style="width:80%" rows="10" onkeyup="textareasize(this)" onkeydown="textareakey(this, event)">'.$template_left.'</textarea></td></tr>';
 	$template_top = dhtmlspecialchars($template['top']);
 	$buttons = threadprofile_buttons('ttop', $authorinfoitems);
-	echo '<tr><td class="td27" colspan="2">Í·Ïñ²Ëµ¥Ä£°å:</td></tr>
+	echo '<tr><td class="td27" colspan="2">å¤´åƒèœå•æ¨¡æ¿:</td></tr>
 		<tr><td colspan="2"><div class="threadprofilenode">'.$buttons.'</div><textarea name="templatenew[top]" id="ttop" class="marginbot" style="width:80%" rows="10" onkeyup="textareasize(this)" onkeydown="textareakey(this, event)">'.$template_top.'</textarea></td></tr>';
 }
 

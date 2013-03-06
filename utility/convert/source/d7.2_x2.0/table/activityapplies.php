@@ -25,7 +25,7 @@ while ($row = $db_source->fetch_array($query)) {
 
 	$nextid = $row['applyid'];
 
-	!empty($row['contact']) && $row['message'] = $row['message'].' ÁªÏµ·½Ê½:'.$row['contact'];
+	!empty($row['contact']) && $row['message'] = $row['message'].' è”ç³»æ–¹å¼:'.$row['contact'];
 	$row  = daddslashes($row, 1);
 
 	$data = implode_field_value($row, ',', db_table_fields($db_target, $table_target));
@@ -34,7 +34,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." applyid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." applyid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

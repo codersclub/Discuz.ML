@@ -13,16 +13,16 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'articlelist_name' => 'ÃÅ»§ ÎÄÕÂÁÐ±í¹ã¸æ',
-	'articlelist_desc' => 'Õ¹ÏÖ·½Ê½: ÎÄÕÂ¹ã¸æÏÔÊ¾ÓÚÆµµÀÎÄÕÂ·ÖÀàµÄÎÄÕÂÁÐ±íÒ³Ãæ£¬·ÖÎª¶¥²¿¡¢µ×²¿ 2 ¸öÍ¶·ÅÎ»ÖÃ¡£',
-	'articlelist_position' => 'Í¶·ÅÎ»ÖÃ',
-	'articlelist_position_comment' => '·ÖÎª 4 ¸öÎ»ÖÃ£¬ÉÏÏÂ¸÷ÓÐ 2 ¸ö½ôÁÚµÄÏÔÊ¾Î»ÖÃ',
-	'articlelist_position_up1' => '¶¥²¿(ÉÏ)',
-	'articlelist_position_up2' => '¶¥²¿(ÏÂ)',
-	'articlelist_position_down1' => 'µ×²¿(ÉÏ)',
-	'articlelist_position_down2' => 'µ×²¿(ÏÂ)',
-	'articlelist_category' => 'Í¶·ÅÆµµÀ·ÖÀà',
-	'articlelist_category_comment' => 'ÉèÖÃ¹ã¸æÍ¶·ÅµÄÆµµÀ·ÖÀà',
+	'articlelist_name' => 'é—¨æˆ· æ–‡ç« åˆ—è¡¨å¹¿å‘Š',
+	'articlelist_desc' => 'å±•çŽ°æ–¹å¼: æ–‡ç« å¹¿å‘Šæ˜¾ç¤ºäºŽé¢‘é“æ–‡ç« åˆ†ç±»çš„æ–‡ç« åˆ—è¡¨é¡µé¢ï¼Œåˆ†ä¸ºé¡¶éƒ¨ã€åº•éƒ¨ 2 ä¸ªæŠ•æ”¾ä½ç½®ã€‚',
+	'articlelist_position' => 'æŠ•æ”¾ä½ç½®',
+	'articlelist_position_comment' => 'åˆ†ä¸º 4 ä¸ªä½ç½®ï¼Œä¸Šä¸‹å„æœ‰ 2 ä¸ªç´§é‚»çš„æ˜¾ç¤ºä½ç½®',
+	'articlelist_position_up1' => 'é¡¶éƒ¨(ä¸Š)',
+	'articlelist_position_up2' => 'é¡¶éƒ¨(ä¸‹)',
+	'articlelist_position_down1' => 'åº•éƒ¨(ä¸Š)',
+	'articlelist_position_down2' => 'åº•éƒ¨(ä¸‹)',
+	'articlelist_category' => 'æŠ•æ”¾é¢‘é“åˆ†ç±»',
+	'articlelist_category_comment' => 'è®¾ç½®å¹¿å‘ŠæŠ•æ”¾çš„é¢‘é“åˆ†ç±»',
 );
 
 ?>

@@ -50,20 +50,20 @@ CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
 ) TYPE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
- `taskid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ÈÎÎñID',
- `aid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '¸½¼şID',
- `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'ÓÃ»§ID',
+ `taskid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ä»»åŠ¡ID',
+ `aid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'é™„ä»¶ID',
+ `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'ç”¨æˆ·ID',
  `openid` char(32) NOT NULL DEFAULT '' COMMENT 'openId',
- `filename` varchar(255) NOT NULL DEFAULT '' COMMENT '¸½¼şÃû³Æ',
- `verifycode` char(32) NOT NULL DEFAULT '' COMMENT 'ÏÂÔØÑéÖ¤Âë',
- `status` smallint(6) unsigned NOT NULL DEFAULT '0' COMMENT 'ÏÂÔØ×´Ì¬',
- `dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Ìí¼ÓÈÎÎñµÄÊ±¼ä',
- `downloadtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'ÏÂÔØÍê³ÉÊ±¼ä',
- `extra` text COMMENT '±£Áô×Ö¶Î',
+ `filename` varchar(255) NOT NULL DEFAULT '' COMMENT 'é™„ä»¶åç§°',
+ `verifycode` char(32) NOT NULL DEFAULT '' COMMENT 'ä¸‹è½½éªŒè¯ç ',
+ `status` smallint(6) unsigned NOT NULL DEFAULT '0' COMMENT 'ä¸‹è½½çŠ¶æ€',
+ `dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'æ·»åŠ ä»»åŠ¡çš„æ—¶é—´',
+ `downloadtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'ä¸‹è½½å®Œæˆæ—¶é—´',
+ `extra` text COMMENT 'ä¿ç•™å­—æ®µ',
  PRIMARY KEY (`taskid`),
  KEY `openid` (`openid`),
  KEY `status` (`status`)
-) TYPE=MyISAM COMMENT='ÍøÅÌÏÂÔØÈÎÎñ±í';
+) TYPE=MyISAM COMMENT='ç½‘ç›˜ä¸‹è½½ä»»åŠ¡è¡¨';
 
 EOF;
 

@@ -20,11 +20,11 @@ function loadcalendar() {
 	s += '<table cellspacing="0" cellpadding="0" width="100%" style="text-align: center;" class="table1">';
 	s += '<thead>';
 	s += '<tr align="center" id="calendar_week">';
-	s += '<th><a href="###" onclick="refreshcalendar(yy, mm-1)" title="ÉÏÒ»ÔÂ">¡¶</a></th>';
-	s += '<th colspan="5" style="text-align: center"><a href="###" onclick="showdiv(\'year\');_cancelBubble(event)" title="µã»÷Ñ¡ÔñÄê·Ý" id="year"></a>&nbsp; - &nbsp;<a id="month" title="µã»÷Ñ¡ÔñÔÂ·Ý" href="###" onclick="showdiv(\'month\');_cancelBubble(event)"></a></th>';
-	s += '<th><A href="###" onclick="refreshcalendar(yy, mm+1)" title="ÏÂÒ»ÔÂ">¡·</A></th>';
+	s += '<th><a href="###" onclick="refreshcalendar(yy, mm-1)" title="ä¸Šä¸€æœˆ">ã€Š</a></th>';
+	s += '<th colspan="5" style="text-align: center"><a href="###" onclick="showdiv(\'year\');_cancelBubble(event)" title="ç‚¹å‡»é€‰æ‹©å¹´ä»½" id="year"></a>&nbsp; - &nbsp;<a id="month" title="ç‚¹å‡»é€‰æ‹©æœˆä»½" href="###" onclick="showdiv(\'month\');_cancelBubble(event)"></a></th>';
+	s += '<th><A href="###" onclick="refreshcalendar(yy, mm+1)" title="ä¸‹ä¸€æœˆ">ã€‹</A></th>';
 	s += '</tr>';
-	s += '<tr id="calendar_header"><td>ÈÕ</td><td>Ò»</td><td>¶þ</td><td>Èý</td><td>ËÄ</td><td>Îå</td><td>Áù</td></tr>';
+	s += '<tr id="calendar_header"><td>æ—¥</td><td>ä¸€</td><td>äºŒ</td><td>ä¸‰</td><td>å››</td><td>äº”</td><td>å…­</td></tr>';
 	s += '</thead>';
 	s += '<tbody>';
 	for(var i = 0; i < 6; i++) {
@@ -33,7 +33,7 @@ function loadcalendar() {
 			s += "<td id=d" + (i * 7 + j) + " height=\"19\">0</td>";
 		s += "</tr>";
 	}
-	s += '<tr id="hourminute"><td colspan="7" align="center"><input type="text" size="2" value="" id="hour" onKeyUp=\'this.value=this.value > 23 ? 23 : zerofill(this.value);controlid.value=controlid.value.replace(/\\d+(\:\\d+)/ig, this.value+"$1")\'> µã <input type="text" size="2" value="" id="minute" onKeyUp=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'> ·Ö</td></tr>';
+	s += '<tr id="hourminute"><td colspan="7" align="center"><input type="text" size="2" value="" id="hour" onKeyUp=\'this.value=this.value > 23 ? 23 : zerofill(this.value);controlid.value=controlid.value.replace(/\\d+(\:\\d+)/ig, this.value+"$1")\'> ç‚¹ <input type="text" size="2" value="" id="minute" onKeyUp=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'> åˆ†</td></tr>';
 	s += '</tbody>';
 	s += '</table></div></div>';
 	s += '<div id="calendar_year" onclick="_cancelBubble(event)" style="display: none; z-index: 130;" class="calendarmenu"><div class="col" style="float: left; margin-right: 5px;">';
@@ -44,7 +44,7 @@ function loadcalendar() {
 	s += '</div></div>';
 	s += '<div id="calendar_month" onclick="_cancelBubble(event)" style="display: none; padding: 3px; z-index: 140" class="calendarmenu">';
 	for(var k = 1; k <= 12; k++) {
-		s += '<a href="###" onclick="refreshcalendar(yy, ' + (k - 1) + ');$(\'calendar_month\').style.display=\'none\'; "><span' + (today.getMonth()+1 == k ? ' class="bold"' : '') + ' id="calendar_month_' + k + '">' + k + ( k < 10 ? '&nbsp;' : '') + ' ÔÂ</span></a><br />';
+		s += '<a href="###" onclick="refreshcalendar(yy, ' + (k - 1) + ');$(\'calendar_month\').style.display=\'none\'; "><span' + (today.getMonth()+1 == k ? ' class="bold"' : '') + ' id="calendar_month_' + k + '">' + k + ( k < 10 ? '&nbsp;' : '') + ' æœˆ</span></a><br />';
 	}
 
 	s += '</div>';
@@ -140,7 +140,7 @@ function refreshcalendar(y, m) {
 		}
 		if(x.getFullYear() == today.getFullYear() && x.getMonth() == today.getMonth() && x.getDate() == today.getDate()) {
 			dd.className = 'bold';
-			dd.firstChild.title = '½ñÌì';
+			dd.firstChild.title = 'ä»Šå¤©';
 		}
 		if(x.getFullYear() == currday.getFullYear() && x.getMonth() == currday.getMonth() && x.getDate() == currday.getDate()) {
 			dd.className = 'error bold';

@@ -13,17 +13,17 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'stick_name' => 'ÖÃ¶¥¿¨',
-	'stick_desc' => '¿ÉÒÔ½«Ö÷ÌâÖÃ¶¥',
-	'stick_expiration' => 'ÖÃ¶¥ÓĞĞ§ÆÚ',
-	'stick_expiration_comment' => 'ÉèÖÃÖ÷Ìâ¿ÉÒÔ±»ÖÃ¶¥¶à³¤Ê±¼ä£¬Ä¬ÈÏ 24 Ğ¡Ê±',
-	'stick_forum' => 'ÔÊĞíÊ¹ÓÃ±¾µÀ¾ßµÄ°æ¿é',
-	'stick_info' => 'ÖÃ¶¥Ö¸¶¨µÄÖ÷Ìâ {expiration} Ğ¡Ê±£¬ÇëÊäÈëÖ÷ÌâµÄ ID',
-	'stick_info_nonexistence' => 'ÇëÖ¸¶¨ÒªÖÃ¶¥µÄÖ÷Ìâ',
-	'stick_succeed' => 'Äú²Ù×÷µÄÖ÷ÌâÒÑÖÃ¶¥',
-	'stick_info_noperm' => '¶Ô²»Æğ£¬Ö÷ÌâËùÔÚ°æ¿é²»ÔÊĞíÊ¹ÓÃ±¾µÀ¾ß',
+	'stick_name' => 'ç½®é¡¶å¡',
+	'stick_desc' => 'å¯ä»¥å°†ä¸»é¢˜ç½®é¡¶',
+	'stick_expiration' => 'ç½®é¡¶æœ‰æ•ˆæœŸ',
+	'stick_expiration_comment' => 'è®¾ç½®ä¸»é¢˜å¯ä»¥è¢«ç½®é¡¶å¤šé•¿æ—¶é—´ï¼Œé»˜è®¤ 24 å°æ—¶',
+	'stick_forum' => 'å…è®¸ä½¿ç”¨æœ¬é“å…·çš„ç‰ˆå—',
+	'stick_info' => 'ç½®é¡¶æŒ‡å®šçš„ä¸»é¢˜ {expiration} å°æ—¶ï¼Œè¯·è¾“å…¥ä¸»é¢˜çš„ ID',
+	'stick_info_nonexistence' => 'è¯·æŒ‡å®šè¦ç½®é¡¶çš„ä¸»é¢˜',
+	'stick_succeed' => 'æ‚¨æ“ä½œçš„ä¸»é¢˜å·²ç½®é¡¶',
+	'stick_info_noperm' => 'å¯¹ä¸èµ·ï¼Œä¸»é¢˜æ‰€åœ¨ç‰ˆå—ä¸å…è®¸ä½¿ç”¨æœ¬é“å…·',
 
-	'stick_notification' => 'ÄúµÄÖ÷Ìâ {subject} ±» {actor} Ê¹ÓÃÁË{magicname}£¬<a href="forum.php?mod=viewthread&tid={tid}">¿ìÈ¥¿´¿´°É£¡</a>',
+	'stick_notification' => 'æ‚¨çš„ä¸»é¢˜ {subject} è¢« {actor} ä½¿ç”¨äº†{magicname}ï¼Œ<a href="forum.php?mod=viewthread&tid={tid}">å¿«å»çœ‹çœ‹å§ï¼</a>',
 );
 
 ?>

@@ -28,9 +28,9 @@
 						<!--{/if}-->
 						</a><span class="pipe">|</span><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=digest&digest=1$forumdisplayadd[digest]{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}" class="xi2">{lang digest_posts}</a><!--{if !empty($_G[setting][recommendthread][status])}--><span class="pipe">|</span><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=recommend&orderby=recommends&recommend=1$forumdisplayadd[recommend]{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}" class="xi2">{lang order_recommends}</a><!--{/if}-->
 
-						<span class="pipe">|</span><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=hot{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}" class="xi2">ÈÈµã</a>
+						<span class="pipe">|</span><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=hot{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}" class="xi2">çƒ­ç‚¹</a>
 						<!--{if empty($_G['forum']['picstyle']) && $_GET['orderby'] == 'lastpost' && (!$_G['setting']['forumseparator'] || !$separatepos) && !$_GET['filter']}--><span class="pipe">|</span><a href="javascript:;" onclick="checkForumnew_btn('{$_G['fid']}')" title="{lang showupgrade}" class="forumrefresh"></a><!--{/if}-->
-						<span id="clearstickthread" style="display: none;"><span class="pipe">|</span><a href="javascript:;" onclick="clearStickThread()" class="xi2" title="ÏÔÊ¾ÖÃ¶¥">ÏÔÊ¾ÖÃ¶¥</a></span>
+						<span id="clearstickthread" style="display: none;"><span class="pipe">|</span><a href="javascript:;" onclick="clearStickThread()" class="xi2" title="æ˜¾ç¤ºç½®é¡¶">æ˜¾ç¤ºç½®é¡¶</a></span>
 						<!--{hook/forumdisplay_filter_extra}-->
 					</div>
 				<!--{else}-->
@@ -144,7 +144,7 @@
 									<!--{/if}-->
 									<th class="$thread[folder]">
 										<!--{if in_array($thread['displayorder'], array(1, 2, 3, 4))}-->
-											<a href="javascript:void(0);" onclick="hideStickThread('$thread[tid]')" class="showhide y" title="Òş²ØÖÃ¶¥Ìû">Òş²ØÖÃ¶¥Ìû</a></em>
+											<a href="javascript:void(0);" onclick="hideStickThread('$thread[tid]')" class="showhide y" title="éšè—ç½®é¡¶å¸–">éšè—ç½®é¡¶å¸–</a></em>
 										<!--{/if}-->
 										<!--{if !$_G['setting']['forumdisplaythreadpreview']}-->
 											<a class="tdpre y" href="javascript:void(0);" onclick="previewThread('$thread[tid]', '$thread[id]');">{lang preview}</a>
@@ -163,7 +163,7 @@
 										<!--{if $thread['rushreply']}-->
 											<img src="{IMGDIR}/rushreply_s.png" alt="{lang rushreply}" align="absmiddle" />
 											<!--{if $rushinfo[$thread[tid]]}-->
-											<span id="rushtimer_$thread[tid]"> ¡¾»¹ÓĞ <span id="rushtimer_body_$thread[tid]"></span> <script language="javascript">settimer($rushinfo[$thread[tid]]['timer'], 'rushtimer_body_$thread[tid]');</script>{if $rushinfo[$thread[tid]]['timertype'] == 'start'}¿ªÊ¼{else}½áÊø{/if}¡¿</span>
+											<span id="rushtimer_$thread[tid]"> ã€è¿˜æœ‰ <span id="rushtimer_body_$thread[tid]"></span> <script language="javascript">settimer($rushinfo[$thread[tid]]['timer'], 'rushtimer_body_$thread[tid]');</script>{if $rushinfo[$thread[tid]]['timertype'] == 'start'}å¼€å§‹{else}ç»“æŸ{/if}ã€‘</span>
 											<!--{/if}-->
 										<!--{/if}-->
 										<!--{if $stemplate && $sortid}-->$stemplate[$sortid][$thread[tid]]<!--{/if}-->

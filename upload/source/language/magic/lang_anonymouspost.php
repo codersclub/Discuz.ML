@@ -13,17 +13,17 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'anonymouspost_name' => 'ÄäÃû¿¨',
-	'anonymouspost_desc' => 'ÔÚÖ¸¶¨µÄµØ·½£¬ÈÃ×Ô¼ºµÄÃû×ÖÏÔÊ¾ÎªÄäÃû¡£',
-	'anonymouspost_num' => 'ÓµÓÐ¸öÊý: {magicnum}',
-	'anonymouspost_forum' => 'ÔÊÐíÊ¹ÓÃ±¾µÀ¾ßµÄ°æ¿é',
-	'anonymouspost_info' => '½«×Ô¼ºµÄÌû×ÓÉèÖÃÎªÄäÃûÉí·Ý£¬ÇëÊäÈëÌû×ÓµÄ ID',
-	'anonymouspost_info_nonexistence' => 'ÇëÖ¸¶¨ÒªÄäÃûµÄÌû×Ó',
-	'anonymouspost_succeed' => '³É¹¦ÉèÖÃÎªÄäÃû',
-	'anonymouspost_use_error' => '²ÎÊý´íÎó£¬²»ÄÜÔÚ´Ë´¦Ê¹ÓÃ±¾µÀ¾ß¡£',
-	'anonymouspost_info_noperm' => '¶Ô²»Æð£¬Ö÷ÌâËùÔÚ°æ¿é²»ÔÊÐíÊ¹ÓÃ±¾µÀ¾ß',
-	'anonymouspost_info_user_noperm' => '¶Ô²»Æð£¬Äú²»ÄÜ¶Ô´ËÈËÊ¹ÓÃ±¾µÀ¾ß',
-	'anonymouspost_once_limit' => 'ÒÑ¾­ÊÇÄäÃû×´Ì¬ÁË£¬²»ÄÜÖØ¸´Ê¹ÓÃ±¾µÀ¾ß¡£',
+	'anonymouspost_name' => 'åŒ¿åå¡',
+	'anonymouspost_desc' => 'åœ¨æŒ‡å®šçš„åœ°æ–¹ï¼Œè®©è‡ªå·±çš„åå­—æ˜¾ç¤ºä¸ºåŒ¿åã€‚',
+	'anonymouspost_num' => 'æ‹¥æœ‰ä¸ªæ•°: {magicnum}',
+	'anonymouspost_forum' => 'å…è®¸ä½¿ç”¨æœ¬é“å…·çš„ç‰ˆå—',
+	'anonymouspost_info' => 'å°†è‡ªå·±çš„å¸–å­è®¾ç½®ä¸ºåŒ¿åèº«ä»½ï¼Œè¯·è¾“å…¥å¸–å­çš„ ID',
+	'anonymouspost_info_nonexistence' => 'è¯·æŒ‡å®šè¦åŒ¿åçš„å¸–å­',
+	'anonymouspost_succeed' => 'æˆåŠŸè®¾ç½®ä¸ºåŒ¿å',
+	'anonymouspost_use_error' => 'å‚æ•°é”™è¯¯ï¼Œä¸èƒ½åœ¨æ­¤å¤„ä½¿ç”¨æœ¬é“å…·ã€‚',
+	'anonymouspost_info_noperm' => 'å¯¹ä¸èµ·ï¼Œä¸»é¢˜æ‰€åœ¨ç‰ˆå—ä¸å…è®¸ä½¿ç”¨æœ¬é“å…·',
+	'anonymouspost_info_user_noperm' => 'å¯¹ä¸èµ·ï¼Œæ‚¨ä¸èƒ½å¯¹æ­¤äººä½¿ç”¨æœ¬é“å…·',
+	'anonymouspost_once_limit' => 'å·²ç»æ˜¯åŒ¿åçŠ¶æ€äº†ï¼Œä¸èƒ½é‡å¤ä½¿ç”¨æœ¬é“å…·ã€‚',
 );
 
 ?>

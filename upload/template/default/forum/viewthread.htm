@@ -260,7 +260,7 @@
 						{lang thread_rushreply_limit} &nbsp;
 					<!--{/if}-->
 					<!--{if $rushresult['timer']}-->
-						<span id="rushtimer_$thread[tid]">¡¾»¹ÓĞ  <span id="rushtimer_body_$thread[tid]"></span> <script language="javascript">settimer($rushresult['timer'], 'rushtimer_body_$thread[tid]');</script>{if $rushresult['timertype'] == 'start'}¿ªÊ¼{else}½áÊø{/if}¡¿</span>
+						<span id="rushtimer_$thread[tid]">ã€è¿˜æœ‰  <span id="rushtimer_body_$thread[tid]"></span> <script language="javascript">settimer($rushresult['timer'], 'rushtimer_body_$thread[tid]');</script>{if $rushresult['timertype'] == 'start'}å¼€å§‹{else}ç»“æŸ{/if}ã€‘</span>
 					<!--{/if}-->
 					<!--{if $rushresult[stopfloor]}-->
 						{lang thread_rushreply_end}$rushresult[stopfloor]&nbsp;
@@ -291,7 +291,7 @@
 			<td class="plc">
 			<!--{/if}-->
 				<!--{if $_G['setting']['close_leftinfo_userctrl']}-->
-				<div id="scrollleftinfo" {if $close_leftinfo}class="open"{/if}onclick="setcookie('close_leftinfo', {if !$close_leftinfo}1{else}2{/if});location.reload();" title="{if !$close_leftinfo}¹Ø±Õ×ó²à{else}¿ªÆô×ó²à{/if}">
+				<div id="scrollleftinfo" {if $close_leftinfo}class="open"{/if}onclick="setcookie('close_leftinfo', {if !$close_leftinfo}1{else}2{/if});location.reload();" title="{if !$close_leftinfo}å…³é—­å·¦ä¾§{else}å¼€å¯å·¦ä¾§{/if}">
 				</div>
 				<script type="text/javascript">
 						var sli_staticnum = 0;
@@ -318,7 +318,7 @@
 	<!--{/loop}-->
 
 	<!--{if $_G['blockedpids']}-->
-		<div id='hiddenpoststip'><a href='javascript:display_blocked_post();'>»¹ÓĞÒ»Ğ©µÄÌû×Ó±»ÏµÍ³×Ô¶¯Òş²Ø£¬µã´ËÕ¹¿ª</a></div>
+		<div id='hiddenpoststip'><a href='javascript:display_blocked_post();'>è¿˜æœ‰ä¸€äº›çš„å¸–å­è¢«ç³»ç»Ÿè‡ªåŠ¨éšè—ï¼Œç‚¹æ­¤å±•å¼€</a></div>
 		<div id="hiddenposts"></div>
 	<!--{/if}-->
 

@@ -37,7 +37,7 @@ if($action == 'source') {
 } elseif($action == 'finish') {
 	require DISCUZ_ROOT.'./include/do_finish.inc.php';
 } else {
-	showmessage('·Ç·¨ÇëÇó');
+	showmessage('éæ³•è¯·æ±‚');
 }
 
 showfooter();

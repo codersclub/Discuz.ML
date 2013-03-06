@@ -62,7 +62,7 @@
 					</span>
 					<h1 class="xs2">
 						<a href="forum.php?mod=forumdisplay&fid=$_G[fid]">$_G['forum'][name]</a>
-						<!--{if !$subforumonly}--><span class="xs1 xw0 i">{lang index_today}: <strong class="xi1">$_G[forum][todayposts]</strong><!--{if $_G[forum][todayposts] < $_G[forum][yesterdayposts]}--><b class="ico_fall">¡ı</b><!--{else}--><b class="ico_increase">¡ü</b><!--{/if}--><span class="pipe">|</span>{lang index_threads}: <strong class="xi1">$_G[forum][threads]</strong><span class="pipe">|</span>ÅÅÃû: <strong class="xi1" title="ÉÏ´ÎÅÅÃû:$_G[forum][oldrank]">$_G[forum][rank]</strong><!--{if $_G[forum][rank] <= $_G[forum][oldrank]}--><b class="ico_increase">¡ü</b><!--{else}--><b class="ico_fall">¡ı</b><!--{/if}--></span><!--{/if}-->
+						<!--{if !$subforumonly}--><span class="xs1 xw0 i">{lang index_today}: <strong class="xi1">$_G[forum][todayposts]</strong><!--{if $_G[forum][todayposts] < $_G[forum][yesterdayposts]}--><b class="ico_fall">â†“</b><!--{else}--><b class="ico_increase">â†‘</b><!--{/if}--><span class="pipe">|</span>{lang index_threads}: <strong class="xi1">$_G[forum][threads]</strong><span class="pipe">|</span>æ’å: <strong class="xi1" title="ä¸Šæ¬¡æ’å:$_G[forum][oldrank]">$_G[forum][rank]</strong><!--{if $_G[forum][rank] <= $_G[forum][oldrank]}--><b class="ico_increase">â†‘</b><!--{else}--><b class="ico_fall">â†“</b><!--{/if}--></span><!--{/if}-->
 					</h1>
 				</div>
 				<!--{if (!empty($_G[forum][domain]) && !empty($_G['setting']['domain']['root']['forum'])) || $moderatedby || ($_G['page'] == 1 && $_G['forum']['rules'])}-->
@@ -305,7 +305,7 @@
 						}
 
 						function livecontentfacemove() {
-							//note ´Ó¶ÓÁĞÖĞÈ¡³öÊı¾İ
+							//note ä»é˜Ÿåˆ—ä¸­å–å‡ºæ•°æ®
 							var reply = '';
 							for(i in addreplylist) {
 								reply = replycontentlist[i] = addreplylist[i];
@@ -428,14 +428,14 @@
 				<!--{if $filter === 'hot'}-->
 				<div id="ReTie_review" class="bm">
 					<div class="bm_h">
-						<h2>µ±ÔÂ°æ¿éÈÈÌû»Ø¹Ë</h2>
+						<h2>å½“æœˆç‰ˆå—çƒ­å¸–å›é¡¾</h2>
 					</div>
-					<h6>{$ny}Äê{$nm}ÔÂ</h6>
+					<h6>{$ny}å¹´{$nm}æœˆ</h6>
 					<ul class="review_this cl">
 						<!--{eval $i = 0;}-->
 						<!--{loop $calendar[$ny][$nm] $day}-->
 						<!--{eval $i++;}-->
-						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=hot&hottime={$ny}{$nm}{$day}">{if $nd == $day}<strong>{/if}{$day}ÈÕ{if $nd == $day}</strong>{/if}</a></li>
+						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=hot&hottime={$ny}{$nm}{$day}">{if $nd == $day}<strong>{/if}{$day}æ—¥{if $nd == $day}</strong>{/if}</a></li>
 						<!--{if intval($day)%10 == 0}-->
 						</ul><ul class="review_this cl">
 						<!--{/if}-->
@@ -444,13 +444,13 @@
 				</div>
 				<div class="bm">
 					<div class="bm_h">
-						<h2>±¾°æÈÈÌû»Ø¹Ë</h2>
+						<h2>æœ¬ç‰ˆçƒ­å¸–å›é¡¾</h2>
 					</div>
 					<!--{loop $calendar $year $months}-->
 					<ul class="review_this cl">
-						<li class="xw1 cl">{$year}Äê</li>
+						<li class="xw1 cl">{$year}å¹´</li>
 						<!--{loop $months $month $mv}-->
-						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=hot&hottime={$year}{$month}01">{$month}ÔÂ</a></li>
+						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=hot&hottime={$year}{$month}01">{$month}æœˆ</a></li>
 						<!--{/loop}-->
 					</ul>
 					<!--{/loop}-->

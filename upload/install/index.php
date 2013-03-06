@@ -303,7 +303,7 @@ if($method == 'show_license') {
 		}
 
 		if($username && $email && $password) {
-			if(strlen($username) > 15 || preg_match("/^$|^c:\\con\\con$|¡¡|[,\"\s\t\<\>&]|^Guest/is", $username)) {
+			if(strlen($username) > 15 || preg_match("/^$|^c:\\con\\con$|ã€€|[,\"\s\t\<\>&]|^Guest/is", $username)) {
 				show_msg('admin_username_invalid', $username, 0);
 			} elseif(!strstr($email, '@') || $email != stripslashes($email) || $email != dhtmlspecialchars($email)) {
 				show_msg('admin_email_invalid', $email, 0);

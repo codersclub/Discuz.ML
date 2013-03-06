@@ -1,17 +1,17 @@
 ===============================
-SS7 ×ª»»µ½ Discuz£¡ X1 ×¢ÒâÊÂÏî
+SS7 è½¬æ¢åˆ° Discuzï¼ X1 æ³¨æ„äº‹é¡¹
 ===============================
 
-ÎÊÌâ£º×ª»»ºóµÄÍ¼Æ¬¼°¸½¼şµØÖ·²»¶Ô£¿
-·½°¸£º ²½ÖèÈçÏÂ£º
-1. ÔÚÔ­ SS7 Ô´ÂëÏÂÕÒµ½Í¼±ê images/base/attachment.gif£¬·ÅÔÚ Disucuz£¡ X1 µÄÄ¿Â¼ static/image/filetype/ ÏÂ£»
-2. ÕÒµ½ source/module/portal/portal_view.php ÎÄ¼ş£¬ÔÚ´úÂë¡°$content['content'] = blog_bbcode($content['content']);¡±ºó»»ĞĞÌí¼ÓÒÔÏÂ´úÂë£º
+é—®é¢˜ï¼šè½¬æ¢åçš„å›¾ç‰‡åŠé™„ä»¶åœ°å€ä¸å¯¹ï¼Ÿ
+æ–¹æ¡ˆï¼š æ­¥éª¤å¦‚ä¸‹ï¼š
+1. åœ¨åŸ SS7 æºç ä¸‹æ‰¾åˆ°å›¾æ ‡ images/base/attachment.gifï¼Œæ”¾åœ¨ Disucuzï¼ X1 çš„ç›®å½• static/image/filetype/ ä¸‹ï¼›
+2. æ‰¾åˆ° source/module/portal/portal_view.php æ–‡ä»¶ï¼Œåœ¨ä»£ç â€œ$content['content'] = blog_bbcode($content['content']);â€åæ¢è¡Œæ·»åŠ ä»¥ä¸‹ä»£ç ï¼š
 
-$ss_url = 'http://your_ss_site_url/'; // Çë½«´ËÁ´½ÓµØÖ·¸ÄÎªÄúµÄ SS Õ¾µãµØÖ·£¡£¡£¡
+$ss_url = 'http://your_ss_site_url/'; // è¯·å°†æ­¤é“¾æ¥åœ°å€æ”¹ä¸ºæ‚¨çš„ SS ç«™ç‚¹åœ°å€ï¼ï¼ï¼
 $findarr = array(
-	$ss_url.'batch.download.php?aid=', // ¸½¼şÏÂÔØµØÖ·
-	$ss_url.'attachments/',  // ¸½¼şÍ¼Æ¬Ä¿Â¼
-	$ss_url.'images/base/attachment.gif'  // ¸½¼şÏÂÔØÍ¼±ê
+	$ss_url.'batch.download.php?aid=', // é™„ä»¶ä¸‹è½½åœ°å€
+	$ss_url.'attachments/',  // é™„ä»¶å›¾ç‰‡ç›®å½•
+	$ss_url.'images/base/attachment.gif'  // é™„ä»¶ä¸‹è½½å›¾æ ‡
 );
 $replacearr = array(
 	'porta.php?mod=attachment&id=',

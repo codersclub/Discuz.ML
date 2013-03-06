@@ -13,21 +13,21 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'cornerbanner_name' => 'ȫ�� ���½ǹ��',
-	'cornerbanner_desc' => 'չ�ַ�ʽ: ��ʾ��ҳ�����½ǡ���ǰҳ���ж��ҳͷͨ�����ʱ��ϵͳ�����ѡȡ����֮һ��ʾ��<br />��ֵ����: �����ܹ���ҳ�������λ��չ�֣���˳�Ϊ����ҳ�м�λ��ߡ����ʺϽ�����ҵ������Ʒ���ƹ�Ĺ������֮һ��',
-	'cornerbanner_index' => '��ҳ',
-	'cornerbanner_fids' => 'Ͷ�Ű��',
-	'cornerbanner_fids_comment' => '���ù��Ͷ�ŵ���̳��飬�����Ͷ�ŷ�Χ�а�������̳��ʱ��Ч',
-	'cornerbanner_groups' => 'Ͷ��Ⱥ�����',
-	'cornerbanner_groups_comment' => '���ù��Ͷ�ŵ�Ⱥ����࣬�����Ͷ�ŷ�Χ�а�����Ⱥ�顱ʱ��Ч',
-	'cornerbanner_animator' => '����Ч��',
-	'cornerbanner_animator_comment' => '����չ��ʱ�Ƿ���ʾ����Ч��',
-	'cornerbanner_category' => 'Ͷ���Ż�Ƶ��',
-	'cornerbanner_category_comment' => '���ù��Ͷ�ŵ�Ƶ�����࣬�����Ͷ�ŷ�Χ�а������Ż���ʱ��Ч',
-	'cornerbanner_disableclose' => '�رչ�������',
-	'cornerbanner_disableclose_comment' => '����������������ùرղ��������Թر�ϵͳԤ�õĹر�����',
-	'cornerbanner_show' => '��ʾ',
-	'cornerbanner_hidden' => '����',
+	'cornerbanner_name' => '全局 右下角广告',
+	'cornerbanner_desc' => '展现方式: 显示于页面右下角。当前页面有多个页头通栏广告时，系统会随机选取其中之一显示。<br />价值分析: 由于能够在页面的明显位置展现，因此成为了网页中价位最高、最适合进行商业宣传或品牌推广的广告类型之一。',
+	'cornerbanner_index' => '首页',
+	'cornerbanner_fids' => '投放版块',
+	'cornerbanner_fids_comment' => '设置广告投放的论坛版块，当广告投放范围中包含“论坛”时有效',
+	'cornerbanner_groups' => '投放群组分类',
+	'cornerbanner_groups_comment' => '设置广告投放的群组分类，当广告投放范围中包含“群组”时有效',
+	'cornerbanner_animator' => '动画效果',
+	'cornerbanner_animator_comment' => '设置展现时是否显示动画效果',
+	'cornerbanner_category' => '投放门户频道',
+	'cornerbanner_category_comment' => '设置广告投放的频道分类，当广告投放范围中包含“门户”时有效',
+	'cornerbanner_disableclose' => '关闭广告的链接',
+	'cornerbanner_disableclose_comment' => '如果广告代码中已内置关闭操作，可以关闭系统预置的关闭链接',
+	'cornerbanner_show' => '显示',
+	'cornerbanner_hidden' => '隐藏',
 );
 
 ?>

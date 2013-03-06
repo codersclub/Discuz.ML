@@ -87,14 +87,14 @@
 				<a id="{$editorid}_pasteword" adv="1" title="{lang e_pasteword_title}">{lang e_pasteword}</a>
 				<!--{if $_G['group']['allowdownremoteimg']}--><!--{if !($_G['setting']['magicstatus'] && !empty($_G['setting']['magics']['doodle']))}--><!--{/if}--><a id="{$editorid}_downremoteimg" adv="1" title="{lang e_downremoteimg_title}">{lang e_downremoteimg}</a><!--{/if}-->
 				<!--{if $isfirstpost}-->
-					<a id="{$editorid}_page" adv="1" title="·ÖÒ³">Page</a>
-					<a id="{$editorid}_index" adv="1" title="Ä¿Â¼">Index</a>
+					<a id="{$editorid}_page" adv="1" title="åˆ†é¡µ">Page</a>
+					<a id="{$editorid}_index" adv="1" title="ç›®å½•">Index</a>
 				<!--{/if}-->
 				<!--{if $_G['setting']['magicstatus'] && !empty($_G['setting']['magics']['doodle'])}-->
 					<a id="a_magic_doodle" adv="1" href="home.php?mod=magic&mid=doodle&showid=comment_doodle&target={$editorid}_textarea&from=forumeditor" class="cst" onclick="showWindow(this.id, this.href, 'get', 0)"><img src="{STATICURL}image/magic/doodle.small.gif" alt="doodle" title="$_G['setting']['magics']['doodle']" style="margin-top:2px" /></a>
 				<!--{/if}-->
-				<a id="{$editorid}_password" adv="1" title="Ìû×ÓÃÜÂë">Password</a>
-				<a id="{$editorid}_postbg" adv="1" title="Ìû×Ó±³¾°">Background</a>
+				<a id="{$editorid}_password" adv="1" title="å¸–å­å¯†ç ">Password</a>
+				<a id="{$editorid}_postbg" adv="1" title="å¸–å­èƒŒæ™¯">Background</a>
 				<!--{if $_G['group']['allowbegincode'] && $isfirstpost}-->
 					<a id="{$editorid}_beginning" adv="1" title="{lang e_beginning_title}" menupos="43" menuwidth="600">{lang e_beginning}</a>
 				<!--{/if}-->

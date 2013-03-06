@@ -84,7 +84,7 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 .fixwidth{ width: 100%; }
 	.fixwidthdec{ width:580px; }
 #loginform{ overflow:hidden; margin:90px auto; *padding-top:90px; width:590px; }
-.login{ float:left; margin-top:5px; text-align:right; font:bold 14px "ËÎÌå"; }
+.login{ float:left; margin-top:5px; text-align:right; font:bold 14px "å®‹ä½“"; }
 	.login p{ margin:10px 5px; }
 	.loginbtn{ padding-left:53px; text-align:left; }
 	.login .txt{ width:160px; }

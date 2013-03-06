@@ -30,7 +30,7 @@
 	_attachEvent($('e_btn_upload').getElementsByTagName('a')[0], 'click',
 					function(e){showConfirm();});
 
-	if(BROWSER.firefox && window.HTMLElement) {   //Îª firefox Ôö¼Ó innerText ·½·¨
+	if(BROWSER.firefox && window.HTMLElement) {   //ä¸º firefox å¢åŠ  innerText æ–¹æ³•
 		HTMLElement.prototype.__defineGetter__("innerText", function(){
 			var anyString = "";
 			var childS = this.childNodes;
@@ -110,7 +110,7 @@
 				},time);
 			}
 		}
-		// Ò³Ãæ³¬Ê±¼à¿Ø,½öIEÓĞĞ§
+		// é¡µé¢è¶…æ—¶ç›‘æ§,ä»…IEæœ‰æ•ˆ
 		// if (BROWSER.ie) {
 		//	var linster = setTimeout(function() {
 		//		if(iframe.readyState != 'complete' && swfupload == 1){

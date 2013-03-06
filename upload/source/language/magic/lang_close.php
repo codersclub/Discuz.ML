@@ -13,18 +13,18 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'close_name' => '³ÁÄ¬¿¨',
-	'close_desc' => '¿ÉÒÔ½«Ö÷Ìâ¹Ø±Õ£¬½ûÖ¹»Ø¸´',
-	'close_expiration' => '¹Ø±ÕÓĞĞ§ÆÚ',
-	'close_expiration_comment' => 'ÉèÖÃÖ÷Ìâ¿ÉÒÔ±»¹Ø±Õ¶à³¤Ê±¼ä£¬Ä¬ÈÏ 24 Ğ¡Ê±',
-	'close_forum' => 'ÔÊĞíÊ¹ÓÃ±¾µÀ¾ßµÄ°æ¿é',
-	'close_info' => '¹Ø±ÕÖ¸¶¨µÄÖ÷Ìâ {expiration} Ğ¡Ê±£¬ÇëÊäÈëÖ÷ÌâµÄ ID',
-	'close_info_nonexistence' => 'ÇëÖ¸¶¨Òª¹Ø±ÕµÄÖ÷Ìâ',
-	'close_succeed' => 'Äú²Ù×÷µÄÖ÷ÌâÒÑ¹Ø±Õ',
-	'close_info_noperm' => '¶Ô²»Æğ£¬Ö÷ÌâËùÔÚ°æ¿é²»ÔÊĞíÊ¹ÓÃ±¾µÀ¾ß',
-	'close_info_user_noperm' => '¶Ô²»Æğ£¬Äú²»ÄÜ¶Ô´ËÈËÊ¹ÓÃ±¾µÀ¾ß',
+	'close_name' => 'æ²‰é»˜å¡',
+	'close_desc' => 'å¯ä»¥å°†ä¸»é¢˜å…³é—­ï¼Œç¦æ­¢å›å¤',
+	'close_expiration' => 'å…³é—­æœ‰æ•ˆæœŸ',
+	'close_expiration_comment' => 'è®¾ç½®ä¸»é¢˜å¯ä»¥è¢«å…³é—­å¤šé•¿æ—¶é—´ï¼Œé»˜è®¤ 24 å°æ—¶',
+	'close_forum' => 'å…è®¸ä½¿ç”¨æœ¬é“å…·çš„ç‰ˆå—',
+	'close_info' => 'å…³é—­æŒ‡å®šçš„ä¸»é¢˜ {expiration} å°æ—¶ï¼Œè¯·è¾“å…¥ä¸»é¢˜çš„ ID',
+	'close_info_nonexistence' => 'è¯·æŒ‡å®šè¦å…³é—­çš„ä¸»é¢˜',
+	'close_succeed' => 'æ‚¨æ“ä½œçš„ä¸»é¢˜å·²å…³é—­',
+	'close_info_noperm' => 'å¯¹ä¸èµ·ï¼Œä¸»é¢˜æ‰€åœ¨ç‰ˆå—ä¸å…è®¸ä½¿ç”¨æœ¬é“å…·',
+	'close_info_user_noperm' => 'å¯¹ä¸èµ·ï¼Œæ‚¨ä¸èƒ½å¯¹æ­¤äººä½¿ç”¨æœ¬é“å…·',
 
-	'close_notification' => 'ÄúµÄÖ÷Ìâ {subject} ±» {actor} Ê¹ÓÃÁË{magicname}£¬<a href="forum.php?mod=viewthread&tid={tid}">¿ìÈ¥¿´¿´°É£¡</a>',
+	'close_notification' => 'æ‚¨çš„ä¸»é¢˜ {subject} è¢« {actor} ä½¿ç”¨äº†{magicname}ï¼Œ<a href="forum.php?mod=viewthread&tid={tid}">å¿«å»çœ‹çœ‹å§ï¼</a>',
 );
 
 ?>

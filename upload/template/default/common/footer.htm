@@ -155,15 +155,15 @@
 <!--{if $_G['basescript'] != 'userapp'}-->
 <div id="scrolltop">
 	<!--{if $_G[fid] && $_G['mod'] == 'viewthread'}-->
-	<span><a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_GET[extra]&page=$page{if $_GET[from]}&from=$_GET[from]{/if}" onclick="showWindow('reply', this.href)" class="replyfast" title="���ٻظ�"><b>���ٻظ�</b></a></span>
+	<span><a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_GET[extra]&page=$page{if $_GET[from]}&from=$_GET[from]{/if}" onclick="showWindow('reply', this.href)" class="replyfast" title="快速回复"><b>快速回复</b></a></span>
 	<!--{/if}-->
 	<span hidefocus="true"><a title="{lang scrolltop}" onclick="window.scrollTo('0','0')" class="scrolltopa" ><b>{lang scrolltop}</b></a></span>
 	<!--{if $_G[fid]}-->
 	<span>
 		<!--{if $_G['mod'] == 'viewthread'}-->
-		<a href="forum.php?mod=forumdisplay&fid=$_G[fid]" hidefocus="true" class="returnlist" title="�����б�"><b>�����б�</b></a>
+		<a href="forum.php?mod=forumdisplay&fid=$_G[fid]" hidefocus="true" class="returnlist" title="返回列表"><b>返回列表</b></a>
 		<!--{else}-->
-		<a href="forum.php" hidefocus="true" class="returnboard" title="���ذ��"><b>���ذ��</b></a>
+		<a href="forum.php" hidefocus="true" class="returnboard" title="返回版块"><b>返回版块</b></a>
 		<!--{/if}-->
 	</span>
 	<!--{/if}-->

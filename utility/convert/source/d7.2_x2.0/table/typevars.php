@@ -32,7 +32,7 @@ while ($data = $db_source->fetch_array($query)) {
 }
 
 if($next) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." $start ÖÁ ".($start+$limit)." ÐÐ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start + $limit));
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." $start è‡³ ".($start+$limit)." è¡Œ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start + $limit));
 } else {
 	if(!$db_target->result_first("SELECT count(*) FROM $table_target WHERE search > 2 LIMIT 1")) {
 		$db_target->query("UPDATE $table_target SET search = '3' WHERE search = '1'");

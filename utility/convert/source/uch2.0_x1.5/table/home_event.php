@@ -24,8 +24,8 @@ if(!empty($eventfid)) {
 	}
 }
 if(empty($eventfid)) {
-	$board_name = 'UCHomeÊý¾Ý';
-	$forum_name = 'UCHome»î¶¯';
+	$board_name = 'UCHomeæ•°æ®';
+	$forum_name = 'UCHomeæ´»åŠ¨';
 	$value = $db_target->fetch_first('SELECT fid FROM '.$db_target->table_name('forum_forum')." WHERE type='forum' AND status='1' AND `name`='$forum_name'");
 	if(!empty($value)) {
 		$eventfid = intval($value['fid']);
@@ -53,7 +53,7 @@ if(empty($eventfid)) {
 		$eventfid = $db_target->insert('forum_forum', $forum, true);
 		$forumfield = array(
 			'fid' => $eventfid,
-			'description' => '´Ó UCenter Home ×ªÒÆ¹ýÀ´µÄ»î¶¯ÄÚÈÝ'
+			'description' => 'ä»Ž UCenter Home è½¬ç§»è¿‡æ¥çš„æ´»åŠ¨å†…å®¹'
 		);
 		$db_target->insert('forum_forumfield', $forumfield);
 	}
@@ -113,7 +113,7 @@ while ($event = $db_source->fetch_array($event_query)) {
 		'place' => '['.$event['province'].$event['city'].'] '.$event['location'],
 		'class' => $eventclass[$event['classid']],
 		'number' => $event['limitnum'],
-		'applynumber' => $event['membernum'] - 1,// Home ÀïµÄ»î¶¯³ÉÔ±°üÀ¨´´½¨Õß
+		'applynumber' => $event['membernum'] - 1,// Home é‡Œçš„æ´»åŠ¨æˆå‘˜åŒ…æ‹¬åˆ›å»ºè€…
 		'expiration' => $event['deadline']
 	);
 	$db_target->insert('forum_activity', daddslashes($activityarr));
@@ -146,7 +146,7 @@ while ($event = $db_source->fetch_array($event_query)) {
 }
 
 if($nextid) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." eventid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." eventid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 $maxpid = $db_target->result_first("SELECT MAX(pid) FROM ".$db_target->table('forum_post'));

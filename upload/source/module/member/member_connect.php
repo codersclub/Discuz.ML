@@ -21,7 +21,7 @@ if(defined('IN_MOBILE')) {
 	showmessage("qqconnect:connect_register_mobile_bind_error", 'forum.php');
 }
 
-if($_GET['action'] == 'login') { // debug ряспук╨её╛╟С╤╗нр╣дук╨евъ╢к╥жж╖
+if($_GET['action'] == 'login') { // debug Е╥╡Ф°┴Х╢╕Е▐╥О╪▄Г╩▒Е╝ Ф┬▒Г └Х╢╕Е▐╥Х╣╟Ф╜╓Е┬├Ф■╞
 
 	$ctl_obj = new logging_ctl();
 	$ctl_obj->setting = $_G['setting'];
@@ -33,7 +33,7 @@ if($_GET['action'] == 'login') { // debug ряспук╨её╛╟С╤╗нр╣дук╨евъ╢к╥жж╖
 	$ctl_obj->template = 'member/login';
 	$ctl_obj->on_login();
 
-} else { // debug мЙифнр╣двйаоё╛╪╢лМ╪с╦Жпб╣дбшлЁук╨евъ╢к╥жж╖
+} else { // debug Е╝▄Е√└Ф┬▒Г └Х╣└Ф√≥О╪▄Е█ЁФ╥╩Е┼═Д╦╙Ф√╟Г └Х╝╨Е²⌡Х╢╕Е▐╥Х╣╟Ф╜╓Е┬├Ф■╞
 
 	$_G['qc']['connect_auth_hash'] = $_GET['con_auth_hash'];
 	if(!$_G['qc']['connect_auth_hash']) {

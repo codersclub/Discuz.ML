@@ -57,7 +57,7 @@ if($typetids) {
 }
 
 if($nextid) {
-	showmessage("继续转换主题分类数据表，fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+	showmessage("缁х画杞崲涓婚鍒嗙被鏁版嵁琛紝fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 }
 
 ?>

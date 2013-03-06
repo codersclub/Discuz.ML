@@ -108,7 +108,7 @@ http://www.comsenz.com
 	#e_beginning { background-position: -246px -120px;}
 		.b2r #e_beginning { background-position: -260px -78px; }
 
-/* 缩小编辑器演出菜单中输入框的尺寸 */
+/* 缂╁皬缂栬緫鍣ㄦ紨鍑鸿彍鍗曚腑杈撳叆妗嗙殑灏哄 */
 .popupfix .px { margin-bottom: 4px; }
 
 #e_body { display: block !important; }
@@ -117,7 +117,7 @@ http://www.comsenz.com
 /*
 	Name:			mod_editor_menu
 	Level:			Function
-	Explain:		编辑器弹层关闭按钮在 IE8 下有问题
+	Explain:		缂栬緫鍣ㄥ脊灞傚叧闂寜閽湪 IE8 涓嬫湁闂
 	Last Modify:	Pony
 */
 .ie8 .editortoolbar .flbc { position: relative; }

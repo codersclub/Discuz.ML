@@ -21,7 +21,7 @@ class extend_thread_filter extends extend_thread_base {
 		require_once libfile('function/discuzcode');
 		$content = discuzcode($message);
 		$content = strip_tags($content);
-		$content = str_replace(array(',', '.', '?', '!', '£ø', '£°', '°£', '£¨', '~', '°≠'), '', $content);
+		$content = str_replace(array(',', '.', '?', '!', 'Ôºü', 'ÔºÅ', '„ÄÇ', 'Ôºå', '~', '‚Ä¶'), '', $content);
 		$content = preg_replace('/\s+/', '', $content);
 		$realLength = dstrlen($content);
 

@@ -9,21 +9,21 @@
 
 class seccode {
 
-	var $code;			//100000-999999 ·¶Î§ÄÚËæ»ú
-	var $type 	= 0;		//0 Ó¢ÎÄÍ¼Æ¬ÑéÖ¤Âë  1 ÖĞÎÄÍ¼Æ¬ÑéÖ¤Âë  2 Flash ÑéÖ¤Âë  3 ÓïÒôÑéÖ¤Âë
-	var $width 	= 0;		//¿í¶È
-	var $height 	= 0;		//¸ß¶È
-	var $background	= 1;		//Ëæ»úÍ¼Æ¬±³¾°
-	var $adulterate	= 1;		//Ëæ»ú±³¾°Í¼ĞÎ
-	var $ttf 	= 0;		//Ëæ»ú TTF ×ÖÌå
-	var $angle 	= 0;		//Ëæ»úÇãĞ±¶È
-	var $color 	= 1;		//Ëæ»úÑÕÉ«
-	var $size 	= 0;		//Ëæ»ú´óĞ¡
-	var $shadow 	= 1;		//ÎÄ×ÖÒõÓ°
-	var $animator 	= 0;		//GIF ¶¯»­
-	var $fontpath	= '';		//TTF ×Ö¿âÄ¿Â¼
-	var $datapath	= '';		//Í¼Æ¬¡¢ÉùÒô¡¢Flash µÈÊı¾İÄ¿Â¼
-	var $includepath= '';		//ÆäËü°üº¬ÎÄ¼şÄ¿Â¼
+	var $code;			//100000-999999 èŒƒå›´å†…éšæœº
+	var $type 	= 0;		//0 è‹±æ–‡å›¾ç‰‡éªŒè¯ç   1 ä¸­æ–‡å›¾ç‰‡éªŒè¯ç   2 Flash éªŒè¯ç   3 è¯­éŸ³éªŒè¯ç 
+	var $width 	= 0;		//å®½åº¦
+	var $height 	= 0;		//é«˜åº¦
+	var $background	= 1;		//éšæœºå›¾ç‰‡èƒŒæ™¯
+	var $adulterate	= 1;		//éšæœºèƒŒæ™¯å›¾å½¢
+	var $ttf 	= 0;		//éšæœº TTF å­—ä½“
+	var $angle 	= 0;		//éšæœºå€¾æ–œåº¦
+	var $color 	= 1;		//éšæœºé¢œè‰²
+	var $size 	= 0;		//éšæœºå¤§å°
+	var $shadow 	= 1;		//æ–‡å­—é˜´å½±
+	var $animator 	= 0;		//GIF åŠ¨ç”»
+	var $fontpath	= '';		//TTF å­—åº“ç›®å½•
+	var $datapath	= '';		//å›¾ç‰‡ã€å£°éŸ³ã€Flash ç­‰æ•°æ®ç›®å½•
+	var $includepath= '';		//å…¶å®ƒåŒ…å«æ–‡ä»¶ç›®å½•
 
 	var $fontcolor;
 	var $im;

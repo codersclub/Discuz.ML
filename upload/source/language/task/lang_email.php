@@ -13,13 +13,13 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'email_name' => 'ÑéÖ¤ÓÊÏäÈÎÎñ',
-	'email_desc' => 'ÑéÖ¤ÓÊÏä»ñµÃÏàÓ¦µÄ½±Àø¡£',
-	'email_view' => '<strong>Çë°´ÕÕÒÔÏÂµÄËµÃ÷À´²ÎÓë±¾ÈÎÎñ£º</strong>
+	'email_name' => 'éªŒè¯é‚®ç®±ä»»åŠ¡',
+	'email_desc' => 'éªŒè¯é‚®ç®±èŽ·å¾—ç›¸åº”çš„å¥–åŠ±ã€‚',
+	'email_view' => '<strong>è¯·æŒ‰ç…§ä»¥ä¸‹çš„è¯´æ˜Žæ¥å‚ä¸Žæœ¬ä»»åŠ¡ï¼š</strong>
 		<ul>
-		<li><a href="home.php?mod=spacecp&ac=profile&op=password" target="_blank">ÐÂ´°¿Ú´ò¿ªÕËºÅÉèÖÃÒ³Ãæ</a></li>
-		<li>ÔÚÐÂ´ò¿ªµÄÉèÖÃÒ³ÃæÖÐ£¬½«×Ô¼ºµÄÓÊÏäÕæÊµÌîÐ´(ÐÂÌîÐ´µÄÓÊÏäÐèÒªÏÈ±£´æ)£¬²¢µã»÷¡°ÖØÐÂ½ÓÊÕÑéÖ¤ÓÊ¼þ¡±Á´½Ó</li>
-		<li>¼¸·ÖÖÓºó£¬ÏµÍ³»á¸øÄú·¢ËÍÒ»·âÓÊ¼þ£¬ÊÕµ½ÓÊ¼þºó£¬Çë°´ÕÕÓÊ¼þµÄËµÃ÷£¬·ÃÎÊÓÊ¼þÖÐµÄÑéÖ¤Á´½Ó¾Í¿ÉÒÔÁË</li>
+		<li><a href="home.php?mod=spacecp&ac=profile&op=password" target="_blank">æ–°çª—å£æ‰“å¼€è´¦å·è®¾ç½®é¡µé¢</a></li>
+		<li>åœ¨æ–°æ‰“å¼€çš„è®¾ç½®é¡µé¢ä¸­ï¼Œå°†è‡ªå·±çš„é‚®ç®±çœŸå®žå¡«å†™(æ–°å¡«å†™çš„é‚®ç®±éœ€è¦å…ˆä¿å­˜)ï¼Œå¹¶ç‚¹å‡»â€œé‡æ–°æŽ¥æ”¶éªŒè¯é‚®ä»¶â€é“¾æŽ¥</li>
+		<li>å‡ åˆ†é’ŸåŽï¼Œç³»ç»Ÿä¼šç»™æ‚¨å‘é€ä¸€å°é‚®ä»¶ï¼Œæ”¶åˆ°é‚®ä»¶åŽï¼Œè¯·æŒ‰ç…§é‚®ä»¶çš„è¯´æ˜Žï¼Œè®¿é—®é‚®ä»¶ä¸­çš„éªŒè¯é“¾æŽ¥å°±å¯ä»¥äº†</li>
 		</ul>',
 );
 

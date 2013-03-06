@@ -14,7 +14,7 @@ if($setting['config']['ucenter']) {
 
 $process = load_process('main');
 if(empty($process)) {
-	showmessage("ÇëÊ×ÏÈÑ¡Ôñ×ª»»³ÌĞò", "index.php?action=select&source=$source");
+	showmessage("è¯·é¦–å…ˆé€‰æ‹©è½¬æ¢ç¨‹åº", "index.php?action=select&source=$source");
 }
 
 $prg = getgpc('prg');
@@ -44,18 +44,18 @@ foreach (array('start', 'tables', 'steps') as $program) {
 
 			list($rday, $rhour, $rmin, $rsec) = remaintime(time() - $process['timestart']);
 			$stime = gmdate('Y-m-d H:i:s', $process['timestart'] + 3600* 8);
-			$timetodo = "Éı¼¶¿ªÊ¼Ê±¼ä£º<strong>$stime</strong>, Éı¼¶³ÌĞòÒÑ¾­Ö´ĞĞÁË <strong>$rday</strong>Ìì <strong>$rhour</strong>Ğ¡Ê± <strong>$rmin</strong>·Ö <strong>$rsec</strong>Ãë";
-			$timetodo .= "<br><br>Ä¿Ç°ÕıÔÚÖ´ĞĞ×ª»»³ÌĞò( $prg_done / $prg_total ) <strong>$prg</strong>£¬×ª»»¹ı³ÌÖĞĞèÒª¶à´ÎÌø×ª£¬ÇëÎğ¹Ø±Õä¯ÀÀÆ÷¡£";
-			$timetodo .= "<br><br>Èç¹û³ÌĞòÖĞ¶Ï»òÕßĞèÒªÖØĞÂ¿ªÊ¼µ±Ç°³ÌĞò£¬Çëµã»÷ (<a href=\"index.php?a=convert&source=$source&prg=$prg\">ÖØĞÂ¿ªÊ¼</a>)";
+			$timetodo = "å‡çº§å¼€å§‹æ—¶é—´ï¼š<strong>$stime</strong>, å‡çº§ç¨‹åºå·²ç»æ‰§è¡Œäº† <strong>$rday</strong>å¤© <strong>$rhour</strong>å°æ—¶ <strong>$rmin</strong>åˆ† <strong>$rsec</strong>ç§’";
+			$timetodo .= "<br><br>ç›®å‰æ­£åœ¨æ‰§è¡Œè½¬æ¢ç¨‹åº( $prg_done / $prg_total ) <strong>$prg</strong>ï¼Œè½¬æ¢è¿‡ç¨‹ä¸­éœ€è¦å¤šæ¬¡è·³è½¬ï¼Œè¯·å‹¿å…³é—­æµè§ˆå™¨ã€‚";
+			$timetodo .= "<br><br>å¦‚æœç¨‹åºä¸­æ–­æˆ–è€…éœ€è¦é‡æ–°å¼€å§‹å½“å‰ç¨‹åºï¼Œè¯·ç‚¹å‡» (<a href=\"index.php?a=convert&source=$source&prg=$prg\">é‡æ–°å¼€å§‹</a>)";
 
 			showtips($timetodo);
 			if(file_exists($prg_dir[$program].$prg)) {
 				define('PROGRAM_TYPE', $program);
 				require $prg_dir[$program].$prg;
 				save_process_main($prg);
-				showmessage("×ª»»³ÌĞò $prg Ö´ĞĞÍê±Ï£¬ ÏÖÔÚÌø×ªµ½ÏÂÒ»¸ö³ÌĞò", "index.php?a=convert&source=$source", null, 500);
+				showmessage("è½¬æ¢ç¨‹åº $prg æ‰§è¡Œå®Œæ¯•ï¼Œ ç°åœ¨è·³è½¬åˆ°ä¸‹ä¸€ä¸ªç¨‹åº", "index.php?a=convert&source=$source", null, 500);
 			} else {
-				showmessage('Êı¾İ×ª»»ÖĞ¶Ï! ÎŞ·¨ÕÒµ½×ª»»³ÌĞò '.$prg);
+				showmessage('æ•°æ®è½¬æ¢ä¸­æ–­! æ— æ³•æ‰¾åˆ°è½¬æ¢ç¨‹åº '.$prg);
 			}
 		} else {
 			$process[$program.'_is_end'] = 1;
@@ -66,7 +66,7 @@ foreach (array('start', 'tables', 'steps') as $program) {
 	}
 }
 
-showmessage('×ª»»³ÌĞòÈ«²¿ÔËĞĞÍê±Ï', "index.php?action=finish&source=$source");
+showmessage('è½¬æ¢ç¨‹åºå…¨éƒ¨è¿è¡Œå®Œæ¯•', "index.php?action=finish&source=$source");
 
 function save_process_main($prg = '') {
 	global $process;

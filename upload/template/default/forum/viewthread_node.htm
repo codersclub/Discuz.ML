@@ -155,7 +155,7 @@
 						<!--{if isset($post[isstick])}-->
 							<img src ="{IMGDIR}/settop.png" title="{lang replystick}" class="vm" /> {lang from} {$post[number]}{$postnostick}
 						<!--{elseif $post[number] == -1}-->
-							推荐
+							鎺ㄨ崘
 						<!--{else}-->
 							<!--{if !empty($postno[$post[number]])}-->
 								$postno[$post[number]]
@@ -226,7 +226,7 @@
 				<!--{/if}-->
 				<!--{if !IS_ROBOT && !$_G['forum_thread']['archiveid'] && $post['first'] }-->
 					<!--{if $_G['forum_thread']['attachment'] == 2 && (!$_G['setting']['guestviewthumb']['flag'] || $_G['setting']['guestviewthumb']['flag'] && $_G['uid'])}-->
-						<span class="pipe">|</span><a href="forum.php?mod=viewthread&tid=$_G[tid]&from=album">只看大图</a>
+						<span class="pipe">|</span><a href="forum.php?mod=viewthread&tid=$_G[tid]&from=album">鍙湅澶у浘</a>
 					<!--{/if}-->
 					<!--{if !$rushreply}-->
 						<!--{if $ordertype != 1}-->
@@ -245,7 +245,7 @@
 					<!--{/if}-->
 				<!--{/if}-->
 				<!--{if $post['first']}-->
-				<span class="pipe">|</span><a href="javascript:;" onclick="readmode($('thread_subject').innerHTML, $('postmessage_$post[pid]').innerHTML);">阅读模式</a>
+				<span class="pipe">|</span><a href="javascript:;" onclick="readmode($('thread_subject').innerHTML, $('postmessage_$post[pid]').innerHTML);">闃呰妯″紡</a>
 				<!--{/if}-->
 				<!--{hook/viewthread_postheader $postcount}-->
 				</div>
@@ -428,8 +428,8 @@
 					<!--{/if}-->
 					<!--{if $post['first'] && $allowblockrecommend}--><a class="push" href="javascript:;" onclick="modaction('recommend', '$_G[forum_firstpid]', 'op=recommend&idtype={if $_G[forum_thread][isgroup]}gtid{else}tid{/if}&id=$_G[tid]&pid=$post[pid]', 'portal.php?mod=portalcp&ac=portalblock')">{lang modmenu_blockrecommend}</a><!--{/if}-->
 					<!--{if !$_G['forum_thread']['special'] && !$rushreply && !$hiddenreplies && $_G['setting']['repliesrank'] && !$post['first'] && !($post['isWater'] && $_G['setting']['filterednovote'])}-->
-						<a class="replyadd" href="forum.php?mod=misc&action=postreview&do=support&tid=$_G[tid]&pid=$post[pid]&hash={FORMHASH}" {if $_G['uid']}onclick="ajaxmenu(this, 3000, 1, 0, '43', '');return false;"{else} onclick="showWindow('login', this.href)"{/if} onmouseover="this.title = ($('review_support_$post[pid]').innerHTML ? $('review_support_$post[pid]').innerHTML : 0) + ' {lang activity_member_unit}支持'">支持 <span id="review_support_$post[pid]">$post[postreview][support]</span></a>
-						<a class="replysubtract" href="forum.php?mod=misc&action=postreview&do=against&tid=$_G[tid]&pid=$post[pid]&hash={FORMHASH}" {if $_G['uid']}onclick="ajaxmenu(this, 3000, 1, 0, '43', '');return false;"{else} onclick="showWindow('login', this.href)"{/if} onmouseover="this.title = ($('review_against_$post[pid]').innerHTML ? $('review_against_$post[pid]').innerHTML : 0) + ' {lang activity_member_unit}反对'">反对 <span id="review_against_$post[pid]">$post[postreview][against]</span></a>
+						<a class="replyadd" href="forum.php?mod=misc&action=postreview&do=support&tid=$_G[tid]&pid=$post[pid]&hash={FORMHASH}" {if $_G['uid']}onclick="ajaxmenu(this, 3000, 1, 0, '43', '');return false;"{else} onclick="showWindow('login', this.href)"{/if} onmouseover="this.title = ($('review_support_$post[pid]').innerHTML ? $('review_support_$post[pid]').innerHTML : 0) + ' {lang activity_member_unit}鏀寔'">鏀寔 <span id="review_support_$post[pid]">$post[postreview][support]</span></a>
+						<a class="replysubtract" href="forum.php?mod=misc&action=postreview&do=against&tid=$_G[tid]&pid=$post[pid]&hash={FORMHASH}" {if $_G['uid']}onclick="ajaxmenu(this, 3000, 1, 0, '43', '');return false;"{else} onclick="showWindow('login', this.href)"{/if} onmouseover="this.title = ($('review_against_$post[pid]').innerHTML ? $('review_against_$post[pid]').innerHTML : 0) + ' {lang activity_member_unit}鍙嶅'">鍙嶅 <span id="review_against_$post[pid]">$post[postreview][against]</span></a>
 					<!--{/if}-->
 					<!--{hook/viewthread_postfooter $postcount}-->
 				</em>

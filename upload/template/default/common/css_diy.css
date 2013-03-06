@@ -1,4 +1,4 @@
-/* ÅĞ¶Ï£ºµ±´ò¿ª DIY Ãæ°åÊ±¼ÓÔØ */
+/* åˆ¤æ–­ï¼šå½“æ‰“å¼€ DIY é¢æ¿æ—¶åŠ è½½ */
 body { padding-top: 170px; }
 #controlpanel { color: #000;position: fixed; top: 0; left: 0; z-index: 200; width: 100%; border-bottom: 1px solid #999; background: #F5F5F5 url({STATICURL}image/diy/cp-bg.png) repeat-x 0 0; }
 	* html #controlpanel { position: absolute; top: expression(offsetParent.scrollTop); }
@@ -58,7 +58,7 @@ body { padding-top: 170px; }
 			#cpfooter td.c { height: 5px; border-bottom: 1px solid #CCBDCC; }
 			#cpfooter td.r { width: 6px; background: url({STATICURL}image/diy/cp-nav-corner-br.png) no-repeat 0 0; }
 
-/* DIY ²¿·Ö */
+/* DIY éƒ¨åˆ† */
 dl.diy dt { margin-top: -10px; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid #CCC; line-height: 26px; }
 	dl.diy dt a { color: #06C !important; text-decoration: underline; }
 		dl.diy dt a.activity { color: #333 !important; font-weight: 700; text-decoration: none; }
@@ -78,7 +78,7 @@ dl.diy dt { margin-top: -10px; margin-bottom: 10px; padding-bottom: 5px; border-
 			#diyimg_next .prev { background: url({IMGDIR}/arw_l.gif) no-repeat 50% 50%; }
 			#diyimg_next .nxt { margin: 0; background: url({IMGDIR}/arw_r.gif) no-repeat 50% 50%; }
 
-/* Ô­CSS */
+/* åŸCSS */
 #outerbox { width: 970px; margin: auto; }
 .float_left { margin: 0 0 0 34px;}
 .float_center { margin: auto; }
@@ -145,7 +145,7 @@ dl.diy dt { margin-top: -10px; margin-bottom: 10px; padding-bottom: 5px; border-
 .td_right { float: left; display: block; line-height:22px; }
 .rb { border: 2px solid red; }
 #contentframe li a, #contentblockclass li label { cursor: move; }
-/***Ô­CSS***/
+/***åŸCSS***/
 #diy-tg { display: none !important; }
 /**space**/
 #controlcontent .selector li a { margin: 5px 10px 0 0; padding-left: 30px; width: 60px; height: 30px; line-height: 30px; background: url({STATICURL}image/diy/cp-item-mini.png) no-repeat 0 0; text-align: left; cursor: pointer; }
@@ -156,14 +156,14 @@ dl.diy dt { margin-top: -10px; margin-bottom: 10px; padding-bottom: 5px; border-
 	.borderul .bordera, .borderul label { display: none; }
 	.borderul label.y { display: inline; }
 
-/* µ¯´° by Pony */
+/* å¼¹çª— by Pony */
 .diywin .px { vertical-align: middle; }
 .diywin td { padding: 2px 0; }
 .diywin .tfm caption, .diywin .tfm th, .diywin .tfm td { padding: 5px 2px; }
-/* ¸öÈËµ¼º½Ğ¡ÑùÊ½ */
+/* ä¸ªäººå¯¼èˆªå°æ ·å¼ */
 .mininv { width: 450px; height: 30px; border: 1px dotted #09F; }
 
-/* ¸öÈË¿Õ¼äºÍÍøÕ¾DIY¹²ÓÃµÄ²¿·ÖÑùÊ½ */
+/* ä¸ªäººç©ºé—´å’Œç½‘ç«™DIYå…±ç”¨çš„éƒ¨åˆ†æ ·å¼ */
 .hide { display: none; }
 .frame,.tab,.block { position: relative; zoom:1; min-height: 20px; }
 .edit { position: absolute; top: 0; right: 0; z-index: 199; padding: 0 5px; background: red; line-height: 26px; color: #FFF; cursor: pointer; }

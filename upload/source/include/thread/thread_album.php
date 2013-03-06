@@ -36,7 +36,7 @@ foreach(C::t('forum_attachment_n')->fetch_all_by_id('tid:'.$_G['tid'], 'tid', $_
 	$apids[] = $attach['pid'];
 }
 if(empty($imglist)) {
-	showmessage('楼主暂时没有上传图片');
+	showmessage('妤间富鏆傛椂娌℃湁涓婁紶鍥剧墖');
 }
 foreach($postlist as $key=>$subpost) {
 	if($subpost['first'] == 1 || in_array($subpost['pid'], $apids)) {

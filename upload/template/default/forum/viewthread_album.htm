@@ -44,7 +44,7 @@
 					<span class="pipe">|</span><a href="forum.php?mod=post&action=edit&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if !empty($_GET[modthreadkey])}&modthreadkey=$_GET[modthreadkey]{/if}&page=$page{if $_GET[from]}&from=$_GET[from]{/if}"><!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}</a><!--{/if}-->
 					<!--{/if}-->
 					<span class="pipe">|</span><a href="forum.php?mod=viewthread&tid=$_G[tid]" class="xg1">{lang thread_mod}</a>
-					<span class="pipe">|</span>ÌáÊ¾£ºÖ§³Ö¼üÅÌ·­Ò³ ¡û×ó ÓÒ¡ú
+					<span class="pipe">|</span>æç¤ºï¼šæ”¯æŒé”®ç›˜ç¿»é¡µ â†å·¦ å³â†’
 				</p>
 			</div>
 			<div class="d">
@@ -60,7 +60,7 @@
 									<div class="imagelist_album">
 										<a id="goleft" class="left" onclick="imagelist_go('prev');" href="javascript:void(0);"></a>
 										<div id="imagelistwarp" class="left">
-											<ul id="imagelistthumb" style="width: <!--{echo count($imglist[aid]) * 110;}-->px; left: 0px;"><img src="static/image/common/loading.gif" width="16" height="16" class="vm" /> ×éÍ¼´ò¿ªÖĞ£¬ÇëÉÔºò......</ul>
+											<ul id="imagelistthumb" style="width: <!--{echo count($imglist[aid]) * 110;}-->px; left: 0px;"><img src="static/image/common/loading.gif" width="16" height="16" class="vm" /> ç»„å›¾æ‰“å¼€ä¸­ï¼Œè¯·ç¨å€™......</ul>
 											<a id="currentpic" class="mask" href="javascript:void(0)" style="left: 0px;"></a>
 										</div>
 										<a id="goright" class="right" onclick="imagelist_go('next');" href="javascript:void(0);"></a>
@@ -174,11 +174,11 @@
 
 									pre.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-prev.png) no-repeat 0 100px'; }
 									pre.onclick = function(){if(curnum>=1) {$('pic').src=imglist['url'][curnum-1];current_pic(curnum-1);}}
-									pre.title = 'µã»÷ä¯ÀÀÉÏÒ»ÕÅ£¬Ö§³Ö\'¡û\'·­Ò³';
+									pre.title = 'ç‚¹å‡»æµè§ˆä¸Šä¸€å¼ ï¼Œæ”¯æŒ\'â†\'ç¿»é¡µ';
 
 									next.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-next.png) no-repeat 100% 100px'; }
 									next.onclick = function(){if(curnum < imagecount - 1) {$('pic').src=imglist['url'][curnum+1];current_pic(curnum+1);}}
-									next.title = 'µã»÷ä¯ÀÀÏÂÒ»ÕÅ£¬Ö§³Ö\'¡ú\'·­Ò³';
+									next.title = 'ç‚¹å‡»æµè§ˆä¸‹ä¸€å¼ ï¼Œæ”¯æŒ\'â†’\'ç¿»é¡µ';
 
 									//cont.style.position = 'relative';
 									if(divappend == 1) {

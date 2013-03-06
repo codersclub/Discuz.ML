@@ -13,16 +13,16 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'checkonline_name' => 'À×´ï¿¨',
-	'checkonline_desc' => '²é¿´Ä³¸öÓÃ»§ÊÇ·ñÔÚÏß',
-	'checkonline_targetuser' => 'ÄúÒª²é¿´Ë­ÊÇ·ñÔÚÏß',
-	'checkonline_info_nonexistence' => 'ÇëÊäÈëÓÃ»§Ãû',
-	'checkonline_hidden_message' => '{username} µ±Ç°ÒþÉí£¬×îºó»î¶¯Ê±¼äÊÇ {time}',
-	'checkonline_online_message' => '{username} µ±Ç°ÔÚÏß£¬×îºó»î¶¯Ê±¼äÊÇ {time}',
-	'checkonline_offline_message' => '{username} µ±Ç°ÀëÏß',
-	'checkonline_info_noperm' => '¶Ô²»Æð£¬ÄúÎÞÈ¨²é¿´´ËÈËµÄ IP',
+	'checkonline_name' => 'é›·è¾¾å¡',
+	'checkonline_desc' => 'æŸ¥çœ‹æŸä¸ªç”¨æˆ·æ˜¯å¦åœ¨çº¿',
+	'checkonline_targetuser' => 'æ‚¨è¦æŸ¥çœ‹è°æ˜¯å¦åœ¨çº¿',
+	'checkonline_info_nonexistence' => 'è¯·è¾“å…¥ç”¨æˆ·å',
+	'checkonline_hidden_message' => '{username} å½“å‰éšèº«ï¼Œæœ€åŽæ´»åŠ¨æ—¶é—´æ˜¯ {time}',
+	'checkonline_online_message' => '{username} å½“å‰åœ¨çº¿ï¼Œæœ€åŽæ´»åŠ¨æ—¶é—´æ˜¯ {time}',
+	'checkonline_offline_message' => '{username} å½“å‰ç¦»çº¿',
+	'checkonline_info_noperm' => 'å¯¹ä¸èµ·ï¼Œæ‚¨æ— æƒæŸ¥çœ‹æ­¤äººçš„ IP',
 
-	'checkonline_notification' => 'ÓÐÈËÊ¹ÓÃÁË{magicname}¼ì²éÄúÊÇ·ñÔÚÏß',
+	'checkonline_notification' => 'æœ‰äººä½¿ç”¨äº†{magicname}æ£€æŸ¥æ‚¨æ˜¯å¦åœ¨çº¿',
 );
 
 ?>

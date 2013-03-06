@@ -1323,7 +1323,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 	$applylist = array();
 	$query = C::t('forum_activityapply')->fetch_all_for_thread($_G['tid'], 0, 2000, 0, 1);
 	foreach($query as $apply) {
-		$apply = str_replace(',', '£¬', $apply);
+		$apply = str_replace(',', 'ï¼Œ', $apply);
 		$apply['dateline'] = dgmdate($apply['dateline'], 'dt');
 		$apply['ufielddata'] = !empty($apply['ufielddata']) ? dunserialize($apply['ufielddata']) : '';
 		$ufielddata = '';
@@ -1719,7 +1719,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 
 	$hotreply = C::t('forum_hotreply_number')->fetch_by_pid($post['pid']);
 	if($_G['uid'] == $post['authorid']) {
-		showmessage('Äú²»ÄÜ¶Ô×Ô¼ºµÄ»ØÌû½øÐÐÍ¶Æ±', '', array(), array('msgtype' => 3));
+		showmessage('æ‚¨ä¸èƒ½å¯¹è‡ªå·±çš„å›žå¸–è¿›è¡ŒæŠ•ç¥¨', '', array(), array('msgtype' => 3));
 	}
 
 	if(empty($hotreply)) {
@@ -1732,7 +1732,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 		), true);
 	} else {
 		if(C::t('forum_hotreply_member')->fetch($post['pid'], $_G['uid'])) {
-			showmessage('ÄúÒÑ¾­¶Ô´Ë»ØÌûÍ¶¹ýÆ±ÁË', '', array(), array('msgtype' => 3));
+			showmessage('æ‚¨å·²ç»å¯¹æ­¤å›žå¸–æŠ•è¿‡ç¥¨äº†', '', array(), array('msgtype' => 3));
 		}
 	}
 
@@ -1748,7 +1748,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 
 	$hotreply[$_GET['do']]++;
 
-	showmessage('Í¶Æ±³É¹¦', '', array(), array('msgtype' => 3, 'extrajs' => '<script type="text/javascript">postreviewupdate('.$post['pid'].', '.$typeid.');</script>'));
+	showmessage('æŠ•ç¥¨æˆåŠŸ', '', array(), array('msgtype' => 3, 'extrajs' => '<script type="text/javascript">postreviewupdate('.$post['pid'].', '.$typeid.');</script>'));
 }
 
 function getratelist($raterange) {

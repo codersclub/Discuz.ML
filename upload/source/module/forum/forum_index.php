@@ -140,7 +140,7 @@ $grids = array();
 if($_G['setting']['grid']['showgrid']) {
 	loadcache('grids');
 	$cachelife = $_G['setting']['grid']['cachelife'] ? $_G['setting']['grid']['cachelife'] : 600;
-	$now = dgmdate(TIMESTAMP, 'YÄêmÔÂdÈÕ').' '.lang('forum/misc', 'week_'.dgmdate(TIMESTAMP, 'w'));
+	$now = dgmdate(TIMESTAMP, 'Yå¹´mæœˆdæ—¥').' '.lang('forum/misc', 'week_'.dgmdate(TIMESTAMP, 'w'));
 	if(TIMESTAMP - $_G['cache']['grids']['cachetime'] < $cachelife) {
 		$grids = $_G['cache']['grids'];
 	} else {

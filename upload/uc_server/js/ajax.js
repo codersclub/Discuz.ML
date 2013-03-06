@@ -147,7 +147,7 @@ function appendscript(src, text, reload) {
 	$('append').appendChild(scriptNode);
 }
 
-// µÃµ½Ò»¸ö¶¨³¤µÄ hash Öµ£¬ ÒÀÀµÓÚ stringxor()
+// å¾—åˆ°ä¸€ä¸ªå®šé•¿çš„ hash å€¼ï¼Œ ä¾èµ–äº stringxor()
 function hash(string, length) {
 	var length = length ? length : 32;
 	var start = 0;
@@ -192,7 +192,7 @@ function newfunc(func){
 function ajaxmenu(url, position) {
 	e = is_ie ? event : ajaxmenu.caller.arguments[0];
 	controlid = is_ie ? e.srcElement : e.target;
-	var menuid = hash(url);// Ê¹Ã¿¸ö url ¶ÔÓ¦Ò»¸öµ¯³ö²ã£¬±ÜÃâÖØ¸´ÇëÇó
+	var menuid = hash(url);// ä½¿æ¯ä¸ª url å¯¹åº”ä¸€ä¸ªå¼¹å‡ºå±‚ï¼Œé¿å…é‡å¤è¯·æ±‚
 	createmenu(menuid);
 
 	showmenu2(e, menuid, position, controlid);

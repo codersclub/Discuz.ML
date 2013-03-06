@@ -13,21 +13,21 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'albumlist_aids' => 'Ö¸¶¨Ïà²á',
-	'albumlist_aids_comment' => 'ÌîÈëÖ¸¶¨Ïà²áµÄID(aid)£¬¶à¸öÏà²áÖ®¼äÓÃ¶ººÅ(,)·Ö¸ô',
-	'albumlist_uids' => 'ÓÃ»§UID',
-	'albumlist_uids_comment' => 'ÌîÈëÖ¸¶¨ÓÃ»§µÄID(uid)£¬¶à¸öÓÃ»§Ö®¼äÓÃ¶ººÅ(,)·Ö¸ô',
-	'albumlist_catid' => 'Ö¸¶¨·ÖÀà',
-	'albumlist_catid_comment' => 'Ñ¡ÔñÏà²áËùÊôµÄÏµÍ³Ïà²á·ÖÀà£¬¿É¶àÑ¡',
-	'albumlist_startrow' => 'ÆðÊ¼Êý¾ÝÐÐÊý',
-	'albumlist_startrow_comment' => 'ÈçÐèÉè¶¨ÆðÊ¼µÄÊý¾ÝÐÐÊý£¬ÇëÊäÈë¾ßÌåÊýÖµ£¬0 Îª´ÓµÚÒ»ÐÐ¿ªÊ¼£¬ÒÔ´ËÀàÍÆ',
-	'albumlist_titlelength' => '±êÌâ³¤¶È',
-	'albumlist_titlelength' => 'Ö¸¶¨Ïà²áÃû³Æ×î´ó³¤¶È',
-	'albumlist_orderby' => 'Í¼Æ¬ÅÅÐò·½Ê½',
-	'albumlist_orderby_comment' => 'ÉèÖÃÒÔÄÄÒ»×Ö¶Î»ò·½Ê½¶ÔÍ¼Æ¬½øÐÐÅÅÐò',
-	'albumlist_orderby_dateline' => '°´·¢²¼Ê±¼äµ¹Ðò',
-	'albumlist_orderby_picnum' => '°´ÕÕÆ¬Êýµ¹Ðò',
-	'albumlist_orderby_updatetime' => '°´¸üÐÂÊ±¼äµ¹Ðò'
+	'albumlist_aids' => 'æŒ‡å®šç›¸å†Œ',
+	'albumlist_aids_comment' => 'å¡«å…¥æŒ‡å®šç›¸å†Œçš„ID(aid)ï¼Œå¤šä¸ªç›¸å†Œä¹‹é—´ç”¨é€—å·(,)åˆ†éš”',
+	'albumlist_uids' => 'ç”¨æˆ·UID',
+	'albumlist_uids_comment' => 'å¡«å…¥æŒ‡å®šç”¨æˆ·çš„ID(uid)ï¼Œå¤šä¸ªç”¨æˆ·ä¹‹é—´ç”¨é€—å·(,)åˆ†éš”',
+	'albumlist_catid' => 'æŒ‡å®šåˆ†ç±»',
+	'albumlist_catid_comment' => 'é€‰æ‹©ç›¸å†Œæ‰€å±žçš„ç³»ç»Ÿç›¸å†Œåˆ†ç±»ï¼Œå¯å¤šé€‰',
+	'albumlist_startrow' => 'èµ·å§‹æ•°æ®è¡Œæ•°',
+	'albumlist_startrow_comment' => 'å¦‚éœ€è®¾å®šèµ·å§‹çš„æ•°æ®è¡Œæ•°ï¼Œè¯·è¾“å…¥å…·ä½“æ•°å€¼ï¼Œ0 ä¸ºä»Žç¬¬ä¸€è¡Œå¼€å§‹ï¼Œä»¥æ­¤ç±»æŽ¨',
+	'albumlist_titlelength' => 'æ ‡é¢˜é•¿åº¦',
+	'albumlist_titlelength' => 'æŒ‡å®šç›¸å†Œåç§°æœ€å¤§é•¿åº¦',
+	'albumlist_orderby' => 'å›¾ç‰‡æŽ’åºæ–¹å¼',
+	'albumlist_orderby_comment' => 'è®¾ç½®ä»¥å“ªä¸€å­—æ®µæˆ–æ–¹å¼å¯¹å›¾ç‰‡è¿›è¡ŒæŽ’åº',
+	'albumlist_orderby_dateline' => 'æŒ‰å‘å¸ƒæ—¶é—´å€’åº',
+	'albumlist_orderby_picnum' => 'æŒ‰ç…§ç‰‡æ•°å€’åº',
+	'albumlist_orderby_updatetime' => 'æŒ‰æ›´æ–°æ—¶é—´å€’åº'
 );
 
 ?>

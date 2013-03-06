@@ -8,22 +8,22 @@
  */
 
 // ============================================================================
-define('UC_CONNECT', 'mysql');				// Á¬½Ó UCenter µÄ·½Ê½: mysql/NULL, Ä¬ÈÏÎª¿ÕÊ±Îª fscoketopen(), mysql ÊÇÖ±½ÓÁ¬½ÓµÄÊı¾İ¿â, ÎªÁËĞ§ÂÊ, ½¨Òé²ÉÓÃ mysql
-// Êı¾İ¿âÏà¹Ø (mysql Á¬½ÓÊ±)
-define('UC_DBHOST', 'localhost');			// UCenter Êı¾İ¿âÖ÷»ú
-define('UC_DBUSER', 'root');				// UCenter Êı¾İ¿âÓÃ»§Ãû
-define('UC_DBPW', 'root');				// UCenter Êı¾İ¿âÃÜÂë
-define('UC_DBNAME', 'ucenter');				// UCenter Êı¾İ¿âÃû³Æ
-define('UC_DBCHARSET', 'gbk');				// UCenter Êı¾İ¿â×Ö·û¼¯
-define('UC_DBTABLEPRE', '`ucenter`.uc_');		// UCenter Êı¾İ¿â±íÇ°×º
-define('UC_DBCONNECT', '0');				// UCenter Êı¾İ¿â³Ö¾ÃÁ¬½Ó 0=¹Ø±Õ, 1=´ò¿ª
+define('UC_CONNECT', 'mysql');				// è¿æ¥ UCenter çš„æ–¹å¼: mysql/NULL, é»˜è®¤ä¸ºç©ºæ—¶ä¸º fscoketopen(), mysql æ˜¯ç›´æ¥è¿æ¥çš„æ•°æ®åº“, ä¸ºäº†æ•ˆç‡, å»ºè®®é‡‡ç”¨ mysql
+// æ•°æ®åº“ç›¸å…³ (mysql è¿æ¥æ—¶)
+define('UC_DBHOST', 'localhost');			// UCenter æ•°æ®åº“ä¸»æœº
+define('UC_DBUSER', 'root');				// UCenter æ•°æ®åº“ç”¨æˆ·å
+define('UC_DBPW', 'root');				// UCenter æ•°æ®åº“å¯†ç 
+define('UC_DBNAME', 'ucenter');				// UCenter æ•°æ®åº“åç§°
+define('UC_DBCHARSET', 'gbk');				// UCenter æ•°æ®åº“å­—ç¬¦é›†
+define('UC_DBTABLEPRE', '`ucenter`.uc_');		// UCenter æ•°æ®åº“è¡¨å‰ç¼€
+define('UC_DBCONNECT', '0');				// UCenter æ•°æ®åº“æŒä¹…è¿æ¥ 0=å…³é—­, 1=æ‰“å¼€
 
-// Í¨ĞÅÏà¹Ø
-define('UC_KEY', 'yeN3g9EbNfiaYfodV63dI1j8Fbk5HaL7W4yaW4y7u2j4Mf45mfg2v899g451k576');	// Óë UCenter µÄÍ¨ĞÅÃÜÔ¿, ÒªÓë UCenter ±£³ÖÒ»ÖÂ
-define('UC_API', 'http://localhost/ucenter/branches/1.5.0/server'); // UCenter µÄ URL µØÖ·, ÔÚµ÷ÓÃÍ·ÏñÊ±ÒÀÀµ´Ë³£Á¿
-define('UC_CHARSET', 'gbk');				// UCenter µÄ×Ö·û¼¯
-define('UC_IP', '127.0.0.1');				// UCenter µÄ IP, µ± UC_CONNECT Îª·Ç mysql ·½Ê½Ê±, ²¢ÇÒµ±Ç°Ó¦ÓÃ·şÎñÆ÷½âÎöÓòÃûÓĞÎÊÌâÊ±, ÇëÉèÖÃ´ËÖµ
-define('UC_APPID', '1');				// µ±Ç°Ó¦ÓÃµÄ ID
+// é€šä¿¡ç›¸å…³
+define('UC_KEY', 'yeN3g9EbNfiaYfodV63dI1j8Fbk5HaL7W4yaW4y7u2j4Mf45mfg2v899g451k576');	// ä¸ UCenter çš„é€šä¿¡å¯†é’¥, è¦ä¸ UCenter ä¿æŒä¸€è‡´
+define('UC_API', 'http://localhost/ucenter/branches/1.5.0/server'); // UCenter çš„ URL åœ°å€, åœ¨è°ƒç”¨å¤´åƒæ—¶ä¾èµ–æ­¤å¸¸é‡
+define('UC_CHARSET', 'gbk');				// UCenter çš„å­—ç¬¦é›†
+define('UC_IP', '127.0.0.1');				// UCenter çš„ IP, å½“ UC_CONNECT ä¸ºé mysql æ–¹å¼æ—¶, å¹¶ä¸”å½“å‰åº”ç”¨æœåŠ¡å™¨è§£æåŸŸåæœ‰é—®é¢˜æ—¶, è¯·è®¾ç½®æ­¤å€¼
+define('UC_APPID', '1');				// å½“å‰åº”ç”¨çš„ ID
 
 // ============================================================================
 

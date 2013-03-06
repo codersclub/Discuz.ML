@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_DISCUZ')) {
 $operation = in_array($operation, array('all', 'index', 'category', 'article', 'topic', 'aids', 'catids', 'topicids', 'makehtmlsetting')) ? $operation : 'all';
 
 cpheader();
-shownav('portal', 'HTML¹ÜÀí');
+shownav('portal', 'HTMLç®¡ç†');
 
 $css = '<style>
 		#mk_result {width:100%; margin-top:10px; border: 1px solid #ccc; margin: 0 auto; font-size:16px; text-align:center; display:none; }
@@ -25,33 +25,33 @@ $css = '<style>
 
 $result = '<tr><td colspan="15"><div id="mk_result">
 			<div id="progress_bar"></div>
-			<div id="mk_topic" mktitle="×¨Ìâ"></div>
-			<div id="mk_article" mktitle="ÎÄÕÂ"></div>
-			<div id="mk_category" mktitle="ÆµµÀ"></div>
-			<div id="mk_index" mktitle="Ê×Ò³"></div>
+			<div id="mk_topic" mktitle="ä¸“é¢˜"></div>
+			<div id="mk_article" mktitle="æ–‡ç« "></div>
+			<div id="mk_category" mktitle="é¢‘é“"></div>
+			<div id="mk_index" mktitle="é¦–é¡µ"></div>
 			</div></td></tr>';
 
 if(!in_array($operation, array('aids', 'catids', 'topicids'))) {
 	showsubmenu('html',  array(
-		array('Éú³ÉÈ«²¿', 'makehtml&operation=all', $operation == 'all'),
-		array('Éú³ÉÊ×Ò³', 'makehtml&operation=index', $operation == 'index'),
-		array('Éú³ÉÆµµÀ', 'makehtml&operation=category', $operation == 'category'),
-		array('Éú³ÉÎÄÕÂ', 'makehtml&operation=article', $operation == 'article'),
-		array('Éú³É×¨Ìâ', 'makehtml&operation=topic', $operation == 'topic'),
-		array('ÉèÖÃ', 'makehtml&operation=makehtmlsetting', $operation == 'makehtmlsetting')
+		array('ç”Ÿæˆå…¨éƒ¨', 'makehtml&operation=all', $operation == 'all'),
+		array('ç”Ÿæˆé¦–é¡µ', 'makehtml&operation=index', $operation == 'index'),
+		array('ç”Ÿæˆé¢‘é“', 'makehtml&operation=category', $operation == 'category'),
+		array('ç”Ÿæˆæ–‡ç« ', 'makehtml&operation=article', $operation == 'article'),
+		array('ç”Ÿæˆä¸“é¢˜', 'makehtml&operation=topic', $operation == 'topic'),
+		array('è®¾ç½®', 'makehtml&operation=makehtmlsetting', $operation == 'makehtmlsetting')
 	), '');
 }
 if($operation == 'all') {
 
-	showtips('<li>Éú³ÉÖ¸¶¨ÆğÊ¼Ê±¼äÒÔºó·¢²¼µÄÎÄÕÂµÄHTMLÎÄ¼ş</li><li>Éú³ÉÖ¸¶¨ÆğÊ¼Ê±¼äÒÔºó·¢²¼¹ıÎÄÕÂµÄÆµµÀHTMLÎÄ¼ş</li><li>Éú³ÉÃÅ»§Ê×Ò³µÄHTMLÎÄ¼ş</li>');
+	showtips('<li>ç”ŸæˆæŒ‡å®šèµ·å§‹æ—¶é—´ä»¥åå‘å¸ƒçš„æ–‡ç« çš„HTMLæ–‡ä»¶</li><li>ç”ŸæˆæŒ‡å®šèµ·å§‹æ—¶é—´ä»¥åå‘å¸ƒè¿‡æ–‡ç« çš„é¢‘é“HTMLæ–‡ä»¶</li><li>ç”Ÿæˆé—¨æˆ·é¦–é¡µçš„HTMLæ–‡ä»¶</li>');
 
 	showformheader('makehtml&operation=all');
 	showtableheader('');
 	echo '<script type="text/javascript" src="'.STATICURL.'js/calendar.js"></script>',
 		'<script type="text/javascript" src="'.STATICURL.'js/makehtml.js?1"></script>',
 		$css;
-	showsetting('ÆğÊ¼Ê±¼ä', 'starttime', dgmdate(TIMESTAMP, 'Y-m-d'), 'calendar', '', '', '', '1');
-	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">Éú³ÉÈ«²¿</a></div></td></tr>', $result;
+	showsetting('èµ·å§‹æ—¶é—´', 'starttime', dgmdate(TIMESTAMP, 'Y-m-d'), 'calendar', '', '', '', '1');
+	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">ç”Ÿæˆå…¨éƒ¨</a></div></td></tr>', $result;
 	$adminscript = ADMINSCRIPT;
 	echo <<<EOT
 <script type="text/JavaScript">
@@ -60,7 +60,7 @@ form.onsubmit = function(){return false;};
 _attachEvent($('submit_portal_html'), 'click', function(){
 	$('mk_result').style.display = 'block';
 	$('mk_index').style.display = 'none';
-	this.innerHTML = 'ÖØĞÂÉú³É';
+	this.innerHTML = 'é‡æ–°ç”Ÿæˆ';
 	var starttime = form['starttime'].value;
 	if(starttime){
 		make_html_article(starttime);
@@ -70,18 +70,18 @@ _attachEvent($('submit_portal_html'), 'click', function(){
 
 function make_html_ok() {
 	var dom = $('mk_index');
-	dom.innerHTML = '<div class="mk_msg">È«²¿ÎÄ¼şÉú³É³É¹¦</div>';
+	dom.innerHTML = '<div class="mk_msg">å…¨éƒ¨æ–‡ä»¶ç”ŸæˆæˆåŠŸ</div>';
 }
 function make_html_index() {
 	var dom = $('mk_index');
-	dom.innerHTML = '<div class="mk_msg">ÇëÉÔµÈ£¬ÕıÔÚÉú³ÉÊ×Ò³...</div>';
+	dom.innerHTML = '<div class="mk_msg">è¯·ç¨ç­‰ï¼Œæ­£åœ¨ç”Ÿæˆé¦–é¡µ...</div>';
 	dom.style.display = 'block';
 	new make_html_batch('portal.php?', 0, make_html_ok, dom, 1);
 }
 
 function make_html_category(starttime){
 	var dom = $('mk_category');
-	dom.innerHTML = '<div class="mk_msg">ÇëÉÔµÈ£¬ÕıÔÚ¼ì²é¿ÉÉú³ÉµÄÆµµÀÒ³Ãæ...</div>';
+	dom.innerHTML = '<div class="mk_msg">è¯·ç¨ç­‰ï¼Œæ­£åœ¨æ£€æŸ¥å¯ç”Ÿæˆçš„é¢‘é“é¡µé¢...</div>';
 	dom.style.display = 'block';
 	starttime = starttime || form['starttime'].value;
 	var x = new Ajax();
@@ -89,7 +89,7 @@ function make_html_category(starttime){
 		if(s) {
 			new make_html_batch('portal.php?mod=list&catid=', s.split(','), make_html_index, dom);
 		} else {
-			dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄÆµµÀÒ³Ãæ<br/>ÏÖÔÚ¿ªÊ¼Éú³ÉÖ÷Ò³ÎÄ¼ş...<br /><a href="javascript:void(0);" onclick="\$(\'mk_category\').style.display = \'none\';make_html_index();">Èç¹ûÄúµÄä¯ÀÀÆ÷Ã»ÓĞ·´Ó¦£¬Çëµã»÷¼ÌĞø...</a>';
+			dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„é¢‘é“é¡µé¢<br/>ç°åœ¨å¼€å§‹ç”Ÿæˆä¸»é¡µæ–‡ä»¶...<br /><a href="javascript:void(0);" onclick="\$(\'mk_category\').style.display = \'none\';make_html_index();">å¦‚æœæ‚¨çš„æµè§ˆå™¨æ²¡æœ‰ååº”ï¼Œè¯·ç‚¹å‡»ç»§ç»­...</a>';
 			setTimeout(function(){\$('mk_category').style.display = 'none'; make_html_index();}, 1000);
 		}
 	});
@@ -97,14 +97,14 @@ function make_html_category(starttime){
 
 function make_html_article(starttime) {
 	var dom = $('mk_article');
-	dom.innerHTML = '<div class="mk_msg">ÇëÉÔµÈ£¬ÕıÔÚ¼ì²é¿ÉÉú³ÉµÄÎÄÕÂÒ³Ãæ...</div>';
+	dom.innerHTML = '<div class="mk_msg">è¯·ç¨ç­‰ï¼Œæ­£åœ¨æ£€æŸ¥å¯ç”Ÿæˆçš„æ–‡ç« é¡µé¢...</div>';
 	dom.style.display = 'block';
 	var x = new Ajax();
 	x.get('$adminscript?action=makehtml&operation=aids&inajax=1&frame=no&starttime='+starttime, function (s) {
 		if(s){
 			new make_html_batch('portal.php?mod=view&aid=', s.split(','), make_html_category, dom);
 		} else {
-			dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄÎÄÕÂÒ³Ãæ<br/>ÏÖÔÚ¿ªÊ¼Éú³ÉÆµµÀÎÄ¼ş...<br /><a href="javascript:void(0);" onclick="\$(\'mk_article\').style.display = \'none\';make_html_category();">Èç¹ûÄúµÄä¯ÀÀÆ÷Ã»ÓĞ·´Ó¦£¬Çëµã»÷¼ÌĞø...</a>';
+			dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„æ–‡ç« é¡µé¢<br/>ç°åœ¨å¼€å§‹ç”Ÿæˆé¢‘é“æ–‡ä»¶...<br /><a href="javascript:void(0);" onclick="\$(\'mk_article\').style.display = \'none\';make_html_category();">å¦‚æœæ‚¨çš„æµè§ˆå™¨æ²¡æœ‰ååº”ï¼Œè¯·ç‚¹å‡»ç»§ç»­...</a>';
 			setTimeout(function(){\$('mk_article').style.display = 'none'; make_html_category();}, 1000);
 		}
 	});
@@ -117,12 +117,12 @@ EOT;
 
 } elseif($operation == 'index') {
 
-	showtips('<li>Éú³ÉÃÅ»§Ê×Ò³µÄHTMLÎÄ¼ş</li>');
+	showtips('<li>ç”Ÿæˆé—¨æˆ·é¦–é¡µçš„HTMLæ–‡ä»¶</li>');
 
 	showformheader('makehtml&operation=index');
 	showtableheader('');
 	echo '<script type="text/javascript" src="'.STATICURL.'js/makehtml.js?1"></script>', $css;
-	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">Éú³ÉÊ×Ò³</a></div></td></tr>', $result;
+	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">ç”Ÿæˆé¦–é¡µ</a></div></td></tr>', $result;
 	$adminscript = ADMINSCRIPT;
 	echo <<<EOT
 <script type="text/JavaScript">
@@ -131,7 +131,7 @@ form.onsubmit = function(){return false;};
 _attachEvent($('submit_portal_html'), 'click', function(){
 	$('mk_result').style.display = 'block';
 	$('mk_index').style.display = 'none';
-	this.innerHTML = 'ÖØĞÂÉú³É';
+	this.innerHTML = 'é‡æ–°ç”Ÿæˆ';
 	this.disabled = true;
 	make_html_index();
 	return false;
@@ -139,7 +139,7 @@ _attachEvent($('submit_portal_html'), 'click', function(){
 
 function make_html_index() {
 	var dom = $('mk_index');
-	dom.innerHTML = '<div class="mk_msg">ÇëÉÔµÈ£¬ÕıÔÚÉú³ÉÊ×Ò³...</div>';
+	dom.innerHTML = '<div class="mk_msg">è¯·ç¨ç­‰ï¼Œæ­£åœ¨ç”Ÿæˆé¦–é¡µ...</div>';
 	dom.style.display = 'block';
 	new make_html_batch('portal.php?', 0, null, dom, 1);
 }
@@ -150,18 +150,18 @@ EOT;
 } elseif($operation == 'category') {
 
 	loadcache('portalcategory');
-	showtips('<li>Éú³ÉÖ¸¶¨ÆµµÀÊ×Ò³HTMLÎÄ¼ş</li><li>Éú³ÉÖ¸¶¨ÆğÊ¼Ê±¼äÒÔºó·¢²¼¹ıÎÄÕÂµÄÆµµÀÊ×Ò³HTMLÎÄ¼ş</li>');
+	showtips('<li>ç”ŸæˆæŒ‡å®šé¢‘é“é¦–é¡µHTMLæ–‡ä»¶</li><li>ç”ŸæˆæŒ‡å®šèµ·å§‹æ—¶é—´ä»¥åå‘å¸ƒè¿‡æ–‡ç« çš„é¢‘é“é¦–é¡µHTMLæ–‡ä»¶</li>');
 	showformheader('makehtml&operation=category');
 	showtableheader('');
 	echo '<script type="text/javascript" src="'.STATICURL.'js/calendar.js"></script>',
 		'<script type="text/javascript" src="'.STATICURL.'js/makehtml.js?1"></script>',
 		$css;
 
-	showsetting('ÆğÊ¼Ê±¼ä', 'starttime', '', 'calendar', '', '', '', '1');
-	$selectdata = array('category', array(array(0, 'Éú³ÉËùÓĞÆµµÀ')));
+	showsetting('èµ·å§‹æ—¶é—´', 'starttime', '', 'calendar', '', '', '', '1');
+	$selectdata = array('category', array(array(0, 'ç”Ÿæˆæ‰€æœ‰é¢‘é“')));
 	mk_format_category(array_keys($_G['cache']['portalcategory']));
-	showsetting('Ñ¡ÔñÆµµÀ', $selectdata, 0, 'mselect');
-	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">Éú³ÉÆµµÀ</a></div></td></tr>', $result;
+	showsetting('é€‰æ‹©é¢‘é“', $selectdata, 0, 'mselect');
+	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">ç”Ÿæˆé¢‘é“</a></div></td></tr>', $result;
 	$adminscript = ADMINSCRIPT;
 	echo <<<EOT
 <script type="text/JavaScript">
@@ -170,7 +170,7 @@ form.onsubmit = function(){return false;};
 _attachEvent($('submit_portal_html'), 'click', function(){
 	$('mk_result').style.display = 'block';
 	$('mk_index').style.display = 'none';
-	this.innerHTML = 'ÖØĞÂÉú³É';
+	this.innerHTML = 'é‡æ–°ç”Ÿæˆ';
 	var starttime = form['starttime'].value;
 	if(starttime){
 		make_html_category(starttime);
@@ -190,7 +190,7 @@ _attachEvent($('submit_portal_html'), 'click', function(){
 		} else {
 			var dom = $('mk_index');
 			dom.style.display = 'block';
-			dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄÆµµÀÒ³Ãæ';
+			dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„é¢‘é“é¡µé¢';
 		}
 	}
 	return false;
@@ -200,11 +200,11 @@ function make_html_category_ok() {
 	var dom = $('mk_index');
 	dom.style.display = 'block';
 	dom.style.color = 'green';
-	dom.innerHTML = '<div class="mk_msg">Ñ¡ÔñµÄÆµµÀÈ«²¿Éú³É³É¹¦</div>';
+	dom.innerHTML = '<div class="mk_msg">é€‰æ‹©çš„é¢‘é“å…¨éƒ¨ç”ŸæˆæˆåŠŸ</div>';
 }
 function make_html_category(starttime){
 	var dom = $('mk_category');
-	dom.innerHTML = '<div class="mk_msg">ÇëÉÔµÈ£¬ÕıÔÚ¼ì²é¿ÉÉú³ÉµÄÆµµÀÒ³Ãæ...</div>';
+	dom.innerHTML = '<div class="mk_msg">è¯·ç¨ç­‰ï¼Œæ­£åœ¨æ£€æŸ¥å¯ç”Ÿæˆçš„é¢‘é“é¡µé¢...</div>';
 	dom.style.display = 'block';
 	starttime = starttime || form['starttime'].value;
 	var x = new Ajax();
@@ -212,7 +212,7 @@ function make_html_category(starttime){
 		if(s) {
 			new make_html_batch('portal.php?mod=list&catid=', s.split(','), make_html_category_ok, dom);
 		} else {
-			dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄÆµµÀÒ³Ãæ';
+			dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„é¢‘é“é¡µé¢';
 			setTimeout(function(){\$('mk_category').style.display = 'none'; make_html_index();}, 1000);
 		}
 	});
@@ -225,20 +225,20 @@ EOT;
 } elseif($operation == 'article') {
 
 	loadcache('portalcategory');
-	showtips('<li>Éú³ÉÖ¸¶¨ÆğÊ¼Ê±¼äÒÔºó·¢²¼µÄÎÄÕÂµÄHTMLÎÄ¼ş</li><li>Éú³ÉÖ¸¶¨ÆµµÀÏÂËùÓĞÎÄÕÂµÄHTMLÎÄ¼ş</li><li>Éú³ÉÖ¸¶¨ÆğÊ¼Ê±¼äÒÔºó·¢²¼µÄÎÄÕÂµÄHTMLÎÄ¼ş</li>');
+	showtips('<li>ç”ŸæˆæŒ‡å®šèµ·å§‹æ—¶é—´ä»¥åå‘å¸ƒçš„æ–‡ç« çš„HTMLæ–‡ä»¶</li><li>ç”ŸæˆæŒ‡å®šé¢‘é“ä¸‹æ‰€æœ‰æ–‡ç« çš„HTMLæ–‡ä»¶</li><li>ç”ŸæˆæŒ‡å®šèµ·å§‹æ—¶é—´ä»¥åå‘å¸ƒçš„æ–‡ç« çš„HTMLæ–‡ä»¶</li>');
 	showformheader('makehtml&operation=category');
 	showtableheader('');
 	echo '<script type="text/javascript" src="'.STATICURL.'js/calendar.js"></script>',
 		'<script type="text/javascript" src="'.STATICURL.'js/makehtml.js?1"></script>',
 		$css;
 
-	showsetting('ÆğÊ¼Ê±¼ä', 'starttime', dgmdate(TIMESTAMP - 86400, 'Y-m-d'), 'calendar', '', '', '', '1');
-	$selectdata = array('category', array(array(0, 'Éú³ÉËùÓĞÆµµÀ')));
+	showsetting('èµ·å§‹æ—¶é—´', 'starttime', dgmdate(TIMESTAMP - 86400, 'Y-m-d'), 'calendar', '', '', '', '1');
+	$selectdata = array('category', array(array(0, 'ç”Ÿæˆæ‰€æœ‰é¢‘é“')));
 	mk_format_category(array_keys($_G['cache']['portalcategory']));
-	showsetting('Ñ¡ÔñÆµµÀ', $selectdata, 0, 'mselect');
-	showsetting('ÆğÊ¼ID(¿Õ»ò0±íÊ¾´ÓÍ·¿ªÊ¼)', 'startid', 0, 'text');
-	showsetting('½áÊøID(¿Õ»ò0±íÊ¾Ö±µ½½áÊø)', 'endid', 0, 'text');
-	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">Éú³ÉÎÄÕÂ</a></div></td></tr>', $result;
+	showsetting('é€‰æ‹©é¢‘é“', $selectdata, 0, 'mselect');
+	showsetting('èµ·å§‹ID(ç©ºæˆ–0è¡¨ç¤ºä»å¤´å¼€å§‹)', 'startid', 0, 'text');
+	showsetting('ç»“æŸID(ç©ºæˆ–0è¡¨ç¤ºç›´åˆ°ç»“æŸ)', 'endid', 0, 'text');
+	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">ç”Ÿæˆæ–‡ç« </a></div></td></tr>', $result;
 	$adminscript = ADMINSCRIPT;
 	echo <<<EOT
 <script type="text/JavaScript">
@@ -247,7 +247,7 @@ form.onsubmit = function(){return false;};
 _attachEvent($('submit_portal_html'), 'click', function(){
 	$('mk_result').style.display = 'block';
 	$('mk_index').style.display = 'none';
-	this.innerHTML = 'ÖØĞÂÉú³É';
+	this.innerHTML = 'é‡æ–°ç”Ÿæˆ';
 	var starttime = form['starttime'].value;
 	var category = form['category'];
 	var allcatids = [];
@@ -266,7 +266,7 @@ _attachEvent($('submit_portal_html'), 'click', function(){
 	} else {
 		var dom = $('mk_index');
 		dom.style.display = 'block';
-		dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄÎÄÕÂÒ³Ãæ';
+		dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„æ–‡ç« é¡µé¢';
 	}
 	return false;
 });
@@ -275,7 +275,7 @@ function make_html_article_ok() {
 	var dom = $('mk_index');
 	dom.style.display = 'block';
 	dom.style.color = 'green';
-	dom.innerHTML = '<div class="mk_msg">È«²¿ÎÄÕÂÉú³É³É¹¦</div>';
+	dom.innerHTML = '<div class="mk_msg">å…¨éƒ¨æ–‡ç« ç”ŸæˆæˆåŠŸ</div>';
 }
 
 function make_html_article(starttime, catids, startid, endid) {
@@ -283,14 +283,14 @@ function make_html_article(starttime, catids, startid, endid) {
 	startid = startid || 0;
 	endid = endid || 0;
 	var dom = $('mk_article');
-	dom.innerHTML = '<div class="mk_msg">ÇëÉÔµÈ£¬ÕıÔÚ¼ì²é¿ÉÉú³ÉµÄÎÄÕÂÒ³Ãæ...</div>';
+	dom.innerHTML = '<div class="mk_msg">è¯·ç¨ç­‰ï¼Œæ­£åœ¨æ£€æŸ¥å¯ç”Ÿæˆçš„æ–‡ç« é¡µé¢...</div>';
 	dom.style.display = 'block';
 	var x = new Ajax();
 	x.get('$adminscript?action=makehtml&operation=aids&inajax=1&frame=no&starttime='+starttime+'&catids='+(catids == -1 ? '' : catids.join(','))+'&startid='+startid+'&endid='+endid, function (s) {
 		if(s && s.indexOf('<') < 0){
 			new make_html_batch('portal.php?mod=view&aid=', s.split(','), make_html_article_ok, dom);
 		} else {
-			dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄÎÄÕÂÒ³Ãæ';
+			dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„æ–‡ç« é¡µé¢';
 		}
 	});
 }
@@ -315,15 +315,15 @@ EOT;
 
 } elseif($operation == 'topic') {
 
-	showtips('<li>Éú³ÉÖ¸¶¨ÆğÊ¼Ê±¼äÒÔºó·¢²¼µÄ×¨ÌâµÄHTMLÎÄ¼ş</li>');
+	showtips('<li>ç”ŸæˆæŒ‡å®šèµ·å§‹æ—¶é—´ä»¥åå‘å¸ƒçš„ä¸“é¢˜çš„HTMLæ–‡ä»¶</li>');
 	showformheader('makehtml&operation=topic');
 	showtableheader('');
 	echo '<script type="text/javascript" src="'.STATICURL.'js/calendar.js"></script>',
 		'<script type="text/javascript" src="'.STATICURL.'js/makehtml.js?1"></script>',
 		$css;
 
-	showsetting('ÆğÊ¼Ê±¼ä', 'starttime', '', 'calendar', '', '', '', '1');
-	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">Éú³É×¨Ìâ</a></div></td></tr>', $result;
+	showsetting('èµ·å§‹æ—¶é—´', 'starttime', '', 'calendar', '', '', '', '1');
+	echo '<tr><td colspan="15"><div class="fixsel"><a href="javascript:void(0);" class="btn_big" id="submit_portal_html">ç”Ÿæˆä¸“é¢˜</a></div></td></tr>', $result;
 	$adminscript = ADMINSCRIPT;
 	echo <<<EOT
 <script type="text/JavaScript">
@@ -332,14 +332,14 @@ form.onsubmit = function(){return false;};
 _attachEvent($('submit_portal_html'), 'click', function(){
 	$('mk_result').style.display = 'block';
 	$('mk_index').style.display = 'none';
-	this.innerHTML = 'ÖØĞÂÉú³É';
+	this.innerHTML = 'é‡æ–°ç”Ÿæˆ';
 	var starttime = form['starttime'].value;
 	if(starttime) {
 		make_html_topic(starttime);
 	} else {
 		var dom = $('mk_index');
 		dom.style.display = 'block';
-		dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄ×¨ÌâÒ³Ãæ';
+		dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„ä¸“é¢˜é¡µé¢';
 	}
 	return false;
 });
@@ -348,19 +348,19 @@ function make_html_topic_ok() {
 	var dom = $('mk_index');
 	dom.style.display = 'block';
 	dom.style.color = 'green';
-	dom.innerHTML = '<div class="mk_msg">È«²¿×¨ÌâÉú³É³É¹¦</div>';
+	dom.innerHTML = '<div class="mk_msg">å…¨éƒ¨ä¸“é¢˜ç”ŸæˆæˆåŠŸ</div>';
 }
 
 function make_html_topic(starttime) {
 	var dom = $('mk_topic');
-	dom.innerHTML = '<div class="mk_msg">ÇëÉÔµÈ£¬ÕıÔÚ¼ì²é¿ÉÉú³ÉµÄ×¨ÌâÒ³Ãæ...</div>';
+	dom.innerHTML = '<div class="mk_msg">è¯·ç¨ç­‰ï¼Œæ­£åœ¨æ£€æŸ¥å¯ç”Ÿæˆçš„ä¸“é¢˜é¡µé¢...</div>';
 	dom.style.display = 'block';
 	var x = new Ajax();
 	x.get('$adminscript?action=makehtml&operation=topicids&inajax=1&frame=no&starttime='+starttime, function (s) {
 		if(s && s.indexOf('<') < 0){
 			new make_html_batch('portal.php?mod=topic&topicid=', s.split(','), make_html_topic_ok, dom);
 		} else {
-			dom.innerHTML = 'Ã»ÓĞ¿ÉÉú³ÉµÄ×¨ÌâÒ³Ãæ';
+			dom.innerHTML = 'æ²¡æœ‰å¯ç”Ÿæˆçš„ä¸“é¢˜é¡µé¢';
 		}
 	});
 }

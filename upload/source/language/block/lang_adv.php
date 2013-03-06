@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'adv_title' => '»òÕßÊäÈëÃû³Æ',
-	'adv_adv' => 'Ñ¡Ôñ¹ã¸æ',
+	'adv_title' => 'æˆ–è€…è¾“å…¥åç§°',
+	'adv_adv' => 'é€‰æ‹©å¹¿å‘Š',
 );
 ?>

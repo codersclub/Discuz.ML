@@ -13,15 +13,15 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'banner_pic' => 'Í¼Æ¬µØÖ·',
-	'banner_width' => 'Í¼Æ¬¿í¶È',
-	'banner_height' => 'Í¼Æ¬¸ß¶È',
-	'banner_url' => 'Í¼Æ¬Á´½Ó',
-	'banner_text' => 'Í¼Æ¬½éÉÜ',
-	'banner_atarget' => 'Á´½Ó´ò¿ª·½Ê½',
-	'banner_atarget_top' => '±¾Ò³Ãæ´ò¿ª(Ìø³ö¿ò¼Ü)',
-	'banner_atarget_blank' => 'ÐÂ´°¿Ú´ò¿ª',
-	'banner_atarget_self' => '±¾Ò³Ãæ´ò¿ª',
+	'banner_pic' => 'å›¾ç‰‡åœ°å€',
+	'banner_width' => 'å›¾ç‰‡å®½åº¦',
+	'banner_height' => 'å›¾ç‰‡é«˜åº¦',
+	'banner_url' => 'å›¾ç‰‡é“¾æŽ¥',
+	'banner_text' => 'å›¾ç‰‡ä»‹ç»',
+	'banner_atarget' => 'é“¾æŽ¥æ‰“å¼€æ–¹å¼',
+	'banner_atarget_top' => 'æœ¬é¡µé¢æ‰“å¼€(è·³å‡ºæ¡†æž¶)',
+	'banner_atarget_blank' => 'æ–°çª—å£æ‰“å¼€',
+	'banner_atarget_self' => 'æœ¬é¡µé¢æ‰“å¼€',
 );
 
 ?>

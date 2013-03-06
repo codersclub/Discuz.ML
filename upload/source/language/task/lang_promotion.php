@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'promotion_name' => 'Õ¾µãÍÆ¹ãÈÎÎñ',
-	'promotion_desc' => 'µ½¡°<a href="home.php?mod=spacecp&ac=promotion" target="_blank" class="xi2">·ÃÎÊÍÆ¹ã</a>¡±Ò³Ãæ£¬¸´ÖÆÄúµÄÍÆ¹ãÁ´½Ó£¬·¢¸øQQºÃÓÑ¡¢ÄúµÄ²©¿Í»òÆäËû´óÐÍÍøÕ¾£¬ÍÆ¹ã»ñ»ý·Ö',
-	'promotion_complete_var_iplimit' => 'ÍÆ¹ã IP ÊýÏÂÏÞ',
-	'promotion_complete_var_iplimit_comment' => 'µ±ÈÕÍÆ¹ã IP Êý´óÓÚ»òµÈÓÚ´ËÉèÖÃ£¬²ÅÄÜÍê³ÉÈÎÎñ',
+	'promotion_name' => 'ç«™ç‚¹æŽ¨å¹¿ä»»åŠ¡',
+	'promotion_desc' => 'åˆ°â€œ<a href="home.php?mod=spacecp&ac=promotion" target="_blank" class="xi2">è®¿é—®æŽ¨å¹¿</a>â€é¡µé¢ï¼Œå¤åˆ¶æ‚¨çš„æŽ¨å¹¿é“¾æŽ¥ï¼Œå‘ç»™QQå¥½å‹ã€æ‚¨çš„åšå®¢æˆ–å…¶ä»–å¤§åž‹ç½‘ç«™ï¼ŒæŽ¨å¹¿èŽ·ç§¯åˆ†',
+	'promotion_complete_var_iplimit' => 'æŽ¨å¹¿ IP æ•°ä¸‹é™',
+	'promotion_complete_var_iplimit_comment' => 'å½“æ—¥æŽ¨å¹¿ IP æ•°å¤§äºŽæˆ–ç­‰äºŽæ­¤è®¾ç½®ï¼Œæ‰èƒ½å®Œæˆä»»åŠ¡',
 );
 
 ?>

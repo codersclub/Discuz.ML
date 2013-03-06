@@ -32,7 +32,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("¼ÌÐø×ª»»Êý¾Ý±í ".$table_source." $start ÖÁ ".($start+$limit)." ÐÐ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+	showmessage("ç»§ç»­è½¬æ¢æ•°æ®è¡¨ ".$table_source." $start è‡³ ".($start+$limit)." è¡Œ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 }
 
 ?>

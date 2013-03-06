@@ -14,217 +14,217 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 
-	'type_wall' => 'ÁôÑÔ',
-	'type_piccomment' => 'Í¼Æ¬ÆÀÂÛ',
-	'type_blogcomment' => 'ÈÕÖ¾ÆÀÂÛ',
-	'type_clickblog' => 'ÈÕÖ¾±íÌ¬',
-	'type_clickarticle' => 'ÎÄÕÂ±íÌ¬',
-	'type_clickpic' => 'Í¼Æ¬±íÌ¬',
-	'type_sharecomment' => '·ÖÏíÆÀÂÛ',
-	'type_doing' => '¼ÇÂ¼',
-	'type_friend' => 'ºÃÓÑ',
-	'type_credit' => '»ý·Ö',
-	'type_bbs' => 'ÂÛÌ³',
-	'type_system' => 'ÏµÍ³',
-	'type_thread' => 'Ö÷Ìâ',
-	'type_task' => 'ÈÎÎñ',
-	'type_group' => 'Èº×é',
+	'type_wall' => 'ç•™è¨€',
+	'type_piccomment' => 'å›¾ç‰‡è¯„è®º',
+	'type_blogcomment' => 'æ—¥å¿—è¯„è®º',
+	'type_clickblog' => 'æ—¥å¿—è¡¨æ€',
+	'type_clickarticle' => 'æ–‡ç« è¡¨æ€',
+	'type_clickpic' => 'å›¾ç‰‡è¡¨æ€',
+	'type_sharecomment' => 'åˆ†äº«è¯„è®º',
+	'type_doing' => 'è®°å½•',
+	'type_friend' => 'å¥½å‹',
+	'type_credit' => 'ç§¯åˆ†',
+	'type_bbs' => 'è®ºå›',
+	'type_system' => 'ç³»ç»Ÿ',
+	'type_thread' => 'ä¸»é¢˜',
+	'type_task' => 'ä»»åŠ¡',
+	'type_group' => 'ç¾¤ç»„',
 
-	'mail_to_user' => 'ÓÐÐÂµÄÍ¨Öª',
-	'showcredit' => '{actor} ÔùËÍ¸øÄú {credit} ¸ö¾º¼Û»ý·Ö£¬°ïÖúÌáÉýÄúÔÚ <a href="misc.php?mod=ranklist&type=member" target="_blank">¾º¼ÛÅÅÐÐ°ñ</a> ÖÐµÄÃû´Î',
-	'share_space' => '{actor} ·ÖÏíÁËÄúµÄ¿Õ¼ä',
-	'share_blog' => '{actor} ·ÖÏíÁËÄúµÄÈÕÖ¾ <a href="{url}" target="_blank">{subject}</a>',
-	'share_album' => '{actor} ·ÖÏíÁËÄúµÄÏà²á <a href="{url}" target="_blank">{albumname}</a>',
-	'share_pic' => '{actor} ·ÖÏíÁËÄúµÄÏà²á {albumname} ÖÐµÄ <a href="{url}" target="_blank"> Í¼Æ¬</a>',
-	'share_thread' => '{actor} ·ÖÏíÁËÄúµÄÌû×Ó <a href="{url}" target="_blank">{subject}</a>',
-	'share_article' => '{actor} ·ÖÏíÁËÄúµÄÎÄÕÂ <a href="{url}" target="_blank">{subject}</a>',
-	'magic_present_note' => 'ËÍ¸øÄúÒ»¸öµÀ¾ß <a href="{url}" target="_blank">{name}</a>',
-	'friend_add' => '{actor} ºÍÄú³ÉÎªÁËºÃÓÑ',
-	'friend_request' => '{actor} ÇëÇó¼ÓÄúÎªºÃÓÑ{note}&nbsp;&nbsp;<a onclick="showWindow(this.id, this.href, \'get\', 0);" class="xw1" id="afr_{uid}" href="{url}">Åú×¼ÉêÇë</a>',
-	'doing_reply' => '{actor} »Ø¸´ÁËÄúµÄ <a href="{url}" target="_blank">¼ÇÂ¼</a>',
-	'wall_reply' => '{actor} »Ø¸´ÁËÄúµÄ <a href="{url}" target="_blank">ÁôÑÔ</a>',
-	'pic_comment_reply' => '{actor} »Ø¸´ÁËÄúµÄ <a href="{url}" target="_blank">Í¼Æ¬ÆÀÂÛ</a>',
-	'blog_comment_reply' => '{actor} »Ø¸´ÁËÄúµÄ <a href="{url}" target="_blank">ÈÕÖ¾ÆÀÂÛ</a>',
-	'share_comment_reply' => '{actor} »Ø¸´ÁËÄúµÄ <a href="{url}" target="_blank">·ÖÏíÆÀÂÛ</a>',
-	'wall' => '{actor} ÔÚÁôÑÔ°åÉÏ¸øÄú <a href="{url}" target="_blank">ÁôÑÔ</a>',
-	'pic_comment' => '{actor} ÆÀÂÛÁËÄúµÄ <a href="{url}" target="_blank">Í¼Æ¬</a>',
-	'blog_comment' => '{actor} ÆÀÂÛÁËÄúµÄÈÕÖ¾ <a href="{url}" target="_blank">{subject}</a>',
-	'share_comment' => '{actor} ÆÀÂÛÁËÄúµÄ <a href="{url}" target="_blank">·ÖÏí</a>',
-	'click_blog' => '{actor} ¶ÔÄúµÄÈÕÖ¾ <a href="{url}" target="_blank">{subject}</a> ×öÁË±íÌ¬',
-	'click_pic' => '{actor} ¶ÔÄúµÄ <a href="{url}" target="_blank">Í¼Æ¬</a> ×öÁË±íÌ¬',
-	'click_article' => '{actor} ¶ÔÄúµÄÎÄÕÂ <a href="{url}" target="_blank">{subject}</a> ×öÁË±íÌ¬',
-	'show_out' => '{actor} ·ÃÎÊÁËÄúµÄÖ÷Ò³ºó£¬ÄúÔÚ¾º¼ÛÅÅÃû°ñÖÐµÄ×îºóÒ»¸ö»ý·ÖÒ²±»Ïû·ÑµôÁË',
-	'puse_article' => '¹§Ï²Äú£¬ÄúµÄ<a href="{url}" target="_blank">{subject}</a>ÒÑ±»Ìí¼Óµ½ÎÄÕÂÁÐ±í£¬ <a href="{newurl}" target="_blank">µã»÷²é¿´</a>',
+	'mail_to_user' => 'æœ‰æ–°çš„é€šçŸ¥',
+	'showcredit' => '{actor} èµ é€ç»™æ‚¨ {credit} ä¸ªç«žä»·ç§¯åˆ†ï¼Œå¸®åŠ©æå‡æ‚¨åœ¨ <a href="misc.php?mod=ranklist&type=member" target="_blank">ç«žä»·æŽ’è¡Œæ¦œ</a> ä¸­çš„åæ¬¡',
+	'share_space' => '{actor} åˆ†äº«äº†æ‚¨çš„ç©ºé—´',
+	'share_blog' => '{actor} åˆ†äº«äº†æ‚¨çš„æ—¥å¿— <a href="{url}" target="_blank">{subject}</a>',
+	'share_album' => '{actor} åˆ†äº«äº†æ‚¨çš„ç›¸å†Œ <a href="{url}" target="_blank">{albumname}</a>',
+	'share_pic' => '{actor} åˆ†äº«äº†æ‚¨çš„ç›¸å†Œ {albumname} ä¸­çš„ <a href="{url}" target="_blank"> å›¾ç‰‡</a>',
+	'share_thread' => '{actor} åˆ†äº«äº†æ‚¨çš„å¸–å­ <a href="{url}" target="_blank">{subject}</a>',
+	'share_article' => '{actor} åˆ†äº«äº†æ‚¨çš„æ–‡ç«  <a href="{url}" target="_blank">{subject}</a>',
+	'magic_present_note' => 'é€ç»™æ‚¨ä¸€ä¸ªé“å…· <a href="{url}" target="_blank">{name}</a>',
+	'friend_add' => '{actor} å’Œæ‚¨æˆä¸ºäº†å¥½å‹',
+	'friend_request' => '{actor} è¯·æ±‚åŠ æ‚¨ä¸ºå¥½å‹{note}&nbsp;&nbsp;<a onclick="showWindow(this.id, this.href, \'get\', 0);" class="xw1" id="afr_{uid}" href="{url}">æ‰¹å‡†ç”³è¯·</a>',
+	'doing_reply' => '{actor} å›žå¤äº†æ‚¨çš„ <a href="{url}" target="_blank">è®°å½•</a>',
+	'wall_reply' => '{actor} å›žå¤äº†æ‚¨çš„ <a href="{url}" target="_blank">ç•™è¨€</a>',
+	'pic_comment_reply' => '{actor} å›žå¤äº†æ‚¨çš„ <a href="{url}" target="_blank">å›¾ç‰‡è¯„è®º</a>',
+	'blog_comment_reply' => '{actor} å›žå¤äº†æ‚¨çš„ <a href="{url}" target="_blank">æ—¥å¿—è¯„è®º</a>',
+	'share_comment_reply' => '{actor} å›žå¤äº†æ‚¨çš„ <a href="{url}" target="_blank">åˆ†äº«è¯„è®º</a>',
+	'wall' => '{actor} åœ¨ç•™è¨€æ¿ä¸Šç»™æ‚¨ <a href="{url}" target="_blank">ç•™è¨€</a>',
+	'pic_comment' => '{actor} è¯„è®ºäº†æ‚¨çš„ <a href="{url}" target="_blank">å›¾ç‰‡</a>',
+	'blog_comment' => '{actor} è¯„è®ºäº†æ‚¨çš„æ—¥å¿— <a href="{url}" target="_blank">{subject}</a>',
+	'share_comment' => '{actor} è¯„è®ºäº†æ‚¨çš„ <a href="{url}" target="_blank">åˆ†äº«</a>',
+	'click_blog' => '{actor} å¯¹æ‚¨çš„æ—¥å¿— <a href="{url}" target="_blank">{subject}</a> åšäº†è¡¨æ€',
+	'click_pic' => '{actor} å¯¹æ‚¨çš„ <a href="{url}" target="_blank">å›¾ç‰‡</a> åšäº†è¡¨æ€',
+	'click_article' => '{actor} å¯¹æ‚¨çš„æ–‡ç«  <a href="{url}" target="_blank">{subject}</a> åšäº†è¡¨æ€',
+	'show_out' => '{actor} è®¿é—®äº†æ‚¨çš„ä¸»é¡µåŽï¼Œæ‚¨åœ¨ç«žä»·æŽ’åæ¦œä¸­çš„æœ€åŽä¸€ä¸ªç§¯åˆ†ä¹Ÿè¢«æ¶ˆè´¹æŽ‰äº†',
+	'puse_article' => 'æ­å–œæ‚¨ï¼Œæ‚¨çš„<a href="{url}" target="_blank">{subject}</a>å·²è¢«æ·»åŠ åˆ°æ–‡ç« åˆ—è¡¨ï¼Œ <a href="{newurl}" target="_blank">ç‚¹å‡»æŸ¥çœ‹</a>',
 
-	'myinvite_request' => 'ÓÐÐÂµÄÓ¦ÓÃÏûÏ¢<a href="home.php?mod=space&do=notice&view=userapp">µã´Ë½øÈëÓ¦ÓÃÏûÏ¢Ò³Ãæ½øÐÐÏà¹Ø²Ù×÷</a>',
+	'myinvite_request' => 'æœ‰æ–°çš„åº”ç”¨æ¶ˆæ¯<a href="home.php?mod=space&do=notice&view=userapp">ç‚¹æ­¤è¿›å…¥åº”ç”¨æ¶ˆæ¯é¡µé¢è¿›è¡Œç›¸å…³æ“ä½œ</a>',
 
 
-	'group_member_join' => '{actor} ¼ÓÈëÄúµÄ <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> Èº×éÐèÒªÉóºË£¬Çëµ½Èº×é<a href="{url}" target="_blank">¹ÜÀíºóÌ¨</a> ½øÐÐÉóºË',
-	'group_member_invite' => '{actor} ÑûÇëÄú¼ÓÈë <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> Èº×é£¬<a href="{url}" target="_blank">µã´ËÂíÉÏ¼ÓÈë</a>',
-	'group_member_check' => 'ÄúÒÑÍ¨¹ýÁË <a href="{url}" target="_blank">{groupname}</a> Èº×éµÄÉóºË£¬Çë <a href="{url}" target="_blank">µã»÷ÕâÀï·ÃÎÊ</a>',
-	'group_member_check_failed' => 'ÄúÃ»ÓÐÍ¨¹ý <a href="{url}" target="_blank">{groupname}</a> Èº×éµÄÉóºË¡£',
-	'group_mod_check' => 'ÄúµÄ´´½¨µÄÈº×é <a href="{url}" target="_blank">{groupname}</a> ÉóºËÍ¨¹ýÁË£¬Çë <a href="{url}" target="_blank">µã»÷ÕâÀï·ÃÎÊ</a>',
+	'group_member_join' => '{actor} åŠ å…¥æ‚¨çš„ <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> ç¾¤ç»„éœ€è¦å®¡æ ¸ï¼Œè¯·åˆ°ç¾¤ç»„<a href="{url}" target="_blank">ç®¡ç†åŽå°</a> è¿›è¡Œå®¡æ ¸',
+	'group_member_invite' => '{actor} é‚€è¯·æ‚¨åŠ å…¥ <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> ç¾¤ç»„ï¼Œ<a href="{url}" target="_blank">ç‚¹æ­¤é©¬ä¸ŠåŠ å…¥</a>',
+	'group_member_check' => 'æ‚¨å·²é€šè¿‡äº† <a href="{url}" target="_blank">{groupname}</a> ç¾¤ç»„çš„å®¡æ ¸ï¼Œè¯· <a href="{url}" target="_blank">ç‚¹å‡»è¿™é‡Œè®¿é—®</a>',
+	'group_member_check_failed' => 'æ‚¨æ²¡æœ‰é€šè¿‡ <a href="{url}" target="_blank">{groupname}</a> ç¾¤ç»„çš„å®¡æ ¸ã€‚',
+	'group_mod_check' => 'æ‚¨çš„åˆ›å»ºçš„ç¾¤ç»„ <a href="{url}" target="_blank">{groupname}</a> å®¡æ ¸é€šè¿‡äº†ï¼Œè¯· <a href="{url}" target="_blank">ç‚¹å‡»è¿™é‡Œè®¿é—®</a>',
 
-	'reason_moderate' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_moderate' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_merge' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_merge' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_delete_post' => 'ÄúÔÚ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄÌû×Ó±» {actor} É¾³ý <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_delete_post' => 'æ‚¨åœ¨ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å¸–å­è¢« {actor} åˆ é™¤ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_delete_comment' => 'ÄúÔÚ <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank">{subject}</a> µÄµãÆÀ±» {actor} É¾³ý <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_delete_comment' => 'æ‚¨åœ¨ <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank">{subject}</a> çš„ç‚¹è¯„è¢« {actor} åˆ é™¤ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_ban_post' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_ban_post' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_warn_post' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} {modaction}<br />
-Á¬Ðø {warningexpiration} ÌìÄÚÀÛ¼Æ {warninglimit} ´Î¾¯¸æ£¬Äú½«±»×Ô¶¯½ûÖ¹·¢ÑÔ {warningexpiration} Ìì¡£<br />
-½ØÖ¹ÖÁÄ¿Ç°£¬ÄúÒÑ±»¾¯¸æ {authorwarnings} ´Î£¬Çë×¢Òâ£¡<div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_warn_post' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} {modaction}<br />
+è¿žç»­ {warningexpiration} å¤©å†…ç´¯è®¡ {warninglimit} æ¬¡è­¦å‘Šï¼Œæ‚¨å°†è¢«è‡ªåŠ¨ç¦æ­¢å‘è¨€ {warningexpiration} å¤©ã€‚<br />
+æˆªæ­¢è‡³ç›®å‰ï¼Œæ‚¨å·²è¢«è­¦å‘Š {authorwarnings} æ¬¡ï¼Œè¯·æ³¨æ„ï¼<div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_move' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} ÒÆ¶¯µ½ <a href="forum.php?mod=forumdisplay&fid={tofid}" target="_blank">{toname}</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_move' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} ç§»åŠ¨åˆ° <a href="forum.php?mod=forumdisplay&fid={tofid}" target="_blank">{toname}</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_copy' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} ¸´ÖÆÎª <a href="forum.php?mod=viewthread&tid={threadid}" target="_blank">{subject}</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_copy' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} å¤åˆ¶ä¸º <a href="forum.php?mod=viewthread&tid={threadid}" target="_blank">{subject}</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_remove_reward' => 'ÄúµÄÐüÉÍÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} ³·Ïú <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_remove_reward' => 'æ‚¨çš„æ‚¬èµä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} æ’¤é”€ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_stamp_update' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} Ìí¼ÓÁËÍ¼ÕÂ {stamp} <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_stamp_update' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} æ·»åŠ äº†å›¾ç«  {stamp} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_stamp_delete' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} ³·ÏúÁËÍ¼ÕÂ <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_stamp_delete' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} æ’¤é”€äº†å›¾ç«  <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_stamplist_update' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} Ìí¼ÓÁËÍ¼±ê {stamp} <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_stamplist_update' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} æ·»åŠ äº†å›¾æ ‡ {stamp} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_stamplist_delete' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} ³·ÏúÁËÍ¼±ê <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_stamplist_delete' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} æ’¤é”€äº†å›¾æ ‡ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_stickreply' => 'ÄúÔÚÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ»ØÌû±» {actor} ÖÃ¶¥ <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_stickreply' => 'æ‚¨åœ¨ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å›žå¸–è¢« {actor} ç½®é¡¶ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_stickdeletereply' => 'ÄúÔÚÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ»ØÌû±» {actor} ³·ÏúÖÃ¶¥ <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_stickdeletereply' => 'æ‚¨åœ¨ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å›žå¸–è¢« {actor} æ’¤é”€ç½®é¡¶ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_quickclear' => 'ÄúµÄ{cleartype} ±» {actor} Çå³ý <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_quickclear' => 'æ‚¨çš„{cleartype} è¢« {actor} æ¸…é™¤ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_live_update' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} ÉèÖÃÎªÖ±²¥Ìù <div class="quote"><blockquote>{reason}</blockquote></div>',
-	'reason_live_cancle' => 'ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} È¡ÏûÖ±²¥ <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_live_update' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} è®¾ç½®ä¸ºç›´æ’­è´´ <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_live_cancle' => 'æ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} å–æ¶ˆç›´æ’­ <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'modthreads_delete' => 'Äú·¢±íµÄÖ÷Ìâ {threadsubject} Î´Í¨¹ýÉóºË£¬ÏÖÒÑ±»É¾³ý£¡',
+	'modthreads_delete' => 'æ‚¨å‘è¡¨çš„ä¸»é¢˜ {threadsubject} æœªé€šè¿‡å®¡æ ¸ï¼ŒçŽ°å·²è¢«åˆ é™¤ï¼',
 
-	'modthreads_delete_reason' => 'Äú·¢±íµÄÖ÷Ìâ {threadsubject} Î´Í¨¹ýÉóºË£¬ÏÖÒÑ±»É¾³ý£¡<div class="quote"><blockquote>{reason}</blockquote></div>',
-	'modthreads_validate' => 'Äú·¢±íµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> ÒÑÉóºËÍ¨¹ý£¡ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'modthreads_delete_reason' => 'æ‚¨å‘è¡¨çš„ä¸»é¢˜ {threadsubject} æœªé€šè¿‡å®¡æ ¸ï¼ŒçŽ°å·²è¢«åˆ é™¤ï¼<div class="quote"><blockquote>{reason}</blockquote></div>',
+	'modthreads_validate' => 'æ‚¨å‘è¡¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> å·²å®¡æ ¸é€šè¿‡ï¼ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'modreplies_delete' => 'Äú·¢±í»Ø¸´Î´Í¨¹ýÉóºË£¬ÏÖÒÑ±»É¾³ý£¡ <p class="summary">»Ø¸´ÄÚÈÝ£º<span>{post}</span></p>',
+	'modreplies_delete' => 'æ‚¨å‘è¡¨å›žå¤æœªé€šè¿‡å®¡æ ¸ï¼ŒçŽ°å·²è¢«åˆ é™¤ï¼ <p class="summary">å›žå¤å†…å®¹ï¼š<span>{post}</span></p>',
 
-	'modreplies_validate' => 'Äú·¢±íµÄ»Ø¸´ÒÑÉóºËÍ¨¹ý£¡ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a> <p class="summary">»Ø¸´ÄÚÈÝ£º<span>{post}</span></p>',
+	'modreplies_validate' => 'æ‚¨å‘è¡¨çš„å›žå¤å·²å®¡æ ¸é€šè¿‡ï¼ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a> <p class="summary">å›žå¤å†…å®¹ï¼š<span>{post}</span></p>',
 
-	'transfer' => 'ÄúÊÕµ½Ò»±ÊÀ´×Ô {actor} µÄ»ý·Ö×ªÕË {credit} &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=log&suboperation=creditslog" target="_blank" class="lit">²é¿´ &rsaquo;</a>
-<p class="summary">{actor} Ëµ£º<span>{transfermessage}</span></p>',
+	'transfer' => 'æ‚¨æ”¶åˆ°ä¸€ç¬”æ¥è‡ª {actor} çš„ç§¯åˆ†è½¬è´¦ {credit} &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=log&suboperation=creditslog" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>
+<p class="summary">{actor} è¯´ï¼š<span>{transfermessage}</span></p>',
 
-	'addfunds' => 'ÄúÌá½»µÄ»ý·Ö³äÖµÇëÇóÒÑÍê³É£¬ÏàÓ¦Êý¶îµÄ»ý·ÖÒÑ´æÈëÄúµÄ»ý·ÖÕË»§ &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=base" target="_blank" class="lit">²é¿´ &rsaquo;</a>
-<p class="summary">¶©µ¥ºÅ£º<span>{orderid}</span></p><p class="summary">Ö§³ö£º<span>ÈËÃñ±Ò {price} Ôª</span></p><p class="summary">ÊÕÈë£º<span>{value}</span></p>',
+	'addfunds' => 'æ‚¨æäº¤çš„ç§¯åˆ†å……å€¼è¯·æ±‚å·²å®Œæˆï¼Œç›¸åº”æ•°é¢çš„ç§¯åˆ†å·²å­˜å…¥æ‚¨çš„ç§¯åˆ†è´¦æˆ· &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=base" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>
+<p class="summary">è®¢å•å·ï¼š<span>{orderid}</span></p><p class="summary">æ”¯å‡ºï¼š<span>äººæ°‘å¸ {price} å…ƒ</span></p><p class="summary">æ”¶å…¥ï¼š<span>{value}</span></p>',
 
-	'rate_reason' => 'ÄúÔÚÖ÷Ìâ <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank">{subject}</a> µÄÌû×Ó±» {actor} ÆÀ·Ö {ratescore} <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'rate_reason' => 'æ‚¨åœ¨ä¸»é¢˜ <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank">{subject}</a> çš„å¸–å­è¢« {actor} è¯„åˆ† {ratescore} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'recommend_note_post' => '¹§Ï²£¬ÄúµÄÌû×Ó <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±»±à¼­²ÉÓÃ',
+	'recommend_note_post' => 'æ­å–œï¼Œæ‚¨çš„å¸–å­ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢«ç¼–è¾‘é‡‡ç”¨',
 
-	'rate_removereason' => 'ÄúÔÚÖ÷Ìâ <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank">{subject}</a> ÖÐÌû×ÓµÄÆÀ·Ö {ratescore} <div class="quote"><blockquote>{reason}</blockquote></div> ±» {actor} ³·Ïú',
+	'rate_removereason' => 'æ‚¨åœ¨ä¸»é¢˜ <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank">{subject}</a> ä¸­å¸–å­çš„è¯„åˆ† {ratescore} <div class="quote"><blockquote>{reason}</blockquote></div> è¢« {actor} æ’¤é”€',
 
-	'trade_seller_send' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> ¹ºÂòÄúµÄÉÌÆ· <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a>£¬¶Ô·½ÒÑ¸¶¿î£¬µÈ´ýÄú·¢»õ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'trade_seller_send' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> è´­ä¹°æ‚¨çš„å•†å“ <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a>ï¼Œå¯¹æ–¹å·²ä»˜æ¬¾ï¼Œç­‰å¾…æ‚¨å‘è´§ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'trade_buyer_confirm' => 'Äú¹ºÂòµÄÉÌÆ· <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a>£¬<a href="home.php?mod=space&uid={sellerid}" target="_blank">{seller}</a> ÒÑ·¢»õ£¬µÈ´ýÄúÈ·ÈÏ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'trade_buyer_confirm' => 'æ‚¨è´­ä¹°çš„å•†å“ <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a>ï¼Œ<a href="home.php?mod=space&uid={sellerid}" target="_blank">{seller}</a> å·²å‘è´§ï¼Œç­‰å¾…æ‚¨ç¡®è®¤ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'trade_fefund_success' => 'ÉÌÆ· <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> ÒÑÍË¿î³É¹¦ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">ÆÀ¼Û &rsaquo;</a>',
+	'trade_fefund_success' => 'å•†å“ <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> å·²é€€æ¬¾æˆåŠŸ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">è¯„ä»· &rsaquo;</a>',
 
-	'trade_success' => 'ÉÌÆ· <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> ÒÑ½»Ò×³É¹¦ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">ÆÀ¼Û &rsaquo;</a>',
+	'trade_success' => 'å•†å“ <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> å·²äº¤æ˜“æˆåŠŸ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">è¯„ä»· &rsaquo;</a>',
 
-	'trade_order_update_sellerid' => 'Âô¼Ò <a href="home.php?mod=space&uid={sellerid}" target="_blank">{seller}</a> ÐÞ¸ÄÁËÉÌÆ· <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> µÄ½»Ò×µ¥£¬ÇëÈ·ÈÏ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'trade_order_update_sellerid' => 'å–å®¶ <a href="home.php?mod=space&uid={sellerid}" target="_blank">{seller}</a> ä¿®æ”¹äº†å•†å“ <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> çš„äº¤æ˜“å•ï¼Œè¯·ç¡®è®¤ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'trade_order_update_buyerid' => 'Âò¼Ò <a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> ÐÞ¸ÄÁËÉÌÆ· <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> µÄ½»Ò×µ¥£¬ÇëÈ·ÈÏ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'trade_order_update_buyerid' => 'ä¹°å®¶ <a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> ä¿®æ”¹äº†å•†å“ <a href="forum.php?mod=trade&orderid={orderid}" target="_blank">{subject}</a> çš„äº¤æ˜“å•ï¼Œè¯·ç¡®è®¤ &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'eccredit' => 'ÓëÄú½»Ò×µÄ {actor} ÒÑ¶ÔÄú×÷ÁËÆÀ¼Û &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">»ØÆÀ &rsaquo;</a>',
+	'eccredit' => 'ä¸Žæ‚¨äº¤æ˜“çš„ {actor} å·²å¯¹æ‚¨ä½œäº†è¯„ä»· &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">å›žè¯„ &rsaquo;</a>',
 
-	'activity_notice' => '{actor} ÉêÇë¼ÓÈëÄú¾Ù°ìµÄ»î¶¯ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>£¬ÇëÉóºË &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'activity_notice' => '{actor} ç”³è¯·åŠ å…¥æ‚¨ä¸¾åŠžçš„æ´»åŠ¨ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>ï¼Œè¯·å®¡æ ¸ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'activity_apply' => '»î¶¯ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ·¢ÆðÈË {actor} ÒÑÅú×¼Äú²Î¼Ó´Ë»î¶¯ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'activity_apply' => 'æ´»åŠ¨ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å‘èµ·äºº {actor} å·²æ‰¹å‡†æ‚¨å‚åŠ æ­¤æ´»åŠ¨ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'activity_replenish' => '»î¶¯ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ·¢ÆðÈË {actor} Í¨ÖªÄúÐèÒªÍêÉÆ»î¶¯±¨ÃûÐÅÏ¢ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'activity_replenish' => 'æ´»åŠ¨ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å‘èµ·äºº {actor} é€šçŸ¥æ‚¨éœ€è¦å®Œå–„æ´»åŠ¨æŠ¥åä¿¡æ¯ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'activity_delete' => '»î¶¯ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ·¢ÆðÈË {actor} ¾Ü¾øÄú²Î¼Ó´Ë»î¶¯ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}"  target="_blank" class="lit">²é¿´ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'activity_delete' => 'æ´»åŠ¨ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å‘èµ·äºº {actor} æ‹’ç»æ‚¨å‚åŠ æ­¤æ´»åŠ¨ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}"  target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'activity_cancel' => '{actor} È¡ÏûÁË²Î¼Ó <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> »î¶¯ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}"  target="_blank" class="lit">²é¿´ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'activity_cancel' => '{actor} å–æ¶ˆäº†å‚åŠ  <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> æ´»åŠ¨ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}"  target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'activity_notification' => '»î¶¯ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ·¢ÆðÈË {actor} ·¢À´Í¨Öª&nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´»î¶¯ &rsaquo;</a> <div class="quote"><blockquote>{msg}</blockquote></div>',
+	'activity_notification' => 'æ´»åŠ¨ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å‘èµ·äºº {actor} å‘æ¥é€šçŸ¥&nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹æ´»åŠ¨ &rsaquo;</a> <div class="quote"><blockquote>{msg}</blockquote></div>',
 
-	'reward_question' => 'ÄúµÄÐüÉÍÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ±» {actor} ÉèÖÃÁË×î¼Ñ´ð°¸ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'reward_question' => 'æ‚¨çš„æ‚¬èµä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> è¢« {actor} è®¾ç½®äº†æœ€ä½³ç­”æ¡ˆ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'reward_bestanswer' => 'ÄúµÄ»Ø¸´±»ÐüÉÍÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ×÷Õß {actor} Ñ¡Îª×î¼Ñ´ð°¸ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'reward_bestanswer' => 'æ‚¨çš„å›žå¤è¢«æ‚¬èµä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„ä½œè€… {actor} é€‰ä¸ºæœ€ä½³ç­”æ¡ˆ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'reward_bestanswer_moderator' => 'ÄúÔÚÐüÉÍÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> µÄ»Ø¸´±»Ñ¡Îª×î¼Ñ´ð°¸ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'reward_bestanswer_moderator' => 'æ‚¨åœ¨æ‚¬èµä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> çš„å›žå¤è¢«é€‰ä¸ºæœ€ä½³ç­”æ¡ˆ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'comment_add' => '{actor} µãÆÀÁËÄúÔø¾­ÔÚÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> ·¢±íµÄÌû×Ó &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
+	'comment_add' => '{actor} ç‚¹è¯„äº†æ‚¨æ›¾ç»åœ¨ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> å‘è¡¨çš„å¸–å­ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
 
-	'reppost_noticeauthor' => '{actor} »Ø¸´ÁËÄúµÄÌû×Ó <a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">{subject}</a> &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">²é¿´</a>',
+	'reppost_noticeauthor' => '{actor} å›žå¤äº†æ‚¨çš„å¸–å­ <a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">{subject}</a> &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">æŸ¥çœ‹</a>',
 
-	'task_reward_credit' => '¹§Ï²ÄúÍê³ÉÈÎÎñ£º<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>£¬»ñµÃ»ý·Ö {creditbonus} &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=base" target="_blank" class="lit">²é¿´ÎÒµÄ»ý·Ö &rsaquo;</a></p>',
+	'task_reward_credit' => 'æ­å–œæ‚¨å®Œæˆä»»åŠ¡ï¼š<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>ï¼ŒèŽ·å¾—ç§¯åˆ† {creditbonus} &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=base" target="_blank" class="lit">æŸ¥çœ‹æˆ‘çš„ç§¯åˆ† &rsaquo;</a></p>',
 
-	'task_reward_magic' => '¹§Ï²ÄúÍê³ÉÈÎÎñ£º<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>£¬»ñµÃµÀ¾ß <a href="home.php?mod=magic&action=mybox" target="_blank">{rewardtext}</a> {bonus} ÕÅ',
+	'task_reward_magic' => 'æ­å–œæ‚¨å®Œæˆä»»åŠ¡ï¼š<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>ï¼ŒèŽ·å¾—é“å…· <a href="home.php?mod=magic&action=mybox" target="_blank">{rewardtext}</a> {bonus} å¼ ',
 
-	'task_reward_medal' => '¹§Ï²ÄúÍê³ÉÈÎÎñ£º<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>£¬»ñµÃÑ«ÕÂ <a href="home.php?mod=medal" target="_blank">{rewardtext}</a> ÓÐÐ§ÆÚ {bonus} Ìì',
+	'task_reward_medal' => 'æ­å–œæ‚¨å®Œæˆä»»åŠ¡ï¼š<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>ï¼ŒèŽ·å¾—å‹‹ç«  <a href="home.php?mod=medal" target="_blank">{rewardtext}</a> æœ‰æ•ˆæœŸ {bonus} å¤©',
 
-	'task_reward_medal_forever' => '¹§Ï²ÄúÍê³ÉÈÎÎñ£º<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>£¬»ñµÃÑ«ÕÂ <a href="home.php?mod=medal" target="_blank">{rewardtext}</a> ÓÀ¾ÃÓÐÐ§',
+	'task_reward_medal_forever' => 'æ­å–œæ‚¨å®Œæˆä»»åŠ¡ï¼š<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>ï¼ŒèŽ·å¾—å‹‹ç«  <a href="home.php?mod=medal" target="_blank">{rewardtext}</a> æ°¸ä¹…æœ‰æ•ˆ',
 
-	'task_reward_invite' => '¹§Ï²ÄúÍê³ÉÈÎÎñ£º<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>£¬»ñµÃ<a href="home.php?mod=spacecp&ac=invite" target="_blank">ÑûÇëÂë {rewardtext}¸ö</a> ÓÐÐ§ÆÚ {bonus} Ìì',
+	'task_reward_invite' => 'æ­å–œæ‚¨å®Œæˆä»»åŠ¡ï¼š<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>ï¼ŒèŽ·å¾—<a href="home.php?mod=spacecp&ac=invite" target="_blank">é‚€è¯·ç  {rewardtext}ä¸ª</a> æœ‰æ•ˆæœŸ {bonus} å¤©',
 
-	'task_reward_group' => '¹§Ï²ÄúÍê³ÉÈÎÎñ£º<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>£¬»ñµÃÓÃ»§×é {rewardtext} ÓÐÐ§ÆÚ {bonus} Ìì &nbsp; <a href="home.php?mod=spacecp&ac=usergroup" target="_blank" class="lit">¿´¿´ÎÒÄÜ×öÊ²Ã´ &rsaquo;</a>',
+	'task_reward_group' => 'æ­å–œæ‚¨å®Œæˆä»»åŠ¡ï¼š<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>ï¼ŒèŽ·å¾—ç”¨æˆ·ç»„ {rewardtext} æœ‰æ•ˆæœŸ {bonus} å¤© &nbsp; <a href="home.php?mod=spacecp&ac=usergroup" target="_blank" class="lit">çœ‹çœ‹æˆ‘èƒ½åšä»€ä¹ˆ &rsaquo;</a>',
 
-	'user_usergroup' => 'ÄúµÄÓÃ»§×éÉý¼¶Îª {usergroup} &nbsp; <a href="home.php?mod=spacecp&ac=usergroup" target="_blank" class="lit">¿´¿´ÎÒÄÜ×öÊ²Ã´ &rsaquo;</a>',
+	'user_usergroup' => 'æ‚¨çš„ç”¨æˆ·ç»„å‡çº§ä¸º {usergroup} &nbsp; <a href="home.php?mod=spacecp&ac=usergroup" target="_blank" class="lit">çœ‹çœ‹æˆ‘èƒ½åšä»€ä¹ˆ &rsaquo;</a>',
 
-	'grouplevel_update' => '¹§Ï²Äú£¬ÄúµÄÈº×é {groupname} ÒÑÉý¼¶µ½ {newlevel}¡£',
+	'grouplevel_update' => 'æ­å–œæ‚¨ï¼Œæ‚¨çš„ç¾¤ç»„ {groupname} å·²å‡çº§åˆ° {newlevel}ã€‚',
 
-	'thread_invite' => '{actor} ÑûÇëÄú{invitename} <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
-	'blog_invite' => '{actor} ÑûÇëÄú²é¿´ÈÕÖ¾ <a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank">{subject}</a> &nbsp; <a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
-	'article_invite' => '{actor} ÑûÇëÄú²é¿´ÎÄÕÂ <a href="{url}" target="_blank">{subject}</a> &nbsp; <a href="{url}" target="_blank" class="lit">²é¿´ &rsaquo;</a>',
-	'invite_friend' => '¹§Ï²Äú³É¹¦ÑûÇëµ½ {actor} ²¢³ÉÎªÄúµÄºÃÓÑ',
+	'thread_invite' => '{actor} é‚€è¯·æ‚¨{invitename} <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
+	'blog_invite' => '{actor} é‚€è¯·æ‚¨æŸ¥çœ‹æ—¥å¿— <a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank">{subject}</a> &nbsp; <a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
+	'article_invite' => '{actor} é‚€è¯·æ‚¨æŸ¥çœ‹æ–‡ç«  <a href="{url}" target="_blank">{subject}</a> &nbsp; <a href="{url}" target="_blank" class="lit">æŸ¥çœ‹ &rsaquo;</a>',
+	'invite_friend' => 'æ­å–œæ‚¨æˆåŠŸé‚€è¯·åˆ° {actor} å¹¶æˆä¸ºæ‚¨çš„å¥½å‹',
 
-	'poke_request' => '<a href="{fromurl}" class="xi2">{fromusername}</a>: <span class="xw0">{pokemsg}&nbsp;</span><a href="home.php?mod=spacecp&ac=poke&op=reply&uid={fromuid}&from=notice" id="a_p_r_{fromuid}" class="xw1" onclick="showWindow(this.id, this.href, \'get\', 0);">»Ø´òÕÐºô</a><span class="pipe">|</span><a href="home.php?mod=spacecp&ac=poke&op=ignore&uid={fromuid}&from=notice" id="a_p_i_{fromuid}" onclick="showWindow(\'pokeignore\', this.href, \'get\', 0);">ºöÂÔ</a>',
+	'poke_request' => '<a href="{fromurl}" class="xi2">{fromusername}</a>: <span class="xw0">{pokemsg}&nbsp;</span><a href="home.php?mod=spacecp&ac=poke&op=reply&uid={fromuid}&from=notice" id="a_p_r_{fromuid}" class="xw1" onclick="showWindow(this.id, this.href, \'get\', 0);">å›žæ‰“æ‹›å‘¼</a><span class="pipe">|</span><a href="home.php?mod=spacecp&ac=poke&op=ignore&uid={fromuid}&from=notice" id="a_p_i_{fromuid}" onclick="showWindow(\'pokeignore\', this.href, \'get\', 0);">å¿½ç•¥</a>',
 
-	'profile_verify_error' => '{verify}×ÊÁÏÉóºË±»¾Ü¾ø,ÒÔÏÂ×Ö¶ÎÐèÒªÖØÐÂÌîÐ´:<br/>{profile}<br/>¾Ü¾øÀíÓÉ:{reason}',
-	'profile_verify_pass' => '¹§Ï²Äú£¬ÄúÌîÐ´µÄ{verify}×ÊÁÏÉóºËÒÑÍ¨¹ý',
-	'profile_verify_pass_refusal' => 'ºÜÒÅº¶£¬ÄúÌîÐ´µÄ{verify}×ÊÁÏÉóºËÒÑ±»¾Ü¾ø',
-	'member_ban_speak' => 'ÄúÒÑ±» {user} ½ûÖ¹·¢ÑÔ£¬ÆÚÏÞ£º{day}Ìì(0£º´ú±íÓÀ¾Ã½ûÑÔ)£¬½ûÑÔÀíÓÉ£º{reason}',
-	'member_ban_visit' => 'ÄúÒÑ±» {user} ½ûÖ¹·ÃÎÊ£¬ÆÚÏÞ£º{day}Ìì(0£º´ú±íÓÀ¾Ã½ûÖ¹·ÃÎÊ)£¬½ûÖ¹·ÃÎÊÀíÓÉ£º{reason}',
-	'member_ban_status' => 'ÄúÒÑ±» {user} Ëø¶¨£¬½ûÖ¹·ÃÎÊÀíÓÉ£º{reason}',
-	'member_follow' => 'Äú¹Ø×¢µÄÈËÒÑÓÐ{count}ÌõÐÂ¶¯Ì¬¡£<a href="home.php?mod=follow">µã»÷²é¿´</a>',
-	'member_follow_add' => '{actor} ÊÕÌýÁËÄú¡£<a href="home.php?mod=follow&do=follower">µã»÷²é¿´</a>',
+	'profile_verify_error' => '{verify}èµ„æ–™å®¡æ ¸è¢«æ‹’ç»,ä»¥ä¸‹å­—æ®µéœ€è¦é‡æ–°å¡«å†™:<br/>{profile}<br/>æ‹’ç»ç†ç”±:{reason}',
+	'profile_verify_pass' => 'æ­å–œæ‚¨ï¼Œæ‚¨å¡«å†™çš„{verify}èµ„æ–™å®¡æ ¸å·²é€šè¿‡',
+	'profile_verify_pass_refusal' => 'å¾ˆé—æ†¾ï¼Œæ‚¨å¡«å†™çš„{verify}èµ„æ–™å®¡æ ¸å·²è¢«æ‹’ç»',
+	'member_ban_speak' => 'æ‚¨å·²è¢« {user} ç¦æ­¢å‘è¨€ï¼ŒæœŸé™ï¼š{day}å¤©(0ï¼šä»£è¡¨æ°¸ä¹…ç¦è¨€)ï¼Œç¦è¨€ç†ç”±ï¼š{reason}',
+	'member_ban_visit' => 'æ‚¨å·²è¢« {user} ç¦æ­¢è®¿é—®ï¼ŒæœŸé™ï¼š{day}å¤©(0ï¼šä»£è¡¨æ°¸ä¹…ç¦æ­¢è®¿é—®)ï¼Œç¦æ­¢è®¿é—®ç†ç”±ï¼š{reason}',
+	'member_ban_status' => 'æ‚¨å·²è¢« {user} é”å®šï¼Œç¦æ­¢è®¿é—®ç†ç”±ï¼š{reason}',
+	'member_follow' => 'æ‚¨å…³æ³¨çš„äººå·²æœ‰{count}æ¡æ–°åŠ¨æ€ã€‚<a href="home.php?mod=follow">ç‚¹å‡»æŸ¥çœ‹</a>',
+	'member_follow_add' => '{actor} æ”¶å¬äº†æ‚¨ã€‚<a href="home.php?mod=follow&do=follower">ç‚¹å‡»æŸ¥çœ‹</a>',
 
-	'member_moderate_invalidate' => 'ÄúµÄÕËºÅÎ´ÄÜÍ¨¹ý¹ÜÀíÔ±µÄÉóºË£¬Çë<a href="home.php?mod=spacecp&ac=profile">ÖØÐÂÌá½»×¢²áÐÅÏ¢</a>¡£<br />¹ÜÀíÔ±ÁôÑÔ: <b>{remark}</b>',
-	'member_moderate_validate' => 'ÄúµÄÕËºÅÒÑÍ¨¹ýÉóºË¡£<br />¹ÜÀíÔ±ÁôÑÔ: <b>{remark}</b>',
-	'member_moderate_invalidate_no_remark' => 'ÄúµÄÕËºÅÎ´ÄÜÍ¨¹ý¹ÜÀíÔ±µÄÉóºË£¬Çë<a href="home.php?mod=spacecp&ac=profile">ÖØÐÂÌá½»×¢²áÐÅÏ¢</a>¡£',
-	'member_moderate_validate_no_remark' => 'ÄúµÄÕËºÅÒÑÍ¨¹ýÉóºË¡£',
-	'manage_verifythread' => 'ÓÐÐÂµÄ´ýÉóºËÖ÷Ìâ¡£<a href="admin.php?action=moderate&operation=threads&dateline=all">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifypost' => 'ÓÐÐÂµÄ´ýÉóºË»ØÌû¡£<a href="admin.php?action=moderate&operation=replies&dateline=all">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifyuser' => 'ÓÐÐÂµÄ´ýÉóºË»áÔ±¡£<a href="admin.php?action=moderate&operation=members">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifyblog' => 'ÓÐÐÂµÄ´ýÉóºËÈÕÖ¾¡£<a href="admin.php?action=moderate&operation=blogs">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifydoing' => 'ÓÐÐÂµÄ´ýÉóºË¼ÇÂ¼¡£<a href="admin.php?action=moderate&operation=doings">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifypic' => 'ÓÐÐÂµÄ´ýÉóºËÍ¼Æ¬¡£<a href="admin.php?action=moderate&operation=pictures">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifyshare' => 'ÓÐÐÂµÄ´ýÉóºË·ÖÏí¡£<a href="admin.php?action=moderate&operation=shares">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifycommontes' => 'ÓÐÐÂµÄ´ýÉóºËÁôÑÔ/ÆÀÂÛ¡£<a href="admin.php?action=moderate&operation=comments">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifyrecycle' => '»ØÊÕÕ¾ÓÐÐÂµÄ´ý´¦ÀíÖ÷Ìâ¡£<a href="admin.php?action=recyclebin">ÏÖÔÚ´¦Àí</a>',
-	'manage_verifyrecyclepost' => '»ØÌû»ØÊÕÕ¾ÓÐÐÂµÄ´ý´¦Àí»ØÌû¡£<a href="admin.php?action=recyclebinpost">ÏÖÔÚ´¦Àí</a>',
-	'manage_verifyarticle' => 'ÓÐÐÂµÄ´ýÉóºËÎÄÕÂ¡£<a href="admin.php?action=moderate&operation=articles">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifymedal' => 'ÓÐÐÂµÄ´ýÉóºËÑ«ÕÂÉêÇë¡£<a href="admin.php?action=medals&operation=mod">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifyacommont' => 'ÓÐÐÂµÄ´ýÉóºËÎÄÕÂÆÀÂÛ¡£<a href="admin.php?action=moderate&operation=articlecomments">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verifytopiccommont' => 'ÓÐÐÂµÄ´ýÉóºË×¨ÌâÆÀÂÛ¡£<a href="admin.php?action=moderate&operation=topiccomments">ÏÖÔÚ½øÐÐÉóºË</a>',
-	'manage_verify_field' => 'ÓÐÐÂµÄ´ý´¦Àí{verifyname}¡£<a href="admin.php?action=verify&operation=verify&do={doid}">ÏÖÔÚ´¦Àí</a>',
+	'member_moderate_invalidate' => 'æ‚¨çš„è´¦å·æœªèƒ½é€šè¿‡ç®¡ç†å‘˜çš„å®¡æ ¸ï¼Œè¯·<a href="home.php?mod=spacecp&ac=profile">é‡æ–°æäº¤æ³¨å†Œä¿¡æ¯</a>ã€‚<br />ç®¡ç†å‘˜ç•™è¨€: <b>{remark}</b>',
+	'member_moderate_validate' => 'æ‚¨çš„è´¦å·å·²é€šè¿‡å®¡æ ¸ã€‚<br />ç®¡ç†å‘˜ç•™è¨€: <b>{remark}</b>',
+	'member_moderate_invalidate_no_remark' => 'æ‚¨çš„è´¦å·æœªèƒ½é€šè¿‡ç®¡ç†å‘˜çš„å®¡æ ¸ï¼Œè¯·<a href="home.php?mod=spacecp&ac=profile">é‡æ–°æäº¤æ³¨å†Œä¿¡æ¯</a>ã€‚',
+	'member_moderate_validate_no_remark' => 'æ‚¨çš„è´¦å·å·²é€šè¿‡å®¡æ ¸ã€‚',
+	'manage_verifythread' => 'æœ‰æ–°çš„å¾…å®¡æ ¸ä¸»é¢˜ã€‚<a href="admin.php?action=moderate&operation=threads&dateline=all">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifypost' => 'æœ‰æ–°çš„å¾…å®¡æ ¸å›žå¸–ã€‚<a href="admin.php?action=moderate&operation=replies&dateline=all">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifyuser' => 'æœ‰æ–°çš„å¾…å®¡æ ¸ä¼šå‘˜ã€‚<a href="admin.php?action=moderate&operation=members">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifyblog' => 'æœ‰æ–°çš„å¾…å®¡æ ¸æ—¥å¿—ã€‚<a href="admin.php?action=moderate&operation=blogs">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifydoing' => 'æœ‰æ–°çš„å¾…å®¡æ ¸è®°å½•ã€‚<a href="admin.php?action=moderate&operation=doings">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifypic' => 'æœ‰æ–°çš„å¾…å®¡æ ¸å›¾ç‰‡ã€‚<a href="admin.php?action=moderate&operation=pictures">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifyshare' => 'æœ‰æ–°çš„å¾…å®¡æ ¸åˆ†äº«ã€‚<a href="admin.php?action=moderate&operation=shares">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifycommontes' => 'æœ‰æ–°çš„å¾…å®¡æ ¸ç•™è¨€/è¯„è®ºã€‚<a href="admin.php?action=moderate&operation=comments">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifyrecycle' => 'å›žæ”¶ç«™æœ‰æ–°çš„å¾…å¤„ç†ä¸»é¢˜ã€‚<a href="admin.php?action=recyclebin">çŽ°åœ¨å¤„ç†</a>',
+	'manage_verifyrecyclepost' => 'å›žå¸–å›žæ”¶ç«™æœ‰æ–°çš„å¾…å¤„ç†å›žå¸–ã€‚<a href="admin.php?action=recyclebinpost">çŽ°åœ¨å¤„ç†</a>',
+	'manage_verifyarticle' => 'æœ‰æ–°çš„å¾…å®¡æ ¸æ–‡ç« ã€‚<a href="admin.php?action=moderate&operation=articles">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifymedal' => 'æœ‰æ–°çš„å¾…å®¡æ ¸å‹‹ç« ç”³è¯·ã€‚<a href="admin.php?action=medals&operation=mod">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifyacommont' => 'æœ‰æ–°çš„å¾…å®¡æ ¸æ–‡ç« è¯„è®ºã€‚<a href="admin.php?action=moderate&operation=articlecomments">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verifytopiccommont' => 'æœ‰æ–°çš„å¾…å®¡æ ¸ä¸“é¢˜è¯„è®ºã€‚<a href="admin.php?action=moderate&operation=topiccomments">çŽ°åœ¨è¿›è¡Œå®¡æ ¸</a>',
+	'manage_verify_field' => 'æœ‰æ–°çš„å¾…å¤„ç†{verifyname}ã€‚<a href="admin.php?action=verify&operation=verify&do={doid}">çŽ°åœ¨å¤„ç†</a>',
 	'system_notice' => '{subject}<p class="summary">{message}</p>',
-	'system_adv_expiration' => 'ÄúÕ¾µãµÄÒÔÏÂ¹ã¸æ½«ÓÚ {day} Ììºóµ½ÆÚ£¬Çë¼°Ê±´¦Àí£º<br />{advs}',
-	'report_change_credits' => '{actor} ´¦ÀíÁËÄúµÄ¾Ù±¨ {creditchange} {msg}',
-	'at_message' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> ÔÚÖ÷Ìâ <a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">{subject}</a> ÖÐÌáµ½ÁËÄú<div class="quote"><blockquote>{message}</blockquote></div><a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">ÏÖÔÚÈ¥¿´¿´</a>¡£',
-	'new_report' => 'ÓÐÐÂµÄ¾Ù±¨µÈ´ý´¦Àí£¬<a href="admin.php?action=report" target="_blank">µã´Ë½øÈëºóÌ¨´¦Àí</a>¡£',
-	'new_post_report' => 'ÓÐÐÂµÄ¾Ù±¨µÈ´ý´¦Àí£¬<a href="forum.php?mod=modcp&action=report&fid={fid}" target="_blank">µã´Ë½øÈë¹ÜÀíÃæ°æ</a>¡£',
-	'magics_receive' => 'ÄúÊÕµ½ {actor} ËÍ¸øÄúµÄµÀ¾ß {magicname}
-<p class="summary">{actor} Ëµ£º<span>{msg}</span></p>
-<p class="mbn"><a href="home.php?mod=magic" target="_blank">»ØÔùµÀ¾ß</a><span class="pipe">|</span><a href="home.php?mod=magic&action=mybox" target="_blank">²é¿´ÎÒµÄµÀ¾ßÏä</a></p>',
-	'invite_collection' => '{actor} ÑûÇëÄú²ÎÓëÎ¬»¤ÌÔ×¨¼­  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>¡£<br /> <a href="forum.php?mod=collection&action=edit&op=acceptinvite&ctid={ctid}&dateline={dateline}">½ÓÊÜÑûÇë</a>',
-	'collection_removed' => 'Äú²ÎÓëÎ¬»¤µÄÌÔ×¨¼­  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> ÒÑ±» {actor} ¹Ø±Õ¡£',
-	'exit_collection' => 'ÄúÒÑ¾­ÍË³öÎ¬»¤ÌÔ×¨¼­  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>¡£',
-	'collection_becommented' => 'ÄúµÄÌÔ×¨¼­  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> ÊÕµ½ÁËÐÂÆÀÂÛ¡£',
-	'collection_befollowed' => 'ÄúµÄÌÔ×¨¼­  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> ÓÐÐÂÓÃ»§¶©ÔÄÁË£¡',
-	'collection_becollected' => '¹§Ï²ÄúµÄÖ÷Ìâ <a href="forum.php?mod=viewthread&tid={tid}">{threadname}</a> ±»ÌÔ×¨¼­  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> ÊÕÂ¼ÁË£¡',
+	'system_adv_expiration' => 'æ‚¨ç«™ç‚¹çš„ä»¥ä¸‹å¹¿å‘Šå°†äºŽ {day} å¤©åŽåˆ°æœŸï¼Œè¯·åŠæ—¶å¤„ç†ï¼š<br />{advs}',
+	'report_change_credits' => '{actor} å¤„ç†äº†æ‚¨çš„ä¸¾æŠ¥ {creditchange} {msg}',
+	'at_message' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> åœ¨ä¸»é¢˜ <a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">{subject}</a> ä¸­æåˆ°äº†æ‚¨<div class="quote"><blockquote>{message}</blockquote></div><a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">çŽ°åœ¨åŽ»çœ‹çœ‹</a>ã€‚',
+	'new_report' => 'æœ‰æ–°çš„ä¸¾æŠ¥ç­‰å¾…å¤„ç†ï¼Œ<a href="admin.php?action=report" target="_blank">ç‚¹æ­¤è¿›å…¥åŽå°å¤„ç†</a>ã€‚',
+	'new_post_report' => 'æœ‰æ–°çš„ä¸¾æŠ¥ç­‰å¾…å¤„ç†ï¼Œ<a href="forum.php?mod=modcp&action=report&fid={fid}" target="_blank">ç‚¹æ­¤è¿›å…¥ç®¡ç†é¢ç‰ˆ</a>ã€‚',
+	'magics_receive' => 'æ‚¨æ”¶åˆ° {actor} é€ç»™æ‚¨çš„é“å…· {magicname}
+<p class="summary">{actor} è¯´ï¼š<span>{msg}</span></p>
+<p class="mbn"><a href="home.php?mod=magic" target="_blank">å›žèµ é“å…·</a><span class="pipe">|</span><a href="home.php?mod=magic&action=mybox" target="_blank">æŸ¥çœ‹æˆ‘çš„é“å…·ç®±</a></p>',
+	'invite_collection' => '{actor} é‚€è¯·æ‚¨å‚ä¸Žç»´æŠ¤æ·˜ä¸“è¾‘  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>ã€‚<br /> <a href="forum.php?mod=collection&action=edit&op=acceptinvite&ctid={ctid}&dateline={dateline}">æŽ¥å—é‚€è¯·</a>',
+	'collection_removed' => 'æ‚¨å‚ä¸Žç»´æŠ¤çš„æ·˜ä¸“è¾‘  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> å·²è¢« {actor} å…³é—­ã€‚',
+	'exit_collection' => 'æ‚¨å·²ç»é€€å‡ºç»´æŠ¤æ·˜ä¸“è¾‘  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>ã€‚',
+	'collection_becommented' => 'æ‚¨çš„æ·˜ä¸“è¾‘  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> æ”¶åˆ°äº†æ–°è¯„è®ºã€‚',
+	'collection_befollowed' => 'æ‚¨çš„æ·˜ä¸“è¾‘  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> æœ‰æ–°ç”¨æˆ·è®¢é˜…äº†ï¼',
+	'collection_becollected' => 'æ­å–œæ‚¨çš„ä¸»é¢˜ <a href="forum.php?mod=viewthread&tid={tid}">{threadname}</a> è¢«æ·˜ä¸“è¾‘  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> æ”¶å½•äº†ï¼',
 
 	'pmreportcontent' => '{pmreportcontent}',
 

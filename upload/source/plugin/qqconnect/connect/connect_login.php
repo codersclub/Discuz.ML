@@ -163,7 +163,7 @@ if($op == 'init') {
 				)
 			);
 
-		} else { // debug ╣╠г╟╣гб╪╣дбшлЁук╨е╡╒ц╩сп╟С╤╗хн╨нQQ╨её╛тР©ирт╟С╤╗╣╠г╟╣дуБ╦ЖQQ╨е
+		} else { // debug Е╫⌠Е┴█Г≥╩Е╫∙Г └Х╝╨Е²⌡Х╢╕Е▐╥Е╧╤Ф╡║Ф°┴Г╩▒Е╝ Д╩╩Д╫∙QQЕ▐╥О╪▄Е┬≥Е▐╞Д╩╔Г╩▒Е╝ Е╫⌠Е┴█Г └Х©≥Д╦╙QQЕ▐╥
 			if(empty($current_connect_member)) {
 				C::t('#qqconnect#common_member_connect')->insert(
 					array(
@@ -222,7 +222,7 @@ if($op == 'init') {
 
 	} else {
 
-		if($connect_member) { // debug ╢к╥жж╖йгсц╩╖ж╠╫с╣Ц╩ВQQ╣гб╪ё╛╡╒груБ╦ЖQQ╨еря╬╜╟С╨цр╩╦ЖбшлЁук╨еакё╛╫╚ж╠╫с╣г╫ЬбшлЁак
+		if($connect_member) { // debug Ф╜╓Е┬├Ф■╞Ф≤╞Г■╗Ф┬╥Г⌡╢Ф▌╔Г┌╧Е┤╩QQГ≥╩Е╫∙О╪▄Е╧╤Д╦■Х©≥Д╦╙QQЕ▐╥Е╥╡Г╩▐Г╩▒Е╔╫Д╦─Д╦╙Х╝╨Е²⌡Х╢╕Е▐╥Д╨├О╪▄Е╟├Г⌡╢Ф▌╔Г≥╩Х©⌡Х╝╨Е²⌡Д╨├
 			C::t('#qqconnect#common_member_connect')->update($connect_member['uid'],
 				array(
 					'conuin' => $conuin,
@@ -249,7 +249,7 @@ if($op == 'init') {
 			dsetcookie('stats_qc_login', 3, 86400);
 			showmessage('login_succeed', $referer, $param, array('extrajs' => $ucsynlogin));
 
-		} else { // debug ╢к╥жж╖йгсц╩╖ж╠╫с╣Ц╩ВQQ╣гб╪ё╛╡╒груБ╦ЖQQ╨е╩╧н╢╟С╤╗хн╨нбшлЁук╨её╛╫╚╫╚лЬв╙╣╫р╩╦ЖпбрЁрЩ╣╪сц╩╖в╒╡А╦ЖпббшлЁук╨е╩Р╟Ср╩╦Жрясп╣дбшлЁук╨е
+		} else { // debug Ф╜╓Е┬├Ф■╞Ф≤╞Г■╗Ф┬╥Г⌡╢Ф▌╔Г┌╧Е┤╩QQГ≥╩Е╫∙О╪▄Е╧╤Д╦■Х©≥Д╦╙QQЕ▐╥Х©≤Ф°╙Г╩▒Е╝ Д╩╩Д╫∙Х╝╨Е²⌡Х╢╕Е▐╥О╪▄Е╟├Е╟├Х╥ЁХ╫╛Е┬╟Д╦─Д╦╙Ф√╟И║╣Е╪∙Е╞╪Г■╗Ф┬╥ФЁ╗Е├▄Д╦╙Ф√╟Х╝╨Е²⌡Х╢╕Е▐╥Ф┬√Г╩▒Д╦─Д╦╙Е╥╡Ф°┴Г └Х╝╨Е²⌡Х╢╕Е▐╥
 
 			$auth_hash = authcode($conopenid, 'ENCODE');
 			$insert_arr = array(

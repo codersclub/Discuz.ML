@@ -13,22 +13,22 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'topiclist_topicids' => 'Ö¸¶¨×¨Ìâ',
-	'topiclist_topicids_comment' => 'ÌîÈëÖ¸¶¨×¨ÌâµÄID(topicid)£¬¶à¸ö×¨ÌâÖ®¼äÓÃ¶ººÅ(,)·Ö¸ô',
-	'topiclist_uids' => '´´½¨ÕßUID',
-	'topiclist_uids_comment' => 'ÌîÈëÖ¸¶¨×¨Ìâ´´½¨ÕßµÄID(uid)£¬¶à¸öÓÃ»§Ö®¼äÓÃ¶ººÅ(,)·Ö¸ô',
-	'topiclist_startrow' => 'ÆðÊ¼Êý¾ÝÐÐÊý',
-	'topiclist_startrow_comment' => 'ÈçÐèÉè¶¨ÆðÊ¼µÄÊý¾ÝÐÐÊý£¬ÇëÊäÈë¾ßÌåÊýÖµ£¬0 Îª´ÓµÚÒ»ÐÐ¿ªÊ¼£¬ÒÔ´ËÀàÍÆ',
-	'topiclist_titlelength' => '±êÌâ³¤¶È',
-	'topiclist_titlelength_comment' => 'Ö¸¶¨×¨Ìâ±êÌâ×î´ó³¤¶È',
-	'topiclist_summarylength' => '½éÉÜ³¤¶È',
-	'topiclist_summarylength_comment' => 'Ö¸¶¨×¨Ìâ½éÉÜ×î´ó³¤¶È',
-	'topiclist_picrequired' => '¹ýÂËÎÞ·âÃæ×¨Ìâ',
-	'topiclist_picrequired_comment' => 'ÊÇ·ñ¹ýÂËÃ»ÓÐ·âÃæÍ¼Æ¬µÄ×¨Ìâ',
-	'topiclist_orderby' => '×¨ÌâÅÅÐò·½Ê½',
-	'topiclist_orderby_comment' => 'ÉèÖÃÒÔÄÄÒ»×Ö¶Î»ò·½Ê½¶Ô×¨Ìâ½øÐÐÅÅÐò',
-	'topiclist_orderby_dateline' => '°´·¢²¼Ê±¼äµ¹Ðò',
-	'topiclist_orderby_viewnum' => '°´²é¿´Êýµ¹Ðò',
+	'topiclist_topicids' => 'æŒ‡å®šä¸“é¢˜',
+	'topiclist_topicids_comment' => 'å¡«å…¥æŒ‡å®šä¸“é¢˜çš„ID(topicid)ï¼Œå¤šä¸ªä¸“é¢˜ä¹‹é—´ç”¨é€—å·(,)åˆ†éš”',
+	'topiclist_uids' => 'åˆ›å»ºè€…UID',
+	'topiclist_uids_comment' => 'å¡«å…¥æŒ‡å®šä¸“é¢˜åˆ›å»ºè€…çš„ID(uid)ï¼Œå¤šä¸ªç”¨æˆ·ä¹‹é—´ç”¨é€—å·(,)åˆ†éš”',
+	'topiclist_startrow' => 'èµ·å§‹æ•°æ®è¡Œæ•°',
+	'topiclist_startrow_comment' => 'å¦‚éœ€è®¾å®šèµ·å§‹çš„æ•°æ®è¡Œæ•°ï¼Œè¯·è¾“å…¥å…·ä½“æ•°å€¼ï¼Œ0 ä¸ºä»Žç¬¬ä¸€è¡Œå¼€å§‹ï¼Œä»¥æ­¤ç±»æŽ¨',
+	'topiclist_titlelength' => 'æ ‡é¢˜é•¿åº¦',
+	'topiclist_titlelength_comment' => 'æŒ‡å®šä¸“é¢˜æ ‡é¢˜æœ€å¤§é•¿åº¦',
+	'topiclist_summarylength' => 'ä»‹ç»é•¿åº¦',
+	'topiclist_summarylength_comment' => 'æŒ‡å®šä¸“é¢˜ä»‹ç»æœ€å¤§é•¿åº¦',
+	'topiclist_picrequired' => 'è¿‡æ»¤æ— å°é¢ä¸“é¢˜',
+	'topiclist_picrequired_comment' => 'æ˜¯å¦è¿‡æ»¤æ²¡æœ‰å°é¢å›¾ç‰‡çš„ä¸“é¢˜',
+	'topiclist_orderby' => 'ä¸“é¢˜æŽ’åºæ–¹å¼',
+	'topiclist_orderby_comment' => 'è®¾ç½®ä»¥å“ªä¸€å­—æ®µæˆ–æ–¹å¼å¯¹ä¸“é¢˜è¿›è¡ŒæŽ’åº',
+	'topiclist_orderby_dateline' => 'æŒ‰å‘å¸ƒæ—¶é—´å€’åº',
+	'topiclist_orderby_viewnum' => 'æŒ‰æŸ¥çœ‹æ•°å€’åº',
 );
 
 ?>

@@ -8,7 +8,7 @@
 <!--{elseif $post['first'] && $_G['forum_threadpay']}-->
 	<!--{template forum/viewthread_pay}-->
 <!--{elseif $_G['forum_discuzcode']['passwordlock'][$post[pid]]}-->
-	<div class="locked">{lang message_password_exists}£¬ÇëÊäÈëÃÜÂë <input type="text" id="postpw_$post[pid]" class="vm" />&nbsp;<button class="pn vm" type="button" onclick="submitpostpw($post[pid]{if $_GET['from'] == 'preview'},{$post[tid]}{else}{/if})"><strong>Ìá½»</strong></button></div>
+	<div class="locked">{lang message_password_exists}ï¼Œè¯·è¾“å…¥å¯†ç  <input type="text" id="postpw_$post[pid]" class="vm" />&nbsp;<button class="pn vm" type="button" onclick="submitpostpw($post[pid]{if $_GET['from'] == 'preview'},{$post[tid]}{else}{/if})"><strong>æäº¤</strong></button></div>
 <!--{else}-->
 	<!--{if !$post['first'] && !empty($post[subject])}-->
 		<h2>$post[subject]</h2>
@@ -68,7 +68,7 @@
 				<!--{if empty($_G['uid']) && !$post['attachment'] && $_GET['from'] != 'preview'}-->
 				<div class="attach_nopermission attach_tips">
 					<div>
-						<h3><strong>ÂíÉÏ×¢²á£¬½á½»¸ü¶àºÃÓÑ£¬ÏíÓÃ¸ü¶à¹¦ÄÜ£¬ÈÃÄãÇáËÉÍæ×ªÉçÇø¡£</strong></h3>
+						<h3><strong>é©¬ä¸Šæ³¨å†Œï¼Œç»“äº¤æ›´å¤šå¥½å‹ï¼Œäº«ç”¨æ›´å¤šåŠŸèƒ½ï¼Œè®©ä½ è½»æ¾ç©è½¬ç¤¾åŒºã€‚</strong></h3>
 						<p>{lang attach_nopermission_login} <!--{hook/global_login_text}--></p>
 					</div>
 					<span class="atips_close" onclick="this.parentNode.style.display='none'">x</span>
@@ -183,7 +183,7 @@
 			succeedhandle_fastpost(url, message, param);
 			showCreditPrompt();
 		}
-		var vf_tips = 'Â¥Ö÷µÄÌû×ÓÔõÃ´Ñù£¿¸Ï½ôÊÔÊÔÕâÀïµÄ¿ìËÙ»Ø¸´¸øÂ¥Ö÷µãÆÀÂÛ°É';
+		var vf_tips = 'æ¥¼ä¸»çš„å¸–å­æ€ä¹ˆæ ·ï¼Ÿèµ¶ç´§è¯•è¯•è¿™é‡Œçš„å¿«é€Ÿå›å¤ç»™æ¥¼ä¸»ç‚¹è¯„è®ºå§';
 		$('vmessage').value = vf_tips;
 		$('vmessage').style.color = '#CDCDCD';
 		$('vmessage').onclick = function() {

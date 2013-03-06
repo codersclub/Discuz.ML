@@ -13,15 +13,15 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'bump_name' => 'ÌáÉı¿¨',
-	'bump_forum' => 'ÔÊĞíÊ¹ÓÃ±¾µÀ¾ßµÄ°æ¿é',
-	'bump_desc' => '¿ÉÒÔÌáÉıÄ³¸öÖ÷Ìâ',
-	'bump_info' => 'ÌáÉıÖ¸¶¨µÄÖ÷Ìâ£¬ÇëÊäÈëÖ÷ÌâµÄ ID',
-	'bump_info_nonexistence' => 'ÇëÖ¸¶¨ÒªÌáÉıµÄÖ÷Ìâ',
-	'bump_succeed' => 'Äú²Ù×÷µÄÖ÷ÌâÒÑÌáÉı',
-	'bump_info_noperm' => '¶Ô²»Æğ£¬Ö÷ÌâËùÔÚ°æ¿é²»ÔÊĞíÊ¹ÓÃ±¾µÀ¾ß',
+	'bump_name' => 'æå‡å¡',
+	'bump_forum' => 'å…è®¸ä½¿ç”¨æœ¬é“å…·çš„ç‰ˆå—',
+	'bump_desc' => 'å¯ä»¥æå‡æŸä¸ªä¸»é¢˜',
+	'bump_info' => 'æå‡æŒ‡å®šçš„ä¸»é¢˜ï¼Œè¯·è¾“å…¥ä¸»é¢˜çš„ ID',
+	'bump_info_nonexistence' => 'è¯·æŒ‡å®šè¦æå‡çš„ä¸»é¢˜',
+	'bump_succeed' => 'æ‚¨æ“ä½œçš„ä¸»é¢˜å·²æå‡',
+	'bump_info_noperm' => 'å¯¹ä¸èµ·ï¼Œä¸»é¢˜æ‰€åœ¨ç‰ˆå—ä¸å…è®¸ä½¿ç”¨æœ¬é“å…·',
 
-	'bump_notification' => 'ÄúµÄÖ÷Ìâ {subject} ±» {actor} Ê¹ÓÃÁË{magicname}£¬<a href="forum.php?mod=viewthread&tid={tid}">¿ìÈ¥¿´¿´°É£¡</a>',
+	'bump_notification' => 'æ‚¨çš„ä¸»é¢˜ {subject} è¢« {actor} ä½¿ç”¨äº†{magicname}ï¼Œ<a href="forum.php?mod=viewthread&tid={tid}">å¿«å»çœ‹çœ‹å§ï¼</a>',
 );
 
 ?>

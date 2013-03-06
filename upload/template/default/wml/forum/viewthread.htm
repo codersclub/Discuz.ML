@@ -48,7 +48,7 @@
 						<p><!--{if $post['position'] > 1}-->#$post['position'] <!--{/if}-->{echo str_replace('&nbsp;', ' ', strip_tags($post[message]))}</p>
                     <!--{/if}-->
 
-				<!--{if $post['first'] && $thread['allreplies'] > 1}-->»Ø¸´ÁĞ±í($thread['allreplies'])|<!--{/if}-->
+				<!--{if $post['first'] && $thread['allreplies'] > 1}-->å›å¤åˆ—è¡¨($thread['allreplies'])|<!--{/if}-->
 				<!--{if $postcount == 0}--><a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]">{lang join_thread}</a>|<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang send_threads}</a><!--{/if}-->
 				<!--{if !$post['first'] }-->
 					<!--{if $post['authorid'] && $post['username'] && !$post['anonymous']}-->
@@ -72,9 +72,9 @@
         <!--{eval $postcount++;}-->
         <!--{/loop}-->
         <!--{echo str_replace('&amp;amp;', '&amp;', str_replace('&', '&amp;', $multipage));}-->
-		<br/><br/>&lt;&lt;<a href="forum.php?mod=redirect&goto=nextoldset&tid=$_G['tid']">ÉÏÒ»¸öÖ÷Ìâ</a><br/>
-		&gt;&gt;<a href="forum.php?mod=redirect&goto=nextnewset&tid=$_G['tid']">ÏÂÒ»¸öÖ÷Ìâ</a><br/>
-		<a href="forum.php?mod=forumdisplay&fid=$thread['fid']">·µ»Ø°æ¿é</a>
+		<br/><br/>&lt;&lt;<a href="forum.php?mod=redirect&goto=nextoldset&tid=$_G['tid']">ä¸Šä¸€ä¸ªä¸»é¢˜</a><br/>
+		&gt;&gt;<a href="forum.php?mod=redirect&goto=nextnewset&tid=$_G['tid']">ä¸‹ä¸€ä¸ªä¸»é¢˜</a><br/>
+		<a href="forum.php?mod=forumdisplay&fid=$thread['fid']">è¿”å›ç‰ˆå—</a>
 
 <!--{hook/viewthread_bottom_mobile}-->
 

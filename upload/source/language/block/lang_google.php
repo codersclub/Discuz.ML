@@ -13,20 +13,20 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'google_name' => 'Google ËÑË÷',
-	'google_desc' => 'Google ËÑË÷¿ò',
-	'google_lang' => 'ËÑË÷ÍøÒ³µÄÓïÑÔ',
-	'google_lang_comment' => 'ÉèÖÃÊÊºÏ×Ô¼ºÂÛÌ³µÄÍøÒ³ÓïÑÔ¿ÉÒÔÓÐÐ§µÄÌá¸ßËÑË÷½á¹ûµÄÖÊÁ¿',
-	'google_lang_any' => 'ÈÎºÎÓïÑÔ',
-	'google_lang_en' => 'Ó¢ÎÄ',
-	'google_lang_zh-CN' => '¼òÌåÖÐÎÄ',
-	'google_lang_zh-TW' => '·±ÌåÖÐÎÄ',
-	'google_default' => 'Ä¬ÈÏËÑË÷Ñ¡Ôñ',
-	'google_default_comment' => 'ËÑË÷¿òÄ¬ÈÏÑ¡ÔñµÄÏîÄ¿',
-	'google_default_0' => 'ÍøÒ³ËÑË÷',
-	'google_default_1' => 'Õ¾ÄÚËÑË÷',
-	'google_client' => 'ËÑË÷ÁªÃË ID',
-	'google_client_comment' => 'Èç¹ûÄú¼ÓÈëÁË Google ËÑË÷ÁªÃË£¬¿ÉÒÔÔÚÕâÀïÌîÐ´ ID',
+	'google_name' => 'Google æœç´¢',
+	'google_desc' => 'Google æœç´¢æ¡†',
+	'google_lang' => 'æœç´¢ç½‘é¡µçš„è¯­è¨€',
+	'google_lang_comment' => 'è®¾ç½®é€‚åˆè‡ªå·±è®ºå›çš„ç½‘é¡µè¯­è¨€å¯ä»¥æœ‰æ•ˆçš„æé«˜æœç´¢ç»“æžœçš„è´¨é‡',
+	'google_lang_any' => 'ä»»ä½•è¯­è¨€',
+	'google_lang_en' => 'è‹±æ–‡',
+	'google_lang_zh-CN' => 'ç®€ä½“ä¸­æ–‡',
+	'google_lang_zh-TW' => 'ç¹ä½“ä¸­æ–‡',
+	'google_default' => 'é»˜è®¤æœç´¢é€‰æ‹©',
+	'google_default_comment' => 'æœç´¢æ¡†é»˜è®¤é€‰æ‹©çš„é¡¹ç›®',
+	'google_default_0' => 'ç½‘é¡µæœç´¢',
+	'google_default_1' => 'ç«™å†…æœç´¢',
+	'google_client' => 'æœç´¢è”ç›Ÿ ID',
+	'google_client_comment' => 'å¦‚æžœæ‚¨åŠ å…¥äº† Google æœç´¢è”ç›Ÿï¼Œå¯ä»¥åœ¨è¿™é‡Œå¡«å†™ ID',
 );
 
 ?>

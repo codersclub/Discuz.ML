@@ -13,16 +13,16 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'namepost_name' => 'ÕÕÑı¾µ',
-	'namepost_desc' => '¿ÉÒÔ²é¿´Ò»´ÎÄäÃûÓÃ»§µÄÕæÊµÉí·İ¡£',
-	'namepost_forum' => 'ÔÊĞíÊ¹ÓÃ±¾µÀ¾ßµÄ°æ¿é',
-	'namepost_num' => 'ÓµÓĞ¸öÊı: {magicnum}',
-	'namepost_info' => 'Ö¸¶¨ÒªÏÔÉíµÄÌû×Ó£¬ÇëÊäÈëÌû×ÓµÄ ID',
-	'namepost_info_nonexistence' => '²ÎÊı´íÎó£¬²»ÄÜÔÚ´ËÊ¹ÓÃ±¾µÀ¾ß¡£',
-	'namepost_succeed' => 'ÄäÃûµÄÓÃ»§ÊÇ <a title="{username}" href="space.php?uid={uid}" target="_blank"><b>{username}</b></a>',
-	'namepost_info_noperm' => '¶Ô²»Æğ£¬Ö÷ÌâËùÔÚ°æ¿é²»ÔÊĞíÊ¹ÓÃ±¾µÀ¾ß',
-	'namepost_info_user_noperm' => '¶Ô²»Æğ£¬Äú²»ÄÜ¶Ô´ËÈËÊ¹ÓÃ±¾µÀ¾ß',
-	'magic_namepost_succeed' => 'ÄäÃûµÄÓÃ»§ÊÇ',
+	'namepost_name' => 'ç…§å¦–é•œ',
+	'namepost_desc' => 'å¯ä»¥æŸ¥çœ‹ä¸€æ¬¡åŒ¿åç”¨æˆ·çš„çœŸå®èº«ä»½ã€‚',
+	'namepost_forum' => 'å…è®¸ä½¿ç”¨æœ¬é“å…·çš„ç‰ˆå—',
+	'namepost_num' => 'æ‹¥æœ‰ä¸ªæ•°: {magicnum}',
+	'namepost_info' => 'æŒ‡å®šè¦æ˜¾èº«çš„å¸–å­ï¼Œè¯·è¾“å…¥å¸–å­çš„ ID',
+	'namepost_info_nonexistence' => 'å‚æ•°é”™è¯¯ï¼Œä¸èƒ½åœ¨æ­¤ä½¿ç”¨æœ¬é“å…·ã€‚',
+	'namepost_succeed' => 'åŒ¿åçš„ç”¨æˆ·æ˜¯ <a title="{username}" href="space.php?uid={uid}" target="_blank"><b>{username}</b></a>',
+	'namepost_info_noperm' => 'å¯¹ä¸èµ·ï¼Œä¸»é¢˜æ‰€åœ¨ç‰ˆå—ä¸å…è®¸ä½¿ç”¨æœ¬é“å…·',
+	'namepost_info_user_noperm' => 'å¯¹ä¸èµ·ï¼Œæ‚¨ä¸èƒ½å¯¹æ­¤äººä½¿ç”¨æœ¬é“å…·',
+	'magic_namepost_succeed' => 'åŒ¿åçš„ç”¨æˆ·æ˜¯',
 );
 
 ?>

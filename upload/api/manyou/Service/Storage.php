@@ -89,7 +89,7 @@ class Cloud_Service_Storage {
 	public function makeDownloadurl($sha1, $filesize, $filename) {
 		global $_G;
 
-		$filename = trim($filename,' "'); // Discuz! Ä¬ÈÏµÄfilenameÁ½²à»á¼ÓÉÏ Ë«ÒýºÅ
+		$filename = trim($filename,' "'); // Discuz! é»˜è®¤çš„filenameä¸¤ä¾§ä¼šåŠ ä¸Š åŒå¼•å·
 		$filename = diconv($filename,CHARSET,'UTF-8');
 		$filename = $this->str2hex($filename);
 

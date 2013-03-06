@@ -23,7 +23,7 @@ if(empty($_GET['ftn_formhash']) || empty($_G['uid']) || empty($_GET['filesize'])
 		include template('xf_storage:cross');
 	}
 } elseif($_GET['ftn_formhash'] != $storageService->ftnFormhash()){
-	exit;//showmessage('²Ù×÷³¬Ê±»òÕßÊı¾İÀ´Ô´´íÎó','','error');
+	exit;//showmessage('æ“ä½œè¶…æ—¶æˆ–è€…æ•°æ®æ¥æºé”™è¯¯','','error');
 }
 
 if($_GET['ftn_submit']) {

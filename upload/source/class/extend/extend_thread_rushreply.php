@@ -62,7 +62,7 @@ class extend_thread_rushreply extends extend_thread_base {
 		if(getstatus($this->thread['status'], 3) && $rushinfo['replylimit'] > 0) {
 			$replycount = C::t('forum_post')->count_by_tid_invisible_authorid($this->thread['tid'], $_G['uid']);
 			if($replycount >= $rushinfo['replylimit']) {
-				showmessage('¶Ô²»Æğ£¬ÄãÒÑ¾­´ïµ½±¾Ö÷ÌâµÄ»ØÌûÉÏÏŞ¡£');
+				showmessage('å¯¹ä¸èµ·ï¼Œä½ å·²ç»è¾¾åˆ°æœ¬ä¸»é¢˜çš„å›å¸–ä¸Šé™ã€‚');
 			}
 		}
 	}
