@@ -1,0 +1,42 @@
+<!--{template common/header}-->
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<a href="home.php?mod=spacecp">{lang darkroom}</a>
+	</div>
+</div>
+
+<div style="margin:10px 0;">
+<table summary="{lang darkroom}" cellspacing="0" cellpadding="0" class="bm dt">
+	<tr>
+		<th class="xw1" style="width:15px;">&nbsp;</th>
+		<th class="xw1" style="width:105px;">{lang username}</th>
+		<th class="xw1" style="width:135px;">{lang crime_action}</th>
+		<th class="xw1" style="width:155px;">{lang expire_dateline}</th>
+		<th class="xw1" style="width:155px;">{lang crime_dateline}</th>
+		<th class="xw1">{lang crime_reason}</th>
+	</tr>
+<!--{if $users}-->
+	<!--{eval $i = 0;}-->
+	<!--{loop $users $user}-->
+	<!--{eval $i++;}-->
+	<tr{if $i % 2 == 0} class="alt"{/if}>
+		<td>&nbsp;</td>
+		<td><a href="home.php?mod=space&uid=$user[uid]" targe="_blank">$user[username]</a></td>
+		<td>$crimes[$user[uid]][action]</td>
+		<td>$crimes[$user[uid]][groupexpiry]</td>
+		<td><!--{date($crimes[$user[uid]][dateline], 'Y-m-d H:i')}--></td>
+		<td>$crimes[$user[uid]][reason]</td>
+	</tr>
+	<!--{/loop}-->
+<!--{else}-->
+	<tr>
+		<td colspan="6" align="center">{lang darkroom_no_users}</td>
+	</tr>
+<!--{/if}-->
+</table>
+
+</div>
+<!--{if $multi}--><div class="pgs cl mbm">$multi</div><!--{/if}-->
+
+<!--{template common/footer}-->

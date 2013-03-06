@@ -1,0 +1,17 @@
+		<p>
+			<!--{if CURMODULE !== 'index'}-->
+				<anchor title="confirm"><prev/>返回</anchor> <a href="forum.php">首页</a><br />
+			<!--{/if}-->
+			<!--{if $_G['uid']}-->
+				<a href="member.php?mod=logging&amp;action=logout&amp;formhash={FORMHASH}">$_G['username']:退出</a>
+			<!--{else}-->
+				<a href="member.php?mod=logging&action=login">登录</a> <a href="member.php?mod=register">注册</a><br /><br />
+			<!--{/if}-->
+			<br/><br/>
+			<em>极简版</em>|<a href="forum.php?mobile=1">标准版</a><br/>
+			<small>Powered by Discuz!</small>
+		</p>
+	</card>
+</wml>
+<!--{eval updatesession();}-->
+<!--{eval output();}-->
