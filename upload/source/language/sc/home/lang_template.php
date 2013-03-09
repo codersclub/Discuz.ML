@@ -1537,5 +1537,20 @@ $lang = array (
   'video_certification_audit' => '视频认证审核',
   'connect_fill_profile_to_view' => '<a href="member.php?mod=connect" target="_blank">完善帐号信息</a> <a href="member.php?mod=connect&ac=bind" target="_blank">绑定已有帐号</a>',
   'connect_fill_profile_to_comment' => '您需要<a href="member.php?mod=connect" class="xi2">完善帐号信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">绑定已有帐号</a> 后才可以留言',
+
+//---------------------------------------------------------------
+// Added by Valery Votintsev
+	'login_immediately'	=> '马上登录',//'Login Now',
+	'nofollow'		=> '不收听',//'Stop follow',
+	'views'			=> '空间查看数',//'Views',
+	'in'			=> '在',//' &nbsp;In',
+	'poston'		=> '发表于',//'Post time',
+	'views'			=> '查看',//'Views',
+	'reply_num'		=> '回复',//'Replies',
+	'follow_intro1'		=> '广播怎么玩？',//'How to broadcast?',
+	'follow_intro2'		=> '在这里可以快速发广播',//'Write your message here',
+	'follow_intro3'		=> '查看收听的人<br/>和听众',//'Check your followings and listeners',
+	'follow_intro4'		=> '您收听的人发的广播<br/>会在这里出现',//'Your content will be shown here',
+	'say_to'		=> '说',
 );
 ?>

@@ -101,13 +101,29 @@ $lang = array(
 	'block3' => '自定义模块3',
 	'block4' => '自定义模块4',
 	'block5' => '自定义模块5',
-	'blockdata' => array('personalinfo' => '个人资料', 'profile' => '头像', 'doing' => '记录', 'feed' => '动态',
-				'blog' => '日志', 'stickblog' => '置顶日志', 'album' => '相册', 'friend' => '好友',
-				'visitor' => '最近访客', 'wall' => '留言板', 'share' => '分享',
-				'thread' => '主题', 'group'=>$_G[setting][navs][3][navname],'music'=>'音乐盒',
-				'statistic' => '统计信息','myapp' => '应用',
-				'block1'=>'自由模块1', 'block2'=>'自由模块2', 'block3'=>'自由模块3',
-				'block4'=>'自由模块4','block5'=>'自由模块5'),
+/*vot*/	'blockdata' => array(
+		'personalinfo' => '个人资料',
+		'profile' => '头像',
+		'doing' => '记录',
+		'feed' => '动态',
+		'blog' => '日志',
+		'stickblog' => '置顶日志',
+		'album' => '相册',
+		'friend' => '好友',
+		'visitor' => '最近访客',
+		'wall' => '留言板',
+		'share' => '分享',
+		'thread' => '主题',
+		'group' => $_G[setting][navs][3][navname],
+		'music' => '音乐盒',
+		'statistic' => '统计信息',
+		'myapp' => '应用',
+		'block1' => '自由模块1',
+		'block2' => '自由模块2',
+		'block3' => '自由模块3',
+		'block4' => '自由模块4',
+		'block5' => '自由模块5'
+	),
 
 	'block_title' => '<div class="blocktitle title"><span>{bname}</span>{more}</div>',
 	'blog_li' => '<dl class="bbda cl"><dt><a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank">{subject}</a><span class="xg2 xw0"> {date}</span></dt>',
@@ -116,7 +132,7 @@ $lang = array(
 	'album_li' => '<li style="width:70px"><div class="c"><a href="home.php?mod=space&uid={uid}&do=album&id={albumid}" target="_blank" title="{albumname}, 更新 {date}"><img src="{src}" alt="{albumname}" width="70" height="70" /></a></div><p><a href="home.php?mod=space&uid={uid}&do=album&id={albumid}" target="_blank" title="{albumname}, 更新 {date}">{albumname}</a></p><span>图片数: {picnum}</span></li>',
 	'doing_li' => '<li>{message}</li><br />{date} {from} 回复({replynum})',
 	'visitor_anonymity' => '<div class="avatar48"><img src="image/magic/hidden.gif" alt="匿名"></div><p>匿名</p>',
-	'visitor_list' => '<a href="home.php?mod=space&uid={uid}" target="_blank" class="avt"><em class="{class}"></em><em class="{self}" onclick="javascript:removeVisitor(event, {cuid});" title="删除访问足迹"></em>{avatar}</a><p><a href="home.php?mod=space&uid={uid}" title="{username}">{username}</a></p>',
+/*!*/	'visitor_list' => '<a href="home.php?mod=space&uid={uid}" target="_blank" class="avt"><em class="{class}"></em><em class="{self}" onclick="javascript:removeVisitor(event, {cuid});" title="删除访问足迹"></em>{avatar}</a><p><a href="home.php?mod=space&uid={uid}" title="{username}">{username}</a></p>',
 	'wall_form' => '<div class="space_wall_post">
 						<form action="home.php?mod=spacecp&ac=comment" id="quickcommentform_{uid}" name="quickcommentform_{uid}" method="post" autocomplete="off" onsubmit="ajaxpost(\'quickcommentform_{uid}\', \'return_commentwall_{uid}\');doane(event);">
 							'.($_G['uid'] ? '<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="static/image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
@@ -124,7 +140,8 @@ $lang = array(
 							<input type="hidden" name="refer" value="home.php?mod=space&uid={uid}" />
 							<input type="hidden" name="id" value="{uid}" />
 							<input type="hidden" name="idtype" value="uid" />
-							<input type="hidden" name="commentsubmit" value="true" />' : ($_G['connectguest'] ? '<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善帐号信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">绑定已有帐号</a> 后才可以回帖</div>' : '<div class="pt hm">你需要登录后才可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登录</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
+							<input type="hidden" name="commentsubmit" value="true" />' :
+							($_G['connectguest'] ? '<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善帐号信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">绑定已有帐号</a> 后才可以回帖</div>' : '<div class="pt hm">你需要登录后才可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登录</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
 							<p class="ptn"><button '.($_G['uid'] ? 'type="submit"' : 'type="button" onclick="showWindow(\'login\', \'member.php?mod=logging&action=login&guestmessage=yes\')"').' name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"><strong>留言</strong></button></p>
 							<input type="hidden" name="handlekey" value="commentwall_{uid}" />
 							<span id="return_commentwall_{uid}"></span>
@@ -235,7 +252,7 @@ $lang = array(
 	'viewthread_userinfo_sharings' => '分享',
 	'viewthread_userinfo_friends' => '好友',
 	'viewthread_userinfo_digest' => '精华',
-	'viewthread_userinfo_digestposts' => '精华',
+/*!*/	'viewthread_userinfo_digestposts' => '精华',
 	'viewthread_userinfo_credits' => '积分',
 	'viewthread_userinfo_readperm' => '阅读权限',
 	'viewthread_userinfo_regtime' => '注册时间',
@@ -243,10 +260,10 @@ $lang = array(
 	'viewthread_userinfo_oltime' => '在线时间',
 	'viewthread_userinfo_sellercredit' => '卖家信用',
 	'viewthread_userinfo_buyercredit' => '买家信用',
-	'viewthread_userinfo_follower' => '听众',
-	'viewthread_userinfo_following' => '收听',
-	'viewthread_userinfo_feeds' => '广播',
-	'viewthread_userinfo_privacy' => '保密',
+/*!*/	'viewthread_userinfo_follower' => '听众',
+/*!*/	'viewthread_userinfo_following' => '收听',
+/*!*/	'viewthread_userinfo_feeds' => '广播',
+/*!*/	'viewthread_userinfo_privacy' => '保密',
 	'follow_view_follow' => '我关注的',
 	'follow_view_special' => '特别关注',
 	'follow_view_other' => '广播大厅',

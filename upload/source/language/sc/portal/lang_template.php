@@ -310,9 +310,13 @@ $lang = array (
   'view_publisher' => '发布者',
   'view_related' => '相关阅读',
   'view_views' => '查看',
-  'pre_article' => '上一篇：',
-  'next_article' => '下一篇：',
-  'display_order' => '显示位置',
+/*!*/  'pre_article' => '上一篇：',
+/*!*/  'next_article' => '下一篇：',
+/*!*/  'display_order' => '显示位置',
+
+// Added by Valery Votintsev
+	'select_all'	=> '全选',//'Select All',
+	'select_mod'	=> '选择模块',//'Choose module',
+	'select_page'	=> '选择页面',//'Select page',
 );
 
-?>

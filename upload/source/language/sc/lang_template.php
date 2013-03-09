@@ -51,9 +51,9 @@ $lang = array (
   'close' => '关闭',
   'focus_hottopics' => '站长推荐',
   'focus_show' => '查看',
-  'newpm_subject' => '新的短消息',
-  'newpm_notice_info' => '有新的短消息，快去看看吧',
-  'newnotice_notice_info' => '有新的提醒，快去看看吧',
+/*!*/  'newpm_subject' => '新的短消息',
+/*!*/  'newpm_notice_info' => '有新的短消息，快去看看吧',
+/*!*/  'newnotice_notice_info' => '有新的提醒，快去看看吧',
   'footer_next' => '下一条',
   'footer_previous' => '上一条',
   'login_invisible_mode' => '隐身',
@@ -67,8 +67,8 @@ $lang = array (
   'cloudcp' => '云平台',
   'default' => '默认',
   'forum_manager' => '{$_G[setting][navs][2][navname]}管理',
-  'shortcut_notice' => '您经常访问 {$_G[setting][bbname]}，试试添加到桌面，访问更方便！',
-  'shortcut_add' => '添加 {$_G[setting][bbname]} 到桌面',
+/*!*/  'shortcut_notice' => '您经常访问 {$_G[setting][bbname]}，试试添加到桌面，访问更方便！',
+/*!*/  'shortcut_add' => '添加 {$_G[setting][bbname]} 到桌面',
   'go_to_mobile' => '进入手机版',
   'header_diy_mode_adv' => '高级模式',
   'header_diy_mode_simple' => '简洁模式',
@@ -286,27 +286,27 @@ $lang = array (
   'medals' => '勋章',
   'task' => '任务',
   'notice' => '提醒',
-  'notice_pm' => '我的私信',
-  'notice_mypost' => '我的帖子',
-  'notice_mypost_at' => '提到我的',
-  'notice_mypost_post' => '帖子',
-  'notice_mypost_pcomment' => '点评',
-  'notice_mypost_activity' => '活动',
-  'notice_mypost_reward' => '悬赏',
-  'notice_mypost_goods' => '商品',
-  'notice_interactive' => '坛友互动',
-  'notice_interactive_follow' => '我关注的',
-  'notice_interactive_follower' => '新听众',
-  'notice_interactive_poke' => '打招呼',
-  'notice_interactive_friend' => '好友',
-  'notice_interactive_comment' => '评论',
-  'notice_interactive_wall' => '留言',
-  'notice_interactive_click' => '挺你',
-  'notice_interactive_sharenotice' => '分享',
-  'notice_system' => '系统提醒',
-  'notice_manage' => '管理工作',
-  'notice_app' => '应用提醒',
-  'notice_userapp' => '应用邀请',
+/*!*/  'notice_pm' => '我的私信',
+/*!*/  'notice_mypost' => '我的帖子',
+/*!*/  'notice_mypost_at' => '提到我的',
+/*!*/  'notice_mypost_post' => '帖子',
+/*!*/  'notice_mypost_pcomment' => '点评',
+/*!*/  'notice_mypost_activity' => '活动',
+/*!*/  'notice_mypost_reward' => '悬赏',
+/*!*/  'notice_mypost_goods' => '商品',
+/*!*/  'notice_interactive' => '坛友互动',
+/*!*/  'notice_interactive_follow' => '我关注的',
+/*!*/  'notice_interactive_follower' => '新听众',
+/*!*/  'notice_interactive_poke' => '打招呼',
+/*!*/  'notice_interactive_friend' => '好友',
+/*!*/  'notice_interactive_comment' => '评论',
+/*!*/  'notice_interactive_wall' => '留言',
+/*!*/  'notice_interactive_click' => '挺你',
+/*!*/  'notice_interactive_sharenotice' => '分享',
+/*!*/  'notice_system' => '系统提醒',
+/*!*/  'notice_manage' => '管理工作',
+/*!*/  'notice_app' => '应用提醒',
+/*!*/  'notice_userapp' => '应用邀请',
   'you' => '您',
   'group_expiry_type_ext' => '扩展用户组',
   'task_done' => '已完成的任务',
@@ -341,9 +341,9 @@ $lang = array (
   'password_security' => '密码安全',
   'increase' => '增加',
   'friend_top' => '排行榜',
-  'connect_register_profile' => '创建新帐号',
-  'connect_register_bind' => '已有本站帐号',
-  'connect_member_login_tip' => '欢迎使用QQ帐号登录  {$_G[setting][bbname]}',
+/*!*/  'connect_register_profile' => '创建新帐号',
+/*!*/  'connect_register_bind' => '已有本站帐号',
+/*!*/  'connect_member_login_tip' => '欢迎使用QQ帐号登录  {$_G[setting][bbname]}',
   'connect_config_newpassword_comment' => '您目前使用的是QQ帐号绑定本站，您可以在这里设置独立密码，只有设置了独立密码后本站需要填写密码的相应功能才可使用',
   'email' => 'Email',
   'security_question' => '安全提问(未设置请忽略)',
@@ -406,11 +406,80 @@ $lang = array (
   'file_size' => '文件大小',
   'click_filename_to_article' => '点击文件名将附件添加到文章中',
   'connect_fill_profile_to_visit' => '请先<br /><a class="xi2" href="member.php?mod=connect"><strong>完善帐号信息</strong></a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2 xw1"><strong>绑定已有帐号</strong></a><br />后使用快捷导航',
-  'ipnoice_current' => '本次登录位置',
-  'ipnoice_last' => '上次登录位置',
-  'ipnoice_lasttime' => '上次登录时间',
-  'ipnoice_title' => '安全提醒',
-  'ipnoice_link' => '登录地点异常，建议立即更改密码',
+/*!*/  'ipnoice_current' => '本次登录位置',
+/*!*/  'ipnoice_last' => '上次登录位置',
+/*!*/  'ipnoice_lasttime' => '上次登录时间',
+/*!*/  'ipnoice_title' => '安全提醒',
+/*!*/  'ipnoice_link' => '登录地点异常，建议立即更改密码',
+
+//---------------------------
+// Added by Valery Votintsev
+
+	'follow_view_follow'	=> '我关注的',//'I follow',
+	'follow_stop'		=> '不收听',//'Stop follow',
+	'follow_start'		=> '收听TA',//'Follow',
+
+	'e_full_screen'		=> '全屏',//'Full Screen',
+	'e_restore_size'	=> '恢复',//'Restore size',
+	'e_simple'		=> '常用',//'General Mode',
+	'e_advanced'		=> '高级',//'Advanced Mode',
+
+//static/space/t1/style.css
+	'default_style'	=> '默认风格',//'[name]默认风格[/name]',
+
+//---------------------------
+//static/space/t2/style.css
+	'nature'	=> '自然',//'[name]自然[/name]',
+
+//---------------------------
+//static/space/t3/style.css
+	'sky'		=> '天空',//'[name]天空[/name]',
+
+//---------------------------
+//static/space/t4/style.css
+	'cat'		=> '猫猫',//'[name]猫猫[/name]',
+
+//---------------------------
+//static/space/t5/style.css
+	'courtyard'	=> '庭院',//'[name]庭院[/name]',
+
+//---------------------------
+//static/space/t6/style.css
+	'green_wall'	=> '绿墙',//'[name]绿墙[/name]',
+
+//---------------------------
+//static/space/t7/style.css
+	'cowboy'	=> '牛仔',//'[name]牛仔[/name]',
+
+//---------------------------
+//static/space/t8/style.css
+	'christmas'	=> '圣诞',//'[name]圣诞[/name]',
+
+//---------------------------
+//static/topic/t1/style.css
+	'default_skin'	=> '默认皮肤',//'[name]默认皮肤[/name]',
+
+//---------------------------
+//static/topic/t2/style.css
+	'skin_2'	=> '皮肤2',//'[name]皮肤2[/name]',
+
+//---------------------------
+//Change Language
+	'change_language'	=> '',//'更改语言:',//'Change language',
+	'change_language_title'	=> '更改语言',//'Change language:',
+	'changestyle_title'	=> '切换风格',//'Change Style',
+
+//vot:
+	'new'		=> '全新',//'New',
+
+	'register'	=> '注册',//'Register',
+
+	'or'		=> '或者',//'or',
+
+// Google Maps
+	'e_map'		=> '地图',//'Map',
+	'e_map_insert'	=> '插入google地图',//'Insert Google Map',
+	'e_map_address'	=> '地址： ',//'Enter address for search: ',
+
 );
 
-?>

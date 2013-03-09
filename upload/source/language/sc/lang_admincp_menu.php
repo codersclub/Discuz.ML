@@ -62,14 +62,14 @@ $lang = array
 	'menu_setting_ranklist' => '排行榜设置',
 	'menu_setting_mobile' => '手机版访问设置',
 	'menu_setting_tag' => '标签管理',
-	'menu_setting_antitheft' => '防采集设置',
+/*!*/	'menu_setting_antitheft' => '防采集设置',
 
 	'menu_forums' => '版块管理',
 	'menu_forums_merge' => '版块合并',
 	'menu_forums_threadtypes' => '主题分类',
 	'menu_forums_infotypes' => '分类信息',
 	'menu_forums_infooption' => '分类信息选项',
-	'menu_grid' => '首页四格',
+/*!*/	'menu_grid' => '首页四格',
 
 	'menu_members_add' => '添加用户',
 	'menu_members_edit' => '用户管理',
@@ -113,7 +113,7 @@ $lang = array
 	'menu_postcomment' => '帖子点评管理',
 	'menu_maint_doing' => '记录管理',
 	'menu_maint_blog' => '日志管理',
-	'menu_maint_blog_recycle_bin' => '日志回收站',
+/*!*/	'menu_maint_blog_recycle_bin' => '日志回收站',
 	'menu_maint_feed' => '动态管理',
 	'menu_maint_album' => '相册管理',
 	'menu_maint_pic' => '图片管理',
@@ -132,7 +132,7 @@ $lang = array
 
 	'menu_patch' => '安全中心',
 	'menu_upgrade' => '在线升级',
-	'menu_optimizer' => '优化大师',
+/*!*/	'menu_optimizer' => '优化大师',
 
 	'menu_addons' => '应用中心',
 	'menu_plugins' => '插件',
@@ -186,7 +186,7 @@ $lang = array
 	'menu_portalpermission' => '权限列表',
 	'menu_blockxml' => '第三方模块',
 	'menu_topic' => '专题管理',
-	'menu_html' => 'HTML管理',
+/*!*/	'menu_html' => 'HTML管理',
 	'menu_diytemplate' => '页面管理',
 
 	'menu_group_setting' => '群组设置',
@@ -201,6 +201,7 @@ $lang = array
 
 	'admincp_title' => $_G['setting']['bbname'].' 管理中心',
 
+// Added by Valery Votintsev
+	'menu_setting_language'		=> '语言',//'Languages',
 );
 
-?>

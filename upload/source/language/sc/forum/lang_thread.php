@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array (
 	  'forum_archive' => '存档',
-	  'source' => '来源',
+/*!*/	  'source' => '来源',
 
 
 );
