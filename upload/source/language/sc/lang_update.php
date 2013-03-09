@@ -159,3 +159,13 @@ $lang = array(
 // Added in X3.0:
 /*!*/	'cron_todayheats_daily'	=> '统计今日热帖',//'Count today hot posts daily',
 /*!*/	'hot_posts_completed'	=> '热帖处理完毕',//'Hot posts updated',);
+/*!*/	'reminder_update_completed'	=> '提醒数据升级完毕',//'Remind data upgrade finished',
+/*!*/	'layout_update_completed'	=> '布局方案设置升级完毕',//'Layout settings upgrade finished',
+/*!*/	'processed_from'	=> '正在处理从 ',//'Being processed from ',
+/*!*/	'starting_from'		=> ' 开始 ',//' starting from ',
+/*!*/	'popular_posts'		=> '的热帖',//'popular posts',
+//To lang_template:
+/*!*/	'default_layout'	=> '默认方案',//'Default layout',
+/*!*/	'qq_bbcode_description'	=> '显示 QQ 在线状态，点这个图标可以和他（她）聊天',//'QQ online status, points icon and his/her chat',
+/*!*/	'qq_enter'		=> '请输入 QQ 号码',//'Please enter the QQ number',
+/*!*/	'qq_onlne_status'	=> '设置QQ在线状态',//'Set QQ online status',
