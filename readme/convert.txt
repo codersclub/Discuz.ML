@@ -1,95 +1,158 @@
 ||==================================||
-   Discuz! X 转换文档
+||  Discuz! X Conversion document   ||
+||----------------------------------||
+|| English Version                  ||
+|| by Valery Votintsev at sources.ru||
 ||==================================||
 
-本文档用于帮助您将原有社区产品转换或者转换到 Discuz! X 系列产品。
-在您开始转换之前，请务必逐条仔细阅读以下的注意事项：
+This document is designed to help you to convert the existing
+community products to the Discuz! X series products.
 
-1. 转换之前，为了确保无误，强烈建议您备份原有数据，我们无法对转换前没有备份的用
-   户提供任何技术支持
-2. 通常情况下，我们的转换程序放置在发行版本的 ./utilities/convert 目录中，此程序
-   可以独立于产品运行
-3. 我们不能保障转换或者转换到 Discuz! X 产品当中所有的数据都是有效的，某些插件或
-   者自行开发的功能数据需要您自行转换
-4. 大多数情况下，您转换到 Discuz! X 产品以后，需要进入后台进行一系列重新设置，否
-   则某些功能可能无法正常使用。
-5. 除非有特殊的声明，我们的转换程序不会改变您原有的数据格式和设置，他会将原有数
-   据重新复制一份，并做格式转换。所以，在转换开始之前，您应当检查您的数据库存储   
-   空间是否够用。假设您原有数据是 100M，您至少需要 110M 以上的数据剩余空间，否则
-   可能无法转换成功
-6. 转换成功后，请您删除 convert 程序，以避免可能的安全问题
+Before you start the conversion, be sure to read step by step
+the following precautions:
+
+1. Before the conversion, in order to ensure the correct processing,
+   it is strongly recommended to backup all the original data,
+   and your current database!
+   We can not provide any technical support for customers
+   who did not make a backup before the upgrade!
+   
+2. Typically, our conversion program placed in the /utility/convert/ directory
+   of the product release, and can be run independently of the product.
+
+3. We can not guarantee a successfull conversion to Discuz! X if
+   all the product data are not valid, or some plug-ins or
+   functional data were developed by your own needs
+
+4. In most cases, after you converted to Discuz! X product,
+   you need to go to your admin-center, and update all the cache!
+   Elsewhere some features may not work properly.
+
+5. Unless the special statements, our conversion process will not change
+   your original data format and settings, it would copy the original
+   data and then perform the format conversion.
+   So, before the conversion, you should check if your database storage space
+   is sufficient.
+   Assuming your original data is 100M, so you need at least 110M free space
+   above the data, otherwise your product can not be converted successfully.
+
+6. After a successful upgrade, please delete the conversion program
+   to avoid possible security problems.
 
 +--------------------------------------+
- 转换方法和步骤
+ Conversion methods and steps
 +--------------------------------------+
-1. 进入您原来的系统，关闭您的站点。
-2. 进行数据备份，附件备份
-3. 备份您的系统的配置文件 例如 config.inc.php，记录下当中的各种服务器信息，例如
-   mysql 数据库
-4. 将原有程序 全部转移到一个备份目录，例如 old
-5. 上传 Discuz! X 程序到您的站点目录
-6. 正确安装 Discuz! X （如果您的 UCenter Server 是独立安装的，您需要提供他的访问
-   路径和创始人密码）
-7. 上传 utilities 目录中的 convert 文件夹到您的站点根目录
-   设置为可写（777）
-8. 访问 http://您的域名/convert 开始转换/转换
-9. convert 程序当中集成了多种程序可以转换到 Discuz! X，请您根据系统进行选择
-10. 转换程序通常会提供一个转换或者安装说明，您在开始之前请仔细阅读他
-11. 按照程序提示，直至所有转换执行完毕
+
+1. Shut down your curent system.
+
+2. Backup all the files.
+
+3. Backup your database.
+
+4. Back up your system configuration files
+   such as config.inc.php, config_global.php, config_ucenter.php
+
+5. By Discuz! X program directory to your site
+
+6. Correctly Discuz! X (if you Ucenter Server is a stand-alone installation,
+   you need to provide access to his
+   Path and the founder of the password)
+
+7. Upload utilities directory to your site convert program.
+   Meanwhile, the convert/data directory
+   Writable (777)
+
+8. Visit http://your_domain/convert/ to start the conversion/transformation
+
+9. Convert program integrates a variety of programs which can be converted
+   to the Discuz! X, you select the system
+
+10. The conversion process is usually a conversion or the installation
+    instructions carefully before you begin to read him
+
+11. In accordance with the program prompts, until all the conversion is
+    finished
 
 +--------------------------------------+
- 转换疑难解决
+ Conversion Troubleshooting
 +--------------------------------------+
-您在转换过程中遇到任何问题，可通过以下途径解决
+You encounter any problems during the conversion process can be resolved
+through the following channels
 
-1. 到我们的讨论区寻求帮助和支持
+1. To our forum to seek help and support
    http://www.discuz.net
 
-2. 查看详细转换指导文件
+2. See detailed guidance document conversion
    http://faq.comsenz.com/category-202
 
-3. 商业用户可以根据您购买的服务，使用电话、MSN、QQ、论坛等多种方式寻求技术支持
+3. Commercial users can purchase according to your service,
+   phone calls, MSN, QQ, forums for technical support and other means
 
 
 +--------------------------------------+
- 常见问题和解答
+ FAQ
 +--------------------------------------+
 
-1. 我必须要先安装 Discuz! X 么？
-   通常是这样的，尤其是在进行转换的时候，这是最关键的一步，否则无法转换成功
+1. I must first install DiscuzX it?
+   Often the case, especially during the conversion time,
+   this is the most critical step, or can not be converted successfully
 
-2. 我已经安装了 Discuz! 论坛和 UChome 两个产品，可以转换到 Discuz! X 产品么?
-   可以的。Discuz! X 融合了论坛和 SNS 的功能，转换以后，您的两个产品将会完美整合
+2. I have installed Discuz! Forum and UChome two products
+   can be converted to DiscuzX product?
+   Can. DiscuzX integration of the functions of the Forum and the SNS,
+   the conversion after two of your products will be seamlessly integrated
 
-3. 转换 Discuz! 和 UChome 有什么特殊要求么？
-   在进行转换之前，您必须在站点上安装 DiscuzX 程序，并保证它可以正常运行。
-   如果您仅仅安装了某一个产品，那么转换到 DiscuzX 是容易的，按照提示即可。
-   如果您安装了两个或者多个产品，那么转换的时候要注意转换顺序，您首先应当转换论
-   坛产品到 Discuz! X，然后再执行其他转换程序，转换 UChome 或者 Supesite
+3. Conversion Discuz! And UChome have any special requirements it?
+   During the conversion, you must install on your site DiscuzX program
+   and ensure that it functions properly.
+   If you only install a certain product, then switch to DiscuzX is easy to
+   follow the prompts.
+   If you have two or more products, then converted when converting the
+   order to pay attention, you should first conversion of Forum products
+   to DiscuzX, and then run the other conversion programs,
+   conversion UChome or supesite
 
-4. 为何我转换完毕以后，站点的用户都没有了
-   转换程序只有检测到 UCenter 数据表的时候，才会转换用户数据。如果您以前使用的是
-   我们提供的 Discuz! 完整版，转换程序可以自动检测到 UCenter 的。但是如果您使用的
-   是自己独立安装的 UCenter，那么转换程序会检测不到。
-   解决的办法：
-       请重新安装您的 Discuz! X，安装的时候选择 仅安装 Discuz! X (手工指定已经安
-   装的 UCenter Server)，然后填入您的 UCenter 的信息，并开始安装。安装完毕以后重新
-   开始转换。
+4. Why is my conversion is finished, the site's users do not have the
+   Ucenter conversion program only detected when the data table,
+   will convert the user data. If you previously used the
+   We provide Discuz! Full version, the conversion program can automatically
+   detect ucenter's. However, if you are using Be your own installation ucenter,
+   then the conversion process will not be detected.
+   The solution:
+       Please re-install your Discuz! X, select the time of installation
+       to install only Discuz! X (safety manual has been designated
+   Installed Ucenter Server), and then fill in your ucenter information,
+   and start the installation. After the re-installation Begin the conversion.
 
-5. 我原来的论坛规模很大，转换程序对数据的大小有限制么？是否可能确保转换成功？
-   我们的转换程序经过多次的测试，并在 >6G 的数据环境中反复转换成功，因此对于原始
-   数据的大小是没有限制的，只不过随着数据量越大，转换时间越长。您应当保障
-   数据转换期间，服务器一直是可用的。
+5. I had the forum is large, the data conversion process limit the size of it?
+   Possible to ensure a successful conversion?
+   Our conversion process after several tests, and in > 6G data environment
+   repeatedly successful conversion, so the original
+   The size of the data is no limit, but with the larger amount of data,
+   conversion time is longer. You should protect the
+   During the conversion data, the server has been available.
 
-6. 如果转换中途出错或者意外中断，该如何处理？
-   如果出现意外中断，通常情况下您应当根据错误提示，排除错误，然后再重新开始。
-   转换程序提供了高级转换模式，您可以选择跳过某些转换步骤，而不必重新来过，但您
-   应当了解哪些步骤已经执行过，否则可能导致数据转换不完整。
-   如果您是在转换 UChome 或者 Supesite 过程中出错，并且此时论坛已经转换完毕，
-   那么您可能需要重新转换论坛，然后再执行 UChome 的转换，否则转换可能无法成功。
-   因此，如果您需要转换论坛 + UChome + ... 多个程序，我们建议您在每个转换程序结束，
-   对已经转换好的数据进行备份，这样可以在中断的时候，恢复备份，然后继续执行。
+6. If the conversion error or accident interrupted halfway, how to deal with?
+   If the unexpected interruption, usually you should be based on error,
+   eliminate errors, and then start again.
+   Converter provides a high conversion mode,
+   you can choose to skip some of the conversion steps,
+   without having to start over, but you
+   Should be aware of what steps have been performed,
+   or it may result in data conversion is not complete.
+   If you are in the process of converting UChome or supesite error,
+   and the Forum have been converted at this time is completed,
+   Then you may need to convert forum, and then run Uchome conversion,
+   or conversion may not succeed.
+   Therefore, if you need to convert Forum + UChome .. more than one program,
+   we recommend the end of each conversion process,
+   Good data on the backup has already been converted,
+   this time in the interrupt and restore the backup, and then continue.
 
-7. 转换过程中需要人工干预么？
-   除了转换前面需要填写一些信息和选择转换程序，转换一旦开始，程序将会自动运行和
-   跳转，所以您无需进行干预。不恰当的干预反而可能在成转换中断或者失败。
+7. The conversion process requires human intervention it?
+   In addition to converting the front to fill in some information
+   and select the conversion process, the conversion once you start,
+   the program will automatically run and
+   Jump, so you do not need to intervene.
+   Inappropriate intervention into the conversion but may be interrupted
+   or failed.

@@ -1,43 +1,72 @@
 ||==================================||
-   Discuz! X 升级文档
+|| Discuz! X upgrade documentation  ||
+||----------------------------------||
+|| Multilingual Version             ||
+|| Valery Votintsev, codersclub.org ||
 ||==================================||
 
-本文档用于帮助您将 Discuz! X 版本程序升级至现今版本，如果您的论坛不是 Discuz! X 
-系列，请首先使用我们的转换程序。
+This document is designed to help you to upgrade your current version
+of any Comsenz product (not Discuz!X Series) to the latest Discuz! X version.
+This upgrade program can also be used for upgrading any previous Discuz!X
+versions to the latest version.
 
-在您开始升级之前，请务必逐条仔细阅读以下的注意事项：
+Before you start the upgrade process, be sure to read step by step
+the following instructions:
 
-1. 升级之前，为了确保无误，强烈建议您备份原有数据，我们无法对升级前没有备份的用
-   户提供任何技术支持
-2. 通常情况下，我们的升级程序是 update.php, 他放置在发行版本的 ./utilities/ 目录中
-3. 大多数情况下，您升级到 Discuz! X 产品以后，需要进入后台进行一系列重新设置，否
-   则某些功能可能无法正常使用。
-4. 升级成功后，请您删除 update 程序，以避免可能的安全问题
-
-+--------------------------------------+
- 升级方法和步骤（以下方法仅适用于Discuz!X系列产品)
-+--------------------------------------+
-1. 进入您原来的系统，关闭您的站点。进行数据备份。
-2. 站点建立 old 文件夹，除 data, config, uc_server, uc_client 之外的文件移动到 old 目录中
-3. 下载并解压缩最新版的程序包（请注意需要与您原来的语言版本一样，不可混用)
-4. 程序包解压缩后，可以看到 readme, upload, utilities 三个目录， 
-5. 上传upload目录中的程序到服务器论坛目录，如果提示需要覆盖，则选择“是”
-6. 将压缩包中 /utilities/ 目录中的 update.php 程序上传到您的论坛 install 目录。并删除 install 目录
-   中的 index.php
-7. 访问 http://您的域名/论坛目录/install/update.php
-8. 按照程序提示，直至所有升级完毕。删除 update.php 程序，以免被恶意利用。
-9. 进入论坛后台，更新缓存，并对新功能进行设置和测试。
-10.old目录中如果存放有非discuzX程序文件，则将他备份或者恢复到原来的位置，否则当中的程序可以在升级成功后删除。
+1. Before the upgrade, in order to ensure the correct processing,
+   it is strongly recommended to backup all the original data,
+   and your current database!
+   We can not provide any technical support for customers
+   who did not make a backup before the upgrade!
+2. Typically, our upgrade program is update.php,
+   it is placed in the /utility/ directory of the product release.
+3. In most cases, after you upgrade to Discuz! X product,
+   you need to go to your admin-center, and update all the cache!
+   Elsewhere some features may not work properly.
+4. After a successful upgrade, please delete the update program
+   to avoid possible security problems.
 
 +--------------------------------------+
- 升级疑难解决
+ Methods and steps to upgrade
 +--------------------------------------+
-您在升级过程中遇到任何问题，可通过以下途径解决
+1. Shut down your curent system.
+2. Backup all the files.
 
-1. 到我们的讨论区寻求帮助和支持
+3. Backup your database.
+
+4. Upload the latest version of Discuz!X to your site,
+   overwriting old files.
+
+5. Upload all the files and subdirectories from the /utilities/
+   directory into your site /install/ directory.
+   Ensure that the /install/ directory contains the latest installer!
+
+6. Copy the file /instal/convert/language/lang_update.php
+   to the /source/language/ directory at your site.
+
+7. Visit http://your_domain/install/update.php
+
+8. Follow to the program prompts until completion of
+   all the upgrade processes.
+
++--------------------------------------+
+ Upgrade Troubleshooting
++--------------------------------------+
+
+ If you encounter any problems during the upgrade process,
+ this can be resolved using the following channels:
+
+0. The Multilingual version support:
+   http://codersclub.org/discuzx/
+
+1. Official Discuz help and support forum
    http://www.discuz.net
 
-2. 查看详细升级指导文件
+2. View detailed update guidance documents
    http://faq.comsenz.com/category-202
 
-3. 商业用户可以根据您购买的服务，使用电话、MSN、QQ、论坛等多种方式寻求技术支持
+3. International support and help forum
+   http://msg2me.com
+
+4. Commercial users can purchase a service by phone calls,
+   MSN, QQ, forums for technical support and other ways.
