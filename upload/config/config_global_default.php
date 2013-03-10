@@ -5,47 +5,48 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: config_global_default.php 31879 2012-10-18 09:27:24Z zhangguosheng $
+ *      Modified by Valery Votintsev at codersclub.org
  */
 
 $_config = array();
 
 // ----------------------------  CONFIG DB  ----------------------------- //
-// ----------------------------  数据库相关设置---------------------------- //
+// Database server settings
 
 /**
- * 数据库主服务器设置, 支持多组服务器设置, 当设置多组服务器时, 则会根据分布式策略使用某个服务器
+ * Set the primary database server to support multiple sets of server settings, when set to multiple servers, distributed strategy is to use a server based on
  * @example
- * $_config['db']['1']['dbhost'] = 'localhost'; // 服务器地址
- * $_config['db']['1']['dbuser'] = 'root'; // 用户
- * $_config['db']['1']['dbpw'] = 'root';// 密码
- * $_config['db']['1']['dbcharset'] = 'gbk';// 字符集
- * $_config['db']['1']['pconnect'] = '0';// 是否持续连接
- * $_config['db']['1']['dbname'] = 'x1';// 数据库
- * $_config['db']['1']['tablepre'] = 'pre_';// 表名前缀
+ * $_config['db']['1']['dbhost'] = 'localhost'; // Server Address
+ * $_config['db']['1']['dbuser'] = 'root'; // User name
+ * $_config['db']['1']['dbpw'] = 'root';// Password
+ * $_config['db']['1']['dbcharset'] = 'utf8';// Character Set
+ * $_config['db']['1']['pconnect'] = '0';// Persistent connection
+ * $_config['db']['1']['dbname'] = 'x1';// Database name
+ * $_config['db']['1']['tablepre'] = 'pre_';// Table prefix
  *
  * $_config['db']['2']['dbhost'] = 'localhost';
  * ...
  *
  */
-$_config['db'][1]['dbhost']  		= 'localhost';
-$_config['db'][1]['dbuser']  		= 'root';
-$_config['db'][1]['dbpw'] 	 	= 'root';
-$_config['db'][1]['dbcharset'] 		= 'gbk';
-$_config['db'][1]['pconnect'] 		= 0;
-$_config['db'][1]['dbname']  		= 'ultrax';
-$_config['db'][1]['tablepre'] 		= 'pre_';
+$_config['db'][1]['dbhost']  	= 'localhost';	// DB Server address
+$_config['db'][1]['dbuser']  	= 'root';	// DB User Name
+$_config['db'][1]['dbpw'] 	= 'root';	// DB User Password
+$_config['db'][1]['dbcharset'] 	= 'utf8';	// DB Charset
+$_config['db'][1]['pconnect'] 	= 0;		// Enable DB persistent connection
+$_config['db'][1]['dbname']  	= 'ultrax';	// DB Name
+$_config['db'][1]['tablepre'] 	= 'pre_';	// DB Table Prefix
 
 /**
- * 数据库从服务器设置( slave, 只读 ), 支持多组服务器设置, 当设置多组服务器时, 系统根据每次随机使用
+ * Database from the server settings (slave, read-only), support for multiple sets of server settings, when set to multiple servers, the system using each random
  * @example
  * $_config['db']['1']['slave']['1']['dbhost'] = 'localhost';
  * $_config['db']['1']['slave']['1']['dbuser'] = 'root';
  * $_config['db']['1']['slave']['1']['dbpw'] = 'root';
- * $_config['db']['1']['slave']['1']['dbcharset'] = 'gbk';
+ * $_config['db']['1']['slave']['1']['dbcharset'] = 'utf8';//vot
  * $_config['db']['1']['slave']['1']['pconnect'] = '0';
  * $_config['db']['1']['slave']['1']['dbname'] = 'x1';
  * $_config['db']['1']['slave']['1']['tablepre'] = 'pre_';
- * $_config['db']['1']['slave']['1']['weight'] = '0'; //权重：数据越大权重越高
+ * $_config['db']['1']['slave']['1']['weight'] = '0'; //Weight: If the data greater then the weight is higher
  *
  * $_config['db']['1']['slave']['2']['dbhost'] = 'localhost';
  * ...
@@ -53,137 +54,171 @@ $_config['db'][1]['tablepre'] 		= 'pre_';
  */
 $_config['db']['1']['slave'] = array();
 
-//启用从服务器的开关
+//Enable to switch the servers
 $_config['db']['slave'] = false;
 /**
- * 数据库 分布部署策略设置
+ * Distributed database deployment policy setting
  *
- * @example 将 common_member 部署到第二服务器, common_session 部署在第三服务器, 则设置为
+ * @example Store the common_member table at the second server, but common_session table at the third server:
  * $_config['db']['map']['common_member'] = 2;
  * $_config['db']['map']['common_session'] = 3;
  *
- * 对于没有明确声明服务器的表, 则一律默认部署在第一服务器上
+ * Server for the table is not explicitly stated, it will be deployed in the first server, the default
  *
  */
 $_config['db']['map'] = array();
 
 /**
- * 数据库 公共设置, 此类设置通常对针对每个部署的服务器
+ * Database public settings, such settings are usually deployed on the server for each
  */
 $_config['db']['common'] = array();
 
 /**
- *  禁用从数据库的数据表, 表名字之间使用逗号分割
+ *  Disable the data from the database tables, table names separated by commas between
  *
- * @example common_session, common_member 这两个表仅从主服务器读写, 不使用从服务器
+ * @example common_session, common_member These two tables to read and write only from the master server, do not use from the server
  * $_config['db']['common']['slave_except_table'] = 'common_session, common_member';
  *
  */
 $_config['db']['common']['slave_except_table'] = '';
 
 /**
- * 内存服务器优化设置
- * 以下设置需要PHP扩展组件支持，其中 memcache 优先于其他设置，
- * 当 memcache 无法启用时，会自动开启另外的两种优化模式
+ * Memory server optimization settings
+ * The following settings need to be PHP extension support component, which memcache priority over other settings,
+ * can not be enabled when the memcache automatically when you open the other two optimization models)
  */
 
-//内存变量前缀, 可更改,避免同服务器中的程序引用错乱
+//Memory variable prefix, change, to avoid reference to the same server process disorder
 $_config['memory']['prefix'] = 'discuz_';
 
-/* reids设置, 需要PHP扩展组件支持, timeout参数的作用没有查证 */
+/* Redis settings, Requires for this PHP extension is supported, timeout No verification of the role of the parameter */
 $_config['memory']['redis']['server'] = '';
 $_config['memory']['redis']['port'] = 6379;
 $_config['memory']['redis']['pconnect'] = 1;
 $_config['memory']['redis']['timeout'] = 0;
 /**
- * 是否使用 Redis::SERIALIZER_IGBINARY选项,需要igbinary支持,windows下测试时请关闭，否则会出>现错误Reading from client: Connection reset by peer
- * 支持以下选项，默认使用PHP的serializer
- * [重要] 该选项已经取代原来的 $_config['memory']['redis']['igbinary'] 选项
+ * Whether to use Redis::SERIALIZER_IGBINARY option, Need igbinary Support. If windows testing is closed otherwise they will be out > Is now error Reading from client: Connection reset by peer
+ * Supports the following options, the default using PHP serializer
+ * [Important] This option has been to replace the original $_config['memory']['redis']['igbinary'] option
  * Redis::SERIALIZER_IGBINARY =2
  * Redis::SERIALIZER_PHP =1
- * Redis::SERIALIZER_NONE =0 //则不使用serialize,即无法保存array
+ * Redis::SERIALIZER_NONE =0 //If not use serialize, It can not be saved as array
  */
 $_config['memory']['redis']['serializer'] = 1;
 
-$_config['memory']['memcache']['server'] = '';			// memcache 服务器地址
-$_config['memory']['memcache']['port'] = 11211;			// memcache 服务器端口
-$_config['memory']['memcache']['pconnect'] = 1;			// memcache 是否长久连接
-$_config['memory']['memcache']['timeout'] = 1;			// memcache 服务器连接超时
+$_config['memory']['memcache']['server'] = '';	// memcache server address
+$_config['memory']['memcache']['port'] = 11211;	// memcache server port
+$_config['memory']['memcache']['pconnect'] = 1;	// memcache persistent connection
+$_config['memory']['memcache']['timeout'] = 1;	// memcache server connection timeout
 
-$_config['memory']['apc'] = 1;							// 启动对 apc 的支持
-$_config['memory']['xcache'] = 1;						// 启动对 xcache 的支持
-$_config['memory']['eaccelerator'] = 1;					// 启动对 eaccelerator 的支持
-$_config['memory']['wincache'] = 1;						// 启动对 wincache 的支持
-// 服务器相关设置
-$_config['server']['id']		= 1;			// 服务器编号，多webserver的时候，用于标识当前服务器的ID
+$_config['memory']['apc'] = 1;			// Start support for apc
+$_config['memory']['xcache'] = 1;		// Start the support for xcache
+$_config['memory']['eaccelerator'] = 1;		// Start the support for eaccelerator
+$_config['memory']['wincache'] = 1;		// Stert the support for wincache
+// Server-related settings
+$_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID to identify the current server
 
-// 附件下载相关
+// Download attachments
 //
-// 本地文件读取模式; 模式2为最节省内存方式，但不支持多线程下载
-// 1=fread 2=readfile 3=fpassthru 4=fpassthru+multiple
+// local file reading mode; Mode 2 means the most to save memory, but does not support multi-threaded download
+// 1=fread, 2=readfile, 3=fpassthru, 4=fpassthru+multiple
 $_config['download']['readmod'] = 2;
 
-// 是否启用 X-Sendfile 功能（需要服务器支持）0=close 1=nginx 2=lighttpd 3=apache
+// Enable X-Sendfile feature(required server support) 0=disable, 1=nginx, 2=lighttpd, 3=apache
 $_config['download']['xsendfile']['type'] = 0;
 
-// 启用 nginx X-sendfile 时，论坛附件目录的虚拟映射路径，请使用 / 结尾
+// Enable nginx X-sendfile, the forum attachment directory path to the virtual map, use the "/" at the end
 $_config['download']['xsendfile']['dir'] = '/down/';
 
 //  CONFIG CACHE
-$_config['cache']['type'] 			= 'sql';	// 缓存类型 file=文件缓存, sql=数据库缓存
+$_config['cache']['type'] 		= 'sql';	// Cache type: file = file cache, sql = database cache
 
-// 页面输出设置
-$_config['output']['charset'] 			= 'gbk';	// 页面字符集
-$_config['output']['forceheader']		= 1;		// 强制输出页面字符集，用于避免某些环境乱码
-$_config['output']['gzip'] 			= 0;		// 是否采用 Gzip 压缩输出
-$_config['output']['tplrefresh'] 		= 1;		// 模板自动刷新开关 0=关闭, 1=打开
-$_config['output']['language'] 			= 'zh_cn';	// 页面语言 zh_cn/zh_tw
-$_config['output']['staticurl'] 		= 'static/';	// 站点静态文件路径，“/”结尾
-$_config['output']['ajaxvalidate']		= 0;		// 是否严格验证 Ajax 页面的真实性 0=关闭，1=打开
-$_config['output']['iecompatible']		= 0;		// 页面 IE 兼容模式
+// Page output settings
+$_config['output']['charset'] 		= 'utf-8';	// Page character set
+$_config['output']['forceheader']	= 1;		// Force the output in defined character set, used to avoid page content garbled
+$_config['output']['gzip'] 		= 0;		// Use Gzip compression for output
+$_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = off, 1 = On
+$_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/...
+$_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
+$_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
+$_config['output']['iecompatible']	= 0;		// IE compatibility mode
 
-// COOKIE 设置
-$_config['cookie']['cookiepre'] 		= 'discuz_'; 	// COOKIE前缀
-$_config['cookie']['cookiedomain'] 		= ''; 		// COOKIE作用域
-$_config['cookie']['cookiepath'] 		= '/'; 		// COOKIE作用路径
+// COOKIE settings
+$_config['cookie']['cookiepre'] 	= 'discuz_'; 	// COOKIE prefix
+$_config['cookie']['cookiedomain'] 	= ''; 		// COOKIE domain
+$_config['cookie']['cookiepath'] 	= '/'; 		// COOKIE path
 
-// 站点安全设置
-$_config['security']['authkey']			= 'asdfasfas';	// 站点加密密钥
-$_config['security']['urlxssdefend']		= true;		// 自身 URL XSS 防御
-$_config['security']['attackevasive']		= 0;		// CC 攻击防御 1|2|4|8
+// Site Security Settings
+$_config['security']['authkey']		= 'asdfasfas';	// Site encryption key
+$_config['security']['urlxssdefend']	= true;		// Use own URL XSS defense
+$_config['security']['attackevasive']	= 0;		// CC Attack Defense 1 | 2 | 4
 
-$_config['security']['querysafe']['status']	= 1;		// 是否开启SQL安全检测，可自动预防SQL注入攻击
+$_config['security']['querysafe']['status']	= 1;	// Enable the SQL security detection, prevent the SQL injection attacks automatically
 $_config['security']['querysafe']['dfunction']	= array('load_file','hex','substring','if','ord','char');
 $_config['security']['querysafe']['daction']	= array('intooutfile','intodumpfile','unionselect','(select', 'unionall', 'uniondistinct');
 $_config['security']['querysafe']['dnote']	= array('/*','*/','#','--','"');
 $_config['security']['querysafe']['dlikehex']	= 1;
 $_config['security']['querysafe']['afullnote']	= 0;
 
-$_config['admincp']['founder']			= '1';		// 站点创始人：拥有站点管理后台的最高权限，每个站点可以设置 1名或多名创始人
-								// 可以使用uid，也可以使用用户名；多个创始人之间请使用逗号“,”分开;
-$_config['admincp']['forcesecques']		= 0;		// 管理人员必须设置安全提问才能进入系统设置 0=否, 1=是[安全]
-$_config['admincp']['checkip']			= 1;		// 后台管理操作是否验证管理员的 IP, 1=是[安全], 0=否。仅在管理员无法登陆后台时设置 0。
-$_config['admincp']['runquery']			= 0;		// 是否允许后台运行 SQL 语句 1=是 0=否[安全]
-$_config['admincp']['dbimport']			= 1;		// 是否允许后台恢复论坛数据  1=是 0=否[安全]
+$_config['admincp']['founder']		= '1';	// Site Founder: site management background with the highest authority, each site can be set to one or more founders
+						// You can use the user uid or user name. Separate multiple users with a comma;
+$_config['admincp']['forcesecques']	= 0;	// Force managers to set the security question for access to the system settings: 0 = no, 1 = yes [secure]
+$_config['admincp']['checkip']		= 1;	// Back office operations are verified administrator IP, 1 = yes [secure], 0 = no. Only the administrator can not log in from time to set 0.
+$_config['admincp']['runquery']		= 0;	// Allow to run SQL statements in the background: 1 = yes, 0 = no [secure]
+$_config['admincp']['dbimport']		= 1;	// Allow the data recovery in the background: 1 = yes, 0 = no [secure]
 
 /**
- * 系统远程调用功能模块
+ * Remote call function module system
  */
 
-// 远程调用: 总开关 0=关  1=开
+// Remote call: master switch 0 = off, 1 = On
 $_config['remote']['on'] = 0;
 
-// 远程调用: 程序目录名. 出于安全考虑,您可以更改这个目录名, 修改完毕, 请手工修改程序的实际目录
+// Rremote call: the program directory name. For security reasons, you can change the directory name, change is completed, the actual directory manually modify the program
 $_config['remote']['dir'] = 'remote';
 
-// 远程调用: 通信密钥. 用于客户端和本服务端的通信加密. 长度不少于 32 位
-//          默认值是 $_config['security']['authkey']	的 md5, 您也可以手工指定
+// Rremote call: Communication key. for the client and the server communication encryption. length of not less than 32
+//          default value is $_config ['security']['authkey']   of md5, you can also manually specify the$_config['remote']['appkey'] = md5($_config['security']['authkey']);
 $_config['remote']['appkey'] = md5($_config['security']['authkey']);
 
-// 远程调用: 开启外部 cron 任务. 系统内部不再执行cron, cron任务由外部程序激活
+// Remote call: Open external cron task. within the system no longer running cron, cron task activated by an external program
 $_config['remote']['cron'] = 0;
 
-// $_GET|$_POST的兼容处理，0为关闭，1为开启；开启后即可使用$_G['gp_xx'](xx为变量名，$_GET和$_POST集合的所有变量名)，值为已经addslashes()处理过
+// $_GET|$_POST compatibility processing. 0 is off, 1 is on, Turned to $_G['gp_xx'](xx is a Variable name, $_GET and $_POST Collection of all variable names), Value has been addslashes() treated
 $_config['input']['compatible'] = 1;
+
+//-----------------------------------------------------------------------
+// Multi-Lingual support by Valery Votintsev
+//-----------------------------------------------------------------------
+// "icon" - flag image file name;
+// "name" - language name in NATIONAL language;
+// "title" - language name in ENGLISH language;
+// "dir" - text direction:
+//	'ltr' (Left To Right) 
+//	'rtl' (Right To Left), i.e for Arabic, Hebrew, Urdu, etc.
+//-----------------------------------------------------------------------
+// Uncomment a language line for enable the language!
+// Comment a language line that is not required!!!
+//
+// Enabled Language List:
+
+$_config['languages'] = array(
+	'ar' => array('icon'=>'ar.gif', 'name'=>'العربية', 'title'=>'Arabic', 'dir'=>'rtl', 'code'=>'ar-AE'),
+	'de' => array('icon'=>'de.gif', 'name'=>'Deutsch', 'title'=>'German', 'dir'=>'ltr', 'code'=>'de-DE'),
+	'en' => array('icon'=>'en.gif', 'name'=>'English', 'title'=>'English', 'dir'=>'ltr', 'code'=>'en-GB'),
+	'es' => array('icon'=>'es.gif', 'name'=>'Español', 'title'=>'Spanish', 'dir'=>'ltr', 'code'=>'es-ES'),
+	'fr' => array('icon'=>'fr.gif', 'name'=>'Français', 'title'=>'French', 'dir'=>'ltr', 'code'=>'fr-FR'),
+	'kr' => array('icon'=>'kr.gif', 'name'=>'한국어', 'title'=>'Korean', 'dir'=>'ltr', 'code'=>'ko-KO'),
+	'pl' => array('icon'=>'pl.gif', 'name'=>'Polski', 'title'=>'Polish', 'dir'=>'ltr', 'code'=>'pl-PL'),
+	'ru' => array('icon'=>'ru.gif', 'name'=>'Русский', 'title'=>'Russian', 'dir'=>'ltr', 'code'=>'ru-RU'),
+	'sc' => array('icon'=>'zh.gif', 'name'=>'简体中文', 'title'=>'Simplified Chinese', 'dir'=>'ltr', 'code'=>'zh-CN'),
+	'tc' => array('icon'=>'tw.gif', 'name'=>'繁體中文', 'title'=>'Traditional Chinese', 'dir'=>'ltr', 'code'=>'zh-TW'),
+	'th' => array('icon'=>'th.gif', 'name'=>'ภาษาไทย', 'title'=>'Thai', 'dir'=>'ltr', 'code'=>'th-TH'),
+	'tr' => array('icon'=>'tr.gif', 'name'=>'Türkçe', 'title'=>'Turkish', 'dir'=>'ltr', 'code'=>'tr-TR'),
+	'vn' => array('icon'=>'vn.gif', 'name'=>'Tiếng Việt', 'title'=>'Vietnamese', 'dir'=>'ltr', 'code'=>'vi-VN'),
+);
+$_config['detect_language'] = true;	// Auto-detect user language: true|false
+$_config['enable_multilingual'] = true;	// Enable/Disable multi-lingual feature
+
 
 ?>
