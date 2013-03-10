@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: forum.php 31999 2012-10-30 07:19:49Z cnteacher $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 
@@ -55,6 +56,7 @@ if(C::app()->var['mod'] == 'group') {
 C::app()->cachelist = $cachelist;
 C::app()->init();
 
+/*vot*/	settings_localize(); // Localize Navigation & Settings
 
 loadforum();
 
@@ -70,4 +72,3 @@ $navtitle = str_replace('{bbname}', $_G['setting']['bbname'], $_G['setting']['se
 
 require DISCUZ_ROOT.'./source/module/forum/forum_'.$mod.'.php';
 
-?>

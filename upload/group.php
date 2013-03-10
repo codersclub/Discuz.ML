@@ -4,6 +4,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: group.php 31307 2012-08-10 02:10:56Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 3);
@@ -18,6 +19,8 @@ $cachelist = array('grouptype', 'groupindex', 'diytemplatenamegroup');
 $discuz->cachelist = $cachelist;
 $discuz->init();
 
+/*vot*/	settings_localize(); // Localize Navigation & Settings
+
 $_G['disabledwidthauto'] = 0;
 
 $modarray = array('index', 'my', 'attentiongroup');
@@ -30,4 +33,3 @@ runhooks();
 $navtitle = str_replace('{bbname}', $_G['setting']['bbname'], $_G['setting']['seotitle']['group']);
 
 require DISCUZ_ROOT.'./source/module/group/group_'.$mod.'.php';
-?>

@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: misc.php 32082 2012-11-07 08:00:31Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 100);
@@ -16,10 +17,10 @@ require './source/class/class_core.php';
 $discuz = C::app();
 
 $discuz->reject_robot();
-$modarray = array('seccode', 'secqaa', 'initsys', 'invite', 'faq', 'report',
+/*vot*/ $modarray = array('seccode', 'secqaa', 'initsys', 'invite', 'faq', 'report',
 				'swfupload', 'manyou', 'stat', 'ranklist', 'buyinvitecode',
 				'tag', 'diyhelp', 'mobile', 'patch', 'getatuser', 'imgcropper',
-				'userstatus', 'signin');
+				'userstatus', 'signin', 'googlemap');
 
 $modcachelist = array(
 	'ranklist' => array('forums', 'diytemplatename'),
@@ -56,9 +57,10 @@ switch ($mod) {
 
 $discuz->init();
 
+/*vot*/	settings_localize(); // Localize Navigation & Settings
+
 define('CURMODULE', $mod);
 runhooks();
 
 require DISCUZ_ROOT.'./source/module/misc/misc_'.$mod.'.php';
 
-?>
