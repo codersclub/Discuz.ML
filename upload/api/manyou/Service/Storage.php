@@ -5,6 +5,7 @@
  *		This is NOT a freeware, use is subject to license terms
  *
  *		$Id: Storage.php 29263 2012-03-31 05:45:08Z yexinhao $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -89,7 +90,7 @@ class Cloud_Service_Storage {
 	public function makeDownloadurl($sha1, $filesize, $filename) {
 		global $_G;
 
-		$filename = trim($filename,' "'); // Discuz! 默认的filename两侧会加上 双引号
+/*vot*/		$filename = trim($filename,' "'); // Discuz! default filename will be enclosed in double quotes on both sides
 		$filename = diconv($filename,CHARSET,'UTF-8');
 		$filename = $this->str2hex($filename);
 

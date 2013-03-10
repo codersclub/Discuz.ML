@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: SearchHelper.php 29915 2012-05-03 01:22:40Z zhouxiaobo $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -747,7 +748,7 @@ class Cloud_Service_SearchHelper {
 					'f_id' => $fid,
 					'need_random' => false,
 					'need_num' => $needNum,
-					'version' => $format == 'num' ? 1 : 2, // 1：返回数字下标的结果集、2：返回关联数组形式的结果集
+/*vot*/					'version' => $format == 'num' ? 1 : 2, // 1: Return the result as a simple array. 2: Return the result as an associative array
 				);
 
 				$utilService = Cloud::loadClass('Service_Util');
