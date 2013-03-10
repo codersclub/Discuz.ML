@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="spacecss"><![CDATA[#portal_block_1 .dxb_bc {margin-left:0px !important;}#portal_block_2 .dxb_bc {font-size:14px !important;margin-left:10px !important;}]]></item>
 	<item id="layoutdata">
@@ -170,7 +170,7 @@ runslideshow();
 			<item id="24">
 				<item id="styleid"><![CDATA[24]]></item>
 				<item id="blockclass"><![CDATA[group_thread]]></item>
-				<item id="name"><![CDATA[[内置]帖子标题]]></item>
+				<item id="name"><![CDATA[[Internal] Thread title]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
