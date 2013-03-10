@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: index.php 22348 2011-05-04 01:16:02Z monkey $
+ *	Modified by Valery Votintsev
  */
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -13,19 +14,26 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
-define('ROOT_PATH', dirname(__FILE__).'/../');
+/*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(dirname(__FILE__))).'/');
+//DEBUG //echo "root_path=",ROOT_PATH,"<br>";
+/*vot*/ header("Content-Type:text/html;charset=utf-8");
+$language = '';
 
 require ROOT_PATH.'./source/discuz_version.php';
 require ROOT_PATH.'./install/include/install_var.php';
 require ROOT_PATH.'./install/include/install_mysql.php';
 require ROOT_PATH.'./install/include/install_function.php';
-require ROOT_PATH.'./install/include/install_lang.php';
+//vot require ROOT_PATH.'./install/include/install_lang.php';
+//vot: Load the install language
+/*vot*/ $language = getgpc('language');
+/*vot*/ $lng = $language ? $language : 'sc';
+/*vot*/ require ROOT_PATH.'./source/language/' . $lng . '/lang_install.php';
 
 $view_off = getgpc('view_off');
 
 define('VIEW_OFF', $view_off ? TRUE : FALSE);
 
-$allow_method = array('show_license', 'env_check', 'app_reg', 'db_init', 'ext_info', 'install_check', 'tablepre_check');
+/*vot*/ $allow_method = array('show_license', 'env_check', 'app_reg', 'db_init', 'ext_info', 'install_check', 'tablepre_check', 'language');
 
 $step = intval(getgpc('step', 'R')) ? intval(getgpc('step', 'R')) : 0;
 $method = getgpc('method');
@@ -57,9 +65,35 @@ if(in_array($method, array('app_reg', 'ext_info'))) {
 }
 
 if($method == 'show_license') {
+    //vot: Select the install language
+    if(!$language) {
 
+	$default_config = $_config = array();
+	$default_configfile = './config/config_global_default.php';
+
+	if(!file_exists(ROOT_PATH.$default_configfile)) {
+		exit('config_global_default.php was lost, please reupload this  file.');
+	} else {
+		include ROOT_PATH.$default_configfile;
+		$default_config = $_config;
+	}
+
+	$lang_list = $default_config['languages'];
+
+	foreach($lang_list AS $id=>$l) {
+		$lang_list[$id]['available'] = lang_exists($id) ? 1 : 0;
+	}
+
+	show_language($lang_list);
+
+
+
+    } else {
+	// Show the License
 	transfer_ucinfo($_POST);
 	show_license();
+    }
+
 
 } elseif($method == 'env_check') {
 
@@ -79,7 +113,7 @@ if($method == 'show_license') {
 		define('UC_API', '');
 	}
 	if(getgpc('install_ucenter') == 'yes') {
-		header("Location: index.php?step=3&install_ucenter=yes");
+/*vot*/		header("Location: index.php?step=3&install_ucenter=yes&language=$language");
 		die;
 	}
 	$submit = true;
@@ -171,7 +205,7 @@ if($method == 'show_license') {
 						show_msg('app_reg_success');
 					} else {
 						$step = $step + 1;
-						header("Location: index.php?step=$step");
+/*vot*/						header("Location: index.php?step=$step&language=$language");
 						exit;
 					}
 				} else {
@@ -437,7 +471,24 @@ if($method == 'show_license') {
 		VIEW_OFF && show_msg('initdbresult_succ');
 
 		if(!VIEW_OFF) {
-			echo '<script type="text/javascript">function setlaststep() {document.getElementById("laststep").disabled=false;window.location=\'index.php?method=ext_info\';}</script><script type="text/javascript">setTimeout(function(){window.location=\'index.php?method=ext_info\'}, 30000);</script><iframe src="../misc.php?mod=initsys" style="display:none;" onload="setlaststep()"></iframe>'."\r\n";
+/*vot*/		$lang_next = lang('new_step');
+/*vot*/		echo <<<EOT
+<script type="text/javascript">
+  function setlaststep() {
+    document.getElementById("laststep").disabled=false;
+//vot    window.location="index.php?method=ext_info&language=$language";
+}
+</script>
+<script type="text/javascript">
+//vot  setTimeout(function(){ window.location="index.php?method=ext_info&language=$language" }, 30000);
+</script>
+
+<iframe src="../misc.php?mod=initsys" style="display:none;" onload="setlaststep()"></iframe>
+
+<!--vot-->	<div class="btnbox margintop marginbot">
+<!--vot-->		<input type="button" name="submit" value="{$lang_next}" disabled="disabled" id="laststep" onClick="window.location='index.php?method=ext_info&language=$language';" >
+<!--vot-->	</div>
+EOT;
 			show_footer();
 		}
 
@@ -457,9 +508,13 @@ if($method == 'show_license') {
 		show_msg('ext_info_succ');
 	} else {
 		show_header();
-		echo '</div><div class="main" style="margin-top: -123px;padding-left:30px"><span id="platformIntro"></span>';
-		echo '<script type="text/javascript" src="http://cp.discuz.qq.com/cloud/platformIntroJS?siteurl='.urlencode($default_appurl).'&version='.DISCUZ_VERSION.'" charset="utf-8"></script>';
-		echo '<iframe frameborder="0" width="700" height="550" allowTransparency="true" src="http://addon.discuz.com/api/outer.php?id=installed&siteurl='.urlencode($default_appurl).'&version='.DISCUZ_VERSION.'"></iframe>';
+		echo '</div><div class="main" style="margin-top: -123px;padding-left:30px">';
+/*vot*/		echo '<ul style="line-height: 200%;">';
+/*vot*/		echo '<li><a href="../">'.lang('install_succeed').'</a><br></li>';
+/*vot*/		echo '</ul>';
+//vot		echo '<span id="platformIntro"></span>';
+//vot		echo '<script type="text/javascript" src="http://cp.discuz.qq.com/cloud/platformIntroJS?siteurl='.urlencode($default_appurl).'&version='.DISCUZ_VERSION.'" charset="utf-8"></script>';
+//vot		echo '<iframe frameborder="0" width="700" height="550" allowTransparency="true" src="http://addon.discuz.com/api/outer.php?id=installed&siteurl='.urlencode($default_appurl).'&version='.DISCUZ_VERSION.'"></iframe>';
 		echo '</div>';
 		show_footer();
 	}

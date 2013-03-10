@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_var.php 28275 2012-02-27 04:14:58Z monkey $
+ *	Modified by Valery Votintsev at sources.ru
  */
 
 if(!defined('IN_COMSENZ')) {
@@ -13,7 +14,8 @@ if(!defined('IN_COMSENZ')) {
 
 define('SOFT_NAME', 'Discuz!');
 
-define('INSTALL_LANG', 'SC_GBK');
+/*vot*/ define('DEFAULT_LANG', 'en'); // Default Installation Language
+/*vot*/ define('INSTALL_LANG', 'MultiLingual'); // 'EN_UTF8', 'SC_UTF8', 'TC_UTF8'
 
 define('CONFIG', './config/config_global.php');
 define('CONFIG_UC', './config/config_ucenter.php');
@@ -23,8 +25,8 @@ $lockfile = ROOT_PATH.'./data/install.lock';
 
 @include ROOT_PATH.CONFIG;
 
-define('CHARSET', 'gbk');
-define('DBCHARSET', 'gbk');
+/*vot*/ define('CHARSET', 'utf-8');
+/*vot*/ define('DBCHARSET', 'utf8');
 
 define('ORIG_TABLEPRE', 'pre_');
 
@@ -70,7 +72,7 @@ $filesock_items = array('fsockopen', 'pfsockopen', 'stream_socket_client', 'curl
 $env_items = array
 (
 	'os' => array('c' => 'PHP_OS', 'r' => 'notset', 'b' => 'unix'),
-	'php' => array('c' => 'PHP_VERSION', 'r' => '5.1', 'b' => '5.3'),
+/*vot*/ 'php' => array('c' => 'PHP_VERSION', 'r' => '5.3', 'b' => '5.4'),
 	'attachmentupload' => array('r' => 'notset', 'b' => '2M'),
 	'gdversion' => array('r' => '1.0', 'b' => '2.0'),
 	'diskspace' => array('r' => '10M', 'b' => 'notset'),
@@ -149,7 +151,7 @@ $serialize_sql_setting = array (
     1 =>
     array (
       'img' => '',
-      'title' => '威望',
+      'title' => 'Reputation',//'威望',
       'unit' => '',
       'ratio' => 0,
       'available' => '1',
@@ -160,7 +162,7 @@ $serialize_sql_setting = array (
     2 =>
     array (
       'img' => '',
-      'title' => '金钱',
+      'title' => 'Money',//'金钱',
       'unit' => '',
       'ratio' => 0,
       'available' => '1',
@@ -171,7 +173,7 @@ $serialize_sql_setting = array (
     3 =>
     array (
       'img' => '',
-      'title' => '贡献',
+      'title' => 'Contribution',//'贡献',
       'unit' => '',
       'ratio' => 0,
       'available' => '1',
@@ -237,16 +239,16 @@ $serialize_sql_setting = array (
   ),
   'postnocustom' =>
   array (
-    0 => '楼主',
-    1 => '沙发',
-    2 => '板凳',
-    3 => '地板',
+/*vot*/    0 => '#1',//'楼主',
+/*vot*/    1 => '#2',//'沙发',
+/*vot*/    2 => '#3',//'板凳',
+/*vot*/    3 => '#4',//'地板',
   ),
   'recommendthread' =>
   array (
     'status' => '0',
-    'addtext' => '支持',
-    'subtracttext' => '反对',
+    'addtext'		=> 'Like',//'支持',
+    'subtracttext'	=> 'Not like',//'反对',
     'defaultshow' => '1',
     'daycount' => '0',
     'ownthread' => '0',
@@ -254,34 +256,34 @@ $serialize_sql_setting = array (
   ),
   'seotitle' =>
   array (
-    'portal' => '门户',
-    'forum' => '论坛',
-    'group' => '群组',
-    'home' => '家园',
-    'userapp' => '应用',
+    'portal'	=> 'Portal',//'门户',
+    'forum'	=> 'Forum',//'论坛',
+    'group'	=> 'Groups',//'群组',
+    'home'	=> 'Home',//'家园',
+    'userapp'	=> 'Apps',//'应用',
   ),
   'activityfield' =>
   array (
-    'realname' => '真实姓名',
-    'mobile' => '手机',
-    'qq' => 'QQ号',
+    'realname'	=> 'Real Name',//'真实姓名',
+    'mobile'	=> 'Mobile Phone',//'手机',
+    'qq'	=> 'QQ number',//'QQ号',
   ),
   'article_tags' =>
   array (
-    1 => '原创',
-    2 => '热点',
-    3 => '组图',
-    4 => '爆料',
-    5 => '头条',
-    6 => '幻灯',
-    7 => '滚动',
-    8 => '推荐',
+    1 => 'Original',//'原创',
+    2 => 'Hot',//'热点',
+    3 => 'Photos',//'组图',
+    4 => 'Breaking News',//'爆料',
+    5 => 'Headline',//'头条',
+    6 => 'Slideshow',//'幻灯',
+    7 => 'Scroll',//'滚动',
+    8 => 'Recommended',//'推荐',
   ),
   'verify' =>
   array (
     6 =>
     array (
-      'title' => '实名认证',
+      'title' => 'Real-name verification',//'实名认证',
       'available' => '0',
       'showicon' => '0',
       'viewrealname' => '0',
@@ -314,7 +316,7 @@ $serialize_sql_setting = array (
     ),
     7 =>
     array (
-      'title' => '视频认证',
+      'title' => 'Video Verification',//'视频认证',
       'available' => '0',
       'showicon' => '0',
       'viewvideophoto' => '0',
@@ -323,7 +325,7 @@ $serialize_sql_setting = array (
   ),
   'focus' =>
   array (
-    'title' => '站长推荐',
+    'title' => 'Webmaster Recommended',//'站长推荐',
     'data' =>
     array (
     ),
@@ -335,7 +337,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 0,
-      'title' => '基本资料',
+      'title' => 'Basic Info',//'基本资料',
       'field' =>
       array (
         'realname' => 'realname',
@@ -359,7 +361,7 @@ $serialize_sql_setting = array (
     ),
     'contact' =>
     array (
-      'title' => '联系方式',
+      'title' => 'Contact Info',//'联系方式',
       'available' => '1',
       'displayorder' => '1',
       'field' =>
@@ -377,7 +379,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 2,
-      'title' => '教育情况',
+      'title' => 'Education',//'教育情况',
       'field' =>
       array (
         'graduateschool' => 'graduateschool',
@@ -388,7 +390,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 3,
-      'title' => '工作情况',
+      'title' => 'Work Info',//'工作情况',
       'field' =>
       array (
         'occupation' => 'occupation',
@@ -399,7 +401,7 @@ $serialize_sql_setting = array (
     ),
     'info' =>
     array (
-      'title' => '个人信息',
+      'title' => 'Personal Info',//'个人信息',
       'available' => '1',
       'displayorder' => '4',
       'field' =>

@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_function.php 32638 2013-02-27 08:15:29Z chenmengshu $
+ *	Multilingual by Valery Votintsev at sources.ru
  */
 
 if(!defined('IN_COMSENZ')) {
@@ -311,8 +312,10 @@ function show_env_result(&$env_items, &$dirfile_items, &$func_items, &$filesock_
 
 function show_next_step($step, $error_code) {
 	global $uchidden;
+/*vot*/	global $language;
 	echo "<form action=\"index.php\" method=\"post\">\n";
 	echo "<input type=\"hidden\" name=\"step\" value=\"$step\" />";
+/*vot*/	echo "<input type='hidden' name='language' value='$language' />";
 	if(isset($GLOBALS['hidden'])) {
 		echo $GLOBALS['hidden'];
 	}
@@ -329,6 +332,7 @@ function show_next_step($step, $error_code) {
 function show_form(&$form_items, $error_msg) {
 
 	global $step, $uchidden;
+/*vot*/	global $language;
 
 	if(empty($form_items) || !is_array($form_items)) {
 		return;
@@ -337,10 +341,13 @@ function show_form(&$form_items, $error_msg) {
 	show_header();
 	show_setting('start');
 	show_setting('hidden', 'step', $step);
+/*vot*/	show_setting('hidden', 'language', $language);
 	show_setting('hidden', 'install_ucenter', getgpc('install_ucenter'));
 	if($step == 2) {
-		show_tips('install_dzfull');
-		show_tips('install_dzonly');
+/*vot*/		$install_dzfull = '<br><label><input type="radio"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /> ' . lang('install_dzfull') . '</label>';
+/*vot*/		$install_dzonly = '<br><label><input type="radio"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /> ' . lang('install_dzonly') . '</label>';
+/*vot*/		show_tips($install_dzfull);
+/*vot*/		show_tips($install_dzonly);
 	}
 	$is_first = 1;
 	if(!empty($uchidden)) {
@@ -402,6 +409,7 @@ function show_form(&$form_items, $error_msg) {
 
 function show_license() {
 	global $self, $uchidden, $step;
+/*vot*/	global $language;
 	$next = $step + 1;
 	if(VIEW_OFF) {
 
@@ -420,6 +428,7 @@ function show_license() {
 	<div class="licenseblock">$license</div>
 	<div class="btnbox marginbot">
 		<form method="get" autocomplete="off" action="index.php">
+<!--vot-->	<input type='hidden' name='language' value='$language' />
 		<input type="hidden" name="step" value="$next">
 		<input type="hidden" name="uchidden" value="$uchidden">
 		<input type="submit" name="submit" value="{$lang_agreement_yes}" style="padding: 2px">&nbsp;
@@ -498,14 +507,15 @@ function dir_clear($dir) {
 function show_header() {
 	define('SHOW_HEADER', TRUE);
 	global $step;
+/*vot*/	global $method, $language;
 	$version = DISCUZ_VERSION;
 	$release = DISCUZ_RELEASE;
 	$install_lang = lang(INSTALL_LANG);
 	$title = lang('title_install');
 	$charset = CHARSET;
-	echo <<<EOT
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+/*vot*/	echo <<<EOT
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset" />
 <title>$title</title>
@@ -521,10 +531,11 @@ function show_header() {
 </script>
 <meta content="Comsenz Inc." name="Copyright" />
 </head>
+<body><!--vot-->
 <div class="container">
 	<div class="header">
 		<h1>$title</h1>
-		<span>Discuz!$version $install_lang $release</span>
+		<span>Discuz!$version $install_lang, Release $release</span>
 EOT;
 
 	$step > 0 && show_step($step);
@@ -532,9 +543,13 @@ EOT;
 
 function show_footer($quit = true) {
 
-	echo <<<EOT
-		<div class="footer">&copy;2001 - 2013 <a href="http://www.comsenz.com/">Comsenz</a> Inc.</div>
+/*vot*/	echo <<<EOT
 	</div>
+		<div class="footer">
+			&copy;2001 - 2012 <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
+			&nbsp;&nbsp;&nbsp;
+			<b>MultiLingual</b> version by <a href="http://codersclub.org/discuzx/">CodersClub.org</a>
+		</div>
 </div>
 </body>
 </html>
@@ -612,6 +627,7 @@ EOT;
 	$content .= getvars(array('_config' => $config));
 	$content .= "\r\n// ".str_pad('  THE END  ', 50, '-', STR_PAD_BOTH)." //\r\n\r\n?>";
 	file_put_contents($filename, $content);
+/*vot*/	@chmod($filename, 0666);
 }
 
 function setdefault($var, $default) {
@@ -688,6 +704,7 @@ function generate_key() {
 }
 
 function show_install() {
+/*vot*/	global $language;
 	if(VIEW_OFF) return;
 ?>
 <script type="text/javascript">
@@ -696,13 +713,15 @@ function showmessage(message) {
 	document.getElementById('notice').scrollTop = 100000000;
 }
 function initinput() {
-	window.location='index.php?method=ext_info';
+/*vot*/	window.location='index.php?method=ext_info&language=<? echo $language; ?>';
 }
 </script>
 		<div id="notice"></div>
+<!-- vot
 		<div class="btnbox margintop marginbot">
 			<input type="button" name="submit" value="<?php echo lang('install_in_processed');?>" disabled="disabled" id="laststep" onclick="initinput()">
 		</div>
+-->
 <?php
 }
 
@@ -1044,7 +1063,7 @@ function show_setting($setname, $varname = '', $value = '', $type = 'text|passwo
 		if(strpos($type, 'oldbtn') !== FALSE) {
 			echo "<input type=\"button\" name=\"oldbtn\" value=\"".lang('old_step')."\" class=\"btn\" onclick=\"history.back();\">\n";
 		}
-		$value = empty($value) ? 'next_step' : $value;
+/*vot*/		$value = empty($value) ? 'new_step' : $value;
 		echo "<input type=\"submit\" name=\"$varname\" value=\"".lang($value)."\" class=\"btn\">\n";
 	} elseif($type == 'checkbox') {
 		if(!is_array($varname) && !is_array($value)) {
@@ -1094,7 +1113,7 @@ function show_step($step) {
 			<li class="$stepclass[3]">$step_title_3</li>
 			<li class="$stepclass[4]">$step_title_4</li>
 		</ul>
-		<div class="stepstatbg stepstat1"></div>
+<!--vot-->	<div class="stepstatbg stepstat{$step}"></div>
 	</div>
 </div>
 <div class="main">
@@ -1144,7 +1163,7 @@ function save_uc_config($config, $file) {
 
 	$success = false;
 
-	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip) = $config;
+/*vot*/	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip, $uclang, $uclangdir) = $config;
 
 	$link = mysql_connect($ucdbhost, $ucdbuser, $ucdbpw, 1);
 	$uc_connnect = $link && mysql_select_db($ucdbname, $link) ? 'mysql' : '';
@@ -1171,12 +1190,15 @@ define('UC_API', '$ucapi');
 define('UC_APPID', '$appid');
 define('UC_IP', '$ucip');
 define('UC_PPP', 20);
+/*vot*/	define('UC_DEFAULT_LANG', '$uclang'); // Default UCenter Language (ar,de,en, es,fr,kr,ru,sc,tc,th,tr,vn, etc...)
+/*vot*/	define('UC_DEFAULT_DIR', '$uclangdir'); // Default Language Direction (ltr,rtl)
 ?>
 EOT;
 
 	if($fp = fopen($file, 'w')) {
 		fwrite($fp, $config);
 		fclose($fp);
+/*vot*/		@chmod($file, 0666);
 		$success = true;
 	}
 	return $success;
@@ -1193,7 +1215,7 @@ function _generate_key() {
 }
 
 function uc_write_config($config, $file, $password) {
-	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip) = $config;
+/*vot*/	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip, $uclang, $uclangdir) = $config;
 	$ucauthkey = _generate_key();
 	$ucsiteid = _generate_key();
 	$ucmykey = _generate_key();
@@ -1216,6 +1238,10 @@ function uc_write_config($config, $file, $password) {
 	$config .= "define('UC_MYKEY', '$ucmykey');\r\n";
 	$config .= "define('UC_DEBUG', false);\r\n";
 	$config .= "define('UC_PPP', 20);\r\n";
+/*vot*/	$config .= "\r\n";
+/*vot*/	$config .= "define('UC_DEFAULT_LANG', '$uclang'); // Default UCenter Language (ar,de,en, es,fr,kr,ru,sc,tc,th,tr,vn, etc...)\r\n";
+/*vot*/	$config .= "define('UC_DEFAULT_DIR', '$uclangdir'); // Default Language Direction (ltr,rtl)\r\n";
+
 	$fp = fopen($file, 'w');
 	fwrite($fp, $config);
 	fclose($fp);
@@ -1255,7 +1281,10 @@ function install_uc_server() {
 	$appid = $db->insert_id($link);
 	$db->query("ALTER TABLE {$uctablepre}notelist ADD COLUMN app$appid tinyint NOT NULL");
 
-	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip);
+/*vot*/	$uclang = 'en';
+/*vot*/	$uclangdir = 'ltr';
+/*vot*/	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip,$uclang,$uclangdir);
+
 	save_uc_config($config, ROOT_PATH.'./config/config_ucenter.php');
 
 	$salt = substr(uniqid(rand()), -6);
@@ -1282,7 +1311,7 @@ function install_uc_server() {
 
 	uc_write_config($config, ROOT_PATH.'./uc_server/data/config.inc.php', $password);
 
-	@unlink(ROOT_PATH.'./uc_server/install/index.php');
+//vot	@unlink(ROOT_PATH.'./uc_server/install/index.php');
 	@unlink(ROOT_PATH.'./uc_server/data/cache/settings.php');
 	@touch(ROOT_PATH.'./uc_server/data/upgrade.lock');
 	@touch(ROOT_PATH.'./uc_server/data/install.lock');
@@ -1714,3 +1743,71 @@ function install_extra_setting() {
 		$db->query("REPLACE INTO {$tablepre}common_setting SET skey='$key', svalue='".addslashes(serialize($val))."'");
 	}
 }
+//-------------------------------------------------
+// Added by Valery Votintsev, codersclub.org
+function lang_exists($lang_id='') {
+
+	if(!$lang_id) {
+		exit('Invalid language id selected! Check the file config/config_global_default.php for Enabled Language List is correct!');
+	}
+
+	if(is_file(ROOT_PATH . 'source/language/'.$lang_id .'/lang_install.php')) {
+		return true;
+	}
+
+	return false;
+}
+
+
+function show_language($lang_list=array()) {
+	global $self, $uchidden, $step;
+/*vot*/	global $language;
+
+	$next = $step + 1;
+
+	show_header();
+
+	echo <<<EOT
+</div>
+
+<div class="main" style="margin-top:-123px;">
+
+	<h2>Choose your language:</h2>
+<br/>
+
+	Select the installation language from existing in your package.
+<br/>
+<br/>
+If a desired language is disabled or you want more language packs,
+<br/>please visit the CodersClub x2.5 language repository: <a href="http://code.google.com/p/discuz-lang/">CodersClub Discuz!X Language Packs</a>
+<br/>
+All the language packs must be placed inside the "source/language" folder at your site.
+<br/>
+<br/>
+	For more info and for get help please visit the <a href="http://codersclub.org/discuzx/">CodersClub Support Forum</a>
+<br/>
+<br/>
+<br/>
+
+	<div class="btnbox marginbot">
+		<form method="get" autocomplete="off" action="index.php">
+		Language:
+		<select id='language' name='language'>
+EOT;
+	foreach($lang_list as $id => $l) {
+		echo '<option value="', $id, '"';
+		echo ($l['available'] ? '' : ' disabled'), '>', $l['name'], ' (', $l['title'], ') </option>';
+	}
+
+	echo <<<EOT
+		</select>
+		<input type="hidden" name="step" value="$next">
+		<input type="submit" name="submit" value="OK" style="padding: 2px">&nbsp;
+		</form>
+	</div>
+
+EOT;
+	show_footer();
+
+}
+

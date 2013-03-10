@@ -5,13 +5,14 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_lang.php 32641 2013-02-27 08:39:58Z monkey $
+ *      Modified by Valery Votintsev at sources.ru
  */
 
 if(!defined('IN_COMSENZ')) {
 	exit('Access Denied');
 }
 
-define('UC_VERNAME', '中文版');
+/*vot*/ define('UC_VERNAME', 'MultiLingual Version');
 $lang = array(
 	'SC_GBK' => '简体中文版',
 	'TC_BIG5' => '繁体中文版',
@@ -172,7 +173,7 @@ $lang = array(
 
 	'install_in_processed' => '正在安装...',
 	'install_succeed' => '安装成功，点击进入',
-	'install_cloud' => '安装成功，欢迎开通Discuz!云平台<br>Discuz!云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Discuz!云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、漫游应用、SOSO表情服务。Discuz!云平台将陆续提供更多优质服务项目。<br>开通Discuz!平台之前，请确保您的网站（Discuz!、UCHome或SupeSite）已经升级到Discuz! X3。',
+/*vot*/	'install_cloud' => '安装成功，欢迎开通Discuz!云平台<br>Discuz!云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Discuz!云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、漫游应用、SOSO表情服务。Discuz!云平台将陆续提供更多优质服务项目。<br>开通Discuz!平台之前，请确保您的网站（Discuz!、UCHome或SupeSite）已经升级到Discuz! X。',
 	'to_install_cloud' => '到后台开通',
 	'to_index' => '暂不开通',
 
@@ -354,6 +355,12 @@ $lang = array(
 	'database_nonexistence' => '数据库操作对象不存在',
 	'skip_current' => '跳过本步',
 	'topic' => '专题',
+
+//---------------------------------------------------------------
+// Added by Valery Votintsev
+// 2 vars for language select:
+	'welcome'			=> 'Welcome to Discuz! X Installation!',
+	'select_language'		=> '<b>Select the installation language</b>:',
 
 );
 
