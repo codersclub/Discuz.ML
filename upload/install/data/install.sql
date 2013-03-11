@@ -508,7 +508,8 @@ CREATE TABLE pre_common_diy_data (
   uid int(11) unsigned NOT NULL DEFAULT '0',
   username varchar(255) NOT NULL DEFAULT '',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (targettplname,tpldirectory)
+  PRIMARY KEY (targettplname),
+  KEY (tpldirectory)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS pre_common_domain;
@@ -1395,7 +1396,8 @@ CREATE TABLE pre_common_template_block (
   targettplname varchar(255) NOT NULL DEFAULT '',
   tpldirectory varchar(255) NOT NULL DEFAULT '',
   bid int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (targettplname,tpldirectory,bid),
+  KEY (targettplname),
+  KEY (tpldirectory),
   KEY bid (bid)
 ) TYPE=MyISAM;
 
