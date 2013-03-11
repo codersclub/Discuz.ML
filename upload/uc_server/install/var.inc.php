@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: forum.func.php 14122 2008-08-20 06:06:33Z cnteacher $
+	English by Valery Votintsev at sources.ru
 */
 
 if(!defined('IN_COMSENZ')) {
@@ -21,7 +22,7 @@ if(defined('UC_SERVER_VERSION')) {
 	define('SOFT_RELEASE', '19700101');
 }
 
-define('INSTALL_LANG', 'SC_GBK');
+define('INSTALL_LANG', 'EN_UTF8');
 
 define('CONFIG', ROOT_PATH.'./data/config.inc.php');
 
@@ -29,8 +30,8 @@ $sqlfile = ROOT_PATH.'./install/uc.sql';
 
 $lockfile = ROOT_PATH.'./data/install.lock';
 
-define('CHARSET', 'gbk');
-define('DBCHARSET', 'gbk');
+define('CHARSET', 'UTF-8');
+define('DBCHARSET', 'utf8');
 
 define('ORIG_TABLEPRE', 'uc_');
 

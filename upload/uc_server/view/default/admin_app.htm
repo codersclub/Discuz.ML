@@ -1,3 +1,4 @@
+<!-- Modified by Valery Votintsev -->
 {template header}
 
 <script src="js/common.js" type="text/javascript"></script>
@@ -39,12 +40,12 @@ window.onload = testlink;
 						<!--{eval $i = 0;}-->
 						<!--{loop $applist $app}-->
 							<tr>
-								<td width="50"><input type="checkbox" name="delete[]" value="$app[appid]" class="checkbox" /></td>
+<!--vot-->							<td width="70"><input type="checkbox" name="delete[]" value="$app[appid]" class="checkbox" /></td>
 								<td width="35">$app[appid]</td>
 								<td><a href="admin.php?m=app&a=detail&appid=$app[appid]"><strong>$app[name]</strong></a></td>
 								<td><a href="$app[url]" target="_blank">$app[url]</a></td>
-								<td width="90"><div id="status_$app[appid]"></div><script id="link_$app[appid]" testlink="admin.php?m=app&a=ping&inajax=1&url={eval echo urlencode($app['url']);}&ip={eval echo urlencode($app['ip']);}&appid=$app[appid]&random={eval echo rand()}"></script><script>apps[$i] = '$app[appid]';</script></td>
-								<td width="40"><a href="admin.php?m=app&a=detail&appid=$app[appid]">{lang app_edit}</a></td>
+<!--vot-->							<td width="140"><div id="status_$app[appid]"></div><script id="link_$app[appid]" testlink="admin.php?m=app&a=ping&inajax=1&url={eval echo urlencode($app['url']);}&ip={eval echo urlencode($app['ip']);}&appid=$app[appid]&random={eval echo rand()}"></script><script>apps[$i] = '$app[appid]';</script></td>
+<!--vot-->							<td width="50"><a href="admin.php?m=app&a=detail&appid=$app[appid]">{lang app_edit}</a></td>
 							</tr>
 							<!--{eval $i++}-->
 						<!--{/loop}-->

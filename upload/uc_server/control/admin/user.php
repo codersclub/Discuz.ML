@@ -5,6 +5,8 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: user.php 1096 2011-05-13 11:26:36Z svn_project_zhangjie $
+
+	Modified by Valery Votintsev, codersclub.org
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -173,7 +175,7 @@ class control extends adminbase {
 
 	function onls() {
 
-		include_once UC_ROOT.'view/default/admin.lang.php';
+/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/admin.lang.php';
 
 		$status = 0;
 		if(!empty($_POST['addname']) && $this->submitcheck()) {

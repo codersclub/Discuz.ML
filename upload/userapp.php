@@ -4,6 +4,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: userapp.php 25756 2011-11-22 02:47:45Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 5);
@@ -26,6 +27,8 @@ if($appid) {
 
 $discuz->cachelist = $cachelist;
 $discuz->init();
+
+/*vot*/	settings_localize(); // Localize Navigation & Settings
 
 if(empty($_G['uid']) && $mod == 'app') {
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -59,4 +62,3 @@ if(!$navtitle) {
 
 require_once libfile('userapp/'.$mod, 'module');
 
-?>

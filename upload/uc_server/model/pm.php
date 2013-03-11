@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: pm.php 1059 2011-03-01 07:25:09Z monkey $
+	English by Valery Votintsev at sources.ru
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -759,7 +760,7 @@ class pmmodel {
 
 		if($filter == 'newpm') {
 			$addsql = 'm.isnew=1 AND ';
-		/*性能有影响
+		/*Affect performance
 		} elseif($filter == 'privatepm') {
 			$addsql = 't.pmtype=1 AND ';
 		} elseif($filter == 'chatpm') {

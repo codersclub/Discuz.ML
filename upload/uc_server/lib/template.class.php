@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: template.class.php 1098 2011-05-19 01:28:17Z svn_project_zhangjie $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 class template {
@@ -35,7 +36,9 @@ class template {
 		$this->defaulttpldir = UC_ROOT.'./view/default';
 		$this->tpldir = UC_ROOT.'./view/default';
 		$this->objdir = UC_DATADIR.'./view';
-		$this->langfile = UC_ROOT.'./view/default/templates.lang.php';
+/*vot*/		$this->langfile = UC_ROOT.'./language/'.UC_LANG.'/templates.lang.php';
+//DEBUG
+//echo "langfile=".$this->langfile."<br>";
 		if (version_compare(PHP_VERSION, '5') == -1) {
 			register_shutdown_function(array(&$this, '__destruct'));
 		}

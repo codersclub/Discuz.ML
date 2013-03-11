@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: index.php 1059 2011-03-01 07:25:09Z monkey $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 error_reporting(0);
@@ -33,6 +34,12 @@ require UC_ROOT.'./release/release.php';
 if(!@include UC_DATADIR.'config.inc.php') {
 	exit('The file <b>data/config.inc.php</b> does not exist, perhaps because of UCenter has not been installed, <a href="install/index.php"><b>Please click here to install it.</b></a>.');
 }
+
+//vot echo 'mbstring.internal_encoding = ' . ini_get('mbstring.internal_encoding') . "<br>\n";
+/*vot*/ if(strtolower(UC_CHARSET)=='utf-8') {
+/*vot*/   ini_set('mbstring.internal_encoding','UTF-8');
+//vot echo 'mbstring.internal_encoding = ' . ini_get('mbstring.internal_encoding') . "<br>\n";
+/*vot*/ }
 
 $m = getgpc('m');
 $a = getgpc('a');

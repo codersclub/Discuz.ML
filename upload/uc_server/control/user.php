@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: user.php 1059 2011-03-01 07:25:09Z monkey $
+	English by Valery Votintsev at sources.ru
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -28,7 +29,7 @@ class usercontrol extends base {
 		$this->load('user');
 	}
 
-	// -1 未开启
+	// -1 Is not turned on
 	function onsynlogin() {
 		$this->init_input();
 		$uid = $this->input('uid');

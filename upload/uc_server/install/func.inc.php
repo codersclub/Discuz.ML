@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: forum.func.php 14122 2008-08-20 06:06:33Z cnteacher $
+	English by Valery Votintsev at sources.ru
 */
 
 if(!defined('IN_COMSENZ')) {
@@ -481,9 +482,11 @@ EOT;
 }
 
 function show_footer($quit = true) {
-
-	echo <<<EOT
-		<div class="footer">&copy;2001 - 2011 <a href="http://www.comsenz.com/">Comsenz</a> Inc.</div>
+/*vot*/	$y = date('Y');
+/*vot*/	echo <<<EOT
+		<div class="footer">&copy;2001-{$y} <a href="http://www.comsenz.com/">Comsenz Inc.</a>
+		  <div>Multilingual version by <a href="http://codersclub.org/discuzx/">Valery Votintsev (aka "vot"), codersclub.org</a></div>
+                </div>
 	</div>
 </div>
 </body>
@@ -576,10 +579,10 @@ function config_edit() {
 
 function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
-	$ckey_length = 4;	// 随机密钥长度 取值 0-32;
-				// 加入随机密钥，可以令密文无任何规律，即便是原文和密钥完全相同，加密结果也会每次不同，增大破解难度。
-				// 取值越大，密文变动规律越大，密文变化 = 16 的 $ckey_length 次方
-				// 当此值为 0 时，则不产生随机密钥
+/*vot*/	$ckey_length = 4;	// random key length value 0-32; 
+				// Add random key, the ciphertext can make no law, even if exactly the same text and key, encrypt the result will be different each time, increasing the difficulty is. 
+				// Value the greater the change in the law the greater the ciphertext, ciphertext change = 16, $ ckey_length th power 
+				// When this value is 0, not generate random keys 
 
 	$key = md5($key ? $key : UC_KEY);
 	$keya = md5(substr($key, 0, 16));
@@ -706,7 +709,7 @@ function insertconfig($s, $find, $replace) {
 	if(preg_match($find, $s)) {
 		$s = preg_replace($find, $replace, $s);
 	} else {
-		// 插入到最后一行
+		// Insert to the last line 
 		$s .= "\r\n".$replace;
 	}
 	return $s;
@@ -972,14 +975,14 @@ function check_adminuser($username, $password, $email) {
 	include ROOT_PATH.'./uc_client/client.php';
 	$error = '';
 	$uid = uc_user_register($username, $password, $email);
-	/*
-	-1 : 用户名不合法
-	-2 : 包含不允许注册的词语
-	-3 : 用户名已经存在
-	-4 : email 格式有误
-	-5 : email 不允许注册
-	-6 : 该 email 已经被注册
-	>1 : 表示成功，数值为 UID
+	/*vot comments:
+	-1 : The user name is not valid 
+	-2 : Contains not allowed words 
+	-3 : User name already exists 
+	-4 : Email format is wrong 
+	-5 : THis Email is not allowed for registration
+	-6 : This email is not registered 
+	>1 : the UID is successfully identified
 	*/
 	if($uid == -1 || $uid == -2) {
 		$error = 'admin_username_invalid';

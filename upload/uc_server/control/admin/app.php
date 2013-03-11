@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: app.php 1090 2011-05-03 07:33:28Z cnteacher $
+	English by Valery Votintsev at sources.ru
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -164,7 +165,7 @@ class control extends adminbase {
 					preg_match("/define\(\'UC_CLIENT_VERSION\'\, \'([^\']+?)\'\)/i", $s, $m);
 					$uc_client_version = @$m[1];
 
-					//判断版本
+					// Check version
 					if(!$uc_client_version || $uc_client_version <= '1.0.0') {
 						$this->message('app_apifile_too_low', 'BACK', 0, array('$apifile' => $apifile));
 					}

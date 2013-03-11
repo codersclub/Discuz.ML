@@ -5,25 +5,26 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: seccode.class.php 1059 2011-03-01 07:25:09Z monkey $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 class seccode {
 
-	var $code;			//100000-999999 范围内随机
-	var $type 	= 0;		//0 英文图片验证码  1 中文图片验证码  2 Flash 验证码  3 语音验证码
-	var $width 	= 0;		//宽度
-	var $height 	= 0;		//高度
-	var $background	= 1;		//随机图片背景
-	var $adulterate	= 1;		//随机背景图形
-	var $ttf 	= 0;		//随机 TTF 字体
-	var $angle 	= 0;		//随机倾斜度
-	var $color 	= 1;		//随机颜色
-	var $size 	= 0;		//随机大小
-	var $shadow 	= 1;		//文字阴影
-	var $animator 	= 0;		//GIF 动画
-	var $fontpath	= '';		//TTF 字库目录
-	var $datapath	= '';		//图片、声音、Flash 等数据目录
-	var $includepath= '';		//其它包含文件目录
+	var $code;		// 100000-999999 range of random
+	var $type 	= 1;	// 0 - Chinese, 1 - English image verification code, 2 - Flash Code, 3 - voice verification code
+	var $width 	= 0;	// image width
+	var $height 	= 0;	// image height
+	var $background	= 1;	// random image background
+	var $adulterate	= 1;	// Random Background Graphics
+	var $ttf 	= 0;	// random TTF fonts
+	var $angle 	= 0;	// random angle
+	var $color 	= 1;	// random color
+	var $size 	= 0;	// Random Size
+	var $shadow 	= 1;	// text shadow
+	var $animator 	= 0;	// GIF Animation
+	var $fontpath	= '';	// TTF font directory
+	var $datapath	= '';	// pictures, sounds, Flash and other data directory
+	var $includepath= '';	// Other include files directory
 
 	var $fontcolor;
 	var $im;

@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<item id="name">文件权限检查</item>
+	<item id="name">Check file permissions</item>
 	<item id="version">1.0.0</item>
 	<item id="author">Monkey</item>
 	<item id="date">2008-6-16</item>
 	<item id="lastmodified">2008-6-16</item>
-	<item id="copyright">Comsenz 所有</item>
+	<item id="copyright">Comsenz Inc.</item>
 	<item id="tabindex">2</item>
-	<item id="tips">检查 UCenter 文件是否被修改。</item>
+	<item id="tips">Check if UCenter files was modified.</item>
 	<item id="lang">
-		<item id="plugin_filecheck_modifed">被修改</item>
-		<item id="plugin_filecheck_deleted">被删除</item>
-		<item id="plugin_filecheck_unknow">未知</item>
-		<item id="plugin_filecheck_modifed_in_aweek">一周内被修改</item>
+		<item id="plugin_filecheck_modifed">Modified</item>
+		<item id="plugin_filecheck_deleted">Deleted</item>
+		<item id="plugin_filecheck_unknow">Unknown</item>
+		<item id="plugin_filecheck_modifed_in_aweek">Modified last week</item>
 	</item>
 </root>

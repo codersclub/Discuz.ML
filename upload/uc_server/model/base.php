@@ -5,9 +5,21 @@
 This is NOT a freeware, use is subject to license terms
 
 $Id: base.php 1059 2011-03-01 07:25:09Z monkey $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 !defined('IN_UC') && exit('Access Denied');
+
+//vot Define UC Language !!!
+//vot		include_once UC_ROOT.'./view/default/main.lang.php';
+//vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
+//DEBUG
+//echo "base.php: uc_lang1=", UC_LANG, "<br>\n";
+/*vot*/		define('UC_LANG',UC_DEFAULT_LANG);
+/*vot*/		define('RTLSUFFIX',UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
+///*vot*/		include_once UC_ROOT.'./language/'.UC_LANG.'/main.lang.php';
+//DEBUG
+//echo "base.php: uc_lang2=", UC_LANG, "<br>\n";
 
 class base {
 
@@ -36,6 +48,8 @@ class base {
 		$this->init_note();
 		$this->init_mail();
 		//		$this->cron();
+//vot
+@header('Content-Type: text/html; charset='.UC_CHARSET);
 	}
 
 	function init_var() {
@@ -59,7 +73,14 @@ class base {
 		define('FORMHASH', $this->formhash());
 		$_GET['page'] =  max(1, intval(getgpc('page')));
 
-		include_once UC_ROOT.'./view/default/main.lang.php';
+//vot Define UC Language !!!
+//vot		include_once UC_ROOT.'./view/default/main.lang.php';
+//vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
+if(!defined('UC_LANG')) {
+/*vot*/		define('UC_LANG',UC_DEFAULT_LANG);
+/*vot*/		define('RTLSUFFIX',UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
+}
+/*vot*/		include_once UC_ROOT.'./language/'.UC_LANG.'/main.lang.php';
 		$this->lang = &$lang;
 	}
 
@@ -140,10 +161,10 @@ class base {
 
 	function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
-		$ckey_length = 4;	// 随机密钥长度 取值 0-32;
-		// 加入随机密钥，可以令密文无任何规律，即便是原文和密钥完全相同，加密结果也会每次不同，增大破解难度。
-		// 取值越大，密文变动规律越大，密文变化 = 16 的 $ckey_length 次方
-		// 当此值为 0 时，则不产生随机密钥
+/*vot*/		$ckey_length = 4;	// random key length value 0-32;
+/*vot*/					// Add random key, the ciphertext can make no law, even if exactly the same text and key, encrypt the result will be different each time, increasing the difficulty is.
+/*vot*/					// Value the greater the change in the law the greater the ciphertext, ciphertext change = 16, $ ckey_length th power
+/*vot*/					// When this value is 0, not generate random keys
 
 		$key = md5($key ? $key : UC_KEY);
 		$keya = md5(substr($key, 0, 16));
@@ -296,7 +317,7 @@ class base {
 	}
 
 	function date($time, $type = 3) {
-		$format[] = $type & 2 ? (!empty($this->settings['dateformat']) ? $this->settings['dateformat'] : 'Y-n-j') : '';
+/*vot*/		$format[] = $type & 2 ? (!empty($this->settings['dateformat']) ? $this->settings['dateformat'] : 'Y-m-d') : '';
 		$format[] = $type & 1 ? (!empty($this->settings['timeformat']) ? $this->settings['timeformat'] : 'H:i') : '';
 		return gmdate(implode(' ', $format), $time + $this->settings['timeoffset']);
 	}

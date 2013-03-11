@@ -1,5 +1,5 @@
 {template header}
-
+<!--Modified by Valery Votintsev, codersclub.org-->
 <script src="js/common.js" type="text/javascript"></script>
 <script src="js/calendar.js" type="text/javascript"></script>
 
@@ -56,7 +56,9 @@
 					</tr>
 					<tr>
 						<td>{lang user_regdate}:</td>
-						<td colspan="3"><input type="text" name="srchregdatestart" onclick="showcalendar();" value="$srchregdatestart" class="txt" /> {lang to} <input type="text" name="srchregdateend" onclick="showcalendar();" value="$srchregdateend" class="txt" /></td>
+<!--vot-->					<td><input type="text" name="srchregdatestart" onclick="showcalendar();" value="$srchregdatestart" class="txt" /></td>
+<!--vot-->					<td>{lang to}</td>
+<!--vot-->					<td><input type="text" name="srchregdateend" onclick="showcalendar();" value="$srchregdateend" class="txt" /></td>
 						<td>{lang user_regip}:</td>
 						<td><input type="text" name="srchregip" value="$srchregip" class="txt" /></td>
 					</tr>
