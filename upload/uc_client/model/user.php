@@ -5,6 +5,8 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: user.php 1078 2011-03-30 02:00:29Z monkey $
+
+	Modified by Valery Votintsev at sources.ru
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -41,7 +43,14 @@ class usermodel {
 	function check_username($username) {
 		$guestexp = '\xA1\xA1|\xAC\xA3|^Guest|^\xD3\xCE\xBF\xCD|\xB9\x43\xAB\xC8';
 		$len = $this->dstrlen($username);
-		if($len > 15 || $len < 3 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $username)) {
+/*vot*/		$lenbyte = strlen($username);
+/*vot*/		if($len > 15 || $len < 2) {
+			return FALSE;
+/*vot*/		} elseif($lenbyte > 64) {
+			return FALSE;
+/*vot*/		} elseif(preg_match("/[\t\%,\*\"\<\>\&]|\s{2}|^c:\\con\\con/is", $username)) {
+			return FALSE;
+/*vot*/		} elseif(preg_match("/$guestexp/is", $username)) {
 			return FALSE;
 		} else {
 			return TRUE;
@@ -52,6 +61,7 @@ class usermodel {
 		if(strtolower(UC_CHARSET) != 'utf-8') {
 			return strlen($str);
 		}
+/*vot*/		return mb_strlen($str);
 		$count = 0;
 		for($i = 0; $i < strlen($str); $i++){
 			$value = ord($str[$i]);
