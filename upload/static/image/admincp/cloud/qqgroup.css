@@ -1,3 +1,4 @@
+/*Modified by Valery Votintsev, codersclub.org*/
 /* cnt-dz CSS Document */
 body { text-align: left; }
 body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0; padding: 0; }
@@ -64,7 +65,7 @@ body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0;
 
 
 	.qqqun_bblist { float: left; padding-right: 35px; width: 550px; overflow: hidden; }
-	.qqqun_tl { width: 100%; font: 12px/1.5 Tahoma,Helvetica,'SimSun',sans-serif; empty-cells: show; border-collapse: collapse; }
+/*vot*/	.qqqun_tl { width: 100%; font: 12px/1.5 Verdana, Arial, Tahoma ,Helvetica, sans-serif; empty-cells: show; border-collapse: collapse; }
 		.qqqun_tl * { padding: 0px; margin: 0px; }
 		.qqqun_tl a { text-decoration: none; color: #369; }
 		.qqqun_tl a:hover { text-decoration: underline; color: #369; }
@@ -85,7 +86,7 @@ body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0;
 	.qqqun_pg { padding: 0 6px; height: 28px; line-height: 28px; border-bottom: none !important; background: none !important; text-align: right !important; font-size: 12px; color: #999; }
 			.qqqun_pg a { padding: 0 6px; }
 
-.pt, .px { border: 1px solid; border-color: #FFF; background: none; font: 12px/1.5 Tahoma,Helvetica,'SimSun',sans-serif; color: #0271DA; overflow-y:hidden;}
+/*vot*/ .pt, .px { border: 1px solid; border-color: #FFF; background: none; font: 12px/1.5 Verdana, Arial, Tahoma, Helvetica, sans-serif; color: #0271DA; overflow-y:hidden;}
 	.pt { padding: 1px 6px; width: 174px; *width:173px important; width: 174px\9; _width: 173px; height: 34px; line-height: 17px; }
 	.ipt { padding: 2px; width: 110px; *width:110px important; width: 110px\9; _width: 110px; height: 70px; line-height: 18px; color: #333; }
 	.tpx { width: 188px; *width:188px important; width: 186px\9; _width: 188px; height: 16px;}

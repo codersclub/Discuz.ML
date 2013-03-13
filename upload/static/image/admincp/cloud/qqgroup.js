@@ -1,3 +1,4 @@
+// Modified by Valery Votintsev, codersclub.org
 var cloudj = jQuery.noConflict();
 
 if (typeof disallowfloat == 'undefined' || disallowfloat === null) {
@@ -19,11 +20,11 @@ function previewFormSubmit() {
 	saveAllThread();
 
 	if (!selectedTopicId) {
-		alert('请推送头条信息');
+/*vot*/		alert(lng['select_topic_to_push']);
 		return false;
 	}
 	if (selectedNormalIds.length < 1) {
-		alert('请至少推送一条信息到列表区域');
+/*vot*/		alert(lng['select_item_to_push']);
 		return false;
 	}
 
@@ -65,13 +66,13 @@ function ajaxChangeSearch() {
 }
 
 function ajaxGetSearchResultThreads() {
-	cloudj('#search_result').html('<tr><td colspan="3">加载中...</td></tr>');
+/*vot*/	cloudj('#search_result').html('<tr><td colspan="3">'+lng['loading']+'</td></tr>');
 	qqgroupajaxpost('search_form', 'search_result', 'search_result', null, null, function() {initSelect(); return false});
 	return false;
 }
 
 function ajaxGetPageResultThreads(page, mpurl) {
-	cloudj('#search_result').html('<tr><td colspan="3">加载中...</td></tr>');
+/*vot*/	cloudj('#search_result').html('<tr><td colspan="3">'+lng['loading']+'</td></tr>');
 	if (typeof page == 'undefined' || page === null) {
 		page = 1;
 	}
@@ -164,7 +165,7 @@ function addMiniportalList(tid) {
 		return false;
 	}
 	if (selectedNormalIds.length >= 5) {
-		alert('推送帖子已达到5条，请在右侧取消一些再重试。');
+/*vot*/		alert(lng['push5reached']);
 		return false;
 	}
 	if (tid == selectedTopicId) {
@@ -299,14 +300,14 @@ function removeNormalThreadRecall(displayorder, inNormalEditor) {
 		if (inNormalEditor) {
 			saveAllThread();
 		}
-		firstThreadLi.html('<div class="tips">点击左侧 <img src="static/image/admincp/cloud/qun_op_list.png" align="absmiddle" /> 将信息推送到列表</div>');
+/*vot*/		firstThreadLi.html('<div class="tips">'+lng['click_left']+' <img src="static/image/admincp/cloud/qun_op_list.png" align="absmiddle" /> '+lng['push_to_list']+'</div>');
 		firstThreadLi.show();
 	}
 }
 
 function ajaxUploadQQGroupImage() {
 	cloudj('#uploadImageResult').parent().show();
-	cloudj('#uploadImageResult').text('图片上传中，请稍后...');
+/*vot*/	cloudj('#uploadImageResult').text(lng['wait_image_upload']);
 	qqgroupajaxpost('uploadImage', 'uploadImageResult', 'uploadImageResult', null, null, 'uploadRecall()');
 }
 
@@ -345,7 +346,7 @@ function qqgroupajaxpost(formid, showid, waitid, showidclass, submitbtn, recall)
 			s = ajaxResponse;
 		}
 		if (!s) {
-			s = '内部错误，无法显示此内容';
+/*vot*/			s = lng['int_error'];
 		}
 
 		if(s != '' && s.indexOf('ajaxerror') != -1) {
