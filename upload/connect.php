@@ -4,6 +4,7 @@
    This is NOT a freeware, use is subject to license terms
 
    $Id: connect.php 26424 2011-12-13 03:02:20Z zhouxiaobo $
+ *	Modified by Valery Votintsev, codersclub.org
 */
 
 
@@ -25,6 +26,8 @@ $discuz = C::app();
 $mod = $discuz->var['mod'];
 $discuz->init();
 
+/*vot*/	settings_localize(); // Localize Navigation & Settings
+
 if(!in_array($mod, array('config', 'login', 'feed', 'check', 'user'))) {
 	showmessage('undefined_action');
 }
@@ -38,4 +41,3 @@ runhooks();
 
 $connectService = Cloud::loadClass('Service_Connect');
 require_once libfile('connect/'.$mod, 'plugin/qqconnect');
-?>

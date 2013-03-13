@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: plugin.php 27335 2012-01-16 10:15:37Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 127);
@@ -19,6 +20,8 @@ $cachelist = array('plugin', 'diytemplatename');
 
 $discuz->cachelist = $cachelist;
 $discuz->init();
+
+/*vot*/	settings_localize(); // Localize Navigation & Settings
 
 if(!empty($_GET['id'])) {
 	list($identifier, $module) = explode(':', $_GET['id']);
@@ -46,4 +49,3 @@ runhooks();
 
 include DISCUZ_ROOT.$modfile;
 
-?>

@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: search.php 26313 2011-12-08 09:12:56Z yangli $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 0);
@@ -20,6 +21,8 @@ $cachelist = $slist = array();
 $mod = '';
 $discuz->cachelist = $cachelist;
 $discuz->init();
+
+/*vot*/	settings_localize(); // Localize Navigation & Settings
 
 if(in_array($discuz->var['mod'], $modarray) || !empty($_G['setting']['search'][$discuz->var['mod']]['status'])) {
 	$mod = $discuz->var['mod'];
@@ -52,4 +55,3 @@ if($mod == 'curforum') {
 
 require DISCUZ_ROOT.'./source/module/search/search_'.$mod.'.php';
 
-?>

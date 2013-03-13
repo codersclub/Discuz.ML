@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: home.php 30442 2012-05-29 06:32:06Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 1);
@@ -22,6 +23,8 @@ $discuz = C::app();
 $cachelist = array('magic','userapp','usergroups', 'diytemplatenamehome');
 $discuz->cachelist = $cachelist;
 $discuz->init();
+
+/*vot*/	settings_localize(); // Localize Navigation & Settings
 
 $space = array();
 
@@ -41,4 +44,3 @@ runhooks($_GET['do'] == 'profile' && $_G['inajax'] ? 'card' : $_GET['do']);
 require_once libfile('home/'.$mod, 'module');
 
 
-?>

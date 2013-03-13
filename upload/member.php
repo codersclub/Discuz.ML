@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: member.php 24411 2011-09-19 05:09:03Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 0);
@@ -24,6 +25,9 @@ $mod = !in_array($discuz->var['mod'], $modarray) && (!preg_match('/^\w+$/', $dis
 define('CURMODULE', $mod);
 
 $discuz->init();
+
+/*vot*/	settings_localize(); // Localize Navigation & Settings
+
 if($mod == 'register' && $discuz->var['mod'] != $_G['setting']['regname']) {
 	showmessage('undefined_action');
 }
@@ -36,4 +40,3 @@ runhooks();
 
 require DISCUZ_ROOT.'./source/module/member/member_'.$mod.'.php';
 
-?>

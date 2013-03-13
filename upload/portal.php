@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: portal.php 28297 2012-02-27 08:35:59Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 define('APPTYPEID', 4);
@@ -16,6 +17,8 @@ $discuz = C::app();
 $cachelist = array('userapp', 'portalcategory', 'diytemplatenameportal');
 $discuz->cachelist = $cachelist;
 $discuz->init();
+
+/*vot*/	settings_localize(); // Localize Navigation & Settings
 
 require DISCUZ_ROOT.'./source/function/function_home.php';
 require DISCUZ_ROOT.'./source/function/function_portal.php';
@@ -31,4 +34,3 @@ $_G['disabledwidthauto'] = 1;
 
 require_once libfile('portal/'.$_GET['mod'], 'module');
 
-?>
