@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_album.php 27892 2012-02-16 07:24:19Z chenmengshu $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -54,8 +55,8 @@ if(!submitcheck('albumsubmit')) {
 		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? '' : $starttime;
 		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? '' : $endtime;
 	} else {
-		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-n-j') : $starttime;
-		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-n-j') : $endtime;
+/*vot*/		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
+/*vot*/		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
 	}
 
 	shownav('topic', 'nav_album');
@@ -164,7 +165,7 @@ if(submitcheck('searchsubmit', 1) || $newlist) {
 		$starttime = strtotime($starttime);
 	}
 
-	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-n-j')) {
+/*vot*/	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
 		if($endtime != '') {
 			$endtime = strtotime($endtime);
 		}

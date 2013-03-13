@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: cloud_qqgroup.php 31974 2012-10-29 06:02:39Z songlixin $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
@@ -712,7 +713,7 @@ function showQQGroupScript() {
 	<script type="text/javascript">
 		var adminscript = '$adminscript';
 	</script>
-	<script type="text/javascript" src="static/image/admincp/cloud/qqgroup.js?v=20121101"></script>
+<!--vot--><script type="text/javascript" src="static/image/admincp/cloud/qqgroup.js?v={DISCUZ_RELEASE}"></script>
 EOF;
 }
 

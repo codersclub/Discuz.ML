@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_adv.php 30333 2012-05-23 07:16:05Z monkey $
+ *	Modified by Valery Votintsev at sources.ru
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -28,7 +29,7 @@ if(!empty($_GET['preview'])) {
 <head>
 <script type="text/javascript">var IMGDIR = '<?php echo $_G['style']['imgdir']; ?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>';</script>
 <script type="text/javascript" src="static/js/common.js"></script>
-<link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo $_G['setting']['styleid'];?>_common.css" />
+<!--vot--><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo $_G['setting']['styleid'];?>_common<?php echo RTLSUFFIX;?>.css" />
 </head>
 <body>
 <div id="append_parent"></div><div id="ajaxwaitid"></div>
@@ -276,8 +277,8 @@ if($operation == 'ad') {
 			}
 		}
 
-		$adv['starttime'] = $adv['starttime'] ? dgmdate($adv['starttime'], 'Y-n-j') : '';
-		$adv['endtime'] = $adv['endtime'] ? dgmdate($adv['endtime'], 'Y-n-j') : '';
+/*vot*/	$adv['starttime'] = $adv['starttime'] ? dgmdate($adv['starttime'], 'Y-m-d') : '';
+/*vot*/	$adv['endtime'] = $adv['endtime'] ? dgmdate($adv['endtime'], 'Y-m-d') : '';
 
 		echo '<script type="text/javascript" src="static/js/calendar.js"></script>'.
 			'<div class="colorbox"><h4>'.lang('adv/'.$type, $advclass->name).'</h4>'.
