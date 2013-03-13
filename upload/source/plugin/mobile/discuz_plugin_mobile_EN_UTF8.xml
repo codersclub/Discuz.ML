@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2.5]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[Mobile client]]></item>
+			<item id="identifier"><![CDATA[mobile]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[mobile/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.1]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[mobile]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[28]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[mobile]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="mobile_tip_ios"><![CDATA[Recommended to use the client to access the site, <a href="http://www.discuz.net/mobile.php?platform=ios">Download the client</a>]]></item>
+				<item id="mobile_tip_android"><![CDATA[Recommended to use the client to access the site, <a href="http://www.discuz.net/mobile.php?platform=android">Download the client</a>]]></item>
+				<item id="mobile_tip_wp7"><![CDATA[Recommended to use the client to access the site, <a href="http://www.discuz.net/mobile.php?platform=windowsphone">Download the client</a>]]></item>
+				<item id="mobile_extend_newthread"><![CDATA[Latest threads]]></item>
+				<item id="mobile_extend_newreply"><![CDATA[Latest Replies]]></item>
+				<item id="mobile_extend_digest"><![CDATA[Latest Digest]]></item>
+				<item id="mobile_extend_newpic"><![CDATA[Latest images]]></item>
+				<item id="mobile_fromtype_ios"><![CDATA[From: iPhone client]]></item>
+				<item id="mobile_fromtype_android"><![CDATA[From: Android client]]></item>
+				<item id="mobile_fromtype_windowsphone"><![CDATA[From: WindowsPhone client]]></item>
+				<item id="mobile_post_author_visible"><![CDATA[Visible only for author]]></item>
+			</item>
+			<item id="templatelang">
+				<item id="mobile_tips"><![CDATA[Recommend using two-dimensional code and access to the forum<br />Using two-dimensional code Collecting Forum:<br />1) After the handheld forum application is installed, click on the forum using the two-dimensional code.<br />2) Place the two-dimensional code before the camera focus to Favorites.]]></item>
+				<item id="username"><![CDATA[User name]]></item>
+				<item id="password"><![CDATA[Password]]></item>
+				<item id="password_confirm"><![CDATA[Password again]]></item>
+				<item id="email"><![CDATA[Email]]></item>
+				<item id="invite_code"><![CDATA[Invitation code]]></item>
+				<item id="register_message"><![CDATA[Registration Reason]]></item>
+				<item id="seccode"><![CDATA[Verification code]]></item>
+				<item id="change_seccode"><![CDATA[Renew the code]]></item>
+				<item id="secqaa"><![CDATA[Security Q&A]]></item>
+				<item id="close"><![CDATA[Close]]></item>
+				<item id="admin_tips"><![CDATA[Dear webmaster, you can upload the "mobile.png" image (size 178x178px) to the Discuz! root directory. Mobile forum client will automatiacally show this image as the forum logo.]]></item>
+				<item id="iphone_alt"><![CDATA[iphone - For Apple I-phone]]></item>
+				<item id="android_alt"><![CDATA[Android - equippped Samsung/HTC/Millet and other mobile phone with Android]]></item>
+				<item id="windowsphone_alt"><![CDATA[WinodwsPhone - For mobile phones equipped with the Microsoft WindowsPhone7 system]]></item>
+				<item id="discuzmobile_alt"><![CDATA[Mobile Forum advantages]]></item>
+				<item id="tips_1"><![CDATA[Fast access anytime, anywhere]]></item>
+				<item id="tips_1_desc"><![CDATA[Having a phone in hand, you can quickly and easily see the stickers posted, receive and send new friend.]]></item>
+				<item id="tips_2"><![CDATA[Ultimate optimization, carefree "pleasure" reading]]></item>
+				<item id="tips_2_desc"><![CDATA[Unique forum interface and touch screen design, the phone Forum has become a feast for the eyes, operate freely.]]></item>
+				<item id="tips_3"><![CDATA[Shoot, post, and share your life]]></item>
+				<item id="tips_3_desc"><![CDATA[Whether landscape pictures, or news site, take pictures to post at one go, allowing you to shine in the forum.]]></item>
+				<item id="qr_desc"><![CDATA[Download the client after shooting two-dimensional code for fast access to the site:]]></item>
+				<item id="qr"><![CDATA[Two-dimensional code]]></item>
+				<item id="wapmode"><![CDATA[Or visit the following address for WAP:]]></item>
+				<item id="qqregmode1"><![CDATA[Improve the account information]]></item>
+				<item id="qqregmode2"><![CDATA[Bind existing account]]></item>
+				<item id="register_validate_email_tips"><![CDATA[Registered need to verify the mailbox, be sure to fill in the correct mailbox, please check your email after submission.]]></item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
+	</item>
+</root>

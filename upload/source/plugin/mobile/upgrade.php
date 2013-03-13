@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: upgrade.php 31700 2012-09-24 03:46:59Z zhangjie $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -16,7 +17,7 @@ $sql = '';
 $sql .= <<<EOF
 
 CREATE TABLE IF NOT EXISTS pre_common_devicetoken (
-  `uid` mediumint(8) unsigned NOT NULL,
+  `uid` int(11) unsigned NOT NULL,
   `token` char(50) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `token` (`token`)
