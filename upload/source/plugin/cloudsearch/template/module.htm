@@ -1,3 +1,4 @@
+<!--Modified by Valery Votintsev, codersclub.org-->
 {eval
 function tpl_cloudsearch_index_top($recwords, $searchparams, $srchotquery, $position = 'hotopicf') {
 global $_G;
@@ -431,14 +432,14 @@ global $_G;
 <!--{block return}-->
     <script type="text/javascript">
     var cloudsearch_suggest = {};
-    cloudsearch_suggest.cache = {}; // 缓存
+/*vot*/ cloudsearch_suggest.cache = {}; // Cache
     cloudsearch_suggest.sId = "$_G['setting']['my_siteid']";
-    cloudsearch_suggest.keyInterval = null; // 按住上下键时的setTimeout时间值
-    cloudsearch_suggest.requestTimeout = null; // 发送jsonp请求时的setTimeout时间值
-    cloudsearch_suggest.responseTimeout = null; // jsonp请求超时时的setTimeout时间值
-    cloudsearch_suggest.slideSpeed = 700; // 按住上下键时的滚动速度
-    cloudsearch_suggest.linenow = 0; // 当前所在行
-    cloudsearch_suggest.queryString = "$queryString"; // 当前所在行
+/*vot*/ cloudsearch_suggest.keyInterval = null; // Up and down keys setTimeout value
+/*vot*/ cloudsearch_suggest.requestTimeout = null; // Send jsonp request with the setTimeout value
+/*vot*/ cloudsearch_suggest.responseTimeout = null; // jsonp request timeout of the setTimeout Time value
+/*vot*/cloudsearch_suggest.slideSpeed = 700; // The scrolling speed when the down key hold
+/*vot*/cloudsearch_suggest.linenow = 0; // Current line
+/*vot*/cloudsearch_suggest.queryString = "$queryString"; // Current line
     
     function cloudsearch_suggest_preventEnter(oEvent) {
 
@@ -456,7 +457,7 @@ global $_G;
             var panel = $('sg');
             if ('block' == panel.style.display) {
             	
-            	cloudsearch_suggest_clearStyle(); // 清掉所有li的选中状态
+/*vot*/ 	cloudsearch_suggest_clearStyle(); // Clean of all Selected li state
                 var suggestNum = lines.length;
 
                 if (38 == code) {
@@ -480,9 +481,9 @@ global $_G;
     
     function cloudsearch_suggest_suggest(oEvent) {
         
-    	var q = trim($('scbar_txt').value); // 输入框的输入
+/*vot*/	var q = trim($('scbar_txt').value); // Input box content
         
-        var code = oEvent.keyCode; // 键盘按键值
+/*vot*/	var code = oEvent.keyCode; // Keyboard key code
         var lines = $('sg').getElementsByTagName('li');
 
         if (38 == code || 40 == code) { // up down
@@ -491,7 +492,7 @@ global $_G;
                 cloudsearch_suggest.keyInterval = null;
                 cloudsearch_suggest.slideSpeed = 700;
             }
-            // 把所选值放入输入框（去除html标签）
+/*vot*/     // Select suggested value for Input box (with html tags removed)
             $('scbar_txt').value = lines[cloudsearch_suggest.linenow - 1].innerHTML.replace(/<\s*(\/)?\s*[0-9a-zA-Z]+\s*>/g, '');
         } else if (27 == code) { // ESC
         	
@@ -509,7 +510,7 @@ global $_G;
                     if (null != cloudsearch_suggest.requestTimeout) {
                         clearTimeout(cloudsearch_suggest.requestTimeout);
                     }
-                    // 请求延时0.3秒执行，因为有可能用户是在持续输入
+/*vot*/             // Delay 0.3 seconds befor the Request execute.
                     cloudsearch_suggest.requestTimeout = setTimeout(function() {cloudsearch_suggest_sendRequest(q);}, 500); 
                 }
             } else {
@@ -525,7 +526,7 @@ global $_G;
 
     function cloudsearch_suggest_sendRequest(q) {
     	
-    	// 删掉之前的请求（包括超时处理）
+/*vot*/	// Delete the previous request (Including overtime)
     	if ($('cloudsearch_suggest') != null) {
     		document.getElementsByTagName('head')[0].removeChild($('cloudsearch_suggest'));
     		if (null != cloudsearch_suggest.responseTimeout) {
@@ -540,12 +541,12 @@ global $_G;
         	charset = 'utf-8';
         }
         
-        document.getElementsByTagName('head')[0].appendChild(script); // jsonp加载外域接口数据
-        cloudsearch_suggest.responseTimeout = setTimeout(function() {cloudsearch_suggest_clearRequest();}, 1000); // 0.5秒后没返回就抛弃
+/*vot*/ document.getElementsByTagName('head')[0].appendChild(script); // load jsonp data from external domain interface
+/*vot*/ cloudsearch_suggest.responseTimeout = setTimeout(function() {cloudsearch_suggest_clearRequest();}, 1000); // 0.5 seconds after no return or abandoned
     }
     
     function cloudsearch_suggest_clearRequest() {
-    	// 删掉之前的请求（包括超时处理）
+/*vot*/ // Delete previous request (including overtime)
         if ($('cloudsearch_suggest') != null) {
             document.getElementsByTagName('head')[0].removeChild($('cloudsearch_suggest'));
         }
@@ -582,10 +583,10 @@ global $_G;
     }
     
     function cloudsearch_suggest_mouseOver(obj) {
-    	cloudsearch_suggest_clearStyle(); // 清掉之前的选中状态
-    	obj.className = "smo"; // 当前的li设置为选中状态
+/*vot*/ cloudsearch_suggest_clearStyle(); // Clean up previous selected status
+/*vot*/ obj.className = "smo"; // The current Li is set to selected status
     	
-    	// 把linenow设置为当前悬停的值
+/*vot*/ // Set the value of the current hover to "linenow"
         var lis = $('st_box').getElementsByTagName('li');
         if (typeof lis != undefined && lis.length > 0) {
             for (var i = 0; i < lis.length; i++) {
@@ -636,7 +637,7 @@ global $_G;
 	}
     
 	if (!BROWSER.ie || BROWSER.ie > 6) {
-		// 输入框绑定onkeydown和onkeyup事件
+/*vot*/		// Bind onkeydown and onkeyup event to Input box
 		_attachEvent($('scbar_txt'), 'keydown', cloudsearch_suggest_preventEnter);
 		_attachEvent($('scbar_txt'), 'keyup', cloudsearch_suggest_suggest);
 		_attachEvent($('scbar_txt'), 'blur', cloudsearch_suggest_hide);

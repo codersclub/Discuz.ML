@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
-	<item id="Version"><![CDATA[X2.5]]></item>
+	<item id="Version"><![CDATA[X3.0]]></item>
 	<item id="Data">
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
-			<item id="name"><![CDATA[纵横搜索]]></item>
+			<item id="name"><![CDATA[Cloud Search]]></item>
 			<item id="identifier"><![CDATA[cloudsearch]]></item>
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
@@ -43,20 +43,20 @@
 		<item id="version"><![CDATA[X3]]></item>
 		<item id="language">
 			<item id="templatelang">
-				<item id="hottopic"><![CDATA[热门话题]]></item>
-				<item id="realtedthread"><![CDATA[搜索相关主题]]></item>
-				<item id="forum"><![CDATA[版块]]></item>
-				<item id="addtocollection"><![CDATA[添加到淘专辑]]></item>
-				<item id="no_content"><![CDATA[暂时还没有内容]]></item>
-				<item id="viewmore"><![CDATA[查看更多]]></item>
-				<item id="relate"><![CDATA[相关主题]]></item>
-				<item id="orderby"><![CDATA[筛选]]></item>
-				<item id="order_default"><![CDATA[相关度]]></item>
-				<item id="order_posted"><![CDATA[发帖时间]]></item>
-				<item id="thread_class"><![CDATA[主题分类]]></item>
-				<item id="loading"><![CDATA[正在加载……]]></item>
-				<item id="forumhottopic"><![CDATA[热点]]></item>
-				<item id="current"><![CDATA[本版]]></item>
+				<item id="hottopic"><![CDATA[Hot topics]]></item>
+				<item id="realtedthread"><![CDATA[Search for Related Topics]]></item>
+				<item id="forum"><![CDATA[Forum]]></item>
+				<item id="addtocollection"><![CDATA[Add to Collection]]></item>
+				<item id="no_content"><![CDATA[Yet no content]]></item>
+				<item id="viewmore"><![CDATA[See more]]></item>
+				<item id="relate"><![CDATA[Related Topics]]></item>
+				<item id="orderby"><![CDATA[Order by]]></item>
+				<item id="order_default"><![CDATA[Relevance]]></item>
+				<item id="order_posted"><![CDATA[Post time]]></item>
+				<item id="thread_class"><![CDATA[Thread Category]]></item>
+				<item id="loading"><![CDATA[Loading ...]]></item>
+				<item id="forumhottopic"><![CDATA[Hot Topics]]></item>
+				<item id="current"><![CDATA[Edition]]></item>
 			</item>
 		</item>
 		<item id="installfile"><![CDATA[install.php]]></item>
