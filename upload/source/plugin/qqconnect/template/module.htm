@@ -1,4 +1,5 @@
 {eval
+// Modified by Valery Votintsev, codersclub.org
 function tpl_global_login_extra() {
 global $_G;
 }
@@ -504,7 +505,7 @@ $connect_openid = $_G['qc']['connect_openid'];
 			<tr>
 				<th></th>
 				<td>
-					<label  for="use_qzone_avatar_qqshow"><input type="checkbox" name="use_qzone_avatar_qqshow" id="use_qzone_avatar_qqshow" class="pc" value="1" checked="checked" tabindex="1" />使用QQ头像和QQ秀</label>
+<!--vot-->				<label for="use_qzone_avatar_qqshow"><input type="checkbox" name="use_qzone_avatar_qqshow" id="use_qzone_avatar_qqshow" class="pc" value="1" checked="checked" tabindex="1" /> {lang qqconnect:connect_register_use_qzone_avatar}</label>
 				</td>
 			</tr>
 		</table>
@@ -730,7 +731,7 @@ function tpl_spacecp_profile_bottom() {
 <!--{block return}-->
 	<script type="text/javascript">
 	function connect_handle_get_weibosign(response, ajax) {
-		// 返回值形如: errCode=XX&result=XX
+/*vot*/		// Return value format: errCode=XX&result=XX
 		if (typeof(response) == "string" && response.indexOf("&") > 0) {
 
 			var errCode = response.substring(0, response.indexOf("&"));
@@ -747,7 +748,7 @@ function tpl_spacecp_profile_bottom() {
 		if (response.errCode == '0') {
 			seditor_insertunit('sightml', response.result);
 		} else {
-			// 请求失败
+			// Request failed
 			showDialog('{lang qqconnect:connect_wbsign_no_account}');
 		}
 	}

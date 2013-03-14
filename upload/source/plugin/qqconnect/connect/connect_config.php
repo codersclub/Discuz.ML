@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: connect_config.php 29265 2012-03-31 06:03:26Z yexinhao $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -20,7 +21,7 @@ $referer = dreferer();
 
 if(submitcheck('connectsubmit')) {
 
-	if($op == 'config') { // debug 修改QQ绑定设置
+	if($op == 'config') { // debug Modify QQ binding set
 
 		$ispublishfeed = !empty($_GET['ispublishfeed']) ? 1 : 0;
 		$ispublisht = !empty($_GET['ispublisht']) ? 1 : 0;
@@ -71,7 +72,7 @@ if(submitcheck('connectsubmit')) {
 
 			$connectService->connectUserUnbind();
 
-		} else { // debug 因为老用户access token等信息，所以没法通知connect，所以直接在本地解绑就行了，不fopen connect
+		} else { // debug Because the old user access token information, So I can not notice connect, Directly in the local unbundling on the line, Not fopen connect
 
 			if($_G['member']['conisregister']) {
 				if($_GET['newpassword1'] !== $_GET['newpassword2']) {

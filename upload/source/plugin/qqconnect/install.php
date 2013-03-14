@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install.php 32492 2013-01-29 05:45:03Z liulanbo $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -16,10 +17,10 @@ $connect = C::t('common_setting')->fetch('connect', true);
 $sql = <<<EOF
 
 CREATE TABLE IF NOT EXISTS pre_common_member_connect (
-  `uid` mediumint(8) unsigned NOT NULL default '0',
-  `conuin` char(40) NOT NULL default '',
-  `conuinsecret` char(16) NOT NULL default '',
-  `conopenid` char(32) NOT NULL default '',
+  `uid` int(11) unsigned NOT NULL default '0',
+  `conuin` varchar(255) NOT NULL default '',
+  `conuinsecret` varchar(255) NOT NULL default '',
+  `conopenid` varchar(255) NOT NULL default '',
   `conisfeed` tinyint(1) unsigned NOT NULL default '0',
   `conispublishfeed` tinyint(1) unsigned NOT NULL default '0',
   `conispublisht` tinyint(1) unsigned NOT NULL default '0',
@@ -32,35 +33,35 @@ CREATE TABLE IF NOT EXISTS pre_common_member_connect (
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS pre_connect_feedlog (
-  flid mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  tid mediumint(8) unsigned NOT NULL DEFAULT '0',
-  uid mediumint(8) unsigned NOT NULL DEFAULT '0',
-  publishtimes mediumint(8) unsigned NOT NULL DEFAULT '0',
-  lastpublished int(10) unsigned NOT NULL DEFAULT '0',
-  dateline int(10) unsigned NOT NULL DEFAULT '0',
+  flid int(11) unsigned NOT NULL AUTO_INCREMENT,
+  tid int(11) unsigned NOT NULL DEFAULT '0',
+  uid int(11) unsigned NOT NULL DEFAULT '0',
+  publishtimes int(11) unsigned NOT NULL DEFAULT '0',
+  lastpublished int(11) unsigned NOT NULL DEFAULT '0',
+  dateline int(11) unsigned NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (flid),
   UNIQUE KEY tid (tid)
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS pre_connect_postfeedlog (
-  flid mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  pid int(10) unsigned NOT NULL DEFAULT '0',
-  uid mediumint(8) unsigned NOT NULL DEFAULT '0',
-  publishtimes mediumint(8) unsigned NOT NULL DEFAULT '0',
-  lastpublished int(10) unsigned NOT NULL DEFAULT '0',
-  dateline int(10) unsigned NOT NULL DEFAULT '0',
+  flid int(11) unsigned NOT NULL AUTO_INCREMENT,
+  pid int(11) unsigned NOT NULL DEFAULT '0',
+  uid int(11) unsigned NOT NULL DEFAULT '0',
+  publishtimes mediumint(11) unsigned NOT NULL DEFAULT '0',
+  lastpublished int(11) unsigned NOT NULL DEFAULT '0',
+  dateline int(11) unsigned NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (flid),
   UNIQUE KEY pid (pid)
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS pre_connect_memberbindlog (
-  mblid mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  uid mediumint(8) unsigned NOT NULL DEFAULT '0',
-  uin char(40) NOT NULL,
+  mblid int(11) unsigned NOT NULL AUTO_INCREMENT,
+  uid int(11) unsigned NOT NULL DEFAULT '0',
+  uin varchar(255) NOT NULL,
   `type` tinyint(1) NOT NULL DEFAULT '0',
-  dateline int(10) unsigned NOT NULL DEFAULT '0',
+  dateline int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (mblid),
   KEY uid (uid),
   KEY uin (uin),
@@ -68,50 +69,50 @@ CREATE TABLE IF NOT EXISTS pre_connect_memberbindlog (
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS pre_connect_tthreadlog (
-  twid char(16) NOT NULL,
-  tid mediumint(8) unsigned NOT NULL DEFAULT '0',
-  conopenid char(32) NOT NULL,
-  pagetime int(10) unsigned DEFAULT '0',
-  lasttwid char(16) DEFAULT NULL,
-  nexttime int(10) unsigned DEFAULT '0',
-  updatetime int(10) unsigned DEFAULT '0',
-  dateline int(10) unsigned DEFAULT '0',
+  twid varchar(16) NOT NULL,
+  tid int(11) unsigned NOT NULL DEFAULT '0',
+  conopenid varchar(255) NOT NULL,
+  pagetime int(11) unsigned DEFAULT '0',
+  lasttwid varchar(16) DEFAULT NULL,
+  nexttime int(11) unsigned DEFAULT '0',
+  updatetime int(11) unsigned DEFAULT '0',
+  dateline int(11) unsigned DEFAULT '0',
   PRIMARY KEY (twid),
   KEY nexttime (tid,nexttime),
   KEY updatetime (tid,updatetime)
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS pre_common_uin_black (
-  uin char(40) NOT NULL,
-  uid mediumint(8) unsigned NOT NULL DEFAULT '0',
-  dateline int(10) unsigned NOT NULL DEFAULT '0',
+  uin varchar(255) NOT NULL,
+  uid int(11) unsigned NOT NULL DEFAULT '0',
+  dateline int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (uin),
   UNIQUE KEY uid (uid)
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
-  `conopenid` char(32) NOT NULL default '',
-  `conuin` char(40) NOT NULL default '',
-  `conuinsecret` char(16) NOT NULL default '',
-  `conqqnick` char(100) NOT NULL default '',
+  `conopenid` varchar(255) NOT NULL default '',
+  `conuin` varchar(255) NOT NULL default '',
+  `conuinsecret` varchar(255) NOT NULL default '',
+  `conqqnick` varchar(255) NOT NULL default '',
   PRIMARY KEY (conopenid)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
-  `taskid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '任务ID',
-  `aid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '附件ID',
-  `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `openid` char(32) NOT NULL DEFAULT '' COMMENT 'openId',
-  `filename` varchar(255) NOT NULL DEFAULT '' COMMENT '附件名称',
-  `verifycode` char(32) NOT NULL DEFAULT '' COMMENT '下载验证码',
-  `status` smallint(6) unsigned NOT NULL DEFAULT '0' COMMENT '下载状态',
-  `dateline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加任务的时间',
-  `downloadtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '下载完成时间',
-  `extra` text COMMENT '保留字段',
+  `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Task ID',
+  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Attachment ID',
+  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'User ID',
+  `openid` varchar(255) NOT NULL DEFAULT '' COMMENT 'openId',
+  `filename` varchar(255) NOT NULL DEFAULT '' COMMENT 'Attachment Name',
+  `verifycode` varchar(255) NOT NULL DEFAULT '' COMMENT 'Download verification code',
+  `status` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Download Status',
+  `dateline` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Add the time of the task',
+  `downloadtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Download time',
+  `extra` text COMMENT 'Reserved field',
   PRIMARY KEY (`taskid`),
   KEY `openid` (`openid`),
   KEY `status` (`status`)
-) TYPE=MyISAM COMMENT='网盘下载任务表';
+) ENGINE=MyISAM COMMENT='Network Disk Download Task';
 
 
 REPLACE INTO pre_common_setting VALUES ('regconnect', '1');
