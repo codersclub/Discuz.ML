@@ -134,7 +134,7 @@
 				<item id="connect_feed_published_thread"><![CDATA[发表了《{subject}》：]]></item>
 				<item id="connect_feed_published_post"><![CDATA[参与了《{subject}》的讨论：]]></item>
 				<item id="connect_spacecp_share_a_post"><![CDATA[分享一个好帖#{bbname}#《{subject}》：{message}]]></item>
-				<item id="connect_spacecp_share_qq_default"><![CDATA[看看这个吧，还不错哦，也许你会喜欢^_^]]></item>
+				<item id="connect_spacecp_share_qq_default"><![CDATA[Please look at this, it cold be interesting for you ^_^]]></item>
 				<item id="connect_post_sync_method"><![CDATA[将此回复同步到]]></item>
 			</item>
 			<item id="templatelang">
@@ -235,7 +235,7 @@
 				<item id="connect_post_sync_not_bind_desc"><![CDATA[马上绑定QQ账号，您将可以发表主题时同步到QQ空间和腾讯微博，第一时间和大家分享您在论坛中的新鲜事儿。]]></item>
 				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ空间]]></item>
 				<item id="connect_viewthread_share_to_t"><![CDATA[腾讯微博]]></item>
-				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ好友和群]]></item>
+				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ friends and groups]]></item>
 				<item id="connect_viewthread_share_to_pengyou"><![CDATA[腾讯朋友]]></item>
 				<item id="connect_createpassword"><![CDATA[<b>创建密码</b>]]></item>
 				<item id="connect_uin_limit"><![CDATA[您的QQ帐号在本站注册的帐号数量达到上限，请绑定已有帐号，或<a href="{$change_qq_url}">更换其他QQ账号</a>]]></item>
