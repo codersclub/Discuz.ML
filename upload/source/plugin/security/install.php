@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install.php 32469 2013-01-23 05:52:37Z liulanbo $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -14,45 +15,45 @@ if(!defined('IN_DISCUZ')) {
 $sql = <<<EOF
 
 CREATE TABLE IF NOT EXISTS `pre_security_evilpost` (
-  `pid` int(10) unsigned NOT NULL COMMENT '帖子ID',
-  `tid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '主题ID',
-  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '帖子类型',
-  `evilcount` int(10) NOT NULL DEFAULT '0' COMMENT '恶意次数',
-  `eviltype` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '恶意类型',
-  `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `operateresult` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '操作结果：1 通过 2 删除 3 忽略',
-  `isreported` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已经上报',
-  `censorword` char(50) NOT NULL,
+  `pid` int(11) unsigned NOT NULL COMMENT 'Post ID',
+  `tid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Topic ID',
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Post type',
+  `evilcount` int(11) NOT NULL DEFAULT '0' COMMENT 'Malicious Views',
+  `eviltype` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Malicious type',
+  `createtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Create Time',
+  `operateresult` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Operation Result: 1=passed, 2=Deleted, 3=ignored',
+  `isreported` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Was reported flag',
+  `censorword` varchar(255) NOT NULL,
   PRIMARY KEY (`pid`),
   KEY `type` (`tid`,`type`),
   KEY `operateresult` (`operateresult`,`createtime`)
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `pre_security_eviluser` (
-  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
-  `evilcount` int(10) NOT NULL DEFAULT '0' COMMENT '恶意次数',
-  `eviltype` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '恶意类型',
-  `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `operateresult` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '操作结果：1 恢复 2 删除 3 忽略',
-  `isreported` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已经上报',
+  `uid` int(11) unsigned NOT NULL COMMENT 'User ID',
+  `evilcount` int(11) NOT NULL DEFAULT '0' COMMENT 'Malicious Views',
+  `eviltype` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Malicious type',
+  `createtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Create Time',
+  `operateresult` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Operation Result: 1=passed, 2=Deleted, 3=ignored',
+  `isreported` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Was reported flag',
   PRIMARY KEY (`uid`),
   KEY `operateresult` (`operateresult`,`createtime`)
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `pre_security_failedlog` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `reporttype` char(20) NOT NULL COMMENT '上报类型',
-  `tid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'TID',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'PID',
-  `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'UID',
-  `failcount` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '计数',
-  `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '失败时间',
-  `posttime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发帖时间/上次发帖时间',
-  `delreason` char(255) NOT NULL COMMENT '处理原因',
-  `scheduletime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '计划重试时间',
-  `lastfailtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上次失败时间',
-  `extra1` int(10) unsigned NOT NULL COMMENT '整型的扩展字段',
-  `extra2` char(255) NOT NULL DEFAULT '0' COMMENT '字符类型的扩展字段',
+  `reporttype` varchar(32) NOT NULL COMMENT 'Report type',
+  `tid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'TID',
+  `pid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'PID',
+  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'UID',
+  `failcount` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Failure Counter',
+  `createtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Failure time',
+  `posttime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Post time / Last post time',
+  `delreason` varchar(255) NOT NULL COMMENT 'Delete Reason',
+  `scheduletime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Planned retry time',
+  `lastfailtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Last time failure',
+  `extra1` int(11) unsigned NOT NULL COMMENT 'Integer extension field',
+  `extra2` varchar(255) NOT NULL DEFAULT '0' COMMENT 'Character type extension field',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`),
   KEY `uid` (`uid`)
