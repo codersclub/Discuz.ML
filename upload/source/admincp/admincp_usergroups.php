@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_usergroups.php 32082 2012-11-07 08:00:31Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -478,7 +479,7 @@ EOT;
 		$anchor = in_array($_GET['anchor'], array('basic', 'system', 'special', 'post', 'attach', 'magic', 'invite', 'pm', 'credit', 'home', 'group', 'portal', 'plugin')) ? $_GET['anchor'] : 'basic';
 		showformheader('', '', 'menuform', 'get');
 		showhiddenfields(array('action' => 'usergroups', 'operation' => 'edit'));
-		showsubmenuanchors(cplang('usergroups_edit').(count($mgroup) == 1 ? ' - '.$mgroup[0]['grouptitle'].'(groupid:'.$mgroup[0]['groupid'].')' : ''), array(
+/*vot*/		showsubmenuanchors(cplang('usergroups_edit').(count($mgroup) == 1 ? ' - '.$mgroup[0]['grouptitle'].' (groupid:'.$mgroup[0]['groupid'].')' : ''), array(
 			array('usergroups_edit_basic', 'basic', $anchor == 'basic'),
 			count($mgroup) == 1 && $mgroup[0]['type'] == 'special' && $mgroup[0]['radminid'] < 1 ? array('usergroups_edit_system', 'system', $anchor == 'system') : array(),
 			array(array('menu' => 'usergroups_edit_forum', 'submenu' => array(
