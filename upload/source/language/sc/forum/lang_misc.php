@@ -323,6 +323,9 @@ $lang = array
 	'plugin_memo' => '您有 <span class="xi1">{number}</span> 款应用有可用更新',
 	'plugin_link' => '现在更新',
 
+// Added by Valery Votintsev, codersclub.org
+	'poll_reply_no_perms'	=> '您不能对自己的回帖进行投票',//'You can not reply the poll',
+	'poll_replyed_already'	=> '您已经对此回帖投过票了',//'You have already replied this poll',
+	'poll_voted_ok'		=> '投票成功',//'You have voted successfully',
 );
 
-?>

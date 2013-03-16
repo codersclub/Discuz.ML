@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: forum_ajax.php 32554 2013-02-19 10:33:44Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -143,8 +144,8 @@ if($_GET['action'] == 'checkusername') {
 	if(empty($groupname)) {
 		showmessage('group_name_empty', '', array(), array('msgtype' => 3));
 	}
-	$tmpname = cutstr($groupname, 20, '');
-	if($tmpname != $groupname) {
+//vot	$tmpname = cutstr($groupname, 20, '');
+/*vot*/	if(dstrlen($groupname) < 2 || dstrlen($groupname) > 80) {
 		showmessage('group_name_oversize', '', array(), array('msgtype' => 3));
 	}
 	if(C::t('forum_forum')->fetch_fid_by_name($groupname)) {

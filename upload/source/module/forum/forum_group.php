@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: forum_group.php 32539 2013-02-18 07:36:00Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -305,7 +306,14 @@ if($action == 'index') {
 	} else {
 		$parentid = intval($_GET['parentid']);
 		$fup = intval($_GET['fup']);
-		$name = censor(dhtmlspecialchars(cutstr(trim($_GET['name']), 20, '')));
+/*vot*/		$name = stripslashes(trim($_GET['name']));
+/*vot*/		if(dstrlen($name) < 2 || dstrlen($name) > 80) {	// Name length in Characters
+/*vot*/			showmessage('group_name_oversize');
+/*vot*/		}
+/*vot*/		$name = addslashes(dhtmlspecialchars($name));
+/*vot*/		if(strlen($name) > 255) {	// Name length in Bytes
+/*vot*/			showmessage('group_name_oversize');
+/*vot*/		}
 		$censormod = censormod($name);
 		if(empty($name)) {
 			showmessage('group_name_empty');
@@ -408,22 +416,29 @@ if($action == 'index') {
 				$parentid = intval($_GET['parentid']);
 
 				if(isset($_GET['name'])) {
-					$_GET['name'] = censor(dhtmlspecialchars(cutstr(trim($_GET['name']), 20, '')));
-					if(empty($_GET['name'])) {
+/*vot*/					$name = stripslashes(trim($_GET['name']));
+/*vot*/					if(dstrlen($name) < 2 || dstrlen($name) > 80) {	// Name length in Characters
+/*vot*/						showmessage('group_name_oversize');
+/*vot*/					}
+/*vot*/					$name = addslashes(dhtmlspecialchars($name));
+/*vot*/					if(strlen($name) > 255) {	// Name length in Bytes
+/*vot*/						showmessage('group_name_oversize');
+/*vot*/					}
+/*vot*/					if(empty($name)) {
 						showmessage('group_name_empty');
 					}
-					$censormod = censormod($_GET['name']);
+/*vot*/					$censormod = censormod($name);
 					if($censormod) {
 						showmessage('group_name_failed');
 					}
 				} elseif(isset($_GET['parentid']) && empty($parentid) && empty($fup)) {
 					showmessage('group_category_empty');
 				}
-				if(!empty($_GET['name']) && $_GET['name'] != $_G['forum']['name']) {
+/*vot*/				if(!empty($name) && $name != $_G['forum']['name']) {
 					if(C::t('forum_forum')->fetch_fid_by_name($_GET['name'])) {
 						showmessage('group_name_exist', $url);
 					}
-					$forumarr['name'] = $_GET['name'];
+/*vot*/					$forumarr['name'] = $name;
 				}
 				if(empty($fup)) {
 					$fup = $parentid;
@@ -732,4 +747,3 @@ if($action == 'index') {
 }
 
 
-?>

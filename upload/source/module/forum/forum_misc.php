@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: forum_misc.php 32533 2013-02-17 06:09:10Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -691,7 +692,8 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 		require_once libfile('function/discuzcode');
 		$sqlvalues = $comma = '';
 		$sqlreason = censor(trim($_GET['reason']));
-		$sqlreason = cutstr(dhtmlspecialchars($sqlreason), 40, '.');
+//vot		$sqlreason = cutstr(dhtmlspecialchars($sqlreason), 40, '.');
+/*vot*/		$sqlreason = dhtmlspecialchars($sqlreason);
 		foreach($creditsarray as $id => $addcredits) {
 			$insertarr = array(
 				'pid' => $_GET['pid'],
@@ -1323,7 +1325,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 	$applylist = array();
 	$query = C::t('forum_activityapply')->fetch_all_for_thread($_G['tid'], 0, 2000, 0, 1);
 	foreach($query as $apply) {
-		$apply = str_replace(',', '，', $apply);
+/*vot*/		$apply = str_replace('，', ',', $apply);//str_replace(',', '，', $apply);
 		$apply['dateline'] = dgmdate($apply['dateline'], 'dt');
 		$apply['ufielddata'] = !empty($apply['ufielddata']) ? dunserialize($apply['ufielddata']) : '';
 		$ufielddata = '';
@@ -1719,7 +1721,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 
 	$hotreply = C::t('forum_hotreply_number')->fetch_by_pid($post['pid']);
 	if($_G['uid'] == $post['authorid']) {
-		showmessage('您不能对自己的回帖进行投票', '', array(), array('msgtype' => 3));
+/*vot*/		showmessage(lang('forum/misc', 'poll_reply_no_perms'), '', array(), array('msgtype' => 3));
 	}
 
 	if(empty($hotreply)) {
@@ -1732,7 +1734,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 		), true);
 	} else {
 		if(C::t('forum_hotreply_member')->fetch($post['pid'], $_G['uid'])) {
-			showmessage('您已经对此回帖投过票了', '', array(), array('msgtype' => 3));
+/*vot*/			showmessage(lang('forum/misc', 'poll_replyed_already'), '', array(), array('msgtype' => 3));
 		}
 	}
 
@@ -1748,7 +1750,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 
 	$hotreply[$_GET['do']]++;
 
-	showmessage('投票成功', '', array(), array('msgtype' => 3, 'extrajs' => '<script type="text/javascript">postreviewupdate('.$post['pid'].', '.$typeid.');</script>'));
+/*vot*/	showmessage(lang('forum/misc', 'poll_voted_ok'), '', array(), array('msgtype' => 3, 'extrajs' => '<script type="text/javascript">postreviewupdate('.$post['pid'].', '.$typeid.');</script>'));
 }
 
 function getratelist($raterange) {
@@ -1786,4 +1788,3 @@ function getratingleft($raterange) {
 	return $maxratetoday;
 }
 
-?>
