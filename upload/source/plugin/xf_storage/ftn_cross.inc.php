@@ -4,6 +4,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: ftn_cross.inc.php 29265 2012-03-31 06:03:26Z yexinhao $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -23,7 +24,7 @@ if(empty($_GET['ftn_formhash']) || empty($_G['uid']) || empty($_GET['filesize'])
 		include template('xf_storage:cross');
 	}
 } elseif($_GET['ftn_formhash'] != $storageService->ftnFormhash()){
-	exit;//showmessage('操作超时或者数据来源错误','','error');
+/*vot*/	exit;//showmessage('timeout_or_data_error','','error');
 }
 
 if($_GET['ftn_submit']) {
