@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: helper_notification.php 31068 2012-07-12 08:34:53Z liulanbo $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -57,6 +58,7 @@ class helper_notification {
 			$categoryname = $type;
 		}
 		$notevars['actor'] = "<a href=\"home.php?mod=space&uid=$_G[uid]\">".$_G['member']['username']."</a>";
+//vot Move this to DISPLAY notification !!!!!!!!!!!!!!!
 		if(!is_numeric($type)) {
 			$vars = explode(':', $note);
 			if(count($vars) == 2) {
@@ -76,13 +78,17 @@ class helper_notification {
 		}
 		if(empty($oldnote['from_num'])) $oldnote['from_num'] = 0;
 		$notevars['from_num'] = $notevars['from_num'] ? $notevars['from_num'] : 1;
+
+/*vot*/	$notevars['template'] = $note;
+/*vot*/	$notestring = serialize($notevars);
+
 		$setarr = array(
 			'uid' => $touid,
 			'type' => $type,
 			'new' => 1,
 			'authorid' => $_G['uid'],
 			'author' => $_G['username'],
-			'note' => $notestring,
+/*vot*/			'note' => daddslashes($notestring),
 			'dateline' => $_G['timestamp'],
 			'from_id' => $notevars['from_id'],
 			'from_idtype' => $notevars['from_idtype'],
@@ -94,6 +100,18 @@ class helper_notification {
 			$setarr['author'] = '';
 		}
 		$pkId = 0;
+//DEBUG
+//$log = 'notification_add::'."\n";
+//$log .= ' touid='.$touid.';'."\n";
+//$log .= ' type='.$type.';'."\n";
+//$log .= ' system='.$system.';'."\n";
+//$log .= ' note='.var_export($note,true).';'."\n";
+//$log .= ' notevars='.var_export($notevars,true).';'."\n";
+//$log .= ' setarr='.var_export($setarr,true).';'."\n";
+//$log .= "-----------------------------------------\n";
+//$log .= "\n";
+//writelog('notification', $log);
+
 		if($oldnote['id']) {
 			C::t('home_notification')->update($oldnote['id'], $setarr);
 			$pkId = $oldnote['id'];
@@ -209,4 +227,3 @@ class helper_notification {
 	}
 }
 
-?>

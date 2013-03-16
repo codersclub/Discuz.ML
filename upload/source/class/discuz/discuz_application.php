@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: discuz_application.php 32526 2013-02-05 08:51:57Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -121,6 +122,7 @@ class discuz_application extends discuz_base{
 			'clientip' => $this->_get_client_ip(),
 			'referer' => '',
 			'charset' => '',
+/*vot*/			'dbcharset' => '',
 			'gzipcompress' => '',
 			'authkey' => '',
 			'timenow' => array(),
@@ -195,6 +197,9 @@ class discuz_application extends discuz_base{
 			$_G['siteroot'] = str_replace(SUB_DIR, '/', $_G['siteroot']);
 		}
 
+/*vot*/		$_G['siteurl'] = str_replace("\\", '/', $_G['siteurl']);
+/*vot*/		$_G['siteroot'] = str_replace("\\", '/', $_G['siteroot']);
+
 		$this->var = & $_G;
 
 	}
@@ -268,6 +273,82 @@ class discuz_application extends discuz_base{
 		}
 		$this->var['authkey'] = md5($this->var['config']['security']['authkey'].$this->var['cookie']['saltkey']);
 
+		//---------------------------
+		//vot: Multi-Lingual Support
+
+		// set default
+		$default_lang = strtolower($this->var['config']['output']['language']);
+		$lng = '';
+
+		if($this->var['config']['enable_multilingual']) {
+
+			// Adjust language names with language titles
+			foreach($this->var['config']['languages'] AS $k=>$v) {
+				if(empty($v['name'])) {
+					$this->var['config']['languages'][$k]['name'] = $v['title'];
+				}
+			}
+
+			// set language from cookies
+			if($this->var['cookie']['language']) {
+				$lng = strtolower($this->var['cookie']['language']);
+//DEBUG
+//echo "Cookie lang=",$lng,"<br>";
+			}
+
+			// check if the language from GET is valid
+			if(isset($_GET['language'])) {
+				$tmp = strtolower($_GET['language']);
+				if(isset($this->var['config']['languages'][$tmp])) {
+					// set from GET
+					$lng = $tmp;
+				}
+//DEBUG
+//echo "_GET lang=",$lng,"<br>";
+			}
+
+			// Check for language auto-detection
+			if(!$lng) {
+				$detect = (boolean) $this->var['config']['detect_language'];
+				if($detect) {
+					$lng = detect_language($this->var['config']['languages'],$default_lang);
+//DEBUG
+//echo "Detect lang=",$lng,"<br>";
+				}
+			}
+		}
+		// Set language to default if no language detected
+		if(!$lng) {
+			$lng = $default_lang;
+		}
+
+//DEBUG
+//echo "Result lang=",$lng,"<br>";
+		$this->var['oldlanguage'] = $lng; // Store Old Language Value for compare
+
+		// define DISCUZ_LANG
+		define('DISCUZ_LANG', $lng);
+
+		// set new language to cookie
+		dsetcookie('language', $lng);
+
+		// set new language variables
+		$this->var['language']  = $lng;
+		$this->var['langpath']  = DISCUZ_ROOT . 'source/language/'.$lng . '/';
+		$this->var['langurl']   = $this->var['siteroot'] . 'source/language/'.$lng . '/';
+		$this->var['langicon']  = $this->var['config']['languages'][$lng]['icon'];
+		$this->var['langname'] = $this->var['config']['languages'][$lng]['name'];
+		$this->var['langtitle'] = $this->var['config']['languages'][$lng]['title'];
+		$this->var['langdir']   = strtolower($this->var['config']['languages'][$lng]['dir']);
+
+		// define LANGUAGE RTL Suffix
+		define('RTLSUFFIX', $this->var['langdir'] == 'rtl' ? '_rtl' : '');
+/*vot*/		define('LANGURL', $this->var['langurl']);
+
+
+		// set jspath (for include *.js)
+//		$this->var['setting']['jspath'] = $this->var['siteroot'] . 'static/js/';
+
 	}
 
 	private function _init_config() {
@@ -303,6 +384,12 @@ class discuz_application extends discuz_base{
 		define('STATICURL', !empty($_config['output']['staticurl']) ? $_config['output']['staticurl'] : 'static/');
 		$this->var['staticurl'] = STATICURL;
 
+/*vot*/ $server_id = $_config['server'][id];
+/*vot*/ $dbcharset = $_config['db'][$server_id]['dbcharset'];
+/*vot*/ if(empty($dbcharset)) $dbcharset = 'utf8';
+/*vot*/ $_config['dbcharset'] = $dbcharset;
+
+
 		$this->config = & $_config;
 		$this->var['config'] = & $_config;
 
@@ -337,8 +424,27 @@ class discuz_application extends discuz_base{
 
 		setglobal('charset', $this->config['output']['charset']);
 		define('CHARSET', $this->config['output']['charset']);
+/*vot*/ setglobal('dbcharset', $this->config['dbcharset']);
+/*vot*/ define('DBCHARSET', $this->config['dbcharset']);
+/*vot*/ if(strtolower(CHARSET)=='utf-8') {
+/*vot*/   ini_set('mbstring.internal_encoding','UTF-8'); //vot
+//vot echo 'mbstring.internal_encoding = ' . ini_get('mbstring.internal_encoding') . "<br>\n";
+/*vot*/ }
 		if($this->config['output']['forceheader']) {
 			@header('Content-Type: text/html; charset='.CHARSET);
+		}
+
+		//vot MultiLingual Support
+		// Reload current page if the language is changed
+//		if($this->var['language'] != $this->var['oldlanguage']) {
+		if(isset($this->var['gp_language'])) {
+			$url = $_SERVER['REQUEST_URI'];
+			$url = preg_replace("~[\?\&]language\=\w*~i",'',$url);
+//DEBUG
+//echo $this->var['language'],"=>", $this->var['oldlanguage'],"<br>";
+//echo $url;
+			header('Location: '.$url);
+			exit;
 		}
 
 	}
@@ -784,4 +890,3 @@ class discuz_application extends discuz_base{
 	}
 }
 
-?>

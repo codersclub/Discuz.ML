@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: class_member.php 32645 2013-02-27 09:09:41Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -166,7 +167,7 @@ class logging_ctl {
 							showmessage($loginmessage, $location, $param, $extra);
 						} else {
 							$href = str_replace("'", "\'", $location);
-							showmessage('location_login_succeed', $location, array(),
+/*vot*/							showmessage('location_login_succeed', $location, array('username' => $_G['member']['username']),
 								array(
 									'showid' => 'succeedmessage',
 									'extrajs' => '<script type="text/javascript">'.
@@ -406,7 +407,7 @@ class register_ctl {
 					}
 				}
 
-				$navtitle = $this->setting['reglinkname'];
+/*vot*/			$navtitle = lang('template', 'register');
 
 				if($this->extrafile && file_exists($this->extrafile)) {
 					require_once $this->extrafile;
@@ -469,10 +470,14 @@ class register_ctl {
 			}
 
 			if(!$activation) {
+/*vot*/				$username = trim(dstripslashes($username));
 				$usernamelen = dstrlen($username);
-				if($usernamelen < 3) {
+/*vot*/				$username_mblen = mb_strlen($username);
+/*vot*/				if($username_mblen < 2) {
 					showmessage('profile_username_tooshort');
-				} elseif($usernamelen > 15) {
+/*vot*/				} elseif($username_mblen > 15) {
+					showmessage('profile_username_toolong');
+/*vot*/				} elseif($usernamelen > 64) {
 					showmessage('profile_username_toolong');
 				}
 				if(uc_get_user(addslashes($username)) && !C::t('common_member')->fetch_uid_by_username($username) && !C::t('common_member_archive')->fetch_uid_by_username($username)) {
@@ -945,4 +950,3 @@ class crime_action_ctl {
 		return array($count, $clist);
 	}
 }
-?>
