@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_attachment.php 28348 2012-02-28 06:16:29Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -52,7 +53,7 @@ function attachtype($type, $returnval = 'html') {
 			$typeid = 5;
 		} elseif(preg_match("/^rar\t/", $type)) {
 			$typeid = 4;
-		} elseif(preg_match("/compressed|^(zip|arj|arc|cab|lzh|lha|tar|gz)\t/", $type)) {
+/*vot*/		} elseif(preg_match("/compressed|^(zip|arj|arc|cab|lzh|lha|tar|gz|7z)\t/", $type)) {
 			$typeid = 3;
 		} elseif(preg_match("/octet-stream|^(exe|com|bat|dll)\t/", $type)) {
 			$typeid = 2;

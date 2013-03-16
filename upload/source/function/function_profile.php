@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_profile.php 32502 2013-01-30 02:43:52Z liulanbo $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -61,9 +62,10 @@ function profile_setting($fieldid, $space=array(), $showstatus=false, $ignoreunc
 			$birthyeayhtml .= "<option value=\"$they\"$selectstr>$they</option>";
 		}
 		$birthmonthhtml = '';
+/*vot*/		$monthname = lang('core','month_name');
 		for ($i=1; $i<13; $i++) {
 			$selectstr = $i == $space['birthmonth']?' selected':'';
-			$birthmonthhtml .= "<option value=\"$i\"$selectstr>$i</option>";
+/*vot*/			$birthmonthhtml .= "<option value=\"$i\"$selectstr>".$monthname[$i]."</option>";
 		}
 		$birthdayhtml = '';
 		if(empty($space['birthmonth']) || in_array($space['birthmonth'], array(1, 3, 5, 7, 8, 10, 12))) {
@@ -108,7 +110,20 @@ function profile_setting($fieldid, $space=array(), $showstatus=false, $ignoreunc
 		$html .= '<option value="1"'.($space[$fieldid]=='1' ? ' selected="selected"' : '').'>'.lang('space', 'gender_1').'</option>'
 			.'<option value="2"'.($space[$fieldid]=='2' ? ' selected="selected"' : '').'>'.lang('space', 'gender_2').'</option>'
 			.'</select>';
-
+/*vot*/
+/*
+	} elseif($fieldid=='birthcountry') {
+		if($field['unchangeable'] && !empty($space[$fieldid])) {
+			return '<span>'.$space['birtcountry'].'</span>';
+		}
+		if(!empty($space['birthcountry'])) {
+			$html = profile_show('birthcountry', $space);
+			$html .= '&nbsp;(<a href="javascript:;" onclick="showcountry(\'birthcountrybox\', [\'birthcountry\'], 4, \'\', \'birth\'); return false;">'.lang('spacecp', 'profile_edit').'</a>)';
+			$html .= '<p id="birthcountrybox"></p>';
+		} else {
+			$html = '<p id="birthcountrybox">'.showcountry($values, $elems, 'birthcountrybox', 1, 'birth').'</p>';
+		}
+*/
 	} elseif($fieldid=='birthcity') {
 		if($field['unchangeable'] && !empty($space[$fieldid])) {
 			return '<span>'.$space['birthprovince'].'-'.$space['birthcity'].'</span>';
@@ -123,6 +138,20 @@ function profile_setting($fieldid, $space=array(), $showstatus=false, $ignoreunc
 			$html = '<p id="birthdistrictbox">'.showdistrict($values, $elems, 'birthdistrictbox', 1, 'birth').'</p>';
 		}
 
+/*vot*/
+/*
+	} elseif($fieldid=='residecountry') {
+		if($field['unchangeable'] && !empty($space[$fieldid])) {
+			return '<span>'.$space['residecountry'].'</span>';
+		}
+		if(!empty($space['residecountry'])) {
+			$html = profile_show('residecountry', $space);
+			$html .= '&nbsp;(<a href="javascript:;" onclick="showcountry(\'residecountrybox\', [\'residecountry\'], 4, \'\', \'reside\'); return false;">'.lang('spacecp', 'profile_edit').'</a>)';
+			$html .= '<p id="residecountrybox"></p>';
+		} else {
+			$html = '<p id="residecountrybox">'.showcountry($values, $elems, 'residecountrybox', 1, 'reside').'</p>';
+		}
+*/
 	} elseif($fieldid=='residecity') {
 		if($field['unchangeable'] && !empty($space[$fieldid])) {
 			return '<span>'.$space['resideprovince'].'-'.$space['residecity'].'</span>';
@@ -309,14 +338,14 @@ function profile_show($fieldid, $space=array(), $getalone = false) {
 		return $return;
 	} elseif($fieldid=='birthcity' && !$getalone) {
 		return $space['birthprovince']
-				.(!empty($space['birthcity']) ? ' '.$space['birthcity'] : '')
-				.(!empty($space['birthdist']) ? ' '.$space['birthdist'] : '')
-				.(!empty($space['birthcommunity']) ? ' '.$space['birthcommunity'] : '');
+/*vot*/				.(!empty($space['birthcity']) ? ' / '.$space['birthcity'] : '')
+/*vot*/				.(!empty($space['birthdist']) ? ' / '.$space['birthdist'] : '')
+/*vot*/				.(!empty($space['birthcommunity']) ? ' / '.$space['birthcommunity'] : '');
 	} elseif($fieldid=='residecity' && !$getalone) {
 		return $space['resideprovince']
-				.(!empty($space['residecity']) ? ' '.$space['residecity'] : '')
-				.(!empty($space['residedist']) ? ' '.$space['residedist'] : '')
-				.(!empty($space['residecommunity']) ? ' '.$space['residecommunity'] : '');
+/*vot*/				.(!empty($space['residecity']) ? ' / '.$space['residecity'] : '')
+/*vot*/				.(!empty($space['residedist']) ? ' / '.$space['residedist'] : '')
+/*vot*/				.(!empty($space['residecommunity']) ? ' / '.$space['residecommunity'] : '');
 	} elseif($fieldid == 'site') {
 		$url = str_replace('"', '\\"', $space[$fieldid]);
 		return "<a href=\"$url\" target=\"_blank\">$url</a>";
@@ -459,4 +488,41 @@ function get_zodiac($birthyear) {
 	$idx = (($birthyear - 1900) % 12) + 1;
 	return $idx > 0 && $idx <= 12 ? lang('space', 'zodiac_'. $idx) : '';
 }
-?>
+
+//vot
+/*
+function showcountry($values, $elems=array(), $container='countrybox', $showlevel=null, $containertype = 'birth') {
+	$html = '';
+	if(!preg_match("/^[A-Z0-9]+$/", $container)) {
+		return $html;
+	}
+	if($upids && is_array($upids)) {
+		$query = DB::query('SELECT * FROM '.DB::table('common_district')." WHERE upid IN (".dimplode($upids).') ORDER BY displayorder');
+		while($value = DB::fetch($query)) {
+			if($value['level'] == 1 && ($value['id'] != $values[0] && ($value['usetype'] == 0 || !(($containertype == 'birth' && in_array($value['usetype'], array(1, 3))) || ($containertype != 'birth' && in_array($value['usetype'], array(2, 3))))))) {
+				continue;
+			}
+			$options[$value['level']][] = array($value['id'], $value['name']);
+		}
+	}
+	$names = array('province', 'city', 'district', 'community');
+	for($i=0; $i<4;$i++) {
+		$elems[$i] = !empty($elems[$i]) ? dhtmlspecialchars($elems[$i]) : ($containertype == 'birth' ? 'birth' : 'reside').$names[$i];
+	}
+	for($i=0;$i<$showlevel;$i++) {
+		$level = $i+1;
+		if(!empty($options[$level])) {
+			$jscall = "showdistrict('$container', ['$elems[0]', '$elems[1]', '$elems[2]', '$elems[3]'], $showlevel, $level, '$containertype')";
+			$html .= '<select name="'.$elems[$i].'" id="'.$elems[$i].'" class="ps" onchange="'.$jscall.'" tabindex="1">';
+			$html .= '<option value="">'.lang('spacecp', 'district_level_'.$level).'</option>';
+			foreach($options[$level] as $option) {
+				$selected = $option[0] == $values[$i] ? ' selected="selected"' : '';
+				$html .= '<option did="'.$option[0].'" value="'.$option[1].'"'.$selected.'>'.$option[1].'</option>';
+			}
+			$html .= '</select>';
+			$html .= '&nbsp;&nbsp;';
+		}
+	}
+	return $html;
+}
+*/

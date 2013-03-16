@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_forum.php 32620 2013-02-27 02:03:46Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -411,7 +412,7 @@ function loadforum($fid = null, $tid = null) {
 	if(isset($_G['forum']['fid']) && $_G['forum']['fid'] == $fid || isset($_G['thread']['tid']) && $_G['thread']['tid'] == $tid){
 		return null;
 	}
-	if(!empty($_GET['archiver'])) {//X1.5的Archiver兼容
+/*vot*/	if(!empty($_GET['archiver'])) {//Archiver X1.5 compatible
 		if($fid) {
 			dheader('location: archiver/?fid-'.$fid.'.html');
 		} elseif($tid) {
@@ -1120,4 +1121,3 @@ function getreplybg($replybg = '') {
 	}
 	return $style;
 }
-?>

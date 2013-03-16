@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_misc.php 30988 2012-07-06 02:24:35Z chenmengshu $
+ *	GeoIP Support by Valery Votintsev, http://codersclub.org/discuzx/
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -20,13 +21,16 @@ function convertip($ip) {
 		$iparray = explode('.', $ip);
 
 		if($iparray[0] == 10 || $iparray[0] == 127 || ($iparray[0] == 192 && $iparray[1] == 168) || ($iparray[0] == 172 && ($iparray[1] >= 16 && $iparray[1] <= 31))) {
-			$return = '- LAN';
+/*vot*/			$return = 'LAN';
 		} elseif($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
-			$return = '- Invalid IP Address';
+/*vot*/			$return = 'Invalid IP Address';
 		} else {
+/*vot*/			$geoipfile = DISCUZ_ROOT.'./data/ipdata/GeoIP.dat';
 			$tinyipfile = DISCUZ_ROOT.'./data/ipdata/tinyipdata.dat';
 			$fullipfile = DISCUZ_ROOT.'./data/ipdata/wry.dat';
-			if(@file_exists($tinyipfile)) {
+/*vot*/			if(@file_exists($geoipfile)) {
+/*vot*/				$return = convertip_geo($ip, $geoipfile);
+/*vot*/			} elseif(@file_exists($tinyipfile)) {
 				$return = convertip_tiny($ip, $tinyipfile);
 			} elseif(@file_exists($fullipfile)) {
 				$return = convertip_full($ip, $fullipfile);
@@ -35,6 +39,25 @@ function convertip($ip) {
 	}
 
 	return $return;
+
+}
+//---------------------------------------------------------
+//vot: Check IP country using the maxmind.com free database
+function convertip_geo($ip='', $ipdatafile='') {
+
+	require_once(DISCUZ_ROOT.'./source/function/geoip.inc');
+
+	$gi = geoip_open($ipdatafile,GEOIP_STANDARD);
+
+	$country = geoip_country_code_by_addr($gi, $ip);
+
+	geoip_close($gi);
+
+	if($country) {
+		return lang('country',$country);
+	} else {
+		return lang('country','??');
+	}
 
 }
 
@@ -507,4 +530,3 @@ function recyclebinpostundelete($undeletepids, $posttableid = false) {
 	return count($undeletepids);
 }
 
-?>

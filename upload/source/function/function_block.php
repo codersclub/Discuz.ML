@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_block.php 32297 2012-12-20 10:29:56Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -408,12 +409,12 @@ function block_template($bid) {
 								$ftp = & discuz_ftp::instance();
 								$ftp->connect();
 								if($ftp->connectid && $ftp->ftp_size($thumbpath) > 0 || ($return = $image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2) && $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath))) {
-									$picflag = 1; //common_block_pic表中的picflag标识（0本地，1远程）
+/*vot*/									$picflag = 1; //common_block_pic Table picture flag identity (0=local, 1=remote)
 									$_G['block_makethumb'] = true;
 									@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
 								}
 							} elseif(file_exists($_G['setting']['attachdir'].$thumbpath) || ($return = $image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2))) {
-								$picflag = 0; //common_block_pic表中的picflag标识（0本地，1远程）
+/*vot*/								$picflag = 0; //common_block_pic Table picture flag identity (0=local, 1=remote)
 								$_G['block_makethumb'] = true;
 							}
 							if($_G['block_makethumb']) {
@@ -552,6 +553,7 @@ function block_makeform($blocksetting, $values){
 				$calendar_loaded = true;
 			}
 			$s .= '<input type="text" name="'.$varname.'" class="px" value="'.dhtmlspecialchars($value).'" onclick="showcalendar(event, this, true)" />';
+//vot !!!!!!!!! ADD residecountry !!!!!!!!!!!!!!!!!!!!!!!
 		} elseif($type == 'district') {
 			include_once libfile('function/profile');
 			$elems = $vals = array();
@@ -661,7 +663,7 @@ function block_updateitem($bid, $items=array()) {
 			$curitem['displayorder'] = $i;
 
 			$curitem['makethumb'] = 0;
-			if($block['picwidth'] && $block['picheight'] && $curitem['picflag']) { //picflag=0为url地址
+/*vot*/			if($block['picwidth'] && $block['picheight'] && $curitem['picflag']) { //picflag=0 for Url address
 				$thumbpath = empty($curitem['thumbpath']) ? block_thumbpath($block, $curitem) : $curitem['thumbpath'];
 				if($_G['setting']['ftp']['on']) {
 					if(empty($ftp) || empty($ftp->connectid)) {
@@ -1114,4 +1116,3 @@ function update_template_block($targettplname, $tpldirectory, $blocks) {
 		}
 	}
 }
-?>

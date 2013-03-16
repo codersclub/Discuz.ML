@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: cache_styles.php 32532 2013-02-07 04:09:34Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -99,19 +100,29 @@ function setcssbackground(&$data, $code) {
 
 function writetocsscache($data) {
 	global $_G;
-	$dir = DISCUZ_ROOT.'./template/default/common/';
+/*vot*/	$dir = DISCUZ_ROOT.'template/default/common/';
+//DEBUG
+//echo "writetocsscache: discuz_root=".DISCUZ_ROOT."<br>";
+//echo "writetocsscache: dir=".$dir."<br>";
 	$dh = opendir($dir);
 	$data['staticurl'] = STATICURL;
 	while(($entry = readdir($dh)) !== false) {
 		if(fileext($entry) == 'css') {
-			$cssfile = DISCUZ_ROOT.'./'.$data['tpldir'].'/common/'.$entry;
+/*vot*/			$cssfile = DISCUZ_ROOT.$data['tpldir'].'/common/'.$entry;
+//DEBUG
+//echo "writetocsscache: entry=".$entry."<br>";
+//echo "writetocsscache: cssfile=".$cssfile."<br>";
 			!file_exists($cssfile) && $cssfile = $dir.$entry;
 			$cssdata = @implode('', file($cssfile));
+//DEBUG
+//echo "writetocsscache: check 1 for cssfile=".DISCUZ_ROOT.$data['tpldir'].'/common/extend_'.$entry."<br>";
 			if(file_exists($cssfile = DISCUZ_ROOT.'./'.$data['tpldir'].'/common/extend_'.$entry)) {
 				$cssdata .= @implode('', file($cssfile));
 			}
 			if(is_array($_G['setting']['plugins']['available']) && $_G['setting']['plugins']['available']) {
 				foreach($_G['setting']['plugins']['available'] as $plugin) {
+//DEBUG
+//echo "writetocsscache: check 2 for cssfile=".DISCUZ_ROOT.'./source/plugin/'.$plugin.'/template/extend_'.$entry."<br>";
 					if(file_exists($cssfile = DISCUZ_ROOT.'./source/plugin/'.$plugin.'/template/extend_'.$entry)) {
 						$cssdata .= @implode('', file($cssfile));
 					}
@@ -122,7 +133,7 @@ function writetocsscache($data) {
 			$cssdata = !preg_match('/^http:\/\//i', $data['styleimgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['styleimgdir'], '/')."/i", "url(\\1../../$data[styleimgdir]", $cssdata) : $cssdata;
 			$cssdata = !preg_match('/^http:\/\//i', $data['imgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['imgdir'], '/')."/i", "url(\\1../../$data[imgdir]", $cssdata) : $cssdata;
 			$cssdata = !preg_match('/^http:\/\//i', $data['staticurl']) ? preg_replace("/url\(([\"'])?".preg_quote($data['staticurl'], '/')."/i", "url(\\1../../$data[staticurl]", $cssdata) : $cssdata;
-			if($entry == 'module.css') {
+/*vot*/			if($entry == 'module.css' || $entry == 'module_rtl.css') {
 				$cssdata = preg_replace('/\/\*\*\s*(.+?)\s*\*\*\//', '[\\1]', $cssdata);
 			}
 			$cssdata = preg_replace(array('/\s*([,;:\{\}])\s*/', '/[\t\n\r]/', '/\/\*.+?\*\//'), array('\\1', '',''), $cssdata);
@@ -136,4 +147,3 @@ function writetocsscache($data) {
 	}
 }
 
-?>

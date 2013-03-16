@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_admincp.php 32470 2013-01-23 06:46:49Z chenmengshu $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -61,7 +62,7 @@ function checkpermission($action, $break = 1) {
 }
 
 function siteinformation() {
-
+//vot	!!!!!!!!!! Review the data reported to Comsenz !!!!!!!!!!!!!!!!!!!!
 	global $_G, $siteuniqueid, $save_mastermobile, $save_masterqq, $save_masteremail;
 	$db = DB::object();
 	$update = array(
@@ -152,7 +153,7 @@ function upgradeinformation($status = 0) {
 		$data .= $key.'='.rawurlencode($value).'&';
 	}
 
-	$upgradeurl =  'ht'.'tp:/'.'/cus'.'tome'.'r.disc'.'uz.n'.'et/upg'.'rade'.'.p'.'hp?'.'os=dx&update='.rawurlencode(base64_encode($data)).'&timestamp='.TIMESTAMP;
+/*vot*/	$upgradeurl =  'http://customer.discuz.net/upgrade.php?os=dx&update='.rawurlencode(base64_encode($data)).'&timestamp='.TIMESTAMP;
 	return '<img src="'.$upgradeurl.'" />';
 }
 
@@ -376,14 +377,18 @@ function cpheader() {
 	$frame = getgpc('frame') != 'no' ? 1 : 0;
 	$charset = CHARSET;
 	$basescript = ADMINSCRIPT;
-	echo <<<EOT
+/*vot*/	$rtl_suffix = RTLSUFFIX;
+
+/*vot*/	echo <<<EOT
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset">
 <meta http-equiv="x-ua-compatible" content="ie=7" />
-<link href="static/image/admincp/admincp.css?{$_G[style][verhash]}" rel="stylesheet" type="text/css" />
+<link href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" rel="stylesheet" type="text/css" />
+	<!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
+	<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{VERHASH}"></script>
 </head>
 <body>
 <script type="text/JavaScript">
@@ -409,7 +414,7 @@ function showsubmenu($title, $menus = array(), $right = '', $replace = array()) 
 	if(empty($menus)) {
 		$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title, $replace).'</h3></div>';
 	} elseif(is_array($menus)) {
-		$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title, $replace).'</h3><ul class="tab1">';
+/*vot*/		$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title, $replace).'</h3><div class="clear"></div><ul class="tab1">';
 		foreach($menus as $k => $menu) {
 			if(is_array($menu[0])) {
 				$s .= '<li id="addjs'.$k.'" class="'.($menu[1] ? 'current' : 'hasdropmenu').'" onmouseover="dropmenu(this);"><a href="#"><span>'.cplang($menu[0]['menu']).'<em>&nbsp;&nbsp;</em></span></a><div id="addjs'.$k.'child" class="dropmenu" style="display:none;">';
@@ -429,7 +434,7 @@ function showsubmenu($title, $menus = array(), $right = '', $replace = array()) 
 }
 
 function showsubmenusteps($title, $menus = array(), $mleft = array(), $mright = array()) {
-	$s = '<div class="itemtitle">'.($title ? '<h3>'.cplang($title).'</h3>' : '');
+/*vot*/	$s = '<div class="itemtitle">'.($title ? '<h3>'.cplang($title).'</h3><div class="clear"></div>' : '');
 	if(is_array($mleft)) {
 		$s .= '<ul class="tab1" style="margin-right:10px">';
 		foreach($mleft as $k => $menu) {
@@ -464,7 +469,7 @@ function showsubmenuanchors($title, $menus = array(), $right = '') {
 	echo <<<EOT
 <script type="text/JavaScript">var currentAnchor = '$GLOBALS[anchor]';</script>
 EOT;
-	$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title).'</h3>';
+/*vot*/	$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title).'</h3><div class="clear"></div>';
 	$s .= '<ul class="tab1" id="submenu">';
 	foreach($menus as $k => $menu) {
 		if($menu && is_array($menu)) {
@@ -685,7 +690,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 	} elseif($type == 'mradio' || $type == 'mradio2') {
 		$nocomment = $type == 'mradio2' && !isset($_G['showsetting_multi']) ? true : false;
 		$addstyle = $nocomment ? ' style="float: left; width: 18%"' : '';
-		$ulstyle = $nocomment ? ' style="width: 790px"' : '';
+/*vot*/		$ulstyle = $nocomment ? ' style="width: 100%"' : '';
 		if(is_array($varname)) {
 			$radiocheck = array($value => ' checked');
 			$s .= '<ul'.(empty($varname[2]) ?  ' class="nofloat"' : '').' onmouseover="altStyle(this'.$check['disabledaltstyle'].');"'.$ulstyle.'>';
@@ -709,7 +714,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 	} elseif($type == 'mcheckbox' || $type == 'mcheckbox2') {
 		$nocomment = $type != 'mcheckbox2' && count($varname[1]) > 3 && !isset($_G['showsetting_multi']) ? true : false;
 		$addstyle = $nocomment ? ' style="float: left;'.(empty($_G['showsetting_multirow']) ? ' width: 18%;overflow: hidden;' : '').'"' : '';
-		$ulstyle = $nocomment && empty($_G['showsetting_multirow']) ? ' style="width: 790px"' : '';
+/*vot*/		$ulstyle = $nocomment && empty($_G['showsetting_multirow']) ? ' style="width: 100%"' : '';
 		$s .= '<ul class="nofloat" onmouseover="altStyle(this'.$check['disabledaltstyle'].');"'.$ulstyle.'>';
 		foreach($varname[1] as $varary) {
 			if(is_array($varary) && !empty($varary)) {
@@ -736,7 +741,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 	} elseif($type == 'omcheckbox') {
 		$nocomment = count($varname[1]) > 3 ? true : false;
 		$addstyle = $nocomment ? 'style="float: left; width: 18%"' : '';
-		$ulstyle = $nocomment ? 'style="width: 790px"' : '';
+/*vot*/		$ulstyle = $nocomment ? 'style="width: 100%"' : '';
 		$s .= '<ul onmouseover="altStyle(this'.$check['disabledaltstyle'].');"'.(empty($varname[2]) ? ' class="nofloat"' : 'class="ckbox"').' '.$ulstyle.'>';
 		foreach($varname[1] as $varary) {
 			if(is_array($varary) && !empty($varary)) {
@@ -962,14 +967,27 @@ function cpfooter() {
 	if($_G['adminid'] == 1 && $_GET['action'] == 'index') {
 		$release = DISCUZ_RELEASE;
 
-		$newsurl =  'ht'.'tp:/'.'/cus'.'tome'.'r.disc'.'uz.n'.'et/n'.'ews'.'.p'.'hp?'.siteinformation();
+/*vot*/		$newsurl =  'http://customer.discuz.net/news.php?'.siteinformation();
+/*vot*/		$subscribe = cplang('subscribe');
+/*vot*/		$lang = DISCUZ_LANG;
+/*vot*/		$uptodate = cplang('version_uptodate');
 		echo <<<EOT
 <script type="text/javascript">
 	var newhtml = '';
-	newhtml += '<table class="tb tb2"><tr><th class="partition edited">&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;</th></tr>';
+/*vot*/	var lang = '{$lang}';
+/*vot*/	var code;
+/*vot*/	newhtml += '<table class="tb tb2"><tr><th class="partition edited">{$uptodate}</th></tr>';
 	newhtml += '<tr><td class="tipsblock"><a href="http://faq.comsenz.com/checkversion.php?product=Discuz&version={$version}&release={$release}&charset={$charset}" target="_blank"><img src="{$newsurl}" onload="shownews()" /></a></td></tr></table>';
+/*vot*/	var elem = document.getElementsByClassName('rssbutton')[0];
+/*vot*/	if((lang == 'sc') || (lang == 'tc')) {
+/*vot*/	  code = elem.innerHTML;
+/*vot*/	} else {
+/*vot*/	  code = elem.innerHTML.replace(/订阅/, '{$subscribe}');//Translate
+/*vot*/	}
+
+/*vot*/	elem.innerHTML = code;
 	\$('boardnews').style.display = 'none';
-	\$('boardnews').innerHTML = newhtml;
+//vot	\$('boardnews').innerHTML = newhtml;
 	function shownews() {
 		\$('boardnews').style.display = '';
 	}
@@ -1458,4 +1476,3 @@ function siteftp_upload($readfile, $writefile) {
 	}
 }
 
-?>

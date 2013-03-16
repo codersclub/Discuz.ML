@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_core.php 32577 2013-02-22 01:50:27Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -433,11 +434,11 @@ function lang($file, $langvar = null, $vars = array(), $default = null) {
 	if($path != 'plugin') {
 		$key = $path == '' ? $file : $path.'_'.$file;
 		if(!isset($_G['lang'][$key])) {
-			include DISCUZ_ROOT.'./source/language/'.($path == '' ? '' : $path.'/').'lang_'.$file.'.php';
+/*vot*/			include_once( DISCUZ_ROOT.'source/language/'.DISCUZ_LANG.'/'.($path == '' ? '' : $path.'/').'lang_'.$file.'.php' );
 			$_G['lang'][$key] = $lang;
 		}
 		if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
-			include DISCUZ_ROOT.'./source/language/mobile/lang_template.php';
+/*vot*/			include DISCUZ_ROOT.'source/language/'.DISCUZ_LANG.'/mobile/lang_template.php';
 			$_G['lang'][$key] = array_merge($_G['lang'][$key], $lang);
 		}
 		if($file != 'error' && !isset($_G['cache']['pluginlanguage_system'])) {
@@ -454,6 +455,7 @@ function lang($file, $langvar = null, $vars = array(), $default = null) {
 		if(empty($_G['config']['plugindeveloper'])) {
 			loadcache('pluginlanguage_script');
 		} elseif(!isset($_G['cache']['pluginlanguage_script'][$file]) && preg_match("/^[a-z]+[a-z0-9_]*$/i", $file)) {
+//vot TODO: Separate languages for plugins
 			if(@include(DISCUZ_ROOT.'./data/plugindata/'.$file.'.lang.php')) {
 				$_G['cache']['pluginlanguage_script'][$file] = $scriptlang[$file];
 			} else {
@@ -513,6 +515,10 @@ function checktplrefresh($maintpl, $subtpl, $timecompare, $templateid, $cachefil
 function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primaltpl='') {
 	global $_G;
 
+//DEBUG
+//echo "function template started.<br>\n";
+///*vot*/	settings_localize(); // Localize Navigation & Settings
+
 	static $_init_style = false;
 	if($_init_style === false) {
 		C::app()->_init_style();
@@ -528,7 +534,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 			$indiy = false;
 			$_G['style']['tpldirectory'] = $tpldir ? $tpldir : (defined('TPLDIR') ? TPLDIR : '');
 			$_G['style']['prefile'] = '';
-			$diypath = DISCUZ_ROOT.'./data/diy/'.$_G['style']['tpldirectory'].'/'; //DIY模板文件目录
+/*vot*/			$diypath = DISCUZ_ROOT.'./data/diy/'.$_G['style']['tpldirectory'].'/'; //DIY template file directory
 			$preend = '_diy_preview';
 			$_GET['preview'] = !empty($_GET['preview']) ? $_GET['preview'] : '';
 			$curtplname = $oldfile;
@@ -546,7 +552,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 				$tpldir = 'data/diy/'.$_G['style']['tpldirectory'].'/';
 				!$gettplfile && $_G['style']['tplsavemod'] = $tplsavemod;
 				$curtplname = $file;
-				if(isset($_GET['diy']) && $_GET['diy'] == 'yes' || isset($_GET['diy']) && $_GET['preview'] == 'yes') { //DIY模式或预览模式下做以下判断
+/*vot*/				if(isset($_GET['diy']) && $_GET['diy'] == 'yes' || isset($_GET['diy']) && $_GET['preview'] == 'yes') { //DIY mode or preview mode, do the following judge
 					$flag = file_exists($diypath.$file.$preend.'.htm');
 					if($_GET['preview'] == 'yes') {
 						$file .= $flag ? $preend : '';
@@ -619,7 +625,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 		}
 	}
 
-	$cachefile = './data/template/'.(defined('STYLEID') ? STYLEID.'_' : '_').$templateid.'_'.str_replace('/', '_', $file).'.tpl.php';
+/*vot*/	$cachefile = './data/template/'.DISCUZ_LANG.'_'.(defined('STYLEID') ? STYLEID.'_' : '_').$templateid.'_'.str_replace('/', '_', $file).'.tpl.php';
 	if($templateid != 1 && !file_exists(DISCUZ_ROOT.$tplfile) && !file_exists(substr(DISCUZ_ROOT.$tplfile, 0, -4).'.php')
 			&& !file_exists(DISCUZ_ROOT.($tplfile = $tpldir.$filebak.'.htm'))) {
 		$tplfile = './template/default/'.$filebak.'.htm';
@@ -811,6 +817,8 @@ function dstrlen($str) {
 	if(strtolower(CHARSET) != 'utf-8') {
 		return strlen($str);
 	}
+/*vot*/	return mb_strlen($str);
+/*vot
 	$count = 0;
 	for($i = 0; $i < strlen($str); $i++){
 		$value = ord($str[$i]);
@@ -823,13 +831,14 @@ function dstrlen($str) {
     		$count++;
 	}
 	return $count;
+*/
 }
 
 function cutstr($string, $length, $dot = ' ...') {
-	if(strlen($string) <= $length) {
+/*vot*/	if(dstrlen($string) <= $length) {
 		return $string;
 	}
-
+//vot	return mb_substr($string,0,$length);
 	$pre = chr(1);
 	$end = chr(1);
 	$string = str_replace(array('&amp;', '&quot;', '&lt;', '&gt;'), array($pre.'&'.$end, $pre.'"'.$end, $pre.'<'.$end, $pre.'>'.$end), $string);
@@ -2033,7 +2042,7 @@ function browserversion($type) {
 	}
 	return $return[$type];
 }
-
+//vot !!!! ToDo: Check this for other languages !!!!!!!!!!!!!!!!!!!!!
 function currentlang() {
 	$charset = strtoupper(CHARSET);
 	if($charset == 'GBK') {
@@ -2053,4 +2062,136 @@ function currentlang() {
 }
 
 
-?>
+//vot: Detect User Preferred Language from Browser
+function detect_language() {
+	global $_G;
+
+	$default = strtolower($_G['config']['output']['language']);
+	
+	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+
+		$langs = explode(',',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+
+		//start going through each one
+		foreach ($langs as $value){
+			// zh-tw/zh-hk patch by ken
+			$value = strtolower($value);
+			if(($value=='zh-tw')||($value=='zh-hk')){
+				$choice = 'tc';
+			} else {
+				$choice = substr($value,0,2);
+				if($choice=='zh') $choice = 'sc';
+			}
+
+			if(isset($_G['config']['languages'][$choice])){
+				return $choice;
+			}
+		}
+	} 
+	return $default;
+}
+
+//--------------------------------------------------
+//vot Localize default settings and navigation links
+function settings_localize() {
+	global $_G;
+
+	lang('setting');
+
+	$lang = & $_G['lang']['setting'];
+
+//DEBUG
+//echo "function settings_localize started.<br>\n";
+//echo "<pre>";
+//echo "lang=";
+//print_r($lang);
+//echo "</pre>";
+//exit;
+	//-------------------------------------
+	// Localize the Settings Values
+
+	//-------------------------------------
+	// Localize the Navigation Links
+
+//DEBUG
+//echo "<pre>";
+//echo "setting=";
+//print_r($_G['setting']);
+//echo "</pre>";
+	$navtypes = array('navs','footernavs','spacenavs','mynavs','topnavs');
+	foreach($navtypes AS $type) {
+		if($type=='topnavs') {
+ 			$navs = $_G['setting'][$type][0];
+		} else {
+			$navs = $_G['setting'][$type];
+		}
+//DEBUG
+//echo "<pre>";
+//echo "type=".$type.", navs=";
+//print_r($_G['setting'][$type]);
+//print_r($_G['setting'][$type]);
+//print_r($navs);
+//echo "</pre>";
+
+		foreach($navs AS $id=>$nav) {
+			$newname = $nav['navname'];
+			if(isset($lang['nav_'.$nav['id']])) {
+				$newname = $lang['nav_'.$nav['id']];
+			}
+			if($nav['id']) {
+				if($type=='topnavs') {
+					$_G['setting'][$type][0][$id]['navname'] = $newname;
+				} else {
+					$_G['setting'][$type][$id]['navname'] = $newname;
+				}
+//DEBUG
+//echo "<pre>";
+//echo $oldname." ---&gt; ".$newname." ---&gt; ".$_G['setting'][$type][$nav['id']]['navname']."\n";
+//echo "</pre>";
+			}
+		}
+	}
+//DEBUG
+//echo "<pre>";
+//echo "lng=".$_G['language']."\n";
+//echo "setting=";
+//print_r($_G['setting']);
+//echo "\nnavs=";
+//print_r($_G['setting']['navs']);
+//echo "\ntopnavs=";
+//print_r($_G['setting']['topnavs']);
+//echo "\nfooternavs=";
+//print_r($_G['setting']['footernavs']);
+//echo "\nmynavs=";
+//print_r($_G['setting']['mynavs']);
+//echo "\nspacenavs=";
+//print_r($_G['setting']['spacenavs']);
+//echo "\nusergroups=";
+//print_r($_G['setting']['usergroups']);
+//echo "</pre>";
+
+	// Localize the Sub-Navigation Links
+
+	$navtypes = array('menunavs', 'subnavs');
+	foreach($navtypes AS $type) {
+
+		foreach($_G['setting'][$type] as $navid => $subnav) {
+			if(is_array($subnav)) {
+				foreach($subnav as $subid => $sub) {
+					if(isset($lang['nav_'.$sub['identifier']])) {
+						$newname = $lang['nav_'.$sub['identifier']];
+						$_G['setting'][$type][$navid][$subid]['name'] = $newname;
+					}
+//DEBUG
+//echo "<pre>";
+//echo $type.'['.$navid.']['.$subid.']=';
+//print_r($sub);
+//print_r($_G['setting'][$type][$navid][$subid]);
+//echo "</pre>";
+
+				}
+			}
+		}
+	}
+}
+

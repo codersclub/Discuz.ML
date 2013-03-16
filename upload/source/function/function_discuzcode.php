@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_discuzcode.php 32697 2013-03-01 02:36:42Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -537,7 +538,7 @@ function parseflv($url, $width = 0, $height = 0) {
 		}
 	} elseif(strpos($lowerurl, 'www.youtube.com/watch?') !== FALSE) {
 		if(preg_match("/http:\/\/www.youtube.com\/watch\?v=([^\/&]+)&?/i", $url, $matches)) {
-			$flv = 'http://www.youtube.com/v/'.$matches[1].'&hl=zh_CN&fs=1';
+/*vot*/			$flv = 'http://www.youtube.com/v/'.$matches[1].'&fs=1';
 			if(!$width && !$height) {
 				$str = file_get_contents($url, false, $ctx);
 				if(!empty($str) && preg_match("/'VIDEO_HQ_THUMB':\s'(.+?)'/i", $str, $image)) {
@@ -547,6 +548,60 @@ function parseflv($url, $width = 0, $height = 0) {
 				}
 			}
 		}
+//------------------------------------------------------------------
+// added by vot: YOUTO.BE support
+	} elseif(strpos($lowerurl, 'youtu.be/') !== FALSE) {
+		if(preg_match("/http:\/\/(www\.)*youtu.be\/([^\/]+)/i", $url, $matches)) {
+			$flv = 'http://www.youtube.com/v/'.$matches[2].'?version=3&amp;rel=0';
+			if(!$width && !$height) {
+				$str = file_get_contents("http://www.youtube.com/embed/".$matches[1], false, $ctx);
+				if(!empty($str) && preg_match("/\"iurl\": \"(.+?)\",/i", $str, $image)) {
+					$imgurl = trim(str_replace('\\', '', $image[1]));
+				}
+			}
+		}
+//------------------------------------------------------------------
+// added by vot: XUITE.NET support
+	} elseif(strpos($lowerurl, 'vlog.xuite.net/play') !== FALSE) {
+		if(preg_match("/http:\/\/vlog.xuite.net\/play\/(.*?)/i", $url, $matches)) {
+			$str = file_get_contents($url, false, $ctx);
+			preg_match("/\"og:video\" content=\"(.+?)\"/i", $str, $video);
+			$flv = trim($video[1]);
+			if(!$width && !$height) {
+				if(!empty($str) && preg_match("/\"og:image\" content=\"(.+?)\"/i", $str, $image)) {
+					$imgurl = trim($image[1]);
+				}
+			}
+		}
+//------------------------------------------------------------------
+// added by vot: VIDEO.GOOGLE.COM support
+	} elseif(strpos($lowerurl, 'video.google.com/videoplay') !== FALSE) {
+		if(preg_match("/http:\/\/video\.google\.com\/videoplay\?docid\=(.*?)[&$]/i", $url, $matches)) {
+			$flv = 'http://video.google.com/googleplayer.swf?docId='.$matches[1].'&amp;fs=true';
+		}
+//------------------------------------------------------------------
+// added by vot: RUTUBE.RU support
+	} elseif(strpos($lowerurl, 'rutube.ru/tracks/') !== FALSE) {
+		if(preg_match("/http:\/\/rutube\.ru\/tracks\/\d+\.html\?v\=(.*?)/i", $url, $matches)) {
+			$flv = 'http://video.rutube.ru/'.$matches[1];
+
+		} elseif(preg_match("/http:\/\/rutube\.ru\/tracks\/\d+\.html/i", $url, $matches)) {
+			$str = file_get_contents($url, false, $ctx);
+			preg_match("/\"og:video\" content=\"(.+?)\"/i", $str, $video);
+			$flv = trim($video[1]);
+			if(!$width && !$height) {
+				if(!empty($str) && preg_match("/\"og:image\" content=\"(.+?)\"/i", $str, $image)) {
+					$imgurl = trim($image[1]);
+				}
+			}
+		}
+//------------------------------------------------------------------
+// added by vot: VIDEO.RUTUBE.RU support
+	} elseif(strpos($lowerurl, 'video.rutube.ru/') !== FALSE) {
+		if(preg_match("/http:\/\/video\.rutube\.ru\/(.*?)/i", $url, $matches)) {
+			$flv = 'http://video.rutube.ru/'.$matches[1];
+		}
+//------------------------------------------------------------------
 	} elseif(strpos($lowerurl, 'tv.mofile.com/') !== FALSE) {
 		if(preg_match("/http:\/\/tv.mofile.com\/([^\/]+)/i", $url, $matches)) {
 			$flv = 'http://tv.mofile.com/cn/xplayer.swf?v='.$matches[1];
@@ -746,4 +801,3 @@ function guestviewthumbstyle() {
 	}
 	return $return;
 }
-?>
