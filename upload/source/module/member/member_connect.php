@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: member_connect.php 29157 2012-03-27 12:30:20Z liudongdong $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -21,7 +22,7 @@ if(defined('IN_MOBILE')) {
 	showmessage("qqconnect:connect_register_mobile_bind_error", 'forum.php');
 }
 
-if($_GET['action'] == 'login') { // debug 已有账号，绑定我的账号走此分支
+/*vot*/ if($_GET['action'] == 'login') { // debug Already have an account, bind my account to go to this branch
 
 	$ctl_obj = new logging_ctl();
 	$ctl_obj->setting = $_G['setting'];
@@ -33,7 +34,7 @@ if($_GET['action'] == 'login') { // debug 已有账号，绑定我的账号走�
 	$ctl_obj->template = 'member/login';
 	$ctl_obj->on_login();
 
-} else { // debug 完善我的资料，即添加个新的论坛账号走此分支
+/*vot*/ } else { // debug Improve the information I add a new forum account to take this branch
 
 	$_G['qc']['connect_auth_hash'] = $_GET['con_auth_hash'];
 	if(!$_G['qc']['connect_auth_hash']) {
@@ -117,4 +118,3 @@ if($_GET['action'] == 'login') { // debug 已有账号，绑定我的账号走�
 
 }
 
-?>
