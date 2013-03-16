@@ -36,7 +36,7 @@ NEW: Forum Home set to 4-frame standard, Allow the heat of the forum posts, New 
 NEW: Serious optimization, Comprehensive forum testing, Optimized settings for security and performance, Guide the forum webmaster for better optimized adjustment
 NEW: Anti-plagiarizm methods added for increase a difficulty of the content stealing
 NEW: At the post view page: show user info according to the separate user group settings, Allow different groups of users, display the information in differnd manner, for more unique identity
-NEW: Control of new user registering, wether mailbox rquired or not
+NEW: Control of new user registering, wether mailbox required or not
 NEW: Set the forum replies frame background image. This can be usefull for thr forum rules will be more readable.
 NEW: For some special forums, it is possible to control whether users need to use the points to buy before entering the forum
 NEW: Batch modify of the user group users
