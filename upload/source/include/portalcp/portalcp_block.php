@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: portalcp_block.php 32281 2012-12-18 04:48:04Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -653,12 +654,12 @@ if($op == 'block') {
 				C::t('forum_thread')->update($item['id'], $data);
 			}
 			if($_POST['icflag'] && !(C::t('common_block_pic')->count_by_bid_pic($block['bid'], $thumbpath))) {
-				$picflag = 0; //common_block_pic表中的picflag标识（0本地，1远程）
+/*vot*/				$picflag = 0; //common_block_pic picture flag identity (0=local, 1=remote)
 				if($_G['setting']['ftp']['on']) {
 					$ftp = & discuz_ftp::instance();
 					$ftp->connect();
 					if($ftp->connectid && $ftp->ftp_size($thumbpath) > 0 || $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath)) {
-						$picflag = 1; //common_block_pic表中的picflag标识（0本地，1远程）
+/*vot*/						$picflag = 1; //common_block_pic picture flag identity (0=local, 1=remote)
 						@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
 					}
 				}
