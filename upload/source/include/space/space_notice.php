@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: space_notice.php 31062 2012-07-12 07:33:12Z liulanbo $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -115,6 +116,24 @@ if($view == 'userapp') {
 				$value['rowid'] = ' id="'.($value['type'] == 'friend' ? 'pendingFriend_' : 'pokeQuery_').$value['authorid'].'" ';
 			}
 			if($value['from_num'] > 0) $value['from_num'] = $value['from_num'] - 1;
+//vot
+$value['note'] = stripslashes($value['note']);
+$notevars = @unserialize($value['note']);
+//DEBUG
+//echo "<pre>";
+//echo "source/include/space/space_notice.php.\n";
+//$value['note'] = htmlspecialchars($value['note']);
+//echo "value=";
+//print_r($value);
+//echo "notevars (", gettype($notevars), ")=";
+//print_r($notevars);
+//echo "</pre>";
+if(gettype($notevars)=='array') {
+
+  $template = $notevars['template'];
+  unset($notevars['template']);
+  $value['note'] = lang('notification',$template,$notevars);
+}
 			$list[$value['id']] = $value;
 		}
 
@@ -143,4 +162,3 @@ if($view == 'userapp') {
 dsetcookie('promptstate_'.$_G['uid'], $newprompt, 31536000);
 include_once template("diy:home/space_notice");
 
-?>

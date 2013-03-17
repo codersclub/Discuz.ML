@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: space_share.php 28049 2012-02-21 09:30:06Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -124,6 +125,7 @@ if($id) {
 	}
 	dsetcookie('home_diymode', $diymode);
 	$navtitle = lang('core', 'title_share_'.$_GET['type']);
+/*vot*/	if(DISCUZ_LANG != 'sc' && DISCUZ_LANG != 'tc') $navtitle .= ' ';
 	$navtitle .= lang('core', 'title_share');
 	if($space['username']) {
 		$navtitle = lang('space', 'sb_sharing', array('who' => $space['username']));
@@ -134,4 +136,3 @@ if($id) {
 	include_once template("diy:home/space_share_list");
 }
 
-?>
