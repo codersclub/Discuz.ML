@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: post_editpost.php 32681 2013-02-28 09:36:01Z liulanbo $
+ *	Modified by Valery Votintsev
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -519,4 +520,3 @@ if(!submitcheck('editsubmit')) {
 
 }
 
-?>
