@@ -224,12 +224,12 @@ $lang = array
 // Added by Valery Votintsev
 
 //source/include/misc/misc_security.php
-	'attackevasive_1_subject'	=> '刷新频率限制',//'Refresh frequency limit',
-	'attackevasive_1_message'	=> '您访问网站的速度太快，不到两秒钟！请等一下...',//'You visit the site too fast, less than two seconds! Please wait a little...',
-	'attackevasive_2_subject'	=> '通过代理服务器的访问是受到限制',//'Access throug proxy servers is restricted',
-	'attackevasive_2_message'	=> '通过代理服务器访问网站限制亩。请删除您的代理设置配置，并直接访问该网站。',//'Access to the site through a proxy servers is restricted for mow. Please remove your proxy setting configuration, and access to the site directly.',
-	'attackevasive_4_subject'	=> '打开页面重载',//'Open the page reload',
-	'attackevasive_4_message'	=> '欢迎的网站，页面重新载入，请稍候...',//'Welcome to the site, the page is re-loading, please wait ...',
+	'attackevasive_1_subject'	=> '刷新频率限制',//'&#x9891;&#x7e41;&#x5237;&#x65b0;&#x9650;&#x5236;',//'Refresh frequency limit',
+	'attackevasive_1_message'	=> '您访问网站的速度太快，不到两秒钟！请等一下...',//'&#x60a8;&#x8bbf;&#x95ee;&#x672c;&#x7ad9;&#x901f;&#x5ea6;&#x8fc7;&#x5feb;&#x6216;&#x8005;&#x5237;&#x65b0;&#x95f4;&#x9694;&#x65f6;&#x95f4;&#x5c0f;&#x4e8e;&#x4e24;&#x79d2;&#xff01;&#x8bf7;&#x7b49;&#x5f85;&#x9875;&#x9762;&#x81ea;&#x52a8;&#x8df3;&#x8f6c;&#x20;&#x2e;&#x2e;&#x2e;',//'You visit the site too fast, less than two seconds! Please wait a little...',
+	'attackevasive_2_subject'	=> '通过代理服务器的访问是受到限制',//'&#x4ee3;&#x7406;&#x670d;&#x52a1;&#x5668;&#x8bbf;&#x95ee;&#x9650;&#x5236;',//'Access throug proxy servers is restricted',
+	'attackevasive_2_message'	=> '通过代理服务器访问网站限制亩。请删除您的代理设置配置，并直接访问该网站。',//'&#x672c;&#x7ad9;&#x73b0;&#x5728;&#x9650;&#x5236;&#x4f7f;&#x7528;&#x4ee3;&#x7406;&#x670d;&#x52a1;&#x5668;&#x8bbf;&#x95ee;&#xff0c;&#x8bf7;&#x53bb;&#x9664;&#x60a8;&#x7684;&#x4ee3;&#x7406;&#x8bbe;&#x7f6e;&#xff0c;&#x76f4;&#x63a5;&#x8bbf;&#x95ee;&#x672c;&#x7ad9;&#x3002;',//'Access to the site through a proxy servers is restricted for mow. Please remove your proxy setting configuration, and access to the site directly.',
+	'attackevasive_4_subject'	=> '打开页面重载',//'&#x9875;&#x9762;&#x91cd;&#x8f7d;&#x5f00;&#x542f;',//'Open the page reload',
+	'attackevasive_4_message'	=> '欢迎的网站，页面重新载入，请稍候...',//'&#x6b22;&#x8fce;&#x5149;&#x4e34;&#x672c;&#x7ad9;&#xff0c;&#x9875;&#x9762;&#x6b63;&#x5728;&#x91cd;&#x65b0;&#x8f7d;&#x5165;&#xff0c;&#x8bf7;&#x7a0d;&#x5019;&#x20;&#x2e;&#x2e;&#x2e;'//'Welcome to the site, the page is re-loading, please wait ...',
 
 // Months Names
 	'month_name'	=> array('月','一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'),//array('Month','January','February','March','April','May','June','July','August','September','October','November','December'),
