@@ -418,7 +418,9 @@ class discuz_database_safecheck {
 				$clean .= $mark ? '' : $str;
 			}
 		}
-
+/*vot*/		if(strpos($clean, '@') !== false) {
+/*vot*/			return '-3';
+/*vot*/		}
 		$clean = preg_replace("/[^a-z0-9_\-\(\)#\*\/\"]+/is", "", strtolower($clean));
 
 		if (self::$config['afullnote']) {
