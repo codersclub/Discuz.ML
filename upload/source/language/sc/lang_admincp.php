@@ -834,7 +834,7 @@ $lang = array
 	'setting_styles_global_topnavtype_1' => '右侧',
 	'setting_styles_global_stylejump' => '显示风格切换按钮',
 	'setting_styles_global_stylejump_comment' => '设置是否显示可用的站点风格切换按钮，用户可以此按钮切换不同的站点风格',
-    	'setting_styles_global_jsmenu' => '<span class="spectitle">论坛显示版块跳转菜单</span>',
+	'setting_styles_global_jsmenu' => '<span class="spectitle">论坛显示版块跳转菜单</span>',
 	'setting_styles_global_jsmenu_comment' => '注意: 当论坛分版块很多时，本功能会严重加重服务器负担',
 	'setting_styles_global_allowfloatwin' => '启用浮动窗口',
 	'setting_styles_global_allowfloatwin_comment' => '设置以浮动方式显示的窗口',
@@ -1007,7 +1007,7 @@ $lang = array
 	'setting_styles_viewthread_userinfo_creditinfo' => '信用度',
 	'setting_styles_viewthread_userinfo_follower' => '听众数',
 	'setting_styles_viewthread_userinfo_following' => '收听数',
-	'setting_styles_viewthread_userinfo_friends' => '好友',
+//vot	'setting_styles_viewthread_userinfo_friends' => '好友',
 	'setting_styles_viewthread_userinfo_readperm' => '阅读权限',
 	'setting_styles_viewthread_userinfo_gender' => '性别',
 	'setting_styles_viewthread_userinfo_location' => '来自',
@@ -1333,8 +1333,8 @@ $lang = array
 	'misc_focus_area_title' => '站长推荐区域标题',
 	'misc_focus_area_title_comment' => '默认为“站长推荐”，您可以设置为您希望的标题',
 	'misc_focus_area_cookie' => '设置关闭后可再次弹出的时间(小时)',
-	'misc_focus_area_cookie_comment' => '0表示再刷新页面就会弹出。1表示1小时后刷新页面才会出现。默认为1，可以设置为您希望弹出的时间
-',
+	'misc_focus_area_cookie_comment' => '0表示再刷新页面就会弹出。1表示1小时后刷新页面才会出现。默认为1，可以设置为您希望弹出的时间',
+
 	'misc_focus_position' => '站长推荐投放区域',
 	'misc_focus_position_portal' => '门户',
 	'misc_focus_position_home' => '空间',
