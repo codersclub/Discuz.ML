@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 32681 2013-02-28 09:36:01Z liulanbo $
+ *      $Id: lang_template.php 32775 2013-03-08 01:49:29Z zhangjie $
  *
  *      This file is automatically generate
  */
@@ -350,7 +350,7 @@ $lang = array (
   'rewarding' => '进行中',
   'rushreply' => '抢楼',
   'screening' => '筛选',
-  'search_any_date' => '全部时间',
+  'search_any_date' => '时间',
   'show' => '查看',
   'show_rewarded_only' => '只看已解决的',
   'show_rewarding_only' => '只看进行中的',
@@ -938,6 +938,7 @@ $lang = array (
   'admin_unstickreply' => '解除置顶',
   'admin_live' => '直播',
   'admin_live_cancle' => '取消直播',
+  'admin_live_tips' => '同一版块内只能设置一个直播帖<br>设置直播后会覆盖原有直播帖<br>建议超过5条回复后设置',
   'pay_buyers' => '已购买人数',
   'topicadmin_crime_banpost_nums' => '用户 $crimeauthor 帖子已被屏蔽 $crimenum 次',
   'topicadmin_delet_comment' => '删除选定点评',

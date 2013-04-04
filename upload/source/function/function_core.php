@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 32577 2013-02-22 01:50:27Z zhangguosheng $
+ *      $Id: function_core.php 32770 2013-03-07 10:09:53Z monkey $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -735,29 +735,36 @@ function dgmdate($timestamp, $format = 'dt', $timeoffset = '9999', $uformat = ''
 		$time = TIMESTAMP + $timeoffset * 3600 - $timestamp;
 		if($timestamp >= $todaytimestamp) {
 			if($time > 3600) {
-				return '<span title="'.$s.'">'.intval($time / 3600).'&nbsp;'.$lang['hour'].$lang['before'].'</span>';
+				$return = intval($time / 3600).'&nbsp;'.$lang['hour'].$lang['before'];
 			} elseif($time > 1800) {
-				return '<span title="'.$s.'">'.$lang['half'].$lang['hour'].$lang['before'].'</span>';
+				$return = $lang['half'].$lang['hour'].$lang['before'];
 			} elseif($time > 60) {
-				return '<span title="'.$s.'">'.intval($time / 60).'&nbsp;'.$lang['min'].$lang['before'].'</span>';
+				$return = intval($time / 60).'&nbsp;'.$lang['min'].$lang['before'];
 			} elseif($time > 0) {
-				return '<span title="'.$s.'">'.$time.'&nbsp;'.$lang['sec'].$lang['before'].'</span>';
+				$return = $time.'&nbsp;'.$lang['sec'].$lang['before'];
 			} elseif($time == 0) {
-				return '<span title="'.$s.'">'.$lang['now'].'</span>';
+				$return = $lang['now'];
 			} else {
-				return $s;
+				$return = $s;
+			}
+			if($time >=0 && !defined('IN_MOBILE')) {
+				$return = '<span title="'.$s.'">'.$return.'</span>';
 			}
 		} elseif(($days = intval(($todaytimestamp - $timestamp) / 86400)) >= 0 && $days < 7) {
 			if($days == 0) {
-				return '<span title="'.$s.'">'.$lang['yday'].'&nbsp;'.gmdate($tformat, $timestamp).'</span>';
+				$return = $lang['yday'].'&nbsp;'.gmdate($tformat, $timestamp);
 			} elseif($days == 1) {
-				return '<span title="'.$s.'">'.$lang['byday'].'&nbsp;'.gmdate($tformat, $timestamp).'</span>';
+				$return = $lang['byday'].'&nbsp;'.gmdate($tformat, $timestamp);
 			} else {
-				return '<span title="'.$s.'">'.($days + 1).'&nbsp;'.$lang['day'].$lang['before'].'</span>';
+				$return = ($days + 1).'&nbsp;'.$lang['day'].$lang['before'];
+			}
+			if(!defined('IN_MOBILE')) {
+				$return = '<span title="'.$s.'">'.$return.'</span>';
 			}
 		} else {
-			return $s;
+			$return = $s;
 		}
+		return $return;
 	} else {
 		return gmdate($format, $timestamp);
 	}
@@ -878,8 +885,13 @@ function cutstr($string, $length, $dot = ' ...') {
 		$strcut = substr($string, 0, $n);
 
 	} else {
+		$_length = $length - 1;
 		for($i = 0; $i < $length; $i++) {
-			$strcut .= ord($string[$i]) > 127 ? $string[$i].$string[++$i] : $string[$i];
+			if(ord($string[$i]) <= 127) {
+				$strcut .= $string[$i];
+			} else if($i < $_length) {
+				$strcut .= $string[$i].$string[++$i];
+			}
 		}
 	}
 

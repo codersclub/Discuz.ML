@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum_post.js 32590 2013-02-22 09:42:48Z monkey $
+	$Id: forum_post.js 32735 2013-03-05 08:02:54Z monkey $
 */
 
 var forum_post_inited = true;
@@ -469,6 +469,7 @@ function updateImageList(action, aids) {
 }
 
 function updateDownImageList(msg) {
+	hideMenu('fwin_dialog', 'dialog');
 	if(msg == '') {
 		showError('抱歉，暂无远程附件');
 	} else {

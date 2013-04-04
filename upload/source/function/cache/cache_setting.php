@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cache_setting.php 32571 2013-02-21 08:24:04Z monkey $
+ *      $Id: cache_setting.php 32731 2013-03-05 07:03:45Z monkey $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -963,6 +963,9 @@ function get_cachedata_topnav() {
 
 function get_cachedata_threadprofile() {
 	global $_G;
+	if(!helper_dbtool::isexisttable('forum_threadprofile')) {
+		return;
+	}
 	$threadprofiles = C::t('forum_threadprofile')->fetch_all();
 	$threadprofile_group = C::t('forum_threadprofile_group')->fetch_all();
 	$data = array();

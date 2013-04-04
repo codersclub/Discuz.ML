@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: model_forum_post.php 32064 2012-11-06 03:21:17Z liulanbo $
+ *      $Id: model_forum_post.php 32746 2013-03-05 10:29:02Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -51,7 +51,7 @@ class model_forum_post extends discuz_model {
 			'htmlon', 'bbcodeoff', 'smileyoff', 'parseurloff', 'pstatus',
 			'noticetrimstr', 'noticeauthor', 'from', 'sechash',
 
-			'subject', 'message', 'special', 'sortid', 'typeid', 'isanonymous', 'cronpublish', 'cronpublishdate', 'save',
+			'subject', 'special', 'sortid', 'typeid', 'isanonymous', 'cronpublish', 'cronpublishdate', 'save',
 			'readperm', 'price', 'ordertype', 'hiddenreplies', 'allownoticeauthor', 'audit', 'tags', 'bbcodeoff', 'imgcontent', 'imgcontentwidth',
 			'smileyoff', 'parseurloff', 'usesig', 'htmlon', 'extramessage',
 

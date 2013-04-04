@@ -593,7 +593,7 @@ INSERT INTO pre_common_setting VALUES ('threadblacklist','1');
 INSERT INTO pre_common_setting VALUES ('threadhotreplies','3');
 INSERT INTO pre_common_setting VALUES ('threadfilternum','10');
 INSERT INTO pre_common_setting VALUES ('hidefilteredpost','1');
-INSERT INTO pre_common_setting VALUES ('nofilteredpost','1');
+INSERT INTO pre_common_setting VALUES ('nofilteredpost','0');
 INSERT INTO pre_common_setting VALUES ('filterednovote','1');
 INSERT INTO pre_common_setting VALUES ('numbercard','a:1:{s:3:"row";a:3:{i:1;s:7:"threads";i:2;s:5:"posts";i:3;s:7:"credits";}}');
 INSERT INTO pre_common_setting VALUES ('darkroom','1');

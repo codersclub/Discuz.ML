@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: post_editpost.php 32681 2013-02-28 09:36:01Z liulanbo $
+ *      $Id: post_editpost.php 32751 2013-03-06 03:39:49Z liulanbo $
  *	Modified by Valery Votintsev
  */
 
@@ -81,7 +81,10 @@ if(!submitcheck('editsubmit')) {
 	$codeoffcheck = $postinfo['bbcodeoff'] == 1 ? 'checked="checked"' : '';
 	$tagoffcheck = $postinfo['htmlon'] & 2 ? 'checked="checked"' : '';
 	$htmloncheck = $postinfo['htmlon'] & 1 ? 'checked="checked"' : '';
-	if($isfirstpost && $imgcontentcheck) {
+	if(!$isfirstpost) {
+		$_G['group']['allowimgcontent'] = 0;
+	}
+	if($isfirstpost && $imgcontentcheck && $_G['group']['allowimgcontent']) {
 		$editor['editormode'] = 0;
 	}
 	if($htmloncheck) {

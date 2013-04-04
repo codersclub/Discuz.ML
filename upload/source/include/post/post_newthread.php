@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: post_newthread.php 32681 2013-02-28 09:36:01Z liulanbo $
+ *      $Id: post_newthread.php 32760 2013-03-07 03:23:43Z monkey $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -193,7 +193,7 @@ if(!submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck)) {
 		if(!empty($_GET['addfeed'])) {
 			$modthread->attach_before_method('feed', array('class' => $specials[$special], 'method' => 'before_feed'));
 			if($special == 2) {
-				$modthread->attach_before_method('feed', array('class' => $specials[$special], 'method' => 'after_feed'));
+				$modthread->attach_before_method('feed', array('class' => $specials[$special], 'method' => 'before_replyfeed'));
 			}
 		}
 	}

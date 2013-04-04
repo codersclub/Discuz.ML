@@ -5,10 +5,10 @@ template/default/common/footer.htm *<!--{hook/global_footerlink}-->
 template/default/common/header.htm *<!--{hook/global_cpnav_top}-->
 template/default/common/header.htm *<!--{hook/global_cpnav_extra1}-->
 template/default/common/header.htm *<!--{hook/global_cpnav_extra2}-->
-template/default/common/header.htm *<!--{hook/global_qmenu_top}-->
-template/default/common/header.htm *<!--{hook/global_qmenu_bottom}-->
 template/default/common/header.htm *<!--{hook/global_nav_extra}-->
 template/default/common/header.htm *<!--{hook/global_header}-->
+template/default/common/header_qmenu.htm *<!--{hook/global_qmenu_top}-->
+template/default/common/header_qmenu.htm *<!--{hook/global_qmenu_bottom}-->
 template/default/common/userabout.htm *<!--{hook/global_userabout_top $_G['basescript'].'::'.CURMODULE}-->
 template/default/common/userabout.htm *<!--{hook/userapp_menu_top}-->
 template/default/common/userabout.htm *<!--{hook/userapp_menu_middle}-->

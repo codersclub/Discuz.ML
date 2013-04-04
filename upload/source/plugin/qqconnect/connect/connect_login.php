@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: connect_login.php 32560 2013-02-20 09:43:43Z liulanbo $
+ *      $Id: connect_login.php 32773 2013-03-07 10:48:18Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -302,8 +302,9 @@ if($op == 'init') {
 	dsetcookie('con_request_token');
 	dsetcookie('con_request_token_secret');
 
+	$callback = $_G['connect']['callback_url'] . '&referer=' . urlencode($_GET['referer']);
 	try {
-		$response = $connectOAuthClient->connectGetRequestToken();
+		$response = $connectOAuthClient->connectGetRequestToken($callback);
 	} catch(Exception $e) {
 		showmessage('qqconnect:connect_get_request_token_failed_code', $referer, array('codeMessage' => getErrorMessage($e->getmessage()), 'code' => $e->getmessage()));
 	}
@@ -314,8 +315,7 @@ if($op == 'init') {
 	dsetcookie('con_request_token', $request_token);
 	dsetcookie('con_request_token_secret', $request_token_secret);
 
-	$callback = $_G['connect']['callback_url'] . '&referer=' . urlencode($_GET['referer']);
-	$redirect = $connectOAuthClient->getOAuthAuthorizeURL($request_token, $callback);
+	$redirect = $connectOAuthClient->getOAuthAuthorizeURL($request_token);
 
 	if(defined('IN_MOBILE') || $_GET['oauth_style'] == 'mobile') {
 		$redirect .= '&oauth_style=mobile';

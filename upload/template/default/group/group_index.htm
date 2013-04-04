@@ -13,8 +13,9 @@
 			<div id="livefastreply">
 				<form id="livereplypostform" method="post" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$livethread[tid]&replysubmit=yes&infloat=yes&handlekey=livereplypost&inajax=1" onsubmit="return livereplypostvalidate(this)">
 					<div id="livefastcomment">
-						<textarea id="livereplymessage" name="message" style="color:gray;" onkeydown="seditor_ctlent(event, 'livereplypostvalidate($(\'livereplypostform\'))');">{lang group_live_fastreply_notice}</textarea>
+						<textarea id="livereplymessage" name="message" style="color:gray;">{lang group_live_fastreply_notice}</textarea>
 					</div>
+					<div id="livepostsubmit" style="display:none;">
 					<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
 						<!--{block sectpl}--><sec> <span id="sec<hash>" onclick="showMenu(this.id)"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt" style="display:none"><sec></div><!--{/block}-->
 						<div class="mtm sec" style="text-align:right;"><!--{subtemplate common/seccheck}--></div>
@@ -24,6 +25,7 @@
 						<strong>{lang group_live_post}</strong>
 					</button>
 					</p>
+					</div>
 					<input type="hidden" name="formhash" value="{FORMHASH}">
 					<input type="hidden" name="subject" value="  ">
 				</form>
@@ -32,6 +34,9 @@
 		</div>
 		<script type="text/javascript" src="{$_G['setting']['jspath']}seditor.js?{VERHASH}"></script>
 		<script type="text/javascript">
+			var postminchars = parseInt('$_G['setting']['minpostsize']');
+			var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+			var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
 			var replycontentlist = new Array();
 			var addreplylist = new Array();
 			var timeoutid = timeid = movescrollid = waitescrollid = null;
@@ -43,6 +48,9 @@
 				if(this.style.color == 'gray') {
 					this.value = '';
 					this.style.color = 'black';
+					$('livepostsubmit').style.display = 'block';
+					this.style.height = '56px';
+					$('livefastcomment').style.height = '57px';
 				}
 			};
 			$('livereplymessage').onblur = function() {
@@ -56,11 +64,11 @@
 				$('livereplycontent').style.position = 'absolute';
 				getnewlivepostlist();
 				this.style.display = 'none';
-			}
+			};
 
 			$('livereplycontentout').onmouseover = function(e) {
 
-				if($('livereplycontent').style.position == 'absolute') {
+				if($('livereplycontent').style.position == 'absolute' && $('livereplycontent').clientHeight > 215) {
 					$('livereplycontent').style.position = 'static';
 					this.scrollTop = this.scrollHeight;
 				}
@@ -151,17 +159,19 @@
 						replycontentnum--;
 					}
 
-					movescrollid = setInterval(function() {
-						if(parseInt($('livereplycontent').style.bottom) < 0) {
-							$('livereplycontent').style.bottom =
-								((parseInt($('livereplycontent').style.bottom) + 5) > 0 ? 0 : (parseInt($('livereplycontent').style.bottom) + 5)) + 'px';
-						} else {
-							$('livereplycontentout').style.overflowY = 'auto';
-							clearInterval(movescrollid);
-							movescrollid = null;
-							timeoutid = setTimeout(livecontentfacemove, 1000);
-						}
-					}, 100);
+					if(!movescrollid) {
+						movescrollid = setInterval(function() {
+							if(parseInt($('livereplycontent').style.bottom) < 0) {
+								$('livereplycontent').style.bottom =
+									((parseInt($('livereplycontent').style.bottom) + 5) > 0 ? 0 : (parseInt($('livereplycontent').style.bottom) + 5)) + 'px';
+							} else {
+								$('livereplycontentout').style.overflowY = 'auto';
+								clearInterval(movescrollid);
+								movescrollid = null;
+								timeoutid = setTimeout(livecontentfacemove, 1000);
+							}
+						}, 100);
+					}
 				}
 			}
 

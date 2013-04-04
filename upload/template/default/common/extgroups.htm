@@ -2,9 +2,9 @@
 <!--{eval $upgradecredit = $_G['uid'] && $_G['group']['grouptype'] == 'member' && $_G['group']['groupcreditslower'] != 999999999 ? $_G['group']['groupcreditslower'] - $_G['member']['credits'] : false;}-->
 <div style="width:140px">
 	<ul class="mbn">
-		<li class="hm">{echo profile_node::star($_G[group], '', '', 0)}</li>
+		<li class="hm">{echo profile_node_star($_G[group], '', '', 0)}</li>
 		<!--{if $group}-->
-			<li class="hm mtn">{echo profile_node::upgradeprogress($group, '', '', 0)}</li>
+			<li class="hm mtn">{echo profile_node_upgradeprogress($group, '', '', 0)}</li>
 			<li class="hm">
 				{lang thread_groupupgrade}<p class="xi1">$upgradecredit {lang credits}</p>
 			</li>

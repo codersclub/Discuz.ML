@@ -4,7 +4,7 @@
  *		[Discuz!] (C)2001-2099 Comsenz Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
- *		$Id: DiscuzTips.php 32725 2013-03-05 02:10:43Z liulanbo $
+ *		$Id: DiscuzTips.php 32742 2013-03-05 09:37:19Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -47,8 +47,8 @@ class Cloud_Service_DiscuzTips {
 			$params = array(
 				's_id' => $sId,
 				'product_version' => $version,
-				'product_release' => $release,
-				'fix_bug' => $fix,
+				'product_release' => '',
+				'fix_bug' => '',
 				'is_founder' => $isfounder,
 				's_url' => $_G['siteurl'],
 				'admin_id' => $adminId,

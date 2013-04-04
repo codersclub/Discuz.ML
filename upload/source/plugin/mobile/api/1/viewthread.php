@@ -30,6 +30,8 @@ class mobile_api {
 			}
 		}
 
+		$_G['thread']['lastpost'] = dgmdate($_G['thread']['lastpost']);
+
 		$variable = array(
 			'thread' => $_G['thread'],
 			'fid' => $_G['fid'],
@@ -74,7 +76,6 @@ class mobile_api {
 			if($message) {
 				$variable['postlist'][$k]['message'] = $message;
 			}
-			$variable['postlist'][$k]['attachments'] = array_values(mobile_core::getvalues($post['attachments'], array('/^\d+$/'), array('aid', 'tid', 'uid', 'dbdateline', 'dateline', 'filename', 'filesize', 'url', 'attachment', 'remote', 'description', 'readperm', 'price', 'width', 'thumb', 'picid', 'ext', 'imgalt', 'attachsize', 'payed', 'downloads')));
 		}
 
 		foreach($GLOBALS['aimgs'] as $pid => $aids) {

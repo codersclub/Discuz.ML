@@ -23,6 +23,7 @@ class mobile_api {
 			$data = array();
 			while($row = DB::fetch($query)) {
 				list($row['lastpost_tid'], $row['lastpost_subject'], $row['lastpost'], $row['lastposter']) = explode("\t", $row['lastpost']);
+				$row['lastpost'] = dgmdate($row['lastpost']);
 				$data[] = mobile_core::getvalues($row, array('fid', 'name', 'threads', 'posts', 'lastpost', 'lastposter', 'lastpost_tid', 'lastpost_subject', 'todayposts'));
 			}
 			$variable = array(

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: update.php 32692 2013-03-01 01:25:46Z zhengqingpeng $
+ *      $Id: update.php 32780 2013-03-08 04:29:54Z chenmengshu $
  *      Modified by Valery Votintsev, codersclub.org
  */
 
@@ -818,7 +818,7 @@ if($_GET['step'] == 'start') {
 			$newsettings['threadhotreplies'] = 3;
 			$newsettings['threadfilternum'] = 10;
 			$newsettings['hidefilteredpost'] = 1;
-			$newsettings['nofilteredpost'] = 1;
+			$newsettings['nofilteredpost'] = 0;
 			$newsettings['filterednovote'] = 1;
 		}
 
@@ -1718,9 +1718,9 @@ if($_GET['step'] == 'start') {
 
 		$nextop = 'plugin';
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table("forum_threadprofile")." WHERE global=1")) {
-			DB::query("INSERT INTO `pre_forum_threadprofile` (`id`, `name`, `template`, `global`) VALUES
+			DB::query("INSERT INTO ".DB::table("forum_threadprofile")." (`id`, `name`, `template`, `global`) VALUES
 /*vot*/				  (1, 'default_layout', 'a:2:{s:4:\"left\";s:399:\"{numbercard}\r\n{groupicon}<p>{*}</p>{/groupicon}\r\n{authortitle}<p><em>{*}</em></p>{/authortitle}\r\n{customstatus}<p class=\"xg1\">{*}</p>{/customstatus}\r\n{star}<p>{*}</p>{/star}\r\n{upgradeprogress}<p>{*}</p>{/upgradeprogress}\r\n<dl class=\"pil cl\">\r\n\t<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\r\n{medal}<p class=\"md_ctrl\">{*}</p>{/medal}\r\n<dl class=\"pil cl\">{baseinfo=field_qq,0}</dl>\";s:3:\"top\";s:82:\"<dl class=\"cl\">\r\n<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\";}', 1);");
-/*vot*/			DB::query("REPLACE INTO pre_forum_bbcode VALUES ('2','2','qq','bb_qq.gif','<a href=\"http://wpa.qq.com/msgrd?V=3&Uin={1}&amp;Site=[Discuz!]&amp;from=discuz&amp;Menu=yes\" target=\"_blank\"><img src=\"static/image/common/qq_big.gif\" border=\"0\"></a>','[qq]688888[/qq]','qq_bbcode_decription','1','{lang qq_enter}: <a href=\"\" class=\"xi2\" onclick=\"this.href=\'http://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value\" target=\"_blank\" style=\"float:right;\"> {lang qq_onlne_status}&nbsp;&nbsp;</a>','1','21','1	2	3	10	11	12	13	14	15	16	17	18	19');");
+/*vot*/			DB::query("REPLACE INTO ".DB::table("forum_bbcode")." VALUES ('2','2','qq','bb_qq.gif','<a href=\"http://wpa.qq.com/msgrd?V=3&Uin={1}&amp;Site=[Discuz!]&amp;from=discuz&amp;Menu=yes\" target=\"_blank\"><img src=\"static/image/common/qq_big.gif\" border=\"0\"></a>','[qq]688888[/qq]','qq_bbcode_decription','1','{lang qq_enter}: <a href=\"\" class=\"xi2\" onclick=\"this.href=\'http://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value\" target=\"_blank\" style=\"float:right;\"> {lang qq_onlne_status}&nbsp;&nbsp;</a>','1','21','1	2	3	10	11	12	13	14	15	16	17	18	19');");
 		}
 
 /*vot*/		show_msg(lang('update','layout_update_completed'), "$theurl?step=data&op=$nextop");

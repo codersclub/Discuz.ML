@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms'
  *
- *      $Id: admincp_plugins.php 32576 2013-02-21 10:11:46Z monkey $
+ *      $Id: admincp_plugins.php 32747 2013-03-06 01:09:54Z monkey $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -160,7 +160,7 @@ if(!$operation) {
 							'<img src="'.cloudaddons_pluginlogo_url($entry).'" onerror="this.src=\'static/image/admincp/plugin_logo.png\';this.onerror=null" width="40" height="40" align="left" style="margin-right:5px" />',
 							'<span class="bold light">'.$entrytitle.' '.$entryversion.($filemtime > TIMESTAMP - 86400 ? ' <font color="red">New!</font>' : '').'</span> <span class="sml light">('.$entry.')</span>'.
 							'<p><span class="author">'.($entrycopyright ? cplang('author').': '.$entrycopyright.' | ' : '').
-							'<a href="'.ADMINSCRIPT.'?action=cloudaddons&id='.$plugin['identifier'].'.plugin" target="_blank" title="'.$lang['cloudaddons_linkto'].'">'.$lang['plugins_visit'].'</a></p>',
+							'<a href="'.ADMINSCRIPT.'?action=cloudaddons&id='.$entry.'.plugin" target="_blank" title="'.$lang['cloudaddons_linkto'].'">'.$lang['plugins_visit'].'</a></p>',
 							'<a href="'.ADMINSCRIPT.'?action=plugins&operation=import&dir='.$entry.'" class="bold">'.$lang['plugins_config_install'].'</a>'
 						), true);
 					}

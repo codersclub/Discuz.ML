@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_application.php 32526 2013-02-05 08:51:57Z zhangguosheng $
+ *      $Id: discuz_application.php 32753 2013-03-06 05:59:05Z chenmengshu $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -185,7 +185,7 @@ class discuz_application extends discuz_base{
 		} elseif(defined('IN_ARCHIVER')) {
 			$sitepath = preg_replace("/\/archiver/i", '', $sitepath);
 		}
-		$_G['isHTTPS'] = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != 'off') ? true : false;
+		$_G['isHTTPS'] = ($_SERVER['HTTPS'] && strtolower($_SERVER['HTTPS']) != 'off') ? true : false;
 		$_G['siteurl'] = dhtmlspecialchars('http'.($_G['isHTTPS'] ? 's' : '').'://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
 
 		$url = parse_url($_G['siteurl']);

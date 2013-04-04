@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 32730 2013-03-05 03:28:45Z zhengqingpeng $
+ *      $Id: forum_viewthread.php 32733 2013-03-05 07:47:49Z monkey $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -1374,8 +1374,8 @@ function viewthread_baseinfo($post, $extra) {
 function viewthread_profile_nodeparse($param) {
 	list($name, $s, $e, $extra, $post) = $param;
 	if(strpos($name, ':') === false) {
-		if(method_exists('profile_node', $name)) {
-			return call_user_func(array('profile_node', $name), $post, $s, $e, explode(',', $extra));
+		if(function_exists('profile_node_'.$name)) {
+			return call_user_func('profile_node_'.$name, $post, $s, $e, explode(',', $extra));
 		} else {
 			return '';
 		}

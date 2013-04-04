@@ -215,7 +215,7 @@ var atap = {
 };
 
 
-var JSMENU = new Object;
+var POPMENU = new Object;
 var popup = {
 	init : function() {
 		var $this = this;
@@ -251,22 +251,22 @@ var popup = {
 			$('body').append('<div id="ntcmsg" style="display:none;">'+ pop +'</div>');
 			pop = $('#ntcmsg');
 		}
-		if(JSMENU[pop.attr('id')]) {
-			$('#' + pop.attr('id') + '_jsmenu').html(pop.html()).css({'height':pop.height()+'px', 'width':pop.width()+'px'});
+		if(POPMENU[pop.attr('id')]) {
+			$('#' + pop.attr('id') + '_popmenu').html(pop.html()).css({'height':pop.height()+'px', 'width':pop.width()+'px'});
 		} else {
-			pop.parent().append('<div class="dialogbox" id="'+ pop.attr('id') +'_jsmenu" style="height:'+ pop.height() +'px;width:'+ pop.width() +'px;">'+ pop.html() +'</div>');
+			pop.parent().append('<div class="dialogbox" id="'+ pop.attr('id') +'_popmenu" style="height:'+ pop.height() +'px;width:'+ pop.width() +'px;">'+ pop.html() +'</div>');
 		}
-		var popupobj = $('#' + pop.attr('id') + '_jsmenu');
+		var popupobj = $('#' + pop.attr('id') + '_popmenu');
 		var left = (window.innerWidth - popupobj.width()) / 2;
 		var top = (document.documentElement.clientHeight - popupobj.height()) / 2;
 		popupobj.css({'display':'block','position':'fixed','left':left,'top':top,'z-index':120,'opacity':1});
 		$('#mask').css({'display':'block','width':'100%','height':'100%','position':'fixed','top':'0','left':'0','background':'black','opacity':'0.2','z-index':'100'});
-		JSMENU[pop.attr('id')] = pop;
+		POPMENU[pop.attr('id')] = pop;
 	},
 	close : function() {
 		$('#mask').css('display', 'none');
-		$.each(JSMENU, function(index, obj) {
-			$('#' + index + '_jsmenu').css('display','none');
+		$.each(POPMENU, function(index, obj) {
+			$('#' + index + '_popmenu').css('display','none');
 		});
 	}
 };
@@ -330,6 +330,7 @@ var redirect = {
 	}
 };
 
+var DISMENU = new Object;
 var display = {
 	init : function() {
 		$('.display').each(function(index, obj) {
@@ -337,17 +338,31 @@ var display = {
 			var dis = $(obj.attr('href'));
 			if(dis && dis.attr('display')) {
 				dis.css({'display':'none'});
+				dis.css({'z-index':'102'});
+				DISMENU[dis] = dis;
 				obj.bind('click', function(e) {
 					if(dis.attr('display') == 'true') {
 						dis.css('display', 'block');
 						dis.attr('display', 'false');
-					} else {
-						dis.css('display', 'none');
-						dis.attr('display', 'true');
+						$('#mask').css({'display':'block','width':'100%','height':'100%','position':'fixed','top':'0','left':'0','background':'transparent','z-index':'100'});
 					}
 					return false;
 				});
 			}
+		});
+		this.maskinit();
+	},
+	maskinit : function() {
+		var $this = this;
+		$('#mask').unbind().bind('tap', function() {
+			$this.hide();
+		});
+	},
+	hide : function() {
+		$('#mask').css('display', 'none');
+		$.each(DISMENU, function(index, obj) {
+			obj.css('display', 'none');
+			obj.attr('display', 'true');
 		});
 	}
 };
