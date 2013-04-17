@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: index.php 10469 2010-05-11 09:12:14Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 require './include/common.inc.php';
@@ -37,7 +38,7 @@ if($action == 'source') {
 } elseif($action == 'finish') {
 	require DISCUZ_ROOT.'./include/do_finish.inc.php';
 } else {
-	showmessage('非法请求');
+/*vot*/	showmessage(lang('invalid_request'));
 }
 
 showfooter();

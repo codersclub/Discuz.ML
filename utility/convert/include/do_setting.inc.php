@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: do_setting.inc.php 10469 2010-05-11 09:12:14Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 showtips('setting_tips');
@@ -12,7 +13,7 @@ $sfile = DISCUZ_ROOT.'./source/'.$source.'/setting.ini';
 if(!submitcheck('submit')) {
 	show_form_header();
 	show_table_header();
-	show_table_row(array(array('colspan="3"', '编辑配置文件 source/'.$source.'/setting.ini')), 'title');
+/*vot*/	show_table_row(array(array('colspan="3"', lang('edit_file').' source/'.$source.'/setting.ini')), 'title');
 
 	foreach ($setting as $key => $value) {
 		if(is_array($value) && !empty($value)) {
@@ -21,7 +22,7 @@ if(!submitcheck('submit')) {
 			foreach ($value as $k => $v) {
 				show_table_row(	array(
 				lang($k),
-				array('class="bg2" width="70%"', '<input type="text" size="40" name="newsetting['.$key.']['.$k.']" value="'.htmlspecialchars($v).'"'.$disabled.'>'.($disabled ? ' 只读' : ''))
+/*vot*/				array('class="bg2" width="70%"', '<input type="text" size="40" name="newsetting['.$key.']['.$k.']" value="'.htmlspecialchars($v).'"'.$disabled.'>'.($disabled ? lang('r/o') : ''))
 				), 'bg2'
 				);
 			}
@@ -56,10 +57,10 @@ if(!submitcheck('submit')) {
 		if($fp = @fopen($sfile, 'w')) {
 			fwrite($fp, implode("\n", $lines));
 			fclose($fp);
-			showmessage('设置已经更新完毕并成功保存', 'index.php', '', 1000);
+/*vot*/			showmessage(lang('settings_saved_ok'), 'index.php', '', 1000);
 		} else {
-			showmessage('该设置文件为只读文件，无法保存，请返回');
+/*vot*/			showmessage(lang('file_is_ro'));
 		}
 	}
-	showmessage('您没有改变任何设置', 'index.php', '', 1000);
+/*vot*/	showmessage(lang('settings_not_changed'), 'index.php', '', 1000);
 }

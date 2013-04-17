@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: activityapplies.php 10469 2010-05-11 09:12:14Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -25,7 +26,7 @@ while ($row = $db_source->fetch_array($query)) {
 
 	$nextid = $row['applyid'];
 
-	!empty($row['contact']) && $row['message'] = $row['message'].' 联系方式:'.$row['contact'];
+	!empty($row['contact']) && $row['message'] = $row['message'].lang('contacts').$row['contact'];
 	$row  = daddslashes($row, 1);
 
 	$data = implode_field_value($row, ',', db_table_fields($db_target, $table_target));
@@ -34,7 +35,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." applyid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." applyid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

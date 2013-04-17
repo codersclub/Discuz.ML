@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: threadtype.php 16404 2010-09-06 06:38:01Z wangjinbo $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -43,7 +44,7 @@ while($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换主题分类数据表，fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+	showmessage(lang('convert_thread_type').", fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 }
 
 ?>

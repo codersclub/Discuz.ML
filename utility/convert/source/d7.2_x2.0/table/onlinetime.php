@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: onlinetime.php 15475 2010-08-24 07:34:47Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -32,7 +33,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source."  uid > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source."  uid > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

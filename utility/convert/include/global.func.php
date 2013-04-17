@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: global.func.php 20661 2011-03-01 08:08:07Z shanzongjun $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 function remaintime($time) {
@@ -73,7 +74,7 @@ function cutstr($string, $length, $dot = '') {
 	return $strcut.$dot;
 }
 
-function parseqqicq($qqicq, $minlen = 5, $maxlen = 12) {// qq 转换
+function parseqqicq($qqicq, $minlen = 5, $maxlen = 12) {// QQ conversion
 	return $qqicq ? (preg_match("/^([0-9]+)$/", $qqicq) && strlen($qqicq) >= $minlen && strlen($qqicq) <= $maxlen ? $qqicq : '') : '';
 }
 
@@ -133,7 +134,7 @@ function parsesign($sign) {
 	return daddslashes(str_replace($searcharray, $replacearray, preg_replace($pregfind, $pregreplace, $sign)));
 }
 
-function bbcodeurl($url, $tags) {//url 转换
+function bbcodeurl($url, $tags) {//Url conversion
 	if(!preg_match("/<.+?>/s", $url)) {
 		if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'ftp://', 'rtsp:/', 'mms://'))) {
 			$url = 'http://'.$url;
@@ -158,9 +159,9 @@ function timetounix($time) {
 	if($time > 100000000) {
 		return $time;
 	}
-	$time = str_replace(array(' 一月 ',' 二月 ',' 三月 ',' 四月 ',' 五月 ',' 六月 ',' 七月 ',' 八月 ',' 九月 ',' 十月 ',' 十一月 ',' 十二月 ', ' 上午 '), array('-1-','-2-','-3-','-4-','-5-','-6-','-7-','-8-','-9-','-10-','-11-','-12-', ' '), $time);
-	if(strrchr($time, '下午') !== false) {
-		return strtotime(str_replace(' 下午 ', ' ', $time)) + 43200;
+/*vot*/	$time = str_replace(array(lang('jan'),lang('feb'),lang('mar'),lang('apr'),lang('may'),lang('jun'),lang('jul'),lang('sep'),lang('oct'),lang('nov'),lang('dec'),lang('am')), array('-1-','-2-','-3-','-4-','-5-','-6-','-7-','-8-','-9-','-10-','-11-','-12-', ' '), $time);
+/*vot*/	if(strrchr($time, 'PM') !== false) {
+/*vot*/		return strtotime(str_replace(' PM ', ' ', $time)) + 43200;
 	} else {
 		return strtotime($time);
 	}
@@ -225,9 +226,10 @@ function showmessage($message, $url_forward = '', $vars = array(), $timeout = 1)
 		$messageadd .= "<a href=\"javascript:history.go(-1);\" class=\"mediumtxt\">".lang('message_return').'</a><br><br>';
 	}
 
-	echo <<<EOT
+/*vot*/	$prompt = lang('prompt');
+/*vot*/	echo <<<EOT
 <table class="showtable">
-	<tbody><tr class="title"><td style="color: white">系统提示</td></tr>
+	<tbody><tr class="title"><td style="color: white">$prompt</td></tr>
 		<tr><td style="padding: 10px; background-color: #fefefe;font-size: 14px "><br>$message<br><br></td></tr>
 		<tr><td>$messageadd</td></tr>
 	</tbody>
@@ -245,12 +247,19 @@ function showheader($action = '', $setting = array()) {
 	$class[$action] = 'class="current"';
 	$titleadd = !empty($setting['program']['source']) ? " (<span style=\"color: #888888; padding: 4px\">{$setting['program']['source']} --&gt; {$setting['program']['target']}</span>)" : '';
 
-echo <<<EOT
+/*vot*/ $title = lang('dzx_update');
+/*vot*/ $wizard = lang('dzx_update_wizard');
+/*vot*/ $step1 = lang('step1');
+/*vot*/ $step2 = lang('step2');
+/*vot*/ $step3 = lang('step3');
+/*vot*/ $step4 = lang('step4');
+/*vot*/ $step5 = lang('step5');
+/*vot*/ echo <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Discuz! X 系列产品升级转换</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>$title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 body,td { font-family: Tahoma; font-size: 12px; line-height: 150%;}
 form {margin: 0px; padding: 0px;}
@@ -327,15 +336,15 @@ function checkAll(type, form, value, checkall, changestyle) {
 </head>
 <body style="table-layout:fixed; word-break:break-all; margin-top: 4px;">
 <div class="main">
-<h1>Discuz! X 系列产品升级/转换 向导 $titleadd</h1>
+<h1>$wizard $titleadd</h1>
 <div class="content">
 <table id="menu">
 	<tr>
-	<td $class[source]>1.选择产品转换程序 </td>
-	<td $class[config]>2.设置服务器信息 </td>
-	<td $class[select]>3.配置转换过程 </td>
-	<td $class[convert]>4.执行数据转换 </td>
-	<td $class[finish]>5.转换完成 </td>
+	<td $class[source]> $step1 </td>
+	<td $class[config]> $step2 </td>
+	<td $class[select]> $step3 </td>
+	<td $class[convert]> $step4 </td>
+	<td $class[finish]> $step5 </td>
 	</tr>
 </table>
 
@@ -452,9 +461,10 @@ function output(&$s, $show) {
 function showfooter($halt = false) {
 	static $isshow;
 	if(!$isshow) {
-		echo <<<EOT
+/*vot*/		echo <<<EOT
 	</div>
-	<div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.net</div>
+	<div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.net
+<!--vot--> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multilingual Version by Valery Votintsev, codersclub.org</div>
 	</div>
 </body>
 </html>
@@ -507,7 +517,7 @@ EOT;
 function lang($name, $vars = array()) {
 	static $language;
 	if($language === null) {
-		@include DISCUZ_ROOT.'./language/lang.php';
+/*vot*/		@include DISCUZ_ROOT.'./language/en/lang_update.php';
 		if(empty($language)) {
 			$language = array();
 		}

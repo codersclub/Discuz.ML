@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: members.php 17836 2010-11-03 05:24:59Z cnteacher $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -154,7 +155,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." uid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." uid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	$db_target->query("UPDATE $table_target SET newpm='0'");
 }

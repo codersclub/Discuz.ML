@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: magics.php 15719 2010-08-25 23:51:36Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -57,7 +58,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." magicid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." magicid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	if(!$db_target->result_first("SELECT COUNT(*) FROM $table_target WHERE credit>'0'")) {
 		$settings_creditstrans = $db_target->result_first("SELECT svalue FROM $table_target_setting WHERE skey='creditstrans'");
@@ -65,9 +66,9 @@ if($nextid) {
 		$creditstran = $creditstranssi[3] ? $creditstranssi[3] : $creditstranssi[0];
 		$db_target->query("UPDATE $table_target SET credit='$creditstran'");
 	}
-	$db_target->query("UPDATE $table_target SET name='变色卡', description='可以将帖子或日志的标题高亮，变更颜色' WHERE identifier='highlight'");
-	$db_target->query("UPDATE $table_target SET name='显身卡', description='可以查看一次匿名用户的真实身份。' WHERE identifier='namepost'");
-	$db_target->query("UPDATE $table_target SET name='匿名卡', description='在指定的地方，让自己的名字显示为匿名。' WHERE identifier='anonymouspost'");
+	$db_target->query("UPDATE $table_target SET name='Color card', description='You can highlight a thread or blog title, change color' WHERE identifier='highlight'");
+	$db_target->query("UPDATE $table_target SET name='Discover card', description='You can see a real identity of an anonymous user.' WHERE identifier='namepost'");
+	$db_target->query("UPDATE $table_target SET name='Anonymous card', description='Show your name as Anonymous in designated areas.' WHERE identifier='anonymouspost'");
 }
 
 ?>

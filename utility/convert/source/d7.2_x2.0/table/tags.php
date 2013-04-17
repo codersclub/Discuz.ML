@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: tags.php 20881 2011-03-07 07:09:14Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -49,7 +50,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." tag > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." tag > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

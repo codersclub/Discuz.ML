@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: home_magic.php 15720 2010-08-25 23:56:08Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -84,12 +85,12 @@ if($op=='magic') {
 		$creditstran = $creditstranssi[3] ? $creditstranssi[3] : $creditstranssi[0];
 		$db_target->query("UPDATE ".$db_target->table('common_magic')." SET credit='$creditstran'");
 	}
-	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='变色卡', description='可以将帖子或日志的标题高亮，变更颜色' WHERE identifier='highlight'");
-	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='显身卡', description='可以查看一次匿名用户的真实身份。' WHERE identifier='namepost'");
-	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='匿名卡', description='在指定的地方，让自己的名字显示为匿名。' WHERE identifier='anonymouspost'");
+	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Color card', description='You can highlight a thread or blog title, change color' WHERE identifier='highlight'");//vot
+	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Discover card', description='You can see a real identity of an anonymous user.' WHERE identifier='namepost'");//vot
+	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Anonymous card', description='Show your name as Anonymous in designated areas.' WHERE identifier='anonymouspost'");//vot
 
 	$table_source = $db_source->tablepre.'magic';
-	showmessage("继续转换数据表 ".$table_source." 用户道具", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=0");
+	showmessage(lang('continue_convert_table').$table_source. lang('user_magic'), "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=0");//vot
 
 } elseif($op == 'usermagic') {
 
@@ -129,9 +130,9 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'usermagic';
 	if($done == false) {
-		showmessage("继续转换数据表 ".$table_source." 用户道具-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=$nextid");
+		showmessage(lang('continue_convert_table').$table_source. lang('user_magic')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=$nextid");//vot
 	} else {
-		showmessage("继续转换数据表 ".$table_source." 道具收入记录->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=0");
+		showmessage(lang('continue_convert_table').$table_source. lang('magic_records')."->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=0");//vot
 	}
 
 } elseif($op == 'magicinlog') {
@@ -160,9 +161,9 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'magicinlog';
 	if($done == false) {
-		showmessage("继续转换数据表 ".$table_source." 道具收入记录-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=$nextid");
+		showmessage(lang('continue_convert_table').$table_source. lang('magic_records')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=$nextid");//vot
 	} else {
-		showmessage("继续转换数据表 ".$table_source." 道具使用记录->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=0");
+		showmessage(lang('continue_convert_table').$table_source. lang('magic_use_records')."->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=0");//vot
 	}
 
 } elseif($op == 'magicuselog') {
@@ -187,7 +188,7 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'magicuselog';
 	if($done == false) {
-		showmessage("继续转换数据表 ".$table_source." 道具使用记录-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=$nextid");
+		showmessage(lang('continue_convert_table').$table_source. lang('magic_use_records')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=$nextid");//vot
 	}
 }
 

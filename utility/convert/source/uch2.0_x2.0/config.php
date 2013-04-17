@@ -3,6 +3,7 @@
  * DiscuzX Convert
  *
  * $Id: config.php 10469 2010-05-11 09:12:14Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 if(submitcheck()) {
@@ -66,16 +67,16 @@ if(submitcheck()) {
 
 	show_form_header();
 	show_table_header();
-	show_table_row(array(array('colspan="3"', lang('config_usergroup'))), 'header title');
+	show_table_row(array(array('colspan="3"', lang('config_usergroup'))), 'header title');//vot
 	show_table_row(
 		array(
-			lang('config_from_usergroup'),
+			lang('config_from_usergroup'),//vot
 			array('class="bg1" width="10%" align="center"', '->'),
-			lang('config_target_usergroup')
+			lang('config_target_usergroup')//vot
 		)
 	);
 	foreach($sourcegroup as $key => $value) {
-		$addmsg = $error && $key == 'dbhost' ? lang($error) : '';
+		$addmsg = $error && $key == 'dbhost' ? lang($error) : '';//vot
 		$key = intval($key);
 		show_table_row(
 			array(
@@ -89,24 +90,24 @@ if(submitcheck()) {
 	echo '<br/>';
 
 	show_table_header();
-	show_table_row(array(array('colspan="3"', lang('config_extcredits'))), 'header title');
+	show_table_row(array(array('colspan="3"', lang('config_extcredits'))), 'header title');//vot
 	show_table_row(
 		array(
-			lang('config_from_credit'),
+			lang('config_from_credit'),//vot
 			array('class="bg1" width="10%" align="center"', '->'),
-			lang('config_target_credit')
+			lang('config_target_credit')//vot
 		)
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_credit')),
+			array('class="bg2" width="45%"', lang('config_credit')),//vot
 			array('class="bg1" width="10%" align="center"', '->'),
 			array('class="bg2" width="45%"', '<select name="extcredits[credit]">'.$extcredits.'</select>')
 		),'bg1'
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_experience')),
+			array('class="bg2" width="45%"', lang('config_experience')),//vot
 			array('class="bg1" width="10%" align="center"', '->'),
 			array('class="bg2" width="45%"', '<select name="extcredits[experience]">'.$extcredits.'</select>')
 		),'bg1'
@@ -115,26 +116,26 @@ if(submitcheck()) {
 	echo '<br/>';
 
 	show_table_header();
-	show_table_row(array(array('colspan="3"', lang('config_convert_forum'))), 'header title');
+	show_table_row(array(array('colspan="3"', lang('config_convert_forum'))), 'header title');//vot
 	show_table_row(
 		array(
-			lang('config_from_data'),
+			lang('config_from_data'),//vot
 			array('class="bg1" width="10%" align="center"', '->'),
-			lang('config_target_forum')
+			lang('config_target_forum')//vot
 		)
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_poll')),
+			array('class="bg2" width="45%"', lang('config_poll')),//vot
 			array('class="bg1" width="10%" align="center"', '->'),
-			array('class="bg2" width="45%"', '<select name="forum[poll]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')
+			array('class="bg2" width="45%"', '<select name="forum[poll]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')//vot
 		),'bg1'
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_event')),
+			array('class="bg2" width="45%"', lang('config_event')),//vot
 			array('class="bg1" width="10%" align="center"', '->'),
-			array('class="bg2" width="45%"', '<select name="forum[event]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')
+			array('class="bg2" width="45%"', '<select name="forum[event]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')//vot
 		),'bg1'
 	);
 	show_table_footer();

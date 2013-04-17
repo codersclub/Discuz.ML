@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: do_config.inc.php 10469 2010-05-11 09:12:14Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('DISCUZ_ROOT')) {
@@ -44,7 +45,7 @@ if(submitcheck()) {
 	}
 }
 
-showtips('如果无法显示设置项目，请删除文件 data/config.inc.php');
+/*vot*/ showtips(lang('config_delete'));
 $config = loadconfig('config.inc.php');
 if(empty($config)) {
 	$config = $config_default;

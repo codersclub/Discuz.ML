@@ -3,6 +3,7 @@
  * DiscuzX Convert
  *
  * $Id: uc_friends.php 10469 2010-05-11 09:12:14Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -74,7 +75,7 @@ if(empty($nexttable)) {
 
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." version > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." version > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

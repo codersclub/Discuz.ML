@@ -3,6 +3,7 @@
  * DiscuzX Convert
  *
  * $Id: home_group.php 19554 2011-01-07 04:26:02Z zhengqingpeng $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -102,7 +103,7 @@ if($nextid) {
 		$mtag = $db_source->fetch_first("SELECT * FROM ".$db_source->table('mtag')." WHERE tagid='$tagid'");
 	}
 	$profield = $db_source->fetch_first("SELECT * FROM ".$db_source->table('profield')." WHERE fieldid='$fieldid'");
-	showmessage("继续转换数据表 ".$table_source." : $profield[title] ".(!empty($mtag) ? "&rsaquo; $mtag[tagname] &rsaquo; tid > $nextid":""), "index.php?a=$action&source=$source&prg=$curprg&start=$nextid&gid=$gid&fid=$fid&sid=$sid&fieldid=$fieldid&tagid=$tagid");
+	showmessage(lang('continue_convert_table').$table_source." : $profield[title] ".(!empty($mtag) ? "&rsaquo; $mtag[tagname] &rsaquo; tid > $nextid":""), "index.php?a=$action&source=$source&prg=$curprg&start=$nextid&gid=$gid&fid=$fid&sid=$sid&fieldid=$fieldid&tagid=$tagid");//vot
 }
 
 $maxpid = $db_target->result_first("SELECT MAX(pid) FROM ".$db_target->table('forum_post'));
@@ -194,7 +195,7 @@ function getprofield($start) {
 	global $db_source, $db_target, $fieldid, $gid, $fid, $tagid;
 
 	if(!$gid) {
-		$gid = $db_target->insert('forum_forum', array('type' => 'group', 'name' => '空间群组', 'status' => 3), 1);
+		$gid = $db_target->insert('forum_forum', array('type' => 'group', 'name' => lang('group_home'), 'status' => 3), 1);//vot
 		$db_target->insert('forum_forumfield', array('fid' => $gid));
 	}
 

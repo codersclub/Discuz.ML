@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: home_blacklist.php 15720 2010-08-25 23:56:08Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -34,7 +35,7 @@ while ($value = $db_source->fetch_array($query)) {
 }
 
 if($done == false) {
-	showmessage("继续转换数据表 ".$table_source." uid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." uid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
 }
 
 ?>

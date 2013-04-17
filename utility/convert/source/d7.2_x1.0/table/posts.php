@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: posts.php 9237 2010-04-27 11:02:25Z wangjinbo $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -29,7 +30,7 @@ while($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." pid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." pid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	$maxpid = $db_target->result_first("SELECT MAX(pid) FROM $table_target");
 	$maxpid = intval($maxpid) + 1;

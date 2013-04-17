@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: polls.php 18097 2010-11-12 00:44:54Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -52,6 +53,6 @@ while($poll = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source."，tid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source.", tid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 ?>

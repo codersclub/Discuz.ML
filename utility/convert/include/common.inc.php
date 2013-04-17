@@ -1,5 +1,5 @@
 <?php
-
+// Modified by Valery Votintsev, codersclub.org
 error_reporting(E_ALL ^ E_NOTICE);
 set_time_limit(0);
 
@@ -9,7 +9,7 @@ if(phpversion() < '5.3.0') {
 
 define('CONVERT_VERSION', '1.0.0');
 define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
-define('DISCUZ_ROOT', substr(dirname(__FILE__), 0, -7));
+/*vot*/ define('DISCUZ_ROOT', str_replace("\\",'/',substr(dirname(__FILE__), 0, -7)));
 define('TIMESTAMP', time());
 define('CACHETABLE', 'common_cache');
 

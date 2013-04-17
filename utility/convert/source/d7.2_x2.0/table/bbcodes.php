@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: bbcodes.php 15795 2010-08-27 01:27:04Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -47,7 +48,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." id > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." id > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	$allowcusbbcodes = array();
 	$query = $db_target->query("SELECT * FROM $table_target_usergroup_field");

@@ -4,6 +4,7 @@
  * DiscuzX Convert
  *
  * $Id: common_advertisement.php 15720 2010-08-25 23:56:08Z monkey $
+ * Modified by Valery Votintsev, codersclub.org
  */
 
 $curprg = basename(__FILE__);
@@ -69,7 +70,7 @@ if(!$res) {
 }
 
 if($nextid) {
-	showmessage("继续转换数据表 ".$table_source." adid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+	showmessage(lang('continue_convert_table').$table_source." adid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
 }
 
 function encodeadvcode($advnew) {
