@@ -405,12 +405,12 @@ function show_header() {
 	$charset = CHARSET;
 /*vot*/	$title = lang('restore_title');//vot
 /*vot*/	$intro = lang('restore_questions');//vot
-	print <<< EOT
+/*vot*/	print <<< EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset" />
-<!--vot--><title>$title</title>
+<title>$title</title>
 <style type="text/css">
 * { word-break: break-all; }
 body { text-align:center; margin:0; padding:0; background: #F5FBFF; font-size:12px; font-family:Verdana, Arial, Helvetica, 'SimSun', sans-serif; line-height: 1.8; }
@@ -723,4 +723,3 @@ class dbstuff {
 		show_error('run_sql_error', $message.$sql.'<br /> Error:'.$this->error().'<br />Errno:'.$this->errno(), 0);
 	}
 }
-?>

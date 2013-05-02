@@ -2,7 +2,8 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: calendar.js 27363 2012-01-18 08:46:14Z monkey $
+	$Id: calendar.js 33082 2013-04-18 11:13:53Z zhengqingpeng $
+	Modified by Valery Votintsev, http://codersclub.org
 */
 
 var controlid = null;
@@ -19,23 +20,24 @@ var addtime = false;
 var today = new Date();
 var lastcheckedyear = false;
 var lastcheckedmonth = false;
+var calendarrecall = null;
 
 function loadcalendar() {
 	s = '';
 	s += '<div id="calendar" style="display:none; position:absolute; z-index:100000;" onclick="doane(event)">';
 	s += '<div style="width: 210px;"><table cellspacing="0" cellpadding="0" width="100%" style="text-align: center;">';
-	s += '<tr align="center" id="calendar_week"><td onclick="refreshcalendar(yy, mm-1)" title="上一月" style="cursor: pointer;"><a href="javascript:;">&laquo;</a></td><td colspan="5" style="text-align: center"><a href="javascript:;" onclick="showdiv(\'year\');doane(event)" class="dropmenu" title="点击选择年份" id="year"></a>&nbsp; - &nbsp;<a id="month" class="dropmenu" title="点击选择月份" href="javascript:;" onclick="showdiv(\'month\');doane(event)"></a></td><td onclick="refreshcalendar(yy, mm+1)" title="下一月" style="cursor: pointer;"><a href="javascript:;">&raquo;</a></td></tr>';
-	s += '<tr id="calendar_header"><td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td></tr>';
+/*vot*/	s += '<tr align="center" id="calendar_week"><td><a href="javascript:;" onclick="refreshcalendar(yy, mm-1)" title="'+lng['prev_month']+'">&laquo;</a></td><td colspan="5" style="text-align: center"><a href="javascript:;" onclick="showdiv(\'year\');doane(event)" class="dropmenu" title="'+lng['select_year']+'" id="year"></a>&nbsp; - &nbsp;<a id="month" class="dropmenu" title="'+lng['select_month']+'" href="javascript:;" onclick="showdiv(\'month\');doane(event)"></a></td><td><a href="javascript:;" onclick="refreshcalendar(yy, mm+1)" title="'+lng['next_month']+'">&raquo;</a></td></tr>';
+/*vot*/	s += '<tr id="calendar_header"><td>'+lng['wday0']+'</td><td>'+lng['wday1']+'</td><td>'+lng['wday2']+'</td><td>'+lng['wday3']+'</td><td>'+lng['wday4']+'</td><td>'+lng['wday5']+'</td><td>'+lng['wday6']+'</td></tr>';
 	for(var i = 0; i < 6; i++) {
 		s += '<tr>';
 		for(var j = 1; j <= 7; j++)
 			s += "<td id=d" + (i * 7 + j) + " height=\"19\">0</td>";
 		s += "</tr>";
 	}
-	s += '<tr id="hourminute" class="pns"><td colspan="4" align="left"><input type="text" size="1" value="" id="hour" class="px vm" onKeyUp=\'this.value=this.value > 23 ? 23 : zerofill(this.value);controlid.value=controlid.value.replace(/\\d+(\:\\d+)/ig, this.value+"$1")\'>点';
-	s += '<span id="fullhourselector"><input type="text" size="1" value="" id="minute" class="px vm" onKeyUp=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'>分</span>';
-	s += '<span id="halfhourselector"><select id="minutehalfhourly" onchange=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'><option value="00">00</option><option value="30">30</option></select>分</span>';
-	s += '</td><td align="right" colspan="3"><button class="pn" onclick="confirmcalendar();"><em>确定</em></button></td></tr>';
+/*vot*/	s += '<tr id="hourminute" class="pns"><td colspan="4" align="left"><input type="text" size="1" value="" id="hour" class="px vm" onKeyUp=\'this.value=this.value > 23 ? 23 : zerofill(this.value);controlid.value=controlid.value.replace(/\\d+(\:\\d+)/ig, this.value+"$1")\'> '+lng['hours']+' ';
+/*vot*/	s += '<span id="fullhourselector"><input type="text" size="1" value="" id="minute" class="px vm" onKeyUp=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'> '+lng['minutes']+'</span>';
+/*vot*/	s += '<span id="halfhourselector"><select id="minutehalfhourly" onchange=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'><option value="00">00</option><option value="30">30</option></select>'+lng['halfhour']+'</span>';
+/*vot*/	s += '</td><td align="right" colspan="3"><button class="pn" onclick="confirmcalendar();"><em>'+lng['ok']+'</em></button></td></tr>';
 	s += '</table></div></div>';
 	s += '<div id="calendar_year" onclick="doane(event)" style="display: none;z-index:100001;"><div class="col">';
 	for(var k = 2020; k >= 1931; k--) {
@@ -45,7 +47,7 @@ function loadcalendar() {
 	s += '</div></div>';
 	s += '<div id="calendar_month" onclick="doane(event)" style="display: none;z-index:100001;">';
 	for(var k = 1; k <= 12; k++) {
-		s += '<a href="javascript:;" onclick="refreshcalendar(yy, ' + (k - 1) + ');$(\'calendar_month\').style.display=\'none\'"><span' + (today.getMonth()+1 == k ? ' class="calendar_today"' : '') + ' id="calendar_month_' + k + '">' + k + ( k < 10 ? '&nbsp;' : '') + ' 月</span></a><br />';
+/*vot*/		s += '<a href="javascript:;" onclick="refreshcalendar(yy, ' + (k - 1) + ');$(\'calendar_month\').style.display=\'none\'"><span' + (today.getMonth()+1 == k ? ' class="calendar_today"' : '') + ' id="calendar_month_' + k + '">' + k + ( k < 10 ? '&nbsp;' : '') + ' '+lng['month']+'</span></a><br />';
 	}
 	s += '</div>';
 	if(BROWSER.ie && BROWSER.ie < 7) {
@@ -101,6 +103,11 @@ function settime(d) {
 		}
 	}
 	controlid.value = yy + "-" + zerofill(mm + 1) + "-" + zerofill(d) + (addtime ? ' ' + zerofill($('hour').value) + ':' + zerofill($((halfhour) ? 'minutehalfhourly' : 'minute').value) : '');
+	if(typeof calendarrecall == 'function') {
+		calendarrecall();
+	} else {
+		eval(calendarrecall);
+	}
 }
 
 function confirmcalendar() {
@@ -120,7 +127,7 @@ function initclosecalendar() {
 		aim = aim.parentNode;
 	}
 }
-function showcalendar(event, controlid1, addtime1, startdate1, enddate1, halfhour1) {
+function showcalendar(event, controlid1, addtime1, startdate1, enddate1, halfhour1, recall) {
 	controlid = controlid1;
 	addtime = addtime1;
 	startdate = startdate1 ? parsedate(startdate1) : false;
@@ -129,6 +136,7 @@ function showcalendar(event, controlid1, addtime1, startdate1, enddate1, halfhou
 	hh = currday.getHours();
 	ii = currday.getMinutes();
 	halfhour = halfhour1 ? true : false;
+	calendarrecall = recall ? recall : null;
 	var p = fetchOffset(controlid);
 	$('calendar').style.display = 'block';
 	$('calendar').style.left = p['left']+'px';
@@ -196,7 +204,7 @@ function refreshcalendar(y, m) {
 		}
 		if(x.getFullYear() == today.getFullYear() && x.getMonth() == today.getMonth() && x.getDate() == today.getDate()) {
 			dd.className = 'calendar_today';
-			dd.firstChild.title = '今天';
+/*vot*/			dd.firstChild.title = lng['today'];
 		}
 		if(x.getFullYear() == currday.getFullYear() && x.getMonth() == currday.getMonth() && x.getDate() == currday.getDate()) {
 			dd.className = 'calendar_checked';

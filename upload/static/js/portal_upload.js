@@ -3,6 +3,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: portal_upload.js 32590 2013-02-22 09:42:48Z monkey $
+	Modified by Valery Votintsev
 */
 
 var nowid = 0;
@@ -44,11 +45,11 @@ function insertAttach(id) {
 	var ext = path.lastIndexOf('.') == -1 ? '' : path.substr(path.lastIndexOf('.') + 1, path.length).toLowerCase();
 	var re = new RegExp("(^|\\s|,)" + ext + "($|\\s|,)", "ig");
 	if(extensions != '' && (re.exec(extensions) == null || ext == '')) {
-		alert('对不起，不支持上传此类文件');
+/*vot*/		alert(lng['file_not_supported']);
 		return;
 	}
 	var localfile = $('attach_' + id).value.substr($('attach_' + id).value.replace(/\\/g, '/').lastIndexOf('/') + 1);
-	$('localfile_' + id).innerHTML = localfile + ' 上传中...';
+/*vot*/	$('localfile_' + id).innerHTML = localfile + ' '+lng['uploading'];
 	$('attach_' + id).style.display = 'none';
 	$('upload_' + id).action += '&attach_target_id=' + id;
 	$('upload_' + id).submit();

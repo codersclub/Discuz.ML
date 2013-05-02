@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <strings>
 	
-	<language type="zh_CN" using="true">
+	<language type="zh_CN" using="false">
 		<item key="inefficacy_save" value="\u8BF7\u5148\u4E0A\u4F20\u56FE\u7247\u6216\u7528\u6444\u50CF\u5934\u62CD\u7167\21" />
 		<item key="camera_muted" value="\u65E0\u6CD5\u8FDE\u63A5\u5230\u6D3B\u52A8\u6444\u50CF\u5934\21" />
 		<item key="camera_not_exist" value="\u6444\u50CF\u5934\u8BBE\u5907\u4E0D\u53EF\u7528\21" />
@@ -106,4 +106,58 @@
 			</value>
 		</item>
 	</language>
+
+	<language type="en" using="true">
+		<item key="inefficacy_save" value="Please upload or capture image using webcam\21" />
+		<item key="camera_muted" value="Failed to connect webcam\21" />
+		<item key="camera_not_exist" value="Webcam device not detected\21" />
+		<item key="face_save_success" value="Avatar successfully saved!\21" />
+		<item key="face_save_error" value="During the upload process internet error occured. Please retry\21" />
+		<item key="face_saving" value="Saving Avatar...  Please wait..." />
+		<item key="face_save_ioerror" value="I/O error occured during upload\21" />
+		<item key="upload_volume_1M" value="Please get another image that is smaller than 1 MB\21" />
+		<item key="upload_type_label" value="Image document" />
+		<item key="upload_type_error" value="Invalid file extension error. Please get a file with extension jpg,gif,png" />
+		<item key="upload_uploading" value="Image uploading, Please wait..." />
+		<item key="upload_ioerror" value="I/O Error occur during upload\21" />
+		<item key="upload_httperror" value="HTTP error occured during upload\21" />
+		<item key="upload_securityerror" value="Security Error occured during upload\21" />
+		<item key="upload_progress" value="File uploaded" />
+		<item key="please_select_region" value="Select Image region" />
+		<item key="browse_file_cancel" value="Cancel\21" />
+		<item key="callback_uploaded_ioerror" value="Load failure against uploaded image\21" />
+		<item key="uploaded_invalid_type" value="File uploading is not an image\21" />
+		<item key="preview_note" value="Avatar modification completed. Images below will be the 3 different size of your image\3A" />
+		<item key="gif_submitting" value="Image is saving..." />
+		<item key="gif_reopen" value="Open Image error, please try again..." />
+		<item key="gif_frame_overflow" value="The image has too many frames, please select other image..." />
+		<item key="button_browse" value="Browse" />
+		<item key="button_camera_screen" value="Capture Photo" />
+		<item key="button_reset" value="Reset" />
+		<item key="button_return" value="Return" />
+		<item key="button_save" value="Save Avatar" />
+		<item key="button_submit" value="Confirm\20" />
+		<item key="tab_upload" value="Upload File" />
+		<item key="tab_camera" value="Web Cam" />
+		<item key="note_right_text" value="Select Image region" />
+		<item key="note_right_move" value="Move" />
+		<item key="note_right_zoom" value="Resize" />
+		<item key="note_right_face" value="Avatar Preview" />
+		<item key="note_main" value="Please select one image as Avatar from your PC" />
+
+		<item key="note_success" value="Uploaded Successfully!" />
+		<item key="note_3size" value="These are three sizes of your avatar" />
+		<item key="button_finish" value="Complete" />
+		<item key="upload_downing" value="Loading, please wait..." />
+		<item key="camera_no_device" value="Webcam device not detected" />
+		<item key="js_connect_error" value="javascriptConnect Error, Please refresh to show new avatar" />
+		<item key="player_ver_error">
+			<value>
+				<![CDATA[
+					<font size='14' color='#FF0000'>You are using an old version of Flash Player, please <font color='#0000FF'><u>Update!</u></font></font>
+				]]>
+			</value>
+		</item>
+	</language>
+
 </strings>

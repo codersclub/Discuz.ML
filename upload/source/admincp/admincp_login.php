@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_login.php 32459 2013-01-22 02:01:02Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -45,6 +46,8 @@ function html_login_header($form = true) {
 	$charset = CHARSET;
 	$title = lang('admincp_login', 'login_title');
 	$tips = lang('admincp_login', 'login_tips');
+/*vot*/	$rtl_css = RTLSUFFIX ? '<link rel="stylesheet" href="static/image/admincp/admincp_rtl.css" type="text/css" media="all" />' : '';
+
 	echo <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,6 +55,7 @@ function html_login_header($form = true) {
 <meta http-equiv="Content-Type" content="text/html;charset=$charset" />
 <title>$title</title>
 <link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+<!--vot-->{$rtl_css}
 <meta content="Comsenz Inc." name="Copyright" />
 </head>
 <body>
@@ -78,6 +82,7 @@ EOT;
 
 function html_login_footer($halt = true) {
 	$version = getglobal('setting/version');
+/*vot*/	$release = getglobal('setting/release');
 	echo <<<EOT
 
 	</td>
@@ -87,8 +92,9 @@ function html_login_footer($halt = true) {
 <tr>
 	<td colspan="2" class="footer">
 		<div class="copyright">
-			<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> $version </p>
-			<p>&copy; 2001-2013, <a href="http://www.comsenz.com/" target="_blank">Comsenz</a> Inc.</p>
+<!--vot-->	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> $version, Release $release</p>
+<!--vot-->	<p>&copy; 2001-{$year}, <a href="http://www.comsenz.com/" target="_blank">Comsenz</a> Inc.</p>
+<!--vot-->	<p><br><strong>MultiLingual version</strong> by <a href="http://codersclub.org/discuzx/" target="_blank">codersclub.org</a></p>
 		</div>
 	</td>
 </tr>
@@ -139,4 +145,3 @@ EOT;
 		echo '<script type="text/JavaScript">document.getElementById(\'loginform\').admin_'.($isguest ? 'username' : 'password').'.focus();</script>';
 }
 
-?>

@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_forums.php 32620 2013-02-27 02:03:46Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -134,7 +135,7 @@ var rowtypedata = [
 
 				foreach($forums as $key => $forumname) {
 
-					if(empty($forumname) || strlen($forumname) > 50) continue;
+/*vot*/					if(empty($forumname) /*|| strlen($forumname) > 50*/) continue;
 
 					$forum = $forumfields = array();
 					$inheritedid = !empty($_GET['inherited'][$fup]) ? $fup : (!empty($_GET['newinherited'][$fup][$key]) ? $_GET['newinherited'][$fup][$key] : '');
@@ -571,7 +572,7 @@ var rowtypedata = [
 			if($multiset && !in_array($anchor, array('basic', 'extend', 'posts', 'perm', 'plugin'))) {
 				$anchor = 'basic';
 			}
-			showsubmenuanchors(cplang('forums_edit').(count($mforum) == 1 ? ' - '.$mforum[0]['name'].'(fid:'.$mforum[0]['fid'].')' : ''), array(
+/*vot*/			showsubmenuanchors(cplang('forums_edit').(count($mforum) == 1 ? ' - '.$mforum[0]['name'].' (fid:'.$mforum[0]['fid'].')' : ''), array(
 				array('forums_edit_basic', 'basic', $anchor == 'basic'),
 				array('forums_edit_extend', 'extend', $anchor == 'extend'),
 				array('forums_edit_posts', 'posts', $anchor == 'posts'),
@@ -2187,4 +2188,3 @@ function copy_threadclasses($threadtypes, $fid) {
 	}
 	return '';
 }
-?>

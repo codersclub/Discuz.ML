@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_block.php 32297 2012-12-20 10:29:56Z zhangguosheng $
+ *      $Id: function_block.php 32895 2013-03-21 04:18:15Z zhangguosheng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -430,6 +430,11 @@ function block_template($bid) {
 				$replacearr[] = $replacevalue;
 
 				if($block['hidedisplay']) {
+					if(strpos($replacevalue, "\\") !== false) {
+						$replacevalue = str_replace(
+								array('\.', '\\\\', '\+', '\*', '\?', '\[', '\^', '\]', '\$', '\(', '\)', '\{', '\}', '\=', '\!', '\<', '\>', '\|', '\:', '\-'),
+								array('.', '\\', '+', '*', '?', '[', '^', ']', '$', '(', ')', '{', '}', '=', '!', '<', '>', '|', ':', '-'), $replacevalue);
+					}
 					$_G['block_'.$bid][$order-1][$key] = $replacevalue;
 				}
 			}
@@ -451,7 +456,6 @@ function block_template($bid) {
 	$template = preg_replace('/\s*\[(order\d*)=\w+\](.*?)\[\/\\1\]\s*/is', '', $template);
 	$template = preg_replace('/\s*\[(index\d*)=\w+\](.*?)\[\/\\1\]\s*/is', '', $template);
 	$template = preg_replace('/\s*\[(loop\d{0,1})\](.*?)\[\/\\1\]\s*/is', '', $template);
-
 	return $template;
 }
 

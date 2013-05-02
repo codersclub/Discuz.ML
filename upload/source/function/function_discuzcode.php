@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_discuzcode.php 32697 2013-03-01 02:36:42Z zhangguosheng $
+ *      $Id: function_discuzcode.php 33059 2013-04-16 08:58:23Z zhengqingpeng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -174,6 +174,8 @@ function discuzcode($message, $smileyoff, $bbcodeoff, $htmlon = 0, $allowsmilies
 
 		if($pid && !defined('IN_MOBILE')) {
 			$message = preg_replace("/\s?\[postbg\]\s*([^\[\<\r\n;'\"\?\(\)]+?)\s*\[\/postbg\]\s?/ies", "parsepostbg('\\1', '$pid')", $message);
+		} else {
+			$message = preg_replace("/\s?\[postbg\]\s*([^\[\<\r\n;'\"\?\(\)]+?)\s*\[\/postbg\]\s?/is", "", $message);
 		}
 
 		if($parsetype != 1) {
@@ -246,9 +248,8 @@ function discuzcode($message, $smileyoff, $bbcodeoff, $htmlon = 0, $allowsmilies
 			$message = preg_replace("/\[swf\]\s*([^\[\<\r\n]+?)\s*\[\/swf\]/ies", "bbcodeurl('\\1', ' <img src=\"'.STATICURL.'image/filetype/flash.gif\" align=\"absmiddle\" alt=\"\" /> <a href=\"{url}\" target=\"_blank\">Flash: {url}</a> ')", $message);
 		}
 
-		if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
+		if(defined('IN_MOBILE') && !defined('TPL_DEFAULT') && !defined('IN_MOBILE_API')) {
 			$allowimgcode = false;
-			$viewimg = lang('template', 'viewimg');
 		}
 		$attrsrc = !IS_ROBOT && $lazyload ? 'file' : 'src';
 		if(strpos($msglower, '[/img]') !== FALSE) {
@@ -259,8 +260,8 @@ function discuzcode($message, $smileyoff, $bbcodeoff, $htmlon = 0, $allowsmilies
 				"parseimg(0, 0, '\\1', ".intval($lazyload).", ".intval($pid).", 'onmouseover=\"img_onmouseoverfunc(this)\" onload=\"thumbImg(this)\"')",
 				"parseimg('\\1', '\\2', '\\3', ".intval($lazyload).", ".intval($pid).")"
 			) : ($allowbbcode ? array(
-				(!defined('IN_MOBILE') ? "bbcodeurl('\\1', '<a href=\"{url}\" target=\"_blank\">{url}</a>')" : "bbcodeurl('\\1', '<a href=\"{url}\" target=\"_blank\">[$viewimg]</a>')"),
-				(!defined('IN_MOBILE') ? "bbcodeurl('\\3', '<a href=\"{url}\" target=\"_blank\">{url}</a>')" : "bbcodeurl('\\3', '<a href=\"{url}\" target=\"_blank\">[$viewimg]</a>')"),
+				(!defined('IN_MOBILE') ? "bbcodeurl('\\1', '<a href=\"{url}\" target=\"_blank\">{url}</a>')" : "bbcodeurl('\\1', '')"),
+				(!defined('IN_MOBILE') ? "bbcodeurl('\\3', '<a href=\"{url}\" target=\"_blank\">{url}</a>')" : "bbcodeurl('\\3', '')"),
 			) : array("bbcodeurl('\\1', '{url}')", "bbcodeurl('\\3', '{url}')")), $message);
 		}
 	}
@@ -307,7 +308,7 @@ function parseurl($url, $text, $scheme) {
 function parseflash($w, $h, $url) {
 	$w = !$w ? 550 : $w;
 	$h = !$h ? 400 : $h;
-	preg_match("/((https?){1}:\/\/|www\.)[^\[\"']+/i", $url, $matches);
+	preg_match("/((https?){1}:\/\/|www\.)[^\[\"']+\.swf/i", $url, $matches);
 	$url = $matches[0];
 	$randomid = 'swf_'.random(3);
 	if(fileext($url) != 'flv') {
@@ -349,9 +350,9 @@ function parseemail($email, $text) {
 function parsetable($width, $bgcolor, $message) {
 	if(strpos($message, '[/tr]') === FALSE && strpos($message, '[/td]') === FALSE) {
 		$rows = explode("\n", $message);
-		$s = '<table cellspacing="0" class="t_table" '.
+		$s = !defined('IN_MOBILE') ? '<table cellspacing="0" class="t_table" '.
 			($width == '' ? NULL : 'style="width:'.$width.'"').
-			($bgcolor ? ' bgcolor="'.$bgcolor.'">' : '>');
+			($bgcolor ? ' bgcolor="'.$bgcolor.'">' : '>') : '<table>';
 		foreach($rows as $row) {
 			$s .= '<tr><td>'.str_replace(array('\|', '|', '\n'), array('&#124;', '</td><td>', "\n"), $row).'</td></tr>';
 		}
@@ -367,9 +368,9 @@ function parsetable($width, $bgcolor, $message) {
 			$width = intval($width);
 			$width = $width ? ($width <= 560 ? $width.'px' : '98%') : '';
 		}
-		return '<table cellspacing="0" class="t_table" '.
+		return (!defined('IN_MOBILE') ? '<table cellspacing="0" class="t_table" '.
 			($width == '' ? NULL : 'style="width:'.$width.'"').
-			($bgcolor ? ' bgcolor="'.$bgcolor.'">' : '>').
+			($bgcolor ? ' bgcolor="'.$bgcolor.'">' : '>') : '<table>').
 			str_replace('\\"', '"', preg_replace(array(
 					"/\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td(?:=(\d{1,4}%?))?\]/ie",
 					"/\[\/td\]\s*\[td(?:=(\d{1,4}%?))?\]/ie",
@@ -388,7 +389,7 @@ function parsetable($width, $bgcolor, $message) {
 }
 
 function parsetrtd($bgcolor, $colspan, $rowspan, $width) {
-	return ($bgcolor == 'td' ? '</td>' : '<tr'.($bgcolor ? ' style="background-color:'.$bgcolor.'"' : '').'>').'<td'.($colspan > 1 ? ' colspan="'.$colspan.'"' : '').($rowspan > 1 ? ' rowspan="'.$rowspan.'"' : '').($width ? ' width="'.$width.'"' : '').'>';
+	return ($bgcolor == 'td' ? '</td>' : '<tr'.($bgcolor && !defined('IN_MOBILE') ? ' style="background-color:'.$bgcolor.'"' : '').'>').'<td'.($colspan > 1 ? ' colspan="'.$colspan.'"' : '').($rowspan > 1 ? ' rowspan="'.$rowspan.'"' : '').($width && !defined('IN_MOBILE') ? ' width="'.$width.'"' : '').'>';
 }
 
 function parseaudio($url, $width = 400) {
@@ -708,13 +709,19 @@ function parseflv($url, $width = 0, $height = 0) {
 function parseimg($width, $height, $src, $lazyload, $pid, $extra = '') {
 	global $_G;
 	static $styleoutput = null;
+	if($_G['setting']['domainwhitelist_affectimg']) {
+		$tmp = parse_url($src);
+		if(!empty($tmp['host']) && !iswhitelist($tmp['host'])) {
+			return $src;
+		}
+	}
 	if(strstr($src, 'file:') || substr($src, 1, 1) == ':') {
 		return $src;
 	}
 	if($width > $_G['setting']['imagemaxwidth']) {
 		$height = intval($_G['setting']['imagemaxwidth'] * $height / $width);
 		$width = $_G['setting']['imagemaxwidth'];
-		if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
+		if(defined('IN_MOBILE')) {
 			$extra = '';
 		} else {
 			$extra = 'onmouseover="img_onmouseoverfunc(this)" onclick="zoom(this)" style="cursor:pointer"';
@@ -730,11 +737,15 @@ function parseimg($width, $height, $src, $lazyload, $pid, $extra = '') {
 			$img .= guestviewthumbstyle();
 			$styleoutput = true;
 		}
-		$img .= '<div class="guestviewthumb"><img id="aimg_'.$rimg_id.'" class="guestviewthumb_cur" onclick="showWindow(\'login\', \'{loginurl}\'+\'&referer=\'+encodeURIComponent(location))" '.$attrsrc.'="'.$src.'" border="0" alt="" />
+		$img .= '<div class="guestviewthumb"><img id="aimg_'.$rimg_id.'" class="guestviewthumb_cur" onclick="showWindow(\'login\', \'{loginurl}\'+\'&referer=\'+encodeURIComponent(location))" '.$attrsrc.'="{url}" border="0" alt="" />
 				<br><a href="{loginurl}" onclick="showWindow(\'login\', this.href+\'&referer=\'+encodeURIComponent(location));">'.lang('forum/template', 'guestviewthumb').'</a></div>';
 
 	} else {
-		$img = '<img id="aimg_'.$rimg_id.'" onclick="zoom(this, this.src, 0, 0, '.($_G['setting']['showexif'] ? 1 : 0).')" class="zoom"'.($width > 0 ? ' width="'.$width.'"' : '').($height > 0 ? ' height="'.$height.'"' : '').' '.$attrsrc.'="'.$src.'" '.($extra ? $extra.' ' : '').'border="0" alt="" />';
+		if(defined('IN_MOBILE')) {
+			$img = '<img'.($width > 0 ? 'width="'.$width.'"' : '').($height > 0 ? ' height="'.$height.'"' : '').' src="{url}" border="0" alt="" />';
+		} else {
+			$img = '<img id="aimg_'.$rimg_id.'" onclick="zoom(this, this.src, 0, 0, '.($_G['setting']['showexif'] ? 1 : 0).')" class="zoom"'.($width > 0 ? ' width="'.$width.'"' : '').($height > 0 ? ' height="'.$height.'"' : '').' '.$attrsrc.'="{url}" '.($extra ? $extra.' ' : '').'border="0" alt="" />';
+		}
 	}
 	$code = bbcodeurl($src, $img);
 	if($guestviewthumb) {

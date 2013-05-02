@@ -1,6 +1,7 @@
+/* Modified by Valery Votintsev, codersclub.org */
 input,button,select,textarea{outline:none}
 textarea{resize:none}
-.tips{height:67px;line-height:67px;font-weight:700;background:url(image/tipsbg.jpg) no-repeat 0 0;text-indent:86px;font-size:14px;}
+/*vot*/.tips{min-height:55px;vertical-align:middle;padding:12px 0 0 86px;/*line-height:67px;*/font-weight:700;background:url(image/tipsbg.jpg) no-repeat 0 0;/*text-indent:86px;*/font-size:14px;}
 	.tips .close{background:url(image/close.jpg) no-repeat 0 0;width:30px;height:30px;display:block;overflow:hidden;text-indent:-9999px;margin-top:20px;margin-right:20px;}
 .content{position:relative;background:url(image/wrapbg.jpg) no-repeat 0 0;padding-top:389px;}
 	.platform{position:absolute;top:145px;left:557px;}

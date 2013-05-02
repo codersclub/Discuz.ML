@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_members.php 32356 2013-01-06 03:24:21Z chenmengshu $
+ *	Modified by Valery Votintsev at sources.ru
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -170,13 +171,60 @@ EOF;
 			$detail = $detail."\n";
 		}
 	}
-	$title = array('realname' => '', 'gender' => '', 'birthyear' => '', 'birthmonth' => '', 'birthday' => '', 'constellation' => '',
-		'zodiac' => '', 'telephone' => '', 'mobile' => '', 'idcardtype' => '', 'idcard' => '', 'address' => '', 'zipcode' => '','nationality' => '',
-		'birthprovince' => '', 'birthcity' => '', 'birthdist' => '', 'birthcommunity' => '', 'resideprovince' => '', 'residecity' => '', 'residedist' => '',
-		'residecommunity' => '', 'residesuite' => '', 'graduateschool' => '', 'education' => '', 'company' => '', 'occupation' => '',
-		'position' => '', 'revenue' => '', 'affectivestatus' => '', 'lookingfor' => '', 'bloodtype' => '', 'height' => '', 'weight' => '',
-		'alipay' => '', 'icq' => '', 'qq' => '', 'yahoo' => '', 'msn' => '', 'taobao' => '', 'site' => '', 'bio' => '', 'interest' => '',
-		'field1' => '', 'field2' => '', 'field3' => '', 'field4' => '', 'field5' => '', 'field6' => '', 'field7' => '', 'field8' => '');
+/*vot*/	$title = array(
+		'realname' => '',
+		'gender' => '',
+		'birthyear' => '',
+		'birthmonth' => '',
+		'birthday' => '',
+		'constellation' => '',
+		'zodiac' => '',
+		'telephone' => '',
+		'mobile' => '',
+		'idcardtype' => '',
+		'idcard' => '',
+		'address' => '',
+		'zipcode' => '',
+		'nationality' => '',
+///*vot*/		'birthcountry' => '',
+		'birthprovince' => '',
+		'birthcity' => '',
+		'birthdist' => '',
+		'birthcommunity' => '',
+///*vot*/		'residecountry' => '',
+		'resideprovince' => '',
+		'residecity' => '',
+		'residedist' => '',
+		'residecommunity' => '',
+		'residesuite' => '',
+		'graduateschool' => '',
+		'education' => '',
+		'company' => '',
+		'occupation' => '',
+		'position' => '',
+		'revenue' => '',
+		'affectivestatus' => '',
+		'lookingfor' => '',
+		'bloodtype' => '',
+		'height' => '',
+		'weight' => '',
+		'alipay' => '',
+		'icq' => '',
+		'qq' => '',
+		'yahoo' => '',
+		'msn' => '',
+		'taobao' => '',
+		'site' => '',
+		'bio' => '',
+		'interest' => '',
+		'field1' => '',
+		'field2' => '',
+		'field3' => '',
+		'field4' => '',
+		'field5' => '',
+		'field6' => '',
+		'field7' => '',
+		'field8' => '');
 	foreach(C::t('common_member_profile_setting')->range() as $value) {
 		if(isset($title[$value['fieldid']])) {
 			$title[$value['fieldid']] = $value['title'];
@@ -194,8 +242,9 @@ EOF;
 	header('Content-Disposition: attachment; filename='.$filename);
 	header('Pragma: no-cache');
 	header('Expires: 0');
+//vot !!!!!!! VERIFY THIS !!!!!!!!!!!!!!!!!!!!!!!!!!!
 	if($_G['charset'] != 'gbk') {
-		$detail = diconv($detail, $_G['charset'], 'GBK');
+//vot		$detail = diconv($detail, $_G['charset'], 'GBK');
 	}
 	echo $detail;
 	exit();
@@ -1440,15 +1489,15 @@ EOT;
 				<td colspan="2">
 					<ul class="dblist" onmouseover="altStyle(this);">
 						<li style="width: 100%;"><input type="checkbox" name="chkall" onclick="checkAll('prefix', this.form, 'clear')" class="checkbox">&nbsp;$lang[select_all]</li>
-						<li style="width: 8%;"><input type="checkbox" value="post" name="clear[post]" class="checkbox">&nbsp;$lang[members_ban_delpost]</li>
-						<li style="width: 8%;"><input type="checkbox" value="follow" name="clear[follow]" class="checkbox">&nbsp;$lang[members_ban_delfollow]</li>
-						<li style="width: 8%;"><input type="checkbox" value="postcomment" name="clear[postcomment]" class="checkbox">&nbsp;$lang[members_ban_postcomment]</li>
-						<li style="width: 8%;"><input type="checkbox" value="doing" name="clear[doing]" class="checkbox">&nbsp;$lang[members_ban_deldoing]</li>
-						<li style="width: 8%;"><input type="checkbox" value="blog" name="clear[blog]" class="checkbox">&nbsp;$lang[members_ban_delblog]</li>
-						<li style="width: 8%;"><input type="checkbox" value="album" name="clear[album]" class="checkbox">&nbsp;$lang[members_ban_delalbum]</li>
-						<li style="width: 8%;"><input type="checkbox" value="share" name="clear[share]" class="checkbox">&nbsp;$lang[members_ban_delshare]</li>
-						<li style="width: 8%;"><input type="checkbox" value="avatar" name="clear[avatar]" class="checkbox">&nbsp;$lang[members_ban_delavatar]</li>
-						<li style="width: 8%;"><input type="checkbox" value="comment" name="clear[comment]" class="checkbox">&nbsp;$lang[members_ban_delcomment]</li>
+<!--vot-->					<li><input type="checkbox" value="post" name="clear[post]" class="checkbox">&nbsp;$lang[members_ban_delpost]</li>
+<!--vot-->					<li><input type="checkbox" value="follow" name="clear[follow]" class="checkbox">&nbsp;$lang[members_ban_delfollow]</li>
+<!--vot-->					<li><input type="checkbox" value="postcomment" name="clear[postcomment]" class="checkbox">&nbsp;$lang[members_ban_postcomment]</li>
+<!--vot-->					<li><input type="checkbox" value="doing" name="clear[doing]" class="checkbox">&nbsp;$lang[members_ban_deldoing]</li>
+<!--vot-->					<li><input type="checkbox" value="blog" name="clear[blog]" class="checkbox">&nbsp;$lang[members_ban_delblog]</li>
+<!--vot-->					<li><input type="checkbox" value="album" name="clear[album]" class="checkbox">&nbsp;$lang[members_ban_delalbum]</li>
+<!--vot-->					<li><input type="checkbox" value="share" name="clear[share]" class="checkbox">&nbsp;$lang[members_ban_delshare]</li>
+<!--vot-->					<li><input type="checkbox" value="avatar" name="clear[avatar]" class="checkbox">&nbsp;$lang[members_ban_delavatar]</li>
+<!--vot-->					<li><input type="checkbox" value="comment" name="clear[comment]" class="checkbox">&nbsp;$lang[members_ban_delcomment]</li>
 					</ul>
 				</td>
 			</tr>
@@ -2143,7 +2192,7 @@ EOF;
 			showtablerow('', array('', 'class="td28" colspan="3"', 'class="td28" colspan="2"'), array(
 				$lang['add_new'],
 				'<input type="text" class="txt" name="ip1new" value="'.$iptoban[0].'" size="3" maxlength="3">.<input type="text" class="txt" name="ip2new" value="'.$iptoban[1].'" size="3" maxlength="3">.<input type="text" class="txt" name="ip3new" value="'.$iptoban[2].'" size="3" maxlength="3">.<input type="text" class="txt" name="ip4new" value="'.$iptoban[3].'" size="3" maxlength="3">',
-				$lang['validity'].': <input type="text" class="txt" name="validitynew" value="30" size="3"> '.$lang['days']
+/*vot*/			$lang['validity'].': <input type="text" class="txt" name="validitynew" value="9999" size="3"> '.$lang['days']
 			));
 			showsubmit('ipbansubmit', 'submit', 'del');
 			showtablefooter();
@@ -2870,6 +2919,7 @@ function showsearchform($operation = '') {
 			$select .= "<option value=\"1\">".cplang('members_edit_gender_male')."</option>\n";
 			$select .= "<option value=\"2\">".cplang('members_edit_gender_female')."</option>\n";
 			showsetting($value['title'], '', '', '<select class="txt" name="gender">'.$select.'</select>');
+//vot !!!! ADD SEARCH BY residecountry !!!!!!!!!!!!!!!!!!!!!!!!
 		} elseif($fieldid == 'birthcity') {
 			$elems = array('birthprovince', 'birthcity', 'birthdist', 'birthcommunity');
 			showsetting($value['title'], '', '', '<div id="birthdistrictbox">'.showdistrict(array(0,0,0,0), $elems, 'birthdistrictbox', 1, 'birth').'</div>');

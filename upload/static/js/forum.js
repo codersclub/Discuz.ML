@@ -2,7 +2,8 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum.js 32767 2013-03-07 08:43:59Z zhangguosheng $
+	$Id: forum.js 33082 2013-04-18 11:13:53Z zhengqingpeng $
+	Modified by Valery Votintsev
 */
 
 function saveData(ignoreempty) {
@@ -159,7 +160,7 @@ function announcement() {
 }
 
 function removeindexheats() {
-	return confirm('您确认要把此主题从热点主题中移除么？');
+/*vot*/	return confirm(lng['del_thread_sure']);
 }
 
 function showTypes(id, mod) {
@@ -169,7 +170,7 @@ function showTypes(id, mod) {
 	mod = isUndefined(mod) ? 1 : mod;
 	var baseh = o.getElementsByTagName('li')[0].offsetHeight * 2;
 	var tmph = o.offsetHeight;
-	var lang = ['展开', '收起'];
+/*vot*/	var lang = [lng['expand'], lng['collapse']];
 	var cls = ['unfold', 'fold'];
 	if(tmph > baseh) {
 		var octrl = document.createElement('li');
@@ -210,14 +211,15 @@ function fastpostvalidate(theform, noajaxpost) {
 		}
 	}
 	if(theform.message.value == '' || theform.subject.value == '') {
-		s = '抱歉，您尚未输入标题或内容';
+/*vot*/		s = lng['enter_content']+'.';
 		theform.message.focus();
-	} else if(mb_strlen(theform.subject.value) > 80) {
-		s = '您的标题超过 80 个字符的限制';
+//vot	} else if(mb_strlen(theform.subject.value) > 80) {
+/*vot*/	} else if(theform.subject.value.length > 80 ) {
+/*vot*/		s = lng['title_long']+'.';
 		theform.subject.focus();
 	}
 	if(!disablepostctrl && ((postminchars != 0 && mb_strlen(theform.message.value) < postminchars) || (postmaxchars != 0 && mb_strlen(theform.message.value) > postmaxchars))) {
-		s = '您的帖子长度不符合要求。\n\n当前长度: ' + mb_strlen(theform.message.value) + ' ' + '字节\n系统限制: ' + postminchars + ' 到 ' + postmaxchars + ' 字节';
+/*vot*/		s = lng['content_long'] + lng['current_length']+': ' + mb_strlen(theform.message.value) + ' ' + lng['bytes']+'\n'+lng['system_limit']+': ' + postminchars + ' '+lng['up_to']+' ' + postmaxchars + ' '+lng['bytes'];
 	}
 	if(s) {
 		showError(s);
@@ -277,12 +279,12 @@ function loadData(quiet, formobj) {
 
 	if(in_array((data = trim(data)), ['', 'null', 'false', null, false])) {
 		if(!quiet) {
-			showDialog('没有可以恢复的数据！', 'info');
+/*vot*/			showDialog(lng['no_data_recover'], 'info');
 		}
 		return;
 	}
 
-	if(!quiet && !confirm('此操作将覆盖当前帖子内容，确定要恢复数据吗？')) {
+/*vot*/	if(!quiet && !confirm(lng['content_overwrite'])) {
 		return;
 	}
 
@@ -373,7 +375,7 @@ function checkForumnew(fid, lasttime) {
 			}
 			removetbodyrow(table, 'forumnewshow');
 			var colspan = table.getElementsByTagName('tbody')[0].rows[0].children.length;
-			var checknew = {'tid':'', 'thread':{'common':{'className':'', 'val':'<a href="javascript:void(0);" onclick="ajaxget(\'forum.php?mod=ajax&action=forumchecknew&fid=' + fid+ '&time='+lasttime+'&uncheck=1&inajax=yes\', \'forumnew\');">有新回复的主题，点击查看', 'colspan': colspan }}};
+/*vot*/			var checknew = {'tid':'', 'thread':{'common':{'className':'', 'val':'<a href="javascript:void(0);" onclick="ajaxget(\'forum.php?mod=ajax&action=forumchecknew&fid=' + fid+ '&time='+lasttime+'&uncheck=1&inajax=yes\', \'forumnew\');">'+lng['new_reply_exists'], 'colspan': colspan }}};
 			addtbodyrow(table, ['tbody'], ['forumnewshow'], 'separatorline', checknew);
 		} else {
 			if(checkForumcount < 50) {
@@ -469,7 +471,7 @@ function showtime() {
 	for(i=0; i<=DTimers.length; i++) {
 		if(DItemIDs[i]) {
 			if(DTimers[i] == 0) {
-				$(DItemIDs[i]).innerHTML = '已结束';
+/*vot*/				$(DItemIDs[i]).innerHTML = lng['ended'];
 				DItemIDs[i] = '';
 				continue;
 			}
@@ -479,16 +481,16 @@ function showtime() {
 			var timer_minute = Math.floor(((DTimers[i] % 86400) % 3600) / 60);
 			var timer_second = (((DTimers[i] % 86400) % 3600) % 60);
 			if(timer_day > 0) {
-				timestr += timer_day + '天';
+/*vot*/				timestr += timer_day + lng['days_num'];
 			}
 			if(timer_hour > 0) {
-				timestr += timer_hour + '小时'
+/*vot*/				timestr += timer_hour + lng['hours_num']
 			}
 			if(timer_minute > 0) {
-				timestr += timer_minute + '分'
+/*vot*/				timestr += timer_minute + lng['minutes_num']
 			}
 			if(timer_second > 0) {
-				timestr += timer_second + '秒'
+/*vot*/				timestr += timer_second + lng['seconds']
 			}
 			DTimers[i] = DTimers[i] - 1;
 			$(DItemIDs[i]).innerHTML = timestr;
@@ -677,7 +679,10 @@ function hideStickThread(tid) {
 		}
 	}
 }
-
+function viewhot() {
+	var obj = $('hottime');
+	window.location.href = "forum.php?mod=forumdisplay&filter=hot&fid="+obj.getAttribute('fid')+"&time="+obj.value;
+}
 function clearStickThread () {
 	saveUserdata('sticktids', '[]');
 	location.reload();

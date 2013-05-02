@@ -2,7 +2,8 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: common.js 32718 2013-03-04 09:21:06Z zhangguosheng $
+	$Id: common.js 33043 2013-04-12 03:31:00Z monkey $
+//	Modified by Valery Votintsev
 */
 
 var BROWSER = {};
@@ -294,7 +295,7 @@ function Ajax(recvType, waitId) {
 
 	var aj = new Object();
 
-	aj.loading = '请稍候...';
+/*vot*/	aj.loading = lng['wait_please'];
 	aj.recvType = recvType ? recvType : 'XML';
 	aj.waitId = waitId ? $(waitId) : null;
 
@@ -352,7 +353,7 @@ function Ajax(recvType, waitId) {
 				aj.resultHandle(aj.XMLHttpRequest.responseText, aj);
 			} else if(aj.recvType == 'XML') {
 				if(!aj.XMLHttpRequest.responseXML || !aj.XMLHttpRequest.responseXML.lastChild || aj.XMLHttpRequest.responseXML.lastChild.localName == 'parsererror') {
-					aj.resultHandle('<a href="' + aj.targetUrl + '" target="_blank" style="color:red">内部错误，无法显示此内容</a>' , aj);
+/*vot*/					aj.resultHandle('<a href="' + aj.targetUrl + '" target="_blank" style="color:red">'+lng['int_error']+'</a>' , aj);
 				} else {
 					aj.resultHandle(aj.XMLHttpRequest.responseXML.lastChild.firstChild.nodeValue, aj);
 				}
@@ -660,7 +661,7 @@ function ajaxpost(formid, showid, waitid, showidclass, submitbtn, recall) {
 				try {
 					s = $(ajaxframeid).contentWindow.document.documentElement.firstChild.nodeValue;
 				} catch(e) {
-					s = '内部错误，无法显示此内容';
+/*vot*/					s = lng['int_error'];
 				}
 			}
 		}
@@ -812,7 +813,7 @@ function showPreview(val, id) {
 
 function showloading(display, waiting) {
 	var display = display ? display : 'block';
-	var waiting = waiting ? waiting : '请稍候...';
+/*vot*/	var waiting = waiting ? waiting : lng['wait_please'];
 	$('ajaxwaitid').innerHTML = waiting;
 	$('ajaxwaitid').style.display = display;
 }
@@ -876,11 +877,11 @@ function loadcss(cssname) {
 			css.id = 'css_' + cssname,
 			css.type = 'text/css';
 			css.rel = 'stylesheet';
-			css.href = 'data/cache/style_' + STYLEID + '_' + cssname + '.css?' + VERHASH;
+/*vot*/			css.href = 'data/cache/style_' + STYLEID + '_' + cssname + RTLSUFFIX + '.css?' + VERHASH;
 			var headNode = document.getElementsByTagName("head")[0];
 			headNode.appendChild(css);
 		} else {
-			$('css_' + cssname).href = 'data/cache/style_' + STYLEID + '_' + cssname + '.css?' + VERHASH;
+/*vot*/			$('css_' + cssname).href = 'data/cache/style_' + STYLEID + '_' + cssname + RTLSUFFIX + '.css?' + VERHASH;
 		}
 		CSSLOADED[cssname] = 1;
 	}
@@ -1365,7 +1366,7 @@ function showTip(ctrlobj) {
 	$F('_showTip', arguments);
 }
 
-function showPrompt(ctrlid, evt, msg, timeout) {
+function showPrompt(ctrlid, evt, msg, timeout, classname) {
 	$F('_showPrompt', arguments);
 }
 
@@ -1382,7 +1383,7 @@ function showDialog(msg, mode, t, func, cover, funccancel, leftmsg, confirmtxt, 
 	var menuid = 'fwin_dialog';
 	var menuObj = $(menuid);
 	var showconfirm = 1;
-	confirmtxtdefault = '确定';
+/*vot*/	confirmtxtdefault = lng['submit'];
 	closetime = isUndefined(closetime) ? '' : closetime;
 	closefunc = function () {
 		if(typeof func == 'function') func();
@@ -1390,17 +1391,17 @@ function showDialog(msg, mode, t, func, cover, funccancel, leftmsg, confirmtxt, 
 		hideMenu(menuid, 'dialog');
 	};
 	if(closetime) {
-		showPrompt(null, null, '<i>' + msg + '</i>', closetime * 1000);
+		showPrompt(null, null, '<i>' + msg + '</i>', closetime * 1000, 'popuptext');
 		return;
 	}
 	locationtime = isUndefined(locationtime) ? '' : locationtime;
 	if(locationtime) {
-		leftmsg = locationtime + ' 秒后页面跳转';
+/*vot*/		leftmsg = locationtime + lng['sec_after_page_jump'];
 		showDialogST = setTimeout(closefunc, locationtime * 1000);
 		showconfirm = 0;
 	}
 	confirmtxt = confirmtxt ? confirmtxt : confirmtxtdefault;
-	canceltxt = canceltxt ? canceltxt : '取消';
+/*vot*/	canceltxt = canceltxt ? canceltxt : lng['cancel'];
 
 	if(menuObj) hideMenu('fwin_dialog', 'dialog');
 	menuObj = document.createElement('div');
@@ -1413,8 +1414,8 @@ function showDialog(msg, mode, t, func, cover, funccancel, leftmsg, confirmtxt, 
 		hidedom = '<style type="text/css">object{visibility:hidden;}</style>';
 	}
 	var s = hidedom + '<table cellpadding="0" cellspacing="0" class="fwin"><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="m_l">&nbsp;&nbsp;</td><td class="m_c"><h3 class="flb"><em>';
-	s += t ? t : '提示信息';
-	s += '</em><span><a href="javascript:;" id="fwin_dialog_close" class="flbc" onclick="hideMenu(\'' + menuid + '\', \'dialog\')" title="关闭">关闭</a></span></h3>';
+/*vot*/	s += t ? t : lng['reminder'];
+/*vot*/	s += '</em><span><a href="javascript:;" id="fwin_dialog_close" class="flbc" onclick="hideMenu(\'' + menuid + '\', \'dialog\')" title="'+lng['close']+'">' /*+lng['close']*/ +'</a></span></h3>';
 	if(mode == 'info') {
 		s += msg ? msg : '';
 	} else {
@@ -1474,7 +1475,7 @@ function showWindow(k, url, mode, cache, menuv) {
 			ajaxpost(url, 'fwin_content_' + k, '', '', '', function() {initMenu();show();});
 		}
 		if(parseInt(BROWSER.ie) != 6) {
-			loadingst = setTimeout(function() {showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...')}, 500);
+/*vot*/			loadingst = setTimeout(function() {showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> '+lng['wait_please'])}, 500);
 		}
 	};
 	var initMenu = function() {
@@ -1532,7 +1533,7 @@ function showError(msg) {
 	var p = /<script[^\>]*?>([^\x00]*?)<\/script>/ig;
 	msg = msg.replace(p, '');
 	if(msg !== '') {
-		showDialog(msg, 'alert', '错误信息', null, true, null, '', '', '', 3);
+/*vot*/		showDialog(msg, 'alert', lng['error_message'], null, true, null, '', '', '', 3);
 	}
 }
 
@@ -1663,7 +1664,7 @@ function simulateSelect(selectId, widthvalue) {
 	$('append_parent').appendChild(menuObj);
 
 	$(selectId + '_ctrl').onclick = function(e) {
-		$(selectId + '_ctrl_menu').style.width = selectwidth;
+/*vot*/		$(selectId + '_ctrl_menu').style.width = 'auto';
 		showMenu({'ctrlid':(selectId == 'loginfield' ? 'account' : selectId + '_ctrl'),'menuid':selectId + '_ctrl_menu','evt':'click','pos':'43'});
 		doane(e);
 	};
@@ -1902,20 +1903,20 @@ function initSearchmenu(searchform, cloudSearchUrl) {
 	var tclass = searchtxt.className;
 	searchtxt.className = tclass + ' xg1';
 	if (!!("placeholder" in document.createElement("input"))) {
-		if(searchtxt.value == '请输入搜索内容') {
+/*vot*/		if(searchtxt.value == lng['enter_search_string']) {
 			searchtxt.value = '';
 		}
-		searchtxt.placeholder = '请输入搜索内容';
+/*vot*/		searchtxt.placeholder = lng['enter_search_string'];
 	} else {
 		searchtxt.onfocus = function () {
-			if(searchtxt.value == '请输入搜索内容') {
+/*vot*/			if(searchtxt.value == lng['enter_search_string']) {
 				searchtxt.value = '';
 				searchtxt.className = tclass;
 			}
 		};
 		searchtxt.onblur = function () {
 			if(searchtxt.value == '' ) {
-				searchtxt.value = '请输入搜索内容';
+/*vot*/				searchtxt.value = lng['enter_search_string'];
 				searchtxt.className = tclass + ' xg1';
 			}
 		};
@@ -1957,7 +1958,7 @@ function initSearchmenu(searchform, cloudSearchUrl) {
 }
 
 function searchFocus(obj) {
-	if(obj.value == '请输入搜索内容') {
+/*vot*/	if(obj.value == lng['enter_search_string']) {
 		obj.value = '';
 	}
 	if($('cloudsearchquery') != null) {
@@ -1992,6 +1993,10 @@ function createPalette(colorid, id, func) {
 
 function showForummenu(fid) {
 	$F('_showForummenu', arguments);
+}
+
+function showUserApp() {
+	$F('_showUserApp', arguments);
 }
 
 function cardInit() {
@@ -2038,15 +2043,16 @@ function navShow(id) {
 
 function strLenCalc(obj, checklen, maxlen) {
 	var v = obj.value, charlen = 0, maxlen = !maxlen ? 200 : maxlen, curlen = maxlen, len = strlen(v);
-	for(var i = 0; i < v.length; i++) {
-		if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
-			curlen -= charset == 'utf-8' ? 2 : 1;
-		}
-	}
+//vot	for(var i = 0; i < v.length; i++) {
+//vot		if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
+//vot			curlen -= charset == 'utf-8' ? 2 : 1;
+//vot		}
+//vot	}
 	if(curlen >= len) {
 		$(checklen).innerHTML = curlen - len;
 	} else {
-		obj.value = mb_cutstr(v, maxlen, 0);
+//vot		obj.value = mb_cutstr(v, maxlen, 0);
+/*vot*/		obj.value = obj.value.substr(v, maxlen);
 	}
 }
 
@@ -2080,7 +2086,7 @@ function noticeTitle() {
 
 function noticeTitleFlash() {
 	if(NOTICETITLE.flashNumber < 5 || NOTICETITLE.flashNumber > 4 && !NOTICETITLE['State']) {
-		document.title = (NOTICETITLE['State'] ? '【　　　】' : '【新提醒】') + NOTICETITLE['oldTitle'];
+/*vot*/		document.title = (NOTICETITLE['State'] ? lng['notices_no'] : lng['notices_yes']) + NOTICETITLE['oldTitle'];
 		NOTICETITLE['State'] = !NOTICETITLE['State'];
 	}
 	NOTICETITLE.flashNumber = NOTICETITLE.flashNumber < NOTICETITLE.sleep ? ++NOTICETITLE.flashNumber : 0;
@@ -2137,7 +2143,7 @@ function addFavorite(url, title) {
 		try {
 			window.sidebar.addPanel(title, url, '');
         	} catch (e) {
-			showDialog("请按 Ctrl+D 键添加到收藏夹", 'notice');
+/*vot*/			showDialog(lng['ctrl_d_favorites'], 'notice');
 		}
 	}
 }
@@ -2147,7 +2153,7 @@ function setHomepage(sURL) {
 		document.body.style.behavior = 'url(#default#homepage)';
 		document.body.setHomePage(sURL);
 	} else {
-		showDialog("非 IE 浏览器请手动将本站设为首页", 'notice');
+/*vot*/		showDialog(lng['non_ie_manually'], 'notice');
 		doane();
 	}
 }
@@ -2203,10 +2209,10 @@ function toggleBlind(dom) {
 	if(dom) {
 		if(loadUserdata('is_blindman')) {
 			saveUserdata('is_blindman', '');
-			dom.title = '开启辅助访问';
+/*vot*/			dom.title = lng['blind_disable'];
 		} else {
 			saveUserdata('is_blindman', '1');
-			dom.title = '关闭辅助访问';
+/*vot*/			dom.title = lng['blind_enable'];
 		}
 	}
 }
@@ -2215,9 +2221,9 @@ function checkBlind() {
 	var dom = $('switchblind');
 	if(dom) {
 		if(loadUserdata('is_blindman')) {
-			dom.title = '关闭辅助访问';
+/*vot*/			dom.title = lng['blind_disable'];
 		} else {
-			dom.title = '开启辅助访问';
+/*vot*/			dom.title = lng['blind_enable'];
 		}
 	}
 }
@@ -2245,4 +2251,52 @@ if(typeof IN_ADMINCP == 'undefined') {
 
 if(BROWSER.ie) {
 	document.documentElement.addBehavior("#default#userdata");
+}
+//------------------------------------------------------------
+// Added by Valery Votintsev
+//------------------------------------------------------------
+// Count UTF-8 Multibyte string length in bytes
+// Written by Valery Votintsev, http://codersclub.org/discuzx/
+// Thanx to O'Reilly !
+//------------------------------------------------------------
+function utf8length(data) {
+
+  if (data == '' || data == null) return 0; // Empty string
+
+  data = data.toString();
+  var len = 0;
+  
+  for(var i=0; i<data.length; i++) {
+
+    var c = data.charCodeAt(i);
+
+    if (c < 0) return -1;		// Illegal codePoint
+    if (c < 0x80) len += 1;		// 1 byte
+    else if (c < 0x800) len += 2;	// 2 bytes
+    else if(c >= 0xD800 && c <= 0xDFFF) return -1; // Illegal codePoint
+    else if (c < 0x10000) len += 3;	// 3 bytes
+    else if (c < 0x20000) len += 4;	// 4 bytes
+    else if (c < 0x4000000) len += 5;	// 5 bytes
+    else if (c < 0x80000000) len += 6;	// 6 bytes
+    else return -1;			// Illegal codePoint > 0x7FFFFFFF
+
+  }
+
+  return len;	// Return calculated byte counter
+}
+
+//vot: MultiLingual support
+function setlang(lang) {
+//DEBUG alert(url);
+	var url = document.location.href;
+	var anchorpos = url.indexOf('#');
+	var anchor = '';
+	if(anchorpos != -1) {
+		anchor = url.substr(anchorpos);
+		url = url.substr(0, anchorpos);
+	}
+	url += (url.indexOf('?') != -1) ? '&' : '?';
+	url += 'language='+lang;
+	url += anchor;
+	document.location.href=url;
 }

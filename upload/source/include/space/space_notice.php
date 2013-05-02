@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: space_notice.php 31062 2012-07-12 07:33:12Z liulanbo $
+ *      $Id: space_notice.php 32790 2013-03-12 02:52:19Z liulanbo $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -25,6 +25,9 @@ $list = array();
 $mynotice = $count = 0;
 $multi = '';
 
+if(empty($_G['member']['category_num']['manage']) && !in_array($_G['adminid'], array(1,2,3))) {
+	unset($_G['notice_structure']['manage']);
+}
 $view = (!empty($_GET['view']) && (isset($_G['notice_structure'][$_GET[view]]) || in_array($_GET['view'], array('userapp'))))?$_GET['view']:'mypost';
 $actives = array($view=>' class="a"');
 $opactives[$view] = 'class="a"';
@@ -116,9 +119,8 @@ if($view == 'userapp') {
 				$value['rowid'] = ' id="'.($value['type'] == 'friend' ? 'pendingFriend_' : 'pokeQuery_').$value['authorid'].'" ';
 			}
 			if($value['from_num'] > 0) $value['from_num'] = $value['from_num'] - 1;
-//vot
-$value['note'] = stripslashes($value['note']);
-$notevars = @unserialize($value['note']);
+/*vot*/	$value['note'] = stripslashes($value['note']);
+/*vot*/	$notevars = @unserialize($value['note']);
 //DEBUG
 //echo "<pre>";
 //echo "source/include/space/space_notice.php.\n";
@@ -128,12 +130,11 @@ $notevars = @unserialize($value['note']);
 //echo "notevars (", gettype($notevars), ")=";
 //print_r($notevars);
 //echo "</pre>";
-if(gettype($notevars)=='array') {
-
-  $template = $notevars['template'];
-  unset($notevars['template']);
-  $value['note'] = lang('notification',$template,$notevars);
-}
+/*vot*/	if(gettype($notevars)=='array') {
+/*vot*/	  $template = $notevars['template'];
+/*vot*/	  unset($notevars['template']);
+/*vot*/	  $value['note'] = lang('notification',$template,$notevars);
+/*vot*/	}
 			$list[$value['id']] = $value;
 		}
 

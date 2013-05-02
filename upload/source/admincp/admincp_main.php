@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_main.php 32459 2013-01-22 02:01:02Z monkey $
+ *	Modified by Valery Votintsev at sources.ru
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -33,6 +34,14 @@ if(isfounder()) {
 require './source/admincp/admincp_menu.php';
 $basescript = ADMINSCRIPT;
 
+//vot Multi-Lingual
+$change_language = cplang('change_language');
+$lang_list='';
+foreach($_G['config']['languages'] AS $lng => $lngarray) {
+  $lang_list .= '	<a href="javascript:;" onclick="setlang(\''.$lng.'\')" title="'.$lngarray['title'].'">
+	<img src="'.$_G[siteroot].'source/language/'.$lng.'/'.$lngarray['icon'].'"/> '.$lngarray['name'].'
+      	</a>'."\n";
+}
 $shownotice = '';
 if($_G['uid'] && $_G['member']['allowadmincp'] == 1 && ($_G['setting']['showpatchnotice'] == 1 || !isset($_G['cookie']['checkpatch']))) {
 	$discuz_patch = new discuz_patch();
@@ -59,29 +68,65 @@ if($_G['uid'] && $_G['member']['allowadmincp'] == 1 && !isset($_G['cookie']['che
 	dsetcookie('checkupgrade', 1, 7200);
 }
 
-echo <<<EOT
+/*vot*/	$rtl_css = RTLSUFFIX ? '<link rel="stylesheet" href="static/image/admincp/admincp_rtl.css?{$_G[style][verhash]}" type="text/css" media="all" />' : '';
+/*vot*/	echo <<<EOT
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="{$_G[langdir]}"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset">
 <title>$title</title>
 <meta content="Comsenz Inc." name="Copyright" />
-<link rel="stylesheet" href="static/image/admincp/admincp.css?{$_G[style][verhash]}" type="text/css" media="all" />
+<link rel="stylesheet" href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" type="text/css" media="all" />
+<!--vot-->{$rtl_css}
+<!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
+<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$_G[style][verhash]}"></script>
+
 <script src="{$_G[setting][jspath]}common.js?{$_G[style][verhash]}" type="text/javascript"></script>
 </head>
 <body style="margin: 0px" scroll="no">
 <div id="append_parent"></div>
 $shownotice
+
+      <!-- vot Multi-Lingual -->
+      <div id="lslct_menu" class="cl p_pop" style="position:fixed;display: none; width:120px;">
+      $lang_list
+      </div>
+
 <table id="frametable" cellpadding="0" cellspacing="0" width="100%" height="100%">
-<tr>
-<td colspan="2" height="90">
-<div class="mainhd">
-<a href="$basescript?frames=yes&action=index" class="logo">Discuz! Administrator's Control Panel</a>
-<div class="uinfo" id="frameuinfo">
-<p>$header_welcome, $cpadmingroup <em>{$_G['member']['username']}</em> [<a href="$basescript?action=logout" target="_top">$header_logout</a>]</p>
-<p class="btnlink"><a href="index.php" target="_blank">$header_bbs</a></p>
-</div>
-<div class="navbg"></div>
-<div class="nav">
+<!--vot--> <tr height="90" valign="top">
+  <td width="160" class="mainhd">
+    <a href="admin.php?action=index" class="logo">Discuz! $admincp</a>
+  </td>
+  <td class="mainhd">
+    <div class="uinfo" id="frameuinfo">
+      <p>
+       $header_welcome, $cpadmingroup <em>{$_G['member']['username']}</em>
+       <span class="pipe">|</span>
+
+EOT;
+
+//vot
+if($_G['config']['enable_multilingual']) {
+  echo <<<EOT
+
+       <!-- vot Multi-Lingual -->
+       <a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="$change_language">$change_language:<img class="flag" src="{$_G[langurl]}{$_G[langicon]}"/></a>
+       <span class="pipe">|</span>
+
+EOT;
+}
+
+//vot
+echo <<<EOT
+       <a href="$basescript?action=logout" target="_top">$header_logout</a>
+       <span class="pipe">|</span>
+
+       <a href="index.php" target="_blank">$header_bbs</a>
+
+      </p>
+    </div>
+<!--    <div class="navbg"></div>-->
+
+<div id="nav" class="nav">
 <ul id="topmenu">
 
 EOT;
@@ -116,7 +161,7 @@ echo <<<EOT
 	<a href="###" id="cpmap" onclick="showMap();return false;"><img src="static/image/admincp/btn_map.gif" title="$lang[admincp_maptext]" width="46" height="18" /></a>
 </div>
 </div>
-</div>
+<!--vot /div-->
 </td>
 </tr>
 <tr>
@@ -131,6 +176,7 @@ foreach ($menu as $k => $v) {
 unset($menu);
 
 $plugindefaultkey = $isfounder ? 1 : 0;
+/*vot*/	$year = date('Y');
 
 echo <<<EOT
 
@@ -145,8 +191,10 @@ echo <<<EOT
 	<span onclick="menuScroll(1)"><img src="static/image/admincp/scrollu.gif" /></span><span onclick="menuScroll(2)"><img src="static/image/admincp/scrolld.gif" /></span>
 </div>
 <div class="copyright">
-	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
-	<p>&copy; 2001-2013, <a href="http://www.comsenz.com/" target="_blank">Comsenz Inc.</a></p>
+<!--vot-->	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
+<!--vot-->	<p>Release {$_G['setting']['release']}</p>
+<!--vot-->	<p>&copy; 2001-{$year}, <a href="http://www.comsenz.com/" target="_blank">Comsenz Inc.</a></p>
+<!--vot-->	<p><strong>MultiLingual version</strong><br>by <a href="http://codersclub.org/discuzx/" target="_blank">Valery Votintsev</a></p>
 </div>
 
 <div id="cpmap_menu" class="custom" style="display: none">
@@ -211,11 +259,11 @@ echo <<<EOT
 		if(!obj) {
 			return;
 		}
-		var scrollh = document.body.offsetHeight - 160;
+/*vot*/		var scrollh = document.body.offsetHeight - 210;
 		obj.style.overflow = 'visible';
 		obj.style.height = '';
 		$('scrolllink').style.display = 'none';
-		if(obj.offsetHeight + 150 > document.body.offsetHeight && scrollh > 0) {
+/*vot*/		if(obj.offsetHeight + 200 > document.body.offsetHeight && scrollh > 0) {
 			obj.style.overflow = 'hidden';
 			obj.style.height = scrollh + 'px';
 			$('scrolllink').style.display = '';
@@ -223,7 +271,8 @@ echo <<<EOT
 	}
 	function resizeHeadermenu() {
 		var lis = $('topmenu').getElementsByTagName('li');
-		var maxsize = $('frameuinfo').offsetLeft - 160, widths = 0, moi = -1, mof = '';
+/*vot*/		var maxsize = document.body.clientWidth - 180;
+/*vot*/		var widths = 0, moi = -1, mof = '';
 		if($('menu_mof')) {
 			$('topmenu').removeChild($('menu_mof'));
 		}
@@ -456,4 +505,3 @@ echo <<<EOT
 
 EOT;
 
-?>

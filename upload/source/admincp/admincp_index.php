@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_index.php 29203 2012-03-28 10:16:25Z zhengqingpeng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -12,7 +13,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 }
 
 if(@file_exists(DISCUZ_ROOT.'./install/index.php') && !DISCUZ_DEBUG) {
-	@unlink(DISCUZ_ROOT.'./install/index.php');
+//vot	@unlink(DISCUZ_ROOT.'./install/index.php');
 	if(@file_exists(DISCUZ_ROOT.'./install/index.php')) {
 		dexit('Please delete install/index.php via FTP!');
 	}
@@ -179,7 +180,7 @@ if($membersmod || $threadsmod || $postsmod || $medalsmod || $blogsmod || $pictur
 		($threadsmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=threads&dateline=all">'.cplang('home_mod_threads').'</a>(<em class="lightnum">'.$threadsmod.'</em>)' : '').
 		($postsmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=replies&dateline=all">'.cplang('home_mod_posts').'</a>(<em class="lightnum">'.$postsmod.'</em>)' : '').
 		($medalsmod ? '<a href="'.ADMINSCRIPT.'?action=medals&operation=mod">'.cplang('home_mod_medals').'</a>(<em class="lightnum">'.$medalsmod.'</em>)' : '').
-		($groupmod ? '<a href="'.ADMINSCRIPT.'?action=group&operation=mod">'.cplang('group_mod_wait').'</a>(<em class="lightnum">'.$groupmod.'</em>)' : '').
+/*vot*/		($groupmod ? '<a href="'.ADMINSCRIPT.'?action=group&operation=mod">'.cplang('group_mod_wait').'</a> (<em class="lightnum">'.$groupmod.'</em>)' : '').
 		($blogsmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=blogs&dateline=all">'.cplang('home_mod_blogs').'</a>(<em class="lightnum">'.$blogsmod.'</em>)' : '').
 		($picturesmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=pictures&dateline=all">'.cplang('home_mod_pictures').'</a>(<em class="lightnum">'.$picturesmod.'</em>)' : '').
 		($doingsmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=doings&dateline=all">'.cplang('home_mod_doings').'</a>(<em class="lightnum">'.$doingsmod.'</em>)' : '').
@@ -228,7 +229,12 @@ loaducenter();
 showtableheader('home_sys_info', 'fixpadding');
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_discuz_version'),
-	'Discuz! '.DISCUZ_VERSION.' Release '.DISCUZ_RELEASE.' <a href="http://faq.comsenz.com/checkversion.php?product=Discuz&version='.DISCUZ_VERSION.'&release='.DISCUZ_RELEASE.'&charset='.CHARSET.'&dbcharset='.$dbcharset.'" class="lightlink2 smallfont" target="_blank">'.cplang('home_check_newversion').'</a> <a href="http://www.comsenz.com/purchase/discuz/" class="lightlink2 smallfont" target="_blank">&#19987;&#19994;&#25903;&#25345;&#19982;&#26381;&#21153;</a> <a href="http://idc.comsenz.com" class="lightlink2 smallfont" target="_blank">&#68;&#105;&#115;&#99;&#117;&#122;&#33;&#19987;&#29992;&#20027;&#26426;</a>'
+/*vot*/	'Discuz! '.DISCUZ_VERSION.' Release '.DISCUZ_RELEASE.
+/*vot*/ '<br/><b><a href="http://faq.comsenz.com/checkversion.php?product=Discuz&version='.DISCUZ_VERSION.'&release='.DISCUZ_RELEASE.'&charset='.CHARSET.'&dbcharset='.$dbcharset.'" class="lightlink2 smallfont" target="_blank">'.cplang('home_check_newversion').'</a></b>
+	<span class="pipe">|</span>
+        <a href="http://www.comsenz.com/purchase/discuz/" class="lightlink2 smallfont" target="_blank">Professional support and services</a>
+	<span class="pipe">|</span>
+        <a href="http://idc.comsenz.com" class="lightlink2 smallfont" target="_blank">Discuz! Dedicated Hosting</a>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_ucclient_version'),
@@ -263,11 +269,11 @@ showtablefooter();
 showtableheader('home_dev', 'fixpadding');
 showtablerow('', array('class="vtop td24 lineheight"'), array(
 	cplang('home_dev_copyright'),
-	'<span class="bold"><a href="http://www.comsenz.com" class="lightlink2" target="_blank">&#x5317;&#x4EAC;&#x5EB7;&#x76DB;&#x65B0;&#x521B;&#x79D1;&#x6280;&#x6709;&#x9650;&#x8D23;&#x4EFB;&#x516C;&#x53F8;</a></span>'
+/*vot*/	'<span class="bold"><a href="http://www.comsenz.com" class="lightlink2" target="_blank">Beijing ups Technology Co., Ltd. Hong Sing Company</a></span>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont team"'), array(
 	cplang('home_dev_manager'),
-	'<a href="http://www.discuz.net/home.php?mod=space&uid=1" class="lightlink2 smallfont" target="_blank">&#x6234;&#x5FD7;&#x5EB7; (Kevin \'Crossday\' Day)</a>'
+/*vot*/	'<a href="http://www.discuz.net/home.php?mod=space&uid=1" class="lightlink2 smallfont" target="_blank">Kevin \'Crossday\'</a>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont team"'), array(
 	cplang('home_dev_team'),
@@ -314,19 +320,22 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 	<a href="http://www.discuz.net/home.php?mod=space&uid=177" class="lightlink2 smallfont" target="_blank">Stoneage</a>
 	<a href="http://www.discuz.net/home.php?mod=space&uid=7155" class="lightlink2 smallfont" target="_blank">Gregry</a>'
 ));
+/*vot*/ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
+/*vot*/	'MultiLingual version',
+/*vot*/	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Valery Votintsev</a>, Current International Revision: '.DISCUZ_ML_REVISION
+/*vot*/));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),
-	'<a href="http://www.comsenz.com" class="lightlink2" target="_blank">&#x516C;&#x53F8;&#x7F51;&#x7AD9;</a>,
-		<a href="http://idc.comsenz.com" class="lightlink2" target="_blank">&#x865A;&#x62DF;&#x4E3B;&#x673A;</a>,
-		<a href="http://www.comsenz.com/purchase/discuzx" class="lightlink2" target="_blank">&#x8D2D;&#x4E70;&#x6388;&#x6743;</a>,
-		<a href="http://www.discuz.com/" class="lightlink2" target="_blank">&#x44;&#x69;&#x73;&#x63;&#x75;&#x7A;&#x21;&#x20;&#x4EA7;&#x54C1;</a>,
-		<a href="http://www.comsenz.com/downloads/styles/discuz" class="lightlink2" target="_blank">&#x6A21;&#x677F;</a>,
-		<a href="http://www.comsenz.com/downloads/plugins/discuz" class="lightlink2" target="_blank">&#x63D2;&#x4EF6;</a>,
-		<a href="http://faq.comsenz.com" class="lightlink2" target="_blank">&#x6587;&#x6863;</a>,
-		<a href="http://www.discuz.net/" class="lightlink2" target="_blank">&#x8BA8;&#x8BBA;&#x533A;</a>'
+/*vot*/	'<a href="http://www.comsenz.com" class="lightlink2" target="_blank">Website</a>,
+		<a href="http://idc.comsenz.com" class="lightlink2" target="_blank">Web Hosting</a>,
+		<a href="http://www.comsenz.com/purchase/discuzx" class="lightlink2" target="_blank">Purchase</a>,
+		<a href="http://www.discuz.com/" class="lightlink2" target="_blank">Discuz! Products</a>,
+		<a href="http://www.comsenz.com/downloads/styles/discuz" class="lightlink2" target="_blank">Templates</a>,
+		<a href="http://www.comsenz.com/downloads/plugins/discuz" class="lightlink2" target="_blank">Plugins</a>,
+		<a href="http://faq.comsenz.com" class="lightlink2" target="_blank">Documentation</a>,
+		<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Forum</a>'
 ));
 showtablefooter();
 
 echo '</div>';
 
-?>

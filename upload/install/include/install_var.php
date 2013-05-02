@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_var.php 28275 2012-02-27 04:14:58Z monkey $
- *	Modified by Valery Votintsev at sources.ru
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_COMSENZ')) {
@@ -421,4 +421,3 @@ $serialize_sql_setting = array (
   ),
 );
 
-?>

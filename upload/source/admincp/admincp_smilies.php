@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_smilies.php 29236 2012-03-30 05:34:47Z chenmengshu $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -362,7 +363,7 @@ EOT;
 		cpmsg('smilies_type_nonexistence', '', 'error');
 	} else {
 		$smurl = './static/image/smiley/'.$smtype['directory'];
-		$smdir = DISCUZ_ROOT.$smurl;
+/*vot*/		$smdir = realpath(DISCUZ_ROOT.$smurl);
 		if(!is_dir($smdir)) {
 			cpmsg('smilies_directory_invalid', '', 'error', array('smurl' => $smurl));
 		}
@@ -446,4 +447,3 @@ function update_smiles($smdir, $id, &$imgextarray) {
 
 	return array('smilies'=>$smilies, 'num'=>$num);
 }
-?>

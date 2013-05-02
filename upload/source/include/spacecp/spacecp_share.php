@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_share.php 32069 2012-11-06 07:30:38Z zhengqingpeng $
+ *      $Id: spacecp_share.php 32873 2013-03-18 08:20:55Z chenmengshu $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -480,7 +480,7 @@ if($_GET['op'] == 'delete') {
 				C::t('home_album')->update_num_by_albumid($id, 1, 'sharetimes');
 				break;
 			case 'pic':
-				C::t('home_pic')->update_sharetimes($picid);
+				C::t('home_pic')->update_sharetimes($id);
 				break;
 			case 'thread':
 				C::t('forum_thread')->increase($id, array('sharetimes' => 1));

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_blog.php 32298 2012-12-21 03:29:03Z zhengqingpeng $
+ *      $Id: function_blog.php 33004 2013-04-07 02:22:48Z zhengqingpeng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -54,11 +54,11 @@ function blog_post($POST, $olds=array()) {
 	$POST['tag'] = getstr($POST['tag'], 500);
 	$POST['tag'] = censor($POST['tag']);
 
+	$POST['message'] = checkhtml($POST['message']);
 	if($_G['mobile']) {
 		$POST['message'] = getstr($POST['message'], 0, 0, 0, 1);
 		$POST['message'] = censor($POST['message']);
 	} else {
-		$POST['message'] = checkhtml($POST['message']);
 		$POST['message'] = getstr($POST['message'], 0, 0, 0, 0, 1);
 		$POST['message'] = censor($POST['message']);
 		$POST['message'] = preg_replace(array(

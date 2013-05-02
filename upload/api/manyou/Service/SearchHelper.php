@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: SearchHelper.php 29915 2012-05-03 01:22:40Z zhouxiaobo $
+ *      $Id: SearchHelper.php 33013 2013-04-08 03:31:33Z liulanbo $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -749,6 +749,7 @@ class Cloud_Service_SearchHelper {
 					'need_random' => false,
 					'need_num' => $needNum,
 /*vot*/					'version' => $format == 'num' ? 1 : 2, // 1: Return the result as a simple array. 2: Return the result as an associative array
+					'close' => 1,
 				);
 
 				$utilService = Cloud::loadClass('Service_Util');

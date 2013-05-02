@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_adv.php 30333 2012-05-23 07:16:05Z monkey $
- *	Modified by Valery Votintsev at sources.ru
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -29,7 +29,10 @@ if(!empty($_GET['preview'])) {
 <head>
 <script type="text/javascript">var IMGDIR = '<?php echo $_G['style']['imgdir']; ?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>';</script>
 <script type="text/javascript" src="static/js/common.js"></script>
-<!--vot--><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo $_G['setting']['styleid'];?>_common<?php echo RTLSUFFIX;?>.css" />
+<link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo $_G['setting']['styleid'];?>_common.css" />
+<?php if(RTLSUFFIX) { ?>
+<!--vot--><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo $_G['setting']['styleid'];?>_common_rtl.css" />
+<?php } ?>
 </head>
 <body>
 <div id="append_parent"></div><div id="ajaxwaitid"></div>
@@ -248,9 +251,9 @@ if($operation == 'ad') {
 		$advclass = new $advclass;
 		$advsetting = $advclass->getsetting();
 		$advtitle = lang('adv/'.$type, $advclass->name).($type != 'custom' ? '' : ' '.$advclass->customname);
-		$returnurl = 'action=adv&operation=ad'.(empty($_GET['from']) ? '&type='.$type.($type != 'custom' ? '' : '&customid='.$_GET['customid']) : '');
+/*vot*/		$returnurl = ADMINSCRIPT.'?'.'action=adv&operation=ad'.(empty($_GET['from']) ? '&type='.$type.($type != 'custom' ? '' : '&customid='.$_GET['customid']) : '');
 
-		$return = '<a href="'.ADMINSCRIPT.'?'.$returnurl.'">'.cplang('adv_list').(empty($_GET['from']) ? ' - '.$advtitle : '').'</a>';
+/*vot*/		$return = '<a href="'.$returnurl.'">'.cplang('adv_list').(empty($_GET['from']) ? ' - '.$advtitle : '').'</a>';
 		shownav('extended', 'adv_admin');
 		showsubmenu($root.' &raquo; '.$return.' &raquo; '.($operation == 'edit' ? cplang('adv_edit') : cplang('adv_add')));
 		echo '<br />';
@@ -712,4 +715,3 @@ function getadvs() {
 	return $advs;
 }
 
-?>

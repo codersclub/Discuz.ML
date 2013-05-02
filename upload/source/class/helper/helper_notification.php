@@ -27,7 +27,7 @@ class helper_notification {
 		if($filter && (in_array($type.'|0', $filter) || in_array($type.'|'.$_G['uid'], $filter))) {
 			return false;
 		}
-		if($category == -1) {
+
 			$category = 0;
 			$categoryname = '';
 			if($type == 'follow' || $type == 'follower') {

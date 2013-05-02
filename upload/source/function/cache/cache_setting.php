@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cache_setting.php 32731 2013-03-05 07:03:45Z monkey $
+ *      $Id: cache_setting.php 33004 2013-04-07 02:22:48Z zhengqingpeng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -25,7 +25,7 @@ function build_cache_setting() {
 		'disallowfloat', 'allowviewuserthread', 'advtype', 'click', 'card', 'rewritestatus', 'rewriterule', 'privacy', 'focus',
 		'forumkeys', 'article_tags', 'verify', 'seotitle', 'seodescription', 'seokeywords', 'domain', 'ranklist', 'my_search_data',
 		'seccodedata', 'inviteconfig', 'advexpiration', 'allowpostcomment', /*(IN_MOBILE)*/ 'mobile', 'connect', 'upgrade', 'patch', 'strongpw',
-		'posttable_info', 'threadtable_info', 'profilegroup', 'antitheft', 'makehtml', 'guestviewthumb', 'grid'
+		'posttable_info', 'threadtable_info', 'profilegroup', 'antitheft', 'makehtml', 'guestviewthumb', 'grid', 'guesttipsinthread'
 		);
 
 	$data = array();
@@ -773,6 +773,11 @@ function get_cachedata_mainnav() {
 				$data['navs'][$id]['available'] = 0;
 				continue;
 			}
+		}
+		if($nav['identifier'] == 5 && $nav['type'] == 0) {
+			$onmouseover = 'delayShow(this, function () {showMenu({\'ctrlid\':\'mn_userapp\',\'pos\':\'43!\',\'ctrlclass\':\'a\',\'duration\':2});showUserApp();})';
+			$data['menunavs'][] = '<div class="p_pop h_pop" id="'.$navid.'_menu" style="display: none"></div>';
+			$data['subnavs'][$navid] = '';
 		}
 
 		if($nav['logo']) {

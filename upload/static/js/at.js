@@ -3,6 +3,8 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: at.js 31619 2012-09-17 01:05:07Z monkey $
+
+	Modified by Valery Votintsev, codersclub.org
 */
 
 if(typeof EXTRAFUNC['keydown'] != "undefined") {
@@ -61,7 +63,7 @@ function extrafunc_atListMenu(tag, op) {
 		}
 		curatli = 0;
 		setTimeout(function() {atFilter('', 'at_list','atListSet');$('atkeyword').focus();}, 100);
-		return '请输用户名:<br /><input type="text" id="atkeyword" style="width:240px" value="" class="px" onkeydown="atEnter(event, \'atListSet\')" onkeyup="atFilter(this.value, \'at_list\',\'atListSet\',event, true);" /><div class="p_pop" id="at_list" style="width:250px;"><ul><li>@朋友账号，就能提醒他来看帖子</li></ul></div>';
+/*vot*/		return lng['enter_username']+':<br /><input type="text" id="atkeyword" style="width:240px" value="" class="px" onkeydown="atEnter(event, \'atListSet\')" onkeyup="atFilter(this.value, \'at_list\',\'atListSet\',event, true);" /><div class="p_pop" id="at_list" style="width:250px;"><ul><li>'+lng['at_friend']+'</li></ul></div>';
 	} else {
 		if($('atkeyword').value) {
 			str = '@' + $('atkeyword').value + (wysiwyg ? '&nbsp;' : ' ');
@@ -88,7 +90,7 @@ function atMenu(x, y) {
 	$('at_menu').style.left = x + 'px';
 	$('at_menu').style.top = y + 'px';
 	$('at_menu').style.display = '';
-	$('at_menu').innerHTML = '<img src="' + IMGDIR + '/loading.gif" class="vm"> 请稍候... ';
+/*vot*/	$('at_menu').innerHTML = '<img src="' + IMGDIR + '/loading.gif" class="vm"> '+lng['wait_please'];
 }
 
 function atSearch(kw, call) {
@@ -158,7 +160,7 @@ function atFilter(kw, id, call, e, nae) {
 				var atclass = i == curatli ? ' class="a"' : '';
 				newlist += '<li><a href="javascript:;" id="atli_'+i+'"'+atclass+' onclick="'+call+'(this.innerText)">' + atResult[i] + '</a></li>';
 			}
-			$(id).innerHTML = '<ul>' + newlist + '<li class="xg1">@朋友账号，就能提醒他来看帖子</li></ul>';
+/*vot*/			$(id).innerHTML = '<ul>' + newlist + '<li class="xg1">'+lng['at_friend']+'</li></ul>';
 		} else {
 			$(id).style.visibility = 'hidden';
 		}

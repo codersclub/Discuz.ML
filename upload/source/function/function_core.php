@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 32770 2013-03-07 10:09:53Z monkey $
+ *      $Id: function_core.php 32907 2013-03-21 11:44:37Z zhangjie $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -92,6 +92,7 @@ function getuserprofile($field) {
 		'status'	=> array('regip','lastip','lastvisit','lastactivity','lastpost','lastsendmail','invisible','buyercredit','sellercredit','favtimes','sharetimes','profileprogress'),
 		'field_forum'	=> array('publishfeed','customshow','customstatus','medals','sightml','groupterms','authstr','groups','attentiongroup'),
 		'field_home'	=> array('videophoto','spacename','spacedescription','domain','addsize','addfriend','menunum','theme','spacecss','blockposition','recentnote','spacenote','privacy','feedfriend','acceptemail','magicgift','stickblogs'),
+//vot: ToDo	Add 'birthcountry' before 'birthprovince', AND 'residecountry' before 'resideprovince'
 		'profile'	=> array('realname','gender','birthyear','birthmonth','birthday','constellation','zodiac','telephone','mobile','idcardtype','idcard','address','zipcode','nationality','birthprovince','birthcity','resideprovince','residecity','residedist','residecommunity','residesuite','graduateschool','company','education','occupation','position','revenue','affectivestatus','lookingfor','bloodtype','height','weight','alipay','icq','qq','yahoo','msn','taobao','site','bio','interest','field1','field2','field3','field4','field5','field6','field7','field8'),
 		'verify'	=> array('verify1', 'verify2', 'verify3', 'verify4', 'verify5', 'verify6', 'verify7'),
 	);
@@ -336,7 +337,7 @@ function checkmobile() {
 	}
 	if(($v = dstrpos($useragent, $wmlbrowser_list))) {
 		$_G['mobile'] = $v;
-		return '3'; //wml版
+/*vot*/		return '3'; //WML Version
 	}
 	$brower = array('mozilla', 'chrome', 'safari', 'opera', 'm3gate', 'winwap', 'openwave', 'myop');
 	if(dstrpos($useragent, $brower)) return false;
@@ -420,7 +421,6 @@ function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $stat
 
 function lang($file, $langvar = null, $vars = array(), $default = null) {
 	global $_G;
-	$fileinput = $file;
 	list($path, $file) = explode('/', $file);
 	if(!$file) {
 		$file = $path;
@@ -589,7 +589,9 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 	$filebak = $file;
 
 	if(defined('IN_MOBILE') && !defined('TPL_DEFAULT') && strpos($file, $_G['mobiletpl'][IN_MOBILE].'/') === false || (isset($_G['forcemobilemessage']) && $_G['forcemobilemessage'])) {
-		$oldfile .= !empty($_G['inajax']) && ($oldfile == 'common/header' || $oldfile == 'common/footer') ? '_ajax' : '';
+		if(IN_MOBILE == 2) {
+			$oldfile .= !empty($_G['inajax']) && ($oldfile == 'common/header' || $oldfile == 'common/footer') ? '_ajax' : '';
+		}
 		$file = $_G['mobiletpl'][IN_MOBILE].'/'.$oldfile;
 	}
 
@@ -639,12 +641,11 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 }
 
 function dsign($str, $length = 16){
-	return substr(md5(getglobal('uid').$str.getglobal('authkey')), 0, ($length ? max(8, $length) : 16));
+	return substr(md5($str.getglobal('security/authkey')), 0, ($length ? max(8, $length) : 16));
 }
 
 function modauthkey($id) {
-	global $_G;
-	return md5($_G['username'].$_G['uid'].$_G['authkey'].substr(TIMESTAMP, 0, -7).$id);
+	return md5(getglobal('username').getglobal('uid').getglobal('authkey').substr(TIMESTAMP, 0, -7).$id);
 }
 
 function getcurrentnav() {
@@ -2076,9 +2077,8 @@ function currentlang() {
 
 //vot: Detect User Preferred Language from Browser
 function detect_language() {
-	global $_G;
 
-	$default = strtolower($_G['config']['output']['language']);
+	$default = strtolower(getglobal('config/output/language'));
 	
 	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 
@@ -2095,7 +2095,7 @@ function detect_language() {
 				if($choice=='zh') $choice = 'sc';
 			}
 
-			if(isset($_G['config']['languages'][$choice])){
+			if(isset(getglobal('config/languages/'.$choice))){
 				return $choice;
 			}
 		}

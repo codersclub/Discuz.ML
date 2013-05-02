@@ -38,4 +38,3 @@ runquery($sql);
 
 $finish = TRUE;
 
-?>

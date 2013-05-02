@@ -26,8 +26,8 @@ if(submitcheck('lostpwsubmit')) {
 
 	// Check for username exists
 	if($_GET['username']) {
-		list($tmp['uid'], , $tmp['email']) = uc_get_user(addslashes($_GET['username']));
-		$tmp['email'] = strtolower(trim($tmp['email']));
+/*vot*/		list($tmp['uid'], , $tmp['email']) = uc_get_user($_GET['username']);
+/*vot*/		$tmp['email'] = strtolower(trim($tmp['email']));
 /*vot*/		if($_GET['email']) {
 			if($_GET['email'] != $tmp['email']) {
 				showmessage('getpasswd_account_notmatch');
@@ -44,7 +44,7 @@ if(submitcheck('lostpwsubmit')) {
 		}
 		$member = C::t('common_member')->fetch_by_email($_GET['email'], 1);
 		list($tmp['uid'], , $tmp['email']) = uc_get_user(addslashes($member['username']));
-		$tmp['email'] = strtolower(trim($tmp['email']));
+/*vot*/		$tmp['email'] = strtolower(trim($tmp['email']));
 /*vot*/	} else {	// Check for NO username & NO email entered
 /*vot*/		showmessage('getpasswd_account_notmatch');
 	}

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: model_forum_post.php 32746 2013-03-05 10:29:02Z liulanbo $
+ *      $Id: model_forum_post.php 32866 2013-03-18 02:45:33Z zhangjie $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -49,7 +49,7 @@ class model_forum_post extends discuz_model {
 			'member', 'group', 'forum', 'thread', 'extramessage', 'special',//'nauthorid' 'modnewreplies' 'tid'
 			'message','clientip', 'invisible', 'isanonymous', 'usesig',
 			'htmlon', 'bbcodeoff', 'smileyoff', 'parseurloff', 'pstatus',
-			'noticetrimstr', 'noticeauthor', 'from', 'sechash',
+			'noticetrimstr', 'noticeauthor', 'from', 'sechash', 'geoloc',
 
 			'subject', 'special', 'sortid', 'typeid', 'isanonymous', 'cronpublish', 'cronpublishdate', 'save',
 			'readperm', 'price', 'ordertype', 'hiddenreplies', 'allownoticeauthor', 'audit', 'tags', 'bbcodeoff', 'imgcontent', 'imgcontentwidth',
@@ -145,6 +145,20 @@ class model_forum_post extends discuz_model {
 
 
 		useractionlog($this->member['uid'], 'pid');
+
+		if($this->param['geoloc'] && IN_MOBILE == 2) {
+			list($mapx, $mapy, $location) = explode('|', $this->param['geoloc']);
+			if($mapx && $mapy && $location) {
+				C::t('forum_post_location')->insert(array(
+					'pid' => $this->pid,
+					'tid' => $this->thread['tid'],
+					'uid' => $this->member['uid'],
+					'mapx' => $mapx,
+					'mapy' => $mapy,
+					'location' => $location,
+				));
+			}
+		}
 
 		$nauthorid = 0;
 		if(!empty($this->param['noticeauthor']) && !$this->param['isanonymous'] && !$this->param['modnewreplies']) {

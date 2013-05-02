@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_member.php 32100 2012-11-09 08:27:37Z zhengqingpeng $
+ *      $Id: function_member.php 32967 2013-03-28 10:57:48Z zhengqingpeng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -91,7 +91,10 @@ function setloginstatus($member, $cookietime) {
 	if($_G['setting']['connect']['allow'] && $_G['member']['conisbind']) {
 		updatestat('connectlogin', 1);
 	}
-	checkusergroup($_G['uid']);
+	$rule = updatecreditbyaction('daylogin', $_G['uid']);
+	if(!$rule['updatecredit']) {
+		checkusergroup($_G['uid']);
+	}
 }
 
 function logincheck($username) {

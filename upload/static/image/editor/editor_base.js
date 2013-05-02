@@ -1,3 +1,4 @@
+// Modified by Valery Votintsev, codersclub.org
 var gSetColorType = "";
 var gIsIE = document.all;
 var gIEVer = fGetIEVer();
@@ -40,10 +41,10 @@ function renewContent() {
 		}
 	};
 
-	if(window.confirm('您确定要恢复上次保存?')) {
+/*vot*/	if(window.confirm(lng['restore_last_saved'])) {
 		var data = loadUserdata('home');
 		if(in_array((data = trim(data)), ['', 'null', 'false', null, false])) {
-			parent.showDialog('没有可以恢复的数据！');
+/*vot*/			parent.showDialog(lng['no_data_recover']);
 			return;
 		}
 		var data = data.split(/\x09\x09/);
@@ -205,13 +206,13 @@ function format(type, para){
 	if(!gIsIE){
 		switch(type){
 			case "Cut":
-				sAlert = "您的浏览器安全设置不允许编辑器自动执行剪切操作,请使用键盘快捷键(Ctrl+X)来完成";
+/*vot*/				sAlert = lng['cut_manually'];
 				break;
 			case "Copy":
-				sAlert = "您的浏览器安全设置不允许编辑器自动执行拷贝操作,请使用键盘快捷键(Ctrl+C)来完成";
+/*vot*/				sAlert = lng['copy_manually'];
 				break;
 			case "Paste":
-				sAlert = "您的浏览器安全设置不允许编辑器自动执行粘贴操作,请使用键盘快捷键(Ctrl+V)来完成";
+/*vot*/				sAlert = lng['paste_manually'];
 				break;
 		}
 	}
@@ -295,7 +296,7 @@ function doodleBox(event, id) {
 	if(parent.$('uchome-ttHtmlEditor') != null) {
 		parent.showWindow(id, 'home.php?mod=magic&mid=doodle&showid=blog_doodle&target=uchome-ttHtmlEditor&from=editor');
 	} else {
-		alert("找不到涂鸦板初始化数据");
+/*vot*/		alert(lng['graffiti_no_init']);
 	}
 }
 function backColor(e){
@@ -359,9 +360,9 @@ function setCaret() {
 	if(gIsIE){
 		window.frames["HtmlEditor"].focus();
 		var range = window.frames["HtmlEditor"].document.body.createTextRange();
-        range.moveToBookmark(pos);
-        range.select();
-        pos = null;
+		range.moveToBookmark(pos);
+		range.select();
+		pos = null;
 	}
 }
 
@@ -445,7 +446,7 @@ function fSetBorderMouseDown(obj) {
 }
 function fDisplayElement(element,displayValue) {
 	if(gIEVer<=5.01 && gIsIE){
-		alert('只支持IE 5.01以上版本');
+/*vot*/		alert(lng['ie5_only']);
 		return;
 	}
 	fHideMenu();
@@ -481,7 +482,7 @@ function fSetModeTip(obj){
 		dv.style.padding = "2px";
 		dv.style.border = "1px #000000 solid";
 		dv.style.backgroundColor = "#FFFFCC";
-		dv.innerHTML = "编辑源码";
+/*vot*/		dv.innerHTML = lng['edit_raw'];
 		document.body.appendChild(dv);
 	}else{
 		dvModeTip.style.display = "";
@@ -604,7 +605,7 @@ function changeEditType(flag, ev){
 			}
 			ev = ev || event;
 			if(ev){
-				if(window.confirm("转换为纯文本时将会遗失某些格式。\n您确定要继续吗？")){
+/*vot*/				if(window.confirm(lng['plain_text_warn'])){
 					$('uchome-editstatus').value = 'text';
 					sub1();
 				}else{
@@ -622,7 +623,7 @@ function changeEditFull(flag, ev) {
 		parent.changeEditFull(flag);
 		ev = ev || event;
 		var ele = ev.target || ev.srcElement;
-		ele.innerHTML = flag ? '返回' : '全屏';
+/*vot*/		ele.innerHTML = flag ? lng['restore_size'] : lng['full_screen'];
 		ele.onclick = function() {changeEditFull(!flag, ev)};
 	}
 }

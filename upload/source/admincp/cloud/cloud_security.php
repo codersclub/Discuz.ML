@@ -4,7 +4,7 @@
  *		[Discuz!] (C)2001-2099 Comsenz Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
- *		$Id: cloud_security.php 32561 2013-02-20 09:44:25Z liulanbo $
+ *		$Id: cloud_security.php 32804 2013-03-13 06:18:00Z liulanbo $
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
@@ -166,7 +166,10 @@ if ($_GET['anchor'] == 'index') {
 	showtablefooter();
 
 } elseif($_GET['anchor'] == 'member') {
-
+	showtips('security_member_tips');
+	if($_GET['ignoreuid']) {
+		C::t('#security#security_eviluser')->delete(intval($_GET['ignoreuid']));
+	}
 	$memberperpage = $_G['setting']['memberperpage'];
 	$start_limit = ($page - 1) * $memberperpage;
 	$count = C::t('#security#security_eviluser')->count();
@@ -178,7 +181,7 @@ if ($_GET['anchor'] == 'index') {
 	showhiddenfields(array('security' => 1, 'searchsubmit' => 1));
 	echo "\n<input type=\"hidden\" name=\"authors\" id=\"authors\" value=\"\">";
 	showformfooter();
-	showformheader("members&operation=clean", ' target="_blank"');
+	showformheader("members&operation=clean", '');
 	showtableheader();
 	showsubtitle(array('','security_members_name', 'members_edit_info', 'security_thread_member_group', 'security_createtime', '', '', ''));
 
@@ -189,11 +192,12 @@ if ($_GET['anchor'] == 'index') {
 			$username = $lang['security_userdeleted']."(uid:{$value['uid']})";
 		}
 		$del = '<input type="checkbox" name="uidarray[]" value="'.$value['uid'].'"'.($value['adminid'] == 1 ? 'disabled' : '').' class="checkbox">';
-		$optmember = '<a href="' . ADMINSCRIPT . '?action=members&operation=ban&uid='.$value['uid'].'" target="_blank">'.cplang('members_ban').'</a>';
+		$optmember = '<a href="'.ADMINSCRIPT.'?action=members&operation=ban&uid='.$value['uid'].'" target="_blank">'.cplang('members_ban').'</a>';
+		$ignorethis = '<a href="'.ADMINSCRIPT.'?action=cloud&operation=security&anchor=member&ignoreuid='.$value['uid'].'&page='.$page.'">'.cplang('security_member_ignore_this').'</a>';
 		$createtime = date('Y-m-d', $value['createtime']);
 		$evilthreads = '<a href="javascript:void(0);" onclick="searchevilpost_member(\''.$value['username'].'\', 1);return false;">'.cplang('security_thread_list').'</a>';
 		$evilposts = '<a href="javascript:void(0);" onclick="searchevilpost_member(\''.$value['username'].'\', 2);return false;">'.cplang('security_post_list').'</a>';
-		$member = array($del, $username, convertMemberInfo($value), $value['grouptitle'], $createtime, $evilthreads, $evilposts, $optmember);
+		$member = array($del, $username, convertMemberInfo($value), $value['grouptitle'], $createtime, $evilthreads, $evilposts, $optmember, $ignorethis);
 		showtablerow('',array('class="td25"'),$member);
 	}
 	showsubmit('deletesubmit', cplang('delete'), '', '', $multipage);

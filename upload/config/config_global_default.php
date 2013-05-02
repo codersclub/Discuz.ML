@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: config_global_default.php 31879 2012-10-18 09:27:24Z zhangguosheng $
+ *      $Id: config_global_default.php 32890 2013-03-20 10:42:31Z zhengqingpeng $
  *      Modified by Valery Votintsev at codersclub.org
  */
 
@@ -69,7 +69,7 @@ $_config['db']['slave'] = false;
 $_config['db']['map'] = array();
 
 /**
- * Database public settings, such settings are usually deployed on the server for each
+ * Database public settings, such settings are usually set for each server
  */
 $_config['db']['common'] = array();
 
@@ -131,14 +131,14 @@ $_config['download']['xsendfile']['type'] = 0;
 $_config['download']['xsendfile']['dir'] = '/down/';
 
 //  CONFIG CACHE
-$_config['cache']['type'] 		= 'sql';	// Cache type: file = file cache, sql = database cache
+$_config['cache']['type'] 		= 'file';	// Cache type: file = file cache, sql = database cache
 
 // Page output settings
 $_config['output']['charset'] 		= 'utf-8';	// Page character set
 $_config['output']['forceheader']	= 1;		// Force the output in defined character set, used to avoid page content garbled
 $_config['output']['gzip'] 		= 0;		// Use Gzip compression for output
 $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = off, 1 = On
-$_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/...
+$_config['output']['language'] 		= 'en';		// Page language sc/tc/en/...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
 $_config['output']['iecompatible']	= 0;		// IE compatibility mode
@@ -155,7 +155,7 @@ $_config['security']['attackevasive']	= 0;		// CC Attack Defense 1 | 2 | 4
 
 $_config['security']['querysafe']['status']	= 1;	// Enable the SQL security detection, prevent the SQL injection attacks automatically
 $_config['security']['querysafe']['dfunction']	= array('load_file','hex','substring','if','ord','char');
-$_config['security']['querysafe']['daction']	= array('intooutfile','intodumpfile','unionselect','(select', 'unionall', 'uniondistinct');
+$_config['security']['querysafe']['daction']	= array('@','intooutfile','intodumpfile','unionselect','(select', 'unionall', 'uniondistinct');
 $_config['security']['querysafe']['dnote']	= array('/*','*/','#','--','"');
 $_config['security']['querysafe']['dlikehex']	= 1;
 $_config['security']['querysafe']['afullnote']	= 0;
@@ -178,7 +178,7 @@ $_config['remote']['on'] = 0;
 $_config['remote']['dir'] = 'remote';
 
 // Rremote call: Communication key. for the client and the server communication encryption. length of not less than 32
-//          default value is $_config ['security']['authkey']   of md5, you can also manually specify the$_config['remote']['appkey'] = md5($_config['security']['authkey']);
+//          default value of $_config ['security']['authkey'] is md5, you can also manually specify the$_config['remote']['appkey'] = md5($_config['security']['authkey']);
 $_config['remote']['appkey'] = md5($_config['security']['authkey']);
 
 // Remote call: Open external cron task. within the system no longer running cron, cron task activated by an external program

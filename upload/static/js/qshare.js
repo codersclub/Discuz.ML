@@ -2,7 +2,8 @@
 	[Discuz!] (C)2001-2009 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id$
+	$Id qshare.js $
+	Modified by Valery Votintsev
 */
 
 var _share_tencent_weibo = function() {
@@ -97,7 +98,7 @@ var _share_tencent_weibo = function() {
     };
     share_btn.onclick = function() {
         var _str = _select();
-        var _strmaxlen = 280 - ("\u6211\u6765\u81EA\u4E8E\u817E\u8BAF\u5FAE\u535A\u5F00\u653E\u5E73\u53F0" + " " + _web.name).elength();
+/*vot*/ var _strmaxlen = 280 - (lng['from_tencent'] + " " + _web.name).elength();//vot
         var _resultstr = "";
         if (_str.elength() > _strmaxlen) {
             _strmaxlen = _strmaxlen - 3;

@@ -690,4 +690,3 @@ function modifynav($type, $flag) {
 
 showmessage('succeed', '', array(), array('handle' => false));
 
-?>

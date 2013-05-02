@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-/*vot*/ $allowdiy = false; //Diy permissions: $_G['group']['allowdiy'] || $_G['group']['allowaddtopic'] && $topic['uid'] == $_G['uid'] || $_G['group']['allowmanagetopic']
+/*vot*/ $allowdiy = false; //DIY permissions: $_G['group']['allowdiy'] || $_G['group']['allowaddtopic'] && $topic['uid'] == $_G['uid'] || $_G['group']['allowmanagetopic']
 /*vot*/ $ref = $_GET['diy'] == 'yes'; //DIY mode
 if(!$ref && $_GET['action'] == 'get') {
 	if($_GET['type'] == 'index') {

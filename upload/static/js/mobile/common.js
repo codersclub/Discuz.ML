@@ -15,7 +15,7 @@
 		setup : function() {
 			var thisobj = this;
 			var obj = $(thisobj);
-			obj.bind('touchstart', function(e) {
+			obj.on('touchstart', function(e) {
 				if(e.which && e.which !== 1) {
 					return false;
 				}
@@ -28,8 +28,8 @@
 				}
 				function cleartaphandlers() {
 					cleartaptimer();
-					obj.unbind('touchend', clickhandler);
-					$(document).unbind('touchcancel', cleartaphandlers);
+					obj.off('touchend', clickhandler);
+					$(document).off('touchcancel', cleartaphandlers);
 				}
 
 				function clickhandler(e) {
@@ -40,8 +40,8 @@
 					return false;
 				}
 
-				obj.bind('touchend', clickhandler);
-				$(document).bind('touchcancel', cleartaphandlers);
+				obj.on('touchend', clickhandler);
+				$(document).on('touchcancel', cleartaphandlers);
 
 				timer = setTimeout(function() {
 					triggercustomevent(thisobj, 'taphold', $.Event('taphold', {target:origtarget}));
@@ -52,7 +52,7 @@
 	};
 	$.each(('tap').split(' '), function(index, name) {
 		$.fn[name] = function(fn) {
-			return this.bind(name, fn);
+			return this.on(name, fn);
 		};
 	});
 
@@ -93,7 +93,7 @@ var page = {
 		}
 
 		$('div.pg').removeClass('pg').addClass('page').html('<a href="'+ prevpagehref +'">上一页</a>'+ selector +'<a href="'+ nextpagehref +'">下一页</a>');
-		$('#dumppage').bind('change', function() {
+		$('#dumppage').on('change', function() {
 			var href = (prevpage || nextpage);
 			window.location.href = href.replace(/page=\d+/, 'page=' + $(this).val());
 		});
@@ -111,28 +111,28 @@ var scrolltop = {
 		} else {
 			obj.css({'visibility':'visible', 'position':'absolute'});
 		}
-		$(window).bind('resize', function() {
+		$(window).on('resize', function() {
 			if(fixed) {
 				obj.css('bottom', '8px');
 			} else {
 				obj.css('top', ($(document).scrollTop() + $(window).height() - 40) + 'px');
 			}
 		});
-		obj.bind('tap', function() {
+		obj.on('tap', function() {
 			$(document).scrollTop($(document).height());
 		});
-		$(document).bind('scroll', function() {
+		$(document).on('scroll', function() {
 			if(!fixed) {
 				obj.css('top', ($(document).scrollTop() + $(window).height() - 40) + 'px');
 			}
 			if($(document).scrollTop() >= 400) {
 				obj.removeClass('bottom')
-				.unbind().bind('tap', function() {
+				.off().on('tap', function() {
 					window.scrollTo('0', '1');
 				});
 			} else {
 				obj.addClass('bottom')
-				.unbind().bind('tap', function() {
+				.off().on('tap', function() {
 					$(document).scrollTop($(document).height());
 				});
 			}
@@ -157,7 +157,7 @@ var scrolltop = {
 var img = {
 	init : function(is_err_t) {
 		var errhandle = this.errorhandle;
-		$('img').bind('load', function() {
+		$('img').on('load', function() {
 			var obj = $(this);
 			obj.attr('zsrc', obj.attr('src'));
 			if(obj.width() < 5 && obj.height() < 10 && obj.css('display') != 'none') {
@@ -171,7 +171,7 @@ var img = {
 			obj.parent().find('.loading').remove();
 			obj.parent().find('.error_text').remove();
 		})
-		.bind('error', function() {
+		.on('error', function() {
 			var obj = $(this);
 			obj.attr('zsrc', obj.attr('src'));
 			errhandle(obj, is_err_t);
@@ -205,12 +205,12 @@ var img = {
 
 var atap = {
 	init : function() {
-		$('.atap').bind('tap', function() {
+		$('.atap').on('tap', function() {
 			var obj = $(this);
 			obj.css({'background':'#6FACD5', 'color':'#FFFFFF', 'font-weight':'bold', 'text-decoration':'none', 'text-shadow':'0 1px 1px #3373A5'});
 			return false;
 		});
-		$('.atap a').unbind('click');
+		$('.atap a').off('click');
 	}
 };
 
@@ -224,7 +224,7 @@ var popup = {
 			var pop = $(obj.attr('href'));
 			if(pop && pop.attr('popup')) {
 				pop.css({'display':'none'});
-				obj.bind('tap click', function(e) {
+				obj.on('click', function(e) {
 					$this.open(pop);
 				});
 			}
@@ -233,7 +233,7 @@ var popup = {
 	},
 	maskinit : function() {
 		var $this = this;
-		$('#mask').unbind().bind('tap click', function() {
+		$('#mask').off().on('tap', function() {
 			$this.close();
 		});
 	},
@@ -273,7 +273,7 @@ var popup = {
 
 var dialog = {
 	init : function() {
-		$('.dialog').live('click', function() {
+		$(document).on('click', '.dialog', function() {
 			var obj = $(this);
 			popup.open('<img src="' + IMGDIR + '/imageloading.gif">');
 			$.ajax({
@@ -297,7 +297,7 @@ var dialog = {
 
 var formdialog = {
 	init : function() {
-		$('.formdialog').live('click', function() {
+		$(document).on('click', '.formdialog', function() {
 			popup.open('<img src="' + IMGDIR + '/imageloading.gif">');
 			var obj = $(this);
 			var formobj = $(this.form);
@@ -322,7 +322,7 @@ var formdialog = {
 
 var redirect = {
 	init : function() {
-		$('.redirect').live('click', function() {
+		$(document).on('click', '.redirect', function() {
 			var obj = $(this);
 			popup.close();
 			window.location.href = obj.attr('href');
@@ -333,14 +333,17 @@ var redirect = {
 var DISMENU = new Object;
 var display = {
 	init : function() {
+		var $this = this;
 		$('.display').each(function(index, obj) {
 			obj = $(obj);
 			var dis = $(obj.attr('href'));
 			if(dis && dis.attr('display')) {
 				dis.css({'display':'none'});
 				dis.css({'z-index':'102'});
-				DISMENU[dis] = dis;
-				obj.bind('click', function(e) {
+				DISMENU[dis.attr('id')] = dis;
+				obj.on('click', function(e) {
+					if(in_array(e.target.tagName, ['A', 'IMG', 'INPUT'])) return;
+					$this.maskinit();
 					if(dis.attr('display') == 'true') {
 						dis.css('display', 'block');
 						dis.attr('display', 'false');
@@ -350,11 +353,10 @@ var display = {
 				});
 			}
 		});
-		this.maskinit();
 	},
 	maskinit : function() {
 		var $this = this;
-		$('#mask').unbind().bind('tap', function() {
+		$('#mask').off().on('touchstart', function() {
 			$this.hide();
 		});
 	},
@@ -370,38 +372,130 @@ var display = {
 var geo = {
 	latitude : null,
 	longitude : null,
+	loc : null,
 	errmsg : null,
 	timeout : 5000,
 	getcurrentposition : function() {
 		if(!!navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(this.locationSuccess, this.locationError, {
+			navigator.geolocation.getCurrentPosition(this.locationsuccess, this.locationerror, {
 				enableHighAcuracy : true,
 				timeout : this.timeout,
 				maximumAge : 3000
 			});
 		}
 	},
-	locationError : function(error) {
-		this.errmsg = 'error';
+	locationerror : function(error) {
+		geo.errmsg = 'error';
 		switch(error.code) {
 			case error.TIMEOUT:
-				this.errmsg = "获取位置超时，请重试";
+				geo.errmsg = "获取位置超时，请重试";
 				break;
 			case error.POSITION_UNAVAILABLE:
-				this.errmsg = '无法检测到您的当前位置';
+				geo.errmsg = '无法检测到您的当前位置';
 			    break;
 		    case error.PERMISSION_DENIED:
-		        this.errmsg = '请允许能够正常访问您的当前位置';
+		        geo.errmsg = '请允许能够正常访问您的当前位置';
 		        break;
 		    case error.UNKNOWN_ERROR:
-		        this.errmsg = '发生未知错误';
+		        geo.errmsg = '发生未知错误';
 		        break;
 		}
 	},
-	locationSuccess : function(position) {
-		this.latitude = position.coords.latitude;
-		this.longitude = position.coords.longitude;
-		this.errmsg = '';
+	locationsuccess : function(position) {
+		geo.latitude = position.coords.latitude;
+		geo.longitude = position.coords.longitude;
+		geo.errmsg = '';
+		$.ajax({
+			type:'POST',
+			url:'http://maps.google.com/maps/api/geocode/json?latlng=' + geo.latitude + ',' + geo.longitude + '&language=zh-CN&sensor=true',
+			dataType:'json'
+		})
+		.success(function(s) {
+			if(s.status == 'OK') {
+				geo.loc = s.results[0].formatted_address;
+			}
+		})
+		.error(function() {
+			geo.loc = null;
+		});
+	}
+};
+
+var pullrefresh = {
+	init : function() {
+		var pos = {};
+		var status = false;
+		var divobj = null;
+		var contentobj = null;
+		var reloadflag = false;
+		$('body').on('touchstart', function(e) {
+			e = mygetnativeevent(e);
+			pos.startx = e.touches[0].pageX;
+			pos.starty = e.touches[0].pageY;
+		})
+		.on('touchmove', function(e) {
+			e = mygetnativeevent(e);
+			pos.curposx = e.touches[0].pageX;
+			pos.curposy = e.touches[0].pageY;
+			if(pos.curposy - pos.starty < 0 && !status) {
+				return;
+			}
+			if(!status && $(window).scrollTop() <= 0) {
+				status = true;
+				divobj = document.createElement('div');
+				divobj = $(divobj);
+				divobj.css({'position':'relative', 'margin-left':'-85px'});
+				$('body').prepend(divobj);
+				contentobj = document.createElement('div');
+				contentobj = $(contentobj);
+				contentobj.css({'position':'absolute', 'height':'30px', 'top': '-30px', 'left':'50%'});
+				contentobj.html('<img src="'+ STATICURL + 'image/mobile/images/icon_arrow.gif" style="vertical-align:middle;margin-right:5px;-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg);"><span id="refreshtxt">下拉可以刷新</span>');
+				contentobj.find('img').css({'-webkit-transition':'all 1s ease-in-out'});
+				divobj.prepend(contentobj);
+				pos.topx = pos.curposx;
+				pos.topy = pos.curposy;
+			}
+			if(!status) {
+				return;
+			}
+			if(status == true) {
+				var pullheight = pos.curposy - pos.topy;
+				if(pullheight >= 0 && pullheight < 150) {
+					divobj.css({'height': pullheight/2 + 'px'});
+					contentobj.css({'top': (-30 + pullheight/2) + 'px'});
+					if(reloadflag) {
+						contentobj.find('img').css({'-webkit-transform':'rotate(180deg)', '-moz-transform':'rotate(180deg)', '-o-transform':'rotate(180deg)', 'transform':'rotate(180deg)'});
+						contentobj.find('#refreshtxt').html('下拉可以刷新');
+					}
+					reloadflag = false;
+				} else if(pullheight >= 150) {
+					divobj.css({'height':pullheight/2 + 'px'});
+					contentobj.css({'top': (-30 + pullheight/2) + 'px'});
+					if(!reloadflag) {
+						contentobj.find('img').css({'-webkit-transform':'rotate(360deg)', '-moz-transform':'rotate(360deg)', '-o-transform':'rotate(360deg)', 'transform':'rotate(360deg)'});
+						contentobj.find('#refreshtxt').html('松开可以刷新');
+					}
+					reloadflag = true;
+				}
+			}
+			e.preventDefault();
+		})
+		.on('touchend', function(e) {
+			if(status == true) {
+				if(reloadflag) {
+					contentobj.html('<img src="'+ STATICURL + 'image/mobile/images/icon_load.gif" style="vertical-align:middle;margin-right:5px;">正在加载...');
+					contentobj.animate({'top': (-30 + 75) + 'px'}, 618, 'linear');
+					divobj.animate({'height': '75px'}, 618, 'linear', function() {
+						window.location.reload();
+					});
+					return;
+				}
+			}
+			divobj.remove();
+			divobj = null;
+			status = false;
+			pos = {};
+		});
 	}
 };
 
@@ -507,31 +601,34 @@ function in_array(needle, haystack) {
 
 $(document).ready(function() {
 
-	if($('div.pg')) {
+	if($('div.pg').length > 0) {
 		page.converthtml();
 	}
-	if($('.scrolltop')) {
+	if($('.scrolltop').length > 0) {
 		scrolltop.init($('.scrolltop'));
 	}
-	if($('img')) {
+	if($('img').length > 0) {
 		img.init(1);
 	}
-	if($('.popup')) {
+	if($('.popup').length > 0) {
 		popup.init();
 	}
-	if($('.dialog')) {
+	if($('.dialog').length > 0) {
 		dialog.init();
 	}
-	if($('.formdialog')) {
+	if($('.formdialog').length > 0) {
 		formdialog.init();
 	}
-	if($('.redirect')) {
+	if($('.redirect').length > 0) {
 		redirect.init();
 	}
-	if($('.display')) {
+	if($('.display').length > 0) {
 		display.init();
 	}
-	if($('.atap')) {
+	if($('.atap').length > 0) {
 		atap.init();
+	}
+	if($('.pullrefresh').length > 0) {
+		pullrefresh.init();
 	}
 });

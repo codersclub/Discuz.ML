@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_index.php 32672 2013-02-28 07:41:31Z monkey $
+ *      $Id: forum_index.php 33048 2013-04-12 08:50:27Z zhangjie $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -140,7 +140,7 @@ $grids = array();
 if($_G['setting']['grid']['showgrid']) {
 	loadcache('grids');
 	$cachelife = $_G['setting']['grid']['cachelife'] ? $_G['setting']['grid']['cachelife'] : 600;
-	$now = dgmdate(TIMESTAMP, 'Y年m月d日').' '.lang('forum/misc', 'week_'.dgmdate(TIMESTAMP, 'w'));
+	$now = dgmdate(TIMESTAMP, lang('form/misc', 'y_m_d')).' '.lang('forum/misc', 'week_'.dgmdate(TIMESTAMP, 'w'));
 	if(TIMESTAMP - $_G['cache']['grids']['cachetime'] < $cachelife) {
 		$grids = $_G['cache']['grids'];
 	} else {
@@ -159,7 +159,7 @@ if($_G['setting']['grid']['showgrid']) {
 		}
 		$grids['newthread'] = C::t('forum_thread')->fetch_all_for_guide('thread', 0, array(), 0, 0, 0, 10, $_G['setting']['grid']['fids']);
 
-		$grids['newreply'] = C::t('forum_thread')->fetch_all_for_guide('newthread', 0, array(), 0, 0, 0, 10, $_G['setting']['grid']['fids']);
+		$grids['newreply'] = C::t('forum_thread')->fetch_all_for_guide('reply', 0, array(), 0, 0, 0, 10, $_G['setting']['grid']['fids']);
 		$hotdl = TIMESTAMP-604800;
 		$grids['hot'] = C::t('forum_thread')->fetch_all_for_guide('hot', 0, array(), 3, $hotdl, 0, 10, $_G['setting']['grid']['fids']);
 
@@ -182,9 +182,10 @@ if($_G['setting']['grid']['showgrid']) {
 					$gridthread['highlight'] = '';
 				}
 				if($_G['setting']['grid']['textleng']) {
-					$gridthread['oldsubject'] = $gridthread['subject'];
+					$gridthread['oldsubject'] = dhtmlspecialchars($gridthread['subject']);
 					$gridthread['subject'] = cutstr($gridthread['subject'], $_G['setting']['grid']['textleng']);
 				}
+
 				$grids[$type][$key] = $gridthread;
 			}
 		}

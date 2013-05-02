@@ -1,12 +1,13 @@
 /*
 Offical Style for UCenter
 (C) 2001-2099 Comsenz Inc.
+	English by Valery Votintsev at sources.ru
 */
 
 /* common */
 *{ word-wrap:break-word; outline:none; }
 body{ background:#FFF; text-align:center; }
-body, td, input, textarea, select, button{ color:#666; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, 'Simsun', sans-serif; }
+/*vot*/ body, td, input, textarea, select, button{ color:#666; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif; }
 body, ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin:0; padding:0; }
 h1, h2, h3, h4, h5, h6{ font-size:12px; }
 a{ color:#2366A8; text-decoration:none; }
@@ -23,7 +24,7 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 .btn{ margin:3px 0; padding:2px 5px; *padding:4px 5px 1px; border-color:#ddd #666 #666 #ddd; background:#DDD; color:#000; cursor:pointer; }
 .sgbtn{ margin-left:20px; padding:3px 7px; *padding:4px 7px 2px; border:1px solid #B5CFD9; background:#F2F9FD; color:#666; font-size:12px; font-weight:400; }
 	.sgbtn:hover{ text-decoration:none; }
-.bigarea{ margin-left:5px; width:230px; height:120px; }
+/*vot*/ .bigarea{ margin-left:5px; width:320px; height:120px; }
 
 /* main header */
 .mainhd{ text-align:left; height:69px; line-height:69px; background:url(bg_repx.gif) repeat-x; }
@@ -55,10 +56,10 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 .mainbox{ margin:10px 0; }
 .opt{ clear:both; overflow:hidden; }
 	.opt th{ padding:5px 0; font-weight:700; text-align:left; }
-	.opt td{ padding-bottom:10px; }
+/*vot*/	.opt td{ padding-bottom:10px; border-bottom: 1px solid #CCC; }
 	.opt .txt, .opt textarea{ vertical-align:middle; margin-right:10px; width:250px; }
 	.opt select{ vertical-align:middle; margin-right:10px; }
-	.opt .area{ height:80px; }
+/*vot*/	.opt .area{ height:120px; }
 	.opt .bigarea { width: 500px; height: 80px; }
 	.opt label{ margin-right:20px; }
 	.opt p{ float:left; line-height:180%; }
@@ -84,7 +85,7 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 .fixwidth{ width: 100%; }
 	.fixwidthdec{ width:580px; }
 #loginform{ overflow:hidden; margin:90px auto; *padding-top:90px; width:590px; }
-.login{ float:left; margin-top:5px; text-align:right; font:bold 14px "宋体"; }
+/*vot*/ .login{ float:left; margin-top:5px; text-align:right; font:bold 14px "Times New Roman"; }
 	.login p{ margin:10px 5px; }
 	.loginbtn{ padding-left:53px; text-align:left; }
 	.login .txt{ width:160px; }
@@ -113,7 +114,7 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 .footer{ display:block; line-height:25px; }
 
 /* tabmenu */
-.hastabmenu{ position:relative; height:90px; width: 580px; }
+/*vot*/ .hastabmenu{ position:relative; height:90px; /*width: 580px;*/ }
 	.tabmenu{ position:absolute; z-index:80; list-style:none; }
 		.tabmenu li{ float:left; margin-right:5px; }
 		.tabmenu li a, .tabmenu .tabcurrent a{ display:block; padding: 0 7px; height: 21px; line-height: 21px; border:1px solid #CCC; border-bottom:1px solid #B5CFD9; color:#666; }
@@ -121,14 +122,14 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 		*+html .tabmenu li a { height: 20px; line-height: 20px; }
 		.tabmenu li a:hover{ text-decoration:none; }
 		.tabmenu .tabcurrent a{ border:1px solid #B5CFD9; border-bottom:1px solid #F2F9FD; background:#F2F9FD; }
-	.tabcontent, .tabcontentcur{ position:absolute; top:22px; *top:21px; z-index:70; padding:10px; width:580px; border:1px solid #CCC; }
+/*vot*/	.tabcontent, .tabcontentcur{ position:absolute; top:22px; *top:21px; z-index:70; padding:10px; /*width:580px;*/ border:1px solid #CCC; }
 	.tabcontentcur{ border:1px solid #B5CFD9; background:#F2F9FD; }
 	.tabcontent .txt, .tabcontentcur .txt{ margin-right:10px; width:110px; }
 	.tabcontent .btn, .tabcontentcur .btn{ margin-left:5px; }
 
 /* table */
 .dbtb{ clear:both; width:100%; }
-	.tbtitle{ padding:5px 0; width:70px; }
+/*vot*/	.tbtitle{ padding:5px 0; width:140px; }
 	.dbtb .btn{ margin-left:0; }
 
 /* pages */
@@ -148,7 +149,7 @@ h3{ font-size:14px; }
 	.dblist li{ float:left; margin:0 0 0 -3px; *margin:0 0 5px -3px; width:25%; height:auto; *height:16px; }
 .memlist{ list-style:none; margin:7px 0 25px; padding-top:2px; border-top:2px solid #B5CFD9; }
 	.memlist li{ clear:both; overflow:hidden; zoom:1; padding:5px 0; *padding:1px 0 5px; line-height:150%; background:url(bg_repx.gif) repeat-x 0 bottom; }
-		.memlist em{ float:left; width:120px; }
+/*vot*/		.memlist em{ float:left; width:170px; }
 			.memlist .memcont{ width:480px; }
 .tiplist{ float:right; list-style:none; width:320px; }
 	.tiplist li{ line-height:160%; }
@@ -175,7 +176,16 @@ h3{ font-size:14px; }
 .green{ color:green; }
 
 
-.tabhead {width: 100%; clear: both; background: url(images/bg_tab_line.gif) repeat-x bottom;}
+/*vot*/.tabhead {width: 100%; clear: both; background: url(bg_tab_line.gif) repeat-x bottom;}
 	.tabhead li{line-height: 1.2em; display:block; padding:5px 7px 2px 7px; border:1px solid #CCC; border-bottom:0px solid #B5CFD9; color:#666;  float:left; margin-right:5px;}
 	.tabhead li.checked{background:#F2F9FD; font-weight: 800}
 .tabbody {padding: 1em; clear: both; border:1px solid #B5CFD9; border-top: 0px; background:#F2F9FD; }
+
+/*vot: moved from admin_frame_menu.htm */
+/*vot*/.menu{  width:158px; height: 100%; min-height: 480px; background:#F2F9FD url(bg_repx_h.gif) right top no-repeat; border:1px solid #B5CFD9; border-top: 0; padding-bottom: 60px; }
+/*vot*/	.menu ul{ list-style:none; background:#F2F9FD url(bg_repx_h.gif) right -20px no-repeat; }
+		.menu li{ margin:3px 0; *margin:1px 0; height:auto !important; height:24px; overflow:hidden; font-size:14px; font-weight:700; text-align: left;}
+/*vot*/		.menu li a{ display:block; margin-right:2px; padding:3px 0 2px 10px; *padding:4px 0 2px 30px; border:1px solid #F2F9FD; background:url(bg_repno.gif) no-repeat 10px -40px; color:#666; }
+			.menu li a:hover{ text-decoration:none; margin-right:0; border:1px solid #B5CFD9; border-right:1px solid #FFF; background:#FFF; }
+/*vot*/		.menu li a.tabon{ text-decoration:none; margin-right:0; border:1px solid #B5CFD9; border-right:1px solid #FFF; background:#FFF url(bg_repy.gif) repeat-y; color:#2366A8; }
+/*vot*/ .footer{ padding:5px 0; background:url(bg_repx.gif) 0 -199px repeat-x; font-family:Verdana, Arial, sans-serif; font-size:10px; border: 1px solid #B5CFD9; margin-top: -125px; }/*vot*/

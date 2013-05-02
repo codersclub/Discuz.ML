@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: class_core.php 31312 2012-08-10 03:33:54Z zhangguosheng $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 error_reporting(E_ALL);
@@ -14,8 +13,6 @@ define('IN_DISCUZ', true);
 define('DISCUZ_ROOT', substr(dirname(__FILE__), 0, -12));
 define('DISCUZ_CORE_DEBUG', false);
 define('DISCUZ_TABLE_EXTENDABLE', TRUE);
-//DEBUG
-//echo "discuz_root=",DISCUZ_ROOT,"<br>\n";
 
 set_exception_handler(array('core', 'handleException'));
 

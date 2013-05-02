@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: update.php 32780 2013-03-08 04:29:54Z chenmengshu $
+ *      $Id: update.php 32967 2013-03-28 10:57:48Z zhengqingpeng $
  *      Modified by Valery Votintsev, codersclub.org
  */
 
@@ -781,23 +781,23 @@ if($_GET['step'] == 'start') {
 			}
 			unset($memory['forum_post']);
 /*vot*/			$newsettings['memory'] = array_merge(array(
-				'common_member' => 0,
-				'common_member_count' => 0,
-				'common_member_status' => 0,
-				'common_member_profile' => 0,
-				'common_member_field_home' => 0,
-				'common_member_field_forum' => 0,
-				'common_member_verify' => 0,
-				'forum_thread' => 172800,
-				'forum_thread_forumdisplay' => 300,
-				'forum_collectionrelated' => 0,
-				'forum_postcache' => 300,
-				'forum_collection' => 300,
-				'home_follow' => 86400,
-				'forumindex' => 30,
-				'diyblock' => 300,
-				'diyblockoutput' => 30),
-				$memory);
+						'common_member' => 0,
+						'common_member_count' => 0,
+						'common_member_status' => 0,
+						'common_member_profile' => 0,
+						'common_member_field_home' => 0,
+						'common_member_field_forum' => 0,
+						'common_member_verify' => 0,
+						'forum_thread' => 172800,
+						'forum_thread_forumdisplay' => 300,
+						'forum_collectionrelated' => 0,
+						'forum_postcache' => 300,
+						'forum_collection' => 300,
+						'home_follow' => 86400,
+						'forumindex' => 30,
+						'diyblock' => 300,
+						'diyblockoutput' => 30),
+						$memory);
 		}
 
 		if(!isset($settings['blockmaxaggregationitem'])) {
@@ -832,12 +832,11 @@ if($_GET['step'] == 'start') {
 			$newsettings['darkroom'] = '1';
 		}
 
-		if(!isset($settings['showsignin'])) {
-			$newsettings['showsignin'] = 1;
-		}
-
 		if(!isset($settings['showfjump'])) {
 			$newsettings['showfjump'] = 1;
+		}
+		if(!isset($settings['grid'])) {
+			$newsettings['grid'] = 'a:8:{s:8:"showgrid";s:1:"0";s:8:"gridtype";s:1:"0";s:8:"textleng";s:2:"30";s:4:"fids";a:1:{i:0;i:0;}s:9:"highlight";s:1:"1";s:11:"targetblank";s:1:"1";s:8:"showtips";s:1:"1";s:9:"cachelife";s:3:"600";}';
 		}
 
 		if(!empty($newsettings)) {
@@ -910,45 +909,45 @@ if($_GET['step'] == 'start') {
 	} elseif($_GET['op'] == 'updatecron') {
 		$nextop = 'updatemagic';
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_cleanfeed.php'")) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','clean_feeds','cron_cleanfeed.php','1269746634','1269792000','-1','-1','0','0')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','".lang('update','clean_feeds')."','cron_cleanfeed.php','1269746634','1269792000','-1','-1','0','0')");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_checkpatch_daily.php'")) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','patches_dayly','cron_checkpatch_daily.php','1269746639','1269792000','-1','-1','2','22')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','".lang('update','patches_dayly')."','cron_checkpatch_daily.php','1269746639','1269792000','-1','-1','2','22')");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_publish_halfhourly.php'")) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','regular_publish','cron_publish_halfhourly.php','1269746639','1269792000','-1','-1','-1','0	30')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','".lang('update','regular_publish')."','cron_publish_halfhourly.php','1269746639','1269792000','-1','-1','-1','0	30')");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_follow_daily.php'")) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','archive_weekly','cron_follow_daily.php','1269746639','1269792000','-1','-1','02','0')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','".lang('update','archive_weekly')."','cron_follow_daily.php','1269746639','1269792000','-1','-1','02','0')");
 		}
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_todayviews_daily.php'")) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','updates_daily','cron_todayviews_daily.php','1321500558','1321556400','-1','-1','3','0	5	10	15	20	25	30	35	40	45	50	55')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','".lang('update','updates_daily')."','cron_todayviews_daily.php','1321500558','1321556400','-1','-1','3','0	5	10	15	20	25	30	35	40	45	50	55')");
 		}
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_member_optimize_daily.php'")) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','0','system','users_daily','cron_member_optimize_daily.php','1321500558','1321556400','-1','-1','2','0	5	10	15	20	25	30	35	40	45	50	55')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','0','system','".lang('update','users_daily')."','cron_member_optimize_daily.php','1321500558','1321556400','-1','-1','2','0	5	10	15	20	25	30	35	40	45	50	55')");
 		}
 		if(DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_cron')." WHERE filename='cron_birthday_daily.php'")) {
 			DB::query("DELETE FROM ".DB::table('common_cron')." WHERE filename='cron_birthday_daily.php'");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_todayheats_daily.php'")) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','cron_todayheats_daily','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','统计今日热帖','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0')");
 		}
 
 /*vot*/		show_msg(lang('update','cron_completed'), "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'updatemagic') {
 		$nextop = 'updatereport';
 		if(DB::result_first("SELECT name FROM ".DB::table('common_magic')." WHERE identifier='highlight'")) {
-/*vot*/			DB::query("UPDATE ".DB::table('common_magic')." SET name='color_card', description='color_card_descr' WHERE identifier='highlight'");
+/*vot*/			DB::query("UPDATE ".DB::table('common_magic')." SET name='".lang('update','color_card')."', description='".lang('update','color_card_descr')."' WHERE identifier='highlight'");
 		}
 		if(DB::result_first("SELECT name FROM ".DB::table('common_magic')." WHERE identifier='namepost'")) {
-/*vot*/			DB::query("UPDATE ".DB::table('common_magic')." SET name='visitor_card', description='visitor_card_descr' WHERE identifier='namepost'");
+/*vot*/			DB::query("UPDATE ".DB::table('common_magic')." SET name='".lang('update','visitor_card')."', description='".lang('update','visitor_card_descr')."' WHERE identifier='namepost'");
 		}
 		if(DB::result_first("SELECT name FROM ".DB::table('common_magic')." WHERE identifier='anonymouspost'")) {
-/*vot*/			DB::query("UPDATE ".DB::table('common_magic')." SET name='anonymous_card', description='anonymous_card_descr' WHERE identifier='anonymouspost'");
+/*vot*/			DB::query("UPDATE ".DB::table('common_magic')." SET name='".lang('update','anonymous_card')."', description='".lang('update','anonymous_card_descr')."' WHERE identifier='anonymouspost'");
 		}
 
 /*vot*/		show_msg(lang('update','magics_updated'), "$theurl?step=data&op=$nextop");
@@ -1085,16 +1084,14 @@ if($_GET['step'] == 'start') {
 		if($count) {
 			DB::query("DELETE FROM ".DB::table('common_credit_rule')." WHERE action IN(".dimplode($delrule).")");
 		}
-/*vot 2.5*/	DB::update('common_credit_rule',array('rulename' => 'daylogin'),"action='daylogin'");
-//vot		DB::update('common_credit_rule', array('rulename' => '每天登录'), "rulename='每天登陆'");
-/*vot*/		DB::update('common_credit_rule',array('rulename' => 'daylogin'),"rulename='daylogin'");
+/*vot*/		DB::update('common_credit_rule', array('rulename' => lang('update','daylogin')),"action='daylogin'");
 		$count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_credit_rule')." WHERE action='portalcomment'");
 		if(!$count) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('portalcomment','portalcomment','1','0','40','1','0','1','0','0','0','0','0','0','')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('".lang('update','portalcomment')."','portalcomment','1','0','40','1','0','1','0','0','0','0','0','0','')");
 		}
 		$count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_credit_rule')." WHERE action='followedcollection'");
 		if(!$count) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('collection_follow','followedcollection','1','0','3','0','0','1','0','0','0','0','0','0','')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('".lang('update','collection_follow')."','followedcollection','1','0','3','0','0','1','0','0','0','0','0','0','')");
 		}
 
 /*vot*/		show_msg(lang('update','points_rules_completed'), "$theurl?step=data&op=$nextop");
@@ -1123,13 +1120,13 @@ if($_GET['step'] == 'start') {
 			}
 		}
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_smiley')." WHERE url='010.gif'")) {
-/*vot*/		DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('4','19','stamp','edited_by','010.gif')");
+/*vot*/		DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('4','19','stamp','".lang('update','edited_by')."','010.gif')");
 		}
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_smiley')." WHERE url='010.small.gif'")) {
-/*vot*/		DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','18','stamplist','edited_by','010.small.gif')");
+/*vot*/		DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','18','stamplist','".lang('update','edited_by')."','010.small.gif')");
 		}
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_smiley')." WHERE url='011.small.gif'")) {
-/*vot*/		DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','20','stamplist','new_post','011.small.gif')");
+/*vot*/		DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','20','stamplist','".lang('update','new_post')."','011.small.gif')");
 			$setnewbie = true;
 		}
 		require_once libfile('function/cache');
@@ -1409,7 +1406,7 @@ if($_GET['step'] == 'start') {
 					C::t('forum_threadcalendar')->update($cid, array('hotnum' => $num));
 				}
 			}
-/*vot*/			show_msg(lang('update','processed_from').gmdate('Y-m-d', $startthread['dateline']).lang('update','starting_from')."<strong>Tid {$starttid}</strong> ".lang('update','popular_posts'), "$theurl?step=data&op=threadheat&starttid=$endtid&heatnumber=$heatnumber");
+/*vot*/			show_msg(lang('update','processed_from').gmdate('Y-m-d', $startthread['dateline']).lang('update','starting_from')."<strong> Tid&gt;{$starttid} </strong>".lang('update','popular_posts'), "$theurl?step=data&op=threadheat&starttid=$endtid&heatnumber=$heatnumber");
 		}
 /*vot*/		show_msg(lang('update','hot_posts_completed'), "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'allowgetimage') {
@@ -1435,7 +1432,7 @@ if($_GET['step'] == 'start') {
 		$updateverify = $_GET['updateverify'] ? true : false;
 		if(!isset($verifys[6])) {
 			$verifys[6] = array(
-/*vot*/					'title' => 'realname_verify',
+/*vot*/					'title' => lang('update','realname_verify'),
 					'available' => $settings['realname'],
 					'showicon' => 0,
 					'viewrealname' => 0,
@@ -1443,7 +1440,7 @@ if($_GET['step'] == 'start') {
 					'icon' => ''
 				);
 			$verifys[7] = array(
-/*vot*/					'title' => 'video_verify',
+/*vot*/					'title' => lang('update','video_verify'),
 					'available' => $settings['videophoto'],
 					'showicon' => 0,
 					'viewvideophoto' => $settings['video_allowviewspace'],
@@ -1719,8 +1716,8 @@ if($_GET['step'] == 'start') {
 		$nextop = 'plugin';
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table("forum_threadprofile")." WHERE global=1")) {
 			DB::query("INSERT INTO ".DB::table("forum_threadprofile")." (`id`, `name`, `template`, `global`) VALUES
-/*vot*/				  (1, 'default_layout', 'a:2:{s:4:\"left\";s:399:\"{numbercard}\r\n{groupicon}<p>{*}</p>{/groupicon}\r\n{authortitle}<p><em>{*}</em></p>{/authortitle}\r\n{customstatus}<p class=\"xg1\">{*}</p>{/customstatus}\r\n{star}<p>{*}</p>{/star}\r\n{upgradeprogress}<p>{*}</p>{/upgradeprogress}\r\n<dl class=\"pil cl\">\r\n\t<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\r\n{medal}<p class=\"md_ctrl\">{*}</p>{/medal}\r\n<dl class=\"pil cl\">{baseinfo=field_qq,0}</dl>\";s:3:\"top\";s:82:\"<dl class=\"cl\">\r\n<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\";}', 1);");
-/*vot*/			DB::query("REPLACE INTO ".DB::table("forum_bbcode")." VALUES ('2','2','qq','bb_qq.gif','<a href=\"http://wpa.qq.com/msgrd?V=3&Uin={1}&amp;Site=[Discuz!]&amp;from=discuz&amp;Menu=yes\" target=\"_blank\"><img src=\"static/image/common/qq_big.gif\" border=\"0\"></a>','[qq]688888[/qq]','qq_bbcode_decription','1','{lang qq_enter}: <a href=\"\" class=\"xi2\" onclick=\"this.href=\'http://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value\" target=\"_blank\" style=\"float:right;\"> {lang qq_onlne_status}&nbsp;&nbsp;</a>','1','21','1	2	3	10	11	12	13	14	15	16	17	18	19');");
+/*vot*/				  (1, lang('update','default_layout'), 'a:2:{s:4:\"left\";s:399:\"{numbercard}\r\n{groupicon}<p>{*}</p>{/groupicon}\r\n{authortitle}<p><em>{*}</em></p>{/authortitle}\r\n{customstatus}<p class=\"xg1\">{*}</p>{/customstatus}\r\n{star}<p>{*}</p>{/star}\r\n{upgradeprogress}<p>{*}</p>{/upgradeprogress}\r\n<dl class=\"pil cl\">\r\n\t<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\r\n{medal}<p class=\"md_ctrl\">{*}</p>{/medal}\r\n<dl class=\"pil cl\">{baseinfo=field_qq,0}</dl>\";s:3:\"top\";s:82:\"<dl class=\"cl\">\r\n<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\";}', 1);");
+/*vot*/			DB::query("REPLACE INTO ".DB::table("forum_bbcode")." VALUES ('2','2','qq','bb_qq.gif','<a href=\"http://wpa.qq.com/msgrd?V=3&Uin={1}&amp;Site=[Discuz!]&amp;from=discuz&amp;Menu=yes\" target=\"_blank\"><img src=\"static/image/common/qq_big.gif\" border=\"0\"></a>','[qq]688888[/qq]',lang('update','qq_bbcode_description'),'1',lang('update','qq_enter'). ': <a href=\"\" class=\"xi2\" onclick=\"this.href=\'http://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value\" target=\"_blank\" style=\"float:right;\">'.lang('update','qq_onlne_status').'&nbsp;&nbsp;</a>','1','21','1	2	3	10	11	12	13	14	15	16	17	18	19');");
 		}
 
 /*vot*/		show_msg(lang('update','layout_update_completed'), "$theurl?step=data&op=$nextop");
@@ -1758,12 +1755,16 @@ if($_GET['step'] == 'start') {
 	} elseif($_GET['op'] == 'notification') {
 		$nextop = 'medal';
 		if(!DB::result_first("SELECT id FROM ".DB::table('home_notification')." WHERE category>0")) {
+			$_G['notice_structure']['follow'] = array('follow');
+			$_G['notice_structure']['follower'] = array('follower');
 			foreach($_G['notice_structure'] as $key => $val) {
 				switch ($key) {
 					case 'mypost' : $category = 1; break;
 					case 'interactive' : $category = 2; break;
 					case 'system' : $category = 3; break;
 					case 'manage' : $category = 4; break;
+					case 'follow' : $category = 5; break;
+					case 'follower' : $category = 6; break;
 					default :  $category = 0;
 				}
 				if($category) {

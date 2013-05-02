@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: spacecp_eccredit.php 25246 2011-11-02 03:34:53Z zhangguosheng $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -164,7 +163,8 @@ if($_GET['op'] == 'list') {
 		C::t('forum_tradecomment')->update($id, array('explanation' => $explanation));
 
 		$language = lang('forum/misc');
-/*vot*/		showmessage($language['eccredit_explain'].': '.$explanation, '', array(), array('msgtype' => 3, 'showmsg' => 1));
+		showmessage($language['eccredit_explain'].'&#58; '.$explanation, '', array(), array('msgtype' => 3, 'showmsg' => 1));
 	}
 
 }
+?>

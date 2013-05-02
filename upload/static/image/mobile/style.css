@@ -134,7 +134,7 @@
 	.plc { border-bottom:1px solid #D9D8D8; overflow:hidden; position:relative; }
 	.plc .avatar { position:absolute; left:10px; top:9px; display:inline; }
 	.plc .avatar img{ border:1px solid #D7D7D7; padding:1px; }
-	.plc .pi { margin-left:55px; margin-right:10px; padding:7px 0; }
+	.plc .pi { margin-left:55px; margin-right:10px; padding:7px 0; position:relative;}
 	.plc .pi .authi{ position:relative; }
 	.plc .pi .authi li em{ float:right; font-style: normal; }	
 	.plc .pi .message{ font-size:15px; }

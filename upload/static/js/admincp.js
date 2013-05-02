@@ -3,6 +3,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: admincp.js 31631 2012-09-17 06:36:25Z monkey $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 function redirect(url) {
@@ -381,9 +382,10 @@ function floatbottom(id) {
 	if(!$(id)) {
 		return;
 	}
+/*vot*/	var padding = $(id).clientHeight + 16;
 	$(id).style.position = 'fixed';
 	$(id).style.bottom = '0';
-	$(id).parentNode.style.paddingBottom = '15px';
+/*vot*/	$(id).parentNode.style.paddingBottom = padding + 'px';//'15px';
 	if(!BROWSER.ie || BROWSER.ie && BROWSER.ie > 6) {
 		window.onscroll = function() {
 			var scrollLeft = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);

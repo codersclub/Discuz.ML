@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 32733 2013-03-05 07:47:49Z monkey $
+ *      $Id: forum_viewthread.php 32984 2013-04-01 10:28:25Z monkey $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -50,9 +50,6 @@ if($_G['fid'] == $_G['setting']['followforumid'] && $_G['adminid'] != 1) {
 	dheader("Location: home.php?mod=follow");
 }
 $close_leftinfo = intval($_G['setting']['close_leftinfo']);
-if(browserversion('ie') && browserversion('ie') < 7) {
-	$_G['setting']['close_leftinfo_userctrl'] = 0;
-}
 if($_G['setting']['close_leftinfo_userctrl']) {
 	if($_G['cookie']['close_leftinfo'] == 1) {
 		$close_leftinfo = 1;
@@ -67,7 +64,7 @@ if($_GET['from'] == 'portal' && !$_G['setting']['portalstatus']) {
 	$_GET['from'] = '';
 } elseif($_GET['from'] == 'preview' && !$_G['inajax']) {
 	$_GET['from'] = '';
-} elseif($_GET['from'] == 'album' && $_G['setting']['guestviewthumb']['flag'] && !$_G['uid']) {
+} elseif($_GET['from'] == 'album' && ($_G['setting']['guestviewthumb']['flag'] && !$_G['uid'] || !$_G['group']['allowgetimage'])) {
 	$_GET['from'] = '';
 }
 
@@ -193,7 +190,7 @@ if($_G['forum']['password'] && $_G['forum']['password'] != $_G['cookie']['fidpw'
 	dheader("Location: $_G[siteurl]forum.php?mod=forumdisplay&fid=$_G[fid]");
 }
 
-if($_G['forum']['price']) {
+if($_G['forum']['price'] && !$_G['forum']['ismoderator']) {
 	$membercredits = C::t('common_member_forum_buylog')->get_credits($_G['uid'], $_G['fid']);
 	$paycredits = $_G['forum']['price'] - $membercredits;
 	if($paycredits > 0) {
@@ -1437,7 +1434,7 @@ function viewthread_numbercard($post) {
 }
 function getLinkByKey($key, $post, $returnarray = 0) {
 	switch($key) {
-		case 'uid': $v = $post['uid'];break;
+		case 'uid': $v = array('link' => '?'.$post['uid'], 'value' => $post['uid']);break;
 		case 'posts': $v = array('link' => 'home.php?mod=space&uid='.$post['uid'].'&do=thread&type=reply&view=me&from=space', 'value' => $post['posts']);break;
 		case 'threads': $v = array('link' => 'home.php?mod=space&uid='.$post['uid'].'&do=thread&type=thread&view=me&from=space', 'value' => $post['threads']);break;
 		case 'digestposts': $v = array('link' => 'home.php?mod=space&uid='.$post['uid'].'&do=thread&type=thread&view=me&from=space', 'value' => $post['digestposts']);break;
@@ -1520,7 +1517,7 @@ function getrelateitem($tagarray, $tid, $relatenum, $relatetime, $relatecache = 
 		$updatecache = 1;
 	}
 	if($updatecache) {
-		$query = C::t('common_tagitem')->select($tagidarray, $tid, $type, '', '', $limit, 0, '<>');
+		$query = C::t('common_tagitem')->select($tagidarray, $tid, $type, 'itemid', 'DESC', $limit, 0, '<>');
 		foreach($query as $result) {
 			if($result['itemid']) {
 				$relatearray[] = $result['itemid'];
@@ -1534,6 +1531,7 @@ function getrelateitem($tagarray, $tid, $relatenum, $relatetime, $relatecache = 
 
 
 	if(!empty($relatearray)) {
+		rsort($relatearray);
 		foreach(C::t('forum_thread')->fetch_all_by_tid($relatearray) as $result) {
 			if($result['displayorder'] >= 0) {
 				$relateitem[] = $result;

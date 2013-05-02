@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_function.php 32753 2013-03-06 05:59:05Z chenmengshu $
- *	Multilingual by Valery Votintsev at sources.ru
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_COMSENZ')) {
@@ -544,12 +544,11 @@ EOT;
 function show_footer($quit = true) {
 
 /*vot*/	echo <<<EOT
-	</div>
-		<div class="footer">
-			&copy;2001 - 2012 <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
-			&nbsp;&nbsp;&nbsp;
-			<b>MultiLingual</b> version by <a href="http://codersclub.org/discuzx/">CodersClub.org</a>
+		<div class="footer">&copy;2001 - 2013 <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
+		&nbsp;&nbsp;&nbsp;
+		<b>MultiLingual</b> version by <a href="http://codersclub.org/discuzx/">CodersClub.org</a>
 		</div>
+	</div>
 </div>
 </body>
 </html>

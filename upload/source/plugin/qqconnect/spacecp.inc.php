@@ -4,7 +4,7 @@
  *	  [Discuz! X] (C)2001-2099 Comsenz Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
- *	  $Id: spacecp.inc.php 32745 2013-03-05 10:28:34Z monkey $
+ *	  $Id: spacecp.inc.php 32901 2013-03-21 08:54:21Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -137,7 +137,7 @@ if ($pluginop == 'config') {
 
 	$connectOAuthClient = Cloud::loadClass('Service_Client_ConnectOAuth');
 	$connectService = Cloud::loadClass('Service_Connect');
-	if($sh_type == 1 || $sh_type == 3) {
+	if($sh_type == 3) {
 
 		$firstpost = C::t('forum_post')->fetch_threadpost_by_tid_invisible($tid, 0);
 		$msglower = strtolower($firstpost['message']);

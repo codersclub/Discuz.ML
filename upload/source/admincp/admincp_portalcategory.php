@@ -4,7 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_portalcategory.php 31224 2012-07-27 03:54:18Z zhangguosheng $
+ *      $Id: admincp_portalcategory.php 32945 2013-03-26 05:01:12Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_DISCUZ')) {
@@ -36,7 +37,7 @@ if($operation == 'list') {
 		$tdstyle = array('width="25"', 'width="60"', '', 'width="45"', 'width="55"', 'width="30"', 'width="30"', 'width="30"', 'width="185"', 'width="100"');
 		showformheader('portalcategory');
 		echo '<div style="height:30px;line-height:30px;"><a href="javascript:;" onclick="show_all()">'.cplang('show_all').'</a> | <a href="javascript:;" onclick="hide_all()">'.cplang('hide_all').'</a> <input type="text" id="srchforumipt" class="txt" /> <input type="submit" class="btn" value="'.cplang('search').'" onclick="return srchforum()" /></div>';
-		showtableheader('', '', 'id="portalcategory_header" style="min-width:900px;*width:900px;"');
+/*vot*/		showtableheader('', '', 'id="portalcategory_header" style="min-width:900px;*width:96%;"');
 		showsubtitle(array('', '', 'portalcategory_name', 'portalcategory_articles', 'portalcategory_allowpublish', 'portalcategory_allowcomment', 'portalcategory_is_closed', 'setindex', 'operation', 'portalcategory_article_op'), 'header tbm', $tdstyle);
 		showtablefooter();
 		echo '<script type="text/javascript">floatbottom(\'portalcategory_header\');</script>';
@@ -328,7 +329,7 @@ SCRIPT;
 					deletearticle($aidarr, '0');
 				}
 			} else {
-				C::t('portal_article_title')->update($delids, array('catid'=>$_POST['tocatid']));
+				C::t('portal_article_title')->update_for_cat($delids, array('catid'=>$_POST['tocatid']));
 				$num = C::t('portal_article_title')->fetch_count_for_cat($_POST['tocatid']);
 				C::t('portal_category')->update($_POST['tocatid'], array('articles'=>dintval($num)));
 			}
@@ -1078,4 +1079,3 @@ function getparentviewprimaltplname($catid) {
 	}
 	return $tpl;
 }
-?>

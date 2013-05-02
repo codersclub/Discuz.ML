@@ -4,7 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms'
  *
- *      $Id: admincp_plugins.php 32747 2013-03-06 01:09:54Z monkey $
+ *      $Id: admincp_plugins.php 32883 2013-03-20 02:49:01Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -118,7 +119,7 @@ if(!$operation) {
 					'<a href="'.ADMINSCRIPT.'?action=cloudaddons&id='.$plugin['identifier'].'.plugin" target="_blank" title="'.$lang['cloudaddons_linkto'].'">'.$lang['plugins_visit'].'</a></span></p>'.
 				'<p>'.implode(' | ', $submenuitem).'</p>',
 				($hookexists !== FALSE && $plugin['available'] ? $lang['display_order'].": <input class=\"txt num\" type=\"text\" id=\"displayorder_$plugin[pluginid]\" name=\"displayordernew[$plugin[pluginid]][$hookexists]\" value=\"$hookorder\" /><br /><br />" : '').
-					($plugin['modules']['system'] != 2 ? (!$plugin['available'] ? "<a href=\"".ADMINSCRIPT."?action=plugins&operation=enable&pluginid=$plugin[pluginid]\" class=\"bold\">$lang[enable]</a>&nbsp;&nbsp;" : "<a href=\"".ADMINSCRIPT."?action=plugins&operation=disable&pluginid=$plugin[pluginid]\">$lang[closed]</a>&nbsp;&nbsp;") : '').
+					($plugin['modules']['system'] != 2 ? (!$plugin['available'] ? "<a href=\"".ADMINSCRIPT."?action=plugins&operation=enable&pluginid=$plugin[pluginid]".(!empty($_GET['system']) ? '&system=1' : '')."\" class=\"bold\">$lang[enable]</a>&nbsp;&nbsp;" : "<a href=\"".ADMINSCRIPT."?action=plugins&operation=disable&pluginid=$plugin[pluginid]".(!empty($_GET['system']) ? '&system=1' : '')."\">$lang[closed]</a>&nbsp;&nbsp;") : '').
 					"<a href=\"".ADMINSCRIPT."?action=plugins&operation=upgrade&pluginid=$plugin[pluginid]\">$lang[plugins_config_upgrade]</a>&nbsp;&nbsp;".
 					(!$plugin['modules']['system'] ? "<a href=\"".ADMINSCRIPT."?action=plugins&operation=delete&pluginid=$plugin[pluginid]\">$lang[plugins_config_uninstall]</a>&nbsp;&nbsp;" : '').
 					($isplugindeveloper && !$plugin['modules']['system'] ? "<a href=\"".ADMINSCRIPT."?action=plugins&operation=edit&pluginid=$plugin[pluginid]\">$lang[plugins_editlink]</a>&nbsp;&nbsp;" : ''),
@@ -247,14 +248,14 @@ if(!$operation) {
 	updatemenu('plugin');
 	if($operation == 'enable') {
 		if(!$conflictplugins) {
-			cpmsg('plugins_enable_succeed', 'action=plugins', 'succeed');
+			cpmsg('plugins_enable_succeed', 'action=plugins'.(!empty($_GET['system']) ? '&system=1' : ''), 'succeed');
 		} else {
-			cpmsg('plugins_conflict', 'action=plugins', 'succeed', array('plugins' => $conflictplugins));
+			cpmsg('plugins_conflict', 'action=plugins'.(!empty($_GET['system']) ? '&system=1' : ''), 'succeed', array('plugins' => $conflictplugins));
 		}
 	} else {
-		cpmsg('plugins_disable_succeed', 'action=plugins', 'succeed');
+		cpmsg('plugins_disable_succeed', 'action=plugins'.(!empty($_GET['system']) ? '&system=1' : ''), 'succeed');
 	}
-	cpmsg('plugins_'.$operation.'_succeed', 'action=plugins', 'succeed');
+	cpmsg('plugins_'.$operation.'_succeed', 'action=plugins'.(!empty($_GET['system']) ? '&system=1' : ''), 'succeed');
 
 } elseif($operation == 'export' && $pluginid) {
 
@@ -491,13 +492,15 @@ if(!$operation) {
 				if(preg_match('/^discuz\_plugin\_'.$plugin['identifier'].'(\_\w+)?\.xml$/', $f, $a)) {
 					$extratxt = $extra = substr($a[1], 1);
 					if(preg_match('/^SC\_GBK$/i', $extra)) {
-						$extratxt = '&#31616;&#20307;&#20013;&#25991;&#29256;';
+/*vot*/						$extratxt = 'Simplified Chinese';
 					} elseif(preg_match('/^SC\_UTF8$/i', $extra)) {
-						$extratxt = '&#31616;&#20307;&#20013;&#25991;&#85;&#84;&#70;&#56;&#29256;';
+/*vot*/						$extratxt = 'Simplified Chinese UTF-8';
 					} elseif(preg_match('/^TC\_BIG5$/i', $extra)) {
-						$extratxt = '&#32321;&#39636;&#20013;&#25991;&#29256;';
+/*vot*/						$extratxt = 'Traditional Chinese';
 					} elseif(preg_match('/^TC\_UTF8$/i', $extra)) {
-						$extratxt = '&#32321;&#39636;&#20013;&#25991;&#85;&#84;&#70;&#56;&#29256;';
+/*vot*/						$extratxt = 'Traditional Chinese UTF-8';
+/*vot*/					} else {
+/*vot*/						$extratxt = 'English UTF8';
 					}
 					if($modules['extra']['installtype'] == $extratxt) {
 						continue;
@@ -1461,13 +1464,15 @@ if(!$operation) {
 						if(preg_match('/^discuz\_plugin\_'.$row['identifier'].'(\_\w+)?\.xml$/', $f, $a)) {
 							$extratxt = $extra = substr($a[1], 1);
 							if(preg_match('/^SC\_GBK$/i', $extra)) {
-								$extratxt = '&#31616;&#20307;&#20013;&#25991;&#29256;';
+/*vot*/							$extratxt = 'Simplified Chinese';
 							} elseif(preg_match('/^SC\_UTF8$/i', $extra)) {
-								$extratxt = '&#31616;&#20307;&#20013;&#25991;&#85;&#84;&#70;&#56;&#29256;';
+/*vot*/							$extratxt = 'Simplified Chinese UTF-8';
 							} elseif(preg_match('/^TC\_BIG5$/i', $extra)) {
-								$extratxt = '&#32321;&#39636;&#20013;&#25991;&#29256;';
+/*vot*/							$extratxt = 'Traditional Chinese';
 							} elseif(preg_match('/^TC\_UTF8$/i', $extra)) {
-								$extratxt = '&#32321;&#39636;&#20013;&#25991;&#85;&#84;&#70;&#56;&#29256;';
+/*vot*/							$extratxt = 'Traditional Chinese UTF-8';
+/*vot*/							} else {
+/*vot*/							$extratxt = 'English UTF8';
 							}
 							if($modules['extra']['installtype'] == $extratxt) {
 								continue;
@@ -1636,5 +1641,3 @@ function versioncompatible($versions) {
 	}
 	return false;
 }
-
-?>

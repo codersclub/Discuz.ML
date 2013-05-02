@@ -23,10 +23,9 @@ require ROOT_PATH.'./source/discuz_version.php';
 require ROOT_PATH.'./install/include/install_var.php';
 require ROOT_PATH.'./install/include/install_mysql.php';
 require ROOT_PATH.'./install/include/install_function.php';
-//vot require ROOT_PATH.'./install/include/install_lang.php';
 //vot: Load the install language
 /*vot*/ $language = getgpc('language');
-/*vot*/ $lng = $language ? $language : 'sc';
+/*vot*/ $lng = $language ? $language : 'en';
 /*vot*/ require ROOT_PATH.'./source/language/' . $lng . '/lang_install.php';
 
 $view_off = getgpc('view_off');

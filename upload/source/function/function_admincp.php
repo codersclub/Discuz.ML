@@ -469,7 +469,8 @@ function showsubmenuanchors($title, $menus = array(), $right = '') {
 	echo <<<EOT
 <script type="text/JavaScript">var currentAnchor = '$GLOBALS[anchor]';</script>
 EOT;
-/*vot*/	$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title).'</h3><div class="clear"></div>';
+	$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title).'</h3>';
+/*vot*/	$s .= '<div class="clear"></div>';
 	$s .= '<ul class="tab1" id="submenu">';
 	foreach($menus as $k => $menu) {
 		if($menu && is_array($menu)) {

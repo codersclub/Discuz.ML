@@ -3,6 +3,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: smilies.js 29684 2012-04-25 04:00:58Z zhangguosheng $
+	Modified by Valery Votintsev
 */
 
 function _smilies_show(id, smcols, seditorkey) {
@@ -103,8 +104,8 @@ function smilies_switch(id, smcols, type, page, seditorkey) {
 	if(smilies_array[type].length > 2) {
 		prevpage = ((prevpage = parseInt(page) - 1) < 1) ? smilies_array[type].length - 1 : prevpage;
 		nextpage = ((nextpage = parseInt(page) + 1) == smilies_array[type].length) ? 1 : nextpage;
-		smiliespage = '<div class="z"><a href="javascript:;" onclick="smilies_switch(\'' + id + '\', \'' + smcols + '\', ' + type + ', ' + prevpage + ', \'' + seditorkey + '\');doane(event);">上页</a>' +
-			'<a href="javascript:;" onclick="smilies_switch(\'' + id + '\', \'' + smcols + '\', ' + type + ', ' + nextpage + ', \'' + seditorkey + '\');doane(event);">下页</a></div>' +
+/*vot*/		smiliespage = '<div class="z"><a href="javascript:;" onclick="smilies_switch(\'' + id + '\', \'' + smcols + '\', ' + type + ', ' + prevpage + ', \'' + seditorkey + '\');doane(event);">' + lng['page_prev'] + '</a>' +
+/*vot*/			'<a href="javascript:;" onclick="smilies_switch(\'' + id + '\', \'' + smcols + '\', ' + type + ', ' + nextpage + ', \'' + seditorkey + '\');doane(event);">' + lng['page_next'] + '</a></div>' +
 			page + '/' + (smilies_array[type].length - 1);
 	}
 	$(id + '_data').innerHTML = smiliesdata;

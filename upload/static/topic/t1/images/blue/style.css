@@ -1,9 +1,9 @@
 /*
-[name]蓝色调[/name]
+[name]Blue-scale[/name]
 Powered by Discuz! X
 */
 
-/* 重定义 */
+/* Redefinition */
 body { color: #333; background-image: none; background-color: #FFF; }
 .block, .temp { margin: 0; }
 .frame, .frame-tab, #comment { border: 1px solid #B7B7B7; }
@@ -22,7 +22,7 @@ body { color: #333; background-image: none; background-color: #FFF; }
 
 .xi2, .xi2 a, .xi3 a { color: #369; }
 
-/* 私有样式 */
+/* Private Style */
 .t_ad { margin-bottom: 1px; }
 
 .t_nav { margin-bottom: 10px; padding: 0 15px; height: 30px; line-height: 28px; border: 1px solid #556C98; background: #556C98 url(nav.png) repeat-x; font-size: 14px; color: #FFF; }

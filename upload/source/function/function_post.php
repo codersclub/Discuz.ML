@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_post.php 32415 2013-01-15 03:53:22Z monkey $
+ *      $Id: function_post.php 32846 2013-03-14 10:42:28Z monkey $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -533,6 +533,31 @@ function postfeed($feed) {
 		require_once libfile('function/feed');
 		feed_add($feed['icon'], $feed['title_template'], $feed['title_data'], $feed['body_template'], $feed['body_data'], '', $feed['images'], $feed['image_links'], '', '', '', 0, $feed['id'], $feed['idtype']);
 	}
+}
+
+function messagesafeclear($message) {
+	if(strpos($message, '[/password]') !== FALSE) {
+		$message = '';
+	}
+	if(strpos($message, '[/postbg]') !== FALSE) {
+		$message = preg_replace("/\s?\[postbg\]\s*([^\[\<\r\n;'\"\?\(\)]+?)\s*\[\/postbg\]\s?/is", '', $message);
+	}
+	if(strpos($message, '[/begin]') !== FALSE) {
+		$message = preg_replace("/\[begin(=\s*([^\[\<\r\n]*?)\s*,(\d*),(\d*),(\d*),(\d*))?\]\s*([^\[\<\r\n]+?)\s*\[\/begin\]/is", '', $message);
+	}
+	if(strpos($message, '[page]') !== FALSE) {
+		$message = preg_replace("/\s?\[page\]\s?/is", '', $message);
+	}
+	if(strpos($message, '[/index]') !== FALSE) {
+		$message = preg_replace("/\s?\[index\](.+?)\[\/index\]\s?/is", '', $message);
+	}
+	if(strpos($message, '[/begin]') !== FALSE) {
+		$message = preg_replace("/\[begin(=\s*([^\[\<\r\n]*?)\s*,(\d*),(\d*),(\d*),(\d*))?\]\s*([^\[\<\r\n]+?)\s*\[\/begin\]/is", '', $message);
+	}
+	if(strpos($message, '[/groupid]') !== FALSE) {
+		$message = preg_replace("/\[groupid=\d+\].*\[\/groupid\]/i", '', $message);
+	}
+	return $message;
 }
 
 function messagecutstr($str, $length = 0, $dot = ' ...') {

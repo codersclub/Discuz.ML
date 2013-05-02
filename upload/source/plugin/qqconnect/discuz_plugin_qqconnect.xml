@@ -170,6 +170,7 @@
 				<item id="connect_register_bind_title"><![CDATA[Enter the existing site account for bind your QQ account]]></item>
 				<item id="connect_register_bind_success"><![CDATA[Your QQ account was bind successfully]]></item>
 				<item id="connect_register_bind_need_inactive"><![CDATA[Your account has not been activated, please activate and then Bind QQ account]]></item>
+				<item id="connect_register_bind_need_inactive"><![CDATA[您的帐号还未激活，请先激活后再绑定QQ帐号]]></item>
 				<item id="connect_config"><![CDATA[QQ bind]]></item>
 				<item id="connect_config_bind"><![CDATA[Click the button to immediately Bind QQ account]]></item>
 				<item id="connect_config_bindinfo"><![CDATA[You have a site account <strong>{$_G[member][username]}</strong> and binded QQ number]]></item>

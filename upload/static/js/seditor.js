@@ -3,6 +3,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: seditor.js 28601 2012-03-06 02:49:55Z monkey $
+	Modified by Valery Votintsev
 */
 
 function seditor_showimgmenu(seditorkey) {
@@ -40,24 +41,24 @@ function seditor_menu(seditorkey, tag) {
 				curatli = 0;
 				atsubmitid = ctrlid + '_submit';
 				setTimeout(function() {atFilter('', 'at_list','atListSet');$('atkeyword').focus();}, 100);
-				str = '请输用户名:<br /><input type="text" id="atkeyword" style="width:240px" value="" class="px" onkeydown="atFilter(this.value, \'at_list\',\'atListSet\',event);" /><div class="p_pop" id="at_list" style="width:250px;"><ul><li>@朋友账号，就能提醒他来看帖子</li></ul></div>';
+/*vot*/				str = lng['enter_username'] + ':<br /><input type="text" id="atkeyword" style="width:240px" value="" class="px" onkeydown="atFilter(this.value, \'at_list\',\'atListSet\',event);" /><div class="p_pop" id="at_list" style="width:250px;"><ul><li>'+lng['at_friend']+'</li></ul></div>';
 				submitstr = 'seditor_insertunit(\'' + seditorkey + '\', \'@\' + $(\'atkeyword\').value.replace(/<\\/?b>/g, \'\')+\' \'); hideMenu();';
 				break;
 			case 'url':
-				str = '请输入链接地址:<br /><input type="text" id="' + ctrlid + '_param_1" sautocomplete="off" style="width: 98%" value="" class="px" />' +
-					'<br />请输入链接文字:<br /><input type="text" id="' + ctrlid + '_param_2" style="width: 98%" value="" class="px" />';
+/*vot*/				str = lng['enter_link_url']+':<br /><input type="text" id="' + ctrlid + '_param_1" sautocomplete="off" style="width: 98%" value="" class="px" />' +
+/*vot*/					'<br />'+lng['enter_link_text']+':<br /><input type="text" id="' + ctrlid + '_param_2" style="width: 98%" value="" class="px" />';
 				submitstr = "$('" + ctrlid + "_param_2').value !== '' ? seditor_insertunit('" + seditorkey + "', '[url='+seditor_squarestrip($('" + ctrlid + "_param_1').value)+']'+$('" + ctrlid + "_param_2').value, '[/url]', null, 1) : seditor_insertunit('" + seditorkey + "', '[url]'+$('" + ctrlid + "_param_1').value, '[/url]', null, 1);hideMenu();";
 				break;
 			case 'code':
 			case 'quote':
-				var tagl = {'quote' : '请输入要插入的引用', 'code' : '请输入要插入的代码'};
+/*vot*/				var tagl = {'quote' : lng['insert_quote'], 'code' : lng['insert_code']};
 					str = tagl[tag] + ':<br /><textarea id="' + ctrlid + '_param_1" style="width: 98%" cols="50" rows="5" class="txtarea"></textarea>';
 				submitstr = "seditor_insertunit('" + seditorkey + "', '[" + tag + "]'+$('" + ctrlid + "_param_1').value, '[/" + tag + "]', null, 1);hideMenu();";
 				break;
 			case 'img':
-				str = '请输入图片地址:<br /><input type="text" id="' + ctrlid + '_param_1" style="width: 98%" value="" class="px" onchange="loadimgsize(this.value, \'' + seditorkey + '\',\'' + tag + '\')" />' +
-					'<p class="mtm">宽(可选): <input type="text" id="' + ctrlid + '_param_2" style="width: 15%" value="" class="px" /> &nbsp;' +
-					'高(可选): <input type="text" id="' + ctrlid + '_param_3" style="width: 15%" value="" class="px" /></p>';
+/*vot*/				str = lng['enter_image_url']+':<br /><input type="text" id="' + ctrlid + '_param_1" style="width: 98%" value="" class="px" onchange="loadimgsize(this.value, \'' + seditorkey + '\',\'' + tag + '\')" />' +
+/*vot*/					'<p class="mtm">'+lng['width_optional']+': <input type="text" id="' + ctrlid + '_param_2" style="width: 15%" value="" class="px" /> &nbsp;' +
+/*vot*/					lng['height_optional']+': <input type="text" id="' + ctrlid + '_param_3" style="width: 15%" value="" class="px" /></p>';
 				submitstr = "seditor_insertunit('" + seditorkey + "', '[img' + ($('" + ctrlid + "_param_2').value !== '' && $('" + ctrlid + "_param_3').value !== '' ? '='+$('" + ctrlid + "_param_2').value+','+$('" + ctrlid + "_param_3').value : '')+']'+seditor_squarestrip($('" + ctrlid + "_param_1').value), '[/img]', null, 1);hideMenu();";
 				break;
 		}
@@ -67,7 +68,7 @@ function seditor_menu(seditorkey, tag) {
 		menu.className = 'p_pof upf';
 		menu.style.width = '270px';
 		$('append_parent').appendChild(menu);
-		menu.innerHTML = '<span class="y"><a onclick="hideMenu()" class="flbc" href="javascript:;">关闭</a></span><div class="p_opt cl"><form onsubmit="' + submitstr + ';return false;" autocomplete="off"><div>' + str + '</div><div class="pns mtn"><button type="submit" id="' + ctrlid + '_submit" class="pn pnc"><strong>提交</strong></button><button type="button" onClick="hideMenu()" class="pn"><em>取消</em></button></div></form></div>';
+/*vot*/		menu.innerHTML = '<span class="y"><a onclick="hideMenu()" class="flbc" href="javascript:;">'+lng['close']+'</a></span><div class="p_opt cl"><form onsubmit="' + submitstr + ';return false;" autocomplete="off"><div>' + str + '</div><div class="pns mtn"><button type="submit" id="' + ctrlid + '_submit" class="pn pnc"><strong>'+lng['submit']+'</strong></button><button type="button" onClick="hideMenu()" class="pn"><em>'+lng['cancel']+'</em></button></div></form></div>';
 	}
 	showMenu({'ctrlid':ctrlid,'evt':'click','duration':3,'cache':0,'drag':1});
 }

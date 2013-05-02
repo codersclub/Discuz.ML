@@ -3,9 +3,10 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: register.js 32487 2013-01-28 09:11:34Z zhengqingpeng $
+	Modified by Valery Votintsev
 */
 
-var lastusername = '', lastpassword = '', lastemail = '', lastinvitecode = '', stmp = new Array(), modifypwd = false, profileTips = '如不需要更改密码，此处请留空';
+var lastusername = '', lastpassword = '', lastemail = '', lastinvitecode = '', stmp = new Array();
 
 function errormessage(id, msg) {
 	if($(id)) {
@@ -71,9 +72,9 @@ function checkPwdComplexity(firstObj, secondObj, modify) {
 	modifypwd = modify || false;
 	firstObj.onblur = function () {
 		if(firstObj.value == '') {
-			var pwmsg = !modifypwd ? '请填写密码' : profileTips;
+/*vot*/			var pwmsg = !modifypwd ? lng['password_fill'] : profileTips;
 			if(pwlength > 0) {
-				pwmsg += ', 最小长度为 '+pwlength+' 个字符';
+/*vot*/				pwmsg += lng['length_min']+pwlength+lng['chars'];
 			}
 			errormessage(firstObj.id, pwmsg);
 		}else{
@@ -83,14 +84,14 @@ function checkPwdComplexity(firstObj, secondObj, modify) {
 	};
 	firstObj.onkeyup = function () {
 		if(pwlength == 0 || $(firstObj.id).value.length >= pwlength) {
-			var passlevels = new Array('','弱','中','强');
+/*vot*/			var passlevels = new Array('',lng['pw_weak'],lng['pw_middle'],lng['pw_strong']);
 			var passlevel = checkstrongpw(firstObj.id);
-			errormessage(firstObj.id, '<span class="passlevel passlevel'+passlevel+'">密码强度:'+passlevels[passlevel]+'</span>');
+/*vot*/			errormessage(firstObj.id, '<span class="passlevel passlevel'+passlevel+'">' + lng['password_strength'] + passlevels[passlevel]+'</span>');
 		}
 	};
 	secondObj.onblur = function () {
 		if(secondObj.value == '') {
-			errormessage(secondObj.id, !modifypwd ? '请再次输入密码' : profileTips);
+/*vot*/			errormessage(secondObj.id, !modifypwd ? lng['password_again'] : profileTips);
 		}
 		checkpassword(firstObj.id, secondObj.id);
 	};
@@ -109,7 +110,7 @@ function addMailEvent(mailObj) {
 	};
 	mailObj.onblur = function () {
 		if(mailObj.value == '') {
-			errormessage(mailObj.id, '请输入邮箱地址');
+/*vot*/			errormessage(mailObj.id, lng['email_fill']);
 		}
 		emailMenuOp(3, null, mailObj.id);
 	};
@@ -144,7 +145,7 @@ function showbirthday(){
 	var el = $('birthday');
 	var birthday = el.value;
 	el.length=0;
-	el.options.add(new Option('日', ''));
+/*vot*/	el.options.add(new Option(lng['day'], ''));
 	for(var i=0;i<28;i++){
 		el.options.add(new Option(i+1, i+1));
 	}
@@ -173,7 +174,7 @@ function trim(str) {
 	return str.replace(/^\s*(.*?)[\s\n]*$/g, '$1');
 }
 
-var emailMenuST = null, emailMenui = 0, emaildomains = ['qq.com', '163.com', 'sina.com', 'sohu.com', 'yahoo.cn', 'gmail.com', 'hotmail.com'];
+/*vot*/ var emailMenuST = null, emailMenui = 0; // emaildomains MOVED to lang_js.js
 function emailMenuOp(op, e, id) {
 	if(op == 3 && BROWSER.ie && BROWSER.ie < 7) {
 		checkemail(id);
@@ -274,12 +275,21 @@ function checkusername(id) {
 		lastusername = username;
 	}
 	if(username.match(/<|"/ig)) {
-		errormessage(id, '用户名包含敏感字符');
+/*vot*/		errormessage(id, lng['username_invalid']);
 		return;
 	}
-	var unlen = username.replace(/[^\x00-\xff]/g, "**").length;
-	if(unlen < 3 || unlen > 15) {
-		errormessage(id, unlen < 3 ? '用户名不得小于 3 个字符' : '用户名不得超过 15 个字符');
+//vot	var unlen = username.replace(/[^\x00-\xff]/g, "**").length;
+/*vot*/	var unlen = username.length;
+/*vot*/	var utf8len = utf8length(username);
+
+/*vot*/	if(unlen < 2) {
+/*vot*/		errormessage(id, lng['username_short']);
+		return;
+/*vot*/	} else if(unlen > 15) {
+		errormessage(id, lng['username_long']);
+		return;
+/*vot*/	} else if(utf8len > 64) { // Max DB Field Length in bytes
+/*vot*/		errormessage(id, lng['username_long']);
 		return;
 	}
 	var x = new Ajax();
@@ -295,7 +305,7 @@ function checkpassword(id1, id2) {
 	}
 	if(pwlength > 0) {
 		if($(id1).value.length < pwlength) {
-			errormessage(id1, '密码太短，不得少于 '+pwlength+' 个字符');
+/*vot*/			errormessage(id1, lng['pass_short']+pwlength+lng['chars']);
 			return;
 		}
 	}
@@ -305,33 +315,33 @@ function checkpassword(id1, id2) {
 		for(var i in strongpw) {
 			if(strongpw[i] === 1 && !$(id1).value.match(/\d+/g)) {
 				strongpw_error = true;
-				strongpw_str[j] = '数字';
+/*vot*/				strongpw_str[j] = lng['digital'];
 				j++;
 			}
 			if(strongpw[i] === 2 && !$(id1).value.match(/[a-z]+/g)) {
 				strongpw_error = true;
-				strongpw_str[j] = '小写字母';
+/*vot*/				strongpw_str[j] = lng['lowercase'];
 				j++;
 			}
 			if(strongpw[i] === 3 && !$(id1).value.match(/[A-Z]+/g)) {
 				strongpw_error = true;
-				strongpw_str[j] = '大写字母';
+/*vot*/				strongpw_str[j] = lng['capitals'];
 				j++;
 			}
 			if(strongpw[i] === 4 && !$(id1).value.match(/[^A-Za-z0-9]+/g)) {
 				strongpw_error = true;
-				strongpw_str[j] = '特殊符号';
+/*vot*/				strongpw_str[j] = lng['specials'];
 				j++;
 			}
 		}
 		if(strongpw_error) {
-			errormessage(id1, '密码太弱，密码中必须包含 '+strongpw_str.join('，'));
+/*vot*/			errormessage(id1, lng['pw_weak_info']+strongpw_str.join(', '));
 			return;
 		}
 	}
 	errormessage(id2);
 	if($(id1).value != $(id2).value) {
-		errormessage(id2, '两次输入的密码不一致');
+/*vot*/		errormessage(id2, lng['passwords_not_equal']);
 	} else {
 		errormessage(id2, !modifypwd ? 'succeed' : profileTips);
 	}
@@ -346,7 +356,7 @@ function checkemail(id) {
 		lastemail = email;
 	}
 	if(email.match(/<|"/ig)) {
-		errormessage(id, 'Email 包含敏感字符');
+/*vot*/		errormessage(id, lng['email_invalid']);
 		return;
 	}
 	var x = new Ajax();
@@ -365,7 +375,7 @@ function checkinvite() {
 		lastinvitecode = invitecode;
 	}
 	if(invitecode.match(/<|"/ig)) {
-		errormessage('invitecode', '邀请码包含敏感字符');
+/*vot*/		errormessage('invitecode', lng['invite_code_invalid']);
 		return;
 	}
 	var x = new Ajax();

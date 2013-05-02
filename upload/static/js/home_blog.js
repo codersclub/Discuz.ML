@@ -3,6 +3,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: home_blog.js 23838 2011-08-11 06:51:58Z monkey $
+	Modified by Valery Votintsev
 */
 
 function validate_ajax(obj) {
@@ -10,7 +11,7 @@ function validate_ajax(obj) {
 	if (subject) {
 		var slen = strlen(subject.value);
 		if (slen < 1 || slen > 80) {
-			alert("标题长度(1~80字符)不符合要求");
+/*vot*/			alert(lng['title_length_invalid']);
 			subject.focus();
 			return false;
 		}

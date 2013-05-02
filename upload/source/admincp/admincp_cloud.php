@@ -5,6 +5,7 @@
  *	  This is NOT a freeware, use is subject to license terms
  *
  *	  $Id: admincp_cloud.php 29521 2012-04-17 09:24:42Z songlixin $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -126,7 +127,7 @@ var cloudApiIp = '';
 var dialogHtml = '';
 var getMsg = false;
 
-var millisec = 10 * 1000; //10秒
+/*vot*/ var millisec = 10 * 1000; //10 seconds
 var expirationText = '{$lang['cloud_time_out']}';
 expirationTimeout = setTimeout("expiration()", millisec);
 </script>

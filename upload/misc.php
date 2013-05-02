@@ -17,10 +17,10 @@ require './source/class/class_core.php';
 $discuz = C::app();
 
 $discuz->reject_robot();
-/*vot*/ $modarray = array('seccode', 'secqaa', 'initsys', 'invite', 'faq', 'report',
+$modarray = array('seccode', 'secqaa', 'initsys', 'invite', 'faq', 'report',
 				'swfupload', 'manyou', 'stat', 'ranklist', 'buyinvitecode',
 				'tag', 'diyhelp', 'mobile', 'patch', 'getatuser', 'imgcropper',
-				'userstatus', 'signin', 'googlemap');
+/*vot*/				'userstatus', 'signin', 'googlemap');
 
 $modcachelist = array(
 	'ranklist' => array('forums', 'diytemplatename'),

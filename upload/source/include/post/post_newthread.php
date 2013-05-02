@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: post_newthread.php 32760 2013-03-07 03:23:43Z monkey $
+ *      $Id: post_newthread.php 32970 2013-03-29 02:26:09Z monkey $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -148,6 +148,7 @@ if(!submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck)) {
 	$modthread = C::m('forum_thread');
 	$bfmethods = $afmethods = array();
 
+/*vot*/	$subject = stripslashes($subject);
 	$params = array(
 		'subject' => $subject,
 		'message' => $message,
@@ -217,6 +218,7 @@ if(!submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck)) {
 		}
 		$special = 127;
 		$params['special'] = 127;
+		$params['message'] .= chr(0).chr(0).chr(0).$specialextra;
 
 	}
 
@@ -243,6 +245,8 @@ if(!submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck)) {
 		$params['imgcontentwidth'] = $_G['setting']['imgcontentwidth'] ? intval($_G['setting']['imgcontentwidth']) : 100;
 	}
 
+	$params['geoloc'] = diconv($_GET['geoloc'], 'UTF-8');
+
 	if($_GET['rushreply']) {
 		$bfmethods[] = array('class' => 'extend_thread_rushreply', 'method' => 'before_newthread');
 		$afmethods[] = array('class' => 'extend_thread_rushreply', 'method' => 'after_newthread');
@@ -267,19 +271,12 @@ if(!submitcheck('topicsubmit', 0, $seccodecheck, $secqaacheck)) {
 	$modthread->attach_after_methods('newthread', $afmethods);
 
 	$return = $modthread->newthread($params);
+	$tid = $modthread->tid;
 
 
-	if($special == 1) {
-	} elseif($special == 4 && $_G['group']['allowpostactivity']) {
-
-	} elseif($special == 5 && $_G['group']['allowpostdebate']) {
 
 
-	} elseif($special == 127) {
 
-		$message .= chr(0).chr(0).chr(0).$specialextra;
-
-	}
 
 
 

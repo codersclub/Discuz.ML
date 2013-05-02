@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_db.php 31634 2012-09-17 06:43:39Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -53,7 +54,7 @@ if($operation == 'export') {
 			$dztables[$table['Name']] = $table['Name'];
 		}
 
-		$defaultfilename = date('ymd').'_'.random(8);
+/*vot*/		$defaultfilename = date('Ymd').'_'.random(8);
 
 		include DISCUZ_ROOT.'./config/config_ucenter.php';
 		$uc_tablepre = explode('.', UC_DBTABLEPRE);
@@ -106,8 +107,8 @@ if($operation == 'export') {
 			array('', cplang('default')),
 			$dbcharset ? array($dbcharset, strtoupper($dbcharset)) : array(),
 			$db->version() > '4.1' && $dbcharset != 'utf8' ? array('utf8', 'UTF-8') : array()
-		), TRUE), 0, 'mradio');
-		showsetting('db_export_usehex', 'usehex', 1, 'radio');
+/*vot*/		), TRUE), '', 'mradio');
+/*vot*/		showsetting('db_export_usehex', 'usehex', 0, 'radio');
 		if(function_exists('gzcompress')) {
 			showsetting('db_export_usezip', array('usezip', array(
 				array('1', $lang['db_export_zip_1']),
@@ -1226,4 +1227,3 @@ function slowcheck($type1, $type2) {
 	return FALSE;
 }
 
-?>

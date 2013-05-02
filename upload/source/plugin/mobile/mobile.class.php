@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.class.php 32489 2013-01-29 03:57:16Z monkey $
+ *      $Id: mobile.class.php 32939 2013-03-25 10:18:16Z monkey $
  */
 
 define("MOBILE_PLUGIN_VERSION", "2");
@@ -15,8 +15,26 @@ class mobile_core {
 		global $_G;
 		ob_end_clean();
 		function_exists('ob_gzhandler') ? ob_start('ob_gzhandler') : ob_start();
+		$result = mobile_core::format($result);
 		echo mobile_core::json($result);
 		exit;
+	}
+
+	function format($result) {
+		switch (gettype($result)) {
+			case 'array':
+				foreach($result as $_k => $_v) {
+					$result[$_k] = mobile_core::format($_v);
+				}
+				break;
+			case 'boolean':
+			case 'integer':
+			case 'double':
+			case 'float':
+				$result = (string)$result;
+				break;
+		}
+		return $result;
 	}
 
 	function json($encode) {
@@ -125,6 +143,7 @@ class base_plugin_mobile {
 		if(!empty($_GET['ppp'])) {
 			$_G['ppp'] = intval($_GET['ppp']);
 		}
+		$_G['pluginrunlist'] = array('mobile', 'qqconnect');
 		$_G['siteurl'] = preg_replace('/api\/mobile\/$/', '', $_G['siteurl']);
 		$_G['setting']['msgforward'] = '';
 		$_G['setting']['cacheindexlife'] = $_G['setting']['cachethreadlife'] = false;

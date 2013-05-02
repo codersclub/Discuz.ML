@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_member.php 32645 2013-02-27 09:09:41Z zhengqingpeng $
+ *      $Id: class_member.php 32975 2013-04-01 02:41:31Z liulanbo $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -275,6 +275,9 @@ class register_ctl {
 					showmessage('register_disable_activation');
 				}
 			} elseif(!$this->setting['regstatus']) {
+				if($this->setting['regconnect']) {
+					dheader('location:connect.php?mod=login&op=init&referer=forum.php&statfrom=login_simple');
+				}
 				showmessage(!$this->setting['regclosemessage'] ? 'register_disable' : str_replace(array("\r", "\n"), '', $this->setting['regclosemessage']));
 			}
 		}
@@ -428,7 +431,7 @@ class register_ctl {
 				}
 				$sendurl = false;
 			}
-			if($sendurl || !$_G['setting']['forgeemail']) {
+			if(!$activationauth && ($sendurl || !$_G['setting']['forgeemail'])) {
 				checkemail($_GET['email']);
 			}
 			if($sendurl) {

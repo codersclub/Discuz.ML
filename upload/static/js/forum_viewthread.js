@@ -2,7 +2,8 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum_viewthread.js 32663 2013-02-28 06:57:30Z monkey $
+	$Id: forum_viewthread.js 33083 2013-04-18 12:08:03Z zhengqingpeng $
+	Modified by Valery Votintsev
 */
 
 var replyreload = '', attachimgST = new Array(), zoomgroup = new Array(), zoomgroupinit = new Array();
@@ -70,10 +71,10 @@ function attachimglstshow(pid, islazy, fid, showexif) {
 					continue;
 				}
 				if(fid) {
-					imagelist += '<div id="pattimg_' + aimgcount[pid][i] + '_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c"><a href="forum.php?mod=ajax&action=setthreadcover&aid=' + aimgcount[pid][i] + '&fid=' + fid + '" class="xi2" onclick="showWindow(\'setcover' + aimgcount[pid][i] + '\', this.href)">设为封面</a></div></div>';
+/*vot*/					imagelist += '<div id="pattimg_' + aimgcount[pid][i] + '_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c"><a href="forum.php?mod=ajax&action=setthreadcover&aid=' + aimgcount[pid][i] + '&fid=' + fid + '" class="xi2" onclick="showWindow(\'setcover' + aimgcount[pid][i] + '\', this.href)">' + lng['set_cover'] + '</a></div></div>';
 				}
 				imagelist += '<div class="pattimg">' +
-					'<a id="pattimg_' + aimgcount[pid][i] + '" class="pattimg_zoom" href="javascript:;"' + s + ' onclick="zoom($(\'aimg_' + aimgcount[pid][i] + '\'), attachimggetsrc(\'aimg_' + aimgcount[pid][i] + '\'), 0, 0, ' + (parseInt(showexif) ? 1 : 0) + ')" title="点击放大">点击放大</a>' +
+/*vot*/					'<a id="pattimg_' + aimgcount[pid][i] + '" class="pattimg_zoom" href="javascript:;"' + s + ' onclick="zoom($(\'aimg_' + aimgcount[pid][i] + '\'), attachimggetsrc(\'aimg_' + aimgcount[pid][i] + '\'), 0, 0, ' + (parseInt(showexif) ? 1 : 0) + ')" title="'+lng['click_to_enlarge']+'">' + lng['click_to_enlarge'] + '</a>' +
 					'<img ' + (islazy ? 'file' : 'src') + '="forum.php?mod=image&aid=' + aimgcount[pid][i] + '&size=100x100&key=' + imagelistkey + '&atid=' + tid + '" width="100" height="100" /></div>';
 			}
 			if($('imagelistthumb_' + pid)) {
@@ -169,7 +170,7 @@ function parsetag(pid) {
 }
 
 function setanswer(pid, from){
-	if(confirm('您确认要把该回复选为“最佳答案”吗？')){
+/*vot*/	if(confirm(lng['best_answer_sure'])){
 		if(BROWSER.ie) {
 			doane(event);
 		}
@@ -242,7 +243,7 @@ function succeedhandle_fastpost(locationhref, message, param) {
 		$('fastpostreturn').className = '';
 	} else {
 		if(!message) {
-			message = '本版回帖需要审核，您的帖子将在通过审核后显示';
+/*vot*/			message = lng['premoderated'];
 		}
 		$('post_new').style.display = $('fastpostmessage').value = $('fastpostreturn').className = '';
 		$('fastpostreturn').innerHTML = message;
@@ -375,17 +376,17 @@ function toggleRatelogCollapse(tarId, ctrlObj) {
 	if($(tarId).className == 'rate') {
 		$(tarId).className = 'rate rate_collapse';
 		setcookie('ratecollapse', 1, 2592000);
-		ctrlObj.innerHTML = '展开';
+/*vot*/		ctrlObj.innerHTML = lng['expand'];
 	} else {
 		$(tarId).className = 'rate';
 		setcookie('ratecollapse', 0, -2592000);
-		ctrlObj.innerHTML = '收起';
+/*vot*/		ctrlObj.innerHTML = lng['collapse'];
 	}
 }
 
 function copyThreadUrl(obj, bbname) {
 	bbname = bbname || SITEURL;
-	setCopy($('thread_subject').innerHTML.replace(/&amp;/g, '&') + '\n' + obj.href + '\n' + '(出处:'+bbname+')' + '\n', '帖子地址已经复制到剪贴板');
+/*vot*/	setCopy($('thread_subject').innerHTML.replace(/&amp;/g, '&') + '\n' + obj.href + '\n' + '('+lng['source']+': '+bbname+')' + '\n', lng['thread_to_clipboard']);
 	return false;
 }
 
@@ -395,11 +396,11 @@ function replyNotice() {
 	var status = replynotice.getAttribute("status");
 	if(status == 1) {
 		replynotice.href = newurl + 'receive';
-		replynotice.innerHTML = '接收回复通知';
+/*vot*/		replynotice.innerHTML = lng['notify_on_reply'];
 		replynotice.setAttribute("status", 0);
 	} else {
 		replynotice.href = newurl + 'ignore';
-		replynotice.innerHTML = '取消回复通知';
+/*vot*/		replynotice.innerHTML = lng['notify_on_reply_cancel'];
 		replynotice.setAttribute("status", 1);
 	}
 }
@@ -412,13 +413,13 @@ function connect_share(connect_share_url, connect_uin) {
 		if(connect_uin) {
 			setTimeout(function () {
 				if(!connect_share_loaded) {
-					showDialog('分享服务连接失败，请稍后再试。', 'notice');
+/*vot*/					showDialog(lng['share_connection_failed'], 'notice');
 					$('append_parent').removeChild($('connect_load_js'));
 				}
 			}, 5000);
 			connect_load(connect_share_url);
 		} else {
-			showDialog($('connect_share_unbind').innerHTML, 'info', '请先绑定QQ账号');
+/*vot*/			showDialog($('connect_share_unbind').innerHTML, 'info', lng['qq_bind']);
 		}
 		return false;
 	}
@@ -441,7 +442,7 @@ function connect_show_dialog(title, html, type) {
 function connect_get_thread() {
 	connect_thread_info.subject = $('connect_thread_title').value;
 	if ($('postmessage_' + connect_thread_info.post_id)) {
-		connect_thread_info.html_content = preg_replace(["'"], ['%27'], encodeURIComponent(preg_replace(['本帖最后由 .*? 于 .*? 编辑','&nbsp;','<em onclick="copycode\\(\\$\\(\'code0\'\\)\\);">复制代码</em>'], ['',' ', ''], $('postmessage_' + connect_thread_info.post_id).innerHTML)));
+/*vot*/		connect_thread_info.html_content = preg_replace(["'"], ['%27'], encodeURIComponent(preg_replace([lng['quote_by'],'&nbsp;','<em onclick="copycode\\(\\$\\(\'code0\'\\)\\);">'+lng['copy_code']+'</em>'], ['',' ', ''], $('postmessage_' + connect_thread_info.post_id).innerHTML)));
 	}
 	return connect_thread_info;
 }
@@ -514,7 +515,10 @@ function display_blocked_post() {
 		}
 		display("post_"+blockedPIDs[i]);
 	}
+	postlistreply = $('postlistreply').innerHTML;
+	$('hiddenpoststip').parentNode.removeChild($('postlistreply'));
 	$('hiddenpoststip').parentNode.removeChild($('hiddenpoststip'));
+	$('hiddenposts').innerHTML+='<div id="postlistreply" class="pl">'+postlistreply+'</div>';
 }
 
 function show_threadpage(pid, current, maxpage, ispreview) {
@@ -539,9 +543,9 @@ function show_threadpage(pid, current, maxpage, ispreview) {
 		s += '<a href="javascript:;" onclick="' + clickvalue(maxpage)+ '">... ' + maxpage + '</a>';
 	}
 	if(current < maxpage) {
-		s += '<a href="javascript:;" onclick="' + clickvalue(current + 1) + '" class="nxt">下一页</a>';
+/*vot*/		s += '<a href="javascript:;" onclick="' + clickvalue(current + 1) + '" class="nxt">' + lng['next_page'] + '</a>';
 	}
-	s += '<a href="javascript:;" onclick="' + clickvalue('all') + '">查看所有</a>';
+/*vot*/	s += '<a href="javascript:;" onclick="' + clickvalue('all') + '">' + lng['view_all'] + '</a>';
 	s += '</div></div>';
 	$('threadpage').innerHTML = s;
 }
@@ -549,7 +553,7 @@ function show_threadpage(pid, current, maxpage, ispreview) {
 var show_threadindex_data = '';
 function show_threadindex(pid, ispreview) {
 	if(!show_threadindex_data) {
-		var s = '<div class="tindex"><h3>目录</h3><ul>';
+/*vot*/		var s = '<div class="tindex"><h3>' + lng['index'] + '</h3><ul>';
 		for(i in $('threadindex').childNodes) {
 			o = $('threadindex').childNodes[i];
 			if(o.tagName == 'A') {
@@ -724,7 +728,14 @@ function autozoom(w, h, s) {
 	this.autozoomin();
 }
 
-function readmode(title, msg) {
+function readmode(title, pid) {
+
+	var imagelist = '';
+	for(i = 0;i < aimgcount[pid].length;i++) {
+		var src = $('aimg_'+aimgcount[pid][i]).getAttribute('file');
+		imagelist += '<div class="mbn"><img src="' + src + '" width="600" /></div>';
+	}
+	msg = $('postmessage_'+pid).innerHTML+imagelist;
 	msg = '<div style="width:800px;max-height:500px; overflow-y:auto; padding: 10px;" class="pcb">'+msg+'</div>';
 	showDialog(msg, 'info', title, null, 1);
 	var coverObj = $('fwin_dialog_cover');

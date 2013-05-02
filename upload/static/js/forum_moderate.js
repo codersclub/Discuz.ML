@@ -3,6 +3,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: forum_moderate.js 26484 2011-12-14 02:08:03Z svn_project_zhangjie $
+	Modified by Valery Votintsev
 */
 
 function modaction(action, pid, extra, mod) {
@@ -24,7 +25,7 @@ function modaction(action, pid, extra, mod) {
 		var checked = 1;
 	}
 	if(!checked) {
-		alert('请选择需要操作的帖子');
+/*vot*/		alert(lng['choose_tread']);
 	} else {
 		$('modactions').action = mod + '&action='+ action +'&fid=' + fid + '&tid=' + tid + '&handlekey=mods&infloat=yes&nopost=yes' + (!pid ? '' : '&topiclist[]=' + pid) + extra + '&r' + Math.random();
 		showWindow('mods', 'modactions', 'post');
@@ -120,7 +121,7 @@ function tmodthreads(optgroup, operation) {
 		}
 	}
 	if(!checked) {
-		alert('请选择需要操作的帖子');
+/*vot*/		alert(lng['choose_tread']);
 	} else {
 		$('moderate').optgroup.value = optgroup;
 		$('moderate').operation.value = operation;

@@ -12,7 +12,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[qqconnect/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.17]]></item>
+			<item id="version"><![CDATA[1.15]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[connect]]></item>
@@ -64,7 +64,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3]]></item>
+		<item id="version"><![CDATA[X2.5]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
 		<item id="language">
@@ -134,7 +134,6 @@
 				<item id="connect_feed_published_thread"><![CDATA[發表了《{subject}》︰]]></item>
 				<item id="connect_feed_published_post"><![CDATA[參與了《{subject}》的討論︰]]></item>
 				<item id="connect_spacecp_share_a_post"><![CDATA[分享一個好帖#{bbname}#《{subject}》︰{message}]]></item>
-				<item id="connect_spacecp_share_qq_default"><![CDATA[看看这个吧，还不错哦，也许你会喜欢^_^]]></item>
 				<item id="connect_post_sync_method"><![CDATA[將此回復同步到]]></item>
 			</item>
 			<item id="templatelang">
@@ -235,7 +234,6 @@
 				<item id="connect_post_sync_not_bind_desc"><![CDATA[馬上綁定QQ賬號，您將可以發表主題時同步到QQ空間和騰訊微博，第一時間和大家分享您在論壇中的新鮮事兒。]]></item>
 				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ空間]]></item>
 				<item id="connect_viewthread_share_to_t"><![CDATA[騰訊微博]]></item>
-				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ好友和群]]></item>
 				<item id="connect_viewthread_share_to_pengyou"><![CDATA[騰訊朋友]]></item>
 				<item id="connect_createpassword"><![CDATA[<b>創建密碼</b>]]></item>
 				<item id="connect_uin_limit"><![CDATA[您的QQ帳號在本站注冊的帳號數量達到上限，請綁定已有帳號，或<a href="{$change_qq_url}">更換其他QQ賬號</a>]]></item>

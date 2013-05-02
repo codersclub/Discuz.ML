@@ -312,6 +312,7 @@ if(!submitcheck('editsubmit')) {
 
 	if(empty($_GET['delete'])) {
 
+/*vot*/		$subject=dstripslashes($subject);
 
 		if($isfirstpost) {
 

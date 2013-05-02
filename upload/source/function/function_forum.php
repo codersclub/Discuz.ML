@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_forum.php 32620 2013-02-27 02:03:46Z zhengqingpeng $
+ *      $Id: function_forum.php 32885 2013-03-20 03:34:44Z liulanbo $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -571,6 +571,9 @@ function loadforum($fid = null, $tid = null) {
 	$_G['forum'] = &$forum;
 	$_G['current_grouplevel'] = &$grouplevel;
 
+	if(empty($_G['uid'])) {
+		$_G['group']['allowpostactivity'] = $_G['group']['allowpostpoll'] = $_G['group']['allowvote'] = $_G['group']['allowpostreward'] = $_G['group']['allowposttrade'] = $_G['group']['allowpostdebate'] = $_G['group']['allowpostrushreply'] = 0;
+	}
 	if(!empty($_G['forum']['widthauto'])) {
 		$_G['widthauto'] = $_G['forum']['widthauto'];
 	}
