@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_msg.php 32011 2012-10-31 02:20:10Z monkey $
+ *      $Id: lang_admincp_msg.php 32814 2013-03-13 10:09:22Z zhangguosheng $
  *
  *      This file is automatically generate
  */
@@ -629,6 +629,11 @@ $lang = array (
 
   'cloudaddons_check_url_fopen_error' => '您的服务器无法访问应用中心，这将会导致应用无法安装。请联系您的服务商或者网站技术人员，确保您的服务器能够正常访问 addon.discuz.com 或 addon1.discuz.com',
   'cloudaddons_check_gzuncompress_error' => '您的服务器不支持 Zlib，这将会导致应用无法安装。请联系您的服务商或者网站技术人员。',
-  'cloudaddons_genuine_message' => '对不起，您安装的不是正版应用，安装程序无法继续执行<br /><br /><a href="admin.php?action=cloudaddons&id={addonid}">点击这里安装正版应用</a>',);
+  'cloudaddons_genuine_message' => '对不起，您安装的不是正版应用，安装程序无法继续执行<br /><br /><a href="admin.php?action=cloudaddons&id={addonid}">点击这里安装正版应用</a>',
+
+/*!*/  'admincp_makehtml_cleanhtml_error' => '对不起，开启生成HTML静态文件时，不能清理HTML文件。',
+/*!*/  'admincp_makehtml_cleanhtml_succeed' => '清理HTML文件成功。',
+/*!*/  'admincp_makehtml_cleanhtml_choose_item' => '对不起，请选择需要清理HTML文件。',
+);
 
 ?>

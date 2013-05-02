@@ -4,7 +4,7 @@
  *	  [Discuz!] (C)2001-2099 Comsenz Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
- *	  $Id: lang_admincp_cloud.php 32637 2013-02-27 07:27:20Z monkey $
+ *	  $Id: lang_admincp_cloud.php 32804 2013-03-13 06:18:00Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -305,6 +305,8 @@ $extend_lang = array
 	'qqgroup_setting_tips' => '<li>主题查看页的“推送到QQ群”功能，可将帖子即时推送到QQ群聊天框。</li><li><img src="static/image/admincp/cloud/feed.png" align="left"></li>',
 
 	'security_member_list' => '违规用户',
+/*!*/	'security_member_tips' => '<li>违规用户来自于防水墙识别为垃圾帖的发帖用户，不包含白名单用户。</li><li>“忽略本次”操作将从违规列表中忽略指定用户，如果用户再次违规仍将会被加入违规用户列表。</li>',
+/*!*/	'security_member_ignore_this' => '忽略本次',
 	'security_thread_list' => '违规主题',
 	'security_post_list' => '违规回帖',
 	'security_members_name' => '用户名',
