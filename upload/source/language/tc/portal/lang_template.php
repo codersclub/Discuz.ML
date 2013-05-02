@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 28113 2012-02-22 09:25:55Z svn_project_zhangjie $
+ *      $Id: lang_template.php 33048 2013-04-12 08:50:27Z zhangjie $
  *
  *      Modified by by Valery Votintsev
  */
@@ -66,6 +66,7 @@ $lang = array (
   'article_validate_category' => '請選擇系統分類',
   'article_validate_has_added' => '該文章已經添加過了',
   'article_validate_noexist' => '沒有找到指定的文章',
+  'article_html_existed' => 'HTML靜態文件名重名',
   'article_validate_title' => '標題長度(1~80字符)不符合要求',
   'grab' => '獲取',
   'ignore' => '忽略',
@@ -310,6 +311,10 @@ $lang = array (
   'view_publisher' => '發佈者',
   'view_related' => '相關閱讀',
   'view_views' => '查看',
+  'pre_article' => '上一篇：',
+  'next_article' => '下一篇：',
+  'display_order' => '顯示位置',
+  'filename' => '文件名',
 
 // Added by Valery Votintsev
 	'select_all'	=> '全選',//'Select All',

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 28113 2012-02-22 09:25:55Z svn_project_zhangjie $
+ *      $Id: lang_template.php 32915 2013-03-22 08:25:34Z zhangjie $
  *
  *      This file is automatically generate
  */
@@ -14,6 +14,7 @@ $lang = array (
   'favorite' => '收藏',
   'group_admin' => '管理{$_G[setting][navs][3][navname]}',
   'group_create' => '創建{$_G[setting][navs][3][navname]}',
+  'group_create_buildcredits' => '創建{$_G[setting][navs][3][navname]}需要消耗',
   'group_discuss_area' => '討論區',
   'group_has_joined' => '已加入該{$_G[setting][navs][3][navname]}，等待群主審核中...',
   'group_join_group' => '加入{$_G[setting][navs][3][navname]}',
@@ -204,6 +205,14 @@ $lang = array (
   'orderby_default' => '默認排序',
   'stats_main_threads_count' => '主題數',
   'threads' => '主題',
+  'reply' => '回復',
+  'group_live_newreply_refresh' => '有新的發言了，點擊刷新',
+  'group_live_fastreply_notice' => '#在這裡快速回復#',
+  'group_live_post' => '發表',
+  'group_live_nocontent_error' => '抱歉，您尚未輸入內容',
+  'login_to_reply' => '您需要登錄後才可以回帖',
+  'no_permission_to_post' => '您現在無權發帖。',
+  'click_to_show_reason' => '點擊查看原因',
 );
 
 ?>

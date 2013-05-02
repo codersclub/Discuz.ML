@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_message.php 31615 2012-09-14 03:23:25Z zhangjie $
+ *      $Id: lang_message.php 33048 2013-04-12 08:50:27Z zhangjie $
  *
  *	Modified by Valery Votintsev, codersclub.org
  */
@@ -88,6 +88,7 @@ $lang = array (
   'search_id_invalid' => '抱歉，您指定的搜索不存在或已過期',
   'search_ctrl' => '抱歉，您在 {searchctrl} 秒內只能進行一次搜索',
   'search_toomany' => '抱歉，站點設置每分鐘系統最多響應搜索請求 {maxspm} 次，請稍候再試',
+  'search_closed' => '搜索功能已關閉',
   'no_privilege_myop' => '抱歉，您目前沒有權限使用此應用，<a href="home.php?mod=spacecp&ac=usergroup" target="_blank">點擊這裡查看權限</a>',
   'collection_permission_deny' => '抱歉，該淘專輯不存在或沒有相應的權限',
   'collection_edit_checkentire' => '請將內容填寫完整',
@@ -145,7 +146,6 @@ $lang = array (
   'search_forum_invalid' => '抱歉，您尚未指定搜索論壇的範圍',
   'search_invalid' => '抱歉，您尚未指定要搜索的關鍵字或用戶名',
   'search_redirect' => '搜索成功，現在將轉入結果頁面',
-  'search_closed' => '搜索功能已關閉',
   'to_view_the_photo_does_not_exist' => '抱歉，您要查看的相冊不存在或正在審核',
   'ban_view_other_thead' => '抱歉，禁止查看其他用戶的主題和帖子',
   'album_does_not_exist' => '抱歉，指定的相冊不存在',
@@ -219,6 +219,7 @@ $lang = array (
   'login_succeed' => '歡迎您回來，{usergroup} {username}，現在將轉入登錄前頁面',
   'login_strike' => '密碼錯誤次數過多，請 15 分鐘後重新登錄',
   'logout_succeed' => '您已退出站點，現在將以遊客身份轉入退出前頁面，請稍候…… <br /><a href="member.php?mod=clearcookies&formhash={formhash}">[ 清除痕跡 ]</a> {ucsynlogout} ',
+  'location_logout_succeed_mobile' => '您已退出站點，現在將以遊客身份轉入退出前頁面，請稍候…… <br /><a href="member.php?mod=clearcookies&formhash={formhash}">[ 清除痕跡 ]</a>',
   'register_activation_invalid' => '抱歉，激活失敗，請重新登錄驗證需要激活的用戶',
   'profile_username_tooshort' => '抱歉，您輸入的用戶名小於 3 個字符，請輸入一個較長的用戶名',
   'profile_username_toolong' => '抱歉，您的用戶名超過 15 個字符，請輸入一個較短的用戶名',
@@ -260,7 +261,9 @@ $lang = array (
   'attachement_payto_attach' => '附件需要付費，請您付費後下載',
 
   'forum_passwd_incorrect' => '抱歉，您輸入的密碼不正確，不能訪問這個版塊',
-  'forum_passwd_correct' => '密碼驗證成功 ',
+  'forum_passwd_correct' => '密碼驗證成功，請繼續可以訪問此版塊',
+  'forum_pay_incorrect' => '抱歉，此版塊需要支付 {paycredits} {credits}才能進入此版塊，您的{title}不足',
+  'forum_pay_correct' => '支付成功，請繼續可以訪問此版塊',
 
   'group_rediret_now' => '現在轉入{_G/setting/navs/3/navname}首頁',
   'group_verify' => '{_G/setting/navs/3/navname}正在審核中',
@@ -271,6 +274,7 @@ $lang = array (
   'group_exit_founder' => '抱歉，{_G/setting/navs/3/navname}創始人不能退出{_G/setting/navs/3/navname}',
   'group_exit_succeed' => '已經成功退出{_G/setting/navs/3/navname}',
   'group_create_usergroup_failed' => '抱歉，您所在的用戶組不能建立{_G/setting/navs/3/navname}',
+  'group_create_usergroup_credits_failed' => '抱歉，您的積分不足，創建{_G/setting/navs/3/navname}需要消耗 {buildgroupcredits}',
   'group_create_max_failed' => '抱歉，您的建立{_G/setting/navs/3/navname}數量已到達設置上限，不能建立新的{_G/setting/navs/3/navname}',
   'group_category_error' => '抱歉，選擇{_G/setting/navs/3/navname}分類錯誤',
   'group_create_mod_succeed' => '創建{_G/setting/navs/3/navname}的申請已經提交，我們會盡快進行審核',
@@ -365,8 +369,8 @@ $lang = array (
   'recommend_self_disallow' => '評價指數 <strong id="recommentc" class="xi1 xs2">{recommendc}</strong><br />您不能評價自己的帖子',
   'recommend_duplicate' => '評價指數 <strong id="recommentc" class="xi1 xs2">{recommendc}</strong><br />您已評價過本主題',
   'recommend_outoftimes' => '評價指數 <strong id="recommentc" class="xi1 xs2">{recommendc}</strong><br />今日評價機會已用完',
-  'recommend_daycount_succed' => '評價指數 <strong id="recommentc" class="xi1 xs2">{recommendc}</strong> <span id="recommentv" class="xg2 xs0">{recommendv}</span><br />您今天還能評價 {daycount} 次',
-  'recommend_succed' => '評價指數 <strong id="recommentc" class="xi1 xs2">{recommendc}</strong> <span id="recommentv" class="xg2 xs0">{recommendv}</span>',
+  'recommend_daycount_succeed' => '評價指數 <strong id="recommentc" class="xi1 xs2">{recommendc}</strong> <span id="recommentv" class="xg2 xs0">{recommendv}</span><br />您今天還能評價 {daycount} 次',
+  'recommend_succeed' => '評價指數 <strong id="recommentc" class="xi1 xs2">{recommendc}</strong> <span id="recommentv" class="xg2 xs0">{recommendv}</span>',
   'thread_poll_voter_isnull' => '暫時還沒有人參與投票，不能添加標籤。',
   'thread_activityapply_isnull' => '暫時還沒有人參加活動，不能添加標籤。',
   'forum_usertag_set_continue' => '共 {count} 個用戶，正在設置 {limit} 至 {next} 個用戶，請稍候 ',
@@ -464,6 +468,9 @@ $lang = array (
 
   'faq_content_empty' => '抱歉，指定的幫助項目不存在',
   'faq_keywords_empty' => '抱歉，您尚未指定要搜索的關鍵字',
+
+  'login_reward_succeed' => '簽到成功!',
+  'login_reward_error' => '抱歉，您今天已經簽過到了哦！',
 
   'imagepreview_errorcode_0' => '圖片不符合處理條件，無法處理',
   'imagepreview_errorcode_-1' => '無效的圖片，無法處理',
@@ -572,6 +579,7 @@ $lang = array (
   'recommend_expiration_invalid' => '時間期限格式無效，正確格式為「yyyy-mm-dd hh:mm」',
 
   'members_edit_succeed' => '用戶信息成功更新，請繼續操作',
+  'modcp_member_ban_illegal' => '您不能直接禁止該用戶',
   'modcp_member_ban_succeed' => '用戶資料成功更新',
 
   'modcp_noaction' => '您沒有選擇執行任何操作',
@@ -650,7 +658,7 @@ $lang = array (
   'post_reply_succeed' => '非常感謝，回復發佈成功，現在將轉入主題頁，請稍候……<br /><a href="forum.php?mod=forumdisplay&fid={fid}">[ 點擊這裡轉入主題列表 ]</a>',
   'trade_add_succeed' => '非常感謝，您的商品已經發佈，現在將轉入主題頁，請稍候……<br /><a href="forum.php?mod=post&action=reply&fid={fid}&tid={tid}&addtrade=yes">[ 繼續添加商品請點擊這裡 ]</a><br /><a href="forum.php?mod=forumdisplay&fid={fid}">[ 點擊這裡轉入主題列表 ]</a>',
 
-  'postperm_login_nopermission_mobile' => '您尚未<a href="member.php?mod=logging&action=login&referer={referer}&mobile=yes">登錄</a>，沒有權限在該版塊發帖',
+  'postperm_login_nopermission_mobile' => '您尚未<a href="member.php?mod=logging&action=login&referer={referer}">登錄</a>，沒有權限在該版塊發帖',
   'post_sort_isnull' => '抱歉，您尚未選擇主題的分類信息',
   'post_poll_inputmore' => '抱歉，您至少應當填寫 2 個投票選項',
   'poll_maxchoices_expiration_invalid' => '抱歉，最多可選項數與有效記票天數只接受數字',
@@ -704,6 +712,7 @@ $lang = array (
   'memcp_credits_card_msg_cleardateline_early' => '抱歉，此卡密已過期',
   'memcp_credits_card_msg_succeed' => '<span class="xi1">{extcreditsval}{extcreditstitle}</span>，充值成功 ',
   'memcp_credits_addfunds_msg_incorrect' => '抱歉，您尚未輸入需要充值的數量',
+  'memcp_credits_addfunds_msg_notype' => '抱歉，您尚未選擇支付方式',
   'credits_addfunds_amount_invalid' => '您單次購買的積分數量超出最大值 {ec_maxcredits} 或最小值 {ec_mincredits} 的限制',
   'memcp_credits_transfer_msg_self_incorrect' => '您無需給自己轉賬',
   'credits_transfer_balance_insufficient' => '抱歉，轉賬後 {title}不足 {minbalance}',
@@ -1049,6 +1058,14 @@ $lang = array (
   'magics_credit_message' => '恭喜您獲得 {credit}',
 
   'magics_thunder_message' => '{magicname} 發佈成功 ',
+
+  'topicadmin_live_noset_error' => '該主題並沒有設置為直播帖',
+  'no_privilege_livethread' => '抱歉，您沒有權限設置直播帖',
+  'portal_category_has_no_folder_name' => '抱歉，文章所屬的頻道沒有設置目錄名稱',
+  'noreply_replynum_error' => '對不起，你已經達到本主題的回帖上限。',
+  'author_not_uploadpic' => '樓主暫時沒有上傳圖片',
+  'noreply_yourself_error' => '您不能對自己的回帖進行投票',
+  'noreply_voted_error' => '您已經對此回帖投過票了',
 
 // Added by Valery Votintsev
 	'timeout_or_data_error'	=> '操作超時或者數據來源錯誤',//'Operation timeout or data source error',

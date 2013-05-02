@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 32006 2012-10-30 09:51:28Z zhengqingpeng $
+ *      $Id: lang_template.php 33048 2013-04-12 08:50:27Z zhangjie $
  *
  *      Modified by Valery Votintsev
  */
@@ -183,12 +183,12 @@ $lang = array (
   'filter_shadow' => '陰影',
   'filter_splash' => '噴濺',
   'filter_watercolor' => '水彩',
-  'no_camera_message' => '在您的機器上沒有檢測到攝像頭或者您的攝像頭設備正在使用中',
+  'no_camera_message' => '在您的機器上沒有檢測到攝象頭或者您的攝象頭設備正在使用中',
   'no_draw_message' => '沒有任何塗鴉動作，無法保存',
   'pagedown' => '下一頁',
   'pageup' => '上一頁',
   'redraw' => '重畫',
-  'refuse_camera_message' => '在您的機器上檢測到攝像頭但您拒絕了攝像頭的使用',
+  'refuse_camera_message' => '在您的機器上檢測到攝象頭但您拒絕了攝象頭的使用',
   'reload' => '重載',
   'save' => '保存',
   'save_pic_message_1' => '張大頭貼,正在保存第',
@@ -1537,6 +1537,8 @@ $lang = array (
   'video_certification_audit' => '視頻認證審核',
   'connect_fill_profile_to_view' => '<a href="member.php?mod=connect" target="_blank">完善帳號信息</a> <a href="member.php?mod=connect&ac=bind" target="_blank">綁定已有帳號</a>',
   'connect_fill_profile_to_comment' => '您需要<a href="member.php?mod=connect" class="xi2">完善帳號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有帳號</a> 後才可以留言',
+  'save_to_album' => '保存到相冊',
+  'usergroup_expired' => '您當前的用戶組已經到期，請選擇繼續續費還是要切換到其他用戶組',
 
 //---------------------------------------------------------------
 // Added by Valery Votintsev

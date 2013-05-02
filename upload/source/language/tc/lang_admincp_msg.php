@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_msg.php 32011 2012-10-31 02:20:10Z monkey $
+ *      $Id: lang_admincp_msg.php 32814 2013-03-13 10:09:22Z zhangguosheng $
  *
  *      This file is automatically generate
  */
@@ -109,7 +109,7 @@ $lang = array (
   'forums_threadtypes_duplicate' => '新增主題分類與現有重複',
   'threadtype_import_succeed' => '導入成功',
   'usergroups_nonexistence' => '指定的用戶組不存在',
-  'usergroups_copy_source_invalid' => '您沒有選擇要複製的源用戶組',
+  'usergroups_copy_source_invalid' => '您沒有選擇源用戶組',
   'members_verify_succeed' => '資料審核成功 ',
   'members_verify_update_succeed' => '認證設置更新成功 ',
   'action_noaccess' => '抱歉，您無權使用此功能',
@@ -267,6 +267,9 @@ $lang = array (
   'founder_perm_member_duplicate' => '用戶 {name} 已經存在更改',
   'founder_perm_gperm_update_succeed' => '管理團隊權限資料更新成功 ',
   'founder_perm_notifyusers_succeed' => '管理通知接收者設置成功 ',
+
+  'founder_optimizer_setting_succeed' => '設置項優化成功 ',
+  'founder_optimizer_setting_error' => '優化中出現問題 ',
 
   'group_status_off' => '請先開啟群組功能，現在轉到群組設置頁',
   'group_update_succeed' => '群組分類設置更新成功 ',
@@ -580,9 +583,10 @@ $lang = array (
   'trade_fee_error' => '交易設置有誤',
   'reward_credits_error' => '懸賞交易積分設置有誤',
   'usergroups_edit_succeed' => '用戶組權限設置更新成功 ',
-  'usergroups_copy_target_invalid' => '您沒有選擇要複製的目標用戶組',
+  'usergroups_copy_target_invalid' => '您沒有選擇目標用戶組',
   'usergroups_copy_options_invalid' => '您沒有選擇要複製的項目',
   'usergroups_copy_succeed' => '用戶組設置複製成功 ',
+  'usergroups_merge_succeed' => '用戶組合併成功 ',
 
   'usertag_delete_succeed' => '刪除標籤成功',
   'usertag_merge_succeed' => '標籤合併成功',
@@ -625,6 +629,11 @@ $lang = array (
 
   'cloudaddons_check_url_fopen_error' => '您的服務器無法訪問應用中心，這將會導致應用無法安裝。請聯繫您的服務商或者網站技術人員，確保您的服務器能夠正常訪問 addon.discuz.com 或 addon1.discuz.com',
   'cloudaddons_check_gzuncompress_error' => '您的服務器不支持 Zlib，這將會導致應用無法安裝。請聯繫您的服務商或者網站技術人員。',
-  'cloudaddons_genuine_message' => '對不起，您安裝的不是正版應用，安裝程序無法繼續執行<br /><br /><a href="admin.php?action=cloudaddons&id={addonid}">點擊這裡安裝正版應用</a>',);
+  'cloudaddons_genuine_message' => '對不起，您安裝的不是正版應用，安裝程序無法繼續執行<br /><br /><a href="admin.php?action=cloudaddons&id={addonid}">點擊這裡安裝正版應用</a>',
+
+  'admincp_makehtml_cleanhtml_error' => '對不起，開啟生成HTML靜態文件時，不能清理HTML文件。',
+  'admincp_makehtml_cleanhtml_succeed' => '清理HTML文件成功。',
+  'admincp_makehtml_cleanhtml_choose_item' => '對不起，請選擇需要清理HTML文件。',
+);
 
 ?>

@@ -4,7 +4,7 @@
  *	  [Discuz!] (C)2001-2099 Comsenz Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
- *	  $Id: lang_admincp_cloud.php 30537 2012-06-01 07:11:25Z songlixin $
+ *	  $Id: lang_admincp_cloud.php 32804 2013-03-13 06:18:00Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -305,6 +305,8 @@ $extend_lang = array
 	'qqgroup_setting_tips' => '<li>主題查看頁的「推送到QQ群」功能，可將帖子即時推送到QQ群聊天框。</li><li><img src="static/image/admincp/cloud/feed.png" align="left"></li>',
 
 	'security_member_list' => '違規用戶',
+	'security_member_tips' => '<li>違規用戶來自於防水牆識別為垃圾帖的發帖用戶，不包含白名單用戶。</li><li>「忽略本次」操作將從違規列表中忽略指定用戶，如果用戶再次違規仍將會被加入違規用戶列表。</li>',
+	'security_member_ignore_this' => '忽略本次',
 	'security_thread_list' => '違規主題',
 	'security_post_list' => '違規回帖',
 	'security_members_name' => '用戶名',
@@ -359,14 +361,18 @@ $extend_lang = array
 	'security_thread_status' => '主題狀態',
 	'security_post_status' => '回帖狀態',
 	'security_thread_member' => '用戶狀態',
+	'security_thread_member_group' => '用戶組',
+	'security_cron_lastpost' => '更新版塊最後發表(防水牆相關)',
+	'security_cron_daily' => '防水牆每日優化',
 	'setting_update_succeed' => '當前設置更新成功',
+	'security_createtime' => '違規日期',
 
 	'search_menu_setting' => '設置',
 	'search_menu_service' => '功能配置',
 	'search_setting_allow_hot_topic' => '開啟熱門話題',
-	'search_setting_allow_forum_recommend' => '開啟板塊推薦詞',
+	'search_setting_allow_forum_recommend' => '開啟版塊推薦詞',
 	'search_setting_allow_thread_related' => '開啟主題相關帖',
-	'search_setting_allow_forum_related' => '開啟板塊相關帖',
+	'search_setting_allow_forum_related' => '開啟版塊相關帖',
 	'search_setting_allow_collection_related' => '開啟淘帖相關帖',
 );
 

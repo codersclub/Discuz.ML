@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_menu.php 29721 2012-04-26 07:01:08Z zhengqingpeng $
+ *      $Id: lang_admincp_menu.php 32130 2012-11-14 09:20:40Z zhengqingpeng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -63,12 +63,14 @@ $lang = array
 	'menu_setting_ranklist' => '排行榜設置',
 	'menu_setting_mobile' => '手機版訪問設置',
 	'menu_setting_tag' => '標籤管理',
+	'menu_setting_antitheft' => '防採集設置',
 
 	'menu_forums' => '版塊管理',
 	'menu_forums_merge' => '版塊合併',
 	'menu_forums_threadtypes' => '主題分類',
 	'menu_forums_infotypes' => '分類信息',
 	'menu_forums_infooption' => '分類信息選項',
+	'menu_grid' => '首頁四格',
 
 	'menu_members_add' => '添加用戶',
 	'menu_members_edit' => '用戶管理',
@@ -112,6 +114,7 @@ $lang = array
 	'menu_postcomment' => '帖子點評管理',
 	'menu_maint_doing' => '記錄管理',
 	'menu_maint_blog' => '日誌管理',
+	'menu_maint_blog_recycle_bin' => '日誌回收站',
 	'menu_maint_feed' => '動態管理',
 	'menu_maint_album' => '相冊管理',
 	'menu_maint_pic' => '圖片管理',
@@ -130,6 +133,7 @@ $lang = array
 
 	'menu_patch' => '安全中心',
 	'menu_upgrade' => '在線升級',
+	'menu_optimizer' => '優化大師',
 
 	'menu_addons' => '應用中心',
 	'menu_plugins' => '插件',
@@ -183,6 +187,7 @@ $lang = array
 	'menu_portalpermission' => '權限列表',
 	'menu_blockxml' => '第三方模塊',
 	'menu_topic' => '專題管理',
+	'menu_html' => 'HTML管理',
 	'menu_diytemplate' => '頁面管理',
 
 	'menu_group_setting' => '群組設置',

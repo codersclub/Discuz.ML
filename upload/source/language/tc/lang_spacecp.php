@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_spacecp.php 32425 2013-01-15 09:31:40Z liulanbo $
+ *      $Id: lang_spacecp.php 32426 2013-01-15 10:00:21Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -218,6 +218,7 @@ $lang = array(
 	'do_stat_friend' => '成為好友',
 	'do_stat_post_number' => '發帖量',
 	'do_stat_statistic' => '合併統計',
+	'logs_credit_update_INDEX' => array('TRC','RTC','RAC','MRC','BMC','TFR','RCV','CEC','ECU','SAC','BAC','PRC','RSC','STC','BTC','AFD','UGP','RPC','ACC','RCT','RCA','RCB','CDC','RGC','BGC','AGC','RKC','BME','RPR','RPZ','FCP','BGC'),
 	'logs_credit_update_TRC' => '任務獎勵',
 	'logs_credit_update_RTC' => '懸賞主題',
 	'logs_credit_update_RAC' => '最佳答案',
@@ -248,6 +249,9 @@ $lang = array(
 	'logs_credit_update_BME' => '購買勳章',
 	'logs_credit_update_RPR' => '後台積分獎懲',
 	'logs_credit_update_RPZ' => '後台積分獎懲清零',
+	'logs_credit_update_FCP' => '付費版塊',
+	'logs_credit_update_BGR' => '創建群組',
+	'buildgroup' => '查看已創建的群組',
 	'logs_credit_update_reward_clean' => '清零',
 	'logs_select_operation' => '請選擇操作類型',
 	'task_credit' => '任務獎勵積分',
@@ -273,6 +277,7 @@ $lang = array(
 	'buy_credit' => '對積分充值',
 	'buy_usergroup' => '購買擴展用戶組支出積分',
 	'buy_medal' => '購買勳章',
+	'buy_forum' => '購買付費版塊的訪問權限',
 	'report_credit' => '舉報功能中的獎懲',
 	'join' => '參與',
 	'activity_credit' => '活動扣除積分',

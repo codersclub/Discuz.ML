@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_searchindex.php 32012 2012-10-31 02:20:31Z chenmengshu $
+ *      $Id: lang_admincp_searchindex.php 33050 2013-04-12 08:55:03Z monkey $
  *
  *	This file is automatically generate
  */
@@ -36,6 +36,17 @@ $lang = array (
   array (
     'index' =>
     array (
+      '' => 'action=',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  3 =>
+  array (
+    'index' =>
+    array (
       '站點信息' => 'action=setting&operation=basic',
     ),
     'text' =>
@@ -43,7 +54,7 @@ $lang = array (
       0 => '站點信息',
     ),
   ),
-  3 =>
+  4 =>
   array (
     'index' =>
     array (
@@ -54,7 +65,7 @@ $lang = array (
       0 => '註冊與訪問控制',
     ),
   ),
-  4 =>
+  5 =>
   array (
     'index' =>
     array (
@@ -65,7 +76,7 @@ $lang = array (
       0 => '站點功能',
     ),
   ),
-  5 =>
+  6 =>
   array (
     'index' =>
     array (
@@ -76,7 +87,7 @@ $lang = array (
       0 => '性能優化',
     ),
   ),
-  6 =>
+  7 =>
   array (
     'index' =>
     array (
@@ -87,7 +98,7 @@ $lang = array (
       0 => 'SEO設置',
     ),
   ),
-  7 =>
+  8 =>
   array (
     'index' =>
     array (
@@ -98,7 +109,7 @@ $lang = array (
       0 => '域名設置',
     ),
   ),
-  8 =>
+  9 =>
   array (
     'index' =>
     array (
@@ -109,7 +120,7 @@ $lang = array (
       0 => '廣播設置',
     ),
   ),
-  9 =>
+  10 =>
   array (
     'index' =>
     array (
@@ -120,7 +131,7 @@ $lang = array (
       0 => '空間設置',
     ),
   ),
-  10 =>
+  11 =>
   array (
     'index' =>
     array (
@@ -131,7 +142,7 @@ $lang = array (
       0 => '用戶權限',
     ),
   ),
-  11 =>
+  12 =>
   array (
     'index' =>
     array (
@@ -142,7 +153,7 @@ $lang = array (
       0 => '積分設置',
     ),
   ),
-  12 =>
+  13 =>
   array (
     'index' =>
     array (
@@ -153,7 +164,7 @@ $lang = array (
       0 => '防灌水設置',
     ),
   ),
-  13 =>
+  14 =>
   array (
     'index' =>
     array (
@@ -164,7 +175,7 @@ $lang = array (
       0 => '時間設置',
     ),
   ),
-  14 =>
+  15 =>
   array (
     'index' =>
     array (
@@ -175,7 +186,7 @@ $lang = array (
       0 => '上傳設置',
     ),
   ),
-  15 =>
+  16 =>
   array (
     'index' =>
     array (
@@ -186,7 +197,7 @@ $lang = array (
       0 => '水印設置',
     ),
   ),
-  16 =>
+  17 =>
   array (
     'index' =>
     array (
@@ -197,7 +208,7 @@ $lang = array (
       0 => '附件類型尺寸',
     ),
   ),
-  17 =>
+  18 =>
   array (
     'index' =>
     array (
@@ -208,7 +219,7 @@ $lang = array (
       0 => '搜索設置',
     ),
   ),
-  18 =>
+  19 =>
   array (
     'index' =>
     array (
@@ -219,7 +230,7 @@ $lang = array (
       0 => '地區設置',
     ),
   ),
-  19 =>
+  20 =>
   array (
     'index' =>
     array (
@@ -230,7 +241,7 @@ $lang = array (
       0 => '排行榜設置',
     ),
   ),
-  20 =>
+  21 =>
   array (
     'index' =>
     array (
@@ -241,7 +252,18 @@ $lang = array (
       0 => '手機版訪問設置',
     ),
   ),
-  21 =>
+  22 =>
+  array (
+    'index' =>
+    array (
+      '防採集設置' => 'action=setting&operation=antitheft',
+    ),
+    'text' =>
+    array (
+      0 => '防採集設置',
+    ),
+  ),
+  23 =>
   array (
     'index' =>
     array (
@@ -252,7 +274,7 @@ $lang = array (
       0 => '導航設置',
     ),
   ),
-  22 =>
+  24 =>
   array (
     'index' =>
     array (
@@ -263,7 +285,7 @@ $lang = array (
       0 => '界面設置',
     ),
   ),
-  23 =>
+  25 =>
   array (
     'index' =>
     array (
@@ -274,7 +296,7 @@ $lang = array (
       0 => '風格管理',
     ),
   ),
-  24 =>
+  26 =>
   array (
     'index' =>
     array (
@@ -285,7 +307,7 @@ $lang = array (
       0 => '模板管理',
     ),
   ),
-  25 =>
+  27 =>
   array (
     'index' =>
     array (
@@ -296,7 +318,7 @@ $lang = array (
       0 => '表情管理',
     ),
   ),
-  26 =>
+  28 =>
   array (
     'index' =>
     array (
@@ -307,7 +329,7 @@ $lang = array (
       0 => '表態動作',
     ),
   ),
-  27 =>
+  29 =>
   array (
     'index' =>
     array (
@@ -318,7 +340,7 @@ $lang = array (
       0 => '主題鑒定',
     ),
   ),
-  28 =>
+  30 =>
   array (
     'index' =>
     array (
@@ -329,7 +351,7 @@ $lang = array (
       0 => '編輯器設置',
     ),
   ),
-  29 =>
+  31 =>
   array (
     'index' =>
     array (
@@ -340,7 +362,7 @@ $lang = array (
       0 => '在線列表圖標',
     ),
   ),
-  30 =>
+  32 =>
   array (
     'index' =>
     array (
@@ -351,7 +373,7 @@ $lang = array (
       0 => '內容審核',
     ),
   ),
-  31 =>
+  33 =>
   array (
     'index' =>
     array (
@@ -362,7 +384,7 @@ $lang = array (
       0 => '詞語過濾',
     ),
   ),
-  32 =>
+  34 =>
   array (
     'index' =>
     array (
@@ -373,7 +395,7 @@ $lang = array (
       0 => '用戶舉報',
     ),
   ),
-  33 =>
+  35 =>
   array (
     'index' =>
     array (
@@ -384,7 +406,7 @@ $lang = array (
       0 => '標籤管理',
     ),
   ),
-  34 =>
+  36 =>
   array (
     'index' =>
     array (
@@ -395,7 +417,7 @@ $lang = array (
       0 => '淘帖管理',
     ),
   ),
-  35 =>
+  37 =>
   array (
     'index' =>
     array (
@@ -406,7 +428,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  36 =>
+  38 =>
   array (
     'index' =>
     array (
@@ -417,7 +439,7 @@ $lang = array (
       0 => '論壇主題管理',
     ),
   ),
-  37 =>
+  39 =>
   array (
     'index' =>
     array (
@@ -428,7 +450,7 @@ $lang = array (
       0 => '論壇批量刪帖',
     ),
   ),
-  38 =>
+  40 =>
   array (
     'index' =>
     array (
@@ -439,29 +461,29 @@ $lang = array (
       0 => '論壇附件管理',
     ),
   ),
-  39 =>
-  array (
-    'index' =>
-    array (
-      '' => 'action=',
-    ),
-    'text' =>
-    array (
-      0 => NULL,
-    ),
-  ),
-  40 =>
-  array (
-    'index' =>
-    array (
-      '' => 'action=',
-    ),
-    'text' =>
-    array (
-      0 => NULL,
-    ),
-  ),
   41 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  42 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  43 =>
   array (
     'index' =>
     array (
@@ -472,7 +494,7 @@ $lang = array (
       0 => '群組主題管理',
     ),
   ),
-  42 =>
+  44 =>
   array (
     'index' =>
     array (
@@ -483,7 +505,7 @@ $lang = array (
       0 => '群組批量刪帖',
     ),
   ),
-  43 =>
+  45 =>
   array (
     'index' =>
     array (
@@ -494,29 +516,29 @@ $lang = array (
       0 => '群組附件管理',
     ),
   ),
-  44 =>
-  array (
-    'index' =>
-    array (
-      '' => 'action=',
-    ),
-    'text' =>
-    array (
-      0 => NULL,
-    ),
-  ),
-  45 =>
-  array (
-    'index' =>
-    array (
-      '' => 'action=',
-    ),
-    'text' =>
-    array (
-      0 => NULL,
-    ),
-  ),
   46 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  47 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  48 =>
   array (
     'index' =>
     array (
@@ -527,7 +549,7 @@ $lang = array (
       0 => '主題回收站',
     ),
   ),
-  47 =>
+  49 =>
   array (
     'index' =>
     array (
@@ -538,7 +560,7 @@ $lang = array (
       0 => '回帖回收站',
     ),
   ),
-  48 =>
+  50 =>
   array (
     'index' =>
     array (
@@ -549,7 +571,7 @@ $lang = array (
       0 => '版塊/群組置頂',
     ),
   ),
-  49 =>
+  51 =>
   array (
     'index' =>
     array (
@@ -560,29 +582,29 @@ $lang = array (
       0 => '帖子點評管理',
     ),
   ),
-  50 =>
-  array (
-    'index' =>
-    array (
-      '' => 'action=',
-    ),
-    'text' =>
-    array (
-      0 => NULL,
-    ),
-  ),
-  51 =>
-  array (
-    'index' =>
-    array (
-      '' => 'action=',
-    ),
-    'text' =>
-    array (
-      0 => NULL,
-    ),
-  ),
   52 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  53 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  54 =>
   array (
     'index' =>
     array (
@@ -593,7 +615,7 @@ $lang = array (
       0 => '記錄管理',
     ),
   ),
-  53 =>
+  55 =>
   array (
     'index' =>
     array (
@@ -604,7 +626,18 @@ $lang = array (
       0 => '日誌管理',
     ),
   ),
-  54 =>
+  56 =>
+  array (
+    'index' =>
+    array (
+      '日誌回收站' => 'action=blogrecyclebin',
+    ),
+    'text' =>
+    array (
+      0 => '日誌回收站',
+    ),
+  ),
+  57 =>
   array (
     'index' =>
     array (
@@ -615,7 +648,7 @@ $lang = array (
       0 => '動態管理',
     ),
   ),
-  55 =>
+  58 =>
   array (
     'index' =>
     array (
@@ -626,7 +659,7 @@ $lang = array (
       0 => '相冊管理',
     ),
   ),
-  56 =>
+  59 =>
   array (
     'index' =>
     array (
@@ -637,7 +670,7 @@ $lang = array (
       0 => '圖片管理',
     ),
   ),
-  57 =>
+  60 =>
   array (
     'index' =>
     array (
@@ -648,7 +681,7 @@ $lang = array (
       0 => '評論/留言管理',
     ),
   ),
-  58 =>
+  61 =>
   array (
     'index' =>
     array (
@@ -659,7 +692,7 @@ $lang = array (
       0 => '分享管理',
     ),
   ),
-  59 =>
+  62 =>
   array (
     'index' =>
     array (
@@ -670,7 +703,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  60 =>
+  63 =>
   array (
     'index' =>
     array (
@@ -681,7 +714,7 @@ $lang = array (
       0 => '用戶管理',
     ),
   ),
-  61 =>
+  64 =>
   array (
     'index' =>
     array (
@@ -692,7 +725,7 @@ $lang = array (
       0 => '添加用戶',
     ),
   ),
-  62 =>
+  65 =>
   array (
     'index' =>
     array (
@@ -703,7 +736,7 @@ $lang = array (
       0 => '用戶欄目',
     ),
   ),
-  63 =>
+  66 =>
   array (
     'index' =>
     array (
@@ -714,7 +747,7 @@ $lang = array (
       0 => '資料統計',
     ),
   ),
-  64 =>
+  67 =>
   array (
     'index' =>
     array (
@@ -725,7 +758,7 @@ $lang = array (
       0 => '發送通知',
     ),
   ),
-  65 =>
+  68 =>
   array (
     'index' =>
     array (
@@ -736,7 +769,7 @@ $lang = array (
       0 => '發送手機通知',
     ),
   ),
-  66 =>
+  69 =>
   array (
     'index' =>
     array (
@@ -747,7 +780,7 @@ $lang = array (
       0 => '用戶標籤',
     ),
   ),
-  67 =>
+  70 =>
   array (
     'index' =>
     array (
@@ -758,7 +791,7 @@ $lang = array (
       0 => '禁止用戶',
     ),
   ),
-  68 =>
+  71 =>
   array (
     'index' =>
     array (
@@ -769,7 +802,7 @@ $lang = array (
       0 => '禁止 IP',
     ),
   ),
-  69 =>
+  72 =>
   array (
     'index' =>
     array (
@@ -780,7 +813,7 @@ $lang = array (
       0 => '積分獎懲',
     ),
   ),
-  70 =>
+  73 =>
   array (
     'index' =>
     array (
@@ -791,7 +824,7 @@ $lang = array (
       0 => '審核新用戶',
     ),
   ),
-  71 =>
+  74 =>
   array (
     'index' =>
     array (
@@ -802,7 +835,7 @@ $lang = array (
       0 => '管理組',
     ),
   ),
-  72 =>
+  75 =>
   array (
     'index' =>
     array (
@@ -813,7 +846,7 @@ $lang = array (
       0 => '用戶組',
     ),
   ),
-  73 =>
+  76 =>
   array (
     'index' =>
     array (
@@ -824,7 +857,7 @@ $lang = array (
       0 => '推薦關注',
     ),
   ),
-  74 =>
+  77 =>
   array (
     'index' =>
     array (
@@ -835,7 +868,7 @@ $lang = array (
       0 => '推薦好友',
     ),
   ),
-  75 =>
+  78 =>
   array (
     'index' =>
     array (
@@ -846,7 +879,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  76 =>
+  79 =>
   array (
     'index' =>
     array (
@@ -857,7 +890,7 @@ $lang = array (
       0 => '認證設置',
     ),
   ),
-  77 =>
+  80 =>
   array (
     'index' =>
     array (
@@ -868,7 +901,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  78 =>
+  81 =>
   array (
     'index' =>
     array (
@@ -879,7 +912,18 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  79 =>
+  82 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=verify&operation=verify&do=3',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  83 =>
   array (
     'index' =>
     array (
@@ -890,7 +934,7 @@ $lang = array (
       0 => '頻道欄目',
     ),
   ),
-  80 =>
+  84 =>
   array (
     'index' =>
     array (
@@ -901,7 +945,7 @@ $lang = array (
       0 => '文章管理',
     ),
   ),
-  81 =>
+  85 =>
   array (
     'index' =>
     array (
@@ -912,7 +956,18 @@ $lang = array (
       0 => '專題管理',
     ),
   ),
-  82 =>
+  86 =>
+  array (
+    'index' =>
+    array (
+      'HTML管理' => 'action=makehtml',
+    ),
+    'text' =>
+    array (
+      0 => 'HTML管理',
+    ),
+  ),
+  87 =>
   array (
     'index' =>
     array (
@@ -923,7 +978,7 @@ $lang = array (
       0 => '頁面管理',
     ),
   ),
-  83 =>
+  88 =>
   array (
     'index' =>
     array (
@@ -934,7 +989,7 @@ $lang = array (
       0 => '模塊管理',
     ),
   ),
-  84 =>
+  89 =>
   array (
     'index' =>
     array (
@@ -945,7 +1000,7 @@ $lang = array (
       0 => '模塊模板',
     ),
   ),
-  85 =>
+  90 =>
   array (
     'index' =>
     array (
@@ -956,7 +1011,7 @@ $lang = array (
       0 => '第三方模塊',
     ),
   ),
-  86 =>
+  91 =>
   array (
     'index' =>
     array (
@@ -967,7 +1022,7 @@ $lang = array (
       0 => '權限列表',
     ),
   ),
-  87 =>
+  92 =>
   array (
     'index' =>
     array (
@@ -978,7 +1033,7 @@ $lang = array (
       0 => '日誌分類',
     ),
   ),
-  88 =>
+  93 =>
   array (
     'index' =>
     array (
@@ -989,7 +1044,7 @@ $lang = array (
       0 => '相冊分類',
     ),
   ),
-  89 =>
+  94 =>
   array (
     'index' =>
     array (
@@ -1000,7 +1055,7 @@ $lang = array (
       0 => '版塊管理',
     ),
   ),
-  90 =>
+  95 =>
   array (
     'index' =>
     array (
@@ -1011,7 +1066,7 @@ $lang = array (
       0 => '版塊合併',
     ),
   ),
-  91 =>
+  96 =>
   array (
     'index' =>
     array (
@@ -1022,7 +1077,18 @@ $lang = array (
       0 => '分類信息',
     ),
   ),
-  92 =>
+  97 =>
+  array (
+    'index' =>
+    array (
+      '首頁四格' => 'action=grid',
+    ),
+    'text' =>
+    array (
+      0 => '首頁四格',
+    ),
+  ),
+  98 =>
   array (
     'index' =>
     array (
@@ -1033,7 +1099,7 @@ $lang = array (
       0 => '群組設置',
     ),
   ),
-  93 =>
+  99 =>
   array (
     'index' =>
     array (
@@ -1044,7 +1110,7 @@ $lang = array (
       0 => '群組分類',
     ),
   ),
-  94 =>
+  100 =>
   array (
     'index' =>
     array (
@@ -1055,7 +1121,7 @@ $lang = array (
       0 => '群組管理',
     ),
   ),
-  95 =>
+  101 =>
   array (
     'index' =>
     array (
@@ -1066,7 +1132,7 @@ $lang = array (
       0 => '群主權限',
     ),
   ),
-  96 =>
+  102 =>
   array (
     'index' =>
     array (
@@ -1077,7 +1143,7 @@ $lang = array (
       0 => '群組等級',
     ),
   ),
-  97 =>
+  103 =>
   array (
     'index' =>
     array (
@@ -1088,7 +1154,7 @@ $lang = array (
       0 => '審核群組',
     ),
   ),
-  98 =>
+  104 =>
   array (
     'index' =>
     array (
@@ -1099,7 +1165,7 @@ $lang = array (
       0 => '站點公告',
     ),
   ),
-  99 =>
+  105 =>
   array (
     'index' =>
     array (
@@ -1110,7 +1176,7 @@ $lang = array (
       0 => '站點廣告',
     ),
   ),
-  100 =>
+  106 =>
   array (
     'index' =>
     array (
@@ -1121,7 +1187,7 @@ $lang = array (
       0 => '站點任務',
     ),
   ),
-  101 =>
+  107 =>
   array (
     'index' =>
     array (
@@ -1132,7 +1198,7 @@ $lang = array (
       0 => '道具中心',
     ),
   ),
-  102 =>
+  108 =>
   array (
     'index' =>
     array (
@@ -1143,7 +1209,7 @@ $lang = array (
       0 => '勳章中心',
     ),
   ),
-  103 =>
+  109 =>
   array (
     'index' =>
     array (
@@ -1154,7 +1220,7 @@ $lang = array (
       0 => '站點幫助',
     ),
   ),
-  104 =>
+  110 =>
   array (
     'index' =>
     array (
@@ -1165,7 +1231,7 @@ $lang = array (
       0 => '電子商務',
     ),
   ),
-  105 =>
+  111 =>
   array (
     'index' =>
     array (
@@ -1176,7 +1242,7 @@ $lang = array (
       0 => '友情鏈接',
     ),
   ),
-  106 =>
+  112 =>
   array (
     'index' =>
     array (
@@ -1187,7 +1253,7 @@ $lang = array (
       0 => '站長推薦',
     ),
   ),
-  107 =>
+  113 =>
   array (
     'index' =>
     array (
@@ -1198,7 +1264,7 @@ $lang = array (
       0 => '關聯鏈接',
     ),
   ),
-  108 =>
+  114 =>
   array (
     'index' =>
     array (
@@ -1209,7 +1275,7 @@ $lang = array (
       0 => '充值卡密',
     ),
   ),
-  109 =>
+  115 =>
   array (
     'index' =>
     array (
@@ -1220,7 +1286,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  110 =>
+  116 =>
   array (
     'index' =>
     array (
@@ -1231,7 +1297,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  111 =>
+  117 =>
   array (
     'index' =>
     array (
@@ -1242,7 +1308,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  112 =>
+  118 =>
   array (
     'index' =>
     array (
@@ -1253,7 +1319,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  113 =>
+  119 =>
   array (
     'index' =>
     array (
@@ -1264,7 +1330,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  114 =>
+  120 =>
   array (
     'index' =>
     array (
@@ -1275,7 +1341,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  115 =>
+  121 =>
   array (
     'index' =>
     array (
@@ -1286,7 +1352,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  116 =>
+  122 =>
   array (
     'index' =>
     array (
@@ -1297,7 +1363,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  117 =>
+  123 =>
   array (
     'index' =>
     array (
@@ -1308,7 +1374,7 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  118 =>
+  124 =>
   array (
     'index' =>
     array (
@@ -1319,7 +1385,51 @@ $lang = array (
       0 => NULL,
     ),
   ),
-  119 =>
+  125 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=vip&operation=info',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  126 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=vip&operation=safeguard',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  127 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=vip&operation=payment',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  128 =>
+  array (
+    'index' =>
+    array (
+      '' => 'action=vip&operation=updater',
+    ),
+    'text' =>
+    array (
+      0 => NULL,
+    ),
+  ),
+  129 =>
   array (
     'index' =>
     array (
@@ -1330,7 +1440,7 @@ $lang = array (
       0 => '應用中心',
     ),
   ),
-  120 =>
+  130 =>
   array (
     'index' =>
     array (
@@ -1341,18 +1451,7 @@ $lang = array (
       0 => '插件',
     ),
   ),
-  121 =>
-  array (
-    'index' =>
-    array (
-      '' => 'action=plugins&operation=config&do=138',
-    ),
-    'text' =>
-    array (
-      0 => NULL,
-    ),
-  ),
-  122 =>
+  131 =>
   array (
     'index' =>
     array (
@@ -1363,7 +1462,7 @@ $lang = array (
       0 => '更新緩存',
     ),
   ),
-  123 =>
+  132 =>
   array (
     'index' =>
     array (
@@ -1374,7 +1473,7 @@ $lang = array (
       0 => '更新統計',
     ),
   ),
-  124 =>
+  133 =>
   array (
     'index' =>
     array (
@@ -1385,7 +1484,7 @@ $lang = array (
       0 => '運行記錄',
     ),
   ),
-  125 =>
+  134 =>
   array (
     'index' =>
     array (
@@ -1396,7 +1495,7 @@ $lang = array (
       0 => '計劃任務',
     ),
   ),
-  126 =>
+  135 =>
   array (
     'index' =>
     array (
@@ -1407,7 +1506,7 @@ $lang = array (
       0 => '文件權限檢查',
     ),
   ),
-  127 =>
+  136 =>
   array (
     'index' =>
     array (
@@ -1418,7 +1517,7 @@ $lang = array (
       0 => '文件校驗',
     ),
   ),
-  128 =>
+  137 =>
   array (
     'index' =>
     array (
@@ -1429,7 +1528,7 @@ $lang = array (
       0 => '嵌入點校驗',
     ),
   ),
-  129 =>
+  138 =>
   array (
     'index' =>
     array (
@@ -1440,7 +1539,7 @@ $lang = array (
       0 => '後台管理團隊',
     ),
   ),
-  130 =>
+  139 =>
   array (
     'index' =>
     array (
@@ -1451,7 +1550,7 @@ $lang = array (
       0 => '郵件設置',
     ),
   ),
-  131 =>
+  140 =>
   array (
     'index' =>
     array (
@@ -1462,7 +1561,7 @@ $lang = array (
       0 => '安全中心',
     ),
   ),
-  132 =>
+  141 =>
   array (
     'index' =>
     array (
@@ -1473,7 +1572,7 @@ $lang = array (
       0 => 'UCenter 設置',
     ),
   ),
-  133 =>
+  142 =>
   array (
     'index' =>
     array (
@@ -1484,7 +1583,7 @@ $lang = array (
       0 => '數據庫',
     ),
   ),
-  134 =>
+  143 =>
   array (
     'index' =>
     array (
@@ -1495,7 +1594,7 @@ $lang = array (
       0 => '用戶表優化',
     ),
   ),
-  135 =>
+  144 =>
   array (
     'index' =>
     array (
@@ -1506,7 +1605,7 @@ $lang = array (
       0 => '帖子分表',
     ),
   ),
-  136 =>
+  145 =>
   array (
     'index' =>
     array (
@@ -1517,7 +1616,7 @@ $lang = array (
       0 => '主題分表',
     ),
   ),
-  137 =>
+  146 =>
   array (
     'index' =>
     array (
@@ -1528,7 +1627,18 @@ $lang = array (
       0 => '在線升級',
     ),
   ),
-  138 =>
+  147 =>
+  array (
+    'index' =>
+    array (
+      '優化大師' => 'action=optimizer',
+    ),
+    'text' =>
+    array (
+      0 => '優化大師',
+    ),
+  ),
+  148 =>
   array (
     'index' =>
     array (
@@ -1552,57 +1662,60 @@ $lang = array (
       12 => 'admingroup_edit_highlight_thread',
       13 => '允許高亮主題',
       14 => '設置是否允許高亮管理範圍內的主題',
-      15 => 'admingroup_edit_recommend_thread',
-      16 => '允許推薦主題',
-      17 => '設置是否允許推薦管理範圍內的主題 (要在相應版塊的擴展設置裡開啟推薦主題功能)',
-      18 => 'admingroup_edit_stamp_thread',
-      19 => '允許添加主題圖章',
-      20 => '設置是否允許給主題在帖子內容頁添加圖章',
-      21 => 'admingroup_edit_stamp_list',
-      22 => '允許添加主題圖標',
-      23 => '設置是否允許給主題在帖子列表頁添加圖標',
-      24 => 'admingroup_edit_close_thread',
-      25 => '允許關閉主題',
-      26 => '設置是否允許關閉管理範圍內的主題',
-      27 => 'admingroup_edit_move_thread',
-      28 => '允許移動主題',
-      29 => '設置是否允許移動管理範圍內的主題',
-      30 => 'admingroup_edit_edittype_thread',
-      31 => '允許編輯主題分類',
-      32 => '設置是否允許編輯管理範圍內主題的分類',
-      33 => 'admingroup_edit_copy_thread',
-      34 => '允許複製主題',
-      35 => '設置是否允許複製管理範圍內的主題',
-      36 => 'admingroup_edit_merge_thread',
-      37 => '允許合併主題',
-      38 => '設置是否允許合併管理範圍內的主題',
-      39 => 'admingroup_edit_split_thread',
-      40 => '允許分割主題',
-      41 => '設置是否允許分割管理範圍內的主題',
-      42 => 'admingroup_edit_repair_thread',
-      43 => '允許修復主題',
-      44 => '設置是否允許修復管理範圍內的主題',
-      45 => 'admingroup_edit_refund',
-      46 => '允許強制退款',
-      47 => '允許將作者發佈的收費主題終止，並將作者所獲得收益退還給購買者。退款後，該主題將不能再被設置為收費主題，同時作者將自行承擔積分交易而產生的損失',
-      48 => 'admingroup_edit_edit_poll',
-      49 => '允許編輯投票',
-      50 => '設置是否允許編輯管理範圍內投票主題的選項',
-      51 => 'admingroup_edit_remove_reward',
-      52 => '允許移除懸賞',
-      53 => '設置是否允許移除管理範圍內懸賞主題的懸賞金額',
-      54 => 'admingroup_edit_edit_activity',
-      55 => '允許管理活動報名者',
-      56 => '設置是否允許管理範圍內活動主題的報名者',
-      57 => 'admingroup_edit_edit_trade',
-      58 => '允許編輯商品',
-      59 => '設置是否允許編輯管理範圍內商品主題的商品',
-      60 => 'admingroup_edit_usertag',
-      61 => '允許添加用戶標籤',
-      62 => '設置是否允許編輯管理範圍內主題的用戶標籤',
+      15 => 'admingroup_edit_live_thread',
+      16 => '允許直播主題',
+      17 => '設置是否允許直播管理範圍內的主題',
+      18 => 'admingroup_edit_recommend_thread',
+      19 => '允許推薦主題',
+      20 => '設置是否允許推薦管理範圍內的主題 (要在相應版塊的擴展設置裡開啟推薦主題功能)',
+      21 => 'admingroup_edit_stamp_thread',
+      22 => '允許添加主題圖章',
+      23 => '設置是否允許給主題在帖子內容頁添加圖章',
+      24 => 'admingroup_edit_stamp_list',
+      25 => '允許添加主題圖標',
+      26 => '設置是否允許給主題在帖子列表頁添加圖標',
+      27 => 'admingroup_edit_close_thread',
+      28 => '允許關閉主題',
+      29 => '設置是否允許關閉管理範圍內的主題',
+      30 => 'admingroup_edit_move_thread',
+      31 => '允許移動主題',
+      32 => '設置是否允許移動管理範圍內的主題',
+      33 => 'admingroup_edit_edittype_thread',
+      34 => '允許編輯主題分類',
+      35 => '設置是否允許編輯管理範圍內主題的分類',
+      36 => 'admingroup_edit_copy_thread',
+      37 => '允許複製主題',
+      38 => '設置是否允許複製管理範圍內的主題',
+      39 => 'admingroup_edit_merge_thread',
+      40 => '允許合併主題',
+      41 => '設置是否允許合併管理範圍內的主題',
+      42 => 'admingroup_edit_split_thread',
+      43 => '允許分割主題',
+      44 => '設置是否允許分割管理範圍內的主題',
+      45 => 'admingroup_edit_repair_thread',
+      46 => '允許修復主題',
+      47 => '設置是否允許修復管理範圍內的主題',
+      48 => 'admingroup_edit_refund',
+      49 => '允許強制退款',
+      50 => '允許將作者發佈的收費主題終止，並將作者所獲得收益退還給購買者。退款後，該主題將不能再被設置為收費主題，同時作者將自行承擔積分交易而產生的損失',
+      51 => 'admingroup_edit_edit_poll',
+      52 => '允許編輯投票',
+      53 => '設置是否允許編輯管理範圍內投票主題的選項',
+      54 => 'admingroup_edit_remove_reward',
+      55 => '允許移除懸賞',
+      56 => '設置是否允許移除管理範圍內懸賞主題的懸賞金額',
+      57 => 'admingroup_edit_edit_activity',
+      58 => '允許管理活動報名者',
+      59 => '設置是否允許管理範圍內活動主題的報名者',
+      60 => 'admingroup_edit_edit_trade',
+      61 => '允許編輯商品',
+      62 => '設置是否允許編輯管理範圍內商品主題的商品',
+      63 => 'admingroup_edit_usertag',
+      64 => '允許添加用戶標籤',
+      65 => '設置是否允許編輯管理範圍內主題的用戶標籤',
     ),
   ),
-  139 =>
+  149 =>
   array (
     'index' =>
     array (
@@ -1634,7 +1747,7 @@ $lang = array (
       20 => '設置是否允許管理管理範圍內的標籤',
     ),
   ),
-  140 =>
+  150 =>
   array (
     'index' =>
     array (
@@ -1681,7 +1794,7 @@ $lang = array (
       35 => '設置是否允許查看管理日誌',
     ),
   ),
-  141 =>
+  151 =>
   array (
     'index' =>
     array (
@@ -1721,7 +1834,7 @@ $lang = array (
       28 => '允許管理表態動作',
     ),
   ),
-  142 =>
+  152 =>
   array (
     'index' =>
     array (
@@ -1739,9 +1852,12 @@ $lang = array (
       6 => 'admingroup_edit_manage_collection',
       7 => '允許管理淘專輯',
       8 => '設置是否允許管理淘專輯',
+      9 => 'admingroup_edit_allow_make_html',
+      10 => '允許生成HTML文件',
+      11 => '設置是否允許生成HTML文件',
     ),
   ),
-  143 =>
+  153 =>
   array (
     'index' =>
     array (
@@ -1767,7 +1883,7 @@ $lang = array (
       14 => '設置是否允許 DIY 論壇，文章，空間，論壇等頁面',
     ),
   ),
-  144 =>
+  154 =>
   array (
     'index' =>
     array (
@@ -1778,10 +1894,10 @@ $lang = array (
     array (
       0 => '站點廣告 &raquo; 廣告位',
       1 => 'adv_list_tip',
-      2 => '您可以使用「自定義廣告位」在頁面的任意位置添加廣告位。安裝新的廣告位，需將廣告位腳本程序上傳到 source/class/adv/ 目錄，然後即可在以下列表中使用了。插件開發人員在設計新的廣告位前請務必仔細閱讀《Discuz! 技術文庫》中的內容。Discuz!聯盟免費提供更豐富的廣告形式，讓您賺取更豐厚的廣告收益，快來看看吧。',
+      2 => '您可以使用「自定義廣告位」在頁面的任意位置添加廣告位。系統廣告位位於 source/class/adv/ 目錄中，插件廣告位位於 source/plugin/插件目錄/adv/ 目錄中。插件開發人員在設計新的廣告位前請務必仔細閱讀《Discuz! 技術文庫》中的內容。Discuz!聯盟免費提供更豐富的廣告形式，讓您賺取更豐厚的廣告收益，快來看看吧。',
     ),
   ),
-  145 =>
+  155 =>
   array (
     'index' =>
     array (
@@ -1795,7 +1911,7 @@ $lang = array (
       2 => '批量相冊管理用於刪除相冊使用。連圖片一同刪除提醒：點擊搜索結果頁的刪除按鈕，將會直接刪除相關信息！',
     ),
   ),
-  146 =>
+  156 =>
   array (
     'index' =>
     array (
@@ -1829,7 +1945,7 @@ $lang = array (
       22 => '格式 yyyy-mm-dd',
     ),
   ),
-  147 =>
+  157 =>
   array (
     'index' =>
     array (
@@ -1844,7 +1960,7 @@ $lang = array (
       4 => '系統分類必填',
     ),
   ),
-  148 =>
+  158 =>
   array (
     'index' =>
     array (
@@ -1866,7 +1982,7 @@ $lang = array (
       11 => '文字公告: 直接輸入公告內容，支持 Discuz! 代碼網址鏈接: 請輸入公告的鏈接地址如某個主題地址: http://xxx.xxx.xxx',
     ),
   ),
-  149 =>
+  159 =>
   array (
     'index' =>
     array (
@@ -1894,7 +2010,7 @@ $lang = array (
       16 => '從 URL 地址獲得數據時的密鑰，如果數據源不需要密鑰可以為空。此密鑰由數據源方提供',
     ),
   ),
-  150 =>
+  160 =>
   array (
     'index' =>
     array (
@@ -1908,7 +2024,7 @@ $lang = array (
       2 => '批量日誌信息管理用於刪除日誌使用，並且連同對應的回復一同刪除。關鍵字可以使用限定符 {x} 以限定相鄰兩字符間可忽略的文字，x 是忽略字符的個數，如 "a{1}s{2}s"(不含引號) 可以搜索到 "ass" 也可搜索到 "axsxs" 和 "axsxxs" 等等。提醒：點擊搜索結果頁的刪除按鈕，將會直接刪除相關信息！',
     ),
   ),
-  151 =>
+  161 =>
   array (
     'index' =>
     array (
@@ -1955,7 +2071,7 @@ $lang = array (
       35 => '格式 yyyy-mm-dd',
     ),
   ),
-  152 =>
+  162 =>
   array (
     'index' =>
     array (
@@ -1970,7 +2086,68 @@ $lang = array (
       4 => '系統分類必填',
     ),
   ),
-  153 =>
+  163 =>
+  array (
+    'index' =>
+    array (
+      '日誌回收站' => 'action=blogrecyclebin',
+      '日誌列表' => 'action=blogrecyclebin',
+    ),
+    'text' =>
+    array (
+      0 => '日誌回收站 &raquo; 日誌列表',
+      1 => 'blog_tips',
+      2 => '批量日誌信息管理用於刪除日誌使用，並且連同對應的回復一同刪除。關鍵字可以使用限定符 {x} 以限定相鄰兩字符間可忽略的文字，x 是忽略字符的個數，如 "a{1}s{2}s"(不含引號) 可以搜索到 "ass" 也可搜索到 "axsxs" 和 "axsxxs" 等等。提醒：點擊搜索結果頁的刪除按鈕，將會直接刪除相關信息！',
+    ),
+  ),
+  164 =>
+  array (
+    'index' =>
+    array (
+      '日誌管理' => 'action=blog',
+      '搜索' => 'action=blog&search=true',
+    ),
+    'text' =>
+    array (
+      0 => '日誌管理 &raquo; 搜索',
+      1 => 'blog_search_detail',
+      2 => '顯示詳細日誌列表',
+      3 => 'blog_search_perpage',
+      4 => '每頁顯示數',
+      5 => 'resultsort',
+      6 => '結果排序',
+      7 => 'blog_search_uid',
+      8 => '用戶 UID',
+      9 => '多 UID 中間請用半角逗號 "," 隔開',
+      10 => 'blog_search_blogid',
+      11 => '日誌 ID',
+      12 => '多日誌 ID 中間請用半角逗號 "," 隔開',
+      13 => 'blog_search_user',
+      14 => '發表日誌用戶名',
+      15 => '多用戶名中間請用半角逗號 "," 隔開',
+      16 => 'blog_search_keyword',
+      17 => '標題或內容關鍵字',
+      18 => '多關鍵字中間請用半角逗號 "," 隔開，關鍵詞可以用限定符 {x}',
+      19 => 'blog_search_friend',
+      20 => '查看權限',
+      21 => 'blog_search_ip',
+      22 => '發佈IP',
+      23 => '通配符 "*" 如 "127.0.*.*"(不含引號)，慎用!!!',
+      24 => 'blog_search_lengthlimit',
+      25 => '內容最小長度',
+      26 => '本功能會加重服務器負擔',
+      27 => 'blog_search_view',
+      28 => '查看數',
+      29 => 'blog_search_reply',
+      30 => '回複數',
+      31 => 'blog_search_hot',
+      32 => '熱度',
+      33 => 'blog_search_time',
+      34 => '發表時間範圍',
+      35 => '格式 yyyy-mm-dd',
+    ),
+  ),
+  165 =>
   array (
     'index' =>
     array (
@@ -1984,7 +2161,7 @@ $lang = array (
       3 => '設置是否允許前台充值，關閉前台充值功能，不影響後台卡密的生成充值卡密驗證碼開關：全局->防灌水設置->驗證碼設置',
     ),
   ),
-  154 =>
+  166 =>
   array (
     'index' =>
     array (
@@ -1997,7 +2174,7 @@ $lang = array (
       2 => '導出充值卡密最多支持 10000 條數據，導出的 .xls 文件可用 EXCEL 等工具打開。',
     ),
   ),
-  155 =>
+  167 =>
   array (
     'index' =>
     array (
@@ -2010,7 +2187,7 @@ $lang = array (
       2 => '卡密分類刪除時，其下所有卡片將自動納入「默認分類」',
     ),
   ),
-  156 =>
+  168 =>
   array (
     'index' =>
     array (
@@ -2043,7 +2220,7 @@ $lang = array (
       22 => '為本次生成的卡密添加備註說明，備註將顯示在「生成記錄」中',
     ),
   ),
-  157 =>
+  169 =>
   array (
     'index' =>
     array (
@@ -2056,7 +2233,7 @@ $lang = array (
       2 => '本功能用於設置日誌/圖片/文章表態動作，動作圖片中請填寫圖片文件名，並將相應圖片文件上傳到 static/image/click/ 目錄中。警告：站點運營一段時間後，中途改變各表情的順序將會影響之前的表態結果每個類型最多啟用8個動作',
     ),
   ),
-  158 =>
+  170 =>
   array (
     'index' =>
     array (
@@ -2094,9 +2271,12 @@ $lang = array (
       27 => '淘專輯作者 UID',
       28 => 'feed_search_perpage',
       29 => '每頁顯示數',
+      30 => 'collection_recommend_index_autonumber',
+      31 => '首頁推薦數量',
+      32 => '設置後，會在首頁推薦指定數量的熱門專輯，設為「0」則關閉推薦功能。當手動推薦數量未達到設置的數量時，系統會自動推薦專輯。',
     ),
   ),
-  159 =>
+  171 =>
   array (
     'index' =>
     array (
@@ -2136,7 +2316,7 @@ $lang = array (
       28 => '格式 yyyy-mm-dd',
     ),
   ),
-  160 =>
+  172 =>
   array (
     'index' =>
     array (
@@ -2164,7 +2344,7 @@ $lang = array (
       15 => '格式 yyyy-mm-dd',
     ),
   ),
-  161 =>
+  173 =>
   array (
     'index' =>
     array (
@@ -2179,7 +2359,7 @@ $lang = array (
 				',
     ),
   ),
-  162 =>
+  174 =>
   array (
     'index' =>
     array (
@@ -2213,7 +2393,7 @@ $lang = array (
       22 => '數據恢復',
     ),
   ),
-  163 =>
+  175 =>
   array (
     'index' =>
     array (
@@ -2231,7 +2411,7 @@ $lang = array (
       6 => 'Discuz! 數據庫升級 - 請將數據庫升級語句粘貼在下面',
     ),
   ),
-  164 =>
+  176 =>
   array (
     'index' =>
     array (
@@ -2245,7 +2425,7 @@ $lang = array (
       2 => '數據表優化可以去除數據文件中的碎片，使記錄排列緊密，提高讀寫速度。',
     ),
   ),
-  165 =>
+  177 =>
   array (
     'index' =>
     array (
@@ -2258,7 +2438,7 @@ $lang = array (
       2 => '您可以自己編輯地區數據添加，編輯或刪除操作後需要點擊「提交」按鈕才生效',
     ),
   ),
-  166 =>
+  178 =>
   array (
     'index' =>
     array (
@@ -2271,7 +2451,7 @@ $lang = array (
       2 => '批量記錄信息管理用於刪除記錄使用，並且連同對應的回復一同刪除。關鍵字可以使用限定符 {x} 以限定相鄰兩字符間可忽略的文字，x 是忽略字符的個數，如 "a{1}s{2}s"(不含引號) 可以搜索到 "ass" 也可搜索到 "axsxs" 和 "axsxxs" 等等。提醒：點擊搜索結果頁的刪除按鈕，將會直接刪除相關信息！',
     ),
   ),
-  167 =>
+  179 =>
   array (
     'index' =>
     array (
@@ -2302,7 +2482,7 @@ $lang = array (
       19 => '格式 yyyy-mm-dd',
     ),
   ),
-  168 =>
+  180 =>
   array (
     'index' =>
     array (
@@ -2316,7 +2496,7 @@ $lang = array (
       2 => '各自綁定的域名不能相同，域名不需要添加「http://」，也不要以「/」結尾，例如：portal.comsenz.com任意開啟一項域名，需要配置默認域名，否則會造成多入口問題當開啟多域名時，請在 config/config_global.php 中修改 cookiedomain 值來設置 cookie 作用域',
     ),
   ),
-  169 =>
+  181 =>
   array (
     'index' =>
     array (
@@ -2330,7 +2510,7 @@ $lang = array (
       2 => '可以為個人空間、群組、版塊、專題、頻道設置一個二級域名的根域名。例：用戶申請XXX.comsenz.com,根域名填：comsenz.com個人空間、群組設置完二級域名的根後，還需要在基本設置中開啟相應的二級域名開關，用戶才能在相應的地方申請綁定二級域名，同時受限於用戶組的二級域名長度頻道啟用二級域名如果是綁定目錄的，需要自已在環境中配置相關的綁定操作不建議中途將不同的根域變更為相同的根域',
     ),
   ),
-  170 =>
+  182 =>
   array (
     'index' =>
     array (
@@ -2353,7 +2533,7 @@ $lang = array (
       11 => '多個之間用 | 隔開，可以使用通配符* ',
     ),
   ),
-  171 =>
+  183 =>
   array (
     'index' =>
     array (
@@ -2375,18 +2555,18 @@ $lang = array (
       10 => '本測試將模擬提交 0.01 元人民幣的訂單進行測試，如果提交後成功出現付款界面，說明您站點的支付寶功能可以正常使用',
       11 => 'ec_contract',
       12 => '支付寶簽約用戶設置',
-      13 => 'ec_alipay_partner',
-      14 => '合作者身份 (PID)',
-      15 => '支付寶簽約用戶請在此處填寫支付寶分配給您的合作者身份，簽約用戶的手續費按照您與支付寶官方的簽約協議為準。如果您還未簽約，請點擊這裡簽約；如果已簽約,請點擊這裡獲取PID、Key;如果在簽約時出現合同模板衝突，請咨詢0571-88158090',
-      16 => 'ec_alipay_securitycode',
-      17 => '交易安全校驗碼 (key)',
-      18 => '支付寶簽約用戶可以在此處填寫支付寶分配給您的交易安全校驗碼，此校驗碼您可以到支付寶官方的商家服務功能處查看',
-      19 => 'ec_alipay_creditdirectpay',
-      20 => '使用純即時到帳接口',
-      21 => '如果您的簽約協議中包含純即時到帳接口（不是標準雙接口）可以選擇此項，讓積分充值只能使用即時到賬方式付款',
+      13 => 'ec_alipay_creditdirectpay',
+      14 => '使用純即時到帳接口',
+      15 => '如果您的簽約協議中包含純即時到帳接口（不是標準雙接口）可以選擇此項，讓積分充值只能使用即時到賬方式付款',
+      16 => 'ec_alipay_partner',
+      17 => '合作者身份 (PID)',
+      18 => '支付寶簽約用戶請在此處填寫支付寶分配給您的合作者身份，簽約用戶的手續費按照您與支付寶官方的簽約協議為準。如果您還未簽約，請點擊這裡簽約；如果已簽約,請點擊這裡獲取PID、Key;如果在簽約時出現合同模板衝突，請咨詢0571-88158090',
+      19 => 'ec_alipay_securitycode',
+      20 => '交易安全校驗碼 (key)',
+      21 => '支付寶簽約用戶可以在此處填寫支付寶分配給您的交易安全校驗碼，此校驗碼您可以到支付寶官方的商家服務功能處查看',
     ),
   ),
-  172 =>
+  184 =>
   array (
     'index' =>
     array (
@@ -2408,20 +2588,18 @@ $lang = array (
       9 => '擔保交易賬號密鑰',
       10 => 'ec_tenpay',
       11 => '即時到賬設置',
-      12 => 'ec_tenpay_direct',
-      13 => '是否啟用積分充值即時到賬',
-      14 => 'ec_tenpay_bargainor',
-      15 => '財付通即時到賬商戶號',
-      16 => '如果開啟兌換功能，請填寫真實有效的財付通企業版賬號，用於收取用戶以現金兌換交易積分的相關款項。如賬號無效或密鑰有誤，將導致用戶支付後無法正確對其積分賬戶自動充值。如您沒有財付通帳號，請點擊這裡註冊',
-      17 => 'ec_tenpay_key',
-      18 => '即時到賬密鑰',
-      19 => '與商戶號對應的密鑰，由長度為32的大小寫字母、數字組成，可在財付通後台獲取',
-      20 => 'ec_tenpay_check',
-      21 => '支付測試',
-      22 => '本測試將模擬提交 1 元人民幣的訂單進行測試，如果提交後成功出現付款界面，說明您站點的財付通功能可以正常使用',
+      12 => 'ec_tenpay_bargainor',
+      13 => '財付通即時到賬商戶號',
+      14 => '如果開啟兌換功能，請填寫真實有效的財付通企業版賬號，用於收取用戶以現金兌換交易積分的相關款項。如賬號無效或密鑰有誤，將導致用戶支付後無法正確對其積分賬戶自動充值。如您沒有財付通帳號，請點擊這裡註冊',
+      15 => 'ec_tenpay_key',
+      16 => '即時到賬密鑰',
+      17 => '與商戶號對應的密鑰，由長度為32的大小寫字母、數字組成，可在財付通後台獲取',
+      18 => 'ec_tenpay_check',
+      19 => '支付測試',
+      20 => '本測試將模擬提交 1 元人民幣的訂單進行測試，如果提交後成功出現付款界面，說明您站點的財付通功能可以正常使用',
     ),
   ),
-  173 =>
+  185 =>
   array (
     'index' =>
     array (
@@ -2451,7 +2629,7 @@ $lang = array (
       18 => '訂單確認時間範圍(格式 yyyy-mm-dd)',
     ),
   ),
-  174 =>
+  186 =>
   array (
     'index' =>
     array (
@@ -2470,7 +2648,7 @@ $lang = array (
       7 => '以交易創建的時間計算，超出計分規則範圍的評價將不計分',
     ),
   ),
-  175 =>
+  187 =>
   array (
     'index' =>
     array (
@@ -2508,7 +2686,7 @@ $lang = array (
       27 => '動態熱度',
     ),
   ),
-  176 =>
+  188 =>
   array (
     'index' =>
     array (
@@ -2540,19 +2718,22 @@ $lang = array (
       20 => 'forums_cat_display',
       21 => '顯示分區',
       22 => '選擇「否」將暫時將分區隱藏不顯示，但分區內容仍將保留，且用戶仍可通過 URL 訪問到此分區及其版塊',
-      23 => 'setting_seo_forum_tips',
-      24 => '站點名稱&nbsp;{bbname}（應用範圍：所有位置）當前版塊名稱&nbsp;{forum}（應用範圍：除首頁以外）一級版塊名稱&nbsp;{fup}（應用範圍：子版塊主題列表頁和帖子內容頁）分區名稱&nbsp;{fgroup}（應用範圍：除首頁以外）帖子標題&nbsp;{subject}（應用範圍：帖子內容頁）主題摘要&nbsp;{summary}（應用範圍：帖子內容頁）主題標籤&nbsp;{tags}（應用範圍：帖子內容頁）分頁數&nbsp;{page}（應用範圍：主題列表頁、帖子內容頁）',
-      25 => 'forums_edit_basic_seotitle',
-      26 => 'title',
-      27 => 'forums_edit_basic_keyword',
-      28 => 'keywords',
-      29 => 'keywords用於搜索引擎優化，放在 meta 的 keyword 標籤中，多個關鍵字間請用半角逗號 "," 隔開',
-      30 => 'forums_edit_basic_seodescription',
-      31 => 'description',
-      32 => 'description用於搜索引擎優化，放在 meta 的 description 標籤中',
+      23 => 'forums_edit_basic_shownav',
+      24 => '在導航顯示',
+      25 => '選擇是否在主導航中顯示',
+      26 => 'setting_seo_forum_tips',
+      27 => '站點名稱&nbsp;{bbname}（應用範圍：所有位置）當前版塊名稱&nbsp;{forum}（應用範圍：除首頁以外）一級版塊名稱&nbsp;{fup}（應用範圍：子版塊主題列表頁和帖子內容頁）分區名稱&nbsp;{fgroup}（應用範圍：除首頁以外）帖子標題&nbsp;{subject}（應用範圍：帖子內容頁）主題摘要&nbsp;{summary}（應用範圍：帖子內容頁）主題標籤&nbsp;{tags}（應用範圍：帖子內容頁）分頁數&nbsp;{page}（應用範圍：主題列表頁、帖子內容頁）',
+      28 => 'forums_edit_basic_seotitle',
+      29 => 'title',
+      30 => 'forums_edit_basic_keyword',
+      31 => 'keywords',
+      32 => 'keywords用於搜索引擎優化，放在 meta 的 keyword 標籤中，多個關鍵字間請用半角逗號 "," 隔開',
+      33 => 'forums_edit_basic_seodescription',
+      34 => 'description',
+      35 => 'description用於搜索引擎優化，放在 meta 的 description 標籤中',
     ),
   ),
-  177 =>
+  189 =>
   array (
     'index' =>
     array (
@@ -2579,40 +2760,43 @@ $lang = array (
       15 => 'forums_edit_basic_display',
       16 => '顯示版塊',
       17 => '選擇「不顯示」將暫時將版塊隱藏不顯示，但版塊內容仍將保留，且用戶仍可通過直接提供帶有 fid 的 URL 訪問到此版塊',
-      18 => 'forums_edit_basic_up',
-      19 => '上級版塊',
-      20 => '本版塊的上級版塊或分類',
-      21 => 'forums_edit_basic_redirect',
-      22 => '版塊轉向 URL',
-      23 => '如果設置轉向 URL(例如 http://www.discuz.com)，用戶點擊本分版塊將進入轉向中設置的 URL。一旦設定將無法進入版塊頁面，請確認是否需要使用此功能，留空為不設置轉向 URL',
-      24 => 'forums_edit_basic_description',
-      25 => '版塊簡介',
-      26 => '將顯示於版塊名稱的下面，提供對本版塊的簡短描述支持內置的 Discuz! 代碼',
-      27 => 'forums_edit_basic_rules',
-      28 => '本版塊規則',
-      29 => '顯示於主題列表頁的當前版塊規則，留空為不顯示支持內置的 Discuz! 代碼',
-      30 => 'forums_edit_basic_keys',
-      31 => '綁定別名',
-      32 => '綁定後當站點開啟 URL 靜態化後可通過別名訪問此版塊，如設置別名為「developer」那麼版塊的 URL 將變為「http://127.0.0.1/Discuz!X/tools/language_template/forum-developer-1.html」。注意：別名中只能包含字母或數字，且不能是純數字',
-      33 => 'forums_edit_extend_domain',
-      34 => '綁定域名',
-      35 => '根域名設置完後，此處域名綁定才能生效，設置根域名',
+      18 => 'forums_edit_basic_shownav',
+      19 => '在導航顯示',
+      20 => '選擇是否在主導航中顯示',
+      21 => 'forums_edit_basic_up',
+      22 => '上級版塊',
+      23 => '本版塊的上級版塊或分類',
+      24 => 'forums_edit_basic_redirect',
+      25 => '版塊轉向 URL',
+      26 => '如果設置轉向 URL(例如 http://www.discuz.com)，用戶點擊本分版塊將進入轉向中設置的 URL。一旦設定將無法進入版塊頁面，請確認是否需要使用此功能，留空為不設置轉向 URL',
+      27 => 'forums_edit_basic_description',
+      28 => '版塊簡介',
+      29 => '將顯示於版塊名稱的下面，提供對本版塊的簡短描述支持內置的 Discuz! 代碼',
+      30 => 'forums_edit_basic_rules',
+      31 => '本版塊規則',
+      32 => '顯示於主題列表頁的當前版塊規則，留空為不顯示支持內置的 Discuz! 代碼',
+      33 => 'forums_edit_basic_keys',
+      34 => '綁定別名',
+      35 => '綁定後當站點開啟 URL 靜態化後可通過別名訪問此版塊，如設置別名為「developer」那麼版塊的 URL 將變為「http://127.0.0.1/discuz!x/tools/language_template/forum-developer-1.html」。注意：別名中只能包含字母或數字，且不能是純數字',
       36 => 'forums_edit_extend_domain',
       37 => '綁定域名',
       38 => '根域名設置完後，此處域名綁定才能生效，設置根域名',
-      39 => 'setting_seo_forum_tips',
-      40 => '站點名稱&nbsp;{bbname}（應用範圍：所有位置）當前版塊名稱&nbsp;{forum}（應用範圍：除首頁以外）一級版塊名稱&nbsp;{fup}（應用範圍：子版塊主題列表頁和帖子內容頁）分區名稱&nbsp;{fgroup}（應用範圍：除首頁以外）帖子標題&nbsp;{subject}（應用範圍：帖子內容頁）主題摘要&nbsp;{summary}（應用範圍：帖子內容頁）主題標籤&nbsp;{tags}（應用範圍：帖子內容頁）分頁數&nbsp;{page}（應用範圍：主題列表頁、帖子內容頁）',
-      41 => 'forums_edit_basic_seotitle',
-      42 => 'title',
-      43 => 'forums_edit_basic_keyword',
-      44 => 'keywords',
-      45 => 'keywords用於搜索引擎優化，放在 meta 的 keyword 標籤中，多個關鍵字間請用半角逗號 "," 隔開',
-      46 => 'forums_edit_basic_seodescription',
-      47 => 'description',
-      48 => 'description用於搜索引擎優化，放在 meta 的 description 標籤中',
+      39 => 'forums_edit_extend_domain',
+      40 => '綁定域名',
+      41 => '根域名設置完後，此處域名綁定才能生效，設置根域名',
+      42 => 'setting_seo_forum_tips',
+      43 => '站點名稱&nbsp;{bbname}（應用範圍：所有位置）當前版塊名稱&nbsp;{forum}（應用範圍：除首頁以外）一級版塊名稱&nbsp;{fup}（應用範圍：子版塊主題列表頁和帖子內容頁）分區名稱&nbsp;{fgroup}（應用範圍：除首頁以外）帖子標題&nbsp;{subject}（應用範圍：帖子內容頁）主題摘要&nbsp;{summary}（應用範圍：帖子內容頁）主題標籤&nbsp;{tags}（應用範圍：帖子內容頁）分頁數&nbsp;{page}（應用範圍：主題列表頁、帖子內容頁）',
+      44 => 'forums_edit_basic_seotitle',
+      45 => 'title',
+      46 => 'forums_edit_basic_keyword',
+      47 => 'keywords',
+      48 => 'keywords用於搜索引擎優化，放在 meta 的 keyword 標籤中，多個關鍵字間請用半角逗號 "," 隔開',
+      49 => 'forums_edit_basic_seodescription',
+      50 => 'description',
+      51 => 'description用於搜索引擎優化，放在 meta 的 description 標籤中',
     ),
   ),
-  178 =>
+  190 =>
   array (
     'index' =>
     array (
@@ -2665,48 +2849,51 @@ $lang = array (
       41 => 'forums_edit_extend_defaultorder',
       42 => '主題默認排序方式',
       43 => '設置版塊的主題列表默認排序的方式。默認為「按降序排列」，除默認設置外其他排序方式會加重服務器負擔',
-      44 => 'forums_edit_extend_threadcache',
-      45 => '頁面緩存係數',
-      46 => '此功能可以將遊客經常訪問的主題臨時緩存起來，緩解大型服務器壓力。係數範圍 0～100，建議數值 20 ～ 40，0 為關閉緩存。在磁盤空間允許的情況下，適當調高緩存係數，可以提高緩存效果註：版塊設置完畢後請到 全局 -> 優化設置 -> 站點頁面緩存設置，調整其緩存時間',
-      47 => 'forums_edit_extend_relatedgroup',
-      48 => '關聯群組/版塊',
-      49 => '填寫被關聯群組/版塊的fid，以半角逗號 "," 隔開。版塊的主題列表頁將顯示被關聯群組/版塊的主題',
-      50 => 'forums_edit_extend_edit_rules',
-      51 => '允許版主修改本版塊規則',
-      52 => '設置是否允許超級版主和版主修改本版規則',
-      53 => 'forums_edit_extend_disablecollect',
-      54 => '禁止淘帖',
-      55 => '選擇「是」將禁止用戶淘帖本版主題',
-      56 => 'forums_edit_extend_recommend',
-      57 => '是否開啟推薦主題功能',
-      58 => '設置是否開啟推薦主題功能',
-      59 => 'forums_edit_extend_recommend_sort',
-      60 => '版主推薦主題方式',
-      61 => '自動生成則按照推薦主題規則設定生成推薦列表。手動生成則由版主自行推薦生成推薦列表。半自動生成則和手動方式類似，當手動生成的列表條數不足設置的顯示條數時，將按照推薦主題規則自動補足相差條數',
-      62 => 'forums_edit_extend_recommend_orderby',
-      63 => '推薦主題規則',
-      64 => '推薦主題規則，只對自動和半自動生成推薦主題列表有效，此規則均為降序排列',
-      65 => 'forums_edit_extend_recommend_num',
-      66 => '推薦主題顯示數量',
-      67 => '推薦主題顯示的數量，默認為 10 條，建議不要超過 20 條',
-      68 => 'forums_edit_extend_recommend_imagenum',
-      69 => '推薦主題圖片附件顯示數量',
-      70 => '推薦主題中圖片附件顯示的數量，默認為 5 條。設置為 0 則不顯示，建議不要超過 10 條',
-      71 => 'forums_edit_extend_recommend_imagesize',
-      72 => '推薦主題圖片附件顯示大小',
-      73 => '推薦主題中圖片附件顯示的大小，默認為 300 x 250',
-      74 => 'forums_edit_extend_recommend_maxlength',
-      75 => '標題最大字節數',
-      76 => '設置當標題長度超過本設定時，是否將標題自動縮減到本設定中的字節數，0 為不自動縮減',
-      77 => 'forums_edit_extend_recommend_cachelife',
-      78 => '數據緩存時間(秒)',
-      79 => '由於一些排序檢索操作比較耗費資源，建議設置為 900 的數值',
-      80 => 'forums_edit_extend_recommend_dateline',
-      81 => '推薦主題時間段',
-      82 => '按照設置的排序方式，取從訪問推薦主題列表這一刻往前推送時間段內的主題，自動生成推薦主題列表，單位為小時，設置成0為所有時段',
+      44 => 'forums_edit_extend_reply_background',
+      45 => '快捷回復框背景圖片',
+      46 => '設置後將在快速回復框中展現該圖片',
+      47 => 'forums_edit_extend_threadcache',
+      48 => '頁面緩存係數',
+      49 => '此功能可以將遊客經常訪問的主題臨時緩存起來，緩解大型服務器壓力。係數範圍 0～100，建議數值 20 ～ 40，0 為關閉緩存。在磁盤空間允許的情況下，適當調高緩存係數，可以提高緩存效果註：版塊設置完畢後請到 全局 -> 優化設置 -> 站點頁面緩存設置，調整其緩存時間',
+      50 => 'forums_edit_extend_relatedgroup',
+      51 => '關聯群組/版塊',
+      52 => '填寫被關聯群組/版塊的fid，以半角逗號 "," 隔開。版塊的主題列表頁將顯示被關聯群組/版塊的主題',
+      53 => 'forums_edit_extend_edit_rules',
+      54 => '允許版主修改本版塊規則',
+      55 => '設置是否允許超級版主和版主修改本版規則',
+      56 => 'forums_edit_extend_disablecollect',
+      57 => '禁止淘帖',
+      58 => '選擇「是」將禁止用戶淘帖本版主題',
+      59 => 'forums_edit_extend_recommend',
+      60 => '是否開啟推薦主題功能',
+      61 => '設置是否開啟推薦主題功能',
+      62 => 'forums_edit_extend_recommend_sort',
+      63 => '版主推薦主題方式',
+      64 => '自動生成則按照推薦主題規則設定生成推薦列表。手動生成則由版主自行推薦生成推薦列表。半自動生成則和手動方式類似，當手動生成的列表條數不足設置的顯示條數時，將按照推薦主題規則自動補足相差條數',
+      65 => 'forums_edit_extend_recommend_orderby',
+      66 => '推薦主題規則',
+      67 => '推薦主題規則，只對自動和半自動生成推薦主題列表有效，此規則均為降序排列',
+      68 => 'forums_edit_extend_recommend_num',
+      69 => '推薦主題顯示數量',
+      70 => '推薦主題顯示的數量，默認為 10 條，建議不要超過 20 條',
+      71 => 'forums_edit_extend_recommend_imagenum',
+      72 => '推薦主題圖片附件顯示數量',
+      73 => '推薦主題中圖片附件顯示的數量，默認為 5 條。設置為 0 則不顯示，建議不要超過 10 條',
+      74 => 'forums_edit_extend_recommend_imagesize',
+      75 => '推薦主題圖片附件顯示大小',
+      76 => '推薦主題中圖片附件顯示的大小，默認為 300 x 250',
+      77 => 'forums_edit_extend_recommend_maxlength',
+      78 => '標題最大字節數',
+      79 => '設置當標題長度超過本設定時，是否將標題自動縮減到本設定中的字節數，0 為不自動縮減',
+      80 => 'forums_edit_extend_recommend_cachelife',
+      81 => '數據緩存時間(秒)',
+      82 => '由於一些排序檢索操作比較耗費資源，建議設置為 900 的數值',
+      83 => 'forums_edit_extend_recommend_dateline',
+      84 => '推薦主題時間段',
+      85 => '按照設置的排序方式，取從訪問推薦主題列表這一刻往前推送時間段內的主題，自動生成推薦主題列表，單位為小時，設置成0為所有時段',
     ),
   ),
-  179 =>
+  191 =>
   array (
     'index' =>
     array (
@@ -2775,13 +2962,22 @@ $lang = array (
       57 => '設置允許上傳的附件擴展名，多個擴展名之間用半角逗號 "," 隔開。本設置的優先級高於用戶組，留空為按照用戶組允許的附件類型設定',
       58 => 'forums_edit_posts_allowfeed',
       59 => '允許發送廣播和動態',
-      60 => '開啟後默認允許用戶發送廣播和動態，廣播是否發送用戶可以在發帖時去掉，隱私版塊建議設為否。',
+      60 => '開啟後默認允許用戶發送廣播和動態，同時用戶也可以選擇不發送，隱私版塊建議設為否。如果關閉廣播功能，該設置將無效。',
       61 => 'forums_edit_posts_commentitem',
       62 => '普通主題點評預置觀點',
       63 => '每個觀點一行。如存在空行，空行下方的內容將顯示在下拉菜單中作為備選觀點。只有開啟帖子點評功能後本設置才生效，如留空表示使用全局的「普通主題點評預置觀點」設置',
+      64 => 'forums_edit_posts_noantitheft',
+      65 => '關閉防採集',
+      66 => '關閉防採集功能可節省少量服務器資源，建議灌水類版塊關閉防採集功能。',
+      67 => 'forums_edit_posts_noforumhidewater',
+      68 => '關閉隱藏水帖',
+      69 => '可單獨關閉本版的隱藏水帖功能，適用於灌水類版塊。',
+      70 => 'forums_edit_posts_noforumrecommend',
+      71 => '關閉推薦回復',
+      72 => '可單獨關閉本版的推薦回復功能，適用於灌水類版塊。',
     ),
   ),
-  180 =>
+  192 =>
   array (
     'index' =>
     array (
@@ -2795,7 +2991,7 @@ $lang = array (
       2 => '本功能可限定本版塊某特定類型附件的最大尺寸，當這裡設定的尺寸小於用戶組允許的最大尺寸時，指定類型的附件尺寸限制將按本設定為準。您可以設置某類附件最大尺寸為 0 以整體禁止這類附件被上傳。此處設置留空則使用全局的「附件類型尺寸」設置。',
     ),
   ),
-  181 =>
+  193 =>
   array (
     'index' =>
     array (
@@ -2811,7 +3007,7 @@ $lang = array (
       4 => '擴展積分增減策略',
     ),
   ),
-  182 =>
+  194 =>
   array (
     'index' =>
     array (
@@ -2842,7 +3038,7 @@ $lang = array (
       19 => '您可以啟用已有的主題分類或添加新主題分類應用於本版塊，在分類很多的情況下，建議只有重要的分類使用「平板顯示」方式，更多的分類使用「下拉顯示」方式',
     ),
   ),
-  183 =>
+  195 =>
   array (
     'index' =>
     array (
@@ -2869,7 +3065,7 @@ $lang = array (
       15 => '是否啟用默認顯示分類，如果啟用請在下面的分類信息裡面選擇',
     ),
   ),
-  184 =>
+  196 =>
   array (
     'index' =>
     array (
@@ -2881,9 +3077,9 @@ $lang = array (
       0 => '版塊管理 &raquo; 版塊權限',
       1 => 'forums_edit_tips',
       2 => '以下設置沒有繼承性，即僅對當前版塊有效，不會對下級子版塊產生影響。',
-      3 => 'forums_edit_perm_forum',
-      4 => '版塊權限',
-      5 => '某權限如果全部未選則表示如下含義:　　瀏覽版塊，全部用戶組具有瀏覽版塊帖子權限；發新話題，除遊客以外的用戶組具有發帖權限；發表回復，除遊客以外的用戶組具有回復權限；查看附件，全部用戶組具有下載/查看附件權限；上傳附件，除遊客以外的用戶組具有上傳附件權限；上傳圖片，除遊客以外的用戶組具有上傳圖片權限',
+      3 => 'forums_edit_perm_price',
+      4 => '付費價格',
+      5 => '當你設置了價格後，用戶必須使用指定的交易積分付費後才可進入此版塊。當價格增長時，用戶還需要支付所增加的積分',
       6 => 'forums_edit_perm_passwd',
       7 => '訪問密碼',
       8 => '當您設置密碼後，用戶必須輸入密碼才可以訪問到此版塊',
@@ -2906,7 +3102,7 @@ $lang = array (
       25 => '自定義無權限時的提示信息，如不填寫則無權限時將顯示權限表達式的公式',
     ),
   ),
-  185 =>
+  197 =>
   array (
     'index' =>
     array (
@@ -2919,7 +3115,7 @@ $lang = array (
       2 => '您可以制定多種團隊職務分配給您網站管理團隊的各個成員，讓他們管理網站的不同事務「副站長」擁有除「創始人(站長)」專有權限以外的所有後台權限，僅次於「創始人(站長)」',
     ),
   ),
-  186 =>
+  198 =>
   array (
     'index' =>
     array (
@@ -2945,10 +3141,10 @@ $lang = array (
       15 => '選擇管理用戶組(在群組中具有與論壇中相對應的管理權限)',
       16 => 'forums_edit_posts_allowfeed',
       17 => '允許發送廣播和動態',
-      18 => '開啟後默認允許用戶發送廣播和動態，廣播是否發送用戶可以在發帖時去掉，隱私版塊建議設為否。',
+      18 => '開啟後默認允許用戶發送廣播和動態，同時用戶也可以選擇不發送，隱私版塊建議設為否。如果關閉廣播功能，該設置將無效。',
     ),
   ),
-  187 =>
+  199 =>
   array (
     'index' =>
     array (
@@ -2970,7 +3166,7 @@ $lang = array (
       11 => '其它權限',
     ),
   ),
-  188 =>
+  200 =>
   array (
     'index' =>
     array (
@@ -2983,7 +3179,7 @@ $lang = array (
       2 => '群組等級不宜設置過多。當允許群組內發帖等操作影響用戶積分時應謹慎，用戶有可能通過群組刷積分。默認等級圖標大小是25 X 25像素。',
     ),
   ),
-  189 =>
+  201 =>
   array (
     'index' =>
     array (
@@ -3014,7 +3210,7 @@ $lang = array (
       20 => '創建者 UID',
     ),
   ),
-  190 =>
+  202 =>
   array (
     'index' =>
     array (
@@ -3024,7 +3220,7 @@ $lang = array (
     array (
       0 => '道具中心',
       1 => 'magics_tips',
-      2 => '安裝新的道具，需將道具腳本程序上傳到 source/class/magic/ 目錄，然後即可在以下列表中使用了。插件開發人員在設計新的道具前請務必仔細閱讀《Discuz! 技術文庫》中的內容。',
+      2 => '系統道具位於 source/class/magic/ 目錄中，插件道具位於 source/plugin/插件目錄/magic/ 目錄中插件開發人員在設計新的道具前請務必仔細閱讀《Discuz! 技術文庫》中的內容。',
       3 => 'magics_config_open',
       4 => '是否打開道具中心',
       5 => '是否開啟道具中心功能',
@@ -3033,7 +3229,63 @@ $lang = array (
       8 => '設置道具系統回收價格折扣，此值為百分比，例如如果此值為 85，則系統將以道具原價 85% 的價格回收，建議不超過 100，有效防止刷積分。留空或者 0 表示不開啟道具回收功能',
     ),
   ),
-  191 =>
+  203 =>
+  array (
+    'index' =>
+    array (
+      '生成全部' => 'action=makehtml&operation=all',
+    ),
+    'text' =>
+    array (
+      0 => '生成全部',
+      1 => 'makehtml_tips_all',
+      2 => '生成指定起始時間以後發佈的文章的HTML文件生成指定起始時間以後發佈過文章的頻道HTML文件生成門戶首頁的HTML文件',
+      3 => 'start_time',
+      4 => '起始時間',
+    ),
+  ),
+  204 =>
+  array (
+    'index' =>
+    array (
+      'html' => 'action=makehtml&operation=makehtmlsetting',
+      '生成HTML' => 'action=makehtml&operation=makehtmlsetting',
+    ),
+    'text' =>
+    array (
+      0 => 'html &raquo; 生成HTML',
+      1 => 'setting_functions_makehtml',
+      2 => '生成HTML',
+      3 => 'setting_functions_makehtml_extendname',
+      4 => '靜態文件擴展名',
+      5 => '所有靜態文件的擴展名，默認為html',
+      6 => 'setting_functions_makehtml_articlehtmldir',
+      7 => '文章HTML存放根目錄',
+      8 => '文章靜態文件存放的根目錄，子目錄與頻道目錄相同，從網站的根目錄開始，結尾不需要添加/，為空則存放在當前頻道的文件夾下',
+      9 => 'setting_functions_makehtml_htmldirformat',
+      10 => '目錄結構',
+      11 => '靜態文件文件存放目錄的下級目錄結構, 0:/Ym/, 1:/Ym/d/, 2:/Y/m/, 3:/Y/m/d/',
+      12 => 'setting_functions_makehtml_topichtmldir',
+      13 => '專題HTML存放目錄',
+      14 => '專題HTML文件存放目錄，從網站的根目錄開始，結尾不需要添加/，為空則不生成專題HTML文件',
+      15 => 'setting_functions_makehtml_indexname',
+      16 => '門戶首頁靜態文件名',
+      17 => '生成門戶首頁的靜態文件名，默認為index，不帶擴展名',
+    ),
+  ),
+  205 =>
+  array (
+    'index' =>
+    array (
+    ),
+    'text' =>
+    array (
+      0 => 'setting_functions_makehtml_cleanhtml',
+      1 => '需要清理的HTML',
+      2 => '選擇需要要清理的HTML',
+    ),
+  ),
+  206 =>
   array (
     'index' =>
     array (
@@ -3046,7 +3298,7 @@ $lang = array (
       2 => '本功能用於設置可以頒發給用戶的勳章信息，勳章圖片中請填寫圖片文件名，並將相應圖片文件上傳到 static/image/common/ 目錄中。',
     ),
   ),
-  192 =>
+  207 =>
   array (
     'index' =>
     array (
@@ -3063,7 +3315,7 @@ $lang = array (
       6 => 'IP 地址',
     ),
   ),
-  193 =>
+  208 =>
   array (
     'index' =>
     array (
@@ -3084,7 +3336,7 @@ $lang = array (
       10 => '發送通知到上述地址',
     ),
   ),
-  194 =>
+  209 =>
   array (
     'index' =>
     array (
@@ -3116,7 +3368,7 @@ $lang = array (
       21 => '如果您通過用戶組設定禁止或解除禁止該用戶，請輸入操作理由，系統將把理由記錄在用戶禁止記錄中，以供日後查看',
     ),
   ),
-  195 =>
+  210 =>
   array (
     'index' =>
     array (
@@ -3134,7 +3386,7 @@ $lang = array (
       7 => '如果您修改了用戶的積分資料，請輸入操作理由，系統將把理由記錄在用戶評分記錄中，以供日後查看',
     ),
   ),
-  196 =>
+  211 =>
   array (
     'index' =>
     array (
@@ -3152,7 +3404,7 @@ $lang = array (
       7 => '',
     ),
   ),
-  197 =>
+  212 =>
   array (
     'index' =>
     array (
@@ -3216,7 +3468,7 @@ $lang = array (
       53 => '用戶欄目',
     ),
   ),
-  198 =>
+  213 =>
   array (
     'index' =>
     array (
@@ -3283,7 +3535,7 @@ $lang = array (
       56 => '用戶生日',
     ),
   ),
-  199 =>
+  214 =>
   array (
     'index' =>
     array (
@@ -3296,7 +3548,7 @@ $lang = array (
       2 => '通過用戶優化可以大幅度提高網站的性能。因體檢操作較慢，所以體檢的結果會緩存一天的時間',
     ),
   ),
-  200 =>
+  215 =>
   array (
     'index' =>
     array (
@@ -3309,7 +3561,7 @@ $lang = array (
       2 => '通過用戶優化可以大幅度提高網站的性能。當可優化用戶數大於30%以上時，我們強烈建議進行用戶表優化操作請根據服務器性能，適當調整單步優化數。建議在關閉站點下進行優化操作。',
     ),
   ),
-  201 =>
+  216 =>
   array (
     'index' =>
     array (
@@ -3322,7 +3574,7 @@ $lang = array (
       2 => '本功能用於自定義首頁及主題列表頁顯示的在線會員分組及圖例，只在在線列表功能打開時有效。用戶組圖例處空白為不區分該組用戶，所有未區分的用戶組將統一歸入第一行的「普通用戶」項。用戶組圖例中請填寫圖片文件名，並將相應圖片文件上傳到 static/image/common/ 目錄中。',
     ),
   ),
-  202 =>
+  217 =>
   array (
     'index' =>
     array (
@@ -3336,7 +3588,7 @@ $lang = array (
 						友情鏈接分組只供 DIY 的展示類模塊使用。',
     ),
   ),
-  203 =>
+  218 =>
   array (
     'index' =>
     array (
@@ -3349,7 +3601,7 @@ $lang = array (
       2 => '在指定範圍內出現的相關文字自動加上鏈接。',
     ),
   ),
-  204 =>
+  219 =>
   array (
     'index' =>
     array (
@@ -3363,7 +3615,7 @@ $lang = array (
       2 => '只有在自定義 Discuz! 代碼可用並設置了圖標文件時，具有「允許使用自定義 Discuz! 代碼」權限的用戶組在發帖時才會看到相應自定義 Discuz! 代碼按鈕。',
     ),
   ),
-  205 =>
+  220 =>
   array (
     'index' =>
     array (
@@ -3380,7 +3632,7 @@ $lang = array (
       6 => '默認分類為內置分類，當刪除一組分類時，詞語過濾將會自動編入默認分類中。',
     ),
   ),
-  206 =>
+  221 =>
   array (
     'index' =>
     array (
@@ -3394,7 +3646,7 @@ $lang = array (
       2 => '鑒定圖章顯示在帖子內容頁，鑒定圖標顯示在主題列表頁。系統預留了 100 個主題鑒定圖片位置，分別為圖片 ID 0 至 99。不要隨意修改圖片 ID，否則將會導致主題中已使用的圖章、圖標錯亂。當圖章設置了關聯操作後，圖章會在執行相應操作時被自動添加到主題中；當圖章設置了關聯圖標後，圖標會在添加圖章時自動添加到主題列表中。關聯操作不可與關聯圖標同時設置。',
     ),
   ),
-  207 =>
+  222 =>
   array (
     'index' =>
     array (
@@ -3408,7 +3660,7 @@ $lang = array (
       2 => '鑒定圖章顯示在帖子內容頁，鑒定圖標顯示在主題列表頁。系統預留了 100 個主題鑒定圖片位置，分別為圖片 ID 0 至 99。不要隨意修改圖片 ID，否則將會導致主題中已使用的圖章、圖標錯亂。當圖章設置了關聯操作後，圖章會在執行相應操作時被自動添加到主題中；當圖章設置了關聯圖標後，圖標會在添加圖章時自動添加到主題列表中。關聯操作不可與關聯圖標同時設置。',
     ),
   ),
-  208 =>
+  223 =>
   array (
     'index' =>
     array (
@@ -3422,7 +3674,7 @@ $lang = array (
       2 => '可以選擇是添加成圖章還是圖標。圖片名稱必需填寫，沒有名稱的圖片不會被添加。',
     ),
   ),
-  209 =>
+  224 =>
   array (
     'index' =>
     array (
@@ -3435,7 +3687,7 @@ $lang = array (
       2 => '本功能可限定某特定類型附件的最大尺寸，當這裡設定的尺寸小於用戶組允許的最大尺寸時，指定類型的附件尺寸限制將按本設定為準。您可以設置某類附件最大尺寸為 0 以整體禁止這類附件被上傳。',
     ),
   ),
-  210 =>
+  225 =>
   array (
     'index' =>
     array (
@@ -3448,7 +3700,7 @@ $lang = array (
       2 => '計劃任務是 Discuz! 提供的一項使系統在規定時間自動執行某些特定任務的功能，在需要的情況下，您也可以方便的將其用於站點功能的擴展。計劃任務是與系統核心緊密關聯的功能特性，不當的設置可能造成站點功能的隱患，嚴重時可能導致站點無法正常運行，因此請務必僅在您對計劃任務特性十分瞭解，並明確知道正在做什麼、有什麼樣後果的時候才自行添加或修改任務項目。此處和其他功能不同，本功能中完全按照站點系統默認時差對時間進行設定和顯示，而不會依據某一用戶或管理員的時差設定而改變顯示或設置的時間值。',
     ),
   ),
-  211 =>
+  226 =>
   array (
     'index' =>
     array (
@@ -3464,7 +3716,7 @@ $lang = array (
       4 => '管理',
     ),
   ),
-  212 =>
+  227 =>
   array (
     'index' =>
     array (
@@ -3490,7 +3742,7 @@ $lang = array (
       14 => '站長推薦投放區域',
     ),
   ),
-  213 =>
+  228 =>
   array (
     'index' =>
     array (
@@ -3511,7 +3763,7 @@ $lang = array (
 ',
     ),
   ),
-  214 =>
+  229 =>
   array (
     'index' =>
     array (
@@ -3524,7 +3776,7 @@ $lang = array (
       2 => '批量圖片管理用於刪除圖片使用。連圖片評論一同刪除提醒：點擊搜索結果頁的刪除按鈕，將會直接刪除相關信息！',
     ),
   ),
-  215 =>
+  230 =>
   array (
     'index' =>
     array (
@@ -3561,7 +3813,7 @@ $lang = array (
       25 => '格式 yyyy-mm-dd',
     ),
   ),
-  216 =>
+  231 =>
   array (
     'index' =>
     array (
@@ -3574,7 +3826,7 @@ $lang = array (
       2 => '批量點評管理用於刪除帖子點評。提醒：點擊搜索結果頁的刪除按鈕，將會直接刪除相關信息！',
     ),
   ),
-  217 =>
+  232 =>
   array (
     'index' =>
     array (
@@ -3610,7 +3862,7 @@ $lang = array (
       24 => '格式 yyyy-mm-dd',
     ),
   ),
-  218 =>
+  233 =>
   array (
     'index' =>
     array (
@@ -3624,7 +3876,7 @@ $lang = array (
       2 => '進行帖子分表前一定要先關閉站點，為防止分表操作過程中出現問題，必須做好數據庫備份後再進行此操作帖子數據轉移完畢會對源帖子表進行表優化操作，優化表所耗時間比較長，在這期間絕對不能重起服務器或者停止MySQL服務forum_post(主表)必須保留300M的數據帖子分表功能可以將帖子分在不同的數據表中，適合帖子數很多並且運行效率受到影響的站點使用',
     ),
   ),
-  219 =>
+  234 =>
   array (
     'index' =>
     array (
@@ -3638,7 +3890,7 @@ $lang = array (
       2 => '進行帖子分表前一定要先關閉站點，為防止分表操作過程中出現問題，必須做好數據庫備份後再進行此操作帖子數據轉移完畢會對源帖子表進行表優化操作，優化表所耗時間比較長，在這期間絕對不能重起服務器或者停止MySQL服務forum_post(主表)必須保留300M的數據帖子分表功能可以將帖子分在不同的數據表中，適合帖子數很多並且運行效率受到影響的站點使用',
     ),
   ),
-  220 =>
+  235 =>
   array (
     'index' =>
     array (
@@ -3674,7 +3926,7 @@ $lang = array (
       25 => '本功能會加重服務器負擔',
     ),
   ),
-  221 =>
+  236 =>
   array (
     'index' =>
     array (
@@ -3707,7 +3959,7 @@ $lang = array (
       21 => '僅包含防水牆處理的主題',
     ),
   ),
-  222 =>
+  237 =>
   array (
     'index' =>
     array (
@@ -3724,7 +3976,7 @@ $lang = array (
       5 => '0 為清空全部',
     ),
   ),
-  223 =>
+  238 =>
   array (
     'index' =>
     array (
@@ -3753,7 +4005,7 @@ $lang = array (
       17 => '僅包含防水牆處理的主題',
     ),
   ),
-  224 =>
+  239 =>
   array (
     'index' =>
     array (
@@ -3770,7 +4022,7 @@ $lang = array (
       5 => '0 為清空全部',
     ),
   ),
-  225 =>
+  240 =>
   array (
     'index' =>
     array (
@@ -3783,7 +4035,7 @@ $lang = array (
       2 => '可以根據舉報真實情況，給舉報者加減積分，設置用戶舉報獎懲使用的積分多人舉報時獎懲第一個舉報人。',
     ),
   ),
-  226 =>
+  241 =>
   array (
     'index' =>
     array (
@@ -3804,29 +4056,32 @@ $lang = array (
       10 => 'setting_basic_adminemail',
       11 => '管理員郵箱',
       12 => '管理員 E-mail，將作為系統發郵件的時候的發件人地址',
-      13 => 'setting_basic_icp',
-      14 => '網站備案信息代碼',
-      15 => '頁面底部可以顯示 ICP 備案信息，如果網站已備案，在此輸入您的授權碼，它將顯示在頁面底部，如果沒有請留空',
-      16 => 'setting_basic_boardlicensed',
-      17 => '顯示授權信息鏈接',
-      18 => '選擇「是」將在頁腳顯示商業授權用戶鏈接，鏈接將指向 Discuz! 官方網站，用戶可通過此鏈接驗證其所使用的 Discuz! 是否經過商業授權',
-      19 => 'setting_basic_stat',
-      20 => '網站第三方統計代碼',
-      21 => '頁面底部可以顯示第三方統計',
-      22 => 'setting_basic_bbclosed',
-      23 => '關閉站點',
-      24 => '暫時將站點關閉，其他人無法訪問，但不影響管理員訪問',
+      13 => 'setting_basic_site_qq',
+      14 => 'QQ在線客服號碼',
+      15 => '設置我的QQ在線狀態',
+      16 => 'setting_basic_icp',
+      17 => '網站備案信息代碼',
+      18 => '頁面底部可以顯示 ICP 備案信息，如果網站已備案，在此輸入您的授權碼，它將顯示在頁面底部，如果沒有請留空',
+      19 => 'setting_basic_boardlicensed',
+      20 => '顯示授權信息鏈接',
+      21 => '選擇「是」將在頁腳顯示商業授權用戶鏈接，鏈接將指向 Discuz! 官方網站，用戶可通過此鏈接驗證其所使用的 Discuz! 是否經過商業授權',
+      22 => 'setting_basic_stat',
+      23 => '網站第三方統計代碼',
+      24 => '頁面底部可以顯示第三方統計',
       25 => 'setting_basic_bbclosed',
       26 => '關閉站點',
       27 => '暫時將站點關閉，其他人無法訪問，但不影響管理員訪問',
-      28 => 'setting_basic_closedreason',
-      29 => '關閉站點的原因',
-      30 => '站點關閉時出現的提示信息',
-      31 => 'setting_basic_bbclosed_activation',
-      32 => '站點關閉時允許 UCenter 中的用戶激活',
+      28 => 'setting_basic_bbclosed',
+      29 => '關閉站點',
+      30 => '暫時將站點關閉，其他人無法訪問，但不影響管理員訪問',
+      31 => 'setting_basic_closedreason',
+      32 => '關閉站點的原因',
+      33 => '站點關閉時出現的提示信息',
+      34 => 'setting_basic_bbclosed_activation',
+      35 => '站點關閉時允許 UCenter 中的用戶激活',
     ),
   ),
-  227 =>
+  242 =>
   array (
     'index' =>
     array (
@@ -3869,17 +4124,20 @@ $lang = array (
       31 => 'setting_home_base_sendmailday',
       32 => '郵件通知更新天數',
       33 => '(默認 0) 單位：天，當用戶多少天沒有登錄站點的時候才會給其發送郵件通知；設置為0，則不啟用郵件通知功能；啟用本功能將會輕微增加服務器負載',
-      34 => 'setting_home_base_groupnum',
-      35 => '好友用戶組個數',
-      36 => '(默認為 8)設置每個用戶最多擁有的好友用戶組個數',
-      37 => 'setting_home_base_default_',
-      38 => '',
-      39 => 'setting_home_base_default_doing',
-      40 => '默認記錄提示內容',
-      41 => '一行為一個提示內容，這些內容將在記錄發表框中顯示，隨機從這些默認提示中選取一行做為提示內容',
+      34 => 'setting_home_base_recycle_bin',
+      35 => '開啟日誌回收站',
+      36 => '打開此功能後，所有被日誌將被放在回收站中，而不會被直接刪除',
+      37 => 'setting_home_base_groupnum',
+      38 => '好友用戶組個數',
+      39 => '(默認為 8)設置每個用戶最多擁有的好友用戶組個數',
+      40 => 'setting_home_base_default_',
+      41 => '',
+      42 => 'setting_home_base_default_doing',
+      43 => '默認記錄提示內容',
+      44 => '一行為一個提示內容，這些內容將在記錄發表框中顯示，隨機從這些默認提示中選取一行做為提示內容',
     ),
   ),
-  228 =>
+  243 =>
   array (
     'index' =>
     array (
@@ -3916,7 +4174,7 @@ $lang = array (
       25 => '默認動態發佈設置',
     ),
   ),
-  229 =>
+  244 =>
   array (
     'index' =>
     array (
@@ -3963,60 +4221,69 @@ $lang = array (
       35 => 'setting_access_register_send_register_url',
       36 => '通過郵件發送註冊鏈接',
       37 => '開啟後系統會發一條註冊的地址到用戶的郵箱，從該地址鏈接過來的允許註冊，同時建議UCenter中開啟一個郵箱只允許註冊一個帳戶注意：只有在站長 - 郵件設置中完成郵件設置，確保郵件能發送成功下可以開啟該功能 ',
-      38 => 'setting_access_register_link_name',
-      39 => '註冊鏈接文字',
-      40 => '設置站點註冊頁的鏈接文字，默認為「立即註冊」',
-      41 => 'setting_access_register_censoruser',
-      42 => '用戶信息保留關鍵字',
-      43 => '用戶在其用戶信息中無法使用這些關鍵字。每個關鍵字一行，可使用通配符 "*" 如 "*版主*"(不含引號)',
-      44 => 'setting_access_register_pwlength',
-      45 => '密碼最小長度',
-      46 => '新用戶註冊時密碼最小長度，0或不填為不限制',
-      47 => 'setting_access_register_strongpw',
-      48 => '強制密碼複雜度',
-      49 => '新用戶註冊時密碼中必須存在所選字符類型，不選則為無限制',
-      50 => 'setting_access_register_verify',
-      51 => '新用戶註冊驗證',
-      52 => '選擇「無」用戶可直接註冊成功；選擇「Email 驗證」將向用戶註冊 Email 發送一封驗證郵件以確認郵箱的有效性（開啟「通過郵件發送註冊鏈接」該設置自動通過驗證）；選擇「人工審核」將由管理員人工逐個確定是否允許新用戶註冊',
-      53 => 'setting_access_register_verify_areawhite',
-      54 => '不受新用戶註冊驗證限制的地區列表',
-      55 => '當用戶處於本列表中的地址時，直接註冊成功，無需新用戶註冊驗證。每個地區一行，例如 "北京"(不含引號)，留空為不設置',
-      56 => 'setting_access_register_verify_ipwhite',
-      57 => '不受新用戶註冊驗證限制的 IP 列表',
-      58 => '當用戶處於本列表中的 IP 地址時，直接註冊成功，無需新用戶註冊驗證。每個 IP 一行，既可輸入完整地址，也可只輸入 IP 開頭，例如 "192.168."(不含引號) 可匹配 192.168.0.0～192.168.255.255 範圍內的所有地址，留空為不設置',
-      59 => 'setting_access_register_ctrl',
-      60 => '同一 IP 註冊間隔限制(小時)',
-      61 => '同一 IP 在本時間間隔內將只能註冊一個帳號，0 為不限制',
-      62 => 'setting_access_register_floodctrl',
-      63 => '同一 IP 在 24 小時允許註冊的最大次數',
-      64 => '同一 IP 地址在 24 小時內嘗試註冊的次數限制，建議在 30 - 100 範圍內取值，0 為不限制',
-      65 => 'setting_access_register_ipctrl_time',
-      66 => '限時註冊IP註冊間隔限制(小時):',
-      67 => '用戶處於限時註冊的 IP 列表中的 IP 地址時，同一 IP 在本時間間隔內將只能註冊一個帳號',
-      68 => 'setting_access_register_ipctrl',
-      69 => '限時註冊的 IP 列表',
-      70 => '當用戶處於本列表中的 IP 地址時，在限時註冊IP註冊間隔限制內將至多只允許註冊一個帳號。每個 IP 一行，既可輸入完整地址，也可只輸入 IP 開頭，例如 "192.168."(不含引號) 可匹配 192.168.0.0～192.168.255.255 範圍內的所有地址，留空為不設置',
-      71 => 'setting_access_register_welcomemsg',
-      72 => '發送歡迎信息',
-      73 => '可選擇是否自動向新註冊用戶發送一條歡迎信息',
-      74 => 'setting_access_register_welcomemsgtitle',
-      75 => '歡迎信息標題',
-      76 => '系統發送的歡迎信息的標題，不支持 HTML，不超過 75 字節。 ',
-      77 => 'setting_access_register_welcomemsgtxt',
-      78 => '歡迎信息內容',
-      79 => '系統發送的歡迎信息的內容。標題內容均支持變量替換，可以使用如下變量:{username} : 用戶名{time} : 發送時間{sitename} : 網站名稱（顯示在頁面底部的聯繫方式處的名稱）{bbname} : 站點名稱（顯示在瀏覽器窗口標題等位置的名稱）{adminemail} : 管理員 Email',
-      80 => 'setting_access_register_bbrules',
-      81 => '顯示網站服務條款',
-      82 => '新用戶註冊時顯示網站服務條款',
-      83 => 'setting_access_register_bbruleforce',
-      84 => '是否強制顯示網站服務條款',
-      85 => '選擇是則在用戶註冊時，首先將看到網站服務條款全文，必須同意才可以繼續註冊',
-      86 => 'setting_access_register_bbrulestxt',
-      87 => '服務條款內容',
-      88 => '網站服務條款的詳細內容',
+      38 => 'setting_access_register_forge_email',
+      39 => '取消註冊郵箱必填',
+      40 => '開啟後如果用戶不填寫註冊郵箱，將自動生成一個隨機郵箱地址',
+      41 => 'setting_access_register_link_name',
+      42 => '註冊鏈接文字',
+      43 => '設置站點註冊頁的鏈接文字，默認為「立即註冊」',
+      44 => 'setting_access_register_censoruser',
+      45 => '用戶信息保留關鍵字',
+      46 => '用戶在其用戶信息中無法使用這些關鍵字。每個關鍵字一行，可使用通配符 "*" 如 "*版主*"(不含引號)',
+      47 => 'setting_access_register_pwlength',
+      48 => '密碼最小長度',
+      49 => '新用戶註冊時密碼最小長度，0或不填為不限制',
+      50 => 'setting_access_register_strongpw',
+      51 => '強制密碼複雜度',
+      52 => '新用戶註冊時密碼中必須存在所選字符類型，不選則為無限制',
+      53 => 'setting_access_register_verify',
+      54 => '新用戶註冊驗證',
+      55 => '選擇「無」用戶可直接註冊成功；選擇「Email 驗證」將向用戶註冊 Email 發送一封驗證郵件以確認郵箱的有效性（開啟「通過郵件發送註冊鏈接」該設置自動通過驗證）；選擇「人工審核」將由管理員人工逐個確定是否允許新用戶註冊',
+      56 => 'setting_access_register_verify_areawhite',
+      57 => '不受新用戶註冊驗證限制的地區列表',
+      58 => '當用戶處於本列表中的地址時，直接註冊成功，無需新用戶註冊驗證。每個地區一行，例如 "北京"(不含引號)，留空為不設置',
+      59 => 'setting_access_register_verify_ipwhite',
+      60 => '不受新用戶註冊驗證限制的 IP 列表',
+      61 => '當用戶處於本列表中的 IP 地址時，直接註冊成功，無需新用戶註冊驗證。每個 IP 一行，既可輸入完整地址，也可只輸入 IP 開頭，例如 "192.168."(不含引號) 可匹配 192.168.0.0～192.168.255.255 範圍內的所有地址，留空為不設置',
+      62 => 'setting_access_register_maildomain',
+      63 => '註冊郵箱域名限制',
+      64 => '選擇「無」直接關閉本功能；選擇「白名單模式」，只有限制名單中的郵箱域名可以註冊；選擇「黑名單模式」，限制名單中的郵箱域名不能註冊。',
+      65 => 'setting_access_register_maildomain_list',
+      66 => '限制名單',
+      67 => '當郵箱的域名處於本列表中的地址時，將根據上述選項進行相應限制操作。輸入要限制的郵箱域名即可，例如屏蔽 xxx@xxx.com 的域，只需輸入 xxx.com。每行一個域名。',
+      68 => 'setting_access_register_ctrl',
+      69 => '同一 IP 註冊間隔限制(小時)',
+      70 => '同一 IP 在本時間間隔內將只能註冊一個帳號，0 為不限制',
+      71 => 'setting_access_register_floodctrl',
+      72 => '同一 IP 在 24 小時允許註冊的最大次數',
+      73 => '同一 IP 地址在 24 小時內嘗試註冊的次數限制，建議在 30 - 100 範圍內取值，0 為不限制',
+      74 => 'setting_access_register_ipctrl_time',
+      75 => '限時註冊IP註冊間隔限制(小時):',
+      76 => '用戶處於限時註冊的 IP 列表中的 IP 地址時，同一 IP 在本時間間隔內將只能註冊一個帳號',
+      77 => 'setting_access_register_ipctrl',
+      78 => '限時註冊的 IP 列表',
+      79 => '當用戶處於本列表中的 IP 地址時，在限時註冊IP註冊間隔限制內將至多只允許註冊一個帳號。每個 IP 一行，既可輸入完整地址，也可只輸入 IP 開頭，例如 "192.168."(不含引號) 可匹配 192.168.0.0～192.168.255.255 範圍內的所有地址，留空為不設置',
+      80 => 'setting_access_register_welcomemsg',
+      81 => '發送歡迎信息',
+      82 => '可選擇是否自動向新註冊用戶發送一條歡迎信息',
+      83 => 'setting_access_register_welcomemsgtitle',
+      84 => '歡迎信息標題',
+      85 => '系統發送的歡迎信息的標題，不支持 HTML，不超過 75 字節。 ',
+      86 => 'setting_access_register_welcomemsgtxt',
+      87 => '歡迎信息內容',
+      88 => '系統發送的歡迎信息的內容。標題內容均支持變量替換，可以使用如下變量:{username} : 用戶名{time} : 發送時間{sitename} : 網站名稱（顯示在頁面底部的聯繫方式處的名稱）{bbname} : 站點名稱（顯示在瀏覽器窗口標題等位置的名稱）{adminemail} : 管理員 Email',
+      89 => 'setting_access_register_bbrules',
+      90 => '顯示網站服務條款',
+      91 => '新用戶註冊時顯示網站服務條款',
+      92 => 'setting_access_register_bbruleforce',
+      93 => '是否強制顯示網站服務條款',
+      94 => '選擇是則在用戶註冊時，首先將看到網站服務條款全文，必須同意才可以繼續註冊',
+      95 => 'setting_access_register_bbrulestxt',
+      96 => '服務條款內容',
+      97 => '網站服務條款的詳細內容',
     ),
   ),
-  230 =>
+  245 =>
   array (
     'index' =>
     array (
@@ -4040,7 +4307,7 @@ $lang = array (
       12 => '當用戶組禁止發表 URL ，或者 URL 不解析時，處於本列表中的域名下的 URL 仍然可以正常發表，正常解析，每行一個域名，默認為本站域名可以正常發表',
     ),
   ),
-  231 =>
+  246 =>
   array (
     'index' =>
     array (
@@ -4072,12 +4339,12 @@ $lang = array (
       20 => 'setting_styles_index_switchwidthauto',
       21 => '允許用戶自由切換',
       22 => '設置是否允許用戶自由切換寬窄風格',
-      23 => 'setting_styles_global_jsmenu',
-      24 => '論壇顯示版塊跳轉菜單',
-      25 => '注意: 當論壇分版塊很多時，本功能會嚴重加重服務器負擔',
-      26 => 'setting_styles_global_allowfloatwin',
-      27 => '啟用浮動窗口',
-      28 => '設置以浮動方式顯示的窗口',
+      23 => 'setting_styles_global_allowfloatwin',
+      24 => '啟用浮動窗口',
+      25 => '設置以浮動方式顯示的窗口',
+      26 => 'setting_styles_global_showfjump',
+      27 => '顯示版塊導航',
+      28 => '設置是否在快捷導航中顯示版塊導航',
       29 => 'setting_styles_global_creditnotice',
       30 => '積分變動提示',
       31 => '當用戶在站點的操作產生積分變動時，將彈出提示信息告知用戶',
@@ -4089,7 +4356,7 @@ $lang = array (
       37 => '設置帖子或評論留言中的匿名用戶顯示的文字。如:本站網友',
     ),
   ),
-  232 =>
+  247 =>
   array (
     'index' =>
     array (
@@ -4137,9 +4404,15 @@ $lang = array (
       36 => 'setting_styles_index_hideprivate',
       37 => '隱藏無權訪問的版塊',
       38 => '不在列表中顯示當前用戶無權訪問的版塊',
+      39 => 'setting_styles_index_showfollowcollection',
+      40 => '首頁顯示用戶訂閱的淘專輯數量',
+      41 => '在首頁顯示用戶訂閱的淘專輯數量',
+      42 => 'setting_styles_index_disfixednv',
+      43 => '關閉頂部導航固定',
+      44 => '當向上滾動屏幕時，主導航將即時出現在屏幕的頂部',
     ),
   ),
-  233 =>
+  248 =>
   array (
     'index' =>
     array (
@@ -4198,9 +4471,15 @@ $lang = array (
       47 => 'setting_styles_forumdisplay_newbie',
       48 => '新人帖圖標',
       49 => '用戶發第一篇主題時顯示的圖標，為空則不打圖標',
+      50 => 'setting_styles_forumdisplay_disfixednv_forumdisplay',
+      51 => '關閉頂部導航固定',
+      52 => '當向上滾動屏幕時，主導航將即時出現在屏幕的頂部',
+      53 => 'setting_styles_forumdisplay_threadpreview',
+      54 => '關閉主題預覽',
+      55 => '關閉後將不可在主題列表頁預覽帖子內容',
     ),
   ),
-  234 =>
+  249 =>
   array (
     'index' =>
     array (
@@ -4277,11 +4556,67 @@ $lang = array (
       65 => 'setting_styles_viewthread_author_onleft',
       66 => '作者用戶名顯示位置',
       67 => '顯示位置並不會影響論壇的性能和美觀，請根據您會員的瀏覽習慣進行選擇',
-      68 => 'setting_styles_viewthread_customauthorinfo',
-      69 => '設置用戶信息顯示的位置',
+      68 => 'setting_styles_forumdisplay_disfixedavatar',
+      69 => '關閉頭像區域固定',
+      70 => '當滾動屏幕時，左側頭像區域將跟隨右側帖子內容浮動，填充帖子內容區域很高時導致的左側空白',
+      71 => 'setting_styles_forumdisplay_disfixednv_viewthread',
+      72 => '關閉頂部導航固定',
+      73 => '當向上滾動屏幕時，主導航將即時出現在屏幕的頂部',
+      74 => 'setting_styles_forumdisplay_threadguestlite',
+      75 => '遊客閱讀簡化模式',
+      76 => '啟用後，遊客閱讀主題時，將不顯示用戶的具體資料信息。',
+      77 => 'setting_styles_viewthread_close_leftinfo',
+      78 => '關閉左側信息欄',
+      79 => '帖子左側用戶信息欄是否默認關閉',
+      80 => 'setting_styles_viewthread_close_leftinfo_userctrl',
+      81 => '左側信息欄允許用戶控制',
+      82 => '瀏覽主題時，用戶是否可以控制左側信息欄的顯示狀態',
+      83 => 'setting_styles_viewthread_guestviewthumb',
+      84 => '遊客看小圖',
+      85 => '遊客瀏覽主題時，帖內的圖片將以指定大小的小圖顯示，可提高會員註冊數和活躍量',
+      86 => 'setting_styles_viewthread_guestviewthumb_width',
+      87 => '小圖寬度',
+      88 => '指定小圖的寬度,默認值為100',
+      89 => 'setting_styles_viewthread_guestviewthumb_height',
+      90 => '小圖高度',
+      91 => '指定小圖的商度，默認值為100',
+      92 => 'setting_styles_viewthread_guesttipsinthread',
+      93 => '帖內遊客登錄提示',
+      94 => '遊客在瀏覽主題時，在主題的頂部顯示提示文字',
+      95 => 'setting_styles_viewthread_guesttipsinthread_text',
+      96 => '登錄提示提示文字',
+      97 => '自定義顯示提示文字,默認為：馬上註冊，結交更多好友，享用更多功能，讓你輕鬆玩轉社區。',
+      98 => 'setting_styles_viewthread_imgcontent',
+      99 => '主題內容生成圖片寬度',
+      100 => '本功能需要PHP支持GD庫，內容裡有中文需要將中文 TTF 字體文件放到 static/image/seccode/font/ch/ 目錄下。默認100個漢字，字體不同寬度略有差別，請跟據實際效果調整。',
+      101 => 'setting_styles_viewthread_fast_reply',
+      102 => '開啟帖子快速回復',
+      103 => '開啟後將在主題帖下方展示快速回復框',
+      104 => 'setting_styles_viewthread_allow_replybg',
+      105 => '開啟帖子快速回復框背景',
+      106 => '開啟後允許給帖子快速回復框添加背景圖片',
+      107 => 'setting_styles_viewthread_global_reply_background',
+      108 => '全局帖子快速回復框背景',
+      109 => '設置全局帖子快速回復框背景圖片，版塊設置優先',
     ),
   ),
-  235 =>
+  250 =>
+  array (
+    'index' =>
+    array (
+      '界面設置' => 'action=setting&operation=styles',
+      '帖內用戶信息' => 'action=setting&operation=styles&anchor=threadprofile',
+    ),
+    'text' =>
+    array (
+      0 => '界面設置 &raquo; 帖內用戶信息',
+      1 => 'setting_styles_threadprofile_group',
+      2 => '用戶組方案設置',
+      3 => 'setting_styles_threadprofile_project',
+      4 => '佈局方案列表',
+    ),
+  ),
+  251 =>
   array (
     'index' =>
     array (
@@ -4304,7 +4639,7 @@ $lang = array (
       11 => '當開啟直接/快速跳轉以後，以下信息將會直接跳轉。每行填寫一個信息的關鍵字',
     ),
   ),
-  236 =>
+  252 =>
   array (
     'index' =>
     array (
@@ -4333,7 +4668,22 @@ $lang = array (
       17 => '回復頁面的彈出信息，每行填寫一條信息，多條信息將隨機顯示',
     ),
   ),
-  237 =>
+  253 =>
+  array (
+    'index' =>
+    array (
+      '界面設置' => 'action=setting&operation=threadprofile&do=add',
+    ),
+    'text' =>
+    array (
+      0 => '界面設置',
+      1 => 'setting_threadprofile_tpl_tpls',
+      2 => '{標記} 不含參數的貼內用戶信息標記調用。{標記=參數} 含參數的貼內用戶信息標記調用，多個參數用","分割{標記}HTML{*}HTML{/標記} 當有調用內容有值時顯示 {*} 前後的 HTML 內容「plugin:插件標識」格式的標記為插件增加的貼內用戶信息標記調用。插件開發人員在設計新的貼內用戶信息標記前請務必仔細閱讀《Discuz! 技術文庫》中的內容。',
+      3 => 'setting_styles_threadprofile_name',
+      4 => '名稱',
+    ),
+  ),
+  254 =>
   array (
     'index' =>
     array (
@@ -4348,12 +4698,15 @@ $lang = array (
       3 => 'setting_seo_rewritecompatible',
       4 => 'Rewrite 兼容性',
       5 => '如果您的服務器不支持 Rewrite 規則中的中文字符，請選擇「是」。對於沒有此問題的服務器，可以選擇「否」',
-      6 => 'setting_seo_seohead',
-      7 => '其他頭部信息',
-      8 => '如需在 &lt;head&gt;&lt;/head&gt; 中添加其他的 HTML 代碼，可以使用本設置，否則請留空',
+      6 => 'setting_seo_rewriteguest',
+      7 => '僅對遊客有效',
+      8 => '開啟此項，則 Rewrite功能只對遊客和搜索引擎有效，可減輕服務器負擔',
+      9 => 'setting_seo_seohead',
+      10 => '其他頭部信息',
+      11 => '如需在 &lt;head&gt;&lt;/head&gt; 中添加其他的 HTML 代碼，可以使用本設置，否則請留空',
     ),
   ),
-  238 =>
+  255 =>
   array (
     'index' =>
     array (
@@ -4385,7 +4738,7 @@ $lang = array (
       20 => '將會覆蓋以前的緩存係數值，可以按住 CTRL 多選',
     ),
   ),
-  239 =>
+  256 =>
   array (
     'index' =>
     array (
@@ -4424,7 +4777,7 @@ $lang = array (
       27 => '當開啟後，頁面中的圖片在瀏覽器的當前窗口時再加載，可明顯降低訪問量很大的站點的服務器負擔，建議開啟本功能',
       28 => 'setting_serveropti_blockmaxaggregationitem',
       29 => '參與模塊聚合數據條數',
-      30 => '此值影響模塊聚合時MYSQL檢索數據的條數，設置太大將嚴重影響MYSQL的性能，設置太小將會影響模塊聚合結果數據的理想程度。0為關閉些功能',
+      30 => '此值影響模塊聚合時MYSQL檢索數據的條數，設置太大將嚴重影響MYSQL的性能，設置太小將會影響模塊聚合結果數據的理想程度。0為關閉此功能',
       31 => 'setting_serveropti_blockcachetimerange',
       32 => '模塊更新時間區間',
       33 => '設置全部模塊在指定的時間區間內更新。可以根據網站的訪問情況，避開訪問高峰時間段。如：3點-7點',
@@ -4436,7 +4789,7 @@ $lang = array (
       39 => '關閉session機制以後，總在線人(包括遊客和用戶) ≒ 實際在線用戶數 * 在線人數測算比例，建議值為10左右,可為浮點數（注意：實際在線用戶數緩存週期為600秒）',
     ),
   ),
-  240 =>
+  257 =>
   array (
     'index' =>
     array (
@@ -4465,7 +4818,7 @@ $lang = array (
       17 => '發帖頁面表情顯示的行數',
     ),
   ),
-  241 =>
+  258 =>
   array (
     'index' =>
     array (
@@ -4479,7 +4832,7 @@ $lang = array (
       2 => '功能列表',
     ),
   ),
-  242 =>
+  259 =>
   array (
     'index' =>
     array (
@@ -4532,7 +4885,7 @@ $lang = array (
       41 => '設置版主面板是否詳細顯示待審核主題、帖子及用戶的具體數目',
     ),
   ),
-  243 =>
+  260 =>
   array (
     'index' =>
     array (
@@ -4552,7 +4905,7 @@ $lang = array (
       8 => '設置主題列表頁主題圖標每一級別對應的熱度指數，默認為 3 個級別，請用逗號分隔，如：「50,100,200」表示當主題的熱度大於 50 時為 1 級，大於 100 時為 2 級，大於 200 時為 3 級。留空表示不顯示圖標',
     ),
   ),
-  244 =>
+  261 =>
   array (
     'index' =>
     array (
@@ -4584,7 +4937,7 @@ $lang = array (
       20 => '設置主題列表頁評價圖標每一級別對應的評價指數。建議為 3 個級別，請用逗號分隔，如：「0,100,200」表示當主題的評價指數大於 0 時為 1 級，大於 100 時為 2 級，大於 200 時為 3 級。1 級及以上級別的主題會在主題列表頁「查看好評主題」中列出。留空或者 0 表示不顯示圖標',
     ),
   ),
-  245 =>
+  262 =>
   array (
     'index' =>
     array (
@@ -4626,7 +4979,40 @@ $lang = array (
       30 => '每個觀點一行。如存在空行，空行下方的內容將顯示在下拉菜單中作為備選觀點',
     ),
   ),
-  246 =>
+  263 =>
+  array (
+    'index' =>
+    array (
+      '站點功能' => 'action=setting&operation=functions',
+      '帖子閱讀' => 'action=setting&operation=functions&anchor=threadexp',
+    ),
+    'text' =>
+    array (
+      0 => '站點功能 &raquo; 帖子閱讀',
+      1 => 'setting_functions_threadexp_repliesrank',
+      2 => '啟用回帖投票',
+      3 => '開啟後，用戶可對回帖進行「支持」、「反對」操作。',
+      4 => 'setting_functions_threadexp_blacklist',
+      5 => '啟用用戶黑名單隱藏',
+      6 => '開啟後，用戶可以通過將其他用戶加入黑名單的方法，隱藏指定用戶的帖子。',
+      7 => 'setting_functions_threadexp_hotreplies',
+      8 => '推薦回複數',
+      9 => '系統根據回帖評價和水帖情況，在主題第一頁推薦回帖，0 為不顯示。',
+      10 => 'setting_functions_threadexp_filter',
+      11 => '水帖字數',
+      12 => '系統判斷水帖的條件，小於此數值的帖子會被判斷為水帖，0 為不過濾水帖。',
+      13 => 'setting_functions_threadexp_nofilteredpost',
+      14 => '推薦回復時推薦非水帖',
+      15 => '啟用後會在第一頁推薦回復處推薦相應一定的非水帖。',
+      16 => 'setting_functions_threadexp_hidefilteredpost',
+      17 => '啟用隱藏水帖',
+      18 => '開啟後系統判斷為水帖的帖子會被自動隱藏。',
+      19 => 'setting_functions_threadexp_filterednovote',
+      20 => '水帖不能參與回帖投票',
+      21 => '開啟後系統判斷為水帖的帖子將不能參與回帖投票。',
+    ),
+  ),
+  264 =>
   array (
     'index' =>
     array (
@@ -4641,42 +5027,54 @@ $lang = array (
       3 => 'setting_functions_other_pwdsafety',
       4 => '啟用登錄密碼加密',
       5 => '選擇「是」，站點登錄時的密碼將進行加密後再傳輸',
-      6 => 'setting_functions_other_autoidselect',
-      7 => '啟用登錄自動選擇帳號',
-      8 => '選擇「是」，站點登錄時的將自動按 UID、E-mail、用戶名的順序逐一去匹配',
-      9 => 'setting_functions_other_rssstatus',
-      10 => '啟用 RSS',
-      11 => '選擇「是」，將允許用戶使用 RSS 客戶端軟件接收最新的帖子、文章更新。注意: 在分類很多的情況下，本功能可能會加重服務器負擔',
-      12 => 'setting_functions_other_rssttl',
-      13 => 'RSS TTL(分鐘)',
-      14 => 'TTL(Time to Live) 是 RSS 2.0 的一項屬性，用於控制訂閱內容的自動刷新時間，時間越短則資料實時性就越高，但會加重服務器負擔，通常可設置為 30～180 範圍內的數值',
-      15 => 'setting_functions_other_oltimespan',
-      16 => '用戶在線時間更新時長(分鐘)',
-      17 => 'Discuz! 可統計每個用戶總共和當月的在線時間，本設置用以設定更新用戶在線時間的時間頻率。例如設置為 10，則用戶每在線 10 分鐘更新一次記錄。本設置值越小，則統計越精確，但消耗資源越大。建議設置為 5～30 範圍內，0 為不記錄用戶在線時間',
-      18 => 'setting_functions_other_debug',
-      19 => '顯示程序運行信息',
-      20 => '選擇「是」將在頁腳處顯示程序運行時間和數據庫查詢次數',
-      21 => 'setting_functions_other_onlyacceptfriendpm',
-      22 => '全站是否默認只接受好友短消息',
-      23 => '選擇「是」將在個人短消息設置中，默認只接收好友的短消息',
-      24 => 'setting_functions_other_pmreportuser',
-      25 => '接收短消息舉報人(UID，多人使用英文逗號分隔)',
-      26 => '根據接收的短消息舉報提醒用戶，可及時處理發送垃圾短信的用戶，留空表示不啟用短消息舉報功能',
-      27 => 'setting_functions_other_at_anyone',
-      28 => '發帖時可@任何人',
-      29 => '選擇否表示，只有被@人在用戶的收聽列表和好友中時才有效',
-      30 => 'setting_functions_other_chatpmrefreshtime',
-      31 => '群聊消息內容自動刷新間隔(秒)',
-      32 => '用於群聊消息內容刷新, 間隔時間越短對服務器壓力越大, 0為不刷新',
-      33 => 'setting_functions_other_collectionteamworkernum',
-      34 => '淘帖專輯允許共同維護的人數',
-      35 => '每個淘帖專輯可以共同參與維護的人數。',
-      36 => 'setting_functions_other_closeforumorderby',
-      37 => '關閉主題列表頁排序功能',
-      38 => '選擇「是」用戶將只能按默認排序查看，否則，用戶自選排序將會增加系統壓力。',
+      6 => 'setting_functions_other_uidlogin',
+      7 => '啟用UID登錄',
+      8 => '選擇「是」，站點登錄時允許通過 UID的方式登錄驗證',
+      9 => 'setting_functions_other_autoidselect',
+      10 => '啟用登錄自動選擇帳號',
+      11 => '選擇「是」，站點登錄時的將自動按 UID、E-mail、用戶名的順序逐一去匹配，其中UID驗證只有UID登錄方式被啟用後才有效',
+      12 => 'setting_functions_other_rssstatus',
+      13 => '啟用 RSS',
+      14 => '選擇「是」，將允許用戶使用 RSS 客戶端軟件接收最新的帖子、文章更新。注意: 在分類很多的情況下，本功能可能會加重服務器負擔',
+      15 => 'setting_functions_other_rssttl',
+      16 => 'RSS TTL(分鐘)',
+      17 => 'TTL(Time to Live) 是 RSS 2.0 的一項屬性，用於控制訂閱內容的自動刷新時間，時間越短則資料實時性就越高，但會加重服務器負擔，通常可設置為 30～180 範圍內的數值',
+      18 => 'setting_functions_other_oltimespan',
+      19 => '用戶在線時間更新時長(分鐘)',
+      20 => 'Discuz! 可統計每個用戶總共和當月的在線時間，本設置用以設定更新用戶在線時間的時間頻率。例如設置為 10，則用戶每在線 10 分鐘更新一次記錄。本設置值越小，則統計越精確，但消耗資源越大。建議設置為 5～30 範圍內，0 為不記錄用戶在線時間',
+      21 => 'setting_functions_other_debug',
+      22 => '顯示程序運行信息',
+      23 => '選擇「是」將在頁腳處顯示程序運行時間和數據庫查詢次數',
+      24 => 'setting_functions_other_onlyacceptfriendpm',
+      25 => '全站是否默認只接受好友短消息',
+      26 => '選擇「是」將在個人短消息設置中，默認只接收好友的短消息',
+      27 => 'setting_functions_other_pmreportuser',
+      28 => '接收短消息舉報人(UID，多人使用英文逗號分隔)',
+      29 => '根據接收的短消息舉報提醒用戶，可及時處理發送垃圾短信的用戶，留空表示不啟用短消息舉報功能',
+      30 => 'setting_functions_other_at_anyone',
+      31 => '發帖時可@任何人',
+      32 => '選擇否表示，只有被@人在用戶的收聽列表和好友中時才有效',
+      33 => 'setting_functions_other_chatpmrefreshtime',
+      34 => '群聊消息內容自動刷新間隔(秒)',
+      35 => '用於群聊消息內容刷新, 間隔時間越短對服務器壓力越大, 0為不刷新',
+      36 => 'setting_functions_other_collectionteamworkernum',
+      37 => '淘帖專輯允許共同維護的人數',
+      38 => '每個淘帖專輯可以共同參與維護的人數。',
+      39 => 'setting_functions_other_shortcut',
+      40 => '提醒添加桌面快捷的積分下限',
+      41 => '大於等於設置積分的用戶將看到添加桌面快捷的頂部提醒，0或不填為關閉此功能',
+      42 => 'setting_functions_other_closeforumorderby',
+      43 => '關閉主題列表頁排序功能',
+      44 => '選擇「是」用戶將只能按默認排序查看，否則，用戶自選排序將會增加系統壓力。',
+      45 => 'setting_functions_other_darkroom',
+      46 => '開啟小黑屋',
+      47 => '選擇「是」將開啟小黑屋，用戶可以在右下角導航中進入小黑屋，查看被禁言禁止訪問用戶',
+      48 => 'setting_functions_other_global_sign',
+      49 => '全局簽名內容',
+      50 => '該設置必須開啟簽名後有效，如果用戶沒有設置簽名就顯示該簽名內容',
     ),
   ),
-  247 =>
+  265 =>
   array (
     'index' =>
     array (
@@ -4695,7 +5093,7 @@ $lang = array (
       7 => '精華聚合時間範圍',
     ),
   ),
-  248 =>
+  266 =>
   array (
     'index' =>
     array (
@@ -4722,7 +5120,7 @@ $lang = array (
       15 => '用戶列表每頁顯示參與活動的人數',
     ),
   ),
-  249 =>
+  267 =>
   array (
     'index' =>
     array (
@@ -4745,41 +5143,44 @@ $lang = array (
       12 => 'setting_permissions_minpostsize',
       13 => '帖子最小字數(字節)',
       14 => '管理組成員可通過「發帖不受限制」設置而不受影響，0 為不限制',
-      15 => 'setting_permissions_maxpostsize',
-      16 => '帖子最大字數(字節)',
-      17 => '管理組成員可通過「發帖不受限制」設置而不受影響',
-      18 => 'setting_permissions_alloweditpost',
-      19 => '允許用戶隨時編輯的帖子類型',
-      20 => '被選中的帖子類型將不受用戶組中的「編輯帖子時間」限制，任何時刻都可以編輯',
-      21 => 'setting_permissions_post_append',
-      22 => '啟用帖子補充功能',
-      23 => '啟用後，當用戶無法編輯自己的帖子時，可以補充內容',
-      24 => 'setting_permissions_maxpolloptions',
-      25 => '投票最大選項數:',
-      26 => '設定發佈投票包含的最大選項數',
-      27 => 'setting_permissions_editby',
-      28 => '編輯帖子附加編輯記錄',
-      29 => '在 60 秒後編輯帖子添加「本帖由 xxx 於 xxxx-xx-xx 編輯」字樣。管理員編輯不受此限制',
-      30 => 'nav_setting_rate',
-      31 => '評分',
-      32 => 'setting_permissions_karmaratelimit',
-      33 => '評分時間限制(小時)',
-      34 => '帖子發表後超過此時間限制其他用戶將不能對此帖評分，版主和管理員不受此限制，0 為不限制',
-      35 => 'setting_permissions_modratelimit',
-      36 => '版主評分限制',
-      37 => '設置版主只能在自身所管轄的版塊範圍內對帖子進行評分。本限制只對版主有效，允許評分的普通用戶及超級版主、管理員不受此限制，因此如果賦予這些用戶評分權限，他們仍將可以在全版塊範圍內進行評分',
-      38 => 'setting_permissions_dupkarmarate',
-      39 => '允許重複評分',
-      40 => '選擇「是」將允許用戶對一個帖子進行多次評分，默認為「否」',
-      41 => 'setting_permissions_editperdel',
-      42 => '允許用戶編輯帖子時刪除帖子',
-      43 => '選擇「是」將允許用戶編輯帖子時刪除帖子，默認為「否」',
-      44 => 'setting_permissions_hideexpiration',
-      45 => '帖子中[hide]標籤最大有效天數',
-      46 => '距發帖日期天數超過此設置時標籤自動失效，0或不填為不限制',
+      15 => 'setting_permissions_minpostsize_mobile',
+      16 => '手機客戶端發帖最小字數(字節)',
+      17 => '是否單獨為手機客戶端設置發帖的最小字節數，0 為不單獨設置',
+      18 => 'setting_permissions_maxpostsize',
+      19 => '帖子最大字數(字節)',
+      20 => '管理組成員可通過「發帖不受限制」設置而不受影響',
+      21 => 'setting_permissions_alloweditpost',
+      22 => '允許用戶隨時編輯的帖子類型',
+      23 => '被選中的帖子類型將不受用戶組中的「編輯帖子時間」限制，任何時刻都可以編輯',
+      24 => 'setting_permissions_post_append',
+      25 => '啟用帖子補充功能',
+      26 => '啟用後，當用戶無法編輯自己的帖子時，可以補充內容',
+      27 => 'setting_permissions_maxpolloptions',
+      28 => '投票最大選項數:',
+      29 => '設定發佈投票包含的最大選項數',
+      30 => 'setting_permissions_editby',
+      31 => '編輯帖子附加編輯記錄',
+      32 => '在 60 秒後編輯帖子添加「本帖由 xxx 於 xxxx-xx-xx 編輯」字樣。管理員編輯不受此限制',
+      33 => 'nav_setting_rate',
+      34 => '評分',
+      35 => 'setting_permissions_karmaratelimit',
+      36 => '評分時間限制(小時)',
+      37 => '帖子發表後超過此時間限制其他用戶將不能對此帖評分，版主和管理員不受此限制，0 為不限制',
+      38 => 'setting_permissions_modratelimit',
+      39 => '版主評分限制',
+      40 => '設置版主只能在自身所管轄的版塊範圍內對帖子進行評分。本限制只對版主有效，允許評分的普通用戶及超級版主、管理員不受此限制，因此如果賦予這些用戶評分權限，他們仍將可以在全版塊範圍內進行評分',
+      41 => 'setting_permissions_dupkarmarate',
+      42 => '允許重複評分',
+      43 => '選擇「是」將允許用戶對一個帖子進行多次評分，默認為「否」',
+      44 => 'setting_permissions_editperdel',
+      45 => '允許用戶編輯帖子時刪除帖子',
+      46 => '選擇「是」將允許用戶編輯帖子時刪除帖子，默認為「否」',
+      47 => 'setting_permissions_hideexpiration',
+      48 => '帖子中[hide]標籤最大有效天數',
+      49 => '距發帖日期天數超過此設置時標籤自動失效，0或不填為不限制',
     ),
   ),
-  250 =>
+  268 =>
   array (
     'index' =>
     array (
@@ -4827,24 +5228,27 @@ $lang = array (
       36 => 'setting_credits_trans11',
       37 => '搶樓帖積分限制',
       38 => '參與搶樓帖積分限制時使用的積分',
-      39 => 'setting_credits_tax',
-      40 => '積分交易稅',
-      41 => '積分交易稅(損失率)為用戶在利用積分進行轉讓、兌換、買賣時扣除的稅率，範圍為 0～1 之間的浮點數，例如設置為 0.2，則用戶在轉換 100 個單位積分時，損失掉的積分為 20 個單位，0 為不損失',
-      42 => 'setting_credits_mintransfer',
-      43 => '轉賬最低餘額',
-      44 => '積分轉賬後要求用戶所擁有的餘額最小數值。利用此功能，您可以設置較大的餘額限制，使積分小於這個數值的用戶無法轉賬；也可以將餘額限制設置為負數，使得轉賬在限額內可以透支',
-      45 => 'setting_credits_minexchange',
-      46 => '兌換最低餘額',
-      47 => '積分兌換後要求用戶所擁有的餘額最小數值。利用此功能，您可以設置較大的餘額限制，使積分小於這個數值的用戶無法兌換；也可以將餘額限制設置為負數，使得兌換在限額內可以透支',
-      48 => 'setting_credits_maxincperthread',
-      49 => '單主題(附件)最高收入',
-      50 => '設置單一主題(附件)出售作者所得的最高稅後積分收入，超過此限制後購買者將仍然被扣除相應積分，但主題(附件)作者收益將不再上漲。本限制只在主題(附件)買賣時起作用，0 為不限制',
-      51 => 'setting_credits_maxchargespan',
-      52 => '單主題(附件)最高出售時限(小時)',
-      53 => '設置當主題(附件)被作者出售時，系統允許自主題(附件)發佈時間起，其可出售的最長時間。超過此時間限制後將變為普通主題(附件)，閱讀者無需支付積分購買，作者也將不再獲得相應收益，以小時為單位，0 為不限制',
+      39 => 'setting_credits_trans12',
+      40 => '創建群組消耗積分',
+      41 => '創建群組時要消耗的積分',
+      42 => 'setting_credits_tax',
+      43 => '積分交易稅',
+      44 => '積分交易稅(損失率)為用戶在利用積分進行轉讓、兌換、買賣時扣除的稅率，範圍為 0～1 之間的浮點數，例如設置為 0.2，則用戶在轉換 100 個單位積分時，損失掉的積分為 20 個單位，0 為不損失',
+      45 => 'setting_credits_mintransfer',
+      46 => '轉賬最低餘額',
+      47 => '積分轉賬後要求用戶所擁有的餘額最小數值。利用此功能，您可以設置較大的餘額限制，使積分小於這個數值的用戶無法轉賬；也可以將餘額限制設置為負數，使得轉賬在限額內可以透支',
+      48 => 'setting_credits_minexchange',
+      49 => '兌換最低餘額',
+      50 => '積分兌換後要求用戶所擁有的餘額最小數值。利用此功能，您可以設置較大的餘額限制，使積分小於這個數值的用戶無法兌換；也可以將餘額限制設置為負數，使得兌換在限額內可以透支',
+      51 => 'setting_credits_maxincperthread',
+      52 => '單主題(附件)最高收入',
+      53 => '設置單一主題(附件)出售作者所得的最高稅後積分收入，超過此限制後購買者將仍然被扣除相應積分，但主題(附件)作者收益將不再上漲。本限制只在主題(附件)買賣時起作用，0 為不限制',
+      54 => 'setting_credits_maxchargespan',
+      55 => '單主題(附件)最高出售時限(小時)',
+      56 => '設置當主題(附件)被作者出售時，系統允許自主題(附件)發佈時間起，其可出售的最長時間。超過此時間限制後將變為普通主題(附件)，閱讀者無需支付積分購買，作者也將不再獲得相應收益，以小時為單位，0 為不限制',
     ),
   ),
-  251 =>
+  269 =>
   array (
     'index' =>
     array (
@@ -4866,7 +5270,7 @@ $lang = array (
       10 => '屏蔽郵件發送中的全部錯誤提示',
     ),
   ),
-  252 =>
+  270 =>
   array (
     'index' =>
     array (
@@ -4883,7 +5287,7 @@ $lang = array (
       5 => '如果要測試包含用戶名的郵件地址，格式為「username &lt;user@domain.com&gt;」 。多個郵件地址用逗號分隔',
     ),
   ),
-  253 =>
+  271 =>
   array (
     'index' =>
     array (
@@ -4907,7 +5311,7 @@ $lang = array (
       12 => '設置用戶必須擁有多少個好友後，才可以進行發佈操作',
     ),
   ),
-  254 =>
+  272 =>
   array (
     'index' =>
     array (
@@ -4918,7 +5322,7 @@ $lang = array (
     array (
       0 => '防灌水設置 &raquo; 驗證碼設置',
       1 => 'setting_sec_code_tips',
-      2 => '使用圖片作為驗證碼文字，圖片必須包含字符「2346789BCEFGHJKMPQRTVWXY」24 個字符，且必須為 GIF 透明圖片、背景透明、前景黑色，黑色為圖片的第一個索引色。圖片大小不限制，但建議寬度不大於驗證碼寬度的 1/4，高度不大於驗證碼高度。製作完畢後在 static/image/seccode/gif/ 下創建一個新的子目錄，目錄名任意，把製作完畢的 24 個 GIF 圖片上傳到新子目錄下使用圖片作為驗證碼的背景，把製作好的 JPG 圖片上傳到 static/image/seccode/background/ 目錄下，站點將隨機使用裡面的圖片作為驗證碼的背景使用 TTF 字體作為驗證碼文字，把下載的 TTF 英文字體文件上傳到 static/image/seccode/font/en/ 目錄下，站點將隨機使用裡面的字體文件作為驗證碼的文字使用中文圖片驗證碼前，需要把包含完整中文漢字的 TTF 中文字體文件上傳到 static/image/seccode/font/ch/ 目錄下，站點將隨機使用裡面的字體文件作為驗證碼的文字安裝新的驗證碼腳本，需將驗證碼腳本程序上傳到 source/class/seccode/ 目錄，然後即可在驗證碼類型中選擇使用了。',
+      2 => '使用圖片作為驗證碼文字，圖片必須包含字符「2346789BCEFGHJKMPQRTVWXY」24 個字符，且必須為 GIF 透明圖片、背景透明、前景黑色，黑色為圖片的第一個索引色。圖片大小不限制，但建議寬度不大於驗證碼寬度的 1/4，高度不大於驗證碼高度。製作完畢後在 static/image/seccode/gif/ 下創建一個新的子目錄，目錄名任意，把製作完畢的 24 個 GIF 圖片上傳到新子目錄下使用圖片作為驗證碼的背景，把製作好的 JPG 圖片上傳到 static/image/seccode/background/ 目錄下，站點將隨機使用裡面的圖片作為驗證碼的背景使用 TTF 字體作為驗證碼文字，把下載的 TTF 英文字體文件上傳到 static/image/seccode/font/en/ 目錄下，站點將隨機使用裡面的字體文件作為驗證碼的文字使用中文圖片驗證碼前，需要把包含完整中文漢字的 TTF 中文字體文件上傳到 static/image/seccode/font/ch/ 目錄下，站點將隨機使用裡面的字體文件作為驗證碼的文字系統驗證碼位於 source/class/seccode/ 目錄中，插件驗證碼位於 source/plugin/插件目錄/seccode/ 目錄中。',
       3 => 'setting_sec_seccode_status',
       4 => '啟用驗證碼',
       5 => '驗證碼可以避免惡意註冊及惡意灌水，請選擇需要打開驗證碼的操作。注意: 啟用驗證碼會使得部分操作變得繁瑣，建議僅在必需時打開。充值卡密驗證碼建議一直開啟',
@@ -4966,7 +5370,7 @@ $lang = array (
       47 => '選擇「是」驗證碼將顯示成 GIF 動畫方式，選擇「否」驗證碼將顯示成靜態圖片方式',
     ),
   ),
-  255 =>
+  273 =>
   array (
     'index' =>
     array (
@@ -4977,7 +5381,7 @@ $lang = array (
     array (
       0 => '防灌水設置 &raquo; 驗證問答設置',
       1 => 'setting_sec_qaa_tips',
-      2 => '驗證問題應該言簡意賅，沒有歧義，正常人都能夠正確作答。請經常更新驗證問答的問題及答案以防止被猜測！安裝新的驗證問答腳本，需將驗證問答腳本程序上傳到 source/class/secqaa/ 目錄，然後即可在以下列表中選擇使用了。插件開發人員在設計新的驗證問答腳本前請務必仔細閱讀《Discuz! 技術文庫》中的內容。',
+      2 => '驗證問題應該言簡意賅，沒有歧義，正常人都能夠正確作答。請經常更新驗證問答的問題及答案以防止被猜測！系統驗證問答位於 source/class/secqaa/ 目錄中，插件驗證問答位於 source/plugin/插件目錄/secqaa/ 目錄中。插件開發人員在設計新的驗證問答腳本前請務必仔細閱讀《Discuz! 技術文庫》中的內容。',
       3 => 'setting_sec_secqaa',
       4 => '驗證問答設置',
       5 => '建議您設置 10 個以上驗證問題及答案，驗證問題越多，驗證問答防止惡意註冊或發佈信息的效果越明顯。問題支持 HTML 代碼，答案長度不超過 50 字節',
@@ -4991,7 +5395,7 @@ $lang = array (
       13 => '驗證問題及答案設置',
     ),
   ),
-  256 =>
+  274 =>
   array (
     'index' =>
     array (
@@ -5017,7 +5421,7 @@ $lang = array (
       14 => '默認為 email ，只能是字母和數字的組合，必須以字母開頭。 修改後的表單名會使得註冊機更難發揮作用',
     ),
   ),
-  257 =>
+  275 =>
   array (
     'index' =>
     array (
@@ -5043,7 +5447,7 @@ $lang = array (
       14 => '當用戶處於本列表中的 IP 地址時，發帖不受時間段限制。每個 IP 一行，既可輸入完整地址，也可只輸入 IP 開頭，例如 "192.168."(不含引號) 可匹配 192.168.0.0～192.168.255.255 範圍內的所有地址，留空為不設置',
     ),
   ),
-  258 =>
+  276 =>
   array (
     'index' =>
     array (
@@ -5064,7 +5468,7 @@ $lang = array (
       10 => '選擇「是」，站點中的時間將顯示以「n分鐘前」、「昨天」、「n天前」等形式顯示',
       11 => 'setting_datetime_timeoffset',
       12 => '默認時差',
-      13 => '當地時間與 GMT 的時差',
+      13 => '當地時間與 GMT 的時差。遇夏制時的情況也可以手動輸入，如：-7.5',
       14 => 'setting_datetime_periods',
       15 => '時間段設置',
       16 => 'setting_datetime_visitbanperiods',
@@ -5091,12 +5495,15 @@ $lang = array (
       37 => 'setting_attach_image_thumbquality',
       38 => '縮略圖質量',
       39 => '設置圖片附件縮略圖的質量參數，範圍為 0～100 的整數，數值越大結果圖片效果越好，但尺寸也越大',
-      40 => 'setting_attach_image_preview',
-      41 => '預覽',
-      42 => '無需保存設置即可預覽',
+      40 => 'setting_attach_image_disabledmobile',
+      41 => '是否生成手機版縮略圖',
+      42 => '設置是否為每個附件生成手機版的縮略圖',
+      43 => 'setting_attach_image_preview',
+      44 => '預覽',
+      45 => '無需保存設置即可預覽',
     ),
   ),
-  259 =>
+  277 =>
   array (
     'index' =>
     array (
@@ -5132,7 +5539,7 @@ $lang = array (
       24 => '選擇「是」將檢查下載附件的來路，來自其他網站或站點的下載請求將被禁止。注意: 本功能在開啟「帖子中顯示圖片附件」時，會加重服務器負擔',
     ),
   ),
-  260 =>
+  278 =>
   array (
     'index' =>
     array (
@@ -5188,7 +5595,7 @@ $lang = array (
       44 => '選擇是，將加重本地服務器負擔，並明顯增加本地服務器流量；選擇否，下載的附件與上傳的附件文件名將會不一致',
     ),
   ),
-  261 =>
+  279 =>
   array (
     'index' =>
     array (
@@ -5203,7 +5610,7 @@ $lang = array (
       3 => '如果用戶上傳一些尺寸很大的數碼圖片，則程序會按照本設置進行縮小該圖片並顯示，比如可以設置為 寬：1024px，高：768px，但都不能小於 300px。設置為 0，則不做任何處理',
     ),
   ),
-  262 =>
+  280 =>
   array (
     'index' =>
     array (
@@ -5221,7 +5628,7 @@ $lang = array (
       6 => '如果上傳一些尺寸很大的數碼圖片，則程序會按照本設置進行生成相應的小圖片，默認大小為 300*300',
     ),
   ),
-  263 =>
+  281 =>
   array (
     'index' =>
     array (
@@ -5289,7 +5696,7 @@ $lang = array (
       56 => '請先提交後再預覽',
     ),
   ),
-  264 =>
+  282 =>
   array (
     'index' =>
     array (
@@ -5357,7 +5764,7 @@ $lang = array (
       56 => '請先提交後再預覽',
     ),
   ),
-  265 =>
+  283 =>
   array (
     'index' =>
     array (
@@ -5425,7 +5832,7 @@ $lang = array (
       56 => '請先提交後再預覽',
     ),
   ),
-  266 =>
+  284 =>
   array (
     'index' =>
     array (
@@ -5456,10 +5863,10 @@ $lang = array (
       20 => '填寫 Sphinx 主機端口：例如，3312，主機名填寫 socket 地址的，則此處不需要設置',
       21 => 'settings_sphinx_sphinxsubindex',
       22 => '設置標題索引名',
-      23 => '填寫 Sphinx 配置中的標題主索引名及標題增量索引名：例如，「threads,threads_mintue」。注意：多個索引使用半角逗號 "," 隔開，必須按照 Sphinx 配置文件中的索引名填寫',
+      23 => '填寫 Sphinx 配置中的標題主索引名及標題增量索引名：例如，「threads,threads_minute」。注意：多個索引使用半角逗號 "," 隔開，必須按照 Sphinx 配置文件中的索引名填寫',
       24 => 'settings_sphinx_sphinxmsgindex',
       25 => '設置全文索引名',
-      26 => '填寫 Sphinx 配置中的全文主索引名及全文增量索引名：例如，「posts,posts_mintue」。注意：多個索引使用半角逗號 "," 隔開，必須按照 Sphinx 配置文件中的索引名填寫',
+      26 => '填寫 Sphinx 配置中的全文主索引名及全文增量索引名：例如，「posts,posts_minute」。注意：多個索引使用半角逗號 "," 隔開，必須按照 Sphinx 配置文件中的索引名填寫',
       27 => 'settings_sphinx_sphinxmaxquerytime',
       28 => '設置最大搜索時間',
       29 => '填寫最大搜索時間，以毫秒為單位。參數必須是非負整數。默認值為 0，意思是不做限制',
@@ -5473,7 +5880,7 @@ $lang = array (
 (3)SPH_RANK_NONE，禁用評分的模式，這是最快的模式。實際上這種模式與布爾搜索相同。所有的匹配項都被賦予權重1',
     ),
   ),
-  267 =>
+  285 =>
   array (
     'index' =>
     array (
@@ -5521,7 +5928,7 @@ $lang = array (
       37 => '設置用戶頭像的調用方式',
     ),
   ),
-  268 =>
+  286 =>
   array (
     'index' =>
     array (
@@ -5547,7 +5954,7 @@ $lang = array (
       14 => '設置用戶每月能夠通過在線支付方式購買的交易積分的最大數額，單位為交易積分的單位，0 為不限制',
     ),
   ),
-  269 =>
+  287 =>
   array (
     'index' =>
     array (
@@ -5565,7 +5972,7 @@ $lang = array (
       6 => '內存優化功能設置',
     ),
   ),
-  270 =>
+  288 =>
   array (
     'index' =>
     array (
@@ -5579,7 +5986,7 @@ $lang = array (
       2 => '內存緩存管理',
     ),
   ),
-  271 =>
+  289 =>
   array (
     'index' =>
     array (
@@ -5604,7 +6011,7 @@ $lang = array (
       14 => '選擇更新緩存模塊',
     ),
   ),
-  272 =>
+  290 =>
   array (
     'index' =>
     array (
@@ -5629,27 +6036,36 @@ $lang = array (
       14 => 'setting_mobile_seccode',
       15 => '是否開啟驗證碼',
       16 => '不開啟則手機註冊、登錄、發佈等操作均無驗證碼註冊、登錄、發佈驗證碼開關：全局 - 防灌水設置 - 驗證碼設置',
-      17 => 'setting_mobile_simpletype',
-      18 => '手機版式',
-      19 => '默認為「標準版」，標準版為全功能手機版式。「無圖精簡版」則為去掉小圖標、主題列表日期等頁面元素的精簡版式注意：兩種模式下表情均解析，且用戶可以自由切換',
-      20 => 'setting_mobile_topicperpage',
-      21 => '每頁顯示主題數',
-      22 => '主題列表頁每頁顯示主題個數，推薦值為10',
-      23 => 'setting_mobile_postperpage',
-      24 => '主題內每頁顯示帖數',
-      25 => '主題內每頁顯示的帖子數目，推薦值為5',
-      26 => 'setting_mobile_cachetime',
-      27 => '頁面瀏覽緩存時間',
-      28 => '設置訪問過的頁面在用戶手機上保存的時間，留空或0為不緩存單位：秒',
-      29 => 'setting_mobile_index_forumview',
-      30 => '首頁分區展示方式',
-      31 => '如「收起」，論壇首頁將默認只展示分區標題用戶需點擊分區展開該分區下的版塊列表',
-      32 => 'setting_mobile_come_from',
-      33 => '手機發帖來源自定義',
-      34 => '默認留空，如果填寫，將在看帖頁面"來自手機"處增加自定義文字或圖標如:&lt;a href=\'http://m.x.com\'&gt;手機頻道&lt;/a&gt;此處支持HTML標籤有：&lt;a&gt;&lt;font&gt;&lt;span&gt;&lt;strong&gt;&lt;b&gt;&lt;img&gt;如果使用圖標，請保證圖片高度在16px(像素)以內',
+      17 => 'setting_mobile_hotthread',
+      18 => '是否開啟熱帖',
+      19 => '「觸屏版」功能，開啟則在首頁顯示熱貼',
+      20 => 'setting_mobile_displayorder3',
+      21 => '是否顯示置頂貼',
+      22 => '「觸屏版」功能，在帖子列表頁面中是否顯示置頂貼，否為不顯示',
+      23 => 'setting_mobile_simpletype',
+      24 => '開啟不顯示圖片',
+      25 => '默認顯示圖片，開啟後，「觸屏版」不顯示帖子圖片，「標準版」不顯示帖子圖片、小圖標、主題列表日期等頁面元素',
+      26 => 'setting_mobile_topicperpage',
+      27 => '每頁顯示主題數',
+      28 => '主題列表頁每頁顯示主題個數，推薦值為10',
+      29 => 'setting_mobile_postperpage',
+      30 => '主題內每頁顯示帖數',
+      31 => '主題內每頁顯示的帖子數目，推薦值為5',
+      32 => 'setting_mobile_cachetime',
+      33 => '頁面瀏覽緩存時間',
+      34 => '設置訪問過的頁面在用戶手機上保存的時間，留空或0為不緩存單位：秒',
+      35 => 'setting_mobile_index_forumview',
+      36 => '首頁分區展示方式',
+      37 => '如「收起」，論壇首頁將默認只展示分區標題用戶需點擊分區展開該分區下的版塊列表',
+      38 => 'setting_mobile_come_from',
+      39 => '手機發帖來源自定義',
+      40 => '默認留空，如果填寫，將在看帖頁面"來自手機"處增加自定義文字或圖標如:&lt;a href=\'http://m.x.com\'&gt;手機頻道&lt;/a&gt;此處支持HTML標籤有：&lt;a&gt;&lt;font&gt;&lt;span&gt;&lt;strong&gt;&lt;b&gt;&lt;img&gt;如果使用圖標，請保證圖片高度在16px(像素)以內',
+      41 => 'setting_mobile_wml',
+      42 => '是否啟用極簡版',
+      43 => '極簡版為一些僅支持WML語言的較早期的設備瀏覽網站的內容',
     ),
   ),
-  273 =>
+  291 =>
   array (
     'index' =>
     array (
@@ -5662,7 +6078,7 @@ $lang = array (
       2 => '批量分享管理用於刪除分享(share)使用。提醒：點擊搜索結果頁的刪除按鈕，將會直接刪除相關信息！',
     ),
   ),
-  274 =>
+  292 =>
   array (
     'index' =>
     array (
@@ -5694,7 +6110,7 @@ $lang = array (
       20 => '格式 yyyy-mm-dd',
     ),
   ),
-  275 =>
+  293 =>
   array (
     'index' =>
     array (
@@ -5708,7 +6124,7 @@ $lang = array (
       2 => '表情導出包含表情分類信息及表情代碼信息，表情圖片文件請通過 FTP 下載。請不要同時啟用過多的表情分類，並控制好表情分類的名稱長度，以免表情窗口無法完全顯示所有表情分類。您可以在界面風格中設置默認顯示的表情分類。刪除表情分類請先刪除該分類下所有表情。',
     ),
   ),
-  276 =>
+  294 =>
   array (
     'index' =>
     array (
@@ -5722,7 +6138,7 @@ $lang = array (
       2 => '添加表情請上傳表情圖片到相應的表情目錄中(static/image/smiley/表情目錄/)。表情支持"JPG、GIF、PNG"格式的圖片，文件名只允許數字、26 個英文字母、下劃線、半角空格及 -.&[]() 等符號，文件名長度不能超過 30 字節，否則將會無法識別。請不要設置過多的表情，以免佔用過多的服務器資源。',
     ),
   ),
-  277 =>
+  295 =>
   array (
     'index' =>
     array (
@@ -5735,7 +6151,7 @@ $lang = array (
       2 => '如果把導出的風格文件放置在模板目錄下，則可以通過風格管理直接安裝風格',
     ),
   ),
-  278 =>
+  296 =>
   array (
     'index' =>
     array (
@@ -5752,7 +6168,7 @@ $lang = array (
       6 => '狀態',
     ),
   ),
-  279 =>
+  297 =>
   array (
     'index' =>
     array (
@@ -5766,7 +6182,7 @@ $lang = array (
       2 => '通過批量主題管理，您可以對搜索到的主題進行批量刪除、移動、分類/取消分類、刪除、置頂/取消置頂、設置/取消精華、打開/關閉以及刪除主題中的附件等操作；請先根據條件搜索主題，然後選擇相應的操作。',
     ),
   ),
-  280 =>
+  298 =>
   array (
     'index' =>
     array (
@@ -5817,7 +6233,7 @@ $lang = array (
       39 => '是否包含草稿',
     ),
   ),
-  281 =>
+  299 =>
   array (
     'index' =>
     array (
@@ -5835,7 +6251,7 @@ $lang = array (
       6 => 'thread 存檔表信息',
     ),
   ),
-  282 =>
+  300 =>
   array (
     'index' =>
     array (
@@ -5897,7 +6313,7 @@ $lang = array (
       50 => '建議不超過 1000',
     ),
   ),
-  283 =>
+  301 =>
   array (
     'index' =>
     array (
@@ -5914,7 +6330,7 @@ $lang = array (
 				',
     ),
   ),
-  284 =>
+  302 =>
   array (
     'index' =>
     array (
@@ -5927,7 +6343,7 @@ $lang = array (
       2 => '用戶組分為系統組、會員組和自定義組，會員組以積分確定組別和權限，而系統組和自定義組是人為設定，不會由系統自行改變。系統組和自定義組的設定不需要指定積分，Discuz! 預留了從站點管理員到遊客等的 8 個系統頭銜，自定義組的用戶需要在編輯會員時將其加入。會員用戶組至少分為兩組，其積分下限分別為負值(任一負數)和 0，否則將導致部分用戶無法與用戶組匹配的問題。',
     ),
   ),
-  285 =>
+  303 =>
   array (
     'index' =>
     array (
@@ -5948,7 +6364,7 @@ $lang = array (
       9 => '設置用戶在購買本組權限時，一次支付價值至少多少日的交易積分，請設置為大於等於 1 的數值。例如日價格為 2，最短購買時間為 10，則用戶至少需要花費 2*10=20 個交易積分，獲得至少 10 天本組權限，才能加入本組。注意: 本功能需要首先設定用戶組為收費公眾用戶組才有效',
     ),
   ),
-  286 =>
+  304 =>
   array (
     'index' =>
     array (
@@ -5975,7 +6391,7 @@ $lang = array (
       15 => '0為無限',
       16 => 'usergroups_edit_basic_domain_length',
       17 => '二級域名最短長度',
-      18 => '0為禁止使用二級域名，在站點開啟二級域名時有效',
+      18 => '0為禁止使用二級域名，最大長度為15，在站點開啟二級域名時有效',
       19 => 'usergroups_edit_basic_invisible',
       20 => '允許隱身',
       21 => '設置是否允許用戶登錄後不顯示在在線列表中',
@@ -6023,21 +6439,27 @@ $lang = array (
       63 => 'usergroups_edit_basic_seccode',
       64 => '啟用防灌水驗證碼或驗證問答機制',
       65 => '開啟防灌水驗證機制可以防止灌水機等，但會增加用戶操作易用度。修改密碼不受此限制，開啟防灌水驗證碼或驗證問答後，該設置有效',
-      66 => 'usergroups_edit_basic_disable_postctrl',
-      67 => '發表不受限制',
-      68 => '設置發表是否不受灌水預防和最大字數等',
-      69 => 'usergroups_edit_basic_ignore_censor',
-      70 => '忽略需要審核的關鍵字',
-      71 => '選擇「是」則此用戶組的用戶在發表時不會觸發需要審核的關鍵字',
-      72 => 'usergroups_edit_basic_allowcreatecollection',
-      73 => '允許用戶創建淘專輯的數量',
-      74 => '「0」表示不允許創建淘專輯',
-      75 => 'usergroups_edit_basic_allowfollowcollection',
-      76 => '最多允許關注淘專輯的數量',
-      77 => '允許用戶最多關注淘專輯的數量',
+      66 => 'usergroups_edit_basic_forcesecques',
+      67 => '強制設置安全提問',
+      68 => '選擇「是」則此用戶組的用戶在登錄後台前必須設置安全提問後才可登陸後台, config中為全局開關',
+      69 => 'usergroups_edit_basic_disable_postctrl',
+      70 => '發表不受限制',
+      71 => '設置發表是否不受灌水預防和最大字數等',
+      72 => 'usergroups_edit_basic_ignore_censor',
+      73 => '忽略需要審核的關鍵字',
+      74 => '選擇「是」則此用戶組的用戶在發表時不會觸發需要審核的關鍵字',
+      75 => 'usergroups_edit_basic_allowcreatecollection',
+      76 => '允許用戶創建淘專輯的數量',
+      77 => '「0」表示不允許創建淘專輯',
+      78 => 'usergroups_edit_basic_allowfollowcollection',
+      79 => '最多允許關注淘專輯的數量',
+      80 => '允許用戶最多關注淘專輯的數量',
+      81 => 'usergroups_edit_basic_close_ad',
+      82 => '是否關閉廣告展示',
+      83 => '選擇「是」則此用戶組的用戶在站點中看不到任何廣告',
     ),
   ),
-  287 =>
+  305 =>
   array (
     'index' =>
     array (
@@ -6090,7 +6512,7 @@ $lang = array (
       41 => '設置是否允許發表擴展的特殊主題',
     ),
   ),
-  288 =>
+  306 =>
   array (
     'index' =>
     array (
@@ -6129,48 +6551,54 @@ $lang = array (
       27 => 'usergroups_edit_post_mediacode',
       28 => '允許使用 [audio] [media] [flash] 等多媒體代碼',
       29 => '設置是否允許 [audio] [media] [flash] 等多媒體代碼',
-      30 => 'usergroups_edit_post_sig_bbcode',
-      31 => '允許簽名中使用 Discuz! 代碼',
-      32 => '設置是否解析用戶簽名中的 Discuz! 代碼',
-      33 => 'usergroups_edit_post_sig_img_code',
-      34 => '允許簽名中使用 [img] 代碼',
-      35 => '設置是否解析用戶簽名中的 [img] 代碼',
-      36 => 'usergroups_edit_post_max_sig_size',
-      37 => '簽名文字最大長度',
-      38 => '設置用戶簽名最大字節數，0 為不允許用戶使用簽名',
-      39 => 'usergroups_edit_post_recommend',
-      40 => '主題評價影響值',
-      41 => '設置用戶評價一次主題，對主題評價指數的影響，0 為不允許用戶評價主題',
-      42 => 'usergroups_edit_post_edit_time_limit',
-      43 => '編輯帖子時間限制(分鐘)',
-      44 => '帖子作者發帖後超過此時間限制將不能再編輯帖，版主和管理員在 全局 - 用戶權限 選擇「允許用戶隨時編輯的帖子類型」後不受此限制，0 為不限制',
-      45 => 'usergroups_edit_post_allowreplycredit',
-      46 => '允許設置回帖獎勵',
-      47 => '允許用戶在發佈主題時給予回帖者一定的擴展積分獎勵。回帖獎勵默認積分可在全局 - 積分設置指定',
-      48 => 'usergroups_edit_post_tag',
-      49 => '允許使用標籤',
-      50 => '設置是否允許發表新話題時使用標籤',
-      51 => 'usergroups_edit_post_allowcommentpost',
-      52 => '帖子直接點評',
-      53 => '設置允許點評的範圍，如不選擇表示不啟用點評功能注意：只有在 全局 - 站點功能 - 帖子點評 中開啟直接點評功能，本設置才會生效',
-      54 => 'usergroups_edit_post_allowcommentreply',
-      55 => '樓層回復點評',
-      56 => '允許用戶通過點擊帖子中的「回復」鏈接回復他人回帖時，自動對該樓層產生點評注意：只有在 全局 - 站點功能 - 帖子點評 中開啟樓層回復功能，本設置才會生效；點擊主題中的「回復」鏈接，不會對主題產生點評',
-      57 => 'usergroups_edit_post_allowcommentitem',
-      58 => '允許用戶在點評時發表觀點',
-      59 => '允許用戶在點評時發表觀點注意：只有在 全局 - 站點功能 - 帖子點評 中開啟直接點評功能，本設置才會生效',
-      60 => 'usergroups_edit_post_allowat',
-      61 => '發帖時可 @ 其他人的數量',
-      62 => '0為不允許 @ 其他人（包括他關注的人和他的好友）',
-      63 => 'usergroups_edit_post_allowsetpublishdate',
-      64 => '允許設置定時發佈',
-      65 => '允許用戶在發佈主題時設置指定的發帖時間。只能設置在每半小時（如 13:00 或 13:30）自動發佈。',
-      66 => 'usergroups_edit_post_allowcommentcollection',
-      67 => '允許評論淘專輯',
-      68 => '允許用戶在主題和淘專輯頁面進行評論。',
+      30 => 'usergroups_edit_post_begincode',
+      31 => '允許使用 [begin] 代碼',
+      32 => '設置是否允許帖子中使用 [begin] 開頭動畫標籤',
+      33 => 'usergroups_edit_post_sig_bbcode',
+      34 => '允許簽名中使用 Discuz! 代碼',
+      35 => '設置是否解析用戶簽名中的 Discuz! 代碼',
+      36 => 'usergroups_edit_post_sig_img_code',
+      37 => '允許簽名中使用 [img] 代碼',
+      38 => '設置是否解析用戶簽名中的 [img] 代碼',
+      39 => 'usergroups_edit_post_max_sig_size',
+      40 => '簽名文字最大長度',
+      41 => '設置用戶簽名最大字節數，0 為不允許用戶使用簽名',
+      42 => 'usergroups_edit_post_recommend',
+      43 => '主題評價影響值',
+      44 => '設置用戶評價一次主題，對主題評價指數的影響，0 為不允許用戶評價主題',
+      45 => 'usergroups_edit_post_edit_time_limit',
+      46 => '編輯帖子時間限制(分鐘)',
+      47 => '帖子作者發帖後超過此時間限制將不能再編輯帖，版主和管理員在 全局 - 用戶權限 選擇「允許用戶隨時編輯的帖子類型」後不受此限制，0 為不限制',
+      48 => 'usergroups_edit_post_allowreplycredit',
+      49 => '允許設置回帖獎勵',
+      50 => '允許用戶在發佈主題時給予回帖者一定的擴展積分獎勵。回帖獎勵默認積分可在全局 - 積分設置指定',
+      51 => 'usergroups_edit_post_tag',
+      52 => '允許使用標籤',
+      53 => '設置是否允許發表新話題時使用標籤',
+      54 => 'usergroups_edit_post_allowcommentpost',
+      55 => '帖子直接點評',
+      56 => '設置允許點評的範圍，如不選擇表示不啟用點評功能注意：只有在 全局 - 站點功能 - 帖子點評 中開啟直接點評功能，本設置才會生效',
+      57 => 'usergroups_edit_post_allowcommentreply',
+      58 => '樓層回復點評',
+      59 => '允許用戶通過點擊帖子中的「回復」鏈接回復他人回帖時，自動對該樓層產生點評注意：只有在 全局 - 站點功能 - 帖子點評 中開啟樓層回復功能，本設置才會生效；點擊主題中的「回復」鏈接，不會對主題產生點評',
+      60 => 'usergroups_edit_post_allowcommentitem',
+      61 => '允許用戶在點評時發表觀點',
+      62 => '允許用戶在點評時發表觀點注意：只有在 全局 - 站點功能 - 帖子點評 中開啟直接點評功能，本設置才會生效',
+      63 => 'usergroups_edit_post_allowat',
+      64 => '發帖時可 @ 其他人的數量',
+      65 => '0為不允許 @ 其他人（包括他關注的人和他的好友）',
+      66 => 'usergroups_edit_post_allowsetpublishdate',
+      67 => '允許設置定時發佈',
+      68 => '允許用戶在發佈主題時設置指定的發帖時間。只能設置在每半小時（如 13:00 或 13:30）自動發佈。',
+      69 => 'usergroups_edit_post_allowcommentcollection',
+      70 => '允許評論淘專輯',
+      71 => '允許用戶在主題和淘專輯頁面進行評論。',
+      72 => 'usergroups_edit_post_allowimgcontent',
+      73 => '允許主題內容生成圖片',
+      74 => '看帖時所有帖子正文內容將以字符形式生成圖片展示。',
     ),
   ),
-  289 =>
+  307 =>
   array (
     'index' =>
     array (
@@ -6211,7 +6639,7 @@ $lang = array (
       29 => '設置允許上傳的附件擴展名，多個擴展名之間用半角逗號 "," 隔開，留空為不限制',
     ),
   ),
-  290 =>
+  308 =>
   array (
     'index' =>
     array (
@@ -6234,7 +6662,7 @@ $lang = array (
       11 => '本組用戶帶有道具的最大重量，範圍 0~60000',
     ),
   ),
-  291 =>
+  309 =>
   array (
     'index' =>
     array (
@@ -6263,7 +6691,7 @@ $lang = array (
       17 => '該用戶組購買邀請碼的最大有效期，超過此有效期驗證碼將自動失效，單位為天，默認為10',
     ),
   ),
-  292 =>
+  310 =>
   array (
     'index' =>
     array (
@@ -6289,7 +6717,7 @@ $lang = array (
       14 => '允許參與評分',
     ),
   ),
-  293 =>
+  311 =>
   array (
     'index' =>
     array (
@@ -6348,7 +6776,7 @@ $lang = array (
       47 => '設置是否解析個人主頁自定義模塊中的 [img] 代碼',
     ),
   ),
-  294 =>
+  312 =>
   array (
     'index' =>
     array (
@@ -6363,13 +6791,16 @@ $lang = array (
       3 => 'usergroups_edit_group_build',
       4 => '允許建立群組的數量',
       5 => '範圍1-255，0為不允許建立群組',
-      6 => 'usergroups_edit_post_direct_group',
-      7 => '允許直接發帖',
-      8 => 'usergroups_edit_post_url_group',
-      9 => '允許發站外URL',
+      6 => 'usergroups_edit_group_buildcredits',
+      7 => '創建群組消耗積分',
+      8 => '創建群組需要消耗和積分數量，0為不需要積分',
+      9 => 'usergroups_edit_post_direct_group',
+      10 => '允許直接發帖',
+      11 => 'usergroups_edit_post_url_group',
+      12 => '允許發站外URL',
     ),
   ),
-  295 =>
+  313 =>
   array (
     'index' =>
     array (
@@ -6393,7 +6824,7 @@ $lang = array (
       12 => '發佈文章需要審核',
     ),
   ),
-  296 =>
+  314 =>
   array (
     'index' =>
     array (
