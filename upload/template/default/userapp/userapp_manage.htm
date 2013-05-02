@@ -29,10 +29,7 @@
 
 <!--{elseif $_GET['ac'] == 'menu'}-->
 
-<div id="ct" class="wp ct2_a cl">
-	<div class="appl">
-		<!--{subtemplate userapp/userapp_menu_list}-->
-	</div>
+<div id="ct" class="wp cl">
 	<div class="mn">
 		<div class="bm bw0">
 			<h1 class="mt bbs"><img alt="app" src="static/image/common/appsetting.gif" alt="appsetting" class="vm" /> {lang app_management}</h1>
@@ -92,7 +89,7 @@
 	</div>
 </div>
 <!--{else}-->
-<div id="ct" class="ct2_a wp cl">
+<div id="ct" class="wp cl">
 	<div class="mn">
 		<script type="text/javascript" src="http://static.manyou.com/scripts/my_iframe.js"></script>
 		<script language="javascript">
@@ -132,7 +129,7 @@
 		}
 
 		</script>
-		<iframe id="ifm0" frameborder="0" width="810" scrolling="no" height="810" style="position: absolute; top: -5000px; left: -5000px;" src="{$url}"></iframe>
+		<iframe id="ifm0" frameborder="0" width="100%" scrolling="no" height="810" style="position: absolute; top: -5000px; left: -5000px;" src="{$url}"></iframe>
 
 		<div id="mx2note" style="display: none; padding: 150px 0; text-align: center; background-color: #FFFFBF; color: #DB0000; letter-spacing: 1px;">
 			{lang no_maxthon2_message}
@@ -141,9 +138,7 @@
 			<img src="{IMGDIR}/loading.gif" alt="loading..." class="vm" /> {lang page_loading}
 		</div>
 	</div>
-	<div class="appl">
-		<!--{subtemplate userapp/userapp_menu_list}-->
-	</div>
+	
 </div>
 <!--{if $_G['group']['radminid'] == 1}-->
 	<!--{eval helper_manyou::checkupdate();}-->

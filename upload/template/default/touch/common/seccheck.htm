@@ -36,7 +36,7 @@
 
 <script type="text/javascript">
 	(function() {
-		$('.seccodeimg').bind('click', function() {
+		$('.seccodeimg').on('click', function() {
 			$('#seccodeverify_$sechash').attr('value', '');
 			var tmprandom = 'S' + Math.floor(Math.random() * 1000);
 			$('.sechash').attr('value', tmprandom);

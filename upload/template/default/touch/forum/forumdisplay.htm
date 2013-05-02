@@ -43,7 +43,7 @@
 						<!--{eval $thread[tid]=$thread[closed];}-->
 					<!--{/if}-->
 					<li>
-                    <a href="forum.php?mod=viewthread&tid=$thread[tid]&page=$_G[page]" $thread[highlight] >
+                    <a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra" $thread[highlight] >
 					{$thread[subject]}
 					<span class="by">$thread[author]</span>
 					</a>
@@ -52,7 +52,7 @@
 						<span class="icon_top"><img src="{STATICURL}image/mobile/images/icon_top.png"></span>
 					<!--{elseif $thread['digest'] > 0}-->
 						<span class="icon_top"><img src="{STATICURL}image/mobile/images/icon_digest.png"></span>
-					<!--{elseif $thread['attachment'] == 2}-->
+					<!--{elseif $thread['attachment'] == 2 && $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
 						<span class="icon_tu"><img src="{STATICURL}image/mobile/images/icon_tu.png"></span>
 					<!--{/if}-->
 					</li>
@@ -65,4 +65,5 @@
 $multipage
 <!--{/if}-->
 <!-- main threadlist end -->
+<div class="pullrefresh" style="display:none;"></div>
 <!--{template common/footer}-->

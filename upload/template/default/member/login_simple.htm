@@ -1,7 +1,7 @@
 <!--{if CURMODULE != 'logging'}-->
 	<script type="text/javascript" src="{$_G[setting][jspath]}logging.js?{VERHASH}"></script>
 	<form method="post" autocomplete="off" id="lsform" action="member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes" onsubmit="{if $_G['setting']['pwdsafety']}pwmd5('ls_password');{/if}return lsSubmit();">
-	<div class="fastlg cl">
+<!--vot--><div class="fastlg">
 		<span id="return_ls" style="display:none"></span>
 		<div class="y pns">
 			<table cellspacing="0" cellpadding="0">
@@ -9,7 +9,7 @@
 					<!--{if !$_G['setting']['autoidselect']}-->
 						<td>
 							<span class="ftid">
-								<select name="fastloginfield" id="ls_fastloginfield" width="40" tabindex="900">
+<!--vot-->							<select name="fastloginfield" id="ls_fastloginfield" width="80" tabindex="900">
 									<option value="username">{lang username}</option>
 									<!--{if getglobal('setting/uidlogin')}-->
 									<option value="uid">{lang uid}</option>

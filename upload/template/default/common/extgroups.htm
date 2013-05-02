@@ -10,9 +10,9 @@
 			</li>
 		<!--{/if}-->
 		<!--{if $_G['member'][adminid]}-->
-			<li class="hm mtn">管理级别: <!--{if $_G['member'][adminid] == 1}-->管理员
-				<!--{elseif $_G['member'][adminid] == 2}-->超级版主
-				<!--{elseif $_G['member'][adminid] == 3}-->版主
+			<li class="hm mtn">{lang manage_grade}: <!--{if $_G['member'][adminid] == 1}-->{lang manager}
+				<!--{elseif $_G['member'][adminid] == 2}-->{lang super_forummanager}
+				<!--{elseif $_G['member'][adminid] == 3}-->{lang forummanager}
 				<!--{/if}-->
 			</li>
 		<!--{/if}-->
@@ -26,7 +26,7 @@
 		</ul>
 	<!--{/if}-->
 	<!--{if $_G['setting']['buyusergroupexists']}-->
-		<div onclick="location.href='home.php?mod=spacecp&ac=usergroup&do=list'" class="xi2 ptn pbn btda" align="right"><label>购买用户组&raquo;</label></div>
+		<div onclick="location.href='home.php?mod=spacecp&ac=usergroup&do=list'" class="xi2 ptn pbn btda" align="right"><label>{lang buy_usergroup}&raquo;</label></div>
 	<!--{/if}-->
 </div>
 <!--{template common/footer}-->

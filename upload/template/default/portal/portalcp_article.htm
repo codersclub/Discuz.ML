@@ -137,11 +137,13 @@ make_html('portal.php?mod=view&aid={$aid}', $('makehtml_'));
 					<a href="javascript:;" id="highlight_op_2" onclick="switchhl(this, 2)" class="dopt_i{if $stylecheck[2]} cnt{/if}" style="text-decoration:none;font-style:italic" title="{lang e_italic}">I</a>
 					<a href="javascript:;" id="highlight_op_3" onclick="switchhl(this, 3)" class="dopt_l{if $stylecheck[3]} cnt{/if}" style="text-decoration:underline" title="{lang e_underline}">U</a>
 				</div>
-				<div id="htmlname" class="dopt mtn cl"{if !$htmlstatus} style="display: none"{/if}>
-					<span class="z mtn">HTML文件名:</span>
-					<input type="text" name="htmlname" id="htmlname" class="px" value="$article[htmlname]" size="80" />.html
+				<div id="htmlname_" class="dopt mtn cl"{if !$htmlstatus} style="display: none"{/if}>
+					<span class="z mtn">HTML{lang filename}:</span>
+					<input type="text" name="htmlname" id="htmlname" class="px" value="$article[htmlname]" size="80" onblur="check_htmlname_exists(this)"/>.{$_G['setting']['makehtml']['extendname']}
+					<strong id="checkhtmlnamemsg"></strong>
+					<input type="hidden" name="oldhtmlname" id="oldhtmlname" value="$article[htmlname]" />
 				</div>
-				<div id="pagetitle" class="dopt mtn cl"{if $article[contents] < 2} style="display: none"{/if}>
+				<div id="pagetitle_" class="dopt mtn cl"{if $article[contents] < 2} style="display: none"{/if}>
 					<span class="z mtn">{lang page_title}:&nbsp;</span>
 					<input type="text" name="pagetitle" id="pagetitle" class="px" value="$article_content[title]" size="80" />
 				</div>
@@ -376,6 +378,30 @@ function deleteAttach(attachid, url) {
 <!--{if !empty($article['conver'])}-->
 setConver('$article[conver]');
 <!--{/if}-->
+function check_htmlname_exists(obj) {
+	name = obj.value;
+	var msg = $('checkhtmlnamemsg');
+	if(name && $('oldhtmlname').value != name) {
+		var catid = $('catid').value;
+		var aid = $('aid').value;
+		var x = new Ajax();
+		x.getJSON('portal.php?mod=portalcp&ac=article&op=checkhtmlname&htmlname='+name+'&catid='+catid+'&aid='+aid, function(s){
+			if(s['message'] == 'html_existed') {
+				obj.focus();
+				msg.style.color = 'red';
+				msg.style.paddingLeft = '10px';
+				msg.innerHTML = '{lang article_html_existed}';
+				$('issuance').disabled = 'disabled';
+			} else {
+				msg.innerHTML = '';
+				$('issuance').disabled = '';
+			}
+		});
+	} else {
+		msg.innerHTML = '';
+		$('issuance').disabled = '';
+	}
+}
 </script>
 
 <!--{/if}-->

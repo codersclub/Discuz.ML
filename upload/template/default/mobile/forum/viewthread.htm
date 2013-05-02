@@ -5,7 +5,7 @@
 	<!--{if $_G['forum']['status'] != 3}-->
 		<div class="box"><a href="forum.php">{$_G['setting']['navs'][2]['navname']}</a> <em> &gt; </em> <a href="forum.php?mod=forumdisplay&fid={$fup}">{eval echo strip_tags($_G['cache']['forums'][$fup]['name'])}</a> <em> &gt; </em> <a href="$upnavlink">{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}</a></div>
 	<!--{else}-->
-		<div class="box"><a href="group.php">$_G['setting']['navs'][3]['navname']</a> $nav[nav]</div>
+<!--vot-->	<div class="box"><a href="group.php">$_G['setting']['navs'][3]['navname']</a> $nav[nav]>$nav[navname]</a></div>
     <!--{/if}-->
 <!--{/if}-->
 <div class="tz mtn">
@@ -165,6 +165,7 @@
                             <div id="postmessage_$post[pid]" class="postmessage">$post[message]</div>
                         <!--{/if}-->
 
+						<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
                         <!--{if $post['attachment']}-->
                         	<div class="warning">
                             {lang attachment}: <em><!--{if $_G['uid']}-->{lang attach_nopermission}<!--{else}-->{lang attach_nopermission_login}<!--{/if}--></em>
@@ -178,6 +179,7 @@
                                 {echo showattach($post)}
                             <!--{/if}-->
                         <!--{/if}-->
+						<!--{/if}-->
                     <!--{/if}-->
                     </div>
                 </div>
@@ -218,7 +220,7 @@
 </div>
 <!--{hook/viewthread_bottom_mobile}-->
 
-<!--{if $_G['uid'] && $allowpostreply && !$_G['forum_thread']['archiveid'] && ($_G['forum']['status'] != 3 || $_G['isgroupuser'])}-->
+<!--{if $allowfastpost}-->
 <!--{subtemplate forum/forumdisplay_fastpost}-->
 <!--{/if}-->
 

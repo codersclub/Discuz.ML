@@ -220,7 +220,7 @@
 	</form>
 <!--{elseif $_GET[op] == 'saveforumphoto'}-->
 	<h3 class="flb">
-		<em id="return_$_GET[handlekey]">保存到相册</em>
+		<em id="return_$_GET[handlekey]">{lang save_to_album}</em>
 		<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_GET[handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
 	</h3>
 	<form id="saveforumphoto" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=album&op=saveforumphoto&aid=$_GET[aid]" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_GET[handlekey]');return false;"{/if}>
@@ -230,7 +230,7 @@
 		<input type="hidden" name="aid" value="$_GET[aid]" />
 		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_GET[handlekey]" /><!--{/if}-->
 		<div class="c">
-			保存到：<select name="albumid" class="ps vm">
+			{lang save_to}: <select name="albumid" class="ps vm">
 			<!--{loop $albumlist $key $value}-->
 				<option value="$value[albumid]">$value[albumname]</option>
 			<!--{/loop}-->

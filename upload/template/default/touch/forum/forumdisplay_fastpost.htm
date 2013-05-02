@@ -16,7 +16,7 @@
 		</li>
 		<!--{/if}-->
 		<li><input type="text" value="{lang send_reply_fast_tip}" class="input grey" color="gray" name="message" id="fastpostmessage"></li>
-		<li id="fastpostsubmitline" style="display:none;"><!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}--><!--{subtemplate common/seccheck}--><!--{/if}--><input type="button" value="{lang reply}" class="button2" name="replysubmit" id="fastpostsubmit"></li>
+		<li id="fastpostsubmitline" style="display:none;"><!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}--><!--{subtemplate common/seccheck}--><!--{/if}--><input type="button" value="{lang reply}" class="button2" name="replysubmit" id="fastpostsubmit"><a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&reppost=$_G[forum_firstpid]&page=$page" class="y" style="height:30px;width:30px;margin-top:7px;background:url({STATICURL}image/mobile/images/icon_photo.png) no-repeat"><span class="none">{lang reply}</span></a></li>
 		</ul>
 	</div>
     </form>
@@ -25,7 +25,7 @@
 	(function() {
 		var form = $('#fastpostform');
 		<!--{if !$_G[uid] || $_G[uid] && !$allowpostreply}-->
-		$('#fastpostmessage').bind('focus', function() {
+		$('#fastpostmessage').on('focus', function() {
 			<!--{if !$_G[uid]}-->
 				popup.open('{lang nologin_tip}', 'confirm', 'member.php?mod=logging&action=login');
 			<!--{else}-->
@@ -34,7 +34,7 @@
 			this.blur();
 		});
 		<!--{else}-->
-		$('#fastpostmessage').bind('focus', function() {
+		$('#fastpostmessage').on('focus', function() {
 			var obj = $(this);
 			if(obj.attr('color') == 'gray') {
 				obj.attr('value', '');
@@ -43,7 +43,7 @@
 				$('#fastpostsubmitline').css('display', 'block');
 			}
 		})
-		.bind('blur', function() {
+		.on('blur', function() {
 			var obj = $(this);
 			if(obj.attr('value') == '') {
 				obj.addClass('grey');
@@ -52,7 +52,7 @@
 			}
 		});
 		<!--{/if}-->
-		$('#fastpostsubmit').bind('click', function() {
+		$('#fastpostsubmit').on('click', function() {
 			var msgobj = $('#fastpostmessage');
 			if(msgobj.val() == '{lang send_reply_fast_tip}') {
 				msgobj.attr('value', '');
@@ -73,7 +73,7 @@
 			return false;
 		});
 
-		$('#replyid').bind('click', function() {
+		$('#replyid').on('click', function() {
 			$(document).scrollTop($(document).height());
 			$('#fastpostmessage')[0].focus();
 		});

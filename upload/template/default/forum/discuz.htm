@@ -40,7 +40,7 @@
 			<p class="chart z">{lang index_today}: <em>$todayposts</em><span class="pipe">|</span>{lang index_yesterday}: <em>$postdata[0]</em><span class="pipe">|</span>{lang index_posts}: <em>$posts</em><span class="pipe">|</span>{lang index_members}: <em>$_G['cache']['userstats']['totalmembers']</em><!--{if $_G['cache']['userstats']['newsetuser']}--><span class="pipe">|</span>{lang welcome_new_members}: <em><a href="home.php?mod=space&username={echo rawurlencode($_G['cache']['userstats']['newsetuser'])}" target="_blank" class="xi2">$_G['cache']['userstats']['newsetuser']</a></em><!--{/if}--></p>
 			<div class="y">
 				<!--{hook/index_nav_extra}-->
-				<!--{if $_G['uid']}--><!--{if $_G['setting']['showsignin']}--><a href="misc.php?mod=signin&formhash={FORMHASH}" id="everyday_login_reward" onclick="showWindow(this.id, this.href, 'get', 0);" class="xi2">签到领奖</a><span class="pipe">|</span><!--{/if}--><a href="forum.php?mod=guide&view=my" title="{lang my_posts}" class="xi2">{lang my_posts}</a><!--{/if}--><!--{if !empty($_G['setting']['search']['forum']['status'])}--><!--{if $_G['uid']}--><span class="pipe">|</span><!--{/if}--><a href="forum.php?mod=guide&view=new" title="{lang show_newthreads}" class="xi2">{lang show_newthreads}</a><!--{/if}-->
+				<!--{if $_G['uid']}--><a href="forum.php?mod=guide&view=my" title="{lang my_posts}" class="xi2">{lang my_posts}</a><!--{/if}--><!--{if !empty($_G['setting']['search']['forum']['status'])}--><!--{if $_G['uid']}--><span class="pipe">|</span><!--{/if}--><a href="forum.php?mod=guide&view=new" title="{lang show_newthreads}" class="xi2">{lang show_newthreads}</a><!--{/if}-->
 			</div>
 		</div>
 	<!--{/if}-->
@@ -48,80 +48,87 @@
 	<div class="mn">
 
 		<!--{if !empty($_G['setting']['grid']['showgrid'])}-->
-		<!--首页四格开始-->
+		<!-- index four grid -->
 		<div class="fl bm">
 			<div class="bm bmw cl">
-				<div class="bm_h cl">
-					<h2>$now</h2>
-				</div>
 				<div id="category_grid" class="bm_c" >
 					<table cellspacing="0" cellpadding="0"><tr>
 					<!--{if !$_G['setting']['grid']['gridtype']}-->
 						<td valign="top" style="width:230px" class="category_l1">
-							<h4>最新图片</h4>
-							<div class="module cl slidebox_grid" style="width:218px">
-								<script type="text/javascript">
-								var slideSpeed = 5000;
-								var slideImgsize = [218,200];
-								var slideBorderColor = '{$_G['style']['specialborder']}';
-								var slideBgColor = '{$_G['style']['commonbg']}';
-								var slideImgs = new Array();
-								var slideImgLinks = new Array();
-								var slideImgTexts = new Array();
-								var slideSwitchColor = '{$_G['style']['tabletext']}';
-								var slideSwitchbgColor = '{$_G['style']['commonbg']}';
-								var slideSwitchHiColor = '{$_G['style']['specialborder']}';
-								{eval $k = 1;}
-								<!--{loop $grids['slide'] $stid $svalue}-->
-									slideImgs[<!--{echo $k}-->] = '$svalue[image]';
-									slideImgLinks[<!--{echo $k}-->] = '{$svalue[url]}';
-									slideImgTexts[<!--{echo $k}-->] = '$svalue[subject]';
-									{eval $k++;}
-								<!--{/loop}-->
-								</script>
-								<script language="javascript" type="text/javascript" src="{$_G[setting][jspath]}forum_slide.js?{VERHASH}"></script>
+							<div class="newimgbox">
+								<h4><span class="tit_newimg"></span>{lang latest_images}</h4>
+								<div class="module cl slidebox_grid" style="width:218px">
+									<script type="text/javascript">
+									var slideSpeed = 5000;
+									var slideImgsize = [218,200];
+									var slideBorderColor = '{$_G['style']['specialborder']}';
+									var slideBgColor = '{$_G['style']['commonbg']}';
+									var slideImgs = new Array();
+									var slideImgLinks = new Array();
+									var slideImgTexts = new Array();
+									var slideSwitchColor = '{$_G['style']['tabletext']}';
+									var slideSwitchbgColor = '{$_G['style']['commonbg']}';
+									var slideSwitchHiColor = '{$_G['style']['specialborder']}';
+									{eval $k = 1;}
+									<!--{loop $grids['slide'] $stid $svalue}-->
+										slideImgs[<!--{echo $k}-->] = '$svalue[image]';
+										slideImgLinks[<!--{echo $k}-->] = '{$svalue[url]}';
+										slideImgTexts[<!--{echo $k}-->] = '$svalue[subject]';
+										{eval $k++;}
+									<!--{/loop}-->
+									</script>
+									<script language="javascript" type="text/javascript" src="{$_G[setting][jspath]}forum_slide.js?{VERHASH}"></script>
+								</div>
 							</div>
 						</div>
 					<!--{/if}-->
 					<td valign="top" class="category_l2">
-				    	<h4>最新主题</h4>
-				        <ul class="category_newlist">
-				        	<!--{loop $grids['newthread'] $thread}-->
-							<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="标题: <strong>$thread[oldsubject]</strong><br/>作者: $thread[author] ($thread[dateline])<br/>查看/回复: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
-						<!--{/loop}-->
-				         </ul>
+						<div class="subjectbox">
+							<h4><span class="tit_subject"></span>{lang collection_lastthread}</h4>
+					        <ul class="category_newlist">
+					        	<!--{loop $grids['newthread'] $thread}-->
+								<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
+							<!--{/loop}-->
+					         </ul>
+				         </div>
 					</div>
 					<td valign="top" class="category_l3">
-				    	<h4>最新回复</h4>
-				        <ul class="category_newlist">
-				        	<!--{loop $grids['newreply'] $thread}-->
-							<li><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']}tip="标题: <strong>$thread[oldsubject]</strong><br/>作者: $thread[author] ($thread[dateline])<br/>查看/回复: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
-						<!--{/loop}-->
-				         </ul>
+						<div class="replaybox">
+							<h4><span class="tit_replay"></span>{lang show_newthreads}</h4>
+					        <ul class="category_newlist">
+					        	<!--{loop $grids['newreply'] $thread}-->
+								<li><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']}tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
+							<!--{/loop}-->
+					         </ul>
+				         </div>
 					</div>
-					<td valign="top" class="category_l4">
-				    	<h4>热门帖子</h4>
-				        <ul class="category_newlist">
-				        	<!--{loop $grids['hot'] $thread}-->
-							<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="标题: <strong>$thread[oldsubject]</strong><br/>作者: $thread[author] ($thread[dateline])<br/>查看/回复: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
-						<!--{/loop}-->
-				         </ul>
+					<td valign="top" class="category_l3">
+						<div class="hottiebox">
+							<h4><span class="tit_hottie"></span>{lang hot_thread}</h4>
+					        <ul class="category_newlist">
+					        	<!--{loop $grids['hot'] $thread}-->
+								<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
+							<!--{/loop}-->
+					         </ul>
+				         </div>
 					</div>
 					<!--{if $_G['setting']['grid']['gridtype']}-->
 						<td valign="top" class="category_l4">
-						<h4>精华帖子</h4>
-						<ul class="category_newlist">
-							<!--{loop $grids['digest'] $thread}-->
-								<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="标题: <strong>$thread[oldsubject]</strong><br/>作者: $thread[author] ($thread[dateline])<br/>查看/回复: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
-							<!--{/loop}-->
-						 </ul>
+							<div class="goodtiebox">
+								<h4><span class="tit_goodtie"></span>{lang post_digest_thread}</h4>
+								<ul class="category_newlist">
+									<!--{loop $grids['digest'] $thread}-->
+										<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
+									<!--{/loop}-->
+								 </ul>
+						 	</div>
 						</div>
 					<!--{/if}-->
 					</table>
 				</div>
 			</div>
 		</div>
-		<!--首页四格结束-->
+		<!-- index four grid end -->
 		<!--{/if}-->
 		<!--{hook/index_top}-->
 		<!--{if !empty($_G['cache']['heats']['message'])}-->
@@ -162,7 +169,7 @@
 					<span class="o">
 						<img id="category_-1_img" src="{IMGDIR}/$collapse['collapseimg_-1']" title="{lang spread}" alt="{lang spread}" onclick="toggle_collapse('category_-1');" />
 					</span>
-					<h2><a href="forum.php?mod=collection&op=my">我订阅的专辑</a></h2>
+					<h2><a href="forum.php?mod=collection&op=my">{lang my_order_collection}</a></h2>
 				</div>
 				<div id="category_-1" class="bm_c" style="{echo $collapse['category_-1']}">
 					<table cellspacing="0" cellpadding="0" class="fl_tb">
@@ -425,7 +432,7 @@
 					<span class="o">
 						<img id="category_-2_img" src="{IMGDIR}/$collapse['collapseimg_-2']" title="{lang spread}" alt="{lang spread}" onclick="toggle_collapse('category_-2');" />
 					</span>
-					<h2><a href="forum.php?mod=collection">淘专辑推荐</a></h2>
+					<h2><a href="forum.php?mod=collection">{lang recommend_collection}</a></h2>
 				</div>
 				<div id="category_-2" class="bm_c" style="{echo $collapse['category_-2']}">
 					<table cellspacing="0" cellpadding="0" class="fl_tb">
@@ -485,10 +492,10 @@
 					<span class="o"><a href="forum.php?showoldetails=no#online" title="{lang spread}"><img src="{IMGDIR}/collapsed_no.gif" alt="{lang spread}" /></a></span>
 					<h3>
 						<strong><a href="home.php?mod=space&do=friend&view=online&type=member">{lang onlinemember}</a></strong>
-						<span class="xs1">- <strong>$onlinenum</strong> {lang onlines}
-						- <strong>$membercount</strong> {lang index_members}(<strong>$invisiblecount</strong> {lang index_invisibles}),
-						<strong>$guestcount</strong> {lang index_guests}
-						- {lang index_mostonlines} <strong>$onlineinfo[0]</strong> {lang on} <strong>$onlineinfo[1]</strong>.</span>
+<!--vot-->					<span class="xs1">- <strong>$onlinenum</strong> &nbsp;
+<!--vot-->					( {lang index_members}: <strong>$membercount</strong>, {lang index_invisibles}: <strong>$invisiblecount</strong>,
+<!--vot-->					{lang index_guests}: <strong>$guestcount</strong> )
+<!--vot-->					- {lang index_mostonlines}: <strong>$onlineinfo[0]</strong> {lang on} <strong>$onlineinfo[1]</strong>.</span>
 					</h3>
 				<!--{else}-->
 					<!--{if empty($_G['setting']['sessionclose'])}-->

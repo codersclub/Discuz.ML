@@ -34,13 +34,13 @@
 			<!--{elseif !$_G['forum_thread']['archiveid']}-->
 				<a href="forum.php?mod=viewthread&tid=$_G[tid]&page=$page" rel="nofollow" class="blue" style="font-size:12px;font-weight:normal;margin-left:10px;">{lang thread_show_all}</a>
 			<!--{/if}-->
-	</h2> 
+	</h2>
 
 	<!--{loop $postlist $post}-->
 	<!--{eval $needhiddenreply = ($hiddenreplies && $_G['uid'] != $post['authorid'] && $_G['uid'] != $_G['forum_thread']['authorid'] && !$post['first'] && !$_G['forum']['ismoderator']);}-->
    <div class="plc cl">
 	   <span class="avatar"><img src="<!--{avatar($post[authorid], small, true)}-->" style="width:32px;height:32px;" /></span>
-       <div class="pi">
+       <div class="display pi" href="#replybtn_$post[pid]">
 		   <ul class="authi">
 				<li class="grey">
 					<em>
@@ -54,9 +54,7 @@
 					</em><b>
 					<!--{if $post['authorid'] && $post['username'] && !$post['anonymous']}-->
 						<a href="home.php?mod=space&uid=$post[authorid]" class="blue">$post[author]</a></b>
-						<!--{if 0 && $post[authorid] != $_G[uid] && $_G[uid] && !$post['first']}-->
-						<a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&repquote=$post[pid]&extra=$_GET[extra]&page=$page" class="grey" title="{lang reply}">{lang reply}</a>
-						<!--{/if}-->
+
 					<!--{else}-->
 						<!--{if !$post['authorid']}-->
 						<a href="javascript:;">{lang guest} <em>$post[useip]</em></a>
@@ -97,7 +95,7 @@
 					<!--{/if}-->
 					$post[dateline]
 				</li>
-            </ul>      
+            </ul>
 			<div class="message">
                 	<!--{if $post['warned']}-->
                         <span class="grey quote">{lang warn_get}</span>
@@ -162,7 +160,7 @@
                         <!--{else}-->
                             $post[message]
                         <!--{/if}-->
-                        
+
 					<!--{/if}-->
 			</div>
 			<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
@@ -183,18 +181,24 @@
 				<!--{/if}-->
 			<!--{/if}-->
 			<!--{/if}-->
+			<!--{if $_G[uid] && $allowpostreply && !$post[first]}-->
+			<div id="replybtn_$post[pid]" class="replybtn" display="true" style="display:none;position:absolute;right:0px;top:5px;">
+				<input type="button" class="redirect button" href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&repquote=$post[pid]&extra=$_GET[extra]&page=$page" value="{lang reply}">
+			</div>
+			<!--{/if}-->
        </div>
    </div>
    <!--{/loop}-->
 
-		<!--{subtemplate forum/forumdisplay_fastpost}-->
+	<!--{subtemplate forum/forumdisplay_fastpost}-->
+
 </div>
 <!-- main postlist end -->
 
 $multipage
 
 <script type="text/javascript">
-	$('.favbtn').bind('click', function() {
+	$('.favbtn').on('click', function() {
 		var obj = $(this);
 		$.ajax({
 			type:'POST',

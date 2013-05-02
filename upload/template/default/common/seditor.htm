@@ -19,7 +19,7 @@
 		<a id="{$seditor[0]}code" href="javascript:;" title="{lang e_code}" class="fcd"{if empty($seditor[2])} onclick="seditor_menu('$seditor[0]', 'code');doane(event);"{/if}>Code</a>
 	<!--{/if}-->
 	<!--{if in_array('smilies', $seditor[1])}-->
-		<a href="javascript:;" class="fsml" id="{$seditor[0]}sml"{if empty($seditor[2])} onclick="showMenu({'ctrlid':this.id,'evt':'click','layer':2});return false;"{/if}>Smilies</a>
+<!--vot-->	<a href="javascript:;" class="fsml" id="{$seditor[0]}sml"{if empty($seditor[2])} onclick="showMenu({'ctrlid':this.id,'evt':'click','layer':2});return false;"{/if} title="{lang e_smilies_title}">{lang e_smilies}</a>
 		<!--{if empty($seditor[2])}-->
 			<script type="text/javascript" reload="1">smilies_show('{$seditor[0]}smiliesdiv', $_G['setting']['smcols'], '$seditor[0]');</script>
 		<!--{/if}-->

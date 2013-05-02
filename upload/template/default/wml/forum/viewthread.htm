@@ -48,7 +48,7 @@
 						<p><!--{if $post['position'] > 1}-->#$post['position'] <!--{/if}-->{echo str_replace('&nbsp;', ' ', strip_tags($post[message]))}</p>
                     <!--{/if}-->
 
-				<!--{if $post['first'] && $thread['allreplies'] > 1}-->回复列表($thread['allreplies'])|<!--{/if}-->
+					<!--{if $post['first'] && $thread['allreplies'] > 1}-->{lang replylist}($thread['allreplies'])|<!--{/if}-->
 				<!--{if $postcount == 0}--><a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]">{lang join_thread}</a>|<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang send_threads}</a><!--{/if}-->
 				<!--{if !$post['first'] }-->
 					<!--{if $post['authorid'] && $post['username'] && !$post['anonymous']}-->
@@ -72,9 +72,9 @@
         <!--{eval $postcount++;}-->
         <!--{/loop}-->
         <!--{echo str_replace('&amp;amp;', '&amp;', str_replace('&', '&amp;', $multipage));}-->
-		<br/><br/>&lt;&lt;<a href="forum.php?mod=redirect&goto=nextoldset&tid=$_G['tid']">上一个主题</a><br/>
-		&gt;&gt;<a href="forum.php?mod=redirect&goto=nextnewset&tid=$_G['tid']">下一个主题</a><br/>
-		<a href="forum.php?mod=forumdisplay&fid=$thread['fid']">返回版块</a>
+		<br/><br/>&lt;&lt;<a href="forum.php?mod=redirect&goto=nextoldset&tid=$_G['tid']">{lang last_thread}</a><br/>
+		&gt;&gt;<a href="forum.php?mod=redirect&goto=nextnewset&tid=$_G['tid']">{lang next_thread}</a><br/>
+		<a href="forum.php?mod=forumdisplay&fid=$thread['fid']">{lang return_forum}</a>
 
 <!--{hook/viewthread_bottom_mobile}-->
 

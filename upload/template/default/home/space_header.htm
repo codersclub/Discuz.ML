@@ -2,7 +2,7 @@
 <!--{eval $_G[cookie][extstyle] = false;}-->
 <!--{subtemplate common/header_common}-->
 	<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
-	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_space.css?{VERHASH}" />
+<!--vot-->	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_space{RTLSUFFIX}.css?{VERHASH}" />
 	<link id="style_css" rel="stylesheet" type="text/css" href="{STATICURL}space/{if $space[theme]}$space[theme]{else}t1{/if}/style.css?{VERHASH}">
 	<style id="diy_style">$space[spacecss]</style>
 </head>
@@ -12,13 +12,18 @@
 	<div id="ajaxwaitid"></div>
 
 	<!--{if $space['self'] && $_GET['diy'] == 'yes' && $do == 'index' }-->
-	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+<!--vot-->	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_diy{RTLSUFFIX}.css?{VERHASH}" />
 	<!--{subtemplate home/space_diy}-->
 	<!--{/if}-->
 
 	<div id="toptb" class="cl">
-		<!--{if $_G['uid']}-->
 			<div class="y">
+<!--vot Multi-Lingual -->
+<!--vot-->		<!--{if $_G[config][enable_multilingual]}-->
+<!--vot-->		<a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="{lang change_language}">{lang change_language}<img class="flag" src="{$_G[langurl]}{$_G[langicon]}"/></a>
+<!--vot-->		<!--{/if}-->
+
+<!--vot-->	<!--{if $_G['uid']}-->
 				<a href="home.php?mod=space&uid=$_G[uid]" class="xw1" target="_blank" title="{lang visit_my_space}">{$_G[member][username]}</a>
 				<a href="javascript:;" id="myspace" class="showmenu cur1" onmouseover="showMenu(this.id);">{lang my_nav}</a>
 				<!--{hook/global_usernav_extra1}-->
@@ -31,28 +36,38 @@
 				<!--{hook/global_usernav_extra2}-->
 				<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a>
 				<!--{if $space['self'] && $do == 'index'}--><a id="diy-tg" href="javascript:openDiy();" title="{lang dress_space}">DIY</a><!--{/if}-->
-			</div>
+<!--vot-->
 		<!--{elseif !empty($_G['cookie']['loginuser'])}-->
-			<div class="y">
+<!--vot			<div class="y">-->
 				<a id="loginuser" class="xw1">$_G['cookie']['loginuser']</a>
 				<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang activation}</a>
 				<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a>
-			</div>
+<!--vot-->
 		<!--{elseif $_G['connectguest']}-->
-			<div class="y">
+<!--vot-->
 				{lang connect_fill_profile_to_view}
-			</div>
+<!--vot-->
 		<!--{else}-->
-			<div class="y">
-				<a href="member.php?mod={$_G[setting][regname]}">$_G['setting']['reglinkname']</a>
+<!--vot			<div class="y"> -->
+<!--vot-->			<a href="member.php?mod={$_G[setting][regname]}">{lang register}</a>
 				<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang login}</a>
-			</div>
+<!--vot			</div> -->
 		<!--{/if}-->
+<!--vot-->	</div>
 		<div class="z">
 			<a href="./" title="$_G['setting']['bbname']" class="xw1">$_G['setting']['bbname']</a>
 			<a href="home.php?mod=space&do=home" id="navs" class="showmenu" onmouseover="showMenu(this.id);">{lang return_homepage}</a>
 		</div>
 	</div>
+<!-- vot Multi-Lingual -->
+		<div id="lslct_menu" class="cl p_pop" style="display: none; width:120px;">
+			<!--{loop $_G[config][languages] $lng $lngarray}-->
+
+			<a href="javascript:;" onclick="setlang('$lng')" title="{$lngarray[title]}">
+				<img src="{$_G[siteroot]}source/language/{$lng}/{$lngarray[icon]}"/> {$lngarray[name]}
+			</a>
+			<!--{/loop}-->
+		</div>
 	<!--{if $space['status'] == -1 && $_G['adminid'] == 1 }-->
 		<p class="ptw xw1 xi1 hm"><img src="{IMGDIR}/locked.gif" alt="Locked" class="vm" /> {lang message_banned}</p>
 	<!--{/if}-->
@@ -88,7 +103,17 @@
 		<!--{/loop}-->
 		</ul>
 	<!--{/if}-->
-	$_G[setting][menunavs]
+<!--vot-->			<!--{if $_G[setting][menunavs]}-->
+<!--vot-->				<!--{loop $_G[setting][menunavs] $navid $subnav}-->
+<!--vot-->				<ul class="p_pop h_pop" id="{$navid}_menu" style="display: none">
+<!--vot-->					<!--{loop $subnav $subid $sub}-->
+<!--vot-->					<li{$sub['liparam']}>
+<!--vot-->					<a href="{$sub['url']}"{$sub['extra']}<!--{if $sub['title']}-->title="$sub['title']" <!--{/if}-->>{$sub['name']}</a>
+<!--vot-->					</li>
+<!--vot-->					<!--{/loop}-->
+<!--vot-->				</ul>
+<!--vot-->				<!--{/loop}-->
+<!--vot-->			<!--{/if}-->
 
 <!--{eval $mnid = getcurrentnav();}-->
 <ul id="navs_menu" class="p_pop topnav_pop" style="display:none;">
@@ -98,14 +123,14 @@
     <!--{if $nav_hidden !== false || $nav_navshow !== false}-->
 	<!--{eval $nav['nav'] = preg_replace("/onmouseover\=\"(.*?)\"/i", '',$nav['nav'])}-->
     <!--{/if}-->
-    <!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {$nav[nav]}></li><!--{/if}-->
+<!--vot-->	<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {$nav[nav]}>{$nav[navname]}</a></li><!--{/if}-->
 <!--{/loop}-->
 </ul>
 <ul id="myspace_menu" class="p_pop" style="display:none;">
     <li><a href="home.php?mod=space">{lang my_space}</a></li>
 	<!--{loop $_G['setting']['mynavs'] $nav}-->
 		<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->
-			<li>$nav[code]</li>
+<!--vot-->	<li>{$nav[code]}{$nav[navname]}</a></li>
 		<!--{/if}-->
 	<!--{/loop}-->
 </ul>

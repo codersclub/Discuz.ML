@@ -10,6 +10,7 @@
 .subtitle { margin: 0 4px; }
 	.frame-tab .title .move-span { float: left; margin: 0 3px 0 0; padding: 0; width: 100px; border-bottom: none; cursor: pointer; }
 	#samplepanel { background: #FFF; }
+/*vot*/	#samplepanel img { vertical-align: middle; margin-top: -5px; }
 .block-name { display: block; visibility: hidden; background: #000; color: #FFF; position: absolute; top: 5px; left: 5px; padding: 2px; opacity: 0.85; filter: alpha(opacity=85); z-index: 1; }
 </style>
 <div id="button_more_menu" class="p_pop" style="display: none;">
@@ -24,7 +25,7 @@
 <div id="controlpanel" class="cl hide">
 	<div id="controlheader" class="cl">
 		<p class="y">
-			<span id="navcancel"><a href="javascript:;" id="diycancel" onclick="spaceDiy.cancel();return false;">{lang close}</a></span>
+<!--vot-->		<span id="navcancel"><a href="javascript:;" id="diycancel" onclick="spaceDiy.cancel();return false;" title="{lang close}"><img src="{STATICURL}image/diy/cp-close.png" /></a></span>
 			<a href="javascript:;" title="{lang header_more_actions}" id="button_more" onmouseover="showMenu(this.id);">More</a>
 			<span id="navsave"><a href="javascript:;" onclick="javascript:spaceDiy.save();return false;">{lang save}</a></span>
 			<span id="button_redo" class="unusable"><a href="javascript:;" onclick="spaceDiy.redo();return false;" title="{lang e_redo}" onfocus="this.blur();">{lang e_redo}</a></span>
@@ -70,7 +71,7 @@
 	<div id="cpfooter"><table cellpadding="0" cellspacing="0" width="100%"><tr><td class="l">&nbsp;</td><td class="c">&nbsp;</td><td class="r">&nbsp;</td></tr></table></div>
 </div>
 <div id="samplepanel" class="hide ptm pbm bbda hm">
-	<span class="y"><a href="javascript:;" onclick="spaceDiy.cancel();return false;" class="xi2">{lang close}</a>&nbsp;&nbsp;</span>
+<!--vot--><span class="y"><a href="javascript:;" onclick="spaceDiy.cancel();return false;" class="xi2" title="{lang close}"><img src="{STATICURL}image/diy/cp-close.png" /></a>&nbsp;&nbsp;</span>
 	{lang header_diy_sample_mode}
 </div>
 

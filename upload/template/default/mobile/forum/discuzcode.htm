@@ -16,16 +16,16 @@ $message<br /><br />
 {eval
 }
 
-function tpl_codedisp($discuzcodes, $code) {
+function tpl_codedisp($code) {
 }
-<!--{block return}--><div class="blockcode"><div id="code$discuzcodes[codecount]"><ol><li>$code</ol></div><em>{lang discuzcode_copyclipboard}</em></div><!--{/block}-->
+<!--{block return}--><div class="blockcode"><div><p>{lang post_code}:</p><ol><li>$code</ol></div></div><!--{/block}-->
 <!--{eval return $return;}-->
 {eval
 }
 
 function tpl_quote() {
 }
-<!--{block return}--><div class="quote"><blockquote>\\1</blockquote></div><!--{/block}-->
+<!--{block return}--><div class="quote"><blockquote><p>{lang post_quote}:</p>\\1</blockquote></div><!--{/block}-->
 <!--{eval return $return;}-->
 {eval
 }

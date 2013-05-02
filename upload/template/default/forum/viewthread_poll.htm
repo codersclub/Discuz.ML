@@ -44,7 +44,9 @@
 					<td valign="bottom" id="polloption_$option[polloptionid]" width="25%">
 						<div class="polltd cl">
 							<!--{if $imginfo}-->
-							<a href="javascript:;" title="$imginfo[filename]"><img src="$imginfo[small]" width="130px" /></a>
+							<a href="javascript:;" title="$imginfo[filename]" >
+								<img id="aimg_$imginfo[aid]" aid="$imginfo[aid]" src="$imginfo[small]" width="130px" onclick="zoom(this, this.getAttribute('zoomfile'), 0, 0, '{$_G[setting][showexif]}')" zoomfile="$imginfo[big]" alt="$imginfo[filename]" title="$imginfo[filename]" w="$imginfo[width]" />
+							</a>
 							<!--{else}-->
 							<a href="javascript:;" title=""><img src="{IMGDIR}/nophoto.gif" width="130px" /></a>
 							<!--{/if}-->
@@ -58,7 +60,7 @@
 							<div class="imgf imgf2">
 								<span class="jdt" style="width: $option[width]; background-color:#$option[color]">&nbsp;</span>
 								<p class="imgfc">
-									<span class="z">$option[votes]票</span>
+									<span class="z">$option[votes]{lang debate_poll}</span>
 									<span class="y">{$option[percent]}% </span>
 								</p>
 							</div>

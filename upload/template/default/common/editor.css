@@ -2,16 +2,17 @@
 Editor CSS file for Discuz! X
 (C) Comsenz Inc.
 http://www.comsenz.com
+-- Modified by Valery Votintsev
 */
-.edt { border: 1px solid; border-color: #999 #CCC #CCC #999; }
+/*vot*/ .edt { border: 1px solid; border-color: #999 #CCC #CCC #999; /*min-width: 830px;*/ }
 	.edt .bar { padding: 4px; height: 44px; border-bottom: 1px solid #DDD; background: {COMMONBG}; }
 		.edt .cst { background: {COMMONBG}; border-bottom: 1px solid #DDD; }
 		.edt .cst.nbb { border-bottom: none !important; }
 		.edt .bbar { height: 20px; border-top: 1px solid #DDD; text-align: right; background: {COMMONBG}; }
 			.edt .bbar img { vertical-align: bottom; *margin-right: -4px; cursor: row-resize; }
-			.edt .bbar em { width: 200px; height: 20px; overflow: hidden; white-space: nowrap; float: left; text-align: left; }
+/*vot*/			.edt .bbar em { width: 150px; height: 20px; overflow: hidden; white-space: nowrap; float: left; text-align: left; }
 		.edt .bbar, .edt .bbar a { color: #999; }
-		.edt .btn { float: left; border-right: 1px solid #FEFEFE; }
+/*vot*/		.edt .btn { float: left; border-left: 1px solid #DDD; border-right: 1px solid #FEFEFE; }
 			.edt .b1r, .edt .b2r { position: relative; float: left; padding: 0 3px; height: 44px; border-right: 1px solid #DDD; border-left: 1px solid #FEFEFE; }
 			.edt .b2r p, .edt .b2r br { clear: both; }
 		.edt .esb p { float: left; width: 25px; clear: none; }
@@ -36,8 +37,12 @@ http://www.comsenz.com
 	.simpleedt .bar, .simpleedt .b1r, .simpleedt .b2r { height: 22px; }
 	.bar_swch { display: block; clear: both; }
 
+/*vot*/	#e_googlemap 	{ background:transparent url({STATICURL}image/common/map.gif) no-repeat 0 0; overflow: hidden;background-position: 8px 5px;}
+/*vot*/	.simpleedt #e_googlemap 	{ background-position: 0 0;}
+
 	#e_bold			{ background-position: 0 0; }
-	#e_fontsize		{ width: 45px; }
+	#e_fontsize		{ width: 75px; }
+/*vot*/ #e_fontname		{ width: 75px; }
 	#e_italic		{ background-position: -20px 0; }
 	#e_underline		{ background-position: -40px 0; }
 	#e_forecolor		{ background-position: -60px 0; }
@@ -79,6 +84,8 @@ http://www.comsenz.com
 		.b2r #e_code	{ background-position: -120px -20px; }
 	#e_quote		{ background-position: -163px -80px; }
 		.b2r #e_quote	{ background-position: -140px -20px; }
+/*vot*/	#e_paste		{ background-position: -203px -80px; }
+/*vot*/		.b2r #e_paste	{ background-position: -40px -60px; }
 	#e_pasteword		{ background-position: -60px -60px; }
 	#e_downremoteimg	{ background-position: -80px -60px; }
 
@@ -102,14 +109,17 @@ http://www.comsenz.com
 		.b2r #e_attachn { left: 57px; }
 
 	#e_switcher input{ margin-right: 4px; vertical-align: middle; }
-	#e_simple, #e_fullswitcher { padding: 0 2px; text-align: right; border: 1px solid {SPECIALBORDER}; background: url({IMGDIR}/card_btn.png) repeat-x 0 100%; }
-		#e_fullswitcher { margin-right: 3px; }
+/*vot*/ #e_fullswitcher { background:transparent url({IMGDIR}/expand.png) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
+/*vot*/ #e_backswitcher { background:transparent url({IMGDIR}/shrink.png) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
+/*vot*/ #e_simple { background:transparent url({IMGDIR}/simple.gif) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
+/*vot*/ #e_advanced { background:transparent url({IMGDIR}/advanced.gif) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
+/*vot*/ a#e_fullswitcher:hover, a#e_backswitcher:hover, a#e_advanced:hover, a#e_simple:hover { border: 1px solid #09C; }
 
 	#e_beginning { background-position: -246px -120px;}
 		.b2r #e_beginning { background-position: -260px -78px; }
 
-/* 缩小编辑器演出菜单中输入框的尺寸 */
-.popupfix .px { margin-bottom: 4px; }
+/* Narrow editor shows the size of the input box menu */
+/*vot*/ .popupfix .px { margin-bottom: 4px; padding: 2px; }
 
 #e_body { display: block !important; }
 #e_body_loading { display: none; }
@@ -117,7 +127,7 @@ http://www.comsenz.com
 /*
 	Name:			mod_editor_menu
 	Level:			Function
-	Explain:		编辑器弹层关闭按钮在 IE8 下有问题
+	Explain:		Editor elastic layer under the Close button issue in IE8
 	Last Modify:	Pony
 */
 .ie8 .editortoolbar .flbc { position: relative; }

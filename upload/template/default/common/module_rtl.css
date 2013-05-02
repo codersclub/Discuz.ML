@@ -1,0 +1,1697 @@
+/*
+
+Extend CSS file for Discuz! X
+(C) Comsenz Inc.
+http://www.comsenz.com
+Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
+Translated by Valery Votintsev
+
+1. Some common module styles
+	1. Notice
+	2. Online Member List
+	3. Similar to the group, invite your friends to the buddy list
+	4. Feed list
+	5. Progress bar
+	6. Plaza outside the reference, code style
+	7. Moderators management (including 2.3,2.4)
+	8. Login Register
+2. Posting style
+	1. The functions of the style editor
+	2. Theme icon
+	3. Submit the form
+	4. Made a special topic posts
+3. The list of styles
+	1. Plaza forum, group category list
+	2. Space List
+	3. Topic List
+4. Post content area style
+	1. Structure
+	2. Time, level and some other properties
+	3. Post Body
+		1. Replies recommendation, reviews, etc.
+		2. User Details
+		3. Post attachments and some special styles (such as locking, reference, code, etc.)
+	4. Special quote style
+	5. Plaza and space sharing of goods, and other styles of debate
+	6. Shows the original image pop-up layer styles
+5. Group related styles
+6. Articles, log, etc. page styles
+7. Spatial related Styles
+8. Portal related Styles
+9. Roaming related styles
+10. Search-related styles
+11. Top-List Related Styles
+12. Statistics related Styles
+
+* Global CSS Styles, See common.css
+* The following is an example module written CSS
+* Three lines between categories, the module space between the two lines, one blank line between blocks 
+*/
+
+/** group::index **/
+	/* Group index module uses the CSS */
+/** end **/
+
+/** group::index,forum::index **/
+	/* Group index and the index module uses the CSS Forum */
+/** end **/
+
+/** forum **/
+	/* All modules use the CSS Forum */
+/** end **/
+
+
+
+/* ---------------- 1. The style of some common modules ----------- */
+
+/** forum::index **/
+#pt .y { width: 550px; height: 29px; overflow: hidden; }
+#chart { margin-bottom: 5px; }
+	.chart { padding-right: 22px; background: url({IMGDIR}/chart.png) no-repeat 100% 50%; color: {LIGHTTEXT}; }
+		.chart em { color: {TABLETEXT}; }
+/*
+	Name:			mod_announcement
+	Level:			Function
+	Explain:		Notice. When placed in different locations to adjust # anc, # an li high
+	Last Modify:	Pony 11050309
+*/
+	#an { margin-bottom: 5px; }
+		#an dt { display: none; }
+		#an li { float: left; clear: both; width: 526px; text-align: left; }
+/*vot*/			#an li span { float: right; width: 430px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/*vot*/			#an li em { float: right; width: 95px; color: {LIGHTTEXT}; }
+			#anc, #an li { height: 29px; overflow: hidden; }
+
+/* Online member list */
+/*vot*/	.oll li { float: right; overflow: hidden; white-space: nowrap; /*width: 19.9%;*/ height: 24px; line-height: 24px; margin-left: 32px; }
+		.oll img { vertical-align: middle; }
+
+/* Hot Forums by Pony */
+	.heat { width: 370px; }
+/*vot*/	.heatl { padding-right: 15px; margin-right: 385px; background: url({IMGDIR}/vline.png) repeat-y 100% 0; }
+/** end **/
+
+
+/** misc::invite,group,forum::viewthread **/
+	/* .usl -> Invite friends for a similar group in the buddy list by Pony */
+		.usl { overflow: scroll; overflow-x: hidden; padding: 5px; width: 580px; height: 280px; }
+		.usl2 { width: auto; border: dashed {WRAPBORDERCOLOR}; border-width: 0 1px 1px; }
+			.usl li { overflow: hidden; float: right; margin: 3px; width: 134px; height: 64px; }
+			.usl a { display: block; padding: 4px; border: 1px solid {WRAPBG}; }
+				.usl a:hover { text-decoration: none; border: 1px solid; border-color: #DDD #DDD #999 #999; background: {COMMONBG}; }
+			.usl .avt { float: right; margin-left: 5px; width: 52px; height: 52px; border: 1px solid {COMMONBORDER}; background-color: {WRAPBG}; background-position: 2px 2px; background-repeat: no-repeat; zoom: 1; }
+			.usl .d { float: right; width: 65px; height: 54px; overflow: hidden; word-wrap: break-word; }
+			.usl li.a a, .usl li.a a:hover { border-color: #F90; background-color: #FFF1E1; }
+			.usl li.a .avt span { display: block; margin-right: 2px; width: 50px; height: 50px; background: url({IMGDIR}/mark.png) no-repeat left bottom; }
+		.usd { padding: 5px 10px 0; border: solid {WRAPBORDERCOLOR}; border-width: 1px 0; background-color: {COMMONBG}; }
+		.usd2 { border-width: 1px; border-style: dashed; }
+			.usd li { float: right; margin-left: 1%; width: 48%; }
+/** end **/
+
+
+/** home::space,home::spacecp,group::group,userapp::userapp,misc::ranklist,portal::view,forum::viewthread,group::viewthread,home::medal **/
+	/* .el -> feed_list Deed List by Pony */
+	.e { overflow: hidden; }
+		.e .i, .el .i { padding: 6px 10px; border-bottom: 1px dashed {COMMONBORDER}; background: #F7F7F7; }
+	.el {}
+		.et { margin: 20px 0 10px; }
+		.el li { padding: 10px 20px; min-height: 20px; border-bottom: 1px dashed {COMMONBORDER}; }
+			.ie6 .el, .ie6 .el li { zoom: 1; }
+		.el .t { position: absolute; margin: 1px -20px 0 0; }
+		.el .o { overflow: hidden; float: left; margin: 4px 0 -4px -20px; width: 16px; height: 16px; text-indent: 20px; background: url({IMGDIR}/op.png) no-repeat -2px -62px; }
+			/* Changes outside the wide .ie6 .el .o, .ie6 .xlda .el .o, .ie6 .favl .o The margin value need to change */
+			.ie6 .el .o { position: absolute; margin: 2px 525px 0 0; }
+			.el .del { background-position: -2px -22px; }
+		.el .d { padding-top: 10px; color: {MIDTEXT}; }
+		.ec .tn { margin: 10px 0 0 10px; cursor: pointer; }
+		.ec a .tn { float: right; padding: 2px; max-width: 90px; max-height: 90px; border: 1px solid {COMMONBORDER}; }
+			.ie6 .ec a .tn { width: expression(this.width > 90 && this.width >= this.height ? 90 : true); height: expression(this.height > 90 && this.width <= this.height ? 90 : true); }
+		.el .ec .hot { float: left; margin: 10px 10px 0 0; width: 55px; height: 50px; background: url({IMGDIR}/hotspot.gif) no-repeat; }
+			.el .ec .hot a { display: block; line-height: 20px; text-align: center; color: #FFF; }
+				.el .ec .hot a:hover { text-decoration: none; }
+				.el .ec .hot em { display: block; line-height: 30px; font-size: 16px; color: {HIGHLIGHTLINK}; cursor: pointer; }
+		.el a { color: {HIGHLIGHTLINK}; }
+		/* A picture of the feed list */
+		.xlda .el { overflow: hidden; float: right; margin-top: -4px; width: 100%; }
+			.xlda .el li { margin-bottom: -4px; padding-top: 14px; }
+				.ie6 .xlda .el .o { margin: 2px 460px 0 0; }
+		#share_preview .h { display: none; }
+/** end **/
+
+
+/** forum::viewthread,group::viewthread,home::task,misc::stat **/
+	/* Progress bar */
+		.pbg { height: 16px; background: url({IMGDIR}/pllb.png) 0 0 repeat-x; -webkit-border-radius: 0 0 6px 6px; -moz-border-radius: 0 0 6px 6px; border-radius: 0 0 6px 6px; }
+		.pbr { height: 16px; width: 470px; background-image: url({IMGDIR}/pllb.png); background-color: #5AAF4A; background-position: 100% -16px; background-repeat: repeat-x; -webkit-border-radius: 0 0 6px 6px; -moz-border-radius: 0 0 6px 6px; border-radius: 0 0 6px 6px; }
+
+	/* Order link hover does not show underline by Pony 20110519 */
+	.md_ctrl a:hover { text-decoration: none; }
+/** end **/
+
+
+/**  forum::forumdisplay,forum::viewthread,group::viewthread,home::space,home::spacecp,home::invite,portal::view,portal::comment,forum::post,group::post **/
+	/* Square outside the reference, code style by Pony */
+		.quote { overflow: hidden; margin: 10px 0; padding-right: 16px; background: url({IMGDIR}/qa.gif) no-repeat 0 0; color: {MIDTEXT}; }
+			.quote blockquote { display: inline; margin: 0; padding-left: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
+			.m_c .quote { width: 585px; }
+		.blockcode { overflow: hidden; margin: 10px 0; padding: 5px 10px; background: #F7F7F7; color: {MIDTEXT}; }
+			.blockcode code { font-family: Monaco, Consolas, "Lucida Console", "Courier New", serif; font-size: 12px; line-height: 1.8em; }
+			* html .blockcode code { font-family: "Courier New", serif; }
+/** end **/
+
+
+/** forum::modcp,misc::stat **/
+	/* Forum Management */
+		.mdcp {}
+			.stl { float: right; width: 15%; }
+			.str { float: right; overflow: auto; overflow-y: hidden; width: 84%; *padding-bottom: 17px; }
+/** end **/
+
+/** misc::tag **/
+/* Tag list by Pony */
+	.taglist { min-height: 270px; }
+		.ie6 .taglist { height: 270px; }
+		.taglist a { margin-left: 20px; line-height: 30px; white-space: nowrap; }
+/** end **/
+
+
+
+/* ------------------------ Posting style --------------- */
+/** forum::post,group::post **/
+.ct2_a .mn { float: right; }
+.appl { float: left; margin-top: 8px; border: none; background-color: transparent; }
+.upf { width: 500px; }
+*+html .upf { width: 520px; }
+	.p_tbl { height: auto; line-height: 160%; border-bottom: none; }
+		.p_tbl table { *table-layout: fixed; }
+			.p_tbl table td { height: 28px; line-height: 28px; border-bottom: 1px solid {COMMONBG}; }
+				.atnu { width: 16px; }
+				/*.attachctrl { width: 40px; }*/
+				.atna {}
+					.atna p img, .attswf p img { vertical-align: middle; height: 16px; }
+					.atna .lighttxt, .attswf .lighttxt { color: {MIDTEXT} !important; }
+				.attpr { width: 40px; text-align: center; }
+					.attv .px, .attp .px { width: 25px; }
+					.attv { width: 100px; }
+				.atturl img { height: 20px !important; }
+				.attc { width: 20px }
+				*+html .attc { width: 40px; }
+				.atds { width: 80px; text-align: center; }
+					.atds .px { width: 60px; }
+				.attp { text-align: center; width: 40px; }
+		.upfl { height: auto !important; height: 165px; max-height: 300px; overflow: auto; overflow-x: hidden; }
+			.upfl a, #imgattachlist a { color: {HIGHLIGHTLINK}; }
+			.upfl table td { border-bottom: 1px solid {SPECIALBORDER}; height: 30px; line-height: 24px; }
+
+	.upnf { white-space: normal; }
+	.upbk { zoom: 1; }
+		.fldt { margin-bottom: 8px; }
+	/* Upload file a list of unused */
+	.ufl { width: 300px; }
+	.ufl p{ padding: 4px 0; border-top: 1px solid {SPECIALBORDER}; }
+
+	.p_pop .flb { position: absolute; left: 10px; top: 18px; *top: 13px; }
+
+.imgl { margin-bottom: 5px; width: 100%; *width: 99.6%; }
+	.imgl td { padding: 8px 0; text-align: center; }
+	.imgl img { border: 1px solid {LIGHTTEXT}; }
+	.imgf .px { width: 106px; padding: 2px; height: 14px; line-height: 14px; }
+	.imgdeleted { opacity: 0.3; filter: alpha(opacity=30); }
+
+.fnm { width: 100px !important; }
+.fszm { width: 55px !important; line-height: normal; }
+.fnm li, .fszm li, .simm li { cursor: pointer; }
+.qsv { padding-right: 16px; width: 16px; height: 16px; background: url({IMGDIR}/repquote.gif) no-repeat 50% 50%; cursor: pointer; }
+
+/* Select tag when posting by Pony */
+	.marked { padding-left: 16px; background: url({IMGDIR}/mark.png) no-repeat 100% 50%; }
+	#taglistarea a { white-space: nowrap; zoom: 1; }
+		#taglistarea .marked { padding-left: 0; background: none; font-weight: 700; color: {NOTICETEXT} !important; }
+/** end **/
+
+/** forum::post,group::post **/
+#post_extra_tb { position: relative; z-index: 2; }
+	#post_extra_tb label { float: right; margin-left: 3px; height: 21px; border: 1px solid {COMMONBORDER}; line-height: 21px; white-space: nowrap; }
+		#post_extra_tb label.a { border-bottom-color: {SPECIALBG}; background: {SPECIALBG} none; box-shadow: none; }
+			#post_extra_tb label span { float: right; padding: 0 20px 0 8px; background: url({IMGDIR}/dot.gif) no-repeat 95% 8px; line-height: 21px; }
+				#post_extra_tb span.a { background-image: url({IMGDIR}/dot_c.gif); }
+
+#post_extra_c { position: relative; z-index: 1; }
+	#post_extra_c .exfm { margin: -1px 0 0; border: 1px solid {COMMONBORDER}; }
+
+#draftlist { border-style: solid; border-width: 1px 1px 0; border-color: {WRAPBG}; }
+	#draftlist.a { position: relative; z-index: 302; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE} }
+	#draftlist_menu { margin-top: -1px; padding: 10px; border: 1px solid {DROPMENUBORDER}; {DROPMENUBGCODE}; }
+/** end **/
+
+/** forum::viewthread,forum::forumdisplay,forum::post,group **/
+/* Thread icon by michael */
+#newspecial_menu { width: 90px; }
+	#newspecial_menu li, #sti .wx { display: block; background: url({IMGDIR}/folder_new.gif) no-repeat 100% 50%; zoom: 1; }
+		#newspecial_menu .poll, #sti .poll { background-image: url({IMGDIR}/pollsmall.gif); }
+		#newspecial_menu .trade, #sti .trade { background-image: url({IMGDIR}/tradesmall.gif); }
+		#newspecial_menu .reward, #sti .reward { background-image: url({IMGDIR}/rewardsmall.gif); }
+		#newspecial_menu .activity, #sti .activity { background-image: url({IMGDIR}/activitysmall.gif); }
+		#newspecial_menu .debate, #sti .debate { background-image: url({IMGDIR}/debatesmall.gif); }
+		#newspecial_menu a { display: block; padding: 3px 30px 3px 0; white-space: normal; }
+			#newspecial_menu a:hover { background: none; color: {HIGHLIGHTLINK}; text-shadow: none; text-decoration: underline; }
+#sti {}
+	#sti .wx { padding-right: 25px; background-position: 0 50%; }
+	#sti .tb { margin-top: 0; }
+/** end **/
+
+
+/** forum::modcp,forum::post,group::post,home::spacecp,portal::portalcp **/
+/* Form Submit */
+	.exfm { margin: 10px 0; padding: 10px 14px; border: 1px dashed {SPECIALBORDER}; background: {SPECIALBG}; }
+		.exfm .pn { height: 22px; line-height: 22px; font-size: 12px; }
+		.ie6 .exfm .pn, .ie7 .exfm .pn { line-height: 16px; }
+		.exfm .rq { float: left; padding-left: 2px; }
+		.exfm table { width: 100%; }
+			.exfm table th, .exfm table td { padding: 4px 2px; }
+		.mdcp .um { margin-bottom: 0; padding: 10px 5px; }
+
+/* Made a special topic post by dfox */
+	.sinf p, .sadd p { padding: 2px 0; height: 30px; line-height: 30px; }
+	.sinf .px, .sadd .px { width: 120px; }
+	.sinf { float: right; padding-left: 14px; width: 380px; border-left: 1px dashed {WRAPBORDERCOLOR}; }
+		.sinf h4 { padding: 6px 0; }
+		.sinf textarea { width: 368px; height: 80px; }
+		.onum { float: right; margin-left: 6px; width: 16px; }
+		.oinf { width: 270px !important; }
+			.sinf dl, .sadd dl { overflow: hidden; }
+			.sinf dl dt, .sadd dl dt { float: right; padding-top: 3px\9; width: 75px; clear: right; }
+			.sinf dl dd, .sadd dl dd { margin-bottom: 10px; overflow: hidden; }
+			.sinf dl dd { width: 300px; }
+			.sinf span.fb, .sadd span.fb { display: block; float: right; margin-left: 6px; height: 26px; line-height: 26px; white-space: nowrap; }
+				.sinf dl dd strong { padding: 0 8px; }
+	.sadd { float: right; margin-right: 10px; width: 300px; overflow: hidden; }
+		.sadd dl dd { width: 220px; }
+		.spl em { float: right; margin-left: 9px; height: 20px; line-height: 20px; }
+		.spl input[type=radio] { margin: 0 0 0 3px; }
+	.spimg { margin: 0 0 0 10px; width: 200px; border: 1px solid #AAA; }
+	.spmp { width: 30px; }
+	.spmf { width: 300px; }
+		.spmf, .spmf3 { overflow: hidden; _height: 1%; }
+		.spmf label, .spmf3 label{ display: block; padding-top: 5px; }
+			.spmf em{ float: right; width: 150px;  }
+			.spmf3 em{ float: right; margin-left: 12px; }
+				.spmf3 .px { margin: 0 !important; width: 72px; }
+/** end **/
+
+
+/** forum::forumdisplay,forum::viewthread,group::forumdisplay,group::viewthread **/
+/* Open the quick post, and the smilies style recommended by Pony */
+	#f_pst .bm_c { padding: 20px; }
+		#f_pst .tedt { width: auto; }
+		.hasfsl { margin-left: 170px; zoom: 1; }
+
+	#f_pst .upfl { height: auto; max-height: 100%; }
+		#f_pst .upfl td { padding: 4px 0; border-bottom-color: {COMMONBORDER}; }
+		#f_pst .atds { width: 100px; }
+		#f_pst .px { padding: 2px; }
+/** end **/
+
+
+
+/* -------------------- Plaza Forum, the group classification list style ----------------------------------------- */
+/** forum::index,forum::forumdisplay,group::index,group::group,search::group **/
+/* Forum List */
+.fl {}
+	.fl_tb { width: 100%; }
+		.fl_tb td { padding: 10px 0; }
+		.fl_icn { padding-left: 10px !important; width: 31px; }
+		.fl_by { width: 220px; }
+			.fl_by div { margin-right: 10px; width: 210px; padding-right: 8px; word-break: keep-all; word-wrap: normal; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+				.fl_by div .xi2 { zoom: 1; }
+			.fl_by cite { display: block; }
+		.fl_i { width: 150px; text-align: left; }
+			.fl_i em { display: block; width: 5em; }
+			.fl .i_z { margin-left: 8px; padding-left: 8px; border-left: 1px solid {CONTENTSEPARATE}; }
+	.fl_icn_g { float: right; width: 31px; }
+	.fl_g { vertical-align: top; }
+		.fl_g dl { margin-right: 31px; padding-right: 10px; }
+			.fl_g dt { font-weight: 700; }
+	.fl_row td { border-top: 1px dashed {COMMONBORDER}; }
+
+/* Group Category List */
+	.flt {}
+		.flt .flc { width: 294px; }
+		.gcop { margin-left: 15px; clear: right; }
+		.ghfl dt, .flt dt { font-size: 14px; font-weight: 700; }
+			.ghfl dt span, .flt dt span, .flt dd span { font-size: 12px; font-weight: 200; color: {LIGHTTEXT}; }
+			.ghfl dd, .flt dd { line-height: 1.8em; }
+/** end **/
+
+
+/** forum::forumdisplay **/
+/*
+	Name:			mod_board_navigation
+	Level:			Function
+	Explain:		Post page to see the left side of the forum navigation. There is no width in the CSS default, the width setting in the background
+	Last Modify:	Pony
+*/
+.bdl { float: left; overflow: hidden; border: 1px solid #BDD7E3; background-color: #F5F9FB; }
+	.ie6 .bdl { position: relative; }
+/*vot*/	.bdl_h { height: 32px; line-height: 22px; width: 100%; }
+.bdl .tbn { margin: 10px; }
+	/* Zoning */
+	.bdl dl { margin: -1px -10px 0; }
+		.bdl dt { overflow: hidden; height: 27px; line-height: 27px; border: solid #CCE0EB; border-width: 1px 0; background: #F5F9FB url({IMGDIR}/titlebg_sd_rtl.png) repeat-x 0% 0; } /* charaf > .bdl dt { overflow: hidden; height: 27px; line-height: 27px; border: solid #CCE0EB; border-width: 1px 0; background: #F5F9FB url({IMGDIR}/titlebg_sd.png) repeat-x 100% 0; }*/
+			.bdl dt a { display: block; padding: 0 10px 0 15px; }
+				.bdl dt a:hover, .bdl_a a:hover { text-decoration: none; }
+	/* District Forum, the default away */
+	.bdl dd { display: none; }
+		.bdl dd a { display: block; margin: 0 3px; padding: 0 7px; height: 26px; line-height: 26px; overflow: hidden; }
+	/* Expand Partition */
+	.bdl dl.a { padding-bottom: 4px; background-color: #FFF; }
+		.bdl dl.a dt { margin-bottom: 3px; background-position: 0% -27px; } /* charaf > .bdl dl.a dt { margin-bottom: 3px; background-position: 100% -27px; }*/
+		.bdl dl.a dd, .bdl_fav dd { display: block; overflow: hidden; zoom: 1; }
+			/* Current Forum */
+			.bdl dd.bdl_a a { background-color: #F5F9FB; font-weight: 700; color: {HIGHLIGHTLINK}; }
+
+/*
+	Level:			Channel
+	Explain:		New posts to remind panel
+	Last Modify:	Max.Cong
+*/
+	#forumnew{ position: absolute; left: 0; top: 0; z-index: -1; }
+	.tl #forumnewshow { background: #FFFAF3; font-size: 12px; text-align: center; }
+	.tl #forumnewshow th, .tl #forumnewshow td { padding: 0; border: 0; }
+	.tl #forumnewshow th:hover, .tl #forumnewshow td:hover{ background: #FFFFE9; }
+	.tl #forumnewshow a { display: block; border-top: 1px solid #F4E4B4; border-bottom: 1px solid #F4E4B4; text-indent: 25px; height: 29px; line-height: 29px; color: #EFAA00; }
+	.tl #forumnewshow a:hover { text-decoration: none; }
+	#checknewline tr td, #checknewline tr th { background: #FFFFEB; text-align: center; color: #666; }
+
+	.newthread tr th, .newthread tr td { background: #FFFAF3; }
+	.newthread .new em { margin-left: 4px; }
+	.newthread .new em, .newthread .new em a { color: #007CD5; font: {FONTSIZE} {FONT}; }
+	/*
+	.tl .newthread tr:hover th, .tl .newthread tr:hover td{ background-color: transparent; }
+	*/
+
+.forumrefresh { padding-right: 14px; background: url({IMGDIR}/refresh.png) no-repeat 100% 50%; }
+/** end **/
+
+
+
+/* ------------ Topic list style ------------------------------------------------------------ */
+/** forum::forumdisplay,forum::viewthread,forum::modcp,group,home::space,home::task,search::forum,search::group,member::groupexpiry,misc::ranklist,misc::stat **/
+/* fct --> froumatction Function Button */
+	.fct a { float: right; margin-right: 8px; }
+/*vot*/	.fa_fav_0, .fa_fav, .fa_rss, .fa_achv, .fa_bin, .fa_ivt, .fa_mng, .fa_pend { padding-right: 16px; background: no-repeat 100% 50%; }
+		.fa_fav_0 { background-image: url({IMGDIR}/fav_grey.gif); }
+		.fa_fav { background-image: url({IMGDIR}/fav.gif); }
+		.fa_rss { background-image: url({IMGDIR}/feed.gif); }
+		.fa_achv { background-image: url({IMGDIR}/clock.gif); }
+		.fa_bin { background-image: url({IMGDIR}/recyclebin.gif); }
+		.fa_ivt { background-image: url({IMGDIR}/user_add.gif); }
+/*vot*/		.fa_mng { background-image: url({IMGDIR}/manage.png); }
+/*vot*/		.fa_pend { background-image: url({IMGDIR}/notice.gif); }
+
+/* List of related topics */
+	/*.tl .th th a { float: left; margin-right: 10px; padding-right: 17px; background: url({IMGDIR}/arw_d2.gif) no-repeat 100% 50%; }*/
+	#fh { width: 644px; }
+		.mw #fh { width: 100%; }
+	#fh .bm { padding-top: 5px; padding-bottom: 0; }
+	#nv_group #fh { margin-bottom: 1em; }
+		#fh #gh { padding-top: 10px; }
+		#fh .h { margin-top: 10px; }
+			#fh .h * { float: right; }
+			#fh h1 { margin-left: 10px; font-size: 16px; }
+			#fh .h .y { float: left; }
+			#fh .o a { float: right; margin-left: 10px; }
+	#fh.m { padding-top: 0; background-color: {COMMONBG}; }
+	.xst { font-family: {THREADTITLEFONT}; font-size: {THREADTITLEFONTSIZE}; }
+
+	/* threadtype Thread Type */
+	.ttp { margin-bottom: 5px; padding-top: 10px; border-width: 2px 0 0; background: transparent; }
+		.ttp li { float: right; padding-bottom: 5px; }
+		.ttp a, .ttp strong { float: right; margin-left: 5px; padding: 4px 8px 3px; height: 18px; border: 1px solid {COMMONBORDER}; background: {WRAPBG}; white-space: nowrap; }
+			.ttp a:hover { border-color: {HIGHLIGHTLINK}; color: {HIGHLIGHTLINK}; text-decoration: none; }
+		.ttp .a a { padding-right: 12px; padding-left: 12px; border-color: {HIGHLIGHTLINK}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
+		.ttp .pipe { float: right; margin-left: 10px; padding: 0; width: 2px; height: 27px; background: {SPECIALBORDER}; text-indent: -9999px; }
+	/* when the Forum has launched a large number of subject classification away style by Pony */
+	.cttp { overflow: hidden; padding-left: 35px; height: 32px; }
+		.cttp .unfold, .cttp .fold { float: left; display: inline; margin: 5px 0 9px -35px; padding: 0 10px 0 0; width: 25px; height: 18px; background-color: transparent; color: {HIGHLIGHTLINK}; font-weight: 400; }
+
+	/* tl --> Thread list modify by lushnis */
+	.tl .bm_c { padding-top: 0; }
+	.tl table { width: 100%; table-layout: fixed; border-collapse: separate; }
+		.tl th, .tl td { padding: 5px 0; border-bottom: 1px solid {CONTENTSEPARATE}; }
+			.emptb th, .emptb td { padding: 0; border-bottom: none; }
+			.tl tr:hover th, .tl tr:hover td { background-color: {COMMONBG}; }
+			.tl th { padding-left: 1.5em; zoom: 1; }
+				.tl th a:visited { color: {MIDTEXT}; }
+				.fromg { visibility: hidden; }
+				.ie6 .fromg, tr:hover .fromg { visibility: visible; }
+			.tl .icn { padding-right: 5px; width: 25px; text-align: right; }
+			.tl .new {}
+			.tl .comm {}
+			.tl .frm { width: 150px; }
+			.tl .o { width: 20px; }
+			.tl .num { width: 60px; line-height: 14px; }
+			.tl .by { width: 105px; line-height: 14px; }
+				.tl cite, .tl .num em { display: block; }
+				.tl th em { margin-left: 4px; zoom: 1; }
+					.tl th em, .tl th em a { color: #007CD5; }
+/*vot*/			.tl td em { font-size: 11px; font-family: Verdana, Arial, sans-serif; -webkit-text-size-adjust: none; }
+					.tl td em, .tl td em a { color: {LIGHTTEXT}; }
+			/*.tl .th th, .tl .th td { padding: 8px 0; background: {SPECIALBG}; border-top: 1px solid {SPECIALBORDER}; }*/
+			.tl .ts th, .tl .ts td { padding: 3px 0; border-bottom-color: {COMMONBORDER}; background: {COMMONBG}; }
+	.tl .th { margin-top: 1px; padding: 0 10px; border-bottom: 1px solid {COMMONBORDER}; background: {COMMONBG}; }
+		.tl .th table { border: none; }
+		.tl .th td, .tl .th th { height: 20px; border: none; vertical-align: baseline; }
+	.tl .tf { padding: 3px 0; }
+		.tf .showmenu:hover { border-color: {SPECIALBORDER}; }
+
+	/* recy --> recyclebin Recycle Bin theme style list of topics by shuaishuai*/
+	.recy { text-decoration: line-through; }
+
+	/* Thread Page */
+	.tps { white-space: nowrap; }
+		.tps a { padding: 2px 4px; color: {TABLETEXT}; }
+			.tps a:hover { background-color: {COMMONBG}; color: #007CD5; }
+
+/*
+	Name:			mod_thread_type_search
+	Level:			Function
+	Explain:		Classifieds Search
+	Last Modify:	Pony 11050314
+*/
+	.mfm .mtm { margin-left: 10px; }
+	.mfm span { height: 26px; white-space: nowrap; }
+/** end **/
+
+
+/** forum::forumdisplay,group::forumdisplay,group::my **/
+/*
+	Name:			mod_thread_type
+	Level:			Function
+	Explain:		Forum posts subject classification group screening of classified information and other styles
+	Author:			lushnis
+	Last Modify:	Pony
+*/
+	.ttp .a a:hover { background: {SPECIALBG} url({IMGDIR}/close-s.png) no-repeat 100% 11px; }
+	#ttp_all a:hover { background-image: none !important; }
+/** end **/
+
+
+
+/* -------------------- Post content area style --------------------------------------------------- */
+/** forum::viewthread,group::viewthread **/
+.plh { line-height: 46px; }
+	.plh .plc { padding-bottom: 0; }
+/*vot*/	.ts { font: 700 16px Verdana, Arial, Tahoma, sans-serif; }
+
+#nv_forum #ct { border-color: {SPECIALBORDER}; }
+
+.pattimg { float: right; margin: 0 0 10px 10px; width: 100px; height: 100px; overflow: hidden; }
+.pattimg_zoom { position: absolute; display: block; width: 100px; height: 100px; line-height: 300px; overflow: hidden; }
+	.ie_all .pattimg_zoom { background-color: #FFF; filter:alpha(opacity=0); }
+.attl_g, .attl_m { margin-right: 10px; padding-right: 16px; background: url({IMGDIR}/attl_icon.png) no-repeat 0 3px; }
+	.attl_m { background-position: -100px 3px; }
+
+/* Default classification information by michael */
+.ie6 .cgtl { width: auto; }
+	.cgtl { overflow: hidden; }
+	.cgtl td, .cgtl th, .cgtl caption { padding: 5px; border-bottom: 1px solid {SPECIALBORDER}; }
+	.cgtl caption { background: {SPECIALBG}; border-top: 1px solid {SPECIALBORDER}; font-size: 14px; font-weight: 700; }
+	.cgtl th { width: 16%; }
+/** end **/
+
+
+/** forum::forumdisplay,group::forumdisplay **/
+/* post list of the "new window ", "photo mode " button style, chk with the float need to use modified by Pony */
+	#atarget, .unchk, .chked { padding-right: 15px; line-height: 16px; background: url({IMGDIR}/atarget.png) no-repeat 100% 3px; color: {HIGHLIGHTLINK}; cursor: pointer; }
+		.ie_all #atarget, .ie_all .unchk, .ie_all .chked { display: inline-block; height: 20px; line-height: 20px; }
+		#atarget.atarget_1, .chked { background-position: 100% -37px; }
+		.unchk:hover, .chked:hover { text-decoration: none; }
+
+#a_magic_doodle { padding-right: 20px; background: url({STATICURL}image/magic/doodle.small.gif) 0 50% no-repeat; }
+
+/*
+	Name:			mod_Media_List_thread
+	Level:			Global
+	depentend:		.ml
+	Explain:		Picture mode message list
+	Author:			lushnis
+	Last Modify:	Pony 11042616
+*/
+	.mlt {}
+		.mlt li { display: inline; margin: 0 4px 10px; padding-top: 5px; border: 1px solid {SPECIALBG}; border-bottom-color: {SPECIALBORDER}; background: #FFF; text-align: right; }
+			.mlt .sum { padding: 0 5px; border-radius: 5px; background: {SPECIALBG}; }
+			.mlt .c .nopic { background:{WRAPBG} url({IMGDIR}/nophototiny.png) no-repeat 50% 50%; }
+			.mlt img.vm { display: inline; }
+
+			.mlt h3 { height: 30px; line-height: 30px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+			.mlt li .cl { height: 18px; overflow: hidden; }
+				.mlt li .c { height: auto !important; }
+
+/*
+	Name:			mod_threadlist_last-child
+	Level:			Function
+	Explain:		Page list of posts to support last-child browser does not display the last line
+	Last Modify:	Pony
+*/
+.tl tbody:last-child th, .tl tbody:last-child td { border-bottom: none; }
+/** end **/
+
+
+/** forum::viewthread,group::viewthread,forum::trade,forum::misc **/
+#a_magic_doodle { padding-right: 20px; background: url({STATICURL}image/magic/doodle.small.gif) 0 50% no-repeat; }
+
+.pl {}
+	.pl table { table-layout: fixed; width: 100%; }
+		.pl .dt { width: 100%; }
+	.plm { vertical-align: bottom !important; }
+	.plc, .pls { vertical-align: top; overflow: hidden; }
+		.plc { padding: 0 20px; }
+		.pls { width: 160px; background: {SPECIALBG}; overflow: hidden; border-left: 1px solid {CONTENTSEPARATE}; }
+		.pls .avatar { margin: 10px 15px; }
+			.pls .avatar img { padding: 5px 5px 8px; background: #FFF url({IMGDIR}/midavt_shadow.gif) 0 100% repeat-x; }
+
+/*vot*/		.pls p, .pls .pil, .pls .o { /*margin: 10px 20px;*/ padding: 2px 6px; }
+/*vot*/			.pls p em, .pls dt em { color: {NOTICETEXT}; padding-right: 10px; }
+			.pls dd, .pls dt { float: right; overflow: hidden; height: 1.6em; line-height: 1.6em; }
+				.pls dt { margin-left: 3px; width: 60px; }
+				.pls dd { width: 65px; }
+	.ad .pls { background: {CONTENTSEPARATE}; padding: 0; height: 4px; }
+	.ad .plc { background: {SPECIALBG}; padding: 0; overflow: hidden; }
+	.pl .pnv .pls { background: {SPECIALBG}; border: solid {SPECIALBORDER}; border-width: 0 0 1px 1px; line-height: 16px; }
+		.pl .pnv .tns p { font-size: 12px; }
+	.pl .pnv .plc { border-bottom: 1px solid {SPECIALBORDER}; }
+
+	.pnh { padding: 11px 20px; }
+	.tnv { text-align: center; vertical-align: middle; } /* Threads navigation by lushnis */
+
+	#threadstamp { position: relative; width: 100%; height: 0; overflow: visible; }
+		#threadstamp img { position: absolute; top: -20px; left: 140px; }
+
+	#pl_top .ad .pls, #pl_top .ad .plc { height: 1px;overflow: hidden; }
+		#pl_top .pls { text-indent: 15px; }
+
+/* Posts of the time, the floor where the block and some properties */
+/*vot*/	.pi { overflow: hidden; margin-bottom: 10px; padding: 10px 0; /*height: 16px;*/ border-bottom: 1px dashed {COMMONBORDER}; }
+		.pi strong a { float: left; margin-top: -6px; padding: 4px 6px; border: 1px solid {WRAPBG}; font-weight: 400; }
+			.pi strong a:hover { border-color: {COMMONBORDER}; }
+		.pls .pi { padding-right: 15px; }
+		.pi em {}
+		.pti {}
+			.authicn { cursor: pointer; }
+
+/* Post the text block */
+	.pcb { clear: right; margin-left: 130px; }
+		.ie6 .pcbs table, .ie6 .t_fsz table { width: auto; }
+		.pcb h1, .pcb h2 { margin: 8px 0; font-size: 1.17em; }
+			.pcb h1 a { font-weight: 400; }
+			.pcb h2 em { float: left; font-size: 12px; font-weight: 400; }
+			#ph { padding: 17px 0 0; }
+				#ph h1 { font-size: 20px; }
+			#fj { margin-right: 5px; }
+				#fj label, #fj input { margin-left: 4px; padding: 0; height: 16px; line-height: 16px; }
+		.pcb .jammer { font-size: 10px; color: {WRAPBG}; }
+
+		.pcb strong { font-weight: 700; }
+		.pcb em { color: {MIDTEXT}; }
+		.pcb span.t_tag { cursor: pointer; border-bottom: 1px solid red; white-space: nowrap; }
+			.pcb span.t_tag:hover { border-bottom: 1px solid {NOTICETEXT}; }
+		.pct { padding-bottom: 1em; }
+		.t_fsz { min-height: 100px; }
+			* html .t_fsz { height: 100px; overflow: visible; }
+		.t_f, .t_f td { font-size: {MSGFONTSIZE}; }
+			.t_f a { color: {HIGHLIGHTLINK}; text-decoration: underline; }
+		.t_f ul { margin-right: 14px; }
+			.t_f li { margin-right: 2em; }
+			.t_f ul li { list-style-type: disc; }
+				ul.litype_1 li { list-style-type: decimal; }
+				ul.litype_2 li { list-style-type: lower-alpha; }
+				ul.litype_3 li { list-style-type: upper-alpha; }
+		.sign { overflow: hidden; padding: 20px 0 10px; line-height: 1.6em; background: url({IMGDIR}/sigline.gif) no-repeat 100% 0; }
+			* html .sign { height: expression(signature(this)); }
+			.sign * { line-height: normal; }
+		.po { border-top: 1px dashed {COMMONBORDER}; }
+			.po .y { margin: 8px 5px 0 0; }
+			.po p { float: left; }
+				.po p a, .po p label { margin-left: 6px; }
+		.pob { line-height: 36px; }
+			.pob em { float: right;}
+				.pob em a { padding: 5px 25px 5px 10px; }
+			.cmmnt { background: url({IMGDIR}/cmmnt.gif) no-repeat 100% 50%; }
+			.fastre { background: url({IMGDIR}/fastreply.gif) no-repeat 100% 50%; }
+			.req { background: url({IMGDIR}/repquote.gif) no-repeat 100% 50%; }
+			.editp { background: url({IMGDIR}/edit.gif) no-repeat 100% 50%; }
+			.appendp { background: url({IMGDIR}/icon_append.png) no-repeat 100% 50%; }
+			.psave { background: url({IMGDIR}/pubsave.gif) no-repeat 100% 50%; }
+			.push { background: url({IMGDIR}/push.png) no-repeat 100% 50%; }
+		.modact { display: block; height: 32px; text-align: center; }
+			.modact, .modact a { line-height: 32px !important; }
+
+		#p_btn { line-height: 24px; }
+			#p_btn a { float: right; margin-right: 3px; padding-right: 4px; padding-left: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 0 0; vertical-align: top; white-space: nowrap; }
+				#p_btn a:hover { text-decoration: none; }
+				#p_btn i { display: block; padding-right: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 100% 100%; font-style: normal; cursor: pointer; }
+					#p_btn img { float: right; margin: 4px 0 0 3px; }
+					#p_btn span { padding-left: 2px; color: {LIGHTTEXT}; }
+			.tshare { padding-bottom: 10px; }
+				.tshare strong { float: right; margin-right: 10px; }
+				#p_btn .tshare a, #p_btn .tshare i { padding: 0; background-image: none; }
+					#p_btn .tshare a { margin-right: 10px; color: {HIGHLIGHTLINK}; }
+					#p_btn .tshare a:hover { text-decoration: underline; }
+
+		.rate { margin: 20px 0; font-size: 12px; }
+			.rate dt { float: right; padding-top: 7px; width: 80px; text-align: center; }
+				.rate dt strong { padding: 12px 8px; height: 46px; font-size: 24px; background: #FFF4DD; }
+				.rate dt p { padding-top: 10px; }
+					.rate dt strong a, .rate dt strong a em { line-height: 48px; height: 48px; color: {NOTICETEXT}; }
+			.rate dd { margin-right: 80px; }
+				.rate dd ul li { float: right; overflow: hidden; margin:0 4px; width: 67px; height: 84px; text-align: center; }
+				.rate .ratt { border-bottom: 1px dotted {WRAPBORDERCOLOR}; padding: 6px 0; }
+				.ratl th, .ratl td, .ratc { overflow: hidden; padding: 5px 2px; height: 24px; line-height: 24px; border-bottom: 1px dashed {WRAPBORDERCOLOR}; white-space: nowrap; }
+				.ratl img { height: 24px; width: 24px; vertical-align: middle; }
+			.rate_collapse .ratl_l { display: none; }
+				.rate_collapse i { visibility: hidden; }
+				.rate .op { padding-left: 16px; background: url({IMGDIR}/arrow_top.gif) no-repeat 100% 50%; }
+					.rate_collapse .op { background-image: url({IMGDIR}/arrow_down.gif); }
+			.rate i { font-style: normal; }
+
+/* Replies Recommended post sticklist by dfox */
+	.psth { margin: 2em -20px 2em 0; padding: 5px 20px 5px 45px; width: 240px; background: #FFF4DD url({IMGDIR}/arw.gif) no-repeat 100% 50%; color: {NOTICETEXT}; font-size: 14px; }
+	.tpst .psth { margin-right: -15px; }
+	.pstl { clear: right; margin-bottom: 2em; }
+		.psta { float: right; width: 30px; }
+			.psta img { width: 24px; height: 24px; }
+		.psti { margin-right: 30px; }
+
+/* Reviews by monkeye */
+	.f_c .cm { overflow: hidden; }
+	.cm .psth { background-color: #FFF4DD; color: {NOTICETEXT}; background-position: 100% 50%; font-size: 12px; }
+		.cm .pg { float: none; }
+			.cm .pg a, .cm .pg strong { margin: 0 0 0 4px; }
+		.cm i { color: #F30; font-style: normal; }
+		.cmstar { display: block; margin-top: 5px; width: 100px; height: 16px; background: url({IMGDIR}/starlevel.gif) no-repeat 10px 0; cursor: pointer; }
+			.cmstarv { padding-left: 100px; width: 100px; height: 16px; background: url({IMGDIR}/starlevel.gif) no-repeat 12px 0; }
+			.cmm .cmstar { margin-top: 0; }
+			.cmstar em { float: right; width: 16px; height: 16px; overflow: hidden; text-indent: -9999px; }
+
+/*
+	Name:			mod_viewthread_author
+	Level:			Function
+	Explain:		After the show the theme of the second page
+	Author:			lushnis
+	Last Modify:	Pony 11042913
+*/
+	#tath { padding: 0 15px 0 10px; width: 130px; line-height: 24px; white-space: nowrap; word-break: keep-all; word-wrap: normal; text-overflow: ellipsis; overflow: hidden; }
+		#tath img { width: 24px; height: 24px; vertical-align: middle; }
+
+#f_pst .plc { padding: 20px; }
+	#f_pst .fpp label { zoom: 1; }
+	#f_pst .avatar { margin-top: 15px; }
+
+i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: center; font-style: normal; line-height: 32px; color: {LIGHTTEXT}; }
+
+/* User Details */
+	.bui { position: absolute; margin: -1px -1px 0 0; padding: 15px 20px 15px 0; width: 430px !important; border: 1px solid {COMMONBORDER}; background: {WRAPBG}; box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; -webkit-box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; -moz-box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; }
+		.bui dl { margin: 5px 0 10px; }
+			.bui dt { width: 4.5em; }
+			.bui dd { margin-left: 10px; width: 75px; }
+		.bui .m img { margin-bottom: 12px; }
+		.bui .i { width: 290px; }
+			.imicn img { vertical-align: middle; margin-left: 8px; }
+				.imicn .xi2:hover { text-decoration: none; }
+				.imicn .xi2 img { margin-left: 0; }
+
+	/*
+		Name:			mod_user_interaction
+		Level:			Function
+		Explain:		The left side of the user interactivity post
+		Last Modify:	Pony
+	*/
+	.pls .o li { background-position: 100% 50%; background-repeat: no-repeat; text-indent: 18px; }
+		.pls .o .callon { background-image: url({IMGDIR}/home.gif); }
+		.pls .o .buddy { background-image: url({STATICURL}image/feed/friend.gif); }
+		.pls .o .poke2 { background-image: url({STATICURL}image/feed/poke.gif); }
+		.pls .o .pm2 { background-image: url({IMGDIR}/pmto.gif); }
+	/* Tuning the user group upgrade Prompt at left post side, Last Modify Pony */
+	.pls .tip_4 { margin-right: -5px; }
+
+	/*
+		Name:			mod_thread_attr
+		Level:			Function
+		Explain:		Posts like "Guest, if you want to see the hidden post, please..." and other parts of the style
+		Last Modify:	Pony 11060209
+	*/
+	.locked { overflow: hidden; margin: 10px 0; padding: 8px 24px 8px 8px; border: 1px dashed #FF9A9A; background: {WRAPBG} url({IMGDIR}/locked.gif) no-repeat 99% 50%; font-size: 12px; }
+		.locked:hover { background: #F7F7F7 url({IMGDIR}/locked.gif) no-repeat 99% 50%; }
+		.locked strong { color: {NOTICETEXT}; }
+		.locked a { color: {HIGHLIGHTLINK}; }
+	.viewpay { overflow: hidden; margin: 0 6px; padding: 1px 24px 1px 0; background: url({IMGDIR}/viewpay.gif) no-repeat 6px 60%; color: {HIGHLIGHTLINK}; font-weight: 700; }
+	.showhide { overflow: hidden; border: 1px dashed #FF9A9A; margin: 8px 0; padding: 10px; zoom: 1; }
+		.showhide h4 { margin-bottom: 10px; color: #F66; font-size: 12px; text-align: center; }
+
+	/*
+		Name:			mod_thread_code_quote
+		Level:			Function
+		Explain:		Post code / reference other styles
+		Author:			lushnis
+		Last Modify:	Pony 11053010
+	*/
+	.pl .quote, .pl .blockcode { margin: 10px 0; padding: 10px 10px 10px 65px; zoom: 1; }
+	.pl .quote { padding-bottom: 5px; background: #F9F9F9 url({IMGDIR}/icon_quote_s.gif) no-repeat 20px 6px; }
+		.pl .quote blockquote { margin: 0; padding: 0 65px 5px 0; background: url({IMGDIR}/icon_quote_e.gif) no-repeat 100% 100%; line-height: 1.6; zoom: 1; }
+
+	.pl .blockcode * { direction: ltr; }
+	.pl .blockcode { padding: 10px 0 5px 10px; border: 1px solid {WRAPBORDERCOLOR}; background: #F7F7F7 url({IMGDIR}/codebg.gif) repeat-y 0 0; overflow: hidden; }
+		.pl .blockcode ol { margin: 0 0 0 10px !important; padding: 0 !important; }
+			.pl .blockcode ol li { padding-left: 10px; list-style-type: decimal-leading-zero; font-family: Monaco,Consolas,"Lucida Console","Courier New",serif; font-size: 12px; line-height: 1.8em; }
+				.pl .blockcode ol li:hover { background: {WRAPBG}; color: {HIGHLIGHTLINK}; }
+			* html .pl .blockcode ol li { font-family: "Courier New",serif; }
+		.pl .blockcode em { margin-right: 43px; color: {HIGHLIGHTLINK} !important; font-size: 12px; cursor: pointer; }
+		.pl .blockcode li { margin-left: 2em; }
+
+/* Poll optionvessel by dfox */
+	.pcht { margin-bottom: 15px; }
+		.pcht h4 a { color: {HIGHLIGHTLINK}; text-decoration:underline; }
+		.pcht table { table-layout: fixed; }
+		.pcht table td { padding: 4px 2px; vertical-align: middle; }
+			.pslt { width: 20px; }
+			.pvt { width: auto; }
+				.pvt label { cursor: pointer; }
+			.pvts { width: 100px; }
+				.pcht table tr.ptl td { padding: 8px 2px; border-bottom: 1px solid {WRAPBORDERCOLOR}; }
+		.pcht { width: 600px; }
+		.pinf { margin: 15px 0; color: {LIGHTTEXT}; }
+			.pinf strong { color: {MIDTEXT}; }
+			.pinf a { color: {HIGHLIGHTLINK}; }
+		.ptmr { margin: -10px 0 15px; }
+
+	/*
+		Name:			mod_voter_list
+		Level:			Function
+		Explain:		Voters list style
+		Last Modify:	Pony
+	*/
+	.voterlist { width: 495px; height: 195px; overflow: auto; }
+		.voterlist .ps { max-width: 495px; }
+	.voterl li { padding: 0 0 5px 5px; width: 90px; text-align: right; }
+
+	/*
+		Name:			mod_thread_trade_activity
+		Level:			Function
+		Explain:		spvimg,spi Activity, public part of the goods
+		Author:			dfox
+		Last Modify:	Pony 11082510
+	*/
+	.act {}
+		.act .c { line-height: 28px; font-size: 14px; }
+		.spvimg { float: right; position: relative; width: 300px; background: #FAFAFA; text-align: center; border: 1px solid {COMMONBORDER}; }
+		.spvimg em.hot { width: 120px; height: 102px; background-position: 0 -104px; }
+		.spi { margin-right: 315px;}
+			.spi dl { font-size: 14px; }
+/*vot*/				.spi dl dt { float: right; padding: 2px 0; width: 140px; height: 1em; }
+				.spi dl dd { margin-right: 90px; padding: 2px 0; min-height: 21px; height: auto !important; height: 21px; }
+				.spi dl dd em { color: #F30; }
+			dl.nums {}
+				.spi dl.nums dt { padding-top: 15px; }
+				.spi dl.nums dd em { font-size: 26px; }
+/*vot*/		.actl { table-layout: fixed; margin: 10px 0; width: 320px; border-top: 3px solid {COMMONBORDER}; }
+			.actl th, .actl td { padding: 8px 2px; border-top: 1px dashed {COMMONBORDER}; }
+			.actl th { width: 60px; }
+		.actfm { height: auto !important; height: 220px; max-height: 220px; overflow-x: hidden; overflow-y: auto; }
+		.actl_pop { overflow: auto; max-width: 200px; max-height: 300px; }
+			.ie6 .actl_pop { width: 200px !important; height: expression(this.offsetHeight > 300 ? 300 : 'auto'); }
+			.actl_pop li { display: block; padding: 3px 0; border-bottom: 1px dashed {COMMONBORDER}; }
+
+/* Reward by dfox */
+	.rwd {}
+		.rsld, .rusld { width: 90px; height: 118px; background: url({IMGDIR}/rwd.gif) no-repeat 0 0; text-align: center; color: #F30; }
+		.rsld { background-position: 0 -118px; color: {LIGHTTEXT}; }
+			.rsld cite, .rusld cite { display: block; margin: 26px auto 6px; _margin-bottom: -6px; height: 30px; font-size: 28px; }
+		.rwdn { margin-right: 110px; }
+	.rwdbst {}
+
+/* Debate point of view style by michael */
+	.pdbt { float: left; margin: -5px 0 0 10px; }
+
+	.pdbts { float: right; overflow: hidden; height: 25px; line-height: 25px; background: url({IMGDIR}/pdbt.gif) no-repeat 0 0; }
+		.pdbts a { float: right; margin: 0; height: 25px; line-height: 25px; }
+			.pdbts a:hover { text-decoration: none; }
+		.pdbts .v { padding-left: 3px; width: 39px; color: {LIGHTLINK}; text-align: center; font-weight: 700; }
+		.pdbts .b { padding: 0 10px; background: url({IMGDIR}/pdbt.gif) no-repeat 100% -25px; }
+	.pdbts_0 { background-position: 0 -100px; }
+		.pdbts_0 a { width: 110px; text-align: center; }
+	.pdbts_2 { background-position: 0 -50px; }
+			.pdbts_2 .b { background-position: 100% -75px; }
+
+/* Goods trade by michael & dfox*/
+	.trdc { margin-top: 20px; background: #09C; height: 30px; line-height: 30px; color: {LIGHTLINK}; }
+		.trdc a { margin: 0 6px; height: 30px; line-height: 30px; color: {LIGHTLINK}; }
+		.trdc em { float: left; padding-left: 6px; line-height: 30px; color: {LIGHTLINK}; }
+	.trdb { border-bottom: 1px dashed {WRAPBORDERCOLOR}; }
+		.trdb .y * { vertical-align: middle; }
+		.trdb .c { clear: both; padding: 10px; font-size:14px; }
+			.trdb .c .pattl { border: none !important; }
+		.spi h4 { font-size: 18px; font-weight: 700; padding: 4px 2px 8px; }
+
+		.trdl { padding: 10px 0; }
+			.trdl .tt { float: right; position: relative; width: 90px; text-align: center; }
+				.trdl .tt img { vertical-align: middle; cursor: pointer; }
+				.trdl .tt .hot { width: 43px; height: 37px; }
+			.ta { margin-right: 100px; overflow: hidden; }
+				.ta h4 { padding: 2px; font-size: 14px; font-weight: 700; }
+				.ta dl { margin: 0; width: 200px; }
+				.ta strong { font-size:16px; color: #F30; }
+
+		.torder .spvimg { width: 90px; }
+		.torder .spi { margin-right: 110px; }
+			.torder .spi strong { color: #F30; }
+
+/* Portal viewthread Show */
+.vw .pcb { margin-left: 0; }
+	.vw dd .pcb { width: 640px; }
+	.vw dd .rate { padding-right: 0; }
+	.vw .pcb table { table-layout: fixed; width: 100%; overflow: hidden; }
+		.vw .t_fsz { min-height: 30px; }
+			.ie6 .vw .t_fsz { height: 30px; }
+	.vw .pstl { margin-bottom: 1.4em; }
+		.vw .psth { margin-right: 0; }
+	.vw .pdbts { margin-left: 10px; height: 20px; line-height: 20px; background: url({IMGDIR}/pdbtm.gif) no-repeat 0 0; }
+		.vw .pdbts a { height: 20px; line-height: 20px; }
+		.vw .pdbts .b, .vw .pdbts .b:hover { padding: 0 5px; background: url({IMGDIR}/pdbtm.gif) no-repeat 100% -20px; }
+		.vw .pdbts .v { width: 30px; }
+	.vw .pdbts_0 { background-position: 0 -80px; }
+		.vw .pdbts_0 a { width: 90px; text-align: center; }
+	.vw .pdbts_2 { background-position: 0 -40px; }
+			.vw .pdbts_2 .b, .vw .pdbts_2 .b:hover { background-position: 100% -60px; }
+
+	.vw .dr .sr_2 h5, .vw .dr h5 { width: 172px; }
+
+#modopt, #modopttmp { margin-right:5px; }
+/** end **/
+
+
+/** forum::viewthread,group::viewthread,forum::forumdisplay,group::forumdisplay **/
+/*
+	Name:			mod_visited_t&b
+	Level:			Function
+	Explain:		Back to the list of visited shown in posts and forum
+	Last Modify:	Pony
+*/
+#visitedforums_menu { width: 150px; }
+	#visitedforums_menu li { display: block; float: none; }
+	#visitedforums_menu td { padding: 5px 10px; vertical-align: top; }
+	#visitedforums_menu a { white-space: normal !important; display: inline-block; overflow: hidden; height: 1.5em; }
+	#v_forums { width: 120px; }
+.visited_w { width: 400px !important; }
+	.visited_w table { table-layout: fixed; width: 100%; }
+	.visited_w #v_threads { border-left: 1px solid {COMMONBORDER}; }
+#v_threads li, #v_forums li { padding-right: 10px; background: url({IMGDIR}/dot.gif) no-repeat 100% 7px; }
+
+/* Quick smilies view */
+#fastsmilies { text-align: left; }
+	#fastsmilies table { table-layout: auto; width: 160px; height: 133px; }
+	#fastsmilies td { text-align: left; vertical-align: middle; cursor: pointer; }
+		#fastsmilies img { vertical-align: middle; }
+/** end **/
+
+
+/** home::space,forum::viewthread,forum::trade **/
+/*
+	Name:			mod_trade_list
+	Level:			Function
+	Explain:		Post and the list of goods in a single transaction
+	Last Modify:	Pony 11060710
+*/
+.tradl {}
+	.tradl li { padding: 10px; width: 138px; height: 235px; }
+		.pg_trade .tradl li { float: none; padding: 10px 0; width: auto; height: 224px; }
+	.tradl .u { text-align: right; }
+	.tradl h4 { overflow: hidden; height: 38px; font-weight: 400; }
+	.tradl .tn { display: block; position: relative; margin: 5px auto; padding: 1px; width: 130px; height: 130px; border: 1px solid {COMMONBORDER}; }
+		.tradl .tn em.hot { width: 53px; height: 46px; background-position: 0 -48px; }
+		.tradl img { max-width: 130px; max-height: 130px; }
+			* html .tradl img { width: expression(this.width > 130 && this.width>=this.height ? 130 : true); height: expression(this.height > 130 && this.width<=this.height ? 130 : true); }
+	.tradl .p { font-family: Arial, sans-serif; font-size: 16px; color: {LIGHTTEXT}; }
+	.tradl .stat { background: url({IMGDIR}/closed.png); color: {LIGHTLINK}; }
+/** end **/
+
+
+/** forum::viewthread,group::viewthread,home::space **/
+/* Debates debatesquare by michael & dfox */
+	.dtm { padding: 10px 0; text-align: center; font-weight: 700; }
+	.ds { margin-top: 1em; background: url({IMGDIR}/debate_bg.gif) no-repeat 50% 100%; line-height: normal; }
+		.ds th { width: 60px; vertical-align: bottom; }
+		.ds th div { background: url({IMGDIR}/debate_vs.gif) no-repeat 50% 50%; height: 150px; }
+		.ds td { vertical-align: bottom; }
+			.ds td p{ font-size: 14px; padding: 5px 0 15px; line-height: 20px; text-align: right; }
+		.ds .si_1, .ds .si_2 { text-align: center; vertical-align: middle; }
+		.ds .sc_1, .ds .sc_2 { width: 62px; }
+			.ds .point_chart{ position: relative; width: 62px; height: 150px; background: url({IMGDIR}/debate_chart.gif) no-repeat 0 0; }
+			.ds .point { margin: 0 auto; padding: 0 10px 0 20px; text-align: center; font-size: 14px; }
+				.ds .si_2 .point { padding: 0 20px; }
+					.ds .si_1 .point strong{ color: #F04700; }
+					.ds .si_2 .point strong{ color: #0092C5; }
+			.ds .chart{ position:absolute; right: 0; bottom: 0; width: 62px; background: url({IMGDIR}/debate_chart.gif) no-repeat; }
+				.ds .sc_1 .chart{ background-position: -62px 0; }
+				.ds .sc_2 .chart{ background-position: -124px 0; }
+		/* List of space debates by Pony */
+		#nv_home .ds table { table-layout: fixed; width: 100%; }
+		#nv_home .ds th div, #nv_home .ds .point_chart { height: 120px; }
+		#nv_home .ds .ph { font-size: 16px; text-align: center; }
+	.dr { margin: 2px 0; padding-top: 6px; min-height: 80px; height: auto !important; height: 80px; background: url({IMGDIR}/debate_dr.jpg) no-repeat 50% 0; }
+		.dr th { width:50px; }
+		.dr td { vertical-align: top; }
+		.dr h5 { padding-right:10px; width: 193px; text-align: center; font-size: 14px; font-weight: 400; }
+			.dr h5 a { color: #F04700; font-weight: 700; }
+			.dr .sr_1 .pn { float: left; margin-left: 5px; }
+			.dr .sr_2 .pn { margin-right: 5px; }
+			.dr .sr_2 h5 { float: left; padding: 0 0 0 20px; width: 183px; }
+				.dr .sr_2 h5 a { color: #0092C5; }
+			.dr .mls { padding-top: 15px; clear: both; }
+			.dr .mls li { width: 70px; }
+
+/* Tags */
+	.ptg { padding-right: 20px; background: url({IMGDIR}/tag.gif) no-repeat 100% 2px; }
+		.ptg a { color: {HIGHLIGHTLINK}; }
+/** end **/
+
+
+/** forum::viewthread,group::viewthread,forum::trade,portal::view **/
+/* Post attachments by dfox */
+	.pattl { overflow: hidden; padding: 1em 0; width: 100%; border-bottom: 1px dashed {COMMONBORDER} !important; font-size: 12px; }
+	.tatt, .t_attach_img { padding: 5px; color: {LIGHTTEXT}; font-size: 12px; }
+		.tatt { width: 240px; }
+		.tatt em { color: {LIGHTTEXT}; }
+		.t_attachinsert{ margin:1em 0; font-size: 12px; }
+		.t_attachinsert p img{ margin-bottom: -4px; }
+	.t_table{ border: 1px solid #E3EDF5; empty-cells: show; border-collapse: collapse; }
+		.pl table.t_table { table-layout: auto; }
+		.t_table td { padding: 4px; border: 1px solid #E3EDF5; overflow: hidden; }
+	.tattl { float: right; overflow: hidden; padding: 10px 0 10px 10px; width: 45%; height: 64px; }
+		.tattl a { color: {HIGHLIGHTLINK}; text-decoration: underline; }
+		.tattl dt { float: right; width: 40px; font-weight: 700; }
+		.tattl strong { margin-left: 6px; color: {NOTICETEXT}; font-weight: 400; }
+		.tattl dt img { width: 32px; height: 32px; }
+		.tattl dd { margin-right: 40px; color: {LIGHTTEXT}; }
+	.attnm { height: 18px; margin-bottom: 3px; overflow: hidden; white-space: nowrap; }
+		*html .attnm { white-space: normal; }
+	.attm { overflow: visible; float: none; width: 580px; height: auto; }
+		.attm dt { width: 0; }
+		.attm dd { margin-right: 0; }
+		.zoom { cursor: pointer; }
+
+	.attp { width: 180px; text-align: right; }
+		.tattl .attp { width: 240px; }
+
+	/* Moderator viewing a post attachments charges, and inserted into the post content in the attach to the time by Pony */
+	.attprice { padding: 5px; border: 1px dashed #FF9A9A; }
+
+	/*
+		Name:			mod_zoominner
+		Level:			Function
+		Explain:		Shows the original image popup
+		Last Modify:	Pony
+	*/
+	.zoominner { padding: 5px 10px 10px; background: {WRAPBG}; text-align: right; }
+		.zoominner p { padding: 8px 0; }
+			.zoominner p a { float: right; margin-right: 10px; width: 17px; height: 17px; background: url({IMGDIR}/imgzoom_tb.gif) no-repeat 0 0; line-height: 100px; overflow: hidden; }
+				.zoominner p a:hover { background-position: 0 -39px; }
+			.zoominner p a.imgadjust { background-position: -40px 0; }
+				.zoominner p a.imgadjust:hover { background-position: -40px -39px; }
+			.zoominner p a.imgclose { background-position: -80px 0; }
+				.zoominner p a.imgclose:hover { background-position: -80px -39px; }
+
+.zimg_c { position: relative; }
+/*vot*/ .zimg_prev, .zimg_next { display: block; position: absolute; width: 45%; height: 100%; background: url({IMGDIR}/pic-prev.gif) no-repeat 0 -100px; cursor: pointer; }
+/*vot*/ .zimg_next { left: 10px; background-image: url({IMGDIR}/pic-next.gif); background-position: 100% -100px; }
+.zimg_c img { margin: 0 auto; }
+.zimg_p strong { display: none; }
+/** end **/
+
+
+/** forum::misc **/
+/* redefinition When non-pop style of the page displayed*/
+	.mn .flb { padding-right: 0; }
+	.f_c .list { margin-right: 0; }
+/** end **/
+
+
+/** portal::portalcp,portal::view,forum::viewthread,group::viewthread,home::space **/
+/* Automatically link to the key words to increase the style by Pony */
+	.relatedlink, .relatedlink:hover { text-decoration: none !important; color: {TABLETEXT} !important; border-bottom: 1px solid blue; }
+
+/* Module identifies the collection of pictures behind the style    by Pony */
+	.favmark { margin-bottom: -3px; }
+/** end **/
+
+
+/* ---------------- Groups related styles by dfox ------------------------------------------------------- */
+/** group::index **/
+	#g_focus { width: 320px; }
+	#g_commend {}
+		#g_commend .xld { float: right; margin-left: 0.3%; width: 24.5%; height: 64px; overflow: hidden; }
+		#g_commend dt { padding-bottom: 0; }
+/*vot*/	#g_guide { }
+/*vot*/		#g_guide li { border-bottom: 1px dashed {COMMONBORDER}; background: url({IMGDIR}/g_guide.png) no-repeat; }
+/*vot*/		#g_guide a, #g_guide label { display: block; padding: 7px 40px 7px 0; height: auto; }
+			#g_guide label { cursor: text; }
+		#g_guide strong { display: block; }
+/*vot*/		#g_guide li.step1 { background-position: 100% 10px; }
+/*vot*/		#g_guide li.step2 { background-position: 100% -65px; }
+/*vot*/		#g_guide li.step3 { background-position: 100% -145px; }
+/*vot*/		#g_guide li.step4 { background-position: 100% -225px; }
+	.fl .bm_h { border-bottom: none; background-color: transparent; }
+
+/* Group list by Pony */
+	.fl_icn, .fl_icn_g { width: 48px; }
+	.fl_g dl { margin-right: 48px; padding: 0 5px; }
+/** end **/
+
+/** group::group **/
+#gh { border: 1px solid {COMMONBORDER}; }
+	#gh .bm { margin-bottom: 0; }
+	#gh .bm_h { background-color: {SPECIALBG}; }
+/** end **/
+
+/** group,search::group **/
+.gl .flc .icn { float: right; width: 60px; }
+.gl .flc dl { margin-right: 60px; }
+	.gl .flc dl dt { height: 20px; overflow: hidden; }
+
+/*vot*/	.mls li p { margin: 5px 4px 0; width: 66px; }
+
+.gl .flc .i { margin-top: -14px; width: 127px; }
+	.gl .flc .i em, .gl .flc .i span { float: left; width: 55px; color: {LIGHTTEXT}; text-align: left; line-height: 20px; }
+	.gl .flc .i em { border-left: 1px solid {COMMONBORDER}; padding-left: 10px; }
+		.gl .flc .i p { color: {LINK}; }
+		.gl .flc .i span p { font-weight: 700; }
+
+#nv_group .flg dd em { float: right; margin-left: 1em; color: {LIGHTTEXT}; white-space: nowrap; }
+
+#nv_group {}
+/** end **/
+
+
+/** group::my **/
+/* Related to the pop group set by Pony */
+	.attgroup { width: 450px; }
+		.attgroup li { float: right; overflow: hidden; margin-left: 5px; width: 145px; white-space: nowrap; }
+
+/* All groups related buttons  by Shuaishuai*/
+	.groupbtn { float: right; margin: 0 2px; padding: 0 7px 0 0 !important; height: 25px; background: url({IMGDIR}/n_rate.png) no-repeat 0 0 !important; line-height: 25px; text-align: center; cursor: pointer; }
+	.groupbtn:hover{ text-decoration: none; }
+		.groupbtn span { display: block; background: url({IMGDIR}/n_rate.png) no-repeat right 100% !important; padding-left: 7px; }
+/** end **/
+
+
+
+/* --------------------------- Articles, such as the blog page style -------------------------------------------- */
+/** portal::list,home::space **/
+.bm_h .addnew { margin-right: 10px; padding-right: 20px; background: url({IMGDIR}/addbuddy.gif) no-repeat 100% 45%; }
+.bm_h .rss { margin-right: 10px; padding-right: 20px; background: url({IMGDIR}/feed.gif) no-repeat 100% 45%; }
+/** end **/
+
+
+/** forum::viewthread,portal::view,portal::comment,home::space **/
+/* Article/Blog View by lushnis */
+	.vw { }
+		.vw .h { padding-bottom: 15px; border-bottom: 1px solid {COMMONBORDER}; }
+			.vw .ph { padding: 15px 0 10px; color: #000; }
+		.vw .hot { margin-left: 5px; color: {NOTICETEXT}; }
+		.vw .s { margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid {COMMONBORDER}; line-height: 2; color: {HIGHLIGHTLINK}; }
+			.vw .s strong { font-weight: 400; color: red; }
+		.vw .d { margin: 15px 0; min-height: 100px; font-size: 14px; line-height: 1.8; color: #000; }
+			.vw .d img { max-width: 620px; }
+			.ie6 .vw .d img { width: expression(this.width > 620 ? 620:true); }
+			.vwtb { table-layout: fixed; width: 100%; }
+		.vw .d ol, .vw .d ul { margin: 1em 2em; }
+			.vw .d ul li { list-style-type: disc; }
+			.vw .d .ml, .vw .d .xl { margin: 0; }
+				.vw .d .ml li { list-style-type: none; }
+		.vw .attach { padding-right: 20px; background: url({IMGDIR}/fach.gif) no-repeat 0 50%; color: {HIGHLIGHTLINK}; }
+		.vw .o { margin-top: 15px; padding-top: 5px; border-top: 1px solid {COMMONBORDER}; text-align: left; }
+			.vw .o .mgcmn { width: auto; text-align: right; }
+		#nv_portal .vw .h, #nv_portal .vw .s, #nv_portal .vw .d, #nv_portal .vw .o,#nv_forum .vw .h, #nv_forum .vw .s, #nv_forum .vw .d { margin-right: 15px; margin-left: 15px; }
+
+/* .atd -> attitude Position by Pony */
+	.atd { margin: 15px auto; }
+		.atd img { margin-bottom: 10px; }
+		.atd a { display: block; }
+			.atd a:hover { text-decoration: none; }
+		.atd td { padding: 10px; text-align: center; vertical-align: bottom; }
+			.atd .atdc { position: relative; margin: 0 auto 10px; width: 20px; height: 50px; }
+				.atdc div { position: absolute; right: 0; bottom: 0; width: 20px; text-align: right; }
+				.atd .ac1 { background: #C30; }
+				.atd .ac2 { background: #0C0; }
+				.atd .ac3 { background: #F90; }
+				.atd .ac4 { background: #06F; }
+				.atdc em { position: absolute; margin: -25px -5px 0 0; width: 30px; font-size: 11px; text-align: center; color: {LIGHTTEXT}; }
+/** end **/
+
+
+/** portal::portalcp **/
+.pgm { clear: both; padding: 5px 0; }
+	.pgm .pg { float: right; }
+
+/* Articles Management related */
+.bart { position: relative; padding: 10px; width: 640px; }
+	.bartl { overflow-y: scroll; padding: 10px; width: 270px; height: 270px; border: 1px solid {COMMONBORDER}; }
+		.bartl li { overflow: hidden; width: 250px; height: 20px; }
+			.bartl li em { float: right; width: 200px; }
+	.barto { position: absolute; top: 190px; right: 315px; height: 30px; }
+		.barto .pn * { padding: 0 8px; }
+	.bart .chkall { padding-right: 10px; }
+	#chkalldiv p { width: 292px; }
+
+/* Block Management */
+	.ptblk li { padding: 7px 0; border-bottom: 1px solid {COMMONBORDER}; }
+	.ptblk em { margin-left: 30px; }
+
+/* Article title color, bold, italics, underline and other styles by Pony */
+.colorwd { margin-left: 3px; }
+.dopt input { float: right; }
+
+/*
+	Name:			mod_post_article_attach
+	Level:			Function
+	Explain:		Regional Development article post attachments
+	Last Modify:	Pony 11051011
+*/
+.posta { float: left; margin-top: 70px; padding: 0; width: 135px; }
+	.posta_c { height: 540px; overflow-x: hidden; overflow-y: auto; }
+	.ie6 .posta_c, .ie7 .posta_c { height: 548px; }
+#attach_image_body table, #attach_file_body table { table-layout: fixed; }
+#attach_image_body td, #attach_file_body td { padding: 5px 0; }
+	#attach_image_body img { margin: 0 !important; }
+/** end **/
+
+
+
+/* ------------------- Spatial related styles ---------------------------------------------------- */
+/** home::space,misc::ranklist **/
+/* .mi --> my_infomation Home Personal space Information section */
+	.mi {}
+		.mi th, .mi td { vertical-align: top; }
+		.mi th { width: 145px; }
+		.mi .avatar a { position: relative; }
+			.ie6 .avatar a { float: right; }
+			.mi .avatar a:hover { text-decoration: none; }
+			.mi .avatar a span { display: none; position: absolute; bottom: 3px; padding: 5px 0; width: 100%; text-align: center; background: transparent; background: rgba(255, 255, 255, 0.5); cursor: pointer; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr = #50FFFFFF, endColorstr = #50FFFFFF); }
+				.mi .avatar a:hover span { display: block; }
+				.mi .avatar img { padding: 3px; border: 1px solid {COMMONBORDER}; }
+		.mifm { position: relative; margin: 10px 0 20px; padding: 5px; width: 370px; background: {COMMONBG}; zoom: 1; }
+	.mipm { padding: 5px 0; border: 1px solid {COMMONBORDER}; }
+		.mipm li { float: right; padding: 5px 15px; white-space: nowrap; }
+		.mi a.o { margin-left: 5px; padding-right: 18px; background: url({IMGDIR}/mine_icn.png) no-repeat 100% 50%; }
+	#moodfm {}
+		#moodfm textarea { width: 600px; height: 56px; border: 1px solid; border-color: {INPUTBORDERDARKCOLOR} {INPUTBORDER} {INPUTBORDER} {INPUTBORDERDARKCOLOR}; overflow-y: auto; }
+		.mi .moodfm_input { width: 350px; height: 58px; background: {COMMONBORDER} url({IMGDIR}/mood_input.png) no-repeat 0 0; }
+			.mi .hover .moodfm_input { background-color: {SPECIALBORDER}; }
+			.mi #moodfm textarea { margin: 3px 6px 0 0; padding: 0; width: 341px; height: 51px; outline: none; border: none; }
+		.moodfm_btn { padding-right: 5px; background: url({IMGDIR}/mood_input_btn.png) no-repeat 5px 0; }
+			.moodfm_btn button { width: 58px; height: 58px; cursor: pointer; opacity: 0; filter: alpha(opacity=0); }
+		.moodfm_f { padding: 5px 3px 0 0; }
+
+/*
+	Name:			mod_share_form
+	Level:			Function
+	Explain:		Publish share form
+	Last Modify:	Pony
+*/
+	.sfm { margin: 0 10px 20px 0; }
+		.sfm .c { width: 442px; }
+		.sfm .px { width: 432px; }
+		.sfm .pt { width: 432px; height: 67px; }
+
+/* When sharing videos with screenshots by Pony */
+.vdtn { width: 126px; height: 95px; border: 1px solid {COMMONBORDER}; cursor: pointer; }
+
+/* .pic -> picture View image by Pony */
+	.osld { padding-right: 18px; background: url({IMGDIR}/slide.png) no-repeat 100% 50%; }
+	.pic {}
+		.pic .c { margin-top: 20px; text-align: center; }
+			.pic .c img { max-width: 764px; }
+			* html .pic .c img { width: expression(this.width > 764 ? 764 : true); }
+		.pic p { margin: 5px 0; }
+	.albim_pic_title { padding: 5px; border-top: 1px dashed {COMMONBORDER}; background: {COMMONBG}; }
+
+/* Media list navigation */
+	.mlnv { text-align: center; }
+		.mlnv img { margin: 0 5px; padding: 2px; max-width: 100px; max-height: 100px; _width: expression(this.width > 100 && this.width>=this.height ? 100 : true); height: expression(this._height > 100 && this.width<=this.height ? 100 : true); border: 1px solid {WRAPBORDERCOLOR}; background: {WRAPBG};}
+			.mlnv img.a { border-color: {NOTICETEXT}; background: #FFEAA8; }
+		.mlnv .btn img { padding: 0; border: 0; background: none;  }
+
+
+/* .sl -> share_list Share list by Pony */
+	.sl {}
+		.sl li { padding: 10px 0; border-bottom: none; }
+		.sl .h { padding: 6px 10px; _height: 1%; background: {COMMONBG}; border-bottom: 1px solid {COMMONBORDER}; }
+
+/* .favl -> fav_list Favorite List by Pony */
+	.favl .o { background: url({IMGDIR}/op.png) no-repeat -4px -2px; }
+		.favl .o:hover { background-position: -4px -22px; }
+		.ie6 .favl li { position: relative; }
+			.ie6 .favl .o { margin: 0; left: 0; top: 12px; }
+
+/* .cmt -> comment feed comment area by Pony */
+	.cmt { margin: 10px 0 0 24px; padding: 10px; border: 1px solid #EAEAEA; background: {COMMONBG}; zoom: 1; }
+		.cmt form { margin-top: 10px; }
+			.cmt input, .cmt button { vertical-align: middle; }
+		.cmt .pt { width: 95%; margin: 3px 0; }
+		.cmt .tri { margin: 10px 0 -23px; width: 19px; height: 13px; background: url({IMGDIR}/cmt_ico.png) no-repeat; }
+		.cmt .xlda dl { padding-right: 50px; }
+		.cmt .xlda .m { margin-right: -50px; }
+		.cmt .avt img { width: 36px; height: 36px; }
+		.cmt .pg a, .cmt .pg strong { background-color: transparent; }
+		.cmt .pg a { border-color: {COMMONBG}; }
+			.cmt .pg a:hover { border-color: {WRAPBORDERCOLOR}; }
+/* feed Comment list */
+		.el .cmt li { padding-left: 0; border-bottom: none; }
+		.el .tri { display: none; }
+/* feed Verification code in the comment area */
+		.el .cmt .sec .px { width: 80px !important; }
+
+/* .pll -> poll_list Poll List */
+	.pll {}
+		.pll li { padding: 10px 0; min-height: auto; }
+		.pll .h { font-size: 14px; }
+			.pll .h span { font-weight: 400; }
+		.pll .c { margin: 0 74px 0 84px; }
+		.pll ol { margin: 5px 20px 0 0; }
+			* html .pll ol { margin-right: 25px; }
+			*+html .pll ol { margin-right: 25px; }
+			.pll ol li { list-style-type: decimal; padding: 0; border-bottom: none; }
+		.pll .u { overflow: hidden; width: 74px; text-align: center; }
+			.pll .u p { white-space: nowrap; }
+		.pll .s { display: inline; margin: 5px 0 0 10px; width: 60px; background:url({IMGDIR}/polljoins.gif) no-repeat 0 0; }
+			.pll .s a.joins { margin: 0 0 5px; padding: 12px 0; width: 60px; height: 36px; display: block; overflow: hidden; text-align: center; text-decoration: none; }
+				.pll .s a.joins span { display: block; font-size: 16px; font-weight: 700; }
+			.pll .s a.go { padding: 0 17px 0 0; width: 43px; height: 24px; line-height: 24px; display:block; }
+
+/* .acl -> activity_list Activity List by Pony */
+	.acl { width: 100%; table-layout: fixed; }
+		.acl h3 { padding: 10px 0; font-size: 14px; }
+			.acl h3 span { float: right; margin: 1px 0 0 10px; width: 34px; text-align: center; }
+			.acl h3 strong { display: block; background-color: #C00; color: {LIGHTLINK}; font-size: 12px; }
+			.acl h3 em { display: block; line-height: 22px; border: solid {COMMONBORDER}; border-width: 0 1px 1px; font-size: 16px; font-weight: 400; }
+		.acl td { padding: 10px 3px; border-top: 1px dashed {COMMONBORDER}; vertical-align: top; }
+		.acl .type { padding: 10px 0 10px 3px; width: 80px; }
+		.acl .addr { padding-right: 20px; width: 130px; }
+		.acl .orgr { width: 74px; }
+		.acl .ml li { margin-top: 6px; padding-bottom: 0; }
+
+/* .tlog -> trade_log Transactions by Pony */
+	.tlog th, .tlog td { padding: 10px 4px !important; }
+
+/* .rwdl -> reward_list Reward list by Pony */
+	.rwdl {}
+		.rwdl li { overflow: hidden; float: right; padding: 15px 100px 15px 10px; width: 290px; height: 92px; }
+		.rwdl .uslvd { position: absolute; margin-right: -100px; width: 90px; height: 92px; background: url({IMGDIR}/rwd2.gif) no-repeat 0 0; }
+			.rwdl .uslvd cite { display: block; line-height: 28px; font-size: 28px; margin-top: 10px; text-align: center; color: {NOTICETEXT}; }
+			.rwdl .uslvd span { display: block; line-height: 12px; font-size: 12px; }
+			.rwdl .uslvd em { position: absolute; bottom: 11px; bottom /*\**/: 9px\9; right: 37px; color: {LIGHTLINK}; }
+				* html .rwdl .uslvd em { bottom: 11px; }
+				*+html .rwdl .uslvd em { bottom: 9px; }
+		.rwdl .slvd { background-position: 0 -92px; }
+			.rwdl .slvd cite { color: {LIGHTTEXT}; }
+		.rwdl h4 { overflow: hidden; height: 36px; font-weight: 400; }
+		.rwdl p { white-space: nowrap; }
+
+/* .facel -> face_list Avatar List by Pony */
+	.facel { padding: 8px; width: 240px; }
+		.facel img { margin: 5px; }
+
+/* View profile by lushnis */
+	#pprl li { clear: both; padding: 3px 90px 3px 0; }
+/*vot*/		#pprl li em { float: right; margin-right: -90px; width: 140px; white-space: nowrap; overflow: hidden; }
+	#pbbs li, #psts li, #pntc li { clear: none; float: right; width: 270px }
+
+/* Reminded of the content will be used. This stand-alone class, so personalized. To make the content more visible reminder, the span can be defined under the summary */
+	.summary { margin: 10px 0; }
+/** end **/
+
+
+/** home::space,home::spacecp,home::medal,misc::ranklist **/
+	/* Space Image list */
+	.mla li, .mlp li { width: 150px; }
+/** end **/
+
+
+/** home::space **/
+/* Home page search box on the right side */
+	#sc .shortsc td { padding: 0 0 0 1px; }
+/*vot*/	.shortsc .px { width: 100px; }
+	.ie6 .shortsc .pn span { padding: 0; }
+
+/* Quick Find friends button style by ShuaiShuai */
+	.sc_display{ display:inline-block; width:36px; text-align:left;}
+
+	#mood_mystatus { width: 410px; word-break: break-all; overflow: hidden; }
+	#newprompt { background: url({IMGDIR}/info.gif) no-repeat 12px 50%; }
+
+/* .dtls -> doing_treeline_short Record recovery tree background by shuaishuai */
+		.dtls { background:url({IMGDIR}/treeline_short.gif) no-repeat 0 2px; }
+/* .dtll -> doing_treeline_long Record recovery tree background by shuaishuai */
+		.dtll { background:url({IMGDIR}/treeline_long.gif) no-repeat 2em 2px; }
+
+	.nts { padding-right: 20px; }
+		.nts dl { border-bottom: 1px dashed {COMMONBORDER}; }
+		.nts .more { border-top: 1px dashed {COMMONBORDER}; padding:10px 64px 0 0; }
+
+/*
+	Name:			mod_pm_list
+	Level:			Channel
+	Explain:		Short Message List
+	Last Modify:	Pony
+*/
+	.pml {}
+		.pml dl { padding-right: 75px; padding-left: 110px; }
+		.pml .hover { background-color: {SPECIALBG}; }
+		.pm_o { display: inline; margin-left: -100px; width: 100px; text-align: left; }
+			.pm_o .o { overflow: hidden; float: left; margin-right: 10px; width: 16px; height: 16px; text-indent: 20px; background: url({IMGDIR}/op.png) no-repeat 0 -120px; }
+				.pm_o .o:hover { background-position: 0 -140px; }
+			.pm_o .p_pop { text-align: right; }
+		.pml .newpm { background: {SPECIALBG}; }
+		.pml .newpm .newpm_avt { position: absolute; margin: -2px 40px 0 0; width: 16px; height: 14px; background: url({IMGDIR}/new_pm_2.png) no-repeat 100% 0; }
+		.pm_c { padding-right: 25px; }
+			.pm_c .o { float: right; display: inline; margin: 2px -25px 0 0; }
+			.ie7 .pm_c .o { margin-top: -2px; }
+		.pm_op { padding-right: 75px; }
+		.pm_op_r { padding-left: 110px; }
+
+/*
+	Name:			mod_pm_group
+	Level:			Function
+	Explain:		Short message group chat
+	Last Modify:	Pony
+*/
+	.pm_g { padding: 10px 15px; border: 1px solid #C2D5E3; background: #F2F7FA; }
+		.pm_sd, .pm_b { border: 1px solid #C2D5E3; background: {WRAPBG}; }
+			.pm_mn { margin-left: 175px; }
+				.pm_mn dl { padding: 0; }
+				.pm_mn dd.ptm { margin-top: -1px; padding-top: 0 !important; }
+				.pm_mn .tedt { margin-bottom: 5px; width: 591px; }
+					.ie6 .pm_mn .tedt { width: 587px; }
+					.pm_mn .area { height: 70px; }
+					.pm_mn .tedt .pt { height: 68px; }
+				.pm_mn .avt { display: none; }
+			.pm_sd { float: left; width: 160px; height: 425px; }
+				.pm_mem_l { overflow-x: hidden; overflow-y: auto; height: 425px; }
+					.pm_admin { height: 380px; }
+					.pm_mem_l li { overflow: hidden; padding-right: 25px; height: 25px; line-height: 25px; background: url({IMGDIR}/pm_member.png) no-repeat 5px 50%; }
+				.pm_add { padding: 10px; }
+					.pm_add .px { width: 90px; }
+		.pm_b { overflow-x: hidden; overflow-y: auto; padding: 10px; height: 300px; }
+			.pm_b img { padding: 2px; max-width: 575px; height: expression(this.height > 575 ? 575 : true); }
+	.syn_signature, .syn_signature_check { background: url({IMGDIR}/connect_post_syn.png) no-repeat scroll 0 0 transparent; cursor: pointer; display: inline-block; height: 19px; line-height: 64px; opacity: 1; overflow: hidden; vertical-align: -6px; width: 19px; }
+	.syn_signature { background-position: 0 -66px }
+	.syn_signature_check { background-position: -22px -66px; }
+/** end **/
+
+
+/** home::spacecp **/
+/* Space Image list */
+	.mls li { width: 90px; }
+/* Uploads by lushnis */
+	.up_row { width: 100%; }
+		.up_row td { vertical-align: middle; padding: 5px 0; border-bottom: 1px solid {SPECIALBORDER}; }
+		.up_row .d { width: 400px; }
+		.up_row .o { width: 4em; text-align: center; }
+		.up_row strong { display: block; width: 100%; word-break: break-all; word-wrap: break-word; white-space: normal; overflow: hidden; }
+	#creatalbum { padding-top: 1px; border-top: 1px solid {SPECIALBORDER}; }
+	.doodle{ width:65px; background:url({STATICURL}image/magic/doodle.small.gif) no-repeat 0 center; padding-right:3px; text-align:right;}
+		.doodle a{ padding-right:2px;}
+
+/*
+	Name:			mod_my_credits_list
+	Level:			Function
+	Explain:		My Points List
+	Last Modify:	Pony
+*/
+	.creditl {}
+		.creditl li { float: right; padding: 0 65px 10px 0; width: 95px; }
+		.creditl .cl { clear: both; float: none; width: auto; }
+			.creditl li em { position: absolute; overflow: hidden; margin-right: -65px; width: 60px; white-space: nowrap; font-weight: 700; }
+		.creditl u { text-decoration: none; }
+/** end **/
+
+
+/** home::spacecp,home::magic **/
+/* Find Friends .scf --> Search friend */
+	.scf h2 { padding-right: 20px; line-height: 2.2; background: url({IMGDIR}/scf.gif) no-repeat 100% 50%; font-weight: 700; font-size: 14px; }
+/* Statistical data to demonstrate the complexity of the form, currently only used in the user group page */
+	.tdats { overflow: hidden; zoom: 1; margin: 10px 0; *padding-bottom: 10px; }
+		.tdats th, .tdats td { overflow: hidden; padding: 0 5px; height: 26px; border-width: 0 0 0 1px; border-color: {WRAPBG}; white-space: nowrap; }
+		.tdats th { height: 40px; font-weight: 700; }
+			.tdats .h th { height: 24px; border-top: 1px solid {COMMONBORDER}; border-bottom: 1px solid #E5E5E5; background: url({IMGDIR}/tb.png) repeat-x 0 -4px; color: {MIDTEXT}; zoom: 1; }
+		.tdats .tdat { float: right; width: 150px; border: none; table-layout: fixed; }
+		.tdats .tfx { width: 300px; }
+			.tdats .tfxf { width: 650px; }
+			.tfx th, .tfx td { border-width: 0 3px !important; background: #FFF2DF; }
+			.tfx .alt, .tfx .alt th, .tfx .alt td { background: #FAEDDA; }
+			.tfx .h th { padding: 1px 5px; }
+		.tscr { float: right; overflow: hidden; width: 350px; }
+			.tscr .tdat th, .tscr .tdat td { width: 350px; }
+			.nwp { word-wrap: normal; white-space: nowrap; }
+		.tdats .c0 { padding: 0; height: 46px; text-align: center; vertical-align: bottom; background: transparent; }
+			.tdats .c0 h4 { line-height: 38px; background-color: #F60; color: {LIGHTLINK}; }
+		 	.tdats .c0 h4, .tdats .tb li { -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0; }
+		.tdats .tb { float: right; margin-top: 8px; padding-right: 0; width: 350px; border-bottom-width: 4px; }
+			.tdats .tb li { padding: 0 10px; line-height: 33px; font-weight: 700; color: {LIGHTLINK}; }
+			.tdats .c0 h4, .tdats #c1, .tdats #c2, .tdats #c3, .tdats #c4 { background-image: url({IMGDIR}/bg_usergroup.png); }
+			.tdats .c1 { border-color: #158B00; }
+				.tdats #c1 { border-color: #158B00; background-color: #158B00; background-position: 0 -40px; }
+			.tdats .c2 { border-color: #057373; }
+				.tdats #c2 { border-color: #057373; background-color: #057373; background-position: 0 -80px; }
+			.tdats .c3 { border-color: #1F57A9; }
+				.tdats #c3 { border-color: #1F57A9; background-color: #1F57A9; background-position: 0 -120px; }
+			.tdats .c4 { border-color: #1A588D; }
+				.tdats #c4 { border-color: #1A588D; background-color: #1A588D; background-position: 0 -160px; }
+			.tdats .c1 #c1, .tdats .c2 #c2, .tdats .c3 #c3, .tdats .c4 #c4 { line-height: 35px; }
+		.ftb td { width: 12%; }
+/** end **/
+
+
+/** home::space,home::spacecp **/
+/*
+	Name:			mod_ct_vw
+	Level:			Function
+	Explain:		Logs, buddy lists, two columns used in the framework of page
+	Last Modify:	Pony
+*/
+	.ct_vw {}
+		.ct_vw_mn { float: right; width: 70%; }
+		.ct_vw_sd { float: left; width: 28%; }
+
+/*
+	Name:			mod_buddy
+	Level:			Function
+	Explain:		buddy Friend List
+	Last Modify:	Pony
+*/
+	.buddy { margin: 0 -2px 10px -4px; }
+/*vot*/		.buddy li { overflow: hidden; display: inline; float: right; margin: 10px 5px 0; padding: 10px 70px 10px 10px; width: 175px; height: 75px; border: 1px solid #F3F3F3; background: #F9F9F9; }
+			.ct_vw_mn .buddy li { width: 190px; }
+		.buddy h4 { overflow: hidden; height: 20px; }
+		.buddy .avt { position: absolute; margin-right: -60px; }
+		.buddy .maxh { overflow: hidden; height: 20px; }
+		.buddy .note { color: green; }
+		.addbuddy { padding-right: 20px; background: url({IMGDIR}/addbuddy.gif) no-repeat 100% 50%; }
+
+/*
+	Name:			mod_buddy_group
+	Level:			Function
+	Explain:		Friends Group
+	Last Modify:	Pony
+*/
+	.buddy_group { margin-top: -5px; }
+		.buddy_group li { overflow: hidden; padding: 5px 0; line-height: 20px; border-bottom: 1px dashed {COMMONBORDER}; }
+			.buddy_group li.a { font-weight: 700; }
+		.buddy_group .b, .buddy_group .o { float: left; width: 20px; height: 20px; overflow: hidden; line-height: 100px; background: url({IMGDIR}/op.png) no-repeat 0 -40px; }
+			.buddy_group .b:hover { background-position: 0 -60px; }
+		.buddy_group .o { background-position: 0 -80px; }
+			.buddy_group .o:hover { background-position: 0 -100px; }
+
+.ntc_body .summary { margin-right: 2em; padding-right: 10px; border-right: 1px solid {COMMONBORDER}; }
+	.ntc_body .summary span { color: {LIGHTTEXT}; }
+
+/* .pmform -> Private Message Form (non pop-up) by Pony */
+	.pmform {}
+		.pmform .px { width: 408px; }
+		.pmform .tedt { width: 416px; }
+
+/*
+	Name:			mod_user_selector
+	Level:			Function
+	Explain:		Users are prompted to select the effect name
+	Last Modify:	Pony
+*/
+	.un_selector { height: auto; cursor: text; overflow: hidden; }
+		.un_selector input { width: 95px; height: 19px; border-width: 0; outline: none; }
+			.ie6 .un_selector input, .ie7 .un_selector input { height: 17px; }
+			.un_selector #subject { width: 408px; }
+		.un_selector span { float: right; margin: 1px 0 1px 2px; width: 100px; height: 19px; line-height: 19px; background: #F7F6ED url({IMGDIR}/un_selector.png) no-repeat 0 0; color: {HIGHLIGHTLINK}; overflow: hidden; }
+			.un_selector em { padding-right: 5px; width: 80px; }
+			.un_selector .x { float: left; width: 15px; height: 19px; background: url({IMGDIR}/un_selector.png) no-repeat 100% -19px; text-indent: -9999px; overflow: hidden; }
+				.un_selector .x:hover { background-position: 100% -38px; }
+		a.appendmb, a.appendmb span { height: 25px; line-height: 25px !important; }
+	#friends { position: absolute; margin-top: 3px; padding: 4px; width: 120px; border: solid {DROPMENUBORDER}; border-width: 0 1px 1px; background: #FFF; }
+		.ie6 #friends, .ie7 #friends { margin-top: 4px; }
+		#friends li { display: inline; }
+			#friends a { display: block; padding: 4px 2px; color: {HIGHLIGHTLINK}; }
+				#friends a:hover { text-decoration: none; }
+				#friends a.a { background: {SPECIALBG}; }
+	#showSelectBox_menu { padding: 10px; width: 300px; white-space: nowrap; }
+	#selBox { margin: 0 -10px 10px; padding-right: 10px; height: 110px; border: solid {COMMONBORDER}; border-width: 1px 0; overflow-y: auto; }
+/** end **/
+
+
+/** home::task **/
+.pbg { position: relative; width: 80%; }
+/*vot*/	.pbg .xs0 { position: absolute; top: 0; left: 8px; font-family: Verdana, Arial, sans-serif; }
+/** end **/
+
+
+/** home::magic,home::medal **/
+/* .mgcl -> Magic list by lushnis */
+	.mgcl li { padding: 0 5px 5px; width: 350px; height: 120px; }
+		.mgcl img { width: 74px; height: 74px; }
+		.mgcl li p { float: left; width: 236px; text-align: right; white-space: normal; }
+		.mgcl li p.xg1 { display: block; height: 36px; }
+
+/* .mdl -> medal list by Pony */
+	.mdl { border-top: none !important; }
+	.mdlow img { width: auto; height: auto; }
+/* Medal records redefinition by Pony */
+	.el li { padding-right: 40px; }
+	.el .t { margin: -2px -30px 0 0; }
+		.el .t img { width: 24px; height: 24px; }
+/** end **/
+
+
+
+/* --------------------- Portal related Styles --------------------------------------------------- */
+
+
+
+/* --------------------- Applications related styling --------------------------------------------------- */
+/** userapp::userapp **/
+/* Application Management by Pony */
+	.myset { margin-top: 15px; padding: 5px 0; background: url({IMGDIR}/vline.png) repeat-y 50% 0; }
+		.mgapp { float: right; padding: 0 15px; width: 374px; }
+		.apps { padding: 7px 0; height: 20px; line-height: 20px; border-bottom: 1px dashed #DDD; }
+			.dragable { padding-right: 25px; background: url({IMGDIR}/drag.gif) no-repeat 2px 50%; cursor: move; }
+			.dragable:hover { background-color: {COMMONBG}; }
+		.apps img { vertical-align: middle; }
+		.apps .y a { margin-left: 20px; }
+	.note { padding: 0 15px; }
+		.note li { margin-right: 20px; *margin-right: 25px; }
+
+/* Home Applications list by Pony */
+	.appmaxh .bm_c { height: 140px; }
+	.apl li { margin: 5px 0; }
+
+/* Application of new applications and the list of popular applications icon by Pony */
+	.appl li { position: relative; }
+		.ie6 .appl li { width: 100%; }
+		.appnew, .apphot { position: absolute; left: 0; width: 20px; height: 100%; background-color: {SIDEBGCOLOR}; background-repeat: no-repeat; background-position: 100% 50%; }
+			.appnew { background-image: url({IMGDIR}/appnew.png); }
+			.apphot { background-image: url({IMGDIR}/apphot.png); }
+/** end **/
+
+
+/** home::space,home::spacecp,userapp::userapp,forum::forumdisplay **/
+/* Collapse button by Pony */
+	.unfold, .fold { float: left; padding-right: 10px; background: url({IMGDIR}/arrwd.gif) no-repeat 0 50%; cursor: pointer; outline: none; }
+	.fold { background-image: url({IMGDIR}/arrow_top.gif); }
+/** end **/
+
+
+
+/* ----------------- Search Related Styles ------------------------------------------------------- */
+/** search **/
+a { color: #369; }
+body { background: #FFF none !important; }
+	#toptb { padding: 0 15px; border-bottom: 1px solid #EFEFEF; }
+#ct { margin: 0 20px; }
+#scform { margin: 10px 0;}
+	#scform h1 { margin-left: 20px; }
+	#scform_tb a { float: right; display: inline; margin: 0 3px 0 15px; height: 26px; line-height: 26px; }
+		#scform_tb .y a { margin: 0 15px 0 3px; }
+		#scform_tb .a  { background: url({IMGDIR}/searchbar.png) no-repeat 50% 100%; color: #333; font-weight: 700; }
+	#scform_form { background: url({IMGDIR}/searchbar.png) repeat-x 0 0; }
+		.td_srchtxt { background: url({IMGDIR}/searchbar.png) no-repeat 100% -35px; }
+		.td_srchbtn { background: url({IMGDIR}/searchbar.png) no-repeat 0 -70px; }
+		#scform_srchtxt { padding: 0 10px; width: 460px; background: transparent; outline: none; }
+/*vot*/		#scform_submit { width: 107px; /*opacity: 0; filter: alpha(opacity=0);*/ cursor: pointer; color: white; background: transparent; }
+		#scform_srchtxt, #scform_submit { height: 35px; border: none; line-height: 35px; }
+		.ie6 #scform_srchtxt, .ie6 #scform_submit, .ie7 #scform_srchtxt, .ie7 #scform_submit { height: 33px; border: none; line-height: 33px; }
+	.sttl { margin: 10px 0; padding: 5px; border-bottom: 1px solid #CCC; background: #F5F5F5; }
+	.slst { width: 760px; }
+		.slst a { color: #00C; text-decoration: underline; font-weight: 400; }
+		.slst a:visited { color: purple; }
+			.slst a strong { font-weight: 400; }
+			.slst p span { color: #3A8000; }
+				.slst p span a, .slst p span a:visited { color: #666; }
+		.pbw strong { font-weight: 400; }
+			.pbw p { color: #000; }
+		.p_pop span { display: none; }
+#ft { margin: 20px; text-align: center; }
+.pg { float: none; }
+#myspace_menu li a, #navs_menu li a { background-repeat: no-repeat; background-position: -200px 0; }
+/** end **/
+
+
+
+/* ----------------- Top-List Related Styles ------------------------------------------------------- */
+/** misc::ranklist **/
+.rankicn { width: 20px; }
+
+/* .rnk1 One block per line */
+.rnk1 {}
+	.rnk1 .mlp .d { width: 120px; height: 120px; }
+	.rnk1 .mlp img { max-width: 100px; max-height: 75px; }
+		.ie6 .rnk1 .mlp img { width: expression(this.width > 100 && this.width>=this.height ? 100 : true); height: expression(this.height > 75 && this.width<=this.height ? 75 : true); }
+	.rnk1 .mlp .bigpic { width: 295px; height: 240px; }
+		.rnk1 .bigpic img { max-width: 286px; max-height: 200px; }
+			.ie6 .rnk1 .bigpic img { width: expression(this.width > 286 && this.width>=this.height ? 286 : true); height: expression(this.height > 200 && this.width<=this.height ? 200 : true); }
+
+/* The serial number of pictures on the top */
+.picrank { position: absolute; margin: 14px 8px 0 0 !important; }
+
+/* Bid Ranking by Pony */
+.bid { margin: 2px 2px -2px -4px; zoom: 1; }
+.biduser { width: 780px; background: url({IMGDIR}/avatar_blank.gif); }
+	.biduser li { float: right; margin: 0 0 4px 4px; }
+	.biduser a { display: block; }
+		.biduser img { width: 48px; height: 48px; }
+	.bidtop { overflow: hidden; width: 100px; height: 100px; background-color: {COMMONBG}; }
+		.bidtop img { width: auto; height: 100px; }
+
+
+/* Redefinition */
+.xl2 { background: url({IMGDIR}/vline.png) repeat-y 50% 0; }
+	.xl2 li { margin-left: 20px; width: 378px; }
+		.xl2 li.xl2_r { margin-left: 0; }
+
+.hasrank dl { padding-right: 110px; }
+	.ranknum { position: absolute; margin: 8px -100px 0 0; }
+
+.el .t {  }
+.pll li { padding-right: 20px; }
+
+.acl td { border-top: none; border-bottom: 1px dashed {COMMONBORDER}; }
+/** end **/
+
+
+
+/* -------------- Statistics related Styles ---------------------------------------------------------- */
+/** misc::stat **/
+.dt a { color: {HIGHLIGHTLINK}; }
+.dt th, .dt td { border-left: 1px solid {COMMONBORDER}; }
+.dt .stat_subject { border-left: none; }
+.dt .stat_num { padding-left: 15px; text-align: left; }
+.pbg { float: right; width: 372px; }
+.bm_h { padding-right: 0; background: none; border: none; }
+/** end **/
+

@@ -13,7 +13,7 @@ body { background-color: transparent; }
 			.block .dxb_bc { padding: 5px 10px 10px; }
 		.block .title { padding: 0 10px; font-size: 12px; color: #333; }
 	#pcd .hm img { padding: 2px; background: {WRAPBG}; border: 1px solid; border-color: {COMMONBG} {COMMONBORDER} {COMMONBORDER} {COMMONBG}; }
-	#pcd h2 { margin: 10px auto 0; }
+/*vot*/ #pcd h2 { margin: 1px auto 0; clear: both; }
 	.mls li { width: 69px; }
 .move-span{ margin: 1px; }
 .column, #share { overflow: hidden; }
@@ -27,7 +27,7 @@ body { background-color: transparent; }
 #hd ul.savebar li { float:right; margin: 0 3px;}
 .ipx {background: none; height: 17px;}
 #infoedit { margin-left: 5px; padding: 0 5px; background: #369; color: #FFF; cursor: pointer; }
-#diy-tg { float: right; line-height: 30px; background: url({STATICURL}image/diy/panel-toggle-space.png) no-repeat 100% 2px; }
+#diy-tg { float: right; line-height: 30px; background: url({STATICURL}image/diy/panel-toggle-space.png) no-repeat 100% 2px; padding: 0 4px !important;}
 .topnav_pop li span{ display: none; }
 #myspace_menu li a, #navs_menu li a { background-repeat: no-repeat; background-position: -200px 0; }
 .ct2 .sd { width: 180px; }
@@ -40,11 +40,12 @@ body { background-color: transparent; }
 	#pcd { padding: 15px 4px 15px 6px; }
 
 	.mla li, .mlp li { width: 133px; }
-	.buddy li { width: 156px; }
+/*vot*/	.buddy li { width: 156px; height: 75px; }
 	.pic .c img { max-width: 714px; }
 		* html .pic .c img { width: expression(this.width > 714 ? 714 : true); }
 	.ul_list {}
-		.ul_list a { padding: 2px 0 2px 20px; background-position: 0 50%; background-repeat: no-repeat; }
+/*vot*/		.ul_list li { /*border: 1px solid red;*/ }
+/*vot*/		.ul_list a { padding-left: 20px; background-position: 0 50%; background-repeat: no-repeat; }
 		.ul_diy a { background-image: url({STATICURL}image/feed/thread_magic.gif); }
 		.ul_msg a { background-image: url({STATICURL}image/feed/wall.gif); }
 		.ul_avt a { background-image: url({STATICURL}image/feed/album.gif); }

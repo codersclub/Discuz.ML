@@ -19,7 +19,12 @@
 
 <script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{$_G['setting']['imagemaxwidth']}';var aimgcount = new Array();</script>
 
-<div class="fastpreview"><span class="icon_preview"></span>
+<!--{if in_array($thread['displayorder'], array(1, 2, 3, 4))}-->
+	<!--{eval $thread['id'] = 'stickthread_'.$thread['tid'];}-->
+<!--{else}-->
+	<!--{eval $thread['id'] = 'normalthread_'.$thread['tid'];}-->
+<!--{/if}-->
+<div class="fastpreview"><span class="icon_preview"></span><a class="showhide y" href="javascript:void(0);" onclick="previewThread('$thread[tid]', '$thread[id]');" title="{lang hide_preview}">{lang hide_preview}</a>
 	<div>
 		<div>
 			<div class="bm_c">
@@ -62,6 +67,7 @@
 				}
 			</script>
 			<!--{/if}-->
+			<div class="hm"><a class="icon_up" href="javascript:void(0);" onclick="previewThread('$thread[tid]', '$thread[id]');" title="{lang collapse_preview}"> </a></div>
 		</div>
 	</div>
 </div>

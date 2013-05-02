@@ -21,7 +21,7 @@
 				<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang activation}</a>
 				<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a>
 			<!--{else}-->
-				<a href="member.php?mod={$_G[setting][regname]}">$_G['setting']['reglinkname']</a>
+<!--vot-->			<a href="member.php?mod={$_G[setting][regname]}">{lang register}</a>
 				<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang login}</a>
 			<!--{/if}-->
 		</div>
@@ -35,7 +35,18 @@
 		<!--{/loop}-->
 		</ul>
 	<!--{/if}-->
-	$_G[setting][menunavs]
+
+<!--vot-->			<!--{if $_G[setting][menunavs]}-->
+<!--vot-->				<!--{loop $_G[setting][menunavs] $navid $subnav}-->
+<!--vot-->				<ul class="p_pop h_pop" id="{$navid}_menu" style="display: none">
+<!--vot-->					<!--{loop $subnav $subid $sub}-->
+<!--vot-->					<li{$sub['liparam']}>
+<!--vot-->					<a href="{$sub['url']}"{$sub['extra']}<!--{if $sub['title']}-->title="$sub['title']" <!--{/if}-->>{$sub['name']}</a>
+<!--vot-->					</li>
+<!--vot-->					<!--{/loop}-->
+<!--vot-->				</ul>
+<!--vot-->				<!--{/loop}-->
+<!--vot-->			<!--{/if}-->
 
 	<!--{if $_G['setting']['navs']}-->
 		<ul class="p_pop h_pop" id="navs_menu" style="display: none">
@@ -45,7 +56,7 @@
 		    <!--{if $nav_hidden !== false || $nav_navshow !== false}-->
 			<!--{eval $nav['nav'] = preg_replace("/onmouseover\=\"(.*?)\"/i", '',$nav['nav'])}-->
 		    <!--{/if}-->
-			<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li $nav[nav]></li><!--{/if}-->
+<!--vot-->		<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li $nav[nav]>$nav[navname]</a></li><!--{/if}-->
 		<!--{/loop}-->
 		</ul>
 	<!--{/if}-->
@@ -53,7 +64,7 @@
 	<ul id="myspace_menu" class="p_pop" style="display:none;">
 		<!--{loop $_G['setting']['mynavs'] $nav}-->
 			<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->
-				<li>$nav[code]</li>
+<!--vot-->			<li>{$nav[code]}{$nav[navname]}</a></li>
 			<!--{/if}-->
 		<!--{/loop}-->
 	</ul>

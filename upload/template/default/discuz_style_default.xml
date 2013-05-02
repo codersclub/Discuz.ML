@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Style]]></item>
-	<item id="Version"><![CDATA[X2.5]]></item>	
+	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Data">
-		<item id="name"><![CDATA[默认风格]]></item>
+		<item id="name"><![CDATA[Default style]]></item>
 		<item id="templateid"><![CDATA[1]]></item>
-		<item id="tplname"><![CDATA[默认模板套系]]></item>
+		<item id="tplname"><![CDATA[Part of the default template set]]></item>
 		<item id="directory"><![CDATA[./template/default]]></item>
-		<item id="copyright"><![CDATA[康盛创想（北京）科技有限公司]]></item>
+		<item id="copyright"><![CDATA[Comsenz (Beijing) Technology Co., Ltd.]]></item>
 		<item id="style">
-			<item id="smfont"><![CDATA[Arial]]></item>
+			<item id="smfont"><![CDATA[Verdana,Arial,sans-serif]]></item>
 			<item id="threadtitlefontsize"><![CDATA[14px]]></item>
-			<item id="threadtitlefont"><![CDATA[Tahoma,'Microsoft Yahei','Simsun']]></item>
+			<item id="threadtitlefont"><![CDATA[Verdana, Tahoma,Arial,sans-serif]]></item>
 			<item id="smfontsize"><![CDATA[0.83em]]></item>
 			<item id="tabletext"><![CDATA[#444]]></item>
 			<item id="midtext"><![CDATA[#666]]></item>
@@ -39,7 +39,7 @@
 			<item id="menuhoverbgcolor"><![CDATA[#005AB4 nv_a.png no-repeat 50% -33px]]></item>
 			<item id="titlebgcolor"><![CDATA[#E5EDF2 titlebg.png repeat-x 0 0]]></item>
 			<item id="fontsize"><![CDATA[12px/1.5]]></item>
-			<item id="font"><![CDATA[Tahoma,'Microsoft Yahei','Simsun']]></item>
+			<item id="font"><![CDATA[Verdana, Tahoma,Arial,sans-serif]]></item>
 			<item id="styleimgdir"><![CDATA[]]></item>
 			<item id="imgdir"><![CDATA[]]></item>
 			<item id="boardimg"><![CDATA[logo.png]]></item>

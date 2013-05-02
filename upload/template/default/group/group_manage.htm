@@ -23,7 +23,7 @@
 					<!--{if !empty($specialswitch['allowchangename']) && ($_G['uid'] == $_G['forum']['founderuid'] || $_G['adminid'] == 1)}-->
 					<tr>
 						<th><span class="rq">*</span>{lang group_name}:</th>
-						<td><input type="text" id="name" name="name" class="px" size="36" tabindex="1" value="$_G[forum][name]" autocomplete="off" tabindex="1" /></td>
+<!--vot-->					<td><input type="text" id="name" name="name" class="px" maxsize="80" tabindex="1" value="$_G[forum][name]" autocomplete="off" tabindex="1" /></td>
 					</tr>
 					<!--{/if}-->
 					<!--{if !empty($specialswitch['allowchangetype']) && ($_G['uid'] == $_G['forum']['founderuid'] || $_G['adminid'] == 1)}-->

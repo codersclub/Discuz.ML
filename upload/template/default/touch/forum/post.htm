@@ -80,8 +80,10 @@
 			<li class="bl_none area">
 			<textarea class="pt" id="needmessage" tabindex="3" autocomplete="off" id="{$editorid}_textarea" name="$editor[textarea]" cols="80" rows="2"  placeholder="{lang thread_content}" fwin="reply">$postinfo[message]</textarea>
 			</li>
-			<li>
-				<input type="file" name="Filedata" id="filedata" />
+			<li style="padding:0px;">
+				<a href="javascript:;" class="y" style="background:url({STATICURL}image/mobile/images/icon_photo.png) no-repeat;overflow:hidden;">
+					<input type="file" name="Filedata" id="filedata" style="width:30px;height:30px;font-size:30px;opacity:0;"/>
+				</a>
 			</li>
 		</ul>
 		<ul id="imglist" class="post_imglist cl bl_line">
@@ -109,7 +111,7 @@
 	(function() {
 		var needsubject = needmessage = false;
 		<!--{if $_GET[action] == 'newthread'}-->
-		$('#needsubject').bind('keyup input', function() {
+		$('#needsubject').on('keyup input', function() {
 			var obj = $(this);
 			if(obj.val()) {
 				needsubject = true;
@@ -126,7 +128,7 @@
 		<!--{else}-->
 		needsubject = true;
 		<!--{/if}-->
-		$('#needmessage').bind('keyup input', function() {
+		$('#needmessage').on('keyup input', function() {
 			var obj = $(this);
 			if(obj.val()) {
 				needmessage = true;
@@ -140,11 +142,19 @@
 				$('.btn_pn').attr('disable', 'true');
 			}
 		});
+
+		$('#needmessage').on('scroll', function() {
+			var obj = $(this);
+			if(obj.scrollTop() > 0) {
+				obj.attr('rows', parseInt(obj.attr('rows'))+2);
+			}
+		}).scrollTop($(document).height());
 	 })();
 </script>
-<script type="text/javascript" src="{STATICURL}js/mobile/ajaxfileupload.js"></script>
+<script type="text/javascript" src="{STATICURL}js/mobile/ajaxfileupload.js?{VERHASH}"></script>
+<script type="text/javascript" src="{STATICURL}js/mobile/buildfileupload.js?{VERHASH}"></script>
 <script type="text/javascript">
-	var imgexts = typeof imgexts == 'undefined' ? 'jpg, jpeg, gif, png, bmp' : imgexts;
+	var imgexts = typeof imgexts == 'undefined' ? 'jpg, jpeg, gif, png' : imgexts;
 	var STATUSMSG = {
 		'-1' : '{lang uploadstatusmsgnag1}',
 		'0' : '{lang uploadstatusmsg0}',
@@ -161,47 +171,80 @@
 		'11' : '{lang uploadstatusmsg11}'
 	};
 	var form = $('#postform');
-	$('#filedata').live('change', function() {
+	$(document).on('change', '#filedata', function() {
 			popup.open('<img src="' + IMGDIR + '/imageloading.gif">');
-			$.ajaxfileupload({
-				url:'misc.php?mod=swfupload&operation=upload&type=image&inajax=yes&infloat=yes&simple=2',
-				data:{uid:"$_G[uid]", hash:"<!--{eval echo md5(substr(md5($_G[config][security][authkey]), 8).$_G[uid])}-->"},
-				dataType:'text',
-				fileElementId:'filedata',
-				success:function(data) {
-					if(data == '') {
-						popup.open('{lang uploadpicfailed}', 'alert');
-					}
-					var dataarr = data.split('|');
-					if(dataarr[0] == 'DISCUZUPLOAD' && dataarr[2] == 0) {
-						popup.close();
-						$('#imglist').append('<li><span aid="'+dataarr[3]+'" class="del"><a href="javascript:;"><img src="{STATICURL}image/mobile/images/icon_del.png"></a></span><span class="p_img"><a href="javascript:;"><img style="height:54px;width:54px;" id="aimg_'+dataarr[3]+'" title="'+dataarr[6]+'" src="{$_G[setting][attachurl]}forum/'+dataarr[5]+'" /></a></span><input type="hidden" name="attachnew['+dataarr[3]+'][description]" /></li>');
-					} else {
-						var sizelimit = '';
-						if(dataarr[7] == 'ban') {
-							sizelimit = '{lang uploadpicatttypeban}';
-						} else if(dataarr[7] == 'perday') {
-							sizelimit = '{lang donotcross}'+dataarr[8]+'{lang bytemore}';
-						} else if(dataarr[7] > 0) {
-							sizelimit = '{lang donotcross}'+dataarr[7]+'{lang bytemore}';
-						}
-						popup.open(STATUSMSG[dataarr[2]] + sizelimit, 'alert');
-					}
-				},
-				error: function() {
+
+			uploadsuccess = function(data) {
+				if(data == '') {
 					popup.open('{lang uploadpicfailed}', 'alert');
 				}
-			});
+				var dataarr = data.split('|');
+				if(dataarr[0] == 'DISCUZUPLOAD' && dataarr[2] == 0) {
+					popup.close();
+					$('#imglist').append('<li><span aid="'+dataarr[3]+'" class="del"><a href="javascript:;"><img src="{STATICURL}image/mobile/images/icon_del.png"></a></span><span class="p_img"><a href="javascript:;"><img style="height:54px;width:54px;" id="aimg_'+dataarr[3]+'" title="'+dataarr[6]+'" src="{$_G[setting][attachurl]}forum/'+dataarr[5]+'" /></a></span><input type="hidden" name="attachnew['+dataarr[3]+'][description]" /></li>');
+				} else {
+					var sizelimit = '';
+					if(dataarr[7] == 'ban') {
+						sizelimit = '{lang uploadpicatttypeban}';
+					} else if(dataarr[7] == 'perday') {
+						sizelimit = '{lang donotcross}'+Math.ceil(dataarr[8]/1024)+'K)';
+					} else if(dataarr[7] > 0) {
+						sizelimit = '{lang donotcross}'+Math.ceil(dataarr[7]/1024)+'K)';
+					}
+					popup.open(STATUSMSG[dataarr[2]] + sizelimit, 'alert');
+				}
+			};
+
+			if(typeof FileReader != null && typeof FileReader != undefined && this.files) {//note 支持html5上传新特性
+				
+				$.buildfileupload({
+					uploadurl:'misc.php?mod=swfupload&operation=upload&type=image&inajax=yes&infloat=yes&simple=2',
+					files:this.files,
+					uploadformdata:{uid:"$_G[uid]", hash:"<!--{eval echo md5(substr(md5($_G[config][security][authkey]), 8).$_G[uid])}-->"},
+					uploadinputname:'Filedata',
+					maxfilesize:"$swfconfig[max]",
+					success:uploadsuccess,
+					error:function() {
+						popup.open('{lang uploadpicfailed}', 'alert');
+					}
+				});
+
+			} else {
+
+				$.ajaxfileupload({
+					url:'misc.php?mod=swfupload&operation=upload&type=image&inajax=yes&infloat=yes&simple=2',
+					data:{uid:"$_G[uid]", hash:"<!--{eval echo md5(substr(md5($_G[config][security][authkey]), 8).$_G[uid])}-->"},
+					dataType:'text',
+					fileElementId:'filedata',
+					success:uploadsuccess,
+					error: function() {
+						popup.open('{lang uploadpicfailed}', 'alert');
+					}
+				});
+
+			}
 	});
 
-	$('#postsubmit').bind('click', function() {
+	<!--{if 0 && $_G['setting']['mobile']['geoposition']}-->
+	geo.getcurrentposition();
+	<!--{/if}-->
+	$('#postsubmit').on('click', function() {
 		var obj = $(this);
 		if(obj.attr('disable') == 'true') {
 			return false;
 		}
+
+		obj.attr('disable', 'true').removeClass('btn_pn_blue').addClass('btn_pn_grey');
+		popup.open('<img src="' + IMGDIR + '/imageloading.gif">');
+
+		var postlocation = '';
+		if(geo.errmsg === '' && geo.loc) {
+			postlocation = geo.longitude + '|' + geo.latitude + '|' + geo.loc;
+		}
+
 		$.ajax({
 			type:'POST',
-			url:form.attr('action') + '&handlekey='+form.attr('id')+'&inajax=1',
+			url:form.attr('action') + '&geoloc=' + postlocation + '&handlekey='+form.attr('id')+'&inajax=1',
 			data:form.serialize(),
 			dataType:'xml'
 		})
@@ -214,7 +257,7 @@
 		return false;
 	});
 
-	$('.del').live('click', function() {
+	$(document).on('click', '.del', function() {
 		var obj = $(this);
 		$.ajax({
 			type:'GET',

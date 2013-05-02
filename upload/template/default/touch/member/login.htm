@@ -33,7 +33,7 @@
 				<div class="login_select">
 				<span class="login-btn-inner">
 					<span class="login-btn-text">
-						<span id="span_question">{lang security_question}</span>
+						<span class="span_question">{lang security_question}</span>
 					</span>
 					<span class="icon-arrow">&nbsp;</span>
 				</span>
@@ -74,10 +74,11 @@
 
 <script type="text/javascript">
 	(function() {
-		$('.sel_list').live('change', function() {
+		$(document).on('change', '.sel_list', function() {
 			var obj = $(this);
-			$('#span_question').text(obj.find('option:selected').text());
+			$('.span_question').text(obj.find('option:selected').text());
 		});
+		formdialog.init();
 	 })();
 </script>
 <!--{template common/footer}-->

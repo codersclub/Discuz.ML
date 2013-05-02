@@ -1,5 +1,23 @@
 <!--{template common/header}-->
-
+<style>
+	#hd,#comment { display:none;}
+</style>
+<script type="text/javascript">
+	var albumback = 0;
+	function changealbumback() {
+		if(albumback == 0){
+			$('nv_forum').style.background='#000';
+			$('nv_forum').className = 'albumback';
+			$('albumback_sw').innerHTML = '{lang lightopen}';
+			albumback = 1;
+		}else{
+			$('nv_forum').style.background='#FFF';
+			$('nv_forum').className = 'albumback_on';
+			$('albumback_sw').innerHTML = '{lang lightclose}';
+			albumback = 0;
+		}
+	}
+</script>
 <script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
 <!--{if $_G['forum']['ismoderator']}-->
 	<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
@@ -22,45 +40,34 @@
 <!--{hook/viewthread_beginline}-->
 
 <div id="ct" class="ct2 wp cl">
-		<div class="bm vw pl">
-			<div class="h hm">
-				<h1 class="ph">$_G[forum_thread][subject]</h1>
-				<p class="xg1">
-					{lang posted_by}:
-					<!--{if $_G[forum_thread][author] && $_G[forum_thread][authorid]}-->
-					<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">$_G[forum_thread][author]</a>
-					<!--{else}-->
-						<!--{if $_G['forum']['ismoderator']}-->
-							<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">{lang anonymous}</a>
-						<!--{else}-->
-							{lang anonymous}
-						<!--{/if}-->
-					<!--{/if}-->
+		<div class="pic_h bm vw pl">
+			<div class="h hm cl">
+				<div class="img_tit_t cl">				
+					<h1 class="ph z">$_G[forum_thread][subject]</h1>
+					<div class="ph_r_con xg1 y vm">{lang home_view_num}:<span class="xi1"> $_G[forum_thread][views]</span> <span class="pipe">|</span> {lang comment_num}: <span class="xi1">$_G[forum_thread][replies]</span> <span class="pipe">|</span> <a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' {lang activity_member_unit}{lang thread_favorite}'">{lang thread_favorite} <span id="favoritenumber" class="xi1">{$_G['forum_thread']['favtimes']}</span></a><!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && ($post['authorid'] == $_G['uid'] && $_G['forum_thread']['closed'] == 0) && !(!$alloweditpost_status && $edittimelimit && TIMESTAMP - $post['dbdateline'] > $edittimelimit)))}-->
+					<span class="pipe">|</span><a href="forum.php?mod=post&action=edit&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if !empty($_GET[modthreadkey])}&modthreadkey=$_GET[modthreadkey]{/if}&page=$page{if $_GET[from]}&from=$_GET[from]{/if}"><!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}--><span class="xi2">{lang edit}</span></a><!--{/if}-->
+					<!--{/if}--></div>
+				</div>
+				<div class="xg1 z">
+					<a id="albumback_sw" href="javascript:void(0);" onclick="changealbumback();">{lang lightclose}</a>
 					<span class="pipe">|</span>
-					{lang dateline}: <!--{date($_G[forum_thread][dateline])}--><span class="pipe">|</span>
-					{lang home_view_num}: $_G[forum_thread][views]<span class="pipe">|</span>
-					{lang comment_num}: $_G[forum_thread][replies]
-					<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && ($post['authorid'] == $_G['uid'] && $_G['forum_thread']['closed'] == 0) && !(!$alloweditpost_status && $edittimelimit && TIMESTAMP - $post['dbdateline'] > $edittimelimit)))}-->
-					<span class="pipe">|</span><a href="forum.php?mod=post&action=edit&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if !empty($_GET[modthreadkey])}&modthreadkey=$_GET[modthreadkey]{/if}&page=$page{if $_GET[from]}&from=$_GET[from]{/if}"><!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}</a><!--{/if}-->
-					<!--{/if}-->
-					<span class="pipe">|</span><a href="forum.php?mod=viewthread&tid=$_G[tid]" class="xg1">{lang thread_mod}</a>
-					<span class="pipe">|</span>提示：支持键盘翻页 ←左 右→
-				</p>
+					<span class="keyboard-tip">{lang keyboard_tip}</span>
+				</div>
+				<div class="xg1 y"><a href="forum.php?mod=viewthread&tid=$_G[tid]" class="thread_mod xg1"><span>{lang thread_mod}</span></a></div>
 			</div>
 			<div class="d">
 				<table cellpadding="0" cellspacing="0" width="100%">
 					<tr>
-						<td>
-							<div>$post['message']</div>
-							<div>
+						<td width="780">
+							<div class="photo_pic">
 								<div id="photo_pic" style="position: relative; text-align: center;">
-								<img alt="" id="pic" style="max-width: 930px;" src="$imglist['url'][0]">
+									<img alt="" id="pic" style="max-width: 780px;_width: 780px;" src="$imglist['url'][0]">
 								</div>
 								<div id="imagelist_nav">
 									<div class="imagelist_album">
 										<a id="goleft" class="left" onclick="imagelist_go('prev');" href="javascript:void(0);"></a>
 										<div id="imagelistwarp" class="left">
-											<ul id="imagelistthumb" style="width: <!--{echo count($imglist[aid]) * 110;}-->px; left: 0px;"><img src="static/image/common/loading.gif" width="16" height="16" class="vm" /> 组图打开中，请稍候......</ul>
+											<ul id="imagelistthumb" style="width: <!--{echo count($imglist[aid]) * 110;}-->px; left: 0px;"><img src="static/image/common/loading.gif" width="16" height="16" class="vm" /> {lang waitpicloading}......</ul>
 											<a id="currentpic" class="mask" href="javascript:void(0)" style="left: 0px;"></a>
 										</div>
 										<a id="goright" class="right" onclick="imagelist_go('next');" href="javascript:void(0);"></a>
@@ -77,10 +84,10 @@
 									var left = parseInt($('imagelistthumb').style.left.substr(0, ($('imagelistthumb').style.left.length - 2)));
 									var curleft = parseInt($('currentpic').style.left.substr(0, ($('imagelistthumb').style.left.length - 2)));
 									if(type == 'next') {
-										if(left > -(width - 880)) {
+										if(left > -(width - 730)) {
 											newleft = imagewidth * 4;
-											if(left - newleft < -(width - 880)) {
-												newleft = width - 880 - left;
+											if(left - newleft < -(width - 730)) {
+												newleft = width - 730 - left;
 											}
 											imagelist_scrolleft('imagelistthumb', left, newleft);
 											imagelist_scrolleft('currentpic', curleft, newleft);
@@ -109,13 +116,13 @@
 									var left = parseInt($('imagelistthumb').style.left.substr(0, ($('imagelistthumb').style.left.length - 2)));
 									$('pic').src=imglist['url'][n];
 									var curleft = imagewidth * n;
-									if(imagecount > 8 && n >= 4) {
+									if(imagecount > 7 && n >= 4) {
 										if(n < (imagecount - 4)) {
 											curleft = imagewidth * 3;
 											imagelist_scrolleft('imagelistthumb', 0, imagewidth * (n-3));
 										} else {
-											curleft = imagewidth * (8 - (imagecount - n));
-											imagelist_scrolleft('imagelistthumb', 0, imagewidth * (imagecount-8));
+											curleft = imagewidth * (7 - (imagecount - n));
+											imagelist_scrolleft('imagelistthumb', 0, imagewidth * (imagecount-7));
 										}
 									} else {
 										imagelist_scrolleft('imagelistthumb', 0, 0);
@@ -159,12 +166,12 @@
 									}
 									var cont = $('photo_pic');
 									var tar = $('pic');
-									var w = 465;
+									var w = 390;
 									var objpos = fetchOffset(tar);
 									pager.style.position = 'absolute';
 									pager.style.left = '0px';
 									pager.style.top = '0px';
-									pager.style.width = '930px';
+									pager.style.width = '780px';
 									pager.style.height = tar.height + 'px';
 									pre.style.left = 0;
 									next.style.right = 0;
@@ -172,13 +179,13 @@
 									pre.style.height = next.style.height = tar.height + 'px';
 									pre.innerHTML = next.innerHTML = '<img src="{IMGDIR}/emp.gif" width="' + w + '" height="' + tar.height + '" />';
 
-									pre.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-prev.png) no-repeat 0 100px'; }
+									pre.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-prev.png) no-repeat 0 50%'; }
 									pre.onclick = function(){if(curnum>=1) {$('pic').src=imglist['url'][curnum-1];current_pic(curnum-1);}}
-									pre.title = '点击浏览上一张，支持\'←\'翻页';
+									pre.title = '';
 
-									next.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-next.png) no-repeat 100% 100px'; }
+									next.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-next.png) no-repeat 100% 50%'; }
 									next.onclick = function(){if(curnum < imagecount - 1) {$('pic').src=imglist['url'][curnum+1];current_pic(curnum+1);}}
-									next.title = '点击浏览下一张，支持\'→\'翻页';
+									next.title = '';
 
 									//cont.style.position = 'relative';
 									if(divappend == 1) {
@@ -216,7 +223,7 @@
 							<!--{if !IS_ROBOT && $post['first'] && !$_G['forum_thread']['archiveid']}-->
 								<!--{if !empty($lastmod['modaction'])}--><div class="modact xs1"><a href="forum.php?mod=misc&action=viewthreadmod&tid=$_G[tid]" title="{lang thread_mod}" onclick="showWindow('viewthreadmod', this.href)">{lang thread_mod_by}</a></div><!--{/if}-->
 								<!--{if $post['invisible'] == 0}-->
-									<div id="p_btn" class="mtw mbm cl xs1">
+									<div id="p_btn" class="mtw mbm cl xs1" style="display:none;">
 										<!--{hook/viewthread_useraction_prefix}-->
 										<!--{if helper_access::check_module('share')}-->
 											<a href="home.php?mod=spacecp&ac=share&type=thread&id=$_G[tid]" id="k_share" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('sharenumber').innerHTML + ' {lang activity_member_unit}{lang thread_share}'"><i><img src="{IMGDIR}/oshr.png" alt="{lang thread_share}" />{lang thread_share}<span id="sharenumber">{$_G['forum_thread']['sharetimes']}</span></i></a>
@@ -240,6 +247,29 @@
 									</div>
 								<!--{/if}-->
 							<!--{/if}-->
+						</td>
+						<td valign="top" class="album_side_r">
+							<div class="album_side">
+								<div class="hm mtn mbn">
+									<a href="home.php?mod=space&uid=$post[authorid]" target="_blank" class="xi2"><img src="$_G[setting][ucenterurl]/avatar.php?uid=$post[authorid]&size=small" /></a>
+									<span class="tit_author">
+								<!--{if $_G[forum_thread][author] && $_G[forum_thread][authorid]}-->
+									<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">$_G[forum_thread][author]</a>
+									<!--{else}-->
+										<!--{if $_G['forum']['ismoderator']}-->
+											<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">{lang anonymous}</a>
+										<!--{else}-->
+											{lang anonymous}
+										<!--{/if}-->
+									<!--{/if}-->
+									</span>
+								</div>
+								<div class="date"><span>{lang dateline}:</span> <!--{date($_G[forum_thread][dateline])}--></div>
+								<div class="album_info">
+									<h3>{lang text_summary}: </h3>
+									<p>$post['message']</p>
+								</div>
+							</div>
 						</td>
 					</tr>
 				</table>

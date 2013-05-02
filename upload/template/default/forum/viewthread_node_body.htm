@@ -8,7 +8,7 @@
 <!--{elseif $post['first'] && $_G['forum_threadpay']}-->
 	<!--{template forum/viewthread_pay}-->
 <!--{elseif $_G['forum_discuzcode']['passwordlock'][$post[pid]]}-->
-	<div class="locked">{lang message_password_exists}，请输入密码 <input type="text" id="postpw_$post[pid]" class="vm" />&nbsp;<button class="pn vm" type="button" onclick="submitpostpw($post[pid]{if $_GET['from'] == 'preview'},{$post[tid]}{else}{/if})"><strong>提交</strong></button></div>
+	<div class="locked">{lang message_password_exists} {lang pleaseinputpw}<input type="text" id="postpw_$post[pid]" class="vm" />&nbsp;<button class="pn vm" type="button" onclick="submitpostpw($post[pid]{if $_GET['from'] == 'preview'},{$post[tid]}{else}{/if})"><strong>{lang submit}</strong></button></div>
 <!--{else}-->
 	<!--{if !$post['first'] && !empty($post[subject])}-->
 		<h2>$post[subject]</h2>
@@ -65,10 +65,16 @@
 						$ad_a_pr
 					<!--{/if}-->
 				<!--{/if}-->
-				<!--{if empty($_G['uid']) && !$post['attachment'] && $_GET['from'] != 'preview'}-->
+				<!--{if !empty($_G['setting']['guesttipsinthread']['flag']) && empty($_G['uid']) && !$post['attachment'] && $_GET['from'] != 'preview'}-->
 				<div class="attach_nopermission attach_tips">
 					<div>
-						<h3><strong>马上注册，结交更多好友，享用更多功能，让你轻松玩转社区。</strong></h3>
+						<h3><strong>
+								<!--{if !empty($_G['setting']['guesttipsinthread']['text'])}-->
+								{$_G['setting']['guesttipsinthread']['text']}
+								<!--{else}-->
+								{lang guesttipsinthread_text}
+								<!--{/if}-->
+							</strong></h3>
 						<p>{lang attach_nopermission_login} <!--{hook/global_login_text}--></p>
 					</div>
 					<span class="atips_close" onclick="this.parentNode.style.display='none'">x</span>
@@ -99,6 +105,72 @@
 			<!--{if $post['invisible'] != '-2' || $_G['forum']['ismoderator']}-->$post[message]<!--{else}--><span class="xg1">{lang moderate_need}</span><!--{/if}--></td></tr></table>
 		<!--{/if}-->
 		$_G['forum_posthtml']['footer'][$post[pid]]
+
+		<!--{if $post['first'] && ($post[tags] || $relatedkeywords)}-->
+			<div class="ptg mbm mtn">
+				<!--{if $post[tags]}-->
+					<!--{eval $tagi = 0;}-->
+					<!--{loop $post[tags] $var}-->
+						<!--{if $tagi}-->, <!--{/if}--><a title="$var[1]" href="misc.php?mod=tag&id=$var[0]" target="_blank">$var[1]</a>
+						<!--{eval $tagi++;}-->
+					<!--{/loop}-->
+				<!--{/if}-->
+				<!--{if $relatedkeywords}--><span>$relatedkeywords</span><!--{/if}-->
+			</div>
+		<!--{/if}-->
+
+		<!--{if !IS_ROBOT && $post['first'] && !$_G['forum_thread']['archiveid']}-->
+			<!--{if !empty($lastmod['modaction'])}--><div class="modact"><a href="forum.php?mod=misc&action=viewthreadmod&tid=$_G[tid]" title="{lang thread_mod}" onclick="showWindow('viewthreadmod', this.href)"><!--{if $lastmod['modactiontype'] == 'REB'}-->{lang thread_mod_recommend_by}<!--{else}-->{lang thread_mod_by}<!--{/if}--></a></div><!--{/if}-->
+			<!--{hook/viewthread_modaction}-->
+		<!--{/if}-->
+
+		<!--{if $_G['setting']['allowfastreply'] && $post['first'] && $fastpost && $allowpostreply && !$_G['forum_thread']['archiveid'] && $_GET['from'] != 'preview'}-->
+			<div id="vfastpost" class="fullvfastpost">
+				<form method="post" autocomplete="off" id="vfastpostform" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&fromvf=1&extra=$_G[gp_extra]&replysubmit=yes{if $_G['gp_ordertype'] != 1}&infloat=yes&handlekey=vfastpost{/if}{if $_G[gp_from]}&from=$_G[gp_from]{/if}" onsubmit="this.message.value = parseurl(this.message.value);ajaxpost('vfastpostform', 'return_reply', 'return_reply', 'onerror');return false;">
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<table cellspacing="0" cellpadding="0" id="vfastposttb">
+						<tr>
+							<td id="vf_l"></td>
+							<td id="vf_m">
+								<input type="text" name="message" id="vmessage" onKeyDown="seditor_ctlent(event, '$(\'vfastpostform\').submit()');"/>
+							</td>
+							<td id="vf_r"></td>
+							<td id="vf_b">
+								<button type="submit" class="pn pnc" name="replysubmit" id="vreplysubmit" value="true" style="">post_newreply</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<script type="text/javascript">
+				//$('note_{$tid}').focus();
+				function succeedhandle_vfastpost(url, message, param) {
+					$('vmessage').value = '';
+					succeedhandle_fastpost(url, message, param);
+					showCreditPrompt();
+				}
+				var vf_tips = '{lang forum_live_fastreply_notice}';
+				$('vmessage').value = vf_tips;
+				$('vmessage').style.color = '#CDCDCD';
+				$('vmessage').onclick = function() {
+					if($('vmessage').value==vf_tips) {
+						$('vmessage').value='';
+						$('vmessage').style.color="#000";
+					}
+				}
+				$('vmessage').onblur = function() {
+					if(!$('vmessage').value) {
+						$('vmessage').value=vf_tips;
+						$('vmessage').style.color="#CDCDCD";
+					}
+				}
+				$('vreplysubmit').onclick = function() {
+					if($('vmessage').value == vf_tips) {
+						return false;
+					}
+				}
+			</script>
+		<!--{/if}-->
 
 		<!--{if $post['attachment'] && $_GET['from'] != 'preview'}-->
 			<div class="attach_nopermission attach_tips">
@@ -134,18 +206,20 @@
 	</div>
 	<div id="comment_$post[pid]" class="cm">
 	<!--{if $_GET['from'] != 'preview' && $_G['setting']['commentnumber'] && !empty($comments[$post[pid]])}-->
-		<h3 class="psth xs1">{lang comments}</h3>
+		<h3 class="psth xs1"><span class="icon_ring vm"></span>{lang comments}</h3>
 		<!--{if $totalcomment[$post[pid]]}--><div class="pstl">$totalcomment[$post[pid]]</div><!--{/if}-->
 		<!--{loop $comments[$post[pid]] $comment}-->
-			<div class="pstl xs1">
-				<div class="psta"><a href="home.php?mod=space&uid=$comment[authorid]" c="1">$comment[avatar]</a></div>
-				<div class="psti">
+			<div class="pstl xs1 cl">
+				<div class="psta vm">
+					<a href="home.php?mod=space&uid=$comment[authorid]" c="1">$comment[avatar]</a>
 					<!--{if $comment['authorid']}-->
-					<a href="home.php?mod=space&uid=$comment[authorid]" class="xi2 xw1">$comment[author]</a>
-					<!--{else}-->
-					{lang guest}
+						<a href="home.php?mod=space&uid=$comment[authorid]" class="xi2 xw1">$comment[author]</a>
+						<!--{else}-->
+						{lang guest}
 					<!--{/if}-->
-					&nbsp;$comment[comment]&nbsp;
+				</div>
+				<div class="psti">
+					$comment[comment]&nbsp;
 					<!--{if $comment[rpid]}-->
 						<a href="forum.php?mod=redirect&goto=findpost&pid=$comment[rpid]&ptid=$_G[tid]" class="xi2">{lang detail}</a>
 						<a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&repquote=$comment[rpid]&extra=$_GET[extra]&page=$page{if $_GET[from]}&from=$_GET[from]{/if}" class="xi2" onclick="showWindow('reply', this.href)">{lang reply}</a>
@@ -158,56 +232,13 @@
 				</div>
 			</div>
 		<!--{/loop}-->
-		<!--{if $commentcount[$post[pid]] > $_G['setting']['commentnumber']}--><div class="pgs mbm cl"><div class="pg"><a href="javascript:;" class="nxt" onclick="ajaxget('forum.php?mod=misc&action=commentmore&tid=$post[tid]&pid=$post[pid]&page=2', 'comment_$post[pid]')">{lang next_page}</a></div></div><!--{/if}-->
+		<!--{if $commentcount[$post[pid]] > $_G['setting']['commentnumber']}--><div class="pgs mbm mtn cl"><div class="pg"><a href="javascript:;" class="nxt" onclick="ajaxget('forum.php?mod=misc&action=commentmore&tid=$post[tid]&pid=$post[pid]&page=2', 'comment_$post[pid]')">{lang next_page}</a></div></div><!--{/if}-->
 	<!--{/if}-->
 	</div>
-
-	<!--{if $post['first'] && $fastpost && $allowpostreply && !$_G['forum_thread']['archiveid'] && $_GET['from'] != 'preview'}-->
-	<div id="vfastpost" class="fullvfastpost">
-		<form method="post" autocomplete="off" id="vfastpostform" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&fromvf=1&extra=$_G[gp_extra]&replysubmit=yes{if $_G['gp_ordertype'] != 1}&infloat=yes&handlekey=vfastpost{/if}{if $_G[gp_from]}&from=$_G[gp_from]{/if}" onsubmit="this.message.value = parseurl(this.message.value);ajaxpost('vfastpostform', 'return_reply', 'return_reply', 'onerror');return false;">
-			<input type="hidden" name="formhash" value="{FORMHASH}" />
-			<table cellspacing="0" cellpadding="0" id="vfastposttb">
-				<tr>
-					<td id="vf_l"></td>
-					<td id="vf_m"><input type="text" name="message" id="vmessage" onKeyDown="seditor_ctlent(event, '$(\'vfastpostform\').submit()');"/></td>
-					<td id="vf_r"></td>
-					<td id="vf_b"><button type="submit" class="pn pnc" name="replysubmit" id="vreplysubmit" value="true" style="">post_newreply</button></td>
-				</tr>
-			</table>
-		</form>
-	</div>
-	<script type="text/javascript">
-		//$('note_{$tid}').focus();
-		function succeedhandle_vfastpost(url, message, param) {
-			$('vmessage').value = '';
-			succeedhandle_fastpost(url, message, param);
-			showCreditPrompt();
-		}
-		var vf_tips = '楼主的帖子怎么样？赶紧试试这里的快速回复给楼主点评论吧';
-		$('vmessage').value = vf_tips;
-		$('vmessage').style.color = '#CDCDCD';
-		$('vmessage').onclick = function() {
-			if($('vmessage').value==vf_tips) {
-				$('vmessage').value='';
-				$('vmessage').style.color="#000";
-			}
-		}
-		$('vmessage').onblur = function() {
-			if(!$('vmessage').value) {
-				$('vmessage').value=vf_tips;
-				$('vmessage').style.color="#CDCDCD";
-			}
-		}
-		$('vreplysubmit').onclick = function() {
-			if($('vmessage').value == vf_tips) {
-				return false;
-			}
-		}
-	</script>
-	<!--{/if}-->
 
 	<!--{hook/viewthread_postbottom $postcount}-->
 	<!--{if $_GET['from'] != 'preview' && !empty($post['ratelog'])}-->
+		<h3 class="psth xs1"><span class="icon_ring vm"></span>{lang rate}</h3>
 		<dl id="ratelog_$post[pid]" class="rate{if !empty($_G['cookie']['ratecollapse'])} rate_collapse{/if}">
 			<!--{if $_G['setting']['ratelogon']}-->
 				<dd style="margin:0">
@@ -224,13 +255,17 @@
 				<!--{if $_G['setting']['ratelogon']}-->
 					<table class="ratl">
 						<tr>
-							<th class="xw1" width="120"><a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)" title="{lang rate_view}">{lang have} <span class="xi1"><!--{echo count($postlist[$post[pid]][totalrate]);}--></span> {lang people_score}</a></th>
+							<th class="xw1" width="120"><a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)" title="{lang rate_view}"> {lang number_of_participants} <span class="xi1"><!--{echo count($postlist[$post[pid]][totalrate]);}--></span></a></th>
 							<!--{loop $post['ratelogextcredits'] $id $score}-->
-							<th width="50"><i>{$_G['setting']['extcredits'][$id][title]}</i></th>
+								<!--{if $score > 0}-->
+									<th class="xw1" width="80">{$_G['setting']['extcredits'][$id][title]} <i><span class="xi1">+$score</span></i></th>
+								<!--{else}-->
+									<th class="xw1" width="80">{$_G['setting']['extcredits'][$id][title]} <i><span class="xi1">$score</span></i></th>
+								<!--{/if}-->
 							<!--{/loop}-->
 							<th>
 								<a href="javascript:;" onclick="toggleRatelogCollapse('ratelog_$post[pid]', this);" class="y xi2 op"><!--{if !empty($_G['cookie']['ratecollapse'])}-->{lang open}<!--{else}-->{lang pack}<!--{/if}--></a>
-								<i>{lang reason}</i>
+								<i class="txt_h">{lang reason}</i>
 							</th>
 						</tr>
 						<tbody class="ratl_l">
@@ -252,15 +287,7 @@
 						</tbody>
 					</table>
 					<p class="ratc">
-						{lang rate_total}:&nbsp;
-						<!--{loop $post['ratelogextcredits'] $id $score}-->
-							<!--{if $score > 0}-->
-								<span class="xi1">{$_G['setting']['extcredits'][$id][title]} + $score</span>&nbsp;
-							<!--{else}-->
-								<span class="xg1">{$_G['setting']['extcredits'][$id][title]} $score</span>&nbsp;
-							<!--{/if}-->
-						<!--{/loop}-->
-						&nbsp;<a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)" title="{lang rate_view}" class="xi2">{lang rate_view}</a>
+						<a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)" title="{lang rate_view}" class="xi2">{lang rate_view}</a>
 					</p>
 				<!--{else}-->
 					<ul class="cl">

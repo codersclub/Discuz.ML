@@ -47,3 +47,4 @@ Created & Modified by Pony.
 
 .widthauto #toptb #diy-tg_menu { margin: -7px 0 0 -1px; }
 .widthauto .switchwidth { background-position: 100% -18px; }
+.widthauto .switchwidth:hover { background: url({IMGDIR}/switch_width.png) no-repeat 100% -54px; }

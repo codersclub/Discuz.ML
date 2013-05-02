@@ -17,10 +17,10 @@
 				<!--{/if}-->
 			<!--{/if}-->
 			<!--{if ($_GET[action] == 'newthread' && $_G['group']['allowpostrushreply'] && $special != 2) || ($_GET[action] == 'edit' && getstatus($thread['status'], 3))}-->
-				<label id="extra_rushreplyset_b" onclick="showExtra('extra_rushreplyset')"><span id="extra_rushreplyset_chk">抢楼主题</span></label>
+				<label id="extra_rushreplyset_b" onclick="showExtra('extra_rushreplyset')"><span id="extra_rushreplyset_chk">{lang rushreply_thread}</span></label>
 			<!--{/if}-->
 			<!--{if $_G['group']['maxprice'] && !$special}-->
-				<label id="extra_price_b" onclick="showExtra('extra_price')"><span id="extra_price_chk">主题售价</span></label>
+				<label id="extra_price_b" onclick="showExtra('extra_price')"><span id="extra_price_chk">{lang thread_pricepay}</span></label>
 			<!--{/if}-->
 			<!--{if $_G['group']['allowposttag']}-->
 				<label id="extra_tag_b" onclick="showExtra('extra_tag')"><span id="extra_tag_chk">{lang posttag}</span></label>
@@ -134,9 +134,9 @@
 						<dl>
 							<dt>&nbsp;</dt>
 							<dd>&nbsp;</dd>
-							<dt><label for="stopfloor">回帖限制: </label></dt>
+							<dt><label for="stopfloor">{lang stopfloor}: </label></dt>
 							<dd>
-								<input type="text" name="replylimit" id="replylimit" class="px" autocomplete="off" value="$postinfo[rush][replylimit]" onkeyup="$('rushreply').checked = true;" /> <span class="xg1">每个用户回帖次数上限</span>
+								<input type="text" name="replylimit" id="replylimit" class="px" autocomplete="off" value="$postinfo[rush][replylimit]" onkeyup="$('rushreply').checked = true;" /> <span class="xg1">{lang replylimit}</span>
 							</dd>
 							<dt><label for="stopfloor">{lang rushreply_end}</label></dt>
 							<dd>
@@ -162,7 +162,7 @@
 		<div class="exfm cl" id="extra_additional_c" style="display: none;">
 			<table cellspacing="0" cellpadding="0">
 				<tr>
-					<td class="xw1" valign="top">基本属性</td>
+					<td class="xw1" valign="top">{lang basic_attr}</td>
 					<td>
 						<!--{if $_GET[action] != 'edit'}-->
 							<!--{if $_G['group']['allowanonymous']}--><label for="isanonymous"><input type="checkbox" name="isanonymous" id="isanonymous" class="pc" value="1" />{lang post_anonymous}</label><!--{/if}-->
@@ -186,7 +186,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="xw1" valign="top">文本特性</td>
+					<td class="xw1" valign="top">{lang text_feature}</td>
 					<td>
 						<!--{if ($_G['forum']['allowhtml'] || ($_GET[action] == 'edit' && ($orig['htmlon'] & 1))) && $_G['group']['allowhtml']}-->
 							<label for="htmlon"><input type="checkbox" name="htmlon" id="htmlon" class="pc" value="1" $htmloncheck />{lang post_html}</label>
@@ -201,16 +201,16 @@
 						<label for="smileyoff"><input type="checkbox" name="smileyoff" id="smileyoff" class="pc" value="1" $smileyoffcheck />{lang disable}{lang smilies}</label>
 						<label for="bbcodeoff"><input type="checkbox" name="bbcodeoff" id="bbcodeoff" class="pc" value="1" $codeoffcheck />{lang disable}{lang discuzcode}</label>
 						<!--{if $_G['group']['allowimgcontent']}-->
-							<label for="imgcontent"><input type="checkbox" name="imgcontent" id="imgcontent" class="pc" value="1" $imgcontentcheck onclick="switchEditor(this.checked?0:1);$('e_switchercheck').checked=this.checked;" />内容生成图片</label>
+							<label for="imgcontent"><input type="checkbox" name="imgcontent" id="imgcontent" class="pc" value="1" $imgcontentcheck onclick="switchEditor(this.checked?0:1);$('e_switchercheck').checked=this.checked;" />{lang content_to_pic}</label>
 						<!--{else}-->
-							<label for="imgcontent"><input type="checkbox" name="imgcontent" id="imgcontent" class="pc" value="0" $imgcontentcheck disabled="disabled"/>内容生成图片</label>
+							<label for="imgcontent"><input type="checkbox" name="imgcontent" id="imgcontent" class="pc" value="0" $imgcontentcheck disabled="disabled"/>{lang content_to_pic}</label>
 						<!--{/if}-->
 					</td>
 				</tr>
 				<!--{if $_GET[action] == 'newthread' && $_G['forum']['ismoderator'] && ($_G['group']['allowdirectpost'] || !$_G['forum']['modnewposts'])}-->
 					<!--{if $_GET[action] == 'newthread' && $_G['forum']['ismoderator'] && ($_G['group']['allowdirectpost'] || !$_G['forum']['modnewposts']) && ($_G['group']['allowstickthread'] || $_G['group']['allowdigestthread'])}-->
 						<tr>
-							<td class="xw1" valign="top">管理操作</td>
+							<td class="xw1" valign="top">{lang manage_operation}</td>
 							<td>
 								<!--{if $_G['group']['allowstickthread']}-->
 									<label for="sticktopic"><input type="checkbox" name="sticktopic" id="sticktopic" class="pc" value="1" $stickcheck />{lang post_stick_thread}</label>
@@ -223,7 +223,7 @@
 					<!--{/if}-->
 				<!--{elseif $_GET[action] == 'edit' && $_G['forum_auditstatuson']}-->
 					<tr>
-						<td class="xw1" valign="top">管理操作</td>
+						<td class="xw1" valign="top">{lang manage_operation}</td>
 						<td>
 							<label for="audit"><input type="checkbox" name="audit" id="audit" class="pc" value="1">{lang auditstatuson}</label>
 						</td>

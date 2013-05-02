@@ -45,7 +45,6 @@ function setTitle(x) {
 }
 
 </script>
-<!--{if $isFullscreen==1}-->
 <div id="ct" class="wp cl">
 	<div class="mn">
 		<!--{hook/userapp_app_top}-->
@@ -55,24 +54,9 @@ function setTitle(x) {
 		<div id="loading" style="display: block; padding: 100px 0; text-align: center; color: #999;">
 			<img src="{IMGDIR}/loading.gif" alt="loading..." class="vm" /> {lang page_loading}
 		</div>
-		<iframe id="ifm0" frameborder="0" width="970" scrolling="no" height="810" style="position: absolute; top: -5000px; left: -5000px;" src="{$url}"></iframe>
+		<iframe id="ifm0" frameborder="0" width="100%" scrolling="no" height="810" style="position: absolute; top: -5000px; left: -5000px;" src="{$url}"></iframe>
 		<!--{hook/userapp_app_bottom}-->
 	</div>
-<!--{else}-->
-<div id="ct" class="wp ct2_a cl">
-	<div class="mn">
-		<div id="mx2note" style="display: none; padding: 150px 0; text-align: center; background-color: #FFFFBF; color: #DB0000; letter-spacing: 1px;">
-			{lang no_maxthon2_message}
-		</div>
-		<div id="loading" style="display: block; padding: 100px 0; text-align: center; color: #999;">
-			<img src="{IMGDIR}/loading.gif" alt="loading..." class="vm" /> {lang page_loading}
-		</div>
-		<iframe id="ifm0" frameborder="0" width="810" scrolling="no" height="810" style="position: absolute; top: -5000px; left: -5000px;" src="{$url}"></iframe>
-	</div>
-	<div class="appl">
-		<!--{subtemplate userapp/userapp_menu_list}-->
-	</div>
-<!--{/if}-->
 </div>
 <script type="text/javascript">
 if(top.location != location) {

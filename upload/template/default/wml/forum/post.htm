@@ -25,9 +25,9 @@
 			</select>
 		<!--{/if}-->
 		<!--{if $_GET[action] == 'newthread'}-->
-			标题:<input type="text" name="subject" value="" maxlength="80" format="M*m" /><br />
+			{lang thread_subject}:<input type="text" name="subject" value="" maxlength="80" format="M*m" /><br />
 		<!--{/if}-->
-		内容:<input type="text" name="message" value="" format="M*m" /><br />
+			{lang thread_content}:<input type="text" name="message" value="" format="M*m" /><br />
 		<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
 		<!--{subtemplate common/seccheck}-->
 		<!--{/if}-->

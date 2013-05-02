@@ -146,15 +146,20 @@ function imagelist($attach, $firstpost = 0) {
 						<p class="mbn">
 							<a href="forum.php?mod=attachment{$is_archive}&aid=$aidencode&nothumb=yes" {if $_GET['from'] != 'preview'}onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" id="aid$attach[aid]"{/if} class="xw1" target="_blank">$attach[filename]</a>
 							<em class="xg1">($attach[attachsize], {lang downloads}: $attach[downloads])</em>
-							<!--{if $firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
-								<a href="forum.php?mod=ajax&action=setthreadcover&aid=$attach[aid]&fid=$_G[fid]" onclick="showWindow('setcover{$attach[aid]}', this.href)">{lang set_cover}</a>
-							<!--{/if}-->
 						</p>
 						<div class="tip tip_4" id="aid$attach[aid]_menu" style="display: none" disautofocus="true">
-							<div class="tip_c">
-								<p class="y">$attach[dateline] {lang upload}</p>
-								<p>{lang clicktodownload}</p>
+							<div>
 								<p>
+									<a href="forum.php?mod=attachment{$is_archive}&aid=$aidencode&nothumb=yes" target="_blank">{lang download}</a>
+									<!--{if helper_access::check_module('album')}-->
+										&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_$attach[aid]" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=$attach[aid]&amp;handlekey=savephoto_$attach[aid]">{lang save_to_album}</a>
+									<!--{/if}-->
+									<!--{if $firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
+										&nbsp;<a href="forum.php?mod=ajax&action=setthreadcover&aid=$attach[aid]&fid=$_G[fid]" onclick="showWindow('setcover{$attach[aid]}', this.href)">{lang set_cover}</a>
+									<!--{/if}-->
+								</p>
+								<p>
+									<span class="y">$attach[dateline] {lang upload}</span>
 									<a href="javascript:;" onclick="imageRotate('aimg_$attach[aid]', 1)"><img src="{STATICURL}image/common/rleft.gif" class="vm" /></a>
 									<a href="javascript:;" onclick="imageRotate('aimg_$attach[aid]', 2)"><img src="{STATICURL}image/common/rright.gif" class="vm" /></a>
 								</p>
@@ -191,11 +196,6 @@ function imagelist($attach, $firstpost = 0) {
 							<a href="javascript:;"><img id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" onclick="zoom(this, this.getAttribute('zoomfile'), 0, 0, '{$_G[setting][showexif]}')" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode{else}{$attach[url]}$attachthumb{/if}" alt="$attach[imgalt]" title="$attach[imgalt]" w="$attach[width]" /></a>
 						<!--{else}-->
 							<img id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes{else}{$attach[url]}$attach[attachment]{/if}" $widthcode alt="$attach[imgalt]" title="$attach[imgalt]" w="$attach[width]" />
-
-
-						<!--{/if}-->
-						<!--{if helper_access::check_module('album')}-->
-							<div class="savephoto" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_$attach[aid]" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=$attach[aid]&amp;handlekey=savephoto_$attach[aid]"><span>保存到相册</span></div>
 						<!--{/if}-->
 						</div>
 					<!--{/if}-->
@@ -249,32 +249,33 @@ function attachinpost($attach, $post) {
 					<div class="guestviewthumb">
 						<div style="margin: 0 auto;">
 							<img id="aimg_$attach[aid]" class="guestviewthumb_cur" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" onclick="showWindow('login', 'member.php?mod=logging&action=login'+'&referer='+encodeURIComponent(location))" onerror="javascript:if(this.getAttribute('makefile')){this.src=this.getAttribute('makefile'); this.removeAttribute('makefile');}" file="$thumbpath" makefile="$makefile" inpost="1" alt="$attach[imgalt]" title="$attach[imgalt]"/>
-						<br>
-						<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href+'&referer='+encodeURIComponent(location));">{lang guestviewthumb}</a>
+							<br>
+							<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href+'&referer='+encodeURIComponent(location));">{lang guestviewthumb}</a>
 						</div>
 					</div>
 				<!--{else}-->
-					<div class="mbn savephotop">
+					<div class="mbn">
 						<!--{if $_G['setting']['thumbstatus'] && $attach['thumb']}-->
-							<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} style="cursor:pointer" id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" onclick="zoom(this, this.getAttribute('zoomfile'), 0, 0, '{$_G[setting][showexif]}')" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode{else}{$attach[url]}$attachthumb{/if}" inpost="1" alt="$attach[imgalt]" title="$attach[imgalt]" {if $_GET['from'] != 'preview'}onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
+							<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} style="cursor:pointer" id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" onclick="zoom(this, this.getAttribute('zoomfile'), 0, 0, '{$_G[setting][showexif]}')" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode{else}{$attach[url]}$attachthumb{/if}" inpost="1"{if $_GET['from'] != 'preview'} onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
 						<!--{else}-->
-							<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes{else}{$attach[url]}$attach[attachment]{/if}" $widthcode id="aimg_$attach[aid]" inpost="1" alt="$attach[imgalt]" title="$attach[imgalt]" {if $_GET['from'] != 'preview'}onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
-						<!--{/if}-->
-
-						<!--{if helper_access::check_module('album')}-->
-							<div class="savephoto" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_$attach[aid]" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=$attach[aid]&amp;handlekey=savephoto_$attach[aid]"><span>保存到相册</span></div>
+							<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes{else}{$attach[url]}$attach[attachment]{/if}" $widthcode id="aimg_$attach[aid]" inpost="1"{if $_GET['from'] != 'preview'} onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
 						<!--{/if}-->
 					</div>
 				<!--{/if}-->
-
 			<div class="tip tip_4 aimg_tip" id="aimg_$attach[aid]_menu" style="position: absolute; display: none" disautofocus="true">
-				<div class="tip_c xs0">
-					<div class="y">$attach[dateline] {lang upload}</div>
-					<a href="forum.php?mod=attachment{$is_archive}&aid=$aidencode&nothumb=yes" title="$attach[filename] {lang downloads}:$attach[downloads]" target="_blank"><strong>{lang download}</strong> <span class="xs0">($attach[attachsize])</span></a>
-					<!--{if $attach[description]}--><br />$attach[description]<!--{/if}-->
-					<!--{if $firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
-						<br /><a href="forum.php?mod=ajax&action=setthreadcover&aid=$attach[aid]&fid=$_G[fid]" onclick="showWindow('setcover{$attach[aid]}', this.href)">{lang set_cover}</a>
-					<!--{/if}-->
+				<div class="xs0">
+					<p><strong>$attach[filename]</strong> <em class="xg1">($attach[attachsize], {lang downloads}: $attach[downloads])</em></p>
+					<p>
+						<a href="forum.php?mod=attachment{$is_archive}&aid=$aidencode&nothumb=yes" target="_blank">{lang download}</a>
+						<!--{if helper_access::check_module('album')}-->
+							&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_$attach[aid]" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=$attach[aid]&amp;handlekey=savephoto_$attach[aid]">{lang save_to_album}</a>
+						<!--{/if}-->
+						<!--{if $firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
+							&nbsp;<a href="forum.php?mod=ajax&action=setthreadcover&aid=$attach[aid]&fid=$_G[fid]" onclick="showWindow('setcover{$attach[aid]}', this.href)">{lang set_cover}</a>
+						<!--{/if}-->
+					</p>
+					<!--{if $attach[description]}--><p>$attach[description]</p><!--{/if}-->
+					<p class="xg1 y">$attach[dateline] {lang upload}</p>
 		<!--{else}-->
 			<!--{if $attach['description']}--><p>{$attach[description]}</p><!--{/if}-->
 			<img src="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes{else}{$attach[url]}$attach[attachment]{/if}" alt="$attach[imgalt]" title="$attach[imgalt]" />

@@ -16,9 +16,9 @@ $message<br /><br />
 {eval
 }
 
-function tpl_codedisp($discuzcodes, $code) {
+function tpl_codedisp($code) {
 }
-<!--{block return}--><div class="blockcode"><div id="code$discuzcodes[codecount]"><ol><li>$code</li></ol></div><em>{lang discuzcode_copyclipboard}</em></div><!--{/block}-->
+<!--{block return}--><div class="blockcode"><div><ol><li>$code</ol></div></div><!--{/block}-->
 <!--{eval return $return;}-->
 {eval
 }
@@ -110,7 +110,7 @@ $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archivei
 				<!--{/if}-->
 			<!--{if !$attach['price'] || $attach['payed']}-->
 				<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
-				<li><a href="forum.php?mod=viewthread&tid=$attach[tid]&aid=$attach[aid]&from=album" class="orange"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]" /></a>
+				<li><a href="forum.php?mod=viewthread&tid=$attach[tid]&aid=$attach[aid]&from=album&page=$_G[page]" class="orange"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]" /></a>
 				</li>
 				<!--{/if}-->
 			<!--{/if}-->
@@ -130,7 +130,7 @@ $is_archive = $_G['forum_thread']['is_archived'] ? '&fid='.$_G['fid'].'&archivei
 <!--{block return}-->
 	<!--{if $attach['attachimg'] && $_G['setting']['showimages'] && (!$attach['price'] || $attach['payed']) && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid'])}-->
 		<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
-		<a href="forum.php?mod=viewthread&tid=$attach[tid]&aid=$attach[aid]&from=album" class="orange"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]" /></a>
+		<a href="forum.php?mod=viewthread&tid=$attach[tid]&aid=$attach[aid]&from=album&page=$_G[page]" class="orange"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]" /></a>
 		<!--{/if}-->
 	<!--{else}-->
 		<div id="attach_$attach[aid]" class="box attach mbn" >

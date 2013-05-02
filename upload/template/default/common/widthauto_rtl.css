@@ -1,0 +1,34 @@
+/* ----------------------------------
+Self-adaption Width CSS file for Discuz! X
+(C) Comsenz Inc.
+http://www.comsenz.com
+Created & Modified by Pony.
+---------------------------------- */
+
+.wp { width: 98%; }
+	#hd .wp, #wp { min-width: 960px; }
+
+.ct2 { margin-left: 235px; }
+	.ct2 .sd { margin-left: -235px; }
+		.ie7 .ct2 .sd { margin-right: 15px; }
+		.ie6 .ct2 .sd { padding-right: 15px; position: relative; }
+	.ct2 .mn { width: 100%; }
+
+.ct2 #chart, .ct2 #an { margin-left: -235px; }
+	.ie6 .ct2 #chart, .ie6 .ct2 #an { position: relative; }
+
+.ct2_a { margin-right: 150px; background-image: none; }
+/*vot*/	.ct2_a .appl { margin-right: -150px; /*{SIDEBGCODE};*/ }
+		.ie6 .ct2_a .appl { position: relative; }
+	.ct2_a .mn { width: 100%; }
+
+#nv, #mu { border-right: 1px solid {COMMONBORDER}; border-left: 1px solid {COMMONBORDER}; }
+
+#nv { background-repeat: repeat-x; background-position: 0 -33px; }
+
+#mu ul { border-bottom: 1px solid {COMMONBORDER}; background-image: none; background-color: {COMMONBG}; }
+
+.pg_post .ct2_a { margin-right: 0; margin-left: 150px; }
+/*vot*/	.pg_post .ct2_a .appl { margin-right: 0; margin-left: -150px; }
+.pg_modcp .ct2_a, .pg_announcement .ct2_a { border: none; }
+	.pg_modcp .ct2_a .mn, .pg_announcement .ct2_a .mn { margin-left: 0; padding-top: 0; }

@@ -10,7 +10,7 @@
 	<!--{/if}-->
 	<!--{if !empty($rsshead)}-->$rsshead<!--{/if}-->
 	<!--{if widthauto()}-->
-		<link rel="stylesheet" id="css_widthauto" type="text/css" href="data/cache/style_{STYLEID}_widthauto.css?{VERHASH}" />
+<!--vot-->	<link rel="stylesheet" id="css_widthauto" type="text/css" href="data/cache/style_{STYLEID}_widthauto{RTLSUFFIX}.css?{VERHASH}" />
 		<script type="text/javascript">HTMLNODE.className += ' widthauto'</script>
 	<!--{/if}-->
 	<!--{if $_G['basescript'] == 'forum' || $_G['basescript'] == 'group'}-->
@@ -24,7 +24,7 @@
 		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
 	<!--{/if}-->
 	<!--{if $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
-	<link rel="stylesheet" type="text/css" id="diy_common" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+<!--vot-->	<link rel="stylesheet" type="text/css" id="diy_common" href="data/cache/style_{STYLEID}_css_diy{RTLSUFFIX}.css?{VERHASH}" />
 	<!--{/if}-->
 </head>
 
@@ -59,20 +59,37 @@
 			<div class="wp">
 				<div class="z">
 					<!--{loop $_G['setting']['topnavs'][0] $nav}-->
-						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->
+<!--vot-->					<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
 					<!--{/loop}-->
 					<!--{hook/global_cpnav_extra1}-->
 				</div>
 				<div class="y">
-					<a id="switchblind" href="javascript:;" onclick="toggleBlind(this)" title="{lang switch_blind}" class="switchblind">{lang switch_blind}</a>
+<!--vot-->				<a id="switchblind" href="javascript:;" onclick="toggleBlind(this)" title="{lang switch_blind}" class="switchblind"><img src="{IMGDIR}/switch_blind.png"></a>
+<!--vot-->				<span class="pipe">|</span>
 					<!--{hook/global_cpnav_extra2}-->
 					<!--{loop $_G['setting']['topnavs'][1] $nav}-->
-						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->
+<!--vot-->					<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
 					<!--{/loop}-->
+
+			<!-- vot Multi-Lingual -->
+			<!--{if $_G[config][enable_multilingual]}-->
+			<a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="{lang change_language_title}">{lang change_language}<img class="flag" src="{$_G[langurl]}{$_G[langicon]}"/></a>
+			<span class="pipe">|</span>
+			<div id="lslct_menu" class="cl p_pop" style="display: none; width:120px;">
+			<!--{loop $_G[config][languages] $lng $lngarray}-->
+				<a href="javascript:;" onclick="setlang('$lng')" title="{$lngarray[title]}">
+					<img src="{$_G[siteroot]}source/language/{$lng}/{$lngarray[icon]}"/> {$lngarray[name]}
+				</a>
+			<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+			<!-- /vot Multi-Lingual -->
+
 					<!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
-						<a href="javascript:;" id="switchwidth" onclick="widthauto(this)" title="{if widthauto()}{lang switch_narrow}{else}{lang switch_wide}{/if}" class="switchwidth"><!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}--></a>
+<!--vot-->					<a href="javascript:;" onclick="widthauto(this)" title="<!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}-->"><img src="{IMGDIR}/<!--{if widthauto()}-->shrink<!--{else}-->expand<!--{/if}-->.png"></a>
+<!--vot-->					<span class="pipe">|</span>
 					<!--{/if}-->
-					<!--{if $_G['uid'] && !empty($_G['style']['extstyle'])}--><a id="sslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});">{lang changestyle}</a><!--{/if}-->
+<!--vot-->				<!--{if !empty($_G['style']['extstyle'])}--><a id="sslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});" title="{lang changestyle_title}">{lang changestyle}<img src="{IMGDIR}/style_switch.png"></a><!--{/if}-->
 					<!--{if check_diy_perm($topic)}-->
 						$diynav
 					<!--{/if}-->
@@ -96,15 +113,15 @@
 					<!--{/loop}-->
 				<!--{/if}-->
 				<!--{if empty($_G['cookie']['ignore_notice'])}-->
-				<li><a href="javascript:;" onclick="setcookie('ignore_notice', 1);hideMenu('myprompt_menu')"><em class="ignore_notice"></em>暂不提醒</a></li>
+				<li class="ignore_noticeli"><a href="javascript:;" onclick="setcookie('ignore_notice', 1);hideMenu('myprompt_menu')" title="{lang temporarily_to_remind}"><em class="ignore_notice"></em></a></li>
 				<!--{/if}-->
 				</ul>
 			<!--{/if}-->
-			<!--{if $_G['uid'] && !empty($_G['style']['extstyle'])}-->
+<!--vot-->		<!--{if !empty($_G['style']['extstyle'])}-->
 				<div id="sslct_menu" class="cl p_pop" style="display: none;">
-					<!--{if !$_G[style][defaultextstyle]}--><span class="sslct_btn" onclick="extstyle('')" title="{lang default}"><i></i></span><!--{/if}-->
+<!--vot-->				<!--{if !$_G[style][defaultextstyle]}--><a class="sslct_btn" onclick="extstyle('')"><i></i>{lang default}</a><!--{/if}-->
 					<!--{loop $_G['style']['extstyle'] $extstyle}-->
-						<span class="sslct_btn" onclick="extstyle('$extstyle[0]')" title="$extstyle[1]"><i style='background:$extstyle[2]'></i></span>
+<!--vot-->					<a class="sslct_btn" onclick="extstyle('$extstyle[0]')"><i style='background:$extstyle[2]'></i>$extstyle[1]</a>
 					<!--{/loop}-->
 				</div>
 			<!--{/if}-->
@@ -121,10 +138,10 @@
 				</div>
 
 				<div id="nv">
-					<a href="javascript:;" id="qmenu" onmouseover="delayShow(this, function () {showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'a','duration':2});showForummenu($_G[fid]);})">{lang my_nav}</a>
+<!--vot-->				<a href="javascript:;" id="qmenu" onmouseover="delayShow(this, function () {showMenu({'ctrlid':'qmenu','pos':'<!--{if $_G['langdir']=='rtl'}-->43<!--{else}-->34<!--{/if}-->!','ctrlclass':'a','duration':2});showForummenu($_G[fid]);})">{lang my_nav}</a>
 					<ul>
 						<!--{loop $_G['setting']['navs'] $nav}-->
-							<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if $mnid == $nav[navid]}class="a" {/if}$nav[nav]></li><!--{/if}-->
+<!--vot-->						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if $mnid == $nav[navid]}class="a" {/if}$nav[nav]>$nav[navname]</a></li><!--{/if}-->
 						<!--{/loop}-->
 					</ul>
 					<!--{hook/global_nav_extra}-->
@@ -138,13 +155,29 @@
 					<!--{/loop}-->
 					</ul>
 				<!--{/if}-->
-				$_G[setting][menunavs]
+
+<!--vot-->			<!--{if $_G[setting][menunavs]}-->
+<!--vot-->				<!--{loop $_G[setting][menunavs] $navid $subnav}-->
+<!--vot-->				<ul class="p_pop h_pop" id="{$navid}_menu" style="display: none">
+<!--vot-->					<!--{loop $subnav $subid $sub}-->
+<!--vot-->					<li{$sub['liparam']}>
+<!--vot-->					<a href="{$sub['url']}"{$sub['extra']}<!--{if $sub['title']}-->title="$sub['title']" <!--{/if}-->>{$sub['name']}</a>
+<!--vot-->					</li>
+<!--vot-->					<!--{/loop}-->
+<!--vot-->				</ul>
+<!--vot-->				<!--{/loop}-->
+<!--vot-->			<!--{/if}-->
+
 				<div id="mu" class="cl">
 				<!--{if $_G['setting']['subnavs']}-->
 					<!--{loop $_G[setting][subnavs] $navid $subnav}-->
 						<!--{if $_G['setting']['navsubhover'] || $mnid == $navid}-->
 						<ul class="cl {if $mnid == $navid}current{/if}" id="snav_$navid" style="display:{if $mnid != $navid}none{/if}">
-						$subnav
+<!--vot-->					<!--{loop $subnav $subid $sub}-->
+<!--vot-->					<li{$sub['liparam']}>
+<!--vot-->					<a href="{$sub['url']}"{$sub['extra']}<!--{if $sub['title']}-->title="$sub['title']" <!--{/if}-->>{$sub['name']}</a>
+<!--vot-->					</li>
+<!--vot-->					<!--{/loop}-->
 						</ul>
 						<!--{/if}-->
 					<!--{/loop}-->

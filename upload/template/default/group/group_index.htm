@@ -1,10 +1,11 @@
 <!--{if $status != 2}-->
 	<!--{if $livethread}-->
 		<div id="livethread" class="tl bm bmw cl" style="padding:10px 15px;">
-			<div class="livethreadtitle">
+			<div class="livethreadtitle vm">
 				<span class="replynumber xg1">{lang reply} <span id="livereplies" class="xi1">$livethread[replies]</span></span>
 				<a href="forum.php?mod=viewthread&tid=$livethread[tid]" target="_blank">$livethread[subject]</a> <img src="{IMGDIR}/livethreadtitle.png" />
 			</div>
+			<div class="livethreadcon">$livemessage</div>
 			<div id="livereplycontentout">
 				<div id="livereplycontent">
 				</div>
@@ -13,7 +14,16 @@
 			<div id="livefastreply">
 				<form id="livereplypostform" method="post" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$livethread[tid]&replysubmit=yes&infloat=yes&handlekey=livereplypost&inajax=1" onsubmit="return livereplypostvalidate(this)">
 					<div id="livefastcomment">
-						<textarea id="livereplymessage" name="message" style="color:gray;">{lang group_live_fastreply_notice}</textarea>
+						<textarea id="livereplymessage" name="message" style="color:gray;<!--{if !$liveallowpostreply}-->display:none;<!--{/if}-->">{lang group_live_fastreply_notice}</textarea>
+						<!--{if !$liveallowpostreply}-->
+							<div>
+								<!--{if !$_G[uid]}-->
+									{lang login_to_reply} <a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)" class="xi2">{lang login}</a> | <a href="member.php?mod={$_G[setting][regname]}" class="xi2">$_G['setting']['reglinkname']</a>
+								<!--{else}-->
+									{lang no_permission_to_post}<a href="javascript:;" onclick="ajaxpost('livereplypostform', 'livereplypostreturn', 'livereplypostreturn', 'onerror', $('livereplysubmit'));" class="xi2">{lang click_to_show_reason}</a>
+								<!--{/if}-->
+							</div>
+						<!--{/if}-->
 					</div>
 					<div id="livepostsubmit" style="display:none;">
 					<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
@@ -209,7 +219,7 @@
 		<div class="pg">
 			<a href="forum.php?mod=forumdisplay&action=list&fid=$_G[fid]" class="nxt">{lang view_all_threads}</a>
 		</div>
-		<a href="javascript:;" id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]')" title="{lang send_posts}"><img src="{IMGDIR}/pn_post.png" alt="{lang send_posts}" /></a>
+<!--vot-->	<a href="javascript:;" id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]')" title="{lang send_posts}">{lang send_posts}</a>
 	</div>
 	<!--{/if}-->
 	<div class="tl bm bml">

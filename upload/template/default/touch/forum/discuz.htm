@@ -50,7 +50,7 @@
 		<!--{else}-->
 			$('.sub_forum').css('display', 'none');
 		<!--{/if}-->
-		$('.subforumshow').bind('click', function() {
+		$('.subforumshow').on('click', function() {
 			var obj = $(this);
 			var subobj = $(obj.attr('href'));
 			if(subobj.css('display') == 'none') {

@@ -4,64 +4,66 @@ Extend CSS file for Discuz! X
 (C) Comsenz Inc.
 http://www.comsenz.com
 Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
+Modified by Valery Votintsev, codersclub.org
 
-1. 一些通用模块的样式
-	1. 公告
-	2. 在线会员列表
-	3. 类似群组中邀请好友中的好友列表
-	4. 动态列表
-	5. 进度条
-	6. 广场以外的引用、代码样式
-	7. 版主管理(包括2.3、2.4)
-	8. 登录注册
-	9. 标签
-2. 发帖相关样式
-	1. 编辑器中的功能样式
-	2. 主题图标
-	3. 提交表单
-	4. 发特殊主题帖
-3. 列表样式
-	1. 广场版块、群组分类列表
-	2. 房屋列表
-	3. 主题列表
-4. 帖子内容区域样式
-	1. 结构
-	2. 作者、时间、楼层等一些属性
-	3. 帖子正文
-		1. 回帖推荐、点评等
-		2. 用户详细信息
-		3. 帖子附件及一些特殊样式(如锁定、引用、代码等)
-	4. 特殊帖样式
-	5. 广场和空间共用的商品、辩论等样式
-	6. 显示原始图片弹出层样式
-5. 群组相关样式
-6. 文章、日志等页面样式
-7. 空间相关样式
-8. 门户相关样式
-9. 漫游相关样式
-10.搜索相关样式
-11.排行榜相关样式
-12.统计相关样式
+1. Some common module styles
+	1. Notice
+	2. Online Member List
+	3. Similar to the group, invite your friends to the buddy list
+	4. Feed list
+	5. Progress bar
+	6. Plaza outside the reference, code style
+	7. Moderators management (including 2.3,2.4)
+	8. Login Register
+	9. Tags
+2. Posting style
+	1. The functions of the style editor
+	2. Theme icon
+	3. Submit the form
+	4. Made a special topic posts
+3. The list of styles
+	1. Plaza forum, group category list
+	2. Space List
+	3. Topic List
+4. Post content area style
+	1. Structure
+	2. Time, level and some other properties
+	3. Post Body
+		1. Replies recommendation, reviews, etc.
+		2. User Details
+		3. Post attachments and some special styles (such as locking, reference, code, etc.)
+	4. Special quote style
+	5. Plaza and space sharing of goods, and other styles of debate
+	6. Shows the original image pop-up layer styles
+5. Group related styles
+6. Articles, log, etc. page styles
+7. Spatial related Styles
+8. Portal related Styles
+9. Roaming related styles
+10. Search-related styles
+11. Top-List Related Styles
+12. Statistics related Styles
 
-* 全局 CSS 样式参见 common.css
-* 以下为模块 CSS 写法举例
-* 分类之间空三行，模块之间空两行，区块之间空一行 */
+* Global CSS Styles, See common.css
+* The following is an example module written CSS
+* Three lines between categories, the module space between the two lines, one blank line between blocks 
+*/
 
 /** group::index **/
-	/* 群组 index 模块使用的CSS */
+	/* Group index module uses the CSS */
 /** end **/
 
 /** group::index,forum::index **/
-	/* 群组 index 和 论坛 index 模块使用的CSS */
+	/* Group index and the index module uses the CSS Forum */
 /** end **/
 
 /** forum **/
-	/* 论坛 所有模块使用的CSS */
+	/* All modules use the CSS Forum */
 /** end **/
 
 
 
-/* ------------------------------------------------------------------------ 一些通用模块的样式 */
+/* ---------------- 1. The style of some common modules ----------- */
 
 /** forum::index **/
 #pt .y { width: 550px; height: 29px; overflow: hidden; }
@@ -71,49 +73,57 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_announcement
 	Level:			Function
-	Explain:		公告。放置在不同位置时注意调整 #anc, #an li 的高度
+	Explain:		Notice. When placed in different locations to adjust # anc, # an li high
 	Last Modify:	Pony 1203191111
 */
 	#an { margin-bottom: 5px; }
 		#an dt { display: none; }
 		#an li { float: right; clear: both; width: 526px; text-align: right; }
-			#an li span { float: left; width: 450px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-			#an li em { float: left; width: 75px; color: {LIGHTTEXT}; }
+/*vot*/			#an li span { float: left; width: 430px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/*vot*/			#an li em { float: left; width: 95px; color: {LIGHTTEXT}; }
 			#anc, #an li { height: 29px; overflow: hidden; }
 			#anc i { font-style: italic; }
 
-/* 在线会员列表 */
-	.oll li { float: left; overflow: hidden; white-space: nowrap; width: 19.9%; height: 24px; line-height: 24px; }
+/* Online member list */
+/*vot*/	.oll li { float: left; overflow: hidden; white-space: nowrap; /*width: 19.9%;*/ height: 24px; line-height: 24px; margin-right: 32px; }
 		.oll img { vertical-align: middle; }
 
-/* 论坛首页热点 by Pony */
+/* Hot Forums by Pony */
 	.heat { width: 370px; }
 	.heatl { padding-left: 15px; margin-left: 385px; background: url({IMGDIR}/vline.png) repeat-y 0 0; }
 
-/* 论坛首页四格 by Jane */
-	#category_grid { padding: 0; }
+/* Forum Home four-frame by Alice */
+	#category_grid { padding: 0; border-top:1px solid {COMMONBORDER}; }
 		#category_grid table { width:100%;table-layout: fixed; }
-			#category_grid td { width: 33%; }
+			#category_grid td { width: 25%; }
 		.category_l1, .category_l2, .category_l3, .category_l4 { line-height: 25px; background: #fff; overflow: hidden; }
 			.category_l1 { line-height: normal; }
-		.category_l2, .category_l3 { background: url({IMGDIR}/category_lbg.png) no-repeat right bottom; }
+		.category_l2, .category_l3 { background: url({IMGDIR}/category_lbg.png) no-repeat right center; }
 			.ie6 .category_l4 { margin-right: -3px; }
 			.slidebox_grid { position: relative; margin: 10px; border: 1px #ccc solid; }
-			#category_grid h4 { width:100%; height: 30px; line-height: 30px; padding-left:  10px; font-size: 14px; cursor: pointer; background: url({IMGDIR}/tb.png) repeat-x;}
+			#category_grid h4 { width:100%; height: 30px; line-height: 30px; text-indent:10px; font-size: 12px; cursor: pointer; background: url({IMGDIR}/tb.png) repeat-x; position:relative; }
 		.category_newlist { padding: 10px; }
-			.category_newlist li { height: 20px; overflow: hidden; }
+			.category_newlist li { background:url({IMGDIR}/dot.gif) no-repeat left center;  height: 21px; line-height:21px; overflow: hidden; padding-left:10px; }
+			#category_grid h4 span { background:#CDCDCD; width:1px; height:30px; display:inline-block; position:absolute; left:0; top:0; }
+			#category_grid h4 span.tit_newimg { background:#FFF; }
+			#category_grid .newimgbox:hover h4 span, #category_grid .subjectbox:hover h4 span, #category_grid .replaybox:hover h4 span, #category_grid .hottiebox:hover h4 span, #category_grid .goodtiebox:hover h4 span { width:6px; background:url({IMGDIR}/grid.png) no-repeat 0 0;transition:width 0.2s ease 0s; overflow:hidden; }
+			#category_grid .newimgbox:hover h4 span.tit_newimg { background-position:0 -30px; } 
+			#category_grid .subjectbox:hover h4 span.tit_subject { background-position:0 0; }
+			#category_grid .repalybox:hover h4 span.tit_replay { background-position:0 -30px; }
+			#category_grid .hottiebox:hover h4 span.tit_hottie { background-position:0 -60px; }
+			#category_grid .goodtiebox:hover h4 span.tit_goodtie { background-position:0 -90px; }
 /** end **/
 
 /** misc::faq **/
 /*
-	Explain:		帮助页面的标题要显示出来
+	Explain:		Help page title to be displayed
 	Last Modify:	Pony 1203231449
 */
 	.ct2_a h1.mt { display: block; }
 /** end **/
 
 /** misc::invite,group,forum::viewthread,portal::view,home::space **/
-	/* .usl -> 用于类似群组中邀请好友中的好友列表 by Pony */
+	/* .usl -> Invite friends for a similar group in the buddy list by Pony */
 		.usl { overflow: scroll; overflow-x: hidden; padding: 5px; width: 580px; height: 280px; }
 		.usl2 { width: auto; border: dashed {WRAPBORDERCOLOR}; border-width: 0 1px 1px; }
 			.usl li { overflow: hidden; float: left; margin: 3px; width: 134px; height: 64px; }
@@ -130,7 +140,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** home::space,home::spacecp,group::group,userapp::userapp,misc::ranklist,portal::view,forum::viewthread,group::viewthread,home::medal,misc::tag **/
-	/* .el -> feed_list 动态列表 by Pony */
+	/* .el -> feed_list Deed List by Pony */
 	.e { overflow: hidden; }
 		.e .i, .el .i { padding: 6px 10px; border-bottom: 1px dashed {COMMONBORDER}; background: #F7F7F7; }
 	.el {}
@@ -139,7 +149,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.ie6 .el, .ie6 .el li { zoom: 1; }
 		.el .t { position: absolute; margin: 1px 0 0 -20px; }
 		.el .o { overflow: hidden; float: right; margin: 4px -20px -4px 0; width: 16px; height: 16px; text-indent: 20px; background: url({IMGDIR}/op.png) no-repeat -2px -62px; }
-			/* 外宽改变时 .ie6 .el .o, .ie6 .xlda .el .o 的 margin 值需要更改 */
+			/* Changes outside the wide .ie6 .el .o, .ie6 .xlda .el .o, .ie6 .favl .o The margin value need to change */
 			.ie6 .el .o { position: absolute; margin: 2px 0 0 525px; }
 			.el .del { background-position: -2px -22px; }
 		.el .d { padding-top: 10px; color: {MIDTEXT}; }
@@ -151,7 +161,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 				.el .ec .hot a:hover { text-decoration: none; }
 				.el .ec .hot em { display: block; line-height: 30px; font-size: 16px; color: {HIGHLIGHTLINK}; cursor: pointer; }
 		.el a { color: {HIGHLIGHTLINK}; }
-		/* 有头像的动态列表 */
+		/* A picture of the feed list */
 		.xlda .el { overflow: hidden; float: left; margin-top: -4px; width: 100%; }
 			.xlda .el li { margin-bottom: -4px; padding-top: 14px; }
 				.ie6 .xlda .el .o { margin: 2px 0 0 460px; }
@@ -160,13 +170,13 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::viewthread,group::viewthread,home::task,misc::stat,home::space **/
-	/* 进度条 */
-		.pbg { height: 16px; background: url({IMGDIR}/pllb.png) 0 0 repeat-x; -webkit-border-radius: 0 6px 6px 0; -moz-border-radius: 0 6px 6px 0; border-radius: 0 6px 6px 0; }
+	/* Progress bar */
+		.pbg { height: 10px; background: url({IMGDIR}/pllb.png) 0 0 repeat-x; -webkit-border-radius: 0 6px 6px 0; -moz-border-radius: 0 6px 6px 0; border-radius: 0 6px 6px 0; }
 		.pbr { height: 16px; width: 470px; background-image: url({IMGDIR}/pllb.png); background-color: #5AAF4A; background-position: 0 -16px; background-repeat: repeat-x; -webkit-border-radius: 0 6px 6px 0; -moz-border-radius: 0 6px 6px 0; border-radius: 0 6px 6px 0; }
-		.pbg2 { display: block; height: 16px; width: 120px; margin: 0 auto; background: url({IMGDIR}/ico_jdt.png) 0 -16px repeat-x; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
-		.pbr2 { display: block; height: 16px; background: url({IMGDIR}/ico_jdt.png) 0 0 repeat-x; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+		.pbg2 { display: block; height: 10px; width: 130px; margin: 0 auto; background: url({IMGDIR}/ico_jdt.png) 0 -10px repeat-x; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+		.pbr2 { display: block; height: 10px; background: url({IMGDIR}/ico_jdt.png) 0 0 repeat-x; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 
-	/* 勋章链接hover时不显示下划线 by Pony 20110519 */
+	/* Order link hover does not show underline by Pony 20110519 */
 	.md_ctrl a:hover { text-decoration: none; }
 /** end **/
 
@@ -182,9 +192,6 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	#vfastpost #vf_r{width:10px;background: url({IMGDIR}/v.png) no-repeat -47px -119px;}
 	#vfastpost #vf_b{width:120px;}
 		#vfastpost #vf_b button{width:120px;display:block;height:38px;line-height:100px;overflow:hidden;background: url({IMGDIR}/v.png) no-repeat 0 0; margin: 0; padding: 0; border: none;}
-.savephotop { position: relative; display: inline-block; background: #cdf; width:auto !important; width:50px; min-width:50px}
-.savephoto {  position: absolute; right: 0; bottom: 0; width: 114px; height: 29px; background: url({IMGDIR}/btnS.png) no-repeat scroll 0 0 transparent; cursor: pointer; overflow: hidden;}
-	.savephoto span{ color: #2471A8; display: block; font-size: 12px; line-height: 16px; height: 47px; text-align: center; visibility: hidden;}
 /** end **/
 
 /** forum::viewthread,group::viewthread **/
@@ -192,10 +199,21 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 .tig_bottom1{color:#FEFEE9;display:block;height:8px;top:55px;margin-left:20px;position:absolute;z-index:111;}
 .vct{font: 12px/1.5 Tahoma;margin:0;}
 .container{border:1px solid #B1B1B1;margin-top:8px;margin-right:80px;background-color:#FEFEE9;border-radius: 3px;padding: 5px;width:120px;position:absolute;top:-80px;right:0;}
+	/* Click loading the Next button style  by Alice */
+	.pgbtn a { display: block; margin-bottom: 10px; border: 1px solid rgb(194, 213, 227); border-radius: 3px; text-align: center; }
+	.pgbtn a:hover { background: #fff; text-decoration: none; }
+	/* Posting page open, half closed around list by Alice */
+	.side_btn { position:relative; display:block; }
+	.ie_all .side_btn { display:inline; }
+	.side_btn a { position:absolute; left:-21px; top:-10px; display:block; width:7px; height:38px; overflow:hidden; }
+	.side_btn a.btn_s_close { left:-27px; top:-10px; }
+	.side_btn a.btn_s_open { left:-21px; top:-10px; }
+		.ie8 .side_btn a.btn_s_close,.ie8 .side_btn a.btn_s_open { top:-27px;}
+
 /** end **/
 
 /**  forum::forumdisplay,forum::viewthread,group::viewthread,home::space,home::spacecp,home::invite,portal::view,portal::comment,forum::post,group::post **/
-	/* 广场以外的引用、代码样式 by Pony */
+	/* Square outside the reference, code style by Pony */
 		.quote { overflow: hidden; margin: 10px 0; padding-left: 16px; background: url({IMGDIR}/qa.gif) no-repeat 0 0; color: {MIDTEXT}; }
 			.quote blockquote { display: inline; margin: 0; padding-right: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
 			.m_c .quote { width: 585px; }
@@ -204,16 +222,15 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			* html .blockcode code { font-family: 'Courier New', serif; }
 /** end **/
 
-
 /** forum::modcp,misc::stat **/
-	/* 版块管理 */
+	/* Forum Management */
 		.mdcp {}
 			.stl { float: left; width: 15%; }
 			.str { float: left; overflow: auto; overflow-y: hidden; width: 84%; *padding-bottom: 17px; }
 /** end **/
 
 /** misc::tag **/
-/* 标签列表 by Pony */
+/* Tag list by Pony */
 	.taglist { min-height: 270px; }
 		.ie6 .taglist { height: 270px; }
 		.taglist a { margin-right: 20px; line-height: 30px; white-space: nowrap; }
@@ -221,7 +238,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ------------------------------------------------------------------------ 发帖相关样式 */
+/* ------------------------ Posting style --------------- */
 /** forum::post,forum::forumdisplay,forum::viewthread,group::post,group::forumdisplay,group::viewthread **/
 .ct2_a .mn { float: left; }
 .appl { float: right; margin-top: 8px; border: none; background-color: transparent; }
@@ -239,7 +256,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 .fnm li, .fszm li, .simm li { cursor: pointer; }
 .qsv { padding-left: 16px; width: 16px; height: 16px; background: url({IMGDIR}/repquote.gif) no-repeat 50% 50%; cursor: pointer; }
 
-/* 发帖时选择标签 by Pony */
+/* Select tag when posting by Pony */
 	.marked { padding-right: 16px; background: url({IMGDIR}/mark.png) no-repeat 100% 50%; }
 	#taglistarea a { white-space: nowrap; zoom: 1; }
 		#taglistarea .marked { padding-right: 0; background: none; font-weight: 700; color: {NOTICETEXT} !important; }
@@ -287,7 +304,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::post,group::post,portal::portalcp,home::spacecp **/
-/* 发帖、日志、文章时上传的图片列表样式 by Pony 11090615 */
+/* Post, blog, upload image list style by Pony 11090615 */
 .upfl { margin-top: -1px; height: auto !important; height: 165px; max-height: 300px; overflow: auto; overflow-x: hidden; }
 	.upfl a, #imgattachlist a { color: {HIGHLIGHTLINK}; }
 	.upfl table td { border-bottom: 1px solid {COMMONBORDER}; height: 30px; line-height: 24px; }
@@ -303,7 +320,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_opattach
 	Level:			Function
-	Explain:		发文章时上传的图片上的操作区域的样式
+	Explain:		Upload pictures in the issued article on the style of the operating area
 	Last Modify:	Pony 11082416
 */
 	.opattach { display: block; position: relative; margin: 0 auto; width: 110px; border: 1px solid #CDCDCD; }
@@ -312,7 +329,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 		.opattach:hover .opattach_ctrl { display: block; }
 		.opattach img { border: none; }
 
-/* 重定义日志和文章的编辑器弹窗 by Pony 11082217 */
+/* redefinition of blog and articles editor pop by Pony 11082217 */
 .tfm .fwin .t_l, .tfm .fwin .t_c, .tfm .fwin .t_r, .tfm .fwin .m_c, .tfm .fwin .b_l, .tfm .fwin .b_c, .tfm .fwin .b_r { padding: 0; }
 .tfm .fwin th { padding: 0; width: auto; }
 .tfm .fwin .px { width: auto; }
@@ -321,7 +338,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::viewthread,forum::forumdisplay,forum::post,group **/
-/* 主题图标 by michael */
+/* Thread icon by michael */
 #newspecial_menu { width: 90px; }
 	#newspecial_menu li, #sti .wx { display: block; background: url({IMGDIR}/folder_new.gif) no-repeat 8px 50%; zoom: 1; }
 		#newspecial_menu .poll, #sti .poll { background-image: url({IMGDIR}/pollsmall.gif); }
@@ -338,7 +355,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::modcp,forum::post,group::post,home::spacecp,portal::portalcp **/
-/* 提交表单 */
+/* Form Submit */
 	.exfm { margin: 10px 0; padding: 10px 14px; border: 1px dashed {SPECIALBORDER}; background: {SPECIALBG}; }
 		.exfm .pn { height: 22px; line-height: 22px; font-size: 12px; }
 		.ie6 .exfm .pn, .ie7 .exfm .pn { line-height: 16px; }
@@ -347,7 +364,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.exfm table th, .exfm table td { padding: 4px 2px; }
 		.mdcp .um { margin-bottom: 0; padding: 10px 5px; }
 
-/* 发特殊主题帖 by dfox */
+/* Made a special topic post by dfox */
 	.sinf p, .sadd p { padding: 2px 0; height: 30px; line-height: 30px; }
 	.sinf .px, .sadd .px { width: 120px; }
 	.sinf { float: left; padding-right: 14px; width: 380px; border-right: 1px dashed {WRAPBORDERCOLOR}; }
@@ -381,7 +398,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::forumdisplay,forum::viewthread,group::forumdisplay,group::viewthread **/
-	/* 开启快速发帖和推荐表情时的样式 by Pony */
+/* Open the quick post, and the smilies style recommended by Pony */
 	#f_pst .bm_c { padding: 20px; }
 		#f_pst .tedt { width: auto; }
 		.hasfsl { margin-right: 170px; zoom: 1; }
@@ -393,7 +410,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	/*
 		Name:			mod_mobile-type
 		Level:			Function
-		Explain:		手机发帖的相关样式
+		Explain:		Mobile posting style
 		Author:			Lushnis
 		Last Modify:	Pony 1204111343
 	*/
@@ -408,7 +425,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	/*
 		Name:			threadbeginid
 		Level:			Function
-		Explain:	 	起始动画或图片的位置样式
+		Explain:	 	Start animation or the location of the picture style
 		Author:			Jane
 		Last Modify:	Jane 1210251731
 	*/
@@ -419,9 +436,9 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ------------------------------------------------------------------------ 广场版块、群组分类等列表样式 */
+/* -------------------- Plaza Forum, the group classification list style ----------------------------------------- */
 /** forum::index,forum::forumdisplay,group::index,group::group,search::group **/
-/* 版块列表 */
+/* Forum List */
 .fl {}
 	.fl_tb { width: 100%; }
 		.fl_tb td { padding: 10px 0; }
@@ -439,7 +456,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.fl_g dt { font-weight: 700; }
 	.fl_row td { border-top: 1px dashed {COMMONBORDER}; }
 
-/* 群组分类列表 */
+/* Group Category List */
 	.flt {}
 		.flt .flc { width: 294px; }
 		.gcop { margin-right: 15px; clear: left; }
@@ -453,42 +470,42 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_board_navigation
 	Level:			Function
-	Explain:		看贴页左侧的版块导航。宽度在CSS里没有默认值，宽度在后台设置
-	Last Modify:	Jane
+	Explain:		Post page to see the left side of the forum navigation. There is no width in the CSS default, the width setting in the background
+	Last Modify:	Pony
 */
 .bdl { float: left; overflow: hidden; border: 1px solid #BDD7E3; background-color: #F5F9FB; }
 	.ie6 .bdl { position: relative; }
-	.bdl_h { height: 32px; line-height: 22px; }
+/*vot*/	.bdl_h { height: 32px; line-height: 22px; width: 100%; }
 .bdl .tbn { margin: 10px; }
-	/* 分区 */
+	/* Regions */
 	.bdl dl { margin: -1px -10px 0; }
 		.bdl dt { overflow: hidden; height: 27px; line-height: 27px; border: solid #CCE0EB; border-width: 1px 0; background: #F5F9FB url({IMGDIR}/titlebg_sd.png) repeat-x 100% 0; }
 			.bdl dt a { display: block; padding: 0 15px 0 10px; }
 				.bdl dt a:hover, .bdl_a a:hover { text-decoration: none; }
-	/* 版块，默认收起 */
+	/* District Forum, the default away */
 	.bdl dd { display: none; }
 		.bdl dd a { display: block; margin: 0 3px; padding: 0 7px; height: 26px; line-height: 26px; overflow: hidden; }
-	/* 展开的分区 */
+	/* Expand districts */
 	.bdl dl.a { padding-bottom: 4px; background-color: #FFF; }
 		.bdl dl.a dt { margin-bottom: 3px; background-position: 100% -27px; }
 		.bdl dl.a dd, .bdl_fav dd { display: block; overflow: hidden; zoom: 1; }
-			/* 当前版块 */
+			/* Current Forum */
 			.bdl dd.bdl_a a { background-color: #F5F9FB; font-weight: 700; color: {HIGHLIGHTLINK}; }
 
 	.previewPost { width: 100%; }
-	/* 点击加载下一页按钮样式 */
+	/* Click loading the Next button style */
 	#autopbn { display: block; margin-bottom: 10px; border: 1px solid rgb(194, 213, 227); border-radius: 3px; text-align: center; }
 	#autopbn:hover { background: #fff; text-decoration: none; }
-	/* 上涨和下降图标样式 */
+	/* Rise and Fall icon style */
 	.ico_increase, .ico_fall { display: inline-block; width: 16px; height: 16px; margin: 0 5px; background: url({IMGDIR}/increase.png) no-repeat left center; vertical-align: middle; text-indent: -999em; }
 	.ico_fall { background: url({IMGDIR}/fall.png) no-repeat left center; }
-	/* 版块热帖日历样式 */
+	/* Forum hot posts Calendar Style */
 	#ReTie_review h6 { padding: 0 10px; line-height: 27px; }
 	.review_this { padding: 5px 0 10px; }
 	.review_this li { float: left; width: 7.5%; text-align: center; }
 /*
 	Level:			Channel
-	Explain:		板块新帖提醒
+	Explain:		New posts to remind panel
 	Last Modify:	Max.Cong
 */
 	#forumnew{ position: absolute; right: 0; top: 0; z-index: -1; }
@@ -514,7 +531,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_forum_jump
 	Level:			Function
-	Explain:		快速跳转菜单
+	Explain:		Quick Jump Menu
 	Last Modify:	Pony 11080915
 */
 #fjump_menu { overflow-x: hidden; max-height: 600px; }
@@ -526,19 +543,21 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ------------------------------------------------------------------------ 主题列表样式 */
+/* ------------ Topic list style ------------------------------------------------------------ */
 /** forum::forumdisplay,forum::viewthread,forum::modcp,forum::collection,group,home::space,home::task,home::follow,search::forum,search::group,member::groupexpiry,misc::ranklist,misc::stat,misc::tag,forum::guide,portal::block **/
-/* fct --> froumatction 板块功能按钮 */
+/* fct --> froumatction Function Button */
 	.fct a { float: left; margin-left: 8px; }
-	.fa_fav_0, .fa_fav, .fa_rss, .fa_achv, .fa_bin, .fa_ivt { padding-left: 20px; background: no-repeat 0 50%; }
+/*vot*/	.fa_fav_0, .fa_fav, .fa_rss, .fa_achv, .fa_bin, .fa_ivt, .fa_mng, .fa_pend { padding-left: 16px; background: no-repeat 0 50%; }
 		.fa_fav_0 { background-image: url({IMGDIR}/fav_grey.gif); }
 		.fa_fav { background-image: url({IMGDIR}/fav.gif); }
 		.fa_rss { background-image: url({IMGDIR}/feed.gif); }
 		.fa_achv { background-image: url({IMGDIR}/clock.gif); }
 		.fa_bin { background-image: url({IMGDIR}/recyclebin.gif); }
 		.fa_ivt { background-image: url({IMGDIR}/user_add.gif); }
+/*vot*/		.fa_mng { background-image: url({IMGDIR}/manage.png); }
+/*vot*/		.fa_pend { background-image: url({IMGDIR}/notice.gif); }
 
-/* 主题列表相关 */
+/* List of related topics */
 	/*.tl .th th a { float: left; margin-right: 10px; padding-right: 17px; background: url({IMGDIR}/arw_d2.gif) no-repeat 100% 50%; }*/
 	#fh { width: 644px; }
 		.mw #fh { width: 100%; }
@@ -554,14 +573,14 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	.xst { font-family: {THREADTITLEFONT}; font-size: {THREADTITLEFONTSIZE}; }
 		.xst i { font-style: italic; }
 
-	/* threadtype 帖子类型 */
+	/* threadtype Thread Type */
 	.ttp { margin-bottom: 5px; padding-top: 10px; border-width: 2px 0 0; background: transparent; }
 		.ttp li { float: left; padding-bottom: 5px; }
 		.ttp a, .ttp strong { float: left; margin-right: 5px; padding: 4px 8px 3px; height: 18px; border: 1px solid {COMMONBORDER}; background: {WRAPBG}; white-space: nowrap; }
 			.ttp a:hover { border-color: {HIGHLIGHTLINK}; color: {HIGHLIGHTLINK}; text-decoration: none; }
 		.ttp .a a { padding-right: 12px;  padding-left: 12px; border-color: {HIGHLIGHTLINK}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
 		.ttp .pipe { float: left; margin-right: 10px; padding: 0; width: 2px; height: 27px; background: {SPECIALBORDER}; text-indent: -9999px; }
-	/* 版块有大量主题分类时的展开收起样式 by Pony */
+	/* when the Forum has launched a large number of subject classification away style by Pony */
 	.cttp { overflow: hidden; padding-right: 35px; height: 32px; }
 		.cttp .unfold, .cttp .fold { float: right; display: inline; margin: 5px -35px 9px 0; padding: 0 0 0 10px; width: 25px; height: 18px; background-color: transparent; color: {HIGHLIGHTLINK}; font-weight: 400; }
 
@@ -573,12 +592,15 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.tl tr:hover th, .tl tr:hover td { background-color: {COMMONBG}; }
 			.tl .threadpre td, .tl .threadpre:hover td { background-color: #FCFCFC; }
 			.tl .threadpre .threadpretd { border-left: 1px solid {CONTENTSEPARATE}; border-right: 1px solid {CONTENTSEPARATE};  }
-			.tl th .tdpre, .tl td.fn .tdpre { display: none; width: 31px; height: 17px; margin-top: 3px; background-image: url({IMGDIR}/preview.png); text-indent: -999em;  }
+			.tl th .tdpre, .tl td.fn .tdpre { display: none; width: 31px; height: 17px; margin-top: 3px; background-image: url({IMGDIR}/preview.png); text-indent: -999em; overflow:hidden; }
 			.tl th:hover .tdpre, .tl td.fn:hover .tdpre  { display: inline; }
 			.ie6 .tl th .tdpre, .ie6 .tl td.fn .tdpre { display: none; }
+			
 
 			.fastpreview { position: relative; }
 			.icon_preview { position: absolute; display: block; left: 80px; top: -13px; width: 11px; height: 8px; background: url({IMGDIR}/icon_preview.png); overflow: hidden; }
+			a.icon_up { display: block; margin:0 10px; height: 25px; background: #F2F2F2 url({IMGDIR}/arrow_up.png) no-repeat 50% 50%; overflow: hidden; border:1px dashed rgb(194, 213, 227); border-radius: 3px; }
+			a.icon_up:hover { background:#FFF url({IMGDIR}/arrow_up_hover.png) no-repeat 50% 50%; }
 				.fastpreview td { border-bottom: none!important; }
 			.tl th, .tl td.fn { padding-right: 1.5em; zoom: 1; }
 				.tl th a:visited, .tl td.fn a:visited { color: {MIDTEXT}; }
@@ -595,7 +617,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 				.tl cite, .tl .num em { display: block; }
 				.tl th em { margin-right: 4px; zoom: 1; }
 					.tl th em, .tl th em a { color: #007CD5; }
-				.tl td em { font-size: 11px; font-family: Arial, PMingliu, sans-serif; -webkit-text-size-adjust: none; }
+/*vot*/			.tl td em { font-size: 11px; font-family: Verdana, Arial, sans-serif; -webkit-text-size-adjust: none; }
 					.tl td em, .tl td em a { color: {LIGHTTEXT}; }
 			/*.tl .th th, .tl .th td { padding: 8px 0; background: {SPECIALBG}; border-top: 1px solid {SPECIALBORDER}; }*/
 			.tl .ts th, .tl .ts td { padding: 3px 0; border-bottom-color: {COMMONBORDER}; background: {COMMONBG}; }
@@ -604,13 +626,15 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 		.tl .th td, .tl .th th { height: 20px; border: none; vertical-align: baseline; }
 	.tl .tf { padding: 3px 0; }
 		.tf .showmenu:hover { border-color: {SPECIALBORDER}; }
+		
+		
 
 	.tl_reply { padding-left: 10px; background: url({IMGDIR}/dot.gif) no-repeat 0 7px; }
 
-	/* recy --> recyclebin 主题列表的回收站主题样式 by shuaishuai*/
+	/* recy --> recyclebin Recycle Bin theme style list of topics by shuaishuai*/
 	.recy { text-decoration: line-through; }
 
-	/* 主题分页 */
+	/* Thread Page */
 	.tps { white-space: nowrap; }
 		.tps a { padding: 2px 4px; color: {TABLETEXT}; }
 			.tps a:hover { background-color: {COMMONBG}; color: #007CD5; }
@@ -618,7 +642,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type_index
 	Level:			Function
-	Explain:		分类信息检索
+	Explain:		Classified information retrieval
 	Last Modify:	Pony 12020309
 */
 .tsm { overflow: hidden; margin-bottom: -10px; width: 100%; border-collapse: collapse !important; }
@@ -634,7 +658,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type_search
 	Level:			Function
-	Explain:		分类信息搜索
+	Explain:		Classifieds Search
 	Last Modify:	Pony 11050314
 */
 	.mfm .mtm { margin-right: 10px; }
@@ -646,7 +670,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type
 	Level:			Function
-	Explain:		论坛群组的帖子主题分类分类信息等的筛选样式
+	Explain:		Forum posts subject classification group screening of classified information and other styles
 	Author:			lushnis
 	Last Modify:	Pony
 */
@@ -656,7 +680,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ----------------------------------------------------------------------- 帖子内容区域样式 */
+/* -------------------- Post content area style --------------------------------------------------- */
 /** forum::viewthread,group::viewthread **/
 .plh { line-height: 46px; }
 	.plh .plc { padding-bottom: 0; }
@@ -664,12 +688,12 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_viewthread_header
 	Level:			Function
-	Explain:		看帖页标题区域
+	Explain:		View Thread Header
 	Last Modify:	Pony 201201181105
 */
 	.vwthd { padding-right: 80px !important; }
 		.vwthd div.y { display: inline; margin-right: -60px; }
-		.ts { display: inline; font: 700 16px 'Microsoft Yahei', 'Hei', Tahoma, 'SimHei', sans-serif; }
+/*vot*/	.ts { /*display: inline;*/ font: 700 16px Verdana, Arial, Tahoma, sans-serif; }
 
 #nv_forum #ct { border-color: {SPECIALBORDER}; }
 
@@ -680,7 +704,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 .attl_g, .attl_m { margin-left: 10px; padding-left: 16px; background: url({IMGDIR}/attl_icon.png) no-repeat 0 3px; }
 	.attl_m { background-position: -100px 3px; }
 
-/* 默认分类信息 by michael */
+/* Default classification information by michael */
 .ie6 .cgtl { width: auto; }
 	.cgtl { overflow: hidden; }
 	.cgtl td, .cgtl th, .cgtl caption { padding: 5px; border-bottom: 1px solid {SPECIALBORDER}; }
@@ -690,42 +714,84 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_cp_pls
 	Level:			Function
-	Explain:		帖子页每个楼层用户信息下方的管理链接
+	Explain:		Floors below the user information management link of the post page
 	Author:			Pony 12010414
 */
 .cp_pls a { float: left; margin-right: 4px; line-height: 1.231; }
 #scrollleftinfo { position: fixed; left: auto; top: auto; width: 5px; height: 200px; border-radius: 0 5px 5px 0; background: url({IMGDIR}/sidecontrol.png) no-repeat -9px 0; cursor: pointer; }
 #scrollleftinfo.open { width: 9px; background-position: 0 0; }
 
-#imagelist_nav { background: none repeat scroll 0 0 #DDD; margin-top: 20px; height: 150px; width: 930px; }
-	#imagelist_nav .imagelist_album { color: #FFFFFF; font-size: 12px; overflow: hidden; width: 930px; }
-	#imagelist_nav .imagelist_album div.left { height: 110px; margin-top: 18px; overflow: hidden; position: relative; width: 880px; float: left; }
+.img_tit_t .xi1 { color:#444; }
+.img_tit_t .ph { font-weight:700; font-size:16px; }
+.ph_r_con { padding: 20px 0 0; }
+a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-left:25px; height:19px; display:inline-block; color:#444; }
+	a.thread_mod:hover { background: url({IMGDIR}/bigimg.png) no-repeat 0 -57px; color:#369 !important; text-decoration:none; }
+	a.thread_mod span { color:#444; font-weight:700; }
+	a.thread_mod:hover span { color:#539BCB !important; }
+
+/*
+	Name:			mod_cp_pls
+	Level:			Function
+	Explain:		Posting Image style
+	Author:	Alice 201303281607
+*/
+#imagelist_nav { background: none repeat scroll 0 0 #DDD; margin-top: 20px; height: 150px; width: 780px; }
+	#imagelist_nav .imagelist_album { color: #FFFFFF; font-size: 12px; overflow: hidden; width: 780px; }
+	#imagelist_nav .imagelist_album div.left { height: 110px; margin-top: 18px; overflow: hidden; position: relative; width: 730px; float: left; }
 	#imagelist_nav .imagelist_album div.left ul { left: 0; position: absolute; z-index: 2; margin: 0 0; }
 	#imagelist_nav .imagelist_album div.left li { float: left; height: 110px; text-align: center; margin-top: 5px; list-style: none outside none; }
-	#imagelist_nav .imagelist_album a.left { background: url({IMGDIR}imagelist_nav.png) no-repeat scroll -21px 0px transparent; height: 63px; margin-top: 42px; margin-left: 1px; width: 24px; float: left; }
-	#imagelist_nav .imagelist_album a.left:hover { background: url({IMGDIR}imagelist_nav.png) no-repeat scroll 2px -70px transparent; }
-	#imagelist_nav .imagelist_album a.right { background: url({IMGDIR}imagelist_nav.png) no-repeat scroll 2px 0px transparent; height: 63px; margin-top: 42px; margin-right: 1px; width: 24px; float: right; }
-	#imagelist_nav .imagelist_album a.right:hover { background: url({IMGDIR}imagelist_nav.png) no-repeat scroll -21px -70px transparent; }
+	#imagelist_nav .imagelist_album a.left { background: url({IMGDIR}/imagelist_nav.png) no-repeat -21px 0px; height: 63px; margin-top: 42px; margin-left: 1px; width: 24px; float: left; }
+	#imagelist_nav .imagelist_album a.left:hover { background: url({IMGDIR}/imagelist_nav.png) no-repeat 2px -70px; }
+	#imagelist_nav .imagelist_album a.right { background: url({IMGDIR}/imagelist_nav.png) no-repeat 2px 0px; height: 63px; margin-top: 42px; margin-right: 1px; width: 24px; float: right; }
+	#imagelist_nav .imagelist_album a.right:hover { background: url({IMGDIR}/imagelist_nav.png) no-repeat -21px -70px; }
 	#imagelist_nav .imagelist_album div.left a.mask { background-color:#333; display: block; height: 110px; overflow: hidden; position: absolute; width: 110px; z-index: 1; }
 	#imagelist_nav .imagelist_album div.left li div { height: 110px; position: relative; overflow: hidden; cursor: pointer; width: 110px; }
 	#imagelist_nav .imagelist_album div.left li div span { background-color: #000000; bottom: 2px; color: #FFFFFF; display: block; font-size: 12px; height: 14px; line-height: 14px; position: absolute; right: 5px; text-align: center; top:86px; width: 33px; }
-/** end **/
+	.photo_pic { width:780px; }
+	.ie6 #photo_pic img { width: expression(this.width > 620 ? 620:true); }
+	.ie6 .photo_pic { width:780px; margin:0 auto; }
+	.album_side_r { border-left:1px dashed #CDCDCD; }
+	.album_side { padding:20px 10px; font-size:12px; }
+	.album_side .hm { padding:0 0 10px; }
+	.album_info h3 { color:#999; margin:10px 0; }
+	.album_side .date { color:#999; }
+	.album_info p { text-indent:2em; }
+	.tit_author { display:block; }
+	.tit_author a { color: #369; font-size:14px; font-weight:700; }
+	
 
+	/* Author pointing Expand all by Alice */
+		.authi .none { display:inline-block; }
+		.authi .show { display:none; }
+		.authi:hover .none { display:none; }
+		.authi:hover .show { display:inline-block; }
+		.ie6 .authi .none { display:none; }
+		.ie6 .authi .show { display:inline-block; }
+		
+	/** end **/
 
 /** forum::forumdisplay,group::forumdisplay **/
-/* 帖子列表“新窗”、“图片模式”等按钮样式 modified by Pony */
+/* post list of the "new window ", "photo mode " button style, chk with the float need to use modified by Pony */
 	#atarget, .unchk, .chked { padding-left: 15px; line-height: 16px; background: url({IMGDIR}/atarget.png) no-repeat 0 3px; color: {HIGHLIGHTLINK}; cursor: pointer; }
 		.ie_all #atarget, .ie_all .unchk, .ie_all .chked { display: inline-block; height: 20px; line-height: 20px; }
 		#atarget.atarget_1, .chked { background-position: 0 -37px; }
 		.unchk:hover, .chked:hover { text-decoration: none; }
 
 #a_magic_doodle { padding-left: 20px; background: url({STATICURL}image/magic/doodle.small.gif) 0 50% no-repeat; }
-
+		/* Redefine the tab label style breakdown by alice 13032514 */
+		.ttp .num { background:#999; padding:0 5px; margin-left:5px; border-radius:3px; color:#FFF !important; }
+		.ttp .a .num { background:#91BDD3; }
+		/* Redefine the post more categories and tags by alice 13032614 */		
+		.pop_moremenu li { display:block; border-bottom:1px solid #E5EDF2; line-height:24px; }
+		.pop_moremenu a { display:inline; text-decoration:none; border-bottom:0; }
+		.pop_moremenu li:last-child { border-bottom:none; }
+		.pop_moremenu .pipe { margin:0; }
+		.pop_moremenu a.xw1 { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-decoration: none; font-weight:normal; }
 /*
-	Name:			mod_media_list_thread
+	Name:			mod_Media_List_thread
 	Level:			Global
 	depentend:		.ml
-	Explain:		图片模式的帖子列表
+	Explain:		Picture mode message list
 	Author:			lushnis
 	Last Modify:	Pony 11121511
 */
@@ -745,7 +811,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_threadlist_last-child
 	Level:			Function
-	Explain:		帖子列表页支持 last-child 的浏览器不显示最后一条线
+	Explain:		Page list of posts to support last-child browser does not display the last line
 	Last Modify:	Pony
 */
 .tl tbody:last-child th, .tl tbody:last-child td { border-bottom: none; }
@@ -753,7 +819,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			showhide
 	Level:			Function
-	Explain:		帖子列表页隐藏置顶帖的按钮样式
+	Explain:		Topics list page Hide top posts button style
 	Last Modify:	Jane
 */
 .showhide { width: 12px; height: 12px; background: url({IMGDIR}/close.gif) no-repeat 0 0; margin: 5px; text-indent: -999em; cursor: pointer; overflow: hidden; }
@@ -769,7 +835,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	.pl table { table-layout: fixed; width: 100%; }
 		.pl .dt { width: 100%; }
 	.plm { vertical-align: bottom !important; }
-	.plc, .pls { vertical-align: top; overflow: hidden; }
+	.plc, .pls { vertical-align: top; }
 		.plc { padding: 0 20px; }
 		.pls { width: 160px; background: {SPECIALBG}; overflow: hidden; border-right: 1px solid {CONTENTSEPARATE}; }
 		.pls .avatar { margin: 10px 15px; }
@@ -777,11 +843,11 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 			.pls .favatar { background: transparent; height: auto; border-width: 0px; overflow: visible; }
 
-		.pls p, .pls .pil, .pls .o { margin: 5px 10px 5px 20px; }
-			.pls p em, .pls dt em { color: {NOTICETEXT}; }
+/*vot*/		.pls p, .pls .pil, .pls .o { /*margin: 10px 20px;*/ padding: 2px 6px; }
+/*vot*/			.pls p em, .pls dt em { color: {NOTICETEXT}; padding-left: 10px; }
 			.pls dd, .pls dt { float: left; overflow: hidden; height: 1.6em; line-height: 1.6em; }
-				.pls dt { margin-right: 3px; width: 55px; }
-				.pls dd { width: 70px; }
+/*vot*/				.pls dt { margin-right: 3px; width: 60px; }
+/*vot*/				.pls dd { width: 65px; }
 					.pls dd img { margin-top: -2px; max-width: 65px; }
 						.ie6 .pls dd img, .ie7 .pls dd img { margin-top: 2px; width: expression(this.width > 65 ? 65 : true); }
 	.ad .pls { background: {CONTENTSEPARATE}; padding: 0; height: 4px; }
@@ -799,16 +865,16 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	#pl_top .ad .pls, #pl_top .ad .plc { height: 1px;overflow: hidden; }
 		#pl_top .pls { text-indent: 15px; }
 
-/* 帖子作者、时间、楼层等一些属性所在区块 */
-	.pi { overflow: hidden; margin-bottom: 10px; padding: 10px 0; height: 16px; border-bottom: 1px dashed {COMMONBORDER}; }
+/* Posts of the time, the floor where the block and some properties */
+/*vot*/	.pi { overflow: hidden; margin-bottom: 10px; padding: 10px 0; /*height: 16px;*/ border-bottom: 1px dashed {COMMONBORDER}; }
 		.pi strong a { float: right; margin-top: -6px; padding: 4px 6px; border: 1px solid {WRAPBG}; font-weight: 400; }
 			.pi strong a:hover { border-color: {COMMONBORDER}; }
 		.pls .pi { padding-left: 15px; }
 		.pi em {}
 		.pti {}
-			.authicn { cursor: pointer; }
+			.authicn { cursor: pointer; width:16px; }
 
-/* 帖子正文区块 */
+/* Post the text block */
 	.pcb { clear: left; margin-right: 130px; }
 		.ie6 .pcbs table, .ie6 .t_fsz table { width: auto; }
 		.pcb h1, .pcb h2 { margin: 8px 0; font-size: 1.17em; }
@@ -855,25 +921,24 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.req { background: url({IMGDIR}/repquote.gif) no-repeat 0 50%; }
 			.editp { background: url({IMGDIR}/edit.gif) no-repeat 4px 50%; }
 			.appendp { background: url({IMGDIR}/icon_append.png) no-repeat 4px 50%; }
-			.psave { background: url({IMGDIR}/pubsave.gif) no-repeat 4px 50%; }
-			.push { background: url({IMGDIR}/push.png) no-repeat 4px 50%; }
+			.psave { background: url({IMGDIR}/pubsave.gif) no-repeat 4px 50%; padding: 3px 10px 3px 25px; border:1px dotted {COMMONBORDER}; margin-left:5px; }
+			.push { background: url({IMGDIR}/push.png) no-repeat 4px 50%;}
 			.replyadd { background: url({IMGDIR}/rec_add.gif) no-repeat 0 50%; }
 			.replysubtract { background: url({IMGDIR}/rec_subtract.gif) no-repeat 0 50%; }
-		.modact { display: block; height: 32px; text-align: center; }
+		.modact { display: block; height: 32px; text-align: center; padding:30px 0 0; }
 			.modact, .modact a { line-height: 32px !important; }
-
-		#p_btn { line-height: 24px; }
-			#p_btn a { float: left; margin-right: 3px; padding-right: 4px; padding-left: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 0 0; vertical-align: top; white-space: nowrap; }
+		/* Push button by alice */
+		#p_btn { line-height: 24px; padding:3em 0; text-align:center; }
+			#p_btn a { display:inline-block; margin-right: 3px; padding-right: 4px; padding-left: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 0 0; vertical-align: top; white-space: nowrap; }
 				#p_btn a:hover { text-decoration: none; }
-				#p_btn i { display: block; padding-right: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 100% 100%; font-style: normal; cursor: pointer; }
-					#p_btn img { float: left; margin: 4px 3px 0 0; }
+				#p_btn i { display: block; padding:4px 8px 4px 0;background: url({IMGDIR}/share_btn.png) no-repeat 100% 100%; font-style: normal; cursor: pointer; }
+					#p_btn img { float: left; margin: 4px 4px 0 0; }
 					#p_btn span { padding-left: 2px; color: {LIGHTTEXT}; }
 			.tshare { padding-bottom: 10px; }
 				.tshare strong { float: left; margin-right: 10px; }
 				#p_btn .tshare a, #p_btn .tshare i { padding: 0; background-image: none; }
 					#p_btn .tshare a { margin-right: 10px; color: {HIGHLIGHTLINK}; }
 					#p_btn .tshare a:hover { text-decoration: underline; }
-
 		.rate { margin: 20px 0; font-size: 12px; }
 			.rate dt { float: left; padding-top: 7px; width: 80px; text-align: center; }
 				.rate dt strong { padding: 12px 8px; height: 46px; font-size: 24px; background: #FFF4DD; }
@@ -884,21 +949,25 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 				.rate .ratt { border-bottom: 1px dotted {WRAPBORDERCOLOR}; padding: 6px 0; }
 				.ratl th, .ratl td, .ratc { overflow: hidden; padding: 5px 2px; height: 24px; line-height: 24px; border-bottom: 1px dashed {WRAPBORDERCOLOR}; white-space: nowrap; }
 				.ratl img { height: 24px; width: 24px; vertical-align: middle; }
-			.rate_collapse .ratl_l { display: none; }
-				.rate_collapse i { visibility: hidden; }
+			.rate_collapse .ratl_l,.rate_collapse .ratc { display: none; }
+				.rate_collapse .txt_h { visibility: hidden; }
 				.rate .op { padding-right: 16px; background: url({IMGDIR}/arrow_top.gif) no-repeat 100% 50%; }
 					.rate_collapse .op { background-image: url({IMGDIR}/arrow_down.gif); }
 			.rate i { font-style: normal; }
+			.ratl .xw1 .xi1 { background:#FFF4DD; border-radius:3px; padding:2px 3px; }
+			
+			.icon_ring { background:#FFF4DD; display: inline-block; width:8px; height:8px; margin-right:5px; border:2px solid #F26C4F; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2); overflow: hidden; }
+			.icon_ring:hover { background:#F26C4F; border:2px solid #FFF; }
 
-/* 回帖推荐 post sticklist by dfox */
+/* Replies Recommended post sticklist by dfox */
 	.psth { margin: 2em 0 2em -20px; padding: 5px 45px 5px 20px; width: 240px; background: #FFF4DD url({IMGDIR}/arw.gif) no-repeat 100% 50%; color: {NOTICETEXT}; font-size: 14px; }
 	.tpst .psth { margin-left: -15px; }
-	.pstl { clear: left; margin-bottom: 2em; }
-		.psta { float: left; width: 30px; }
-			.psta img { width: 24px; height: 24px; }
-		.psti { margin-left: 30px; }
+	.pstl { clear: left; padding: 0.5em 0;}
+		.psta { float: left; width: 120px; line-height:24px; overflow:hidden; }
+			.psta img { width: 24px; height: 24px; vertical-align:midden; }
+		.psti { margin-left: 120px; line-height:24px; }
 
-/* 点评 by monkeye */
+/* Reviews by monkeye */
 	.f_c .cm { overflow: hidden; }
 	.cm .psth { background-color: #FFF4DD; color: {NOTICETEXT}; background-position: 100% 50%; font-size: 12px; }
 		.cm .pg { float: none; }
@@ -909,7 +978,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.cmm .cmstar { margin-top: 0; }
 			.cmstar em { float: left; width: 16px; height: 16px; overflow: hidden; text-indent: -9999px; }
 
-/* 屏蔽提示 */
+/* Filtering Tip */
 	#hiddenpoststip { line-height:40px;padding-left:20px;background: #FFFAF3; font-size: 12px; text-align: center; }
 	#hiddenpoststip a { display: block; text-indent: 25px; height: 29px; line-height: 29px; color: #EFAA00; }
 	#hiddenpoststip a:hover { text-decoration: none; }
@@ -917,7 +986,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_viewthread_author
 	Level:			Function
-	Explain:		第二页以后显示主题作者
+	Explain:		After the show the theme of the second page
 	Author:			lushnis
 	Last Modify:	Pony 11042913
 */
@@ -930,7 +999,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: center; font-style: normal; line-height: 32px; color: {LIGHTTEXT}; }
 
-/* 用户详细信息 */
+/* User Details */
 	.bui { position: absolute; margin: -1px 0 0 -1px; padding: 15px 0 15px 20px; width: 430px !important; border: 1px solid {COMMONBORDER}; background: {WRAPBG}; box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; -webkit-box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; -moz-box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; }
 		.bui dl { margin: 5px 0 10px; }
 			.bui dt { width: 4.5em; }
@@ -943,12 +1012,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 				.card_gender_0 { background: #efefef url({IMGDIR}/nosexbg.png) no-repeat bottom right; }
 				.card_gender_1 { background: #bbebf9 url({IMGDIR}/gentlemanbg.png) no-repeat bottom right; }
 				.card_gender_2 { background: #fce0df url({IMGDIR}/ladybg.png) no-repeat bottom right; }
-		*
 
 	/*
 		Name:			mod_user_interaction
 		Level:			Function
-		Explain:		帖子左侧用户互动操作
+		Explain:		The left side of the user interactivity post
 		Last Modify:	Pony
 	*/
 	.pls .o li { background-position: 0 50%; background-repeat: no-repeat; text-indent: 18px; }
@@ -957,13 +1025,13 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.pls .o .poke2 { background-image: url({STATICURL}image/feed/poke.gif); }
 		.pls .o .pm2 { background-image: url({IMGDIR}/pmto.gif); }
 		.pls .o .addflw { background-image: url({IMGDIR}/flw_ico.png); }
-	/* 帖子左侧用户组升级提示细微调整 Last Modify Pony */
+	/* Tuning the user group upgrade Prompt at left post side, Last Modify Pony */
 	.pls .tip_4 { margin-left: -5px; }
 
 	/*
 		Name:			mod_thread_attr
 		Level:			Function
-		Explain:		帖子中类似“游客，如果您要查看本帖隐藏内容请”等地方的样式
+		Explain:		Posts like "Guest, if you want to see the hidden post, please..." and other parts of the style
 		Last Modify:	Pony 11060209
 	*/
 	.locked { overflow: hidden; margin: 10px 0; padding: 8px 8px 8px 24px; border: 1px dashed #FF9A9A; background: {WRAPBG} url({IMGDIR}/locked.gif) no-repeat 6px 50%; font-size: 12px; zoom: 1; }
@@ -985,7 +1053,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_thread_code_quote
 		Level:			Function
-		Explain:		帖子代码/引用等样式
+		Explain:		Post code / reference other styles
 		Author:			lushnis
 		Last Modify:	Pony 1205241556
 	*/
@@ -1005,7 +1073,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.pl .tindex li { cursor: pointer; height: 22px; padding-left: 22px; background: url({IMGDIR}/ico_mulu.png) no-repeat 10px center; overflow: hidden; }
 
 
-/*投票 poll optionvessel by dfox */
+/* Poll optionvessel by dfox */
 	.pcht { margin-bottom: 15px; }
 	.polltd { padding: 4px; border: 1px #dfdfdf solid; border-radius: 3px; }
 		.pcht h4 a { color: {HIGHLIGHTLINK}; text-decoration: underline; }
@@ -1027,7 +1095,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_voter_list
 		Level:			Function
-		Explain:		投票者列表样式
+		Explain:		Voters list style
 		Last Modify:	Pony
 	*/
 	.voterlist { width: 495px; height: 195px; overflow: auto; }
@@ -1037,7 +1105,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_thread_trade_activity
 		Level:			Function
-		Explain:		spvimg,spi 为活动、商品公用部分
+		Explain:		spvimg,spi Activity, public part of the goods
 		Author:			dfox
 		Last Modify:	Pony 11082511
 	*/
@@ -1047,24 +1115,24 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.spvimg em.hot { width: 120px; height: 102px; background-position: 0 -104px; }
 		.spi { margin-left: 315px;}
 			.spi dl { font-size: 14px; }
-				.spi dl dt { float: left; padding: 2px 0; width: 80px; height: 1em; }
+/*vot*/				.spi dl dt { float: left; padding: 2px 0; width: 140px; height: 1em; }
 				.spi dl dd { margin-left: 90px; padding: 2px 0; min-height: 21px; height: auto !important; height: 21px; }
 				.spi dl dd em { color: #F30; }
 			dl.nums {}
 				.spi dl.nums dt { padding-top: 15px; }
 				.spi dl.nums dd em { font-size: 26px; }
-		.actl { table-layout: fixed; width: 320px; border-top: 3px solid {COMMONBORDER}; }
+/*vot*/		.actl { table-layout: fixed; margin: 10px 0; width: 320px; border-top: 3px solid {COMMONBORDER}; }
 			.actl th, .actl td { padding: 8px 2px; border-top: 1px dashed {COMMONBORDER}; }
 			.actl th { width: 60px; }
 		.actfm { height: auto !important; height: 220px; max-height: 220px; overflow-x: hidden; overflow-y: auto; }
 		.actl_pop { overflow: auto; max-width: 200px; max-height: 300px; }
 			.ie6 .actl_pop { width: 200px !important; height: expression(this.offsetHeight > 300 ? 300 : 'auto'); }
 			.actl_pop li { display: block; padding: 3px 0; border-bottom: 1px dashed {COMMONBORDER}; }
-			/* 重定义弹窗里的链接 */
+			/* Redefine the link in the pop */
 			.actl_pop a { display: inline; position: static; padding: 0; border: none; white-space: normal; }
 				.actl_pop a:hover { background: transparent; text-decoration: underline; }
 
-/* 悬赏 by dfox */
+/* Reward by dfox */
 	.rwd {}
 		.rsld, .rusld { width: 90px; height: 118px; background: url({IMGDIR}/rwd.gif) no-repeat 0 0; text-align: center; color: #F30; }
 		.rsld { background-position: 0 -118px; color: {LIGHTTEXT}; }
@@ -1072,7 +1140,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.rwdn { margin-left: 110px; }
 	.rwdbst {}
 
-/* 辩论观点样式 by michael */
+/* Debate point of view style by michael */
 	.pdbt { float: right; margin: -5px 10px 0 0; }
 
 	.pdbts { float: left; overflow: hidden; height: 25px; line-height: 25px; background: url({IMGDIR}/pdbt.gif) no-repeat 0 0; }
@@ -1085,7 +1153,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.pdbts_2 { background-position: 0 -50px; }
 			.pdbts_2 .b { background-position: 100% -75px; }
 
-/* 商品 trade by michael & dfox*/
+/* Goods trade by michael & dfox*/
 	.trdc { margin-top: 20px; background: #09C; height: 30px; line-height: 30px; color: {LIGHTLINK}; }
 		.trdc a { margin: 0 6px; height: 30px; line-height: 30px; color: {LIGHTLINK}; }
 		.trdc em { float: right; padding-right: 6px; line-height: 30px; color: {LIGHTLINK}; }
@@ -1108,7 +1176,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.torder .spi { margin-left: 110px; }
 			.torder .spi strong { color: #F30; }
 
-/* 门户 viewthread 显示 */
+/* Portal viewthread Show */
 .vw .pcb { margin-right: 0; }
 	.vw dd .pcb { width: 640px; }
 	.vw dd .rate { padding-left: 0; }
@@ -1141,7 +1209,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_visited_t&b
 	Level:			Function
-	Explain:		返回列表中显示的访问过的帖子和版块
+	Explain:		Back to the list of visited shown in posts and forum
 	Last Modify:	Pony
 */
 #visitedforums_menu { width: 150px; }
@@ -1151,7 +1219,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	#v_forums { width: 120px; }
 #v_threads li, #v_forums li { padding-left: 10px; background: url({IMGDIR}/dot.gif) no-repeat 0 7px; }
 
-/* 快速表情 */
+/* Quick smilies view */
 #fastsmilies { text-align: right; }
 	#fastsmilies table { table-layout: auto; width: 160px; height: 133px; }
 	#fastsmilies td { text-align: right; vertical-align: middle; cursor: pointer; }
@@ -1163,7 +1231,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_trade_list
 	Level:			Function
-	Explain:		帖子以及交易单中的商品列表
+	Explain:		Post and the list of goods in a single transaction
 	Last Modify:	Pony 11060710
 */
 .tradl {}
@@ -1181,7 +1249,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** forum::viewthread,group::viewthread,home::space **/
-/* 辩论 debatesquare by michael & dfox */
+/* Debates debatesquare by michael & dfox */
 	.dtm { padding: 10px 0; text-align: center; font-weight: 700; }
 	.ds { margin-top: 1em; background: url({IMGDIR}/debate_bg.gif) no-repeat 50% 100%; line-height: normal; }
 		.ds th { width: 60px; vertical-align: bottom; }
@@ -1198,7 +1266,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.ds .chart{ position:absolute; left: 0; bottom: 0; width: 62px; background: url({IMGDIR}/debate_chart.gif) no-repeat; }
 				.ds .sc_1 .chart{ background-position: -62px 0; }
 				.ds .sc_2 .chart{ background-position: -124px 0; }
-		/* 空间中的辩论列表 by Pony */
+		/* List of space debates by Pony */
 		#nv_home .ds table { table-layout: fixed; width: 100%; }
 		#nv_home .ds th div, #nv_home .ds .point_chart { height: 120px; }
 		#nv_home .ds .ph { font-size: 16px; text-align: center; }
@@ -1214,14 +1282,14 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.dr .mls { padding-top: 15px; clear: both; }
 			.dr .mls li { width: 70px; }
 
-/* 标签 */
+/* Tags */
 	.ptg { padding-left: 20px; background: url({IMGDIR}/tag.gif) no-repeat 0 2px; }
 		.ptg a { color: {HIGHLIGHTLINK}; }
 /** end **/
 
 
 /** forum::viewthread,group::viewthread,forum::trade,portal::view **/
-/* 帖子附件 by dfox */
+/* Post attachments by dfox */
 	.pattl { overflow: hidden; padding: 1em 0; width: 100%; font-size: 12px; }
 	.tatt, .t_attach_img { padding: 5px; color: {LIGHTTEXT}; font-size: 12px; }
 		.tatt { width: 240px; }
@@ -1239,7 +1307,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.tattl dd { margin-left: 40px; color: {LIGHTTEXT}; }
 	.attnm { height: 18px; margin-bottom: 3px; overflow: hidden; white-space: nowrap; }
 		*html .attnm { white-space: normal; }
-	.attm { overflow: visible; float: none; width: 100%; height: auto; }
+	.attm { overflow: visible; float: none; width: 580px; height: auto; }
 		.attm dt { width: 0; }
 		.attm dd { margin-left: 0; }
 		.zoom { cursor: pointer; }
@@ -1247,7 +1315,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.attp { width: 180px; text-align: left; }
 		.tattl .attp { width: 240px; }
 
-	/* 版主浏览包含收费附件的帖子，且附件插入到帖子内容中去的时候 by Pony */
+	/* Moderator viewing a post attachments charges, and inserted into the post content in the attach to the time by Pony */
 	.attprice { padding: 5px; border: 1px dashed #FF9A9A; }
 /** end **/
 
@@ -1255,7 +1323,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_zoominner
 		Level:			Function
-		Explain:		显示原始图片弹出层
+		Explain:		Shows the original image popup
 		Last Modify:	Pony
 	*/
 	.zoominner { padding: 5px 10px 10px; background: {WRAPBG}; text-align: left; }
@@ -1276,35 +1344,39 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** forum::misc **/
-/* 非弹窗时显示出来的页面的样式重定义 */
+/* redefinition When non-pop style of the page displayed*/
 	.mn .flb { padding-left: 0; }
 	.f_c .list { margin-left: 0; }
 /** end **/
 
 
 /** portal::portalcp,portal::view,forum::viewthread,group::viewthread,home::space **/
-/* 自动给关键词增加的链接的样式 by Pony */
+/* Automatically link to the key words to increase the style by Pony */
 	.relatedlink, .relatedlink:hover { text-decoration: none !important; color: {TABLETEXT} !important; border-bottom: 1px solid blue; }
 
-/* 模块标识后面的收藏图片样式 by Pony */
+/* Module identifies the collection of pictures behind the style    by Pony */
 	.favmark { margin-bottom: -3px; }
 /** end **/
 
 
-/* ----------------------------------------------------------------------- 群组相关样式 by dfox */
+/* ---------------- Groups related styles by dfox ------------------------------------------------------- */
 /** group::index **/
 	#g_focus { width: 320px; }
 	#g_commend {}
 		#g_commend .xld { float: left; margin-right: 0.3%; width: 24.5%; height: 64px; overflow: hidden; }
 		#g_commend dt { padding-bottom: 0; }
-	#g_guide { background: url({IMGDIR}/g_guide.png) no-repeat 10px 18px; }
-		#g_guide li { border-bottom: 1px dashed {COMMONBORDER}; }
-		#g_guide a, #g_guide label { display: block; padding: 7px 0 7px 40px; height: 36px; }
+/*vot*/	#g_guide { /*background: url({IMGDIR}/g_guide.png) no-repeat 10px 18px;*/ }
+/*vot*/		#g_guide li { border-bottom: 1px dashed {COMMONBORDER}; background: url({IMGDIR}/g_guide.png) no-repeat; }
+/*vot*/		#g_guide a, #g_guide label { display: block; padding: 7px 0 7px 40px; height: auto; }
 			#g_guide label { cursor: text; }
 		#g_guide strong { display: block; }
+/*vot*/		#g_guide li.step1 { background-position: 10px 10px; }
+/*vot*/		#g_guide li.step2 { background-position: 10px -65px; }
+/*vot*/		#g_guide li.step3 { background-position: 10px -145px; }
+/*vot*/		#g_guide li.step4 { background-position: 10px -225px; }
 	.fl .bm_h { border-bottom: none; background-color: transparent; }
 
-/* 群组列表 by Pony */
+/* Group list by Pony */
 	.fl_icn, .fl_icn_g { width: 48px; }
 	.fl_g dl { margin-left: 48px; padding: 0 5px; }
 /** end **/
@@ -1320,7 +1392,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 .gl .flc dl { margin-left: 60px; }
 	.gl .flc dl dt { height: 20px; overflow: hidden; }
 
-	.mls li p { margin: 5px 4px 0; width: 58px; }
+/*vot*/	.mls li p { margin: 5px 4px 0; width: 66px; }
 
 .gl .flc .i { margin-top: -14px; width: 127px; }
 	.gl .flc .i em, .gl .flc .i span { float: right; width: 55px; color: {LIGHTTEXT}; text-align: right; line-height: 20px; }
@@ -1335,11 +1407,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** group::my **/
-/* 设置关注的群组弹窗 by Pony */
+/* Related to the pop group set by Pony */
 	.attgroup { width: 450px; }
 		.attgroup li { float: left; overflow: hidden; margin-right: 5px; width: 145px; white-space: nowrap; }
 
-/* 关注按钮和所有群组的按钮 by Shuaishuai*/
+/* All groups related buttons  by Shuaishuai*/
 	.groupbtn { float: left; margin: 0 2px; padding: 0 0 0 7px !important; height: 25px; background: url({IMGDIR}/n_rate.png) no-repeat 0 0 !important; line-height: 25px; text-align: center; cursor: pointer; }
 	.groupbtn:hover{ text-decoration: none; }
 		.groupbtn span { display: block; background: url({IMGDIR}/n_rate.png) no-repeat right 100% !important; padding-right: 7px; }
@@ -1347,7 +1419,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 
-/* ----------------------------------------------------------------------- 文章、日志等页面样式 */
+/* --------------------------- Articles, such as the blog page style -------------------------------------------- */
 /** portal::list,home::space **/
 .bm_h .addnew { margin-left: 10px; padding-left: 20px; background: url({IMGDIR}/addbuddy.gif) no-repeat 0 45%; }
 .bm_h .rss { margin-left: 10px; padding-left: 20px; background: url({IMGDIR}/feed.gif) no-repeat 0 45%; }
@@ -1358,7 +1430,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /* Article/Blog View by lushnis */
 	.vw {}
 		.vw .h { padding-bottom: 15px; border-bottom: 1px solid {COMMONBORDER}; }
-			.vw .ph { padding: 15px 0 10px; color: #000; }
+			.vw .ph { padding: 15px 0 10px; color: #444; }
 		.vw .hot { margin-right: 5px; color: {NOTICETEXT}; }
 		.vw .s { margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid {COMMONBORDER}; line-height: 2; color: {HIGHLIGHTLINK}; }
 			.vw .s strong { font-weight: 400; color: red; }
@@ -1377,8 +1449,17 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.vw .o { margin-top: 15px; padding-top: 5px; border-top: 1px solid {COMMONBORDER}; text-align: right; }
 			.vw .o .mgcmn { width: auto; text-align: left; }
 		#nv_portal .vw .h, #nv_portal .vw .s, #nv_portal .vw .d, #nv_portal .vw .o, #nv_portal .vw .pren, #nv_forum .vw .h, #nv_forum .vw .s, #nv_forum .vw .d { margin-right: 15px; margin-left: 15px; }
+		.pic_h { border-radius:5px; }
+		.pic_h .h { border-bottom:1px dashed #CDCDCD; margin-left:0 !important; margin-right:0 !important; padding-left: 15px;padding-right: 15px; }
+		.pic_h .d { margin:0 !important; }
+		/* albumback by Alice */
+		.albumback #ft { border-top:0; color:#FFF; }
+		.albumback #pt a,.albumback #ft a,.albumback a.thread_mod span,.albumback .vw .ph,.albumback .album_info p,.albumback .img_tit_t .xi1 { color:#FFF; }
+		.albumback .ct2 .bm,.albumback #imagelist_nav { background:#000; }
+		.albumback #ct { border-color:#CDCDCD; }
+		.albumback a.thread_mod:hover span { color:#539BCB !important; }
 
-/* .atd -> attitude 表态 by Pony */
+/* .atd -> attitude Position by Pony */
 	.atd { margin: 15px auto; }
 		.atd img { margin-bottom: 10px; }
 		.atd a { display: block; }
@@ -1398,7 +1479,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 .pgm { clear: both; padding: 5px 0; }
 	.pgm .pg { float: left; }
 
-/* 管理相关文章 */
+/* Articles Management related */
 .bart { position: relative; padding: 10px; width: 640px; }
 	.bartl { overflow-y: scroll; padding: 10px; width: 270px; height: 270px; border: 1px solid {COMMONBORDER}; }
 		.bartl li { overflow: hidden; width: 250px; height: 20px; }
@@ -1408,23 +1489,23 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.bart .chkall { padding-left: 10px; }
 	#chkalldiv p { width: 292px; }
 
-/* 管理模块 */
+/* Block Management */
 	.ptblk li { padding: 7px 0; border-bottom: 1px solid {COMMONBORDER}; }
 	.ptblk em { margin-right: 30px; }
 
-/* 文章标题颜色、加粗、斜体、下划线等样式 by Pony */
+/* Article title color, bold, italics, underline and other styles by Pony */
 .colorwd { margin-right: 3px; }
 .dopt input { float: left; }
 
-/* 上一篇/下一篇文章 样式*/
+/* Previous/Next article style*/
 #nv_portal .vw .pren em { display: block; width: 100%; height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /** end **/
 
 
 
-/* ----------------------------------------------------------------------- 空间相关样式 */
+/* ------------------- Spatial related styles ---------------------------------------------------- */
 /** home::space,misc::ranklist **/
-/* .mi --> my_infomation 空间首页个人信息部分 */
+/* .mi --> my_infomation Home Personal space Information section */
 	.mi {}
 		.mi th, .mi td { vertical-align: top; }
 		.mi th { width: 145px; }
@@ -1450,7 +1531,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_share_form
 	Level:			Function
-	Explain:		发布分享的表单
+	Explain:		Publish share form
 	Last Modify:	Pony
 */
 	.sfm { margin: 0 0 20px 10px; }
@@ -1458,10 +1539,10 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.sfm .px { width: 432px; }
 		.sfm .pt { width: 432px; height: 67px; }
 
-/* 分享视频有截图时 by Pony */
+/* When sharing videos with screenshots by Pony */
 .vdtn { width: 126px; height: 95px; border: 1px solid {COMMONBORDER}; cursor: pointer; }
 
-/* .pic -> picture 查看图片 by Pony */
+/* .pic -> picture View image by Pony */
 	.osld { padding-left: 18px; background: url({IMGDIR}/slide.png) no-repeat 0 50%; }
 	.pic {}
 		.pic .c { margin-top: 20px; text-align: center; }
@@ -1470,25 +1551,25 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.pic p { margin: 5px 0; }
 	.albim_pic_title { padding: 5px; border-top: 1px dashed {COMMONBORDER}; background: {COMMONBG}; }
 
-/* 侧边图片导航 Media list navigation */
+/* Media list navigation */
 	.mlnv { text-align: center; }
 		.mlnv img { margin: 0 5px; padding: 2px; max-width: 100px; max-height: 100px; _width: expression(this.width > 100 && this.width>=this.height ? 100 : true); height: expression(this._height > 100 && this.width<=this.height ? 100 : true); border: 1px solid {WRAPBORDERCOLOR}; background: {WRAPBG};}
 			.mlnv img.a { border-color: {NOTICETEXT}; background: #FFEAA8; }
 		.mlnv .btn img { padding: 0; border: 0; background: none;  }
 
 
-/* .sl -> share_list 分享列表 by Pony */
+/* .sl -> share_list Share list by Pony */
 	.sl {}
 		.sl li { padding: 10px 0; border-bottom: none; }
 		.sl .h { padding: 6px 10px; _height: 1%; background: {COMMONBG}; border-bottom: 1px solid {COMMONBORDER}; }
 
-/* .favl -> fav_list 收藏列表 by Pony */
+/* .favl -> fav_list Favorite List by Pony */
 	.favl .o { background: url({IMGDIR}/op.png) no-repeat -4px -2px; }
 		.favl .o:hover { background-position: -4px -22px; }
 		.ie6 .favl li { position: relative; }
 			.ie6 .favl .o { margin: 0; right: 0; top: 12px; }
 
-/* .cmt -> comment feed中的评论区域 by Pony */
+/* .cmt -> comment feed comment area by Pony */
 	.cmt { margin: 10px 24px 0 0; padding: 10px; border: 1px solid #EAEAEA; background: {COMMONBG}; zoom: 1; }
 		.cmt form { margin-top: 10px; }
 			.cmt input, .cmt button { vertical-align: middle; }
@@ -1500,13 +1581,13 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.cmt .pg a, .cmt .pg strong { background-color: transparent; }
 		.cmt .pg a { border-color: {COMMONBG}; }
 			.cmt .pg a:hover { border-color: {WRAPBORDERCOLOR}; }
-		/* feed 区域里的评论 */
+/* feed Comment list */
 		.el .cmt li { padding-right: 0; border-bottom: none; }
 		.el .tri { display: none; }
-		/* feed 区域中评论的验证码 */
+/* feed Verification code in the comment area */
 		.el .cmt .sec .px { width: 80px !important; }
 
-/* .pll -> poll_list 投票列表 */
+/* .pll -> poll_list Poll List */
 	.pll {}
 		.pll li { padding: 10px 0; min-height: auto; }
 		.pll .h { font-size: 14px; }
@@ -1523,7 +1604,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 				.pll .s a.joins span { display: block; font-size: 16px; font-weight: 700; }
 			.pll .s a.go { padding: 0 0 0 17px; width: 43px; height: 24px; line-height: 24px; display:block; }
 
-/* .acl -> activity_list 活动列表 by Pony */
+/* .acl -> activity_list Activity List by Pony */
 	.acl { width: 100%; table-layout: fixed; }
 		.acl h3 { padding: 10px 0; font-size: 14px; }
 			.acl h3 span { float: left; margin: 1px 10px 0 0; width: 34px; text-align: center; }
@@ -1535,10 +1616,10 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.acl .orgr { width: 74px; }
 		.acl .ml li { margin-top: 6px; padding-bottom: 0; }
 
-/* .tlog -> trade_log 交易记录 by Pony */
+/* .tlog -> trade_log Transactions by Pony */
 	.tlog th, .tlog td { padding: 10px 4px !important; }
 
-/* .rwdl -> reward_list 悬赏列表 by Pony */
+/* .rwdl -> reward_list Reward list by Pony */
 	.rwdl {}
 		.rwdl li { overflow: hidden; float: left; padding: 15px 10px 15px 100px; width: 290px; height: 92px; }
 		.rwdl .uslvd { position: absolute; margin-left: -100px; width: 90px; height: 92px; background: url({IMGDIR}/rwd2.gif) no-repeat 0 0; }
@@ -1552,11 +1633,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.rwdl h4 { overflow: hidden; height: 36px; font-weight: 400; }
 		.rwdl p { white-space: nowrap; }
 
-/* .facel -> face_list 空间部分的表情 by Pony */
+/* .facel -> face_list Avatar List by Pony */
 	.facel { padding: 8px; width: 240px; }
 		.facel img { margin: 5px; }
 
-/* 提醒的内容中会用到。这里使用独立class，以便个性化。若想使提醒内容更醒目，可对summary下的span进行定义 */
+/* Reminded of the content will be used. This stand-alone class, so personalized. To make the content more visible reminder, the span can be defined under the summary */
 	.summary { margin: 10px 0; }
 /** end **/
 
@@ -1565,33 +1646,34 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_pprl
 	Level:			Function
-	Explain:		空间、广播等个人资料页面
+	Explain:		Space, broadcasting profile page
 	Last Modify:	Pony 1109271712
 */
 	#pprl a { color: {HIGHLIGHTLINK}; }
 	#pprl li { clear: both; padding: 3px 0 3px 90px; }
-		#pprl li em { float: left; margin-left: -90px; width: 85px; white-space: nowrap; overflow: hidden; }
+/*vot*/		#pprl li em { float: left; margin-left: -90px; width: 140px; white-space: nowrap; overflow: hidden; }
 	.pf_l li { float: left; width: 300px; }
 		.pf_l em { padding-right: 10px; color: {MIDTEXT}; }
 /** end **/
 
 
 /** home::space,home::spacecp,home::medal,misc::ranklist **/
-	/* 空间图片列表 */
+	/* Space Image list */
 	.mla li, .mlp li { width: 150px; }
 /** end **/
 
 
 /** home::space **/
-/* 快速好友查找链接按钮样式 by ShuaiShuai */
+/*vot*/	.shortsc .px { width: 100px; }
+/* Quick Find friends button style by ShuaiShuai */
 	.sc_display{ display:inline-block; width:36px; text-align:right;}
 
 	#mood_mystatus { width: 410px; word-break: break-all; overflow: hidden; }
 	#newprompt { background: url({IMGDIR}/info.gif) no-repeat 12px 50%; }
 
-	/* .dtls -> doing_treeline_short 记录回复树状背景 by shuaishuai */
+/* .dtls -> doing_treeline_short Record recovery tree background by shuaishuai */
 		.dtls { background:url({IMGDIR}/treeline_short.gif) no-repeat 0 2px; }
-	/* .dtll -> doing_treeline_long 记录回复树状背景 by shuaishuai */
+/* .dtll -> doing_treeline_long Record recovery tree background by shuaishuai */
 		.dtll { background:url({IMGDIR}/treeline_long.gif) no-repeat 2em 2px; }
 
 	.nts { padding-left: 20px; }
@@ -1601,7 +1683,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_pm_list
 	Level:			Channel
-	Explain:		短消息列表
+	Explain:		Short Message List
 	Last Modify:	Pony
 */
 	.pml {}
@@ -1622,7 +1704,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_pm_group
 	Level:			Function
-	Explain:		短消息群聊
+	Explain:		Short message group chat
 	Last Modify:	Pony
 */
 	.pm_g { padding: 10px 15px; border: 1px solid #C2D5E3; background: #F2F7FA; }
@@ -1650,12 +1732,12 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** home::spacecp **/
-/* 空间图片列表 */
+/* Space Image list */
 	.mls li { width: 90px; }
 /*
 	Name:			mod_my_credits_list
 	Level:			Function
-	Explain:		上传图片
+	Explain:		Upload pictures
 	Last Modify:	Pony 11082413
 */
 	.up_row { width: 100%; table-layout: fixed; }
@@ -1672,7 +1754,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_my_credits_list
 	Level:			Function
-	Explain:		我的积分列表
+	Explain:		My Points List
 	Last Modify:	Pony 11061714
 */
 	.creditl {}
@@ -1684,9 +1766,9 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** home::spacecp,home::magic **/
-/* 查找好友 .scf --> Search friend */
+/* Find Friends .scf --> Search friend */
 	.scf h2 { padding-left: 20px; line-height: 2.2; background: url({IMGDIR}/scf.gif) no-repeat 0 50%; font-weight: 700; font-size: 14px; }
-/* 用来展示复杂统计数据的表格，目前仅用户组页面用到 */
+/* Statistical data to demonstrate the complexity of the form, currently only used in the user group page */
 	.tdats { overflow: hidden; zoom: 1; margin: 10px 0; *padding-bottom: 10px; }
 		.tdats th, .tdats td { overflow: hidden; padding: 0 5px; height: 26px; border-width: 0 1px 0 0; border-color: {WRAPBG}; white-space: nowrap; }
 		.tdats th { height: 40px; font-weight: 700; }
@@ -1723,7 +1805,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_ct_vw
 	Level:			Function
-	Explain:		日志、好友列表页用到的两栏框架
+	Explain:		Logs, buddy lists, two columns used in the framework of page
 	Last Modify:	Pony
 */
 	.ct_vw {}
@@ -1733,11 +1815,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_buddy
 	Level:			Function
-	Explain:		好友列表
+	Explain:		buddy Friend List
 	Last Modify:	Pony
 */
 	.buddy { margin: 0 -4px 10px -2px; }
-		.buddy li { overflow: hidden; display: inline; float: left; margin: 10px 5px 0; padding: 10px 10px 10px 70px; width: 175px; height: 58px; border: 1px solid #F3F3F3; background: #F9F9F9; }
+/*vot*/		.buddy li { overflow: hidden; display: inline; float: left; margin: 10px 5px 0; padding: 10px 10px 10px 70px; width: 175px; height: 75px; border: 1px solid #F3F3F3; background: #F9F9F9; }
 			.ct_vw_mn .buddy li { width: 190px; }
 		.buddy h4 { overflow: hidden; height: 20px; }
 		.buddy .avt { position: absolute; margin-left: -60px; }
@@ -1748,7 +1830,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_buddy_group
 	Level:			Function
-	Explain:		好友分组
+	Explain:		Friends Group
 	Last Modify:	Pony
 */
 	.buddy_group { margin-top: -5px; }
@@ -1762,7 +1844,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 .ntc_body .summary { margin-left: 2em; padding-left: 10px; border-left: 1px solid {COMMONBORDER}; }
 	.ntc_body .summary span { color: {LIGHTTEXT}; }
 
-/* .pmform -> 短消息表单非弹窗 by Pony */
+/* .pmform -> Private Message Form (non pop-up) by Pony */
 	.pmform {}
 		.pmform .px { width: 408px; }
 		.pmform .tedt { width: 416px; }
@@ -1770,7 +1852,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_user_selector
 	Level:			Function
-	Explain:		用户名提示选择效果
+	Explain:		Users are prompted to select the effect name
 	Last Modify:	Pony 11061311
 */
 	.un_selector { height: auto; cursor: text; overflow: hidden; }
@@ -1782,7 +1864,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.un_selector .x { float: right; width: 15px; height: 19px; background: url({IMGDIR}/un_selector.png) no-repeat 100% -19px; text-indent: -9999px; overflow: hidden; }
 				.un_selector .x:hover { background-position: 100% -38px; }
 		a.appendmb, a.appendmb span { height: 25px; line-height: 25px !important; }
-	/* 发短消息时根据输入显示出的用户名列表样式 */
+	/* PM according to the input user name list style */
 	.pmfrndl { position: absolute; margin-top: 3px; padding: 4px; width: 120px; border: solid {DROPMENUBORDER}; border-width: 0 1px 1px; background: #FFF; }
 		.ie6 .pmfrndl, .ie7 .pmfrndl { margin-top: 4px; }
 		.pmfrndl li { display: inline; }
@@ -1796,7 +1878,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 /** home::task **/
 .pbg { position: relative; width: 80%; }
-	.pbg .xs0 { position: absolute; top: 0; right: 8px; font-family: PMingLiU, sans-serif; }
+/*vot*/	.pbg .xs0 { position: absolute; top: 0; right: 8px; font-family: Verdana, Arial, sans-serif; }
 /** end **/
 
 
@@ -1806,7 +1888,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.mgcl .mg_img { margin: 0 auto 5px; }
 			.pg_medal .mgcl img { margin-top: 20px; width: auto; height: auto; }
 
-/* 勋章记录重定义 by Pony */
+/* Medal records redefinition by Pony */
 	.el li { padding-left: 40px; }
 	.el .t { margin: -2px 0 0 -30px; }
 		.el .t img { width: 24px; height: 24px; }
@@ -1814,13 +1896,13 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 
-/* ------------------------------------------------------------------------ 门户相关样式 */
+/* --------------------- Portal related Styles --------------------------------------------------- */
 
 
 
-/* ------------------------------------------------------------------------ 漫游相关样式 */
+/* --------------------- Applications related styling --------------------------------------------------- */
 /** userapp::userapp **/
-/* 管理漫游应用 by Pony */
+/* Application Management by Pony */
 	.myset { margin-top: 15px; padding: 5px 0; }
 		.mgapp { float: left; padding: 0 15px; width: 777px; }
 		.apps { padding: 7px 0; height: 20px; line-height: 20px; border-bottom: 1px dashed #DDD; }
@@ -1831,11 +1913,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.note { padding: 0 15px; }
 		.note li { margin-left: 20px; *margin-left: 25px; }
 
-/* 应用首页应用列表定高 by Pony */
+/* Home Applications list by Pony */
 	.appmaxh .bm_c { height: 140px; }
 	.apl li { margin: 5px 0; }
 
-/* 应用列表中新应用和热门应用图标 by Pony */
+/* Application of new applications and the list of popular applications icon by Pony */
 	.appl li { position: relative; }
 		.ie6 .appl li { width: 100%; }
 		.appnew, .apphot { position: absolute; right: 0; width: 20px; height: 100%; background-color: {SIDEBGCOLOR}; background-repeat: no-repeat; background-position: 100% 50%; }
@@ -1845,14 +1927,14 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** home::space,home::spacecp,userapp::userapp,forum::forumdisplay **/
-/* 折叠按钮 by Pony */
+/* Collapse button by Pony */
 	.unfold, .fold { float: right; padding-left: 10px; background: url({IMGDIR}/arrwd.gif) no-repeat 0 50%; cursor: pointer; outline: none; }
 	.fold { background-image: url({IMGDIR}/arrow_top.gif); }
 /** end **/
 
 
 
-/* ------------------------------------------------------------------------ 搜索相关样式 */
+/* ----------------- Search Related Styles ------------------------------------------------------- */
 /** search **/
 a { color: #369; }
 body { background: #FFF none !important; }
@@ -1867,7 +1949,7 @@ body { background: #FFF none !important; }
 		.td_srchtxt { background: url({IMGDIR}/searchbar.png) no-repeat 0 -35px; }
 		.td_srchbtn { background: url({IMGDIR}/searchbar.png) no-repeat 0 -70px; }
 		#scform_srchtxt { padding: 0 10px; width: 460px; background: transparent; outline: none; }
-		#scform_submit { width: 107px; opacity: 0; filter: alpha(opacity=0); cursor: pointer; }
+/*vot*/		#scform_submit { width: 107px; /*opacity: 0; filter: alpha(opacity=0);*/ cursor: pointer; color: white; background: transparent; }
 		#scform_srchtxt, #scform_submit { height: 35px; border: none; }
 			.ie_all #scform_srchtxt { height: 33px; line-height: 33px; }
 	.sttl { margin: 10px 0; padding: 5px; border-bottom: 1px solid #CCC; background: #F5F5F5; }
@@ -1880,18 +1962,18 @@ body { background: #FFF none !important; }
 		.pbw strong { font-weight: 400; }
 			.pbw p { color: #000; }
 		.p_pop span { display: none; }
-#ft { margin: 20px; text-align: center; }
+#nv_search #ft { margin: 20px; text-align: center; }
 .pg { float: none; }
 #myspace_menu li a, #navs_menu li a { background-repeat: no-repeat; background-position: -200px 0; }
 /** end **/
 
 
 
-/* ------------------------------------------------------------------------ 排行榜相关样式 */
+/* ----------------- Top-List Related Styles ------------------------------------------------------- */
 /** misc::ranklist **/
 .rankicn { width: 20px; }
 
-/* .rnk1 每行一个区块 */
+/* .rnk1 One block per line */
 .rnk1 {}
 	.rnk1 .mlp .d { width: 120px; height: 120px; }
 	.rnk1 .mlp img { max-width: 100px; max-height: 75px; }
@@ -1900,10 +1982,10 @@ body { background: #FFF none !important; }
 		.rnk1 .bigpic img { max-width: 286px; max-height: 200px; }
 			.ie6 .rnk1 .bigpic img { width: expression(this.width > 286 && this.width>=this.height ? 286 : true); height: expression(this.height > 200 && this.width<=this.height ? 200 : true); }
 
-/* 图片排名上的序号 */
+/* The serial number of pictures on the top */
 .picrank { position: absolute; margin: 14px 0 0 8px !important; }
 
-/* 竞价排名 by Pony */
+/* Bid Ranking by Pony */
 .bid { margin: 2px -4px -2px 2px; zoom: 1; }
 .biduser { width: 780px; background: url({IMGDIR}/avatar_blank.gif); }
 	.biduser li { float: left; margin: 0 4px 4px 0; }
@@ -1913,7 +1995,7 @@ body { background: #FFF none !important; }
 		.bidtop img { width: auto; height: 100px; }
 
 
-/* 重定义 */
+/* Redefinition */
 .xl2 { background: url({IMGDIR}/vline.png) repeat-y 50% 0; }
 	.xl2 li { margin-right: 20px; width: 378px; }
 		.xl2 li.xl2_r { margin-right: 0; }
@@ -1929,7 +2011,7 @@ body { background: #FFF none !important; }
 
 
 
-/* ------------------------------------------------------------------------ 统计相关样式 */
+/* -------------- Statistics related Styles ---------------------------------------------------------- */
 /** misc::stat **/
 .dt a { color: {HIGHLIGHTLINK}; }
 .dt th, .dt td { border-right: 1px solid {COMMONBORDER}; }
@@ -1937,7 +2019,7 @@ body { background: #FFF none !important; }
 .dt .stat_num { padding-right: 15px; text-align: right; }
 .pbg { float: left; width: 372px; }
 .bm_h { padding-left: 0; background: none; border: none; }
-/* 重定义 tab 标签样式 by Pony 11081614 */
+/* Re-definition of the tab label style by Pony 11081614 */
 .ttp .a a { padding-left: 8px; padding-right: 8px; }
 .ttp li.xw1 { font-weight: 400; }
 /** end **/
@@ -1969,7 +2051,7 @@ body { background: #FFF none !important; }
 	Name:			mod_collection_tag
 	Level:			Function
 	Sample:			<span class="ctag ctag0">tag</span>
-	Explain:		淘帖标签样式，从 0 到 2，颜色越来越不醒目
+	Explain:		The Taobao Posts label styles, from 0-2, the color less and less eye-catching
 	Last Modify:	Pony 2012022311
 */
 .ctag { padding: 1px 3px; font-weight: 400; border-radius: 3px; }
@@ -1981,10 +2063,10 @@ body { background: #FFF none !important; }
 
 
 /** home::follow **/
-/* 广播头像通用样式 */
+/* Broadcast picture generic style */
 .flw_avt { width: 80px; }
 	.flw_avt img { float: left; margin-left: 15px; width: 48px; }
-/* 广播区域样式 */
+/* Broadcast area style */
 .flw_article { margin: 0 0 10px 70px; padding: 5px 10px 15px; border-bottom: 1px solid #DBDBDB; }
 	.flw_thread .flw_article { margin-left: 0; }
 	.flw_article h2 { font-size: 16px; }
@@ -2023,13 +2105,13 @@ body { background: #FFF none !important; }
 	.flw_more a { display: block; padding: 10px; box-shadow: 0 1px 0 rgba(0,0,0,0.05); border: 1px solid #DBDBDB; border-radius: 4px; background: #F4F7F9; text-align: center; }
 		.flw_more a:hover { border-color: #9EB4C2; text-decoration: none; }
 
-/* 收听按钮通用样式 */
-.flw_btn_fo, .flw_btn_unfo { float: right; width: 70px; height: 21px; background: url({IMGDIR}/flw_btn_s.png) no-repeat 0 0; text-indent: -9999px; overflow: hidden; }
+/* Listen button universal style */
+/*vot*/ .flw_btn_fo, .flw_btn_unfo { float: right; width: 70px; height: 21px; background: url({IMGDIR}/flw_btn_s.png) no-repeat 0 0; text-indent: 24px; overflow: hidden; }
 	.flw_btn_unfo { background-image: url({IMGDIR}/flw_btn_unfo_s.png); }
 	.ie6 .flw_btn_fo, .ie7 .flw_btn_fo { position: relative; z-index: 1; }
 	.flw_uheader .flw_btn_fo, .flw_uheader .flw_btn_unfo, .flw_hd .flw_btn_fo, .flw_hd .flw_btn_unfo { float: left; }
 
-/* 发广播 */
+/* issue broadcast */
 #flw_header { padding: 10px; }
 #flw_post_subject { width: 628px; height: 30px; line-height: 30px; border: 1px solid #9EB4C2; border-radius: 4px; background: #FFF url({IMGDIR}/input_shadow.png) repeat-x 0 0; }
 #flw_header #subject { margin: 5px; width: 580px; height: 20px; border: none; outline: none; background: transparent; line-height: 20px; }
@@ -2041,7 +2123,33 @@ body { background: #FFF none !important; }
 #flw_header .area { background: #FFF url({IMGDIR}/input_shadow.png) repeat-x 0 0; border-radius: 4px 4px 0 0; }
 	#flw_header .area .pt { height: 4em; }
 #flw_header .ftid { margin-left: 5px; }
-#fastpostsubmit { margin-right: 0; width: 77px; height: 33px; border: none; background: transparent url({IMGDIR}/flw_post.png) no-repeat 0 0; text-indent: -9999px; }
+#fastpostsubmit { /*vot CSS3 Button */
+	font-size: 14px;
+	height: 32px;
+	color: #ffffff;
+	padding: 2px 10px;
+	background: -moz-linear-gradient(
+		top,
+		#42aaff 0%,
+		#003366);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#42aaff),
+		to(#003366));
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #003366;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.5);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.5);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
 #flw_header .tb { padding-left: 0; height: 32px; border-bottom: none; line-height: 32px; }
 	#flw_header .tb a { padding: 0 15px; border: none; background: transparent none; color: #369; }
 		#flw_header .tb .a a { box-shadow: 0 -1px 0 rgba(0,0,0,0.15); border-radius: 4px 4px 0 0; background: #FFF; color: #333; }
@@ -2050,21 +2158,21 @@ body { background: #FFF none !important; }
 
 .sd { border-radius: 5px; background: #F4F7F9; }
 
-/* 侧边和主区域头像及统计信息 */
+/* Side and the main regional picture and statistics */
 #flw_avt { padding: 20px; }
 	#flw_avt img { margin: 0 auto 10px; border: 6px solid #FFF; }
 		.sd #flw_avt img { display: block; }
 
 	.flw_user_info { margin: 10px 0; padding: 10px; box-shadow: 0 1px 0 #FFF, 0 -1px 0 #D7DBDF; border-radius: 5px; background: #E9EEF2; }
 		.flw_linktohome { padding: 2px 0 2px 20px; background: url({IMGDIR}/homelink.gif) no-repeat 0 2px; }
-	/* 主区域头像 */
+	/* The main regional picture */
 	.flw_uheader { padding-right: 0; padding-left: 0; }
 
 		.flw_stat_mn { margin-left: 20px; width: 490px; }
 .pg_follow .sd .bm { border-width: 1px 0 0; border-color: #E8EAEB; background: transparent; }
 	.pg_follow .sd .bm_h { padding-left: 20px; border-width: 1px 0 0; border-color: #FFF; background: transparent; }
 
-/* 用户单页顶部 */
+/* User single top page */
 #flw_header.flw_uheader { padding-top: 20px; border-bottom: 1px solid rgba(0,0,0,0.15); background: #F4F7F9 none !important; }
 	.flw_uheader .tb { margin-bottom: -1px; }
 	.flw_uheader h1 { font-size: 16px; }
@@ -2078,7 +2186,7 @@ body { background: #FFF none !important; }
 	#specialflag_2_menu { width: 80px; }
 	.flw_uheader .flw_linktohome { padding: 0 0 0 20px; background-position: 0 3px; }
 
-/* 回复区域 */
+/* Reply area */
 .flw_replybox { margin: -11px 0 20px 70px; padding: 15px 20px; box-shadow: 0 1px 0 rgba(0,0,0,0.05); border: 1px solid #DBDBDB; background: #E9EEF1; }
 	.flw_replybox li { padding: 10px 80px 10px 0; border-top: 1px solid #DBE2E6; }
 		.flw_replybox li .d { margin-right: 10px; }
@@ -2090,25 +2198,25 @@ body { background: #FFF none !important; }
 	.flw_replybox .pnc { width: 77px; height: 33px; border: none; background: transparent url({IMGDIR}/pn_reply.png) no-repeat 0 0; }
 		.flw_replybox .pnc span { line-height: 99px; }
 		.flw_replybox td table .pnc { background-image: url({IMGDIR}/pn_rt.png); }
-	/* 回复并转播选项 */
+	/* Reply and broadcast options */
 	.flw_rert { display: inline-block; padding-right: 5px; width: 95px; text-align: right; }
 	.flw_replybox .cnr { position: relative; float: right; overflow: hidden; display: inline; margin: -22px 16px 0 0; width: 11px; height: 7px; background: transparent url({IMGDIR}/flw_cnr_t.png) no-repeat 0 0; }
 
-/* 侧边切换 */
+/* Side switch */
 #flw_side_tab { margin: 10px 0; }
 	#flw_side_tab li { line-height: 32px; }
 	#flw_side_tab a { display: block; height: 32px; padding-left: 20px; background: url({IMGDIR}/flw_side_tab.png) repeat-x 0 0; }
 		#flw_side_tab li.a a { background-position: 0 -32px; }
 		#flw_side_tab a img { float: left; margin: 8px 10px 0 0; }
 
-/* 侧边用户列表 */
+/* Side user list */
 .flw_side_promote {  }
 	.flw_side_promote .xlda dl { margin-bottom: 8px; }
 	.flw_side_promote .xlda .m { margin: 0 0 8px -55px; }
 	.flw_side_promote .xlda dt { padding-top: 0; }
 	.flw_side_promote .flw_btn_fo { float: left; }
 
-/* 类似听众页面的用户列表 */
+/* Similar audience list of users page */
 .flw_ulist {}
 	.flw_ulist li { padding: 10px 0 10px 100px; border-bottom: 1px solid #DBDBDB; }
 	.flw_ulist .flw_avt { float: left; margin: 0 0 0 -80px; }
@@ -2125,7 +2233,7 @@ body { background: #FFF none !important; }
 /*
 	Name:			mod_follow_flashupload
 	Level:			Global
-	Explain:		重定义 follow 页面的 Flash 上传时的处理界面，结构参见 /static/js/fileprogress.js
+	Explain:		Redefine follow Page Flash Upload processing interface, for structure see /static/js/fileprogress.js
 	Last Modify:	Pony 2012022813
 */
 .progressWrapper { overflow: hidden; float: left; width: auto; }
@@ -2142,19 +2250,23 @@ body { background: #FFF none !important; }
 
 
 /** forum::forumdisplay,group::group **/
-#livereplycontentout { position: relative; height: 215px; margin-top: 10px; border: 2px solid #5780c0; background: #fff; overflow-y: auto; }
+#livereplycontentout { position: relative; height: 195px; margin-top: 10px; border: 1px solid #E8F1F7; background: #FFF; overflow-y: auto; }
 #livereplycontent { position: absolute; left: 0; bottom: 0; padding: 0 15px; }
-#liverefresh { height: 30px; line-height: 30px; background-color: #3A83F1; color: #fff; text-align: center; cursor: pointer; display: none; }
-#livefastcomment { position: relative; height: 34px; margin: 10px 0px 0px 0px; border: 2px solid #5780c0; }
+#liverefresh { margin-top:10px; height: 30px; line-height: 30px; background-color: #FCF4CD; color: #fff; text-align: center; cursor: pointer; display: none; border:1px dashed #FCE491; color:#F26C4F; }
+#livefastcomment { position: relative; height: 34px; margin: 10px 0px 0px 0px; border: 1px solid #E8F1F7;background-color: #FFF; padding:5px 10px; }
 	#livereplycontent dl { position: relative; width: 100%; min-height: 45px; line-height: 20px; padding: 10px 0; border-top: 1px #ccc dotted; clear: both; }
 	#livereplycontent dl dt { position: absolute; left: 0; top: 10px; width: 40px; height: 40px; border: 1px #ccc solid; padding: 1px; }
 	#livereplycontent dl dt img { width: 40px; height: 40px; }
 	#livereplycontent dl dd { padding-left: 62px; }
-		#livereplycontent dl dd a { color: #1d53bf; }
+		#livereplycontent dl dd a { color:{HIGHLIGHTLINK}; }
 	#livereplycontent dl dd.dateline { position: absolute; top: 10px; right: 0; padding: 0; color: #999; }
 #livereplymessage{ width: 100%; line-height:28px; height: 33px; padding: 0px !important; border: none; outline: 0px; background: white none; overflow-y: auto; }
 	.ie6 #livereplycontent dl, .ie7 #livereplycontent dl { width: 97%; }
-.livethreadtitle a { color: #1d53bf; font-size: 14px; }
-.livethreadtitle img { vertical-align: middle; }
-.livethreadtitle .replynumber { float: right; line-height: 25px; padding-right: 10px; }
+	#livethread { background: #F5F9FB; border-top:2px solid #BDD7E3; }
+.livethreadtitle { margin-bottom:5px; }
+	.livethreadtitle a { color:{HIGHLIGHTLINK}; font-size: 14px; }
+	.livethreadtitle img { vertical-align: middle; }
+	.livethreadtitle .replynumber { float: right; line-height: 25px; }
+		.livethreadtitle .replynumber .xi1 { background:{NOTICETEXT}; padding:0 5px; border-radius: 5px; color: #FFF; font-weight: 700; }
+	.livethreadcon { line-height:160%; font-size:14px;}
 /** end **/

@@ -13,9 +13,9 @@
         <p>
         	<!--{if $value[touid]}-->
 			<!--{if $value[msgfromid] == $_G[uid]}-->
-				<span class="xg1">{lang me}{lang you_to}{$value[tousername]}{lang say}</span>
+<!--vot-->			<span class="xg1">{lang me} {lang you_to} {$value[tousername]} {lang say_to}</span>
 			<!--{else}-->
-				<span class="xg1">{$value[tousername]}{lang you_to}{lang me}{lang say}</span>
+<!--vot-->			<span class="xg1">{$value[tousername]} {lang you_to} {lang me} {lang say_to}</span>
 			<!--{/if}-->
             <!--{elseif $value['pmtype'] == 2}-->
 			<span class="xg1">{lang chatpm_author}:$value['firstauthor']</span>

@@ -35,7 +35,7 @@
 </form>
 <script type="text/javascript">
 	(function() {
-		$('#sendmessage').bind('keyup input', function() {
+		$('#sendmessage').on('keyup input', function() {
 			var obj = $(this);
 			if(obj.val()) {
 				$('.btn_pn').removeClass('btn_pn_grey').addClass('btn_pn_blue');
@@ -46,7 +46,7 @@
 			}
 		});
 		var form = $('#pmform_{$pmid}');
-		$('#pmsubmit_btn').bind('click', function() {
+		$('#pmsubmit_btn').on('click', function() {
 			var obj = $(this);
 			if(obj.attr('disable') == 'true') {
 				return false;
