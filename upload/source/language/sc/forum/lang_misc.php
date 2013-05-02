@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_misc.php 32032 2012-11-01 02:27:05Z chenmengshu $
+ *      $Id: lang_misc.php 33048 2013-04-12 08:50:27Z zhangjie $
  */
 
 if(!defined('IN_DISCUZ')) {
