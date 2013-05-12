@@ -169,5 +169,7 @@ $lang = array(
 /*!*/	'qq_bbcode_description'	=> '显示 QQ 在线状态，点这个图标可以和他（她）聊天',//'QQ online status, points icon and his/her chat',
 /*!*/	'qq_enter'		=> '请输入 QQ 号码',//'Please enter the QQ number',
 /*!*/	'qq_onlne_status'	=> '设置QQ在线状态',//'Set QQ online status',
+/*!*/	'open_soso'		=> '<br><br>友情提示：<br>为更好的降低论坛搜索时的数据压力，本次升级已经帮本站开通纵横搜索服务。<br>你可以在';
+/*!*/	'open_soso_link'	=> '站点后台-&gt;云平台-&gt;纵横搜索 进行管理';
 
 );

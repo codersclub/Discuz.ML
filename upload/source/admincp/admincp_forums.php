@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_forums.php 32620 2013-02-27 02:03:46Z zhengqingpeng $
+ *      $Id: admincp_forums.php 33099 2013-04-25 05:49:35Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1879,6 +1879,7 @@ EOT;
 			$log_handler = Cloud::loadClass('Cloud_Service_SearchHelper');
 			$log_handler->myThreadLog('delforum', array('fid' => $fid));
 			C::t('forum_forum')->delete_by_fid($fid);
+			C::t('common_nav')->delete_by_type_identifier(5, $fid);
 			C::t('home_favorite')->delete_by_id_idtype($fid, 'fid');
 			C::t('forum_moderator')->delete_by_fid($fid);
 			C::t('common_member_forum_buylog')->delete_by_fid($fid);
@@ -1974,7 +1975,9 @@ EOT;
 		$fieldarray = array_merge($fields['forums'], $fields['forumfields']);
 		$listfields = array_diff($fieldarray, array_merge($delfields['forums'], $delfields['forumfields']));
 		foreach($listfields as $field) {
-			$optselect .= '<option value="'.$field.'">'.($lang['project_option_forum_'.$field] ? $lang['project_option_forum_'.$field] : $field).'</option>';
+			if(isset($lang['project_option_forum_'.$field])) {
+				$optselect .= '<option value="'.$field.'">'.$lang['project_option_forum_'.$field].'</option>';
+			}
 		}
 		$optselect .= '</select>';
 		shownav('forum', 'forums_copy');

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *      $Id: admincp_setting.php 33164 2013-05-02 08:15:35Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -1261,6 +1261,7 @@ EOF;
 		showsetting('setting_functions_other_collectionteamworkernum', 'settingnew[collectionteamworkernum]', $setting['collectionteamworkernum'], 'text');
 		showsetting('setting_functions_other_shortcut', 'settingnew[shortcut]', $setting['shortcut'], 'text');
 		showsetting('setting_functions_other_closeforumorderby', 'settingnew[closeforumorderby]', $setting['closeforumorderby'], 'radio');
+		showsetting('setting_functions_other_disableipnotice', 'settingnew[disableipnotice]', $setting['disableipnotice'], 'radio');
 		showsetting('setting_functions_other_darkroom', 'settingnew[darkroom]', $setting['darkroom'], 'radio');
 		showsetting('setting_functions_other_global_sign', 'settingnew[globalsightml]', $setting['globalsightml'], 'textarea');
 		showtablefooter();
@@ -2895,6 +2896,9 @@ EOT;
 		}
 	} elseif($operation == 'threadprofile') {
 		$_GET['templatenew'] = serialize($_GET['templatenew']);
+		if(!$_GET['namenew']) {
+			cpmsg('setting_threadprofile_name_empty', '', 'error');
+		}
 		if($_GET['do'] == 'add') {
 			C::t('forum_threadprofile')->insert(array('name' => strip_tags($_GET['namenew']), 'template' => $_GET['templatenew']));
 		} elseif($_GET['do'] == 'edit') {
@@ -3553,7 +3557,7 @@ function threadprofile_buttons($id, $authorinfoitems) {
 			$buttons .= '<a href="###" onclick="insertunit($(\''.$id.'\'), \''.$code.'\')">'.$name.'</a>';
 			$i++;
 		} else {
-			$buttons .= $name ? '<a href="javascript:;" onclick="display(\''.$id.'more\')" class="light">'.$lang['more'].'</a><div id="'.$id.'more" style="display:none">' : '<br />';
+			$buttons .= $name ? '<a href="javascript:;" onclick="display(\''.$id.'more\')" class="light">'.cplang('more').'</a><div id="'.$id.'more" style="display:none">' : '<br />';
 			$i = 0;
 		}
 	}

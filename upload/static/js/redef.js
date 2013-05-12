@@ -25,7 +25,27 @@ function waterfall(v) {
 	var space = typeof(v.space) == "undefined" ? 10 : v.space;
 	var index = typeof(v.index) == "undefined" ? 0 : v.index;
 	var tag = typeof(v.tag) == "undefined" ? "li" : v.tag;
+
 	var columnsheight = typeof(v.columnsheight) == "undefined" ? [] : v.columnsheight;
+
+	function waterfallMin() {
+		var min = 0;
+		var index = 0;
+		if(columnsheight.length > 0) {
+			min = Math.min.apply({}, columnsheight);
+			for(var i = 0, j = columnsheight.length; i < j; i++) {
+				if(columnsheight[i] == min) {
+					index = i;
+					break;
+				}
+			}
+		}
+		return {"value": min, "index": index};
+	}
+	function waterfallMax() {
+		return Math.max.apply({}, columnsheight);
+	}
+
 	var mincolumn = {"value": 0, "index": 0};
 	var totalelem = [];
 	var singlewidth = 0;
@@ -48,35 +68,16 @@ function waterfall(v) {
 		singlewidth = totalelem[0].offsetWidth + space;
 		totalwidth = singlewidth * column - space;
 		for(var i = index, j = totalelem.length; i < j; i++) {
-			mincolumn = columnsheight.waterfallMin();
+			mincolumn = waterfallMin();
 			totalelem[i].style.position = "absolute";
 			totalelem[i].style.left = singlewidth * mincolumn.index + "px";
 			totalelem[i].style.top = mincolumn.value + "px";
 			columnsheight[mincolumn.index] = columnsheight[mincolumn.index] + totalelem[i].offsetHeight + space;
-			totalheight = Math.max(totalheight, columnsheight.waterfallMax());
+			totalheight = Math.max(totalheight, waterfallMax());
 			index++;
 		}
 		parent.style.height = totalheight + "px";
 		parent.style.width = totalwidth + "px";
 	}
 	return {"index": index, "totalwidth": totalwidth, "totalheight": totalheight, "columnsheight" : columnsheight};
-}
-
-Array.prototype.waterfallMin = function () {
-	var min = 0;
-	var index = 0;
-	if(this.length > 0) {
-		min = Math.min.apply({}, this);
-		for(var i = 0, j = this.length; i < j; i++) {
-			if(this[i] == min) {
-				index = i;
-				break;
-			}
-		}
-	}
-	return {"value": min, "index": index};
-}
-
-Array.prototype.waterfallMax = function () {
-	return Math.max.apply({}, this);
 }

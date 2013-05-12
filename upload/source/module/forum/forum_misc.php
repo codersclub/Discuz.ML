@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_misc.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *      $Id: forum_misc.php 33219 2013-05-07 08:56:48Z jeffjzhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -413,15 +413,15 @@ IconIndex=1
 		$postarr = C::t('forum_post')->fetch_all_by_tid('tid:'.$livetid, $livetid, true, 'DESC', 20);
 		ksort($postarr);
 		foreach($postarr as $post) {
-			if($post['first'] == 1) {
+			if($post['first'] == 1 || getstatus($post['status'], 1)) {
 				continue;
 			}
 			$contentarr = array(
-				'authorid' => $post['authorid'],
-				'author' => $post['author'],
+				'authorid' => !$post['anonymous'] ? $post['authorid'] : '',
+				'author' => !$post['anonymous'] ? $post['author'] : lang('forum/misc', 'anonymous'),
 				'message' => str_replace("\r\n", '<br>', messagecutstr($post['message'])),
 				'dateline' => dgmdate($post['dateline'], 'u'),
-				'avatar' => avatar($post['authorid'], 'small'),
+				'avatar' => !$post['anonymous'] ? avatar($post['authorid'], 'small') : '',
 			);
 			$postlist['list'][$post['pid']] = $contentarr;
 		}

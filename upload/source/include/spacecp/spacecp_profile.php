@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_profile.php 31130 2012-07-18 09:29:13Z zhengqingpeng $
+ *      $Id: spacecp_profile.php 33107 2013-04-26 03:43:21Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -118,6 +118,10 @@ if(submitcheck('profilesubmit')) {
 			continue;
 		} elseif($key == 'timeoffset') {
 			C::t('common_member')->update($_G['uid'], array('timeoffset' => intval($value)));
+		} elseif($key == 'site') {
+			if(!in_array(strtolower(substr($value, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $value) && !preg_match('/^data\//', $value)) {
+				$value = 'http://'.$value;
+			}
 		}
 		if($field['formtype'] == 'file') {
 			if((!empty($_FILES[$key]) && $_FILES[$key]['error'] == 0) || (!empty($space[$key]) && empty($_GET['deletefile'][$key]))) {

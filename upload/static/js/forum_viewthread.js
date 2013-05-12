@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum_viewthread.js 33083 2013-04-18 12:08:03Z zhengqingpeng $
+	$Id: forum_viewthread.js 33216 2013-05-07 08:44:23Z andyzheng $
 	Modified by Valery Votintsev
 */
 
@@ -278,6 +278,7 @@ function succeedhandle_postappend(locationhref, message, param) {
 function recommendupdate(n) {
 	if(getcookie('recommend')) {
 		var objv = n > 0 ? $('recommendv_add') : $('recommendv_subtract');
+		objv.style.display = '';
 		objv.innerHTML = parseInt(objv.innerHTML) + 1;
 		setTimeout(function () {
 			$('recommentc').innerHTML = parseInt($('recommentc').innerHTML) + n;
@@ -294,6 +295,7 @@ function postreviewupdate(pid, n) {
 
 function favoriteupdate() {
 	var obj = $('favoritenumber');
+	obj.style.display = '';
 	obj.innerHTML = parseInt(obj.innerHTML) + 1;
 }
 
@@ -489,7 +491,12 @@ function lazyload(className) {
 				var height = img.getAttribute('height') ? img.getAttribute('height') : 100;
 				dom.innerHTML = '<div style="width: '+width+'px; height: '+height+'px;background: url('+IMGDIR + '/loading.gif) no-repeat center center;"></div>';
 				img.parentNode.insertBefore(dom.childNodes[0], img);
-				img.onload = function () {if(!this.getAttribute('_load')) {this.setAttribute('_load', 1);this.style.width = this.style.height = '';this.parentNode.removeChild(this.previousSibling);}};
+				img.onload = function () {
+					if(!this.getAttribute('_load')) {this.setAttribute('_load', 1);this.style.width = this.style.height = '';this.parentNode.removeChild(this.previousSibling);}
+					if(img.getAttribute('lazyloadthumb')) {
+						thumbImg(this);
+					}
+				};
 				img.style.width = img.style.height = '1px';
 				img.setAttribute('src', img.getAttribute('file') ? img.getAttribute('file') : img.getAttribute('src'));
 				img.setAttribute('lazyloaded', true);
@@ -504,8 +511,10 @@ function lazyload(className) {
 	_attachEvent(window, 'scroll', function(){obj.showImage();});
 }
 function update_collection(){
+	var obj = $('collectionnumber');
 	sum = 1;
-    $('collectionnumber').innerText = parseInt($('collectionnumber').innerText)+sum;
+	obj.style.display = '';
+	obj.innerText = parseInt(obj.innerText)+sum;
 }
 function display_blocked_post() {
 	var movehiddendiv = (!$('hiddenposts').innerHTML) ? true : false;
@@ -515,7 +524,7 @@ function display_blocked_post() {
 		}
 		display("post_"+blockedPIDs[i]);
 	}
-	postlistreply = $('postlistreply').innerHTML;
+	var postlistreply = $('postlistreply').innerHTML;
 	$('hiddenpoststip').parentNode.removeChild($('postlistreply'));
 	$('hiddenpoststip').parentNode.removeChild($('hiddenpoststip'));
 	$('hiddenposts').innerHTML+='<div id="postlistreply" class="pl">'+postlistreply+'</div>';
@@ -595,6 +604,9 @@ function fixed_avatar(pids, fixednv) {
 			var pid = pids[i];
 			var posttable = $('pid'+pid);
 			var postavatar = $('favatar'+pid);
+			if(!$('favatar'+pid)) {
+				return;
+			}
 			var nextpost = $('_postposition'+pid);
 			if(!postavatar || !nextpost || posttable.offsetHeight - 100 < postavatar.offsetHeight) {
 				if(postavatar.style.position == 'fixed') {
@@ -731,9 +743,14 @@ function autozoom(w, h, s) {
 function readmode(title, pid) {
 
 	var imagelist = '';
-	for(i = 0;i < aimgcount[pid].length;i++) {
-		var src = $('aimg_'+aimgcount[pid][i]).getAttribute('file');
-		imagelist += '<div class="mbn"><img src="' + src + '" width="600" /></div>';
+	if(aimgcount[pid]) {
+		for(var i = 0; i < aimgcount[pid].length;i++) {
+			var aimgObj = $('aimg_'+aimgcount[pid][i]);
+			if(aimgObj.parentElement.className!="mbn") {
+				var src = aimgObj.getAttribute('file');
+				imagelist += '<div class="mbn"><img src="' + src + '" width="600" /></div>';
+			}
+		}
 	}
 	msg = $('postmessage_'+pid).innerHTML+imagelist;
 	msg = '<div style="width:800px;max-height:500px; overflow-y:auto; padding: 10px;" class="pcb">'+msg+'</div>';
@@ -756,4 +773,8 @@ function changecontentdivid(tid) {
 	$('postlistreply_'+tid).id = 'postlistreply';
 	postnewdiv = $('postlistreply').childNodes;
 	postnewdiv[postnewdiv.length-1].id = 'post_new';
+}
+function showmobilebbs(obj) {
+/*vot*/	var content = '<h3 class="flb" style="cursor:move;"><em>'+lng['download_pocket_forum']+'</em><span><a href="javascript:;" class="flbc" onclick="hideWindow(\'mobilebbs\')" title="{lang close}">{lang close}</a></span></h3><div class="c"><h4>'+lng['pocket_forum_android']+'</h4><p class="mtm mbm vm"><span class="code_bg"><img src="'+ STATICURL +'image/common/zslt_andriod.png" alt="" /></span><img src="'+ STATICURL +'image/common/andriod.png" alt="'+lng['pocket_forum_android_alt']+'" /></p><h4>'+lng['pocket_forum_ios']+'</h4><p class="mtm mbm vm"><span class="code_bg"><img src="'+ STATICURL +'image/common/zslt_ios.png" alt="" /></span><img src="'+ STATICURL +'image/common/ios.png" alt="'+lng['pocket_forum_ios_alt']+'" /></p></div>';
+	showWindow('mobilebbs', content, 'html');
 }

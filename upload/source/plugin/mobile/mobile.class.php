@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.class.php 32939 2013-03-25 10:18:16Z monkey $
+ *      $Id: mobile.class.php 33230 2013-05-08 02:14:26Z jeffjzhang $
  */
 
 define("MOBILE_PLUGIN_VERSION", "2");
@@ -232,13 +232,15 @@ class plugin_mobile_forum extends base_plugin_mobile_forum {}
 class plugin_mobile_misc extends base_plugin_mobile_misc {}
 class mobileplugin_mobile extends base_plugin_mobile {
 	function global_header_mobile() {
-		$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
-		if(strpos($useragent, 'iphone') !== false || strpos($useragent, 'ios') !== false) {
-			return lang('plugin/mobile', 'mobile_tip_ios');
-		} elseif(strpos($useragent, 'android') !== false) {
-			return lang('plugin/mobile', 'mobile_tip_android');
-		} elseif(strpos($useragent, 'windows phone') !== false) {
-			return lang('plugin/mobile', 'mobile_tip_wp7');
+		if(IN_MOBILE === '1' || IN_MOBILE === 'yes' || IN_MOBILE === true) {
+			$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
+			if(strpos($useragent, 'iphone') !== false || strpos($useragent, 'ios') !== false) {
+				return lang('plugin/mobile', 'mobile_tip_ios');
+			} elseif(strpos($useragent, 'android') !== false) {
+				return lang('plugin/mobile', 'mobile_tip_android');
+			} elseif(strpos($useragent, 'windows phone') !== false) {
+				return lang('plugin/mobile', 'mobile_tip_wp7');
+			}
 		}
 	}
 }

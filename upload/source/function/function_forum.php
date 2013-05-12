@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_forum.php 32885 2013-03-20 03:34:44Z liulanbo $
+ *      $Id: function_forum.php 33118 2013-04-26 07:28:50Z theoliu $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -426,10 +426,10 @@ function loadforum($fid = null, $tid = null) {
 	}
 	if($_G['setting']['forumpicstyle']) {
 		$_G['setting']['forumpicstyle'] = dunserialize($_G['setting']['forumpicstyle']);
-		empty($_G['setting']['forumpicstyle']['thumbwidth']) && $_G['setting']['forumpicstyle']['thumbwidth'] = 214;
-		empty($_G['setting']['forumpicstyle']['thumbheight']) && $_G['setting']['forumpicstyle']['thumbheight'] = 160;
+		empty($_G['setting']['forumpicstyle']['thumbwidth']) && $_G['setting']['forumpicstyle']['thumbwidth'] = 203;
+		empty($_G['setting']['forumpicstyle']['thumbheight']) && $_G['setting']['forumpicstyle']['thumbheight'] = 999;
 	} else {
-		$_G['setting']['forumpicstyle'] = array('thumbwidth' => 214, 'thumbheight' => 160);
+		$_G['setting']['forumpicstyle'] = array('thumbwidth' => 203, 'thumbheight' => 999);
 	}
 	if($fid) {
 		$fid = is_numeric($fid) ? intval($fid) : (!empty($_G['setting']['forumfids'][$fid]) ? $_G['setting']['forumfids'][$fid] : 0);

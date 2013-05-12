@@ -1,9 +1,13 @@
+var supporttouch = "ontouchend" in document;
+!supporttouch && (window.location.href = 'forum.php?mobile=1');
+
+var platform = navigator.platform;
+var ua = navigator.userAgent;
+var ios = /iPhone|iPad|iPod/.test(platform) && ua.indexOf( "AppleWebKit" ) > -1;
+var andriod = ua.indexOf( "Android" ) > -1;
+
+
 (function($, window, undefined) {
-
-	var supporttouch = "ontouchend" in document;
-	!supporttouch && (window.location.href = 'forum.php?mobile=1');
-
-
 	function triggercustomevent(obj, eventtype, event) {
 		var origtype = event.type;
 		event.type = eventtype;
@@ -178,6 +182,9 @@ var img = {
 		});
 	},
 	errorhandle : function(obj, is_err_t) {
+		if(obj.attr('noerror') == 'true') {
+			return;
+		}
 		obj.css('visibility', 'hidden');
 		obj.css('display', 'none');
 		var parentnode = obj.parent();
@@ -599,6 +606,40 @@ function in_array(needle, haystack) {
 	return false;
 }
 
+function isUndefined(variable) {
+	return typeof variable == 'undefined' ? true : false;
+}
+
+function setcookie(cookieName, cookieValue, seconds, path, domain, secure) {
+	if(cookieValue == '' || seconds < 0) {
+		cookieValue = '';
+		seconds = -2592000;
+	}
+	if(seconds) {
+		var expires = new Date();
+		expires.setTime(expires.getTime() + seconds * 1000);
+	}
+	domain = !domain ? cookiedomain : domain;
+	path = !path ? cookiepath : path;
+	document.cookie = escape(cookiepre + cookieName) + '=' + escape(cookieValue)
+		+ (expires ? '; expires=' + expires.toGMTString() : '')
+		+ (path ? '; path=' + path : '/')
+		+ (domain ? '; domain=' + domain : '')
+		+ (secure ? '; secure' : '');
+}
+
+function getcookie(name, nounescape) {
+	name = cookiepre + name;
+	var cookie_start = document.cookie.indexOf(name);
+	var cookie_end = document.cookie.indexOf(";", cookie_start);
+	if(cookie_start == -1) {
+		return '';
+	} else {
+		var v = document.cookie.substring(cookie_start + name.length + 1, (cookie_end > cookie_start ? cookie_end : document.cookie.length));
+		return !nounescape ? unescape(v) : v;
+	}
+}
+
 $(document).ready(function() {
 
 	if($('div.pg').length > 0) {
@@ -613,15 +654,6 @@ $(document).ready(function() {
 	if($('.popup').length > 0) {
 		popup.init();
 	}
-	if($('.dialog').length > 0) {
-		dialog.init();
-	}
-	if($('.formdialog').length > 0) {
-		formdialog.init();
-	}
-	if($('.redirect').length > 0) {
-		redirect.init();
-	}
 	if($('.display').length > 0) {
 		display.init();
 	}
@@ -631,4 +663,7 @@ $(document).ready(function() {
 	if($('.pullrefresh').length > 0) {
 		pullrefresh.init();
 	}
+	dialog.init();
+	formdialog.init();
+	redirect.init();
 });

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: connect_login.php 32773 2013-03-07 10:48:18Z liulanbo $
+ *      $Id: connect_login.php 33177 2013-05-06 02:43:31Z theoliu $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -99,7 +99,7 @@ if($op == 'init') {
 	$is_notify = true;
 
 	$conispublishfeed = 0;
-	$conispublisht = 1;
+	$conispublisht = 0;
 
 	$is_user_info = 1;
 	$is_feed = 1;

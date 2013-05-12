@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum_post.js 32735 2013-03-05 08:02:54Z monkey $
+	$Id: forum_post.js 33179 2013-05-06 03:16:25Z nemohou $
 	Modified by Valery Votintsev
 */
 
@@ -125,7 +125,7 @@ function validate(theform) {
 	theform.message.value = message;
 	if($('postsubmit').name == 'editsubmit') {
 		postsubmit(theform);
-		return true;
+		return false;
 	} else if(in_array($('postsubmit').name, ['topicsubmit', 'replysubmit'])) {
 		if(seccodecheck || secqaacheck) {
 			var chk = 1, chkv = '';

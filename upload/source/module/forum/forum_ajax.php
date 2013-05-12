@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_ajax.php 32554 2013-02-19 10:33:44Z monkey $
+ *      $Id: forum_ajax.php 33116 2013-04-26 06:47:25Z nemohou $
  * Modified by Valery Votintsev, codersclub.org
  */
 
@@ -285,6 +285,10 @@ if($_GET['action'] == 'checkusername') {
 		$forum_field = daddslashes($forum_field);
 		$todaytime = strtotime(dgmdate(TIMESTAMP, 'Ymd'));
 		foreach(C::t('forum_thread')->fetch_all_by_fid_lastpost($fid, $time, TIMESTAMP) as $thread) {
+			$thread['icontid'] = $thread['forumstick'] || !$thread['moved'] && $thread['isgroup'] != 1 ? $thread['tid'] : $thread['closed'];
+			if(!$thread['forumstick'] && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])) {
+				$thread['icontid'] = $thread['closed'] > 1 ? $thread['closed'] : $thread['tid'];
+			}
 			list($thread['subject'], $thread['author'], $thread['lastposter']) = daddslashes(array($thread['subject'], $thread['author'], $thread['lastposter']));
 			$thread['dateline'] = $thread['dateline'] > $todaytime ? "<span class=\"xi1\">".dgmdate($thread['dateline'], 'd')."</span>" : "<span>".dgmdate($thread['dateline'], 'd')."</span>";
 			$thread['lastpost'] = dgmdate($thread['lastpost']);

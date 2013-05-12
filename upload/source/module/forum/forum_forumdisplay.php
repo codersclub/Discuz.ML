@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_forumdisplay.php 33078 2013-04-18 09:37:59Z zhengqingpeng $
+ *      $Id: forum_forumdisplay.php 33211 2013-05-07 06:55:30Z jeffjzhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -588,7 +588,7 @@ if($_G['forum']['picstyle']) {
 		if(!empty($_G['setting']['forumpicstyle']['thumbnum'])) {
 			$_G['tpp'] = $_G['setting']['forumpicstyle']['thumbnum'];
 		}
-		$stickycount = 0;
+		$stickycount = $showsticky = 0;
 	}
 }
 
@@ -622,7 +622,7 @@ if($filter !== 'hot') {
 		if($filterarr['digest']) {
 			$indexadd = " FORCE INDEX (digest) ";
 		}
-	} elseif($showsticky) {
+	} elseif($showsticky && $stickytids && is_array($stickytids)) {
 		$filterarr1 = $filterarr;
 		$filterarr1['inforum'] = '';
 		$filterarr1['intids'] = $stickytids;
@@ -804,7 +804,7 @@ foreach($threadlist as $thread) {
 }
 
 $livethread = array();
-if($_G['forum']['livetid'] && $page == 1 && !$filter) {
+if($_G['forum']['livetid'] && $page == 1 && (!$filter || ($filter == 'sortid' && $_G['forum']['threadsorts']['defaultshow'] == $_GET['sortid']))) {
 	include_once libfile('function/post');
 	$livethread = C::t('forum_thread')->fetch($_G['forum']['livetid']);
 	$livepost = C::t('forum_post')->fetch_threadpost_by_tid_invisible($_G['forum']['livetid']);

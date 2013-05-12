@@ -231,7 +231,7 @@ var lng = {
 
 	'copy_failed'		: '复制失败，请选择“允许访问”',
 	'prev'			: '上一张',
-	'next'			: '下一张',
+	'next'			: '下一张',//'下一页',
 
 //--------------------------------
 //static/js/editor.js
@@ -371,6 +371,11 @@ var lng = {
 	'qq_bind'		: '请先绑定QQ账号',
 	'quote_by'		: '本帖最后由 .*? 于 .*? 编辑',
 	'copy_code'		: '复制代码',
+	'download_pocket_forum'	: '下载掌上论坛',//'Download Pocket Forum',
+	'pocket_forum_android'	: 'Andriod版本，扫描二维码可以直接下载到手机',//'If Andriod version, Scan thw QR-code can be downloaded directly to the phone',
+	'pocket_forum_android_alt'	: '适用于装有安卓系统的三星/HTC/小米等手机',//'Suitablefor Android-based smartphones like Samsung/HTC/etc',
+	'pocket_forum_ios'	: 'iPhone版本，扫描二维码可以直接下载到手机',//'If iPhone used, Scan thw QR-code can be downloaded directly to the phone',
+	'pocket_forum_ios_alt'	: '适用于苹果手机',//'Suitable for Apple mobile phone',
 
 //--------------------------------
 //static/js/handlers.js
@@ -591,6 +596,7 @@ var lng = {
 	'capitals'		: '大写字母',//'Capital letters',
 	'specials'		: '特殊符号',//'Special symbols',
 	'pw_weak_info'		: '密码太弱，密码中必须包含 ',//'Weak password, the password must contain ',
+	'leave_blank_old_pass'	: '如不需要更改密码，此处请留空',//'Leave blank if you do not need to change the password',
 
 //--------------------------------
 //static/js/seditor.js

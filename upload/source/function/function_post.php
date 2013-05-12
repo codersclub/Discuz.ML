@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_post.php 32846 2013-03-14 10:42:28Z monkey $
+ *      $Id: function_post.php 33172 2013-05-03 03:13:40Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -562,6 +562,7 @@ function messagesafeclear($message) {
 
 function messagecutstr($str, $length = 0, $dot = ' ...') {
 	global $_G;
+	$str = messagesafeclear($str);
 	$sppos = strpos($str, chr(0).chr(0).chr(0));
 	if($sppos !== false) {
 		$str = substr($str, 0, $sppos);

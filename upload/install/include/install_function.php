@@ -1758,7 +1758,7 @@ function lang_exists($lang_id='') {
 }
 
 
-function show_language($lang_list=array()) {
+function show_language($lang_list=array(), $lng='en') {
 	global $self, $uchidden, $step;
 /*vot*/	global $language;
 
@@ -1794,8 +1794,10 @@ All the language packs must be placed inside the "source/language" folder at you
 		<select id='language' name='language'>
 EOT;
 	foreach($lang_list as $id => $l) {
-		echo '<option value="', $id, '"';
-		echo ($l['available'] ? '' : ' disabled'), '>', $l['name'], ' (', $l['title'], ') </option>';
+		$disabled = $l['available'] ? '' : ' disabled';
+		$selected = $id==$lng ? ' selected' : '';
+		echo '<option value="', $id, '"', $disabled, $selected, '>';
+		echo $l['name'], ' (', $l['title'], ') </option>';
 	}
 
 	echo <<<EOT

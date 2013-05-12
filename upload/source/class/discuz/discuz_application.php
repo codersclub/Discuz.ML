@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_application.php 32967 2013-03-28 10:57:48Z zhengqingpeng $
+ *      $Id: discuz_application.php 33204 2013-05-07 03:29:45Z jeffjzhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -798,6 +798,7 @@ class discuz_application extends discuz_base{
 			dsetcookie('mobile', 'no', 3600);
 			$nomobile = true;
 		} elseif($this->var['cookie']['mobile'] == 'no' && $mobileflag) {
+			checkmobile();
 			dsetcookie('mobile', '');
 		} elseif($this->var['cookie']['mobile'] == 'no') {
 			$nomobile = true;
@@ -876,6 +877,7 @@ class discuz_application extends discuz_base{
 		$this->var['setting']['seccodedata']['height'] = 30;
 		$this->var['setting']['seccodedata']['animator'] = 0;
 		$this->var['setting']['thumbquality'] = 50;
+		$this->var['setting']['avatarmethod'] = 0;
 
 		$this->var['setting']['mobile']['simpletypeurl'] = array();
 		$this->var['setting']['mobile']['simpletypeurl'][0] = $this->var['siteurl'].$this->var['basefilename'].($query_sting_tmp ? '?'.$query_sting_tmp.'&' : '?').'mobile=1&simpletype=no';

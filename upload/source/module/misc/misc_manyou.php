@@ -3,7 +3,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_manyou.php 33035 2013-04-11 03:43:56Z zhengqingpeng $
+ *      $Id: misc_manyou.php 33253 2013-05-10 01:29:32Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -34,6 +34,10 @@ if($_GET['action'] == 'inviteCode') {
 				$usedList = C::t('home_userapp')->fetch_all_by_uid_appid($_G['uid'], $appids);
 				$usedAppId = array();
 				foreach($usedList as $key => $app) {
+					if(isset($list[1][$app['appid']])) {
+						unset($usedList[$key]);
+						continue;
+					}
 					$usedAppId[$app['appid']] = $app['appid'];
 					$app['pic'] = 'http://appicon.manyou.com/logos/'.$app['appid'];
 					$app['url'] = 'userapp.php?mod=app&id='.$app['appid'];
@@ -41,8 +45,8 @@ if($_GET['action'] == 'inviteCode') {
 					$usedList[$key] = $app;
 				}
 				$usedNum = count($usedAppId);
-				if($usedNum < 5 && isset($list[2]) && $list[2]) {
-					$addNum = 5 - $usedNum;
+				if($usedNum < 6 && isset($list[2]) && $list[2]) {
+					$addNum = 6 - $usedNum;
 					foreach($list[2] as $app) {
 						if(!$addNum) {
 							break;
@@ -57,6 +61,9 @@ if($_GET['action'] == 'inviteCode') {
 	}
 	if(empty($usedList) && isset($list[2]) && $list[2]) {
 		foreach($list[2] as $app) {
+			if(count($usedList) >= 6) {
+				break;
+			}
 			$usedList[] = $app;
 		}
 	}

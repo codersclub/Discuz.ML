@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: model_forum_post.php 32866 2013-03-18 02:45:33Z zhangjie $
+ *      $Id: model_forum_post.php 33148 2013-04-28 01:38:24Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -354,7 +354,7 @@ class model_forum_post extends discuz_model {
 			}
 		} else {
 			$this->param['threadupdatearr']['author'] = $this->param['isanonymous'] ? '' : $this->post['author'];
-			$anonymousadd = $isanonymous;
+			$anonymousadd = $this->param['isanonymous'];
 		}
 
 		if($isfirstpost) {

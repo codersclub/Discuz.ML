@@ -45,12 +45,13 @@ INSERT INTO pre_common_credit_rule VALUES ('31','Collection followed','followedc
 -- INSERT INTO pre_common_credit_rule VALUES ('36','Modify real name','editrealname','0','0','1','0','0','0','0','0','0','0','0','0','');
 -- INSERT INTO pre_common_credit_rule VALUES ('37','Change verified E-mail','editrealemail','0','0','1','0','0','0','0','0','0','0','0','0','');
 -- INSERT INTO pre_common_credit_rule VALUES ('38','Delete avatar','delavatar','0','0','1','0','0','0','0','0','0','0','0','0','');
---
---
---
+
+
+
 INSERT INTO pre_common_cron VALUES ('1','1','system','Clean today posted daily','cron_todaypost_daily.php','1269746623','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('2','1','system','Clean Online Time Monthly','cron_onlinetime_monthly.php','1269682366','1270051200','-1','1','0','0');
 INSERT INTO pre_common_cron VALUES ('3','1','system','Clean data daily','cron_cleanup_daily.php','1269746634','1269811800','-1','-1','5','30');
+-- INSERT INTO pre_common_cron VALUES ('4','1','system', 'Clean e-mail Statistics and birthday wishes daily', 'cron_birthday_daily.php','1269746627','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('5','1','system','Clean Announcements Daily','cron_announcement_daily.php','1269746629','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('6','1','system','Clean Expired Threads Hourly','cron_threadexpiry_hourly.php','1269746634','1269810000','-1','-1','-1','0');
 INSERT INTO pre_common_cron VALUES ('7','1','system','Clean Promotions Hourly','cron_promotion_hourly.php','1269746629','1269792000','-1','-1','0','00');
@@ -66,7 +67,7 @@ INSERT INTO pre_common_cron VALUES ('16','1','system','Weekly broadcast archive'
 INSERT INTO pre_common_cron VALUES ('17','1','system','Views daily update','cron_todayviews_daily.php','1321500558','1321556400','-1','-1','3','0	5	10	15	20	25	30	35	40	45	50	55');
 INSERT INTO pre_common_cron VALUES ('18','0','system','Daily users table optimization','cron_member_optimize_daily.php','1321500558','1321556400','-1','-1','2','0	5	10	15	20	25	30	35	40	45	50	55');
 INSERT INTO pre_common_cron VALUES ('19','1','system','Count today hot posts','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0');
--- INSERT INTO pre_common_cron VALUES ('4','1','system', 'Clean e-mail Statistics and birthday wishes daily', 'cron_birthday_daily.php','1269746627','1269792000','-1','-1','0','0');
+
 INSERT INTO pre_common_friendlink VALUES ('1','0','Official Forum','http://www.discuz.net','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
 INSERT INTO pre_common_friendlink VALUES ('2','4','My Territory','http://www.5d6d.com/','','','2');
 INSERT INTO pre_common_friendlink VALUES ('3','2','Open Application Platform','http://www.manyou.com/','','','2');

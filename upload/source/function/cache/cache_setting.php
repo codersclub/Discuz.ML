@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cache_setting.php 33004 2013-04-07 02:22:48Z zhengqingpeng $
+ *      $Id: cache_setting.php 33238 2013-05-08 07:29:37Z alicezhao $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -713,6 +713,7 @@ function get_cachedata_mainnav() {
 		$nav['style'] = parsehighlight($nav['highlight']);
 /*vot*/		$data['navs'][$id]['id'] = $nav['identifier'];
 		$data['navs'][$id]['navname'] = $nav['name'];
+/*vot*/		$nav['name'] .= ($nav['identifier'] == 5 && $nav['type'] == 0 ? '<b class="icon_down"></b>' : '');
 		$data['navs'][$id]['filename'] = $nav['url'];
 		$data['navs'][$id]['available'] = $nav['available'];
 		$nav['name'] = $nav['name'].($nav['title'] ? '<span>'.$nav['title'].'</span>' : '');

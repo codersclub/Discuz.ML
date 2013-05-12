@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: extend_thread_replycredit.php 30673 2012-06-11 07:51:54Z svn_project_zhangjie $
+ *      $Id: extend_thread_replycredit.php 33173 2013-05-03 03:41:15Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -73,7 +73,7 @@ class extend_thread_replycredit extends extend_thread_base {
 					if($rand_replycredit) {
 						updatemembercount($this->member['uid'], array($replycredit_rule['extcreditstype'] => $replycredit_rule['extcredits']), 1, 'RCA', $this->thread['tid']);
 						C::t('forum_post')->update('tid:'.$this->thread['tid'], $this->pid, array('replycredit' => $replycredit_rule['extcredits']));
-						$this->param['updatethreaddata'] = array_merge((array)$this->param['updatethreaddata'], (array)DB::field('replycredit', $this->thread['replycredit'] - $replycredit_rule['extcredits']));
+						C::t('forum_thread')->update($this->thread['tid'], (array)DB::field('replycredit', $this->thread['replycredit'] - $replycredit_rule['extcredits']), false, false, 0, true);
 					}
 				}
 			}

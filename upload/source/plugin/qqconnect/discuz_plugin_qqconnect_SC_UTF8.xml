@@ -12,7 +12,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[qqconnect/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.15]]></item>
+			<item id="version"><![CDATA[1.17]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[connect]]></item>
@@ -64,7 +64,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X2.5]]></item>
+		<item id="version"><![CDATA[X3]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
 		<item id="language">
@@ -134,6 +134,7 @@
 				<item id="connect_feed_published_thread"><![CDATA[发表了《{subject}》：]]></item>
 				<item id="connect_feed_published_post"><![CDATA[参与了《{subject}》的讨论：]]></item>
 				<item id="connect_spacecp_share_a_post"><![CDATA[分享一个好帖#{bbname}#《{subject}》：{message}]]></item>
+				<item id="connect_spacecp_share_qq_default"><![CDATA[看看这个吧，还不错哦，也许你会喜欢^_^]]></item>
 				<item id="connect_post_sync_method"><![CDATA[将此回复同步到]]></item>
 			</item>
 			<item id="templatelang">
@@ -161,6 +162,7 @@
 				<item id="connect_register_sex_secret"><![CDATA[保密]]></item>
 				<item id="connect_register_public_email"><![CDATA[公开邮箱地址]]></item>
 				<item id="connect_register_use_qzone_avatar"><![CDATA[使用QQ头像]]></item>
+				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[使用QQ头像和QQ秀]]></item>
 				<item id="connect_register_use_qqshow"><![CDATA[<span title="QQ秀将展示在论坛帖子左侧和个人空间首页">使用QQ秀形象</span>]]></item>
 				<item id="connect_register_agree"><![CDATA[同意服务条款]]></item>
 				<item id="connect_register_must_agree"><![CDATA[您必须同意服务条款后才能注册]]></item>
@@ -177,8 +179,8 @@
 				<item id="connect_config_desc_title1"><![CDATA[用QQ帐号轻松登录]]></item>
 				<item id="connect_config_desc_content1"><![CDATA[无需记住本站的帐号和密码，随时使用QQ帐号密码轻松登录]]></item>
 				<item id="connect_config_newpassword_comment"><![CDATA[您目前使用的是QQ帐号绑定本站，您可以在这里设置独立密码，只有设置了独立密码后本站需要填写密码的相应功能才可使用]]></item>
-				<item id="connect_config_desc_title2"><![CDATA[发表主题同时推送到QQ空间和腾讯微博]]></item>
-				<item id="connect_config_desc_content2"><![CDATA[将您的论坛主题推送到QQ空间和腾讯微博，让好友全方面了解您]]></item>
+				<item id="connect_config_desc_title2"><![CDATA[发表主题同时推送到腾讯微博]]></item>
+				<item id="connect_config_desc_content2"><![CDATA[将您的论坛主题推送到腾讯微博，让好友全方面了解您]]></item>
 				<item id="connect_config_desc_title3"><![CDATA[把本站精彩内容分享到QQ空间、腾讯微博和腾讯朋友]]></item>
 				<item id="connect_config_desc_content3"><![CDATA[每一个精彩内容绝不放过，简单快捷的将论坛主题分享给好友和听众]]></item>
 				<item id="connect_config_profile"><![CDATA[个人资料]]></item>
@@ -193,7 +195,7 @@
 				<item id="connect_config_modify_authorization"><![CDATA[修改本站的授权？]]></item>
 				<item id="connect_config_modify_authorization_desc"><![CDATA[您可根据自己的需要随时增加、取消QQ帐号对本站的授权，在确保隐私的前提下使用各项功能和服务。]]></item>
 				<item id="connect_config_set_password"><![CDATA[设置本站密码？]]></item>
-				<item id="connect_config_sync_post"><![CDATA[同步动态到QQ空间与腾讯微博？]]></item>
+				<item id="connect_config_sync_post"><![CDATA[同步动态到腾讯微博？]]></item>
 				<item id="connect_config_sync_post_desc1"><![CDATA[您的好友或听众能够看到您发表的主题和记录。]]></item>
 				<item id="connect_config_sync_post_desc2"><![CDATA[马上完善授权，您将可以把本站精彩内容分享到QQ空间、腾讯微博和腾讯朋友，跟大家分享每个精彩瞬间。]]></item>
 				<item id="connect_config_unbind_desc1"><![CDATA[您当前是使用QQ帐号绑定到 {$_G[setting][bbname]}]]></item>
@@ -216,10 +218,10 @@
 				<item id="connect_post_by_price"><![CDATA[具有售价的帖子无法发送QQ空间动态]]></item>
 				<item id="connect_post_by_invisible_forum"><![CDATA[该板块的帖子无法发送QQ空间动态]]></item>
 				<item id="connect_post_unbind"><![CDATA[绑定QQ帐号，轻松分享到QQ空间与腾讯微博]]></item>
-				<item id="connect_post_sync_tip"><![CDATA[此主题将同步到QQ空间和腾讯微博，您的好友或听众能够看到您发表的主题。]]></item>
+				<item id="connect_post_sync_tip"><![CDATA[此主题将同步到腾讯微博，您的听众能够看到您发表的主题。]]></item>
 				<item id="connect_post_sync_tip_close"><![CDATA[关闭同步发帖提示]]></item>
 				<item id="connect_post_sync_cancel"><![CDATA[暂不同步]]></item>
-				<item id="connect_post_sync_cancel_tip"><![CDATA[取消发表主题时同步到QQ空间和腾讯微博，将来您可以到“设置-QQ绑定”页面重新设置。]]></item>
+				<item id="connect_post_sync_cancel_tip"><![CDATA[取消发表主题时同步到腾讯微博，将来您可以到“设置-QQ绑定”页面重新设置。]]></item>
 				<item id="connect_post_sync_qzone1"><![CDATA[已设置同步至QQ空间]]></item>
 				<item id="connect_post_sync_t1"><![CDATA[已设置同步至腾讯微博]]></item>
 				<item id="connect_post_sync_qzone2"><![CDATA[未设置同步至QQ空间]]></item>
@@ -234,6 +236,7 @@
 				<item id="connect_post_sync_not_bind_desc"><![CDATA[马上绑定QQ账号，您将可以发表主题时同步到QQ空间和腾讯微博，第一时间和大家分享您在论坛中的新鲜事儿。]]></item>
 				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ空间]]></item>
 				<item id="connect_viewthread_share_to_t"><![CDATA[腾讯微博]]></item>
+				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ好友和群]]></item>
 				<item id="connect_viewthread_share_to_pengyou"><![CDATA[腾讯朋友]]></item>
 				<item id="connect_createpassword"><![CDATA[<b>创建密码</b>]]></item>
 				<item id="connect_uin_limit"><![CDATA[您的QQ帐号在本站注册的帐号数量达到上限，请绑定已有帐号，或<a href="{$change_qq_url}">更换其他QQ账号</a>]]></item>

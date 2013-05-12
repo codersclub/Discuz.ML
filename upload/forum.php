@@ -12,6 +12,13 @@
 define('APPTYPEID', 2);
 define('CURSCRIPT', 'forum');
 
+//DEBUG
+echo '<pre>';
+echo '_FILE=', __FILE__, "\n";
+echo 'url=', $url, "\n";
+echo '_ENV=';
+print_r($_ENV);
+echo '</pre>', "\n";
 
 require './source/class/class_core.php';
 

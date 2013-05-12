@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_forum_thread.php 32942 2013-03-26 02:09:33Z monkey $
+ *      $Id: table_forum_thread.php 33147 2013-04-27 09:58:40Z theoliu $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -1103,12 +1103,12 @@ class table_forum_thread extends discuz_table
 				$addsql .= ' AND dateline > '.intval($dateline);
 			}
 			if($type == 'newthread') {
-				$orderby = 'lastpost';
+				$orderby = 'tid';
 			} elseif($type == 'reply') {
 				$orderby = 'lastpost';
 				$addsql .= ' AND replies > 0';
 			} else {
-				$orderby = 'tid';
+				$orderby = 'lastpost';
 			}
 			$addsql .= ' AND displayorder>=0 ORDER BY '.$orderby.' DESC '.DB::limit($start, $limit);
 

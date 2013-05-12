@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: post_newreply.php 32968 2013-03-29 02:20:19Z monkey $
+ *      $Id: post_newreply.php 33239 2013-05-08 07:35:08Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -182,6 +182,10 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 		if(!($thread['price'] && !$thread['special'] && $thaquote['first'])) {
 			$quotefid = $thaquote['fid'];
 			$message = $thaquote['message'];
+
+			if(strpos($message, '[/password]') !== FALSE) {
+				$message = '';
+			}
 
 			if($_G['setting']['bannedmessages'] && $thaquote['authorid']) {
 				$author = getuserbyuid($thaquote['authorid']);
@@ -434,7 +438,9 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 		$url = "forum.php?mod=viewthread&tid=".$_G['tid']."&pid=".$modpost->pid."&page=".$modpost->param('page')."&extra=".$extra."#pid".$modpost->pid;
 	}
 
-	showmessage($return , $url, $modpost->param('showmsgparam'));
+	if(!isset($inspacecpshare)) {
+		showmessage($return , $url, $modpost->param('showmsgparam'));
+	}
 
 }
 

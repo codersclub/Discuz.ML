@@ -2,11 +2,11 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: register.js 32487 2013-01-28 09:11:34Z zhengqingpeng $
+	$Id: register.js 33191 2013-05-06 06:49:34Z nemohou $
 	Modified by Valery Votintsev
 */
 
-var lastusername = '', lastpassword = '', lastemail = '', lastinvitecode = '', stmp = new Array();
+/*vot*/ var lastusername = '', lastpassword = '', lastemail = '', lastinvitecode = '', stmp = new Array(), modifypwd = false, profileTips = lng['leave_blank_old_pass'];
 
 function errormessage(id, msg) {
 	if($(id)) {
@@ -290,11 +290,11 @@ function checkusername(id) {
 		return;
 /*vot*/	} else if(utf8len > 64) { // Max DB Field Length in bytes
 /*vot*/		errormessage(id, lng['username_long']);
-		return;
+/*vot*/		return;
 	}
 	var x = new Ajax();
 	$('tip_' + id).parentNode.className = $('tip_' + id).parentNode.className.replace(/ p_right/, '');
-	x.get('forum.php?mod=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=checkusername&username=' + (BROWSER.ie && document.charset == 'utf-8' ? encodeURIComponent(username) : username.replace(/%/g, '%25')), function(s) {
+	x.get('forum.php?mod=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=checkusername&username=' + (BROWSER.ie && document.charset == 'utf-8' ? encodeURIComponent(username) : username.replace(/%/g, '%25').replace(/#/g, '%23')), function(s) {
 		errormessage(id, s);
 	});
 }

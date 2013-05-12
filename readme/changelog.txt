@@ -7,20 +7,88 @@
 
 Main differences from the official Discuz!X:
 
-1. All the language files translated to English
-2. Added a javascript language file (English)
+1. All the language files translated
+2. Added a javascript language file
 3. All the javascript files modified for Multi Language usage
-4. All the images translated to English
+4. All the images converted to Miltilingual or translated to English
    (You can find the Photoshop images in /PSD/ directory)
 5. All other files translated to English (.xml, .css, etc.)
 6. Database structure modified for european languages (most of fields expanded)
-7. Translated to English all the Chinese strings
-   encoded with HTML code like &#NNNN;
+7. All the Chinese stringsencoded with HTML code like &#NNNN; translated to English
 8. Some styles modified for more wider fields
 9. Upgrade/Convert utilities translated to English
 10. All Discuz!X "readme/" files translated to English
 11. UCenter upgraded to v.1.6.0
 12. UCenter API Development Guide translated to English
+
++======================================+
+   Discuz! X3 20130511
++======================================+
+[ADD] Switch from Standard version to Touch-screen version
+[ADD] Added broadcast posts description
+[ADD] Added the post login prompt Switch for guests
+[ADD] Added the compressed image upload feature for Touch-screen version
+[ADD] Added the quick reply box switch
+[ADD] Added the secondary navigation menu
+[ADD] Added the Ignore Malicious Users operation
+[ADD] Added four-frame Home switch off by default
+
+[ADV] Improved the meaningless posts filter and experience optimization
+[ADV] Improved the client compatibility for check banned users
+[ADV] Added static HTML or file name check function
+[ADV] Optimized only opened QQ registration process
+[ADV] Waterfall flow effect adjusted for the topic cover width and height
+[ADV] Improved tips for Touch-screen version of the post page
+[ADV] Enhanced plug-in installation with open check
+[ADV] Optimize the touch-screen version for See posts pages and images zoom in and drag feature
+[ADV] Improved the post list headings filtering
+[ADV] Standardized the interfaces return data
+[ADV] Adjusted the post page details
+[ADV] Added the password strength verification for the Retrieve Password feature
+[ADV] Enhanced SQL security and defense
+[ADV] Added the URL safety function
+[ADV] Changed the post synchronization to QQ method
+
+[FIX] Article static file the number of clicks updated and display
+[FIX] Optimized the navigation tips function
+[FIX] Fixed the upgrade process threadprofile error 
+[FIX] Fixed editor abnormalities for IE browser
+[FIX] Fixed the read permissions BUG
+[FIX] Fixed the current IP handling BUG
+[FIX] Optimized the notification related issues
+[FIX] Fixed error in Share to the QQ friends or QQ group
+[FIX] Fixed the @User time-related error
+[FIX] Fixed the Application bisectional link error
+[FIX] Fixed the Topic List page details
+[FIX] Fixed the Back to the content generated image is not allowed
+[FIX] Fixed the bug of no fiid for the Product posts
+[FIX] Optimized the mobile related settings
+[FIX] Post live functions improved
+[FIX] Fixed the json_encode Escape problems
+[FIX] Fixed the bug of Personal space DIY dress
+[FIX] Fixed the Waterproof wall delete user error
+[FIX] Optimized the visitors Reply permission details
+[FIX] Fixed error for showtips does not support HTML
+[FIX] Fixed the address processing when generated the article static file
+[FIX] Fixed the Save to Album error in IE
+[FIX] Fixed the Special Topic plugin detection error
+[FIX] Fixedescape character with regular expression after restore the module data hidden output
+[FIX] Fixed error when kick Group Members
+[FIX] Fixed incomplete data when the article restored from the Recycle Bin
+[FIX] Fixed Edit the article does not display properly static HTML file name
+[FIX] Fixed HTML files can not be deleted from the Recycle Bin when delete the article
+[FIX] Fixed A number of security-related issues
+[FIX] Fixed generation of article static file access address with the respective channel domain name
+[FIX] Fixed collections and other functions failure
+[FIX] Fixed ajaxpost processing in chrome is identified as firefox Continuous request fail problem
+[FIX] Fixed Collection compatibility issues
+[FIX] Fixed the anonymous avatar displaying
+[FIX] Fixed Replies reward stickers of Members earn reward points, but Posts set total credit not deducted
+[FIX] Fixed the FLV Video can not play
+[FIX] Fixed the IPAD post Discuz! Code Error
+[FIX] Fixed the Category information area shows live posts
+[FIX] Fixed the installation for the plug-in cron task
+[FIX] Fixed HTTPS protocol detection, Verification for e-mail link error
 
 +======================================+
    Discuz! X3 Beta 20130305

@@ -83,7 +83,7 @@ if($method == 'show_license') {
 		$lang_list[$id]['available'] = lang_exists($id) ? 1 : 0;
 	}
 
-	show_language($lang_list);
+	show_language($lang_list, $lng);
 
 
 

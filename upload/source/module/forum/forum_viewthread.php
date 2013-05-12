@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 32984 2013-04-01 10:28:25Z monkey $
+ *      $Id: forum_viewthread.php 33261 2013-05-10 03:36:04Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -1343,8 +1343,8 @@ function viewthread_baseinfo($post, $extra) {
 		}
 	} elseif(substr($key, 0, 6) == 'field_') {
 		$field = substr($key, 6);
-		if(!$type && !empty($post['privacy']['profile'][$field])) {
-			return lang('space', 'viewthread_userinfo_privacy');
+		if(!empty($post['privacy']['profile'][$field])) {
+			return '';
 		}
 		require_once libfile('function/profile');
 		if($field != 'qq') {
@@ -1353,6 +1353,9 @@ function viewthread_baseinfo($post, $extra) {
 			$v = '<a href="http://wpa.qq.com/msgrd?V=3&Uin='.$post['qq'].'&Site='.$_G['setting']['bbname'].'&Menu=yes&from=discuz" target="_blank" title="'.lang('spacecp', 'qq_dialog').'"><img src="'.STATICURL.'/image/common/qq_big.gif" alt="QQ" style="margin:0px;"/></a>';
 		}
 		if($v) {
+			if(!isset($_G['cache']['profilesetting'])) {
+				loadcache('profilesetting');
+			}
 			$v = $type ? $_G['cache']['profilesetting'][$field]['title'] : $v;
 		}
 	} elseif($key == 'eccredit_seller') {
@@ -1575,6 +1578,7 @@ function checkrushreply($post) {
 
 function parseindex($nodes, $pid) {
 	global $_G;
+	$nodes = dhtmlspecialchars($nodes);
 	$nodes = preg_replace('/(\**?)\[#(\d+)\](.+?)[\r\n]/', "<a page=\"\\2\" sub=\"\\1\">\\3</a>", $nodes);
 	$nodes = preg_replace('/(\**?)\[#(\d+),(\d+)\](.+?)[\r\n]/', "<a tid=\"\\2\" pid=\"\\3\" sub=\"\\1\">\\4</a>", $nodes);
 	$_G['forum_posthtml']['header'][$pid] .= '<div id="threadindex">'.$nodes.'</div><script type="text/javascript" reload="1">show_threadindex('.$pid.', '.($_GET['from'] == 'preview' ? '1' : '0').')</script>';
@@ -1583,7 +1587,7 @@ function parseindex($nodes, $pid) {
 
 function parsebegin($linkaddr, $imgflashurl, $w = 0, $h = 0, $type = 0, $s = 0) {
 	static $begincontent;
-	if($begincontent) {
+	if($begincontent || $_GET['from'] == 'preview') {
 		return '';
 	}
 	preg_match("/((https?){1}:\/\/|www\.)[^\[\"']+/i", $imgflashurl, $matches);
@@ -1614,7 +1618,7 @@ function parsebegin($linkaddr, $imgflashurl, $w = 0, $h = 0, $type = 0, $s = 0) 
 				'<script type="text/javascript" reload="1">$(\''.$randomid.'\').innerHTML='.
 				'AC_FL_RunContent(\'width\', \''.$w.'\', \'height\', \''.$h.'\', '.
 				'\'allowNetworking\', \'internal\', \'allowScriptAccess\', \'never\', '.
-				'\'src\', \''.$imgflashurl.'\', \'quality\', \'high\', \'bgcolor\', \'#ffffff\', '.
+				'\'src\', encodeURI(\''.$imgflashurl.'\'), \'quality\', \'high\', \'bgcolor\', \'#ffffff\', '.
 				'\'wmode\', \'transparent\', \'allowfullscreen\', \'true\');</script>';
 			break;
 		default:

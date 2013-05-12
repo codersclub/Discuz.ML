@@ -11,7 +11,9 @@ error_reporting(E_ALL);
 
 define('IN_DISCUZ', true);
 define('DISCUZ_ROOT', substr(dirname(__FILE__), 0, -12));
-define('DISCUZ_CORE_DEBUG', false);
+//DEBUG
+define('DISCUZ_CORE_DEBUG', true);
+//define('DISCUZ_CORE_DEBUG', false);
 define('DISCUZ_TABLE_EXTENDABLE', TRUE);
 
 set_exception_handler(array('core', 'handleException'));
@@ -29,6 +31,13 @@ if(function_exists('spl_autoload_register')) {
 	}
 }
 
+//DEBUG
+echo '<pre>';
+echo '_FILE=', __FILE__, "\n";
+//echo 'url=', $url, "\n";
+//echo '_ENV=';
+//print_r($_ENV);
+//echo '</pre>', "\n";
 C::creatapp();
 
 class core
