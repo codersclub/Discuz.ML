@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *      $Id: lang_admincp.php 33138 2013-04-27 08:25:48Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -135,7 +135,7 @@ $lang = array
 	'rmb' => '人民币',
 	'rmb_yuan' => '元',
 	'posts' => '发帖数',
-	'blogid' => '日志 ID',
+	'blogid' =>'日志 ID',
 	'view' => '查看',
 	'reply' => '回复',
 	'hot' => '热度',
@@ -1003,9 +1003,9 @@ $lang = array
 	'setting_styles_forumdisplay_fastsmilies' => '显示推荐表情',
 	'setting_styles_forumdisplay_fastsmilies_comment' => '在快速发帖右侧显示推荐表情。推荐的表情需要到“表情管理”中设置',
 	'setting_styles_forumdisplay_forumpicstyle_thumbwidth' => '主题封面宽度',
-	'setting_styles_forumdisplay_forumpicstyle_thumbwidth_comment' => '当版块开启图片列表模式时有效，0或不填 将使用默认值(214)。变更宽高建议重建主题封面，<a href="'.ADMINSCRIPT.'?action=counter" target="_blank">点此重建</a>',
+/*3*/	'setting_styles_forumdisplay_forumpicstyle_thumbwidth_comment' => '当版块开启图片列表模式时有效，0或不填 将使用默认值(203)。变更宽高建议重建主题封面，<a href="'.ADMINSCRIPT.'?action=counter" target="_blank">点此重建</a>',
 	'setting_styles_forumdisplay_forumpicstyle_thumbheight' => '主题封面高度',
-	'setting_styles_forumdisplay_forumpicstyle_thumbheight_comment' => '当版块开启图片列表模式时有效，0或不填 将使用默认值(160)',
+/*3*/	'setting_styles_forumdisplay_forumpicstyle_thumbheight_comment' => '当版块开启图片列表模式时有效，0或不填 将根据原图高度按比例生成，封面高度不同，有瀑布流的效果',
 	'setting_styles_forumdisplay_forumpicstyle_thumbnum' => '封面图显示数量',
 	'setting_styles_forumdisplay_forumpicstyle_thumbnum_comment' => '当版块开启图片列表模式时有效，0或不填 将和普通列表模式每页显示主题数一致',
 	'setting_styles_forumdisplay_defstyle_comment' => '选择“是”时，默认不以图片列表形式显示，用户也可以自己选择',
@@ -1812,6 +1812,8 @@ $lang = array
 	'setting_functions_other_closeforumorderby_comment' => '选择“是”用户将只能按默认排序查看，否则，用户自选排序将会增加系统压力。',
 /*!*/	'setting_functions_other_darkroom' => '开启小黑屋',
 /*!*/	'setting_functions_other_darkroom_comment' => '选择“是”将开启小黑屋，用户可以在右下角导航中进入小黑屋，查看被禁言禁止访问用户',
+/*3*/	'setting_functions_other_disableipnotice' => '关闭登录安全提醒',
+/*3*/	'setting_functions_other_disableipnotice_comment' => '选择“是”将关闭用户登录地区异常安全提醒功能',
 /*!*/	'setting_functions_other_global_sign' => '全局签名内容',
 /*!*/	'setting_functions_other_global_sign_comment' => '该设置必须开启签名后有效，如果用户没有设置签名就显示该签名内容',
 /*!*/	'setting_functions_other_shortcut' => '提醒添加桌面快捷的积分下限',
@@ -3260,6 +3262,7 @@ $lang = array
 
 	'styles_import' => '导入界面方案',
 	'styles_import_ignore_version' => '允许导入老版本 Discuz! 的界面(易产生错误!!)',
+/*3*/	'styles_import_version_invalid' => '版本号不匹配，当前版本：{cur_version}，系统版本：{set_version}',
 
 	'templates_admin' => '模板管理',
 	'templates_admin_name' => '模板名称',

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *      $Id: lang_template.php 33227 2013-05-07 11:23:50Z jeffjzhang $
  *
  *      This file is automatically generate
  */
@@ -155,6 +155,15 @@ $lang = array (
 /*!*/  'replylist' => '回复列表',
 /*!*/  'last_thread' => '上一个主题',
 /*!*/  'next_thread' => '下一个主题',
+/*3*/  'warmtip' => '温馨提示',
+/*3*/  'zsltmobileclient' => '掌上论坛手机客户端',
+/*3*/  'visitbbsanytime' => '随时随地上论坛',
+/*3*/  'clicktodownload' => '点击下载',
+/*3*/  'iphoneandriodmobile' => 'iPhone,Andriod等智能手机',
+/*3*/  'visitwapmobile' => '直接登录手机版，阅读体验更佳',
+/*3*/  'clicktovisitwapmobile' => '访问手机版',
+/*3*/  'downloadnow' => '立即下载',
+/*3*/  'downloadzslttoshareview' => '下载新版掌上论坛客户端，尊享多项看帖特权!',
 );
 
 ?>
