@@ -1,8 +1,0 @@
-syntax: glob
-.hgignore
-.hg
-*.bak
-_cn.lst
-_errors.txt
-_files.txt
-_find_CN.pl
