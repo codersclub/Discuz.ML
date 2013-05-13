@@ -6,17 +6,19 @@
         <a href="forum.php?forumlist=1" class="z"><img src="{STATICURL}image/mobile/images/icon_back.png" /></a>
 		<span class="category">
 			<!--{if $subexists && $_G['page'] == 1}-->
-			<span class="display name" href="#subname_list">
-				<!--{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}-->
+			<span class="display name vm" href="#subname_list">
+				<h2 class="tit"><!--{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}--></h2>
 				<img src="{STATICURL}image/mobile/images/icon_arrow_down.png">
 			</span>
-			<ul id="subname_list" class="subname_list" display="true" style="display:none;">
+			<div id="subname_list" class="subname_list" display="true" style="display:none;">
+				<ul>
 				<!--{loop $sublist $sub}-->
 				<li>
 					<a href="forum.php?mod=forumdisplay&fid={$sub[fid]}">{$sub['name']}</a>
 				</li>
 				<!--{/loop}-->
-			</ul>
+				</ul>
+			</div>
 			<!--{else}-->
 			<span class="name">
 				<!--{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}-->
@@ -27,6 +29,7 @@
 </header>
 <!-- header end -->
 
+<!--{hook/forumdisplay_top_mobile}-->
 <!-- main threadlist start -->
 <!--{if !$subforumonly}-->
 <div class="threadlist">
@@ -43,6 +46,7 @@
 						<!--{eval $thread[tid]=$thread[closed];}-->
 					<!--{/if}-->
 					<li>
+					<!--{hook/forumdisplay_thread_mobile $key}-->
                     <a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra" $thread[highlight] >
 					{$thread[subject]}
 					<span class="by">$thread[author]</span>
@@ -65,5 +69,6 @@
 $multipage
 <!--{/if}-->
 <!-- main threadlist end -->
+<!--{hook/forumdisplay_bottom_mobile}-->
 <div class="pullrefresh" style="display:none;"></div>
 <!--{template common/footer}-->

@@ -259,6 +259,30 @@
 			<!--{hook/collection_relatedop}-->
 		<!--{/if}-->
 		
+		<!--{if $_G['collection']['commentnum'] > 0}-->
+		<div class="bm">
+			<div class="bm_h">
+				<span class="y"><a href="forum.php?mod=collection&action=view&op=comment&ctid=$ctid" class="xi2">{lang collection_allcomment}</a></span>
+				<h2>{lang collection_newcomment}</h2>
+			</div>
+			<div class="bm_c">
+			<!--{loop $commentlist $comment}-->
+				<div class="pbn">
+					<a href="home.php?mod=space&uid={$comment['uid']}" class="xi2 xw1" c="1">$comment[username]</a>
+					<span class="xg1">$comment[dateline]:</span>
+				</div>
+				<div class="pbm">
+					$comment[message]
+					<!--{if $comment[rateimg]}-->
+						<!--{if trim($comment[message])}--><br /><!--{/if}-->
+						<span class="clct_ratestar"><span class="star star$comment[rateimg]"></span></span><br />
+					<!--{/if}-->
+				</div>
+			<!--{/loop}-->
+			</div>
+		</div>
+		<!--{/if}-->
+		
 		<!--{if $_G['group']['allowcommentcollection']}-->
 		<div class="bm">
 			<form action="forum.php?mod=collection&action=comment&ctid={$_G['collection']['ctid']}" method="POST" onsubmit="$('btnCommentSubmit').disabled=true;ajaxpost(this.id, 'ajaxreturn');" id="form_addComment" name="form_addComment">
@@ -295,30 +319,6 @@
 			<input type="hidden" name="inajax" value="1">
 			<input type="hidden" name="handlekey" value="k_addComment">
 			</form>
-		</div>
-		<!--{/if}-->
-
-		<!--{if $_G['collection']['commentnum'] > 0}-->
-		<div class="bm">
-			<div class="bm_h">
-				<span class="y"><a href="forum.php?mod=collection&action=view&op=comment&ctid=$ctid" class="xi2">{lang collection_allcomment}</a></span>
-				<h2>{lang collection_newcomment}</h2>
-			</div>
-			<div class="bm_c">
-			<!--{loop $commentlist $comment}-->
-				<div class="pbn">
-					<a href="home.php?mod=space&uid={$comment['uid']}" class="xi2 xw1" c="1">$comment[username]</a>
-					<span class="xg1">$comment[dateline]:</span>
-				</div>
-				<div class="pbm">
-					$comment[message]
-					<!--{if $comment[rateimg]}-->
-						<!--{if trim($comment[message])}--><br /><!--{/if}-->
-						<span class="clct_ratestar"><span class="star star$comment[rateimg]"></span></span><br />
-					<!--{/if}-->
-				</div>
-			<!--{/loop}-->
-			</div>
 		</div>
 		<!--{/if}-->
 		

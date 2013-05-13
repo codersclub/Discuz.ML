@@ -9,12 +9,13 @@
 			<button class="btn_pn btn_pn_blue" id="replyid"><span>{lang reply}</span></button>
 		</span>
 		<a href="<!--{if $_GET[fromguid] == 'hot'}-->forum.php?mod=guide&view=hot&page=$_GET[page]<!--{else}-->forum.php?mod=forumdisplay&fid=$_G[fid]&page=$_G[page]<!--{/if}-->" class="z"><img src="{STATICURL}image/mobile/images/icon_back.png" /></a>
-		<span><!--{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}--></span>
+		<span class="name"><!--{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}--></span>
 	</div>
 
 </header>
 <!-- header end -->
 
+<!--{hook/viewthread_top_mobile}-->
 <!-- main postlist start -->
 <div class="postlist">
 	<h2>
@@ -38,6 +39,7 @@
 
 	<!--{loop $postlist $post}-->
 	<!--{eval $needhiddenreply = ($hiddenreplies && $_G['uid'] != $post['authorid'] && $_G['uid'] != $_G['forum_thread']['authorid'] && !$post['first'] && !$_G['forum']['ismoderator']);}-->
+	<!--{hook/viewthread_posttop_mobile $postcount}-->
    <div class="plc cl">
 	   <span class="avatar"><img src="<!--{avatar($post[authorid], small, true)}-->" style="width:32px;height:32px;" /></span>
        <div class="display pi" href="#replybtn_$post[pid]">
@@ -188,6 +190,8 @@
 			<!--{/if}-->
        </div>
    </div>
+   <!--{hook/viewthread_postbottom_mobile $postcount}-->
+   <!--{eval $postcount++;}-->
    <!--{/loop}-->
 
 	<!--{subtemplate forum/forumdisplay_fastpost}-->
@@ -196,6 +200,8 @@
 <!-- main postlist end -->
 
 $multipage
+
+<!--{hook/viewthread_bottom_mobile}-->
 
 <script type="text/javascript">
 	$('.favbtn').on('click', function() {

@@ -2,7 +2,64 @@
 	<!--{eval dheader('Location:forum.php?mod=guide&view=hot');exit;}-->
 <!--{/if}-->
 <!--{template common/header}-->
+
+<script type="text/javascript">
+	function getvisitclienthref() {
+		var visitclienthref = '';
+		if(ios) {
+			visitclienthref = 'https://itunes.apple.com/cn/app/zhang-shang-lun-tan/id489399408?mt=8';
+		} else if(andriod) {
+			visitclienthref = 'http://www.discuz.net/mobile.php?platform=android';
+		}
+		return visitclienthref;
+	}
+</script>
+
+<!--{if $_GET['visitclient']}-->
+
+<header class="header">
+    <div class="nav">
+		<span>{lang warmtip}</span>
+    </div>
+</header>
+<div class="cl">
+	<div class="clew_con">
+		<h2 class="tit">{lang zsltmobileclient}</h2>
+		<p>{lang visitbbsanytime}<input class="redirect button" id="visitclientid" type="button" value="{lang clicktodownload}" href="" /></p>
+		<h2 class="tit">{lang iphoneandriodmobile}</h2>
+		<p>{lang visitwapmobile}<input class="redirect button" type="button" value="{lang clicktovisitwapmobile}" href="$_GET[visitclient]" /></p>
+	</div>
+</div>
+<script type="text/javascript">
+	var visitclienthref = getvisitclienthref();
+	if(visitclienthref) {
+		$('#visitclientid').attr('href', visitclienthref);
+	} else {
+		window.location.href = '$_GET[visitclient]';
+	}
+</script>
+
+<!--{else}-->
+
 <!-- header start -->
+<!--{if $showvisitclient}-->
+
+<div class="visitclienttip vm" style="display:block;">
+	<a href="javascript:;" id="visitclientid" class="btn_download">{lang downloadnow}</a>	
+	<p>
+		{lang downloadzslttoshareview}
+	</p>
+</div>
+<script type="text/javascript">
+	var visitclienthref = getvisitclienthref();
+	if(visitclienthref) {
+		$('#visitclientid').attr('href', visitclienthref);
+		$('.visitclienttip').css('display', 'block');
+	}
+</script>
+
+<!--{/if}-->
+
 <header class="header">
 	<div class="hdc cl">
 		<!--{if $_G['setting']['domain']['app']['mobile']}-->
@@ -22,6 +79,7 @@
 	</div>
 </header>
 <!-- header end -->
+<!--{hook/index_top_mobile}-->
 <!-- main forumlist start -->
 <div class="wp wm" id="wp">
 	<!--{loop $catlist $key $cat}-->
@@ -42,7 +100,7 @@
 	<!--{/loop}-->
 </div>
 <!-- main forumlist end -->
-
+<!--{hook/index_middle_mobile}-->
 <script type="text/javascript">
 	(function() {
 		<!--{if !$_G[setting][mobile][mobileforumview]}-->
@@ -63,4 +121,6 @@
 		});
 	 })();
 </script>
+
+<!--{/if}-->
 <!--{template common/footer}-->

@@ -24,7 +24,8 @@
 						<!--{/if}-->
 						<!--{if $_GET['filter'] == 'hot'}-->
 							<script type="text/javascript" src="{$_G[setting][jspath]}calendar.js?{VERHASH}"></script>
-							<span name="hottime" id="hottime" value="$ctime" onpropertychange="viewhot(this);" oninput="if(event.keyCode==13) {viewhot(this); doane(event);}" fid="$_G[fid]" onclick="showcalendar(event, this, false, false, false, false, function(){viewhot(this);});">$ctime</span>
+							<span>$ctime</span>
+							<img src="{IMGDIR}/date_magnify.png" class="cur1" alt="" id="hottime" value="$ctime" fid="$_G[fid]" onclick="showcalendar(event, this, false, false, false, false, function(){viewhot(this);});" align="absmiddle" />
 						<!--{/if}-->
 						<span id="clearstickthread" style="display: none;">
 							<span class="pipe">|</span>
@@ -306,7 +307,7 @@
 
 							<!--{if $page < $_G['page_next'] && !$subforumonly}-->
 								var page = $page + 1,
-									maxpage = $page + 10,
+									maxpage = Math.min($page + 10,$maxpage + 1),
 									stopload = 0,
 									scrolltimer = null,
 									tmpelems = [],
@@ -352,7 +353,7 @@
 														if(loadready && stopload < 2) {
 															if(!tmpelems.length) {
 																page++;
-																pgbtn.href = nxtpgurl + page;
+																pgbtn.href = nxtpgurl + Math.min(page, $maxpage);
 																pgbtn.innerHTML = "{lang next_page_extra}";
 																showready = 1;
 																clearInterval(waitingtimer);
@@ -454,8 +455,12 @@
 	<!--{/if}-->
 <!--{/if}-->
 <!--{if $multipage && $filter != 'hot'}-->
-	<a class="bm_h" href="javascript:;" rel="$multipage_more" curpage="$page" id="autopbn" totalpage="$maxpage" picstyle="$_G[forum][picstyle]" forumdefstyle="$_G[cookie][forumdefstyle]">{lang next_page_extra}</a>
-	<script type="text/javascript" src="{$_G[setting][jspath]}autoloadpage.js?{VERHASH}"></script>
+	<!--{if !($_G[forum][picstyle] && !$_G[cookie][forumdefstyle])}-->
+		<a class="bm_h" href="javascript:;" rel="$multipage_more" curpage="$page" id="autopbn" totalpage="$maxpage" picstyle="$_G[forum][picstyle]" forumdefstyle="$_G[cookie][forumdefstyle]">{lang next_page_extra}</a>
+		<script type="text/javascript" src="{$_G[setting][jspath]}autoloadpage.js?{VERHASH}"></script>
+	<!--{else}-->
+		<div id="pgbtn" class="pgbtn"><a href="forum.php?mod=forumdisplay&fid={$_G[fid]}&filter={$filter}&orderby={$_GET[orderby]}{$forumdisplayadd[page]}&{$multipage_archive}&page=$nextpage" hidefocus="true">{lang next_page_extra}</a></div>
+	<!--{/if}-->
 <!--{/if}-->
 <div class="bm bw0 pgs cl">
 	<span id="fd_page_bottom">$multipage</span>

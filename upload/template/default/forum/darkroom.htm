@@ -2,14 +2,13 @@
 <div id="pt" class="bm cl">
 	<div class="z">
 		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
-		<a href="home.php?mod=spacecp">{lang darkroom}</a>
+		<a href="forum.php?mod=misc&action=showdarkroom">{lang darkroom}</a>
 	</div>
 </div>
 
 <div style="margin:10px 0;">
 <table summary="{lang darkroom}" cellspacing="0" cellpadding="0" class="bm dt">
 	<tr>
-		<th class="xw1" style="width:15px;">&nbsp;</th>
 		<th class="xw1" style="width:105px;">{lang username}</th>
 		<th class="xw1" style="width:135px;">{lang crime_action}</th>
 		<th class="xw1" style="width:155px;">{lang expire_dateline}</th>
@@ -19,9 +18,9 @@
 <!--{if $users}-->
 	<!--{eval $i = 0;}-->
 	<!--{loop $users $user}-->
+	<!--{if empty($crimes[$user[uid]])}--><!--{eval continue;}--><!--{/if}-->
 	<!--{eval $i++;}-->
 	<tr{if $i % 2 == 0} class="alt"{/if}>
-		<td>&nbsp;</td>
 		<td><a href="home.php?mod=space&uid=$user[uid]" targe="_blank">$user[username]</a></td>
 		<td>$crimes[$user[uid]][action]</td>
 		<td>$crimes[$user[uid]][groupexpiry]</td>

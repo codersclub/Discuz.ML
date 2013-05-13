@@ -40,7 +40,7 @@
 <!-- header start -->
 <header class="header">
     <div class="nav">
-		<span class="y"><button id="postsubmit" class="btn_pn btn_pn_grey" disable="true"><span><!--{if $_GET[action] == 'newthread'}-->{lang send_thread}<!--{elseif $_GET[action] == 'reply'}-->{lang join_thread}<!--{elseif $_GET[action] == 'edit'}-->{lang edit_save}<!--{/if}--></span></button></span>
+		<span class="y"><button id="postsubmit" class="btn_pn <!--{if $_GET[action] == 'edit'}-->btn_pn_blue" disable="false"<!--{else}-->btn_pn_grey" disable="true"<!--{/if}-->><span><!--{if $_GET[action] == 'newthread'}-->{lang send_thread}<!--{elseif $_GET[action] == 'reply'}-->{lang join_thread}<!--{elseif $_GET[action] == 'edit'}-->{lang edit_save}<!--{/if}--></span></button></span>
 		<input type="hidden" name="{if $_GET[action] == 'newthread'}topicsubmit{elseif $_GET[action] == 'reply'}replysubmit{elseif $_GET[action] == 'edit'}editsubmit{/if}" value="yes">
 		<a href="<!--{if $_GET[action] == 'newthread'}-->forum.php?mod=forumdisplay&fid=$_G[fid]&page=$_GET[page]<!--{else}-->forum.php?mod=redirect&goto=findpost&ptid=$_G[tid]&pid=$pid<!--{/if}-->" class="z"><img src="{STATICURL}image/mobile/images/icon_back.png" /></a>
 		<span><!--{if $_GET[action] == 'edit'}-->{lang edit}<!--{else}-->{lang send_threads}<!--{/if}--></span>
@@ -110,7 +110,14 @@
 <script type="text/javascript">
 	(function() {
 		var needsubject = needmessage = false;
-		<!--{if $_GET[action] == 'newthread'}-->
+
+		<!--{if $_GET[action] == 'reply'}-->
+			needsubject = true;
+		<!--{elseif $_GET[action] == 'edit'}-->
+			needsubject = needmessage = true;
+		<!--{/if}-->
+
+		<!--{if $_GET[action] == 'newthread' || ($_GET[action] == 'edit' && $isfirstpost)}-->
 		$('#needsubject').on('keyup input', function() {
 			var obj = $(this);
 			if(obj.val()) {
@@ -125,8 +132,6 @@
 				$('.btn_pn').attr('disable', 'true');
 			}
 		});
-		<!--{else}-->
-		needsubject = true;
 		<!--{/if}-->
 		$('#needmessage').on('keyup input', function() {
 			var obj = $(this);

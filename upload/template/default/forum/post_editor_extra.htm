@@ -27,8 +27,9 @@
 			<!--{else}-->
 				<span id="subjecthide" class="z">RE: $thread[subject] [<a href="javascript:;" onclick="display('subjecthide');display('subjectbox');$('subject').value='RE: {echo dhtmlspecialchars(str_replace('\'', '\\\'', $thread[subject]))}';display('subjectchk');strLenCalc($('subject'), 'checklen', 80);return false;">{lang modify}</a>]</span>
 				<span id="subjectbox" style="display:none"><input type="text" name="subject" id="subject" class="px" value="" onkeyup="strLenCalc(this, 'checklen', 80);" style="width: 25em" /></span>
-			<!--{/if}-->
+			<!--{/if}-->			
 			<span id="subjectchk"{if $_GET[action] == 'reply'} style="display:none"{/if}>{lang comment_message1} <strong id="checklen">80</strong> {lang comment_message2}</span>
+			<script type="text/javascript">strLenCalc($('subject'), 'checklen', 80)</script>
 		<!--{/if}-->
 		<!--{if $_GET[action] == 'newthread' && $modnewthreads}--> <span class="xg1 xw0">({lang approve})</span><!--{/if}-->
 		<!--{if $_GET[action] == 'reply' && $modnewreplies}--> <span class="xg1 xw0">({lang approve})</span><!--{/if}-->

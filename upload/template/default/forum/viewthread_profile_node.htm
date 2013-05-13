@@ -91,7 +91,8 @@ function profile_node_upgrade_menu($post) {
 }
 
 function profile_node_baseinfo($post, $s, $e, $extra) {
-	return $s.viewthread_baseinfo($post, $extra).$e;
+	$str = viewthread_baseinfo($post, $extra);
+	return $str ? $s.$str.$e : '';
 }
 -->
 <!--{/eval}-->

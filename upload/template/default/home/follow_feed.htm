@@ -85,7 +85,7 @@
 						var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
 					</script>
 					<!--{eval $dmfid = $_G['setting']['followforumid'] && !empty($defaultforum) ? $_G['setting']['followforumid'] : 0;}-->
-					<form method="post" autocomplete="off" id="fastpostform" action="home.php?mod=spacecp&ac=follow&op=newthread&topicsubmit=yes&infloat=yes&handlekey=fastnewpost&inajax=1" onsubmit="return fastpostvalidate(this);" style="float: left;width: 400px;">
+					<form method="post" autocomplete="off" id="fastpostform" action="home.php?mod=spacecp&ac=follow&op=newthread&topicsubmit=yes&infloat=yes&handlekey=fastnewpost&inajax=1" onsubmit="return fastpostvalidate(this);" style="float: left;">
 						<div id="fastpostreturn" style="margin:-5px 0 5px"></div>
 						<div id="flw_post_subject" style="display:none;">
 							<span id="flw_checklen" class="y"><span id="checklen" class="xg1">80</span></span>
@@ -286,7 +286,7 @@
 					function modifyformurl(mfid) {
 						if(parseInt(mfid)) {
 							backupContent();
-/*vot*/							//noteX Modify the two fixed address in the form
+/*vot*/							//note Modify the two fixed address in the form
 							$('fastpostform').action = 'home.php?mod=spacecp&ac=follow&op=newthread&topicsubmit=yes&infloat=yes&handlekey=fastnewpost&inajax=1&fid='+mfid;
 							if(upload) {
 								fid = mfid;

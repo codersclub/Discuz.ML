@@ -29,7 +29,7 @@
 		<ul>
 			<li><input type="text" value="" tabindex="1" class="px p_fre" size="30" autocomplete="off" value="" name="username" placeholder="{lang inputyourname}" fwin="login"></li>
 			<li><input type="password" tabindex="2" class="px p_fre" size="30" value="" name="password" placeholder="{lang login_password}" fwin="login"></li>
-			<li>
+			<li class="bl_none questionli">
 				<div class="login_select">
 				<span class="login-btn-inner">
 					<span class="login-btn-text">
@@ -49,7 +49,7 @@
 				</select>
 				</div>
 			</li>
-			<li class="bl_none"><input type="text" name="answer" id="answer_{$loginhash}" class="px p_fre" size="30"></li>
+			<li class="bl_none answerli" style="display:none;"><input type="text" name="answer" id="answer_{$loginhash}" class="px p_fre" size="30" placeholder="{lang security_a}"></li>
 		</ul>
 		<!--{if $secqaacheck || $seccodecheck}-->
 		<!--{subtemplate common/seccheck}-->
@@ -77,6 +77,13 @@
 		$(document).on('change', '.sel_list', function() {
 			var obj = $(this);
 			$('.span_question').text(obj.find('option:selected').text());
+			if(obj.val() == 0) {
+				$('.answerli').css('display', 'none');
+				$('.questionli').addClass('bl_none');
+			} else {
+				$('.answerli').css('display', 'block');
+				$('.questionli').removeClass('bl_none');
+			}
 		});
 		formdialog.init();
 	 })();

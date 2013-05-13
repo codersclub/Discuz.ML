@@ -344,7 +344,7 @@
 function permtbody($maingroup) {
 global $_G, $bperms, $pperms, $sperms, $aperms;
 }
-<tr><td><!--{eval showstars($_G['cache']['usergroups'][$maingroup['groupid']]['stars']);}--></td></tr>
+<tr><td><!--{echo showstars($_G['cache']['usergroups'][$maingroup['groupid']]['stars']);}--></td></tr>
 <tbody class="ca">
 	<!--{loop $bperms $key $groupbperm}-->
 	<tr {if $key%2==0}class="alt"{/if}>

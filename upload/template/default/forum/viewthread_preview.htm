@@ -1,6 +1,7 @@
 {eval
 	$specialarr = array(0 => array('thread', '{lang index_posts}'), 1 => array('poll', '{lang thread_poll}'), 2 => array('trade', '{lang thread_trade}'), 3 => array('reward', '{lang thread_reward}'), 4 => array('activity', '{lang thread_activity}'), 5 => array('debate', '{lang thread_debate}'));
 	$specialtype = $specialarr[$_G['forum_thread']['special']];
+	$previewspecial = $_G['forum_thread']['special'];
 	$_G[home_tpl_titles][] = $navsubject;
 	$_G[home_tpl_titles][] = $specialtype[1];
 	$_G[home_tpl_titles][] = '{lang portal}';
@@ -67,7 +68,6 @@
 				}
 			</script>
 			<!--{/if}-->
-			<div class="hm"><a class="icon_up" href="javascript:void(0);" onclick="previewThread('$thread[tid]', '$thread[id]');" title="{lang collapse_preview}"> </a></div>
 		</div>
 	</div>
 </div>

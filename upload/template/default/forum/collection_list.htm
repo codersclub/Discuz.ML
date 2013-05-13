@@ -21,15 +21,15 @@
 				<!--{/if}-->
 				<div>
 					<a href="forum.php?mod=collection&action=view&ctid={$collectionvalues['ctid']}{if $op}&fromop={$op}{/if}{if $tid}&fromtid={$tid}{/if}" class="xi2" {if $collectionvalues['updated'] && $op == 'my'}style='color:red;'{/if}>{$collectionvalues['name']}</a>
+					<!--{if $collectionvalues['arraykeyword']}-->
 					<span class="ctag_keyword">
-						<!--{if $collectionvalues['arraykeyword']}-->
-							<!--{eval $keycount=0;}-->
-							<!--{loop $collectionvalues['arraykeyword'] $unique_keyword}-->
-								{if $keycount},&nbsp;{/if}<a href="search.php?mod={if $_G['setting']['search']['collection']['status']}collection{else}forum{/if}&srchtxt={echo rawurlencode($unique_keyword)}&formhash={FORMHASH}&searchsubmit=true&source=collectionsearch" target="_blank" class="xi2">$unique_keyword</a>
-								<!--{eval $keycount++;}-->
-							<!--{/loop}-->
-						<!--{/if}-->
+						<!--{eval $keycount=0;}-->
+						<!--{loop $collectionvalues['arraykeyword'] $unique_keyword}-->
+							{if $keycount},&nbsp;{/if}<a href="search.php?mod={if $_G['setting']['search']['collection']['status']}collection{else}forum{/if}&srchtxt={echo rawurlencode($unique_keyword)}&formhash={FORMHASH}&searchsubmit=true&source=collectionsearch" target="_blank" class="xi2">$unique_keyword</a>
+							<!--{eval $keycount++;}-->
+						<!--{/loop}-->
 					</span>
+						<!--{/if}-->
 				</div>
 			</dt>
 			<dd>

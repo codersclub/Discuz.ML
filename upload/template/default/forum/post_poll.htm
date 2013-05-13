@@ -75,7 +75,6 @@
 		<!--{hook/post_poll_extra}-->
 	</div>
 </div>
-
 <!--{subtemplate common/upload}-->
 <script type="text/javascript" reload="1">
 var maxoptions = parseInt('$_G[setting][maxpolloptions]');
@@ -95,7 +94,7 @@ function addUploadEvent(imgid, pollstr) {
 	<!--{if empty($_G['setting']['pluginhooks']['post_upload_extend']) && empty($_G['setting']['pluginhooks']['post_poll_upload_extend'])}-->
 		new SWFUpload({
 			upload_url: SITEURL + 'misc.php?mod=swfupload&action=swfupload&operation=poll&fid=$_G[fid]',
-			post_params: {"uid":"1", "hash":"$swfconfig[hash]"},
+			post_params: {"uid":"$_G[uid]", "hash":"$swfconfig[hash]"},
 
 			file_size_limit : "2048",
 			file_types : "*.jpg;*.jpeg;*.gif;*.png;*.bmp",
