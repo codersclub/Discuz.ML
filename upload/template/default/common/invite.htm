@@ -115,7 +115,7 @@
 					$('append_parent').appendChild(scriptNode);
 				}
 			</script>
-			<form method="post" autocomplete="off" name="invite" id="inviteform" action="misc.php?mod=invite&action=$_GET[action]&id=$_GET[id]{if $_GET['activity']}&activity=1{/if}">
+			<form method="post" autocomplete="off" name="invite" id="inviteform" action="misc.php?mod=invite&action=$_GET[action]&id=$id{if $_GET['activity']}&activity=1{/if}">
 				<input type="hidden" name="formhash" value="{FORMHASH}" />
 				<input type="hidden" name="referer" value="{echo dreferer()}" />
 				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->

@@ -58,15 +58,9 @@
 		<div id="flk" class="y">
 			<p>
 				<!--{if $_G['setting']['site_qq']}--><a href="http://wpa.qq.com/msgrd?V=3&Uin=$_G['setting']['site_qq']&Site=$_G['setting']['bbname']&Menu=yes&from=discuz" target="_blank" title="QQ"><img src="{IMGDIR}/site_qq.jpg" alt="QQ" /></a><span class="pipe">|</span><!--{/if}-->
-				<!--{loop $_G['setting']['footernavs'] $nav}-->
-<!--vot-->			<!--{if $nav['available'] &&
-					($nav['type'] &&
-					(!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
-					!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile'))}-->
-<!--vot-->				{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span>
-				<!--{/if}-->
-				<!--{/loop}-->
-				<strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename']</a></strong>
+				<!--{loop $_G['setting']['footernavs'] $nav}--><!--{if $nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
+<!--vot-->					!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile' || $nav['id'] == 'darkroom'))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}--><!--{/loop}-->
+						<strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename']</a></strong>
 				<!--{if $_G['setting']['icp']}-->( <a href="http://www.miitbeian.gov.cn/" target="_blank">$_G['setting']['icp']</a> )<!--{/if}-->
 				<!--{hook/global_footerlink}-->
 				<!--{if $_G['setting']['statcode']}-->$_G['setting']['statcode']<!--{/if}-->
@@ -132,7 +126,7 @@
 	<div class="focus plugin" id="plugin_notice"></div>
 	<script type="text/javascript">pluginNotice();</script>
 <!--{/if}-->
-<!--{if $_G['uid'] && !empty($_G['cookie']['lip'])}-->
+<!--{if !$_G['setting']['bbclosed'] && $_G['setting']['disableipnotice'] != 1 && $_G['uid'] && !empty($_G['cookie']['lip'])}-->
 	<div class="focus plugin" id="ip_notice"></div>
 	<script type="text/javascript">ipNotice();</script>
 <!--{/if}-->

@@ -3,7 +3,7 @@
 Main CSS file for Discuz! X
 (C) Comsenz Inc.
 http://www.comsenz.com
-Created & Modified by Lushnis, Pony, Dfox & DragonLee.
+Created & Modified by Lushnis, Pony, Alice, Dfox & DragonLee.
 Modified by Valery Votintsev, codersclub.org
 
 ----------------------------------
@@ -667,6 +667,8 @@ Note on the CSS Hack:
 	Explain:		User application navigation
 	Last Modify:	alice 2013021313
 */
+#mn_userapp .icon_down {background: url({IMGDIR}/arr_w.gif) no-repeat 50% 50%; display:inline-block; width:12px; height:12px; overflow:hidden; margin-left:3px; }
+#nv li.a .icon_down {background: url({IMGDIR}/arr_w.gif) no-repeat  50% 50%; display:inline-block; width:12px; height:12px; overflow:hidden; margin-left:3px; }
 #mn_userapp_menu { clear: left; min-height: 210px; min-width: 630px; }
 .ie6 #mn_userapp_menu { height: 210px; width: 630px; }
 	#mn_userapp_menu ul.mrec{ float:left; width:182px; padding-right:5px; border-right:1px dotted {DROPMENUBORDER}; }

@@ -3,7 +3,7 @@
 Extend CSS file for Discuz! X
 (C) Comsenz Inc.
 http://www.comsenz.com
-Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
+Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 Modified by Valery Votintsev, codersclub.org
 
 1. Some common module styles
@@ -98,7 +98,7 @@ Modified by Valery Votintsev, codersclub.org
 			#category_grid td { width: 25%; }
 		.category_l1, .category_l2, .category_l3, .category_l4 { line-height: 25px; background: #fff; overflow: hidden; }
 			.category_l1 { line-height: normal; }
-		.category_l2, .category_l3 { background: url({IMGDIR}/category_lbg.png) no-repeat right center; }
+		.category_l1.category_l2, .category_l3 { background: url({IMGDIR}/category_lbg.png) no-repeat right center; }
 			.ie6 .category_l4 { margin-right: -3px; }
 			.slidebox_grid { position: relative; margin: 10px; border: 1px #ccc solid; }
 			#category_grid h4 { width:100%; height: 30px; line-height: 30px; text-indent:10px; font-size: 12px; cursor: pointer; background: url({IMGDIR}/tb.png) repeat-x; position:relative; }
@@ -492,7 +492,7 @@ Modified by Valery Votintsev, codersclub.org
 			/* Current Forum */
 			.bdl dd.bdl_a a { background-color: #F5F9FB; font-weight: 700; color: {HIGHLIGHTLINK}; }
 
-	.previewPost { width: 100%; }
+	.previewPost { width: 100%; font-size: 14px; }
 	/* Click loading the Next button style */
 	#autopbn { display: block; margin-bottom: 10px; border: 1px solid rgb(194, 213, 227); border-radius: 3px; text-align: center; }
 	#autopbn:hover { background: #fff; text-decoration: none; }
@@ -592,8 +592,8 @@ Modified by Valery Votintsev, codersclub.org
 			.tl tr:hover th, .tl tr:hover td { background-color: {COMMONBG}; }
 			.tl .threadpre td, .tl .threadpre:hover td { background-color: #FCFCFC; }
 			.tl .threadpre .threadpretd { border-left: 1px solid {CONTENTSEPARATE}; border-right: 1px solid {CONTENTSEPARATE};  }
-			.tl th .tdpre, .tl td.fn .tdpre { display: none; width: 31px; height: 17px; margin-top: 3px; background-image: url({IMGDIR}/preview.png); text-indent: -999em; overflow:hidden; }
-			.tl th:hover .tdpre, .tl td.fn:hover .tdpre  { display: inline; }
+			.tl th .tdpre, .tl td.fn .tdpre { visibility: hidden; display: inline; width: 31px; height: 17px; margin-top: 3px; background-image: url({IMGDIR}/preview.png); text-indent: -999em; overflow:hidden; }
+			.tl th:hover .tdpre, .tl td.fn:hover .tdpre  { visibility: visible; }
 			.ie6 .tl th .tdpre, .ie6 .tl td.fn .tdpre { display: none; }
 			
 
@@ -759,16 +759,15 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 	.tit_author { display:block; }
 	.tit_author a { color: #369; font-size:14px; font-weight:700; }
 	
-
-	/* Author pointing Expand all by Alice */
-		.authi .none { display:inline-block; }
-		.authi .show { display:none; }
-		.authi:hover .none { display:none; }
-		.authi:hover .show { display:inline-block; }
-		.ie6 .authi .none { display:none; }
-		.ie6 .authi .show { display:inline-block; }
+/* Author pointing Expand all by Alice */
+	.authi .none { display:inline-block; }
+	.authi .show { display:none; }
+	.authi:hover .none { display:none; }
+	.authi:hover .show { display:inline-block; }
+	.ie6 .authi .none { display:none; }
+	.ie6 .authi .show { display:inline-block; }
 		
-	/** end **/
+/** end **/
 
 /** forum::forumdisplay,group::forumdisplay **/
 /* post list of the "new window ", "photo mode " button style, chk with the float need to use modified by Pony */
@@ -822,9 +821,10 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 	Explain:		Topics list page Hide top posts button style
 	Last Modify:	Jane
 */
-.showhide { width: 12px; height: 12px; background: url({IMGDIR}/close.gif) no-repeat 0 0; margin: 5px; text-indent: -999em; cursor: pointer; overflow: hidden; }
+.showhide { width: 12px; height: 12px; background: url({IMGDIR}/close.gif) no-repeat 0 0; text-indent: -999em; cursor: pointer; overflow: hidden; }
 .showhide:hover { background-position: 0 -12px; }
 .ie6 .showhide { display: none; }
+.pcb .jammer { font-size: 10px; color: {WRAPBG}; }
 /** end **/
 
 
@@ -839,7 +839,7 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 		.plc { padding: 0 20px; }
 		.pls { width: 160px; background: {SPECIALBG}; overflow: hidden; border-right: 1px solid {CONTENTSEPARATE}; }
 		.pls .avatar { margin: 10px 15px; }
-			.pls .avatar img { padding: 5px 5px 8px; background: #FFF url({IMGDIR}/midavt_shadow.gif) 0 100% repeat-x; }
+			.pls .avatar img { padding: 5px 5px 8px; background: #FFF url({IMGDIR}/midavt_shadow.gif) 0 100% repeat-x; width:120px; }
 
 			.pls .favatar { background: transparent; height: auto; border-width: 0px; overflow: visible; }
 
@@ -865,7 +865,7 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 	#pl_top .ad .pls, #pl_top .ad .plc { height: 1px;overflow: hidden; }
 		#pl_top .pls { text-indent: 15px; }
 
-/* Posts of the time, the floor where the block and some properties */
+/* Block for post time, floor and some properties */
 /*vot*/	.pi { overflow: hidden; margin-bottom: 10px; padding: 10px 0; /*height: 16px;*/ border-bottom: 1px dashed {COMMONBORDER}; }
 		.pi strong a { float: right; margin-top: -6px; padding: 4px 6px; border: 1px solid {WRAPBG}; font-weight: 400; }
 			.pi strong a:hover { border-color: {COMMONBORDER}; }
@@ -873,6 +873,9 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 		.pi em {}
 		.pti {}
 			.authicn { cursor: pointer; width:16px; }
+			
+/* Post Mobile Forum popup */
+	.code_bg {background: url({IMGDIR}/code_bg.png) no-repeat 0 0; display:inline-block; padding:4px; margin:10px 20px; }
 
 /* Post the text block */
 	.pcb { clear: left; margin-right: 130px; }
@@ -1004,7 +1007,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.bui dl { margin: 5px 0 10px; }
 			.bui dt { width: 4.5em; }
 			.bui dd { margin-right: 10px; width: 75px; }
-		.bui .m img { margin-bottom: 12px; }
+		.bui .m img { margin-bottom: 12px; width: 120px; }
 		.bui .i { width: 290px; }
 			.imicn img { vertical-align: middle; margin-right: 8px; }
 				.imicn .xi2:hover { text-decoration: none; }
@@ -2058,7 +2061,7 @@ body { background: #FFF none !important; }
 	.ctag0 { background:#F6C5BE; color: #822111; }
 	.ctag1 { background:#FEF1D1; color: #AA8831; }
 	.ctag2 { background:#EEE; color: #666; }
-.ctag_keyword { background:url(../../static/image/common/tag.gif) no-repeat 0 0px;padding-left:20px;margin-left:10px;font-weight:normal; };
+.ctag_keyword { background:url({IMGDIR}/tag.gif) no-repeat 0 0px;padding-left:20px;margin-left:10px;font-weight:normal; }
 /** end **/
 
 
@@ -2112,11 +2115,11 @@ body { background: #FFF none !important; }
 	.flw_uheader .flw_btn_fo, .flw_uheader .flw_btn_unfo, .flw_hd .flw_btn_fo, .flw_hd .flw_btn_unfo { float: left; }
 
 /* issue broadcast */
+#fastpostform { width:82%; }
 #flw_header { padding: 10px; }
 #flw_post_subject { width: 628px; height: 30px; line-height: 30px; border: 1px solid #9EB4C2; border-radius: 4px; background: #FFF url({IMGDIR}/input_shadow.png) repeat-x 0 0; }
 #flw_header #subject { margin: 5px; width: 580px; height: 20px; border: none; outline: none; background: transparent; line-height: 20px; }
 #flw_checklen { padding-right: 10px; }
-#flw_post_extra { width: 629px; }
 	#flw_post_extra .sec { padding: 8px 15px; border: 1px solid #EFEFEF; background: #F9FBFC; border-radius: 4px; }
 .tedt { width: auto; border: 1px solid #9EB4C2; border-radius: 4px; overflow: hidden; }
 #flw_header .bar { padding-left: 10px; border-top: 1px solid #EFEFEF; border-bottom: none; background: #F9FBFC; border-radius: 0 0 4px 4px; }
