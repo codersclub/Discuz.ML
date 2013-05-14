@@ -108,7 +108,7 @@ class Cloud_Service_Server_Security extends Cloud_Service_Server_Restful {
 	protected function _handleEvilUser($uid, $evilType, $evilLevel = 1) {
 		global $_G;
 
-		include_once DISCUZ_ROOT.'./source/language/lang_admincp_cloud.php';
+/*vot*/		include_once DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/lang_admincp_cloud.php';
 
 		$securityService = Cloud::loadClass('Service_Security');
 		$securityService->writeLog($uid, 'uid');

@@ -16,7 +16,7 @@ class optimizer_setting {
 	private $setting;
 
 	public function __construct() {
-		include_once DISCUZ_ROOT.'./source/language/lang_optimizer.php';
+/*vot*/		include_once DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/lang_optimizer.php';
 		$this->setting = array(
 			'cacheindexlife' => array(
 				'initvalue' => '0',

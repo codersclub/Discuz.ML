@@ -74,7 +74,7 @@ if(file_exists(DISCUZ_ROOT . './source/include/cron/cron_security_cleanup_lastpo
 		}
 	}
 }
-include DISCUZ_ROOT . 'source/language/lang_admincp_cloud.php';
+include DISCUZ_ROOT . 'source/language/'. DISCUZ_LANG. '/lang_admincp_cloud.php';
 if(file_exists(DISCUZ_ROOT . './source/include/cron/cron_security_cleanup_lastpost.php') && empty($cronId_security_lastpost)) {
 	$data = array(
 		'available' => 0,

@@ -53,7 +53,7 @@ if ($sql) {
 }
 
 $table = DB::table('common_plugin');
-include DISCUZ_ROOT . 'source/language/lang_admincp_cloud.php';
+include DISCUZ_ROOT . 'source/language/'. DISCUZ_LANG. '/lang_admincp_cloud.php';
 $format = "UPDATE $table SET name = '%s' WHERE identifier = 'security'";
 $name = $extend_lang['menu_cloud_security'];
 $sql = sprintf($format, $name);
