@@ -205,8 +205,8 @@ if($_GET['op'] == 'base') {
 		showmessage('action_closed', NULL);
 	}
 	$_CACHE['creditsettings'] = array();
-	if(file_exists(DISCUZ_ROOT.'/uc_client/data/cache/creditsettings.php')) {
-		include_once(DISCUZ_ROOT.'/uc_client/data/cache/creditsettings.php');
+/*vot*/	if(file_exists(DISCUZ_ROOT.'./uc_client/data/cache/creditsettings.php')) {
+/*vot*/		include_once(DISCUZ_ROOT.'./uc_client/data/cache/creditsettings.php');
 	}
 
 	if(submitcheck('exchangesubmit')) {

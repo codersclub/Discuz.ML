@@ -865,7 +865,7 @@ function block_getstyle($styleids = array()) {
 function blockclass_cache() {
 	global $_G;
 	$data = $dirs = $styles = $dataconvert = array();
-	$dir = DISCUZ_ROOT.'/source/class/block/';
+/*vot*/	$dir = DISCUZ_ROOT.'./source/class/block/';
 	$dh = opendir($dir);
 	while(($filename=readdir($dh))) {
 		if(is_dir($dir.$filename) && substr($filename,0,1) != '.') {

@@ -29,7 +29,7 @@ class Cloud_Service_DiscuzTips {
 		global $_G;
 		$clientVersion = '2';
 		$util = Cloud::loadclass('Service_Util');
-		include_once DISCUZ_ROOT . '/source/discuz_version.php';
+/*vot*/		include_once DISCUZ_ROOT . './source/discuz_version.php';
 		$release = DISCUZ_RELEASE;
 		$fix = DISCUZ_FIXBUG;
 		$cloudApi = $util->getApiVersion();

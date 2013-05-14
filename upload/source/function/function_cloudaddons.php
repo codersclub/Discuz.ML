@@ -267,7 +267,7 @@ function cloudaddons_copytree($from, $to) {
 					}
 				} else {
 					$writefile = preg_replace('/\._addons_$/', '', $writefile);
-					siteftp_upload($readfile, preg_replace('/^'.preg_quote(DISCUZ_ROOT).'/', '', $writefile));
+/*?*/					siteftp_upload($readfile, preg_replace('/^'.preg_quote(DISCUZ_ROOT).'/', '', $writefile));
 				}
 				if(md5_file($readfile) != md5_file($writefile)) {
 					cpmsg('cloudaddons_file_write_error', '', 'error');

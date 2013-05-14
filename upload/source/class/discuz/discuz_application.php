@@ -8,6 +8,11 @@
  *	Modified by Valery Votintsev, codersclub.org
  */
 
+//DEBUG
+echo '<pre>';
+echo '_FILE_=', __FILE__, "\n";
+echo '</pre>', "\n";
+
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
@@ -55,6 +60,11 @@ class discuz_application extends discuz_base{
 	}
 
 	public function __construct() {
+//DEBUG
+echo '<pre>';
+echo 'function discuz_application::__construct=', "\n";
+echo '</pre>', "\n";
+
 		$this->_init_env();
 		$this->_init_config();
 		$this->_init_input();
@@ -62,6 +72,10 @@ class discuz_application extends discuz_base{
 	}
 
 	public function init() {
+//DEBUG
+echo '<pre>';
+echo 'function discuz_application::init=', "\n";
+echo '</pre>', "\n";
 		if(!$this->initated) {
 			$this->_init_db();
 			$this->_init_setting();
@@ -75,8 +89,13 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _init_env() {
+//DEBUG
+echo '<pre>';
+echo 'function discuz_application::init_env=', "\n";
+echo '</pre>', "\n";
 
 		error_reporting(E_ERROR);
+//DEBUG error_reporting(E_ALL);
 		if(PHP_VERSION < '5.3.0') {
 			set_magic_quotes_runtime(0);
 		}
@@ -89,6 +108,11 @@ class discuz_application extends discuz_base{
 		define('TIMESTAMP', time());
 		$this->timezone_set();
 
+//DEBUG
+echo '<pre>';
+echo 'function discuz_application::init_env 2', "\n";
+echo '	DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
+echo '</pre>', "\n";
 		if(!defined('DISCUZ_CORE_FUNCTION') && !@include(DISCUZ_ROOT.'./source/function/function_core.php')) {
 			exit('function_core.php is missing');
 		}
@@ -226,6 +250,10 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _init_input() {
+//DEBUG
+echo '<pre>';
+echo 'function discuz_application::init_input=', "\n";
+echo '</pre>', "\n";
 		if (isset($_GET['GLOBALS']) ||isset($_POST['GLOBALS']) ||  isset($_COOKIE['GLOBALS']) || isset($_FILES['GLOBALS'])) {
 			system_error('request_tainting');
 		}
@@ -352,6 +380,10 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _init_config() {
+//DEBUG
+echo '<pre>';
+echo 'function discuz_application::init_config=', "\n";
+echo '</pre>', "\n";
 
 		$_config = array();
 		@include DISCUZ_ROOT.'./config/config_global.php';
@@ -402,6 +434,10 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _init_output() {
+//DEBUG
+echo '<pre>';
+echo 'function discuz_application::init_output=', "\n";
+echo '</pre>', "\n";
 
 		if($this->config['security']['urlxssdefend'] && $_SERVER['REQUEST_METHOD'] == 'GET' && !empty($_SERVER['REQUEST_URI'])) {
 			$this->_xss_check();

@@ -10,8 +10,12 @@
 error_reporting(E_ALL);
 
 define('IN_DISCUZ', true);
-define('DISCUZ_ROOT', substr(dirname(__FILE__), 0, -12));
+/*vot*/ define('DISCUZ_ROOT', substr(dirname(str_replace('\\','/',__FILE__)), 0, -12));
 //DEBUG
+//echo '<pre>';
+//echo 'DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
+//echo '</pre>', "\n";
+
 define('DISCUZ_CORE_DEBUG', true);
 //define('DISCUZ_CORE_DEBUG', false);
 define('DISCUZ_TABLE_EXTENDABLE', TRUE);
@@ -33,11 +37,12 @@ if(function_exists('spl_autoload_register')) {
 
 //DEBUG
 echo '<pre>';
-echo '_FILE=', __FILE__, "\n";
+echo '_FILE_=', __FILE__, "\n";
 //echo 'url=', $url, "\n";
 //echo '_ENV=';
 //print_r($_ENV);
-//echo '</pre>', "\n";
+echo '</pre>', "\n";
+
 C::creatapp();
 
 class core
@@ -48,10 +53,19 @@ class core
 	private static $_memory;
 
 	public static function app() {
+//DEBUG
+echo '<pre>';
+echo 'function app=', __FILE__, "\n";
+echo '</pre>', "\n";
+
 		return self::$_app;
 	}
 
 	public static function creatapp() {
+//DEBUG
+echo '<pre>';
+echo 'function createapp=', "\n";
+echo '</pre>', "\n";
 		if(!is_object(self::$_app)) {
 			self::$_app = discuz_application::instance();
 		}
@@ -110,7 +124,7 @@ class core
 	public static function import($name, $folder = '', $force = true) {
 		$key = $folder.$name;
 		if(!isset(self::$_imports[$key])) {
-			$path = DISCUZ_ROOT.'/source/'.$folder;
+/*vot*/			$path = DISCUZ_ROOT.'./source/'.$folder;
 			if(strpos($name, '/') !== false) {
 				$pre = basename(dirname($name));
 				$filename = dirname($name).'/'.$pre.'_'.basename($name).'.php';

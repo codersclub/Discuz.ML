@@ -398,9 +398,9 @@ function gettitlehtml($title, $type) {
 
 function gettheme($type) {
 	$themes = array();
-	$themedirs = dreaddir(DISCUZ_ROOT."/static/$type");
+/*vot*/	$themedirs = dreaddir(DISCUZ_ROOT."./static/$type");
 	foreach ($themedirs as $key => $dirname) {
-		$now_dir = DISCUZ_ROOT."/static/$type/$dirname";
+/*vot*/		$now_dir = DISCUZ_ROOT."./static/$type/$dirname";
 		if(file_exists($now_dir.'/style.css') && file_exists($now_dir.'/preview.jpg')) {
 			$themes[] = array(
 				'dir' => $type.'/'.$dirname,

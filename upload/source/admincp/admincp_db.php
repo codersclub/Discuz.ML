@@ -515,7 +515,7 @@ if($operation == 'export') {
 	$checkperm = checkpermission('runquery', 0);
 
 	$runquerys = array();
-	include_once(DISCUZ_ROOT.'source/admincp/admincp_quickquery.php');
+/*vot*/	include_once(DISCUZ_ROOT.'./source/admincp/admincp_quickquery.php');
 
 	if(!submitcheck('sqlsubmit')) {
 
