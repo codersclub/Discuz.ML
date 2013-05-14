@@ -121,6 +121,7 @@ if($view == 'userapp') {
 			if($value['from_num'] > 0) $value['from_num'] = $value['from_num'] - 1;
 /*vot*/	$value['note'] = stripslashes($value['note']);
 /*vot*/	$notevars = @unserialize($value['note']);
+
 //DEBUG
 //echo "<pre>";
 //echo "source/include/space/space_notice.php.\n";
@@ -130,6 +131,7 @@ if($view == 'userapp') {
 //echo "notevars (", gettype($notevars), ")=";
 //print_r($notevars);
 //echo "</pre>";
+
 /*vot*/	if(gettype($notevars)=='array') {
 /*vot*/	  $template = $notevars['template'];
 /*vot*/	  unset($notevars['template']);

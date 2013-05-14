@@ -11,6 +11,7 @@ error_reporting(E_ALL);
 
 define('IN_DISCUZ', true);
 /*vot*/ define('DISCUZ_ROOT', substr(dirname(str_replace('\\','/',__FILE__)), 0, -12));
+
 //DEBUG
 //echo '<pre>';
 //echo 'DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
@@ -36,12 +37,12 @@ if(function_exists('spl_autoload_register')) {
 }
 
 //DEBUG
-echo '<pre>';
-echo '_FILE_=', __FILE__, "\n";
+//echo '<pre>';
+//echo '_FILE_=', __FILE__, "\n";
 //echo 'url=', $url, "\n";
 //echo '_ENV=';
 //print_r($_ENV);
-echo '</pre>', "\n";
+//echo '</pre>', "\n";
 
 C::creatapp();
 
@@ -54,18 +55,18 @@ class core
 
 	public static function app() {
 //DEBUG
-echo '<pre>';
-echo 'function app=', __FILE__, "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function core::app=', __FILE__, "\n";
+//echo '</pre>', "\n";
 
 		return self::$_app;
 	}
 
 	public static function creatapp() {
 //DEBUG
-echo '<pre>';
-echo 'function createapp=', "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function core::createapp=', "\n";
+//echo '</pre>', "\n";
 		if(!is_object(self::$_app)) {
 			self::$_app = discuz_application::instance();
 		}
@@ -229,4 +230,3 @@ echo '</pre>', "\n";
 class C extends core {}
 class DB extends discuz_database {}
 
-?>

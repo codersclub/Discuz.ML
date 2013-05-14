@@ -7,11 +7,6 @@
  *      $Id: discuz_base.php 30321 2012-05-22 09:09:35Z zhangguosheng $
  */
 
-//DEBUG
-echo '<pre>';
-echo '_FILE_=', __FILE__, "\n";
-echo '</pre>', "\n";
-
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }

@@ -9,22 +9,16 @@
  */
 
 //DEBUG
-echo '<pre>';
-echo '_FILE=', __FILE__, "\n";
-echo '_ENV=';
-print_r($_ENV);
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo '_FILE=', __FILE__, "\n";
+//echo '_ENV=';
+//print_r($_ENV);
+//echo '</pre>', "\n";
 
 define('APPTYPEID', 2);
 define('CURSCRIPT', 'forum');
 
 require './source/class/class_core.php';
-
-//DEBUG
-echo '<pre>';
-echo '_FILE_2=', __FILE__, "\n";
-echo '</pre>', "\n";
-
 
 require './source/function/function_forum.php';
 

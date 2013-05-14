@@ -8,6 +8,11 @@
  *	Modified by Valery Votintsev, codersclub.org
  */
 
+//DEBUG
+//echo '<pre>';
+//echo '_FILE_=', __FILE__, "\n";
+//echo '</pre>', "\n";
+
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
@@ -2077,6 +2082,7 @@ function currentlang() {
 
 //vot: Detect User Preferred Language from Browser
 function detect_language() {
+	global $_G;
 
 	$default = strtolower(getglobal('config/output/language'));
 	
@@ -2095,7 +2101,7 @@ function detect_language() {
 				if($choice=='zh') $choice = 'sc';
 			}
 
-			if(isset(getglobal('config/languages/'.$choice))){
+			if(isset($_G['config']['languages'][$choice])){
 				return $choice;
 			}
 		}

@@ -9,9 +9,9 @@
  */
 
 //DEBUG
-echo '<pre>';
-echo '_FILE_=', __FILE__, "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo '_FILE_=', __FILE__, "\n";
+//echo '</pre>', "\n";
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -61,9 +61,9 @@ class discuz_application extends discuz_base{
 
 	public function __construct() {
 //DEBUG
-echo '<pre>';
-echo 'function discuz_application::__construct=', "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function discuz_application::__construct=', "\n";
+//echo '</pre>', "\n";
 
 		$this->_init_env();
 		$this->_init_config();
@@ -72,10 +72,12 @@ echo '</pre>', "\n";
 	}
 
 	public function init() {
+
 //DEBUG
-echo '<pre>';
-echo 'function discuz_application::init=', "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function discuz_application::init=', "\n";
+//echo '</pre>', "\n";
+
 		if(!$this->initated) {
 			$this->_init_db();
 			$this->_init_setting();
@@ -89,13 +91,15 @@ echo '</pre>', "\n";
 	}
 
 	private function _init_env() {
-//DEBUG
-echo '<pre>';
-echo 'function discuz_application::init_env=', "\n";
-echo '</pre>', "\n";
 
-		error_reporting(E_ERROR);
-//DEBUG error_reporting(E_ALL);
+//DEBUG
+//echo '<pre>';
+//echo 'function discuz_application::init_env=', "\n";
+//echo '</pre>', "\n";
+
+//vot		error_reporting(E_ERROR);
+/*vot*/		error_reporting(E_ALL);
+
 		if(PHP_VERSION < '5.3.0') {
 			set_magic_quotes_runtime(0);
 		}
@@ -109,10 +113,12 @@ echo '</pre>', "\n";
 		$this->timezone_set();
 
 //DEBUG
-echo '<pre>';
-echo 'function discuz_application::init_env 2', "\n";
-echo '	DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function discuz_application::init_env 2', "\n";
+//echo '	DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
+//echo '	DISCUZ_CORE_FUNCTION=', DISCUZ_CORE_FUNCTION, "\n";
+//echo '</pre>', "\n";
+
 		if(!defined('DISCUZ_CORE_FUNCTION') && !@include(DISCUZ_ROOT.'./source/function/function_core.php')) {
 			exit('function_core.php is missing');
 		}
@@ -250,10 +256,12 @@ echo '</pre>', "\n";
 	}
 
 	private function _init_input() {
+
 //DEBUG
-echo '<pre>';
-echo 'function discuz_application::init_input=', "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function discuz_application::init_input=', "\n";
+//echo '</pre>', "\n";
+
 		if (isset($_GET['GLOBALS']) ||isset($_POST['GLOBALS']) ||  isset($_COOKIE['GLOBALS']) || isset($_FILES['GLOBALS'])) {
 			system_error('request_tainting');
 		}
@@ -365,7 +373,7 @@ echo '</pre>', "\n";
 		$this->var['langpath']  = DISCUZ_ROOT . 'source/language/'.$lng . '/';
 		$this->var['langurl']   = $this->var['siteroot'] . 'source/language/'.$lng . '/';
 		$this->var['langicon']  = $this->var['config']['languages'][$lng]['icon'];
-		$this->var['langname'] = $this->var['config']['languages'][$lng]['name'];
+		$this->var['langname']  = $this->var['config']['languages'][$lng]['name'];
 		$this->var['langtitle'] = $this->var['config']['languages'][$lng]['title'];
 		$this->var['langdir']   = strtolower($this->var['config']['languages'][$lng]['dir']);
 
@@ -381,20 +389,31 @@ echo '</pre>', "\n";
 
 	private function _init_config() {
 //DEBUG
-echo '<pre>';
-echo 'function discuz_application::init_config=', "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function discuz_application::init_config started', "\n";
+//echo '</pre>', "\n";
 
 		$_config = array();
 		@include DISCUZ_ROOT.'./config/config_global.php';
+
 		if(empty($_config)) {
 			if(!file_exists(DISCUZ_ROOT.'./data/install.lock')) {
-				header('location: install');
+//DEBUG
+//echo '<pre>';
+//echo '	redirect: install', "\n";
+//echo '</pre>', "\n";
+
+/*vot*/				header('location: install/');
 				exit;
 			} else {
 				system_error('config_notfound');
 			}
 		}
+
+//DEBUG
+//echo '<pre>';
+//echo 'function discuz_application::init_config finished', "\n";
+//echo '</pre>', "\n";
 
 		if(empty($_config['security']['authkey'])) {
 			$_config['security']['authkey'] = md5($_config['cookie']['cookiepre'].$_config['db'][1]['dbname']);
@@ -430,14 +449,13 @@ echo '</pre>', "\n";
 		}
 		$this->var['config']['cookie']['cookiepre'] = $this->var['config']['cookie']['cookiepre'].substr(md5($this->var['config']['cookie']['cookiepath'].'|'.$this->var['config']['cookie']['cookiedomain']), 0, 4).'_';
 
-
 	}
 
 	private function _init_output() {
 //DEBUG
-echo '<pre>';
-echo 'function discuz_application::init_output=', "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo 'function discuz_application::init_output=', "\n";
+//echo '</pre>', "\n";
 
 		if($this->config['security']['urlxssdefend'] && $_SERVER['REQUEST_METHOD'] == 'GET' && !empty($_SERVER['REQUEST_URI'])) {
 			$this->_xss_check();
@@ -475,9 +493,11 @@ echo '</pre>', "\n";
 /*vot*/		if(isset($this->var['gp_language'])) {
 /*vot*/			$url = $_SERVER['REQUEST_URI'];
 /*vot*/			$url = preg_replace("~[\?\&]language\=\w*~i",'',$url);
+
 //DEBUG
 //echo $this->var['language'],"=>", $this->var['oldlanguage'],"<br>";
 //echo $url;
+
 /*vot*/			header('Location: '.$url);
 /*vot*/			exit;
 /*vot*/		}

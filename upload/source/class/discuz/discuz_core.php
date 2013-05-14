@@ -8,9 +8,9 @@
  */
 
 //DEBUG
-echo '<pre>';
-echo '_FILE_=', __FILE__, "\n";
-echo '</pre>', "\n";
+//echo '<pre>';
+//echo '_FILE_=', __FILE__, "\n";
+//echo '</pre>', "\n";
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
