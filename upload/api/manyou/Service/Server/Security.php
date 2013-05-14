@@ -49,7 +49,7 @@ class Cloud_Service_Server_Security extends Cloud_Service_Server_Restful {
 
 	protected function _handleEvilPost($tid, $pid, $evilType, $evilLevel = 1) {
 
-		include_once DISCUZ_ROOT.'./source/language/lang_admincp_cloud.php';
+/*vot*/		include_once DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/lang_admincp_cloud.php';
 
 		$securityService = Cloud::loadClass('Service_Security');
 		$securityService->writeLog($pid, 'pid');
