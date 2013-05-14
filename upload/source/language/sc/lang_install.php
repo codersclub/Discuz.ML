@@ -362,6 +362,8 @@ $lang = array(
 //vot	'regiondata_check_label'	=> 'Install additional regional data (countries/regions/cities)',//'Install additional regional data (countries/regions/cities)',
 //vot	'install_region_data'		=> 'Install regional data',//'Install regional data',
 
+	'php_version_too_low'		=> 'PHP version is too low',
+	'php_version_too_low_comment'	=> 'For normal functioning Discuz! requires for more new version of PHP',
 //---------------------------------------------------------------
 
 );

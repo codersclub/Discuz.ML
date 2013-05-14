@@ -544,10 +544,10 @@ EOT;
 function show_footer($quit = true) {
 
 /*vot*/	echo <<<EOT
-		<div class="footer">&copy;2001 - 2013 <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
+	</div>
+	<div class="footer">&copy;2001 - 2013 <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
 		&nbsp;&nbsp;&nbsp;
 		<b>MultiLingual</b> version by <a href="http://codersclub.org/discuzx/">CodersClub.org</a>
-		</div>
 	</div>
 </div>
 </body>
