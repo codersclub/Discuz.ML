@@ -1243,7 +1243,7 @@ function _setShortcut() {
 	$('shortcuttip').onclick = function() {
 /*vot*/		var msg = lng['shortcut_1'] + '"<a href="javascript:;" class="xi2 xw1" ';
 		msg += 'onclick="this.href = \'forum.php?mod=misc&action=shortcut\';this.click();saveUserdata(\'setshortcut\', 1);"';
-/*vot*/		msg += '>'+lng['shortcut_1_1']+'</a>"' + lng['shortcut_1_2']'+'<br />';
+/*vot*/		msg += '>'+lng['shortcut_1_1']+'</a>"' + lng['shortcut_1_2'] + '<br />';
 /*vot*/		msg += lng['shortcut_2'] + '<a href="forum.php?mod=misc&action=shortcut&type=ico" class="xi2 xw1">';
 /*vot*/		msg += lng['shortcut_2_1']+'</a>"' + lng['shortcut_2_2'];
 /*vot*/		showDialog(msg, 'notice', lng['shortcut_add']);
