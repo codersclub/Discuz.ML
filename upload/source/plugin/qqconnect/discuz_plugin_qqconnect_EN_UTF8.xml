@@ -12,7 +12,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[qqconnect/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.15]]></item>
+			<item id="version"><![CDATA[1.17]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[connect]]></item>
@@ -64,7 +64,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X2.5]]></item>
+		<item id="version"><![CDATA[X3]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
 		<item id="language">
@@ -112,7 +112,7 @@
 				<item id="connectguest_message_complete_or_bind"><![CDATA[Sorry, You are yet not <a href="member.php?mod=connect" class="xi2">provide the account information</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">Bind existing account</a>, This action can not be performed]]></item>
 				<item id="connect_error_code_999"><![CDATA[Request failed]]></item>
 				<item id="connect_error_code_10001"><![CDATA[Invalid QQ connect APPID]]></item>
-				<item id="connect_error_code_10002"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_10002"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
 				<item id="connect_error_code_10003"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
 				<item id="connect_error_code_10004"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
 				<item id="connect_error_code_10005"><![CDATA[网站服务器时间误差超过 5 分钟]]></item>
@@ -134,6 +134,7 @@
 				<item id="connect_feed_published_thread"><![CDATA[发表了《{subject}》：]]></item>
 				<item id="connect_feed_published_post"><![CDATA[参与了《{subject}》的讨论：]]></item>
 				<item id="connect_spacecp_share_a_post"><![CDATA[分享一个好帖#{bbname}#《{subject}》：{message}]]></item>
+				<item id="connect_spacecp_share_qq_default"><![CDATA[看看这个吧，还不错哦，也许你会喜欢^_^]]></item>
 				<item id="connect_post_sync_method"><![CDATA[将此回复同步到]]></item>
 			</item>
 			<item id="templatelang">
@@ -169,6 +170,7 @@
 				<item id="connect_register_bind_title"><![CDATA[Enter the existing site account for bind your QQ account]]></item>
 				<item id="connect_register_bind_success"><![CDATA[Your QQ account was bind successfully]]></item>
 				<item id="connect_register_bind_need_inactive"><![CDATA[Your account has not been activated, please activate and then Bind QQ account]]></item>
+				<item id="connect_register_bind_need_inactive"><![CDATA[您的帐号还未激活，请先激活后再绑定QQ帐号]]></item>
 				<item id="connect_config"><![CDATA[QQ bind]]></item>
 				<item id="connect_config_bind"><![CDATA[Click the button to immediately Bind QQ account]]></item>
 				<item id="connect_config_bindinfo"><![CDATA[You have a site account <strong>{$_G[member][username]}</strong> and binded QQ number]]></item>
@@ -234,6 +236,7 @@
 				<item id="connect_post_sync_not_bind_desc"><![CDATA[马上绑定QQ账号，您将可以发表主题时同步到QQ空间和腾讯微博，第一时间和大家分享您在论坛中的新鲜事儿。]]></item>
 				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ空间]]></item>
 				<item id="connect_viewthread_share_to_t"><![CDATA[腾讯微博]]></item>
+				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ好友和群]]></item>
 				<item id="connect_viewthread_share_to_pengyou"><![CDATA[腾讯朋友]]></item>
 				<item id="connect_createpassword"><![CDATA[<b>创建密码</b>]]></item>
 				<item id="connect_uin_limit"><![CDATA[您的QQ帐号在本站注册的帐号数量达到上限，请绑定已有帐号，或<a href="{$change_qq_url}">更换其他QQ账号</a>]]></item>

@@ -163,7 +163,7 @@ if($op == 'init') {
 				)
 			);
 
-		} else { // debug 当前登录的论坛账号并没有绑定任何QQ号，则可以绑定当前的这个QQ号
+/*vot*/		} else { // debug Currently logged Forum account does not bind any QQ number, You can bind this QQ number
 			if(empty($current_connect_member)) {
 				C::t('#qqconnect#common_member_connect')->insert(
 					array(
@@ -222,7 +222,7 @@ if($op == 'init') {
 
 	} else {
 
-		if($connect_member) { // debug 此分支是用户直接点击QQ登录，并且这个QQ号已经绑好一个论坛账号了，将直接登进论坛了
+/*vot*/		if($connect_member) { // debug This branch is directly click QQ login, And the QQ number has been bind for a forum account, so will directly log into the forum
 			C::t('#qqconnect#common_member_connect')->update($connect_member['uid'],
 				array(
 					'conuin' => $conuin,
@@ -238,7 +238,6 @@ if($op == 'init') {
 			loadcache('usergroups');
 			$usergroups = $_G['cache']['usergroups'][$_G['groupid']]['grouptitle'];
 			$param = array('username' => $_G['member']['username'], 'usergroup' => $_G['group']['grouptitle']);
-
 			C::t('common_member_status')->update($connect_member['uid'], array('lastip'=>$_G['clientip'], 'lastvisit'=>TIMESTAMP, 'lastactivity' => TIMESTAMP));
 			$ucsynlogin = '';
 			if($_G['setting']['allowsynlogin']) {
@@ -249,7 +248,7 @@ if($op == 'init') {
 			dsetcookie('stats_qc_login', 3, 86400);
 			showmessage('login_succeed', $referer, $param, array('extrajs' => $ucsynlogin));
 
-		} else { // debug 此分支是用户直接点击QQ登录，并且这个QQ号还未绑定任何论坛账号，将将跳转到一个新页引导用户注册个新论坛账号或绑一个已有的论坛账号
+/*vot*/		} else { // debug This branch is directly click QQ login, And the QQ number has been bind for a forum account, Will jump to a new page to guide the user to register a new forum account or bind to an existing forum account
 
 			$auth_hash = authcode($conopenid, 'ENCODE');
 			$insert_arr = array(
