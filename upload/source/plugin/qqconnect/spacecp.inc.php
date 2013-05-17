@@ -174,7 +174,7 @@ if ($pluginop == 'config') {
 			$code = $errorCode;
 			if($errorCode == 41001) {
 				$message = lang('plugin/qqconnect', 'connect_user_unauthorized', array('login_url' => $_G['connect']['login_url'].'&reauthorize=yes&formhash='.FORMHASH));
-			} elseif($errorCode == 41003 || $errorCode == 40006) { // access token失效或非法
+			} elseif($errorCode == 41003 || $errorCode == 40006) { // access token Failed or Illegal
 				$message = lang('plugin/qqconnect', 'connect_share_token_outofdate', array('login_url' => $_G['connect']['login_url']));
 			} elseif ($errorCode == 3021) {
 				$message = lang('plugin/qqconnect', 'connect_qzone_share_same_url');
@@ -217,7 +217,7 @@ if ($pluginop == 'config') {
 			$code = $errorCode;
 			if($errorCode == 41001) {
 				$message = lang('plugin/qqconnect', 'connect_user_unauthorized', array('login_url' => $_G['connect']['login_url'].'&reauthorize=yes&formhash='.FORMHASH));
-			} elseif($errorCode == 41003 || $errorCode == 40006) { // access token失效或非法
+			} elseif($errorCode == 41003 || $errorCode == 40006) { // access token Failed or Illegal
 				$message = lang('plugin/qqconnect', 'connect_share_token_outofdate', array('login_url' => $_G['connect']['login_url']));
 			} elseif ($errorCode == 3013) {
 				$message = lang('plugin/qqconnect', 'connect_qzone_weibo_same_content');

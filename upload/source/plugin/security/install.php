@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `pre_security_eviluser` (
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `pre_security_failedlog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `reporttype` varchar(32) NOT NULL COMMENT 'Report type',
   `tid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'TID',
   `pid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'PID',
