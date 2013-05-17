@@ -3,6 +3,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: makehtml.js 33047 2013-04-12 08:46:56Z zhangguosheng $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 function make_html(url, obj) {
@@ -15,7 +16,8 @@ function make_html(url, obj) {
 		if(ret && (ret=ret['data']) && ret['status'] == 'html_ok') {
 			if(obj) {
 				obj.style.color = 'blue';
-				obj.innerHTML = '<a href="'+ret['path']+'" target="_blank">'+title+'生成成功</a>';
+/*vot*/				obj.innerHTML = '<a href="'+ret['path']+'" target="_blank">'+title+lng['generated_ok']+'</a>';
+
 			}
 			if(ret['nexturl']) {
 				if(obj) {
@@ -96,7 +98,7 @@ make_html_batch.prototype = {
 					makehtml_error.style.height = '200px';
 					makehtml_error.style.overflow = 'scroll';
 					makehtml_error.id = 'makehtml_error';
-					makehtml_error.innerHTML = '错误信息';
+/*vot*/					makehtml_error.innerHTML = lng['error_message'];
 					obj.dom.appendChild(makehtml_error);
 				}
 				makehtml_error.innerHTML += '<br>[id:' + id + ']' + ret['message'];

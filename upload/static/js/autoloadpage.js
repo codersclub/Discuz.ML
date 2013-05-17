@@ -23,7 +23,7 @@
 	autopbn.onclick = function() {
 		var oldloadstatus = loadstatus;
 		loadstatus = 2;
-		autopbn.innerHTML = '正在加载, 请稍后...';
+/*vot*/		autopbn.innerHTML = lng['loading_content_wait'];
 		getnextpagecontent();
 		loadstatus = oldloadstatus;
 	};
@@ -33,7 +33,7 @@
 			var curtop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
 			if(curtop + document.documentElement.clientHeight + 500 >= document.documentElement.scrollHeight && !loadstatus) {
 				loadstatus = 1;
-				autopbn.innerHTML = '正在加载, 请稍后...';
+/*vot*/				autopbn.innerHTML = lng['loading_content_wait'];
 				setTimeout(getnextpagecontent, 1000);
 			}
 		};
