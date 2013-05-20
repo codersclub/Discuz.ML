@@ -133,6 +133,10 @@ var lng = {
 
 
 //---------------------------
+//upload/static/js/autoloadpage.js
+	'loading_content_wait'	: '正在加载, 请稍后...',//'Loading content, wait please...',
+
+//---------------------------
 //upload/static/js/at.js
 //	'enter_username'	: '請輸用戶名',//'Please enter the user name',
 
@@ -369,8 +373,13 @@ var lng = {
 	'notify_on_reply_cancel'	: '取消回復通知',
 	'share_connection_failed'	: '分享服務連接失敗，請稍後再試',
 	'qq_bind'		: '請先綁定QQ賬號',
-	'quote_by'	: '本帖最後由 .*? 於 .*? 編輯',
-	'copy_code'	: '複製代碼',
+	'quote_by'		: '本帖最後由 .*? 於 .*? 編輯',
+	'copy_code'		: '複製代碼',
+	'download_pocket_forum'	: '下载掌上论坛',//'Download Pocket Forum',
+	'pocket_forum_android'	: 'Andriod版本，扫描二维码可以直接下载到手机',//'If Andriod version, Scan thw QR-code can be downloaded directly to the phone',
+	'pocket_forum_android_alt'	: '适用于装有安卓系统的三星/HTC/小米等手机',//'Suitable for Android-based smartphones like Samsung/HTC/etc',
+	'pocket_forum_ios'	: 'iPhone版本，扫描二维码可以直接下载到手机',//'If iPhone used, Scan thw QR-code can be downloaded directly to the phone',
+	'pocket_forum_ios_alt'	: '适用于苹果手机',//'Suitable for Apple mobile phone',
 
 //--------------------------------
 //static/js/handlers.js
@@ -454,6 +463,12 @@ var lng = {
 	'image_description'	: '圖片描述',
 	'uploading_wait'	: '上傳中，請等待',
 	'retry'			: '重試',
+
+//---------------------------
+//static/js/makehtml.js
+	'generated_ok'	: '生成成功',//' generated successfully',
+	'generate'	: '生成',//'Generate ',
+//	''	: '',//'',
 
 //--------------------------------
 //static/js/portal.js
@@ -591,6 +606,7 @@ var lng = {
 	'capitals'		: '大寫字母',//'Capital letters',
 	'specials'		: '特殊符號',//'Special symbols',
 	'pw_weak_info'		: '密碼太弱，密碼中必須包含 ',//'Weak password, the password must contain ',
+	'leave_blank_old_pass'	: '如不需要更改密码，此处请留空',//'Leave blank if you do not need to change the password',
 
 //--------------------------------
 //static/js/seditor.js

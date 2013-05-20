@@ -133,6 +133,10 @@ var lng = {
 
 
 //---------------------------
+//upload/static/js/autoloadpage.js
+	'loading_content_wait'	: '正在加载, 请稍后...',//'Loading content, wait please...',
+
+//---------------------------
 //upload/static/js/at.js
 //	'enter_username'	: 'Please enter the user name',//'请输用户名',
 
@@ -373,7 +377,7 @@ var lng = {
 	'copy_code'		: '复制代码',
 	'download_pocket_forum'	: '下载掌上论坛',//'Download Pocket Forum',
 	'pocket_forum_android'	: 'Andriod版本，扫描二维码可以直接下载到手机',//'If Andriod version, Scan thw QR-code can be downloaded directly to the phone',
-	'pocket_forum_android_alt'	: '适用于装有安卓系统的三星/HTC/小米等手机',//'Suitablefor Android-based smartphones like Samsung/HTC/etc',
+	'pocket_forum_android_alt'	: '适用于装有安卓系统的三星/HTC/小米等手机',//'Suitable for Android-based smartphones like Samsung/HTC/etc',
 	'pocket_forum_ios'	: 'iPhone版本，扫描二维码可以直接下载到手机',//'If iPhone used, Scan thw QR-code can be downloaded directly to the phone',
 	'pocket_forum_ios_alt'	: '适用于苹果手机',//'Suitable for Apple mobile phone',
 
@@ -459,6 +463,12 @@ var lng = {
 	'image_description'	: '图片描述',
 	'uploading_wait'	: '上传中，请等待',
 	'retry'			: '重试',
+
+//---------------------------
+//static/js/makehtml.js
+	'generated_ok'	: '生成成功',//' generated successfully',
+	'generate'	: '生成',//'Generate ',
+//	''	: '',//'',
 
 //--------------------------------
 //static/js/portal.js
