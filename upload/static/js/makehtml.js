@@ -22,7 +22,7 @@ function make_html(url, obj) {
 			if(ret['nexturl']) {
 				if(obj) {
 					obj.style.color = 'green';
-					obj.innerHTML = '生成'+title+(Math.round((ret['current']/ret['count'])*100))+'%';
+/*vot*/					obj.innerHTML = lng['generate']+title+(Math.round((ret['current']/ret['count'])*100))+'%';
 				}
 				make_html(ret['nexturl'], obj);
 			}
