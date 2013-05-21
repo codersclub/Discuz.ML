@@ -2,7 +2,7 @@
 /* Modified by Valery Votintsev, codersclub.org */
 *{ word-wrap:break-word; outline:none; }
 body{ background:#FFF; text-align:center; }
-body, td, input, textarea, select, button{ color:#555; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, 'Simsun', sans-serif; }
+/*vot*/ body, td, input, textarea, select, button{ color:#555; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif; }
 body, ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin:0; padding:0; }
 ul{ list-style:none; }
 h1, h2, h3, h4, h5, h6{ font-size:12px; }
@@ -53,29 +53,29 @@ h3{ margin-bottom:10px; font-size:14px; color:#09C; }
 .mainhd{ position:relative; overflow:hidden; text-align:left; height:90px; line-height:88px; background:url(bg_repx.gif) repeat-x; }
 	.logo{ display: block; text-indent:-9999px; width:135px; height:80px; background:url(logo.gif) no-repeat 15px 13px; }
 		.logo:hover{ background-image:url(logo_hover.gif); }
-	.uinfo{ position:absolute; z-index:4; line-height:32px; top:10px; right:15px; }
+/*vot*/	.uinfo{ position:absolute; z-index:4; line-height:24px; top:0px; right:15px; }
 		.uinfo a{ color:#666; }
 		.uinfo em{ margin-right:5px; font-weight:700; }
 			.uinfo em a{ text-decoration:underline; }
 		.uinfo p{ float:left; }
 			.btnlink a{ display:block; margin-left:10px; width:63px; height:32px; text-align:center; background:url(bg_repno.gif) no-repeat -50px -150px; }
 	.navbg{ position:absolute; z-index:1; top:52px; left:153px; width:6px; height:37px; background:#F7FAFD; }
-	.nav{ position:absolute; z-index:2; top:14px; left:159px; width:100%; height:75px; }
-		.nav ul{ overflow:hidden; position:relative; z-index:4; font-size:14px; }
-			.nav li{ float:left; height:43px; line-height:43px; background:url(btn_block.gif) right -115px no-repeat; }
+/*vot*/	.nav{ position:absolute; z-index:2; top:24px; /*left:159px;*/ width:100%; height:75px; }
+/*vot*/		.nav ul{ overflow:hidden; position:relative; z-index:4; font-size:14px; height: 28px; }
+/*vot*/			.nav li{ float:left; height:28px; line-height:28px; background:url(btn_block.gif) right -115px no-repeat; }
 				.nav li em{ display:block; }
 				.nav li a{ padding:5px 5px; color:#639BB0; font-weight:700; }
 				.nav li a:hover{ color:#09C; text-decoration:none; }
 				.nav li .diffcolor{ color:#F60; }
 			.nav li.navon{ line-height:33px; background:url(btn_block.gif) no-repeat; }
 				.nav li.navon em{ display:block; background:url(btn_block.gif) right -50px no-repeat; }
-				.nav li.navon em a{ display:block; background:url(btn_block.gif) center bottom no-repeat; color:#FFF; }
+/*vot*/				.nav li.navon em a{ display:block; background:url(btn_block.gif) center bottom no-repeat; color:#FFF; height: 32px; line-height: 18px; }
 					.nav li.navon em a:hover{ color:#FFF; }
 		.nav ul #header_uc { font-size:12px; }
-		.navbd { overflow:hidden; clear:both; position:absolute; z-index:3; top:38px; width:100%; height:5px; background:#09C; }
+/*vot*/		.navbd { overflow:hidden; clear:both; position:absolute; z-index:3; top:28px; width:100%; height:5px; background:#09C; }
 	.currentloca{ clear:both; height:32px; border-left:1px solid #B5CFD9; }
 		.currentloca p{ padding-left:10px; line-height:25px; border-top:5px solid #FFF; border-bottom:2px solid #FFF; border-left:1px solid #FFF; background:#F2F9FD; }
-		.sitemapbtn{ position:absolute; right:175px; *right:170px; top:50px; line-height:100%; }
+/*vot*/		.sitemapbtn{ position:absolute; right:175px; *right:170px; top:38px; line-height:100%; }
 			.sitemapbtn span{ margin-right:3px; }
 
 a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px; }
@@ -89,7 +89,7 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 	#ugselect_menu { width:450px; }
 	.popupmenu_popup em { display:block; clear: both; padding: 2px 4px; font-weight:700; background:#EAF4FB; }
 		.popupmenu_popup em.hover { cursor:pointer; }
-	.popupmenu_popup a { float: left; margin: 1px 9px 1px 0; padding-left:3px; width: 100px; }
+/*vot*/	.popupmenu_popup a { float: left; margin: 1px 9px 1px 0; padding-left:3px; width: 120px; }
 	.popupmenu_popup .ck { width: 25px; margin-top: 4px; }
 	.popupmenu_popup .current { font-weight:700; }
 		.popupmenu_popup a.f, .popupmenu_popup a.s { float: none; display: block; width:80%; }
@@ -169,14 +169,14 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 			.itemtitle .tab1 a:hover{ background:#F5F5F5 url(btn_block_3.gif) no-repeat 0 -40px; color:#09C; }
 				.itemtitle .tab1 a:hover span{ background:url(btn_block_3.gif) no-repeat right -60px; }
 		.itemtitle .tab1 .hasdropmenu a:hover{ color:#666; }
-		.itemtitle .tab1 .current a{ background:url(btn_block_3.gif) no-repeat 0 0 !important; }
+/*vot*/		.itemtitle .tab1 .current a{ background:url(btn_block_3.gif) no-repeat 0 0 #666 !important; }
 			.itemtitle .tab1 .current a span, .itemtitle .tab1 .current a:hover span{ background:url(btn_block_3.gif) no-repeat right -20px; color:#FFF; }
 		.itemtitle .tab1 .dropmenu a{ background:none !important; }
 			.itemtitle .tab1 .dropmenu a:hover, .itemtitle .tab1 .dropmenu a.current{ background:#DEEFFA !important; }
 .floattop { position:fixed; z-index:200; top:0; left:0; margin-left: 20px; padding:8px 20px 8px 0; width:99%; background:#FFF; }
 	.floattop #fselect, .floattop #ugselect { margin-right: 20px; }
 	* html .floattop { position:relative; top:expression(offsetParent ? offsetParent.scrollTop : 0); left: -20px; margin-top: -10px; width: 100%; }
-	.floattopempty { height: 35px !important; height: auto; }
+/*vot*/	.floattopempty { height: 65px !important; height: auto; }
 	.floattop .dropmenu { position: fixed !important; position: absolute; margin-left: 0 !important; margin-left: -20px; } /* for opera position fixed bug */
 .stepstat{ *margin-bottom:10px; }
 	.stepstat li{ float:left; margin-right:15px; color:#CCC; }
@@ -210,8 +210,24 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 	.optblock .pbg .xs0 { line-height: 1.5; }
 
 /* table */
-.tb{ clear:both; width:100%; margin-top: 8px}
-	.tb th, .tb td{ padding:5px !important; height:25px; }
+.tb{ clear:both; width:100%; margin-top: 8px; }
+
+/*vot*/	.tb tr {
+/*vot*/	border-top: 1px solid #DEEFFB;
+}
+/*vot*/	.tb th, .tb td{ padding:8px 2px 8px !important; height:25px;
+	vertical-align: top;
+/*DEBUG*/ /*border: 1px solid red;*/
+}
+
+/*vot*/	tr.trsub {
+	border-width: 0 1px;
+}
+/*vot*/	tr.trsub td {
+	padding: 0 2px 8px;
+}
+
+
 .tb1{}
 	.th11, .th12{ width:60px; font-weight:700; }
 	.tb1 .th12{ padding-top:7px; vertical-align:top; }
@@ -248,16 +264,17 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 	.tb2 tr.hl td { border-top:1px #F4E4B4 solid; border-bottom:1px #F4E4B4 solid }
 	.tb2.tdhover tr:hover td { background: none; }
 	.tb2.tdhover tr td:hover { background: #F2F9FD; }
-	.tb2 td{ padding:5px 5px 3px 0; border-top: 1px dotted #DEEFFB; }
-	.tb2 th{ padding:5px 5px 3px 0; line-height:21px; font-size: 12px; }
-	.tb2 .txt, .tb2 .txtnobd{ width:100px; margin-right:10px; }
+/*vot*/	.tb2 td{ padding:8px 2px; /*border-top: 1px dotted #DEEFFB;*/ }
+/*vot*/	.tb2 th{ padding:8px 2px; line-height:21px; font-size: 12px; }
+/*vot*/	.tb2 .txt, .tb2 .txtnobd{ width:90%; }
+/*vot*/	.tb2 .txtid { width:100px; }
 	.tb2 .smtxt { margin-right: 5px; width: 25px; }
 	.nowrap { white-space: nowrap; }
 	.td21{ width:150px; font-weight:700; }
 	.td22{ width:100px; font-weight:700; }
 	.td23{ width:100px; }
 	.td24{ width:120px; }
-	.td25{ width:50px; }
+/*vot*/	.td25{ width:25px; }
 		.td25 .txt{ width:40px; }
 	.td26{}
 		.td26 .txt, .td26 .txtnobd{ width:90%; *width:280px; }
@@ -288,7 +305,7 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 	.partition, .partition2{ line-height:21px; font-weight:700; color:#09C; }
 		.tb2 .partition{ padding:5px; background:url(bg_repx_hc.gif) repeat-x 0 -40px; }
 	.dblist{}
-		.dblist li{ float:left; margin-bottom:5px; width:33%; height:20px; white-space:nowrap; cursor:pointer; }
+/*vot*/		.dblist li{ float:left; margin-bottom:5px; width:auto; height:20px; white-space:nowrap; cursor:pointer; }
 
 	.cfolder, .ofolder{ display:block; padding-left:50px; line-height:30px; background:url(bg_repno.gif) no-repeat -260px -50px; font-weight:700; }
 	.ofolder{ background:url(bg_repno.gif) no-repeat -260px -100px; }
@@ -431,7 +448,7 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 .smallfont{font-size:12px!important; font-size: 11px}
 .smallfont h3{ font-size:12px; }
 .fixpadding th, .fixpadding td{ padding-left:5px !important; }
-.notice { position: absolute; z-index: 100; width: 100%; }
+/*vot*/ .notice { position: absolute; z-index: 100; /*width: 100%;*/ margin-left: 160px; }
 	.notice a { display: inline-block; padding: 5px 10px; border: solid #CCC; border-width: 0 1px 1px; background: #FEFEE9; color: red; box-shadow: 0 0 5px #B1B1B1; }
 		.notice a:hover { text-decoration: none; }
 	.notice span { margin-left: 20px; color: #09C; text-decoration: underline; }
@@ -461,7 +478,7 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 .header, .header td, .header th{ border-top: 1px dotted #DEEFFB; font-weight: 700; }
 .smallefont{font-size: 11px}
 
-/* Popup */
+/* Pop-ups */
 .fwin { text-align: left; background: #FFF; }
 .t_l, .t_c, .t_r, .m_l, .m_r, .b_l, .b_c, .b_r { overflow: hidden; background: #000; opacity: 0.2; filter: alpha(opacity=20); }
 .t_l, .t_r, .b_l, .b_r { width: 10px; height: 10px; line-height: 10px; font-size: 0; }
@@ -494,14 +511,14 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 .fwin .ss em { background: #eee; width: 16px; line-height: 18px; display: block; float: left; margin: 2px; cursor: pointer; padding-left: 7px;}
 .fwin .ss em.a { background: #09f; color: #FFF;}
 
-/* .cl --> Clear Automatically closed */
+/* .cl --> Clear Automatic Closure */
 .cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .cl { zoom: 1; }
 
 .preview { margin-bottom: 8px; width: 570px; height: 340px; border: 1px solid #09C; box-shadow: 3px 3px 3px #EEE; -moz-box-shadow: 3px 3px 3px #EEE; -webkit-box-shadow: 3px 3px 3px #EEE; -o-box-shadow: 3px 3px 3px #EEE; }
 
 
-/* Bubble information by dfox */
+/* Bubble info by dfox */
 .prmm { margin-left: -27px; padding-top: 10px; width: 250px; background: transparent url(pm_ntc.gif) no-repeat 0 0; text-align: left; opacity: 0.98; }
 	.prmc { padding-bottom: 10px; background: transparent url(pm_ntc.gif) no-repeat -250px 100%; }
 		.prmm ul { padding: 0 10px; border: solid #91C8E2; border-width: 0 2px; background: #FFF; }
@@ -510,8 +527,8 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 .up { padding-top: 0; padding-bottom: 10px; width: 150px; background-position: -500px 100%; }
 	.up .prmc { padding-top: 5px; padding-bottom: 0; background-position: -650px 0; }
 		.up li { border-bottom: none; line-height: 160%; }
-
-/* Common form style */
+		
+/* General form styles */
 	.tfm { width: 100%; }
 		.tfm caption, .tfm th, .tfm td { padding: 10px 2px; }
 			.tfm caption h2 { font-size: 16px; }
@@ -529,8 +546,8 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 		.tfm .l th, .tfm .l td { padding-top: 0; padding-bottom: 0; }
 	.bn .tfm caption, .bn .tfm th, .bn .tfm td { padding-top: 5px; padding-bottom: 5px; }
 		.bn .tfm th { font-weight: 400; }
-
-/* A list of common data datatable by michael */
+		
+/* General data list datatable by michael */
 
 .dt { border-top: 1px solid #CDCDCD; width: 100%; }
 	.dt th { background: #F2F2F2; }
@@ -539,7 +556,7 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 	.dt .px { height: 16px !important; font-size: 12px; }
 
 
-/* Margins, 3 groups from narrow to wide, available types: n, m, w */
+/* Margins, three groups from narrow to wide, level respectively: n, m, w */
 	.mtn { margin-top: 5px !important; }
 	.mbn { margin-bottom: 5px !important; }
 	.mtm { margin-top: 10px !important; }
@@ -556,3 +573,8 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 .pbg { position: relative; margin: 10px 0; width: 200px; height: 16px; background: url(bg_progressbar.png) 0 0 repeat-x; border-radius: 5px; }
 	.pbr { height: 16px; width: 200px; background-image: url(bg_progressbar.png); background-color: #5AAF4A; background-position: 0 -16px; background-repeat: repeat-x; border-radius: 5px; }
 	.pbg .xs0 { position: absolute; top: 0; right: 8px; }
+
+/*vot*/
+/* pop-up menu and pop-up window */
+.p_pop {line-height: 18px; padding: 4px; border: 1px solid #999; min-width: 60px; border-color: #333; background: #FFF; box-shadow: 1px 2px 2px rgba(0,0,0,0.3); }
+.p_pop a { position: relative; display: block; text-align:left; padding: 3px 5px; border-bottom: 1px solid #CCF; white-space: nowrap; }
