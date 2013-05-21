@@ -143,12 +143,12 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 	#scrolllink img { margin-left: 2px; }
 .copyright{ position:absolute; z-index:10; left:5px; bottom:3px; padding-top:3px; border-top:1px dashed #DDD; text-align:left; line-height:150%; font-family:Tahoma; font-size:11px; -webkit-text-size-adjust: none; }
 .logintb{ text-align:left; margin:120px auto 0; width:600px; }
-.login{ padding-right:30px; width:310px; height:150px; background:url(bg_login.gif) right 50% no-repeat; }
+/*vot*/ .login{ padding-right:30px; width:220px; height:150px; background:url(bg_login.gif) right 50% no-repeat; }
 	.login h1{ text-indent:-9999px; margin-bottom:10px; width:262px; height:26px; background:url(login_title.gif) no-repeat; }
 	.login p{ line-height:150%; }
 .logintitle, .loginform { margin:2px 0; height:22px; line-height:22px; font-size:14px; }
-.logintitle{ float:left; clear:left; width:60px; font-weight:700; color:#666; }
-.loginform{ float:left; width:160px; }
+/*vot*/ .logintitle{ float:left; clear:both; /*width:60px;*/ font-weight:700; color:#666; padding:0 4px;}
+/*vot*/ .loginform{ float:right; width:160px; }
 	.loginform .txt{ margin-top:1px; width:150px; }
 	.loginform select { margin-top:1px; padding:1px; width:156px; }
 .loginnofloat{ clear:both; }
