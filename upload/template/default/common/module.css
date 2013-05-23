@@ -339,7 +339,7 @@ Modified by Valery Votintsev, codersclub.org
 
 /** forum::viewthread,forum::forumdisplay,forum::post,group **/
 /* Thread icon by michael */
-#newspecial_menu { width: 90px; }
+#newspecial_menu { width: 120px; }
 	#newspecial_menu li, #sti .wx { display: block; background: url({IMGDIR}/folder_new.gif) no-repeat 8px 50%; zoom: 1; }
 		#newspecial_menu .poll, #sti .poll { background-image: url({IMGDIR}/pollsmall.gif); }
 		#newspecial_menu .trade, #sti .trade { background-image: url({IMGDIR}/tradesmall.gif); }

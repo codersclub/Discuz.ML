@@ -70,7 +70,7 @@ dl.diy dt { margin-top: -10px; margin-bottom: 10px; padding-bottom: 5px; border-
 			#positiontable td.red{ background-color:red;}
 	.color_diy { width:310px; float:left; overflow:visible;}
 		.color_diy .span { float:left; display:inline; line-height:24px;}
-	#controlcontent .diy li a { width: 60px; height: 60px; }
+	#controlcontent .diy li a { width: 146px; height: 60px; }
 		#controlcontent .diy li a:hover { background: none; }
 		#controlcontent li.thumb img { margin: 0; width: 60px; height: 60px; }
 	#diyimg_prev div *, #diyimg_next div * { display: none; }
@@ -150,7 +150,7 @@ dl.diy dt { margin-top: -10px; margin-bottom: 10px; padding-bottom: 5px; border-
 /*** Original CSS ***/
 #diy-tg { display: none !important; }
 /**space**/
-#controlcontent .selector li a { margin: 5px 10px 0 0; padding-left: 30px; width: 60px; height: 30px; line-height: 30px; background: url({STATICURL}image/diy/cp-item-mini.png) no-repeat 0 0; text-align: left; cursor: pointer; }
+#controlcontent .selector li a { margin: 5px 10px 0 0; padding-left: 30px; width: 146px; height: 30px; line-height: 30px; background: url({STATICURL}image/diy/cp-item-mini.png) no-repeat 0 0; text-align: left; cursor: pointer; }
 	#controlcontent .selector li a:hover { background: url({STATICURL}image/diy/cp-item-mini.png) no-repeat 0 -30px; }
 	#controlcontent .selector li.activity a, #controlcontent .selector li.activity a:hover { background: url({STATICURL}image/diy/cp-item-mini.png) no-repeat 0 100%; }
 
