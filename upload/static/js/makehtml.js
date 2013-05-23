@@ -16,7 +16,7 @@ function make_html(url, obj) {
 		if(ret && (ret=ret['data']) && ret['status'] == 'html_ok') {
 			if(obj) {
 				obj.style.color = 'blue';
-/*vot*/				obj.innerHTML = '<a href="'+ret['path']+'" target="_blank">'+title+lng['generated_ok']+'</a>';
+/*vot*/				obj.innerHTML = '<a href="'+ret['path']+'" target="_blank">'+title+lng['generate_ok']+'</a>';
 
 			}
 			if(ret['nexturl']) {
@@ -29,7 +29,7 @@ function make_html(url, obj) {
 		} else {
 			if(obj) {
 				obj.style.color = 'red';
-				obj.innerHTML = title+'生成失败';
+/*vot*/				obj.innerHTML = title+lng['generate_error'];
 			}
 		}
 	});
@@ -54,13 +54,13 @@ function make_html_batch(url, ids, callback, dom, single) {
 		child.style.color = 'green';
 		var cent = ((1/this.count)*100).toFixed(2);
 		progress_bar(cent);
-		child.innerHTML = '开始生成'+this.dom.getAttribute('mktitle');
+/*vot*/		child.innerHTML = lng['generate_start']+this.dom.getAttribute('mktitle');
 		this.dom.innerHTML = '';
 		this.dom.appendChild(child);
 		this.make(id, child);
 		this.child = child;
 		var child2 = document.createElement('div');
-		child2.innerHTML = '<a href="javascript:void(0);" id="mk_goon">如果您的浏览器没有反应，请点击继续...</a>';
+/*vot*/		child2.innerHTML = '<a href="javascript:void(0);" id="mk_goon">'+lng['generate_click_continue']+'</a>';
 		this.dom.appendChild(child2);
 		var obj = this;
 		$('mk_goon').onclick = function (e) {make_html_batch.prototype.make_goon.call(obj, e)};
@@ -107,7 +107,7 @@ make_html_batch.prototype = {
 
 			if(obj.single) {
 				child.style.color = 'blue';
-				child.innerHTML = '<div class="mk_msg">'+'<a href="'+data['path']+'" target="_blank">'+obj.dom.getAttribute('mktitle')+'</a>生成完成'+'</div>';
+/*vot*/				child.innerHTML = '<div class="mk_msg">'+'<a href="'+data['path']+'" target="_blank">'+obj.dom.getAttribute('mktitle')+'</a>'+lng['generate_completed']+'</div>';
 				if(obj.callback) {
 					setTimeout(function(){(obj.callback)();}, 2000);
 				}
@@ -115,12 +115,12 @@ make_html_batch.prototype = {
 				var current = obj.count - obj.ids.length;
 				var cent = ((current/obj.count)*100).toFixed(2);
 				progress_bar(cent);
-				var str = '本次共需要生成'+obj.count+'个'+obj.dom.getAttribute('mktitle')+'文件，成功生成'+obj.makedcount+'个，';
+/*vot*/				var str = lng['generate_total']+obj.count+lng['ones']+', '+obj.dom.getAttribute('mktitle')+lng['generate_files']+obj.makedcount+lng['ones']+', ';
 				if(cent != 100) {
-					child.innerHTML = str+'正在生成第'+current+'个，已经完成'+cent+'%';
+/*vot*/					child.innerHTML = str+lng['generate_first']+current+lng['ones']+', '+lng['generate_percent']+cent+'%';
 				} else {
 					child.style.color = 'blue';
-					child.innerHTML = str+obj.dom.getAttribute('mktitle')+'生成完成';
+/*vot*					child.innerHTML = str+obj.dom.getAttribute('mktitle')+lng['generate_completed'];
 				}
 				if(id) {
 					obj.make(id, child);
