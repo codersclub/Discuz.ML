@@ -46,7 +46,7 @@ function html_login_header($form = true) {
 	$charset = CHARSET;
 	$title = lang('admincp_login', 'login_title');
 	$tips = lang('admincp_login', 'login_tips');
-/*vot*/	$rtl_css = RTLSUFFIX ? '<link rel="stylesheet" href="static/image/admincp/admincp_rtl.css" type="text/css" media="all" />' : '';
+/*vot*/	$rtl_suffix = RTLSUFFIX;
 
 	echo <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -54,8 +54,7 @@ function html_login_header($form = true) {
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=$charset" />
 <title>$title</title>
-<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
-<!--vot-->{$rtl_css}
+<!--vot--><link rel="stylesheet" href="static/image/admincp/admincp{$rtl_suffix}.css" type="text/css" media="all" />
 <meta content="Comsenz Inc." name="Copyright" />
 </head>
 <body>
@@ -83,6 +82,7 @@ EOT;
 function html_login_footer($halt = true) {
 	$version = getglobal('setting/version');
 /*vot*/	$release = getglobal('setting/release');
+/*vot*/	$year = date('Y');
 	echo <<<EOT
 
 	</td>

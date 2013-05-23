@@ -68,15 +68,14 @@ if($_G['uid'] && $_G['member']['allowadmincp'] == 1 && !isset($_G['cookie']['che
 	dsetcookie('checkupgrade', 1, 7200);
 }
 
-/*vot*/	$rtl_css = RTLSUFFIX ? '<link rel="stylesheet" href="static/image/admincp/admincp_rtl.css?{$_G[style][verhash]}" type="text/css" media="all" />' : '';
-/*vot*/	echo <<<EOT
+/*vot*/	$rtl_suffix = RTLSUFFIX;
+echo <<<EOT
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{$_G[langdir]}"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset">
 <title>$title</title>
 <meta content="Comsenz Inc." name="Copyright" />
 <link rel="stylesheet" href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" type="text/css" media="all" />
-<!--vot-->{$rtl_css}
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
 <script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$_G[style][verhash]}"></script>
 
