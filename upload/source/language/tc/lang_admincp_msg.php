@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_msg.php 32814 2013-03-13 10:09:22Z zhangguosheng $
+ *      $Id: lang_admincp_msg.php 33164 2013-05-02 08:15:35Z nemohou $
  *
  *      This file is automatically generate
  */
@@ -460,6 +460,7 @@ $lang = array (
   'setting_seccode_ttf_lost' => '驗證碼缺少顯示所需的字體文件，請上傳字體文件至 {path} 目錄',
   'forum_name_duplicate' => '表單名稱設置不能重複，請重新設置',
   'alipay_ratio_invalid' => '您輸入的現金/積分兌換比率小於 0',
+  'setting_threadprofile_name_empty' => '方案名稱不能為空',
   'ftp_password_short' => 'FTP 密碼不得少於 3 位',
   'cachethread_dir_noexists' => '抱歉，您所指定的目錄 {cachethreaddir} 不存在或者不可寫，請嘗試通過 FTP 將其屬性改為 777',
   'ranklistcache_update' => '排行榜緩存文件已更新',

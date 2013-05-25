@@ -1,3 +1,4 @@
+/* Modified by Valery Votintsev, codersclub.org */
 var supporttouch = "ontouchend" in document;
 !supporttouch && (window.location.href = 'forum.php?mobile=1');
 
@@ -6,6 +7,311 @@ var ua = navigator.userAgent;
 var ios = /iPhone|iPad|iPod/.test(platform) && ua.indexOf( "AppleWebKit" ) > -1;
 var andriod = ua.indexOf( "Android" ) > -1;
 
+
+(function($, window, document, undefined) {
+	var dataPropertyName = "virtualMouseBindings",
+		touchTargetPropertyName = "virtualTouchID",
+		virtualEventNames = "vmouseover vmousedown vmousemove vmouseup vclick vmouseout vmousecancel".split(" "),
+		touchEventProps = "clientX clientY pageX pageY screenX screenY".split( " " ),
+		mouseHookProps = $.event.mouseHooks ? $.event.mouseHooks.props : [],
+		mouseEventProps = $.event.props.concat( mouseHookProps ),
+		activeDocHandlers = {},
+		resetTimerID = 0,
+		startX = 0,
+		startY = 0,
+		didScroll = false,
+		clickBlockList = [],
+		blockMouseTriggers = false,
+		blockTouchTriggers = false,
+		eventCaptureSupported = "addEventListener" in document,
+		$document = $(document),
+		nextTouchID = 1,
+		lastTouchID = 0, threshold;
+	$.vmouse = {
+		moveDistanceThreshold: 10,
+		clickDistanceThreshold: 10,
+		resetTimerDuration: 1500
+	};
+	function getNativeEvent(event) {
+		while( event && typeof event.originalEvent !== "undefined" ) {
+			event = event.originalEvent;
+		}
+		return event;
+	}
+	function createVirtualEvent(event, eventType) {
+		var t = event.type, oe, props, ne, prop, ct, touch, i, j, len;
+		event = $.Event(event);
+		event.type = eventType;
+		oe = event.originalEvent;
+		props = $.event.props;
+		if(t.search(/^(mouse|click)/) > -1 ) {
+			props = mouseEventProps;
+		}
+		if(oe) {
+			for(i = props.length, prop; i;) {
+				prop = props[ --i ];
+				event[ prop ] = oe[ prop ];
+			}
+		}
+		if(t.search(/mouse(down|up)|click/) > -1 && !event.which) {
+			event.which = 1;
+		}
+		if(t.search(/^touch/) !== -1) {
+			ne = getNativeEvent(oe);
+			t = ne.touches;
+			ct = ne.changedTouches;
+			touch = (t && t.length) ? t[0] : (( ct && ct.length) ? ct[0] : undefined);
+			if(touch) {
+				for(j = 0, len = touchEventProps.length; j < len; j++) {
+					prop = touchEventProps[j];
+					event[prop] = touch[prop];
+				}
+			}
+		}
+		return event;
+	}
+	function getVirtualBindingFlags(element) {
+		var flags = {},
+			b, k;
+		while(element) {
+			b = $.data(element, dataPropertyName);
+			for(k in b) {
+				if(b[k]) {
+					flags[k] = flags.hasVirtualBinding = true;
+				}
+			}
+			element = element.parentNode;
+		}
+		return flags;
+	}
+	function getClosestElementWithVirtualBinding(element, eventType) {
+		var b;
+		while(element) {
+			b = $.data( element, dataPropertyName );
+			if(b && (!eventType || b[eventType])) {
+				return element;
+			}
+			element = element.parentNode;
+		}
+		return null;
+	}
+	function enableTouchBindings() {
+		blockTouchTriggers = false;
+	}
+	function disableTouchBindings() {
+		blockTouchTriggers = true;
+	}
+	function enableMouseBindings() {
+		lastTouchID = 0;
+		clickBlockList.length = 0;
+		blockMouseTriggers = false;
+		disableTouchBindings();
+	}
+	function disableMouseBindings() {
+		enableTouchBindings();
+	}
+	function startResetTimer() {
+		clearResetTimer();
+		resetTimerID = setTimeout(function() {
+			resetTimerID = 0;
+			enableMouseBindings();
+		}, $.vmouse.resetTimerDuration);
+	}
+	function clearResetTimer() {
+		if(resetTimerID ) {
+			clearTimeout(resetTimerID);
+			resetTimerID = 0;
+		}
+	}
+	function triggerVirtualEvent(eventType, event, flags) {
+		var ve;
+		if((flags && flags[eventType]) ||
+					(!flags && getClosestElementWithVirtualBinding(event.target, eventType))) {
+			ve = createVirtualEvent(event, eventType);
+			$(event.target).trigger(ve);
+		}
+		return ve;
+	}
+	function mouseEventCallback(event) {
+		var touchID = $.data(event.target, touchTargetPropertyName);
+		if(!blockMouseTriggers && (!lastTouchID || lastTouchID !== touchID)) {
+			var ve = triggerVirtualEvent("v" + event.type, event);
+			if(ve) {
+				if(ve.isDefaultPrevented()) {
+					event.preventDefault();
+				}
+				if(ve.isPropagationStopped()) {
+					event.stopPropagation();
+				}
+				if(ve.isImmediatePropagationStopped()) {
+					event.stopImmediatePropagation();
+				}
+			}
+		}
+	}
+	function handleTouchStart(event) {
+		var touches = getNativeEvent(event).touches,
+			target, flags;
+		if(touches && touches.length === 1) {
+			target = event.target;
+			flags = getVirtualBindingFlags(target);
+			if(flags.hasVirtualBinding) {
+				lastTouchID = nextTouchID++;
+				$.data(target, touchTargetPropertyName, lastTouchID);
+				clearResetTimer();
+				disableMouseBindings();
+				didScroll = false;
+				var t = getNativeEvent(event).touches[0];
+				startX = t.pageX;
+				startY = t.pageY;
+				triggerVirtualEvent("vmouseover", event, flags);
+				triggerVirtualEvent("vmousedown", event, flags);
+			}
+		}
+	}
+	function handleScroll(event) {
+		if(blockTouchTriggers) {
+			return;
+		}
+		if(!didScroll) {
+			triggerVirtualEvent("vmousecancel", event, getVirtualBindingFlags(event.target));
+		}
+		didScroll = true;
+		startResetTimer();
+	}
+	function handleTouchMove(event) {
+		if(blockTouchTriggers) {
+			return;
+		}
+		var t = getNativeEvent(event).touches[0],
+			didCancel = didScroll,
+			moveThreshold = $.vmouse.moveDistanceThreshold,
+			flags = getVirtualBindingFlags(event.target);
+			didScroll = didScroll ||
+				(Math.abs(t.pageX - startX) > moveThreshold ||
+					Math.abs(t.pageY - startY) > moveThreshold);
+		if(didScroll && !didCancel) {
+			triggerVirtualEvent("vmousecancel", event, flags);
+		}
+		triggerVirtualEvent("vmousemove", event, flags);
+		startResetTimer();
+	}
+	function handleTouchEnd(event) {
+		if(blockTouchTriggers) {
+			return;
+		}
+		disableTouchBindings();
+		var flags = getVirtualBindingFlags(event.target), t;
+		triggerVirtualEvent("vmouseup", event, flags);
+		if(!didScroll) {
+			var ve = triggerVirtualEvent("vclick", event, flags);
+			if(ve && ve.isDefaultPrevented()) {
+				t = getNativeEvent(event).changedTouches[0];
+				clickBlockList.push({
+					touchID: lastTouchID,
+					x: t.clientX,
+					y: t.clientY
+				});
+				blockMouseTriggers = true;
+			}
+		}
+		triggerVirtualEvent("vmouseout", event, flags);
+		didScroll = false;
+		startResetTimer();
+	}
+	function hasVirtualBindings(ele) {
+		var bindings = $.data( ele, dataPropertyName ), k;
+		if(bindings) {
+			for(k in bindings) {
+				if(bindings[k]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	function dummyMouseHandler() {}
+
+	function getSpecialEventObject(eventType) {
+		var realType = eventType.substr(1);
+		return {
+			setup: function(data, namespace) {
+				if(!hasVirtualBindings(this)) {
+					$.data(this, dataPropertyName, {});
+				}
+				var bindings = $.data(this, dataPropertyName);
+				bindings[eventType] = true;
+				activeDocHandlers[eventType] = (activeDocHandlers[eventType] || 0) + 1;
+				if(activeDocHandlers[eventType] === 1) {
+					$document.bind(realType, mouseEventCallback);
+				}
+				$(this).bind(realType, dummyMouseHandler);
+				if(eventCaptureSupported) {
+					activeDocHandlers["touchstart"] = (activeDocHandlers["touchstart"] || 0) + 1;
+					if(activeDocHandlers["touchstart"] === 1) {
+						$document.bind("touchstart", handleTouchStart)
+							.bind("touchend", handleTouchEnd)
+							.bind("touchmove", handleTouchMove)
+							.bind("scroll", handleScroll);
+					}
+				}
+			},
+			teardown: function(data, namespace) {
+				--activeDocHandlers[eventType];
+				if(!activeDocHandlers[eventType]) {
+					$document.unbind(realType, mouseEventCallback);
+				}
+				if(eventCaptureSupported) {
+					--activeDocHandlers["touchstart"];
+					if(!activeDocHandlers["touchstart"]) {
+						$document.unbind("touchstart", handleTouchStart)
+							.unbind("touchmove", handleTouchMove)
+							.unbind("touchend", handleTouchEnd)
+							.unbind("scroll", handleScroll);
+					}
+				}
+				var $this = $(this),
+					bindings = $.data(this, dataPropertyName);
+				if(bindings) {
+					bindings[eventType] = false;
+				}
+				$this.unbind(realType, dummyMouseHandler);
+				if(!hasVirtualBindings(this)) {
+					$this.removeData(dataPropertyName);
+				}
+			}
+		};
+	}
+	for(var i = 0; i < virtualEventNames.length; i++) {
+		$.event.special[virtualEventNames[i]] = getSpecialEventObject(virtualEventNames[i]);
+	}
+	if(eventCaptureSupported) {
+		document.addEventListener("click", function(e) {
+			var cnt = clickBlockList.length,
+				target = e.target,
+				x, y, ele, i, o, touchID;
+			if(cnt) {
+				x = e.clientX;
+				y = e.clientY;
+				threshold = $.vmouse.clickDistanceThreshold;
+				ele = target;
+				while(ele) {
+					for(i = 0; i < cnt; i++) {
+						o = clickBlockList[i];
+						touchID = 0;
+						if((ele === target && Math.abs(o.x - x) < threshold && Math.abs(o.y - y) < threshold) ||
+									$.data(ele, touchTargetPropertyName) === o.touchID) {
+							e.preventDefault();
+							e.stopPropagation();
+							return;
+						}
+					}
+					ele = ele.parentNode;
+				}
+			}
+		}, true);
+	}
+})(jQuery, window, document);
 
 (function($, window, undefined) {
 	function triggercustomevent(obj, eventtype, event) {
@@ -19,7 +325,7 @@ var andriod = ua.indexOf( "Android" ) > -1;
 		setup : function() {
 			var thisobj = this;
 			var obj = $(thisobj);
-			obj.on('touchstart', function(e) {
+			obj.on('vmousedown', function(e) {
 				if(e.which && e.which !== 1) {
 					return false;
 				}
@@ -32,8 +338,9 @@ var andriod = ua.indexOf( "Android" ) > -1;
 				}
 				function cleartaphandlers() {
 					cleartaptimer();
-					obj.off('touchend', clickhandler);
-					$(document).off('touchcancel', cleartaphandlers);
+					obj.off('vclick', clickhandler)
+						.off('vmouseup', cleartaptimer);
+					$(document).off('vmousecancel', cleartaphandlers);
 				}
 
 				function clickhandler(e) {
@@ -44,7 +351,8 @@ var andriod = ua.indexOf( "Android" ) > -1;
 					return false;
 				}
 
-				obj.on('touchend', clickhandler);
+				obj.on('vmouseup', cleartaptimer)
+					.on('vclick', clickhandler)
 				$(document).on('touchcancel', cleartaphandlers);
 
 				timer = setTimeout(function() {
@@ -107,7 +415,7 @@ var page = {
 var scrolltop = {
 	obj : null,
 	init : function(obj) {
-		this.obj = obj;
+		scrolltop.obj = obj;
 		var fixed = this.isfixed();
 		obj.css('opacity', '.618');
 		if(fixed) {
@@ -144,7 +452,7 @@ var scrolltop = {
 
 	},
 	isfixed : function() {
-		var offset = this.obj.offset();
+		var offset = scrolltop.obj.offset();
 		var scrollTop = $(window).scrollTop();
 		var screenHeight = document.documentElement.clientHeight;
 		if(offset == undefined) {
@@ -457,7 +765,7 @@ var pullrefresh = {
 				contentobj = $(contentobj);
 				contentobj.css({'position':'absolute', 'height':'30px', 'top': '-30px', 'left':'50%'});
 				contentobj.html('<img src="'+ STATICURL + 'image/mobile/images/icon_arrow.gif" style="vertical-align:middle;margin-right:5px;-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg);"><span id="refreshtxt">下拉可以刷新</span>');
-				contentobj.find('img').css({'-webkit-transition':'all 1s ease-in-out'});
+				contentobj.find('img').css({'-webkit-transition':'all 0.5s ease-in-out'});
 				divobj.prepend(contentobj);
 				pos.topx = pos.curposx;
 				pos.topy = pos.curposy;

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_forums.php 33099 2013-04-25 05:49:35Z nemohou $
+ *      $Id: admincp_forums.php 33278 2013-05-14 06:11:45Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -474,7 +474,7 @@ var rowtypedata = [
 
 		$query = C::t('forum_access')->fetch_all_by_fid_uid($source);
 		foreach($query as $access) {
-			C::t('forum_access')->insert(array('uid' => $access['uid'], 'fid' => $target, 'allowview' => $access['allowview'], 'allowpost' => $access['allowpost'], 'allowreply' => $access['allowreply'], 'allowgetattach' => $access['allowgetattach']));
+			C::t('forum_access')->insert(array('uid' => $access['uid'], 'fid' => $target, 'allowview' => $access['allowview'], 'allowpost' => $access['allowpost'], 'allowreply' => $access['allowreply'], 'allowgetattach' => $access['allowgetattach']), false, true);
 		}
 		C::t('forum_access')->delete_by_fid($source);
 		C::t('forum_thread')->clear_cache(array($source,$target), 'forumdisplay_');

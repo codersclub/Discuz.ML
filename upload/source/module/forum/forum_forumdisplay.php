@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_forumdisplay.php 33211 2013-05-07 06:55:30Z jeffjzhang $
+ *      $Id: forum_forumdisplay.php 33284 2013-05-16 08:49:40Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -142,6 +142,7 @@ if(!$navtitle) {
 } else {
 	$nobbname = true;
 }
+$_GET['typeid'] = intval($_GET['typeid']);
 if(!empty($_GET['typeid']) && !empty($_G['forum']['threadtypes']['types'][$_GET['typeid']])) {
 	$navtitle = strip_tags($_G['forum']['threadtypes']['types'][$_GET['typeid']]).' - '.$navtitle;
 }

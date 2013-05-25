@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_announce.php 33175 2013-05-06 01:44:42Z kamichen $
+ *      $Id: admincp_announce.php 33271 2013-05-13 08:16:21Z kamichen $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -190,7 +190,7 @@ if(empty($operation)) {
 		} else {
 			$messagenew = $_GET['typenew'] == 1 ? explode("\n", $messagenew) : array(0 => $messagenew);
 			C::t('forum_announcement')->update_by_id_username($_GET['announceid'], array(
-				'subject' => strip_tags($newsubject, '<u><i><b><font>'),
+				'subject' => strip_tags($subjectnew, '<u><i><b><font>'),
 				'type' => $_GET['typenew'],
 				'starttime' => $starttimenew,
 				'endtime' => $endtimenew,

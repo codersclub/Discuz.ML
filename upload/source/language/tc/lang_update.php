@@ -155,5 +155,21 @@ $lang = array(
 	'medal_completed'	=> '用戶勳章數據升級完畢',//'User Medal data upgrade is completed',
 	'data_update_completed'	=> '數據升級結束',//'Data update is completed',
 	'group_stat_completed'	=> '論壇版塊統計數據升級完畢',//'Forum Group statistics upgrade is completed',
-	
+//-----------------------------------------------------------------------------
+// Added in X3.0:
+/*!*/	'cron_todayheats_daily'	=> '统计今日热帖',//'Count today hot posts daily',
+/*!*/	'hot_posts_completed'	=> '热帖处理完毕',//'Hot posts updated',
+/*!*/	'reminder_update_completed'	=> '提醒数据升级完毕',//'Remind data upgrade finished',
+/*!*/	'layout_update_completed'	=> '布局方案设置升级完毕',//'Layout settings upgrade finished',
+/*!*/	'processed_from'	=> '正在处理从 ',//'Being processed from ',
+/*!*/	'starting_from'		=> ' 开始 ',//' starting from ',
+/*!*/	'popular_posts'		=> '的热帖',//'popular posts',
+//To lang_template:
+/*!*/	'default_layout'	=> '默认方案',//'Default layout',
+/*!*/	'qq_bbcode_description'	=> '显示 QQ 在线状态，点这个图标可以和他（她）聊天',//'QQ online status, points icon and his/her chat',
+/*!*/	'qq_enter'		=> '请输入 QQ 号码',//'Please enter the QQ number',
+/*!*/	'qq_onlne_status'	=> '设置QQ在线状态',//'Set QQ online status',
+/*!*/	'open_soso'		=> '<br><br>友情提示：<br>为更好的降低论坛搜索时的数据压力，本次升级已经帮本站开通纵横搜索服务。<br>你可以在',
+/*!*/	'open_soso_link'	=> '站点后台-&gt;云平台-&gt;纵横搜索 进行管理',
+
 );

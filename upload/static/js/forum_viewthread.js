@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum_viewthread.js 33216 2013-05-07 08:44:23Z andyzheng $
+	$Id: forum_viewthread.js 33277 2013-05-14 06:00:11Z laoguozhang $
 	Modified by Valery Votintsev
 */
 
@@ -470,6 +470,7 @@ function lazyload(className) {
 					if(this.getOffset(imgs[j]) > document.documentElement.clientHeight) {
 						lazyload.imgs.push(imgs[j]);
 					} else {
+						imgs[j].onload = function(){thumbImg(this);};
 						imgs[j].setAttribute('src', imgs[j].getAttribute('file'));
 						imgs[j].setAttribute('lazyloaded', 'true');
 					}
@@ -492,9 +493,13 @@ function lazyload(className) {
 				dom.innerHTML = '<div style="width: '+width+'px; height: '+height+'px;background: url('+IMGDIR + '/loading.gif) no-repeat center center;"></div>';
 				img.parentNode.insertBefore(dom.childNodes[0], img);
 				img.onload = function () {
-					if(!this.getAttribute('_load')) {this.setAttribute('_load', 1);this.style.width = this.style.height = '';this.parentNode.removeChild(this.previousSibling);}
-					if(img.getAttribute('lazyloadthumb')) {
-						thumbImg(this);
+					if(!this.getAttribute('_load')) {
+						this.setAttribute('_load', 1);
+						this.style.width = this.style.height = '';
+						this.parentNode.removeChild(this.previousSibling);
+						if(this.getAttribute('lazyloadthumb')) {
+							thumbImg(this);
+						}
 					}
 				};
 				img.style.width = img.style.height = '1px';

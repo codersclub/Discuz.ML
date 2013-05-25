@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 29181 2012-03-28 06:24:30Z zhengqingpeng $
+ *      $Id: lang_template.php 33048 2013-04-12 08:50:27Z zhangjie $
  *
  *      This file is automatically generate
  */
@@ -45,6 +45,9 @@ $lang = array (
 								<li>如果您要管理您的空間、日誌、相冊等隱私，請到您的空間隱私設置；</li>
 								<li>默認應用只能進行相關設置與移除，但移除後仍然會顯示在您的右側菜單中。</li></ol>',
   'open' => '展開',
+  'recommend_unit' => '薦',
+  'myapp' => '我的應用',
+  'appcenter' => '應用中心',
 );
 
 ?>

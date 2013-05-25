@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms'
  *
- *      $Id: admincp_plugins.php 33262 2013-05-10 05:04:37Z andyzheng $
+ *      $Id: admincp_plugins.php 33270 2013-05-13 07:57:09Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -95,9 +95,13 @@ if(!$operation) {
 			$outputsubmit = $hookexists !== FALSE && $plugin['available'] || $outputsubmit;
 			$hl = !empty($_GET['hl']) && $_GET['hl'] == $plugin['pluginid'];
 			$intro = $title = '';
-			$order = !$updateinfo ? intval($plugin['modules']['system']) + 1 : 0;
+			if($updateinfo) {
+				$order = 'updatelist';
+			} else {
+				$order = $plugin['available'] ? 'open' : 'close';
+			}
 			if($plugin['pluginid'] == $_GET['hl']) {
-				$order = -1;
+				$order = 'hightlight';
 			} else {
 				if($plugin['available']) {
 					if(empty($splitavailable[0])) {
@@ -126,7 +130,7 @@ if(!$operation) {
 			), true);
 		}
 		ksort($pluginlist);
-		$pluginlist = (array)$pluginlist[-1] + (array)$pluginlist[0] + (array)$pluginlist[1] + (array)$pluginlist[2] + (array)$pluginlist[3];
+		$pluginlist = (array)$pluginlist['hightlight'] + (array)$pluginlist['updatelist'] + (array)$pluginlist['open'] + (array)$pluginlist['close'];
 		echo implode('', $pluginlist);
 
 		if(empty($_GET['system'])) {

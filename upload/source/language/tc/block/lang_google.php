@@ -27,9 +27,6 @@ $lang = array
 	'google_default_1' => '站內搜索',
 	'google_client' => '搜索聯盟 ID',
 	'google_client_comment' => '如果您加入了 Google 搜索聯盟，可以在這裡填寫 ID',
-// Added by vot
-// ToDo:
-// Make Language List from the config settings!
 );
 
 ?>

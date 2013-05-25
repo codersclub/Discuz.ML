@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 33164 2013-05-02 08:15:35Z nemohou $
+ *      $Id: admincp_setting.php 33290 2013-05-22 05:50:15Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -3238,6 +3238,10 @@ EOT;
 
 	if(isset($settingnew['smcols'])) {
 		$settingnew['smcols'] = $settingnew['smcols'] >= 8 && $settingnew['smcols'] <= 12 ? $settingnew['smcols'] : 8;
+	}
+
+	if(isset($settingnew['thumbdisabledmobile'])) {
+		$settingnew['thumbdisabledmobile'] = !$settingnew['thumbdisabledmobile'] ? 1 : 0;
 	}
 
 	if(isset($settingnew['jspath'])) {

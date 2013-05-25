@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 33261 2013-05-10 03:36:04Z nemohou $
+ *      $Id: forum_viewthread.php 33306 2013-05-23 05:33:01Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -95,7 +95,9 @@ $thread['short_subject'] = cutstr($_G['forum_thread']['subject'], 52);
 
 $navigation = '';
 if($_GET['from'] == 'portal') {
-
+	if($_G['forum']['status'] == 3) {
+		_checkviewgroup();
+	}
 	$_G['setting']['ratelogon'] = 1;
 	$navigation = ' <em>&rsaquo;</em> <a href="portal.php">'.lang('core', 'portal').'</a>';
 	$navsubject = $_G['forum_thread']['subject'];
@@ -106,16 +108,7 @@ if($_GET['from'] == 'portal') {
 	$_G['setting']['ratelogon'] = 1;
 
 } elseif($_G['forum']['status'] == 3) {
-	$_G['action']['action'] = 3;
-	require_once libfile('function/group');
-	$status = groupperm($_G['forum'], $_G['uid']);
-	if($status == 1) {
-		showmessage('forum_group_status_off');
-	} elseif($status == 2) {
-		showmessage('forum_group_noallowed', 'forum.php?mod=group&fid='.$_G['fid']);
-	} elseif($status == 3) {
-		showmessage('forum_group_moderated', 'forum.php?mod=group&fid='.$_G['fid']);
-	}
+	_checkviewgroup();
 	$nav = get_groupnav($_G['forum']);
 	$navigation = ' <em>&rsaquo;</em> <a href="group.php">'.$_G['setting']['navs'][3]['navname'].'</a> '.$nav['nav'];
 	$upnavlink = 'forum.php?mod=forumdisplay&amp;fid='.$_G['fid'].($_GET['extra'] && !IS_ROBOT ? '&amp;'.$_GET['extra'] : '');
@@ -1644,6 +1637,20 @@ function parsebegin($linkaddr, $imgflashurl, $w = 0, $h = 0, $type = 0, $s = 0) 
 	}
 	$begincontent = $content;
 	return $content;
+}
+
+function _checkviewgroup() {
+	global $_G;
+	$_G['action']['action'] = 3;
+	require_once libfile('function/group');
+	$status = groupperm($_G['forum'], $_G['uid']);
+	if($status == 1) {
+		showmessage('forum_group_status_off');
+	} elseif($status == 2) {
+		showmessage('forum_group_noallowed', 'forum.php?mod=group&fid='.$_G['fid']);
+	} elseif($status == 3) {
+		showmessage('forum_group_moderated', 'forum.php?mod=group&fid='.$_G['fid']);
+	}
 }
 
 ?>

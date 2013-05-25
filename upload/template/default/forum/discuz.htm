@@ -87,8 +87,11 @@
 							<h4><span class="tit_subject"></span>{lang collection_lastthread}</h4>
 					        <ul class="category_newlist">
 					        	<!--{loop $grids['newthread'] $thread}-->
+					        	<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
+									<!--{eval $thread[tid]=$thread[closed];}-->
+								<!--{/if}-->
 								<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
-							<!--{/loop}-->
+								<!--{/loop}-->
 					         </ul>
 				         </div>
 					</div>
@@ -97,8 +100,11 @@
 							<h4><span class="tit_replay"></span>{lang show_newthreads}</h4>
 					        <ul class="category_newlist">
 					        	<!--{loop $grids['newreply'] $thread}-->
+					        	<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
+									<!--{eval $thread[tid]=$thread[closed];}-->
+								<!--{/if}-->
 								<li><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']}tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
-							<!--{/loop}-->
+								<!--{/loop}-->
 					         </ul>
 				         </div>
 					</div>
@@ -107,8 +113,11 @@
 							<h4><span class="tit_hottie"></span>{lang hot_thread}</h4>
 					        <ul class="category_newlist">
 					        	<!--{loop $grids['hot'] $thread}-->
+					        	<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
+									<!--{eval $thread[tid]=$thread[closed];}-->
+								<!--{/if}-->
 								<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
-							<!--{/loop}-->
+								<!--{/loop}-->
 					         </ul>
 				         </div>
 					</div>
@@ -118,6 +127,9 @@
 								<h4><span class="tit_goodtie"></span>{lang post_digest_thread}</h4>
 								<ul class="category_newlist">
 									<!--{loop $grids['digest'] $thread}-->
+										<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
+											<!--{eval $thread[tid]=$thread[closed];}-->
+										<!--{/if}-->
 										<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
 									<!--{/loop}-->
 								 </ul>

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_share.php 32873 2013-03-18 08:20:55Z chenmengshu $
+ *      $Id: spacecp_share.php 33291 2013-05-22 05:59:13Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -209,12 +209,12 @@ if($_GET['op'] == 'delete') {
 			if(in_array($thread['displayorder'], array(-2, -3))) {
 				showmessage('moderate_thread_not_share');
 			}
+			require_once libfile('function/post');
 			$post = C::t('forum_post')->fetch_threadpost_by_tid_invisible($id);
 			$arr['title_template'] = lang('spacecp', 'share_thread');
 			$arr['body_template'] = '<b>{subject}</b><br>{author}<br>{message}';
 			$attachment = !preg_match("/\[hide=?\d*\](.*?)\[\/hide\]/is", $post['message'], $a) && preg_match("/\[attach\]\d+\[\/attach\]/i", $a[1]);
-			$language = lang('forum/misc');
-			$post['message'] = preg_replace(array($language['post_edithtml_regexp'],$language['post_editnobbcode_regexp'],$language['post_edit_regexp']), '', $post['message']);
+			$post['message'] = messagecutstr($post['message']);
 			$arr['body_data'] = array(
 				'subject' => "<a href=\"forum.php?mod=viewthread&tid=$id\">$thread[subject]</a>",
 				'author' => "<a href=\"home.php?mod=space&uid=$thread[authorid]\">$thread[author]</a>",

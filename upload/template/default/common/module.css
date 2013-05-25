@@ -98,7 +98,7 @@ Modified by Valery Votintsev, codersclub.org
 			#category_grid td { width: 25%; }
 		.category_l1, .category_l2, .category_l3, .category_l4 { line-height: 25px; background: #fff; overflow: hidden; }
 			.category_l1 { line-height: normal; }
-		.category_l1.category_l2, .category_l3 { background: url({IMGDIR}/category_lbg.png) no-repeat right center; }
+		.category_l1, .category_l2, .category_l3 { background: url({IMGDIR}/category_lbg.png) no-repeat right center; }
 			.ie6 .category_l4 { margin-right: -3px; }
 			.slidebox_grid { position: relative; margin: 10px; border: 1px #ccc solid; }
 			#category_grid h4 { width:100%; height: 30px; line-height: 30px; text-indent:10px; font-size: 12px; cursor: pointer; background: url({IMGDIR}/tb.png) repeat-x; position:relative; }
@@ -209,6 +209,8 @@ Modified by Valery Votintsev, codersclub.org
 	.side_btn a.btn_s_close { left:-27px; top:-10px; }
 	.side_btn a.btn_s_open { left:-21px; top:-10px; }
 		.ie8 .side_btn a.btn_s_close,.ie8 .side_btn a.btn_s_open { top:-27px;}
+		.ie9 .side_btn a.btn_s_close,.ie8 .side_btn a.btn_s_open { top:-27px;}
+		.ie10 .side_btn a.btn_s_close,.ie8 .side_btn a.btn_s_open { top:-27px;}
 
 /** end **/
 

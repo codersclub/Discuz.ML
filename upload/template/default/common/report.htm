@@ -3,7 +3,7 @@
 	<em>{lang report}</em>
 	<span><a href="javascript:;" onclick="hideWindow('$_GET[handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span>
 </h3>
-<form method="post" autocomplete="off" id="form_$_GET[handlekey]" name="form_$_GET[handlekey]" action="misc.php?mod=report" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'form_$_GET[handlekey]');"{/if}>
+<form method="post" autocomplete="off" id="form_$_GET[handlekey]" name="form_$_GET[handlekey]" action="misc.php?mod=report" {if $_G[inajax]}onsubmit="if(!$('message').value) return false;ajaxpost(this.id, 'form_$_GET[handlekey]');"{/if}>
 	<div class="reason_slct c" id="return_$_GET[handlekey]">
 		<p>{lang report_reason}</p>
 		<ul id="reportreason" class="reasonselect pt mtn mbn"><!--{echo modreasonselect()}--></ul>

@@ -61,6 +61,7 @@ $aidencode = packaids($attach);
 $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archiveid=".$_G[forum_thread][archiveid] : '';
 }
 <!--{block return}-->
+<!--{if !$attach['price'] || $attach['payed']}-->
 <div class="box box_ex2 attach">
 	<dd>
 		<p class="attnm">
@@ -75,17 +76,10 @@ $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archivei
 			<span class="xg1">($attach[dateline] {lang upload})</span>
 		</p>
 		<p class="xg1">$attach[attachsize]<!--{if $attach['readperm']}-->, {lang readperm}: <strong>$attach[readperm]</strong><!--{/if}-->, {lang downloads}: $attach[downloads]<!--{if !$attach['attachimg'] && $_G['getattachcredits']}-->, {lang attachcredits}: $_G[getattachcredits]<!--{/if}--></p>
-		<p>
-			<!--{if $attach['price']}-->
-				{lang price}: <strong>$attach[price] {$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][unit]}{$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][title]}</strong> &nbsp;[<a href="forum.php?mod=misc&action=viewattachpayments&aid=$attach[aid]" target="_blank">{lang pay_view}</a>]
-				<!--{if !$attach['payed']}-->
-					&nbsp;[<a href="forum.php?mod=misc&action=attachpay&aid=$attach[aid]&tid=$attach[tid]">{lang attachment_buy}</a>]
-				<!--{/if}-->
-			<!--{/if}-->
-		</p>
 		<!--{if $attach['description']}--><p class="xg2">{$attach[description]}</p><!--{/if}-->
 	</dd>
 </div>
+<!--{/if}-->
 <!--{/block}-->
 <!--{eval return $return;}-->
 {eval
@@ -101,13 +95,7 @@ $aidencode = packaids($attach);
 $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archiveid=".$_G[forum_thread][archiveid] : '';
 }
 <!--{block return}-->
-	<!--{if $attach['attachimg'] && $_G['setting']['showimages'] && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid'])}-->
-			<!--{if $attach['readperm']}-->{lang readperm}: <strong>$attach[readperm]</strong><!--{/if}-->
-				<!--{if $attach['price']}-->{lang price}: <strong>$attach[price] {$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][unit]}{$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][title]}</strong> &nbsp;[<a href="forum.php?mod=misc&action=viewattachpayments&aid=$attach[aid]">{lang pay_view}</a>]
-				<!--{if !$attach['payed']}-->
-					&nbsp;[<a href="forum.php?mod=misc&action=attachpay&aid=$attach[aid]&tid=$attach[tid]" target="_blank">{lang attachment_buy}</a>]
-				<!--{/if}-->
-				<!--{/if}-->
+	<!--{if $attach['attachimg'] && $_G['setting']['showimages'] && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid']) && (!$attach['price'] || $attach['payed'])}-->
 			<!--{if !$attach['price'] || $attach['payed']}-->
 				<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
 				<li><a href="forum.php?mod=viewthread&tid=$attach[tid]&aid=$attach[aid]&from=album&page=$_G[page]" class="orange"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]" /></a>
@@ -133,6 +121,7 @@ $is_archive = $_G['forum_thread']['is_archived'] ? '&fid='.$_G['fid'].'&archivei
 		<a href="forum.php?mod=viewthread&tid=$attach[tid]&aid=$attach[aid]&from=album&page=$_G[page]" class="orange"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]" /></a>
 		<!--{/if}-->
 	<!--{else}-->
+		<!--{if !$attach['price'] || $attach['payed']}-->
 		<div id="attach_$attach[aid]" class="box attach mbn" >
 			<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
 			$attach[attachicon]
@@ -145,15 +134,9 @@ $is_archive = $_G['forum_thread']['is_archived'] ? '&fid='.$_G['fid'].'&archivei
 			<em class="xg1">($attach[attachsize])</em>
 			<em class="xg1"><br />({lang downloads}: $attach[downloads], $attach[dateline] {lang upload})
 			</em>
-			<!--{if $attach['price']}-->
-				<p class="xg1">{lang price}: $attach[price] {$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][unit]}{$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][title]}&nbsp;<a href="forum.php?mod=misc&action=viewattachpayments&aid=$attach[aid]">[{lang pay_view}]</a>
-				<!--{if !$attach['payed']}-->
-				&nbsp;[<a href="forum.php?mod=misc&action=attachpay&aid=$attach[aid]&tid=$attach[tid]" target="_blank">{lang attachment_buy}</a>]
-				<!--{/if}-->
-				</p>
-			<!--{/if}-->
 			<!--{if !$attach['attachimg'] && $_G['getattachcredits']}--><p>{lang attachcredits}: $_G[getattachcredits]</p><!--{/if}-->
 		</div>
+		<!--{/if}-->
 	<!--{/if}-->
 <!--{/block}-->
 <!--{eval return $return;}-->

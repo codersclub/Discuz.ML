@@ -114,9 +114,11 @@ $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archivei
 			</p>
 			<!--{if $attach['description']}--><p class="mbn xg2">{$attach[description]}</p><!--{/if}-->
 			<!--{if !$attach['price'] || $attach['payed']}-->
+				<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
 				<p class="mbn">
 					<a href="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]" /></a>
 				</p>
+				<!--{/if}-->
 			<!--{/if}-->
 		</div>
 	<!--{/if}-->
@@ -134,7 +136,9 @@ $is_archive = $_G['forum_thread']['is_archived'] ? '&fid='.$_G['fid'].'&archivei
 }
 <!--{block return}-->
 	<!--{if $attach['attachimg'] && $_G['setting']['showimages'] && (!$attach['price'] || $attach['payed']) && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid'])}-->
+		<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
 		<a href="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}"><img id="aimg_$attach[aid]" src="$mobilethumburl" alt="$attach[imgalt]" title="$attach[imgalt]"/></a>
+		<!--{/if}-->
 	<!--{else}-->
 		<div id="attach_$attach[aid]" class="box attach mbn" >
 			<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->

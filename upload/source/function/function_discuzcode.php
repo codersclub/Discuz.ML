@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_discuzcode.php 33255 2013-05-10 01:52:32Z andyzheng $
+ *      $Id: function_discuzcode.php 33295 2013-05-22 07:27:40Z andyzheng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -308,7 +308,7 @@ function parseurl($url, $text, $scheme) {
 function parseflash($w, $h, $url) {
 	$w = !$w ? 550 : $w;
 	$h = !$h ? 400 : $h;
-	preg_match("/((https?){1}:\/\/|www\.)[^\[\"']+(\.swf|\.flv)/i", $url, $matches);
+	preg_match("/((https?){1}:\/\/|www\.)[^\[\"'\?]+(\.swf|\.flv)(\?.+)?/i", $url, $matches);
 	$url = $matches[0];
 	$randomid = 'swf_'.random(3);
 	if(fileext($url) != 'flv') {
@@ -420,7 +420,7 @@ function parsemedia($params, $url) {
 	}
 	if(in_array(count($params), array(3, 4))) {
 		$type = $params[0];
-		$url = str_replace(array('<', '>'), '', str_replace('\\"', '\"', $url));
+		$url = htmlspecialchars(str_replace(array('<', '>'), '', str_replace('\\"', '\"', $url)));
 		switch($type) {
 			case 'mp3':
 			case 'wma':

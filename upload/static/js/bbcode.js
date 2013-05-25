@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: bbcode.js 33137 2013-04-27 08:19:34Z nemohou $
+	$Id: bbcode.js 33275 2013-05-14 02:57:45Z nemohou $
 */
 
 var re, DISCUZCODE = [];
@@ -133,7 +133,7 @@ function bbcode2html(str) {
 				}
 				return '<img src="' + $('image_' + $2).src + '" border="0" aid="attachimg_' + $2 + '" width="' + width + '" alt="" />';
 			});
-			str = str.replace(/\[img=(\d{1,4})[x|\,](\d{1,4})\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/ig, function ($1, $2, $3, $4) {return '<img' + ($2 > 0 ? ' width="' + $2 + '"' : '') + ($3 > 0 ? ' height="' + $3 + '"' : '') + ' src="' + $4 + '" border="0" alt="" />'});
+			str = str.replace(/\[img=(\d{1,4})[x|\,](\d{1,4})\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/ig, function ($1, $2, $3, $4) {return '<img' + ($2 > 0 ? ' width="' + $2 + '"' : '') + ($3 > 0 ? ' _height="' + $3 + '"' : '') + ' src="' + $4 + '" border="0" alt="" />'});
 		} else {
 			str = str.replace(/\[img\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/ig, '<a href="$1" target="_blank">$1</a>');
 			str = str.replace(/\[img=(\d{1,4})[x|\,](\d{1,4})\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/ig, '<a href="$3" target="_blank">$3</a>');

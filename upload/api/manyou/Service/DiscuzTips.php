@@ -4,7 +4,7 @@
  *		[Discuz!] (C)2001-2099 Comsenz Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
- *		$Id: DiscuzTips.php 32742 2013-03-05 09:37:19Z liulanbo $
+ *		$Id: DiscuzTips.php 33303 2013-05-23 03:35:36Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -27,9 +27,12 @@ class Cloud_Service_DiscuzTips {
 
 	public function show() {
 		global $_G;
+		if($_G['inajax']) {
+			return '';
+		}
 		$clientVersion = '2';
 		$util = Cloud::loadclass('Service_Util');
-/*vot*/		include_once DISCUZ_ROOT . './source/discuz_version.php';
+		include_once DISCUZ_ROOT . '/source/discuz_version.php';
 		$release = DISCUZ_RELEASE;
 		$fix = DISCUZ_FIXBUG;
 		$cloudApi = $util->getApiVersion();

@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_misc.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -325,6 +326,9 @@ $lang = array
 	'plugin_memo' => '您有 <span class="xi1">{number}</span> 款應用有可用更新',
 	'plugin_link' => '現在更新',
 
+// Added by Valery Votintsev, codersclub.org
+	'poll_reply_no_perms'	=> '您不能对自己的回帖进行投票',//'You can not reply the poll',
+	'poll_replyed_already'	=> '您已经对此回帖投过票了',//'You have already replied this poll',
+	'poll_voted_ok'		=> '投票成功',//'You have voted successfully',
 );
 
-?>

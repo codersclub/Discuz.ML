@@ -4,7 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 33138 2013-04-27 08:25:48Z nemohou $
+ *      $Id: lang_admincp.php 33296 2013-05-22 08:41:49Z kamichen $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -1128,7 +1129,7 @@ $lang = array
 /*!*/	'setting_styles_viewthread_guestviewthumb_width' => '小图宽度',
 /*!*/	'setting_styles_viewthread_guestviewthumb_width_comment' => '指定小图的宽度,默认值为100',
 /*!*/	'setting_styles_viewthread_guestviewthumb_height' => '小图高度',
-/*!*/	'setting_styles_viewthread_guestviewthumb_height_comment' => '指定小图的商度，默认值为100',
+/*!*/	'setting_styles_viewthread_guestviewthumb_height_comment' => '指定小图的高度，默认值为100',
 /*!*/	'setting_styles_viewthread_guesttipsinthread' => '帖内游客登录提示',
 /*!*/	'setting_styles_viewthread_guesttipsinthread_comment' => '游客在浏览主题时，在主题的顶部显示提示文字',
 /*!*/	'setting_styles_viewthread_guesttipsinthread_text' => '登录提示提示文字',

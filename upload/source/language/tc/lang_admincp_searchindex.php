@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_searchindex.php 33050 2013-04-12 08:55:03Z monkey $
+ *      $Id: lang_admincp_searchindex.php 33296 2013-05-22 08:41:49Z kamichen $
  *
  *	This file is automatically generate
  */
@@ -4579,7 +4579,7 @@ $lang = array (
       88 => '指定小圖的寬度,默認值為100',
       89 => 'setting_styles_viewthread_guestviewthumb_height',
       90 => '小圖高度',
-      91 => '指定小圖的商度，默認值為100',
+      91 => '指定小圖的高度，默認值為100',
       92 => 'setting_styles_viewthread_guesttipsinthread',
       93 => '帖內遊客登錄提示',
       94 => '遊客在瀏覽主題時，在主題的頂部顯示提示文字',

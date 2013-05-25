@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *      $Id: lang_admincp.php 33296 2013-05-22 08:41:49Z kamichen $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1004,9 +1004,9 @@ $lang = array
 	'setting_styles_forumdisplay_fastsmilies' => '顯示推薦表情',
 	'setting_styles_forumdisplay_fastsmilies_comment' => '在快速發帖右側顯示推薦表情。推薦的表情需要到「表情管理」中設置',
 	'setting_styles_forumdisplay_forumpicstyle_thumbwidth' => '主題封面寬度',
-	'setting_styles_forumdisplay_forumpicstyle_thumbwidth_comment' => '當版塊開啟圖片列表模式時有效，0或不填 將使用默認值(214)。變更寬高建議重建主題封面，<a href="'.ADMINSCRIPT.'?action=counter" target="_blank">點此重建</a>',
+	'setting_styles_forumdisplay_forumpicstyle_thumbwidth_comment' => '當版塊開啟圖片列表模式時有效，0或不填 將使用默認值(203)。變更寬高建議重建主題封面，<a href="'.ADMINSCRIPT.'?action=counter" target="_blank">點此重建</a>',
 	'setting_styles_forumdisplay_forumpicstyle_thumbheight' => '主題封面高度',
-	'setting_styles_forumdisplay_forumpicstyle_thumbheight_comment' => '當版塊開啟圖片列表模式時有效，0或不填 將使用默認值(160)',
+	'setting_styles_forumdisplay_forumpicstyle_thumbheight_comment' => '當版塊開啟圖片列表模式時有效，0或不填 將根據原圖高度按比例生成，封面高度不同，有瀑布流的效果',
 	'setting_styles_forumdisplay_forumpicstyle_thumbnum' => '封面圖顯示數量',
 	'setting_styles_forumdisplay_forumpicstyle_thumbnum_comment' => '當版塊開啟圖片列表模式時有效，0或不填 將和普通列表模式每頁顯示主題數一致',
 	'setting_styles_forumdisplay_defstyle_comment' => '選擇「是」時，默認不以圖片列表形式顯示，用戶也可以自己選擇',
@@ -1129,7 +1129,7 @@ $lang = array
 	'setting_styles_viewthread_guestviewthumb_width' => '小圖寬度',
 	'setting_styles_viewthread_guestviewthumb_width_comment' => '指定小圖的寬度,默認值為100',
 	'setting_styles_viewthread_guestviewthumb_height' => '小圖高度',
-	'setting_styles_viewthread_guestviewthumb_height_comment' => '指定小圖的商度，默認值為100',
+	'setting_styles_viewthread_guestviewthumb_height_comment' => '指定小圖的高度，默認值為100',
 	'setting_styles_viewthread_guesttipsinthread' => '帖內遊客登錄提示',
 	'setting_styles_viewthread_guesttipsinthread_comment' => '遊客在瀏覽主題時，在主題的頂部顯示提示文字',
 	'setting_styles_viewthread_guesttipsinthread_text' => '登錄提示提示文字',
@@ -1813,6 +1813,8 @@ $lang = array
 	'setting_functions_other_closeforumorderby_comment' => '選擇「是」用戶將只能按默認排序查看，否則，用戶自選排序將會增加系統壓力。',
 	'setting_functions_other_darkroom' => '開啟小黑屋',
 	'setting_functions_other_darkroom_comment' => '選擇「是」將開啟小黑屋，用戶可以在右下角導航中進入小黑屋，查看被禁言禁止訪問用戶',
+	'setting_functions_other_disableipnotice' => '關閉登錄安全提醒',
+	'setting_functions_other_disableipnotice_comment' => '選擇「是」將關閉用戶登錄地區異常安全提醒功能',
 	'setting_functions_other_global_sign' => '全局簽名內容',
 	'setting_functions_other_global_sign_comment' => '該設置必須開啟簽名後有效，如果用戶沒有設置簽名就顯示該簽名內容',
 	'setting_functions_other_shortcut' => '提醒添加桌面快捷的積分下限',
@@ -3261,6 +3263,7 @@ $lang = array
 
 	'styles_import' => '導入界面方案',
 	'styles_import_ignore_version' => '允許導入老版本 Discuz! 的界面(易產生錯誤!!)',
+	'styles_import_version_invalid' => '版本號不匹配，當前版本：{cur_version}，系統版本：{set_version}',
 
 	'templates_admin' => '模板管理',
 	'templates_admin_name' => '模板名稱',
@@ -6966,6 +6969,7 @@ RepeatLimit 32
 
 //source/function/function_admincp.php
 	'upload_selectfile'		=> '瀏覽',//'Browse',
+	'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
 
 //source/admincp/admincp_index.php - javascript function shownews()
 	'subscribe'		=> '訂閱',//'Subscribe',

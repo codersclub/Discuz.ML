@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: update.php 33157 2013-04-28 07:55:55Z theoliu $
+ *      $Id: update.php 33268 2013-05-13 05:31:52Z theoliu $
  *      Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1341,9 +1341,7 @@ if($_GET['step'] == 'start') {
 
 	} elseif($_GET['op'] == 'pm') {
 		$nextop = 'allowgetimage';
-		if($first_to_3_0) {
 			DB::query("UPDATE ".DB::table('common_member')." SET newpm='0', newprompt='0'");
-		}
 /*vot*/		show_msg(lang('update','new_pm_completed'), "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'allowgetimage') {
 		$nextop = 'verify';

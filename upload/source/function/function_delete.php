@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_delete.php 32938 2013-03-25 08:33:31Z zhangguosheng $
+ *      $Id: function_delete.php 33288 2013-05-22 02:23:20Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -169,6 +169,7 @@ function deletepost($ids, $idtype = 'pid', $credit = false, $posttableid = false
 			if($idtype == 'pid') {
 				C::t('forum_post')->delete($id, $ids);
 				C::t('forum_postcomment')->delete_by_pid($ids);
+				C::t('forum_postcomment')->delete_by_rpid($ids);
 			} elseif($idtype == 'tid') {
 				C::t('forum_post')->delete_by_tid($id, $ids);
 				C::t('forum_postcomment')->delete_by_tid($ids);
