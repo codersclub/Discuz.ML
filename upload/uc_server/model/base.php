@@ -48,7 +48,7 @@ class base {
 		$this->init_note();
 		$this->init_mail();
 		//		$this->cron();
-//vot
+//vot: Force specified charset!!!
 @header('Content-Type: text/html; charset='.UC_CHARSET);
 	}
 

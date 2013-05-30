@@ -41,11 +41,11 @@ class usermodel {
 
 	function check_username($username) {
 		$guestexp = '\xA1\xA1|\xAC\xA3|^Guest|^\xD3\xCE\xBF\xCD|\xB9\x43\xAB\xC8';
-		$len = strlen($username);
-/*vot*/		$mblen = $this->dstrlen($username);
-/*vot*/		if($len > 64) {
+		$len = $this->dstrlen($username);
+/*vot*/		$bytelen = strlen($username);
+/*vot*/		if($bytelen > 64) {
 /*vot*/			return FALSE;
-/*vot*/		} elseif($mblen < 2) {
+/*vot*/		} elseif($len < 2) {
 /*vot*/			return FALSE;
 /*vot*/		} elseif(preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $username)) {
 			return FALSE;

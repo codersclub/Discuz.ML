@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: admin.php 1059 2011-03-01 07:25:09Z monkey $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 error_reporting(0);

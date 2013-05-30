@@ -5,7 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: app.php 1090 2011-05-03 07:33:28Z cnteacher $
-	English by Valery Votintsev at sources.ru
+	Modified by Valery Votintsev, codersclub.org
 */
 
 !defined('IN_UC') && exit('Access Denied');

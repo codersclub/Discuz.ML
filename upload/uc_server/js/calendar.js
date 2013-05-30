@@ -1,4 +1,4 @@
-//	MultiLingual by Valery Votintsev, codersclub.org
+//	Modified by Valery Votintsev, codersclub.org
 var controlid = null;
 var currdate = null;
 var startdate = null;
