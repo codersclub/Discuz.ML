@@ -15,6 +15,7 @@ http://www.comsenz.com
 /*vot*/		.edt .btn { float: left; border-left: 1px solid #DDD; border-right: 1px solid #FEFEFE; }
 			.edt .b1r, .edt .b2r { position: relative; float: left; padding: 0 3px; height: 44px; border-right: 1px solid #DDD; border-left: 1px solid #FEFEFE; }
 			.edt .b2r p, .edt .b2r br { clear: both; }
+/*vot*/		.edt .esb { width: 210px; }
 		.edt .esb p { float: left; width: 25px; clear: none; }
 		.edt .esbs p { float: left; clear: none; }
 		.edt .bar a { float: left; border: 1px solid {COMMONBG}; background: transparent url({STATICURL}image/editor/editor.gif) no-repeat 0 0; overflow: hidden; }
