@@ -1133,7 +1133,7 @@ function showEditorMenu(tag, params) {
 /*vot*/				str = '<p class="pbn">' + lng['flash_url'] + ':</p><p class="pbn"><input type="text" id="' + ctrlid + '_param_1" class="px" value="" style="width: 220px;" /></p><p class="pbn">' + lng['width'] + ': <input id="' + ctrlid + '_param_2" size="5" value="" class="px" /> &nbsp; ' + lng['height'] + ': <input id="' + ctrlid + '_param_3" size="5" value="" class="px" /></p><p class="xg2 pbn">'+lng['flash_support']+'</p>';
 				break;
 			case 'beginning':
-/*vot*/				str = '<p class="pbn">'+lng['begin_flash_img']:</p><p class="pbn"><input type="text" id="' + ctrlid + '_param_1" class="px" value="" style="width: 220px;" /></p>';
+/*vot*/				str = '<p class="pbn">'+lng['begin_flash_img']+':</p><p class="pbn"><input type="text" id="' + ctrlid + '_param_1" class="px" value="" style="width: 220px;" /></p>';
 /*vot*/				str += '<p class="pbn">'+lng['begin_click_url']+':</p><p class="pbn"><input type="text" id="' + ctrlid + '_param_2" class="px" value="" style="width: 220px;" /></p>';
 /*vot*/				str += '<p class="pbn">'+lng['width']+': <input id="' + ctrlid + '_param_3" size="5" value="" class="px" /> &nbsp; '+lng['height']+': <input id="' + ctrlid + '_param_4" size="5" value="" class="px" /></p>';
 /*vot*/				str += '<p class="pbn">'+lng['begin_stay_seconds']+': <input id="' + ctrlid + '_param_8" size="5" value="" class="px" /></p>';
@@ -1154,7 +1154,7 @@ function showEditorMenu(tag, params) {
 					<span class="xi1">*</span>[#<span class="xi1">tid,pid</span>]<span class="xi1">'+lng['title']+'</span> &nbsp;&nbsp;<span class="xg1">'+lng['jump_to_post']+'</span><br />\n\
 					[/index]<br />\n\
 					<br />\n\
-					<span class="xi1">'+lng['page_number']+'</span> &nbsp;&nbsp;<span class="xg1">'+lng[jump_to_page_comment']+'</span><br />\n\
+					<span class="xi1">'+lng['page_number']+'</span> &nbsp;&nbsp;<span class="xg1">'+lng['jump_to_page_comment']+'</span><br />\n\
 					<span class="xi1">tid,pid</span> &nbsp;&nbsp;<span class="xg1">'+lng['jump_tip_pid']+'</span><br />\n\
 					<span class="xi1">*</span> &nbsp;&nbsp;<span class="xg1">'+lng['add_indent']+'</span></p>';
 				break;
