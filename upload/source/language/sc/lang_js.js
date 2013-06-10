@@ -296,6 +296,24 @@ var lng = {
 	'show_tips'		: '友情提示',
 	'expire_days'		: '有效天数',//'Valid for (days)',
 	'expire_days_invalid'	: '距离发帖日期大于这个天数时标签自动失效',//'Distance from the posting date is greater than the number of days when the label automatically expire',
+	'download_remote'	: '正在下载远程附件，请稍等……',//'Downloading remote attachment, please wait ...',
+	'create_post_directory'	: '创建帖子目录',//'Create post directory',
+	'page_number'		: '页码',//'Page number',
+	'jump_to_page'		: '跳转到指定的页',//'Jump to specified page',
+	'jump_to_page_comment'	: '用 [page] 对当前帖子分页后的页码',//'Use [page] tag for add a page break',
+	'jump_to_post'		: '跳转到指定的帖子',//'Jump to specified post',
+	'jump_tip_pid'		: '帖子的 TID 和 PID',//'Post TID and PID',
+	'add_indent'		: '添加行首缩进',//'Add the first line indent',
+	'enter_post_password'	: '请输入帖子密码',//'Please enter the post password',
+	'begin_flash_img'	: '请输入开头动画 Flash 或 图片 地址',//'Enter the beginning Flash or image animation URL',
+	'begin_click_url'	: '点击链接地址','Click on the link URL',
+	'begin_stay_seconds'	: '停留秒数',//'Display seconds',
+	'begin_disappearance'	: '载入、消失的效果',//'Disappear effect after loading',
+	'none'			: '无',//'None',
+	'begin_fade'		: '淡入淡出','Fade',
+	'begin_explosive'	: '展开闭合',//'Explode',
+	'begin_info'		: '支持 swf flv jpg gif png 网址<br />宽高范围: 宽400~1024 高300~640<br />示例: http://server/flash.swf',//'Supported formats: swf flv jpg gif png<br/>Width range: 400~1024, Height range: 300~640<br/>Example: http://server/flash.swf',
+
 //--------------------------------
 //static/js/forum.js
 
@@ -466,8 +484,17 @@ var lng = {
 
 //---------------------------
 //static/js/makehtml.js
-	'generated_ok'	: '生成成功',//' generated successfully',
 	'generate'	: '生成',//'Generate ',
+	'generate_ok'	: '生成成功',//' generated successfully',
+	'generate_error'	: '生成失败',//' generation failed',
+	'generate_start'	: '开始生成 ',//'Start generating of ',
+	'generate_click_continue'	: '如果您的浏览器没有反应，请点击继续...',//'If your browser does not respond, Click to continue...',
+	'generate_completed'	: ' 生成完成',//' generation is completed',
+	'generate_total'	: '本次共需要生成 ',//'Total need to generate ',
+	'generate_files'	: ' 文件，成功生成 ',//' files, Successfully generated ',
+	'generate_first'	: '正在生成第 ',//'generated first ',
+	'generate_percent'	: '已经完成 ',//'has been completed ',
+
 //	''	: '',//'',
 
 //--------------------------------
@@ -665,6 +692,6 @@ var lng = {
 //-------------------------------------
 //	''	: '',//'',
 
-'fiction'	: ''
+'fiction'	: '' // This key MUST BE THE LAST!
 
 };
