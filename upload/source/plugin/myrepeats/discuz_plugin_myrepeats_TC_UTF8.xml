@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2.5]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[我的馬甲]]></item>
+			<item id="identifier"><![CDATA[myrepeats]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[myrepeats/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[2.4]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[memcp]]></item>
+					<item id="menu"><![CDATA[我的馬甲]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[7]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[myrepeats]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+				</item>
+				<item id="2">
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="menu"><![CDATA[管理]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[1]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[允許使用馬甲]]></item>
+				<item id="description"><![CDATA[設置哪些用戶組可以使用馬甲切換功能]]></item>
+				<item id="variable"><![CDATA[usergroups]]></item>
+				<item id="type"><![CDATA[groups]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+		<item id="intro"><![CDATA[本插件方便用戶快速的在自己的多個賬戶間自由切換]]></item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="login_strike"><![CDATA[密碼錯誤次數過多，請重新設置馬甲賬號信息並在 15 分鐘後再嘗試切換。]]></item>
+				<item id="login_succeed"><![CDATA[您已切換到 {user} {comment}帳號，現在將轉入切換前頁面。]]></item>
+				<item id="login_succeed_rsnonexistence"><![CDATA[您已切換到 {user} {comment}帳號，但是此賬號尚未設置 {olduser} 為馬甲。<br /><a href="home.php?mod=spacecp&ac=plugin&id=myrepeats:memcp&username={olduserenc}" target="_blank">[ 設置 {olduser} 為本賬號的馬甲 ]</a><br /><a href="{referer}">[ 轉入切換前頁面 ]</a>]]></item>
+				<item id="login_activation"><![CDATA[{user} 賬號未在本論壇激活，現在將轉入帳號激活頁面。]]></item>
+				<item id="login_invalid"><![CDATA[賬號切換失敗，請重新設置帳號信息，您還可以嘗試 {loginperm} 次。]]></item>
+				<item id="login_password_invalid"><![CDATA[賬號切換失敗，請重新設置帳號信息。]]></item>
+				<item id="login_question_empty"><![CDATA[請重新設置賬號的安全提問以及正確的答案。]]></item>
+				<item id="login_question_invalid"><![CDATA[安全提問選擇錯誤，請重新設置。]]></item>
+				<item id="user_nonexistence"><![CDATA[無效的馬甲賬號信息，請重新設置。]]></item>
+				<item id="user_locked"><![CDATA[此馬甲賬號被管理員鎖定，您無法切換到 {user}，請與管理員聯繫。]]></item>
+				<item id="switch"><![CDATA[馬甲]]></item>
+				<item id="memcp"><![CDATA[設置馬甲]]></item>
+				<item id="usergroup_disabled"><![CDATA[您所在用戶組無法使用本功能]]></item>
+				<item id="normal"><![CDATA[正常]]></item>
+				<item id="lock"><![CDATA[鎖定]]></item>
+				<item id="username"><![CDATA[用戶名]]></item>
+				<item id="repeat"><![CDATA[馬甲]]></item>
+				<item id="lastswitch"><![CDATA[最後切換時間]]></item>
+				<item id="status"><![CDATA[狀態]]></item>
+				<item id="search"><![CDATA[搜索]]></item>
+				<item id="repeats"><![CDATA[被哪些賬號馬甲]]></item>
+				<item id="repeatusers"><![CDATA[的馬甲]]></item>
+				<item id="statuss"><![CDATA[狀態的記錄]]></item>
+				<item id="viewall"><![CDATA[查看全部]]></item>
+				<item id="deleted"><![CDATA[- 已刪除 -]]></item>
+				<item id="adduser_succeed"><![CDATA[馬甲賬號 {usernamenew} 已成功添加。]]></item>
+				<item id="updateuser_succeed"><![CDATA[馬甲帳號信息已成功更新。]]></item>
+			</item>
+			<item id="templatelang">
+				<item id="myrepeats"><![CDATA[我的馬甲]]></item>
+				<item id="adduser"><![CDATA[添加馬甲賬號]]></item>
+				<item id="add"><![CDATA[添加]]></item>
+				<item id="lastswitch"><![CDATA[最後切換時間]]></item>
+				<item id="nouse"><![CDATA[尚未使用]]></item>
+				<item id="locked"><![CDATA[被管理員鎖定]]></item>
+				<item id="comment"><![CDATA[備　注]]></item>
+				<item id="commentrow"><![CDATA[備註]]></item>
+				<item id="username"><![CDATA[用戶名]]></item>
+				<item id="password"><![CDATA[密碼]]></item>
+				<item id="security_question"><![CDATA[安全提問]]></item>
+				<item id="security_question_1"><![CDATA[母親的名字]]></item>
+				<item id="security_question_2"><![CDATA[爺爺的名字]]></item>
+				<item id="security_question_3"><![CDATA[父親出生的城市]]></item>
+				<item id="security_question_4"><![CDATA[您其中一位老師的名字]]></item>
+				<item id="security_question_5"><![CDATA[您個人計算機的型號]]></item>
+				<item id="security_question_6"><![CDATA[您最喜歡的餐館名稱]]></item>
+				<item id="security_question_7"><![CDATA[駕駛執照的最後四位數字]]></item>
+				<item id="security_answer"><![CDATA[回答]]></item>
+				<item id="delete_check"><![CDATA[刪?]]></item>
+				<item id="switch_title"><![CDATA[請輸入密碼]]></item>
+				<item id="switch_tips"><![CDATA[你是首次切換到此帳號，請輸入密碼]]></item>
+				<item id="confirm"><![CDATA[確定]]></item>
+				<item id="select_rrepeats"><![CDATA[選擇馬甲]]></item>				
+			</item>
+		</item>
+	</item>
+</root>

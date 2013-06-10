@@ -46,8 +46,8 @@
 		<item id="language">
 			<item id="scriptlang">
 				<item id="banuser_tips_qq"><![CDATA[抱歉，您的帳號被系統禁言，您可以綁定QQ解除禁言狀態。<a href="connect.php?mod=login&op=init">綁定QQ</a>]]></item>
-				<item id="banuser_tips_seccode"><![CDATA[抱歉，您的帳號被系統禁言，您可以點擊<a href="#" onclick="showWindow('security','plugin.php?id=security:unlock')">這里</a>解除禁言操作。]]></item>
-				<item id="unlock_success"><![CDATA[解禁成功\！]]></item>
+				<item id="banuser_tips_seccode"><![CDATA[抱歉，您的帳號被系統禁言，您可以點擊<a href="#" onclick="showWindow('security','plugin.php?id=security:unlock')">這裡</a>解除禁言操作。]]></item>
+				<item id="unlock_success"><![CDATA[解禁成功！]]></item>
 				<item id="wrongcode"><![CDATA[驗證碼驗證失敗，無法解禁。]]></item>
 				<item id="title"><![CDATA[防水牆保衛網站遠離侵害]]></item>
 			</item>

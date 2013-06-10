@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2.5]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[旋風存儲]]></item>
+			<item id="identifier"><![CDATA[xf_storage]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[xf_storage/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.04]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[xf_storage]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3]]></item>
+		<item id="language">
+			<item id="templatelang">
+				<item id="sava_attachlist"><![CDATA[完畢，保存到附件列表]]></item>
+				<item id="xf_storage_tips"><![CDATA[您可以在上傳過程中關閉這個小窗口，上傳完畢後會通知您]]></item>
+				<item id="wait_for_url"><![CDATA[頁面加載中，請稍等...]]></item>
+				<item id="timeout_tips"><![CDATA[超大附件上傳頁面加載失敗，是否切換到批量上傳？]]></item>
+				<item id="filesize_limit"><![CDATA[文件尺寸: 小於 2GB]]></item>
+				<item id="xf_storage_btn"><![CDATA[大附件上傳]]></item>
+				<item id="update_tips"><![CDATA[該附件是通過QQ旋風方式上傳的大附件，不支持直接更新方式修改。]]></item>
+				<item id="notice_name"><![CDATA[通知信息]]></item>
+				<item id="download_xf"><![CDATA[旋風高速下載]]></item>
+				<item id="attachlist"><![CDATA[附件列表]]></item>
+			</item>
+		</item>
+	</item>
+</root>
