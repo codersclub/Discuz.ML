@@ -603,7 +603,7 @@ Note on the CSS Hack:
 				.scbar_btn_td { width: 38px; background: url({IMGDIR}/search.png) no-repeat 8px -142px; }
 					#scbar_btn { margin: 0; padding: 0; border: none; background: transparent none; box-shadow: none; }
 						#scbar_btn strong { line-height: 84px; }
-				.scbar_type_td { width: 61px; background: url({IMGDIR}/search.png) no-repeat 0 -193px; }
+				.scbar_type_td { width: 100px; background: url({IMGDIR}/search.png) no-repeat 0 -193px; }
 					#scbar_type { display: block; padding-left: 10px; text-align: left; text-decoration: none; }
 						#scbar_type_menu { margin-top: -8px; }
 				#scbar_hot { padding-left: 8px; height: 45px; overflow: hidden; }
