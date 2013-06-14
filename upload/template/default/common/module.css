@@ -191,7 +191,7 @@ Modified by Valery Votintsev, codersclub.org
 	#vfastpost #vf_m input{border:1px solid white; width: 100%; border: 1px solid white; outline: none; font-size: 14px; }
 	#vfastpost #vf_r{width:10px;background: url({IMGDIR}/v.png) no-repeat -47px -119px;}
 	#vfastpost #vf_b{width:120px;}
-		#vfastpost #vf_b button{width:120px;display:block;height:38px;line-height:100px;overflow:hidden;background: url({IMGDIR}/v.png) no-repeat 0 0; margin: 0; padding: 0; border: none;}
+/*vot*/		#vfastpost #vf_b button{width:120px;display:block;height:38px;/*line-height:100px;*/overflow:hidden;/*background: url({IMGDIR}/v.png) no-repeat 0 0;*/ margin: 0; padding: 0; border: none; border-radius:4px; font-size:130%;}
 /** end **/
 
 /** forum::viewthread,group::viewthread **/
@@ -594,7 +594,7 @@ Modified by Valery Votintsev, codersclub.org
 			.tl tr:hover th, .tl tr:hover td { background-color: {COMMONBG}; }
 			.tl .threadpre td, .tl .threadpre:hover td { background-color: #FCFCFC; }
 			.tl .threadpre .threadpretd { border-left: 1px solid {CONTENTSEPARATE}; border-right: 1px solid {CONTENTSEPARATE};  }
-			.tl th .tdpre, .tl td.fn .tdpre { visibility: hidden; display: inline; width: 31px; height: 17px; margin-top: 3px; background-image: url({IMGDIR}/preview.png); text-indent: -999em; overflow:hidden; }
+/*vot*/			.tl th .tdpre, .tl td.fn .tdpre { visibility: hidden; display: inline; width: 24px; height: 24px; margin-top: 3px; background: url({IMGDIR}/preview.png) no-repeat; text-indent: -999em; overflow:hidden; }
 			.tl th:hover .tdpre, .tl td.fn:hover .tdpre  { visibility: visible; }
 			.ie6 .tl th .tdpre, .ie6 .tl td.fn .tdpre { display: none; }
 			
