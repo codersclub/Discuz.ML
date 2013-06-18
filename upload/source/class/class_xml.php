@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: class_xml.php 27449 2012-02-01 05:32:35Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -49,7 +50,7 @@ class XMLparse {
 
 	function XMLparse($isnormal) {
 		$this->isnormal = $isnormal;
-		$this->parser = xml_parser_create('ISO-8859-1');
+/*vot*/		$this->parser = xml_parser_create('UTF-8');// was: 'ISO-8859-1'
 		xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);
 		xml_set_object($this->parser, $this);
 		xml_set_element_handler($this->parser, 'open','close');
@@ -106,4 +107,3 @@ class XMLparse {
 
 }
 
-?>
