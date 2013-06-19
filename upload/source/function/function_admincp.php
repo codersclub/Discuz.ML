@@ -388,7 +388,7 @@ function cpheader() {
 <meta http-equiv="x-ua-compatible" content="ie=7" />
 <link href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" rel="stylesheet" type="text/css" />
 	<!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-	<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{VERHASH}"></script>
+	<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$VERHASH}"></script>
 </head>
 <body>
 <script type="text/JavaScript">

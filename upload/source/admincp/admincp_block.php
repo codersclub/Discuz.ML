@@ -233,9 +233,10 @@ if($operation=='perm') {
 		$addjscall = $operation == 'jscall' ? '<input type="button" class="btn" onclick="addjscall()" value="'.$searchlang['block_add_jscall'].'" />' : '';
 		$firstrow = "<th>$searchlang[block_diytemplate]</th><td>$diytemplatename_sel</td><th>$searchlang[block_blockclass]</th><td colspan=\"2\">$blockclass_sel $addjscall</td>";
 		$adminscript = ADMINSCRIPT;
+/*vot*/		$VERHASH = VERHASH;
 		echo <<<SEARCH
 			<script>disallowfloat = '{$_G[setting][disallowfloat]}';</script>
-			<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+			<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{$VERHASH}"></script>
 			<div id="ajaxwaitid"></div>
 			<form method="get" autocomplete="off" action="$adminscript" id="tb_search">
 				<div style="margin-top:8px;">
