@@ -16,15 +16,6 @@ function convertip($ip) {
 
 	$return = '';
 
-	if(preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/", $ip)) {
-
-		$iparray = explode('.', $ip);
-
-		if($iparray[0] == 10 || $iparray[0] == 127 || ($iparray[0] == 192 && $iparray[1] == 168) || ($iparray[0] == 172 && ($iparray[1] >= 16 && $iparray[1] <= 31))) {
-/*vot*/			$return = 'LAN';
-		} elseif($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
-/*vot*/			$return = 'Invalid IP Address';
-		} else {
 /*vot*/			$geoipfile = DISCUZ_ROOT.'./data/ipdata/GeoIP.dat';
 			$tinyipfile = DISCUZ_ROOT.'./data/ipdata/tinyipdata.dat';
 			$fullipfile = DISCUZ_ROOT.'./data/ipdata/wry.dat';
@@ -35,29 +26,53 @@ function convertip($ip) {
 			} elseif(@file_exists($fullipfile)) {
 				$return = convertip_full($ip, $fullipfile);
 			}
-		}
-	}
 
-	return $return;
+	return lang('country',$return);
 
 }
+
 //---------------------------------------------------------
 //vot: Check IP country using the maxmind.com free database
 function convertip_geo($ip='', $ipdatafile='') {
 
-	require_once(DISCUZ_ROOT.'./source/function/geoip.inc');
+	return geoip_country($ip);
 
-	$gi = geoip_open($ipdatafile,GEOIP_STANDARD);
+}
 
-	$country = geoip_country_code_by_addr($gi, $ip);
+function geoip_country($ip='', $ipdatafile='') {
 
-	geoip_close($gi);
+	if(preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/", $ip)) {
 
-	if($country) {
-		return lang('country',$country);
+		$iparray = explode('.', $ip);
+
+/*vot*/		if($iparray[0] == 127) {
+/*vot*/			$return = 'LOC';
+/*vot*/		} elseif($iparray[0] == 10 || ($iparray[0] == 192 && $iparray[1] == 168) || ($iparray[0] == 172 && ($iparray[1] >= 16 && $iparray[1] <= 31))) {
+/*vot*/			$return = 'LAN';
+		} elseif($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
+/*vot*/			$return = 'ERR';
+		} else {
+
+			require_once(DISCUZ_ROOT.'./source/function/geoip.inc');
+
+			$ipdatafile = DISCUZ_ROOT.'./data/ipdata/GeoIP.dat';
+
+			$gi = geoip_open($ipdatafile,GEOIP_STANDARD);
+
+			$return = geoip_country_code_by_addr($gi, $ip);
+
+			geoip_close($gi);
+
+		}
 	} else {
-		return lang('country','??');
+/*vot*/			$return = 'ERR';
 	}
+
+	if(!$return) {
+		$return = '??';
+	}
+
+	return $return;
 
 }
 

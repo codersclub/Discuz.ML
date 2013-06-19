@@ -263,4 +263,7 @@ $lang = array(
 	'ZM'	=> '贊比亞',
 	'ZW'	=> '津巴布韋',
 	'??'	=> '未知',
+	'LAN'	=> 'LAN',
+	'LOC'	=> 'Localhost',
+	'ERR'	=> 'Invalid IP Address',
 );
