@@ -306,11 +306,11 @@ var lng = {
 	'add_indent'		: '添加行首缩进',//'Add the first line indent',
 	'enter_post_password'	: '请输入帖子密码',//'Please enter the post password',
 	'begin_flash_img'	: '请输入开头动画 Flash 或 图片 地址',//'Enter the beginning Flash or image animation URL',
-	'begin_click_url'	: '点击链接地址','Click on the link URL',
+	'begin_click_url'	: '点击链接地址',//'Click on the link URL',
 	'begin_stay_seconds'	: '停留秒数',//'Display seconds',
 	'begin_disappearance'	: '载入、消失的效果',//'Disappear effect after loading',
 	'none'			: '无',//'None',
-	'begin_fade'		: '淡入淡出','Fade',
+	'begin_fade'		: '淡入淡出',//'Fade',
 	'begin_explosive'	: '展开闭合',//'Explode',
 	'begin_info'		: '支持 swf flv jpg gif png 网址<br />宽高范围: 宽400~1024 高300~640<br />示例: http://server/flash.swf',//'Supported formats: swf flv jpg gif png<br/>Width range: 400~1024, Height range: 300~640<br/>Example: http://server/flash.swf',
 
