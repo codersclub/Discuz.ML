@@ -4,7 +4,7 @@
  *	  [Discuz!] (C)2001-2099 Comsenz Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
- *	  $Id: lang_admincp_cloud.php 32804 2013-03-13 06:18:00Z liulanbo $
+ *	  $Id: lang_admincp_cloud.php 33387 2013-06-05 03:21:26Z jeffjzhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -366,14 +366,26 @@ $extend_lang = array
 	'security_cron_daily' => '防水牆每日優化',
 	'setting_update_succeed' => '當前設置更新成功',
 	'security_createtime' => '違規日期',
+	'security_safe_list' => '安全設置',
+	'security_safe_login_open' => '開啟安全登陸功能',
+	'security_safe_login_open_comment' => '有效防止惡意註冊！選擇是，用戶必須將論壇帳號與QQ帳號綁定後，才能在論壇發帖，回復',
+	'security_qq_login_alone_open' => '開啟QQ獨立登錄',
+	'security_qq_login_alone_open_comment' => '有效防止盜號！開啟後只能使用QQ號登錄，即便盜取了論壇帳號也無法登錄發帖',
 
 	'search_menu_setting' => '設置',
 	'search_menu_service' => '功能配置',
 	'search_setting_allow_hot_topic' => '開啟熱門話題',
 	'search_setting_allow_forum_recommend' => '開啟版塊推薦詞',
 	'search_setting_allow_thread_related' => '開啟主題相關帖',
+	'search_setting_allow_thread_related_comment' => '展示在主題帖下方，根據帖子內容計算出站內相關的帖子，挖掘相似主題，拓展用戶閱讀深度。',
+	'search_setting_allow_recommend_related' => '開啟相關推薦',
+	'search_setting_allow_recommend_related_comment' => '當用戶通過搜索引擎點到站內帖子頁時，會在頁面左下角產生一個浮動的推薦頁面，幫助訪客發現更多站內相關內容。',
 	'search_setting_allow_forum_related' => '開啟版塊相關帖',
 	'search_setting_allow_collection_related' => '開啟淘帖相關帖',
+	'search_menu_settingsearch' => '搜索設置',
+	'search_menu_basicsetting' => '基本設置',
+	'search_menu_modulesetting' => '模塊設置',
+	'search_modulesetting_tips' => '縱橫搜索提供的推薦服務，在不佔用網站資源的前提下，通過雲計算能力為網站用戶提升訪問深度。',
 );
 
 $GLOBALS['admincp_actions_normal'][] = 'cloud';

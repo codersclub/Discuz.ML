@@ -702,7 +702,7 @@ Modified by Valery Votintsev, codersclub.org
 .pattl_c .tip { margin-top: 30px; padding: 5px; width: 88px; }
 .pattimg { float: left; margin: 0 10px 10px 0; width: 100px; height: 100px; overflow: hidden; }
 .pattimg_zoom { position: absolute; display: block; width: 100px; height: 100px; line-height: 300px; overflow: hidden; }
-	.ie_all .pattimg_zoom { background-color: #FFF; filter:alpha(opacity=0); }
+	.ie_all .pattimg_zoom { background-color: #FFF; filter:alpha(opacity=0); opacity:0; }
 .attl_g, .attl_m { margin-left: 10px; padding-left: 16px; background: url({IMGDIR}/attl_icon.png) no-repeat 0 3px; }
 	.attl_m { background-position: -100px 3px; }
 

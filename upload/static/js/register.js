@@ -2,8 +2,8 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: register.js 33191 2013-05-06 06:49:34Z nemohou $
-	Modified by Valery Votintsev
+	$Id: register.js 33432 2013-06-13 07:36:18Z nemohou $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 /*vot*/ var lastusername = '', lastpassword = '', lastemail = '', lastinvitecode = '', stmp = new Array(), modifypwd = false, profileTips = lng['leave_blank_old_pass'];
@@ -78,7 +78,7 @@ function checkPwdComplexity(firstObj, secondObj, modify) {
 			}
 			errormessage(firstObj.id, pwmsg);
 		}else{
-			errormessage(firstObj.id, !modifypwd ? 'succeed' : profileTips);
+			errormessage(firstObj.id, !modifypwd ? 'succeed' : '');
 		}
 		checkpassword(firstObj.id, secondObj.id);
 	};
@@ -343,7 +343,7 @@ function checkpassword(id1, id2) {
 	if($(id1).value != $(id2).value) {
 /*vot*/		errormessage(id2, lng['passwords_not_equal']);
 	} else {
-		errormessage(id2, !modifypwd ? 'succeed' : profileTips);
+		errormessage(id2, !modifypwd ? 'succeed' : '');
 	}
 }
 

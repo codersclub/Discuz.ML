@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_discuzcode.php 33295 2013-05-22 07:27:40Z andyzheng $
+ *      $Id: function_discuzcode.php 33443 2013-06-18 01:28:27Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -234,7 +234,7 @@ function discuzcode($message, $smileyoff, $bbcodeoff, $htmlon = 0, $allowsmilies
 					$message = preg_replace("/\[hide\]\s*(.*?)\s*\[\/hide\]/is", tpl_hide_reply(), $message);
 				} else {
 					$message = preg_replace("/\[hide\](.*?)\[\/hide\]/is", tpl_hide_reply_hidden(), $message);
-					$message .= '<script type="text/javascript">replyreload += \',\' + '.$pid.';</script>';
+/*vot*/					$message .= '<script type="text/javascript">replyreload += \',\' + '.$pid.';</script>';
 				}
 			}
 			if(strpos($msglower, '[hide=') !== FALSE) {

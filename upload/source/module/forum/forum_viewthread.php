@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 33306 2013-05-23 05:33:01Z laoguozhang $
+ *      $Id: forum_viewthread.php 33371 2013-06-03 05:58:41Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -393,7 +393,6 @@ if(empty($_GET['viewpid'])) {
 		$poststick = C::t('forum_poststick')->fetch_all_by_tid($_G['tid']);
 		foreach(C::t('forum_post')->fetch_all($posttableid, array_keys($poststick)) as $post) {
 			$post['position'] = $poststick[$post['pid']]['position'];
-			$post['message'] = messagecutstr($post['message'], 400);
 			$post['avatar'] = avatar($post['authorid'], 'small');
 			$post['isstick'] = true;
 			$sticklist[$post['pid']] = $post;

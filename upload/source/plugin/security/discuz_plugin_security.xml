@@ -12,7 +12,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[security/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.10]]></item>
+			<item id="version"><![CDATA[1.11]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[security]]></item>
@@ -50,6 +50,9 @@
 				<item id="unlock_success"><![CDATA[Unlocked successfully!]]></item>
 				<item id="wrongcode"><![CDATA[Verification code validation failed, can not unlock.]]></item>
 				<item id="title"><![CDATA[Waterproof wall for protect the site from spam-bots]]></item>
+				<item id="safelogintips"><![CDATA[To avoid unauthorized use of your account, please post only after you have bind your QQ account. After binding, please use the QQ account to login.]]></item>
+				<item id="qqloginaloneopened"><![CDATA[QQ separate login settings opened]]></item>
+				<item id="quicklogin"><![CDATA[Quick login]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="unlock_title"><![CDATA[Please enter the verification code for remove the R/O status]]></item>

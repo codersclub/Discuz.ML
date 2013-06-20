@@ -4,8 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: post_editpost.php 32751 2013-03-06 03:39:49Z liulanbo $
- *	Modified by Valery Votintsev
+ *      $Id: post_editpost.php 33417 2013-06-08 08:25:16Z andyzheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -432,6 +432,9 @@ if(!submitcheck('editsubmit')) {
 		if($_G['group']['allowimgcontent']) {
 			$param['imgcontent'] = $_GET['imgcontent'];
 			$param['imgcontentwidth'] = $_G['setting']['imgcontentwidth'] ? intval($_G['setting']['imgcontentwidth']) : 100;
+		}
+		if($isfirstpost && $isorigauthor && $_G['group']['allowreplycredit']) {
+			$param['replycredit_rule'] = $replycredit_rule;
 		}
 
 		$modpost->editpost($param);

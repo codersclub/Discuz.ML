@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 32907 2013-03-21 11:44:37Z zhangjie $
+ *      $Id: function_core.php 33364 2013-06-03 02:30:46Z andyzheng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1216,6 +1216,7 @@ function hookscriptoutput($tplfile) {
 
 function pluginmodule($pluginid, $type) {
 	global $_G;
+	$pluginid = $pluginid ? preg_replace("/[^A-Za-z0-9_:]/", '', $pluginid) : '';
 	if(!isset($_G['cache']['plugin'])) {
 		loadcache('plugin');
 	}

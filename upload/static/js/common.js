@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: common.js 33139 2013-04-27 08:49:04Z kamichen $
+	$Id: common.js 33439 2013-06-17 02:31:32Z nemohou $
 //	Modified by Valery Votintsev
 */
 
@@ -1802,7 +1802,7 @@ function codetag(text, br) {
 	var br = !br ? 1 : br;
 	DISCUZCODE['num']++;
 	if(br > 0 && typeof wysiwyg != 'undefined' && wysiwyg) text = text.replace(/<br[^\>]*>/ig, '\n');
-	text = text.replace(/\$/ig, '$$$$');
+	text = text.replace(/\$/ig, '$$');
 	DISCUZCODE['html'][DISCUZCODE['num']] = '[code]' + text + '[/code]';
 	return '[\tDISCUZ_CODE_' + DISCUZCODE['num'] + '\t]';
 }
@@ -2070,7 +2070,7 @@ function pluginNotice() {
 
 function ipNotice() {
 	if($('ip_notice')) {
-		ajaxget('misc.php?mod=patch&action=ipnotice', 'ip_notice', '');
+		ajaxget('misc.php?mod=patch&action=ipnotice&_r='+Math.random(), 'ip_notice', '');
 	}
 }
 

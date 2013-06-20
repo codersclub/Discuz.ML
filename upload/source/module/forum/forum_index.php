@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_index.php 33301 2013-05-23 03:10:20Z andyzheng $
+ *      $Id: forum_index.php 33354 2013-05-31 03:15:07Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -156,7 +156,7 @@ if($_G['setting']['grid']['showgrid']) {
 			}
 			$grids['image'] = C::t('forum_thread')->fetch_all_by_tid($tids);
 		}
-		$grids['newthread'] = C::t('forum_thread')->fetch_all_for_guide('thread', 0, array(), 0, 0, 0, 10, $_G['setting']['grid']['fids']);
+		$grids['newthread'] = C::t('forum_thread')->fetch_all_for_guide('newthread', 0, array(), 0, 0, 0, 10, $_G['setting']['grid']['fids']);
 
 		$grids['newreply'] = C::t('forum_thread')->fetch_all_for_guide('reply', 0, array(), 0, 0, 0, 10, $_G['setting']['grid']['fids']);
 		$grids['hot'] = C::t('forum_thread')->fetch_all_for_guide('hot', 0, array(), 3, 0, 0, 10, $_G['setting']['grid']['fids']);

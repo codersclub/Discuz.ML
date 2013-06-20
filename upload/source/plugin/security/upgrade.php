@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install.php 27070 2012-01-04 05:55:20Z songlixin $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -53,7 +54,7 @@ if ($sql) {
 }
 
 $table = DB::table('common_plugin');
-include DISCUZ_ROOT . 'source/language/'. DISCUZ_LANG. '/lang_admincp_cloud.php';
+/*vot*/ include DISCUZ_ROOT . 'source/language/'. DISCUZ_LANG. '/lang_admincp_cloud.php';
 $format = "UPDATE $table SET name = '%s' WHERE identifier = 'security'";
 $name = $extend_lang['menu_cloud_security'];
 $sql = sprintf($format, $name);
@@ -109,6 +110,11 @@ if (file_exists(DISCUZ_ROOT . './source/include/cron/cron_security_daily.php')) 
 	}
 	updatecache('setting');
 	discuz_cron::run($cronId_security_daily);
+}
+
+if(!C::t('common_setting')->skey_exists('security_safelogin')) {
+	C::t('common_setting')->update('security_safelogin', 1);
+	updatecache('setting');
 }
 
 $finish = true;

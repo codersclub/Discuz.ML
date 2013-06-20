@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_forums.php 33278 2013-05-14 06:11:45Z nemohou $
+ *      $Id: admincp_forums.php 33377 2013-06-04 04:03:30Z andyzheng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -15,7 +15,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 cpheader();
 
 $operation = empty($operation) ? 'admin' : $operation;
-$fid = getgpc('fid');
+$fid = intval(getgpc('fid'));
 
 if($operation == 'admin') {
 
@@ -1855,7 +1855,7 @@ EOT;
 
 	}
 
-} elseif($operation == 'delete') {
+} elseif($operation == 'delete' && FORMHASH == $_GET['formhash']) {
 	$ajax = $_GET['ajax'];
 	$confirmed = $_GET['confirmed'];
 	$finished = $_GET['finished'];
@@ -1905,12 +1905,12 @@ EOT;
 
 		if(!$_GET['confirmed']) {
 
-			cpmsg('forums_delete_confirm', "mod=forum&action=forums&operation=delete&fid=$fid", 'form');
+			cpmsg('forums_delete_confirm', "action=forums&operation=delete&fid=$fid&formhash=".FORMHASH, 'form');
 
 		} else {
 
 			$threads = C::t('forum_thread')->count_by_fid($fid);
-			cpmsg('forums_delete_alarm', "mod=forum&action=forums&operation=delete&fid=$fid&confirmed=1", 'loadingform', '', '<div id="percent">0%</div>', FALSE);
+			cpmsg('forums_delete_alarm', "action=forums&operation=delete&fid=$fid&confirmed=1&formhash=".FORMHASH, 'loadingform', '', '<div id="percent">0%</div>', FALSE);
 
 			echo "
 			<div id=\"statusid\" style=\"display:none\"></div>
@@ -1926,7 +1926,7 @@ EOT;
 					var x = new Ajax('HTML', 'statusid');
 					x.get(url+'&ajax=1&pp='+pp+'&total='+total+'&currow='+currow, function(s) {
 						if(s != 'GO') {
-							location.href = adminfilename + '?action=forums&operation=delete&finished=1';
+							location.href = adminfilename + '?action=forums&operation=delete&finished=1&formhash=".FORMHASH."';
 						}
 
 						currow += pp;
@@ -1940,7 +1940,7 @@ EOT;
 						}
 					});
 				}
-				forumsdelete(adminfilename + '?action=forums&operation=delete&fid=$fid&confirmed=1', $threads, 2000, 0);
+				forumsdelete(adminfilename + '?action=forums&operation=delete&fid=$fid&confirmed=1&formhash=".FORMHASH."', $threads, 2000, 0);
 			</script>
 			";
 		}
@@ -2087,7 +2087,7 @@ function showforum(&$forum, $type = '', $last = '', $toggle = false) {
 			<td width="160"><input class="checkbox" value="'.$forum['fid'].'" type="checkbox"'.($type != 'group' ? ' chkvalue="g'.$_G['fg'].'" onclick="multiupdate(this, '.$forum['fid'].')"' : ' name="gc'.$_G['fg'].'" onclick="checkAll(\'value\', this.form, \'g'.$_G['fg'].'\', \'gc'.$_G['fg'].'\', 1)"').' />'.'
 			<a href="'.ADMINSCRIPT.'?action=forums&operation=edit&fid='.$forum['fid'].'" title="'.cplang('forums_edit_comment').'" class="act">'.cplang('edit').'</a>'.
 			($type != 'group' ? '<a href="'.ADMINSCRIPT.'?action=forums&operation=copy&source='.$forum['fid'].'" title="'.cplang('forums_copy_comment').'" class="act">'.cplang('forums_copy').'</a>' : '').
-			'<a href="'.ADMINSCRIPT.'?action=forums&operation=delete&fid='.$forum['fid'].'" title="'.cplang('forums_delete_comment').'" class="act">'.cplang('delete').'</a></td></tr>';
+			'<a href="'.ADMINSCRIPT.'?action=forums&operation=delete&fid='.$forum['fid'].'&formhash='.FORMHASH.'" title="'.cplang('forums_delete_comment').'" class="act">'.cplang('delete').'</a></td></tr>';
 		if($type == 'group') $return .= '<tbody id="group_'.$forum['fid'].'"'.($toggle ? ' style="display:none;"' : '').'>';
 	} else {
 		if($last == 'lastboard') {

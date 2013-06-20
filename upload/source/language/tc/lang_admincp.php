@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 33296 2013-05-22 08:41:49Z kamichen $
+ *      $Id: lang_admincp.php 33440 2013-06-17 02:39:05Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -959,6 +959,7 @@ $lang = array
 	'setting_styles_index_forumallowside' => '顯示邊欄',
 	'setting_styles_index_forumallowside_comment' => '選擇「是」論壇首頁側邊將顯示聚合論壇內容的信息',
 	'setting_styles_index_whosonline' => '顯示在線用戶',
+	'setting_styles_index_display_none' => '不顯示',
 	'setting_styles_index_whosonline_comment' => '設置是否在論壇首頁底部和論壇版塊邊欄顯示在線會員列表',
 	'setting_styles_index_whosonline_contract' => '縮略顯示在線列表',
 	'setting_styles_index_whosonline_contract_comment' => '如果打開該選項，在線列表將只顯示在線用戶數，不顯示詳情，此時會員可手動打開在線用戶列表(最大在線超過 500 人系統將自動縮略顯示在線列表)',
@@ -1199,7 +1200,7 @@ $lang = array
 	'setting_home_base_sendmailday' => '郵件通知更新天數',
 	'setting_home_base_sendmailday_comment' => '(默認 0) 單位：天，當用戶多少天沒有登錄站點的時候才會給其發送郵件通知；<br>設置為0，則不啟用郵件通知功能；<br>啟用本功能將會輕微增加服務器負載',
 	'setting_home_base_recycle_bin' => '開啟日誌回收站',
-	'setting_home_base_recycle_bin_comment' => '打開此功能後，所有被日誌將被放在回收站中，而不會被直接刪除',
+	'setting_home_base_recycle_bin_comment' => '打開此功能後，所有被刪除日誌將被放在回收站中，而不會被直接刪除',
 
 	'setting_home_base_networkpage' => '成員排行榜允許分頁瀏覽',
 	'setting_home_base_networkpage_comment' => '該設置只對排行榜中的競價排行、在線成員、全部成員有效',

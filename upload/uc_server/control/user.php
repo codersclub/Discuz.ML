@@ -295,6 +295,10 @@ class usercontrol extends base {
 		}
 
 		list($width, $height, $type, $attr) = getimagesize($_FILES['Filedata']['tmp_name']);
+		if(!in_array($type, array(1,2,3,6))) {
+			@unlink($_FILES['Filedata']['tmp_name']);
+			return -4;
+		}
 		$imgtype = array(1 => '.gif', 2 => '.jpg', 3 => '.png');
 		$filetype = $imgtype[$type];
 		if(!$filetype) $filetype = '.jpg';

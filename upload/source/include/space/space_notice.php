@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: space_notice.php 32790 2013-03-12 02:52:19Z liulanbo $
+ *      $Id: space_notice.php 33412 2013-06-08 03:26:12Z kamichen $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -156,6 +156,16 @@ if($view == 'userapp') {
 	helper_notification::update_newprompt($_G['uid'], ($type ? $type : $category));
 	if($_G['setting']['my_app_status']) {
 		$mynotice = C::t('common_myinvite')->count_by_touid($_G['uid']);
+	}
+	if($_G['member']['newprompt']) {
+		$recountprompt = 0;
+		foreach($_G['member']['category_num'] as $promptnum) {
+			$recountprompt += $promptnum;
+		}
+		$recountprompt += $mynotice;
+		if($recountprompt == 0) {
+			C::t('common_member')->update($_G['uid'], array('newprompt' => 0));
+		}
 	}
 
 	$readtag = array($type => ' class="a"');

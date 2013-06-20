@@ -4,7 +4,7 @@
  *		[Discuz!] (C)2001-2099 Comsenz Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
- *		$Id: cloud_security.php 32804 2013-03-13 06:18:00Z liulanbo $
+ *		$Id: cloud_security.php 33344 2013-05-30 04:37:03Z jeffjzhang $
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $op = trim($_GET['op']);
 
-$_GET['anchor'] = in_array($_GET['anchor'], array('index', 'setting', 'thread', 'post', 'member', 'reportOperation')) ? $_GET['anchor'] : 'index';
+$_GET['anchor'] = in_array($_GET['anchor'], array('index', 'setting', 'thread', 'post', 'member', 'safe', 'reportOperation')) ? $_GET['anchor'] : 'index';
 $pt = in_array($_GET['anchor'], array('thread', 'post')) ? $_GET['anchor'] : 'thread';
 
 $current = array($_GET['anchor'] => 1);
@@ -30,6 +30,7 @@ $securitynav[1] = array('security_blanklist', 'cloud&operation=security&anchor=s
 $securitynav[2] = array('security_thread_list', 'cloud&operation=security&anchor=thread', $current['thread']);
 $securitynav[3] = array('security_post_list', 'cloud&operation=security&anchor=post', $current['post']);
 $securitynav[4] = array('security_member_list', 'cloud&operation=security&anchor=member', $current['member']);
+$securitynav[5] = array('security_safe_list', 'cloud&operation=security&anchor=safe', $current['safe']);
 
 if (!$_G['inajax']) {
 	cpheader();
@@ -45,7 +46,7 @@ $datas = $data = $eviluids = $evilPids = $evilTids = $members = $thread = $post 
 
 if ($_GET['anchor'] == 'index') {
 	$utilService = Cloud::loadClass('Service_Util');
-	$signUrl = $utilService->generateSiteSignUrl();
+	$signUrl = $utilService->generateSiteSignUrl(array('v' => 2));
 	$utilService->redirect($cloudDomain.'/security/stats/list/?' . $signUrl);
 } elseif ($_GET['anchor'] == 'setting') {
 
@@ -164,6 +165,26 @@ if ($_GET['anchor'] == 'index') {
 		showtablerow('', 'colspan = "6"', $multipage);
 	}
 	showtablefooter();
+
+} elseif($_GET['anchor'] == 'safe') {
+
+	if(!submitcheck('safesetting')) {
+		showformheader('cloud&operation=security&anchor=safe');
+		showtableheader();
+		showsetting('security_safe_login_open', 'security_safelogin', $_G['setting']['security_safelogin'], 'radio');
+		showsetting('security_qq_login_alone_open', 'security_qqlogin_alone', $_G['setting']['security_qqlogin_alone'], 'radio');
+		showsubmit('safesetting');
+		showtablefooter();
+		showformfooter();
+	} else {
+		$updateData = array(
+			'security_safelogin' => dintval($_POST['security_safelogin']),
+			'security_qqlogin_alone' => dintval($_POST['security_qqlogin_alone']),
+		);
+		C::t('common_setting')->update_batch($updateData);
+		updatecache('setting');
+		cpmsg('setting_update_succeed', 'action=cloud&operation=security&anchor='.$_GET['anchor'], 'succeed');
+	}
 
 } elseif($_GET['anchor'] == 'member') {
 	showtips('security_member_tips');

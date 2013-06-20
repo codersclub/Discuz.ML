@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_application.php 33204 2013-05-07 03:29:45Z jeffjzhang $
+ *      $Id: discuz_application.php 33454 2013-06-19 03:08:34Z jeffjzhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -395,7 +395,6 @@ class discuz_application extends discuz_base{
 
 		$_config = array();
 		@include DISCUZ_ROOT.'./config/config_global.php';
-
 		if(empty($_config)) {
 			if(!file_exists(DISCUZ_ROOT.'./data/install.lock')) {
 //DEBUG
@@ -448,6 +447,7 @@ class discuz_application extends discuz_base{
 			$this->var['config']['cookie']['cookiepath'] = '/'.$this->var['config']['cookie']['cookiepath'];
 		}
 		$this->var['config']['cookie']['cookiepre'] = $this->var['config']['cookie']['cookiepre'].substr(md5($this->var['config']['cookie']['cookiepath'].'|'.$this->var['config']['cookie']['cookiedomain']), 0, 4).'_';
+
 
 	}
 
@@ -897,7 +897,12 @@ class discuz_application extends discuz_base{
 		define('IN_MOBILE', $mobileflag ? $mobile : '2');
 		setglobal('gzipcompress', 0);
 
-		$arr = array(strstr($_SERVER['QUERY_STRING'], '&simpletype'), strstr($_SERVER['QUERY_STRING'], 'simpletype'), '&mobile=yes', 'mobile=yes', '&mobile=1', 'mobile=1');
+		$arr = array();
+		foreach(array_keys($this->var['mobiletpl']) as $mobiletype) {
+			$arr[] = '&mobile='.$mobiletype;
+			$arr[] = 'mobile='.$mobiletype;
+		}
+		$arr = array_merge(array(strstr($_SERVER['QUERY_STRING'], '&simpletype'), strstr($_SERVER['QUERY_STRING'], 'simpletype')), $arr);
 		$query_sting_tmp = str_replace($arr, '', $_SERVER['QUERY_STRING']);
 		$this->var['setting']['mobile']['nomobileurl'] = ($this->var['setting']['domain']['app']['forum'] ? 'http://'.$this->var['setting']['domain']['app']['forum'].'/' : $this->var['siteurl']).$this->var['basefilename'].($query_sting_tmp ? '?'.$query_sting_tmp.'&' : '?').'mobile=no';
 

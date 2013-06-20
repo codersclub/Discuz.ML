@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_admincp.php 32470 2013-01-23 06:46:49Z chenmengshu $
+ *      $Id: function_admincp.php 33367 2013-06-03 04:24:27Z andyzheng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -387,8 +387,8 @@ function cpheader() {
 <meta http-equiv="Content-Type" content="text/html; charset=$charset">
 <meta http-equiv="x-ua-compatible" content="ie=7" />
 <link href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" rel="stylesheet" type="text/css" />
-	<!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-	<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$VERHASH}"></script>
+<!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
+<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$VERHASH}"></script>
 </head>
 <body>
 <script type="text/JavaScript">
@@ -956,6 +956,7 @@ function cpfooter() {
 		$kws = explode(' ', $_GET['highlight']);
 		echo '<script type="text/JavaScript">';
 		foreach($kws as $kw) {
+			$kw = addslashes($kw);
 			echo 'parsetag(\''.dhtmlspecialchars($kw).'\');';
 		}
 		echo '</script>';

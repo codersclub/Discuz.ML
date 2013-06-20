@@ -922,7 +922,7 @@ Note on the CSS Hack:
 	.xl label, .xl label a { color: #C00; }
 	.xl1 li { height: 1.5em; overflow: hidden; }
 		.xl1_elp { float: left; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/*vot*/	.xl2 li { /*float: left;*/ margin: 2px 0; padding: 0; /*width: 48.6%;*/ height: 1.5em; overflow: hidden; }
+	.xl2 li { float: left; margin: 2px 0; padding: 0; width: 50%; height: 1.5em; overflow: hidden; }
 	.xl ol, ol.xl { background: url({IMGDIR}/sortnum.png) no-repeat 0 3px; line-height: 21px; }
 		.xl ol li, ol.xl li { background: none; padding-left: 20px; }
 		.xl ol li, ol.xl li { height: 21px; }
@@ -1792,6 +1792,12 @@ DIY image is not loaded when the Hide Slide
 		.waterfall .c .nopic { display: block; background:{WRAPBG} url({IMGDIR}/nophototiny.png) no-repeat 50% 50%; cursor: pointer; }
 	.waterfall .auth { padding: 0 10px 10px; border-width: 0 1px 1px; border-style: solid; border-color: transparent #EAEAEA #B9B9B9; background: #F8F8F8; }
 		.waterfall .auth img { display: inline-block; margin: 0 1px; }
+		
+/* ????? by theo */
+.pgbtn { margin: 5px 0 10px; }
+	.pgbtn a { display: block; height: 40px; line-height: 40px; letter-spacing: 5px; text-align: center; border: 1px solid #DCDCDC; font-size: 14px; outline: none; border-radius: 5px; box-shadow: 0 1px 0 #F5F5F5; }
+		.pgbtn a:hover { border-color: #BABABA; text-decoration: none; }
+		.pgbtn a:active { background: #EEE; border-color: #D0D0D0; box-shadow: none; }
 
 /*----------------------------------------------------*/
 /*------- Added by Valery Votintsev -----*/

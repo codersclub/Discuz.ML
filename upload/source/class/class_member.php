@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_member.php 32975 2013-04-01 02:41:31Z liulanbo $
+ *      $Id: class_member.php 33436 2013-06-14 02:28:25Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -361,6 +361,7 @@ class register_ctl {
 		$sendurl = $this->setting['sendregisterurl'] ? true : false;
 		if($sendurl) {
 			if(!empty($_GET['hash'])) {
+				$_GET['hash'] = preg_replace("/[^\[A-Za-z0-9_\]%]/", '', $_GET['hash']);
 				$hash = explode("\t", authcode($_GET['hash'], 'DECODE', $_G['config']['security']['authkey']));
 				if(is_array($hash) && isemail($hash[0]) && TIMESTAMP - $hash[1] < 259200) {
 					$sendurl = false;
@@ -445,7 +446,7 @@ class register_ctl {
 				if(!sendmail("$_GET[email] <$_GET[email]>", lang('email', 'email_register_subject'), $email_register_message)) {
 					runlog('sendmail', "$_GET[email] sendmail failed.");
 				}
-				showmessage('register_email_send_succeed', dreferer(), array('bbname' => $this->setting['bbname']), array('showdialog' => true, 'msgtype' => 3, 'closetime' => 10));
+				showmessage('register_email_send_succeed', dreferer(), array('bbname' => $this->setting['bbname']), array('showdialog' => false, 'msgtype' => 3, 'closetime' => 10));
 			}
 			$emailstatus = 0;
 			if($this->setting['sendregisterurl'] && !$sendurl) {
@@ -479,7 +480,7 @@ class register_ctl {
 /*vot*/				if($username_mblen < 2) {
 					showmessage('profile_username_tooshort');
 /*vot*/				} elseif($username_mblen > 15) {
-					showmessage('profile_username_toolong');
+/*vot*/					showmessage('profile_username_toolong');
 /*vot*/				} elseif($usernamelen > 64) {
 					showmessage('profile_username_toolong');
 				}

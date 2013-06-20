@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: model_forum_post.php 33148 2013-04-28 01:38:24Z nemohou $
+ *      $Id: model_forum_post.php 33429 2013-06-13 03:01:54Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -138,8 +138,7 @@ class model_forum_post extends discuz_model {
 			'status' => $status,
 		));
 
-
-		$heatthreadset ? $heatthreadset : array();
+		$this->param['updatethreaddata'] = $heatthreadset ? $heatthreadset : array();
 		$this->param['maxposition'] = C::t('forum_post')->fetch_maxposition_by_tid($this->thread['posttableid'], $this->thread['tid']);
 		$this->param['updatethreaddata'][] = DB::field('maxposition', $this->param['maxposition']);
 
@@ -587,7 +586,7 @@ class model_forum_post extends discuz_model {
 			$forumcounter['threads'] = $forumcounter['posts'] = -1;
 			$tablearray = array('forum_relatedthread', 'forum_debate', 'forum_debatepost', 'forum_polloption', 'forum_poll');
 			foreach ($tablearray as $table) {
-				DB::query("DELETE FROM ".DB::table($table)." WHERE tid='".$this->thread['tid']."'", 'UNBUFFERED');
+				C::t($table)->delete_by_tid($this->thread['tid']);
 			}
 			C::t('forum_thread')->delete_by_tid($this->thread['tid']);
 			C::t('common_moderate')->delete($this->thread['tid'], 'tid');

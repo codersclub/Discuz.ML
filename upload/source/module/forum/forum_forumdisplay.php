@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_forumdisplay.php 33284 2013-05-16 08:49:40Z andyzheng $
+ *      $Id: forum_forumdisplay.php 33431 2013-06-13 07:05:28Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -245,7 +245,7 @@ if(!empty($_G['forum']['threadsorts']['types'])) {
 		$forum_optionlist = getsortedoptionlist();
 	}
 }
-
+$_GET['sortid'] = intval($_GET['sortid']);
 $moderatedby = $_G['forum']['status'] != 3 ? moddisplay($_G['forum']['moderators'], 'forumdisplay') : '';
 $_GET['highlight'] = empty($_GET['highlight']) ? '' : dhtmlspecialchars($_GET['highlight']);
 if($_G['forum']['autoclose']) {

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 33290 2013-05-22 05:50:15Z nemohou $
+ *      $Id: admincp_setting.php 33440 2013-06-17 02:39:05Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -219,8 +219,6 @@ if(!submitcheck('settingsubmit')) {
 		showsetting('setting_follow_base_default_follow_retain_day', 'settingnew[followretainday]', $setting['followretainday'], 'text');
 		showsetting('setting_follow_base_default_view_profile', 'settingnew[allowquickviewprofile]', $setting['allowquickviewprofile'], 'radio');
 		showtablefooter();
-
-
 
 	} elseif($operation == 'home') {
 
@@ -2709,7 +2707,6 @@ EOT;
 					'allowexchangein' => $value['allowexchangein'],
 					'allowexchangeout' => $value['allowexchangeout'],
 					);
-				$settingnew['initcredits'][$key] = intval($settingnew['initcredits'][$key]);
 			}
 		}
 
@@ -2734,6 +2731,7 @@ EOT;
 
 		$initformula = str_replace('posts', '0', $settingnew['creditsformula']);
 		for($i = 1; $i <= 8; $i++) {
+			$settingnew['initcredits'][$i] = intval($settingnew['initcredits'][$i]);
 			$initformula = str_replace('extcredits'.$i, $settingnew['initcredits'][$i], $initformula);
 		}
 		eval("\$_G['setting']['initcredits'] = round($initformula);");
@@ -3205,6 +3203,10 @@ EOT;
 		$enabledgroup = true;
 		if(!empty($settingnew['profilegroupnew'])) {
 			foreach($settingnew['profilegroupnew'] as $key => $value) {
+				if(!in_array($key, array('base', 'contact', 'edu', 'work', 'info'))) {
+					unset($profilegroup[$key]);
+					continue;
+				}
 				$temp[$key] = $value['displayorder'];
 				$profilegroup[$key]['available'] = !empty($value['available']) ? 1 : 0;
 				$profilegroup[$key]['displayorder'] = $value['displayorder'];
@@ -3221,6 +3223,10 @@ EOT;
 				$profilegroup[$prokey] = $settingnew['profile'];
 			}
 			foreach($profilegroup as $key => $value) {
+				if(!in_array($key, array('base', 'contact', 'edu', 'work', 'info'))) {
+					unset($profilegroup[$key]);
+					continue;
+				}
 				$temp[$key] = $value['displayorder'];
 				if($enabledgroup && $value['available']) {
 					$enabledgroup = false;

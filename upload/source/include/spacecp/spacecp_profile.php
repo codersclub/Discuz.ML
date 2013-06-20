@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_profile.php 33107 2013-04-26 03:43:21Z andyzheng $
+ *      $Id: spacecp_profile.php 33364 2013-06-03 02:30:46Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -28,6 +28,7 @@ $secqaacheck = $_G['setting']['secqaa']['status'] & 4;
 $_G['group']['seccode'] = 1;
 @include_once DISCUZ_ROOT.'./data/cache/cache_domain.php';
 $spacedomain = isset($rootdomain['home']) && $rootdomain['home'] ? $rootdomain['home'] : array();
+$_GET['id'] = $_GET['id'] ? preg_replace("/[^A-Za-z0-9_:]/", '', $_GET['id']) : '';
 if($operation != 'password') {
 
 	include_once libfile('function/profile');

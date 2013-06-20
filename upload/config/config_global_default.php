@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: config_global_default.php 32890 2013-03-20 10:42:31Z zhengqingpeng $
+ *      $Id: config_global_default.php 33337 2013-05-29 02:23:47Z andyzheng $
  *      Modified by Valery Votintsev at codersclub.org
  */
 
@@ -96,6 +96,7 @@ $_config['memory']['redis']['server'] = '';
 $_config['memory']['redis']['port'] = 6379;
 $_config['memory']['redis']['pconnect'] = 1;
 $_config['memory']['redis']['timeout'] = 0;
+$_config['memory']['redis']['requirepass'] = '';
 /**
  * Whether to use Redis::SERIALIZER_IGBINARY option, Need igbinary Support. If windows testing is closed otherwise they will be out > Is now error Reading from client: Connection reset by peer
  * Supports the following options, the default using PHP serializer
