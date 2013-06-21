@@ -2,7 +2,8 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: swfupload.js 28981 2012-03-21 06:43:44Z zhengqingpeng $
+	$Id: upload.js 28981 2012-03-21 06:43:44Z zhengqingpeng $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 var SWFUpload;
@@ -1096,7 +1097,7 @@ function fileQueued(file) {
 
 		}
 		if(createQueue) {
-			progress.setStatus("等待上传...");
+/*vot*/			progress.setStatus(lng[''wait_upload'']);
 		} else {
 			this.cancelUpload(file.id);
 			progress.setCancelled();
@@ -1114,7 +1115,7 @@ function fileQueueError(file, errorCode, message) {
 	try {
 		if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
 			message = parseInt(message);
-			showDialog("您选择的文件个数超过限制。\n"+(message === 0 ? "您已达到上传文件的上限了。" : "您还可以选择 " + message + " 个文件"), 'notice', null, null, 0, null, null, null, null, sdCloseTime);
+/*vot*/			showDialog(lng['file_selected_exceed']+'\n'+(message === 0 ? lng['upload_number_exceed'] : lng['can_choose_more'] + message + lng['files']), 'notice', null, null, 0, null, null, null, null, sdCloseTime);
 			return;
 		}
 
@@ -1124,15 +1125,15 @@ function fileQueueError(file, errorCode, message) {
 
 		switch (errorCode) {
 			case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-				progress.setStatus("文件太大.");
+/*vot*/				progress.setStatus(lng['file_is_large']);
 				this.debug("Error Code: File too big, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 				break;
 			case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
-				progress.setStatus("不能上传零字节文件.");
+/*vot*/				progress.setStatus(lng['file_is_empty']);
 				this.debug("Error Code: Zero byte file, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 				break;
 			case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-				progress.setStatus("禁止上传该类型的文件.");
+/*vot*/				progress.setStatus(lng['file_type_disabled']);
 				this.debug("Error Code: Invalid File Type, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 				break;
 			case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
@@ -1197,7 +1198,7 @@ function uploadStart(file) {
 			preObj.innerHTML = '';
 		}
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("上传中...");
+/*vot*/		progress.setStatus(lng['uploading']);
 		progress.toggleCancel(true, this);
 		if(this.customSettings.uploadSource == 'forum') {
 			var objId = this.customSettings.uploadType == 'attach' ? 'attachlist' : 'imgattachlist';
@@ -1216,7 +1217,7 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {
 		var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
 
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("正在上传("+percent+"%)...");
+/*vot*/		progress.setStatus(lng['upload_progress']+'('+percent+"%)...");
 
 	} catch (ex) {
 		this.debug(ex);
@@ -1273,7 +1274,7 @@ function uploadSuccess(file, serverData) {
 						progress.setStatus(STATUSMSG[aid]);
 						showDialog(STATUSMSG[aid], 'notice', null, null, 0, null, null, null, null, sdCloseTime);
 					} else {
-						progress.setStatus("取消上传");
+/*vot*/						progress.setStatus(lng['upload_cancelled']);
 					}
 					this.cancelUpload(file.id);
 					progress.setCancelled();
@@ -1300,11 +1301,11 @@ function uploadSuccess(file, serverData) {
 				newTr.appendChild(newTd);
 				newTd = document.createElement("TD");
 				newTd.className = 'd';
-				newTd.innerHTML = '图片描述<br/><textarea name="title['+data.picid+']" cols="40" rows="2" class="pt"></textarea>';
+/*vot*/				newTd.innerHTML = lng['file_description']+'<br/><textarea name="title['+data.picid+']" cols="40" rows="2" class="pt"></textarea>';
 				newTr.appendChild(newTd);
 				this.customSettings.imgBoxObj.appendChild(newTr);
 			} else {
-				showDialog('图片上传失败', 'notice', null, null, 0, null, null, null, null, sdCloseTime);
+/*vot*/				showDialog(lng['image_upload_failed'], 'notice', null, null, 0, null, null, null, null, sdCloseTime);
 			}
 			$(file.id).style.display = 'none';
 		} else if(this.customSettings.uploadType == 'blog') {
@@ -1324,7 +1325,7 @@ function uploadSuccess(file, serverData) {
 				inputObj.value= data.picid;
 				tdObj.appendChild(inputObj);
 			} else {
-				showDialog('图片上传失败', 'notice', null, null, 0, null, null, null, null, sdCloseTime);
+/*vot*/				showDialog(lng['image_upload_failed'], 'notice', null, null, 0, null, null, null, null, sdCloseTime);
 			}
 			$(file.id).style.display = 'none';
 		} else if(this.customSettings.uploadSource == 'portal') {
@@ -1341,7 +1342,7 @@ function uploadSuccess(file, serverData) {
 					$(file.id).style.display = 'none';
 				}
 			} else {
-				showDialog('上传失败', 'notice', null, null, 0, null, null, null, null, sdCloseTime);
+/*vot*/				showDialog(lng['upload_failed'], 'notice', null, null, 0, null, null, null, null, sdCloseTime);
 				progress.setStatus("Cancelled");
 				this.cancelUpload(file.id);
 				progress.setCancelled();
@@ -1349,7 +1350,7 @@ function uploadSuccess(file, serverData) {
 			}
 		} else {
 			progress.setComplete();
-			progress.setStatus("上传完成.");
+/*vot*/			progress.setStatus(lng['upload_completed']);
 			progress.toggleCancel(false);
 		}
 	} catch (ex) {

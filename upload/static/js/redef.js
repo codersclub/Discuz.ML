@@ -1,18 +1,20 @@
 /*
- 参数
- parent			放置瀑布流元素的容器，默认为 $("waterfall")
- container		放置瀑布流的父容器，默认为 $("threadlist")
- maxcolumn		最多多少列，默认为 0 不限制
- space			图片间距，默认为 10
- index			从第几张开始排列，默认为 0
- tag			瀑布流元素的 tagName，默认为 li
- columnsheight	存放列高度的数组
+ Modified by Valery Votintsev, codersclub.org
+ 
+ Parameters:
+ parent			Place waterfall flow elements container, The default is $("waterfall")
+ container		Place waterfall flows parent container, The default is $("threadlist")
+ maxcolumn		Up to how many columns, The default is 0 without limiting
+ space			Inter-image gap, The default is 10
+ index			Arrange starting from the first few images, The default is 0
+ tag			Waterfall stream element tagName, The default is li
+ columnsheight		Storing the column height array
 
- 返回值
- index			当前瀑布流已经排列了多少个图片
- totalwidth		当前瀑布流的总宽度
- totalheight	当前瀑布流的总高度
- columnsheight	存放瀑布流列高的数组
+ Return Value
+ index			Current waterfall stream has been ranked the number of images
+ totalwidth		The total width of the current cascade
+ totalheight		The total height of the current cascade
+ columnsheight		Storing waterfall flows column height array
  */
 function waterfall(v) {
 	var v = typeof(v) == "undefined" ? {} : v;

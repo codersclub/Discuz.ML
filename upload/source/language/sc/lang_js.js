@@ -364,7 +364,7 @@ var lng = {
 	'files attached_num'	: '个附件',
 	'images'		: '图片',
 	'attachments'		: '附件',
-	'upload_failed'		: '上传失败',
+//	'upload_failed'		: '上传失败',
 
 	'attach_big'		: '服务器限制无法上传那么大的附件',
 	'attach_group_big'	: '用户组限制无法上传那么大的附件',
@@ -484,8 +484,8 @@ var lng = {
 
 //---------------------------
 //static/js/makehtml.js
-	'generate'	: '生成',//'Generate ',
-	'generate_ok'	: '生成成功',//' generated successfully',
+	'generate'		: '生成',//'Generate ',
+	'generate_ok'		: '生成成功',//' generated successfully',
 	'generate_error'	: '生成失败',//' generation failed',
 	'generate_start'	: '开始生成 ',//'Start generating of ',
 	'generate_click_continue'	: '如果您的浏览器没有反应，请点击继续...',//'If your browser does not respond, Click to continue...',
@@ -495,7 +495,23 @@ var lng = {
 	'generate_first'	: '正在生成第 ',//'generated first ',
 	'generate_percent'	: '已经完成 ',//'has been completed ',
 
-//	''	: '',//'',
+//---------------------------
+//static/js/mobile/common.js
+	'first'		: '第 ',//'First ',
+	'page'		: '页',//'Page',
+	'pages'		: '页',//' pages',
+	'prev_page'	: '上一页',//'Prev',
+	'next_page'	: '下一页',//'Next',
+	
+	'click_to_reload'	: '点击重新加载',//'Click to reload',
+	'loading_now'		: '正在加载...',//'Loading...',
+
+	'geo_timeout'		: '获取位置超时，请重试',//'Get location timeout, please try again',
+	'geo_error'		: '无法检测到您的当前位置',//'Unable to detect your current location',
+	'geo_permission'	: '请允许能够正常访问您的当前位置',//'Please allow normal access to your current location',
+	'unknown_error'		: '发生未知错误',//'Unknown error occurred',
+	'touch_down_refresh'	: '下拉可以刷新',//'Touch down to refresh',
+	'touch_up_refresh'	: '松开可以刷新',//'Touch UP to refresh',
 
 //--------------------------------
 //static/js/portal.js
@@ -671,6 +687,7 @@ var lng = {
 //static/js/upload.js
 
 	'file_not_supported'	: '对不起，不支持上传此类文件',
+	'wait_upload'		: '等待上传...',//'Wait for upload...',
 
 //-------------------------------------
 //source/function/function_admincp.php
@@ -692,6 +709,6 @@ var lng = {
 //-------------------------------------
 //	''	: '',//'',
 
-'fiction'	: '' // This key MUST BE THE LAST!
+'fiction'	: '' // This key MUST BE THE LAST row!
 
 };
