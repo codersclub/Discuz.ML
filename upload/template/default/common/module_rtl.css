@@ -741,11 +741,19 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		Explain:		Posts like "Guest, if you want to see the hidden post, please..." and other parts of the style
 		Last Modify:	Pony 11060209
 	*/
-	.locked { overflow: hidden; margin: 10px 0; padding: 8px 24px 8px 8px; border: 1px dashed #FF9A9A; background: {WRAPBG} url({IMGDIR}/locked.gif) no-repeat 99% 50%; font-size: 12px; }
-		.locked:hover { background: #F7F7F7 url({IMGDIR}/locked.gif) no-repeat 99% 50%; }
+	.locked { overflow: hidden; margin: 10px 0; padding: 8px 8px 8px 24px; border: 1px dashed #FF9A9A; background: {WRAPBG} url({IMGDIR}/locked.gif) no-repeat 6px 50%; font-size: 12px; zoom: 1; }
+		.locked:hover background-color: #F7F7F7; }
 		.locked strong { color: {NOTICETEXT}; }
-		.locked a { color: {HIGHLIGHTLINK}; }
-	.viewpay { overflow: hidden; margin: 0 6px; padding: 1px 24px 1px 0; background: url({IMGDIR}/viewpay.gif) no-repeat 6px 60%; color: {HIGHLIGHTLINK}; font-weight: 700; }
+		.locked a, .attach_nopermission a { color: {HIGHLIGHTLINK}; }
+	.attach_nopermission { margin: 10px 0; width: 600px; border: 1px dashed #AAAA92; background: #FFFFEE url({IMGDIR}/attach_nopermission_bg.png) no-repeat 100% 0; font-size: 12px; }
+		.attach_nopermission div { padding: 20px 0 20px 70px; border: 3px solid #FFF; background: url({IMGDIR}/attach_nopermission.png) no-repeat 15px 15px; }
+		.attach_nopermission:hover div { border-color: #DADAB1; }
+		.attach_tips { margin-bottom:15px; position: relative; }
+		.attach_tips h3 strong { color: #8CA226; font-size:15px; display:block; margin-bottom: 10px; margin-top: -10px; }
+			.attach_tips .atips_close { position: absolute; top: 5px; right: 10px; width: 10px; height: 10px; cursor: pointer; color: #ccc; }
+				.attach_tips:hover .atips_close { color: #333; }
+				.attach_tips .atips_close:hover { font-weight: bold; }
+	.viewpay { overflow: hidden; margin: 0 6px; padding: 1px 0 1px 24px; background: url({IMGDIR}/viewpay.gif) no-repeat 6px 60%; color: {HIGHLIGHTLINK}; font-weight: 700; zoom: 1; }
 	.showhide { overflow: hidden; border: 1px dashed #FF9A9A; margin: 8px 0; padding: 10px; zoom: 1; }
 		.showhide h4 { margin-bottom: 10px; color: #F66; font-size: 12px; text-align: center; }
 
