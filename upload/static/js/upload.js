@@ -1097,7 +1097,7 @@ function fileQueued(file) {
 
 		}
 		if(createQueue) {
-/*vot*/			progress.setStatus(lng[''wait_upload'']);
+/*vot*/			progress.setStatus(lng['wait_upload']);
 		} else {
 			this.cancelUpload(file.id);
 			progress.setCancelled();

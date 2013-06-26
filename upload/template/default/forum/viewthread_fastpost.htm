@@ -42,7 +42,7 @@ var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
 						<!--{hook/viewthread_fastpost_func_extra}-->
 						<a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]{if $_GET[from]}&from=$_GET[from]{/if}" onclick="return switchAdvanceMode(this.href)">{lang post_advancemode}</a>
 					</span>
-					<!--{eval $seditor = array('fastpost', array('at', 'bold', 'color', 'img', 'link', 'quote', 'code', 'smilies'), !$allowfastpost ? 1 : 0, $allowpostattach && $_GET['from'] != 'preview' && $allowfastpost ? '<span class="pipe z">|</span><span id="spanButtonPlaceholder">'.lang('template', 'upload').'</span>' : '');}-->
+					<!--{eval $seditor = array('fastpost', array('at', 'bold', 'color', 'img', 'link', 'quote', 'code', 'smilies'), !$allowfastpost ? 1 : 0, $allowpostattach && $_GET['from'] != 'preview' && $allowfastpost ? '<span class="pipe z">|</span><span id="spanButtonPlaceholder">{lang upload}</span>' : '');}-->
 					<!--{hook/viewthread_fastpost_ctrl_extra}-->
 					<!--{subtemplate common/seditor}-->
 				</div>
