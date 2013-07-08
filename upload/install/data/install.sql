@@ -500,16 +500,15 @@ CREATE TABLE pre_common_district (
 
 DROP TABLE IF EXISTS pre_common_diy_data;
 CREATE TABLE pre_common_diy_data (
-  targettplname varchar(255) NOT NULL DEFAULT '',
-  tpldirectory varchar(255) NOT NULL DEFAULT '',
+  targettplname varchar(128) NOT NULL DEFAULT '',
+  tpldirectory varchar(128) NOT NULL DEFAULT '',
   primaltplname varchar(255) NOT NULL DEFAULT '',
   diycontent mediumtext NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   uid int(11) unsigned NOT NULL DEFAULT '0',
   username varchar(255) NOT NULL DEFAULT '',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (targettplname),
-  KEY (tpldirectory)
+  PRIMARY KEY (targettplname,tpldirectory)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS pre_common_domain;
@@ -1393,17 +1392,16 @@ CREATE TABLE pre_common_template (
 
 DROP TABLE IF EXISTS pre_common_template_block;
 CREATE TABLE pre_common_template_block (
-  targettplname varchar(255) NOT NULL DEFAULT '',
-  tpldirectory varchar(255) NOT NULL DEFAULT '',
+  targettplname varchar(128) NOT NULL DEFAULT '',
+  tpldirectory varchar(128) NOT NULL DEFAULT '',
   bid int(11) unsigned NOT NULL DEFAULT '0',
-  KEY (targettplname),
-  KEY (tpldirectory),
+  PRIMARY KEY (targettplname,tpldirectory,bid),
   KEY bid (bid)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS pre_common_template_permission;
 CREATE TABLE pre_common_template_permission (
-  targettplname varchar(255) NOT NULL DEFAULT '',
+  targettplname varchar(128) NOT NULL DEFAULT '',
   uid int(11) unsigned NOT NULL DEFAULT '0',
   allowmanage tinyint(1) NOT NULL DEFAULT '0',
   allowrecommend tinyint(1) NOT NULL DEFAULT '0',
