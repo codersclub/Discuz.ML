@@ -6977,6 +6977,9 @@ RepeatLimit 32
 //source/admincp/admincp_index.php - javascript function shownews()
 	'subscribe'		=> '订阅',//'Subscribe',
 
+//source/admincp/admincp_plugins.php
+	'disable'		=> '禁用',//'Disable',
+
 //---------------------------
 //Change Language
 	'change_language'	=> '更改语言',//'Change language',
