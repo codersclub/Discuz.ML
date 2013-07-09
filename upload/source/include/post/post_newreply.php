@@ -209,7 +209,8 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 				$thaquote['author'] = $thaquote['author'];
 			}
 
-			$post_reply_quote = lang('forum/misc', 'post_reply_quote', array('author' => $thaquote['author'], 'time' => $time));
+//vot			$post_reply_quote = lang('forum/misc', 'post_reply_quote', array('author' => $thaquote['author'], 'time' => $time));
+/*vot*/			$post_reply_quote = '[img]static/image/common/user_online.gif[/img] '.$thaquote['author'].' [img]static/image/common/clock.gif[/img] '.$time;
 			$noticeauthormsg = dhtmlspecialchars($message);
 			if(!defined('IN_MOBILE')) {
 				$message = "[quote][size=2][url=forum.php?mod=redirect&goto=findpost&pid=$_GET[repquote]&ptid={$_G['tid']}][color=#999999]{$post_reply_quote}[/color][/url][/size]\n{$message}[/quote]";
