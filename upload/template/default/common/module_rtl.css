@@ -3,8 +3,8 @@
 Extend CSS file for Discuz! X
 (C) Comsenz Inc.
 http://www.comsenz.com
-Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
-Translated by Valery Votintsev
+Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
+Modified by Valery Votintsev, codersclub.org
 
 1. Some common module styles
 	1. Notice
@@ -15,6 +15,7 @@ Translated by Valery Votintsev
 	6. Plaza outside the reference, code style
 	7. Moderators management (including 2.3,2.4)
 	8. Login Register
+	9. Tags
 2. Posting style
 	1. The functions of the style editor
 	2. Theme icon
@@ -73,7 +74,7 @@ Translated by Valery Votintsev
 	Name:			mod_announcement
 	Level:			Function
 	Explain:		Notice. When placed in different locations to adjust # anc, # an li high
-	Last Modify:	Pony 11050309
+	Last Modify:	Pony 1203191111
 */
 	#an { margin-bottom: 5px; }
 		#an dt { display: none; }
@@ -81,6 +82,7 @@ Translated by Valery Votintsev
 /*vot*/			#an li span { float: right; width: 430px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /*vot*/			#an li em { float: right; width: 95px; color: {LIGHTTEXT}; }
 			#anc, #an li { height: 29px; overflow: hidden; }
+			#anc i { font-style: italic; }
 
 /* Online member list */
 /*vot*/	.oll li { float: right; overflow: hidden; white-space: nowrap; /*width: 19.9%;*/ height: 24px; line-height: 24px; margin-left: 32px; }
@@ -89,10 +91,38 @@ Translated by Valery Votintsev
 /* Hot Forums by Pony */
 	.heat { width: 370px; }
 /*vot*/	.heatl { padding-right: 15px; margin-right: 385px; background: url({IMGDIR}/vline.png) repeat-y 100% 0; }
+
+/* Forum Home four-frame by Alice */
+	#category_grid { padding: 0; border-top:1px solid {COMMONBORDER}; }
+		#category_grid table { width:100%;table-layout: fixed; }
+			#category_grid td { width: 25%; }
+		.category_l1, .category_l2, .category_l3, .category_l4 { line-height: 25px; background: #fff; overflow: hidden; }
+			.category_l1 { line-height: normal; }
+		.category_l1, .category_l2, .category_l3 { background: url({IMGDIR}/category_lbg.png) no-repeat right center; }
+			.ie6 .category_l4 { margin-right: -3px; }
+			.slidebox_grid { position: relative; margin: 10px; border: 1px #ccc solid; }
+			#category_grid h4 { width:100%; height: 30px; line-height: 30px; text-indent:10px; font-size: 12px; cursor: pointer; background: url({IMGDIR}/tb.png) repeat-x; position:relative; }
+		.category_newlist { padding: 10px; }
+			.category_newlist li { background:url({IMGDIR}/dot.gif) no-repeat left center;  height: 21px; line-height:21px; overflow: hidden; padding-left:10px; }
+			#category_grid h4 span { background:#CDCDCD; width:1px; height:30px; display:inline-block; position:absolute; left:0; top:0; }
+			#category_grid h4 span.tit_newimg { background:#FFF; }
+			#category_grid .newimgbox:hover h4 span, #category_grid .subjectbox:hover h4 span, #category_grid .replaybox:hover h4 span, #category_grid .hottiebox:hover h4 span, #category_grid .goodtiebox:hover h4 span { width:6px; background:url({IMGDIR}/grid.png) no-repeat 0 0;transition:width 0.2s ease 0s; overflow:hidden; }
+			#category_grid .newimgbox:hover h4 span.tit_newimg { background-position:0 -30px; } 
+			#category_grid .subjectbox:hover h4 span.tit_subject { background-position:0 0; }
+			#category_grid .repalybox:hover h4 span.tit_replay { background-position:0 -30px; }
+			#category_grid .hottiebox:hover h4 span.tit_hottie { background-position:0 -60px; }
+			#category_grid .goodtiebox:hover h4 span.tit_goodtie { background-position:0 -90px; }
 /** end **/
 
+/** misc::faq **/
+/*
+	Explain:		Help page title to be displayed
+	Last Modify:	Pony 1203231449
+*/
+	.ct2_a h1.mt { display: block; }
+/** end **/
 
-/** misc::invite,group,forum::viewthread **/
+/** misc::invite,group,forum::viewthread,portal::view,home::space **/
 	/* .usl -> Invite friends for a similar group in the buddy list by Pony */
 		.usl { overflow: scroll; overflow-x: hidden; padding: 5px; width: 580px; height: 280px; }
 		.usl2 { width: auto; border: dashed {WRAPBORDERCOLOR}; border-width: 0 1px 1px; }
@@ -109,7 +139,7 @@ Translated by Valery Votintsev
 /** end **/
 
 
-/** home::space,home::spacecp,group::group,userapp::userapp,misc::ranklist,portal::view,forum::viewthread,group::viewthread,home::medal **/
+/** home::space,home::spacecp,group::group,userapp::userapp,misc::ranklist,portal::view,forum::viewthread,group::viewthread,home::medal,misc::tag **/
 	/* .el -> feed_list Deed List by Pony */
 	.e { overflow: hidden; }
 		.e .i, .el .i { padding: 6px 10px; border-bottom: 1px dashed {COMMONBORDER}; background: #F7F7F7; }
@@ -139,15 +169,50 @@ Translated by Valery Votintsev
 /** end **/
 
 
-/** forum::viewthread,group::viewthread,home::task,misc::stat **/
+/** forum::viewthread,group::viewthread,home::task,misc::stat,home::space **/
 	/* Progress bar */
-		.pbg { height: 16px; background: url({IMGDIR}/pllb.png) 0 0 repeat-x; -webkit-border-radius: 0 0 6px 6px; -moz-border-radius: 0 0 6px 6px; border-radius: 0 0 6px 6px; }
+		.pbg { height: 10px; background: url({IMGDIR}/pllb.png) 0 0 repeat-x; -webkit-border-radius: 0 0 6px 6px; -moz-border-radius: 0 0 6px 6px; border-radius: 0 0 6px 6px; }
 		.pbr { height: 16px; width: 470px; background-image: url({IMGDIR}/pllb.png); background-color: #5AAF4A; background-position: 100% -16px; background-repeat: repeat-x; -webkit-border-radius: 0 0 6px 6px; -moz-border-radius: 0 0 6px 6px; border-radius: 0 0 6px 6px; }
+		.pbg2 { display: block; height: 10px; width: 130px; margin: 0 auto; background: url({IMGDIR}/ico_jdt.png) 0 -10px repeat-x; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+		.pbr2 { display: block; height: 10px; background: url({IMGDIR}/ico_jdt.png) 0 0 repeat-x; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 
 	/* Order link hover does not show underline by Pony 20110519 */
 	.md_ctrl a:hover { text-decoration: none; }
 /** end **/
 
+/** forum::forumdisplay,forum::viewthread,group::viewthread **/
+#vfastpost{background:#E5EDF2;padding:3px;position:relative;}
+.previewvfastpost{margin:0px 10px 3px 10px;}
+.fullvfastpost{margin-top:30px;}
+#vfastpost th, #vfastpost td{padding: 0px;}
+#vfastpost td{height:38px;}
+	#vfastpost #vf_l{width:5px;background: url({IMGDIR}/v.png) no-repeat -30px -39px;}
+	#vfastpost #vf_m{background: url({IMGDIR}/v.png) repeat-x 0px -79px;}
+	#vfastpost #vf_m input{border:1px solid white; width: 100%; border: 1px solid white; outline: none; font-size: 14px; }
+	#vfastpost #vf_r{width:10px;background: url({IMGDIR}/v.png) no-repeat -47px -119px;}
+	#vfastpost #vf_b{width:120px;}
+/*vot*/		#vfastpost #vf_b button{width:120px;display:block;height:38px;/*line-height:100px;*/overflow:hidden;/*background: url({IMGDIR}/v.png) no-repeat 0 0;*/ margin: 0; padding: 0; border: none; border-radius:4px; font-size:130%;}
+/** end **/
+
+/** forum::viewthread,group::viewthread **/
+.tig_bottom{color:#B1B1B1;display:block;height:8px;top:56px;margin-left:20px;position:absolute;z-index: 99;}
+.tig_bottom1{color:#FEFEE9;display:block;height:8px;top:55px;margin-left:20px;position:absolute;z-index:111;}
+.vct{font: 12px/1.5 Tahoma;margin:0;}
+.container{border:1px solid #B1B1B1;margin-top:8px;margin-right:80px;background-color:#FEFEE9;border-radius: 3px;padding: 5px;width:120px;position:absolute;top:-80px;right:0;}
+	/* Click loading the Next button style  by Alice */
+	.pgbtn a { display: block; margin-bottom: 10px; border: 1px solid rgb(194, 213, 227); border-radius: 3px; text-align: center; }
+	.pgbtn a:hover { background: #fff; text-decoration: none; }
+	/* Posting page open, half closed around list by Alice */
+	.side_btn { position:relative; display:block; }
+	.ie_all .side_btn { display:inline; }
+	.side_btn a { position:absolute; left:-21px; top:-10px; display:block; width:7px; height:38px; overflow:hidden; }
+	.side_btn a.btn_s_close { left:-27px; top:-10px; }
+	.side_btn a.btn_s_open { left:-21px; top:-10px; }
+		.ie8 .side_btn a.btn_s_close,.ie8 .side_btn a.btn_s_open { top:-27px;}
+		.ie9 .side_btn a.btn_s_close,.ie8 .side_btn a.btn_s_open { top:-27px;}
+		.ie10 .side_btn a.btn_s_close,.ie8 .side_btn a.btn_s_open { top:-27px;}
+
+/** end **/
 
 /**  forum::forumdisplay,forum::viewthread,group::viewthread,home::space,home::spacecp,home::invite,portal::view,portal::comment,forum::post,group::post **/
 	/* Square outside the reference, code style by Pony */
@@ -155,10 +220,9 @@ Translated by Valery Votintsev
 			.quote blockquote { display: inline; margin: 0; padding-left: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
 			.m_c .quote { width: 585px; }
 		.blockcode { overflow: hidden; margin: 10px 0; padding: 5px 10px; background: #F7F7F7; color: {MIDTEXT}; }
-			.blockcode code { font-family: Monaco, Consolas, "Lucida Console", "Courier New", serif; font-size: 12px; line-height: 1.8em; }
-			* html .blockcode code { font-family: "Courier New", serif; }
+			.blockcode code { font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; font-size: 12px; line-height: 1.8em; }
+			* html .blockcode code { font-family: 'Courier New', serif; }
 /** end **/
-
 
 /** forum::modcp,misc::stat **/
 	/* Forum Management */
@@ -177,48 +241,19 @@ Translated by Valery Votintsev
 
 
 /* ------------------------ Posting style --------------- */
-/** forum::post,group::post **/
+/** forum::post,forum::forumdisplay,forum::viewthread,group::post,group::forumdisplay,group::viewthread **/
 .ct2_a .mn { float: right; }
 .appl { float: left; margin-top: 8px; border: none; background-color: transparent; }
 .upf { width: 500px; }
 *+html .upf { width: 520px; }
-	.p_tbl { height: auto; line-height: 160%; border-bottom: none; }
-		.p_tbl table { *table-layout: fixed; }
-			.p_tbl table td { height: 28px; line-height: 28px; border-bottom: 1px solid {COMMONBG}; }
-				.atnu { width: 16px; }
-				/*.attachctrl { width: 40px; }*/
-				.atna {}
-					.atna p img, .attswf p img { vertical-align: middle; height: 16px; }
-					.atna .lighttxt, .attswf .lighttxt { color: {MIDTEXT} !important; }
-				.attpr { width: 40px; text-align: center; }
-					.attv .px, .attp .px { width: 25px; }
-					.attv { width: 100px; }
-				.atturl img { height: 20px !important; }
-				.attc { width: 20px }
-				*+html .attc { width: 40px; }
-				.atds { width: 80px; text-align: center; }
-					.atds .px { width: 60px; }
-				.attp { text-align: center; width: 40px; }
-		.upfl { height: auto !important; height: 165px; max-height: 300px; overflow: auto; overflow-x: hidden; }
-			.upfl a, #imgattachlist a { color: {HIGHLIGHTLINK}; }
-			.upfl table td { border-bottom: 1px solid {SPECIALBORDER}; height: 30px; line-height: 24px; }
 
-	.upnf { white-space: normal; }
-	.upbk { zoom: 1; }
-		.fldt { margin-bottom: 8px; }
-	/* Upload file a list of unused */
-	.ufl { width: 300px; }
-	.ufl p{ padding: 4px 0; border-top: 1px solid {SPECIALBORDER}; }
+.upnf { white-space: normal; }
+.upbk { zoom: 1; }
+	.fldt { margin-bottom: 8px; }
 
-	.p_pop .flb { position: absolute; left: 10px; top: 18px; *top: 13px; }
+.p_pop .flb { position: absolute; left: 10px; top: 18px; *top: 13px; }
 
-.imgl { margin-bottom: 5px; width: 100%; *width: 99.6%; }
-	.imgl td { padding: 8px 0; text-align: center; }
-	.imgl img { border: 1px solid {LIGHTTEXT}; }
-	.imgf .px { width: 106px; padding: 2px; height: 14px; line-height: 14px; }
-	.imgdeleted { opacity: 0.3; filter: alpha(opacity=30); }
-
-.fnm { width: 100px !important; }
+.fnm { width: 130px !important; }
 .fszm { width: 55px !important; line-height: normal; }
 .fnm li, .fszm li, .simm li { cursor: pointer; }
 .qsv { padding-right: 16px; width: 16px; height: 16px; background: url({IMGDIR}/repquote.gif) no-repeat 50% 50%; cursor: pointer; }
@@ -239,10 +274,70 @@ Translated by Valery Votintsev
 #post_extra_c { position: relative; z-index: 1; }
 	#post_extra_c .exfm { margin: -1px 0 0; border: 1px solid {COMMONBORDER}; }
 
+#extra_additional_c label { float:right; width: 20%; }
+
 #draftlist { border-style: solid; border-width: 1px 1px 0; border-color: {WRAPBG}; }
 	#draftlist.a { position: relative; z-index: 302; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE} }
 	#draftlist_menu { margin-top: -1px; padding: 10px; border: 1px solid {DROPMENUBORDER}; {DROPMENUBGCODE}; }
 /** end **/
+
+
+/** forum::post,forum::forumdisplay,forum::viewthread,group::post,group::forumdisplay,group::viewthread,portal::portalcp,home::spacecp **/
+.p_tbl { height: auto; line-height: 160%; border-bottom: none; }
+	.p_tbl table { *table-layout: fixed; }
+		.p_tbl table td { height: 28px; line-height: 28px; border-bottom: 1px solid {COMMONBG}; }
+			.atnu { width: 16px; }
+			/*.attachctrl { width: 40px; }*/
+			.atna {}
+				.atna p img, .attswf p img { vertical-align: middle; height: 16px; }
+				.atna .lighttxt, .attswf .lighttxt { color: {MIDTEXT} !important; }
+			.attpr { width: 40px; text-align: center; }
+				.attv .px, .attp .px { width: 25px; }
+				.attv { width: 100px; }
+			.atturl img { height: 20px !important; }
+			.attc { width: 20px }
+			*+html .attc { width: 40px; }
+			.atds { width: 80px; text-align: center; }
+				.atds .px { width: 60px; }
+			.attp { text-align: center; width: 40px; }
+			.attach_preview { border: 1px solid {COMMONBORDER}; box-shadow: 0 0 5px rgba(96, 96, 96, 0.3); }
+				.ie8 .attach_preview, .ie9 .attach_preview { top: 57px; right: 18px; }
+/** end **/
+
+
+/** forum::post,group::post,portal::portalcp,home::spacecp **/
+/* Post, blog, upload image list style by Pony 11090615 */
+.upfl { margin-top: -1px; height: auto !important; height: 165px; max-height: 300px; overflow: auto; overflow-x: hidden; }
+	.upfl a, #imgattachlist a { color: {HIGHLIGHTLINK}; }
+	.upfl table td { border-bottom: 1px solid {COMMONBORDER}; height: 30px; line-height: 24px; }
+.imgl { margin-bottom: 5px; width: 100%; *width: 99.6%; }
+	.imgl td { padding: 8px 0; text-align: center; vertical-align: bottom; }
+		.imgl tr:last-child td { border-bottom: none; }
+	.imgl img { border: 1px solid {LIGHTTEXT}; max-width: 110px; }
+		.ie6 .imgl img { width: expression(this.width > 110 ? 110 : true); }
+
+	.imgf .px { width: 106px; padding: 2px; height: 14px; line-height: 14px; }
+	.imgdeleted { opacity: 0.3; filter: alpha(opacity=30); }
+
+/*
+	Name:			mod_opattach
+	Level:			Function
+	Explain:		Upload pictures in the issued article on the style of the operating area
+	Last Modify:	Pony 11082416
+*/
+	.opattach { display: block; position: relative; margin: 0 auto; width: 110px; border: 1px solid #CDCDCD; }
+		.opattach:hover { text-decoration: none; }
+		.opattach_ctrl { display: none; position: absolute; bottom: 0; left: 0; width: 100%; color: #FFF; background: transparent; background: rgba(0, 0, 0, 0.3); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr = #30000000, endColorstr = #30000000); }
+		.opattach:hover .opattach_ctrl { display: block; }
+		.opattach img { border: none; }
+
+/* redefinition of blog and articles editor pop by Pony 11082217 */
+.tfm .fwin .t_l, .tfm .fwin .t_c, .tfm .fwin .t_r, .tfm .fwin .m_c, .tfm .fwin .b_l, .tfm .fwin .b_c, .tfm .fwin .b_r { padding: 0; }
+.tfm .fwin th { padding: 0; width: auto; }
+.tfm .fwin .px { width: auto; }
+.tfm .fwin .upfl table td { border-bottom: none; }
+/** end **/
+
 
 /** forum::viewthread,forum::forumdisplay,forum::post,group **/
 /* Thread icon by michael */
@@ -274,9 +369,11 @@ Translated by Valery Votintsev
 /* Made a special topic post by dfox */
 	.sinf p, .sadd p { padding: 2px 0; height: 30px; line-height: 30px; }
 	.sinf .px, .sadd .px { width: 120px; }
-	.sinf { float: right; padding-left: 14px; width: 380px; border-left: 1px dashed {WRAPBORDERCOLOR}; }
+	.sinf { float: right; padding-left: 14px; width: 400px; border-left: 1px dashed {WRAPBORDERCOLOR}; }
 		.sinf h4 { padding: 6px 0; }
 		.sinf textarea { width: 368px; height: 80px; }
+		.sinf a.d { margin-top: 8px; }
+		.sinf object { vertical-align: middle; }
 		.onum { float: right; margin-left: 6px; width: 16px; }
 		.oinf { width: 270px !important; }
 			.sinf dl, .sadd dl { overflow: hidden; }
@@ -286,7 +383,9 @@ Translated by Valery Votintsev
 			.sinf span.fb, .sadd span.fb { display: block; float: right; margin-left: 6px; height: 26px; line-height: 26px; white-space: nowrap; }
 				.sinf dl dd strong { padding: 0 8px; }
 	.sadd { float: right; margin-right: 10px; width: 300px; overflow: hidden; }
-		.sadd dl dd { width: 220px; }
+		.sadd dl dd { width: 420px; }
+		.ct2_a .sadd { width: 360px; }
+		.ct2_a .sadd dl dd { width: 260px; }
 		.spl em { float: right; margin-left: 9px; height: 20px; line-height: 20px; }
 		.spl input[type=radio] { margin: 0 0 0 3px; }
 	.spimg { margin: 0 0 0 10px; width: 200px; border: 1px solid #AAA; }
@@ -307,9 +406,34 @@ Translated by Valery Votintsev
 		.hasfsl { margin-left: 170px; zoom: 1; }
 
 	#f_pst .upfl { height: auto; max-height: 100%; }
-		#f_pst .upfl td { padding: 4px 0; border-bottom-color: {COMMONBORDER}; }
+		#f_pst .upfl td { padding: 4px 0; }
 		#f_pst .atds { width: 100px; }
 		#f_pst .px { padding: 2px; }
+	/*
+		Name:			mod_mobile-type
+		Level:			Function
+		Explain:		Mobile posting style
+		Author:			Lushnis
+		Last Modify:	Pony 1204111343
+	*/
+	.mobile-type { position: absolute; margin: -5px 0 -85px 103px; width: 58px; height: 80px; background: url({IMGDIR}/mobile-type.png) no-repeat 100% 100%; }
+		.ie6 .mobile-type, .ie7 .mobile-type { margin-left: 88px; }
+		.mobile-type a { display: block; width: 46px; height: 80px; background: url({IMGDIR}/mobile-type.png) no-repeat 0 0; }
+			.mobile-type-2 a { background-position: 0 -80px; }
+			.mobile-type-3 a { background-position: 0 -160px; }
+			.mobile-type-4 a { background-position: 0 -240px; }
+		.ie6 .mobile-type, .ie6 .mobile-type a { background-image: url({IMGDIR}/mobile-type-ie6.png) !important; }
+	.mobile-location { padding-left: 20px; background: url({IMGDIR}/mobile-attach-2.png) no-repeat 0 0; }
+	/*
+		Name:			threadbeginid
+		Level:			Function
+		Explain:	 	Start animation or the location of the picture style
+		Author:			Jane
+		Last Modify:	Jane 1210251731
+	*/
+	#threadbeginid { position: fixed; top: 0px; left: 0px; z-index: 999; }
+		#threadbeginid .beginidin { position: absolute; top: 0; right: 0px; z-index: 999; }
+		#threadbeginid .beginidimg { background: white; filter:alpha(opacity=0); opacity: 0; }
 /** end **/
 
 
@@ -365,11 +489,22 @@ Translated by Valery Votintsev
 		.bdl dd a { display: block; margin: 0 3px; padding: 0 7px; height: 26px; line-height: 26px; overflow: hidden; }
 	/* Expand Partition */
 	.bdl dl.a { padding-bottom: 4px; background-color: #FFF; }
-		.bdl dl.a dt { margin-bottom: 3px; background-position: 0% -27px; } /* charaf > .bdl dl.a dt { margin-bottom: 3px; background-position: 100% -27px; }*/
+		.bdl dl.a dt { margin-bottom: 3px; background-position: 0% -27px; }
 		.bdl dl.a dd, .bdl_fav dd { display: block; overflow: hidden; zoom: 1; }
 			/* Current Forum */
 			.bdl dd.bdl_a a { background-color: #F5F9FB; font-weight: 700; color: {HIGHLIGHTLINK}; }
 
+	.previewPost { width: 100%; font-size: 14px; }
+	/* Click loading the Next button style */
+	#autopbn { display: block; margin-bottom: 10px; border: 1px solid rgb(194, 213, 227); border-radius: 3px; text-align: center; }
+	#autopbn:hover { background: #fff; text-decoration: none; }
+	/* Rise and Fall icon style */
+	.ico_increase, .ico_fall { display: inline-block; width: 16px; height: 16px; margin: 0 5px; background: url({IMGDIR}/increase.png) no-repeat left center; vertical-align: middle; text-indent: -999em; }
+	.ico_fall { background: url({IMGDIR}/fall.png) no-repeat left center; }
+	/* Forum hot posts Calendar Style */
+	#ReTie_review h6 { padding: 0 10px; line-height: 27px; }
+	.review_this { padding: 5px 0 10px; }
+	.review_this li { float: left; width: 7.5%; text-align: center; }
 /*
 	Level:			Channel
 	Explain:		New posts to remind panel
@@ -394,9 +529,24 @@ Translated by Valery Votintsev
 /** end **/
 
 
+/** forum **/
+/*
+	Name:			mod_forum_jump
+	Level:			Function
+	Explain:		Quick Jump Menu
+	Last Modify:	Pony 11080915
+*/
+#fjump_menu { overflow-x: hidden; max-height: 600px; }
+	#fjump_menu dl { width: 200px; }
+		#fjump_menu dt { font-weight: 700; }
+		#fjump_menu dd { text-indent: 1em; }
+		#fjump_menu li.a a { background-color: {SPECIALBG}; }
+/** end **/
+
+
 
 /* ------------ Topic list style ------------------------------------------------------------ */
-/** forum::forumdisplay,forum::viewthread,forum::modcp,group,home::space,home::task,search::forum,search::group,member::groupexpiry,misc::ranklist,misc::stat **/
+/** forum::forumdisplay,forum::viewthread,forum::modcp,forum::collection,group,home::space,home::task,home::follow,search::forum,search::group,member::groupexpiry,misc::ranklist,misc::stat,misc::tag,forum::guide,portal::block **/
 /* fct --> froumatction Function Button */
 	.fct a { float: right; margin-right: 8px; }
 /*vot*/	.fa_fav_0, .fa_fav, .fa_rss, .fa_achv, .fa_bin, .fa_ivt, .fa_mng, .fa_pend { padding-right: 16px; background: no-repeat 100% 50%; }
@@ -423,6 +573,7 @@ Translated by Valery Votintsev
 			#fh .o a { float: right; margin-left: 10px; }
 	#fh.m { padding-top: 0; background-color: {COMMONBG}; }
 	.xst { font-family: {THREADTITLEFONT}; font-size: {THREADTITLEFONTSIZE}; }
+		.xst i { font-style: italic; }
 
 	/* threadtype Thread Type */
 	.ttp { margin-bottom: 5px; padding-top: 10px; border-width: 2px 0 0; background: transparent; }
@@ -441,11 +592,24 @@ Translated by Valery Votintsev
 		.tl th, .tl td { padding: 5px 0; border-bottom: 1px solid {CONTENTSEPARATE}; }
 			.emptb th, .emptb td { padding: 0; border-bottom: none; }
 			.tl tr:hover th, .tl tr:hover td { background-color: {COMMONBG}; }
-			.tl th { padding-left: 1.5em; zoom: 1; }
-				.tl th a:visited { color: {MIDTEXT}; }
+			.tl .threadpre td, .tl .threadpre:hover td { background-color: #FCFCFC; }
+			.tl .threadpre .threadpretd { border-left: 1px solid {CONTENTSEPARATE}; border-right: 1px solid {CONTENTSEPARATE};  }
+/*vot*/			.tl th .tdpre, .tl td.fn .tdpre { visibility: hidden; display: inline; width: 24px; height: 24px; margin-top: 3px; background: url({IMGDIR}/preview.png) no-repeat; text-indent: -999em; overflow:hidden; }
+			.tl th:hover .tdpre, .tl td.fn:hover .tdpre  { visibility: visible; }
+			.ie6 .tl th .tdpre, .ie6 .tl td.fn .tdpre { display: none; }
+			
+
+			.fastpreview { position: relative; }
+			.icon_preview { position: absolute; display: block; left: 80px; top: -13px; width: 11px; height: 8px; background: url({IMGDIR}/icon_preview.png); overflow: hidden; }
+			a.icon_up { display: block; margin:0 10px; height: 25px; background: #F2F2F2 url({IMGDIR}/arrow_up.png) no-repeat 50% 50%; overflow: hidden; border:1px dashed rgb(194, 213, 227); border-radius: 3px; }
+			a.icon_up:hover { background:#FFF url({IMGDIR}/arrow_up_hover.png) no-repeat 50% 50%; }
+				.fastpreview td { border-bottom: none!important; }
+			.tl th, .tl td.fn { padding-right: 1.5em; zoom: 1; }
+				.tl th a:visited, .tl td.fn a:visited { color: {MIDTEXT}; }
 				.fromg { visibility: hidden; }
 				.ie6 .fromg, tr:hover .fromg { visibility: visible; }
-			.tl .icn { padding-right: 5px; width: 25px; text-align: right; }
+			.tl .icn { padding-left: 5px; width: 25px; text-align: left; }
+				.tl .icn a:hover { text-decoration: none; }
 			.tl .new {}
 			.tl .comm {}
 			.tl .frm { width: 150px; }
@@ -464,6 +628,10 @@ Translated by Valery Votintsev
 		.tl .th td, .tl .th th { height: 20px; border: none; vertical-align: baseline; }
 	.tl .tf { padding: 3px 0; }
 		.tf .showmenu:hover { border-color: {SPECIALBORDER}; }
+		
+		
+
+	.tl_reply { padding-left: 10px; background: url({IMGDIR}/dot.gif) no-repeat 0 7px; }
 
 	/* recy --> recyclebin Recycle Bin theme style list of topics by shuaishuai*/
 	.recy { text-decoration: line-through; }
@@ -472,6 +640,22 @@ Translated by Valery Votintsev
 	.tps { white-space: nowrap; }
 		.tps a { padding: 2px 4px; color: {TABLETEXT}; }
 			.tps a:hover { background-color: {COMMONBG}; color: #007CD5; }
+
+/*
+	Name:			mod_thread_type_index
+	Level:			Function
+	Explain:		Classified information retrieval
+	Last Modify:	Pony 12020309
+*/
+.tsm { overflow: hidden; margin-bottom: -10px; width: 100%; border-collapse: collapse !important; }
+	.ie6 .tsm, .ie7 .tsm { margin-bottom: 0; }
+	.tsm th { padding: 5px 0 5px 10px; border: none; vertical-align: top; }
+	.tsm td { padding: 5px 10px 5px 0; border: none; vertical-align: top; }
+	.tsm tr:hover th, .tsm tr:hover td { background: none !important; }
+	.tsm li { float: left; margin-right: 4px; padding: 0 4px; white-space: nowrap; }
+	.tsm .a a { color: {TABLETEXT}; font-weight: 700; }
+		.tsm .a a:hover { text-decoration: none; }
+	.subtsm { margin-top: 5px; padding: 5px; border: 1px dotted {SPECIALBORDER}; }
 
 /*
 	Name:			mod_thread_type_search
@@ -502,10 +686,20 @@ Translated by Valery Votintsev
 /** forum::viewthread,group::viewthread **/
 .plh { line-height: 46px; }
 	.plh .plc { padding-bottom: 0; }
-/*vot*/	.ts { font: 700 16px Verdana, Arial, Tahoma, sans-serif; }
+
+/*
+	Name:			mod_viewthread_header
+	Level:			Function
+	Explain:		View Thread Header
+	Last Modify:	Pony 201201181105
+*/
+	.vwthd { padding-right: 80px !important; }
+		.vwthd div.y { display: inline; margin-right: -60px; }
+/*vot*/	.ts { /*display: inline;*/ font: 700 16px Verdana, Arial, Tahoma, sans-serif; }
 
 #nv_forum #ct { border-color: {SPECIALBORDER}; }
 
+.pattl_c .tip { margin-top: 30px; padding: 5px; width: 88px; }
 .pattimg { float: right; margin: 0 0 10px 10px; width: 100px; height: 100px; overflow: hidden; }
 .pattimg_zoom { position: absolute; display: block; width: 100px; height: 100px; line-height: 300px; overflow: hidden; }
 	.ie_all .pattimg_zoom { background-color: #FFF; filter:alpha(opacity=0); }
@@ -518,8 +712,64 @@ Translated by Valery Votintsev
 	.cgtl td, .cgtl th, .cgtl caption { padding: 5px; border-bottom: 1px solid {SPECIALBORDER}; }
 	.cgtl caption { background: {SPECIALBG}; border-top: 1px solid {SPECIALBORDER}; font-size: 14px; font-weight: 700; }
 	.cgtl th { width: 16%; }
-/** end **/
 
+/*
+	Name:			mod_cp_pls
+	Level:			Function
+	Explain:		Floors below the user information management link of the post page
+	Author:			Pony 12010414
+*/
+.cp_pls a { float: left; margin-right: 4px; line-height: 1.231; }
+#scrollleftinfo { position: fixed; left: auto; top: auto; width: 5px; height: 200px; border-radius: 0 5px 5px 0; background: url({IMGDIR}/sidecontrol.png) no-repeat -9px 0; cursor: pointer; }
+#scrollleftinfo.open { width: 9px; background-position: 0 0; }
+
+.img_tit_t .xi1 { color:#444; }
+.img_tit_t .ph { font-weight:700; font-size:16px; }
+.ph_r_con { padding: 20px 0 0; }
+a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-left:25px; height:19px; display:inline-block; color:#444; }
+	a.thread_mod:hover { background: url({IMGDIR}/bigimg.png) no-repeat 0 -57px; color:#369 !important; text-decoration:none; }
+	a.thread_mod span { color:#444; font-weight:700; }
+	a.thread_mod:hover span { color:#539BCB !important; }
+
+/*
+	Name:			mod_cp_pls
+	Level:			Function
+	Explain:		Posting Image style
+	Author:	Alice 201303281607
+*/
+#imagelist_nav { background: none repeat scroll 0 0 #DDD; margin-top: 20px; height: 150px; width: 780px; }
+	#imagelist_nav .imagelist_album { color: #FFFFFF; font-size: 12px; overflow: hidden; width: 780px; }
+	#imagelist_nav .imagelist_album div.left { height: 110px; margin-top: 18px; overflow: hidden; position: relative; width: 730px; float: left; }
+	#imagelist_nav .imagelist_album div.left ul { left: 0; position: absolute; z-index: 2; margin: 0 0; }
+	#imagelist_nav .imagelist_album div.left li { float: left; height: 110px; text-align: center; margin-top: 5px; list-style: none outside none; }
+	#imagelist_nav .imagelist_album a.left { background: url({IMGDIR}/imagelist_nav.png) no-repeat -21px 0px; height: 63px; margin-top: 42px; margin-left: 1px; width: 24px; float: left; }
+	#imagelist_nav .imagelist_album a.left:hover { background: url({IMGDIR}/imagelist_nav.png) no-repeat 2px -70px; }
+	#imagelist_nav .imagelist_album a.right { background: url({IMGDIR}/imagelist_nav.png) no-repeat 2px 0px; height: 63px; margin-top: 42px; margin-right: 1px; width: 24px; float: right; }
+	#imagelist_nav .imagelist_album a.right:hover { background: url({IMGDIR}/imagelist_nav.png) no-repeat -21px -70px; }
+	#imagelist_nav .imagelist_album div.left a.mask { background-color:#333; display: block; height: 110px; overflow: hidden; position: absolute; width: 110px; z-index: 1; }
+	#imagelist_nav .imagelist_album div.left li div { height: 110px; position: relative; overflow: hidden; cursor: pointer; width: 110px; }
+	#imagelist_nav .imagelist_album div.left li div span { background-color: #000000; bottom: 2px; color: #FFFFFF; display: block; font-size: 12px; height: 14px; line-height: 14px; position: absolute; right: 5px; text-align: center; top:86px; width: 33px; }
+	.photo_pic { width:780px; }
+	.ie6 #photo_pic img { width: expression(this.width > 620 ? 620:true); }
+	.ie6 .photo_pic { width:780px; margin:0 auto; }
+	.album_side_r { border-left:1px dashed #CDCDCD; }
+	.album_side { padding:20px 10px; font-size:12px; }
+	.album_side .hm { padding:0 0 10px; }
+	.album_info h3 { color:#999; margin:10px 0; }
+	.album_side .date { color:#999; }
+	.album_info p { text-indent:2em; }
+	.tit_author { display:block; }
+	.tit_author a { color: #369; font-size:14px; font-weight:700; }
+	
+/* Author pointing Expand all by Alice */
+	.authi .none { display:inline-block; }
+	.authi .show { display:none; }
+	.authi:hover .none { display:none; }
+	.authi:hover .show { display:inline-block; }
+	.ie6 .authi .none { display:none; }
+	.ie6 .authi .show { display:inline-block; }
+		
+/** end **/
 
 /** forum::forumdisplay,group::forumdisplay **/
 /* post list of the "new window ", "photo mode " button style, chk with the float need to use modified by Pony */
@@ -529,24 +779,35 @@ Translated by Valery Votintsev
 		.unchk:hover, .chked:hover { text-decoration: none; }
 
 #a_magic_doodle { padding-right: 20px; background: url({STATICURL}image/magic/doodle.small.gif) 0 50% no-repeat; }
-
+		/* Redefine the tab label style breakdown by alice 13032514 */
+		.ttp .num { background:#999; padding:0 5px; margin-left:5px; border-radius:3px; color:#FFF !important; }
+		.ttp .a .num { background:#91BDD3; }
+		/* Redefine the post more categories and tags by alice 13032614 */		
+		.pop_moremenu li { display:block; border-bottom:1px solid #E5EDF2; line-height:24px; }
+		.pop_moremenu a { display:inline; text-decoration:none; border-bottom:0; }
+		.pop_moremenu li:last-child { border-bottom:none; }
+		.pop_moremenu .pipe { margin:0; }
+		.pop_moremenu a.xw1 { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-decoration: none; font-weight:normal; }
 /*
 	Name:			mod_Media_List_thread
 	Level:			Global
 	depentend:		.ml
 	Explain:		Picture mode message list
 	Author:			lushnis
-	Last Modify:	Pony 11042616
+	Last Modify:	Pony 11121511
 */
 	.mlt {}
 		.mlt li { display: inline; margin: 0 4px 10px; padding-top: 5px; border: 1px solid {SPECIALBG}; border-bottom-color: {SPECIALBORDER}; background: #FFF; text-align: right; }
-			.mlt .sum { padding: 0 5px; border-radius: 5px; background: {SPECIALBG}; }
-			.mlt .c .nopic { background:{WRAPBG} url({IMGDIR}/nophototiny.png) no-repeat 50% 50%; }
+			.mlt .sum { display: inline-block; padding: 0 5px; height: 16px; line-height: 16px; border-radius: 5px; background: {SPECIALBG}; }
+				.mlt .pin { background: #7B3; color: #FFF; }
+				.mlt .digest { background: #0BC; color: #FFF; }
+			.mlt .c .nopic { display: block; background:{WRAPBG} url({IMGDIR}/nophototiny.png) no-repeat 50% 50%; cursor: pointer; }
 			.mlt img.vm { display: inline; }
 
 			.mlt h3 { height: 30px; line-height: 30px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 			.mlt li .cl { height: 18px; overflow: hidden; }
 				.mlt li .c { height: auto !important; }
+			.mlt li span { display: inline; color: {TABLETEXT}; }
 
 /*
 	Name:			mod_threadlist_last-child
@@ -555,6 +816,17 @@ Translated by Valery Votintsev
 	Last Modify:	Pony
 */
 .tl tbody:last-child th, .tl tbody:last-child td { border-bottom: none; }
+.tl tbody:last-child .threadpre .threadpretd { border: 1px solid {CONTENTSEPARATE};}
+/*
+	Name:			showhide
+	Level:			Function
+	Explain:		Topics list page Hide top posts button style
+	Last Modify:	Jane
+*/
+.showhide { width: 12px; height: 12px; background: url({IMGDIR}/close.gif) no-repeat 0 0; text-indent: -999em; cursor: pointer; overflow: hidden; }
+.showhide:hover { background-position: 0 -12px; }
+.ie6 .showhide { display: none; }
+.pcb .jammer { font-size: 10px; color: {WRAPBG}; }
 /** end **/
 
 
@@ -569,13 +841,17 @@ Translated by Valery Votintsev
 		.plc { padding: 0 20px; }
 		.pls { width: 160px; background: {SPECIALBG}; overflow: hidden; border-left: 1px solid {CONTENTSEPARATE}; }
 		.pls .avatar { margin: 10px 15px; }
-			.pls .avatar img { padding: 5px 5px 8px; background: #FFF url({IMGDIR}/midavt_shadow.gif) 0 100% repeat-x; }
+			.pls .avatar img { padding: 5px 5px 8px; background: #FFF url({IMGDIR}/midavt_shadow.gif) 0 100% repeat-x; width:120px; }
+
+			.pls .favatar { background: transparent; height: auto; border-width: 0px; overflow: visible; }
 
 /*vot*/		.pls p, .pls .pil, .pls .o { /*margin: 10px 20px;*/ padding: 2px 6px; }
 /*vot*/			.pls p em, .pls dt em { color: {NOTICETEXT}; padding-right: 10px; }
 			.pls dd, .pls dt { float: right; overflow: hidden; height: 1.6em; line-height: 1.6em; }
 				.pls dt { margin-left: 3px; width: 60px; }
 				.pls dd { width: 65px; }
+					.pls dd img { margin-top: -2px; max-width: 65px; }
+						.ie6 .pls dd img, .ie7 .pls dd img { margin-top: 2px; width: expression(this.width > 65 ? 65 : true); }
 	.ad .pls { background: {CONTENTSEPARATE}; padding: 0; height: 4px; }
 	.ad .plc { background: {SPECIALBG}; padding: 0; overflow: hidden; }
 	.pl .pnv .pls { background: {SPECIALBG}; border: solid {SPECIALBORDER}; border-width: 0 0 1px 1px; line-height: 16px; }
@@ -586,19 +862,22 @@ Translated by Valery Votintsev
 	.tnv { text-align: center; vertical-align: middle; } /* Threads navigation by lushnis */
 
 	#threadstamp { position: relative; width: 100%; height: 0; overflow: visible; }
-		#threadstamp img { position: absolute; top: -20px; left: 140px; }
+		#threadstamp img { position: absolute; top: -20px; left: 170px; }
 
 	#pl_top .ad .pls, #pl_top .ad .plc { height: 1px;overflow: hidden; }
 		#pl_top .pls { text-indent: 15px; }
 
-/* Posts of the time, the floor where the block and some properties */
+/* Block for post time, floor and some properties */
 /*vot*/	.pi { overflow: hidden; margin-bottom: 10px; padding: 10px 0; /*height: 16px;*/ border-bottom: 1px dashed {COMMONBORDER}; }
 		.pi strong a { float: left; margin-top: -6px; padding: 4px 6px; border: 1px solid {WRAPBG}; font-weight: 400; }
 			.pi strong a:hover { border-color: {COMMONBORDER}; }
 		.pls .pi { padding-right: 15px; }
 		.pi em {}
 		.pti {}
-			.authicn { cursor: pointer; }
+			.authicn { cursor: pointer; width:16px; }
+			
+/* Post Mobile Forum popup */
+	.code_bg {background: url({IMGDIR}/code_bg.png) no-repeat 0 0; display:inline-block; padding:4px; margin:10px 20px; }
 
 /* Post the text block */
 	.pcb { clear: right; margin-left: 130px; }
@@ -627,6 +906,7 @@ Translated by Valery Votintsev
 				ul.litype_1 li { list-style-type: decimal; }
 				ul.litype_2 li { list-style-type: lower-alpha; }
 				ul.litype_3 li { list-style-type: upper-alpha; }
+		.t_f i { font-style: italic; }
 		.sign { overflow: hidden; padding: 20px 0 10px; line-height: 1.6em; background: url({IMGDIR}/sigline.gif) no-repeat 100% 0; }
 			* html .sign { height: expression(signature(this)); }
 			.sign * { line-height: normal; }
@@ -634,23 +914,29 @@ Translated by Valery Votintsev
 			.po .y { margin: 8px 5px 0 0; }
 			.po p { float: left; }
 				.po p a, .po p label { margin-left: 6px; }
+		.hin { opacity: 0.2;}
+			.plhin:hover .hin { opacity: 1; }
 		.pob { line-height: 36px; }
 			.pob em { float: right;}
 				.pob em a { padding: 5px 25px 5px 10px; }
 			.cmmnt { background: url({IMGDIR}/cmmnt.gif) no-repeat 100% 50%; }
 			.fastre { background: url({IMGDIR}/fastreply.gif) no-repeat 100% 50%; }
+			.followp { background: url({IMGDIR}/rt.png) no-repeat 0 50%; }
+			.sharep { background: url({IMGDIR}/oshr.png) no-repeat 0 50%; }
 			.req { background: url({IMGDIR}/repquote.gif) no-repeat 100% 50%; }
 			.editp { background: url({IMGDIR}/edit.gif) no-repeat 100% 50%; }
 			.appendp { background: url({IMGDIR}/icon_append.png) no-repeat 100% 50%; }
 			.psave { background: url({IMGDIR}/pubsave.gif) no-repeat 100% 50%; }
 			.push { background: url({IMGDIR}/push.png) no-repeat 100% 50%; }
-		.modact { display: block; height: 32px; text-align: center; }
+			.replyadd { background: url({IMGDIR}/rec_add.gif) no-repeat 0 50%; }
+			.replysubtract { background: url({IMGDIR}/rec_subtract.gif) no-repeat 0 50%; }
+		.modact { display: block; height: 32px; text-align: center; padding:30px 0 0; }
 			.modact, .modact a { line-height: 32px !important; }
-
-		#p_btn { line-height: 24px; }
-			#p_btn a { float: right; margin-right: 3px; padding-right: 4px; padding-left: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 0 0; vertical-align: top; white-space: nowrap; }
+		/* Push button by alice */
+		#p_btn { line-height: 24px; padding:3em 0; text-align:center; }
+			#p_btn a { display:inline-block; margin-left: 3px; padding-left: 4px; padding-right: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 0 0; vertical-align: top; white-space: nowrap; }
 				#p_btn a:hover { text-decoration: none; }
-				#p_btn i { display: block; padding-right: 8px; background: url({IMGDIR}/share_btn.png) no-repeat 100% 100%; font-style: normal; cursor: pointer; }
+				#p_btn i { display: block; padding:4px 0 4px 8px; background: url({IMGDIR}/share_btn.png) no-repeat 100% 100%; font-style: normal; cursor: pointer; }
 					#p_btn img { float: right; margin: 4px 0 0 3px; }
 					#p_btn span { padding-left: 2px; color: {LIGHTTEXT}; }
 			.tshare { padding-bottom: 10px; }
@@ -658,7 +944,6 @@ Translated by Valery Votintsev
 				#p_btn .tshare a, #p_btn .tshare i { padding: 0; background-image: none; }
 					#p_btn .tshare a { margin-right: 10px; color: {HIGHLIGHTLINK}; }
 					#p_btn .tshare a:hover { text-decoration: underline; }
-
 		.rate { margin: 20px 0; font-size: 12px; }
 			.rate dt { float: right; padding-top: 7px; width: 80px; text-align: center; }
 				.rate dt strong { padding: 12px 8px; height: 46px; font-size: 24px; background: #FFF4DD; }
@@ -669,18 +954,22 @@ Translated by Valery Votintsev
 				.rate .ratt { border-bottom: 1px dotted {WRAPBORDERCOLOR}; padding: 6px 0; }
 				.ratl th, .ratl td, .ratc { overflow: hidden; padding: 5px 2px; height: 24px; line-height: 24px; border-bottom: 1px dashed {WRAPBORDERCOLOR}; white-space: nowrap; }
 				.ratl img { height: 24px; width: 24px; vertical-align: middle; }
-			.rate_collapse .ratl_l { display: none; }
-				.rate_collapse i { visibility: hidden; }
+			.rate_collapse .ratl_l,.rate_collapse .ratc { display: none; }
+				.rate_collapse .txt_h { visibility: hidden; }
 				.rate .op { padding-left: 16px; background: url({IMGDIR}/arrow_top.gif) no-repeat 100% 50%; }
 					.rate_collapse .op { background-image: url({IMGDIR}/arrow_down.gif); }
 			.rate i { font-style: normal; }
+			.ratl .xw1 .xi1 { background:#FFF4DD; border-radius:3px; padding:2px 3px; }
+			
+			.icon_ring { background:#FFF4DD; display: inline-block; width:8px; height:8px; margin-right:5px; border:2px solid #F26C4F; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2); overflow: hidden; }
+			.icon_ring:hover { background:#F26C4F; border:2px solid #FFF; }
 
 /* Replies Recommended post sticklist by dfox */
 	.psth { margin: 2em -20px 2em 0; padding: 5px 20px 5px 45px; width: 240px; background: #FFF4DD url({IMGDIR}/arw.gif) no-repeat 100% 50%; color: {NOTICETEXT}; font-size: 14px; }
 	.tpst .psth { margin-right: -15px; }
-	.pstl { clear: right; margin-bottom: 2em; }
+	.pstl { clear: right; margin-bottom: 2em;}
 		.psta { float: right; width: 30px; }
-			.psta img { width: 24px; height: 24px; }
+			.psta img { width: 24px; height: 24px; vertical-align:midden; }
 		.psti { margin-right: 30px; }
 
 /* Reviews by monkeye */
@@ -693,6 +982,11 @@ Translated by Valery Votintsev
 			.cmstarv { padding-left: 100px; width: 100px; height: 16px; background: url({IMGDIR}/starlevel.gif) no-repeat 12px 0; }
 			.cmm .cmstar { margin-top: 0; }
 			.cmstar em { float: right; width: 16px; height: 16px; overflow: hidden; text-indent: -9999px; }
+
+/* Filtering Tip */
+	#hiddenpoststip { line-height:40px;padding-left:20px;background: #FFFAF3; font-size: 12px; text-align: center; }
+	#hiddenpoststip a { display: block; text-indent: 25px; height: 29px; line-height: 29px; color: #EFAA00; }
+	#hiddenpoststip a:hover { text-decoration: none; }
 
 /*
 	Name:			mod_viewthread_author
@@ -715,11 +1009,14 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.bui dl { margin: 5px 0 10px; }
 			.bui dt { width: 4.5em; }
 			.bui dd { margin-left: 10px; width: 75px; }
-		.bui .m img { margin-bottom: 12px; }
+		.bui .m img { margin-bottom: 12px; width: 120px; }
 		.bui .i { width: 290px; }
 			.imicn img { vertical-align: middle; margin-left: 8px; }
 				.imicn .xi2:hover { text-decoration: none; }
 				.imicn .xi2 img { margin-left: 0; }
+				.card_gender_0 { background: #efefef url({IMGDIR}/nosexbg.png) no-repeat bottom right; }
+				.card_gender_1 { background: #bbebf9 url({IMGDIR}/gentlemanbg.png) no-repeat bottom right; }
+				.card_gender_2 { background: #fce0df url({IMGDIR}/ladybg.png) no-repeat bottom right; }
 
 	/*
 		Name:			mod_user_interaction
@@ -732,6 +1029,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.pls .o .buddy { background-image: url({STATICURL}image/feed/friend.gif); }
 		.pls .o .poke2 { background-image: url({STATICURL}image/feed/poke.gif); }
 		.pls .o .pm2 { background-image: url({IMGDIR}/pmto.gif); }
+		.pls .o .addflw { background-image: url({IMGDIR}/flw_ico.png); }
 	/* Tuning the user group upgrade Prompt at left post side, Last Modify Pony */
 	.pls .tip_4 { margin-right: -5px; }
 
@@ -762,27 +1060,32 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		Level:			Function
 		Explain:		Post code / reference other styles
 		Author:			lushnis
-		Last Modify:	Pony 11053010
+		Last Modify:	Pony 1205241556
 	*/
 	.pl .quote, .pl .blockcode { margin: 10px 0; padding: 10px 10px 10px 65px; zoom: 1; }
 	.pl .quote { padding-bottom: 5px; background: #F9F9F9 url({IMGDIR}/icon_quote_s.gif) no-repeat 20px 6px; }
-		.pl .quote blockquote { margin: 0; padding: 0 65px 5px 0; background: url({IMGDIR}/icon_quote_e.gif) no-repeat 100% 100%; line-height: 1.6; zoom: 1; }
+		.pl .quote blockquote { display: inline-block; margin: 0; padding: 0 65px 5px 0; background: url({IMGDIR}/icon_quote_e.gif) no-repeat 100% 100%; line-height: 1.6; zoom: 1; }
+			.ie6 .pl .quote blockquote, .ie7 .pl .quote blockquote { display: inline }
 
 	.pl .blockcode * { direction: ltr; }
 	.pl .blockcode { padding: 10px 0 5px 10px; border: 1px solid {WRAPBORDERCOLOR}; background: #F7F7F7 url({IMGDIR}/codebg.gif) repeat-y 0 0; overflow: hidden; }
 		.pl .blockcode ol { margin: 0 0 0 10px !important; padding: 0 !important; }
-			.pl .blockcode ol li { padding-left: 10px; list-style-type: decimal-leading-zero; font-family: Monaco,Consolas,"Lucida Console","Courier New",serif; font-size: 12px; line-height: 1.8em; }
+			.pl .blockcode ol li { padding-left: 10px; list-style-type: decimal-leading-zero; font-family: Monaco,Consolas,'Lucida Console','Courier New',serif; font-size: 12px; line-height: 1.8em; }
 				.pl .blockcode ol li:hover { background: {WRAPBG}; color: {HIGHLIGHTLINK}; }
-			* html .pl .blockcode ol li { font-family: "Courier New",serif; }
+			* html .pl .blockcode ol li { font-family: 'Courier New',serif; }
 		.pl .blockcode em { margin-right: 43px; color: {HIGHLIGHTLINK} !important; font-size: 12px; cursor: pointer; }
-		.pl .blockcode li { margin-left: 2em; }
+		.pl .tindex { padding: 5px; width: 500px; line-height: 22px; border: 1px solid {WRAPBORDERCOLOR}; }
+			.pl .tindex h3 { border-bottom: 1px #ccc dotted; margin-bottom: 10px; padding-left: 10px; }
+			.pl .tindex li { cursor: pointer; height: 22px; padding-left: 22px; background: url({IMGDIR}/ico_mulu.png) no-repeat 10px center; overflow: hidden; }
+
 
 /* Poll optionvessel by dfox */
 	.pcht { margin-bottom: 15px; }
-		.pcht h4 a { color: {HIGHLIGHTLINK}; text-decoration:underline; }
+	.polltd { padding: 4px; border: 1px #dfdfdf solid; border-radius: 3px; }
+		.pcht h4 a { color: {HIGHLIGHTLINK}; text-decoration: underline; }
 		.pcht table { table-layout: fixed; }
-		.pcht table td { padding: 4px 2px; vertical-align: middle; }
-			.pslt { width: 20px; }
+		.pcht table td { padding: 4px; vertical-align: top; }
+			.pslt { width: 20px; vertical-align: middle !important; }
 			.pvt { width: auto; }
 				.pvt label { cursor: pointer; }
 			.pvts { width: 100px; }
@@ -792,7 +1095,9 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.pinf strong { color: {MIDTEXT}; }
 			.pinf a { color: {HIGHLIGHTLINK}; }
 		.ptmr { margin: -10px 0 15px; }
-
+		.imgf2 { position: relative; height: 20px; background: #e9e9e9; border-radius: 0 10px 10px 0; }
+		.jdt { display: block; width: 1px; height: 20px; background: #f2a61f; border-radius: 0 10px 10px 0;}
+		.imgfc { position: absolute; left: 0; top: 0; padding: 0 5%; width: 90%; line-height: 20px; }
 	/*
 		Name:			mod_voter_list
 		Level:			Function
@@ -808,7 +1113,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		Level:			Function
 		Explain:		spvimg,spi Activity, public part of the goods
 		Author:			dfox
-		Last Modify:	Pony 11082510
+		Last Modify:	Pony 11082511
 	*/
 	.act {}
 		.act .c { line-height: 28px; font-size: 14px; }
@@ -829,6 +1134,9 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.actl_pop { overflow: auto; max-width: 200px; max-height: 300px; }
 			.ie6 .actl_pop { width: 200px !important; height: expression(this.offsetHeight > 300 ? 300 : 'auto'); }
 			.actl_pop li { display: block; padding: 3px 0; border-bottom: 1px dashed {COMMONBORDER}; }
+			/* Redefine the link in the pop */
+			.actl_pop a { display: inline; position: static; padding: 0; border: none; white-space: normal; }
+				.actl_pop a:hover { background: transparent; text-decoration: underline; }
 
 /* Reward by dfox */
 	.rwd {}
@@ -897,6 +1205,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 #modopt, #modopttmp { margin-right:5px; }
 /** end **/
 
+/** forum::forumdisplay,group::forumdisplay **/
+.previewPost .tindex { padding: 5px; width: 500px; line-height: 22px; border: 1px solid {WRAPBORDERCOLOR}; }
+	.previewPost .tindex h3 { border-bottom: 1px #ccc dotted; margin-bottom: 10px; padding-left: 10px; }
+	.previewPost .tindex li { cursor: pointer; height: 22px; padding-left: 22px; background: url({IMGDIR}/ico_mulu.png) no-repeat 10px center; overflow: hidden; }
+/** end **/
 
 /** forum::viewthread,group::viewthread,forum::forumdisplay,group::forumdisplay **/
 /*
@@ -910,9 +1223,6 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	#visitedforums_menu td { padding: 5px 10px; vertical-align: top; }
 	#visitedforums_menu a { white-space: normal !important; display: inline-block; overflow: hidden; height: 1.5em; }
 	#v_forums { width: 120px; }
-.visited_w { width: 400px !important; }
-	.visited_w table { table-layout: fixed; width: 100%; }
-	.visited_w #v_threads { border-left: 1px solid {COMMONBORDER}; }
 #v_threads li, #v_forums li { padding-right: 10px; background: url({IMGDIR}/dot.gif) no-repeat 100% 7px; }
 
 /* Quick smilies view */
@@ -1013,7 +1323,9 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 	/* Moderator viewing a post attachments charges, and inserted into the post content in the attach to the time by Pony */
 	.attprice { padding: 5px; border: 1px dashed #FF9A9A; }
+/** end **/
 
+/** forum::viewthread,group::viewthread,forum::trade,portal::view,forum::forumdisplay **/
 	/*
 		Name:			mod_zoominner
 		Level:			Function
@@ -1122,16 +1434,19 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 /** forum::viewthread,portal::view,portal::comment,home::space **/
 /* Article/Blog View by lushnis */
-	.vw { }
+	.vw {}
 		.vw .h { padding-bottom: 15px; border-bottom: 1px solid {COMMONBORDER}; }
 			.vw .ph { padding: 15px 0 10px; color: #000; }
 		.vw .hot { margin-left: 5px; color: {NOTICETEXT}; }
 		.vw .s { margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid {COMMONBORDER}; line-height: 2; color: {HIGHLIGHTLINK}; }
 			.vw .s strong { font-weight: 400; color: red; }
 		.vw .d { margin: 15px 0; min-height: 100px; font-size: 14px; line-height: 1.8; color: #000; }
+			.vw .d i { font-style: italic; }
 			.vw .d img { max-width: 620px; }
 			.ie6 .vw .d img { width: expression(this.width > 620 ? 620:true); }
-			.vwtb { table-layout: fixed; width: 100%; }
+			.vwtb { table-layout: fixed; width: 100%; height: 300px; }
+			.vw .pattl_c .tip { line-height: 1.5; }
+			#article_content { vertical-align: top; }
 		.vw .d ol, .vw .d ul { margin: 1em 2em; }
 			.vw .d ul li { list-style-type: disc; }
 			.vw .d .ml, .vw .d .xl { margin: 0; }
@@ -1139,7 +1454,16 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.vw .attach { padding-right: 20px; background: url({IMGDIR}/fach.gif) no-repeat 0 50%; color: {HIGHLIGHTLINK}; }
 		.vw .o { margin-top: 15px; padding-top: 5px; border-top: 1px solid {COMMONBORDER}; text-align: left; }
 			.vw .o .mgcmn { width: auto; text-align: right; }
-		#nv_portal .vw .h, #nv_portal .vw .s, #nv_portal .vw .d, #nv_portal .vw .o,#nv_forum .vw .h, #nv_forum .vw .s, #nv_forum .vw .d { margin-right: 15px; margin-left: 15px; }
+		#nv_portal .vw .h, #nv_portal .vw .s, #nv_portal .vw .d, #nv_portal .vw .o, #nv_portal .vw .pren, #nv_forum .vw .h, #nv_forum .vw .s, #nv_forum .vw .d { margin-right: 15px; margin-left: 15px; }
+		.pic_h { border-radius:5px; }
+		.pic_h .h { border-bottom:1px dashed #CDCDCD; margin-left:0 !important; margin-right:0 !important; padding-left: 15px;padding-right: 15px; }
+		.pic_h .d { margin:0 !important; }
+		/* albumback by Alice */
+		.albumback #ft { border-top:0; color:#FFF; }
+		.albumback #pt a,.albumback #ft a,.albumback a.thread_mod span,.albumback .vw .ph,.albumback .album_info p,.albumback .img_tit_t .xi1 { color:#FFF; }
+		.albumback .ct2 .bm,.albumback #imagelist_nav { background:#000; }
+		.albumback #ct { border-color:#CDCDCD; }
+		.albumback a.thread_mod:hover span { color:#539BCB !important; }
 
 /* .atd -> attitude Position by Pony */
 	.atd { margin: 15px auto; }
@@ -1157,7 +1481,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /** end **/
 
 
-/** portal::portalcp **/
+/** portal::portalcp,portal::view **/
 .pgm { clear: both; padding: 5px 0; }
 	.pgm .pg { float: right; }
 
@@ -1179,18 +1503,8 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 .colorwd { margin-left: 3px; }
 .dopt input { float: right; }
 
-/*
-	Name:			mod_post_article_attach
-	Level:			Function
-	Explain:		Regional Development article post attachments
-	Last Modify:	Pony 11051011
-*/
-.posta { float: left; margin-top: 70px; padding: 0; width: 135px; }
-	.posta_c { height: 540px; overflow-x: hidden; overflow-y: auto; }
-	.ie6 .posta_c, .ie7 .posta_c { height: 548px; }
-#attach_image_body table, #attach_file_body table { table-layout: fixed; }
-#attach_image_body td, #attach_file_body td { padding: 5px 0; }
-	#attach_image_body img { margin: 0 !important; }
+/* Previous/Next article style*/
+#nv_portal .vw .pren em { display: block; width: 100%; height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /** end **/
 
 
@@ -1329,13 +1643,23 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.facel { padding: 8px; width: 240px; }
 		.facel img { margin: 5px; }
 
-/* View profile by lushnis */
-	#pprl li { clear: both; padding: 3px 90px 3px 0; }
-/*vot*/		#pprl li em { float: right; margin-right: -90px; width: 140px; white-space: nowrap; overflow: hidden; }
-	#pbbs li, #psts li, #pntc li { clear: none; float: right; width: 270px }
-
 /* Reminded of the content will be used. This stand-alone class, so personalized. To make the content more visible reminder, the span can be defined under the summary */
 	.summary { margin: 10px 0; }
+/** end **/
+
+
+/** home::space,misc::ranklist,home::follow **/
+/*
+	Name:			mod_pprl
+	Level:			Function
+	Explain:		Space, broadcasting profile page
+	Last Modify:	Pony 1109271712
+*/
+	#pprl a { color: {HIGHLIGHTLINK}; }
+	#pprl li { clear: both; padding: 3px 0 3px 90px; }
+/*vot*/		#pprl li em { float: left; margin-left: -90px; width: 140px; white-space: nowrap; overflow: hidden; }
+	.pf_l li { float: left; width: 300px; }
+		.pf_l em { padding-right: 10px; color: {MIDTEXT}; }
 /** end **/
 
 
@@ -1346,11 +1670,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** home::space **/
-/* Home page search box on the right side */
-	#sc .shortsc td { padding: 0 0 0 1px; }
 /*vot*/	.shortsc .px { width: 100px; }
-	.ie6 .shortsc .pn span { padding: 0; }
-
 /* Quick Find friends button style by ShuaiShuai */
 	.sc_display{ display:inline-block; width:36px; text-align:left;}
 
@@ -1420,26 +1740,33 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /** home::spacecp **/
 /* Space Image list */
 	.mls li { width: 90px; }
-/* Uploads by lushnis */
-	.up_row { width: 100%; }
+/*
+	Name:			mod_my_credits_list
+	Level:			Function
+	Explain:		Upload pictures
+	Last Modify:	Pony 11082413
+*/
+	.up_row { width: 100%; table-layout: fixed; }
 		.up_row td { vertical-align: middle; padding: 5px 0; border-bottom: 1px solid {SPECIALBORDER}; }
+		.up_row .c { width: 150px; }
+			.up_row .c img { width: 120px; }
 		.up_row .d { width: 400px; }
-		.up_row .o { width: 4em; text-align: center; }
-		.up_row strong { display: block; width: 100%; word-break: break-all; word-wrap: break-word; white-space: normal; overflow: hidden; }
+		.up_row strong { margin-left: 5px; }
 	#creatalbum { padding-top: 1px; border-top: 1px solid {SPECIALBORDER}; }
-	.doodle{ width:65px; background:url({STATICURL}image/magic/doodle.small.gif) no-repeat 0 center; padding-right:3px; text-align:right;}
-		.doodle a{ padding-right:2px;}
+
+.doodle { padding-right: 3px; width:65px; background:url({STATICURL}image/magic/doodle.small.gif) no-repeat 0 50%; text-align:right; }
+	.doodle a { padding-right: 2px; }
 
 /*
 	Name:			mod_my_credits_list
 	Level:			Function
 	Explain:		My Points List
-	Last Modify:	Pony
+	Last Modify:	Pony 11061714
 */
 	.creditl {}
-		.creditl li { float: right; padding: 0 65px 10px 0; width: 95px; }
+		.creditl li { float: right; margin-left: 5px; width: 24%; height: 30px; }
 		.creditl .cl { clear: both; float: none; width: auto; }
-			.creditl li em { position: absolute; overflow: hidden; margin-right: -65px; width: 60px; white-space: nowrap; font-weight: 700; }
+			.creditl li em { font-weight: 700; }
 		.creditl u { text-decoration: none; }
 /** end **/
 
@@ -1532,7 +1859,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	Name:			mod_user_selector
 	Level:			Function
 	Explain:		Users are prompted to select the effect name
-	Last Modify:	Pony
+	Last Modify:	Pony 11061311
 */
 	.un_selector { height: auto; cursor: text; overflow: hidden; }
 		.un_selector input { width: 95px; height: 19px; border-width: 0; outline: none; }
@@ -1543,12 +1870,13 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.un_selector .x { float: left; width: 15px; height: 19px; background: url({IMGDIR}/un_selector.png) no-repeat 100% -19px; text-indent: -9999px; overflow: hidden; }
 				.un_selector .x:hover { background-position: 100% -38px; }
 		a.appendmb, a.appendmb span { height: 25px; line-height: 25px !important; }
-	#friends { position: absolute; margin-top: 3px; padding: 4px; width: 120px; border: solid {DROPMENUBORDER}; border-width: 0 1px 1px; background: #FFF; }
-		.ie6 #friends, .ie7 #friends { margin-top: 4px; }
-		#friends li { display: inline; }
-			#friends a { display: block; padding: 4px 2px; color: {HIGHLIGHTLINK}; }
-				#friends a:hover { text-decoration: none; }
-				#friends a.a { background: {SPECIALBG}; }
+	/* PM according to the input user name list style */
+	.pmfrndl { position: absolute; margin-top: 3px; padding: 4px; width: 120px; border: solid {DROPMENUBORDER}; border-width: 0 1px 1px; background: #FFF; }
+		.ie6 .pmfrndl, .ie7 .pmfrndl { margin-top: 4px; }
+		.pmfrndl li { display: inline; }
+			.pmfrndl a { display: block; padding: 4px 2px; color: {HIGHLIGHTLINK}; }
+				.pmfrndl a:hover { text-decoration: none; }
+				.pmfrndl a.a { background: {SPECIALBG}; }
 	#showSelectBox_menu { padding: 10px; width: 300px; white-space: nowrap; }
 	#selBox { margin: 0 -10px 10px; padding-right: 10px; height: 110px; border: solid {COMMONBORDER}; border-width: 1px 0; overflow-y: auto; }
 /** end **/
@@ -1562,14 +1890,10 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 /** home::magic,home::medal **/
 /* .mgcl -> Magic list by lushnis */
-	.mgcl li { padding: 0 5px 5px; width: 350px; height: 120px; }
-		.mgcl img { width: 74px; height: 74px; }
-		.mgcl li p { float: left; width: 236px; text-align: right; white-space: normal; }
-		.mgcl li p.xg1 { display: block; height: 36px; }
+	.mgcl li { float: right; width: 132px; height: 180px; text-align: center; padding: 0 5px 5px; }
+		.mgcl .mg_img { margin: 0 auto 5px; }
+			.pg_medal .mgcl img { margin-top: 20px; width: auto; height: auto; }
 
-/* .mdl -> medal list by Pony */
-	.mdl { border-top: none !important; }
-	.mdlow img { width: auto; height: auto; }
 /* Medal records redefinition by Pony */
 	.el li { padding-right: 40px; }
 	.el .t { margin: -2px -30px 0 0; }
@@ -1632,8 +1956,8 @@ body { background: #FFF none !important; }
 		.td_srchbtn { background: url({IMGDIR}/searchbar.png) no-repeat 0 -70px; }
 		#scform_srchtxt { padding: 0 10px; width: 460px; background: transparent; outline: none; }
 /*vot*/		#scform_submit { width: 107px; /*opacity: 0; filter: alpha(opacity=0);*/ cursor: pointer; color: white; background: transparent; }
-		#scform_srchtxt, #scform_submit { height: 35px; border: none; line-height: 35px; }
-		.ie6 #scform_srchtxt, .ie6 #scform_submit, .ie7 #scform_srchtxt, .ie7 #scform_submit { height: 33px; border: none; line-height: 33px; }
+		#scform_srchtxt, #scform_submit { height: 35px; border: none; }
+			.ie_all #scform_srchtxt { height: 33px; line-height: 33px; }
 	.sttl { margin: 10px 0; padding: 5px; border-bottom: 1px solid #CCC; background: #F5F5F5; }
 	.slst { width: 760px; }
 		.slst a { color: #00C; text-decoration: underline; font-weight: 400; }
@@ -1644,7 +1968,7 @@ body { background: #FFF none !important; }
 		.pbw strong { font-weight: 400; }
 			.pbw p { color: #000; }
 		.p_pop span { display: none; }
-#ft { margin: 20px; text-align: center; }
+#nv_search #ft { margin: 20px; text-align: center; }
 .pg { float: none; }
 #myspace_menu li a, #navs_menu li a { background-repeat: no-repeat; background-position: -200px 0; }
 /** end **/
@@ -1701,5 +2025,254 @@ body { background: #FFF none !important; }
 .dt .stat_num { padding-left: 15px; text-align: left; }
 .pbg { float: right; width: 372px; }
 .bm_h { padding-right: 0; background: none; border: none; }
+/* Re-definition of the tab label style by Pony 11081614 */
+.ttp .a a { padding-left: 8px; padding-right: 8px; }
+.ttp li.xw1 { font-weight: 400; }
 /** end **/
 
+
+/** forum::collection,forum::viewthread **/
+.clct_list .xld { float: left; margin-bottom: 5px; width: 49.9%; height: 105px; overflow: hidden; }
+	.clct_list .xld .m, .clct_list .xld .m a { width: 55px; height: 50px; overflow: hidden; cursor: pointer; }
+		.clct_list .xld .m { background: url({IMGDIR}/hotspot.gif) no-repeat 100% 0; }
+		.clct_list .xld .m a:hover { text-decoration: none; }
+		.clct_list .xld .m strong { display: block; height: 32px; line-height: 32px; }
+		.clct_list .xld .m span { display: block; color: #FFF; }
+.clct_flw { float: right; margin-top: 5px; height: 25px; line-height: 25px; line-height: 25px; overflow: hidden; }
+.clct_flw i { float: right; width: 42px; text-align: center; background: url({IMGDIR}/pdbt.gif) no-repeat 0 0; color: #FFF; font-style: normal; }
+	.clct_flw .u { width: 66px; background-position: 0 -125px; }
+.clct_flw strong { float: right; padding: 0 20px; background: url({IMGDIR}/pdbt.gif) no-repeat 100% -25px; }
+.clct_flw a { color: #FFF; }
+.clct_ratestar { float: left; width: 80px; height:  24px; background: url({IMGDIR}/fav_grey.gif) repeat-x 0 0; }
+	.clct_ratestar .btn { position: absolute; width: 80px; height:  24px; z-index: 2; }
+	.clct_ratestar a { float: left; width: 16px; height: 20px; text-indent: -9999px; overflow: hidden; }
+	.clct_ratestar .star { position: absolute; width: 0; height:  24px; background: url({IMGDIR}/fav.gif) repeat-x 0 0; z-index: 1; }
+		.clct_ratestar .star1 { width: 16px; }
+		.clct_ratestar .star2 { width: 32px; }
+		.clct_ratestar .star3 { width: 48px; }
+		.clct_ratestar .star4 { width: 64px; }
+		.clct_ratestar .star5 { width: 80px; }
+.tbmu { padding-left: 10px; line-height: 23px; }
+/*
+	Name:			mod_collection_tag
+	Level:			Function
+	Sample:			<span class="ctag ctag0">tag</span>
+	Explain:		The Taobao Posts label styles, from 0-2, the color less and less eye-catching
+	Last Modify:	Pony 2012022311
+*/
+.ctag { padding: 1px 3px; font-weight: 400; border-radius: 3px; }
+	.ctag0 { background:#F6C5BE; color: #822111; }
+	.ctag1 { background:#FEF1D1; color: #AA8831; }
+	.ctag2 { background:#EEE; color: #666; }
+.ctag_keyword { background:url({IMGDIR}/tag.gif) no-repeat 0 0px;padding-left:20px;margin-left:10px;font-weight:normal; }
+/** end **/
+
+
+/** home::follow **/
+/* Broadcast picture generic style */
+.flw_avt { width: 80px; }
+	.flw_avt img { float: left; margin-left: 15px; width: 48px; }
+/* Broadcast area style */
+.flw_article { margin: 0 0 10px 70px; padding: 5px 10px 15px; border-bottom: 1px solid #DBDBDB; }
+	.flw_thread .flw_article { margin-left: 0; }
+	.flw_article h2 { font-size: 16px; }
+		.flw_article h2 img { vertical-align: middle; }
+	.flw_reply { margin-left: 20px; }
+.flw_author, .flw_author a { color: #79869E; }
+.flw_article .c { font-size: 14px; line-height: 1.8; }
+	.flw_article .c img { display: block; margin: 10px 0; max-width: 600px; }
+		.ie6 .flw_article .c img { width: expression(this.width > 600 ? 600 : true); }
+	.flw_article .c .s { display: inline; margin: 0; }
+	.unread .flw_article { background-color: #FEFEEE; }
+		.unread .flw_article h2 a { color: {HIGHLIGHTLINK}; font-weight: 700; }
+.flw_image { margin-bottom: 10px; max-height: 400px; zoom: 1; overflow: hidden; }
+	.flw_image li { float: left; width: 120px; max-height: 400px; background: #FFF; }
+		.flw_image li img { margin: 0 !important; width: 120px; max-height: 400px; }
+	.flw_image_1 { float: left; margin: 0 15px 10px 0; }
+		.flw_image_1 img { margin: 0 !important; }
+.flw_attach { margin-top: 10px; clear: both; }
+	.flw_attach li { width: 300px; margin-bottom: 5px; height: 31px; line-height: 31px; font-size: 12px; border: 1px solid #DBDBDB; border-radius: 3px; background: url({IMGDIR}/flw_attach_bg.png) repeat-x 0 -31px; box-shadow: 0 1px 0 #FFF; }
+		.flw_attach a { display: block; padding: 0 10px 0 32px; height: 31px; background: url({IMGDIR}/flw_attach_bg.png) no-repeat 10px 8px; color: #369; }
+			.flw_attach a.flw_attach_price { background-image: url({IMGDIR}/viewpay.gif); }
+			.flw_attach a:hover { text-decoration: none; background-color: #EDF1F4; }
+			.flw_attach strong { float: left; width: 160px; font-weight: normal; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+			.flw_attach span { float: right; width: 90px; color: #999; text-align: right; overflow: hidden; }
+.flw_video, .flw_music { margin: 10px 0; }
+	.flw_article .flw_video img { display: inline; }
+.flw_quote { margin-left: 10px; padding-left: 15px; border-left: 3px solid #B1CCD8; }
+.flw_readfull { padding: 3px 5px; border: 1px solid #DDD; border-radius: 3px; background: #FFF; }
+	.flw_readfull:hover { border-color: #9EB4C2; text-decoration: none; }
+.flw_delete { visibility: hidden; float: right; width: 20px; height: 20px; background: url({IMGDIR}/cls.gif) no-repeat 0 0; text-indent: -9999px; overflow: hidden; }
+	.ie8 .flw_delete { position: relative; z-index: 1; }
+	.flw_delete:hover { background-position: 0 100%; }
+	.flw_feed_hover .flw_delete { visibility: visible; }
+.flw_loading { margin: 0 0 10px 80px; padding: 10px; box-shadow: 0 1px 0 rgba(0,0,0,0.05); border: 1px solid #DBDBDB; border-radius: 4px; background: #F4F7F9; }
+.flw_more { margin: 0 0 10px 80px; }
+	.flw_more a { display: block; padding: 10px; box-shadow: 0 1px 0 rgba(0,0,0,0.05); border: 1px solid #DBDBDB; border-radius: 4px; background: #F4F7F9; text-align: center; }
+		.flw_more a:hover { border-color: #9EB4C2; text-decoration: none; }
+
+/* Listen button universal style */
+/*vot*/ .flw_btn_fo, .flw_btn_unfo { float: right; width: 70px; height: 21px; background: url({IMGDIR}/flw_btn_s.png) no-repeat 0 0; text-indent: 24px; overflow: hidden; }
+	.flw_btn_unfo { background-image: url({IMGDIR}/flw_btn_unfo_s.png); }
+	.ie6 .flw_btn_fo, .ie7 .flw_btn_fo { position: relative; z-index: 1; }
+	.flw_uheader .flw_btn_fo, .flw_uheader .flw_btn_unfo, .flw_hd .flw_btn_fo, .flw_hd .flw_btn_unfo { float: left; }
+
+/* issue broadcast */
+#fastpostform { width:82%; }
+#flw_header { padding: 10px; }
+#flw_post_subject { width: 628px; height: 30px; line-height: 30px; border: 1px solid #9EB4C2; border-radius: 4px; background: #FFF url({IMGDIR}/input_shadow.png) repeat-x 0 0; }
+#flw_header #subject { margin: 5px; width: 580px; height: 20px; border: none; outline: none; background: transparent; line-height: 20px; }
+#flw_checklen { padding-right: 10px; }
+	#flw_post_extra .sec { padding: 8px 15px; border: 1px solid #EFEFEF; background: #F9FBFC; border-radius: 4px; }
+.tedt { width: auto; border: 1px solid #9EB4C2; border-radius: 4px; overflow: hidden; }
+#flw_header .bar { padding-left: 10px; border-top: 1px solid #EFEFEF; border-bottom: none; background: #F9FBFC; border-radius: 0 0 4px 4px; }
+#flw_header .area { background: #FFF url({IMGDIR}/input_shadow.png) repeat-x 0 0; border-radius: 4px 4px 0 0; }
+	#flw_header .area .pt { height: 4em; }
+#flw_header .ftid { margin-left: 5px; }
+#fastpostsubmit { /*vot CSS3 Button */
+	font-size: 14px;
+	height: 32px;
+	color: #ffffff;
+	padding: 2px 10px;
+	background: -moz-linear-gradient(
+		top,
+		#42aaff 0%,
+		#003366);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#42aaff),
+		to(#003366));
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #003366;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.5);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.5);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+#flw_header .tb { padding-left: 0; height: 32px; border-bottom: none; line-height: 32px; }
+	#flw_header .tb a { padding: 0 15px; border: none; background: transparent none; color: #369; }
+		#flw_header .tb .a a { box-shadow: 0 -1px 0 rgba(0,0,0,0.15); border-radius: 4px 4px 0 0; background: #FFF; color: #333; }
+
+.flw_tab { padding-top: 0; border-bottom: none; }
+
+.sd { border-radius: 5px; background: #F4F7F9; }
+
+/* Side and the main regional picture and statistics */
+#flw_avt { padding: 20px; }
+	#flw_avt img { margin: 0 auto 10px; border: 6px solid #FFF; }
+		.sd #flw_avt img { display: block; }
+
+	.flw_user_info { margin: 10px 0; padding: 10px; box-shadow: 0 1px 0 #FFF, 0 -1px 0 #D7DBDF; border-radius: 5px; background: #E9EEF2; }
+		.flw_linktohome { padding: 2px 0 2px 20px; background: url({IMGDIR}/homelink.gif) no-repeat 0 2px; }
+	/* The main regional picture */
+	.flw_uheader { padding-right: 0; padding-left: 0; }
+
+		.flw_stat_mn { margin-left: 20px; width: 490px; }
+.pg_follow .sd .bm { border-width: 1px 0 0; border-color: #E8EAEB; background: transparent; }
+	.pg_follow .sd .bm_h { padding-left: 20px; border-width: 1px 0 0; border-color: #FFF; background: transparent; }
+
+/* User single top page */
+#flw_header.flw_uheader { padding-top: 20px; border-bottom: 1px solid rgba(0,0,0,0.15); background: #F4F7F9 none !important; }
+	.flw_uheader .tb { margin-bottom: -1px; }
+	.flw_uheader h1 { font-size: 16px; }
+	.flw_uheader .tns { margin-left: -10px; padding: 0; width: 240px; }
+		.flw_uheader .tns th, .flw_uheader .tns td { padding-left: 10px; text-align: left; }
+	.flw_uheader .o { line-height: 21px; }
+	.flw_status_1, .flw_status_2 { padding: 0 10px 0 20px; background: url({IMGDIR}/flw_statusico.png) no-repeat 0 4px; }
+		.flw_status_2 { background-position: 0 -35px; }
+.flw_specialfo, .flw_specialunfo { float: right; margin-right: 9px; width: 14px; height: 21px; background: url({IMGDIR}/flw_btn_specialfo.png) no-repeat 0 4px; text-indent: -9999px; overflow: hidden; }
+	.flw_specialunfo { background-position: 0 -26px; }
+	#specialflag_2_menu { width: 80px; }
+	.flw_uheader .flw_linktohome { padding: 0 0 0 20px; background-position: 0 3px; }
+
+/* Reply area */
+.flw_replybox { margin: -11px 0 20px 70px; padding: 15px 20px; box-shadow: 0 1px 0 rgba(0,0,0,0.05); border: 1px solid #DBDBDB; background: #E9EEF1; }
+	.flw_replybox li { padding: 10px 80px 10px 0; border-top: 1px solid #DBE2E6; }
+		.flw_replybox li .d { margin-right: 10px; }
+	.flw_replybox .px, .flw_autopt { border: 1px solid #CCDBE5; border-radius: 4px; background: #FFF url({IMGDIR}/input_shadow.png) repeat-x 0 0; }
+		.flw_autopt { display: inline-block; vertical-align: top; margin: 0 5px 0 0; padding: 5px; width: 420px; }
+			td.flw_autopt { margin-right: 0; }
+			.flw_autopt .pts { padding: 0; width: 100%; height: 19px; min-height: 19px; border: 0; }
+			.ie8 .flw_autopt .pts, .ie9 .flw_autopt .pts { min-height: 21px; }
+	.flw_replybox .pnc { width: 77px; height: 33px; border: none; background: transparent url({IMGDIR}/pn_reply.png) no-repeat 0 0; }
+		.flw_replybox .pnc span { line-height: 99px; }
+		.flw_replybox td table .pnc { background-image: url({IMGDIR}/pn_rt.png); }
+	/* Reply and broadcast options */
+	.flw_rert { display: inline-block; padding-right: 5px; width: 95px; text-align: right; }
+	.flw_replybox .cnr { position: relative; float: right; overflow: hidden; display: inline; margin: -22px 16px 0 0; width: 11px; height: 7px; background: transparent url({IMGDIR}/flw_cnr_t.png) no-repeat 0 0; }
+
+/* Side switch */
+#flw_side_tab { margin: 10px 0; }
+	#flw_side_tab li { line-height: 32px; }
+	#flw_side_tab a { display: block; height: 32px; padding-left: 20px; background: url({IMGDIR}/flw_side_tab.png) repeat-x 0 0; }
+		#flw_side_tab li.a a { background-position: 0 -32px; }
+		#flw_side_tab a img { float: left; margin: 8px 10px 0 0; }
+
+/* Side user list */
+.flw_side_promote {  }
+	.flw_side_promote .xlda dl { margin-bottom: 8px; }
+	.flw_side_promote .xlda .m { margin: 0 0 8px -55px; }
+	.flw_side_promote .xlda dt { padding-top: 0; }
+	.flw_side_promote .flw_btn_fo { float: left; }
+
+/* Similar audience list of users page */
+.flw_ulist {}
+	.flw_ulist li { padding: 10px 0 10px 100px; border-bottom: 1px solid #DBDBDB; }
+	.flw_ulist .flw_avt { float: left; margin: 0 0 0 -80px; }
+	.flw_ulist .unread { background-color: #FEFEEE; }
+
+.my_flw_stats { width: 120px; }
+	.my_flw_stats li { margin-bottom: 7px; padding-bottom: 7px; border-bottom: 1px solid {COMMONBORDER}; }
+		.my_flw_stats .xg1 { padding-right: 10px; }
+
+.ie6 .tb .a { position: static; }
+#flw_bar .fpd { position: relative; zoom: 1; }
+.ie6 #flw_bar object { position: absolute; }
+
+/*
+	Name:			mod_follow_flashupload
+	Level:			Global
+	Explain:		Redefine follow Page Flash Upload processing interface, for structure see /static/js/fileprogress.js
+	Last Modify:	Pony 2012022813
+*/
+.progressWrapper { overflow: hidden; float: left; width: auto; }
+	.progressWrapper table { float: left; margin: 5px 1px 0 0; width: 209px; border:  1px solid #C3DCEA; border-radius: 4px; background: #FFF; }
+	.progressWrapper td { border-radius: 4px; }
+.attswf p { padding-left: 5px; width: 170px; height: 26px; line-height: 26px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.attswf p img { width: 16px; height: 16px; }
+.attc { padding-top: 3px; width: 20px; }
+	.attc .d { background-position-y: 0 !important; }
+
+.progressContainer { overflow: hidden; margin: 5px 0 0; width: 620px; border: 1px dashed #9EB4C2; background-color: transparent; }
+.red { border: none; background-color: transparent; color: red; }
+/** end **/
+
+
+/** forum::forumdisplay,group::group **/
+#livereplycontentout { position: relative; height: 195px; margin-top: 10px; border: 1px solid #E8F1F7; background: #FFF; overflow-y: auto; }
+#livereplycontent { position: absolute; left: 0; bottom: 0; padding: 0 15px; }
+#liverefresh { margin-top:10px; height: 30px; line-height: 30px; background-color: #FCF4CD; color: #fff; text-align: center; cursor: pointer; display: none; border:1px dashed #FCE491; color:#F26C4F; }
+#livefastcomment { position: relative; height: 34px; margin: 10px 0px 0px 0px; border: 1px solid #E8F1F7;background-color: #FFF; padding:5px 10px; }
+	#livereplycontent dl { position: relative; width: 100%; min-height: 45px; line-height: 20px; padding: 10px 0; border-top: 1px #ccc dotted; clear: both; }
+	#livereplycontent dl dt { position: absolute; left: 0; top: 10px; width: 40px; height: 40px; border: 1px #ccc solid; padding: 1px; }
+	#livereplycontent dl dt img { width: 40px; height: 40px; }
+	#livereplycontent dl dd { padding-left: 62px; }
+		#livereplycontent dl dd a { color:{HIGHLIGHTLINK}; }
+	#livereplycontent dl dd.dateline { position: absolute; top: 10px; right: 0; padding: 0; color: #999; }
+#livereplymessage{ width: 100%; line-height:28px; height: 33px; padding: 0px !important; border: none; outline: 0px; background: white none; overflow-y: auto; }
+	.ie6 #livereplycontent dl, .ie7 #livereplycontent dl { width: 97%; }
+	#livethread { background: #F5F9FB; border-top:2px solid #BDD7E3; }
+.livethreadtitle { margin-bottom:5px; }
+	.livethreadtitle a { color:{HIGHLIGHTLINK}; font-size: 14px; }
+	.livethreadtitle img { vertical-align: middle; }
+	.livethreadtitle .replynumber { float: right; line-height: 25px; }
+		.livethreadtitle .replynumber .xi1 { background:{NOTICETEXT}; padding:0 5px; border-radius: 5px; color: #FFF; font-weight: 700; }
+	.livethreadcon { line-height:160%; font-size:14px;}
+/** end **/

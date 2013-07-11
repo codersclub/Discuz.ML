@@ -24,3 +24,4 @@ div.quote { padding-bottom: 5px; background: #F9F9F9 url({IMGDIR}icon_quote_s.gi
 div.blockcode { border: 1px solid #CCC; background: #F7F7F7 url({IMGDIR}codebg.gif) repeat-y 0 0; }
 	div.blockcode blockquote { margin: 0; }
 .float td { border: 0; padding: 0; }
+img { max-width:400px; }

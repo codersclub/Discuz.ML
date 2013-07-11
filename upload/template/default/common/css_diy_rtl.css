@@ -1,5 +1,5 @@
 /* Determine: When you open the DIY panel to load
-Translated by Valery Votintsev
+	Modified by Valery Votintsev, codersclub.org
 */
 body { padding-top: 170px; }
 #controlpanel { color: #000;position: fixed; top: 0; right: 0; z-index: 200; width: 100%; border-bottom: 1px solid #999; background: #F5F5F5 url({STATICURL}image/diy/cp-bg.png) repeat-x 0 0; }
@@ -31,6 +31,7 @@ body { padding-top: 170px; }
 	#controlcontent { margin: 0 10px; padding: 10px; height: 110px; he\ight: 90px; border: solid #CCBDCC; border-width: 0 1px; background: #FFF; overflow: hidden; }
 	#controlcontent li { float: right; margin-left: 4px; }
 		#controlcontent li a, #controlcontent li label { float: right; width: 90px; height: 90px; text-align: center; cursor: pointer; }
+			#controlcontent li a { color: #333 !important; }
 			#controlcontent li a:hover, #controlcontent li label.hover { background: url({STATICURL}image/diy/cp-item-selected.png) no-repeat 0 0; text-decoration: none; }
 			#controlcontent li img, #controlcontent li label span { display: block; margin: 7px auto 0; width: 80px; height: 60px; text-align: center; }
 				#controlcontent li span { background: url({STATICURL}image/diy/cp-module-type.png) no-repeat 0 0; }

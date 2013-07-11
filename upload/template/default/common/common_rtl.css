@@ -3,8 +3,8 @@
 Main CSS file for Discuz! X
 (C) Comsenz Inc.
 http://www.comsenz.com
-Created & Modified by Lushnis, Pony, Dfox & DragonLee.
-English by Valery Votintsev at sources.ru
+Created & Modified by Lushnis, Pony, Alice, Dfox & DragonLee.
+Modified by Valery Votintsev, codersclub.org
 Arabic (RTL) by Khalid Nahhal, www.ar-discuz.com
 ----------------------------------
 
@@ -174,7 +174,7 @@ Note on the CSS Hack:
 	/* Page header */ .ph { font-size: 20px; }
 	/* Main title */ .mt { padding: 10px 0; font-size: 16px; }
 
-/*vot*//* vertical line within a section */	.pipe { margin: 0 2px; color: #CCC; }
+/*vot*/ /* vertical line within a section */	.pipe { margin: 0 2px; color: #CCC; }
 
 /* Text attributes: size, color, thickness */
 /*
@@ -226,7 +226,9 @@ Note on the CSS Hack:
 	Last Modify:	lushnis
 */
 	.bbda { border-bottom: 1px dashed {COMMONBORDER}; }
+	.btda { border-top: 1px dashed {COMMONBORDER}; }
 	.bbs { border-bottom: 1px solid {COMMONBORDER} !important; }
+	.bts { border-top: 1px dashed {COMMONBORDER} !important; }
 /*
 	Name:			mod_border_reset
 	Level:			Global
@@ -406,7 +408,7 @@ Note on the CSS Hack:
 		.pt { overflow-y: auto; }
 			div.pt { height: 100px; line-height: 100px; }
 		.ps, select { padding: 2px 1px 2px 2px; }
-	/* Automatically adjust the height of the textarea by Pony */
+		/* Automatically adjust the height of the textarea by Pony */
 		.pts { vertical-align: top; overflow: hidden; }
 		.cmt .pts { width: 60%; }
 
@@ -418,7 +420,7 @@ Note on the CSS Hack:
 	Last Modify:	Pony
 */
 	button::-moz-focus-inner { border: 0; padding: 0; }
-/*vot*/	.pn { vertical-align: middle; overflow: hidden; margin-left: 3px; padding: 0; height: 23px; border: 1px solid #999; background: #E5E5E5 url({IMGDIR}/pn.png) repeat-x 0 0; cursor: pointer; /*-moz-box-shadow: 0 1px 0 #E5E5E5; -webkit-box-shadow: 0 1px 0 #E5E5E5; box-shadow: 0 1px 0 #E5E5E5;*/ }
+/*vot*/	.pn { vertical-align: middle; overflow: hidden; margin-left: 3px; padding: 0; height: 23px; border: 1px solid #999; background: #E5E5E5 url({IMGDIR}/pn.png) repeat-x 0 0; cursor: pointer; -moz-box-shadow: 0 -1px 0 #E5E5E5; -webkit-box-shadow: 0 -1px 0 #E5E5E5; box-shadow: 0 -1px 0 #E5E5E5; }
 		.pn:active { background-position: 0 -23px; }
 		.ie6 .pn { overflow-x: visible; width: 0; }
 
@@ -484,7 +486,7 @@ Note on the CSS Hack:
 		.sltm li:hover { color: {HIGHLIGHTLINK}; }
 		.sltm li.current { color: {NOTICETEXT}; }
 
-/* Share button */ .oshr { float: left; margin-right: 5px; padding: 0 22px 0 5px; border: 1px solid; border-color: #CCC #CCC #A9A9A9 #A9A9A9; background: {WRAPBG} url({IMGDIR}/oshr.png) no-repeat 90% 50%;  }
+/* Share button */ .oshr { float: left; margin-right: 5px; padding: 0 22px 0 5px; border: 1px solid; border-color: #CCC #CCC #A9A9A9 #A9A9A9; background: {WRAPBG} url({IMGDIR}/oshr.png) no-repeat 90% 50%; }
 				.oshr:hover { text-decoration: none; }
 /* Save button with oshr */ .ofav { background-image: url({IMGDIR}/fav.gif); }
 /* Invite button with oshr */ .oivt { background-image: url({IMGDIR}/activitysmall.gif); }
@@ -603,25 +605,15 @@ Note on the CSS Hack:
 					#scbar_txt { width: 400px; border: 1px solid #FFF; outline: none; font-size: 14px; }
 					.scbar_narrow #scbar_txt { width: 260px; }
 				.scbar_btn_td { width: 67px; background: url({IMGDIR}/search.png) no-repeat 0 -296px; text-align: center; }
-					#scbar_btn { margin: 0; padding: 0; border: none; background: transparent none; }
-/*vot*/				.scbar_sep_td { width: 4px; background: url({IMGDIR}/search.png) no-repeat 0 -444px; }
-				.scbar_type_td { background: url({IMGDIR}/search.png) repeat-x 0 -222px; }
+					#scbar_btn { margin: 0; padding: 0; border: none; background: transparent none; box-shadow: none; }
+						#scbar_btn strong { line-height: 84px; }
+				.scbar_type_td { width: 100px; background: url({IMGDIR}/search.png) no-repeat 0 -222px; }
 					#scbar_type { display: block; padding-right: 2px; text-align: right; text-decoration: none; width: 70px; }
 						#scbar_type_menu { margin-top: -8px; }
 				#scbar_hot { padding-right: 8px; height: 45px; overflow: hidden; line-height: 44px; }
 					#scbar_hot strong, #scbar_hot a { float: right; margin-left: 8px; white-space: nowrap; }
-			
-			#sc { display: none; }
-				#sc_txt { margin-left: 0; width: 109px; border-left: none; outline: none; }
-				#sc_type_w { border-right: none; }
-				#sc_type { height: 17px !important; line-height: 17px; }
-					.ie8 #sc_type { line-height: 18px; }
-				#sc_btn { margin-left: 0; }
-				#sc_type_menu { margin: 2px -5px 0 0; width: 100px; line-height: 1.5; }
-					#sc_type_menu a { float: none; }
-				#pt #sc { margin: 3px 0 0 0; }				
 
-			#nv { overflow: hidden; padding-right: 3px; height: 33px; {MENUBGCODE}; }
+			#nv { overflow: hidden; height: 33px; {MENUBGCODE}; padding-right: 3px; }
 				#nv li { float: right; padding-left: 1px; height: 33px; line-height: 33px; background: url({IMGDIR}/nv_a.png) no-repeat 100% 0; font-weight: 700; font-size: 14px; }
 					.ie_all #nv li { line-height: 36px; }
 					.ie6 #nv li { line-height: 33px; }
@@ -653,18 +645,56 @@ Note on the CSS Hack:
 				#um .pipe { margin: 0 0 0 5px; }
 
 				#extcreditmenu { margin-left: 2px !important; padding-top: 3px; padding-bottom: 3px; padding-left: 20px; }
-					#extcreditmenu.a { position: relative; z-index: 302; margin-left: 1px !important; border: 1px solid; border-color: {DROPMENUBORDER}; border-bottom: none; background-color: {WRAPBG}; }
-					#extcreditmenu_menu { margin-top: -1px; width: auto; }
-						#extcreditmenu_menu li { float: none; display: block; padding-right: 10px !important; padding-left: 3em !important; }
+					#g_upmine { margin-left: 1px !important; border: 1px solid transparent; }
+						.ie6 #g_upmine { border: 0; }
+					#extcreditmenu.a, #g_upmine.a { position: relative; z-index: 302; margin-left: 1px !important; border: 1px solid; border-color: {DROPMENUBORDER}; border-bottom: none; background-color: {WRAPBG}; }
+					#extcreditmenu_menu, #g_upmine_menu { margin-top: -1px; width: auto; }
+						#extcreditmenu_menu li { float: none; display: block; padding-right: 5px !important; padding-left: 1em !important; }
+					#g_upmine_menu li { float: none; display: block; padding-left: 5px !important; }
+					#g_upmine_menu ul.extg li { padding-right: 0px !important; }
 
-				#qmenu { float: left; display: inline; margin: 3px 4px 0; padding: 0 12px 0 0; width: 83px; height: 26px; background: url({IMGDIR}/qmenu.png) no-repeat 100% 0; line-height: 26px; text-align: center; color: {HIGHLIGHTLINK}; font-weight: 700; text-shadow: 0 1px 0 #FFF; overflow: hidden; font-size: 11px; }
+				#qmenu { float: left; display: inline; margin: 5px 8px 0; padding-left: 10px; width: 103px; height: 24px; background: url({IMGDIR}/qmenu.png) no-repeat 100% 0; line-height: 24px; text-align: center; color: {HIGHLIGHTLINK}; font-weight: 700; overflow: hidden; font-size: 11px; text-shadow: 0 1px 0 #FFF; }
 					#qmenu:hover { text-decoration: none; }
 					#qmenu.a { position: relative; z-index: 302; background-position: 100% -30px; }
-					.ie8 #qmenu { line-height: 30px; }
-				#qmenu_menu { margin-top: -1px; padding: 20px 5px 10px; width: 180px; border-color: #9A9A9A; }
-					#qmenu_menu ul li { float: left; }
-/*vot*/					#qmenu_menu ul a { margin-bottom: 10px; padding: 42px 0 0; width: 90px; border: none; border-radius: 4px; background: url({IMGDIR}/noicon.gif) no-repeat 50% 5px; text-align: center; }
-						#qmenu_menu ul a:hover { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-shadow: none; }
+				#qmenu_menu { margin-top: -2px; padding: 20px 5px 10px; width: 610px; border-color: #DCE4EB; }
+					#qmenu_menu ul.nav li { float: right; }
+						.ie6 #qmenu_menu ul.nav li { clear: none !important; width: auto !important; }
+/*vot*/					#qmenu_menu ul.nav a { margin-bottom: 10px; padding: 47px 0 0; width: 60px; border: none; border-radius: 4px; background: url({IMGDIR}/noicon.gif) no-repeat 50% 5px; text-align: center; }
+						#qmenu_menu ul.nav a:hover { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-shadow: none; }
+				#shortcut { position: relative; display: none; height: 30px; line-height: 30px; background-color: #3A83F1; color: white; text-align: center; }
+					#shortcuttip { padding: 2px 8px; background: url({IMGDIR}/search.gif) repeat-x 0 -1px; border-radius: 3px; color: #3A83F1; font-weight: 700; }
+					#shortcutcloseid { position: absolute; left: 8px; top: 8px; display: block; width: 12px; height: 12px; background: url({IMGDIR}/close.gif) no-repeat 0 -12px; text-indent: -999em; }
+
+/*
+	Name:			mn_userapp_menu
+	Level:			Global
+	Explain:		User application navigation
+	Last Modify:	alice 2013021313
+*/
+#mn_userapp .icon_down {background: url({IMGDIR}/arr_w.gif) no-repeat 50% 50%; display:inline-block; width:12px; height:12px; overflow:hidden; margin-right:3px; }
+.ie6 #mn_userapp .icon_down {height:24px;vertical-align: middle;}
+#nv li.a .icon_down {background: url({IMGDIR}/arr_w.gif) no-repeat  50% 50%; display:inline-block; width:12px; height:12px; overflow:hidden; margin-right:3px; }
+.ie6 #nv li.a .icon_down {height:24px;vertical-align: middle;}
+#mn_userapp_menu { clear: right; min-height: 210px; min-width: 630px; }
+.ie6 #mn_userapp_menu { height: 210px; width: 630px; }
+	#mn_userapp_menu ul.mrec{ float:right; width:182px; padding-left:5px; border-left:1px dotted {DROPMENUBORDER}; }
+	#mn_userapp_menu ul.uused { float:right; width:273px; }
+	.ie6 #mn_userapp_menu ul.mrec, .ie7 #mn_userapp_menu ul.mrec { width:182px; padding:0 0 0 5px; }
+		#mn_userapp_menu ul.mrec li, #mn_userapp_menu ul.uused li { float:right; display:inline; padding:3px; width:85px; text-align: center; overflow:hidden; }
+		.ie6 #mn_userapp_menu ul.mrec li,.ie6 #mn_userapp_menu ul.uused li { float:right !important; clear:none; }
+			#mn_userapp_menu ul.mrec li img, #mn_userapp_menu ul.uused li img { width:75px; height:75px;  }
+			#mn_userapp_menu ul.mrec li a, #mn_userapp_menu ul.uused li a { border-bottom:0; }
+	#mn_userapp_menu ul.adv { position: absolute; top: 0; left: 0;	padding: 10px; height: 198px; width:140px; border-right: 1px solid #EBEBEB; background: #F5F5F5; text-align: right; zoom: 1; }
+	#mn_userapp_menu ul.mrec li { position:relative; }
+	.ie6 #mn_userapp_menu ul.adv li { clear:none; }
+	#mn_userapp_menu .icon_hotapp { position:absolute; left:8px; bottom:25px; display:inline-block; width:16px; height:16px; background:#F00; color:#FFF;  }
+	#mn_userapp_menu .icon_myapp a{ float:right; display:inline-block; border-bottom:0; padding:0; margin-bottom:10px; width:66px; height:51px; background: url({STATICURL}image/common/app.png) no-repeat 0 0; line-height:2000px; overflow:hidden; clear:none; }
+	#mn_userapp_menu .icon_appcenter a { float:left; margin-right:7px; background-position: 0 -51px; }
+	.ie6 #mn_userapp_menu .icon_myapp a { margin-bottom:0px; }
+	.ie6 #mn_userapp_menu .icon_myapp,.ie6 #mn_userapp_menu .icon_appcenter { float:right; width:66px; }
+	#mn_userapp_menu .ad_img img { width:140px; height:100px; }
+	#mn_userapp_menu .ad_img a { padding:0; line-height:26px; border-bottom:0; }
+	#mn_userapp_menu .ad_img a:hover { background:none; }
 
 /* Page main area */
 	#ct { min-height: 300px; }
@@ -676,8 +706,8 @@ Note on the CSS Hack:
 
 		.appl { float: right; overflow: hidden; margin-bottom: 10px; padding: 6px 5px; width: 125px; }/*117px*/
 
-		.ct2_a, .ct3_a { border: 1px solid {WRAPBORDERCOLOR}; {SIDEBGCODE};}
-			.ct2_a, .ct3_a {background-position: 100% 0;} /*ovewrite above LTR parameters*/
+		.ct2_a, .ct3_a { border: 1px solid {WRAPBORDERCOLOR}; {SIDEBGCODE} }
+		.ct2_a, .ct3_a {background-position: 100% 0;} /*ovewrite above LTR parameters*/
 			.ct2_a_r { border: none; background-image: none; }
 			 .ct2_a h1.mt { display: none; }
 			 .ct2_a .tb { margin-top: 3px; }
@@ -698,8 +728,19 @@ Note on the CSS Hack:
 	#ft { padding: 10px 0 50px; border-top: 1px solid {COMMONBORDER}; line-height: 1.8; color: {FOOTERTEXT}; }
 		#flk { text-align: left; }
 			#flk img { vertical-align: middle; }
-			#scrolltop { visibility: hidden; position: fixed; bottom: 100px; display: block; margin: -30px 0 0; width: 26px; height: 50px; background: url({IMGDIR}/scrolltop.png) no-repeat 50% 0; line-height: 999px; overflow: hidden; cursor: pointer; }
+		#scrolltop { visibility: hidden; position: fixed; bottom: 100px; display: block; margin: -30px 2px 0 0; width: 40px; background: #f4f4f4; border: 1px #cdcdcd solid; border-radius: 3px; border-top: 0; cursor: pointer; }
+			#scrolltop:hover { text-decoration: none; }
 		.ie6 #scrolltop { position: absolute; bottom: auto; }
+			#scrolltop a { display: block; width: 30px; height: 24px; padding: 3px 5px; line-height: 12px; text-align: center; color: #787878; text-decoration: none; background: url({IMGDIR}/scrolltop.png) no-repeat 0 0; border-top: 1px #cdcdcd solid; }
+					a.scrolltopa:hover { background-position: -40px 0px !important;}
+				a.replyfast { background-position: 0 -30px !important; }
+					a.replyfast:hover { background-position: -40px -30px !important;}
+				a.returnlist,a.returnboard { background-position: 0 -60px !important; }
+					a.returnlist:hover,a.returnboard:hover { background-position: -40px -60px !important;}
+					#scrolltop a b { visibility: hidden; font-weight: normal; }
+
+		/*	#scrolltop span { visibility: hidden; }*/
+
 		#nv_home #ft, .pg_announcement #ft, .pg_modcp #ft, .pg_portalcp #ft, .pg_ranklist #ft, #nv_userapp #ft { border-top: none; }
 
 /* Common regional block */
@@ -723,7 +764,7 @@ Note on the CSS Hack:
 		.drag {}
 		.bm_h .o { float: left; width: 30px; }
 			.bm_h .o img { float: left; margin-top: 11px; cursor: pointer; }
-		.bm_h .i { padding-right: 10px; }
+		.bm_h .i { padding-right: 10px; overflow: hidden; }
 		.bm_h .pn { margin-top: 4px; }
 		.bm_h { padding: 0 10px; height: 31px; border-top: 1px solid #FFF; border-bottom: 1px solid {CONTENTSEPARATE}; background: {COMMONBG}; line-height: 31px; white-space: nowrap; overflow: hidden; }
 		.bmw { border: 1px solid {COMMONBORDER}; }
@@ -886,13 +927,13 @@ Note on the CSS Hack:
 	.xl label, .xl label a { color: #C00; }
 	.xl1 li { height: 1.5em; overflow: hidden; }
 		.xl1_elp { float: right; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/*vot*/	.xl2 li { /*float: right;*/ margin: 2px 0; padding: 0; /*width: 48.6%;*/ height: 1.5em; overflow: hidden; }
+/*vot*/	.xl2 li { float: right; margin: 2px 0; padding: 0; width: 50%; height: 1.5em; overflow: hidden; }
 	.xl ol, ol.xl { background: url({IMGDIR}/sortnum.png) no-repeat 100% 3px; line-height: 21px; }
 		.xl ol li, ol.xl li { background: none; padding-right: 20px; }
 		.xl ol li, ol.xl li { height: 21px; }
 	.xld dt { padding: 8px 0 5px; font-weight: 700; }
 	.xld dd { margin-bottom: 8px; }
-	/* text with thumbnail image ( must with the additional class .cl ) */
+		/* text with thumbnail image ( must with the additional class .cl ) */
 		.xld .m { float: right; margin: 8px 0 10px 8px; }
 		.xld .atc { float: left; margin-right: 20px; }
 			.ie8 .xld .atc { max-width: 86px; }
@@ -939,9 +980,10 @@ Note on the CSS Hack:
 	.gs -> Star Member ;
 	.gol -> Online members;
 */
-.gm, .gs, .gol { position: absolute; overflow: hidden; margin: -3px -3px 0 0; width: 60px; height: 18px; background: url({IMGDIR}/gst.gif) no-repeat 0 0; display: block;/* ie6 */ }
+.gm, .gs, .gol, .god { position: absolute; overflow: hidden; margin: -3px -3px 0 0; width: 60px; height: 18px; background: url({IMGDIR}/gst.gif) no-repeat 0 0; display: block;/* ie6 */ }
 .gs { background-position: 0 -18px; }
 .gol { background-position: 0 -36px; }
+.god { margin: -5px 45px 0px 0px;background: url({IMGDIR}/access_disallow.gif) no-repeat 0 0;}
 
 /* Application list */
 	.appl ul { margin: 3px 0; }
@@ -963,8 +1005,16 @@ Note on the CSS Hack:
 		.tbn ul a { display: block; height: 33px; line-height: 33px; }
 /*vot*/		.tbn .mt { padding: 10px; font-size: 14px;}
 
+		.notice_pm, .notice_mypost, .notice_interactive, .notice_system, .notice_manage, .notice_app { float: right; width: 18px; height: 14px; background-image: url({IMGDIR}/ico_notice.png); margin: 11px 0 5px 5px;}
+		.notice_pm { background-position:  0 0;}
+		.notice_mypost { background-position:  0 -33px; }
+		.notice_interactive { background-position:  0 -68px; }
+		.notice_system { background-position:  0 -101px; }
+		.notice_manage { background-position:  0 -135px; }
+		.notice_app { background-position:  0 -169px; }
+
 /* Magics */
-.mg_img { padding: 10px; width: 76px; height: 76px; background: url({IMGDIR}/magic_imgbg.gif) no-repeat 0 0; } 
+.mg_img { padding: 10px; width: 76px; height: 76px; background: url({IMGDIR}/magic_imgbg.gif) no-repeat 0 0; }
 
 /*
 	Name:			mod_link
@@ -1003,12 +1053,23 @@ Note on the CSS Hack:
 	.m_c .tedt { width: 600px; }
 
 /* Smiles */
-.sllt { padding: 10px !important 5px 5px; }
+.sllt { padding: 10px 5px 5px !important; }
 	.sllt td { padding: 8px; border: none; cursor: pointer; }
 /*vot*/	.sllt_p { border-top: 1px solid gray; text-align: left; padding: 4px 0; }
 /*vot*/		.sllt_p a { margin-left: 5px; color: #069; text-decoration: underline; border: 1px solid gray; }
 	.sl_pv { margin-top: 5px; padding: 8px; background: #FAFAFA; border: 1px solid #CCC; }
 	.ie6 .slg, .ie7 .slg { width: expression(this.parentNode.offsetWidth); }
+
+/*
+	Name:			mod_diy_button
+	Level:			Fuction
+	Explain:		DIY button at the page header
+	Last Modify:	Pony 1207021442
+*/
+/*vot*/			#diy-tg { /*float: left;*/ width: 55px; /*background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 1px; text-indent: -9999px; overflow: hidden;*/ }
+/*vot*/				#diy-tg_menu { position: absolute; margin: -2px 0 0 -1px; padding: 0 6px; width: auto; height: 48px; /*background: url({STATICURL}image/diy/panel-toggle-drop.png) no-repeat 0 0; text-align: center;*/ border: 1px solid #E0883A; border-radius: 5px; background: #FBF5E4; }
+/*vot*/				#diy-tg_menu a { float: none !important; white-space: nowrap; }
+/*vot*/			#toptb #diy-tg_menu { margin: 2px 0 0 0; }
 
 /*
 	Name:			mod_style_selector
@@ -1017,14 +1078,15 @@ Note on the CSS Hack:
 	Explain:		Switch style menu
 	Last Modify:	lushnis
 */
-	#toptb a#sslct { /*width: 10px; background: url({IMGDIR}/style_switch.png) no-repeat 50% 50%; text-indent: -9999px; overflow: hidden;*/ }
-	#sslct img { vertical-align:middle; }
+/*vot*/	#toptb a#sslct, #toptb a.switchblind { /*width: 10px; background: url({IMGDIR}/style_switch.png) no-repeat 50% 50%; text-indent: -9999px; overflow: hidden;*/ }
+/*vot*/	#sslct img { vertical-align:middle; }
+	.switchwidth:hover{ background: url({IMGDIR}/switch_width.png) no-repeat 100% -36px; }
 /*vot*/	#sslct_menu { padding: 2px; }
 /*vot*/		 .sslct_btn { display: block; margin: 0; cursor: pointer; }
 /*vot*/			.sslct_btn i { float: right; display: inline; margin: 2px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
 /*vot*/	#toptb a.switchblind{ width: 10px !important; overflow: hidden; }
 /* pop-up menu and pop-up window */
-	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 1px 2px 2px rgba(0,0,0,0.3); }
+	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; width: auto; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 1px 2px 2px rgba(0,0,0,0.3); }
 		.ie6 .p_pop { width: 100px; }
 		.p_pof .p_pop { padding: 0; border: none; box-shadow: none; }
 		.p_pof { width: 500px; }
@@ -1032,8 +1094,18 @@ Note on the CSS Hack:
 		.p_pop li { display: inline; }
 		.p_pop a { display: block; padding: 3px 5px; border-bottom: 1px solid {SPECIALBG}; white-space: nowrap; }
 			.p_pop li:last-child a { border: none; }
+			.ie6 .p_pop li { zoom: 1; clear: both; width: 100%; }
 			.ie6 .p_pop a { position: relative; }
 			.p_pop a:hover, .p_pop a.a, #sctype_menu .sca { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-decoration: none; }
+			.prompt_news, .prompt_follower,.prompt_news_0, .prompt_follower_0, .ignore_notice, .prompt_concern { float: right; width: 18px; height: 14px; margin: 3px 0 5px 3px; display: inline; background: url({IMGDIR}/ico_notice.png) no-repeat 0 0; }
+			.prompt_follower_0 { background-position: 0 -225px; }
+			.prompt_news { background-image: url({IMGDIR}/new_pm.gif); }
+			.prompt_follower { background-position: 0 -191px; }
+			.prompt_concern { background-position: 0 -258px; }
+			.ignore_notice { background: url({IMGDIR}/close.gif) no-repeat 0 0; position:absolute; left:0; top:0; width:12px; height:12px; overflow:hidden; }
+			.p_pop .ignore_noticeli a,.p_pop .ignore_noticeli a:hover,.p_pop .ignore_noticeli a.a { background:none; border-bottom:0; }
+			.p_pop .notice_interactive, .p_pop .notice_system, .p_pop .notice_manage, .p_pop .notice_app, .p_pop .notice_mypost { margin: 3px 0 5px 2px;}
+
 /* .blk -> block content of the more complex pop-up layer
 	.blk of class, redefined within "A" tag
 */
@@ -1044,7 +1116,7 @@ Note on the CSS Hack:
 	.h_pop { min-width: 120px; border-top: none; }
 /* .txt and .textarea belong to the old naming convention, to be finishing by lushnis */ .p_opt .txt, .p_opt .txtarea { margin: 5px 0; }
 
-	.p_pop .flbc, .p_pof .flbc {margin-left: 8px;margin-top: 4px;}
+	.p_pop .flbc, .p_pof .flbc {margin-left: 8px; margin-top: 4px;}
 
 /* For popup the following class can be written separately, defined individually */
 	/* four sides, four corners of the common styles */
@@ -1122,6 +1194,14 @@ Note on the CSS Hack:
 /* Popup editor color box - colorbox*/
 .colorbox{ width: 130px !important; }
 .colorbox input { float: right; margin: 2px; padding: 0; width: 12px; height: 12px; border: 0; cursor: pointer; }
+
+/* Popup editor choose the horizontal divider line hrbox*/
+.hrbox{ width: 500px !important; }
+.hrbox input { float: right; margin: 2px; padding: 0; width: 495px; height: 25px; border: 0; cursor: pointer;background: #FFFFFF; }
+
+/* Popup editor background selection postbgbox*/
+.postbgbox{ width: 325px !important; }
+.postbgbox input { float: right; margin: 2px; padding: 0; width: 50px; height: 50px; border: 1px solid; border-color: #F7F7F7 #F7F7F7 #EFEFEF #EFEFEF; cursor: pointer;background: #FFFFFF; }
 
 /* Short message dialog box .pm -> personal_message (window) by Pony */
 	.pm { overflow: hidden; width: 400px; }
@@ -1351,13 +1431,19 @@ Note on the CSS Hack:
 			.pc_btn img { opacity: 0.5; }
 				.pc_btn:hover img { opacity: 1; }
 	.pc_l { background-position: -30px 0; }
+	
+/* For text prompts pop-up layer tips */
+	.popuptext .pc_l,.popuptext .pc_c,.popuptext .pc_inner,.popuptext .pc_r { background: url({IMGDIR}/popuptext_bg.gif) no-repeat 0 0; }
+	.popuptext .pc_c { width: 200px; background-position: 0 -56px; background-repeat: repeat-x; }
+		.popuptext .pc_inner { white-space: nowrap; text-align: center; width: auto; background-position: 50% -112px; }
+	.popuptext .pc_r { background-position: -30px 0; }
 
 /* Quick Jump Menu */
-#fjump_menu { padding: 7px 0 10px 10px; background: {COMMONBG}; }
-	.ie6 #fjump_menu { width: expression(this.getElementsByTagName('li')[2] ? '600px' : (this.getElementsByTagName('li')[1] ? '400px' : '200px')); }
+#fjump_menu { padding: 7px 10px 10px 0; }
 	#fjump_menu .sch { position: absolute; top: 6px; right: 10px; }
 .jump_bdl { overflow: hidden; }
 	.jump_bdl li { float: left; overflow-x: hidden; overflow-y: auto; margin-right: 10px; padding: 5px; width: 178px; height: 300px; border: 1px solid {WRAPBORDERCOLOR}; background: {WRAPBG}; }
+		.ie6 .jump_bdl li { clear: none !important; float: right !important; width: 178px !important; }
 	.bdl_title li { float: left; margin-right: 9px; padding: 0 1px; width: 189px; height: 33px; line-height: 23px; font-weight: 700; }
 		.bdl_title .px { width: 80px; }
 	.jump_bdl p { overflow: hidden; height: 25px; line-height: 25px; }
@@ -1392,13 +1478,14 @@ Note on the CSS Hack:
 	Name:			mod_reason_select
 	Level:			Global
 	Explain:		Similar to the score rating of reasons for choosing the window style
-	Last Modify:	Pony
+	Last Modify:	Alice
 */
 .reason_slct {}
 	.reason_slct .reasonselect { height: 4.3em; overflow: scroll !important; overflow-x: auto !important; }
 		.reason_slct .reasonselect li { white-space: nowrap; }
 	.reason_slct .pt, .reason_slct .px { width: 25.2em !important; }
 	.reasonarea { height: 5.8em; }
+	.reason_slct .reasonselect:hover { height:auto; }
 
 /*
 	Name:			mod_filebtn
@@ -1415,7 +1502,7 @@ Note on the CSS Hack:
 
 /* Upload popup */
 .upfile { width: 220px; }
-	#uploadform { border: 1px dashed {SPECIALBORDER}; background: {SPECIALBG}; }
+	.uploadform { padding: 0 10px; border: 1px dashed {COMMONBORDER}; background: {COMMONBG}; }
 
 /*
 	Name:			mod_flashupload
@@ -1437,7 +1524,6 @@ Note on the CSS Hack:
 a.progressCancel { display: block; float: right; width: 14px; height: 14px; background: url({IMGDIR}/cancelbutton.gif) no-repeat -14px 0; font-size: 0; }
 	a.progressCancel:hover { background-position: 0 0; }
 .swfupload { vertical-align: top; }
-
 
 /* -------------- Drag and Drop DIY Layout ---------------------------- */
 .frame, .frame-tab { margin-bottom: 10px; border: 1px solid {WRAPBORDERCOLOR}; background: {WRAPBG}; }
@@ -1657,6 +1743,9 @@ em.hot { position: absolute; right: -2px; top: -2px; text-indent: -9999px; overf
 		.ie_all .card .o a { padding: 3px 0 0; }
 	.card .mgc, .card .f { padding: 0 10px 5px; }
 		.card .f li { display: block; }
+		.card_gender_0 { background: #efefef url({IMGDIR}/nosexbg.png) no-repeat bottom right; }
+		.card_gender_1 { background: #bbebf9 url({IMGDIR}/gentlemanbg.png) no-repeat bottom right; }
+		.card_gender_2 { background: #fce0df url({IMGDIR}/ladybg.png) no-repeat bottom right; }
 
 /*
 	Name:			mod_BIUC
@@ -1678,7 +1767,7 @@ em.hot { position: absolute; right: -2px; top: -2px; text-indent: -9999px; overf
 /*
 DIY image is not loaded when the Hide Slide
 */
-.slidebox {display: none; }
+.slidebox, .block-name {display: none; }
 
 .imgzoom_title { padding: 10px 0 0; color: #666; }
 .imgzoom_exif { position: absolute; left: 10px; bottom: 24px; padding: 0 6px; height: 18px; background: rgba(0,0,0,.6); text-align: left; line-height: 1.5; color: white;  overflow: hidden;}
@@ -1697,8 +1786,23 @@ DIY image is not loaded when the Hide Slide
 		.patchdate { width: 70px; }
 		.patchstat { width: 55px; }
 	.unfixed { color: #F26C4F; }
-.plugin { width: 300px; }
+.plugin { width: 270px; }
 	.plugin .bm_h { border-color: {COMMONBORDER}; color: {TABLETEXT}; background: {COMMONBG}; }
+
+/* Waterfall flow layout by Alice 1303191756 */
+.waterfall { position: relative; margin-top: 15px; }
+	.waterfall li { margin: 0 10px 10px 0; padding: 0 0 3px; text-align: left; border-width: 1px 0 0; border-top: 1px solid #EAEAEA; background: url({IMGDIR}/bg_waterfall.png) no-repeat 100% 100%; }
+	.waterfall .c, .waterfall h3 { padding: 10px; border: solid #EAEAEA; border-width: 0 1px; background-color: #F8F8F8; }
+		.waterfall .c { overflow: hidden; padding-bottom: 0; max-height: 800px; }
+		.waterfall .c .nopic { display: block; background:{WRAPBG} url({IMGDIR}/nophototiny.png) no-repeat 50% 50%; cursor: pointer; }
+	.waterfall .auth { padding: 0 10px 10px; border-width: 0 1px 1px; border-style: solid; border-color: transparent #EAEAEA #B9B9B9; background: #F8F8F8; }
+		.waterfall .auth img { display: inline-block; margin: 0 1px; }
+		
+/* ????? by theo */
+.pgbtn { margin: 5px 0 10px; }
+	.pgbtn a { display: block; height: 40px; line-height: 40px; letter-spacing: 5px; text-align: center; border: 1px solid #DCDCDC; font-size: 14px; outline: none; border-radius: 5px; box-shadow: 0 1px 0 #F5F5F5; }
+		.pgbtn a:hover { border-color: #BABABA; text-decoration: none; }
+		.pgbtn a:active { background: #EEE; border-color: #D0D0D0; box-shadow: none; }
 
 /*----------------------------------------------------*/
 /*------- Added by Valery Votintsev -----*/

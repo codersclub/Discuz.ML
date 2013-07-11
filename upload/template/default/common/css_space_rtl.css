@@ -44,6 +44,7 @@ body { background-color: transparent; }
 	.pic .c img { max-width: 714px; }
 		* html .pic .c img { width: expression(this.width > 714 ? 714 : true); }
 	.ul_list {}
+/*vot*/		.ul_list li { /*border: 1px solid red;*/ }
 		.ul_list a { padding-right: 20px; background-position: 100% 50%; background-repeat: no-repeat; }
 		.ul_diy a { background-image: url({STATICURL}image/feed/thread_magic.gif); }
 		.ul_msg a { background-image: url({STATICURL}image/feed/wall.gif); }
@@ -55,6 +56,8 @@ body { background-color: transparent; }
 		.ul_poke a { background-image: url({STATICURL}image/feed/poke.gif); }
 		.ul_pm a { background-image: url({STATICURL}image/feed/pm.gif); }
 		.ul_magicgift { height: 30px !important; margin: 0 auto; line-height: 30px; }
+		.ul_broadcast a { background-image: url({IMGDIR}/ann_icon.gif); }
+		.ul_flw a { background-image: url({IMGDIR}/flw_ico.png); }
 
 #magicreceivegift { position: absolute; top: 50px; left: 20px; }
 

@@ -6,6 +6,8 @@ http://www.comsenz.com
 */
 .edt { border: 1px solid; border-color: #999 #999 #CCC #CCC; }
 	.edt .bar { padding: 4px; height: 44px; border-bottom: 1px solid #DDD; background: {COMMONBG}; }
+		.edt .cst { background: {COMMONBG}; border-bottom: 1px solid #DDD; }
+		.edt .cst.nbb { border-bottom: none !important; }
 		.edt .bbar { height: 20px; border-top: 1px solid #DDD; text-align: left; background: {COMMONBG}; }
 			.edt .bbar img { vertical-align: bottom; *margin-left: -4px; cursor: row-resize; }
 /*vot*/			.edt .bbar em { width: 150px; height: 20px; overflow: hidden; white-space: nowrap; float: right; text-align: right; }
@@ -13,6 +15,9 @@ http://www.comsenz.com
 		.edt .btn { float: right; border-left: 1px solid #FEFEFE; border-right: 1px solid #DDD; }
 			.edt .b1r, .edt .b2r { position: relative; float: right; padding: 0 3px; height: 44px; border-right: 1px solid #FEFEFE; border-left: 1px solid #DDD; }
 			.edt .b2r p, .edt .b2r br { clear: both; }
+/*vot*/		.edt .esb { width: 210px; }
+		.edt .esb p { float: left; width: 25px; clear: none; }
+		.edt .esbs p { float: left; clear: none; }
 		.edt .bar a { float: right; border: 1px solid {COMMONBG}; background: transparent url({STATICURL}image/editor/editor.gif) no-repeat 0 0; overflow: hidden; }
 			.edt .b1r a { padding-top: 27px; width: 35px; height: 15px; text-align: center; font-size: 11px; font-family: Arial, PMingLiU, sans-serif; }
 			.edt .b2r a { width: 20px; height: 20px; text-indent: -9999px; }
@@ -37,8 +42,8 @@ http://www.comsenz.com
 /*vot*/	.simpleedt #e_googlemap 	{ background-position: 0 0;}
 
 	#e_bold			{ background-position: 0 0; }
-	#e_fontsize		{ width: 45px; }
-	#e_fontname		{ width: 50px; }
+	#e_fontsize		{ width: 75px; }
+/*vot*/ #e_fontname		{ width: 75px; }
 	#e_italic		{ background-position: -20px 0; }
 	#e_underline		{ background-position: -40px 0; }
 	#e_forecolor		{ background-position: -60px 0; }
@@ -85,12 +90,19 @@ http://www.comsenz.com
 	#e_pasteword		{ background-position: -60px -60px; }
 	#e_downremoteimg	{ background-position: -80px -60px; }
 
+	#e_page	{ background-position: -200px -60px; }
+	#e_index	{ background-position: -220px -120px; }
+	#e_password	{ background-position: -180px -120px; }
+	#e_postbg	{ background-position: -160px -120px; }
+
 	#e_fls			{ background-position: -3px -120px; }
 		.b2r #e_fls	{ background-position: -260px -20px; }
 	#e_aud			{ background-position: -43px -120px; }
 		.b2r #e_aud	{ background-position: -220px -20px; }
 	#e_vid			{ background-position: -83px -120px; }
 		.b2r #e_vid	{ background-position: -240px -20px; }
+	#e_at			{ background-position: -126px -120px; }
+		.b2r #e_at	{ background-position: -140px 0; }
 
 	#e_imagen, #e_attachn { position: absolute; top: 3px; right: 63px; width: 14px; height: 15px; background: url({STATICURL}image/editor/editor.gif) no-repeat -244px -80px; text-indent: -9999px; }
 		#e_attachn { right: 100px; }
@@ -103,6 +115,9 @@ http://www.comsenz.com
 /*vot*/ #e_simple { background:transparent url({IMGDIR}/simple.gif) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
 /*vot*/ #e_advanced { background:transparent url({IMGDIR}/advanced.gif) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
 /*vot*/ a#e_fullswitcher:hover, a#e_backswitcher:hover, a#e_advanced:hover, a#e_simple:hover { border: 1px solid #09C; }
+
+	#e_beginning { background-position: -246px -120px;}
+		.b2r #e_beginning { background-position: -260px -78px; }
 
 /* Narrow editor shows the size of the input box menu */
 /*vot*/ .popupfix .px { margin-bottom: 4px; padding: 2px; }
