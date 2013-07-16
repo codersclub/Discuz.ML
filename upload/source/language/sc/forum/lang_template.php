@@ -1321,6 +1321,6 @@ $lang = array (
 	'disable_post_parseurl'		=> '禁用 链接识别',//'Disable Parse URL',
 	'disable_smilies'		=> '禁用 表情',//'Disable Smiles',
 	'disable_discuzcode'		=> '禁用 编辑器代码',//'Disable BB-Code',
+	'modmenu'			=> '审核中',//'Thread menu:',
 );
 
-?>
