@@ -166,7 +166,7 @@ if(!$operation) {
 							'<span class="bold light">'.$entrytitle.' '.$entryversion.($filemtime > TIMESTAMP - 86400 ? ' <font color="red">New!</font>' : '').'</span> <span class="sml light">('.$entry.')</span>'.
 							'<p><span class="author">'.($entrycopyright ? cplang('author').': '.$entrycopyright.' | ' : '').
 							'<a href="'.ADMINSCRIPT.'?action=cloudaddons&id='.$entry.'.plugin" target="_blank" title="'.$lang['cloudaddons_linkto'].'">'.$lang['plugins_visit'].'</a></p>',
-							'<a href="'.ADMINSCRIPT.'?action=plugins&operation=import&dir='.$entry.'&formhash='.FORMHASH.'" class="bold">'.$lang['plugins_config_install'].'</a>'
+							'<a href="'.ADMINSCRIPT.'?action=plugins&operation=import&dir='.$entry.'" class="bold">'.$lang['plugins_config_install'].'</a>'
 						), true);
 					}
 				}
@@ -317,7 +317,7 @@ if(!$operation) {
 
 	exportdata('Discuz! Plugin', $plugin['identifier'], $pluginarray);
 
-} elseif(FORMHASH == $_GET['formhash'] && $operation == 'import') {
+} elseif($operation == 'import') {
 
 	if(submitcheck('importsubmit') || isset($_GET['dir'])) {
 		cloudaddons_validator($_GET['dir'].'.plugin');
