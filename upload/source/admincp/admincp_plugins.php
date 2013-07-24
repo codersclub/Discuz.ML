@@ -115,8 +115,10 @@ if(!$operation) {
 					}
 				}
 			}
+/*vot*/			$entryimage = isset($plugin['image']) ? './source/plugin/'.$plugin['identifier'].'/'.dhtmlspecialchars($plugin['image']) : cloudaddons_pluginlogo_url($plugin['identifier']);
+
 			$pluginlist[$order][$plugin['pluginid']] = $title.showtablerow('class="hover'.($hl ? ' hl' : '').'"', array('valign="top" style="width:45px"', 'valign="top"', 'align="right" valign="bottom" style="width:160px"'), array(
-				'<img src="'.cloudaddons_pluginlogo_url($plugin['identifier']).'" onerror="this.src=\'static/image/admincp/plugin_logo.png\';this.onerror=null" width="40" height="40" align="left" />',
+/*vot*/				'<img src="'.$entryimage.'" onerror="this.src=\'static/image/admincp/plugin_logo.png\';this.onerror=null" width="40" height="40" align="left" />',
 					'<span '.($plugin['available'] ? 'class="bold"' : 'class="bold light"').'>'.dhtmlspecialchars($plugin['name']).' '.dhtmlspecialchars($plugin['version']).'</span> <span class="sml">('.$plugin['identifier'].')</span>'.($updateinfo ? ' <b>'.$updateinfo.'</b>' : '').
 					($plugin['description'] || $plugin['modules']['extra']['intro'] ? '<a href="javascript:;" onclick="display(\'intro_'.$plugin['pluginid'].'\')" class="memo">'.cplang('plugins_home').'</a><div id="intro_'.$plugin['pluginid'].'" class="memo" style="display:none">'.$plugin['description'].'<br />'.$plugin['modules']['extra']['intro'].'</div>' : '').
 				'<p><span class="light">'.($plugin['copyright'] ? cplang('author').': '.dhtmlspecialchars($plugin['copyright']).' | ' : '').
@@ -143,26 +145,54 @@ if(!$operation) {
 				if(!in_array($entry, array('.', '..')) && is_dir($plugindir.'/'.$entry) && !in_array($entry, $plugins)) {
 					$entrydir = DISCUZ_ROOT.'./source/plugin/'.$entry;
 					$d = dir($entrydir);
+/*vot*/					$langs = array();
+/*vot*/					$default = '';
+/*vot*/					while($f = $d->read()) {
+/*vot*/						if(preg_match("/discuz_plugin_".$entry."(_\w\w_\w+)*\.xml$/",$f,$matches)) {
+/*vot*/							$extra = $matches[1];
+/*vot*/							$extra = preg_replace("/^_/",'',$extra);
+/*vot*/							if($extra) {
+/*vot*/								$langs[$extra] = array($matches[0]);
+/*vot*/							} else {
+/*vot*/								$default = $matches[0];
+/*vot*/							}
+/*vot*/						}
+/*vot*/					}
+/*vot*/					$first = '';
+/*vot*/					foreach($langs AS $lng => $file) {
+/*vot*/						$first = $lng;
+/*vot*/						break;
+/*vot*/					}
+
 					$filemtime = filemtime($entrydir);
 					$entrytitle = $entry;
 					$entryversion = $entrycopyright = $importtxt = '';
 					$extra = currentlang();
 					$extra = $extra ? '_'.$extra : '';
-					if(file_exists($entrydir.'/discuz_plugin_'.$entry.$extra.'.xml')) {
-						$importtxt = @implode('', file($entrydir.'/discuz_plugin_'.$entry.$extra.'.xml'));
-					} elseif(file_exists($entrydir.'/discuz_plugin_'.$entry.'.xml')) {
-						$importtxt = @implode('', file($entrydir.'/discuz_plugin_'.$entry.'.xml'));
+
+/*vot*/					if(isset($langs[$extra])) {
+/*vot*/						$entryfile = $entrydir.'/discuz_plugin_'.$entry.$extra.'.xml';
+/*vot*/					} else if(!empty($default)) {
+/*vot*/						$entryfile = $entrydir.'/discuz_plugin_'.$entry.'.xml';
+/*vot*/					} else {
+/*vot*/						$entryfile = $entrydir.'/discuz_plugin_'.$entry.'_'.$first.'.xml';
+/*vot*/					}
+
+/*vot*/					if(file_exists($entryfile)) {
+/*vot*/						$importtxt = @implode('', file($entryfile));
 					}
+
 					if($importtxt) {
 						$pluginarray = getimportdata('Discuz! Plugin', 0, 1);
 						if(!empty($pluginarray['plugin']['name'])) {
 							$entrytitle = dhtmlspecialchars($pluginarray['plugin']['name']);
 							$entryversion = dhtmlspecialchars($pluginarray['plugin']['version']);
 							$entrycopyright = dhtmlspecialchars($pluginarray['plugin']['copyright']);
+/*vot*/							$entryimage = isset($pluginarray['plugin']['image']) ? $_G['siteurl'].'/source/plugin/'.$entry.'/'.dhtmlspecialchars($pluginarray['plugin']['image']) : cloudaddons_pluginlogo_url($entry);
 						}
 						$file = $entrydir.'/'.$f;
 						$newlist .= showtablerow('class="hover"', array('style="width:45px"', 'valign="top"', 'align="right" valign="bottom" style="width:160px"'), array(
-							'<img src="'.cloudaddons_pluginlogo_url($entry).'" onerror="this.src=\'static/image/admincp/plugin_logo.png\';this.onerror=null" width="40" height="40" align="left" style="margin-right:5px" />',
+/*vot*/							'<img src="'.$entryimage.'" onerror="this.src=\'static/image/admincp/plugin_logo.png\';this.onerror=null" width="40" height="40" align="left" style="margin-right:5px" />',
 							'<span class="bold light">'.$entrytitle.' '.$entryversion.($filemtime > TIMESTAMP - 86400 ? ' <font color="red">New!</font>' : '').'</span> <span class="sml light">('.$entry.')</span>'.
 							'<p><span class="author">'.($entrycopyright ? cplang('author').': '.$entrycopyright.' | ' : '').
 							'<a href="'.ADMINSCRIPT.'?action=cloudaddons&id='.$entry.'.plugin" target="_blank" title="'.$lang['cloudaddons_linkto'].'">'.$lang['plugins_visit'].'</a></p>',

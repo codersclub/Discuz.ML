@@ -8,11 +8,6 @@
  *	Modified by Valery Votintsev, codersclub.org
  */
 
-//DEBUG
-//echo '<pre>';
-//echo '_FILE_=', __FILE__, "\n";
-//echo '</pre>', "\n";
-
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
@@ -2063,6 +2058,8 @@ function browserversion($type) {
 }
 //vot !!!! ToDo: Check this for other languages !!!!!!!!!!!!!!!!!!!!!
 function currentlang() {
+/*vot*/	return strtoupper(DISCUZ_LANG) . '_UTF8';
+
 	$charset = strtoupper(CHARSET);
 	if($charset == 'GBK') {
 		return 'SC_GBK';
