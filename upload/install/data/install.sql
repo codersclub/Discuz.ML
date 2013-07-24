@@ -1112,6 +1112,7 @@ CREATE TABLE pre_common_plugin (
   copyright varchar(255) NOT NULL DEFAULT '',
   modules text NOT NULL,
   version varchar(255) NOT NULL DEFAULT '',
+  `image` VARCHAR(255) NOT NULL DEFAULT '',
   PRIMARY KEY (pluginid),
   UNIQUE KEY identifier (identifier)
 ) TYPE=MyISAM;
