@@ -218,8 +218,8 @@ drag.extend({
 		html = '<div class="c diywin" style="width:450px;position:relative;">'+table+'</div>';
 /*vot*/		var h = '<h3 class="flb"><em>'+lng['edit']+' '+wname+' '+lng['style']+'</em><span><a href="javascript:;" class="flbc" onclick="drag.closeStyleEdit(\''+id+'\');return false;" title="'+lng['close']+'">\n'
 /*vot*/			+lng['close']+'</a></span></h3>';
-		var f = '<p class="o pns"><button onclick="drag.saveStyle(\''+id+'\');drag.closeStyleEdit(\''+id+'\');" class="pn pnc" value="true">\n\
-/*vot*/			<strong>'+lng['submit']+'</strong></button><button onclick="drag.closeStyleEdit(\''+id+'\')" class="pn" value="true"><strong>'+lng['cancel']+'</strong></button></p>';
+/*vot*/		var f = '<p class="o pns"><button onclick="drag.saveStyle(\''+id+'\');drag.closeStyleEdit(\''+id+'\');" class="pn pnc" value="true">\n\
+			<strong>'+lng['submit']+'</strong></button><button onclick="drag.closeStyleEdit(\''+id+'\')" class="pn" value="true"><strong>'+lng['cancel']+'</strong></button></p>';
 		this.removeMenu(e);
 		showWindow('eleStyle',h + html + f, 'html', 0);
 	},
