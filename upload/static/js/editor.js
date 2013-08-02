@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: editor.js 33303 2013-05-23 03:35:36Z andyzheng $
+	$Id: editor.js 33650 2013-07-26 07:45:14Z nemohou $
 	Modified by Valery Votintsev
 */
 
@@ -15,7 +15,7 @@ var EXTRASELECTION = '', EXTRASEL = null;
 
 function newEditor(mode, initialtext) {
 	wysiwyg = parseInt(mode);
-	if(!(BROWSER.ie || BROWSER.firefox || (BROWSER.opera >= 9))) {
+	if(!(BROWSER.ie || BROWSER.firefox || (BROWSER.opera >= 9 || BROWSER.rv))) {
 		allowswitcheditor = wysiwyg = 0;
 	}
 	if(!allowswitcheditor) {
@@ -567,6 +567,13 @@ function writeEditorContents(text) {
 			initialized = true;
 			if(BROWSER.safari) {
 				editdoc.onclick = safariSel;
+			}
+		}
+		if(BROWSER.ie && BROWSER.ie <= 8) {
+			checkpostbg = /<style[^>]+name="editorpostbg"[^>]*>body{background-image:url\("([^\[\<\r\n;'\"\?\(\)]+?)"\);}<\/style>/ig;
+			var matches = checkpostbg.exec(text);
+			if(matches != null) {
+				editdoc.body.innerHTML += '<style type="text/css" name="editorpostbg">body{background-image:url("'+matches[1]+'");}</style>';
 			}
 		}
 	} else {
@@ -1484,7 +1491,18 @@ function insertText(text, movestart, moveend, select, sel) {
 	checkFocus();
 	if(wysiwyg) {
 		try {
-			editdoc.execCommand('insertHTML', false, text);
+			var sel = editdoc.getSelection();
+			var range = sel.getRangeAt(0);
+			if(range && range.insertNode) {
+				range.deleteContents();
+			}
+			var frag = range.createContextualFragment(text);
+			var lnode = frag.lastChild;
+			range.insertNode(frag);
+			range.setEndAfter(lnode);
+			range.setStartAfter(lnode);
+			sel.removeAllRanges();
+			sel.addRange(range);
 		} catch(e) {
 			if(!isUndefined(editdoc.selection) && editdoc.selection.type != 'Text' && editdoc.selection.type != 'None') {
 				movestart = false;

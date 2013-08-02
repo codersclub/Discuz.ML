@@ -2,13 +2,13 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: common.js 33439 2013-06-17 02:31:32Z nemohou $
-//	Modified by Valery Votintsev
+	$Id: common.js 33674 2013-07-31 08:32:24Z laoguozhang $
+//	Modified by Valery Votintsev, codersclub.org
 */
 
 var BROWSER = {};
 var USERAGENT = navigator.userAgent.toLowerCase();
-browserVersion({'ie':'msie','firefox':'','chrome':'','opera':'','safari':'','mozilla':'','webkit':'','maxthon':'','qq':'qqbrowser'});
+browserVersion({'ie':'msie','firefox':'','chrome':'','opera':'','safari':'','mozilla':'','webkit':'','maxthon':'','qq':'qqbrowser','rv':'rv'});
 if(BROWSER.safari) {
 	BROWSER.firefox = true;
 }
@@ -149,7 +149,7 @@ function browserVersion(types) {
 	for(i in types) {
 		var v = types[i] ? types[i] : i;
 		if(USERAGENT.indexOf(v) != -1) {
-			var re = new RegExp(v + '(\\/|\\s)([\\d\\.]+)', 'ig');
+			var re = new RegExp(v + '(\\/|\\s|:)([\\d\\.]+)', 'ig');
 			var matches = re.exec(USERAGENT);
 			var ver = matches != null ? matches[2] : 0;
 			other = ver !== 0 && v != 'mozilla' ? 0 : other;
@@ -1127,8 +1127,9 @@ function dragMenu(menuObj, e, op) {
 			return;
 		}
 		JSMENU['drag'] = [e.clientX, e.clientY];
-		JSMENU['drag'][2] = parseInt(menuObj.style.left);
-		JSMENU['drag'][3] = parseInt(menuObj.style.top);
+		var sxy = fetchOffset(menuObj);
+		JSMENU['drag'][2] = parseInt(sxy['left']) || 0;
+		JSMENU['drag'][3] = parseInt(sxy['top']) || 0;
 		document.onmousemove = function(e) {try{dragMenu(menuObj, e, 2);}catch(err){}};
 		document.onmouseup = function(e) {try{dragMenu(menuObj, e, 3);}catch(err){}};
 		doane(e);
@@ -2240,6 +2241,19 @@ function getElementOffset(element)
 	return {'left' : left, 'top' : top};
 }
 
+function mobileplayer()
+{
+	var platform = navigator.platform;
+	var ua = navigator.userAgent;
+	var ios = /iPhone|iPad|iPod/.test(platform) && ua.indexOf( "AppleWebKit" ) > -1;
+	var andriod = ua.indexOf( "Android" ) > -1;
+	if(ios || andriod) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 if(typeof IN_ADMINCP == 'undefined') {
 	if(creditnotice != '' && getcookie('creditnotice')) {
 		_attachEvent(window, 'load', showCreditPrompt, document);
@@ -2287,7 +2301,6 @@ function utf8length(data) {
 
 //vot: MultiLingual support
 function setlang(lang) {
-//DEBUG alert(url);
 	var url = document.location.href;
 	var anchorpos = url.indexOf('#');
 	var anchor = '';

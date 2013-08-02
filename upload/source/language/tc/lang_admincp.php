@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 33440 2013-06-17 02:39:05Z nemohou $
+ *      $Id: lang_admincp.php 33494 2013-06-26 05:26:25Z laoguozhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -2528,7 +2528,7 @@ $lang = array
 	'unwind' => '展開',
 
 	'setting_antitheft' => '防採集設置',
-	'setting_antitheft_tips' => '<li>防採集功能不影響正常用戶瀏覽檢驗。</li><li>可防止本站主題、文章和日誌被非法採集。</li><li><font style="color:red">當IP同時存在於黑/白名單時，白名單優先。</font></li>',
+/*0801*/	'setting_antitheft_tips' => '<li>防採集功能不影響正常用戶瀏覽檢驗。</li><li>可防止本站主題、文章和日誌被非法採集。</li><li><font style="color:red">當IP同時存在於黑/白名單時，白名單優先。</font></li><li>開啟防採集功能後帖子列表頁面的帖子預覽功能將不可使用。</li>',
 	'setting_antitheft_status' => '防採集全局設置',
 	'setting_antitheft_allow' => '是否開啟防採集',
 	'setting_antitheft_black' => '黑名單防採集過濾IP',

@@ -22,6 +22,38 @@ Main differences from the official Discuz!X:
 12. UCenter API Development Guide translated to English
 
 +======================================+
+   Discuz! X3 20130801
++======================================+
+FIX Drag the floating layer problem
+FIX Advertising does not automatically expire after endtime
+FIX Use general forum search if Geo Search is closed
+FIX Touch-screen version of the post content page directly display Interference code at the content
+FIX Can not preview the group post after push it to the board block
+
+FIX After editing the Reward Post points, the promt appear "Not enough points"
+FIX Time zone settings can be set to any value
+FIX After the previous X3 security patch, can not automatically repair problems
+FIX Using the wrong method name
+FIX When show in full-size mode, you can see the image w/o purchase
+
+FIX Touch screen version can also display non-own images
+FIX Posts background in multiple browsers compatibility issues
+FIX Portal Search List call cover map
+FIX Always missing one character in the article page navigation li
+FIX DZX3.0 wap Image rotation problem
+
+FIX Product sell post content appears twice
+FIX wp system can not be used at Touch screen version
+FIX Can not upload images from mobile devices with Android native browser
+FIX After generating the portal article  html, the published anarticle title appears misplaced
+FIX When the anti-theft is set, an error occures when number of visitors exceeds 200 (default is 200)
+
+FIX Can not export to QQ when required to post activity to QQ
+FIX Template Error: can not close IP security alert
+FIX Increase the accuracy of the IP regional data for a security alert
+FIX Added support for Youku Potatoes HTML5 player (can see the video on iPad)
+
++======================================+
    Discuz! X3 20130511
 +======================================+
 [ADD] Switch from Standard version to Touch-screen version

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 33364 2013-06-03 02:30:46Z andyzheng $
+ *      $Id: function_core.php 33508 2013-06-27 03:58:47Z jeffjzhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -313,13 +313,14 @@ function checkrobot($useragent = '') {
 function checkmobile() {
 	global $_G;
 	$mobile = array();
-	static $mobilebrowser_list =array('iphone', 'android', 'phone', 'mobile', 'wap', 'netfront', 'java', 'opera mobi', 'opera mini',
+	static $touchbrowser_list =array('iphone', 'android', 'phone', 'mobile', 'wap', 'netfront', 'java', 'opera mobi', 'opera mini',
 				'ucweb', 'windows ce', 'symbian', 'series', 'webos', 'sony', 'blackberry', 'dopod', 'nokia', 'samsung',
 				'palmsource', 'xda', 'pieplus', 'meizu', 'midp', 'cldc', 'motorola', 'foma', 'docomo', 'up.browser',
 				'up.link', 'blazer', 'helio', 'hosin', 'huawei', 'novarra', 'coolpad', 'webos', 'techfaith', 'palmsource',
 				'alcatel', 'amoi', 'ktouch', 'nexian', 'ericsson', 'philips', 'sagem', 'wellcom', 'bunjalloo', 'maui', 'smartphone',
 				'iemobile', 'spice', 'bird', 'zte-', 'longcos', 'pantech', 'gionee', 'portalmmm', 'jig browser', 'hiptop',
 				'benq', 'haier', '^lct', '320x320', '240x320', '176x220');
+	static $mobilebrowser_list =array('windows phone');
 	static $wmlbrowser_list = array('cect', 'compal', 'ctl', 'lg', 'nec', 'tcl', 'alcatel', 'ericsson', 'bird', 'daxian', 'dbtel', 'eastcom',
 			'pantech', 'dopod', 'philips', 'haier', 'konka', 'kejian', 'lenovo', 'benq', 'mot', 'soutec', 'nokia', 'sagem', 'sgh',
 			'sed', 'capitel', 'panasonic', 'sonyericsson', 'sharp', 'amoi', 'panda', 'zte');
@@ -333,7 +334,11 @@ function checkmobile() {
 	}
 	if(($v = dstrpos($useragent, $mobilebrowser_list, true))){
 		$_G['mobile'] = $v;
-		return '2';
+/*vot*/		return '1'; //Mobile Version
+	}
+	if(($v = dstrpos($useragent, $touchbrowser_list, true))){
+		$_G['mobile'] = $v;
+/*vot*/		return '2'; //Touch-Screen Version
 	}
 	if(($v = dstrpos($useragent, $wmlbrowser_list))) {
 		$_G['mobile'] = $v;
@@ -421,6 +426,7 @@ function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $stat
 
 function lang($file, $langvar = null, $vars = array(), $default = null) {
 	global $_G;
+	$fileinput = $file;
 	list($path, $file) = explode('/', $file);
 	if(!$file) {
 		$file = $path;
@@ -515,10 +521,6 @@ function checktplrefresh($maintpl, $subtpl, $timecompare, $templateid, $cachefil
 function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primaltpl='') {
 	global $_G;
 
-//DEBUG
-//echo "function template started.<br>\n";
-///*vot*/	settings_localize(); // Localize Navigation & Settings
-
 	static $_init_style = false;
 	if($_init_style === false) {
 		C::app()->_init_style();
@@ -552,7 +554,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 				$tpldir = 'data/diy/'.$_G['style']['tpldirectory'].'/';
 				!$gettplfile && $_G['style']['tplsavemod'] = $tplsavemod;
 				$curtplname = $file;
-/*vot*/				if(isset($_GET['diy']) && $_GET['diy'] == 'yes' || isset($_GET['diy']) && $_GET['preview'] == 'yes') { //DIY mode or preview mode, do the following judge
+/*vot*/				if(isset($_GET['diy']) && $_GET['diy'] == 'yes' || isset($_GET['diy']) && $_GET['preview'] == 'yes') { //If DIY mode or Preview mode, do the following decision
 					$flag = file_exists($diypath.$file.$preend.'.htm');
 					if($_GET['preview'] == 'yes') {
 						$file .= $flag ? $preend : '';

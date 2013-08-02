@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 33440 2013-06-17 02:39:05Z nemohou $
+ *      $Id: lang_admincp.php 33494 2013-06-26 05:26:25Z laoguozhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -959,7 +959,7 @@ $lang = array
 	'setting_styles_index_forumallowside' => '显示边栏',
 	'setting_styles_index_forumallowside_comment' => '选择“是”论坛首页侧边将显示聚合论坛内容的信息',
 	'setting_styles_index_whosonline' => '显示在线用户',
-/**/	'setting_styles_index_display_none' => '不显示',
+	'setting_styles_index_display_none' => '不显示',
 	'setting_styles_index_whosonline_comment' => '设置是否在论坛首页底部和论坛版块边栏显示在线会员列表',
 	'setting_styles_index_whosonline_contract' => '缩略显示在线列表',
 	'setting_styles_index_whosonline_contract_comment' => '如果打开该选项，在线列表将只显示在线用户数，不显示详情，此时会员可手动打开在线用户列表(最大在线超过 500 人系统将自动缩略显示在线列表)',
@@ -2505,9 +2505,9 @@ $lang = array
 	'setting_mobile_seccode' => '是否开启验证码',
 	'setting_mobile_seccode_comment' => '不开启则手机注册、登录、发布等操作均无验证码<br />注册、登录、发布验证码开关：<a href="?action=setting&operation=sec&anchor=seccode">全局 - 防灌水设置 - 验证码设置</a>',
 	'setting_mobile_hotthread' => '是否开启热帖',
-/**/	'setting_mobile_hotthread_comment' => '“触屏版”功能，开启则在首页显示热贴',
+	'setting_mobile_hotthread_comment' => '“触屏版”功能，开启则在首页显示热贴',
 	'setting_mobile_displayorder3' => '是否显示置顶贴',
-/**/	'setting_mobile_displayorder3_comment' => '“触屏版”功能，在帖子列表页面中是否显示置顶贴，否为不显示',
+	'setting_mobile_displayorder3_comment' => '“触屏版”功能，在帖子列表页面中是否显示置顶贴，否为不显示',
 	'setting_mobile_simpletype' => '开启不显示图片',
 	'setting_mobile_simpletype_comment' => '默认显示图片，开启后，“触屏版”不显示帖子图片，“标准版”不显示帖子图片、小图标、主题列表日期等页面元素',
 	'setting_mobile_simpletype_yes' => '无图精简版',
@@ -2528,7 +2528,7 @@ $lang = array
 	'unwind' => '展开',
 
 	'setting_antitheft' => '防采集设置',
-	'setting_antitheft_tips' => '<li>防采集功能不影响正常用户浏览检验。</li><li>可防止本站主题、文章和日志被非法采集。</li><li><font style="color:red">当IP同时存在于黑/白名单时，白名单优先。</font></li>',
+/*0801*/	'setting_antitheft_tips' => '<li>防采集功能不影响正常用户浏览检验。</li><li>可防止本站主题、文章和日志被非法采集。</li><li><font style="color:red">当IP同时存在于黑/白名单时，白名单优先。</font></li><li>开启防采集功能后帖子列表页面的帖子预览功能将不可使用。</li>',
 	'setting_antitheft_status' => '防采集全局设置',
 	'setting_antitheft_allow' => '是否开启防采集',
 	'setting_antitheft_black' => '黑名单防采集过滤IP',

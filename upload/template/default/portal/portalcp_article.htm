@@ -144,7 +144,7 @@ make_html('portal.php?mod=view&aid={$aid}', $('makehtml_'));
 					<input type="hidden" name="oldhtmlname" id="oldhtmlname" value="$article[htmlname]" />
 				</div>
 				<div id="pagetitle_" class="dopt mtn cl"{if $article[contents] < 2} style="display: none"{/if}>
-					<span class="z mtn">{lang page_title}:&nbsp;</span>
+					<span class="z mtn" style="width: 80px;">{lang page_title}:&nbsp;</span>
 					<input type="text" name="pagetitle" id="pagetitle" class="px" value="$article_content[title]" size="80" />
 				</div>
 

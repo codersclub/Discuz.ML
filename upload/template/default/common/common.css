@@ -1578,7 +1578,7 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; back
 	body#space .block { margin: 0 5px 10px; }
 .temp {margin:1px;}
 /* Re-definition of frame */
-	#ct .frame { margin: 0; border: none; }
+/*vot*/	#ct .frame { margin: 0; border: none; overflow: hidden; }
 	.bx { border: none; }
 		.bx .frame-1-1-1 { background: transparent url({IMGDIR}/vline2.png) repeat-y 320px 0; }
 		.bx .frame-2-1 { background: transparent url({IMGDIR}/vline.png) repeat-y 645px 0; }

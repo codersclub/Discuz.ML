@@ -4,14 +4,9 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_application.php 33454 2013-06-19 03:08:34Z jeffjzhang $
+ *      $Id: discuz_application.php 33619 2013-07-17 06:18:28Z andyzheng $
  *	Modified by Valery Votintsev, codersclub.org
  */
-
-//DEBUG
-//echo '<pre>';
-//echo '_FILE_=', __FILE__, "\n";
-//echo '</pre>', "\n";
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -60,11 +55,6 @@ class discuz_application extends discuz_base{
 	}
 
 	public function __construct() {
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::__construct=', "\n";
-//echo '</pre>', "\n";
-
 		$this->_init_env();
 		$this->_init_config();
 		$this->_init_input();
@@ -72,12 +62,6 @@ class discuz_application extends discuz_base{
 	}
 
 	public function init() {
-
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::init=', "\n";
-//echo '</pre>', "\n";
-
 		if(!$this->initated) {
 			$this->_init_db();
 			$this->_init_setting();
@@ -92,14 +76,7 @@ class discuz_application extends discuz_base{
 
 	private function _init_env() {
 
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::init_env=', "\n";
-//echo '</pre>', "\n";
-
-//vot		error_reporting(E_ERROR);
 /*vot*/		error_reporting(E_ALL);
-
 		if(PHP_VERSION < '5.3.0') {
 			set_magic_quotes_runtime(0);
 		}
@@ -111,13 +88,6 @@ class discuz_application extends discuz_base{
 
 		define('TIMESTAMP', time());
 		$this->timezone_set();
-
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::init_env 2', "\n";
-//echo '	DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
-//echo '	DISCUZ_CORE_FUNCTION=', DISCUZ_CORE_FUNCTION, "\n";
-//echo '</pre>', "\n";
 
 		if(!defined('DISCUZ_CORE_FUNCTION') && !@include(DISCUZ_ROOT.'./source/function/function_core.php')) {
 			exit('function_core.php is missing');
@@ -150,6 +120,7 @@ class discuz_application extends discuz_base{
 			'timestamp' => TIMESTAMP,
 			'starttime' => microtime(true),
 			'clientip' => $this->_get_client_ip(),
+			'remoteport' => $_SERVER['REMOTE_PORT'],
 			'referer' => '',
 			'charset' => '',
 /*vot*/			'dbcharset' => '',
@@ -256,12 +227,6 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _init_input() {
-
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::init_input=', "\n";
-//echo '</pre>', "\n";
-
 		if (isset($_GET['GLOBALS']) ||isset($_POST['GLOBALS']) ||  isset($_COOKIE['GLOBALS']) || isset($_FILES['GLOBALS'])) {
 			system_error('request_tainting');
 		}
@@ -388,31 +353,17 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _init_config() {
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::init_config started', "\n";
-//echo '</pre>', "\n";
 
 		$_config = array();
 		@include DISCUZ_ROOT.'./config/config_global.php';
 		if(empty($_config)) {
 			if(!file_exists(DISCUZ_ROOT.'./data/install.lock')) {
-//DEBUG
-//echo '<pre>';
-//echo '	redirect: install', "\n";
-//echo '</pre>', "\n";
-
 /*vot*/				header('location: install/');
 				exit;
 			} else {
 				system_error('config_notfound');
 			}
 		}
-
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::init_config finished', "\n";
-//echo '</pre>', "\n";
 
 		if(empty($_config['security']['authkey'])) {
 			$_config['security']['authkey'] = md5($_config['cookie']['cookiepre'].$_config['db'][1]['dbname']);
@@ -452,10 +403,6 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _init_output() {
-//DEBUG
-//echo '<pre>';
-//echo 'function discuz_application::init_output=', "\n";
-//echo '</pre>', "\n";
 
 		if($this->config['security']['urlxssdefend'] && $_SERVER['REQUEST_METHOD'] == 'GET' && !empty($_SERVER['REQUEST_URI'])) {
 			$this->_xss_check();
@@ -894,7 +841,7 @@ class discuz_application extends discuz_base{
 		if($mobile === '3' && empty($this->var['setting']['mobile']['wml'])) {
 			return false;
 		}
-		define('IN_MOBILE', $mobileflag ? $mobile : '2');
+		define('IN_MOBILE', isset($this->var['mobiletpl'][$mobile]) ? $mobile : '2');
 		setglobal('gzipcompress', 0);
 
 		$arr = array();

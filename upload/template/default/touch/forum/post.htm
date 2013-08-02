@@ -1,4 +1,5 @@
 <!--{template common/header}-->
+<!--vot-->
 <!--{if $special != 2 && $special != 4 && !($isfirstpost && $sortid)}-->
 <!--{eval $adveditor = $isfirstpost && $special && ($_GET['action'] == 'newthread' || $_GET['action'] == 'reply' && !empty($_GET['addtrade']) || $_GET['action'] == 'edit' );}-->
 
@@ -200,7 +201,7 @@
 				}
 			};
 
-/*vot*/			if(typeof FileReader != null && typeof FileReader != undefined && this.files) {//note Support html5 upload feature
+/*vot*/			if(typeof FileReader != 'undefined' && this.files[0]) {//note Support html5 upload feature
 				
 				$.buildfileupload({
 					uploadurl:'misc.php?mod=swfupload&operation=upload&type=image&inajax=yes&infloat=yes&simple=2',
