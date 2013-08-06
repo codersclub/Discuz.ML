@@ -115,7 +115,7 @@ if(!$operation) {
 					}
 				}
 			}
-/*vot*/			$entryimage = isset($plugin['image']) ? './source/plugin/'.$plugin['identifier'].'/'.dhtmlspecialchars($plugin['image']) : cloudaddons_pluginlogo_url($plugin['identifier']);
+/*vot*/			$entryimage = empty($plugin['image']) ? cloudaddons_pluginlogo_url($plugin['identifier']) : './source/plugin/'.$plugin['identifier'].'/'.dhtmlspecialchars($plugin['image']);
 
 			$pluginlist[$order][$plugin['pluginid']] = $title.showtablerow('class="hover'.($hl ? ' hl' : '').'"', array('valign="top" style="width:45px"', 'valign="top"', 'align="right" valign="bottom" style="width:160px"'), array(
 /*vot*/				'<img src="'.$entryimage.'" onerror="this.src=\'static/image/admincp/plugin_logo.png\';this.onerror=null" width="40" height="40" align="left" />',

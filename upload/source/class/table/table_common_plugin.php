@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: table_common_plugin.php 32122 2012-11-14 01:55:46Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -19,6 +20,8 @@ class table_common_plugin extends discuz_table
 		$this->_pk    = 'pluginid';
 
 		parent::__construct();
+
+/*vot*/		$this->_update_structure();
 	}
 
 	public function fetch_by_identifier($identifier) {
@@ -53,6 +56,12 @@ class table_common_plugin extends discuz_table
 		DB::delete('common_plugin', DB::field('identifier', $identifier));
 	}
 
+/*vot*/	private function _update_structure() {
+/*vot*/	// Add the field "image" for Plugin Icon if not exists.
+/*vot*/		if(!$row = DB::fetch_first("SHOW COLUMNS FROM ".DB::table($this->_table)." LIKE 'image'")) {
+/*vot*/			$res = DB::query("ALTER TABLE ".DB::table($this->_table)." ADD `image` VARCHAR( 255 ) NOT NULL DEFAULT '' COMMENT 'Plugin Icon'");
+/*vot*/		}
+/*vot*/ }
+
 }
 
-?>
