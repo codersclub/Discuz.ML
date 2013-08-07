@@ -93,7 +93,7 @@ $shownotice
 <table id="frametable" cellpadding="0" cellspacing="0" width="100%" height="100%">
 <!--vot--> <tr height="90" valign="top">
   <td width="160" class="mainhd">
-    <a href="admin.php?action=index" class="logo">Discuz! $admincp</a>
+<!--vot-->    <a href="admin.php" class="logo">Discuz! $admincp</a>
   </td>
   <td class="mainhd">
     <div class="uinfo" id="frameuinfo">
