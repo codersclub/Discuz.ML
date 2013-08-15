@@ -154,11 +154,17 @@ function modulecmp($a, $b) {
 
 function updatepluginlanguage($pluginarray) {
 	global $_G;
+//DEBUG
+//echo '<pre>';
+//print_r($pluginarray);
+//echo 'DISCUZ_LANG=', DISCUZ_LANG, "\n";
+//echo '</pre>';
 	if(!$pluginarray['language']) {
 		return false;
 	}
 	foreach(array('script', 'template', 'install', 'system') as $type) {
 		loadcache('pluginlanguage_'.$type, 1);
+//		loadcache('pluginlanguage_'.$type.'_'.DISCUZ_LANG, 1);
 		if($type != 'system') {
 			if(!empty($pluginarray['language'][$type.'lang'])) {
 				$_G['cache']['pluginlanguage_'.$type][$pluginarray['plugin']['identifier']] = $pluginarray['language'][$type.'lang'];
@@ -175,7 +181,12 @@ function updatepluginlanguage($pluginarray) {
 				}
 			}
 		}
+//DEBUG
+//echo '<pre>';
+//echo 'savecache: ','pluginlanguage_'.$type, "\n";
+//echo '</pre>';
 		savecache('pluginlanguage_'.$type, $_G['cache']['pluginlanguage_'.$type]);
+//		savecache('pluginlanguage_'.$type.'_'.DISCUZ_LANG, $_G['cache']['pluginlanguage_'.$type);
 	}
 	return true;
 }
