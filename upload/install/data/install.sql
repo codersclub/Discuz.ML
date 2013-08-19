@@ -3245,7 +3245,7 @@ CREATE TABLE pre_home_blog (
   `password` varchar(255) NOT NULL DEFAULT '',
   favtimes int(11) unsigned NOT NULL DEFAULT '0',
   sharetimes int(11) unsigned NOT NULL DEFAULT '0',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
   click1 int(11) unsigned NOT NULL DEFAULT '0',
   click2 int(11) unsigned NOT NULL DEFAULT '0',
   click3 int(11) unsigned NOT NULL DEFAULT '0',
