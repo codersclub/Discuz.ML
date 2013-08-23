@@ -599,19 +599,19 @@ Note on the CSS Hack:
 				#space #hd h2 { margin-top: 0; }
 			#hd .fastlg { padding-top: 10px; }
 
-			#scbar { height: 44px; border: solid {SPECIALBG}; border-width: 0 1px 1px; background: url({IMGDIR}/search.png) repeat-x 0 0; line-height: 44px; overflow: hidden; }
-				.scbar_icon_td { width: 50px; background: url({IMGDIR}/search.png) no-repeat 100% -490px; }
-				.scbar_txt_td, .scbar_type_td { background: url({IMGDIR}/search.png) repeat-x 0 -222px; }
-					#scbar_txt { width: 400px; border: 1px solid #FFF; outline: none; font-size: 14px; }
+			#scbar { overflow: hidden; height: 42px; line-height: 42px; border-top: 1px solid #FFF; border-bottom: 1px solid #E9EFF5; background: #E8EFF5; }
+				.scbar_icon_td { width: 21px; background: url({IMGDIR}/search_rtl.png) no-repeat 0 -50px; }
+				.scbar_txt_td, .scbar_type_td { background: url({IMGDIR}/search_rtl.png) repeat-x 0 -93px; }
+					#scbar_txt { width: 400px; border: 1px solid #FFF; outline: none; }
 					.scbar_narrow #scbar_txt { width: 260px; }
-				.scbar_btn_td { width: 67px; background: url({IMGDIR}/search.png) no-repeat 0 -296px; text-align: center; }
+				.scbar_btn_td { width: 38px; background: url({IMGDIR}/search_rtl.png) no-repeat 8px -142px; }
 					#scbar_btn { margin: 0; padding: 0; border: none; background: transparent none; box-shadow: none; }
 						#scbar_btn strong { line-height: 84px; }
-				.scbar_type_td { width: 100px; background: url({IMGDIR}/search.png) no-repeat 0 -222px; }
-					#scbar_type { display: block; padding-right: 2px; text-align: right; text-decoration: none; width: 70px; }
+				.scbar_type_td { width: 100px; background: url({IMGDIR}/search_rtl.png) no-repeat 0 -193px; }
+					#scbar_type { display: block; padding-left: 10px; text-align: left; text-decoration: none; }
 						#scbar_type_menu { margin-top: -8px; }
-				#scbar_hot { padding-right: 8px; height: 45px; overflow: hidden; line-height: 44px; }
-					#scbar_hot strong, #scbar_hot a { float: right; margin-left: 8px; white-space: nowrap; }
+				#scbar_hot { padding-left: 8px; height: 45px; overflow: hidden; }
+					#scbar_hot strong, #scbar_hot a { float: right; margin-right: 8px; white-space: nowrap; }
 
 			#nv { overflow: hidden; height: 33px; {MENUBGCODE}; padding-right: 3px; }
 				#nv li { float: right; padding-left: 1px; height: 33px; line-height: 33px; background: url({IMGDIR}/nv_a.png) no-repeat 100% 0; font-weight: 700; font-size: 14px; }
@@ -816,16 +816,16 @@ Note on the CSS Hack:
 			#uhd .mn .addflw a { background-image: url({IMGDIR}/flw_ico.png); }
 			#uhd .mn .addf a { background-image: url({STATICURL}image/feed/friend.gif); }
 			#uhd .mn .pm2 a { background-image: url({IMGDIR}/pmto.gif); }
-	#uhd .h { padding-left: 75px; }
-		#uhd .avt { display: inline; float: left; margin-left: -65px; }
+	#uhd .h { padding-right: 75px; }
+		#uhd .avt { display: inline; float: right; margin-right: -65px; }
 		#uhd .mt { padding-bottom: 0; }
-	#uhd .flw_hd { float: right; width: 260px; margin-right: 10px; margin-bottom: -30px; }
-		#uhd .tns th, #uhd .tns td { padding-left: 20px; text-align: left; }
-		#uhd .flw_hd .o { padding-left: 20px; }
+	#uhd .flw_hd { float: left; width: 260px; margin-right: 10px; margin-bottom: -30px; }
+		#uhd .tns th, #uhd .tns td { padding-right: 20px; text-align: right; }
+		#uhd .flw_hd .o { padding-right: 20px; }
 /* Statistics */
 .tns { padding: 10px 0; }
 	.tns table { width: 100%; }
-		.tns th, .tns td { text-align: center; font-size: 12px; }
+		.tns th, .tns td { text-align: center; font-size: 10px; }
 		.sd .tns th, .sd .tns td { width: 110px !important; }
 		.tns th { border-right: 1px solid #CCC; }
 		.tns th p, .tns td p { font-size: 14px; margin: 0; }
@@ -853,7 +853,7 @@ Note on the CSS Hack:
 .tb { margin-top: 10px; padding-right: 5px; line-height: 30px; border-bottom: 1px solid {COMMONBORDER}; }
 	.tb li { float: right; margin: 0 0 -1px 3px; }
 		.ie6 .tb .a, .ie6 .tb .current { position: relative; }
-	.tb a { display: block; padding: 0 10px; border: 1px solid {COMMONBORDER}; background: {SPECIALBG}; }
+	.tb a { display: block; padding: 0 4px; border: 1px solid {COMMONBORDER}; background: {SPECIALBG}; }
 		.tb .a a, .tb .current a { border-bottom-color: {WRAPBG}; background: {WRAPBG}; font-weight: 700;}
 		.tb a:hover { text-decoration: none; }
 	.tb .y { float: left; margin-left: 0; }
@@ -1081,7 +1081,7 @@ Note on the CSS Hack:
 /*vot*/	#toptb a#sslct, #toptb a.switchblind { /*width: 10px; background: url({IMGDIR}/style_switch.png) no-repeat 50% 50%; text-indent: -9999px; overflow: hidden;*/ }
 /*vot*/	#sslct img { vertical-align:middle; }
 	.switchwidth:hover{ background: url({IMGDIR}/switch_width.png) no-repeat 100% -36px; }
-/*vot*/	#sslct_menu { padding: 2px; }
+/*vot*/	#sslct_menu { padding: 2px; left:18px;}
 /*vot*/		 .sslct_btn { display: block; margin: 0; cursor: pointer; }
 /*vot*/			.sslct_btn i { float: right; display: inline; margin: 2px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
 /*vot*/	#toptb a.switchblind{ width: 10px !important; overflow: hidden; }
@@ -1220,7 +1220,7 @@ Note on the CSS Hack:
 						* html .pmd img { width: expression(this.width > 292 ? 292 : true); }
 					/* Reference to the short message and code under */
 					.pmd .quote { overflow: hidden; margin: 0; padding-right: 16px; background: url({IMGDIR}/qa.gif) no-repeat 0 0; color: {MIDTEXT}; }
-						.pmd .quote blockquote { display: inline; margin: 0; padding-left: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
+						.pmd .quote blockquote { display: inline; margin: 0; padding-right: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
 					.pmd .blockcode { overflow: hidden; margin: 0; padding: 0; background: transparent; color: {MIDTEXT}; }
 						.pmd .blockcode code { font-family: Monaco, Consolas, "Lucida Console", "Courier New", serif; font-size: 12px; line-height: 1.8em; }
 						* html .pmd .blockcode code { font-family: "Courier New", serif; }
@@ -1433,7 +1433,7 @@ Note on the CSS Hack:
 	.pc_l { background-position: -30px 0; }
 	
 /* For text prompts pop-up layer tips */
-	.popuptext .pc_l,.popuptext .pc_c,.popuptext .pc_inner,.popuptext .pc_r { background: url({IMGDIR}/popuptext_bg.gif) no-repeat 0 0; }
+	.popuptext .pc_l,.popuptext .pc_c,.popuptext .pc_inner,.popuptext .pc_r { background: url({IMGDIR}/popuptext_bg_rtl.gif) no-repeat 0 0; }
 	.popuptext .pc_c { width: 200px; background-position: 0 -56px; background-repeat: repeat-x; }
 		.popuptext .pc_inner { white-space: nowrap; text-align: center; width: auto; background-position: 50% -112px; }
 	.popuptext .pc_r { background-position: -30px 0; }

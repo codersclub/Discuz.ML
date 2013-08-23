@@ -186,10 +186,10 @@ Modified by Valery Votintsev, codersclub.org
 .fullvfastpost{margin-top:30px;}
 #vfastpost th, #vfastpost td{padding: 0px;}
 #vfastpost td{height:38px;}
-	#vfastpost #vf_l{width:5px;background: url({IMGDIR}/v.png) no-repeat -30px -39px;}
-	#vfastpost #vf_m{background: url({IMGDIR}/v.png) repeat-x 0px -79px;}
+	#vfastpost #vf_l{width:5px;background: url({IMGDIR}/v_rtl.png) no-repeat -30px -39px;}
+	#vfastpost #vf_m{background: url({IMGDIR}/v_rtl.png) repeat-x 0px -79px;}
 	#vfastpost #vf_m input{border:1px solid white; width: 100%; border: 1px solid white; outline: none; font-size: 14px; }
-	#vfastpost #vf_r{width:10px;background: url({IMGDIR}/v.png) no-repeat -47px -119px;}
+	#vfastpost #vf_r{width:10px;background: url({IMGDIR}/v_rtl.png) no-repeat -47px -119px;}
 	#vfastpost #vf_b{width:120px;}
 /*vot*/		#vfastpost #vf_b button{width:120px;display:block;height:38px;/*line-height:100px;*/overflow:hidden;/*background: url({IMGDIR}/v.png) no-repeat 0 0;*/ margin: 0; padding: 0; border: none; border-radius:4px; font-size:130%;}
 /** end **/
@@ -217,7 +217,7 @@ Modified by Valery Votintsev, codersclub.org
 /**  forum::forumdisplay,forum::viewthread,group::viewthread,home::space,home::spacecp,home::invite,portal::view,portal::comment,forum::post,group::post **/
 	/* Square outside the reference, code style by Pony */
 		.quote { overflow: hidden; margin: 10px 0; padding-right: 16px; background: url({IMGDIR}/qa.gif) no-repeat 0 0; color: {MIDTEXT}; }
-			.quote blockquote { display: inline; margin: 0; padding-left: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
+			.quote blockquote { display: inline; margin: 0; padding-right: 16px; background: url({IMGDIR}/qz.gif) no-repeat 100% 100%; }
 			.m_c .quote { width: 585px; }
 		.blockcode { overflow: hidden; margin: 10px 0; padding: 5px 10px; background: #F7F7F7; color: {MIDTEXT}; }
 			.blockcode code { font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; font-size: 12px; line-height: 1.8em; }
@@ -614,7 +614,7 @@ Modified by Valery Votintsev, codersclub.org
 			.tl .comm {}
 			.tl .frm { width: 150px; }
 			.tl .o { width: 20px; }
-			.tl .num { width: 60px; line-height: 14px; }
+			.tl .num { width: 172px; line-height: 14px; }
 			.tl .by { width: 105px; line-height: 14px; }
 				.tl cite, .tl .num em { display: block; }
 				.tl th em { margin-left: 4px; zoom: 1; }
@@ -693,7 +693,7 @@ Modified by Valery Votintsev, codersclub.org
 	Explain:		View Thread Header
 	Last Modify:	Pony 201201181105
 */
-	.vwthd { padding-right: 80px !important; }
+	.vwthd { padding-right: 20px !important; }
 		.vwthd div.y { display: inline; margin-right: -60px; }
 /*vot*/	.ts { /*display: inline;*/ font: 700 16px Verdana, Arial, Tahoma, sans-serif; }
 
@@ -928,8 +928,8 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 			.appendp { background: url({IMGDIR}/icon_append.png) no-repeat 100% 50%; }
 			.psave { background: url({IMGDIR}/pubsave.gif) no-repeat 100% 50%; }
 			.push { background: url({IMGDIR}/push.png) no-repeat 100% 50%; }
-			.replyadd { background: url({IMGDIR}/rec_add.gif) no-repeat 0 50%; }
-			.replysubtract { background: url({IMGDIR}/rec_subtract.gif) no-repeat 0 50%; }
+			.replyadd { background: url({IMGDIR}/rec_add.gif) no-repeat 100% 50%; }
+			.replysubtract { background: url({IMGDIR}/rec_subtract.gif) no-repeat 100% 50%; }
 		.modact { display: block; height: 32px; text-align: center; padding:30px 0 0; }
 			.modact, .modact a { line-height: 32px !important; }
 		/* Push button by alice */
@@ -965,16 +965,16 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 			.icon_ring:hover { background:#F26C4F; border:2px solid #FFF; }
 
 /* Replies Recommended post sticklist by dfox */
-	.psth { margin: 2em -20px 2em 0; padding: 5px 20px 5px 45px; width: 240px; background: #FFF4DD url({IMGDIR}/arw.gif) no-repeat 100% 50%; color: {NOTICETEXT}; font-size: 14px; }
-	.tpst .psth { margin-right: -15px; }
-	.pstl { clear: right; margin-bottom: 2em;}
-		.psta { float: right; width: 30px; }
+	.psth { margin: 2em 0 2em -20px; padding: 5px 4px 5px 20px; width: 240px; background: #FFF4DD url({IMGDIR}/arw_rtl.gif) no-repeat 0% 50%; color: {NOTICETEXT}; font-size: 14px; }
+	.tpst .psth { margin-left: -15px; }
+	.pstl { clear: left; padding: 0.5em 0;}
+		.psta { float: left; width: 120px; line-height:24px; overflow:hidden; }
 			.psta img { width: 24px; height: 24px; vertical-align:midden; }
-		.psti { margin-right: 30px; }
+		.psti { margin-left: 120px; line-height:24px; }
 
 /* Reviews by monkeye */
 	.f_c .cm { overflow: hidden; }
-	.cm .psth { background-color: #FFF4DD; color: {NOTICETEXT}; background-position: 100% 50%; font-size: 12px; }
+/*Khalid*/	.cm .psth { background-color: #FFF4DD; color: {NOTICETEXT}; /*background-position: 100% 50%;*/ font-size: 12px; } 
 		.cm .pg { float: none; }
 			.cm .pg a, .cm .pg strong { margin: 0 0 0 4px; }
 		.cm i { color: #F30; font-style: normal; }
@@ -1658,8 +1658,8 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	#pprl a { color: {HIGHLIGHTLINK}; }
 	#pprl li { clear: both; padding: 3px 0 3px 90px; }
 /*vot*/		#pprl li em { float: left; margin-left: -90px; width: 140px; white-space: nowrap; overflow: hidden; }
-	.pf_l li { float: left; width: 300px; }
-		.pf_l em { padding-right: 10px; color: {MIDTEXT}; }
+	.pf_l li { float: right; width: 300px; }
+		.pf_l em { padding-right: 0x; color: {MIDTEXT}; }
 /** end **/
 
 
@@ -2032,7 +2032,7 @@ body { background: #FFF none !important; }
 
 
 /** forum::collection,forum::viewthread **/
-.clct_list .xld { float: left; margin-bottom: 5px; width: 49.9%; height: 105px; overflow: hidden; }
+.clct_list .xld { float: right; margin-bottom: 5px; width: 49.9%; height: 105px; overflow: hidden; }
 	.clct_list .xld .m, .clct_list .xld .m a { width: 55px; height: 50px; overflow: hidden; cursor: pointer; }
 		.clct_list .xld .m { background: url({IMGDIR}/hotspot.gif) no-repeat 100% 0; }
 		.clct_list .xld .m a:hover { text-decoration: none; }
@@ -2043,9 +2043,9 @@ body { background: #FFF none !important; }
 	.clct_flw .u { width: 66px; background-position: 0 -125px; }
 .clct_flw strong { float: right; padding: 0 20px; background: url({IMGDIR}/pdbt.gif) no-repeat 100% -25px; }
 .clct_flw a { color: #FFF; }
-.clct_ratestar { float: left; width: 80px; height:  24px; background: url({IMGDIR}/fav_grey.gif) repeat-x 0 0; }
+.clct_ratestar { float: right; width: 80px; height:  24px; background: url({IMGDIR}/fav_grey.gif) repeat-x 0 0; }
 	.clct_ratestar .btn { position: absolute; width: 80px; height:  24px; z-index: 2; }
-	.clct_ratestar a { float: left; width: 16px; height: 20px; text-indent: -9999px; overflow: hidden; }
+	.clct_ratestar a { float: right; width: 16px; height: 20px; text-indent: -9999px; overflow: hidden; }
 	.clct_ratestar .star { position: absolute; width: 0; height:  24px; background: url({IMGDIR}/fav.gif) repeat-x 0 0; z-index: 1; }
 		.clct_ratestar .star1 { width: 16px; }
 		.clct_ratestar .star2 { width: 32px; }
@@ -2064,7 +2064,7 @@ body { background: #FFF none !important; }
 	.ctag0 { background:#F6C5BE; color: #822111; }
 	.ctag1 { background:#FEF1D1; color: #AA8831; }
 	.ctag2 { background:#EEE; color: #666; }
-.ctag_keyword { background:url({IMGDIR}/tag.gif) no-repeat 0 0px;padding-left:20px;margin-left:10px;font-weight:normal; }
+.ctag_keyword { background:url({IMGDIR}/tag.gif) no-repeat 100% 0px;padding-right:20px;margin-right:10px;font-weight:normal; }
 /** end **/
 
 
@@ -2099,10 +2099,10 @@ body { background: #FFF none !important; }
 			.flw_attach span { float: right; width: 90px; color: #999; text-align: right; overflow: hidden; }
 .flw_video, .flw_music { margin: 10px 0; }
 	.flw_article .flw_video img { display: inline; }
-.flw_quote { margin-left: 10px; padding-left: 15px; border-left: 3px solid #B1CCD8; }
+.flw_quote { margin-right: 10px; padding-right: 15px; border-right: 3px solid #B1CCD8; }
 .flw_readfull { padding: 3px 5px; border: 1px solid #DDD; border-radius: 3px; background: #FFF; }
 	.flw_readfull:hover { border-color: #9EB4C2; text-decoration: none; }
-.flw_delete { visibility: hidden; float: right; width: 20px; height: 20px; background: url({IMGDIR}/cls.gif) no-repeat 0 0; text-indent: -9999px; overflow: hidden; }
+.flw_delete { visibility: hidden; float: left; width: 20px; height: 20px; background: url({IMGDIR}/cls.gif) no-repeat 0 0; text-indent: -9999px; overflow: hidden; }
 	.ie8 .flw_delete { position: relative; z-index: 1; }
 	.flw_delete:hover { background-position: 0 100%; }
 	.flw_feed_hover .flw_delete { visibility: visible; }
@@ -2124,7 +2124,7 @@ body { background: #FFF none !important; }
 #flw_header #subject { margin: 5px; width: 580px; height: 20px; border: none; outline: none; background: transparent; line-height: 20px; }
 #flw_checklen { padding-right: 10px; }
 	#flw_post_extra .sec { padding: 8px 15px; border: 1px solid #EFEFEF; background: #F9FBFC; border-radius: 4px; }
-.tedt { width: auto; border: 1px solid #9EB4C2; border-radius: 4px; overflow: hidden; }
+/*khalid*/ .tedt {/* width: auto;*/  border: 1px solid #9EB4C2; border-radius: 4px; overflow: hidden; }
 #flw_header .bar { padding-left: 10px; border-top: 1px solid #EFEFEF; border-bottom: none; background: #F9FBFC; border-radius: 0 0 4px 4px; }
 #flw_header .area { background: #FFF url({IMGDIR}/input_shadow.png) repeat-x 0 0; border-radius: 4px 4px 0 0; }
 	#flw_header .area .pt { height: 4em; }
@@ -2230,7 +2230,7 @@ body { background: #FFF none !important; }
 
 .my_flw_stats { width: 120px; }
 	.my_flw_stats li { margin-bottom: 7px; padding-bottom: 7px; border-bottom: 1px solid {COMMONBORDER}; }
-		.my_flw_stats .xg1 { padding-right: 10px; }
+		.my_flw_stats .xg1 { padding-left: 10px; }
 
 .ie6 .tb .a { position: static; }
 #flw_bar .fpd { position: relative; zoom: 1; }
