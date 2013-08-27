@@ -508,7 +508,8 @@ CREATE TABLE pre_common_diy_data (
   uid int(11) unsigned NOT NULL DEFAULT '0',
   username varchar(255) NOT NULL DEFAULT '',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (targettplname,tpldirectory)
+  KEY targettplname (targettplname),
+  KEY tpldirectory (tpldirectory)
 ) TYPE=MyISAM;
 
 DROP TABLE IF EXISTS pre_common_domain;
