@@ -1186,7 +1186,7 @@ $lang = array (
   'warn_get' => '受到警告',
   'admin_message_banned' => '提示: <em>作者被禁止或刪除 內容自動屏蔽，只有管理員或有管理權限的成員可見</em>',
   'admin_message_single_banned' => '提示: <em>該帖被管理員或版主屏蔽，只有管理員或有管理權限的成員可見</em>',
-  'attach_nopermission_login' => '您需要 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href);return false;">登錄</a> 才可以下載或查看，沒有帳號？<a href="member.php?mod={$_G[setting][regname]}" title="註冊帳號">{$_G[setting][reglinkname]}</a>',
+/*vot*/  'attach_nopermission_login' => '您需要 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href);return false;">登錄</a> 才可以下載或查看，沒有帳號？<a href="member.php?mod={$_G[setting][regname]}" title="註冊帳號">註冊帳號</a>',
   'guesttipsinthread_text' => '馬上註冊，結交更多好友，享用更多功能，讓你輕鬆玩轉社區。',
   'attach_nopermission_connect_fill_profile' => '您需要 <a href="member.php?mod=connect" class="xi2">完善帳號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有帳號</a> 後才可以下載或查看',
   'attach_nopermission_notice' => '本帖子中包含更多資源',

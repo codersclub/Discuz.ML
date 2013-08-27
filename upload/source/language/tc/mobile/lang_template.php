@@ -64,7 +64,7 @@ $lang = array (
   'admin_banpost_confirm' => '您要進行屏蔽操作',
   'admin_delpost_confirm' => '您確定要刪除此回復？',
   'admin_warn_confirm' => '您要進行警告操作',
-  'attach_nopermission_login' => '您需要<a href="member.php?mod=logging&action=login">登錄</a>才可以下載或查看附件。沒有帳號？<a href="member.php?mod={$_G[setting][regname]}" title="註冊帳號">{$_G[setting][reglinkname]}</a>',
+/*vot*/  'attach_nopermission_login' => '您需要<a href="member.php?mod=logging&action=login">登錄</a>才可以下載或查看附件。沒有帳號？<a href="member.php?mod={$_G[setting][regname]}" title="註冊帳號">註冊帳號</a>',
   'attachlist' => '附件列表',
   'ban_member' => '禁止',
   'digest' => '<span class="xi1">精華</span>',
