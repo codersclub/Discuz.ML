@@ -364,6 +364,7 @@ $lang = array(
 
 	'php_version_too_low'		=> 'PHP version is too low',
 	'php_version_too_low_comment'	=> 'For normal functioning Discuz! requires for more new version of PHP',
+	'mbstring'			=> 'MBstring 库',//'MBstring Library',
 //---------------------------------------------------------------
 
 );

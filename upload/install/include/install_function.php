@@ -132,6 +132,8 @@ function env_check(&$env_items) {
 			$tmp = function_exists('gd_info') ? gd_info() : array();
 			$env_items[$key]['current'] = empty($tmp['GD Version']) ? 'noext' : $tmp['GD Version'];
 			unset($tmp);
+		} elseif($key == 'mbstring') {
+			$env_items[$key]['current'] = function_exists('mb_get_info') ? 'support' : 'noext';
 		} elseif($key == 'diskspace') {
 			if(function_exists('disk_free_space')) {
 				$env_items[$key]['current'] = floor(disk_free_space(ROOT_PATH) / (1024*1024)).'M';

@@ -76,6 +76,7 @@ $env_items = array
 	'attachmentupload' => array('r' => 'notset', 'b' => '2M'),
 	'gdversion' => array('r' => '1.0', 'b' => '2.0'),
 	'diskspace' => array('r' => '10M', 'b' => 'notset'),
+/*vot*/	'mbstring' => array('r' => 'support', 'b' => 'support'),
 );
 
 $dirfile_items = array

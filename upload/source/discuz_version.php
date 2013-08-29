@@ -16,7 +16,7 @@ if(!defined('DISCUZ_VERSION')) {
 	define('DISCUZ_VERSION', 'X3');
 	define('DISCUZ_RELEASE', '20130801');
 	define('DISCUZ_FIXBUG', '30000000');
-	define('DISCUZ_ML_REVISION', '233');
+	define('DISCUZ_ML_REVISION', '234');
 }
 
 ?>
