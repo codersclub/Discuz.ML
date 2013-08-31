@@ -968,7 +968,7 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 	.psth { margin: 2em 0 2em -20px; padding: 5px 4px 5px 20px; width: 240px; background: #FFF4DD url({IMGDIR}/arw_rtl.gif) no-repeat 0% 50%; color: {NOTICETEXT}; font-size: 14px; }
 	.tpst .psth { margin-left: -15px; }
 	.pstl { clear: left; padding: 0.5em 0;}
-		.psta { float: left; width: 120px; line-height:24px; overflow:hidden; }
+		.psta { float: right; width: 120px; line-height:24px; overflow:hidden; }
 			.psta img { width: 24px; height: 24px; vertical-align:midden; }
 		.psti { margin-left: 120px; line-height:24px; }
 
