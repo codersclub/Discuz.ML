@@ -456,6 +456,7 @@ Modified by Valery Votintsev, codersclub.org
 	.fl_g { vertical-align: top; }
 		.fl_g dl { margin-right: 31px; padding-right: 10px; }
 			.fl_g dt { font-weight: 700; }
+/*vot*/	.fl_row { vertical-align: top; }
 	.fl_row td { border-top: 1px dashed {COMMONBORDER}; }
 
 /* Group Category List */
