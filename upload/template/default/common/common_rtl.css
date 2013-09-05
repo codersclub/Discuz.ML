@@ -1027,7 +1027,7 @@ Note on the CSS Hack:
 	Explain:		Links
 	Last Modify:	lushnis
 */
-	.lk img { float: right; margin-left: 5px; margin-bottom: 5px; width: 88px; height: 31px; }
+	.lk img { float: right; margin-left: 5px; margin-bottom: 5px; }
 	.lk p { color: {MIDTEXT}; }
 	.lk .m li { clear: right; padding: 0 98px 10px 0; }
 		.lk .m img { display: inline; margin-top: 4px; margin-top/*\**/: 1px\9; margin-right: -98px; }
