@@ -1,8 +1,9 @@
 +======================================================+
-   Discuz! X3.0 Beta (MULTILINGUAL)
-   by Valery Votintsev
+   Discuz! ML v.3.1 (MultiLingual)
+   (c) by Valery Votintsev and CodersClub community
    http://codersclub.org/discuzx/
 
+   Based on Discuz! X3.1
 +======================================================+
 
 Main differences from the official Discuz!X:
@@ -22,142 +23,24 @@ Main differences from the official Discuz!X:
 12. UCenter API Development Guide translated to English
 
 +======================================+
-   Discuz! X3 20130801
+   Discuz! ML3.1 Release 20130923
 +======================================+
-FIX Drag the floating layer problem
-FIX Advertising does not automatically expire after endtime
-FIX Use general forum search if Geo Search is closed
-FIX Touch-screen version of the post content page directly display Interference code at the content
-FIX Can not preview the group post after push it to the board block
+ADD. Discuz! Cloud verification code, improved protection against spam-bots
+ADD. Intelligent verification code strategy, without affecting the normal user operations, block ads publishing
+ADD. Safety evaluation mechanisms, suggesting webmasters background settings involving safety operation
+ADD. User account bodyguard, increase the difficulty of brute force account, reducing the loss of user accounts stolen
 
-FIX After editing the Reward Post points, the promt appear "Not enough points"
-FIX Time zone settings can be set to any value
-FIX After the previous X3 security patch, can not automatically repair problems
-FIX Using the wrong method name
-FIX When show in full-size mode, you can see the image w/o purchase
+ADD. Identify malicious users function. All the malicious users posts can be processed, and users automatically banned
+ADD. Whole network defense mechanisms, Blacklisted users, will limiting behavior in all the Discuz! Forum sites
+IMPROVE. Waterproof wall function. Enhance all the site responce level, Limiting the maximum speed of ads posting
+IMPROVE. Webmaster reporting mechanism. Reported by multiple users IP will be blacklisted
 
-FIX Touch screen version can also display non-own images
-FIX Posts background in multiple browsers compatibility issues
-FIX Portal Search List call cover map
-FIX Always missing one character in the article page navigation li
-FIX DZX3.0 wap Image rotation problem
+OPTIMIZE. Some interaction features steps was simplified
+OPTIMIZE. Back-office functions distributed, Easy to quickly find the desired webmaster function
+OPTIMIZE. Part of code, reduce the server loading when PHP parsing
+FIX. Discuz! X3 existed known issues and security risks
 
-FIX Product sell post content appears twice
-FIX wp system can not be used at Touch screen version
-FIX Can not upload images from mobile devices with Android native browser
-FIX After generating the portal article  html, the published anarticle title appears misplaced
-FIX When the anti-theft is set, an error occures when number of visitors exceeds 200 (default is 200)
-
-FIX Can not export to QQ when required to post activity to QQ
-FIX Template Error: can not close IP security alert
-FIX Increase the accuracy of the IP regional data for a security alert
-FIX Added support for Youku Potatoes HTML5 player (can see the video on iPad)
-
-+======================================+
-   Discuz! X3 20130511
-+======================================+
-[ADD] Switch from Standard version to Touch-screen version
-[ADD] Added broadcast posts description
-[ADD] Added the post login prompt Switch for guests
-[ADD] Added the compressed image upload feature for Touch-screen version
-[ADD] Added the quick reply box switch
-[ADD] Added the secondary navigation menu
-[ADD] Added the Ignore Malicious Users operation
-[ADD] Added four-frame Home switch off by default
-
-[ADV] Improved the meaningless posts filter and experience optimization
-[ADV] Improved the client compatibility for check banned users
-[ADV] Added static HTML or file name check function
-[ADV] Optimized only opened QQ registration process
-[ADV] Waterfall flow effect adjusted for the topic cover width and height
-[ADV] Improved tips for Touch-screen version of the post page
-[ADV] Enhanced plug-in installation with open check
-[ADV] Optimize the touch-screen version for See posts pages and images zoom in and drag feature
-[ADV] Improved the post list headings filtering
-[ADV] Standardized the interfaces return data
-[ADV] Adjusted the post page details
-[ADV] Added the password strength verification for the Retrieve Password feature
-[ADV] Enhanced SQL security and defense
-[ADV] Added the URL safety function
-[ADV] Changed the post synchronization to QQ method
-
-[FIX] Article static file the number of clicks updated and display
-[FIX] Optimized the navigation tips function
-[FIX] Fixed the upgrade process threadprofile error 
-[FIX] Fixed editor abnormalities for IE browser
-[FIX] Fixed the read permissions BUG
-[FIX] Fixed the current IP handling BUG
-[FIX] Optimized the notification related issues
-[FIX] Fixed error in Share to the QQ friends or QQ group
-[FIX] Fixed the @User time-related error
-[FIX] Fixed the Application bisectional link error
-[FIX] Fixed the Topic List page details
-[FIX] Fixed the Back to the content generated image is not allowed
-[FIX] Fixed the bug of no fiid for the Product posts
-[FIX] Optimized the mobile related settings
-[FIX] Post live functions improved
-[FIX] Fixed the json_encode Escape problems
-[FIX] Fixed the bug of Personal space DIY dress
-[FIX] Fixed the Waterproof wall delete user error
-[FIX] Optimized the visitors Reply permission details
-[FIX] Fixed error for showtips does not support HTML
-[FIX] Fixed the address processing when generated the article static file
-[FIX] Fixed the Save to Album error in IE
-[FIX] Fixed the Special Topic plugin detection error
-[FIX] Fixedescape character with regular expression after restore the module data hidden output
-[FIX] Fixed error when kick Group Members
-[FIX] Fixed incomplete data when the article restored from the Recycle Bin
-[FIX] Fixed Edit the article does not display properly static HTML file name
-[FIX] Fixed HTML files can not be deleted from the Recycle Bin when delete the article
-[FIX] Fixed A number of security-related issues
-[FIX] Fixed generation of article static file access address with the respective channel domain name
-[FIX] Fixed collections and other functions failure
-[FIX] Fixed ajaxpost processing in chrome is identified as firefox Continuous request fail problem
-[FIX] Fixed Collection compatibility issues
-[FIX] Fixed the anonymous avatar displaying
-[FIX] Fixed Replies reward stickers of Members earn reward points, but Posts set total credit not deducted
-[FIX] Fixed the FLV Video can not play
-[FIX] Fixed the IPAD post Discuz! Code Error
-[FIX] Fixed the Category information area shows live posts
-[FIX] Fixed the installation for the plug-in cron task
-[FIX] Fixed HTTPS protocol detection, Verification for e-mail link error
-
-+======================================+
-   Discuz! X3 Beta 20130305
-+======================================+
-NEW: Full adaptation for mobile browsers.
-NEW: WAP version for non-smart low-end devices, iPhone-oriented, touchpad edition for Android devices
-NEW: Support for independent mobile clients (iphone/android). Client API is expanded, A key generation for your own independent forum client
-NEW: Static URL for the portal info page, Support custom URL aliases. In enhanced server load, Optimize your site's SEO.
-NEW: Support for HTTPS, IPV6 security link access, set the Forum special environment for safer data transfer
-NEW: Forum favorite number, Posts Ranking, Daily forum post ranking changes, Expanded Moderator possibilities, Allow forum became active
-NEW: No longer display additional user data when visitors view a topic, Significantly reduce the number of database queries
-NEW: Forum Home set to 4-frame standard, Allow the heat of the forum posts, New posts display better to a user
-NEW: Serious optimization, Comprehensive forum testing, Optimized settings for security and performance, Guide the forum webmaster for better optimized adjustment
-NEW: Anti-plagiarizm methods added for increase a difficulty of the content stealing
-NEW: At the post view page: show user info according to the separate user group settings, Allow different groups of users, display the information in differnd manner, for more unique identity
-NEW: Control of new user registering, wether mailbox required or not
-NEW: Set the forum replies frame background image. This can be usefull for thr forum rules will be more readable.
-NEW: For some special forums, it is possible to control whether users need to use the points to buy before entering the forum
-NEW: Batch modify of the user group users
-NEW: Adjust the number of viewable parameters below the user avatar at the post view page
-NEW: You can specify the forum, group and thread for live promotion. This will help to increase of your forum activity.
-NEW: When browsing posts, The lower right corner to increase the fast thread, Quick Back to list, Fast Sticky operation menu
-NEW: When using a free magic, it is no longer need to buy before you can use it. Set graffiti board as a free magic, No need to toss, can be used directly
-NEW: When add a thread, you can use the directory floating guide function. Multi-chapter topics (like articles) are more suitable for reading
-NEW: When add a thread, it is possible to encrypt the post content, users must know the password before they can read the content
-NEW: User business card can be displayed in different colors according to the user gender (man or woman)
-NEW: Display the user's last login IP, Time to remind, so set the account more secure
-NEW: When view thread, You can view the hot replies, You can filter specified person replies, You can filter meaningless posts, for let the browsing more comfortable
-NEW: When view thread, You can select "streamline" mode, and can be freely switched. In the "streamline" mode the content is like king. 
-NEW: When a voting initiated, it is possible to uplad an image at the same time, so the image is a expression of your vote
-NEW: When forum list, you can see a colored user name at the quote page. The color can be set according to the user group, for more convenient user identifying.
-NEW: When view the thread images, you can add some good images into your own photo album
-NEW: When the forum list automatically loads the next page, At the same time will can exclude repeated threads, the flip operation become at the past tense
-NEW: When guide the visitor about registration, the wonderful pictures inside a thread, display only thumbnail by default, need to be a member to view a larger image.
-NEW: When create thread, it is possible to show the thread content as an image (User group permissions control)
-NEW: Increased the images cool features, To post images to be viewed together, Reading Pictures arrival [slideshow???]
-NEW: The new reminder prompt improved, Reminds classification, more easy to view reminders
+More updates, see the official release topic
 
 +--------------------------------------+
 Old Versions
@@ -171,3 +54,4 @@ Discuz! X1.5RC Release 20100901
 Discuz! X1.5
 Discuz! X2
 Discuz! X2.5
+Discuz! X3

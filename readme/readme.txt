@@ -1,5 +1,5 @@
 +--------------------------------------------------------------------------+
- Discuz! X3.0 Beta MultiLingual (International)
+ Discuz! ML 3.0 (MultiLingual)
  by Valery Votintsev from codersclub.org
  http://codersclub.org/discuzx/
 +--------------------------------------------------------------------------+

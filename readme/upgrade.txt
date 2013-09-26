@@ -1,14 +1,15 @@
 ||==================================||
-|| Discuz! X upgrade documentation  ||
+|| Discuz! ML upgrade documentation ||
 ||----------------------------------||
-|| Multilingual Version             ||
+|| Multilingual Version of Discuz!X ||
 || Valery Votintsev, codersclub.org ||
 ||==================================||
 
 This document is designed to help you to upgrade your current version
-of any Comsenz product (not Discuz!X Series) to the latest Discuz! X version.
-This upgrade program can also be used for upgrading any previous Discuz!X
-versions to the latest version.
+of any Comsenz product (not only Discuz!X Series)
+to the latest Discuz! X version.
+This upgrade program can also be used for upgrading any previous
+Discuz!X versions to the latest ML version.
 
 Before you start the upgrade process, be sure to read step by step
 the following instructions:
@@ -65,8 +66,5 @@ the following instructions:
 2. View detailed update guidance documents
    http://faq.comsenz.com/category-202
 
-3. International support and help forum
-   http://msg2me.com
-
-4. Commercial users can purchase a service by phone calls,
+3. Commercial users can purchase a service by phone calls,
    MSN, QQ, forums for technical support and other ways.
