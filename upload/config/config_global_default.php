@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: config_global_default.php 33337 2013-05-29 02:23:47Z andyzheng $
+ *      $Id: config_global_default.php 34020 2013-09-22 05:48:16Z nemohou $
  *      Modified by Valery Votintsev at codersclub.org
  */
 
@@ -131,9 +131,6 @@ $_config['download']['xsendfile']['type'] = 0;
 // Enable nginx X-sendfile, the forum attachment directory path to the virtual map, use the "/" at the end
 $_config['download']['xsendfile']['dir'] = '/down/';
 
-//  CONFIG CACHE
-$_config['cache']['type'] 		= 'file';	// Cache type: file = file cache, sql = database cache
-
 // Page output settings
 $_config['output']['charset'] 		= 'utf-8';	// Page character set
 $_config['output']['forceheader']	= 1;		// Force the output in defined character set, used to avoid page content garbled
@@ -221,5 +218,7 @@ $_config['languages'] = array(
 $_config['detect_language'] = true;	// Auto-detect user language: true|false
 $_config['enable_multilingual'] = true;	// Enable/Disable multi-lingual feature
 
+//  CONFIG CACHE
+$_config['cache']['type'] 		= 'file';	// Cache type: file = file cache, sql = database cache
 
 ?>
