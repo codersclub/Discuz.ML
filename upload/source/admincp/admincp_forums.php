@@ -135,7 +135,7 @@ var rowtypedata = [
 
 				foreach($forums as $key => $forumname) {
 
-/*vot*/					if(empty($forumname) /*|| strlen($forumname) > 50*/) continue;
+/*vot*/					if(empty($forumname)) continue;
 
 					$forum = $forumfields = array();
 					$inheritedid = !empty($_GET['inherited'][$fup]) ? $fup : (!empty($_GET['newinherited'][$fup][$key]) ? $_GET['newinherited'][$fup][$key] : '');
