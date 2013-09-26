@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_main.php 32459 2013-01-22 02:01:02Z monkey $
+ *      $Id: admincp_main.php 33988 2013-09-13 10:06:19Z nemohou $
  *	Modified by Valery Votintsev at sources.ru
  */
 
@@ -130,6 +130,9 @@ echo <<<EOT
 
 EOT;
 foreach($topmenu as $k => $v) {
+	if($k == 'cloud') {
+		continue;
+	}
 	if($v === '') {
 		$v = @array_keys($menu[$k]);
 		$v = $menu[$k][$v[0]][1];
@@ -420,7 +423,7 @@ echo <<<EOT
 	function initCpMap() {
 		var ul, hrefs, s = '', count = 0;
 		for(var k in headers) {
-			if(headers[k] != 'index' && headers[k] != 'uc') {
+			if(headers[k] != 'index' && headers[k] != 'uc' && $('header_' + headers[k])) {
 				s += '<tr><td valign="top"><h4>' + $('header_' + headers[k]).innerHTML + '</h4></td><td valign="top">';
 				ul = $('menu_' + headers[k]);
 				if(!ul) {
