@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: install_var.php 28275 2012-02-27 04:14:58Z monkey $
+ *      $Id: install_var.php 33326 2013-05-28 08:52:45Z kamichen $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -25,8 +25,8 @@ $lockfile = ROOT_PATH.'./data/install.lock';
 
 @include ROOT_PATH.CONFIG;
 
-/*vot*/ define('CHARSET', 'utf-8');
-/*vot*/ define('DBCHARSET', 'utf8');
+define('CHARSET', 'utf-8');
+define('DBCHARSET', 'utf8');
 
 define('ORIG_TABLEPRE', 'pre_');
 
@@ -65,7 +65,7 @@ define('UNDEFINE_FUNC', 32);
 define('MISSING_PARAMETER', 33);
 define('LOCK_FILE_NOT_TOUCH', 34);
 
-$func_items = array('mysql_connect', 'gethostbyname', 'file_get_contents', 'xml_parser_create');
+$func_items = array(function_exists('mysql_connect') ? 'mysql_connect' : 'mysqli_connect', 'gethostbyname', 'file_get_contents', 'xml_parser_create');
 
 $filesock_items = array('fsockopen', 'pfsockopen', 'stream_socket_client', 'curl_init');
 
