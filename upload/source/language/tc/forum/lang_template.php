@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 33080 2013-04-18 10:01:00Z zhengqingpeng $
+ *      $Id: lang_template.php 33872 2013-08-23 08:54:40Z nemohou $
  *
  *	Modified by Valery Votintsev, codersclub.org
  */
@@ -1286,7 +1286,7 @@ $lang = array (
   'backgroundcolor' => '背景色',
   'collapse_the_left' => '收起左側',
   'open_the_left' => '開啟左側',
-  'other_reply_hide' => '還有一些的帖子被系統自動隱藏，點此展開',
+  'other_reply_hide' => '還有一些帖子被系統自動隱藏，點此展開',
   'keyboard_tip' => '提示：支持鍵盤翻頁&lt;-左 右-&gt;',
   'lightclose' => '關燈',
   'lightopen' => '開燈',
@@ -1308,6 +1308,10 @@ $lang = array (
   'hide_preview' => '隱藏預覽',
   'collapse_preview' => '收起預覽',
   'hot_thread' => '熱帖',
+  'hidden' => '隱藏',
+  'hiderecover_tips' => '點擊恢復主題隱藏狀態',
+  'hiderecover' => '恢復隱藏',
+  'content_actions' => '更多操作',
 
 // Added by Valery Votintsev
 	'view_thread_textmode'		=> '文字模式',//'Text mode',

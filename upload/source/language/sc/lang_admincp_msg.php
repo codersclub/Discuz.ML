@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_msg.php 33164 2013-05-02 08:15:35Z nemohou $
+ *      $Id: lang_admincp_msg.php 33985 2013-09-13 05:45:27Z nemohou $
  *
  *      This file is automatically generate
  */
@@ -109,7 +109,7 @@ $lang = array (
   'forums_threadtypes_duplicate' => '新增主题分类与现有重复',
   'threadtype_import_succeed' => '导入成功',
   'usergroups_nonexistence' => '指定的用户组不存在',
-/*!*/  'usergroups_copy_source_invalid' => '您没有选择源用户组',
+  'usergroups_copy_source_invalid' => '您没有选择源用户组',
   'members_verify_succeed' => '资料审核成功 ',
   'members_verify_update_succeed' => '认证设置更新成功 ',
   'action_noaccess' => '抱歉，您无权使用此功能',
@@ -184,7 +184,7 @@ $lang = array (
   'cloudaddons_download_write_error' => '文件无法下载，请确认 "data/download/" 目录是否可写',
   'cloudaddons_install_error' => '您不能安装此应用({ErrorCode})',
   'cloudaddons_installing' => '应用 {addonid} 安装中，请稍候......',
-  'cloudaddons_install_files_changed' => '以下文件丢失或者被修改过，是否继续覆盖？<br /><br />{files}',
+  'cloudaddons_install_files_changed' => '以下文件被修改过，是否继续覆盖？<br /><br />{files}',
   'cloudaddons_pack_installed' => '扩展安装完毕',
 
   'counter_forum_succeed' => '论坛帖数重建完成',
@@ -268,8 +268,8 @@ $lang = array (
   'founder_perm_gperm_update_succeed' => '管理团队权限资料更新成功 ',
   'founder_perm_notifyusers_succeed' => '管理通知接收者设置成功 ',
 
-/*!*/  'founder_optimizer_setting_succeed' => '设置项优化成功 ',
-/*!*/  'founder_optimizer_setting_error' => '优化中出现问题 ',
+  'founder_optimizer_setting_succeed' => '设置项优化成功 ',
+  'founder_optimizer_setting_error' => '优化中出现问题 ',
 
   'group_status_off' => '请先开启群组功能，现在转到群组设置页',
   'group_update_succeed' => '群组分类设置更新成功 ',
@@ -460,7 +460,7 @@ $lang = array (
   'setting_seccode_ttf_lost' => '验证码缺少显示所需的字体文件，请上传字体文件至 {path} 目录',
   'forum_name_duplicate' => '表单名称设置不能重复，请重新设置',
   'alipay_ratio_invalid' => '您输入的现金/积分兑换比率小于 0',
-/*!*/  'setting_threadprofile_name_empty' => '方案名称不能为空',
+  'setting_threadprofile_name_empty' => '方案名称不能为空',
   'ftp_password_short' => 'FTP 密码不得少于 3 位',
   'cachethread_dir_noexists' => '抱歉，您所指定的目录 {cachethreaddir} 不存在或者不可写，请尝试通过 FTP 将其属性改为 777',
   'ranklistcache_update' => '排行榜缓存文件已更新',
@@ -584,10 +584,10 @@ $lang = array (
   'trade_fee_error' => '交易设置有误',
   'reward_credits_error' => '悬赏交易积分设置有误',
   'usergroups_edit_succeed' => '用户组权限设置更新成功 ',
-/*!*/  'usergroups_copy_target_invalid' => '您没有选择目标用户组',
+  'usergroups_copy_target_invalid' => '您没有选择目标用户组',
   'usergroups_copy_options_invalid' => '您没有选择要复制的项目',
   'usergroups_copy_succeed' => '用户组设置复制成功 ',
-/*!*/  'usergroups_merge_succeed' => '用户组合并成功 ',
+  'usergroups_merge_succeed' => '用户组合并成功 ',
 
   'usertag_delete_succeed' => '删除标签成功',
   'usertag_merge_succeed' => '标签合并成功',
@@ -632,9 +632,9 @@ $lang = array (
   'cloudaddons_check_gzuncompress_error' => '您的服务器不支持 Zlib，这将会导致应用无法安装。请联系您的服务商或者网站技术人员。',
   'cloudaddons_genuine_message' => '对不起，您安装的不是正版应用，安装程序无法继续执行<br /><br /><a href="admin.php?action=cloudaddons&id={addonid}">点击这里安装正版应用</a>',
 
-/*!*/  'admincp_makehtml_cleanhtml_error' => '对不起，开启生成HTML静态文件时，不能清理HTML文件。',
-/*!*/  'admincp_makehtml_cleanhtml_succeed' => '清理HTML文件成功。',
-/*!*/  'admincp_makehtml_cleanhtml_choose_item' => '对不起，请选择需要清理HTML文件。',
+  'admincp_makehtml_cleanhtml_error' => '对不起，开启生成HTML静态文件时，不能清理HTML文件。',
+  'admincp_makehtml_cleanhtml_succeed' => '清理HTML文件成功。',
+  'admincp_makehtml_cleanhtml_choose_item' => '对不起，请选择需要清理HTML文件。',
 );
 
 ?>

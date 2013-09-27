@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_notification.php 32028 2012-10-31 10:12:22Z zhangjie $
+ *      $Id: lang_notification.php 33824 2013-08-19 08:26:11Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -227,6 +227,8 @@ $lang = array
 	'collection_becollected' => '恭喜您的主題 <a href="forum.php?mod=viewthread&tid={tid}">{threadname}</a> 被淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 收錄了！',
 
 	'pmreportcontent' => '{pmreportcontent}',
+
+	'thread_hidden' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被多個用戶認定為垃圾帖，現已被隱藏 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
 );
 

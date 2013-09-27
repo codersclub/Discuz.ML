@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_misc.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *      $Id: lang_misc.php 33974 2013-09-10 09:30:47Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -325,6 +325,13 @@ $lang = array
 	'plugin_title' => '應用更新提醒',
 	'plugin_memo' => '您有 <span class="xi1">{number}</span> 款應用有可用更新',
 	'plugin_link' => '現在更新',
+
+	'seccode' => '驗證碼',
+	'seccode_update' => '換一個',
+	'seccode_player' => '<span style="padding:2px"><img border="0" style="vertical-align:middle" src="static/image/common/seccodeplayer.gif" /> <a href="javascript:;" onclick="window.document.seccodeplayer_{idhash}.SetVariable(\'isPlay\', 1)">播放驗證碼</a></span>',
+	'secqaa' => '驗證問答',
+
+	'mobileoem_creditrule' => '掌上論壇簽到',
 
 // Added by Valery Votintsev, codersclub.org
 	'poll_reply_no_perms'	=> '您不能对自己的回帖进行投票',//'You can not reply the poll',

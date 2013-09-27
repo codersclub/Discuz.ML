@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_searchindex.php 33440 2013-06-17 02:39:05Z nemohou $
+ *      $Id: lang_admincp_searchindex.php 33672 2013-07-31 05:17:28Z nemohou $
  *
  *	This file is automatically generate
  */
@@ -817,11 +817,11 @@ $lang = array (
   array (
     'index' =>
     array (
-      '審核新用戶' => 'action=moderate&operation=members',
+      '審核用戶' => 'action=moderate&operation=members',
     ),
     'text' =>
     array (
-      0 => '審核新用戶',
+      0 => '審核用戶',
     ),
   ),
   74 =>
@@ -1764,7 +1764,7 @@ $lang = array (
       5 => '設置是否允許審核用戶發表的帖子，只在站點設置需要審核時有效',
       6 => 'admingroup_edit_mod_user',
       7 => '允許審核用戶',
-      8 => '設置是否允許審核新註冊用戶，只在站點設置需要人工審核新用戶時有效',
+      8 => '設置是否允許審核新註冊用戶，只在站點設置需要人工審核用戶時有效',
       9 => 'admingroup_edit_ban_user',
       10 => '允許禁止用戶發言',
       11 => '設置是否允許禁止用戶發言',
@@ -6456,7 +6456,7 @@ $lang = array (
       65 => '開啟防灌水驗證機制可以防止灌水機等，但會增加用戶操作易用度。修改密碼不受此限制，開啟防灌水驗證碼或驗證問答後，該設置有效',
       66 => 'usergroups_edit_basic_forcesecques',
       67 => '強制設置安全提問',
-      68 => '選擇「是」則此用戶組的用戶在登錄後台前必須設置安全提問後才可登陸後台, config中為全局開關',
+      68 => '選擇「是」則此用戶組的用戶在登錄後台前必須設置安全提問後才可登錄後台, config中為全局開關',
       69 => 'usergroups_edit_basic_disable_postctrl',
       70 => '發表不受限制',
       71 => '設置發表是否不受灌水預防和最大字數等',

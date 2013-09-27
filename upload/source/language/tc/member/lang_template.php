@@ -4,9 +4,9 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 29881 2012-05-02 07:19:30Z liulanbo $
+ *      $Id: lang_template.php 33692 2013-08-02 10:26:20Z nemohou $
  *
- *      This file is automatically generate
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 $lang = array (
@@ -25,6 +25,7 @@ $lang = array (
   'login' => '登錄',
   'login_clearcookies' => '清除痕跡',
   'login_guestmessage' => '您需要先登錄才能繼續本操作',
+  'login_seccheck2' => '請輸入驗證碼後繼續登錄',
   'login_member' => '用戶登錄',
   'login_method' => '快捷登錄',
   'login_permanent' => '自動登錄',

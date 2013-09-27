@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_msg.php 33164 2013-05-02 08:15:35Z nemohou $
+ *      $Id: lang_admincp_msg.php 33985 2013-09-13 05:45:27Z nemohou $
  *
  *      This file is automatically generate
  */
@@ -184,7 +184,7 @@ $lang = array (
   'cloudaddons_download_write_error' => '文件無法下載，請確認 "data/download/" 目錄是否可寫',
   'cloudaddons_install_error' => '您不能安裝此應用({ErrorCode})',
   'cloudaddons_installing' => '應用 {addonid} 安裝中，請稍候......',
-  'cloudaddons_install_files_changed' => '以下文件丟失或者被修改過，是否繼續覆蓋？<br /><br />{files}',
+  'cloudaddons_install_files_changed' => '以下文件被修改過，是否繼續覆蓋？<br /><br />{files}',
   'cloudaddons_pack_installed' => '擴展安裝完畢',
 
   'counter_forum_succeed' => '論壇帖數重建完成',

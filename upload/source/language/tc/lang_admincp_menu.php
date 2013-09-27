@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_menu.php 32130 2012-11-14 09:20:40Z zhengqingpeng $
+ *      $Id: lang_admincp_menu.php 33867 2013-08-23 06:12:21Z jeffjzhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -32,6 +32,7 @@ $lang = array
 	'header_bbs' => '站點首頁',
 	'header_portal' => '門戶',
 	'header_group' => '群組',
+	'header_safe' => '防灌水',
 	'header_founder' => '站長',
 	'header_cloudaddons' => '應用中心',
 
@@ -43,7 +44,7 @@ $lang = array
 	'menu_setting_access' => '註冊與訪問控制',
 	'menu_setting_customnav' => '導航設置',
 	'menu_setting_styles' => '界面設置',
-	'menu_setting_optimize' => '性能優化',
+	'menu_setting_optimize' => '優化大師',
 	'menu_setting_seo' => 'SEO設置',
 	'menu_setting_functions' => '站點功能',
 	'menu_setting_domain' => '域名設置',
@@ -84,7 +85,7 @@ $lang = array
 	'menu_members_profile_group' => '用戶欄目分組',
 	'menu_members_verify_setting' => '認證設置',
 	'menu_members_stat' => '資料統計',
-	'menu_moderate_modmembers' => '審核新用戶',
+	'menu_moderate_modmembers' => '審核用戶',
 	'menu_profilefields' => '用戶欄目定制',
 	'menu_admingroups' => '管理組',
 	'menu_usergroups' => '用戶組',
@@ -134,6 +135,7 @@ $lang = array
 	'menu_patch' => '安全中心',
 	'menu_upgrade' => '在線升級',
 	'menu_optimizer' => '優化大師',
+	'menu_security' => '安全大師',
 
 	'menu_addons' => '應用中心',
 	'menu_plugins' => '插件',
@@ -197,8 +199,15 @@ $lang = array
 	'menu_group_level' => '群組等級',
 	'menu_group_mod' => '審核群組',
 
+	'menu_safe_setting' => '基本設置',
+	'menu_safe_security' => '防水牆',
+	'menu_safe_seccheck' => '驗證設置',
+	'menu_safe_accountguard' => '帳號保鏢',
+
 	'menu_setting_manyou' => 'Manyou 設置',
 	'menu_setting_qqconnect' => 'QQ 綁定設置',
+
+	'menu_cloud_doctor' => '診斷工具',
 
 	'admincp_title' => $_G['setting']['bbname'].' 管理中心',
 
