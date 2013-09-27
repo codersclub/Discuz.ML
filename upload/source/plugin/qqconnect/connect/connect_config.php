@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: connect_config.php 32901 2013-03-21 08:54:21Z liulanbo $
+ *      $Id: connect_config.php 33543 2013-07-03 06:01:33Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -67,8 +67,6 @@ if(submitcheck('connectsubmit')) {
 					showmessage('profile_passwd_illegal', $referer);
 				}
 			}
-
-			$connectService->connectUserUnbind();
 
 /*vot*/		} else { // debug Because the old user access token information, So I can not notice connect, Directly in the local unbundling on the line, Not fopen connect
 
