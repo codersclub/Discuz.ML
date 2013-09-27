@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: member_connect.php 29157 2012-03-27 12:30:20Z liudongdong $
+ *      $Id: member_connect.php 34013 2013-09-18 08:26:19Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -25,8 +25,7 @@ if(defined('IN_MOBILE')) {
 /*vot*/ if($_GET['action'] == 'login') { // debug Already have an account, bind my account to go to this branch
 
 	$ctl_obj = new logging_ctl();
-	$ctl_obj->setting = $_G['setting'];
-	$ctl_obj->setting['seccodestatus'] = 0;
+	$_G['setting']['seccodestatus'] = 0;
 
 	$ctl_obj->connect_guest = $connect_guest;
 
@@ -75,8 +74,8 @@ if(defined('IN_MOBILE')) {
 	if($_G['setting']['connect']['register_regverify']) {
 		$ctl_obj->setting['regverify'] = 0;
 	}
-	$ctl_obj->setting['seccodestatus'] = 0;
-	$ctl_obj->setting['secqaa']['status'] = 0;
+	$_G['setting']['seccodestatus'] = 0;
+	$_G['setting']['secqaa']['status'] = 0;
 
 	$ctl_obj->setting['sendregisterurl'] = false;
 

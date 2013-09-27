@@ -27,11 +27,11 @@ if(submitcheck('lostpwsubmit')) {
 	// Check for username exists
 	if($_GET['username']) {
 /*vot*/		list($tmp['uid'], , $tmp['email']) = uc_get_user($_GET['username']);
-/*vot*/		$tmp['email'] = strtolower(trim($tmp['email']));
+		$tmp['email'] = strtolower(trim($tmp['email']));
 /*vot*/		if($_GET['email']) {
-			if($_GET['email'] != $tmp['email']) {
-				showmessage('getpasswd_account_notmatch');
-			}
+		if($_GET['email'] != $tmp['email']) {
+			showmessage('getpasswd_account_notmatch');
+		}
 /*vot*/		}
 		$member = getuserbyuid($tmp['uid'], 1);
 /*vot*/	} else if($_GET['email']) {	// Check for Email exists

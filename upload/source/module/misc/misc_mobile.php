@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: misc_mobile.php 25221 2011-10-31 09:24:20Z liulanbo $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
