@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cache_setting.php 33238 2013-05-08 07:29:37Z alicezhao $
+ *      $Id: cache_setting.php 33989 2013-09-13 10:11:27Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -25,7 +25,8 @@ function build_cache_setting() {
 		'disallowfloat', 'allowviewuserthread', 'advtype', 'click', 'card', 'rewritestatus', 'rewriterule', 'privacy', 'focus',
 		'forumkeys', 'article_tags', 'verify', 'seotitle', 'seodescription', 'seokeywords', 'domain', 'ranklist', 'my_search_data',
 		'seccodedata', 'inviteconfig', 'advexpiration', 'allowpostcomment', /*(IN_MOBILE)*/ 'mobile', 'connect', 'upgrade', 'patch', 'strongpw',
-		'posttable_info', 'threadtable_info', 'profilegroup', 'antitheft', 'makehtml', 'guestviewthumb', 'grid', 'guesttipsinthread'
+		'posttable_info', 'threadtable_info', 'profilegroup', 'antitheft', 'makehtml', 'guestviewthumb', 'grid', 'guesttipsinthread', 'accountguard',
+		'security_usergroups_white_list', 'security_forums_white_list',
 		);
 
 	$data = array();
@@ -621,12 +622,19 @@ function get_cachedata_setting_plugin($method = '') {
 			}
 		}
 		if($addadminmenu) {
-			$adminmenu[] = array('url' => "plugins&operation=config&do=$plugin[pluginid]", 'action' => 'plugins_config_'.$plugin['pluginid'], 'name' => $plugin['name']);
+			$adminmenu[$plugin['modules']['system'] ? 0 : 1][] = array('url' => "plugins&operation=config&do=$plugin[pluginid]", 'action' => 'plugins_config_'.$plugin['pluginid'], 'name' => $plugin['name']);
 		}
 	}
 	if(!$method) {
 		$_G['setting']['plugins']['available'] = $data['plugins']['available'];
-		savecache('adminmenu', $adminmenu);
+		if($adminmenu[0]) {
+			$adminmenu[0] = array_merge(
+				array(array('name' => 'plugins_system', 'sub' => 1)),
+				$adminmenu[0],
+				array(array('name' => 'plugins_system', 'sub' => 2))
+			);
+		}
+		savecache('adminmenu', array_merge((array)$adminmenu[0], (array)$adminmenu[1]));
 	}
 
 	$data['pluginhooks'] = array();
@@ -717,22 +725,17 @@ function get_cachedata_mainnav() {
 		$data['navs'][$id]['filename'] = $nav['url'];
 		$data['navs'][$id]['available'] = $nav['available'];
 		$nav['name'] = $nav['name'].($nav['title'] ? '<span>'.$nav['title'].'</span>' : '');
-/*vot*/		$subnavs = array();
-
 //--------------------------------
 //vot Get All Sub-navigation links
-
 /*vot*/		$subindex = 0;
-
-		foreach(C::t('common_nav')->fetch_all_subnav($nav['id']) as $subnav) {
+/*vot*/		$subnavs = array();
+		if(!($nav['identifier'] == 5 && $nav['type'] == 0)) {
+			foreach(C::t('common_nav')->fetch_all_subnav($nav['id']) as $subnav) {
+//vot				$item = "<a href=\"$subnav[url]\" hidefocus=\"true\" ".($subnav['title'] ? "title=\"$subnav[title]\" " : '').($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']).">$subnav[name]</a>";
+				$liparam = !$nav['subtype'] || !$nav['subcols'] ? '' : ' style="width:'.sprintf('%1.1f', (1 / $nav['subcols']) * 100).'%"';
+//vot				$subnavs .= '<li'.$liparam.'>'.$item.'</li>';
 
 /*vot*/			$subnavs[$subindex] = $subnav;
-
-//vot			$item = "<a href=\"$subnav[url]\" hidefocus=\"true\" ".($subnav['title'] ? "title=\"$subnav[title]\" " : '').($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']).">$subnav[name]</a>";
-			$liparam = !$nav['subtype'] || !$nav['subcols'] ? '' : ' style="width:'.sprintf('%1.1f', (1 / $nav['subcols']) * 100).'%"';
-
-//vot			$subnavs .= '<li'.$liparam.'>'.$item.'</li>';
-
 /*vot*/			$extra = " hidefocus=\"true\" ".($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']);
 
 //			$subnavs[$subindex]['title'] = $title; // Translate this!,
@@ -740,6 +743,7 @@ function get_cachedata_mainnav() {
 			$subnavs[$subindex]['liparam'] = $liparam;
 
 /*vot*/			$subindex++;
+/*vot*/			}
 		}
 		list($navid) = explode('.', basename($nav['url']));
 		if($nav['type'] || $navid == 'misc' || $nav['identifier'] == 6) {

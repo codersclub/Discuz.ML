@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_member.php 32967 2013-03-28 10:57:48Z zhengqingpeng $
+ *      $Id: function_member.php 33692 2013-08-02 10:26:20Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -137,6 +137,23 @@ function loginfailed($username) {
 	C::t('common_failedlogin')->update_failed($_G['clientip']);
 }
 
+function failedipcheck($numiptry, $timeiptry) {
+	global $_G;
+	if(!$numiptry) {
+		return false;
+	}
+	list($ip1, $ip2) = explode('.', $_G['clientip']);
+	$ip = $ip1.'.'.$ip2;
+	return $numiptry <= C::t('common_failedip')->get_ip_count($ip, TIMESTAMP - $timeiptry);
+}
+
+function failedip() {
+	global $_G;
+	list($ip1, $ip2) = explode('.', $_G['clientip']);
+	$ip = $ip1.'.'.$ip2;
+	C::t('common_failedip')->insert_ip($ip);
+}
+
 function getinvite() {
 	global $_G;
 
@@ -235,7 +252,7 @@ function crime($fun) {
 		list(, $action, $username, $operator, $startime, $endtime, $reason, $start, $limit) = $arg_list;
 		return $crimerecord->$fun($action, $username, $operator, $startime, $endtime, $reason, $start, $limit);
 	} elseif($fun == 'actions') {
-		return $crimerecord->$fun;
+		return crime_action_ctl::$actions;
 	}
 	return false;
 }
