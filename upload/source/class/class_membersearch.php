@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_membersearch.php 29721 2012-04-26 07:01:08Z zhengqingpeng $
+ *      $Id: class_membersearch.php 33687 2013-08-02 01:46:22Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -28,6 +28,7 @@ class membersearch {
 			'credits'=>'member',
 			'regdate'=>'member',
 			'status'=>'member',
+			'freeze'=>'member',
 			'emailstatus'=>'member',
 			'avatarstatus'=>'member',
 			'videophotostatus'=>'member',
@@ -121,6 +122,7 @@ class membersearch {
 			'tagid'=>'int',
 			'credits'=>'int',
 			'status'=>'int',
+			'freeze'=>'int',
 			'emailstatus'=>'int',
 			'avatarstatus'=>'int',
 			'videophotostatus'=>'int',

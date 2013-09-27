@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_template.php 32515 2013-02-04 07:12:18Z zhangguosheng $
+ *      $Id: class_template.php 34015 2013-09-22 02:19:41Z nemohou $
  *	Modified by Valery Votintsev at sources.ru
  */
 
@@ -60,7 +60,7 @@ class template {
 		$template = preg_replace("/[\n\r\t]*\{avatar\((.+?)\)\}[\n\r\t]*/ie", "\$this->avatartags('\\1')", $template);
 		$template = preg_replace("/[\n\r\t]*\{eval\}\s*(\<\!\-\-)*(.+?)(\-\-\>)*\s*\{\/eval\}[\n\r\t]*/ies", "\$this->evaltags('\\2')", $template);
 		$template = preg_replace("/[\n\r\t]*\{eval\s+(.+?)\s*\}[\n\r\t]*/ies", "\$this->evaltags('\\1')", $template);
-		$template = preg_replace("/[\n\r\t]*\{csstemplate\}[\n\r\t]*/ies", "\$this->loadcsstemplate('\\1')", $template);
+		$template = preg_replace("/[\n\r\t]*\{csstemplate\}[\n\r\t]*/ies", "\$this->loadcsstemplate()", $template);
 		$template = str_replace("{LF}", "<?=\"\\n\"?>", $template);
 		$template = preg_replace("/\{(\\\$[a-zA-Z0-9_\-\>\[\]\'\"\$\.\x7f-\xff]+)\}/s", "<?=\\1?>", $template);
 		$template = preg_replace("/\{hook\/(\w+?)(\s+(.+?))?\}/ie", "\$this->hooktags('\\1', '\\3')", $template);
@@ -255,7 +255,7 @@ class template {
 
 	function loadcsstemplate() {
 		global $_G;
-/*vot*/		$scriptcss = '<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_common{RTLSUFFIX}.css?'.VERHASH.'" />';
+/*vot*/		$scriptcss = '<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_common'.RTLSUFFIX.'.css?{VERHASH}" />';
 		$content = $this->csscurmodules = '';
 /*vot*/		$content = @implode('', file(DISCUZ_ROOT.'./data/cache/style_'.STYLEID.'_module'.RTLSUFFIX.'.css'));
 		$content = preg_replace("/\[(.+?)\](.*?)\[end\]/ies", "\$this->cssvtags('\\1','\\2')", $content);
@@ -267,7 +267,7 @@ class template {
 			} else {
 				exit('Can not write to cache files, please check directory ./data/ and ./data/cache/ .');
 			}
-/*vot*/			$scriptcss .= '<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_'.$_G['basescript'].'_'.CURMODULE.RTLSUFFIX.'.css?'.VERHASH.'" />';
+/*vot*/			$scriptcss .= '<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_'.$_G['basescript'].'_'.CURMODULE.RTLSUFFIX.'.css?{VERHASH}" />';
 		}
 		$scriptcss .= '{if $_G[uid] && isset($_G[cookie][extstyle]) && strpos($_G[cookie][extstyle], TPLDIR) !== false}<link rel="stylesheet" id="css_extstyle" type="text/css" href="$_G[cookie][extstyle]/style.css" />{elseif $_G[style][defaultextstyle]}<link rel="stylesheet" id="css_extstyle" type="text/css" href="$_G[style][defaultextstyle]/style.css" />{/if}';
 		return $scriptcss;
@@ -323,6 +323,7 @@ class template {
 		$s = preg_replace("/<\?=(.+?)\?>/", "{\$__\\1}", $s);
 		$s = str_replace('?>', "\n\$$var .= <<<EOF\n", $s);
 		$s = str_replace('<?', "\nEOF;\n", $s);
+		$s = str_replace("\nphp ", "\n", $s);
 		return "<?\n$constadd\$$var = <<<EOF\n".$s."\nEOF;\n?>";
 	}
 

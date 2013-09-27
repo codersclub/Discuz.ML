@@ -4,7 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_core.php 31312 2012-08-10 03:33:54Z zhangguosheng $
+ *      $Id: class_core.php 33982 2013-09-12 06:36:35Z hypowang $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 error_reporting(E_ALL);
@@ -17,9 +18,8 @@ define('IN_DISCUZ', true);
 //echo 'DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
 //echo '</pre>', "\n";
 
-define('DISCUZ_CORE_DEBUG', true);
-//define('DISCUZ_CORE_DEBUG', false);
-define('DISCUZ_TABLE_EXTENDABLE', TRUE);
+define('DISCUZ_CORE_DEBUG', false);
+define('DISCUZ_TABLE_EXTENDABLE', false);
 
 set_exception_handler(array('core', 'handleException'));
 
@@ -36,14 +36,6 @@ if(function_exists('spl_autoload_register')) {
 	}
 }
 
-//DEBUG
-//echo '<pre>';
-//echo '_FILE_=', __FILE__, "\n";
-//echo 'url=', $url, "\n";
-//echo '_ENV=';
-//print_r($_ENV);
-//echo '</pre>', "\n";
-
 C::creatapp();
 
 class core
@@ -54,19 +46,10 @@ class core
 	private static $_memory;
 
 	public static function app() {
-//DEBUG
-//echo '<pre>';
-//echo 'function core::app=', __FILE__, "\n";
-//echo '</pre>', "\n";
-
 		return self::$_app;
 	}
 
 	public static function creatapp() {
-//DEBUG
-//echo '<pre>';
-//echo 'function core::createapp=', "\n";
-//echo '</pre>', "\n";
 		if(!is_object(self::$_app)) {
 			self::$_app = discuz_application::instance();
 		}
@@ -86,7 +69,7 @@ class core
 		return self::_make_obj($name, 'model', true, $args);
 	}
 
-	protected static function _make_obj($name, $type, $extendable = true, $p = array()) {
+	protected static function _make_obj($name, $type, $extendable = false, $p = array()) {
 		$pluginid = null;
 		if($name[0] === '#') {
 			list(, $pluginid, $name) = explode('#', $name);
@@ -134,9 +117,10 @@ class core
 			}
 
 			if(is_file($path.'/'.$filename)) {
+				include $path.'/'.$filename;
 				self::$_imports[$key] = true;
-				$rt = include $path.'/'.$filename;
-				return $rt;
+
+				return true;
 			} elseif(!$force) {
 				return false;
 			} else {
