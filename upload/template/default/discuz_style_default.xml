@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Style]]></item>
-	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Data">
 		<item id="name"><![CDATA[Default style]]></item>
 		<item id="templateid"><![CDATA[1]]></item>
@@ -11,7 +10,7 @@
 		<item id="style">
 			<item id="smfont"><![CDATA[Verdana,Arial,sans-serif]]></item>
 			<item id="threadtitlefontsize"><![CDATA[14px]]></item>
-			<item id="threadtitlefont"><![CDATA[Verdana, Tahoma,Arial,sans-serif]]></item>
+			<item id="threadtitlefont"><![CDATA[Verdana,Tahoma,Arial,sans-serif]]></item>
 			<item id="smfontsize"><![CDATA[0.83em]]></item>
 			<item id="tabletext"><![CDATA[#444]]></item>
 			<item id="midtext"><![CDATA[#666]]></item>
@@ -55,6 +54,6 @@
 			<item id="contentseparate"><![CDATA[#C2D5E3]]></item>
 			<item id="inputborder"><![CDATA[#E0E0E0]]></item>
 		</item>
-		<item id="version"><![CDATA[X3]]></item>
+		<item id="version"><![CDATA[X3.1]]></item>
 	</item>
 </root>

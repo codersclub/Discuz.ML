@@ -544,10 +544,11 @@ function show_tips($tip, $title = '', $comment = '', $style = 1) {
 }
 
 function lang($lang_key, $force = true, $replace = array()) {
-//vot MOVED TO lang_restore.php:	$lang = array('filename' => '文件名称',...
 /*vot*/	static $lang;
 /*vot*/	require_once ROOT_PATH.'source/language/'.DISCUZ_LANG.'/lang_restore.php';
-
+//vot MOVED TO lang_restore.php:
+//vot	$lang = array('filename' => '文件名称',
+//vot			);
 	$return = isset($lang[$lang_key]) ? $lang[$lang_key] : ($force ? $lang_key : '');
 	if($replace && is_array($replace)) {
 		$searchs = $replaces = array();
