@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: register.js 33432 2013-06-13 07:36:18Z nemohou $
+	$Id: register.js 33433 2013-06-13 07:36:25Z nemohou $
 	Modified by Valery Votintsev, codersclub.org
 */
 
