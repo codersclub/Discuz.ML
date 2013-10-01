@@ -15,6 +15,7 @@ $tolang   = isset($_GET['tolang']) ? $_GET['tolang'] : '';
 
 
 define('IN_DISCUZ',1);
+define('IN_COMSENZ',1);
 
 
 @header('Content-Type: text/html; charset=UTF-8');

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 33048 2013-04-12 08:50:27Z zhangjie $
+ *      $Id: lang_template.php 33861 2013-08-22 09:16:38Z nemohou $
  *
  *      Modified by Valery Votintsev
  */
@@ -400,6 +400,7 @@ $lang = array (
   'recyclebin' => '回收站',
   'taobao' => '阿里旺旺',
   'del_favorite' => '刪除選中收藏',
+  'collection_favorite' => '添加到淘帖',
   'del_select_favorite_confirm' => '確定要刪除選中的收藏嗎？',
   'favorite_album' => '相冊',
   'favorite_all' => '全部收藏',
@@ -1135,7 +1136,7 @@ $lang = array (
   'show_feed_homepage' => '在首頁顯示該用戶組的好友動態',
   'surprise_they_near' => '驚喜，他們就在您的附近 ',
   'they_online_add_friend' => '他們當前正在線，加為好友就可以互動啦 ',
-  'view_note_message' => '附言為可選，{$tospace[username]} 會看到這條附言，最多50個字符 ',
+  'view_note_message' => '附言為可選，{$tospace[username]} 會看到這條附言，最多 10 個字 ',
   'you_have_common_friends' => '你們目前有 {eval echo count($list)} 位共同的好友',
   'you_have_no_common_friends' => '你們目前還沒有共同的好友',
   'your_common_friends' => '查看你們的共同好友',
@@ -1297,7 +1298,7 @@ $lang = array (
   'ignore_all' => '全部忽略',
   'ignore_all_poke' => '忽略了全部的招呼',
   'lgnore_poke' => '忽略打招呼',
-  'max_text_poke_message' => '內容為可選，並且會覆蓋之前的招呼，最多150個字符',
+  'max_text_poke_message' => '內容為可選，並且會覆蓋之前的招呼，最多 10 個字',
   'me' => '我',
   'no_new_poke' => '還沒有新招呼',
   'poke' => '招呼',
@@ -1539,6 +1540,10 @@ $lang = array (
   'connect_fill_profile_to_comment' => '您需要<a href="member.php?mod=connect" class="xi2">完善帳號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有帳號</a> 後才可以留言',
   'save_to_album' => '保存到相冊',
   'usergroup_expired' => '您當前的用戶組已經到期，請選擇繼續續費還是要切換到其他用戶組',
+  'freeze_pw_tips' => '您當前的帳號存在安全隱患已經被凍結，請修改密碼解除凍結狀態',
+  'freeze_email_tips' => '您當前的帳號已經太長時間未登錄網站已經被凍結，必須驗證郵箱後才能解除凍結狀態 <a href="home.php?mod=spacecp&ac=profile&op=password&resend=1" class="xi2">重新接收驗證郵件</a>',
+  'freeze_reason' => '申訴理由',
+  'freeze_reason_comment' => '如果您無法通過郵箱驗證，請填寫申訴理由',
 
 //---------------------------------------------------------------
 // Added by Valery Votintsev

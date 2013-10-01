@@ -182,7 +182,7 @@ $lang = array
 	'week_5' => '星期五',
 	'week_6' => '星期六',
 
-/*!*/	'y_m_d' => 'Y年m月d日',
+	'y_m_d' => 'Y年m月d日',
 
 	'notice_actor' => '等 $actorcount 人',
 

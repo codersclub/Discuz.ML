@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33227 2013-05-07 11:23:50Z jeffjzhang $
  *
- *      This file is automatically generate
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 $lang = array (

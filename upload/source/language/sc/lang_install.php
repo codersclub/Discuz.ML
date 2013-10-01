@@ -4,11 +4,12 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: install_lang.php 28275 2012-02-27 04:14:58Z monkey $
+ *      $Id: install_lang.php 33770 2013-08-12 05:57:10Z nemohou $
  *      $Id: lang_install.php by Valery Votintsev, codersclub.org
  */
 
 define('UC_VERNAME', 'International Version');
+
 $lang = array(
 	'SC_GBK' => '简体中文版',
 	'TC_BIG5' => '繁体中文版',
@@ -169,7 +170,7 @@ $lang = array(
 
 	'install_in_processed' => '正在安装...',
 	'install_succeed' => '安装成功，点击进入',
-	'install_cloud' => '安装成功，欢迎开通Discuz!云平台<br>Discuz!云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Discuz!云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、社区QQ群、漫游应用、SOSO表情服务。Discuz!云平台将陆续提供更多优质服务项目。<br>开通Discuz!平台之前，请确保您的网站（Discuz!、UCHome或SupeSite）已经升级到Discuz!X2.5。',
+	'install_cloud' => '安装成功，欢迎开通Discuz!云平台<br>Discuz!云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Discuz!云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、漫游应用、SOSO表情服务。Discuz!云平台将陆续提供更多优质服务项目。<br>开通Discuz!平台之前，请确保您的网站（Discuz!、UCHome或SupeSite）已经升级到Discuz! X3。',
 	'to_install_cloud' => '到后台开通',
 	'to_index' => '暂不开通',
 
@@ -247,7 +248,7 @@ $lang = array(
 
 	'license' => '<div class="license"><h1>中文版授权协议 适用于中文用户</h1>
 
-<p>版权所有 (c) 2001-2012，北京康盛新创科技有限责任公司保留所有权利。</p>
+<p>版权所有 (c) 2001-2013，北京康盛新创科技有限责任公司保留所有权利。</p>
 
 <p>感谢您选择康盛产品。希望我们的努力能为您提供一个高效快速、强大的站点解决方案，和强大的社区论坛解决方案。康盛公司网址为 http://www.comsenz.com，产品官方讨论区网址为 http://www.discuz.net。</p>
 
@@ -351,7 +352,7 @@ $lang = array(
 	'database_nonexistence' => '数据库操作对象不存在',
 	'skip_current' => '跳过本步',
 	'topic' => '专题',
-
+//	'install_finish' => '您的论坛已完成安装，点此访问',
 //---------------------------------------------------------------
 // Added by Valery Votintsev
 // 2 vars for language select:
@@ -361,10 +362,9 @@ $lang = array(
 //vot	'regiondata'			=> 'Add regions data',//'Add location data',
 //vot	'regiondata_check_label'	=> 'Install additional regional data (countries/regions/cities)',//'Install additional regional data (countries/regions/cities)',
 //vot	'install_region_data'		=> 'Install regional data',//'Install regional data',
-
 	'php_version_too_low'		=> 'PHP version is too low',
 	'php_version_too_low_comment'	=> 'For normal functioning Discuz! requires for more new version of PHP',
-	'mbstring'			=> 'MBstring 库',//'MBstring Library',
+	'mbstring'		=> 'MBstring 库',//'MBstring Library',
 //---------------------------------------------------------------
 
 );
