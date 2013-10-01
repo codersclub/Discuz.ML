@@ -186,7 +186,7 @@ class discuz_application extends discuz_base{
 		} elseif(defined('IN_ARCHIVER')) {
 			$sitepath = preg_replace("/\/archiver/i", '', $sitepath);
 		}
-		$_G['isHTTPS'] = ($_SERVER['HTTPS'] && strtolower($_SERVER['HTTPS']) != 'off') ? true : false;
+/*vot*/		$_G['isHTTPS'] = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
 		$_G['siteurl'] = dhtmlspecialchars('http'.($_G['isHTTPS'] ? 's' : '').'://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
 
 		$url = parse_url($_G['siteurl']);
