@@ -118,6 +118,6 @@ $lang = array
 /*3.1*/	'optimizer_white_list_need' => '您设置了防水墙白名单，白名单用户发垃圾贴不被处理，请慎重',
 /*3.1*/	'optimizer_white_list_no_need' => '未设置白名单',
 /*3.1*/	'optimizer_security_daily_need' => '开启防水墙每日优化，可清除删帖后首页痕迹',
-/*3.1*/	'optimizer_white_list_no_need' => '该计划任务已开启',
+/*3.1vot*/	'optimizer_security_daily_no_need' => '该计划任务已开启',
 );
 ?>

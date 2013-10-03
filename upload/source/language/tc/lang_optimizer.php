@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_optimizer.php 33906 2013-08-29 09:40:37Z jeffjzhang $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -118,6 +119,6 @@ $lang = array
 	'optimizer_white_list_need' => '您設置了防水牆白名單，白名單用戶發垃圾貼不被處理，請慎重',
 	'optimizer_white_list_no_need' => '未設置白名單',
 	'optimizer_security_daily_need' => '開啟防水牆每日優化，可清除刪帖後首頁痕跡',
-	'optimizer_white_list_no_need' => '該計劃任務已開啟',
+/*vot*/	'optimizer_security_daily_no_need' => '該計劃任務已開啟',
 );
 ?>
