@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: portal_attachment.php 25246 2011-11-02 03:34:53Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -51,7 +52,9 @@ if($operation == 'delete') {
 		showmessage('attachment_nonexistence');
 	}
 
-	$readmod = 2;//read local file's function: 1=fread 2=readfile 3=fpassthru 4=fpassthru+multiple
+/*vot*/	//read local file's function: 1=fread 2=readfile 3=fpassthru 4=fpassthru+multiple
+/*vot*/	$readmod = getglobal('config/download/readmod');
+/*vot*/	$readmod = $readmod > 0 && $readmod < 5 ? $readmod : 2;
 	$range = 0;
 	if($readmod == 4 && !empty($_SERVER['HTTP_RANGE'])) {
 		list($range) = explode('-',(str_replace('bytes=', '', $_SERVER['HTTP_RANGE'])));
