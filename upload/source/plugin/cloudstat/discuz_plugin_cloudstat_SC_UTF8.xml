@@ -5,7 +5,7 @@
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
-			<item id="name"><![CDATA[è¾è®¯åæ]]></item>
+			<item id="name"><![CDATA[腾讯分析]]></item>
 			<item id="identifier"><![CDATA[cloudstat]]></item>
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
@@ -42,7 +42,7 @@
 				<item id="2">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=summary]]></item>
-					<item id="menu"><![CDATA[ç½ç«æ¦åµ]]></item>
+					<item id="menu"><![CDATA[网站概况]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -55,7 +55,7 @@
 				<item id="3">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=base]]></item>
-					<item id="menu"><![CDATA[è®¾ç½®å¾æ ]]></item>
+					<item id="menu"><![CDATA[设置图标]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>

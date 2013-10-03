@@ -5,7 +5,7 @@
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
-			<item id="name"><![CDATA[掌上论坛独立版]]></item>
+			<item id="name"><![CDATA[掌上論壇獨立版]]></item>
 			<item id="identifier"><![CDATA[mobileoem]]></item>
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[mobileoem/]]></item>
@@ -42,19 +42,19 @@
 		<item id="language">			
 			<item id="scriptlang">
 				<item id="pushsuccess"><![CDATA[穿越成功]]></item>
-				<item id="sendtopcnotice"><![CDATA[您成功跨屏穿越了主题 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>]]></item>
-				<item id="touch_tipsa"><![CDATA[安装手机客户端，有回复及时提醒]]></item>
-				<item id="touch_tipsb"><![CDATA[下载手机客户端，永久登录，回复提醒，更方便的阅读]]></item>
+				<item id="sendtopcnotice"><![CDATA[您成功跨屏穿越了主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>]]></item>
+				<item id="touch_tipsa"><![CDATA[安裝手機客戶端，有回復及時提醒]]></item>
+				<item id="touch_tipsb"><![CDATA[下載手機客戶端，永久登錄，回復提醒，更方便的閱讀]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="pushtitle"><![CDATA[穿越]]></item>
-				<item id="pushtomobile"><![CDATA[发送到手机]]></item>
+				<item id="pushtomobile"><![CDATA[發送到手機]]></item>
 				<item id="dg_title"><![CDATA[跨屏穿越]]></item>
-				<item id="dg_brief"><![CDATA[电脑/手机互传贴子，快捷方便！]]></item>
-				<item id="dg_scantoinstall"><![CDATA[如果您尚未安装手机客户端，请先<span class="txt-blue">扫描二维码安装！</span>]]></item>
+				<item id="dg_brief"><![CDATA[電腦/手機互傳貼子，快捷方便！]]></item>
+				<item id="dg_scantoinstall"><![CDATA[如果您尚未安裝手機客戶端，請先<span class="txt-blue">掃瞄二維碼安裝！</span>]]></item>
 				<item id="dg_android"><![CDATA[Android版]]></item>
-				<item id="dg_ios"><![CDATA[iOS版/其他版本<br />敬请期待！]]></item>
-				<item id="dg_firstlogin"><![CDATA[如果您已经安装手机客户端，请在<span class="txt-blue">手机客户端上登录</span>在进行穿越！]]></item>
+				<item id="dg_ios"><![CDATA[iOS版/其他版本<br />敬請期待！]]></item>
+				<item id="dg_firstlogin"><![CDATA[如果您已經安裝手機客戶端，請在<span class="txt-blue">手機客戶端上登錄</span>在進行穿越！]]></item>
 			</item>
 		</item>
 		<item id="installfile"><![CDATA[install.php]]></item>

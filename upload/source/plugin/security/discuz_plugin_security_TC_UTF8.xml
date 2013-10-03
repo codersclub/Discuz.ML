@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
-	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Data">
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
@@ -12,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[security/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.10]]></item>
+			<item id="version"><![CDATA[1.11.1]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[security]]></item>
@@ -40,9 +39,11 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3]]></item>
+		<item id="version"><![CDATA[X3.1]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
+		<item id="enablefile"><![CDATA[switch.php]]></item>
+		<item id="disablefile"><![CDATA[switch.php]]></item>
 		<item id="language">
 			<item id="scriptlang">
 				<item id="banuser_tips_qq"><![CDATA[抱歉，您的帳號被系統禁言，您可以綁定QQ解除禁言狀態。<a href="connect.php?mod=login&op=init">綁定QQ</a>]]></item>
@@ -50,6 +51,13 @@
 				<item id="unlock_success"><![CDATA[解禁成功！]]></item>
 				<item id="wrongcode"><![CDATA[驗證碼驗證失敗，無法解禁。]]></item>
 				<item id="title"><![CDATA[防水牆保衛網站遠離侵害]]></item>
+				<item id="safelogintips"><![CDATA[為避免您的帳號被盜用，請您綁定QQ帳號後發帖，綁定後請使用QQ帳號登錄]]></item>
+				<item id="qqloginaloneopened"><![CDATA[已開啟QQ獨立登錄設置]]></item>
+				<item id="quicklogin"><![CDATA[快捷登錄]]></item>
+				<item id="notice_title"><![CDATA[防水牆提醒您]]></item>
+				<item id="notice_memo"><![CDATA[昨日防水牆識別 {count} 個違規用戶，請馬上處理</p>]]></item>
+				<item id="notice_close"><![CDATA[關閉]]></item>
+				<item id="notice_link"><![CDATA[點擊進入防水牆]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="unlock_title"><![CDATA[請輸入驗證碼，解除禁言狀態]]></item>
