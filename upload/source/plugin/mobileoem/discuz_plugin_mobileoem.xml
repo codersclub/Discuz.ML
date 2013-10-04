@@ -5,7 +5,7 @@
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
-			<item id="name"><![CDATA[掌上论坛独立版]]></item>
+			<item id="name"><![CDATA[Mobile Forum standalone version]]></item>
 			<item id="identifier"><![CDATA[mobileoem]]></item>
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[mobileoem/]]></item>
@@ -41,20 +41,20 @@
 		<item id="version"><![CDATA[X3.1]]></item>
 		<item id="language">			
 			<item id="scriptlang">
-				<item id="pushsuccess"><![CDATA[穿越成功]]></item>
-				<item id="sendtopcnotice"><![CDATA[您成功跨屏穿越了主题 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>]]></item>
-				<item id="touch_tipsa"><![CDATA[安装手机客户端，有回复及时提醒]]></item>
-				<item id="touch_tipsb"><![CDATA[下载手机客户端，永久登录，回复提醒，更方便的阅读]]></item>
+				<item id="pushsuccess"><![CDATA[Pushed successfully]]></item>
+				<item id="sendtopcnotice"><![CDATA[Thread is sent successfully: <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>]]></item>
+				<item id="touch_tipsa"><![CDATA[After install mobile client, you will be promped about new replies]]></item>
+				<item id="touch_tipsb"><![CDATA[Download the mobile client for persistent login, post alert, easier to read]]></item>
 			</item>
 			<item id="templatelang">
-				<item id="pushtitle"><![CDATA[穿越]]></item>
-				<item id="pushtomobile"><![CDATA[发送到手机]]></item>
-				<item id="dg_title"><![CDATA[跨屏穿越]]></item>
-				<item id="dg_brief"><![CDATA[电脑/手机互传贴子，快捷方便！]]></item>
-				<item id="dg_scantoinstall"><![CDATA[如果您尚未安装手机客户端，请先<span class="txt-blue">扫描二维码安装！</span>]]></item>
-				<item id="dg_android"><![CDATA[Android版]]></item>
-				<item id="dg_ios"><![CDATA[iOS版/其他版本<br />敬请期待！]]></item>
-				<item id="dg_firstlogin"><![CDATA[如果您已经安装手机客户端，请在<span class="txt-blue">手机客户端上登录</span>在进行穿越！]]></item>
+				<item id="pushtitle"><![CDATA[Push]]></item>
+				<item id="pushtomobile"><![CDATA[Send to mobile]]></item>
+				<item id="dg_title"><![CDATA[Crossposting]]></item>
+				<item id="dg_brief"><![CDATA[Post fast and convenient by Computer/Mobile phone!]]></item>
+				<item id="dg_scantoinstall"><![CDATA[If you have not installed mobile client, please <span class="txt-blue">use QR code scanner for install it!</span>]]></item>
+				<item id="dg_android"><![CDATA[Android version]]></item>
+				<item id="dg_ios"><![CDATA[iOS/other version<br />Stay tuned!]]></item>
+				<item id="dg_firstlogin"><![CDATA[If you have installed the mobile client, please <span class="txt-blue">Log in with Mobile client</span> before post anything!]]></item>
 			</item>
 		</item>
 		<item id="installfile"><![CDATA[install.php]]></item>

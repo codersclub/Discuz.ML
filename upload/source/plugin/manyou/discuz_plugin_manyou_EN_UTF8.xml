@@ -5,7 +5,7 @@
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[0]]></item>
-			<item id="name"><![CDATA[漫游应用]]></item>
+			<item id="name"><![CDATA[Cloud Platform]]></item>
 			<item id="identifier"><![CDATA[manyou]]></item>
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
@@ -16,7 +16,7 @@
 				<item id="0">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=manage]]></item>
-					<item id="menu"><![CDATA[漫游应用管理]]></item>
+					<item id="menu"><![CDATA[Cloud Applications Management]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -29,7 +29,7 @@
 				<item id="1">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=base]]></item>
-					<item id="menu"><![CDATA[基本设置]]></item>
+					<item id="menu"><![CDATA[Basic Settings]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>

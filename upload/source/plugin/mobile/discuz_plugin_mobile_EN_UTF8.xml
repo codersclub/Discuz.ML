@@ -5,7 +5,7 @@
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
-			<item id="name"><![CDATA[Mobile client]]></item>
+			<item id="name"><![CDATA[Mobile Forum]]></item>
 			<item id="identifier"><![CDATA[mobile]]></item>
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
@@ -55,7 +55,7 @@
 				<item id="mobile_post_author_visible"><![CDATA[Visible only for author]]></item>
 			</item>
 			<item id="templatelang">
-				<item id="mobile_tips"><![CDATA[Recommend using two-dimensional code and access to the forum<br />Using two-dimensional code Collecting Forum:<br />1) After the handheld forum application is installed, click on the forum using the two-dimensional code.<br />2) Place the two-dimensional code before the camera focus to Favorites.]]></item>
+				<item id="mobile_tips"><![CDATA[Recommend using QR code and access to the forum<br />Using QR code Collecting Forum:<br />1) After the handheld forum application is installed, click on the forum using the QR code.<br />2) Place the QR code before the camera focus to Favorites.]]></item>
 				<item id="username"><![CDATA[User name]]></item>
 				<item id="password"><![CDATA[Password]]></item>
 				<item id="password_confirm"><![CDATA[Password again]]></item>
@@ -77,8 +77,8 @@
 				<item id="tips_2_desc"><![CDATA[Unique forum interface and touch screen design, the phone Forum has become a feast for the eyes, operate freely.]]></item>
 				<item id="tips_3"><![CDATA[Shoot, post, and share your life]]></item>
 				<item id="tips_3_desc"><![CDATA[Whether landscape pictures, or news site, take pictures to post at one go, allowing you to shine in the forum.]]></item>
-				<item id="qr_desc"><![CDATA[Download the client after shooting two-dimensional code for fast access to the site:]]></item>
-				<item id="qr"><![CDATA[Two-dimensional code]]></item>
+				<item id="qr_desc"><![CDATA[Download the client after shooting QR code for fast access to the site:]]></item>
+				<item id="qr"><![CDATA[QR code]]></item>
 				<item id="wapmode"><![CDATA[Or visit the following address for WAP:]]></item>
 				<item id="qqregmode1"><![CDATA[Improve the account information]]></item>
 				<item id="qqregmode2"><![CDATA[Bind existing account]]></item>

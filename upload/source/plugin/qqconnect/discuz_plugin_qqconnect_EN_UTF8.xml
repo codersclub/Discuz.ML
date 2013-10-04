@@ -42,7 +42,7 @@
 				<item id="2">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=setting]]></item>
-					<item id="menu"><![CDATA[QQ互联]]></item>
+					<item id="menu"><![CDATA[QQ connect]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -143,30 +143,30 @@
 				<item id="connectguest_message_complete_or_bind"><![CDATA[Sorry, You are yet not <a href="member.php?mod=connect" class="xi2">provide the account information</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">Bind existing account</a>, This action can not be performed]]></item>
 				<item id="connect_error_code_999"><![CDATA[Request failed]]></item>
 				<item id="connect_error_code_10001"><![CDATA[Invalid QQ connect APPID]]></item>
-				<item id="connect_error_code_10002"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_10003"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_10004"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_10005"><![CDATA[网站服务器时间误差超过 5 分钟]]></item>
-				<item id="connect_error_code_10006"><![CDATA[QQ 互联 APPID 无效]]></item>
-				<item id="connect_error_code_11000"><![CDATA[QQ 互联 APPKEY 无效]]></item>
-				<item id="connect_error_code_11001"><![CDATA[QQ 互联 APPID 被禁用]]></item>
-				<item id="connect_error_code_30001"><![CDATA[QQ 互联 APPID 无效]]></item>
-				<item id="connect_error_code_30002"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30003"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30004"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30005"><![CDATA[网站服务器时间误差超过 5 分钟]]></item>
-				<item id="connect_error_code_30006"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30007"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30008"><![CDATA[APPID 未注册，请重新开通 QQ 互联服务]]></item>
-				<item id="connect_error_code_31000"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]]></item>
-				<item id="connect_error_code_31001"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]]></item>
-				<item id="connect_error_code_31002"><![CDATA[QQ 互联 APPID 被禁用]]></item>
-				<item id="connect_feed_iam"><![CDATA[我在]]></item>
-				<item id="connect_feed_published_thread"><![CDATA[发表了《{subject}》：]]></item>
-				<item id="connect_feed_published_post"><![CDATA[参与了《{subject}》的讨论：]]></item>
-				<item id="connect_spacecp_share_a_post"><![CDATA[分享一个好帖#{bbname}#《{subject}》：{message}]]></item>
-				<item id="connect_spacecp_share_qq_default"><![CDATA[看看这个吧，还不错哦，也许你会喜欢^_^]]></item>
-				<item id="connect_post_sync_method"><![CDATA[将此回复同步到]]></item>
+				<item id="connect_error_code_10002"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_10003"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_10004"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_10005"><![CDATA[Error: Server timeout exceeded 5 min]]></item>
+				<item id="connect_error_code_10006"><![CDATA[QQ connect APPID invalid]]></item>
+				<item id="connect_error_code_11000"><![CDATA[QQ connect APPKEY invalid]]></item>
+				<item id="connect_error_code_11001"><![CDATA[QQ connect APPID disabled]]></item>
+				<item id="connect_error_code_30001"><![CDATA[QQ connect APPID invalid]]></item>
+				<item id="connect_error_code_30002"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30003"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30004"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30005"><![CDATA[Error: Server timeout exceeded 5 min]]></item>
+				<item id="connect_error_code_30006"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30007"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30008"><![CDATA[APPID is not registered, Please re-opened the QQ connect service]]></item>
+				<item id="connect_error_code_31000"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]]></item>
+				<item id="connect_error_code_31001"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]]></item>
+				<item id="connect_error_code_31002"><![CDATA[QQ connect APPID disabled]]></item>
+				<item id="connect_feed_iam"><![CDATA[I have]]></item>
+				<item id="connect_feed_published_thread"><![CDATA[created a thread 《{subject}》:]]></item>
+				<item id="connect_feed_published_post"><![CDATA[replied the thread 《{subject}》论:]]></item>
+				<item id="connect_spacecp_share_a_post"><![CDATA[shared the thread 《{subject}》 at #{bbname}#: {message}]]></item>
+				<item id="connect_spacecp_share_qq_default"><![CDATA[Look at this, Also pretty good, Maybe you will like it ^_^]]></item>
+				<item id="connect_post_sync_method"><![CDATA[Synchronize this reply]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="connect_header_login"><![CDATA[QQ login]]></item>
@@ -193,7 +193,7 @@
 				<item id="connect_register_sex_secret"><![CDATA[Secret]]></item>
 				<item id="connect_register_public_email"><![CDATA[E-mail address is public]]></item>
 				<item id="connect_register_use_qzone_avatar"><![CDATA[Use QQ Avatar]]></item>
-				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[使用QQ头像和QQ秀]]></item>
+				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[Use QQ Avatar and QQ show]]></item>
 				<item id="connect_register_use_qqshow"><![CDATA[<span title="QQ image will be displayed on the left side of the forum posts and at personal space">Show QQ image</span>]]></item>
 				<item id="connect_register_agree"><![CDATA[Agree with the Terms of Service]]></item>
 				<item id="connect_register_must_agree"><![CDATA[You must agree to the Terms of Service for register]]></item>
@@ -233,46 +233,46 @@
 				<item id="connect_config_unbind_desc2"><![CDATA[In order to continue to use this site account <strong>$_G[member][username]</strong>, Please set the this site login password]]></item>
 				<item id="connect_config_unbind_desc3"><![CDATA[Are you sure you want to unbind relationship with site account?]]></item>
 				<item id="connect_config_unbind_desc4"><![CDATA[If you need to terminate the site account login using the QQ account, click the <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">Exit here</a>]]></item>
-				<item id="connect_config_unbind_desc5"><![CDATA[重新使用QQ帐号登录]]></item>
-				<item id="connect_config_bind_confirm"><![CDATA[确认解除]]></item>
-				<item id="connect_config_password_comment"><![CDATA[登录本站使用]]></item>
-				<item id="connect_config_set_password_desc"><![CDATA[因为安全因素考虑，在操作兑换积分、版主管理等行为时需要设置本站密码]]></item>
-				<item id="connect_config_qqshow_btn_open"><![CDATA[使用QQ秀形象]]></item>
-				<item id="connect_config_qqshow_btn_close"><![CDATA[取 消]]></item>
-				<item id="connect_config_qqshow_btn_tips"><![CDATA[免费获取精美QQ秀]]></item>
-				<item id="connect_config_qqshow_title"><![CDATA[在社区使用我的QQ秀]]></item>
-				<item id="connect_config_qqshow_desc1"><![CDATA[开启后，论坛帖子左侧和个人空间首页将展示您的QQ秀，并且社区内QQ秀形象将随您的QQ秀形象更新而同步变化]]></item>
-				<item id="connect_config_qqshow_desc2"><![CDATA[现在使用QQ秀形象免费获取QQ秀大礼包]]></item>
-				<item id="connect_config_qqshow_desc3"><![CDATA[您需要绑定QQ帐号才能在社区使用QQ秀形象]]></item>
-				<item id="connect_modify_authorization_button"><![CDATA[修改授权]]></item>
-				<item id="connect_post_by_readperm"><![CDATA[具有特殊阅读权限帖子无法发送QQ空间动态]]></item>
-				<item id="connect_post_by_price"><![CDATA[具有售价的帖子无法发送QQ空间动态]]></item>
-				<item id="connect_post_by_invisible_forum"><![CDATA[该板块的帖子无法发送QQ空间动态]]></item>
-				<item id="connect_post_unbind"><![CDATA[绑定QQ帐号，轻松分享到QQ空间与腾讯微博]]></item>
-				<item id="connect_post_sync_tip"><![CDATA[此主题将同步到腾讯微博，您的听众能够看到您发表的主题。]]></item>
-				<item id="connect_post_sync_tip_close"><![CDATA[关闭同步发帖提示]]></item>
-				<item id="connect_post_sync_cancel"><![CDATA[暂不同步]]></item>
-				<item id="connect_post_sync_cancel_tip"><![CDATA[取消发表主题时同步到腾讯微博，将来您可以到“设置-QQ绑定”页面重新设置。]]></item>
-				<item id="connect_post_sync_qzone1"><![CDATA[已设置同步至QQ空间]]></item>
-				<item id="connect_post_sync_t1"><![CDATA[已设置同步至腾讯微博]]></item>
-				<item id="connect_post_sync_qzone2"><![CDATA[未设置同步至QQ空间]]></item>
-				<item id="connect_post_sync_t2"><![CDATA[未设置同步至腾讯微博]]></item>
-				<item id="connect_post_sync_yes"><![CDATA[已]]></item>
-				<item id="connect_post_sync_no"><![CDATA[未]]></item>
-				<item id="connect_post_sync_unauthorized_title"><![CDATA[授权提示]]></item>
-				<item id="connect_post_sync_unauthorized_desc"><![CDATA[马上完善授权，您将可以发表主题时同步到QQ空间和腾讯微博，第一时间和大家分享您在论坛中的新鲜事儿。]]></item>
-				<item id="connect_access_token_out_of_date_feed"><![CDATA[为了您的账号安全，请使用QQ帐号重新登录，将为您升级帐号安全机制<br/><br/>点击<a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ登录" /></a>页面将发生跳转，请确保您已保存好帖子数据]]></item>
-				<item id="connect_access_token_out_of_date_share"><![CDATA[为了您的账号安全，请使用QQ帐号重新登录，将为您升级帐号安全机制<br/><br/>点击<a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ登录" /></a>页面将发生跳转]]></item>
-				<item id="connect_access_token_outofdate_button"><![CDATA[我知道了]]></item>
-				<item id="connect_post_sync_not_bind_desc"><![CDATA[马上绑定QQ账号，您将可以发表主题时同步到QQ空间和腾讯微博，第一时间和大家分享您在论坛中的新鲜事儿。]]></item>
-				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ空间]]></item>
-				<item id="connect_viewthread_share_to_t"><![CDATA[腾讯微博]]></item>
-				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ好友和群]]></item>
-				<item id="connect_viewthread_share_to_pengyou"><![CDATA[腾讯朋友]]></item>
-				<item id="connect_createpassword"><![CDATA[<b>创建密码</b>]]></item>
-				<item id="connect_uin_limit"><![CDATA[您的QQ帐号在本站注册的帐号数量达到上限，请绑定已有帐号，或<a href="{$change_qq_url}">更换其他QQ账号</a>]]></item>
-				<item id="connect_thread_id_miss"><![CDATA[帖子id不存在]]></item>
-				<item id="connect_get_request_token_failed"><![CDATA[服务器繁忙，请稍后再试。]]></item>
+				<item id="connect_config_unbind_desc5"><![CDATA[Re-use of QQ account login]]></item>
+				<item id="connect_config_bind_confirm"><![CDATA[Confirm binding]]></item>
+				<item id="connect_config_password_comment"><![CDATA[Site log in]]></item>
+				<item id="connect_config_set_password_desc"><![CDATA[Because of security reasons, the operations of redeem credits or the site namagement requires to enter the site password]]></item>
+				<item id="connect_config_qqshow_btn_open"><![CDATA[Using QQ show image]]></item>
+				<item id="connect_config_qqshow_btn_close"><![CDATA[Cancel]]></item>
+				<item id="connect_config_qqshow_btn_tips"><![CDATA[Free method to beautify QQ Show]]></item>
+				<item id="connect_config_qqshow_title"><![CDATA[Using my QQ show in the community]]></item>
+				<item id="connect_config_qqshow_desc1"><![CDATA[If enabled then your QQ Show wil be shown at the posts left sidebar and in the profile. And the community QQ show image will updated synchronously with your QQ status]]></item>
+				<item id="connect_config_qqshow_desc2"><![CDATA[Now uses the QQ Show image free access to QQ Show Gift Pack]]></item>
+				<item id="connect_config_qqshow_desc3"><![CDATA[You need to bind QQ account in order to use QQ show image in a community]]></item>
+				<item id="connect_modify_authorization_button"><![CDATA[Modify authorization]]></item>
+				<item id="connect_post_by_readperm"><![CDATA[With(out) the special read privileges you could not sent a post to QQ space news]]></item>
+				<item id="connect_post_by_price"><![CDATA[The message with a price could not be sent to QQ space news]]></item>
+				<item id="connect_post_by_invisible_forum"><![CDATA[A mpost from invisible forum could not be sent to QQ space news]]></item>
+				<item id="connect_post_unbind"><![CDATA[After bnding QQ account, you can easily share QQ space with Tencent microblog]]></item>
+				<item id="connect_post_sync_tip"><![CDATA[This topic will be synchronized to Tencent microblog, and your followers can see your published topic.]]></item>
+				<item id="connect_post_sync_tip_close"><![CDATA[Close the post synchronization prompt]]></item>
+				<item id="connect_post_sync_cancel"><![CDATA[Cancel synchronization]]></item>
+				<item id="connect_post_sync_cancel_tip"><![CDATA[When the Post Thread synchronization to Tencent microblog is cancelled, you can go to the page "Settings -&raquo; QQ Binding" again later.]]></item>
+				<item id="connect_post_sync_qzone1"><![CDATA[Synchronization with QQ space have been set]]></item>
+				<item id="connect_post_sync_t1"><![CDATA[Synchronization with Tencent Microblog have been set]]></item>
+				<item id="connect_post_sync_qzone2"><![CDATA[Sync to QQ space is not set]]></item>
+				<item id="connect_post_sync_t2"><![CDATA[Sync to Tencent microblog is not set]]></item>
+				<item id="connect_post_sync_yes"><![CDATA[Yes]]></item>
+				<item id="connect_post_sync_no"><![CDATA[No]]></item>
+				<item id="connect_post_sync_unauthorized_title"><![CDATA[Authorization prompt]]></item>
+				<item id="connect_post_sync_unauthorized_desc"><![CDATA[When you authorized, You will be able to synchronize Post Thread to the QQ space and Tencent microblog, and so share your new activity to your news feed]]></item>
+				<item id="connect_access_token_out_of_date_feed"><![CDATA[For your account security, please use the QQ account to log in again, this will enchance your account security mechanisms<br/><br/>Click <a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ Log in" /></a> for redirect the page, Make sure that you have saved your good post data]]></item>
+				<item id="connect_access_token_out_of_date_share"><![CDATA[For your account security, please use the QQ account to log in again, this will enchance your account security mechanisms<br/><br/>Click <a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ Log in" /></a> Page jump will occur]]></item>
+				<item id="connect_access_token_outofdate_button"><![CDATA[I know]]></item>
+				<item id="connect_post_sync_not_bind_desc"><![CDATA[After binding QQ account, You will be able to synchronize Post Thread to the QQ space and Tencent microblog, and so share your new activity to your news feed]]></item>
+				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ Space]]></item>
+				<item id="connect_viewthread_share_to_t"><![CDATA[Tencent microblog]]></item>
+				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ Friends and Groups]]></item>
+				<item id="connect_viewthread_share_to_pengyou"><![CDATA[Tencent Friends]]></item>
+				<item id="connect_createpassword"><![CDATA[<b>Create password</b>]]></item>
+				<item id="connect_uin_limit"><![CDATA[You have reached the limit of QQ accounts registered at the site. Please bind your already existing account, or <a href="{$change_qq_url}">Replace with other QQ account</a>]]></item>
+				<item id="connect_thread_id_miss"><![CDATA[Post id does not exist]]></item>
+				<item id="connect_get_request_token_failed"><![CDATA[Server is busy, please try again later.]]></item>
 				<item id="connect_get_access_token_failed"><![CDATA[服务器繁忙，请稍后再试。]]></item>
 				<item id="connect_spacecp_qzone_to"><![CDATA[分享到QQ空间]]></item>
 				<item id="connect_spacecp_pengyou_to"><![CDATA[分享到腾讯朋友]]></item>
@@ -287,10 +287,10 @@
 				<item id="connect_spacecp_qzone_subject_is_empty"><![CDATA[请输入分享标题]]></item>
 				<item id="connect_spacecp_qzone_subject_is_long"><![CDATA[分享标题超过了长度限制]]></item>
 				<item id="connect_spacecp_qzone_reason_is_long"><![CDATA[分享理由超过了长度限制]]></item>
-				<item id="connect_share_unauthorized"><![CDATA[独乐乐不如众乐乐，马上完善授权，您将可以把本站精彩内容分享到QQ空间、腾讯微博和腾讯朋友，跟大家分享每个精彩瞬间。]]></item>
-				<item id="connect_share_unbind"><![CDATA[很抱歉，由于分享功能升级，您需要使用QQ帐号重新登录本站，即可马上体验全新的分享到QQ空间、腾讯微博和腾讯朋友功能。<br /><span style="font-size: 12px;">提示：点击<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">这里退出</a>后，重新使用QQ账号登录。</span>]]></item>
+				<item id="connect_share_unauthorized"><![CDATA[独乐乐不如众乐乐，马上完善授权，您将可以把本站精彩内容分享到QQ空间、Tencent microblog和腾讯朋友，跟大家分享每个精彩瞬间。]]></item>
+				<item id="connect_share_unbind"><![CDATA[很抱歉，由于分享功能升级，您需要使用QQ帐号重新登录本站，即可马上体验全新的分享到QQ空间、Tencent microblog和腾讯朋友功能。<br /><span style="font-size: 12px;">提示: Click <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">这里退出</a>后，重新使用QQ账号登录。</span>]]></item>
 				<item id="connect_share_unbind_know_button"><![CDATA[我知道了]]></item>
-				<item id="connect_spacecp_weibo_to"><![CDATA[转播到腾讯微博]]></item>
+				<item id="connect_spacecp_weibo_to"><![CDATA[转播到Tencent microblog]]></item>
 				<item id="connect_spacecp_weibo_input"><![CDATA[还能输入<strong id="checklen"></strong>字]]></item>
 				<item id="connect_spacecp_weibo_input_over"><![CDATA[超出<strong id="checklen" style="color:#E56C0A;"></strong>字]]></item>
 				<item id="connect_spacecp_weibo_reason"><![CDATA[微博内容]]></item>
@@ -301,13 +301,13 @@
 				<item id="connect_member_loginbind_tip"><![CDATA[绑定已有帐号可使用QQ帐号快速登录本站]]></item>
 				<item id="connect_member_register_button_tip"><![CDATA[体验本站更多功能]]></item>
 				<item id="connect_member_loginbind_button_tip"><![CDATA[使用QQ帐号快速登录本站]]></item>
-				<item id="connect_wbsign_no_account"><![CDATA[网络繁忙，暂时无法使用腾讯微博签名档功能]]></item>
-				<item id="connect_wbsign_no_bind"><![CDATA[您需要绑定QQ帐号，才可使用腾讯微博签名档功能]]></item>
-				<item id="connect_wbsign_tip"><![CDATA[插入腾讯微博做为论坛签名，可第一时间将您的微博最新信息展示给本站的会员和游客]]></item>
+				<item id="connect_wbsign_no_account"><![CDATA[网络繁忙，暂时无法使用Tencent microblog签名档功能]]></item>
+				<item id="connect_wbsign_no_bind"><![CDATA[您需要绑定QQ帐号，才可使用Tencent microblog签名档功能]]></item>
+				<item id="connect_wbsign_tip"><![CDATA[插入Tencent microblog做为论坛签名，可第一时间将您的微博最新信息展示给本站的会员和游客]]></item>
 				<item id="connect_mobile_login"><![CDATA[使用QQ帐号登录]]></item>
 			</item>
 			<item id="installlang">
-				<item id="connect_guest_group_name"><![CDATA[QQ游客]]></item>
+				<item id="connect_guest_group_name"><![CDATA[QQ Visitor]]></item>
 			</item>
 		</item>
 	</item>

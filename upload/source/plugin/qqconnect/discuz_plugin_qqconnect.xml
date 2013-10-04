@@ -42,7 +42,7 @@
 				<item id="2">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=setting]]></item>
-					<item id="menu"><![CDATA[QQ互联]]></item>
+					<item id="menu"><![CDATA[QQ connect]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -143,30 +143,30 @@
 				<item id="connectguest_message_complete_or_bind"><![CDATA[Sorry, You are yet not <a href="member.php?mod=connect" class="xi2">provide the account information</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">Bind existing account</a>, This action can not be performed]]></item>
 				<item id="connect_error_code_999"><![CDATA[Request failed]]></item>
 				<item id="connect_error_code_10001"><![CDATA[Invalid QQ connect APPID]]></item>
-				<item id="connect_error_code_10002"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_10003"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_10004"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_10005"><![CDATA[网站服务器时间误差超过 5 分钟]]></item>
-				<item id="connect_error_code_10006"><![CDATA[QQ 互联 APPID 无效]]></item>
-				<item id="connect_error_code_11000"><![CDATA[QQ 互联 APPKEY 无效]]></item>
-				<item id="connect_error_code_11001"><![CDATA[QQ 互联 APPID 被禁用]]></item>
-				<item id="connect_error_code_30001"><![CDATA[QQ 互联 APPID 无效]]></item>
-				<item id="connect_error_code_30002"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30003"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30004"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30005"><![CDATA[网站服务器时间误差超过 5 分钟]]></item>
-				<item id="connect_error_code_30006"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30007"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
-				<item id="connect_error_code_30008"><![CDATA[APPID 未注册，请重新开通 QQ 互联服务]]></item>
-				<item id="connect_error_code_31000"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]]></item>
-				<item id="connect_error_code_31001"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]]></item>
-				<item id="connect_error_code_31002"><![CDATA[QQ 互联 APPID 被禁用]]></item>
-				<item id="connect_feed_iam"><![CDATA[我在]]></item>
-				<item id="connect_feed_published_thread"><![CDATA[发表了《{subject}》：]]></item>
-				<item id="connect_feed_published_post"><![CDATA[参与了《{subject}》的讨论：]]></item>
-				<item id="connect_spacecp_share_a_post"><![CDATA[分享一个好帖#{bbname}#《{subject}》：{message}]]></item>
-				<item id="connect_spacecp_share_qq_default"><![CDATA[看看这个吧，还不错哦，也许你会喜欢^_^]]></item>
-				<item id="connect_post_sync_method"><![CDATA[将此回复同步到]]></item>
+				<item id="connect_error_code_10002"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_10003"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_10004"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_10005"><![CDATA[Error: Server timeout exceeded 5 min]]></item>
+				<item id="connect_error_code_10006"><![CDATA[QQ connect APPID invalid]]></item>
+				<item id="connect_error_code_11000"><![CDATA[QQ connect APPKEY invalid]]></item>
+				<item id="connect_error_code_11001"><![CDATA[QQ connect APPID disabled]]></item>
+				<item id="connect_error_code_30001"><![CDATA[QQ connect APPID invalid]]></item>
+				<item id="connect_error_code_30002"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30003"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30004"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30005"><![CDATA[Error: Server timeout exceeded 5 min]]></item>
+				<item id="connect_error_code_30006"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30007"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]></item>
+				<item id="connect_error_code_30008"><![CDATA[APPID is not registered, Please re-opened the QQ connect service]]></item>
+				<item id="connect_error_code_31000"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]]></item>
+				<item id="connect_error_code_31001"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]]></item>
+				<item id="connect_error_code_31002"><![CDATA[QQ connect APPID disabled]]></item>
+				<item id="connect_feed_iam"><![CDATA[I have]]></item>
+				<item id="connect_feed_published_thread"><![CDATA[created a thread 《{subject}》:]]></item>
+				<item id="connect_feed_published_post"><![CDATA[replied the thread 《{subject}》论:]]></item>
+				<item id="connect_spacecp_share_a_post"><![CDATA[shared the thread 《{subject}》 at #{bbname}#: {message}]]></item>
+				<item id="connect_spacecp_share_qq_default"><![CDATA[Look at this, Also pretty good, Maybe you will like it ^_^]]></item>
+				<item id="connect_post_sync_method"><![CDATA[Synchronize this reply]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="connect_header_login"><![CDATA[QQ login]]></item>
@@ -193,7 +193,7 @@
 				<item id="connect_register_sex_secret"><![CDATA[Secret]]></item>
 				<item id="connect_register_public_email"><![CDATA[E-mail address is public]]></item>
 				<item id="connect_register_use_qzone_avatar"><![CDATA[Use QQ Avatar]]></item>
-				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[使用QQ头像和QQ秀]]></item>
+				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[Use QQ Avatar and QQ show]]></item>
 				<item id="connect_register_use_qqshow"><![CDATA[<span title="QQ image will be displayed on the left side of the forum posts and at personal space">Show QQ image</span>]]></item>
 				<item id="connect_register_agree"><![CDATA[Agree with the Terms of Service]]></item>
 				<item id="connect_register_must_agree"><![CDATA[You must agree to the Terms of Service for register]]></item>
@@ -233,14 +233,14 @@
 				<item id="connect_config_unbind_desc2"><![CDATA[In order to continue to use this site account <strong>$_G[member][username]</strong>, Please set the this site login password]]></item>
 				<item id="connect_config_unbind_desc3"><![CDATA[Are you sure you want to unbind relationship with site account?]]></item>
 				<item id="connect_config_unbind_desc4"><![CDATA[If you need to terminate the site account login using the QQ account, click the <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">Exit here</a>]]></item>
-				<item id="connect_config_unbind_desc5"><![CDATA[重新使用QQ帐号登录]]></item>
-				<item id="connect_config_bind_confirm"><![CDATA[确认解除]]></item>
-				<item id="connect_config_password_comment"><![CDATA[登录本站使用]]></item>
-				<item id="connect_config_set_password_desc"><![CDATA[因为安全因素考虑，在操作兑换积分、版主管理等行为时需要设置本站密码]]></item>
-				<item id="connect_config_qqshow_btn_open"><![CDATA[使用QQ秀形象]]></item>
-				<item id="connect_config_qqshow_btn_close"><![CDATA[取 消]]></item>
-				<item id="connect_config_qqshow_btn_tips"><![CDATA[免费获取精美QQ秀]]></item>
-				<item id="connect_config_qqshow_title"><![CDATA[在社区使用我的QQ秀]]></item>
+				<item id="connect_config_unbind_desc5"><![CDATA[Re-use of QQ account login]]></item>
+				<item id="connect_config_bind_confirm"><![CDATA[Confirm binding]]></item>
+				<item id="connect_config_password_comment"><![CDATA[Site log in]]></item>
+				<item id="connect_config_set_password_desc"><![CDATA[Because of security reasons, the operations of redeem credits or the site namagement requires to enter the site password]]></item>
+				<item id="connect_config_qqshow_btn_open"><![CDATA[Using QQ show image]]></item>
+				<item id="connect_config_qqshow_btn_close"><![CDATA[Cancel]]></item>
+				<item id="connect_config_qqshow_btn_tips"><![CDATA[Free method to beautify QQ Show]]></item>
+				<item id="connect_config_qqshow_title"><![CDATA[Using my QQ show in the community]]></item>
 				<item id="connect_config_qqshow_desc1"><![CDATA[开启后，论坛帖子左侧和个人空间首页将展示您的QQ秀，并且社区内QQ秀形象将随您的QQ秀形象更新而同步变化]]></item>
 				<item id="connect_config_qqshow_desc2"><![CDATA[现在使用QQ秀形象免费获取QQ秀大礼包]]></item>
 				<item id="connect_config_qqshow_desc3"><![CDATA[您需要绑定QQ帐号才能在社区使用QQ秀形象]]></item>

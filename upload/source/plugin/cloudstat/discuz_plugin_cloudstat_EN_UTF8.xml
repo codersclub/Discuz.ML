@@ -42,7 +42,7 @@
 				<item id="2">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=summary]]></item>
-					<item id="menu"><![CDATA[网站概况]]></item>
+					<item id="menu"><![CDATA[About the site]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -55,7 +55,7 @@
 				<item id="3">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=base]]></item>
-					<item id="menu"><![CDATA[设置图标]]></item>
+					<item id="menu"><![CDATA[Set Icon]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
