@@ -162,9 +162,9 @@
 				<item id="connect_error_code_31001"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]]></item>
 				<item id="connect_error_code_31002"><![CDATA[QQ connect APPID disabled]]></item>
 				<item id="connect_feed_iam"><![CDATA[I have]]></item>
-				<item id="connect_feed_published_thread"><![CDATA[created a thread 《{subject}》:]]></item>
-				<item id="connect_feed_published_post"><![CDATA[replied the thread 《{subject}》论:]]></item>
-				<item id="connect_spacecp_share_a_post"><![CDATA[shared the thread 《{subject}》 at #{bbname}#: {message}]]></item>
+				<item id="connect_feed_published_thread"><![CDATA[created a thread &laquo;{subject}&raquo;:]]></item>
+				<item id="connect_feed_published_post"><![CDATA[replied the thread &laquo;{subject}&raquo;:]]></item>
+				<item id="connect_spacecp_share_a_post"><![CDATA[shared the thread &laquo;{subject}&raquo; at #{bbname}#: {message}]]></item>
 				<item id="connect_spacecp_share_qq_default"><![CDATA[Look at this, Also pretty good, Maybe you will like it ^_^]]></item>
 				<item id="connect_post_sync_method"><![CDATA[Synchronize this reply]]></item>
 			</item>
@@ -241,73 +241,73 @@
 				<item id="connect_config_qqshow_btn_close"><![CDATA[Cancel]]></item>
 				<item id="connect_config_qqshow_btn_tips"><![CDATA[Free method to beautify QQ Show]]></item>
 				<item id="connect_config_qqshow_title"><![CDATA[Using my QQ show in the community]]></item>
-				<item id="connect_config_qqshow_desc1"><![CDATA[开启后，论坛帖子左侧和个人空间首页将展示您的QQ秀，并且社区内QQ秀形象将随您的QQ秀形象更新而同步变化]]></item>
-				<item id="connect_config_qqshow_desc2"><![CDATA[现在使用QQ秀形象免费获取QQ秀大礼包]]></item>
-				<item id="connect_config_qqshow_desc3"><![CDATA[您需要绑定QQ帐号才能在社区使用QQ秀形象]]></item>
-				<item id="connect_modify_authorization_button"><![CDATA[修改授权]]></item>
-				<item id="connect_post_by_readperm"><![CDATA[具有特殊阅读权限帖子无法发送QQ空间动态]]></item>
-				<item id="connect_post_by_price"><![CDATA[具有售价的帖子无法发送QQ空间动态]]></item>
-				<item id="connect_post_by_invisible_forum"><![CDATA[该板块的帖子无法发送QQ空间动态]]></item>
-				<item id="connect_post_unbind"><![CDATA[绑定QQ帐号，轻松分享到QQ空间与腾讯微博]]></item>
-				<item id="connect_post_sync_tip"><![CDATA[此主题将同步到腾讯微博，您的听众能够看到您发表的主题。]]></item>
-				<item id="connect_post_sync_tip_close"><![CDATA[关闭同步发帖提示]]></item>
-				<item id="connect_post_sync_cancel"><![CDATA[暂不同步]]></item>
-				<item id="connect_post_sync_cancel_tip"><![CDATA[取消发表主题时同步到腾讯微博，将来您可以到“设置-QQ绑定”页面重新设置。]]></item>
-				<item id="connect_post_sync_qzone1"><![CDATA[已设置同步至QQ空间]]></item>
-				<item id="connect_post_sync_t1"><![CDATA[已设置同步至腾讯微博]]></item>
-				<item id="connect_post_sync_qzone2"><![CDATA[未设置同步至QQ空间]]></item>
-				<item id="connect_post_sync_t2"><![CDATA[未设置同步至腾讯微博]]></item>
-				<item id="connect_post_sync_yes"><![CDATA[已]]></item>
-				<item id="connect_post_sync_no"><![CDATA[未]]></item>
-				<item id="connect_post_sync_unauthorized_title"><![CDATA[授权提示]]></item>
-				<item id="connect_post_sync_unauthorized_desc"><![CDATA[马上完善授权，您将可以发表主题时同步到QQ空间和腾讯微博，第一时间和大家分享您在论坛中的新鲜事儿。]]></item>
-				<item id="connect_access_token_out_of_date_feed"><![CDATA[为了您的账号安全，请使用QQ帐号重新登录，将为您升级帐号安全机制<br/><br/>点击<a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ登录" /></a>页面将发生跳转，请确保您已保存好帖子数据]]></item>
-				<item id="connect_access_token_out_of_date_share"><![CDATA[为了您的账号安全，请使用QQ帐号重新登录，将为您升级帐号安全机制<br/><br/>点击<a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ登录" /></a>页面将发生跳转]]></item>
-				<item id="connect_access_token_outofdate_button"><![CDATA[我知道了]]></item>
-				<item id="connect_post_sync_not_bind_desc"><![CDATA[马上绑定QQ账号，您将可以发表主题时同步到QQ空间和腾讯微博，第一时间和大家分享您在论坛中的新鲜事儿。]]></item>
-				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ空间]]></item>
-				<item id="connect_viewthread_share_to_t"><![CDATA[腾讯微博]]></item>
-				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ好友和群]]></item>
-				<item id="connect_viewthread_share_to_pengyou"><![CDATA[腾讯朋友]]></item>
-				<item id="connect_createpassword"><![CDATA[<b>创建密码</b>]]></item>
-				<item id="connect_uin_limit"><![CDATA[您的QQ帐号在本站注册的帐号数量达到上限，请绑定已有帐号，或<a href="{$change_qq_url}">更换其他QQ账号</a>]]></item>
-				<item id="connect_thread_id_miss"><![CDATA[帖子id不存在]]></item>
-				<item id="connect_get_request_token_failed"><![CDATA[服务器繁忙，请稍后再试。]]></item>
-				<item id="connect_get_access_token_failed"><![CDATA[服务器繁忙，请稍后再试。]]></item>
-				<item id="connect_spacecp_qzone_to"><![CDATA[分享到QQ空间]]></item>
-				<item id="connect_spacecp_pengyou_to"><![CDATA[分享到腾讯朋友]]></item>
-				<item id="connect_spacecp_qzone_subject"><![CDATA[分享标题]]></item>
-				<item id="connect_spacecp_qzone_reason"><![CDATA[分享理由]]></item>
-				<item id="connect_spacecp_qzone_picture"><![CDATA[分享图片]]></item>
-				<item id="connect_spacecp_qzone_cancel_picture"><![CDATA[取消分享图片]]></item>
-				<item id="connect_spacecp_qzone_select_picture"><![CDATA[分享图片]]></item>
-				<item id="connect_spacecp_qzone_to_friend"><![CDATA[分享给好友]]></item>
-				<item id="connect_spacecp_qzone_reason_default"><![CDATA[可以在这里输入分享原因或详细内容]]></item>
-				<item id="connect_spacecp_qzone_space"><![CDATA[　]]></item>
-				<item id="connect_spacecp_qzone_subject_is_empty"><![CDATA[请输入分享标题]]></item>
-				<item id="connect_spacecp_qzone_subject_is_long"><![CDATA[分享标题超过了长度限制]]></item>
-				<item id="connect_spacecp_qzone_reason_is_long"><![CDATA[分享理由超过了长度限制]]></item>
-				<item id="connect_share_unauthorized"><![CDATA[独乐乐不如众乐乐，马上完善授权，您将可以把本站精彩内容分享到QQ空间、腾讯微博和腾讯朋友，跟大家分享每个精彩瞬间。]]></item>
-				<item id="connect_share_unbind"><![CDATA[很抱歉，由于分享功能升级，您需要使用QQ帐号重新登录本站，即可马上体验全新的分享到QQ空间、腾讯微博和腾讯朋友功能。<br /><span style="font-size: 12px;">提示：点击<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">这里退出</a>后，重新使用QQ账号登录。</span>]]></item>
-				<item id="connect_share_unbind_know_button"><![CDATA[我知道了]]></item>
-				<item id="connect_spacecp_weibo_to"><![CDATA[转播到腾讯微博]]></item>
-				<item id="connect_spacecp_weibo_input"><![CDATA[还能输入<strong id="checklen"></strong>字]]></item>
-				<item id="connect_spacecp_weibo_input_over"><![CDATA[超出<strong id="checklen" style="color:#E56C0A;"></strong>字]]></item>
-				<item id="connect_spacecp_weibo_reason"><![CDATA[微博内容]]></item>
-				<item id="connect_spacecp_weibo_share"><![CDATA[转播]]></item>
-				<item id="connect_spacecp_weibo_reason_is_long"><![CDATA[微博内容超过了长度限制]]></item>
-				<item id="connect_spacecp_weibo_reason_is_short"><![CDATA[请输入您要转播的微博内容]]></item>
-				<item id="connect_member_register_tip"><![CDATA[完善帐号信息可体验本站更多功能]]></item>
-				<item id="connect_member_loginbind_tip"><![CDATA[绑定已有帐号可使用QQ帐号快速登录本站]]></item>
-				<item id="connect_member_register_button_tip"><![CDATA[体验本站更多功能]]></item>
-				<item id="connect_member_loginbind_button_tip"><![CDATA[使用QQ帐号快速登录本站]]></item>
-				<item id="connect_wbsign_no_account"><![CDATA[网络繁忙，暂时无法使用腾讯微博签名档功能]]></item>
-				<item id="connect_wbsign_no_bind"><![CDATA[您需要绑定QQ帐号，才可使用腾讯微博签名档功能]]></item>
-				<item id="connect_wbsign_tip"><![CDATA[插入腾讯微博做为论坛签名，可第一时间将您的微博最新信息展示给本站的会员和游客]]></item>
-				<item id="connect_mobile_login"><![CDATA[使用QQ帐号登录]]></item>
+				<item id="connect_config_qqshow_desc1"><![CDATA[If enabled then your QQ Show wil be shown at the posts left sidebar and in the profile. And the community QQ show image will updated synchronously with your QQ status]]></item>
+				<item id="connect_config_qqshow_desc2"><![CDATA[Now uses the QQ Show image free access to QQ Show Gift Pack]]></item>
+				<item id="connect_config_qqshow_desc3"><![CDATA[You need to bind QQ account in order to use QQ show image in a community]]></item>
+				<item id="connect_modify_authorization_button"><![CDATA[Modify authorization]]></item>
+				<item id="connect_post_by_readperm"><![CDATA[With(out) the special read privileges you could not sent a post to QQ space news]]></item>
+				<item id="connect_post_by_price"><![CDATA[The message with a price could not be sent to QQ space news]]></item>
+				<item id="connect_post_by_invisible_forum"><![CDATA[A mpost from invisible forum could not be sent to QQ space news]]></item>
+				<item id="connect_post_unbind"><![CDATA[After bnding QQ account, you can easily share QQ space with Tencent microblog]]></item>
+				<item id="connect_post_sync_tip"><![CDATA[This topic will be synchronized to Tencent microblog, and your followers can see your published topic.]]></item>
+				<item id="connect_post_sync_tip_close"><![CDATA[Close the post synchronization prompt]]></item>
+				<item id="connect_post_sync_cancel"><![CDATA[Cancel synchronization]]></item>
+				<item id="connect_post_sync_cancel_tip"><![CDATA[When the Post Thread synchronization to Tencent microblog is cancelled, you can go to the page "Settings -&raquo; QQ Binding" again later.]]></item>
+				<item id="connect_post_sync_qzone1"><![CDATA[Synchronization with QQ space have been set]]></item>
+				<item id="connect_post_sync_t1"><![CDATA[Synchronization with Tencent Microblog have been set]]></item>
+				<item id="connect_post_sync_qzone2"><![CDATA[Sync to QQ space is not set]]></item>
+				<item id="connect_post_sync_t2"><![CDATA[Sync to Tencent microblog is not set]]></item>
+				<item id="connect_post_sync_yes"><![CDATA[Yes]]></item>
+				<item id="connect_post_sync_no"><![CDATA[No]]></item>
+				<item id="connect_post_sync_unauthorized_title"><![CDATA[Authorization prompt]]></item>
+				<item id="connect_post_sync_unauthorized_desc"><![CDATA[When you authorized, You will be able to synchronize Post Thread to the QQ space and Tencent microblog, and so share your new activity to your news feed]]></item>
+				<item id="connect_access_token_out_of_date_feed"><![CDATA[For your account security, please use the QQ account to log in again, this will enchance your account security mechanisms<br/><br/>Click <a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ Log in" /></a> for redirect the page, Make sure that you have saved your good post data]]></item>
+				<item id="connect_access_token_out_of_date_share"><![CDATA[For your account security, please use the QQ account to log in again, this will enchance your account security mechanisms<br/><br/>Click <a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ Log in" /></a> Page jump will occur]]></item>
+				<item id="connect_access_token_outofdate_button"><![CDATA[I know]]></item>
+				<item id="connect_post_sync_not_bind_desc"><![CDATA[After binding QQ account, You will be able to synchronize Post Thread to the QQ space and Tencent microblog, and so share your new activity to your news feed]]></item>
+				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ Space]]></item>
+				<item id="connect_viewthread_share_to_t"><![CDATA[Tencent microblog]]></item>
+				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ Friends and Groups]]></item>
+				<item id="connect_viewthread_share_to_pengyou"><![CDATA[Tencent Friends]]></item>
+				<item id="connect_createpassword"><![CDATA[<b>Create password</b>]]></item>
+				<item id="connect_uin_limit"><![CDATA[You have reached the limit of QQ accounts registered at the site. Please bind your already existing account, or <a href="{$change_qq_url}">Replace with other QQ account</a>]]></item>
+				<item id="connect_thread_id_miss"><![CDATA[Post id does not exist]]></item>
+				<item id="connect_get_request_token_failed"><![CDATA[Server is busy, please try again later.]]></item>
+				<item id="connect_get_access_token_failed"><![CDATA[Server is busy, please try again later.]]></item>
+				<item id="connect_spacecp_qzone_to"><![CDATA[Share to QQ Space]]></item>
+				<item id="connect_spacecp_pengyou_to"><![CDATA[Share to Tencent Friends]]></item>
+				<item id="connect_spacecp_qzone_subject"><![CDATA[Share Title]]></item>
+				<item id="connect_spacecp_qzone_reason"><![CDATA[Share reason]]></item>
+				<item id="connect_spacecp_qzone_picture"><![CDATA[Share Image]]></item>
+				<item id="connect_spacecp_qzone_cancel_picture"><![CDATA[Cancel Share Image]]></item>
+				<item id="connect_spacecp_qzone_select_picture"><![CDATA[Share Image]]></item>
+				<item id="connect_spacecp_qzone_to_friend"><![CDATA[Share to QQ Friends]]></item>
+				<item id="connect_spacecp_qzone_reason_default"><![CDATA[You can enter here the share reason or details]]></item>
+				<item id="connect_spacecp_qzone_space"><![CDATA[&nbsp;]]></item>
+				<item id="connect_spacecp_qzone_subject_is_empty"><![CDATA[Please enter the share title]]></item>
+				<item id="connect_spacecp_qzone_subject_is_long"><![CDATA[Share title exceeds the length limit]]></item>
+				<item id="connect_spacecp_qzone_reason_is_long"><![CDATA[Share reason exceeds the length limit]]></item>
+				<item id="connect_share_unauthorized"><![CDATA[To be together is better than alone! After the authorization you will be able to put this site wonderful content to QQ Space, Tencent Microblog and Tencent Friends, and share with your friends your every wonderful moment.]]></item>
+				<item id="connect_share_unbind"><![CDATA[Sorry, Because of the sharing feature is upgraded, You need to use QQ account to log in to the site, You can immediately experience with the new Share to QQ Space, Tencent Microblog and Tencent Friends functions.<br /><span style="font-size: 12px;">Prompt: Click <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">Log out</a>, and then re-use QQ account login.</span>]]></item>
+				<item id="connect_share_unbind_know_button"><![CDATA[I know]]></item>
+				<item id="connect_spacecp_weibo_to"><![CDATA[Transmit to Tencent microblog]]></item>
+				<item id="connect_spacecp_weibo_input"><![CDATA[You can enter yet <strong id="checklen"></strong> characters]]></item>
+				<item id="connect_spacecp_weibo_input_over"><![CDATA[Exceeding <strong id="checklen" style="color:#E56C0A;"></strong> characters]]></item>
+				<item id="connect_spacecp_weibo_reason"><![CDATA[Microblog content]]></item>
+				<item id="connect_spacecp_weibo_share"><![CDATA[Share]]></item>
+				<item id="connect_spacecp_weibo_reason_is_long"><![CDATA[Microblog content exceeds the length limit]]></item>
+				<item id="connect_spacecp_weibo_reason_is_short"><![CDATA[Please enter your microblog content to be broadcasted]]></item>
+				<item id="connect_member_register_tip"><![CDATA[After improving the Account information you can get more features and  experience]]></item>
+				<item id="connect_member_loginbind_tip"><![CDATA[Binding of QQ account enable to use your QQ account for quick log in to the site]]></item>
+				<item id="connect_member_register_button_tip"><![CDATA[Get more experience with more site features]]></item>
+				<item id="connect_member_loginbind_button_tip"><![CDATA[Use QQ account for quick log in to the site]]></item>
+				<item id="connect_wbsign_no_account"><![CDATA[Network is busy, Tencent Microblog signature function is temporarily unavailable]]></item>
+				<item id="connect_wbsign_no_bind"><![CDATA[You need to bind QQ account before using the Tencent Microblog signature function]]></item>
+				<item id="connect_wbsign_tip"><![CDATA[Inserting the Tencent Microblog as forum signature will enable show your latest microblog info to the site members and visitors]]></item>
+				<item id="connect_mobile_login"><![CDATA[Use QQ account for log in]]></item>
 			</item>
 			<item id="installlang">
-				<item id="connect_guest_group_name"><![CDATA[QQ游客]]></item>
+				<item id="connect_guest_group_name"><![CDATA[QQ Visitor]]></item>
 			</item>
 		</item>
 	</item>

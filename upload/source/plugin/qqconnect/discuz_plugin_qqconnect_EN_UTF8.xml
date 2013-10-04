@@ -162,9 +162,9 @@
 				<item id="connect_error_code_31001"><![CDATA[QQ internet connect failed, Please update program and then reinstall]]]></item>
 				<item id="connect_error_code_31002"><![CDATA[QQ connect APPID disabled]]></item>
 				<item id="connect_feed_iam"><![CDATA[I have]]></item>
-				<item id="connect_feed_published_thread"><![CDATA[created a thread 《{subject}》:]]></item>
-				<item id="connect_feed_published_post"><![CDATA[replied the thread 《{subject}》论:]]></item>
-				<item id="connect_spacecp_share_a_post"><![CDATA[shared the thread 《{subject}》 at #{bbname}#: {message}]]></item>
+				<item id="connect_feed_published_thread"><![CDATA[created a thread &laquo;{subject}&raquo;:]]></item>
+				<item id="connect_feed_published_post"><![CDATA[replied the thread &laquo;{subject}&raquo;:]]></item>
+				<item id="connect_spacecp_share_a_post"><![CDATA[shared the thread &laquo;{subject}&raquo; at #{bbname}#: {message}]]></item>
 				<item id="connect_spacecp_share_qq_default"><![CDATA[Look at this, Also pretty good, Maybe you will like it ^_^]]></item>
 				<item id="connect_post_sync_method"><![CDATA[Synchronize this reply]]></item>
 			</item>
@@ -273,38 +273,38 @@
 				<item id="connect_uin_limit"><![CDATA[You have reached the limit of QQ accounts registered at the site. Please bind your already existing account, or <a href="{$change_qq_url}">Replace with other QQ account</a>]]></item>
 				<item id="connect_thread_id_miss"><![CDATA[Post id does not exist]]></item>
 				<item id="connect_get_request_token_failed"><![CDATA[Server is busy, please try again later.]]></item>
-				<item id="connect_get_access_token_failed"><![CDATA[服务器繁忙，请稍后再试。]]></item>
-				<item id="connect_spacecp_qzone_to"><![CDATA[分享到QQ空间]]></item>
-				<item id="connect_spacecp_pengyou_to"><![CDATA[分享到腾讯朋友]]></item>
-				<item id="connect_spacecp_qzone_subject"><![CDATA[分享标题]]></item>
-				<item id="connect_spacecp_qzone_reason"><![CDATA[分享理由]]></item>
-				<item id="connect_spacecp_qzone_picture"><![CDATA[分享图片]]></item>
-				<item id="connect_spacecp_qzone_cancel_picture"><![CDATA[取消分享图片]]></item>
-				<item id="connect_spacecp_qzone_select_picture"><![CDATA[分享图片]]></item>
-				<item id="connect_spacecp_qzone_to_friend"><![CDATA[分享给好友]]></item>
-				<item id="connect_spacecp_qzone_reason_default"><![CDATA[可以在这里输入分享原因或详细内容]]></item>
-				<item id="connect_spacecp_qzone_space"><![CDATA[　]]></item>
-				<item id="connect_spacecp_qzone_subject_is_empty"><![CDATA[请输入分享标题]]></item>
-				<item id="connect_spacecp_qzone_subject_is_long"><![CDATA[分享标题超过了长度限制]]></item>
-				<item id="connect_spacecp_qzone_reason_is_long"><![CDATA[分享理由超过了长度限制]]></item>
-				<item id="connect_share_unauthorized"><![CDATA[独乐乐不如众乐乐，马上完善授权，您将可以把本站精彩内容分享到QQ空间、Tencent microblog和腾讯朋友，跟大家分享每个精彩瞬间。]]></item>
-				<item id="connect_share_unbind"><![CDATA[很抱歉，由于分享功能升级，您需要使用QQ帐号重新登录本站，即可马上体验全新的分享到QQ空间、Tencent microblog和腾讯朋友功能。<br /><span style="font-size: 12px;">提示: Click <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">这里退出</a>后，重新使用QQ账号登录。</span>]]></item>
-				<item id="connect_share_unbind_know_button"><![CDATA[我知道了]]></item>
-				<item id="connect_spacecp_weibo_to"><![CDATA[转播到Tencent microblog]]></item>
-				<item id="connect_spacecp_weibo_input"><![CDATA[还能输入<strong id="checklen"></strong>字]]></item>
-				<item id="connect_spacecp_weibo_input_over"><![CDATA[超出<strong id="checklen" style="color:#E56C0A;"></strong>字]]></item>
-				<item id="connect_spacecp_weibo_reason"><![CDATA[微博内容]]></item>
-				<item id="connect_spacecp_weibo_share"><![CDATA[转播]]></item>
-				<item id="connect_spacecp_weibo_reason_is_long"><![CDATA[微博内容超过了长度限制]]></item>
-				<item id="connect_spacecp_weibo_reason_is_short"><![CDATA[请输入您要转播的微博内容]]></item>
-				<item id="connect_member_register_tip"><![CDATA[完善帐号信息可体验本站更多功能]]></item>
-				<item id="connect_member_loginbind_tip"><![CDATA[绑定已有帐号可使用QQ帐号快速登录本站]]></item>
-				<item id="connect_member_register_button_tip"><![CDATA[体验本站更多功能]]></item>
-				<item id="connect_member_loginbind_button_tip"><![CDATA[使用QQ帐号快速登录本站]]></item>
-				<item id="connect_wbsign_no_account"><![CDATA[网络繁忙，暂时无法使用Tencent microblog签名档功能]]></item>
-				<item id="connect_wbsign_no_bind"><![CDATA[您需要绑定QQ帐号，才可使用Tencent microblog签名档功能]]></item>
-				<item id="connect_wbsign_tip"><![CDATA[插入Tencent microblog做为论坛签名，可第一时间将您的微博最新信息展示给本站的会员和游客]]></item>
-				<item id="connect_mobile_login"><![CDATA[使用QQ帐号登录]]></item>
+				<item id="connect_get_access_token_failed"><![CDATA[Server is busy, please try again later.]]></item>
+				<item id="connect_spacecp_qzone_to"><![CDATA[Share to QQ Space]]></item>
+				<item id="connect_spacecp_pengyou_to"><![CDATA[Share to Tencent Friends]]></item>
+				<item id="connect_spacecp_qzone_subject"><![CDATA[Share Title]]></item>
+				<item id="connect_spacecp_qzone_reason"><![CDATA[Share reason]]></item>
+				<item id="connect_spacecp_qzone_picture"><![CDATA[Share Image]]></item>
+				<item id="connect_spacecp_qzone_cancel_picture"><![CDATA[Cancel Share Image]]></item>
+				<item id="connect_spacecp_qzone_select_picture"><![CDATA[Share Image]]></item>
+				<item id="connect_spacecp_qzone_to_friend"><![CDATA[Share to QQ Friends]]></item>
+				<item id="connect_spacecp_qzone_reason_default"><![CDATA[You can enter here the share reason or details]]></item>
+				<item id="connect_spacecp_qzone_space"><![CDATA[&nbsp;]]></item>
+				<item id="connect_spacecp_qzone_subject_is_empty"><![CDATA[Please enter the share title]]></item>
+				<item id="connect_spacecp_qzone_subject_is_long"><![CDATA[Share title exceeds the length limit]]></item>
+				<item id="connect_spacecp_qzone_reason_is_long"><![CDATA[Share reason exceeds the length limit]]></item>
+				<item id="connect_share_unauthorized"><![CDATA[To be together is better than alone! After the authorization you will be able to put this site wonderful content to QQ Space, Tencent Microblog and Tencent Friends, and share with your friends your every wonderful moment.]]></item>
+				<item id="connect_share_unbind"><![CDATA[Sorry, Because of the sharing feature is upgraded, You need to use QQ account to log in to the site, You can immediately experience with the new Share to QQ Space, Tencent Microblog and Tencent Friends functions.<br /><span style="font-size: 12px;">Prompt: Click <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">Log out</a>, and then re-use QQ account login.</span>]]></item>
+				<item id="connect_share_unbind_know_button"><![CDATA[I know]]></item>
+				<item id="connect_spacecp_weibo_to"><![CDATA[Transmit to Tencent microblog]]></item>
+				<item id="connect_spacecp_weibo_input"><![CDATA[You can enter yet <strong id="checklen"></strong> characters]]></item>
+				<item id="connect_spacecp_weibo_input_over"><![CDATA[Exceeding <strong id="checklen" style="color:#E56C0A;"></strong> characters]]></item>
+				<item id="connect_spacecp_weibo_reason"><![CDATA[Microblog content]]></item>
+				<item id="connect_spacecp_weibo_share"><![CDATA[Share]]></item>
+				<item id="connect_spacecp_weibo_reason_is_long"><![CDATA[Microblog content exceeds the length limit]]></item>
+				<item id="connect_spacecp_weibo_reason_is_short"><![CDATA[Please enter your microblog content to be broadcasted]]></item>
+				<item id="connect_member_register_tip"><![CDATA[After improving the Account information you can get more features and  experience]]></item>
+				<item id="connect_member_loginbind_tip"><![CDATA[Binding of QQ account enable to use your QQ account for quick log in to the site]]></item>
+				<item id="connect_member_register_button_tip"><![CDATA[Get more experience with more site features]]></item>
+				<item id="connect_member_loginbind_button_tip"><![CDATA[Use QQ account for quick log in to the site]]></item>
+				<item id="connect_wbsign_no_account"><![CDATA[Network is busy, Tencent Microblog signature function is temporarily unavailable]]></item>
+				<item id="connect_wbsign_no_bind"><![CDATA[You need to bind QQ account before using the Tencent Microblog signature function]]></item>
+				<item id="connect_wbsign_tip"><![CDATA[Inserting the Tencent Microblog as forum signature will enable show your latest microblog info to the site members and visitors]]></item>
+				<item id="connect_mobile_login"><![CDATA[Use QQ account for log in]]></item>
 			</item>
 			<item id="installlang">
 				<item id="connect_guest_group_name"><![CDATA[QQ Visitor]]></item>
