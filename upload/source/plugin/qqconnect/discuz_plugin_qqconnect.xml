@@ -225,14 +225,14 @@
 				<item id="connect_config_unbind"><![CDATA[Remove already bound account?]]></item>
 				<item id="connect_config_modify_authorization"><![CDATA[Modify the site authorization?]]></item>
 				<item id="connect_config_modify_authorization_desc"><![CDATA[You can add or delete QQ accounts for authorizing  any time according to your needs. You can use various fetures and services according to your privacy preferrence.]]></item>
-				<item id="connect_config_set_password"><![CDATA[设置本站密码？]]></item>
-				<item id="connect_config_sync_post"><![CDATA[同步动态到腾讯微博？]]></item>
-				<item id="connect_config_sync_post_desc1"><![CDATA[您的好友或听众能够看到您发表的主题和记录。]]></item>
-				<item id="connect_config_sync_post_desc2"><![CDATA[马上完善授权，您将可以把本站精彩内容分享到QQ空间、腾讯微博和腾讯朋友，跟大家分享每个精彩瞬间。]]></item>
-				<item id="connect_config_unbind_desc1"><![CDATA[您当前是使用QQ帐号绑定到 {$_G[setting][bbname]}]]></item>
-				<item id="connect_config_unbind_desc2"><![CDATA[为了您可以继续使用本站帐号 <strong>$_G[member][username]</strong>，请设置本站登录密码]]></item>
-				<item id="connect_config_unbind_desc3"><![CDATA[您确认要解除与本站帐号的绑定关系？]]></item>
-				<item id="connect_config_unbind_desc4"><![CDATA[您需要使用QQ帐号登录才能解除帐号绑定关系，请点击<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">这里退出</a>后]]></item>
+				<item id="connect_config_set_password"><![CDATA[Set this site password?]]></item>
+				<item id="connect_config_sync_post"><![CDATA[Synchronous post to the QQ space and Tencent microblog?]]></item>
+				<item id="connect_config_sync_post_desc1"><![CDATA[Your friends or listeners can see the topic you published and recorded.]]></item>
+				<item id="connect_config_sync_post_desc2"><![CDATA[After authorization, You will be able to share the this site content to QQ space, Tencent microblog and Tencent friends, To share with you each life moment.]]></item>
+				<item id="connect_config_unbind_desc1"><![CDATA[Your current QQ account bound to the {$_G[setting][bbname]}]]></item>
+				<item id="connect_config_unbind_desc2"><![CDATA[In order to continue to use this site account <strong>$_G[member][username]</strong>, Please set the this site login password]]></item>
+				<item id="connect_config_unbind_desc3"><![CDATA[Are you sure you want to unbind relationship with site account?]]></item>
+				<item id="connect_config_unbind_desc4"><![CDATA[If you need to terminate the site account login using the QQ account, click the <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">Exit here</a>]]></item>
 				<item id="connect_config_unbind_desc5"><![CDATA[重新使用QQ帐号登录]]></item>
 				<item id="connect_config_bind_confirm"><![CDATA[确认解除]]></item>
 				<item id="connect_config_password_comment"><![CDATA[登录本站使用]]></item>

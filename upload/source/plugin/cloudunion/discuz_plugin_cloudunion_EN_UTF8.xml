@@ -3,21 +3,22 @@
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
 	<item id="Data">
 		<item id="plugin">
-			<item id="available"><![CDATA[0]]></item>
+			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
-			<item id="name"><![CDATA[URL Safeguard]]></item>
-			<item id="identifier"><![CDATA[pcmgr_url_safeguard]]></item>
+			<item id="name"><![CDATA[Discuz!联盟]]></item>
+			<item id="identifier"><![CDATA[cloudunion]]></item>
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
-			<item id="directory"><![CDATA[pcmgr_url_safeguard/]]></item>
-			<item id="copyright"><![CDATA[Tencent]]></item>
-			<item id="version"><![CDATA[1.1]]></item>
+			<item id="directory"><![CDATA[cloudunion/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.0]]></item>
 			<item id="__modules">
 				<item id="0">
-					<item id="name"><![CDATA[pcmgr_url_safeguard]]></item>
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="param"><![CDATA[]]></item>
 					<item id="menu"><![CDATA[]]></item>
 					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[11]]></item>
+					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
 					<item id="displayorder"><![CDATA[0]]></item>
 					<item id="navtitle"><![CDATA[]]></item>
@@ -28,5 +29,7 @@
 			</item>
 		</item>
 		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="enablefile"><![CDATA[switch.php]]></item>
+		<item id="disablefile"><![CDATA[switch.php]]></item>
 	</item>
 </root>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
-	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Data">
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
@@ -12,10 +11,11 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[qqconnect/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.17]]></item>
+			<item id="version"><![CDATA[1.18.1]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[connect]]></item>
+					<item id="param"><![CDATA[]]></item>
 					<item id="menu"><![CDATA[]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[11]]></item>
@@ -27,31 +27,8 @@
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
 				<item id="1">
-					<item id="name"><![CDATA[spacecp]]></item>
-					<item id="menu"><![CDATA[QQ Binding]]></item>
-					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[7]]></item>
-					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[1]]></item>
-					<item id="navtitle"><![CDATA[]]></item>
-					<item id="navicon"><![CDATA[]]></item>
-					<item id="navsubname"><![CDATA[]]></item>
-					<item id="navsuburl"><![CDATA[]]></item>
-				</item>
-				<item id="2">
-					<item id="name"><![CDATA[qqshow]]></item>
-					<item id="menu"><![CDATA[QQ Show]]></item>
-					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[7]]></item>
-					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[2]]></item>
-					<item id="navtitle"><![CDATA[]]></item>
-					<item id="navicon"><![CDATA[]]></item>
-					<item id="navsubname"><![CDATA[]]></item>
-					<item id="navsuburl"><![CDATA[]]></item>
-				</item>
-				<item id="3">
 					<item id="name"><![CDATA[connect]]></item>
+					<item id="param"><![CDATA[]]></item>
 					<item id="menu"><![CDATA[]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[28]]></item>
@@ -62,11 +39,65 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
+				<item id="2">
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="param"><![CDATA[ac=setting]]></item>
+					<item id="menu"><![CDATA[QQ互联]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="3">
+					<item id="name"><![CDATA[spacecp]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[QQ Binding]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[7]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="4">
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="param"><![CDATA[ac=service]]></item>
+					<item id="menu"><![CDATA[Other]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="5">
+					<item id="name"><![CDATA[qqshow]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[QQ Show]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[7]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[2]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3]]></item>
+		<item id="version"><![CDATA[X3.1]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
+		<item id="enablefile"><![CDATA[switch.php]]></item>
+		<item id="disablefile"><![CDATA[switch.php]]></item>
 		<item id="language">
 			<item id="scriptlang">
 				<item id="qqconnect_closed"><![CDATA[Sorry, QQ Internet feature is not yet open]]></item>
@@ -112,30 +143,30 @@
 				<item id="connectguest_message_complete_or_bind"><![CDATA[Sorry, You are yet not <a href="member.php?mod=connect" class="xi2">provide the account information</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">Bind existing account</a>, This action can not be performed]]></item>
 				<item id="connect_error_code_999"><![CDATA[Request failed]]></item>
 				<item id="connect_error_code_10001"><![CDATA[Invalid QQ connect APPID]]></item>
-				<item id="connect_error_code_10002"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_10003"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_10004"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_10005"><![CDATA[Site server time error exceeds 5 minutes]]></item>
-				<item id="connect_error_code_10006"><![CDATA[QQ APPID invalid]]></item>
-				<item id="connect_error_code_11000"><![CDATA[QQ APPKEY invalid]]></item>
-				<item id="connect_error_code_11001"><![CDATA[QQ APPID is disabled]]></item>
-				<item id="connect_error_code_30001"><![CDATA[QQ APPID invalid]]></item>
-				<item id="connect_error_code_30002"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_30003"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_30004"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_30005"><![CDATA[Site server time error exceeds 5 minutes]]></item>
-				<item id="connect_error_code_30006"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_30007"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]></item>
-				<item id="connect_error_code_30008"><![CDATA[APPID is not registered, Please re-open the QQ connection service]]></item>
-				<item id="connect_error_code_31000"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]]></item>
-				<item id="connect_error_code_31001"><![CDATA[QQ Connect plugin failed, Please update or reinstall the plugin]]]></item>
-				<item id="connect_error_code_31002"><![CDATA[QQ APPID is disabled]]></item>
-				<item id="connect_feed_iam"><![CDATA[I in]]></item>
-				<item id="connect_feed_published_thread"><![CDATA[Published thread &quot;{subject}&quot;]]></item>
-				<item id="connect_feed_published_post"><![CDATA[Replied the thread &quot;{subject}&quot; The discussion:]]></item>
-				<item id="connect_spacecp_share_a_post"><![CDATA[Shared a post #{bbname}#&quot;{subject}&quot;:{message}]]></item>
-				<item id="connect_spacecp_share_qq_default"><![CDATA[Look at this, it may be interesting for you ^_^]]></item>
-				<item id="connect_post_sync_method"><![CDATA[This Reply Synchronize method]]></item>
+				<item id="connect_error_code_10002"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_10003"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_10004"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_10005"><![CDATA[网站服务器时间误差超过 5 分钟]]></item>
+				<item id="connect_error_code_10006"><![CDATA[QQ 互联 APPID 无效]]></item>
+				<item id="connect_error_code_11000"><![CDATA[QQ 互联 APPKEY 无效]]></item>
+				<item id="connect_error_code_11001"><![CDATA[QQ 互联 APPID 被禁用]]></item>
+				<item id="connect_error_code_30001"><![CDATA[QQ 互联 APPID 无效]]></item>
+				<item id="connect_error_code_30002"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_30003"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_30004"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_30005"><![CDATA[网站服务器时间误差超过 5 分钟]]></item>
+				<item id="connect_error_code_30006"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_30007"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]></item>
+				<item id="connect_error_code_30008"><![CDATA[APPID 未注册，请重新开通 QQ 互联服务]]></item>
+				<item id="connect_error_code_31000"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]]></item>
+				<item id="connect_error_code_31001"><![CDATA[QQ 互联插件异常，请更新程序后重新安装]]]></item>
+				<item id="connect_error_code_31002"><![CDATA[QQ 互联 APPID 被禁用]]></item>
+				<item id="connect_feed_iam"><![CDATA[我在]]></item>
+				<item id="connect_feed_published_thread"><![CDATA[发表了《{subject}》：]]></item>
+				<item id="connect_feed_published_post"><![CDATA[参与了《{subject}》的讨论：]]></item>
+				<item id="connect_spacecp_share_a_post"><![CDATA[分享一个好帖#{bbname}#《{subject}》：{message}]]></item>
+				<item id="connect_spacecp_share_qq_default"><![CDATA[看看这个吧，还不错哦，也许你会喜欢^_^]]></item>
+				<item id="connect_post_sync_method"><![CDATA[将此回复同步到]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="connect_header_login"><![CDATA[QQ login]]></item>
@@ -162,6 +193,7 @@
 				<item id="connect_register_sex_secret"><![CDATA[Secret]]></item>
 				<item id="connect_register_public_email"><![CDATA[E-mail address is public]]></item>
 				<item id="connect_register_use_qzone_avatar"><![CDATA[Use QQ Avatar]]></item>
+				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[使用QQ头像和QQ秀]]></item>
 				<item id="connect_register_use_qqshow"><![CDATA[<span title="QQ image will be displayed on the left side of the forum posts and at personal space">Show QQ image</span>]]></item>
 				<item id="connect_register_agree"><![CDATA[Agree with the Terms of Service]]></item>
 				<item id="connect_register_must_agree"><![CDATA[You must agree to the Terms of Service for register]]></item>
@@ -170,7 +202,6 @@
 				<item id="connect_register_bind_title"><![CDATA[Enter the existing site account for bind your QQ account]]></item>
 				<item id="connect_register_bind_success"><![CDATA[Your QQ account was bind successfully]]></item>
 				<item id="connect_register_bind_need_inactive"><![CDATA[Your account has not been activated, please activate and then Bind QQ account]]></item>
-				<item id="connect_register_bind_need_inactive"><![CDATA[Your account has not been activated, Please activate it before binding QQ account]]></item>
 				<item id="connect_config"><![CDATA[QQ bind]]></item>
 				<item id="connect_config_bind"><![CDATA[Click the button to immediately Bind QQ account]]></item>
 				<item id="connect_config_bindinfo"><![CDATA[You have a site account <strong>{$_G[member][username]}</strong> and binded QQ number]]></item>
@@ -218,10 +249,10 @@
 				<item id="connect_post_by_price"><![CDATA[具有售价的帖子无法发送QQ空间动态]]></item>
 				<item id="connect_post_by_invisible_forum"><![CDATA[该板块的帖子无法发送QQ空间动态]]></item>
 				<item id="connect_post_unbind"><![CDATA[绑定QQ帐号，轻松分享到QQ空间与腾讯微博]]></item>
-				<item id="connect_post_sync_tip"><![CDATA[此主题将同步到QQ空间和腾讯微博，您的好友或听众能够看到您发表的主题。]]></item>
+				<item id="connect_post_sync_tip"><![CDATA[此主题将同步到腾讯微博，您的听众能够看到您发表的主题。]]></item>
 				<item id="connect_post_sync_tip_close"><![CDATA[关闭同步发帖提示]]></item>
 				<item id="connect_post_sync_cancel"><![CDATA[暂不同步]]></item>
-				<item id="connect_post_sync_cancel_tip"><![CDATA[取消发表主题时同步到QQ空间和腾讯微博，将来您可以到“设置-QQ绑定”页面重新设置。]]></item>
+				<item id="connect_post_sync_cancel_tip"><![CDATA[取消发表主题时同步到腾讯微博，将来您可以到“设置-QQ绑定”页面重新设置。]]></item>
 				<item id="connect_post_sync_qzone1"><![CDATA[已设置同步至QQ空间]]></item>
 				<item id="connect_post_sync_t1"><![CDATA[已设置同步至腾讯微博]]></item>
 				<item id="connect_post_sync_qzone2"><![CDATA[未设置同步至QQ空间]]></item>
@@ -243,8 +274,8 @@
 				<item id="connect_thread_id_miss"><![CDATA[帖子id不存在]]></item>
 				<item id="connect_get_request_token_failed"><![CDATA[服务器繁忙，请稍后再试。]]></item>
 				<item id="connect_get_access_token_failed"><![CDATA[服务器繁忙，请稍后再试。]]></item>
-				<item id="connect_spacecp_qzone_to"><![CDATA[分享到QQ空间和腾讯朋友]]></item>
-				<item id="connect_spacecp_pengyou_to"><![CDATA[分享到腾讯朋友和QQ空间]]></item>
+				<item id="connect_spacecp_qzone_to"><![CDATA[分享到QQ空间]]></item>
+				<item id="connect_spacecp_pengyou_to"><![CDATA[分享到腾讯朋友]]></item>
 				<item id="connect_spacecp_qzone_subject"><![CDATA[分享标题]]></item>
 				<item id="connect_spacecp_qzone_reason"><![CDATA[分享理由]]></item>
 				<item id="connect_spacecp_qzone_picture"><![CDATA[分享图片]]></item>
