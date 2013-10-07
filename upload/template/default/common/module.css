@@ -849,7 +849,7 @@ a.thread_mod { background: url({IMGDIR}/bigimg.png) no-repeat 0 -38px; padding-l
 		.pls .avatar { margin: 10px 15px; }
 			.pls .avatar img { padding: 5px 5px 8px; background: #FFF url({IMGDIR}/midavt_shadow.gif) 0 100% repeat-x; width:120px; }
 
-			.pls .favatar { background: transparent; height: auto; border-width: 0px; overflow: visible; }
+/*vot*/			.pls .favatar { background: transparent; height: auto; border-width: 0px; overflow: visible; width: 160px; }
 
 /*vot*/		.pls p, .pls .pil, .pls .o { /*margin: 10px 20px;*/ padding: 2px 6px; }
 /*vot*/			.pls p em, .pls dt em { color: {NOTICETEXT}; padding-left: 10px; }
