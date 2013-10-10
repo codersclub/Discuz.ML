@@ -120,7 +120,7 @@ make_html_batch.prototype = {
 /*vot*/					child.innerHTML = str+lng['generate_first']+current+lng['ones']+', '+lng['generate_percent']+cent+'%';
 				} else {
 					child.style.color = 'blue';
-/*vot*					child.innerHTML = str+obj.dom.getAttribute('mktitle')+lng['generate_completed'];
+/*vot*/					child.innerHTML = str+obj.dom.getAttribute('mktitle')+lng['generate_completed'];
 				}
 				if(id) {
 					obj.make(id, child);
