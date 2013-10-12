@@ -19,7 +19,11 @@
 					<!--{hook/logging_side_top}-->
 					<a href="member.php?mod={$_G[setting][regname]}" class="xi2">{lang login_guest}</a>
 				</span>
-				<h3 class="xs2">{lang login}</h3>
+				<!--{if !$secchecklogin2}-->
+					<h3 class="xs2">{lang login}</h3>
+				<!--{else}-->
+					<h3 class="xs2">{lang login_seccheck2}</h3>
+				<!--{/if}-->
 			</div>
 		<div>
 <!--{/if}-->

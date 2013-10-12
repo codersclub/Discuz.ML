@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 33994 2013-09-17 02:33:44Z nemohou $
+ *      $Id: lang_admincp.php 34035 2013-09-24 01:43:53Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -2578,8 +2578,6 @@ $lang = array
 	'setting_mobile_preview_comment' => '當電腦瀏覽器訪問手機版時，給予用戶引導手機登錄的預覽頁面，用戶可以在電腦版中預覽手機版首頁',
 	'setting_mobile_register' => '是否允許手機版註冊',
 	'setting_mobile_register_comment' => '是否開啟手機版註冊功能，手機註冊不會對用戶欄目中的註冊頁必填項進行檢測<br />請謹慎開啟',
-	'setting_mobile_seccode' => '是否開啟驗證碼',
-	'setting_mobile_seccode_comment' => '不開啟則手機註冊、登錄、發佈等操作均無驗證碼<br />註冊、登錄、發佈驗證碼開關：<a href="?action=setting&operation=sec&anchor=seccode">全局 - 防灌水設置 - 驗證碼設置</a>',
 	'setting_mobile_hotthread' => '是否開啟熱帖',
 	'setting_mobile_hotthread_comment' => '「觸屏版」功能，開啟則在首頁顯示熱貼',
 	'setting_mobile_displayorder3' => '是否顯示置頂貼',
@@ -5371,7 +5369,7 @@ $lang = array
 	'card' => '充值卡密',
 	'card_make_tips' => '<li>生成卡密時，簡單的規則或較小的生成張數可能導致實際生成張數小於預設生成張數。</li>',
 	'card_config_open' => '允許前台充值',
-	'card_config_open_comment' => '設置是否允許前台充值，關閉前台充值功能，不影響後台卡密的生成<br />充值卡密驗證碼開關：<a href="'.ADMINSCRIPT.'?action=setting&operation=sec&anchor=seccode">全局->防灌水設置->驗證碼設置</a>',
+	'card_config_open_comment' => '設置是否允許前台充值，關閉前台充值功能，不影響後台卡密的生成<br />充值卡密驗證碼開關：<a href="'.ADMINSCRIPT.'?action=setting&operation=seccheck">全局->防灌水->驗證設置</a>',
 	'card_number' =>'卡密',
 	'card_number_unit' => '位',
 	'card_make_rule' => '卡密生成規則',

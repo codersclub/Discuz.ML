@@ -23,7 +23,13 @@ Main differences from the official Discuz!X:
 12. UCenter API Development Guide translated to English
 
 +======================================+
-   Discuz! ML3.1 Release 20130923
+   Discuz! X3.1 Release 20131011
++======================================+
+Fixed multiple functional problems, stable version
+
+
++======================================+
+   Discuz! X3.1 Release 20130923
 +======================================+
 ADD. Discuz! Cloud verification code, improved protection against spam-bots
 ADD. Intelligent verification code strategy, without affecting the normal user operations, block ads publishing
