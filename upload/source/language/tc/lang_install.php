@@ -350,6 +350,7 @@ $lang = array(
 	'database_nonexistence' => '數據庫操作對像不存在',
 	'skip_current' => '跳過本步',
 	'topic' => '專題',
+	'install_finish' => '您的論壇已完成安裝，點此訪問',
 
 //---------------------------------------------------------------
 // Added by Valery Votintsev

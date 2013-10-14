@@ -352,7 +352,8 @@ $lang = array(
 	'database_nonexistence' => '数据库操作对象不存在',
 	'skip_current' => '跳过本步',
 	'topic' => '专题',
-//	'install_finish' => '您的论坛已完成安装，点此访问',
+	'install_finish' => '您的论坛已完成安装，点此访问',
+
 //---------------------------------------------------------------
 // Added by Valery Votintsev
 // 2 vars for language select:
