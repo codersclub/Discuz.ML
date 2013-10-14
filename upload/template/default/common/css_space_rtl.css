@@ -27,7 +27,7 @@ body { background-color: transparent; }
 #hd ul.savebar li { float:left; margin: 0 3px;}
 .ipx {background: none; height: 17px;}
 #infoedit { margin-right: 5px; padding: 0 5px; background: #369; color: #FFF; cursor: pointer; }
-#diy-tg { float: left; line-height: 30px; background: url({STATICURL}image/diy/panel-toggle-space.png) no-repeat 100% 2px; }
+/*vot*/ #diy-tg { float: left; line-height: 30px; background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 2px; text-indent: 9999em; }
 .topnav_pop li span{ display: none; }
 #myspace_menu li a, #navs_menu li a { background-repeat: no-repeat; background-position: -200px 0; }
 .ct2 .sd { width: 180px; }
