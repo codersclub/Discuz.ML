@@ -365,6 +365,7 @@ $lang = array(
 	'php_version_too_low'		=> 'PHP version is too low',
 	'php_version_too_low_comment'	=> 'For normal functioning Discuz! requires for more new version of PHP',
 	'mbstring'			=> 'MBstring 库',//'MBstring Library',
+	'ext_info'			=> '另外，你可以從雲計算應用中心的許多有趣的和有用的插件和模板安裝：',//'另外，你可以从云计算应用中心的许多有趣的和有用的插件和模板安装：',//'Additionally you can install many interesting and usefull plugins and templates from the Cloud Application Center:',
 //---------------------------------------------------------------
 
 );

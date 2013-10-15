@@ -486,6 +486,8 @@ if($method == 'show_license') {
 		touch($lockfile);
 		VIEW_OFF && show_msg('initdbresult_succ');
 
+/*vot*/		showjsmessage('completed');
+
 		if(!VIEW_OFF) {
 /*vot*/		$lang_next = lang('new_step');
 /*vot*/		echo <<<EOT
@@ -526,8 +528,8 @@ EOT;
 		show_header();
 /*vot*/		echo "</div>\n";
 		echo '<div class="main" style="margin-top: -123px;padding-left:30px"><span id="platformIntro"></span>';
+/*vot*/		echo '<p align="center"><a class="finish" href="'.$default_appurl.'">'.$lang['install_finish'].'</a></p><br /><br />'.$lang['ext_info'].'<hr>';
 		echo '<iframe frameborder="0" width="700" height="550" allowTransparency="true" src="http://addon.discuz.com/api/outer.php?id=installed&siteurl='.urlencode($default_appurl).'&version='.DISCUZ_VERSION.'"></iframe>';
-/*vot*/		echo '<p align="center"><a href="'.$default_appurl.'">'.$lang['install_finish'].'</a></p><br />';
 		echo '</div>';
 		show_footer();
 	}
