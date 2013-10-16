@@ -17,8 +17,8 @@ $lang = array(
 	'TC_BIG5'	=> '繁体中文版',
 	'SC_UTF8'	=> '简体中文 UTF8 版',
 	'TC_UTF8'	=> '繁体中文 UTF8 版',
-	'EN_ISO'	=> 'ENGLISH ISO8859',
-	'EN_UTF8'	=> 'ENGLIST UTF-8',
+	'EN_ISO'		=> 'ENGLISH ISO8859',
+	'EN_UTF8'		=> 'ENGLISH UTF-8',
 
 	'title_install'	=> SOFT_NAME.' 安装向导',
 	'agreement_yes'	=> '我同意',

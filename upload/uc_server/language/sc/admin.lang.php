@@ -20,6 +20,6 @@ $lang = array(
 	'user_password'		=> '密码',
 	'user_addsubmit'	=> '添 加',
 	'delete'		=> '删除',
-	'email'			=> 'Email',
+	'email'			=> 'E-mail',
 	'user_list'		=> '用户列表',
 );

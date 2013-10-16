@@ -266,7 +266,7 @@ $languages = array(
 	'note_view'		=> '查看',
 	'setting_forbidden_username'	=> '禁止的用户名',
 	'setting_ceonsor_comment'	=> '可以设置通配符，每个关键字一行，可使用通配符 "*" 如 "*版主*"(不含引号)。',
-	'note_view'		=> '查看',
+//vot	'note_view'		=> '查看',
 	'note_status'		=> '通知状态',
 	'note_fail_apps'	=> '通知失败的应用',
 
@@ -283,7 +283,7 @@ $languages = array(
 	'anonymity'		=> '匿名',
 	'mail_send'		=> '发送邮件',
 	'mail_list_updated'	=> '邮件列表成功更新。',
-//	'mail_send'		=> '邮件发送',
+//vot	'mail_send'		=> '邮件发送',
 
 	'setting'		=> '设置',
 	'setting_tips'		=> '',
@@ -489,7 +489,7 @@ $languages = array(
 	'privilege'			=> '权限',
 	'admin_edit_priv'		=> '编辑管理员权限',
 	'admin_priv_modified_successfully'	=> '编辑管理员权限成功',
-	'admin_priv_modified_failed'	=> '编辑管理员权限失败',
+	'admin_priv_modified_failed'		=> '编辑管理员权限失败',
 	'admin_modification_notice'	=> '请谨慎开放“管理应用”，“管理用户”、“管理数据”权限',
 	'admin_allow_pm'		=> '允许管理短消息',
 	'admin_admin'			=> '管理员',
@@ -500,6 +500,6 @@ $languages = array(
 	'app_allowips'			=> '允许的IP',
 	'app_allowips_comment'		=> '限定终端访问的IP, 设置哪些IP可以访问Ucenter  的数据接口',
 //Added by vot
-	'view_ml_new_version'		=> 'View Latest International Version',
-	'home_dev_international'	=> 'International Version',
+	'view_ml_new_version'		=> '查看最新的多语言版本',//'View Latest International Version',
+	'home_dev_international'	=> '多语种版本',//'International Version',
 );
