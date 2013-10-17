@@ -54,6 +54,7 @@ $lang = array
 	'open' => '打開',
 	'closed' => '關閉',
 	'public' => '公開',
+	'freeze' => '已凍結',
 	'operation' => '操作',
 	'operator' => '操作者',
 	'reason' => '原因',
