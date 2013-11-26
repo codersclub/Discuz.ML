@@ -214,6 +214,7 @@ $_config['languages'] = array(
 	'th' => array('icon'=>'th.gif', 'name'=>'ภาษาไทย', 'title'=>'Thai', 'dir'=>'ltr', 'code'=>'th-TH'),
 	'tr' => array('icon'=>'tr.gif', 'name'=>'Türkçe', 'title'=>'Turkish', 'dir'=>'ltr', 'code'=>'tr-TR'),
 	'vn' => array('icon'=>'vn.gif', 'name'=>'Tiếng Việt', 'title'=>'Vietnamese', 'dir'=>'ltr', 'code'=>'vi-VN'),
+	'ui' => array('icon'=>'ui.gif', 'name'=>'Uyghur', 'title'=>'Uighur', 'dir'=>'rtl', 'code'=>'ui-UY'),
 );
 $_config['detect_language'] = true;	// Auto-detect user language: true|false
 $_config['enable_multilingual'] = true;	// Enable/Disable multi-lingual feature

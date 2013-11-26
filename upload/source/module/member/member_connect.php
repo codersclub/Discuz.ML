@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: member_connect.php 34013 2013-09-18 08:26:19Z nemohou $
+ *      $Id: member_connect.php 34242 2013-11-21 08:35:08Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -16,10 +16,6 @@ define('NOROBOT', TRUE);
 
 if(!$_G['setting']['connect']['allow']) {
 	showmessage('qqconnect:qqconnect_closed');
-}
-
-if(defined('IN_MOBILE')) {
-	showmessage("qqconnect:connect_register_mobile_bind_error", 'forum.php');
 }
 
 /*vot*/ if($_GET['action'] == 'login') { // debug Already have an account, bind my account to go to this branch
