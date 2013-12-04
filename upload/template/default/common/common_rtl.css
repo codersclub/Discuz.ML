@@ -795,7 +795,7 @@ Note on the CSS Hack:
 		#pt .z { padding-left: 10px; }
 		#pt .z a, #pt .z em, #pt .z span { float: right; height: 29px; }
 		#pt .z em { width: 20px; background: url({IMGDIR}/pt_item.png) no-repeat 10px -10px; line-height: 200px; overflow: hidden; }
-		.nvhm { width: 16px; background: url({IMGDIR}/search.png) no-repeat -8px -119px; line-height: 200px; overflow: hidden; }
+		.nvhm { width: 16px; background: url({IMGDIR}/search.png) no-repeat 0 0; line-height: 200px; overflow: hidden; }
 			/* XP or Windows 7, IE up to version 8 or 9, combinations of these types of differences in font rendering, so the background needs to be fine-tuned to adapt to more situations, by Pony 11050511 */
 			.ie_all #pt .z em { background-position: 3px 9px; }
 			.ie_all .nvhm { background-position: -8px -120px; }
