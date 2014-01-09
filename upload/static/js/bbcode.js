@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: bbcode.js 33679 2013-08-01 02:58:50Z nemohou $
+	$Id: bbcode.js 34274 2013-12-03 02:45:38Z nemohou $
 */
 
 var re, DISCUZCODE = [];
@@ -87,8 +87,8 @@ function bbcode2html(str) {
 			}
 			return addCSS;
 		});
-		str = str.replace(/\[color=([^\[\<]+?)\]/ig, '<font color="$1">');
-		str = str.replace(/\[backcolor=([^\[\<]+?)\]/ig, '<font style="background-color:$1">');
+		str = str.replace(/\[color=([\w#\(\),\s]+?)\]/ig, '<font color="$1">');
+		str = str.replace(/\[backcolor=([\w#\(\),\s]+?)\]/ig, '<font style="background-color:$1">');
 		str = str.replace(/\[size=(\d+?)\]/ig, '<font size="$1">');
 		str = str.replace(/\[size=(\d+(\.\d+)?(px|pt)+?)\]/ig, '<font style="font-size: $1">');
 		str = str.replace(/\[font=([^\[\<]+?)\]/ig, '<font face="$1">');

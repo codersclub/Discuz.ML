@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: member.php 24411 2011-09-19 05:09:03Z monkey $
+ *      $Id: member.php 34254 2013-11-25 03:36:48Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -15,7 +15,7 @@ require './source/class/class_core.php';
 
 $discuz = C::app();
 
-$modarray = array('activate', 'clearcookies', 'emailverify', 'getpasswd',
+$modarray = array('activate', 'emailverify', 'getpasswd',
 	'groupexpiry', 'logging', 'lostpasswd',
 	'register', 'regverify', 'switchstatus');
 

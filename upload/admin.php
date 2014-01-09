@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admin.php 32134 2012-11-15 01:45:34Z zhengqingpeng $
+ *      $Id: admin.php 34296 2013-12-26 03:17:17Z hypowang $
  */
 
 define('IN_ADMINCP', TRUE);
@@ -38,10 +38,10 @@ $admincp_actions_normal = array('index', 'setting', 'members', 'admingroup', 'us
 	'doing', 'group', 'blog', 'feed', 'album', 'pic', 'comment', 'share', 'click', 'specialuser', 'postsplit', 'threadsplit', 'report',
 	'district', 'diytemplate', 'verify', 'nav', 'domain', 'postcomment', 'tag', 'connect', 'card', 'portalpermission', 'collection', 'membersplit', 'makehtml');
 
-$action = dhtmlspecialchars(getgpc('action'));
-$operation = dhtmlspecialchars(getgpc('operation'));
-$do = dhtmlspecialchars(getgpc('do'));
-$frames = dhtmlspecialchars(getgpc('frames'));
+$action = preg_replace('/[^\[A-Za-z0-9_\]]/', '', getgpc('action'));
+$operation = preg_replace('/[^\[A-Za-z0-9_\]]/', '', getgpc('operation'));
+$do = preg_replace('/[^\[A-Za-z0-9_\]]/', '', getgpc('do'));
+$frames = preg_replace('/[^\[A-Za-z0-9_\]]/', '', getgpc('frames'));
 lang('admincp');
 $lang = & $_G['lang']['admincp'];
 $page = max(1, intval(getgpc('page')));

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_message.php 33958 2013-09-06 04:26:39Z nemohou $
+ *      $Id: lang_message.php 34254 2013-11-25 03:36:48Z nemohou $
  *
  *	Modified by Valery Votintsev, codersclub.org
  */
@@ -223,8 +223,8 @@ $lang = array (
   'login_seccheck2' => '請輸入驗證碼後繼續登錄',
   'login_succeed' => '歡迎您回來，{usergroup} {username}，現在將轉入登錄前頁面',
   'login_strike' => '密碼錯誤次數過多，請 15 分鐘後重新登錄',
-  'logout_succeed' => '您已退出站點，現在將以遊客身份轉入退出前頁面，請稍候…… <br /><a href="member.php?mod=clearcookies&formhash={formhash}&referer={referer}">[ 清除痕跡 ]</a> {ucsynlogout} ',
-  'location_logout_succeed_mobile' => '您已退出站點，現在將以遊客身份轉入退出前頁面，請稍候…… <br /><a href="member.php?mod=clearcookies&formhash={formhash}&referer={referer}">[ 清除痕跡 ]</a>',
+  'logout_succeed' => '您已退出站點，現在將以遊客身份轉入退出前頁面，請稍候…… {ucsynlogout} ',
+  'location_logout_succeed_mobile' => '您已退出站點，現在將以遊客身份轉入退出前頁面，請稍候……',
   'register_activation_invalid' => '抱歉，激活失敗，請重新登錄驗證需要激活的用戶',
   'profile_username_tooshort' => '抱歉，您輸入的用戶名小於 3 個字符，請輸入一個較長的用戶名',
   'profile_username_toolong' => '抱歉，您的用戶名超過 15 個字符，請輸入一個較短的用戶名',

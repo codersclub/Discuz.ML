@@ -181,6 +181,9 @@ class discuz_application extends discuz_base{
 		$_G['basescript'] = CURSCRIPT;
 		$_G['basefilename'] = basename($_G['PHP_SELF']);
 		$sitepath = substr($_G['PHP_SELF'], 0, strrpos($_G['PHP_SELF'], '/'));
+//DEBUG
+//echo "discuz_application.php:<br>\n";
+//echo "sitepath=", $sitepath, "<br>";
 		if(defined('IN_API')) {
 			$sitepath = preg_replace("/\/api\/?.*?$/i", '', $sitepath);
 		} elseif(defined('IN_ARCHIVER')) {
