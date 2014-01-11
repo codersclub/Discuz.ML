@@ -702,9 +702,9 @@ var Util = {
 			}
 
 			if(display != '') {
-				e.aim.src=STATICURL+'/image/common/fl_collapsed_no.gif';
+				e.aim.src=STATICURL+'image/common/fl_collapsed_no.gif';
 			} else {
-				e.aim.src=STATICURL+'/image/common/fl_collapsed_yes.gif';
+				e.aim.src=STATICURL+'image/common/fl_collapsed_yes.gif';
 			}
 		},
 		checkEdit : function (ele) {
