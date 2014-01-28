@@ -825,7 +825,7 @@ Note on the CSS Hack:
 /* Statistics */
 .tns { padding: 10px 0; }
 	.tns table { width: 100%; }
-		.tns th, .tns td { text-align: center; font-size: 10px; }
+/*Anish*/	.tns th, .tns td { text-align: center; font-size: 9px; vertical-align: top; }
 		.sd .tns th, .sd .tns td { width: 110px !important; }
 		.tns th { border-right: 1px solid #CCC; }
 		.tns th p, .tns td p { font-size: 14px; margin: 0; }
