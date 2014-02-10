@@ -1700,7 +1700,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.pml {}
 		.pml dl { padding-left: 75px; padding-right: 10px; }
 		.pml .hover { background-color: {SPECIALBG}; }
-		.pm_o { display: inline; width: 100px; }
+		.pm_o { display: inline; }
 			.pm_o .o { overflow: hidden; float: right; margin-left: 10px; width: 16px; height: 16px; text-indent: 20px; background: url({IMGDIR}/op.png) no-repeat 0 -120px; }
 				.pm_o .o:hover { background-position: 0 -140px; }
 			.pm_o .p_pop { text-align: left; }
