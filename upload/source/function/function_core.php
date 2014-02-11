@@ -581,7 +581,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 			$_G['style']['prefile'] = !empty($_GET['preview']) && $_GET['preview'] == 'yes' ? '' : $_G['style']['prefile'];
 
 		} else {
-/*vot*/			$tpldir = DISCUZ_ROOT.'./source/plugin/'.$templateid.'/template';
+			$tpldir = './source/plugin/'.$templateid.'/template';
 		}
 	}
 
