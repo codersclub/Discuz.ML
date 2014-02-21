@@ -140,10 +140,6 @@ var lng = {
 //upload/static/js/at.js
 //	'enter_username'	: '請輸用戶名',//'Please enter the user name',
 
-//---------------------------
-//upload/static/js/common_extra.js
-//	'wait_please'		: 'Loading ...',//'請稍候...',
-
 //--------------------------------
 //static/js/calendar.js
 //static/js/forum_calendar.js
@@ -232,10 +228,17 @@ var lng = {
 
 //--------------------------------
 //static/js/common_extra.js
-
+//	'wait_please'		: 'Loading ...',//'請稍候...',
 	'copy_failed'		: '複製失敗，請選擇「允許訪問」',
 	'prev'			: '上一張',
 	'next'			: '下一張',
+        'shortcut_add'		: '添加桌面快捷',
+        'shortcut_1'		: '1、點擊"',
+        'shortcut_1_1'		: '下載桌面快捷',
+        'shortcut_1_2'		: '"，下載完成後，可移動文件到系統桌面',
+        'shortcut_2'		: '2、點擊"',
+        'shortcut_2_1'		: '下載ICO圖標',
+        'shortcut_2_2'		: '"，下載完成後，右擊桌面快捷文件->屬性->更改圖標，選擇已下載的ICO圖標即可',
 
 //--------------------------------
 //static/js/editor.js
