@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_attachment.php 32178 2012-11-23 03:31:16Z chenmengshu $
+ *      $Id: forum_attachment.php 34305 2014-01-15 11:12:37Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -13,7 +13,19 @@ if(!defined('IN_DISCUZ')) {
 define('NOROBOT', TRUE);
 @list($_GET['aid'], $_GET['k'], $_GET['t'], $_GET['uid'], $_GET['tableid']) = daddslashes(explode('|', base64_decode($_GET['aid'])));
 
+$requestmode = !empty($_GET['request']) && empty($_GET['uid']);
 $aid = intval($_GET['aid']);
+$k = $_GET['k'];
+$t = $_GET['t'];
+$authk = !$requestmode ? substr(md5($aid.md5($_G['config']['security']['authkey']).$t.$_GET['uid']), 0, 8) : md5($aid.md5($_G['config']['security']['authkey']).$t);
+
+if($k != $authk) {
+    if(!$requestmode) {
+        showmessage('attachment_nonexistence');
+    } else {
+        exit;
+    }
+}
 
 if(!empty($_GET['findpost']) && ($attach = C::t('forum_attachment')->fetch($aid))) {
 	dheader('location: forum.php?mod=redirect&goto=findpost&pid='.$attach['pid'].'&ptid='.$attach['tid']);
@@ -28,15 +40,12 @@ if($_GET['uid'] != $_G['uid'] && $_GET['uid']) {
 	$_G['group']['color'] = $_G['cache']['usergroup_'.$_G['groupid']]['color'];
 }
 
-$requestmode = !empty($_GET['request']) && empty($_GET['uid']);
 
 $tableid = 'aid:'.$aid;
 
 if($_G['setting']['attachexpire']) {
-	$k = $_GET['k'];
-	$t = $_GET['t'];
-	$authk = !$requestmode ? substr(md5($aid.md5($_G['config']['security']['authkey']).$t.$_GET['uid']), 0, 8) : md5($aid.md5($_G['config']['security']['authkey']).$t);
-	if(empty($k) || empty($t) || $k != $authk || TIMESTAMP - $t > $_G['setting']['attachexpire'] * 3600) {
+
+	if(TIMESTAMP - $t > $_G['setting']['attachexpire'] * 3600) {
 		$aid = intval($aid);
 		if($attach = C::t('forum_attachment_n')->fetch($tableid, $aid)) {
 			if($attach['isimage']) {

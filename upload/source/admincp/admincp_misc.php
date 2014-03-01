@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_misc.php 34088 2013-10-09 03:24:15Z hypowang $
+ *      $Id: admincp_misc.php 34303 2014-01-15 04:32:19Z hypowang $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -1209,6 +1209,9 @@ var rowtypedata = [
 				}
 
 				$efile = explode(':', $_GET['filenamenew']);
+				if(substr($_GET['filenamenew'], -4) !== '.php') {
+					cpmsg('crons_filename_illegal', '', 'error');
+				}
 				$pluginid = '';
 				if(count($efile) > 1 && ispluginkey($efile[0])) {
 					$pluginid = $efile[0];
@@ -1256,7 +1259,7 @@ var rowtypedata = [
 			} else {
 				$cronfile = DISCUZ_ROOT."./source/include/cron/$cron[filename]";
 			}
-			if(!file_exists($cronfile)) {
+			if(substr($cronfile, -4) !== '.php' || !file_exists($cronfile)) {
 				cpmsg('crons_run_invalid', '', 'error', array('cronfile' => $cronfile));
 			} else {
 				discuz_cron::run($cron['cronid']);

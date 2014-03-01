@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_forumselect.php 25889 2011-11-24 09:52:20Z monkey $
+ *      $Id: misc_forumselect.php 34303 2014-01-15 04:32:19Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -34,6 +34,7 @@ if(!$special) {
 	$commonfids = array_unique($commonfids);
 
 	foreach($commonfids as $fid) {
+		$fid = intval($fid);
 		$commonlist .= '<li fid="'.$fid.'">'.$_G['cache']['forums'][$fid]['name'].'</li>';
 	}
 }

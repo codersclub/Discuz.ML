@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_ajax.php 33772 2013-08-12 06:49:20Z nemohou $
+ *      $Id: forum_ajax.php 34303 2014-01-15 04:32:19Z hypowang $
  * Modified by Valery Votintsev, codersclub.org
  */
 
@@ -512,6 +512,7 @@ EOF;
 	if($_G['cookie']['visitedfid']) {
 		loadcache('forums');
 		foreach(explode('D', $_G['cookie']['visitedfid']) as $fid) {
+			$fid = intval($fid);
 			$visitedforums[$fid] = $_G['cache']['forums'][$fid]['name'];
 		}
 	}

@@ -2,14 +2,14 @@
 	[Discuz!] (C)2001-2009 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: soso_smilies.js 32519 2013-02-04 08:21:44Z liudongdong $
+	$Id: soso_smilies.js 34306 2014-01-17 04:31:33Z nemohou $
 */
 
 var sosojs = document.createElement('script');
 	sosojs.type = 'text/javascript';
 	sosojs.charset = "utf-8";
-	sosojs.src = 'http://bq.soso.com/js/sosoexp_platform.js';
-var sosolo = document.getElementsByTagName('script')[0];
+	sosojs.src = 'http://pic.sogou.com/discuz/sosoexp_platform.js';
+	var sosolo = document.getElementsByTagName('script')[0];
 	sosolo.parentNode.insertBefore(sosojs, sosolo);
 
 function bbcode2html_sososmilies(sososmilieid, getsrc) {
@@ -23,10 +23,10 @@ function bbcode2html_sososmilies(sososmilieid, getsrc) {
 		var imgid = 'soso__' + sososmilieid;
 		var realsmilieid = sososmilieid.substr(0, sososmilieid.length-2);
 		var serverid = sososmilieid.substr(sososmilieid.length-1);
-		imgsrc = "http://soso"+serverid+".gtimg.cn/sosopic_f/0/"+realsmilieid+"/0";
+		imgsrc = "http://imgstore0"+serverid+".cdn.sogou.com/app/a/100520032/"+realsmilieid;
 	} else {
 		var imgid = 'soso_' + sososmilieid;
-		imgsrc = "http://cache.soso.com/img/img/"+sososmilieid+".gif";
+		imgsrc = "http://imgstore01.cdn.sogou.com/app/a/100520032/"+sososmilieid;
 	}
 	if(!isUndefined(getsrc)) {
 		return imgsrc;
@@ -49,15 +49,14 @@ function sososmileycode(sososmilieid) {
 
 function sososmiliesurl2id(sosourl) {
 	var sososmilieid = '';
-	if(sosourl && sosourl.length > 30) {
-		var url = sosourl.substr(0, sosourl.lastIndexOf('/'));
-		var idindex = url.lastIndexOf('/');
-		if (sosourl.indexOf('http://soso') == 0) {
-			var serverid = url.substr(11, 1);
-			var realsmilieid = url.substr(idindex+1);
+	if(sosourl && sosourl.length > 30 && sosourl.indexOf('http://imgstore0') == 0) {
+		var type = sosourl.substr(sosourl.lastIndexOf('/') + 1, 1);
+		if (type == 'e') {
+            		sososmilieid = sosourl.substr(sosourl.lastIndexOf('/') + 1);
+		} else {
+        		var serverid = sosourl.substr(16, 1);
+			var realsmilieid = sosourl.substr(sosourl.lastIndexOf('/') + 1);
 			sososmilieid = '_'+realsmilieid+'_'+serverid;
-		} else if (sosourl.indexOf('http://cache.soso.com') == 0) {
-			sososmilieid = sosourl.substring(sosourl.lastIndexOf('/')+1, sosourl.length-4);
 		}
 		return sososmilieid;
 	}

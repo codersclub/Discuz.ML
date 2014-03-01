@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 34155 2013-10-25 00:54:00Z nemohou $
+ *      $Id: function_core.php 34342 2014-02-25 07:45:57Z hypowang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -13,6 +13,12 @@ if(!defined('IN_DISCUZ')) {
 }
 
 define('DISCUZ_CORE_FUNCTION', true);
+
+function durlencode($url) {
+	static $fix = array('%21', '%2A','%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
+	static $replacements = array('!', '*', ';', ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
+	return str_replace($fix, $replacements, urlencode($url));
+}
 
 function system_error($message, $show = true, $save = true, $halt = true) {
 	discuz_error::system_error($message, $show, $save, $halt);
@@ -1519,7 +1525,7 @@ function dreferer($default = '') {
 		$_G['referer'] = $_G['siteurl'].'./'.$_G['referer'];
 	}
 
-	$_G['referer'] = fixurl($_G['referer']);
+	$_G['referer'] = durlencode($_G['referer']);
 	return$_G['referer'];
 }
 
@@ -1606,7 +1612,7 @@ function sizecount($size) {
 	} elseif($size >= 1024) {
 		$size = round($size / 1024 * 100) / 100 . ' KB';
 	} else {
-		$size = $size . ' Bytes';
+		$size = intval($size) . ' Bytes';
 	}
 	return $size;
 }
@@ -2044,11 +2050,6 @@ function strhash($string, $operation = 'DECODE', $key = '') {
 	return base64_encode(gzcompress($string.$vkey));
 }
 
-function fixurl($url) {
-	static $fix = array( '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
-	static $replacements = array( ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
-	return str_replace($fix, $replacements, urlencode($url));
-}
 
 function dunserialize($data) {
 	if(($ret = unserialize($data)) === false) {

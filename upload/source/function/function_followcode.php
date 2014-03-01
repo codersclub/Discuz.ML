@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_followcode.php 33302 2013-05-23 03:17:26Z andyzheng $
+ *      $Id: function_followcode.php 34308 2014-01-20 09:45:13Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -384,6 +384,10 @@ function fparsetable($width, $bgcolor, $message) {
 }
 
 function fparseaudio($url) {
+	$url = addslashes($url);
+        if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $url) && !preg_match('/^data\//', $url)) {
+		return dhtmlspecialchars($url);
+	}
 	if(fileext($url) == 'mp3') {
 		$randomid = 'music_'.random(3);
 		$html = '<img src="'.IMGDIR.'/music.gif" alt="'.lang('space', 'follow_click_play').'" onclick="javascript:showFlash(\'music\', \''.$url.'\', this, \''.$randomid.'\');" class="tn" style="cursor: pointer;" />';
@@ -449,6 +453,9 @@ function fparsesmiles(&$message) {
 		$enablesmiles = false;
 		if(!empty($_G['cache']['smilies']) && is_array($_G['cache']['smilies'])) {
 			foreach($_G['cache']['smilies']['replacearray'] AS $key => $smiley) {
+				if(substr($_G['cache']['smilies']['replacearray'][$key], 0, 1) == '<') {
+					break;
+				}
 				$_G['cache']['smilies']['replacearray'][$key] = '<img src="'.STATICURL.'image/smiley/'.$_G['cache']['smileytypes'][$_G['cache']['smilies']['typearray'][$key]]['directory'].'/'.$smiley.'" smilieid="'.$key.'" border="0" class="s" alt="" />';
 			}
 			$enablesmiles = true;

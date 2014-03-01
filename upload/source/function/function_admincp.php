@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_admincp.php 34217 2013-11-14 04:00:21Z hypowang $
+ *      $Id: function_admincp.php 34303 2014-01-15 04:32:19Z hypowang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -16,7 +16,7 @@ if(!defined('IN_DISCUZ')) {
 
 function istpldir($dir) {
 	return is_dir(DISCUZ_ROOT.'./'.$dir) && !in_array(substr($dir, -1, 1), array('/', '\\')) &&
-		 strpos(realpath(DISCUZ_ROOT.'./'.$dir), realpath(DISCUZ_ROOT.'./template')) === 0;
+		 strpos(realpath(DISCUZ_ROOT.'./'.$dir), realpath(DISCUZ_ROOT.'./template').DIRECTORY_SEPARATOR) === 0;
 }
 
 function isplugindir($dir) {
