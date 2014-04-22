@@ -4,8 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_country.php by Valery Votintsev
- *      			http://codersclub.org/discuzx/
+ *      $Id: lang_country.php by Valery Votintsev, http://codersclub.org/discuzx/
  *
  *	Translated to Traditional Chinese by ken
  *	http://codersclub.org/discuzx/home.php?mod=space&uid=1563
@@ -42,6 +41,7 @@ $lang = array(
 	'BH'	=> '巴林',
 	'BI'	=> '布隆迪',
 	'BJ'	=> '貝寧',
+	'BL'	=> 'Saint Barthelemy',
 	'BM'	=> '百慕大',
 	'BN'	=> '文萊',
 	'BO'	=> '玻利維亞',
@@ -90,6 +90,7 @@ $lang = array(
 	'FM'	=> '密克羅尼西亞聯邦國家',
 	'FO'	=> '法羅群島',
 	'FR'	=> '法國',
+	'FX'	=> 'France, Metropolitan',
 	'GA'	=> '加蓬',
 	'GB'	=> '英國',
 	'GD'	=> '格林納達',
@@ -110,6 +111,7 @@ $lang = array(
 	'GW'	=> '幾內亞比索',
 	'GY'	=> '圭亞那',
 	'HK'	=> '香港',
+	'HM'	=> 'Heard and McDonald Islands',
 	'HN'	=> '洪都拉斯',
 	'HR'	=> '克羅地亞',
 	'HT'	=> '海地',
@@ -195,6 +197,7 @@ $lang = array(
 	'PK'	=> '巴基斯坦',
 	'PL'	=> '波蘭',
 	'PM'	=> '聖皮埃爾和密克隆島',
+	'PN'	=> 'Pitcairn',
 	'PR'	=> '波多黎各',
 	'PS'	=> '巴勒斯坦',
 	'PT'	=> '葡萄牙',
@@ -223,6 +226,7 @@ $lang = array(
 	'SR'	=> '蘇裡南',
 	'SS'	=> '蘇丹南部',
 	'ST'	=> '聖多美和普林西比',
+	'SU'	=> 'Soviet Union',
 	'SV'	=> '薩爾瓦多',
 	'SY'	=> '阿拉伯敘利亞共和國',
 	'SZ'	=> '斯威士蘭',
@@ -237,6 +241,7 @@ $lang = array(
 	'TM'	=> '土庫曼斯坦',
 	'TN'	=> '突尼斯',
 	'TO'	=> '湯加',
+	'TP'	=> 'East (Portuguese) Timor',
 	'TR'	=> '土耳其',
 	'TT'	=> '特立尼達和多巴哥',
 	'TV'	=> '圖瓦盧',
@@ -244,6 +249,7 @@ $lang = array(
 	'TZ'	=> '坦桑尼亞聯合共和國',
 	'UA'	=> '烏克蘭',
 	'UG'	=> '烏干達',
+	'UK'	=> 'United Kingdom',
 	'UM'	=> '美國本土外小島嶼',
 	'US'	=> '美國',
 	'UY'	=> '烏拉圭',
@@ -259,8 +265,10 @@ $lang = array(
 	'WS'	=> '薩摩亞',
 	'YE'	=> '葉門',
 	'YT'	=> '馬約特島',
+	'YU'	=> 'Yugoslavia',
 	'ZA'	=> '南非',
 	'ZM'	=> '贊比亞',
+	'ZR'	=> 'Zaire',
 	'ZW'	=> '津巴布韋',
 	'??'	=> '未知',
 	'LAN'	=> 'LAN',
