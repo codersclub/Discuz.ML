@@ -83,8 +83,8 @@ INSERT INTO `pre_common_district`
 (45190, 'AM', 'Armenia', 1, 0, 3, 1080),
 (45200, 'AN', 'Netherlands Antilles', 1, 0, 3, 1090),
 (45210, 'AO', 'Angola', 1, 0, 3, 1100),
-(45220, 'AP', 'Asia/Pacific Region', 1, 0, 3, 1110),
-(45230, 'AQ', 'Antarctica', 1, 0, 3, 1120),
+(45220, 'AP', 'Asia/Pacific Region', 1, 0, 0, 1110),
+(45230, 'AQ', 'Antarctica', 1, 0, 0, 1120),
 
 (45240, 'AS', 'American Samoa', 1, 0, 3, 1140),
 
