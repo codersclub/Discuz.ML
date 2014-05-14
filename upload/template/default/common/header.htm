@@ -64,13 +64,6 @@
 					<!--{hook/global_cpnav_extra1}-->
 				</div>
 				<div class="y">
-<!--vot-->				<a id="switchblind" href="javascript:;" onclick="toggleBlind(this)" title="{lang switch_blind}" class="switchblind"><img src="{IMGDIR}/switch_blind.png"></a>
-<!--vot-->				<span class="pipe">|</span>
-					<!--{hook/global_cpnav_extra2}-->
-					<!--{loop $_G['setting']['topnavs'][1] $nav}-->
-<!--vot-->					<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
-					<!--{/loop}-->
-
 			<!-- vot Multi-Lingual -->
 			<!--{if $_G[config][enable_multilingual]}-->
 			<a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="{lang change_language_title}">{lang change_language}<img class="flag" src="{$_G[langurl]}{$_G[langicon]}"/></a>
@@ -84,6 +77,13 @@
 			</div>
 			<!--{/if}-->
 			<!-- /vot Multi-Lingual -->
+
+<!--vot-->				<a id="switchblind" href="javascript:;" onclick="toggleBlind(this)" title="{lang switch_blind}" class="switchblind"><img src="{IMGDIR}/switch_blind.png"></a>
+<!--vot-->				<span class="pipe">|</span>
+					<!--{hook/global_cpnav_extra2}-->
+					<!--{loop $_G['setting']['topnavs'][1] $nav}-->
+<!--vot-->					<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
+					<!--{/loop}-->
 
 					<!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
 <!--vot-->					<a href="javascript:;" onclick="widthauto(this)" title="<!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}-->"><img src="{IMGDIR}/<!--{if widthauto()}-->shrink<!--{else}-->expand<!--{/if}-->.png"></a>
