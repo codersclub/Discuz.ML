@@ -1828,7 +1828,11 @@ DIY image is not loaded when the Hide Slide
 .flag {
 	vertical-align: middle;
 }
-/*
+.language_icon img {opacity:0.4;}
+	.language_icon:hover img {opacity:1;}
+	.language_icon.active img {opacity:1; border:1px solid #CCC;}
+
+/*---------------------------------------------------
 	Name:			Print page copyrights
 	Level:			Global
 	Explain:		Used for print page

@@ -218,6 +218,8 @@ $_config['languages'] = array(
 );
 $_config['detect_language'] = true;	// Auto-detect user language: true|false
 $_config['enable_multilingual'] = true;	// Enable/Disable multi-lingual feature
+$_config['language_horizontal'] = false; // Arrange Language List Horizontally
+
 
 //  CONFIG CACHE
 $_config['cache']['type'] 		= 'file';	// Cache type: file = file cache, sql = database cache
