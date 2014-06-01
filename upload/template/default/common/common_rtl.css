@@ -589,7 +589,7 @@ Note on the CSS Hack:
 	#hd { border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} }
 		#hd .wp { padding: 10px 0 0; }
 			#diy-tg { width: 55px; background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 1px; text-indent: -9999px; overflow: hidden; }
-/*vot*/				#diy-tg_menu { position: absolute; margin: -2px 0 0 -1px; padding: 0 6px; width: auto; height: 48px; /*background: url({STATICURL}image/diy/panel-toggle-drop.png) no-repeat 0 0; text-align: center;*/ border: 1px solid #E0883A; border-radius: 5px; background: #FBF5E4; }
+/*vot*/				#diy-tg_menu { position: absolute; margin: -2px 0 0 -1px; padding: 0 6px; width: auto; /*height: 48px; background: url({STATICURL}image/diy/panel-toggle-drop.png) no-repeat 0 0; text-align: center;*/ border: 1px solid #E0883A; border-radius: 5px; background: #FBF5E4; }
 /*vot*/				#diy-tg_menu a { float: none !important; white-space: nowrap; }
 /*vot*/			#toptb #diy-tg_menu { margin: 2px 0 0 0; }
 
