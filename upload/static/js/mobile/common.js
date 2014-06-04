@@ -395,7 +395,7 @@ var page = {
 
 		var selector = '';
 		if(lastpage) {
-			selector += '<a id="select_a" style="margin:0 2px;padding:1px 0 0 0;border:0;display:inline-block;position:relative;width:100px;height:31px;line-height:27px;background:url('+STATICURL+'image/mobile/images/pic_select.png) no-repeat;text-align:left;text-indent:20px;">';
+/*vot*/			selector += '<a id="select_a" style="margin:0 2px;padding:1px 0 0 0;border:0;display:inline-block;position:relative;width:100px;height:31px;line-height:27px;background:url('+STATICURL+'image/mobile/images/pic_select.png) no-repeat;text-align:left;text-indent:20px;">';
 			selector += '<select id="dumppage" style="position:absolute;left:0;top:0;height:27px;opacity:0;width:100px;">';
 			for(var i=1; i<=lastpage; i++) {
 /*vot*/				selector += '<option value="'+i+'" '+ (i == curpage ? 'selected' : '') +'>'+lng['first']+i+lng['pages']+'</option>';

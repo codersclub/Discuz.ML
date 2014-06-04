@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_task.php 30363 2012-05-24 07:16:47Z monkey $
+ *      $Id: class_task.php 34352 2014-03-19 04:44:20Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -372,7 +372,7 @@ class task {
 
 		if(!($this->task = C::t('common_task')->fetch_by_uid($_G['uid'], $id))) {
 			showmessage('task_nonexistence');
-		} elseif($this->task['status'] != 0) {
+		} elseif(!isset($this->task['status']) || $this->task['status'] != 0) {
 			showmessage('task_not_underway');
 		} elseif($this->task['tasklimits'] && $this->task['achievers'] >= $this->task['tasklimits']) {
 			return -1;

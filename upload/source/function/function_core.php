@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 34342 2014-02-25 07:45:57Z hypowang $
+ *      $Id: function_core.php 34528 2014-05-15 11:42:01Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -331,7 +331,7 @@ function checkmobile() {
 			'pantech', 'dopod', 'philips', 'haier', 'konka', 'kejian', 'lenovo', 'benq', 'mot', 'soutec', 'nokia', 'sagem', 'sgh',
 			'sed', 'capitel', 'panasonic', 'sonyericsson', 'sharp', 'amoi', 'panda', 'zte');
 
-	$pad_list = array('pad', 'gt-p1000');
+	$pad_list = array('ipad');
 
 	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
 

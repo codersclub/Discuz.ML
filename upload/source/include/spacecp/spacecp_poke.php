@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_poke.php 33889 2013-08-27 08:35:04Z nemohou $
+ *      $Id: spacecp_poke.php 34369 2014-04-01 02:00:04Z jeffjzhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -105,6 +105,8 @@ if($op == 'send' || $op == 'reply') {
 	if(submitcheck('ignoresubmit')) {
 		$where = empty($uid)?'':"AND fromuid='$uid'";
 		C::t('home_poke')->delete_by_uid_fromuid($_G['uid'], $uid);
+
+		C::t('home_notification')->delete_by_uid_type_authorid($_G['uid'], 'poke', $uid);
 
 		showmessage('has_been_hailed_overlooked', '', array('uid' => $uid, 'from' => $_GET['from']), array('showdialog'=>1, 'showmsg' => true, 'closetime' => true, 'alert' => 'right'));
 	}

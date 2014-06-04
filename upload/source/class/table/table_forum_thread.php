@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_forum_thread.php 33828 2013-08-20 02:29:32Z nemohou $
+ *      $Id: table_forum_thread.php 34511 2014-05-13 05:51:33Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -521,7 +521,7 @@ class table_forum_thread extends discuz_table
 			}
 		}
 		$data = DB::fetch_all("SELECT * FROM ".DB::table($this->get_table_name($tableid))." $forceindex".$this->search_condition($conditions)." $ordersql ".DB::limit($start, $limit));
-		if($firstpage && !empty($tlkey) && ($ttl = getglobal('setting/memory/forum_thread_forumdisplay')) !== null) {
+		if(!defined('IN_MOBILE') && $firstpage && !empty($tlkey) && ($ttl = getglobal('setting/memory/forum_thread_forumdisplay')) !== null) {
 			$this->store_cache($tlkey, $data, $ttl, 'forumdisplay_');
 		}
 		return $data;

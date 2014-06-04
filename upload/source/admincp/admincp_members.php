@@ -4,8 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_members.php 34090 2013-10-09 03:44:16Z nemohou $
- *	Modified by Valery Votintsev at sources.ru
+ *      $Id: admincp_members.php 34372 2014-04-01 08:34:39Z hypowang $
+ *	Modified by Valery Votintsev aka vot at codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -187,12 +187,10 @@ EOF;
 		'address' => '',
 		'zipcode' => '',
 		'nationality' => '',
-///*vot*/		'birthcountry' => '',
 		'birthprovince' => '',
 		'birthcity' => '',
 		'birthdist' => '',
 		'birthcommunity' => '',
-///*vot*/		'residecountry' => '',
 		'resideprovince' => '',
 		'residecity' => '',
 		'residedist' => '',
@@ -226,6 +224,8 @@ EOF;
 		'field6' => '',
 		'field7' => '',
 		'field8' => '');
+///*vot*/		'birthcountry' => '',
+///*vot*/		'residecountry' => '',
 	foreach(C::t('common_member_profile_setting')->range() as $value) {
 		if(isset($title[$value['fieldid']])) {
 			$title[$value['fieldid']] = $value['title'];
@@ -367,7 +367,7 @@ EOF;
 
 } elseif($operation == 'clean') {
 
-	if(!submitcheck('submit', 1) && !submitcheck('deletesubmit', 1)) {
+	if(!submitcheck('submit') && !submitcheck('deletesubmit')) {
 
 		shownav('user', 'nav_members');
 		showsubmenu('nav_members', array(
@@ -419,8 +419,7 @@ EOF;
 			}
 			cpmsg('members_no_find_deluser', '', 'error');
 		}
-		if(!$_GET['confirmed']) {
-
+		if(!submitcheck('confirmed')) {
 			cpmsg('members_delete_confirm', "action=members&operation=clean&submit=yes&confirmed=yes".$urladd, 'form', array('membernum' => $membernum), $extra.'<br /><label><input type="checkbox" name="includepost" value="1" class="checkbox" />'.$lang['members_delete_all'].'</label>'.($isfounder ? '&nbsp;<label><input type="checkbox" name="includeuc" value="1" class="checkbox" />'.$lang['members_delete_ucdata'].'</label>' : ''), '');
 
 		} else {
@@ -593,7 +592,7 @@ EOF;
 
 } elseif($operation == 'newsletter') {
 
-	if(!submitcheck('newslettersubmit', 1)) {
+	if(!submitcheck('newslettersubmit')) {
 		loadcache('newsletter_detail');
         $newletter_detail = get_newsletter('newsletter_detail');
 		$newletter_detail = dunserialize($newletter_detail);
@@ -738,7 +737,7 @@ EOF;
 
 } elseif($operation == 'reward') {
 
-	if(!submitcheck('rewardsubmit', 1)) {
+	if(!submitcheck('rewardsubmit')) {
 
 		shownav('user', 'nav_members_reward');
 		showsubmenusteps('nav_members_reward', array(
@@ -820,7 +819,7 @@ EOF;
 		cpmsg('members_edit_medals_nonexistence', 'action=medals', 'error');
 	}
 
-	if(!submitcheck('confermedalsubmit', 1)) {
+	if(!submitcheck('confermedalsubmit')) {
 
 		shownav('extended', 'nav_medals', 'nav_members_confermedal');
 		showsubmenusteps('nav_members_confermedal', array(
@@ -894,7 +893,7 @@ EOF;
 		cpmsg('members_edit_magics_nonexistence', 'action=magics', 'error');
 	}
 
-	if(!submitcheck('confermagicsubmit', 1)) {
+	if(!submitcheck('confermagicsubmit')) {
 
 		shownav('extended', 'nav_magics', 'nav_members_confermagic');
 		showsubmenusteps('nav_members_confermagic', array(
@@ -952,7 +951,7 @@ EOF;
 	}
 } elseif($operation == 'add') {
 
-	if(!submitcheck('addsubmit', 1)) {
+	if(!submitcheck('addsubmit')) {
 
 		$groupselect = array();
 		$query = C::t('common_usergroup')->fetch_all_by_not_groupid(array(5, 6, 7));

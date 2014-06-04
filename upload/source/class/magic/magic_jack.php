@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: magic_jack.php 29373 2012-04-09 07:55:30Z chenmengshu $
+ *      $Id: magic_jack.php 34353 2014-03-19 04:57:02Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -65,7 +65,7 @@ class magic_jack {
 		magicthreadmod($_GET['tid']);
 
 		$this->parameters['expiration'] = $this->parameters['expiration'] ? intval($this->parameters['expiration']) : 1;
-		$magicnum = intval($_GET['magicnum']);
+		$magicnum = abs(intval($_GET['magicnum']));
 		if(empty($magicnum) || $magicnum > $this->magic['num']) {
 			showmessage(lang('magic/jack', 'jack_num_not_enough'));
 		}

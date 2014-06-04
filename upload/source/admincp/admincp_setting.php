@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 34295 2013-12-26 02:32:57Z hypowang $
+ *      $Id: admincp_setting.php 34354 2014-03-19 08:32:46Z hypowang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -2632,6 +2632,7 @@ EOT;
 		}
 	}
 	if(isset($settingnew['statcode'])) {
+		$settingnew['statcode'] = preg_replace('/<script(.*?)language(.*?)>/is', '<script>', $settingnew['statcode']);
 		$settingnew['statcode'] = str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $settingnew['statcode']);
 	}
 

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_home_notification.php 32743 2013-03-05 09:37:51Z liulanbo $
+ *      $Id: table_home_notification.php 34369 2014-04-01 02:00:04Z jeffjzhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -47,6 +47,10 @@ class table_home_notification extends discuz_table
 
 	public function delete_by_uid($uid) {
 		DB::query("DELETE FROM %t WHERE uid IN (%n) OR authorid IN (%n)", array($this->_table, $uid, $uid));
+	}
+
+	public function delete_by_uid_type_authorid($uid, $type, $authorid) {
+		return DB::query('DELETE FROM %t WHERE uid=%d AND type=%s AND authorid=%d', array($this->_table, $uid, $type, $authorid));
 	}
 
 	public function fetch_all_by_authorid_fromid($authorid, $fromid, $type) {

@@ -108,9 +108,9 @@ a1cfabcc6f3bd3e8aa86c419ca4a36e1 *source/admincp/admincp_index.php
 b83851a2371b917115ade4d6ba6e7863 *source/admincp/admincp_logs.php
 1bb4886383e494b58807893cdd465f70 *source/admincp/admincp_magics.php
 be506ccffac9fd13820fcd25eb9e1ecd *source/admincp/admincp_main.php
-faa60eb6fc15d4ffb0b8b8e77c16b36f *source/admincp/admincp_makehtml.php
+e23739a014d2d1cc4b8b49e0b057b7f3 *source/admincp/admincp_makehtml.php
 7fd31518567cb389fccdde7b382f7a08 *source/admincp/admincp_medals.php
-c8a68e22eea76bcaeb6cefb9cae672f0 *source/admincp/admincp_members.php
+6c459b0e1939e708a5a7d6f4f5861cea *source/admincp/admincp_members.php
 d84ce153a40a5d5a23791a759f12369a *source/admincp/admincp_membersplit.php
 c953ccd2cef4dc56bf6d3ba9b5ca9f26 *source/admincp/admincp_menu.php
 b357a8a7628931a601d0ad3412527157 *source/admincp/admincp_misc.php
@@ -131,7 +131,7 @@ c4b4a94d92e2ddbdcb018b5dcb0e98a2 *source/admincp/admincp_portalcategory.php
 8143deb93375c66f2367f79de2d567c2 *source/admincp/admincp_recyclebinpost.php
 693cf16a043646e6a1c1d885c1ede9a0 *source/admincp/admincp_report.php
 975cadabbc57363b3929175e1d6bcd6a *source/admincp/admincp_search.php
-78dfefdfd4d4e73cd93c07545a1b2c08 *source/admincp/admincp_setting.php
+93783d773d844d2e43ede58d92ff1125 *source/admincp/admincp_setting.php
 99faaf0fbd0645ac3baf1889629787bd *source/admincp/admincp_share.php
 39a3cbfb7a50464e76b9eb397a13e9f9 *source/admincp/admincp_smilies.php
 007a086e911f690b1ae821a31bf53eaf *source/admincp/admincp_specialuser.php
@@ -322,7 +322,7 @@ f586ad9557c88be3630b8263da72ec19 *source/class/class_optimizer.php
 6458a7fe20f3e3b9fd8212191b1e3d39 *source/class/class_seccode.php
 ba8f93e2baa105875cbca0152cdd8645 *source/class/class_sphinx.php
 1a50bfab1b9481e9302157185480936c *source/class/class_tag.php
-41eb966c8a2785cfc920a90b1e57ce0b *source/class/class_task.php
+b0f50ebd0aa9f563ea926e5dde928403 *source/class/class_task.php
 82a0b7b9f0d3200e2e77ff8a4bf8beb8 *source/class/class_template.php
 02586f739f8c898944389c53515a7f9b *source/class/class_xml.php
 0243c69f103b8167e4e75aae836b3886 *source/class/class_zip.php
@@ -366,7 +366,7 @@ e9d38bb08cdc6d4c95aeb2e5d768447b *source/class/extend/extend_thread_follow.php
 185a921c8ca5e4706d12dd8f7171ac59 *source/class/extend/extend_thread_image.php
 8e5366dd55b8316b161215d0a635a49a *source/class/extend/extend_thread_poll.php
 5e7006cecc97e91de8af7a71e539bee4 *source/class/extend/extend_thread_replycredit.php
-712a87e03920e9586ec7cf73c680b8c9 *source/class/extend/extend_thread_reward.php
+e4cb512304671187651c5aef0093ca48 *source/class/extend/extend_thread_reward.php
 8ef6276349f810a76e29d82f953fa41d *source/class/extend/extend_thread_rushreply.php
 2c7fa126eb92e35ce28bf55059cb113c *source/class/extend/extend_thread_sort.php
 de66c90ea3cf3a34ab8290b4bfa4f8a8 *source/class/extend/extend_thread_trade.php
@@ -377,7 +377,7 @@ d41d8cd98f00b204e9800998ecf8427e *source/class/forum/index.htm
 79feb45e4626dbba96e19ea147fff3e2 *source/class/helper/helper_antitheft.php
 59220a31da954b7d2227f336dbb6f0c3 *source/class/helper/helper_attach.php
 7022fd0d4c037305b08aa3702a6add1e *source/class/helper/helper_dbtool.php
-a17eb87382160d61c490a4547e93411f *source/class/helper/helper_form.php
+86430cb920a355505d6f4fda71215dab *source/class/helper/helper_form.php
 f44c81f0cf86f12e234da0e7f03d11f0 *source/class/helper/helper_json.php
 cd6ed5c1af415245d93e3235c8ede908 *source/class/helper/helper_log.php
 3ed1f5672a4f342ecac5a1e79fee49e7 *source/class/helper/helper_makehtml.php
@@ -410,7 +410,7 @@ e9cdfdef3f79c6ca4ebe5033395c56d9 *source/class/magic/magic_downdateline.php
 daba6289c9c4df2ab5820f3bf7562dcb *source/class/magic/magic_gift.php
 7360aece88d64d2e147879a9ea9e17c5 *source/class/magic/magic_highlight.php
 9ad21341d70b129f8cfaaaf8366e1f23 *source/class/magic/magic_hot.php
-a88d66136610f8aa20aa8194f7822871 *source/class/magic/magic_jack.php
+138e5e6e0172c70b3c3382e2825323f3 *source/class/magic/magic_jack.php
 2622c1f967ed049d269ac620056b9e91 *source/class/magic/magic_money.php
 9b4277aebd3565f1bae49a6ab6c1537b *source/class/magic/magic_namepost.php
 73b453f52d5f024163c23bb1b2212406 *source/class/magic/magic_open.php
@@ -639,7 +639,7 @@ ecbb04bb9a88340e7154d020a41fd8d7 *source/class/table/table_forum_replycredit.php
 cd142f7d9d56f6f5cdf20ba8bcb80841 *source/class/table/table_forum_sofa.php
 292ba4a8221d934d4069e1e82d0bbb9c *source/class/table/table_forum_spacecache.php
 40059149d0a0675213c0b0ac29b99fa4 *source/class/table/table_forum_statlog.php
-62cccc103dd1b71a6329e7e60f299086 *source/class/table/table_forum_thread.php
+c0ff3b54d1448ba5aa0c1ae1011d79b8 *source/class/table/table_forum_thread.php
 4ec6bca5052d26473f7eb7724fa01b3a *source/class/table/table_forum_threadaddviews.php
 588140e7c65c8722818cb1150222c795 *source/class/table/table_forum_threadcalendar.php
 2923528d736502648736bf1cad609fa7 *source/class/table/table_forum_threadclass.php
@@ -684,7 +684,7 @@ f2536c4e7fe55de8e7d4d8448056a27b *source/class/table/table_home_follow_feed.php
 89b62cd1eeef8dd41b2aec4c63db6bd5 *source/class/table/table_home_friend.php
 9ee66a21a5a0a0f2b28c83adc97efae8 *source/class/table/table_home_friendlog.php
 c84346815d1d8a6065ef8e1ec6c4f15e *source/class/table/table_home_friend_request.php
-cc4de0d8eda053f7b6168d7961d223df *source/class/table/table_home_notification.php
+e97de0d070870c7ae17daec465706242 *source/class/table/table_home_notification.php
 a02d88be88214f8b4f8aa7fe4ad821c4 *source/class/table/table_home_pic.php
 da5f4732ffdc0c8bfb6ab7b655f14b77 *source/class/table/table_home_picfield.php
 4f9669703b8f494ec86ccbad96d30327 *source/class/table/table_home_poke.php
@@ -719,7 +719,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-2885febd47d4c04ca859b351b8af62c5 *source/discuz_version.php
+1b88f3daa682e054772bd359d2c33234 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -789,7 +789,7 @@ d479d451010a5ddd24d638cb0a385b43 *source/function/function_blog.php
 a1619d00fe926f4b1c859b7edf50eac7 *source/function/function_cloudaddons.php
 77f06f33b827d1155c5c3c2f28bc7909 *source/function/function_collection.php
 90ee4789682564336c6043e19dc2dcb8 *source/function/function_comment.php
-5562d774353af25ba9a99821d0298cb1 *source/function/function_core.php
+5105f83f5f869dc3edbebfb042881a84 *source/function/function_core.php
 fca8f813316f070ad4026e06b938db1d *source/function/function_credit.php
 dc26872be5adc5364f42bc0335c4b504 *source/function/function_delete.php
 57a0667b8bb15bb1542ffacc45480890 *source/function/function_discuzcode.php
@@ -957,7 +957,7 @@ d088b32256081f1bbb1bfe3ce21c3b94 *source/include/spacecp/spacecp_invite.php
 55e9eb2515f9c2de66657f612a6ece79 *source/include/spacecp/spacecp_magic.php
 3237cef7fb24b80104ed107e47a0aa2c *source/include/spacecp/spacecp_plugin.php
 5cd7ed99fec943fd1d64e1bbcc18929a *source/include/spacecp/spacecp_pm.php
-2bdf248ce9e4a6021c87820614904d77 *source/include/spacecp/spacecp_poke.php
+5f5e62ec69db8d5f072e5b5724eef3ab *source/include/spacecp/spacecp_poke.php
 46701abd4b809377109044820dadbaac *source/include/spacecp/spacecp_privacy.php
 fef9f8238c73af456b09d07685634cc9 *source/include/spacecp/spacecp_profile.php
 6a0fbb877604966c6417e442ff236196 *source/include/spacecp/spacecp_profilevalidate.php
@@ -2505,7 +2505,7 @@ d41d8cd98f00b204e9800998ecf8427e *static/js/index.htm
 b4edebc2c3d396f460510ec99a2035ff *static/js/makehtml.js
 ef058f07a773acf03f6d2f7f6ecb68fd *static/js/md5.js
 ed88708e2be8db3e81cedd63851109c1 *static/js/mobile/ajaxfileupload.js
-a9bfdc0d6f62e3a0ae3a01a933573dc9 *static/js/mobile/buildfileupload.js
+ff352f0645ea7e926caaa3ef2c48da02 *static/js/mobile/buildfileupload.js
 a75a0da2c3c6ae258ac58c7c768abeab *static/js/mobile/common.js
 e1288116312e4728f98923c79b034b67 *static/js/mobile/jquery-1.8.3.min.js
 639bfdb0d68aff0ac8ef036c9674736c *static/js/portal.js

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_makehtml.php 34286 2013-12-13 05:55:14Z laoguozhang $
+ *      $Id: admincp_makehtml.php 34354 2014-03-19 08:32:46Z hypowang $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_DISCUZ')) {
@@ -447,13 +447,13 @@ EOT;
 					cpmsg(cplang('setting_functions_makehtml_indexname_invalid').','.cplang('return'), NULL, 'error');
 				}
 			}
-			$settingnew['makehtml']['articlehtmldir'] = trim($settingnew['makehtml']['articlehtmldir'], ' /');
+			$settingnew['makehtml']['articlehtmldir'] = trim($settingnew['makehtml']['articlehtmldir'], ' /\\');
 			$re = NULL;
 			preg_match_all('/[^\w\d\_\\]/',$settingnew['makehtml']['articlehtmldir'],$re);
 			if(!empty($re[0])) {
 				cpmsg(cplang('setting_functions_makehtml_articlehtmldir_invalid').','.cplang('return'), NULL, 'error');
 			}
-			$settingnew['makehtml']['topichtmldir'] = trim($settingnew['makehtml']['topichtmldir'], ' /');
+			$settingnew['makehtml']['topichtmldir'] = trim($settingnew['makehtml']['topichtmldir'], ' /\\');
 			$re = NULL;
 			preg_match_all('/[^\w\d\_\\]/',$settingnew['makehtml']['topichtmldir'],$re);
 			if(!empty($re[0])) {

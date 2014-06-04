@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: extend_thread_reward.php 33640 2013-07-24 03:47:34Z nemohou $
+ *      $Id: extend_thread_reward.php 34351 2014-03-19 04:34:04Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -77,7 +77,7 @@ class extend_thread_reward extends extend_thread_base {
 			}
 
 			if($this->thread['special'] == 3 && $isorigauthor) {
-				$rewardprice = intval($_GET['rewardprice']);
+				$rewardprice = $this->thread['price'] > 0 ? intval($_GET['rewardprice']) : $this->thread['price'];
 				if($this->thread['price'] > 0 && $this->thread['price'] != $_GET['rewardprice']) {
 					if($rewardprice <= 0){
 						showmessage('reward_credits_invalid');
