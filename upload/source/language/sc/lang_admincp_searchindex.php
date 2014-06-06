@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_searchindex.php 34035 2013-09-24 01:43:53Z nemohou $
+ *      $Id: lang_admincp_searchindex.php 34156 2013-10-25 01:10:00Z nemohou $
  *
  *	This file is automatically generate
  */
@@ -4233,9 +4233,6 @@ $lang = array (
       35 => 'setting_access_register_send_register_url',
       36 => '通过邮件发送注册链接',
       37 => '开启后系统会发一条注册的地址到用户的邮箱，从该地址链接过来的允许注册，同时建议UCenter中开启一个邮箱只允许注册一个帐户注意：只有在站长 - 邮件设置中完成邮件设置，确保邮件能发送成功下可以开启该功能 ',
-      38 => 'setting_access_register_forge_email',
-      39 => '取消注册邮箱必填',
-      40 => '开启后如果用户不填写注册邮箱，将自动生成一个随机邮箱地址',
       41 => 'setting_access_register_link_name',
       42 => '注册链接文字',
       43 => '设置站点注册页的链接文字，默认为“立即注册”',

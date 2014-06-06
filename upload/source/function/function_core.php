@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 34528 2014-05-15 11:42:01Z nemohou $
+ *      $Id: function_core.php 34523 2014-05-15 04:22:29Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -325,22 +325,17 @@ function checkmobile() {
 				'up.link', 'blazer', 'helio', 'hosin', 'huawei', 'novarra', 'coolpad', 'webos', 'techfaith', 'palmsource',
 				'alcatel', 'amoi', 'ktouch', 'nexian', 'ericsson', 'philips', 'sagem', 'wellcom', 'bunjalloo', 'maui', 'smartphone',
 				'iemobile', 'spice', 'bird', 'zte-', 'longcos', 'pantech', 'gionee', 'portalmmm', 'jig browser', 'hiptop',
-				'benq', 'haier', '^lct', '320x320', '240x320', '176x220');
-	static $mobilebrowser_list =array('windows phone');
+				'benq', 'haier', '^lct', '320x320', '240x320', '176x220', 'windows phone');
 	static $wmlbrowser_list = array('cect', 'compal', 'ctl', 'lg', 'nec', 'tcl', 'alcatel', 'ericsson', 'bird', 'daxian', 'dbtel', 'eastcom',
 			'pantech', 'dopod', 'philips', 'haier', 'konka', 'kejian', 'lenovo', 'benq', 'mot', 'soutec', 'nokia', 'sagem', 'sgh',
 			'sed', 'capitel', 'panasonic', 'sonyericsson', 'sharp', 'amoi', 'panda', 'zte');
 
-	$pad_list = array('ipad');
+	static $pad_list = array('ipad');
 
 	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
 
 	if(dstrpos($useragent, $pad_list)) {
 		return false;
-	}
-	if(($v = dstrpos($useragent, $mobilebrowser_list, true))){
-		$_G['mobile'] = $v;
-/*vot*/		return '1'; //Mobile Version
 	}
 	if(($v = dstrpos($useragent, $touchbrowser_list, true))){
 		$_G['mobile'] = $v;
@@ -613,7 +608,8 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 	if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
 		if(strpos($tpldir, 'plugin')) {
 			if(!file_exists(DISCUZ_ROOT.$tpldir.'/'.$file.'.htm') && !file_exists(DISCUZ_ROOT.$tpldir.'/'.$file.'.php')) {
-				discuz_error::template_error('template_notfound', $tpldir.'/'.$file.'.htm');
+				$url = $_SERVER['REQUEST_URI'].(strexists($_SERVER['REQUEST_URI'], '?') ? '&' : '?').'mobile=no';
+				showmessage('mobile_template_no_found', '', array('url' => $url));
 			} else {
 				$mobiletplfile = $tpldir.'/'.$file.'.htm';
 			}
@@ -836,7 +832,6 @@ function dstrlen($str) {
 		return strlen($str);
 	}
 /*vot*/	return mb_strlen($str);
-/*vot
 	$count = 0;
 	for($i = 0; $i < strlen($str); $i++){
 		$value = ord($str[$i]);
@@ -849,7 +844,6 @@ function dstrlen($str) {
     		$count++;
 	}
 	return $count;
-*/
 }
 
 function cutstr($string, $length, $dot = ' ...') {
@@ -2049,7 +2043,6 @@ function strhash($string, $operation = 'DECODE', $key = '') {
 
 	return base64_encode(gzcompress($string.$vkey));
 }
-
 
 function dunserialize($data) {
 	if(($ret = unserialize($data)) === false) {

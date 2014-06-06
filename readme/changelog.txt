@@ -1,9 +1,9 @@
 +======================================================+
-   Discuz! ML v.3.1 (MultiLingual)
+   Discuz! ML v.3.2 (MultiLingual)
    (c) by Valery Votintsev and CodersClub community
    http://codersclub.org/discuzx/
 
-   Based on Discuz! X3.1
+   Based on Discuz! X3.2
 +======================================================+
 
 Main differences from the official Discuz!X:
@@ -23,45 +23,12 @@ Main differences from the official Discuz!X:
 12. UCenter API Development Guide translated to English
 
 +======================================+
-   Discuz! X3.1 Release 20140301
+   Discuz! X3.2 Release 20140603
 +======================================+
-Fixed known security issues, stable version
-
-+======================================+
-   Discuz! X3.1 Release 20140101
-+======================================+
-Fixed multiple functional problems, stable version
-
-+======================================+
-   Discuz! X3.1 Release 20131122
-+======================================+
-Fixed multiple functional problems, stable version
-
-+======================================+
-   Discuz! X3.1 Release 20131011
-+======================================+
-Fixed multiple functional problems, stable version
-
-
-+======================================+
-   Discuz! X3.1 Release 20130923
-+======================================+
-ADD. Discuz! Cloud verification code, improved protection against spam-bots
-ADD. Intelligent verification code strategy, without affecting the normal user operations, block ads publishing
-ADD. Safety evaluation mechanisms, suggesting webmasters background settings involving safety operation
-ADD. User account bodyguard, increase the difficulty of brute force account, reducing the loss of user accounts stolen
-
-ADD. Identify malicious users function. All the malicious users posts can be processed, and users automatically banned
-ADD. Whole network defense mechanisms, Blacklisted users, will limiting behavior in all the Discuz! Forum sites
-IMPROVE. Waterproof wall function. Enhance all the site responce level, Limiting the maximum speed of ads posting
-IMPROVE. Webmaster reporting mechanism. Reported by multiple users IP will be blacklisted
-
-OPTIMIZE. Some interaction features steps was simplified
-OPTIMIZE. Back-office functions distributed, Easy to quickly find the desired webmaster function
-OPTIMIZE. Part of code, reduce the server loading when PHP parsing
-FIX. Discuz! X3 existed known issues and security risks
-
-More updates, see the official release topic
+Optimized: Improve efficiency of the page sections
+Improvement: Plug-in mechanism provide more interfaces 
+New: Log on with micro-channel, Support micro-communities
+Fix: Fixed known issues and security risks from the previous versions
 
 +--------------------------------------+
 Old Versions
@@ -76,3 +43,4 @@ Discuz! X1.5
 Discuz! X2
 Discuz! X2.5
 Discuz! X3
+Discuz! X3.1

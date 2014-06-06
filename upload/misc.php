@@ -4,9 +4,45 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc.php 32082 2012-11-07 08:00:31Z zhengqingpeng $
+ *      $Id: misc.php 34264 2013-11-27 03:14:58Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
+
+if(isset($_GET['css'])) {
+	$css = explode('|', $_GET['css']);
+	$string = '';
+	$size = 0;
+	foreach($css as $file) {
+		if(preg_match('/^\w+$/', $file)) {
+			$file = './data/cache/style_'.$file.'.css';
+			$string .= @implode('', file($file));
+		}
+	}
+	ob_start('ob_gzhandler');
+	header('Content-Type: text/css');
+	header('Expires: '.gmdate('D, d M Y H:i:s', time() + 2592000).' GMT');
+	header('Last-Modified: '.gmdate('D, d M Y H:i:s', time()).' GMT');
+	echo $string;
+	exit;
+}
+if(isset($_GET['js'])) {
+	$js = explode('|', $_GET['js']);
+	$string = '';
+	$size = 0;
+	foreach($js as $file) {
+		$file = substr($file, 0, strpos($file, '.'));
+		if(preg_match('/^\w+$/', $file)) {
+			$file = './data/cache/'.$file.'.js';
+			$string .= @implode('', file($file));
+		}
+	}
+	ob_start('ob_gzhandler');
+	header('Content-Type: text/javascript');
+	header('Expires: '.gmdate('D, d M Y H:i:s', time() + 2592000).' GMT');
+	header('Last-Modified: '.gmdate('D, d M Y H:i:s', time()).' GMT');
+	echo $string;
+	exit;
+}
 
 define('APPTYPEID', 100);
 define('CURSCRIPT', 'misc');

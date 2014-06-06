@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: search.php 26313 2011-12-08 09:12:56Z yangli $
+ *      $Id: search.php 34131 2013-10-17 03:54:09Z andyzheng $
  *	Modified by Valery Votintsev, codersclub.org
  */
 

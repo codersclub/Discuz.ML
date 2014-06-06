@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: index.php 32385 2013-01-08 02:18:27Z monkey $
+ *      $Id: index.php 34314 2014-02-20 01:04:24Z nemohou $
  */
 
 define('IN_OPEN', 1);

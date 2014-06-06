@@ -27,7 +27,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="version"><![CDATA[X3.2]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
 		<item id="var">

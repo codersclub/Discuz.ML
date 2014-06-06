@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: editor.js 34039 2013-09-24 02:37:27Z nemohou $
+	$Id: editor.js 34265 2013-11-27 03:27:04Z nemohou $
 	Modified by Valery Votintsev
 */
 
@@ -548,7 +548,7 @@ function writeEditorContents(text) {
 			text = '<!DOCTYPE html PUBLIC "-/' + '/W3C/' + '/DTD XHTML 1.0 Transitional/' + '/EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' +
 /*vot*/				'<html'+rtl+'><head id="editorheader"><meta http-equiv="Content-Type" content="text/html; charset=' + charset + '" />' +
 				(BROWSER.ie && BROWSER.ie > 7 ? '<meta http-equiv="X-UA-Compatible" content="IE=7" />' : '' ) +
-/*vot*/				'<link rel="stylesheet" type="text/css" href="data/cache/style_' + STYLEID + '_wysiwyg' + RTLSUFFIX + '.css?' + VERHASH + '" />' +
+/*vot*/				'<link rel="stylesheet" type="text/css" href="misc.php?css=' + STYLEID + '_wysiwyg' + '" />' +
 				(BROWSER.ie ? '<script>window.onerror = function() { return true; }</script>' : '') +
 				'</head><body>' + text + '</body></html>';
 			editdoc.designMode = allowhtml ? 'on' : 'off';

@@ -1212,6 +1212,7 @@ var rowtypedata = [
 				if(substr($_GET['filenamenew'], -4) !== '.php') {
 					cpmsg('crons_filename_illegal', '', 'error');
 				}
+
 				$pluginid = '';
 				if(count($efile) > 1 && ispluginkey($efile[0])) {
 					$pluginid = $efile[0];
@@ -1259,6 +1260,7 @@ var rowtypedata = [
 			} else {
 				$cronfile = DISCUZ_ROOT."./source/include/cron/$cron[filename]";
 			}
+
 			if(substr($cronfile, -4) !== '.php' || !file_exists($cronfile)) {
 				cpmsg('crons_run_invalid', '', 'error', array('cronfile' => $cronfile));
 			} else {

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_filesock.php 34110 2013-10-11 10:23:17Z nemohou $
+ *      $Id: function_filesock.php 34441 2014-04-29 07:47:26Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -40,6 +40,7 @@ function _dfsockopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FAL
 		}
 		curl_setopt($ch, CURLOPT_URL, $scheme.'://'.($ip ? $ip : $host).($port ? ':'.$port : '').$path);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($ch, CURLOPT_HEADER, 1);

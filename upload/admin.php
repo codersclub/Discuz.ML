@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admin.php 34296 2013-12-26 03:17:17Z hypowang $
+ *      $Id: admin.php 34285 2013-12-13 03:39:35Z hypowang $
  */
 
 define('IN_ADMINCP', TRUE);

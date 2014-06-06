@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_forumdisplay.php 33966 2013-09-10 05:45:11Z nemohou $
+ *      $Id: forum_forumdisplay.php 34350 2014-03-19 03:16:35Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -67,7 +67,6 @@ if($_G['forum']['archive']) {
 		}
 	}
 }
-
 
 $forum_up = $_G['cache']['forums'][$_G['forum']['fup']];
 if($_G['forum']['type'] == 'forum') {
@@ -626,7 +625,7 @@ if($filter !== 'hot') {
 		if($filterarr['digest']) {
 			$indexadd = " FORCE INDEX (digest) ";
 		}
-	} elseif($showsticky && $stickytids && is_array($stickytids)) {
+	} elseif($showsticky && is_array($stickytids) && $stickytids[0]) {
 		$filterarr1 = $filterarr;
 		$filterarr1['inforum'] = '';
 		$filterarr1['intids'] = $stickytids;
@@ -636,6 +635,7 @@ if($filter !== 'hot') {
 	}
 	$threadlist = array_merge($threadlist, C::t('forum_thread')->fetch_all_search($filterarr, $tableid, $start_limit, $_G['tpp'], $_order, '', $indexadd));
 	unset($_order);
+
 	if(empty($threadlist) && $page <= ceil($_G['forum_threadcount'] / $_G['tpp'])) {
 		require_once libfile('function/post');
 		updateforumcount($_G['fid']);
@@ -849,20 +849,12 @@ if(!empty($threadids)) {
 		$_G['forum_threadlist'][$index]['views'] += $value['addviews'];
 	}
 }
-if($_G['setting']['verify']['enabled'] && $verifyuids) {
-	foreach(C::t('common_member_verify')->fetch_all($verifyuids) as $value) {
-		foreach($_G['setting']['verify'] as $vid => $vsetting) {
-			if($vsetting['available'] && $vsetting['showicon'] && $value['verify'.$vid] == 1) {
-				$srcurl = '';
-					if(!empty($vsetting['icon'])) {
-						$srcurl = $vsetting['icon'];
-					}
-				$verify[$value['uid']] .= "<a href=\"home.php?mod=spacecp&ac=profile&op=verify&vid=$vid\" target=\"_blank\">".(!empty($srcurl) ? '<img src="'.$srcurl.'" class="vm" alt="'.$vsetting['title'].'" title="'.$vsetting['title'].'" />' : $vsetting['title']).'</a>';
-			}
-		}
 
-	}
+$verify = array();
+if($_G['setting']['verify']['enabled'] && $verifyuids) {
+	$verify = forumdisplay_verify_author($verifyuids);
 }
+
 if($authorids) {
 	loadcache('usergroups');
 	$groupcolor = array();
@@ -976,4 +968,17 @@ if(!defined('IN_ARCHIVER')) {
 	include loadarchiver('forum/forumdisplay');
 }
 
+
+function forumdisplay_verify_author($ids) {
+	foreach(C::t('common_member_verify')->fetch_all($ids) as $value) {
+		foreach($_G['setting']['verify'] as $vid => $vsetting) {
+			if($vsetting['available'] && $vsetting['showicon'] && $value['verify'.$vid] == 1) {
+				$srcurl = !empty($vsetting['icon']) ? $vsetting['icon'] : '';
+				$verify[$value['uid']] .= "<a href=\"home.php?mod=spacecp&ac=profile&op=verify&vid=$vid\" target=\"_blank\">".(!empty($srcurl) ? '<img src="'.$srcurl.'" class="vm" alt="'.$vsetting['title'].'" title="'.$vsetting['title'].'" />' : $vsetting['title']).'</a>';
+			}
+		}
+
+	}
+	return $verify;
+}
 ?>

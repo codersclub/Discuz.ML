@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_version.php 34569 2014-06-03 02:19:26Z hypowang $
+ *      $Id: discuz_version.php 34574 2014-06-04 02:04:03Z hypowang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 }
 
 if(!defined('DISCUZ_VERSION')) {
-	define('DISCUZ_VERSION', 'X3.1');
+	define('DISCUZ_VERSION', 'X3.2');
 	define('DISCUZ_RELEASE', '20140603');
-	define('DISCUZ_FIXBUG', '30000000');
-	define('DISCUZ_ML_REVISION', '340');
+	define('DISCUZ_FIXBUG', '32000000');
+	define('DISCUZ_ML_REVISION', '342');
 }
 
 ?>

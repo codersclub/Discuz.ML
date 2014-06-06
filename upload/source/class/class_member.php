@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_member.php 34054 2013-09-25 07:57:38Z nemohou $
+ *      $Id: class_member.php 34156 2013-10-25 01:10:00Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -357,7 +357,7 @@ class register_ctl {
 	function on_register() {
 		global $_G;
 
-		$_GET['username'] = $_GET[''.$this->setting['reginput']['username']];
+		$_GET['username'] = trim($_GET[''.$this->setting['reginput']['username']]);
 		$_GET['password'] = $_GET[''.$this->setting['reginput']['password']];
 		$_GET['password2'] = $_GET[''.$this->setting['reginput']['password2']];
 		$_GET['email'] = $_GET[''.$this->setting['reginput']['email']];
@@ -614,9 +614,6 @@ class register_ctl {
 					}
 				}
 				$email = strtolower(trim($_GET['email']));
-				if(empty($email) && $_G['setting']['forgeemail']) {
-					$_GET['email'] = $email = strtolower(random(6)).'@'.$_SERVER['HTTP_HOST'];
-				}
 				if(empty($this->setting['ignorepassword'])) {
 					if($_GET['password'] !== $_GET['password2']) {
 						showmessage('profile_passwd_notmatch');

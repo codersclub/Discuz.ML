@@ -367,7 +367,7 @@ EOF;
 
 } elseif($operation == 'clean') {
 
-	if(!submitcheck('submit') && !submitcheck('deletesubmit')) {
+	if(!submitcheck('submit', 1) && !submitcheck('deletesubmit', 1)) {
 
 		shownav('user', 'nav_members');
 		showsubmenu('nav_members', array(
@@ -420,11 +420,12 @@ EOF;
 			cpmsg('members_no_find_deluser', '', 'error');
 		}
 		if(!submitcheck('confirmed')) {
+
 			cpmsg('members_delete_confirm', "action=members&operation=clean&submit=yes&confirmed=yes".$urladd, 'form', array('membernum' => $membernum), $extra.'<br /><label><input type="checkbox" name="includepost" value="1" class="checkbox" />'.$lang['members_delete_all'].'</label>'.($isfounder ? '&nbsp;<label><input type="checkbox" name="includeuc" value="1" class="checkbox" />'.$lang['members_delete_ucdata'].'</label>' : ''), '');
 
 		} else {
 
-			if(empty($_GET['includepost'])) {
+			if(!submitcheck('includepost')) {
 
 				require_once libfile('function/delete');
 				$numdeleted = deletemember($uids, 0);
@@ -594,7 +595,7 @@ EOF;
 
 	if(!submitcheck('newslettersubmit')) {
 		loadcache('newsletter_detail');
-        $newletter_detail = get_newsletter('newsletter_detail');
+		$newletter_detail = get_newsletter('newsletter_detail');
 		$newletter_detail = dunserialize($newletter_detail);
 		if($newletter_detail && $newletter_detail['uid'] == $_G['uid']) {
 			if($_GET['goon'] == 'yes') {
@@ -622,7 +623,7 @@ EOF;
 		}
 		showsearchform('newsletter');
 
-		if(submitcheck('submit', 1)) {
+		if(submitcheck('submit')) {
 			$dostr = '';
 			if($_GET['do'] == 'mobile') {
 				$search_condition['token_noempty'] = 'token';

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: extend_thread_trade.php 33509 2013-06-27 04:18:27Z nemohou $
+ *      $Id: extend_thread_trade.php 34221 2013-11-15 09:10:23Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -72,7 +72,7 @@ class extend_thread_trade extends extend_thread_base {
 			'anonymous' => $this->param['isanonymous'],
 			'usesig' => $_GET['usesig'],
 			'htmlon' => $this->param['htmlon'],
-			'bbcodeoff' => $this->param['bbcodeoff'],
+			'bbcodeoff' => 0,
 			'smileyoff' => $this->param['smileyoff'],
 			'parseurloff' => $this->param['parseurloff'],
 			'attachment' => 0,

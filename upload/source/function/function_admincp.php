@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_admincp.php 34303 2014-01-15 04:32:19Z hypowang $
+ *      $Id: function_admincp.php 34500 2014-05-12 05:34:40Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -232,7 +232,8 @@ function cpurl($type = 'parameter', $filters = array('sid', 'frames')) {
 function showheader($key, $url) {
 	list($action, $operation, $do) = explode('_', $url.'___');
 	$url = $action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '');
-	echo '<li><em><a href="'.ADMINSCRIPT.'?action='.$url.'" id="header_'.$key.'" hidefocus="true" onmouseover="previewheader(\''.$key.'\')" onmouseout="previewheader()" onclick="toggleMenu(\''.$key.'\', \''.$url.'\');doane(event);">'.cplang('header_'.$key).'</a></em></li>';
+	$menuname = cplang('header_'.$key) != 'header_'.$key ? cplang('header_'.$key) : $key;
+	echo '<li><em><a href="'.ADMINSCRIPT.'?action='.$url.'" id="header_'.$key.'" hidefocus="true" onmouseover="previewheader(\''.$key.'\')" onmouseout="previewheader()" onclick="toggleMenu(\''.$key.'\', \''.$url.'\');doane(event);">'.$menuname.'</a></em></li>';
 }
 
 function shownav($header = '', $menu = '', $nav = '') {

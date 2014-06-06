@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_msg.php 33985 2013-09-13 05:45:27Z nemohou $
+ *      $Id: lang_admincp_msg.php 34498 2014-05-12 02:51:02Z nemohou $
  *
  *      This file is automatically generate
  */
@@ -225,6 +225,7 @@ $lang = array (
   'setting_domain_repeat_error' => '配置中存在重复的域名',
   'setting_domain_need_default_error' => '请设置默认域名',
   'only_two_names_from_english_composition_and_figures' => '抱歉，您设置的二级域名只能含有英文和数字',
+/*3.2*/  'two_domain_have_been_occupied' => '抱歉，二级域名已被占用',
 
   'alipay_not_contract' => '请输入支付宝签约用户信息',
   'alipay_succeed' => '支付宝功能设定成功 ',
@@ -414,8 +415,6 @@ $lang = array (
   'plugins_edit_modules_duplicated' => '您输入的程序模块名称与现有模块重复',
   'plugins_edit_var_invalid' => '您输入的配置变量名不合法或重复',
   'plugins_delete_error' => '您不能卸载系统插件。',
-  'plugins_delete_confirm' => '您确定要卸载 {pluginname} {toversion} 插件吗？<br /><br />请选择您卸载该应用的原因，以便我们以后为您提供更好的应用：<br /><br /><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="1" />功能不满足需求</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="2" />界面不美观</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="3" />效率问题运行速度慢</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="4" />发现了更好的应用</label><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="5" />纯试用现在卸载</label>',
-  'styles_delete_confirm' => '您确定要卸载这些风格吗？<br /><br />请选择您卸载该应用的原因，以便我们以后为您提供更好的应用：<br /><br /><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="1" />功能不满足需求</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="2" />界面不美观</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="3" />效率问题运行速度慢</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="4" />发现了更好的应用</label><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="5" />纯试用现在卸载</label>',
   'pluginvar_not_found' => '插件变量未找到',
   'plugins_edit_var_title_invalid' => '您没有输入配置名称',
   'plugins_edit_vars_succeed' => '插件变量配置更新成功 ',

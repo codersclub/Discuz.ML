@@ -114,6 +114,9 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 				.menu .desc { background: url(desc.gif) no-repeat 12px 5px; }
 				.menu .lsub ol { list-style: none; padding: 0 0 0 30px; margin: 2px 0 0 -30px; }
 	.menu .sp { width: 160px; height: 1px; line-height: 1px; float: left; border-bottom: 1px dotted #DEEFFA ;  }
+#menu_mof_menu { font-size: 14px; font-weight: 700; background: #F2F9FD }
+	#menu_mof_menu a { color: #639BB0 !important; display:block; }
+	#menu_mof_menu a:hover{ color:#09C !important; text-decoration:none; }
 
 .mask{ padding-top:9px; background:url(bg_repx_hb.gif) repeat-x; }
 .team a { float: left; width: 33%; }
@@ -211,7 +214,7 @@ a.faq { background: url(faq.gif) no-repeat 0 2px; padding:1px; margin-left:10px;
 	.optblock .pbg .xs0 { line-height: 1.5; }
 
 /* table */
-.tb{ clear:both; width:100%; margin-top: 8px; }
+.tb{ clear:both; width:100%; margin-top: 8px}
 
 /*vot*/	.tb tr {
 /*vot*/	border-top: 1px solid #DEEFFB;

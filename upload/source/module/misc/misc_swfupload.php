@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_swfupload.php 34126 2013-10-16 02:02:42Z nemohou $
+ *      $Id: misc_swfupload.php 34113 2013-10-12 06:42:05Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: member_connect.php 34242 2013-11-21 08:35:08Z nemohou $
+ *      $Id: member_connect.php 34239 2013-11-21 08:31:14Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 

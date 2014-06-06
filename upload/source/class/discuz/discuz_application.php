@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_application.php 34170 2013-10-28 02:58:29Z nemohou $
+ *      $Id: discuz_application.php 34505 2014-05-12 11:29:54Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -175,7 +175,7 @@ class discuz_application extends discuz_base{
 				'manage' => array('mod_member','report','pmreport'),
 				'app' => array(),
 			),
-			'mobiletpl' => array('1' => 'mobile', '2' => 'touch', '3' => 'wml','yes' => 'mobile'),
+			'mobiletpl' => array('1' => 'mobile', '2' => 'touch', '3' => 'wml'),
 		);
 		$_G['PHP_SELF'] = dhtmlspecialchars($this->_get_script_url());
 		$_G['basescript'] = CURSCRIPT;
@@ -854,11 +854,12 @@ class discuz_application extends discuz_base{
 			$nomobile = true;
 		} elseif(!($mobile_ = checkmobile())) {
 			$nomobile = true;
-		} elseif(!$mobile) {
-			$mobile = isset($mobile_) ? $mobile_ : 1;
+		}
+		if(!$mobile || $mobile == 'yes') {
+			$mobile = isset($mobile_) ? $mobile_ : 2;
 		}
 
-		if(!$this->var['mobile'] && !$unallowmobile) {
+		if($this->var['mobile'] == 'unknown' && !$unallowmobile) {
 			if($mobileflag) {
 				dheader("Location:misc.php?mod=mobile");
 			}

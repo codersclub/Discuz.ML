@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_initsys.php 34032 2013-09-23 08:37:12Z nemohou $
+ *      $Id: misc_initsys.php 34546 2014-05-26 07:35:56Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -25,7 +25,7 @@ if($_G['config']['output']['tplrefresh']) {
 	cleartemplatecache();
 }
 
-$plugins = array('qqconnect', 'cloudstat', 'soso_smilies', 'cloudsearch', 'security', 'xf_storage', 'mobile', 'mobileoem', 'pcmgr_url_safeguard', 'manyou', 'cloudunion', 'cloudcaptcha');
+$plugins = array('qqconnect', 'cloudstat', 'soso_smilies', 'cloudsearch', 'security', 'xf_storage', 'mobile', 'pcmgr_url_safeguard', 'manyou', 'cloudunion', 'cloudcaptcha', 'wechat');
 $opens = array('mobile', 'pcmgr_url_safeguard', 'security', 'cloudcaptcha');
 $checkcloses = array('cloudcaptcha');
 

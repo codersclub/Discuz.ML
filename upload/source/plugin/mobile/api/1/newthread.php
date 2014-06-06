@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: newthread.php 32489 2013-01-29 03:57:16Z monkey $
+ *      $Id: newthread.php 34468 2014-05-06 02:25:28Z nemohou $
  */
 
 if(!defined('IN_MOBILE_API')) {
@@ -49,11 +49,9 @@ class mobile_api {
 			}
 			if(!empty($_POST['mobiletype'])) {
 				$mobiletype = base_convert($_POST['mobiletype'], 10, 2);
-				if(strlen($mobiletype) < 3) {
-					$mobiletype = sprintf('%03d', $mobiletype);
-					for($i = 0;$i < 3;$i++) {
-						$poststatus = setstatus(10 - $i, $mobiletype{$i}, $poststatus);
-					}
+				$mobiletype = sprintf('%03d', $mobiletype);
+				for($i = 0;$i < 3;$i++) {
+					$poststatus = setstatus(10 - $i, $mobiletype{$i}, $poststatus);
 				}
 			}
 			C::t('forum_post')->update(0, $values['pid'], array('status' => $poststatus));

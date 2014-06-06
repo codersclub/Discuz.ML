@@ -41,7 +41,7 @@
 									<!--{if $option['type'] != 'info'}-->
 										<tr>
 											<th>$option[title]:</th>
-											<td><!--{if $option['value'] || ($option['type'] == 'number' && $option['value'] !== '')}-->$option[value] $option[unit]<!--{else}-->-<!--{/if}--></td>
+											<td><!--{if $option['value'] !== ''}-->$option[value] $option[unit]<!--{else}-->-<!--{/if}--></td>
 										</tr>
 									<!--{/if}-->
 								<!--{/loop}-->

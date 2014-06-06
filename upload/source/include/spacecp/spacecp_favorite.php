@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_favorite.php 33786 2013-08-13 05:56:56Z nemohou $
+ *      $Id: spacecp_favorite.php 34278 2013-12-03 09:46:45Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -86,32 +86,32 @@ if($_GET['op'] == 'delete') {
 				$icon = '<img src="static/image/feed/discuz.gif" alt="forum" class="vm" /> ';
 			}
 			break;
-		case 'blog';
+		case 'blog':
 			$idtype = 'blogid';
 			$bloginfo = C::t('home_blog')->fetch($id);
 			$title = ($bloginfo['uid'] == $spaceuid) ? $bloginfo['subject'] : '';
 			$icon = '<img src="static/image/feed/blog.gif" alt="blog" class="vm" /> ';
 			break;
-		case 'group';
+		case 'group':
 			$idtype = 'gid';
 			$foruminfo = C::t('forum_forum')->fetch($id);
 			$title = $foruminfo['status'] == 3 ? $foruminfo['name'] : '';
 			$icon = '<img src="static/image/feed/group.gif" alt="group" class="vm" /> ';
 			break;
-		case 'album';
+		case 'album':
 			$idtype = 'albumid';
 			$result = C::t('home_album')->fetch($id, $spaceuid);
 			$title = $result['albumname'];
 			$icon = '<img src="static/image/feed/album.gif" alt="album" class="vm" /> ';
 			break;
-		case 'space';
+		case 'space':
 			$idtype = 'uid';
 			$_member = getuserbyuid($id);
 			$title = $_member['username'];
 			$unset($_member);
 			$icon = '<img src="static/image/feed/profile.gif" alt="space" class="vm" /> ';
 			break;
-		case 'article';
+		case 'article':
 			$idtype = 'aid';
 			$article = C::t('portal_article_title')->fetch($id);
 			$title = $article['title'];

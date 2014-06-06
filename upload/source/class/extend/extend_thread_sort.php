@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: extend_thread_sort.php 34202 2013-11-04 06:52:04Z nemohou $
+ *      $Id: extend_thread_sort.php 34201 2013-11-04 06:21:04Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {

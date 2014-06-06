@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_blog.php 34342 2014-02-25 07:45:57Z hypowang $
+ *      $Id: function_blog.php 34348 2014-03-19 03:13:00Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -13,6 +13,7 @@ if(!defined('IN_DISCUZ')) {
 
 function blog_check_url($url) {
 	$url = durlencode(trim($url));
+
 	if(preg_match("/^(https?|ftp|gopher|news|telnet|rtsp|mms|callto|bctp|thunder|qqdl|synacast){1}:\/\//i", $url)) {
 		$return = '<a href="'.$url.'" target="_blank">';
 	} else {

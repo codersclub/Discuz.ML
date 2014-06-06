@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: extend_thread_follow.php 32846 2013-03-14 10:42:28Z monkey $
+ *      $Id: extend_thread_follow.php 34174 2013-10-28 07:18:04Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -23,7 +23,7 @@ class extend_thread_follow extends extend_thread_base {
 			require_once libfile('function/followcode');
 			$feedcontent = array(
 				'tid' => $tid,
-				'content' => followcode(messagesafeclear($this->param['message']), $tid, $pid, 1000),
+				'content' => followcode($this->param['message'], $tid, $pid, 1000),
 			);
 			C::t('forum_threadpreview')->insert($feedcontent);
 			C::t('forum_thread')->update_status_by_tid($tid, '512');
@@ -44,7 +44,7 @@ class extend_thread_follow extends extend_thread_base {
 
 	public function after_newreply() {
 		$feedid = 0;
-		if(helper_access::check_module('follow') && !empty($_GET['adddynamic']) && !$this->param['isanonymous']) {
+		if(helper_access::check_module('follow') && !$this->param['isanonymous']) {
 			require_once libfile('function/discuzcode');
 			require_once libfile('function/followcode');
 			$feedcontent = C::t('forum_threadpreview')->count_by_tid($this->thread['tid']);

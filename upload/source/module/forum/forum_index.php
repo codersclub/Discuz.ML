@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_index.php 33353 2013-05-31 03:05:17Z andyzheng $
+ *      $Id: forum_index.php 34291 2013-12-17 03:47:28Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -73,11 +73,11 @@ if($_G['uid'] && empty($_G['cookie']['nofavfid'])) {
 }
 
 
-if(!$gid && ($_G['setting']['collectionrecommendnum'] || !$_G['setting']['hidefollowcollection'])) {
+if(!$gid && $_G['setting']['collectionstatus'] && ($_G['setting']['collectionrecommendnum'] || !$_G['setting']['hidefollowcollection'])) {
 	require_once libfile('function/cache');
 	loadcache('collection_index');
 	$collectionrecommend = dunserialize($_G['setting']['collectionrecommend']);
-	if(TIMESTAMP - $_G['cache']['collection_index']['dateline'] > 300) {
+	if(TIMESTAMP - $_G['cache']['collection_index']['dateline'] > 3600 * 4) {
 		$collectiondata = $followdata = array();
 		if($_G['setting']['collectionrecommendnum']) {
 			if($collectionrecommend['ctids']) {
@@ -101,6 +101,7 @@ if(!$gid && ($_G['setting']['collectionrecommendnum'] || !$_G['setting']['hidefo
 	} else {
 		$collectiondata = &$_G['cache']['collection_index'];
 	}
+
 	if($_G['setting']['showfollowcollection']) {
 		$followcollections = $_G['uid'] ? C::t('forum_collectionfollow')->fetch_all_by_uid($_G['uid']) : array();;
 		if($followcollections) {

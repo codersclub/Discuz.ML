@@ -582,7 +582,7 @@ INSERT INTO pre_common_setting VALUES ('regconnect', '1');
 INSERT INTO pre_common_setting VALUES ('connect', 'a:19:{s:5:"allow";s:1:"1";s:4:"feed";a:2:{s:5:"allow";s:1:"1";s:5:"group";s:1:"0";}s:1:"t";a:2:{s:5:"allow";s:1:"1";s:5:"group";s:1:"0";}s:10:"like_allow";s:1:"1";s:7:"like_qq";s:0:"";s:10:"turl_allow";s:1:"1";s:7:"turl_qq";s:0:"";s:8:"like_url";s:0:"";s:17:"register_birthday";s:1:"0";s:15:"register_gender";s:1:"0";s:17:"register_uinlimit";s:0:"";s:21:"register_rewardcredit";s:1:"1";s:18:"register_addcredit";s:0:"";s:16:"register_groupid";s:1:"0";s:18:"register_regverify";s:1:"1";s:15:"register_invite";s:1:"0";s:10:"newbiespan";s:0:"";s:9:"turl_code";s:0:"";s:13:"mblog_app_key";s:3:"abc";}');
 INSERT INTO pre_common_setting VALUES ('allowwidthauto', '0');
 INSERT INTO pre_common_setting VALUES ('switchwidthauto', '1');
-INSERT INTO pre_common_setting VALUES ('leftsidewidth', '130');
+INSERT INTO pre_common_setting VALUES ('leftsidewidth', '0');
 INSERT INTO pre_common_setting VALUES ('card', 'a:1:{s:4:"open";s:1:"0";}');
 INSERT INTO pre_common_setting VALUES ('report_receive', 'a:2:{s:9:"adminuser";a:1:{i:0;s:1:"1";}s:12:"supmoderator";N;}');
 INSERT INTO pre_common_setting VALUES ('leftsideopen', '0');

@@ -687,19 +687,5 @@ EOF;
 	exit;
 }
 
-function tmpiconv($s, $d, $str) {
-	if(is_array($str)) {
-		foreach($str as $k => $v) {
-			$str[$k] = tmpiconv($s, $d, $v);
-		}
-	} else {
-		$str = iconv($s, $d, $str);
-	}
-	return $str;
-}
-function modifynav($type, $flag) {
-
-}
-
 showmessage('succeed', '', array(), array('handle' => false));
 

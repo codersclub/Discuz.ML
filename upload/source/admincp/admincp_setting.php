@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 34354 2014-03-19 08:32:46Z hypowang $
+ *      $Id: admincp_setting.php 34486 2014-05-08 01:31:08Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -448,7 +448,6 @@ if(!submitcheck('settingsubmit')) {
 		showsetting('setting_access_register_regclosemessage', 'settingnew[regclosemessage]', $setting['regclosemessage'], 'textarea');
 		showsetting('setting_access_register_name', 'settingnew[regname]', $setting['regname'], 'text');
 		showsetting('setting_access_register_send_register_url', 'settingnew[sendregisterurl]', $setting['sendregisterurl'], 'radio');
-		showsetting('setting_access_register_forge_email', 'settingnew[forgeemail]', $setting['forgeemail'], 'radio');
 		showsetting('setting_access_register_link_name', 'settingnew[reglinkname]', $setting['reglinkname'], 'text');
 		showsetting('setting_access_register_censoruser', 'settingnew[censoruser]', $setting['censoruser'], 'textarea');
 		showsetting('setting_access_register_pwlength', 'settingnew[pwlength]', $setting['pwlength'], 'text');
@@ -1080,6 +1079,13 @@ EOF;
 			$tjspath['custom'] =  'checked="checked"';
 		}
 
+		if(!$setting['csspathv'] || $setting['csspathv'] == 'data/cache/') {
+			$tcsspath['cache'] =  'checked="checked"';
+			$setting['csspathv'] = '';
+		} else {
+			$tcsspath['custom'] =  'checked="checked"';
+		}
+
 		showtips('setting_tips');
 		showtableheader();
 		showtitle('setting_serveropti');
@@ -1093,6 +1099,10 @@ EOF;
 			<li'.($tjspath['default'] ? ' class="checked"' : '').'><input class="radio" type="radio" name="settingnew[jspath]" value="static/js/" '.$tjspath['default'].'> '.$lang['setting_serveropti_jspath_default'].'</li>
 			<li'.($tjspath['cache'] ? ' class="checked"' : '').'><input class="radio" type="radio" name="settingnew[jspath]" value="data/cache/" '.$tjspath['cache'].'> '.$lang['setting_serveropti_jspath_cache'].'</li>
 			<li'.($tjspath['custom'] ? ' class="checked"' : '').'><input class="radio" type="radio" name="settingnew[jspath]" value="" '.$tjspath['custom'].'> '.$lang['setting_serveropti_jspath_custom'].' <input type="text" class="txt" style="width: 100px" name="settingnew[jspathcustom]" value="'.$setting['jspath'].'" size="6"></li></ul>'
+		);
+		showsetting('setting_serveropti_csspath', '', '', '<ul class="nofloat" onmouseover="altStyle(this);">
+			<li'.($tcsspath['cache'] ? ' class="checked"' : '').'><input class="radio" type="radio" name="settingnew[csspathv]" value="data/cache/" '.$tcsspath['cache'].'> '.$lang['setting_serveropti_csspath_cache'].'</li>
+			<li'.($tcsspath['custom'] ? ' class="checked"' : '').'><input class="radio" type="radio" name="settingnew[csspathv]" value="" '.$tcsspath['custom'].'> '.$lang['setting_serveropti_csspath_custom'].' <input type="text" class="txt" style="width: 100px" name="settingnew[csspathcustom]" value="'.$setting['csspathv'].'" size="6"></li></ul>'
 		);
 		showsetting('setting_serveropti_lazyload', 'settingnew[lazyload]', $setting['lazyload'], 'radio');
 		showsetting('setting_serveropti_blockmaxaggregationitem', 'settingnew[blockmaxaggregationitem]', $setting['blockmaxaggregationitem'], 'text');
@@ -2166,7 +2176,7 @@ EOT;
 		showtips('setting_uc_tips');
 		showtableheader();
 		showsetting('setting_uc_appid', 'settingnew[uc][appid]', UC_APPID, 'text', $disable);
-		showsetting('setting_uc_key', 'settingnew[uc][key]', UC_KEY, 'text', $disable);
+		showsetting('setting_uc_key', 'settingnew[uc][key]', '********', 'text', $disable);
 		showsetting('setting_uc_api', 'settingnew[uc][api]', UC_API, 'text', $disable);
 		showsetting('setting_uc_ip', 'settingnew[uc][ip]', UC_IP, 'text', $disable);
 		showsetting('setting_uc_connect', array('settingnew[uc][connect]', array(
@@ -2575,7 +2585,10 @@ EOT;
 
 	if($operation == 'uc' && is_writeable('./config/config_ucenter.php') && $isfounder) {
 		require_once './config/config_ucenter.php';
+
 		$ucdbpassnew = $settingnew['uc']['dbpass'] == '********' ? addslashes(UC_DBPW) : $settingnew['uc']['dbpass'];
+		$settingnew['uc']['key'] = addslashes($settingnew['uc']['key'] == '********' ? addslashes(UC_KEY) : $settingnew['uc']['key']);
+
 		if($settingnew['uc']['connect']) {
 			$uc_dblink = function_exists("mysql_connect") ? @mysql_connect($settingnew['uc']['dbhost'], $settingnew['uc']['dbuser'], $ucdbpassnew, 1) : new mysqli($settingnew['uc']['dbhost'], $settingnew['uc']['dbuser'], $ucdbpassnew);
 			if(!$uc_dblink) {
@@ -2631,6 +2644,7 @@ EOT;
 			$settingnew[$k] = dhtmlspecialchars($settingnew[$k]);
 		}
 	}
+
 	if(isset($settingnew['statcode'])) {
 		$settingnew['statcode'] = preg_replace('/<script(.*?)language(.*?)>/is', '<script>', $settingnew['statcode']);
 		$settingnew['statcode'] = str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $settingnew['statcode']);
@@ -3371,6 +3385,12 @@ EOT;
 	if(isset($settingnew['jspath'])) {
 		if(!$settingnew['jspath']) {
 			$settingnew['jspath'] = $settingnew['jspathcustom'];
+		}
+	}
+
+	if(isset($settingnew['csspathv'])) {
+		if(!$settingnew['csspathv']) {
+			$settingnew['csspathv'] = $settingnew['csspathcustom'];
 		}
 	}
 

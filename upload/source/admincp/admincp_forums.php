@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_forums.php 33377 2013-06-04 04:03:30Z andyzheng $
+ *      $Id: admincp_forums.php 34181 2013-10-29 08:23:15Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1028,8 +1028,8 @@ EOF;
 				[1,'<input type="text" size="2" name="newdisplayorder[]" value="0" />'],
 				[1,'<input type="text" name="newname[]" />'],
 				[1,'<input type="text" name="newicon[]" />'],
-				[1,'<input type="hidden" name="newenable[]" value="1"><input type="checkbox" class="checkbox" checked="checked" disabled/>'],
-				[1,'<input type="checkbox" class="checkbox" name="newmoderators[]" value="1" />'],
+				[1,'<input type="hidden" name="newenable[]" value="1"><input type="checkbox" class="checkbox" checked="checked" disabled />'],
+				[1,'<input type="hidden" name="newmoderators[]" value="0"><input type="checkbox" class="checkbox" disabled />'],
 				[1,'']
 			],
 			[
@@ -1389,7 +1389,7 @@ EOT;
 					C::t('common_nav')->insert($data);
 				}
 
-				updatecache('forums');
+				updatecache(array('forums', 'setting'));
 
 				cpmsg('forums_edit_succeed', 'action=forums', 'succeed');
 			} else {

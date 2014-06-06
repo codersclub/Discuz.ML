@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: upgrade.php 31700 2012-09-24 03:46:59Z zhangjie $
+ *      $Id: upgrade.php 34397 2014-04-14 06:53:24Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -25,6 +25,12 @@ CREATE TABLE IF NOT EXISTS pre_common_devicetoken (
 
 CREATE TABLE IF NOT EXISTS pre_mobile_setting (
   `skey` varchar(255) NOT NULL DEFAULT '',
+  `svalue` text NOT NULL,
+  PRIMARY KEY (`skey`)
+) ENGINE=MyISAM;
+
+CREATE TABLE IF NOT EXISTS pre_mobile_wsq_threadlist (
+  `skey` int(11) unsigned NOT NULL,
   `svalue` text NOT NULL,
   PRIMARY KEY (`skey`)
 ) ENGINE=MyISAM;

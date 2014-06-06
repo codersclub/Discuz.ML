@@ -42,7 +42,7 @@
 				<item id="2">
 					<item id="name"><![CDATA[admincp]]></item>
 					<item id="param"><![CDATA[ac=setting]]></item>
-					<item id="menu"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[Basic Settings]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -67,7 +67,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="version"><![CDATA[X3.2]]></item>
 		<item id="language">
 			<item id="templatelang">
 				<item id="hottopic"><![CDATA[Hot topics]]></item>

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms'
  *
- *      $Id: admincp_plugins.php 34010 2013-09-18 07:45:59Z nemohou $
+ *      $Id: admincp_plugins.php 34498 2014-05-12 02:51:02Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1390,60 +1390,42 @@ if(!$operation) {
 		$pluginarray = getimportdata('Discuz! Plugin');
 	}
 
-	if(!$_GET['confirmed']) {
+	$identifier = $plugin['identifier'];
+	C::t('common_plugin')->delete($pluginid);
+	C::t('common_pluginvar')->delete_by_pluginid($pluginid);
+	C::t('common_nav')->delete_by_type_identifier(3, $identifier);
 
-		if(!empty($pluginarray['checkfile']) && preg_match('/^[\w\.]+$/', $pluginarray['checkfile'])) {
-			$filename = DISCUZ_ROOT.'./source/plugin/'.$plugin['identifier'].'/'.$pluginarray['checkfile'];
-			if(file_exists($filename)) {
-				loadcache('pluginlanguage_install');
-				$installlang = $_G['cache']['pluginlanguage_install'][$plugin['identifier']];
-				@include $filename;
-			}
+	foreach(array('script', 'template') as $type) {
+		loadcache('pluginlanguage_'.$type, 1);
+		if(isset($_G['cache']['pluginlanguage_'.$type][$identifier])) {
+			unset($_G['cache']['pluginlanguage_'.$type][$identifier]);
+			savecache('pluginlanguage_'.$type, $_G['cache']['pluginlanguage_'.$type]);
 		}
-
-		cpmsg('plugins_delete_confirm', 'action=plugins&operation=delete&pluginid='.$pluginid.'&confirmed=yes', 'form', array('pluginname' => $plugin['name'], 'toversion' => $plugin['version']));
-
-	} else {
-
-		dsetcookie('uninstallreason', $_GET['uninstallreason'] ? '|'.implode('|', $_GET['uninstallreason']).'|' : '');
-
-		$identifier = $plugin['identifier'];
-		C::t('common_plugin')->delete($pluginid);
-		C::t('common_pluginvar')->delete_by_pluginid($pluginid);
-		C::t('common_nav')->delete_by_type_identifier(3, $identifier);
-
-		foreach(array('script', 'template') as $type) {
-			loadcache('pluginlanguage_'.$type, 1);
-			if(isset($_G['cache']['pluginlanguage_'.$type][$identifier])) {
-				unset($_G['cache']['pluginlanguage_'.$type][$identifier]);
-				savecache('pluginlanguage_'.$type, $_G['cache']['pluginlanguage_'.$type]);
-			}
-		}
-
-		updatecache(array('plugin', 'setting', 'styles'));
-		cleartemplatecache();
-		updatemenu('plugin');
-
-		if(!empty($pluginarray['uninstallfile']) && preg_match('/^[\w\.]+$/', $pluginarray['uninstallfile'])) {
-			$filename = DISCUZ_ROOT.'./source/plugin/'.$plugin['identifier'].'/'.$pluginarray['uninstallfile'];
-			if(file_exists($filename)) {
-				loadcache('pluginlanguage_install');
-				$installlang = $_G['cache']['pluginlanguage_install'][$plugin['identifier']];
-				@include $filename;
-			}
-		}
-
-		cron_delete($dir);
-
-		loadcache('pluginlanguage_install', 1);
-		if(!empty($_G['cache']['pluginlanguage_install']) && isset($_G['cache']['pluginlanguage_install'][$identifier])) {
-			unset($_G['cache']['pluginlanguage_install'][$identifier]);
-			savecache('pluginlanguage_install', $_G['cache']['pluginlanguage_install']);
-		}
-
-		cloudaddons_uninstall($dir.'.plugin', DISCUZ_ROOT.'./source/plugin/'.$dir);
-		cpmsg('plugins_delete_succeed', "action=plugins", 'succeed');
 	}
+
+	updatecache(array('plugin', 'setting', 'styles'));
+	cleartemplatecache();
+	updatemenu('plugin');
+
+	if(!empty($pluginarray['uninstallfile']) && preg_match('/^[\w\.]+$/', $pluginarray['uninstallfile'])) {
+		$filename = DISCUZ_ROOT.'./source/plugin/'.$plugin['identifier'].'/'.$pluginarray['uninstallfile'];
+		if(file_exists($filename)) {
+			loadcache('pluginlanguage_install');
+			$installlang = $_G['cache']['pluginlanguage_install'][$plugin['identifier']];
+			@include $filename;
+		}
+	}
+
+	cron_delete($dir);
+
+	loadcache('pluginlanguage_install', 1);
+	if(!empty($_G['cache']['pluginlanguage_install']) && isset($_G['cache']['pluginlanguage_install'][$identifier])) {
+		unset($_G['cache']['pluginlanguage_install'][$identifier]);
+		savecache('pluginlanguage_install', $_G['cache']['pluginlanguage_install']);
+	}
+
+	cloudaddons_uninstall($dir.'.plugin', DISCUZ_ROOT.'./source/plugin/'.$dir);
+	cpmsg('plugins_delete_succeed', "action=plugins", 'succeed');
 
 } elseif($operation == 'vars') {
 

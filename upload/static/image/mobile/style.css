@@ -218,7 +218,7 @@
 		.btn_qqlogin a:hover { background: url(./images/qqlogin_on.png) no-repeat; }
 		.loginbox p { line-height:35px; font-size:14px; color:#AFAFAF;}
 		.reg_link a { background: url(./images/icon_arrow.png) no-repeat 100% center; padding-right:10px; color:#AFAFAF; }
-		.px{ border: 0; padding: 2px 4px; line-height: 17px; font-size:15px; }
+		.px{ border:1px solid #ddd; padding: 2px 4px; line-height: 17px; font-size:15px; }
 		.px:focus { color:#4C4C4C;}
 		.p_fre { width: auto !important; }
 		.sel_list { width:100%;border: 0; padding: 2px 4px; font-size:14px; font-weight:700; }

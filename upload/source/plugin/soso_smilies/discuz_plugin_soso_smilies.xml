@@ -39,7 +39,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="version"><![CDATA[X3.2]]></item>
 		<item id="enablefile"><![CDATA[switch.php]]></item>
 		<item id="disablefile"><![CDATA[switch.php]]></item>
 	</item>

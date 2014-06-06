@@ -1073,7 +1073,8 @@ Note on the CSS Hack:
 	Explain:		Switch style menu
 	Last Modify:	lushnis
 */
-/*vot*/	#toptb a#sslct, #toptb a.switchblind { /*width: 10px; background: url({IMGDIR}/style_switch.png) no-repeat 50% 50%; text-indent: -9999px; overflow: hidden;*/ }
+/*vot*/	#toptb a#sslct { /*width: 10px; background: url({IMGDIR}/style_switch.png) no-repeat 50% 50%; text-indent: -9999px; overflow: hidden;*/ }
+/*vot*/	#toptb a.switchblind { width: 10px; background: url({IMGDIR}/style_switch.png) no-repeat 50% 50%; text-indent: -9999px; overflow: hidden; }
 /*vot*/	#sslct img { vertical-align:middle; }
 	.switchwidth:hover{ background: url({IMGDIR}/switch_width.png) no-repeat 100% -36px; }
 /*vot*/	#sslct_menu { padding: 2px; }

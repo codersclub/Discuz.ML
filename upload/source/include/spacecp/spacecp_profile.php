@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_profile.php 33688 2013-08-02 03:00:15Z nemohou $
+ *      $Id: spacecp_profile.php 34515 2014-05-14 02:04:00Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -51,7 +51,20 @@ if($_G['setting']['regverify'] == 2 && $_G['groupid'] == 8) {
 }
 if($_G['setting']['connect']['allow']) {
 	$connect = C::t('#qqconnect#common_member_connect')->fetch($_G['uid']);
-	$conisregister = $operation == 'password' && $_G['setting']['connect']['allow'] && $connect['conisregister'];
+	$conisregister = $operation == 'password' && $connect['conisregister'];
+}
+
+if(in_array('wechat', $_G['setting']['plugins']['available'])) {
+	if($_G['wechat']['setting']['wechat_qrtype']) {
+		$wechatuser = C::t('#wechat#common_member_wechatmp')->fetch($_G['uid']);
+		if($wechatuser && !$wechatuser['status']) {
+			$wechatuser['isregister'] = 1;
+		}
+	} else {
+		$wechatuser = C::t('#wechat#common_member_wechat')->fetch($_G['uid']);
+	}
+
+	$conisregister = $operation == 'password' && $wechatuser['isregister'];
 }
 
 if(submitcheck('profilesubmit')) {
@@ -300,6 +313,14 @@ if(submitcheck('profilesubmit')) {
 		}
 	}
 
+	if(in_array('mobile', $_G['setting']['plugins']['available']) && $wechatuser['isregister']) {
+		$_GET['oldpassword'] = '';
+		$ignorepassword = 1;
+		if(empty($_GET['newpassword'])) {
+			showmessage('profile_passwd_empty');
+		}
+	}
+
 	if($_GET['questionidnew'] === '') {
 		$_GET['questionidnew'] = $_GET['answernew'] = '';
 	} else {
@@ -352,6 +373,10 @@ if(submitcheck('profilesubmit')) {
 	}
 	if($_G['setting']['connect']['allow']) {
 		C::t('#qqconnect#common_member_connect')->update($_G['uid'], array('conisregister' => 0));
+	}
+
+	if(in_array('mobile', $_G['setting']['plugins']['available']) && $wechatuser['isregister']) {
+		C::t('#wechat#common_member_wechat')->update($_G['uid'], array('isregister' => 0));
 	}
 
 	$authstr = false;

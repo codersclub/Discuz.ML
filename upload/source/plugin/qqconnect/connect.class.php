@@ -4,7 +4,7 @@
  *		[Discuz! X] (C)2001-2099 Comsenz Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
- *		$Id: connect.class.php 33545 2013-07-04 07:06:27Z nemohou $
+ *		$Id: connect.class.php 34497 2014-05-09 09:05:09Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -95,34 +95,6 @@ class plugin_qqconnect extends plugin_qqconnect_base {
 		}
 		if($param['caller'] == 'messagecutstr') {
 			$_G['discuzcodemessage'] = preg_replace('/\[tthread=(.+?)\](.*?)\[\/tthread\]/', '', $_G['discuzcodemessage']);
-		}
-	}
-
-	function avatar($param) {
-		global $_G;
-		if($this->allow) {
-			if($_G['basescript'] == 'home' && CURMODULE == 'space' && (!$_GET['do'] || in_array($_GET['do'], array('profile', 'index')))) {
-				$avataruid = $_GET['uid'];
-			} elseif(CURMODULE == 'viewthread') {
-				$avataruid = $_G['uid'];
-			} else {
-				return;
-			}
-			list($uid, $size, $returnsrc) = $param['param'];
-			if($returnsrc || $size && $size != 'middle' || $uid != $avataruid) {
-				return;
-			}
-
-			$connectUserInfo = array();
-			if ($uid) {
-				$connectUserInfo = C::t('#qqconnect#common_member_connect')->fetch($uid);
-			}
-
-			if ($connectUserInfo) {
-				if($connectUserInfo['conisqqshow'] && $connectUserInfo['conopenid']) {
-					$_G['hookavatar'] = $this->_qqshow_img($connectUserInfo['conopenid']);
-				}
-			}
 		}
 	}
 
@@ -486,9 +458,6 @@ class plugin_qqconnect extends plugin_qqconnect_base {
 			if($post['anonymous']) {
 				continue;
 			}
-			if($openids[$post['authorid']]) {
-				$postlist[$pid]['avatar'] = $this->_qqshow_img($openids[$post['authorid']]);
-			}
 		}
 
 		if($page == 1 && $postlist[$_G['forum_firstpid']]['invisible'] == 0) {
@@ -530,11 +499,6 @@ class plugin_qqconnect extends plugin_qqconnect_base {
 		}
 
 		return $return;
-	}
-
-	function _qqshow_img($openid) {
-		global $_G;
-		return '<img width="120" src="http://qs.qlogo.cn/qsthirdbg/'.$_G['setting']['connectappid'].'/'.$openid.'/140" />';
 	}
 
 	function _viewthread_fastpost_btn_extra_output() {

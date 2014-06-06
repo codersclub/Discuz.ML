@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_message.php 34254 2013-11-25 03:36:48Z nemohou $
+ *      $Id: lang_message.php 34503 2014-05-12 09:53:16Z nemohou $
  *
  *      This file is automatically generate
  *	Modified by Valery Votintsev, codersclub.org
@@ -224,8 +224,8 @@ $lang = array (
   'login_seccheck2' => '请输入验证码后继续登录',
   'login_succeed' => '欢迎您回来，{usergroup} {username}，现在将转入登录前页面',
   'login_strike' => '密码错误次数过多，请 15 分钟后重新登录',
-/*20140101*/  'logout_succeed' => '您已退出站点，现在将以游客身份转入退出前页面，请稍候…… {ucsynlogout} ',
-/*20140101*/  'location_logout_succeed_mobile' => '您已退出站点，现在将以游客身份转入退出前页面，请稍候……',
+  'logout_succeed' => '您已退出站点，现在将以游客身份转入退出前页面，请稍候…… {ucsynlogout} ',
+  'location_logout_succeed_mobile' => '您已退出站点，现在将以游客身份转入退出前页面，请稍候……',
   'register_activation_invalid' => '抱歉，激活失败，请重新登录验证需要激活的用户',
   'profile_username_tooshort' => '抱歉，您输入的用户名小于 3 个字符，请输入一个较长的用户名',
   'profile_username_toolong' => '抱歉，您的用户名超过 15 个字符，请输入一个较短的用户名',
@@ -244,6 +244,7 @@ $lang = array (
   'magicuse_object_once_limit' => '抱歉，已对该对象使用过此道具，不能重复使用',
   'magicuse_bad_object' => '尚未正确选择道具要作用的对象',
   'magicuse_has_no_valid_friend' => '抱歉，此道具仅对您的好友有效',
+/*3.2*/  'mobile_template_no_found' => '您访问的页面无手机页面，是否进一步访问电脑版？<br /><br /><a href="{url}">继续访问</a><br /><br />',
 
   'portal_status_off' => '抱歉，门户功能尚未开启',
 

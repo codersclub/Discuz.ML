@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cache_setting.php 33989 2013-09-13 10:11:27Z nemohou $
+ *      $Id: cache_setting.php 34521 2014-05-14 09:07:25Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -232,7 +232,14 @@ function build_cache_setting() {
 	$data['domain']['defaultindex'] = isset($data['defaultindex']) && $data['defaultindex'] != '#' ? $data['defaultindex'] : '';
 	$data['domain']['holddomain'] = isset($data['holddomain']) ? $data['holddomain'] : '';
 	$data['domain']['list'] = array();
-	foreach(C::t('common_domain')->fetch_all_by_idtype(array('subarea', 'forum', 'topic', 'channel')) as $value) {
+	foreach(C::t('common_domain')->fetch_all_by_idtype(array('subarea', 'forum', 'topic', 'channel', 'plugin')) as $value) {
+		if($value['idtype'] == 'plugin') {
+			$plugin = C::t('common_plugin')->fetch($value['id']);
+			if(!$plugin || !$plugin['available']) {
+				continue;
+			}
+			$value['id'] = $plugin['identifier'];
+		}
 		$data['domain']['list'][$value['domain'].'.'.$value['domainroot']] = array('id' => $value['id'], 'idtype' => $value['idtype']);
 	}
 	writetocache('domain', getcachevars(array('domain' => $data['domain'])));
@@ -385,6 +392,11 @@ function build_cache_setting() {
 	} elseif(!$data['jspath']) {
 		$data['jspath'] = 'static/js/';
 	}
+
+	if(!$data['csspathv']) {
+		$data['csspathv'] = 'data/cache/';
+	}
+	$data['csspath'] = $data['csspathv'].'style_';
 
 	if($data['cacheindexlife']) {
 		$cachedir = DISCUZ_ROOT.'./'.$data['cachethreaddir'];
@@ -636,6 +648,8 @@ function get_cachedata_setting_plugin($method = '') {
 		}
 		savecache('adminmenu', array_merge((array)$adminmenu[0], (array)$adminmenu[1]));
 	}
+
+
 
 	$data['pluginhooks'] = array();
 	foreach(array('hookscript', 'hookscriptmobile') as $hooktype) {

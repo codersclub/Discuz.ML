@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: index.php 33630 2013-07-22 08:24:23Z nemohou $
+ *      $Id: index.php 34524 2014-05-15 04:42:23Z nemohou $
  */
 
 if(!empty($_SERVER['QUERY_STRING']) && is_numeric($_SERVER['QUERY_STRING'])) {
@@ -27,8 +27,8 @@ if(!empty($_SERVER['QUERY_STRING']) && is_numeric($_SERVER['QUERY_STRING'])) {
 			$_ENV['curapp'] = array_search($_SERVER['HTTP_HOST'], $_ENV['domain']['app']);
 			if($_ENV['curapp'] == 'mobile') {
 				$_ENV['curapp'] = 'forum';
-				if(@$_GET['mobile'] != 'no') {
-					@$_GET['mobile'] = 'yes';
+				if(!isset($_GET['mobile'])) {
+					@$_GET['mobile'] = '2';
 				}
 			}
 			if($_ENV['curapp'] == 'default' || !isset($_ENV['defaultapp'][$_ENV['curapp'].'.php'])) {
@@ -40,26 +40,30 @@ if(!empty($_SERVER['QUERY_STRING']) && is_numeric($_SERVER['QUERY_STRING'])) {
 			$list = $_ENV['domain']['list'];
 			if(isset($list[$_SERVER['HTTP_HOST']])) {
 				$domain = $list[$_SERVER['HTTP_HOST']];
-				$id = intval($domain['id']);
 				switch($domain['idtype']) {
 					case 'subarea':
 						$_ENV['curapp'] = 'forum';
-						$_GET['gid'] = $id;
+						$_GET['gid'] = intval($domain['id']);
 						break;
 					case 'forum':
 						$_ENV['curapp'] = 'forum';
 						$_GET['mod'] = 'forumdisplay';
-						$_GET['fid'] = $id;
+						$_GET['fid'] = intval($domain['id']);
 						break;
 					case 'topic':
 						$_ENV['curapp'] = 'portal';
 						$_GET['mod'] = 'topic';
-						$_GET['topicid'] = $id;
+						$_GET['topicid'] = intval($domain['id']);
 						break;
 					case 'channel':
 						$_ENV['curapp'] = 'portal';
 						$_GET['mod'] = 'list';
-						$_GET['catid'] = $id;
+						$_GET['catid'] = intval($domain['id']);
+						break;
+					case 'plugin':
+						$_ENV['curapp'] = 'plugin';
+						$_GET['id'] = $domain['id'];
+						$_GET['fromapp'] = 'index';
 						break;
 				}
 			} elseif(count($_ENV['hostarr']) > 2 && $_ENV['hostarr'][0] != 'www' && !checkholddomain($_ENV['hostarr'][0])) {
@@ -116,9 +120,9 @@ if(!empty($_SERVER['QUERY_STRING']) && is_numeric($_SERVER['QUERY_STRING'])) {
 if(!empty($url)) {
 	$delimiter = strrpos($url, '?') ? '&' : '?';
 	if(isset($_GET['fromuid']) && $_GET['fromuid']) {
-		$url .= $delimiter.'fromuid='.$_GET['fromuid'];
+		$url .= sprintf('%sfromuid=%d', $delimiter, $_GET['fromuid']);
 	} elseif(isset($_GET['fromuser']) && $_GET['fromuser']) {
-		$url .= $delimiter.'fromuser='.$_GET['fromuser'];
+		$url .= sprintf('%sfromuser=%s', $delimiter, rawurlencode($_GET['fromuser']));
 	}
 	header("HTTP/1.1 301 Moved Permanently");
 	header("location: $url");

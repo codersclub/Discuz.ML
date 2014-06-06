@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: notify_trade.php 34252 2013-11-25 03:12:09Z nemohou $
+ *      $Id: notify_trade.php 34251 2013-11-25 03:10:11Z nemohou $
  */
 
 define('IN_API', true);

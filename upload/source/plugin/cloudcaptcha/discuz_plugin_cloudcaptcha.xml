@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
 	<item id="Data">
@@ -13,7 +13,7 @@
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
 			<item id="version"><![CDATA[1.0]]></item>
 		</item>
-		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="version"><![CDATA[X3.2]]></item>
 		<item id="language">
 			<item id="scriptlang">
 				<item id="cloudcaptcha_name"><![CDATA[Cloud Captcha]]></item>

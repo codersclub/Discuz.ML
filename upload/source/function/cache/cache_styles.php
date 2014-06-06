@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cache_styles.php 32532 2013-02-07 04:09:34Z zhangguosheng $
+ *      $Id: cache_styles.php 34182 2013-10-29 08:48:22Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -130,9 +130,9 @@ function writetocsscache($data) {
 			}
 			$cssdata = preg_replace("/\{([A-Z0-9]+)\}/e", '\$data[strtolower(\'\1\')]', $cssdata);
 			$cssdata = preg_replace("/<\?.+?\?>\s*/", '', $cssdata);
-			$cssdata = !preg_match('/^http:\/\//i', $data['styleimgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['styleimgdir'], '/')."/i", "url(\\1../../$data[styleimgdir]", $cssdata) : $cssdata;
-			$cssdata = !preg_match('/^http:\/\//i', $data['imgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['imgdir'], '/')."/i", "url(\\1../../$data[imgdir]", $cssdata) : $cssdata;
-			$cssdata = !preg_match('/^http:\/\//i', $data['staticurl']) ? preg_replace("/url\(([\"'])?".preg_quote($data['staticurl'], '/')."/i", "url(\\1../../$data[staticurl]", $cssdata) : $cssdata;
+			$cssdata = !preg_match('/^http:\/\//i', $data['styleimgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['styleimgdir'], '/')."/i", "url(\\1$_G[siteurl]$data[styleimgdir]", $cssdata) : $cssdata;
+			$cssdata = !preg_match('/^http:\/\//i', $data['imgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['imgdir'], '/')."/i", "url(\\1$_G[siteurl]$data[imgdir]", $cssdata) : $cssdata;
+			$cssdata = !preg_match('/^http:\/\//i', $data['staticurl']) ? preg_replace("/url\(([\"'])?".preg_quote($data['staticurl'], '/')."/i", "url(\\1$_G[siteurl]$data[staticurl]", $cssdata) : $cssdata;
 /*vot*/			if($entry == 'module.css' || $entry == 'module_rtl.css') {
 				$cssdata = preg_replace('/\/\*\*\s*(.+?)\s*\*\*\//', '[\\1]', $cssdata);
 			}

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 33835 2013-08-20 07:16:13Z nemohou $
+ *      $Id: lang_template.php 34422 2014-04-23 09:56:17Z nemohou $
  *
  *	Modified by Valery Votintsev, codersclub.org
  */
@@ -83,7 +83,7 @@ $lang = array (
   'portal_manage' => '门户管理',
   'remind' => '提醒',
   'setup' => '设置',
-/*3.1*/  'freeze' => '已冻结',
+  'freeze' => '已冻结',
   'switch_narrow' => '切换到窄版',
   'switch_wide' => '切换到宽版',
   'switch_blind' => '开启辅助访问',
@@ -154,8 +154,8 @@ $lang = array (
   'input_message2' => '个字符',
   'report' => '举报',
   'report_reason' => '请点击举报理由',
-/*3.1*/  'report_reason_message' => "['广告垃圾','违规内容','恶意灌水','重复发帖','其他']",
-/*3.1*/  'report_reason_other' => '请填写举报内容',
+  'report_reason_message' => "['广告垃圾','违规内容','恶意灌水','重复发帖','其他']",
+  'report_reason_other' => '请填写举报内容',
   'seccode' => '验证码',
   'seccode_change' => '换一个',
   'secqaa' => '验证问答',
@@ -348,6 +348,7 @@ $lang = array (
   'connect_register_bind' => '已有本站帐号',
   'connect_member_login_tip' => '欢迎使用QQ帐号登录  {$_G[setting][bbname]}',
   'connect_config_newpassword_comment' => '您目前使用的是QQ帐号绑定本站，您可以在这里设置独立密码，只有设置了独立密码后本站需要填写密码的相应功能才可使用',
+/*3.2*/  'wechat_config_newpassword_comment' => '您目前使用的是微信帐号绑定本站，您可以在这里设置独立密码，只有设置了独立密码后本站需要填写密码的相应功能才可使用',
   'email' => 'Email',
   'security_question' => '安全提问(未设置请忽略)',
   'security_question_0' => '安全提问',
@@ -424,8 +425,8 @@ $lang = array (
   'return_list' => '返回列表',
   'return_forum' => '返回版块',
   'temporarily_to_remind' => '暂不提醒',
-/*3.1*/  'myitem' => '我的',
-/*3.1*/  'mypost' => '帖子',
+  'myitem' => '我的',
+  'mypost' => '帖子',
 
 //---------------------------
 // Added by Valery Votintsev

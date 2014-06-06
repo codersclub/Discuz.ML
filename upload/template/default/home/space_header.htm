@@ -2,7 +2,7 @@
 <!--{eval $_G[cookie][extstyle] = false;}-->
 <!--{subtemplate common/header_common}-->
 	<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
-<!--vot-->	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_space{RTLSUFFIX}.css?{VERHASH}" />
+<!--vot-->	<link rel="stylesheet" type="text/css" href='{$_G['setting']['csspath']}{STYLEID}_css_space{RTLSUFFIX}.css?{VERHASH}' />
 	<link id="style_css" rel="stylesheet" type="text/css" href="{STATICURL}space/{if $space[theme]}$space[theme]{else}t1{/if}/style.css?{VERHASH}">
 	<style id="diy_style">$space[spacecss]</style>
 </head>
@@ -12,11 +12,12 @@
 	<div id="ajaxwaitid"></div>
 
 	<!--{if $space['self'] && $_GET['diy'] == 'yes' && $do == 'index' }-->
-<!--vot-->	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_diy{RTLSUFFIX}.css?{VERHASH}" />
+<!--vot-->	<link rel="stylesheet" type="text/css" href='{$_G['setting']['csspath']}{STYLEID}_css_diy{RTLSUFFIX}.css?{VERHASH}' />
 	<!--{subtemplate home/space_diy}-->
 	<!--{/if}-->
 
 	<div id="toptb" class="cl">
+<!--vot-->
 			<div class="y">
 <!--vot Multi-Lingual -->
 <!--vot-->		<!--{if $_G[config][enable_multilingual]}-->

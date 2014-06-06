@@ -460,6 +460,7 @@ EOT;
 				cpmsg(cplang('setting_functions_makehtml_topichtmldir_invalid').','.cplang('return'), NULL, 'error');
 			}
 			$topichtmldir = realpath($settingnew['makehtml']['topichtmldir']);
+
 			if($topichtmldir === false) {
 				dmkdir($settingnew['makehtml']['topichtmldir'], 777, false);
 				$topichtmldir = realpath($settingnew['makehtml']['topichtmldir']);
