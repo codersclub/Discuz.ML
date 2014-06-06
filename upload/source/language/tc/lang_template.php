@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 33835 2013-08-20 07:16:13Z nemohou $
+ *      $Id: lang_template.php 34422 2014-04-23 09:56:17Z nemohou $
  *
  *	Modified by Valery Votintsev, codersclub.org
  */
@@ -348,6 +348,7 @@ $lang = array (
   'connect_register_bind' => '已有本站帳號',
   'connect_member_login_tip' => '歡迎使用QQ帳號登錄  {$_G[setting][bbname]}',
   'connect_config_newpassword_comment' => '您目前使用的是QQ帳號綁定本站，您可以在這裡設置獨立密碼，只有設置了獨立密碼後本站需要填寫密碼的相應功能才可使用',
+  'wechat_config_newpassword_comment' => '您目前使用的是微信帳號綁定本站，您可以在這裡設置獨立密碼，只有設置了獨立密碼後本站需要填寫密碼的相應功能才可使用',
   'email' => 'Email',
   'security_question' => '安全提問(未設置請忽略)',
   'security_question_0' => '安全提問',

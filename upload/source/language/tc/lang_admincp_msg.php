@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_msg.php 33985 2013-09-13 05:45:27Z nemohou $
+ *      $Id: lang_admincp_msg.php 34498 2014-05-12 02:51:02Z nemohou $
  *
  *      This file is automatically generate
  */
@@ -225,6 +225,7 @@ $lang = array (
   'setting_domain_repeat_error' => '配置中存在重複的域名',
   'setting_domain_need_default_error' => '請設置默認域名',
   'only_two_names_from_english_composition_and_figures' => '抱歉，您設置的二級域名只能含有英文和數字',
+  'two_domain_have_been_occupied' => '抱歉，二級域名已被佔用',
 
   'alipay_not_contract' => '請輸入支付寶簽約用戶信息',
   'alipay_succeed' => '支付寶功能設定成功 ',
@@ -414,8 +415,6 @@ $lang = array (
   'plugins_edit_modules_duplicated' => '您輸入的程序模塊名稱與現有模塊重複',
   'plugins_edit_var_invalid' => '您輸入的配置變量名不合法或重複',
   'plugins_delete_error' => '您不能卸載系統插件。',
-  'plugins_delete_confirm' => '您確定要卸載 {pluginname} {toversion} 插件嗎？<br /><br />請選擇您卸載該應用的原因，以便我們以後為您提供更好的應用：<br /><br /><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="1" />功能不滿足需求</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="2" />界面不美觀</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="3" />效率問題運行速度慢</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="4" />發現了更好的應用</label><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="5" />純試用現在卸載</label>',
-  'styles_delete_confirm' => '您確定要卸載這些風格嗎？<br /><br />請選擇您卸載該應用的原因，以便我們以後為您提供更好的應用：<br /><br /><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="1" />功能不滿足需求</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="2" />界面不美觀</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="3" />效率問題運行速度慢</label> <label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="4" />發現了更好的應用</label><label><input name="uninstallreason[]" class="checkbox" type="checkbox" value="5" />純試用現在卸載</label>',
   'pluginvar_not_found' => '插件變量未找到',
   'plugins_edit_var_title_invalid' => '您沒有輸入配置名稱',
   'plugins_edit_vars_succeed' => '插件變量配置更新成功 ',

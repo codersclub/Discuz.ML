@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp_searchindex.php 34035 2013-09-24 01:43:53Z nemohou $
+ *      $Id: lang_admincp_searchindex.php 34156 2013-10-25 01:10:00Z nemohou $
  *
  *	This file is automatically generate
  */
@@ -4233,9 +4233,6 @@ $lang = array (
       35 => 'setting_access_register_send_register_url',
       36 => '通過郵件發送註冊鏈接',
       37 => '開啟後系統會發一條註冊的地址到用戶的郵箱，從該地址鏈接過來的允許註冊，同時建議UCenter中開啟一個郵箱只允許註冊一個帳戶注意：只有在站長 - 郵件設置中完成郵件設置，確保郵件能發送成功下可以開啟該功能 ',
-      38 => 'setting_access_register_forge_email',
-      39 => '取消註冊郵箱必填',
-      40 => '開啟後如果用戶不填寫註冊郵箱，將自動生成一個隨機郵箱地址',
       41 => 'setting_access_register_link_name',
       42 => '註冊鏈接文字',
       43 => '設置站點註冊頁的鏈接文字，默認為「立即註冊」',

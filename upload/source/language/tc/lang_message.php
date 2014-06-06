@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_message.php 34254 2013-11-25 03:36:48Z nemohou $
+ *      $Id: lang_message.php 34503 2014-05-12 09:53:16Z nemohou $
  *
  *	Modified by Valery Votintsev, codersclub.org
  */
@@ -243,6 +243,7 @@ $lang = array (
   'magicuse_object_once_limit' => '抱歉，已對該對像使用過此道具，不能重複使用',
   'magicuse_bad_object' => '尚未正確選擇道具要作用的對象',
   'magicuse_has_no_valid_friend' => '抱歉，此道具僅對您的好友有效',
+  'mobile_template_no_found' => '您訪問的頁面無手機頁面，是否進一步訪問電腦版？<br /><br /><a href="{url}">繼續訪問</a><br /><br />',
 
   'portal_status_off' => '抱歉，門戶功能尚未開啟',
 
