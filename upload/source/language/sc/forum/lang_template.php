@@ -1308,10 +1308,10 @@ $lang = array (
   'hide_preview' => '隐藏预览',
   'collapse_preview' => '收起预览',
   'hot_thread' => '热帖',
-/*3.1*/  'hidden' => '隐藏',
-/*3.1*/  'hiderecover_tips' => '点击恢复主题隐藏状态',
-/*3.1*/  'hiderecover' => '恢复隐藏',
-/*3.1*/  'content_actions' => '更多操作',
+  'hidden' => '隐藏',
+  'hiderecover_tips' => '点击恢复主题隐藏状态',
+  'hiderecover' => '恢复隐藏',
+  'content_actions' => '更多操作',
 
 // Added by Valery Votintsev
 	'view_thread_textmode'		=> '文字模式',//'Text mode',

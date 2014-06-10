@@ -400,7 +400,7 @@ $lang = array (
   'recyclebin' => '回收站',
   'taobao' => '阿里旺旺',
   'del_favorite' => '删除选中收藏',
-/*3.1*/  'collection_favorite' => '添加到淘帖',
+  'collection_favorite' => '添加到淘帖',
   'del_select_favorite_confirm' => '确定要删除选中的收藏吗？',
   'favorite_album' => '相册',
   'favorite_all' => '全部收藏',
@@ -1136,7 +1136,7 @@ $lang = array (
   'show_feed_homepage' => '在首页显示该用户组的好友动态',
   'surprise_they_near' => '惊喜，他们就在您的附近 ',
   'they_online_add_friend' => '他们当前正在线，加为好友就可以互动啦 ',
-/*3.1*/  'view_note_message' => '附言为可选，{$tospace[username]} 会看到这条附言，最多 10 个字 ',
+  'view_note_message' => '附言为可选，{$tospace[username]} 会看到这条附言，最多 10 个字 ',
   'you_have_common_friends' => '你们目前有 {eval echo count($list)} 位共同的好友',
   'you_have_no_common_friends' => '你们目前还没有共同的好友',
   'your_common_friends' => '查看你们的共同好友',
@@ -1540,10 +1540,10 @@ $lang = array (
   'connect_fill_profile_to_comment' => '您需要<a href="member.php?mod=connect" class="xi2">完善帐号信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">绑定已有帐号</a> 后才可以留言',
   'save_to_album' => '保存到相册',
   'usergroup_expired' => '您当前的用户组已经到期，请选择继续续费还是要切换到其他用户组',
-/*3.1*/  'freeze_pw_tips' => '您当前的帐号存在安全隐患已经被冻结，请修改密码解除冻结状态',
-/*3.1*/  'freeze_email_tips' => '您当前的帐号已经太长时间未登录网站已经被冻结，必须验证邮箱后才能解除冻结状态 <a href="home.php?mod=spacecp&ac=profile&op=password&resend=1" class="xi2">重新接收验证邮件</a>',
-/*3.1*/  'freeze_reason' => '申诉理由',
-/*3.1*/  'freeze_reason_comment' => '如果您无法通过邮箱验证，请填写申诉理由',
+  'freeze_pw_tips' => '您当前的帐号存在安全隐患已经被冻结，请修改密码解除冻结状态',
+  'freeze_email_tips' => '您当前的帐号已经太长时间未登录网站已经被冻结，必须验证邮箱后才能解除冻结状态 <a href="home.php?mod=spacecp&ac=profile&op=password&resend=1" class="xi2">重新接收验证邮件</a>',
+  'freeze_reason' => '申诉理由',
+  'freeze_reason_comment' => '如果您无法通过邮箱验证，请填写申诉理由',
 
 //---------------------------------------------------------------
 // Added by Valery Votintsev
@@ -1560,4 +1560,3 @@ $lang = array (
 	'follow_intro4'		=> '您收听的人发的广播<br/>会在这里出现',//'Your content will be shown here',
 	'say_to'		=> '说',
 );
-?>

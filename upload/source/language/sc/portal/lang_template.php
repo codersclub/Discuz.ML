@@ -66,7 +66,7 @@ $lang = array (
   'article_validate_category' => '请选择系统分类',
   'article_validate_has_added' => '该文章已经添加过了',
   'article_validate_noexist' => '没有找到指定的文章',
-/*!*/  'article_html_existed' => 'HTML静态文件名重名',
+  'article_html_existed' => 'HTML静态文件名重名',
   'article_validate_title' => '标题长度(1~80字符)不符合要求',
   'grab' => '获取',
   'ignore' => '忽略',
@@ -311,10 +311,10 @@ $lang = array (
   'view_publisher' => '发布者',
   'view_related' => '相关阅读',
   'view_views' => '查看',
-/*!*/  'pre_article' => '上一篇：',
-/*!*/  'next_article' => '下一篇：',
-/*!*/  'display_order' => '显示位置',
-/*!*/  'filename' => '文件名',
+  'pre_article' => '上一篇：',
+  'next_article' => '下一篇：',
+  'display_order' => '显示位置',
+  'filename' => '文件名',
 
 // Added by Valery Votintsev
 	'select_all'	=> '全选',//'Select All',

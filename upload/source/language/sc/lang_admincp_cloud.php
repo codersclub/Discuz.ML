@@ -177,8 +177,8 @@ $extend_lang = array
 	'cloud_storage' => '旋风存储',
 	'cloud_storage_tips' => '<li>为网站节省空间带宽，让用户享受超大文件的高速存储，上传下载尽在云端。</li><li>体验高速上传下载，支持单个文件高达2GB的附件上传，附件永久有效，为论坛降低成本。</li>',
 
-/*3.1*/	'cloud_change_info' => '变更信息',
-/*3.1*/	'cloud_change_qq' => '更换绑定QQ',
+	'cloud_change_info' => '变更信息',
+	'cloud_change_qq' => '更换绑定QQ',
 
 	'setting_manyou' => '漫游应用设置',
 	'setting_manyou_tips' => '<li>开启漫游应用功能后，用户可以自由选择各种不同的应用(诸如德克萨斯扑克、弹弹堂、十年一剑......)在站内进行使用。</li><li>漫游应用功能由 <a target="_blank" href="http://www.manyou.com/www/">MYOP开放平台</a> 提供， Manyou Open Platform(Manyou开放平台/MYOP)服务是由 Comsenz 公司为应用开发者提供的开放平台，启用漫游服务前，<a href="http://wiki.developer.manyou.com/wiki/index.php?title=MYOP%E7%BD%91%E7%AB%99%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE&printable=yes" target="_blank">请先阅读MYOP网站服务协议</a></li>',
@@ -342,7 +342,7 @@ $extend_lang = array
 	'security_modreason' => '防水墙自动处理',
 	'security_restore_user' => '恢复该用户',
 	'security_change_usergroup' => '更改用户组',
-/*3.1*/	'security_reopen' => '您的站点未成功开通防水墙，请<a href="'.ADMINSCRIPT.'?action=cloud&operation=security&anchor=reopen">再次开通</a>',
+	'security_reopen' => '您的站点未成功开通防水墙，请<a href="'.ADMINSCRIPT.'?action=cloud&operation=security&anchor=reopen">再次开通</a>',
 
 	'recyclebin_search_security_thread' => '仅包含防水墙处理的主题',
 	'recyclebin_search_security_post' => '仅包含防水墙处理的回帖',
@@ -352,7 +352,7 @@ $extend_lang = array
 	'security_setting' => '白名单设置',
 	'security_blanklist' => '白名单设置',
 	'security_setting_list' => '白名单设置',
-/*3.1*/	'security_reopen_list' => '再次开通',
+	'security_reopen_list' => '再次开通',
 	'security_tips' => '小技巧',
 	'security_tips_1' => '<li><p>系统识别到违规主题和违规回帖后，自动将主题和回帖放入<a href="admin.php?action=recyclebin" style="text-decoration:none; color:#0000FF;">回收站</a></p></li>',
 	'security_white_list_setting' => '白名单设置',

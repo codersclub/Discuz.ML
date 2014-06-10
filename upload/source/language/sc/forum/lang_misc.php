@@ -326,12 +326,12 @@ $lang = array
 	'plugin_memo' => '您有 <span class="xi1">{number}</span> 款应用有可用更新',
 	'plugin_link' => '现在更新',
 
-/*3.1*/	'seccode' => '验证码',
-/*3.1*/	'seccode_update' => '换一个',
-/*3.1*/	'seccode_player' => '<span style="padding:2px"><img border="0" style="vertical-align:middle" src="static/image/common/seccodeplayer.gif" /> <a href="javascript:;" onclick="window.document.seccodeplayer_{idhash}.SetVariable(\'isPlay\', 1)">播放验证码</a></span>',
-/*3.1*/	'secqaa' => '验证问答',
+	'seccode' => '验证码',
+	'seccode_update' => '换一个',
+	'seccode_player' => '<span style="padding:2px"><img border="0" style="vertical-align:middle" src="static/image/common/seccodeplayer.gif" /> <a href="javascript:;" onclick="window.document.seccodeplayer_{idhash}.SetVariable(\'isPlay\', 1)">播放验证码</a></span>',
+	'secqaa' => '验证问答',
 
-/*3.1*/	'mobileoem_creditrule' => '掌上论坛签到',
+	'mobileoem_creditrule' => '掌上论坛签到',
 
 // Added by Valery Votintsev, codersclub.org
 	'poll_reply_no_perms'	=> '您不能对自己的回帖进行投票',//'You can not reply the poll',
