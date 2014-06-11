@@ -922,7 +922,7 @@ Note on the CSS Hack:
 	.xl label, .xl label a { color: #C00; }
 	.xl1 li { height: 1.5em; overflow: hidden; }
 		.xl1_elp { float: left; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-	.xl2 li { float: left; margin: 2px 0; padding: 0; width: 50%; height: 1.5em; overflow: hidden; }
+/*vot*/	.xl2 li { /*float: left;*/ margin: 2px 0; padding: 0; /*width: 50%;*/ height: 1.5em; overflow: hidden; }
 	.xl ol, ol.xl { background: url({IMGDIR}/sortnum.png) no-repeat 0 3px; line-height: 21px; }
 		.xl ol li, ol.xl li { background: none; padding-left: 20px; }
 		.xl ol li, ol.xl li { height: 21px; }
