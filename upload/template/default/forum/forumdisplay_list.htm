@@ -244,7 +244,7 @@
 										<cite><!--{if $thread['lastposter']}--><a href="{if $thread[digest] != -2}home.php?mod=space&username=$thread[lastposterenc]{else}forum.php?mod=viewthread&tid=$thread[tid]&page={echo max(1, $thread[pages]);}{/if}" c="1"{if $groupcolor[$thread[lastposterid]]} style="color: $groupcolor[$thread[lastposterid]];"{/if}>$thread[lastposter]</a><!--{else}-->$_G[setting][anonymoustext]<!--{/if}--></cite>
 										<em><a href="{if $thread[digest] != -2 && !$thread[ordertype]}forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost$highlight#lastpost{else}forum.php?mod=viewthread&tid=$thread[tid]{if !$thread[ordertype]}&page={echo max(1, $thread[pages]);}{/if}{/if}">$thread[lastpost]</a></em>
 									</td>
-<!--{eval echo "<pre>"; print_r($thread); echo "</pre>";}-->
+<!--{/*vot*/ //DEBUG eval echo '<pre>'; print_r($thread); echo '</pre>';}-->
 								</tr>
 							</tbody>
 						<!--{/loop}-->
