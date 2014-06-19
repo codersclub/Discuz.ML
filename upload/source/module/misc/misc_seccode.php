@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_seccode.php 34093 2013-10-09 05:41:18Z nemohou $
+ *      $Id: misc_seccode.php 34646 2014-06-17 03:23:15Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -30,7 +30,7 @@ if($_GET['action'] == 'update') {
 		$htmlcode = "$('seccodeswf_$idhash').innerHTML='".lang('core', 'seccode_sound_tips')."' + AC_FL_RunContent('id', 'seccodeplayer_$idhash', 'name', 'seccodeplayer_$idhash', 'width', '0', 'height', '0', 'src', '$_G[siteurl]static/image/seccode/flash/flash1.swf', 'FlashVars', 'sFile=".rawurlencode("$_G[siteurl]misc.php?mod=seccode&update=$rand&idhash=$idhash")."', 'menu', 'false', 'allowScriptAccess', 'never', 'swLiveConnect', 'true', 'wmode', 'transparent');";
 		$message = '<span id="seccodeswf_'.$idhash.'"></span>'.lang('forum/misc', 'seccode_player', array('idhash' => $idhash));
 	} else {
-		if(!is_numeric($_G['setting']['seccodedata']['type'])) {
+		if(!is_numeric($_G['setting']['seccodedata']['type']) && preg_match('/^[\w\d:_]+$/i', $_G['setting']['seccodedata']['type'])) {
 			$etype = explode(':', $_G['setting']['seccodedata']['type']);
 			if(count($etype) > 1) {
 				$codefile = DISCUZ_ROOT.'./source/plugin/'.$etype[0].'/seccode/seccode_'.$etype[1].'.php';
@@ -95,7 +95,7 @@ EOF;
 		exit('Access Denied');
 	}
 
-	if(is_numeric($_G['setting']['seccodedata']['type'])) {
+	if(is_numeric($_G['setting']['seccodedata']['type']) || !preg_match('/^[\w\d:_]+$/i', $_G['setting']['seccodedata']['type'])) {
 
 		if(IN_MOBILE && in_array($_G['setting']['seccodedata']['type'], array(2, 3))) {
 			exit;

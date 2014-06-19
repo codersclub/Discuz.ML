@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: common.js 34486 2014-05-08 01:31:08Z nemohou $
+	$Id: common.js 34611 2014-06-11 10:28:49Z nemohou $
 //	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -567,7 +567,7 @@ function doane(event, preventDefault, stopPropagation) {
 
 function loadcss(cssname) {
 	if(!CSSLOADED[cssname]) {
-		var csspath = (!CSSPATH ? 'data/cache/style_' : CSSPATH);
+		var csspath = (typeof CSSPATH == 'undefined' ? 'data/cache/style_' : CSSPATH);
 		if(!$('css_' + cssname)) {
 			css = document.createElement('link');
 			css.id = 'css_' + cssname,

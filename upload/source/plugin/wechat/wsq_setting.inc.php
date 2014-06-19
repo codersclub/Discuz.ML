@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wsq_setting.inc.php 34566 2014-05-30 07:07:04Z nemohou $
+ *      $Id: wsq_setting.inc.php 34592 2014-06-06 09:20:29Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -30,7 +30,7 @@ if(!submitcheck('settingsubmit')) {
 
 	if($setting['wsq_siteid']) {
 			if(in_array('plugin', $_G['setting']['rewritestatus'])) {
-			$url = $_G['siteurl'].rewriteoutput('plugin', 1, 'wechat', 'access', '', 'op=access');
+			$url = $_G['siteurl'].rewriteoutput('plugin', 1, 'wechat', 'access');
 		} else {
 			$url = $_G['siteurl'].'plugin.php?id=wechat:access';
 		}
@@ -130,6 +130,14 @@ if(!submitcheck('settingsubmit')) {
 		));
 		WeChatHook::updateRedirect(array('plugin' => 'wechat', 'include' => 'response.class.php', 'class' => 'WSQResponse', 'method' => 'redirect'));
 		WeChatHook::updateViewPluginId('wechat');
+		if(!in_array('mobile', $_G['setting']['plugins']['available'])) {
+			$plugin = C::t('common_plugin')->fetch_by_identifier('mobile');
+			if(!$plugin) {
+				cpmsg(lang('plugin/wechat', 'wsq_mobile_plugin_error'), '', 'error');
+			}
+			C::t('common_plugin')->update($plugin['pluginid'], array('available' => 1));
+			updatecache(array('plugin', 'setting'));
+		}
 	} else {
 		$wechatredirect = WeChatHook::getRedirect();
 		if($wechatredirect['plugin'] == 'wechat') {

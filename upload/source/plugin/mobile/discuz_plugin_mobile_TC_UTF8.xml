@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[mobile/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.3.1]]></item>
+			<item id="version"><![CDATA[1.3.5]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[mobile]]></item>
@@ -39,7 +39,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2]]></item>
 		<item id="language">
 			<item id="scriptlang">
 				<item id="mobile_tip_ios"><![CDATA[<a href="http://www.discuz.net/mobile.php?platform=ios">用掌上論壇訪問本站,擁有更好閱讀體驗</a>]]></item>

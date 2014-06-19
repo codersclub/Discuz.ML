@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_db.php 33633 2013-07-22 09:45:44Z nemohou $
+ *      $Id: admincp_db.php 34644 2014-06-16 09:07:08Z hypowang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -40,7 +40,8 @@ if(!is_dir('./data/'.$backupdir)) {
 
 if($operation == 'export') {
 
-	if(!submitcheck('exportsubmit', 1)) {
+	$_SERVER['REQUEST_METHOD'] = 'POST';
+	if(!submitcheck('exportsubmit')) {
 
 		$shelldisabled = function_exists('shell_exec') ? '' : 'disabled';
 
@@ -233,7 +234,7 @@ if($operation == 'export') {
 						fclose($fp);
 					}
 					unset($sqldump, $zip, $content);
-					cpmsg('database_export_multivol_redirect', "action=db&operation=export&type=".rawurlencode($_GET['type'])."&saveto=server&filename=".rawurlencode($_GET['filename'])."&method=multivol&sizelimit=".rawurlencode($_GET['sizelimit'])."&volume=".rawurlencode($volume)."&tableid=".rawurlencode($tableid)."&startfrom=".rawurlencode($startrow)."&extendins=".rawurlencode($_GET['extendins'])."&sqlcharset=".rawurlencode($_GET['sqlcharset'])."&sqlcompat=".rawurlencode($_GET['sqlcompat'])."&exportsubmit=yes&usehex={$_GET['usehex']}&usezip={$_GET['usezip']}", 'loading', array('volume' => $volume));
+					cpmsg('database_export_multivol_redirect', "action=db&operation=export&formhash=".formhash()."&type=".rawurlencode($_GET['type'])."&saveto=server&filename=".rawurlencode($_GET['filename'])."&method=multivol&sizelimit=".rawurlencode($_GET['sizelimit'])."&volume=".rawurlencode($volume)."&tableid=".rawurlencode($tableid)."&startfrom=".rawurlencode($startrow)."&extendins=".rawurlencode($_GET['extendins'])."&sqlcharset=".rawurlencode($_GET['sqlcharset'])."&sqlcompat=".rawurlencode($_GET['sqlcompat'])."&exportsubmit=yes&usehex={$_GET['usehex']}&usezip={$_GET['usezip']}", 'loading', array('volume' => $volume));
 				}
 			} else {
 				$volume--;

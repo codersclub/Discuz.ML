@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: sub_threadlist.php 34527 2014-05-15 06:08:04Z nemohou $
+ *      $Id: sub_threadlist.php 34650 2014-06-18 08:14:29Z laoguozhang $
  */
 
 if (!defined('IN_MOBILE_API')) {
@@ -59,8 +59,11 @@ foreach ($GLOBALS['sublist'] as $k => $sublist) {
 
 if($_G['forum']['icon']) {
 	require_once libfile('function/forumlist');
-	if(!preg_match('/^http:\//', $_G['forum']['icon'])) {
-		$_G['forum']['icon'] = $_G['siteurl'] . get_forumimg($_G['forum']['icon']);
+	if(strncasecmp($_G['forum']['icon'], 'http://', 7) !== 0) {
+		$_G['forum']['icon'] = get_forumimg($_G['forum']['icon']);
+		if(strncasecmp($_G['forum']['icon'], 'http://', 7) !== 0) {
+			$_G['forum']['icon'] = $_G['siteurl'] . $_G['forum']['icon'];
+		}
 	}
 }
 

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: sub_sendreply.php 34424 2014-04-24 05:17:08Z nemohou $
+ *      $Id: sub_sendreply.php 34619 2014-06-13 01:36:17Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -35,7 +35,7 @@ if (trim($newmessage) != '') {
 	array_push($posts, $post);
 }
 
-if (count($posts) < 3 && ($thread['replies'] >= count($posts))) {
+if (count($posts) < 3 && ($thread['replies'] >= count($posts)) && !getstatus($thread['status'], 2)) {
 	$posts = array();
 	foreach (C::t('forum_post')->fetch_all_by_tid($thread['posttableid'], $thread['tid'], true, 'DESC', 0, 10, 0, 0) as $p) {
 		$p['message'] = preg_replace('/<\/*.*?>|&nbsp;|\r\n|\[attachimg\].*?\[\/attachimg\]|\[quote\].*?\[\/quote\]|\[\/*.*?\]/ms', '', $p['message']);

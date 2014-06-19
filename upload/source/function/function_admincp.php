@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_admincp.php 34500 2014-05-12 05:34:40Z nemohou $
+ *      $Id: function_admincp.php 34645 2014-06-16 09:08:07Z hypowang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -344,7 +344,7 @@ function cpmsg($message, $url = '', $type = '', $values = array(), $extra = '', 
 				$message = "<br />$message<br /><p class=\"margintop\"><input type=\"submit\" class=\"btn\" name=\"submit\" value=\"".cplang('start')."\" onclick=\"location.href='$url'\" />";
 			} else {
 				$message .= '<p class="marginbot"><a href="'.$url.'" class="lightlink">'.cplang($type == 'download' ? 'message_download' : 'message_redirect').'</a></p>';
-				$timeout = $type != 'loading' ? 10000 : 0;
+				$timeout = $type != 'loading' ? 3000 : 1000;
 				$message .= "<script type=\"text/JavaScript\">setTimeout(\"redirect('$url');\", $timeout);</script>";
 			}
 		} elseif($type != 'succeed') {

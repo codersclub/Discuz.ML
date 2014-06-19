@@ -1356,7 +1356,7 @@ $lang = array
 	'setting_profile_time_zone' => '时区',
 	'setting_profile_tips' => '<li>用户栏目分组至少必须启用一项，如果都不启用，默认为全部启用</li>',
 
-/*3.2*/	'setting_threadprofile_tpl_tpls' => '<li>{<b>标记</b>} 不含参数的贴内用户信息标记调用。</li><li>{<b>标记</b>=<b>参数</b>} 含参数的贴内用户信息标记调用，多个参数用","分割</li><li>{<b>标记</b>}<b>HTML</b>{<b>*</b>}<b>HTML</b>{/<b>标记</b>} 当有调用内容有值时显示 {*} 前后的 HTML 内容</li><li>“<b>plugin:插件标识</b>”格式的<b>标记</b>为插件增加的贴内用户信息标记调用。插件开发人员在设计新的贴内用户信息标记前请务必仔细阅读《<a href="http://dev.discuz.org/wiki" target="_blank">Discuz! 技术文库</a>》中的内容。</li>',
+/*3.2.1*/	'setting_threadprofile_tpl_tpls' => '<li>{<b>标记</b>} 不含参数的贴内用户信息标记调用。</li><li>{<b>标记</b>=<b>参数</b>} 含参数的贴内用户信息标记调用，多个参数用","分割</li><li>{<b>标记</b>}<b>HTML</b>{<b>*</b>}<b>HTML</b>{/<b>标记</b>} 当有调用内容有值时显示 {*} 前后的 HTML 内容</li><li>“<b>plugin:插件标识</b>”格式的<b>标记</b>为插件增加的贴内用户信息标记调用。插件开发人员在设计新的贴内用户信息标记前请务必仔细阅读《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技术文档</a>》中的内容。</li>',
 
 	'setting_numbercard' => '用户属性名片',
 	'setting_numbercard_row' => '第 {i} 列',
@@ -4825,8 +4825,8 @@ $lang = array
 	'moderate_m_home' => '家园审核项目',
 	'moderate_m_portal' => '门户审核项目',
 	'moderate' => '审核',
-/*3.2*/	'moderate_members' => '审核新用户',
-/*3.2*/	'moderate_members_tips' => '<li>本功能仅在 全局设置 的 新用户注册验证 中设置为“人工审核”时才有效</li>',
+/*3.2.1*/	'moderate_members' => '审核用户',
+/*3.2.1*/	'moderate_members_tips' => '<li>本功能仅在“新用户注册验证”中设置为“人工审核”时或者开启帐号保镖时才有效</li>',
 	'moderate_members_email' => '发 Email 通知被审核用户',
 	'moderate_members_submit_times' => '提交次数',
 	'moderate_members_submit_time' => '上次提交',

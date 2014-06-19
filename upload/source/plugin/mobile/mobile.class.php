@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.class.php 34558 2014-05-28 11:20:00Z nemohou $
+ *      $Id: mobile.class.php 34605 2014-06-10 02:37:15Z nemohou $
  */
 
 define("MOBILE_PLUGIN_VERSION", "4");
@@ -221,7 +221,7 @@ class base_plugin_mobile {
 		$_G['siteurl'] = preg_replace('/api\/mobile\/$/', '', $_G['siteurl']);
 		$_G['setting']['msgforward'] = '';
 		$_G['setting']['cacheindexlife'] = $_G['setting']['cachethreadlife'] = false;
-		if(function_exists('diconv') && !empty($_GET['charset'])) {
+		if(!$_G['setting']['mobile']['nomobileurl'] && function_exists('diconv') && !empty($_GET['charset'])) {
 			$_GET = mobile_core::diconv_array($_GET, $_GET['charset'], $_G['charset']);
 		}
 		if(class_exists('mobile_api', false) && method_exists('mobile_api', 'common')) {

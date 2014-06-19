@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: editor.js 34265 2013-11-27 03:27:04Z nemohou $
+	$Id: editor.js 34614 2014-06-12 02:48:35Z nemohou $
 	Modified by Valery Votintsev
 */
 
@@ -508,6 +508,9 @@ function keyMenu(code, func) {
 
 function checkFocus() {
 	if(wysiwyg) {
+		if(BROWSER.rv) {
+			return;
+		}
 		try {
 			editwin.focus();
 		} catch(e) {
@@ -732,35 +735,6 @@ function applyFormat(cmd, dialog, argument) {
 			wrapTags('backcolor', argument);
 			break;
 	}
-}
-
-function getCaret() {
-	if(wysiwyg) {
-		var obj = editdoc.body;
-		var s = document.selection.createRange();
-		s.setEndPoint('StartToStart', obj.createTextRange());
-		var matches1 = s.htmlText.match(/<\/p>/ig);
-		var matches2 = s.htmlText.match(/<br[^\>]*>/ig);
-		var fix = (matches1 ? matches1.length - 1 : 0) + (matches2 ? matches2.length : 0);
-		var pos = s.text.replace(/\r?\n/g, ' ').length;
-		if(matches3 = s.htmlText.match(/<img[^\>]*>/ig)) pos += matches3.length;
-		if(matches4 = s.htmlText.match(/<\/tr|table>/ig)) pos += matches4.length;
-		return [pos, fix];
-	} else {
-		checkFocus();
-		var sel = document.selection.createRange();
-		editbox.sel = sel;
-		editdoc._selectionStart = editdoc.selectionStart;
-		editdoc._selectionEnd = editdoc.selectionEnd;
-	}
-}
-
-function setCaret(pos) {
-	var obj = wysiwyg ? editdoc.body : editbox;
-	var r = obj.createTextRange();
-	r.moveStart('character', pos);
-	r.collapse(true);
-	r.select();
 }
 
 function isEmail(email) {
@@ -1060,12 +1034,17 @@ function showEditorMenu(tag, params) {
 	var menupos = '43!';
 	var menutype = 'menu';
 
-	if(BROWSER.ie) {
-		sel = wysiwyg ? editdoc.selection.createRange() : document.selection.createRange();
-		pos = getCaret();
-	}
+	try {
+		sel = wysiwyg ? (editdoc.selection.createRange() ? editdoc.selection.createRange() : editdoc.getSelection().getRangeAt(0)) : document.selection.createRange();
+	} catch(e) {}
 
 	selection = sel ? (wysiwyg ? sel.htmlText : sel.text) : getSel();
+
+	if(BROWSER.rv) {
+		selection = editdoc.getSelection();
+		sel = selection.getRangeAt(0);
+		selection = readNodes(sel.cloneContents(), false);
+	}
 
 	if(menu) {
 		if($(ctrlid).getAttribute('menupos') !== null) {
@@ -1247,8 +1226,11 @@ function showEditorMenu(tag, params) {
 				if(href != '') {
 					var v = selection ? selection : ($(ctrlid + '_param_2').value ? $(ctrlid + '_param_2').value : href);
 					str = wysiwyg ? ('<a href="' + href + '">' + v + '</a>') : '[url=' + squarestrip(href) + ']' + v + '[/url]';
-					if(wysiwyg) insertText(str, str.length - v.length, 0, (selection ? true : false), sel);
-					else insertText(str, str.length - v.length - 6, 6, (selection ? true : false), sel);
+					if(wysiwyg) {
+						insertText(str, str.length - v.length, 0, (selection ? true : false), sel);
+					} else {
+						insertText(str, str.length - v.length - 6, 6, (selection ? true : false), sel);
+					}
 				}
 				break;
 			case 'code':
@@ -1493,41 +1475,40 @@ function insertText(text, movestart, moveend, select, sel) {
 	checkFocus();
 	if(wysiwyg) {
 		try {
-			var sel = editdoc.getSelection();
-			var range = sel.getRangeAt(0);
-			if(range && range.insertNode) {
-				range.deleteContents();
+			if(!editdoc.execCommand('insertHTML', false, text)) {
+				throw 'insertHTML Err';
 			}
-			var frag = range.createContextualFragment(text);
-			var lnode = frag.lastChild;
-			range.insertNode(frag);
-			range.setEndAfter(lnode);
-			range.setStartAfter(lnode);
-			sel.removeAllRanges();
-			sel.addRange(range);
 		} catch(e) {
-			sel = null;
-			if(!isUndefined(editdoc.selection) && editdoc.selection.type != 'Text' && editdoc.selection.type != 'None') {
-				movestart = false;
-				editdoc.selection.clear();
-			}
-
-			if(isUndefined(sel) || sel == null) {
-				sel = editdoc.selection.createRange();
-			}
-
-			sel.pasteHTML(text);
-
-			if(text.indexOf('\n') == -1) {
-				if(!isUndefined(movestart)) {
-					sel.moveStart('character', -strlen(text) + movestart);
-					sel.moveEnd('character', -moveend);
-				} else if(movestart != false) {
-					sel.moveStart('character', -strlen(text));
+			try {
+				if(!isUndefined(editdoc.selection) && editdoc.selection.type != 'Text' && editdoc.selection.type != 'None') {
+					movestart = false;
+					editdoc.selection.clear();
 				}
-				if(!isUndefined(select) && select) {
-					sel.select();
+				range = isUndefined(sel) ? editdoc.selection.createRange() : sel;
+				range.pasteHTML(text);
+				if(text.indexOf('\n') == -1) {
+					if(!isUndefined(movestart)) {
+						range.moveStart('character', -strlen(text) + movestart);
+						range.moveEnd('character', -moveend);
+					} else if(movestart != false) {
+						range.moveStart('character', -strlen(text));
+					}
+					if(!isUndefined(select) && select) {
+						range.select();
+					}
 				}
+			} catch(e) {
+				if(!sel) {
+					var sel = editdoc.getSelection();
+					var range = sel.getRangeAt(0);
+				} else {
+					var range = sel;
+				}
+				if(range && range.insertNode) {
+					range.deleteContents();
+				}
+				var frag = range.createContextualFragment(text);
+				range.insertNode(frag);
 			}
 		}
 	} else {

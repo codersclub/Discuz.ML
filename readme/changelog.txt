@@ -23,6 +23,11 @@ Main differences from the official Discuz!X:
 12. UCenter API Development Guide translated to English
 
 +======================================+
+   Discuz! X3.2 Release 20140618
++======================================+
+Fixed some problems, the stable version
+
++======================================+
    Discuz! X3.2 Release 20140603
 +======================================+
 Optimized: Improve efficiency of the page sections

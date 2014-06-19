@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_upload.php 29368 2012-04-09 04:05:31Z zhengqingpeng $
+ *      $Id: discuz_upload.php 34648 2014-06-18 02:53:07Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -119,6 +119,8 @@ Class discuz_upload{
 			} elseif($ext == 'swf' && $type != 4 && $type != 13) {
 				return false;
 			} elseif($isimage && !in_array($type, array(1,2,3,6,13))) {
+				return false;
+			} elseif(!$allowswf && ($ext == 'swf' || $type == 4 || $type == 13)) {
 				return false;
 			}
 			return $imageinfo;

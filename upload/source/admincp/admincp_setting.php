@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 34486 2014-05-08 01:31:08Z nemohou $
+ *      $Id: admincp_setting.php 34647 2014-06-17 04:09:50Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -2646,7 +2646,7 @@ EOT;
 	}
 
 	if(isset($settingnew['statcode'])) {
-		$settingnew['statcode'] = preg_replace('/<script(.*?)language(.*?)>/is', '<script>', $settingnew['statcode']);
+		$settingnew['statcode'] = preg_replace('/language\s*=[\s|\'|\"]*php/is', '_', $settingnew['statcode']);
 		$settingnew['statcode'] = str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $settingnew['statcode']);
 	}
 
@@ -2780,8 +2780,15 @@ EOT;
 		$settingnew['thumbstatus'] = 0;
 	}
 
-	if(!empty($settingnew['imageimpath']) && !is_dir($settingnew['imageimpath'])) {
-		$settingnew['imageimpath'] = '';
+	if(!empty($settingnew['imageimpath'])) {
+		if(!is_dir($settingnew['imageimpath'])) {
+			$settingnew['imageimpath'] = '';
+		} else {
+			$settingnew['imageimpath'] = str_replace('\\', '/', $settingnew['imageimpath']);
+			if(!preg_match('/^[\!@#\$%\^&\(\)_\+\-\=\{\}\[\];\',\.\/\:\w\s]+$/', $settingnew['imageimpath'])) {
+				$settingnew['imageimpath'] = '';
+			}
+		}
 	}
 
 	if(!empty($settingnew['memory'])) {

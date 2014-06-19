@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat.class.php 34556 2014-05-28 07:47:07Z nemohou $
+ *      $Id: wechat.class.php 34610 2014-06-11 10:10:32Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -38,7 +38,7 @@ class plugin_wechat {
 			}
 		}
 
-		if(!$_G['uid'] && !defined('IN_MOBILE')) {
+		if(!$_G['uid'] && !defined('IN_MOBILE') && $_G['wechat']['setting']['wsq_allow']) {
 			$_G['setting']['pluginhooks']['global_login_text'] .= wechat_tpl_login_bar();
 		}
 
@@ -61,7 +61,7 @@ class plugin_wechat {
 
 	function global_login_extra() {
 		global $_G;
-		if(!$_G['Plang'] || $_G['inshowmessage']) {
+		if(!$_G['Plang'] || $_G['inshowmessage'] || !$_G['wechat']['setting']['wsq_allow']) {
 			return;
 		}
 		return wechat_tpl_login_extra_bar();
@@ -69,7 +69,7 @@ class plugin_wechat {
 
 	function global_usernav_extra1() {
 		global $_G;
-		if(!$_G['Plang'] || $_G['wechatuser']) {
+		if(!$_G['Plang'] || $_G['wechatuser'] || !$_G['wechat']['setting']['wsq_allow'] || !$_G['uid']) {
 			return;
 		}
 		return wechat_tpl_user_bar();
@@ -77,10 +77,13 @@ class plugin_wechat {
 
 	function global_footer() {
 		global $_G;
-		if($_G['wechat']['setting']['wechat_float_qrcode'] && $_G['wechat']['setting']['wsq_siteid']) {
+		if($_G['wechat']['setting']['wechat_float_qrcode'] && $_G['wechat']['setting']['wsq_siteid'] && $_G['wechat']['setting']['wsq_allow']) {
 			$modid = $_G['basescript'].'::'.CURMODULE;
 			if($modid == 'forum::forumdisplay' && !empty($_GET['fid'])) {
 				$idstr = '&fid='.$_GET['fid'];
+				return wechat_tpl_float_qrcode($idstr);
+			} elseif($modid == 'forum::viewthread' && !empty($_GET['tid'])) {
+				$idstr = '&tid='.$_GET['tid'].'&qrsize=2';
 				return wechat_tpl_float_qrcode($idstr);
 			} elseif($modid == 'forum::index') {
 				return wechat_tpl_float_qrcode();
@@ -107,7 +110,7 @@ class plugin_wechat_member extends plugin_wechat {
 
 	function logging_method() {
 		global $_G;
-		if(!$_G['Plang']) {
+		if(!$_G['Plang'] || !$_G['wechat']['setting']['wsq_allow']) {
 			return;
 		}
 		return wechat_tpl_login_bar();
@@ -115,14 +118,14 @@ class plugin_wechat_member extends plugin_wechat {
 
 	function register_top_output() {
 		global $_G;
-		if(strexists($_GET['referer'], 'wechat:login')) {
+		if(strexists($_GET['referer'], 'wechat:login') && $_G['wechat']['setting']['wsq_allow']) {
 			return wechat_tpl_register();
 		}
 	}
 
 	function register_logging_method() {
 		global $_G;
-		if(!$_G['Plang']) {
+		if(!$_G['Plang'] || !$_G['wechat']['setting']['wsq_allow']) {
 			return;
 		}
 		return wechat_tpl_login_bar();
@@ -132,7 +135,10 @@ class plugin_wechat_member extends plugin_wechat {
 
 class plugin_wechat_forum extends plugin_wechat {
 	function viewthread_share_method_output() {
-		return wechat_tpl_share();
+		global $_G;
+		if($_G['wechat']['setting']['wsq_allow']) {
+			return wechat_tpl_share();
+		}
 	}
 }
 

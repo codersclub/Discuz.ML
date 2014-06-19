@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_image.php 34038 2013-09-24 02:21:19Z nemohou $
+ *      $Id: class_image.php 34625 2014-06-16 01:51:31Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -75,12 +75,12 @@ class image {
 		if($dstwidth < 0 || $dstheight < 0) {
 			return $this->returncode(false);
 		}
-		$this->param['dstwidth'] = $dstwidth;
-		$this->param['dstheight'] = $dstheight;
-		$this->param['srcx'] = $srcx;
-		$this->param['srcy'] = $srcy;
-		$this->param['srcwidth'] = $srcwidth ? $srcwidth : $dstwidth;
-		$this->param['srcheight'] = $srcheight ? $srcheight : $dstheight;
+		$this->param['dstwidth'] = intval($dstwidth);
+		$this->param['dstheight'] = intval($dstheight);
+		$this->param['srcx'] = intval($srcx);
+		$this->param['srcy'] = intval($srcy);
+		$this->param['srcwidth'] = intval($srcwidth ? $srcwidth : $dstwidth);
+		$this->param['srcheight'] = intval($srcheight ? $srcheight : $dstheight);
 
 		$return = !$this->libmethod ? $this->Cropper_GD() : $this->Cropper_IM();
 	}

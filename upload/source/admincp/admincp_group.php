@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_group.php 33340 2013-05-29 05:37:43Z jeffjzhang $
+ *      $Id: admincp_group.php 34651 2014-06-18 08:27:31Z hypowang $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -464,7 +464,7 @@ var rowtypedata = [
 	$total = intval($_GET['total']);
 	$pp = intval($_GET['pp']);
 	$currow = intval($_GET['currow']);
-	if($ajax) {
+	if($ajax && $_GET['formhash'] == formhash()) {
 		ob_end_clean();
 		require_once libfile('function/post');
 		$tids = array();
@@ -505,7 +505,8 @@ var rowtypedata = [
 		} else {
 
 			$threads = C::t('forum_thread')->count_by_fid($fid);
-			cpmsg('grouptype_delete_alarm', "action=group&operation=deletetype&fid=$fid&confirmed=1", 'loadingform', array(), '<div id="percent">0%</div>', FALSE);
+			$formhash = formhash();
+			cpmsg('grouptype_delete_alarm', "action=group&operation=deletetype&fid=$fid&confirmed=1&formhash=$formhash", 'loadingform', array(), '<div id="percent">0%</div>', FALSE);
 			echo "
 			<div id=\"statusid\" style=\"display:none\"></div>
 			<script type=\"text/JavaScript\">
@@ -534,7 +535,7 @@ var rowtypedata = [
 						}
 					});
 				}
-				forumsdelete(adminfilename + '?action=group&operation=deletetype&fid=$fid&confirmed=1', $threads, 2000, 0);
+				forumsdelete(adminfilename + '?action=group&operation=deletetype&fid=$fid&confirmed=1&formhash=$formhash', $threads, 2000, 0);
 			</script>
 			";
 		}
