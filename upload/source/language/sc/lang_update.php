@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_update.php by Valery Votintsev at sources.ru
+ *      $Id: lang_update.php by Valery Votintsev at codersclub.org
  */
 
 $lang = array(
@@ -171,5 +171,28 @@ $lang = array(
 	'qq_onlne_status'	=> '设置QQ在线状态',//'Set QQ online status',
 	'open_soso'		=> '<br><br>友情提示：<br>为更好的降低论坛搜索时的数据压力，本次升级已经帮本站开通纵横搜索服务。<br>你可以在',
 	'open_soso_link'	=> '站点后台-&gt;云平台-&gt;纵横搜索 进行管理',
+	'parameter_invalid'	=> '请求的参数不正确',//'Invalid parameter',
+	'update_sql'		=> '<br><br><b>以下是正在执行的数据库升级语句:</b><br>',//'<br><br><b>The following is a database upgrade statement being executed:</b><br>',
+	'builtin'			=> '内置',//'Built-in',
+	'birthdist'			=> '出生县',//'Birth District',
+	'birthdist_info			=> '出生行政区/县',//'Birth District/County',
+	'birthcommunity'		=> '出生小区',//'Birth Community',
+	'birthcommunity_info'		=> '',//'',
+	'birthcity'			=> '出生地',//'Birth City',
+	'residecity'			=> '居住地',//'Reside City',
+	'birthday'			=> '出生日期',//'Birthday',
+	'idcardtype'			=> '证件类型',//'Document type',
+	'alipay'			=> '支付宝',//'AliPay',
+	'taobao'			=> '阿里旺旺',//'TaoBao',
+	'basic_info'			=> '基本资料',//'Basic info',
+	'education_info'		=> '教育情况',//'Education info',
+	'work_info'			=> '工作情况',//'Work info',
+	'personal_info'			=> '个人信息',//'Personal Info',
+	'reglinkname'			=> '注册',//'Registration',
+//SPOILER TAG by jaideejung007
+//	'spoiler'		=> 'Spoiler',//'สปอยล์',
+//	'spoiler_hide'		=> '[Spoil] click to hide the text',//'[Spoil] คลิกเพื่อซ่อนข้อความ',
+//	'spoiler_show'		=> '[Spoil] Click to see hidden text',//'[Spoil] คลิกเพื่อดูข้อความที่ซ่อนไว้',
+//	'spoiler_placeholder'	=> 'Enter the text you want to hide in spoiler',//'กรอกข้อความที่คุณต้องการสปอยล์',
 
 );

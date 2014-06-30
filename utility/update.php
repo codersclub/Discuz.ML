@@ -147,7 +147,7 @@ if($_GET['step'] == 'start') {
 		C::t('forum_groupinvite')->truncate();
 	}
 	if(DB::fetch_first("SHOW COLUMNS FROM ".DB::table('forum_activityapply')." LIKE 'contact'")) {
-/*vot*/		$query = DB::query("UPDATE ".DB::table('forum_activityapply')." SET message=CONCAT_WS('".lang('update','contacts')."', message, contact) WHERE contact<>''");
+/*vot*/		$query = DB::query("UPDATE ".DB::table('forum_activityapply')." SET message=CONCAT_WS(' ".lang('update','contacts').": ', message, contact) WHERE contact<>''");
 		DB::query("ALTER TABLE ".DB::table('forum_activityapply')." DROP contact");
 	}
 	if($row = DB::fetch_first("SHOW COLUMNS FROM ".DB::table('forum_postcomment')." LIKE 'authorid'")) {
@@ -387,25 +387,25 @@ if($_GET['step'] == 'start') {
 		$nextop = 'setting';
 		$value = DB::result_first('SELECT count(*) FROM '.DB::table('common_member_profile_setting')." WHERE fieldid = 'birthdist'");
 		if(!$value) {
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthdist', 1, 0, 0, 'Birth District', 'Birth District/County', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
-/*vot*/			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthcommunity', 1, 0, 0, 'Birth Community', '', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
-/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='Birth City' WHERE fieldid = 'birthcity'");
-/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='Reside City' WHERE fieldid = 'residecity'");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthdist', 1, 0, 0, '".lang('update','birthdist')."', '".lang('update','birthdist_info')."', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthcommunity', 1, 0, 0, '".lang('update','birthcommunity')."', '".lang('update','birthcommunity_info')."', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
+/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='".lang('update','birthcity')."' WHERE fieldid = 'birthcity'");
+/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='".lang('update','residecity')."' WHERE fieldid = 'residecity'");
 		}
 		$count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_district')." WHERE `level`='1' AND `usetype`>'0'");
 		if(!$count) {
 			DB::query("UPDATE ".DB::table('common_district')." SET `usetype`='3' WHERE `level` = '1'");
 		}
 		$profile = DB::fetch_first('SELECT * FROM '.DB::table('common_member_profile_setting')." WHERE fieldid = 'birthday'");
-/*vot*/		if($profile['title'] == '出生日期' || $profile['title'] == 'Birthday') {//vot: Chinese/English "Birthday"
-/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='Birthday' WHERE fieldid = 'birthday'");
-/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='Document type' WHERE fieldid = 'idcardtype'");
-/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='Alipay' WHERE fieldid = 'alipay'");
+/*vot*/		//if($profile['title'] == '出生日期' || $profile['title'] == 'Birthday') {//vot: Chinese/English "Birthday"
+/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='".lang('update','birthday')."' WHERE fieldid = 'birthday'");
+/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='".lang('update','idcardtype')."' WHERE fieldid = 'idcardtype'");
+/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='".lang('update','alipay')."' WHERE fieldid = 'alipay'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='ICQ' WHERE fieldid = 'icq'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='QQ' WHERE fieldid = 'qq'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='MSN' WHERE fieldid = 'msn'");
-/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='TaoBao' WHERE fieldid = 'taobao'");
-		}
+/*vot*/			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='".lang('update','taobao')."' WHERE fieldid = 'taobao'");
+//vot		}
 /*vot*/		show_msg(lang('update','users_updated'), "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'setting') {
 		$nextop = 'admingroup';
@@ -547,7 +547,7 @@ if($_GET['step'] == 'start') {
 				array (
 				  'available' => 1,
 				  'displayorder' => 0,
-/*vot*/				  'title' => 'Basic info',
+/*vot*/				  'title' => lang('update','basic_info'),
 				  'field' =>
 				  array (
 					'realname' => 'realname',
@@ -571,7 +571,7 @@ if($_GET['step'] == 'start') {
 				),
 				'contact' =>
 				array (
-/*vot*/				  'title' => 'Contacts',
+/*vot*/				  'title' => lang('update','contacts'),
 				  'available' => '1',
 				  'displayorder' => '1',
 				  'field' =>
@@ -944,7 +944,7 @@ if($_GET['step'] == 'start') {
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_todayheats_daily.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','统计今日热帖','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0')");
+/*vot*/			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','".lang('update','cron_todayheats_daily')."','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0')");
 		}
 
 /*vot*/		show_msg(lang('update','cron_completed'), "$theurl?step=data&op=$nextop");
