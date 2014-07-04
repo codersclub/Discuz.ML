@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      $Id: lang_restore.php by Valery Votintsev at sources.ru
+ *      $Id: lang_restore.php by Valery Votintsev, codersclub.org
  *	For /utility/restore.php
  */
 

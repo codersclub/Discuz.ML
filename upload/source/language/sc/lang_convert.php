@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *      Convert Language File
- *      $Id: utility/convert/language/lang.php by Valery Votintsev at sources.ru
+ *      $Id: utility/convert/language/lang.php by Valery Votintsev, codersclub.org
  */
 $lang = array(
 
