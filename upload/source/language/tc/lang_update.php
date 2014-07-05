@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_update.php by Valery Votintsev at codersclub.org
+ *      $Id: lang_update.php by Valery Votintsev, codersclub.org
  */
 
 $lang = array(
