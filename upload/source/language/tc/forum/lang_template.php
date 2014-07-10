@@ -1326,5 +1326,6 @@ $lang = array (
 	'disable_smilies'		=> '禁用 表情',//'Disable Smiles',
 	'disable_discuzcode'		=> '禁用 编辑器代码',//'Disable BB-Code',
 	'modmenu'			=> '审核中',//'Thread menu:',
+	'upload_time'			=> '上传日期',//'Upload Time',
 );
 

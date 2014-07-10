@@ -94,7 +94,7 @@ function attachlist($attach) {
 				<!--{/if}-->
 				<div class="tip tip_4" id="aid$attach[aid]_menu" style="display: none" disautofocus="true">
 					<div class="tip_c">
-						<p class="y">$attach[dateline] {lang upload}</p>
+<!--vot-->					<p>{lang upload_time}: $attach[dateline]</p>
 						<p>{lang clicktodownload}</p>
 						<!--{if !$attach['attachimg'] && $_G['getattachcredits']}-->{lang attachcredits}: $_G[getattachcredits]<br /><!--{/if}-->
 					</div>
