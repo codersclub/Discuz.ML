@@ -68,7 +68,7 @@
 			<p class="xs0">
 				{lang time_now}
 				<span id="debuginfo">
-<!--vot-->			<!--{if debuginfo()}-->, Processed in $_G[debuginfo][time] sec., $_G[debuginfo][queries] queries
+<!--vot-->			<!--{if debuginfo()}-->, {lang processed_in} $_G[debuginfo][time] {lang seconds}, $_G[debuginfo][queries] {lang queries}
 					<!--{if $_G['gzipcompress']}-->, Gzip On<!--{/if}--><!--{if C::memory()->type}-->, <!--{echo ucwords(C::memory()->type)}--> On<!--{/if}-->.
 				<!--{/if}-->
 				</span>

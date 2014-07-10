@@ -497,5 +497,9 @@ $lang = array (
 	'e_map_insert'	=> '插入google地图',//'Insert Google Map',
 	'e_map_address'	=> '地址： ',//'Enter address for search: ',
 
+	'processed_in'			=> 'Processed in',
+	'seconds'			=> 'sec.',//'second(s)',
+	'queries'			=> 'queries',
+
 );
 
