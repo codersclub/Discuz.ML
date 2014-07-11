@@ -72,7 +72,7 @@ $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archivei
 			<!--{else}-->
 				<a href="forum.php?mod=misc&action=attachpay&aid=$attach[aid]&tid=$attach[tid]">$attach[filename]</a>
 			<!--{/if}-->
-			<span class="xg1">($attach[dateline] {lang upload})</span>
+<!--vot-->		<span class="xg1">({lang upload_time}: $attach[dateline])</span>
 		</p>
 		<p class="xg1">$attach[attachsize]<!--{if $attach['readperm']}-->, {lang readperm}: <strong>$attach[readperm]</strong><!--{/if}-->, {lang downloads}: $attach[downloads]<!--{if !$attach['attachimg'] && $_G['getattachcredits']}-->, {lang attachcredits}: $_G[getattachcredits]<!--{/if}--></p>
 		<p>
@@ -102,7 +102,7 @@ $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archivei
 	<!--{if $attach['attachimg'] && $_G['setting']['showimages'] && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid'])}-->
 		<div class="box box_ex2">
 			<a href="forum.php?mod=attachment{$is_archive}&aid=$aidencode&nothumb=yes" id="aid$attach[aid]" class="xw1" target="_blank">$attach[filename]</a>
-			<span class="xg1">($attach[dateline] {lang upload})</span>
+<!--vot-->		<span class="xg1">({lang upload_time}: $attach[dateline])</span>
 			<p class="xg1">{lang sourceimagesize} $attach[attachsize], {lang downloads}: $attach[downloads]</p>
 			<p class="mbn">
 			<!--{if $attach['readperm']}-->{lang readperm}: <strong>$attach[readperm]</strong><!--{/if}-->
@@ -146,7 +146,7 @@ $is_archive = $_G['forum_thread']['is_archived'] ? '&fid='.$_G['fid'].'&archivei
 				<a href="forum.php?mod=misc&action=attachpay&aid=$attach[aid]&tid=$attach[tid]" target="_blank">$attach[filename]</a>
 			<!--{/if}-->
 			<em class="xg1">($attach[attachsize])</em>
-			<em class="xg1"><br />({lang downloads}: $attach[downloads], $attach[dateline] {lang upload})
+<!--vot-->		<em class="xg1"><br />({lang downloads}: $attach[downloads], {lang upload_time}: $attach[dateline])
 			</em>
 			<!--{if $attach['price']}-->
 				<p class="xg1">{lang price}: $attach[price] {$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][unit]}{$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][title]}&nbsp;<a href="forum.php?mod=misc&action=viewattachpayments&aid=$attach[aid]">[{lang pay_view}]</a>
