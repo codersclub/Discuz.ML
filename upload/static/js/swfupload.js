@@ -151,10 +151,10 @@ SWFUpload.prototype.initSettings = function (userSettings) {
 	this.ensureDefault("button_image_url", "");
 	this.ensureDefault("button_width", 1);
 	this.ensureDefault("button_height", 1);
-	this.ensureDefault("button_text", "");
+/*vot*/	this.ensureDefault("button_text", "Browse");
 	this.ensureDefault("button_text_style", "color: #000000; font-size: 16pt;");
-	this.ensureDefault("button_text_top_padding", 0);
-	this.ensureDefault("button_text_left_padding", 0);
+/*vot*/	this.ensureDefault("button_text_top_padding", 4);
+/*vot*/	this.ensureDefault("button_text_left_padding", 16);
 	this.ensureDefault("button_action", SWFUpload.BUTTON_ACTION.SELECT_FILES);
 	this.ensureDefault("button_disabled", false);
 	this.ensureDefault("button_placeholder_id", "");
