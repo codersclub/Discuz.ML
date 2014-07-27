@@ -20,13 +20,13 @@ function extrafunc_atMenu() {
 	if(BROWSER.opera) {
 		return;
 	}
-	if(wysiwyg && EXTRAEVENT.shiftKey && EXTRAEVENT.keyCode == 50 && postaction && (postaction == 'newthread' || postaction == 'reply' || postaction == 'edit')) {
+	if(wysiwyg && EXTRAEVENT.shiftKey && EXTRAEVENT.keyCode == 50 && postaction && (postaction == 'newthread' || postaction == 'reply' || postaction == 'edit')) { // Shift-2
 		keyMenu('@', atMenu);
 		ctlent_enable[13] = 0;
 		doane(EXTRAEVENT);
 		atkeypress = 1;
 	}
-	if($('at_menu') && $('at_menu').style.display == '' && (EXTRAEVENT.keyCode == 38 || EXTRAEVENT.keyCode == 40 || EXTRAEVENT.keyCode == 13)) {
+/*vot*/	if($('at_menu') && $('at_menu').style.display == '' && (EXTRAEVENT.keyCode == 38 || EXTRAEVENT.keyCode == 40 || EXTRAEVENT.keyCode == 13)) { // Up/Down/Enter
 		doane(EXTRAEVENT);
 	}
 }
@@ -35,14 +35,14 @@ function extrafunc_atMenuKeyUp() {
 	if(BROWSER.opera) {
 		return;
 	}
-	if(wysiwyg && EXTRAEVENT.shiftKey && EXTRAEVENT.keyCode == 50 && postaction && (postaction == 'newthread' || postaction == 'reply' || postaction == 'edit') && !atkeypress) {
+/*vot*/	if(wysiwyg && EXTRAEVENT.shiftKey && EXTRAEVENT.keyCode == 50 && postaction && (postaction == 'newthread' || postaction == 'reply' || postaction == 'edit') && !atkeypress) { //Shift-2
 		keyBackspace();
 		keyMenu('@', atMenu);
 		ctlent_enable[13] = 0;
 		doane(EXTRAEVENT);
 	}
 	if(wysiwyg && $('at_menu') && $('at_menu').style.display == '' && postaction && (postaction == 'newthread' || postaction == 'reply' || postaction == 'edit')) {
-		if(EXTRAEVENT.keyCode == 32 || EXTRAEVENT.keyCode == 9 || EXTRAEVENT.keyCode == 8 && !keyMenuObj.innerHTML.substr(1).length) {
+/*vot*/		if(EXTRAEVENT.keyCode == 32 || EXTRAEVENT.keyCode == 9 || EXTRAEVENT.keyCode == 8 && !keyMenuObj.innerHTML.substr(1).length) { // Space/Tab/Backspace
 			$('at_menu').style.display = 'none';
 			ctlent_enable[13] = 1;
 		} else {
@@ -127,15 +127,15 @@ function atSearch(kw, call) {
 
 function atEnter(e, call) {
 	if(e) {
-		if(e.keyCode == 38 && curatli > 0) {
+/*vot*/		if(e.keyCode == 38 && curatli > 0) { // Up arrow
 			curatli--;
 			return false;
 		}
-		if(e.keyCode == 40 && curatli < (atResult.length -1)) {
+/*vot*/		if(e.keyCode == 40 && curatli < (atResult.length -1)) { // Down arrow
 			curatli++;
 			return false;
 		}
-		if(e.keyCode == 13) {
+/*vot*/		if(e.keyCode == 13) { // ENTER key
 			var call = !call ? 'insertText' : call;
 			if(curatli > -1) {
 				eval(call+'($(\'atli_'+curatli+'\').innerText)');

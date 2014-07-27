@@ -1317,7 +1317,7 @@ function simulateSelect(selectId, widthvalue) {
 	var ul = document.createElement('ul');
 	var handleKeyDown = function(e) {
 		e = BROWSER.ie ? event : e;
-		if(e.keyCode == 40 || e.keyCode == 38) doane(e);
+/*vot*/		if(e.keyCode == 40 || e.keyCode == 38) doane(e); // Up/Down
 	};
 	var selectwidth = (selectObj.getAttribute('width', i) ? selectObj.getAttribute('width', i) : widthvalue) + 'px';
 	var tabindex = selectObj.getAttribute('tabindex', i) ? selectObj.getAttribute('tabindex', i) : 1;
@@ -1376,7 +1376,7 @@ function simulateSelect(selectId, widthvalue) {
 	$(selectId + '_ctrl').onkeyup = function(e) {
 		e = e ? e : window.event;
 		value = e.keyCode;
-		if(value == 40 || value == 38) {
+		if(value == 40 || value == 38) { // Up/Down
 			if(menuObj.style.display == 'none') {
 				$(selectId + '_ctrl').onclick();
 			} else {
@@ -1474,7 +1474,7 @@ function showColorBox(ctrlid, layer, k, bgcolor) {
 
 function ctrlEnter(event, btnId, onlyEnter) {
 	if(isUndefined(onlyEnter)) onlyEnter = 0;
-	if((event.ctrlKey || onlyEnter) && event.keyCode == 13) {
+	if((event.ctrlKey || onlyEnter) && event.keyCode == 13) { // Enter
 		$(btnId).click();
 		return false;
 	}

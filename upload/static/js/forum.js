@@ -103,10 +103,10 @@ function keyPageScroll(e, prev, next, url, page) {
 	var tagname = BROWSER.ie ? e.srcElement.tagName : e.target.tagName;
 	if(tagname == 'INPUT' || tagname == 'TEXTAREA') return;
 	actualCode = e.keyCode ? e.keyCode : e.charCode;
-	if(next && actualCode == 39) {
+/*vot*/	if(next && actualCode == 39) { //Right Arrow
 		window.location = url + '&page=' + (page + 1);
 	}
-	if(prev && actualCode == 37) {
+/*vot*/	if(prev && actualCode == 37) { //Left Arrow
 		window.location = url + '&page=' + (page - 1);
 	}
 }

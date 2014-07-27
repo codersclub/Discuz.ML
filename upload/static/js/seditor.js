@@ -132,7 +132,7 @@ function seditor_insertunit(key, text, textend, moveend, selappend) {
 }
 
 function seditor_ctlent(event, script) {
-	if(event.ctrlKey && event.keyCode == 13 || event.altKey && event.keyCode == 83) {
+/*vot*/	if(event.ctrlKey && event.keyCode == 13 || event.altKey && event.keyCode == 83) { // Enter or Alt-S
 		eval(script);
 	}
 }

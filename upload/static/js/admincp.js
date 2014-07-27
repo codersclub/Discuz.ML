@@ -163,7 +163,7 @@ function insertunit(obj, text, textend) {
 
 var heightag = BROWSER.chrome ? 4 : 0;
 function textareakey(obj, event) {
-	if(event.keyCode == 9) {
+/*vot*/	if(event.keyCode == 9) { // TAB button
 		insertunit(obj, '\t');
 		doane(event);
 	}
@@ -221,7 +221,7 @@ function entersubmit(e, name) {
 		return false;
 	}
 	e = e ? e : event;
-	if(e.keyCode != 13) {
+/*vot*/	if(e.keyCode != 13) { // ENTER button
 		return;
 	}
 	var tag = BROWSER.ie ? e.srcElement.tagName : e.target.tagName;

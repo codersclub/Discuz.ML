@@ -194,7 +194,7 @@ function emailMenuOp(op, e, id) {
 	} else if(op == 4) {
 	       	e = e ? e : window.event;
                 var obj = $(id);
-        	if(e.keyCode == 13) {
+/*vot*/        	if(e.keyCode == 13) { // Enter
                         var v = obj.value.indexOf('@') != -1 ? obj.value.substring(0, obj.value.indexOf('@')) : obj.value;
                         obj.value = v + '@' + emaildomains[emailMenui];
                         doane(e);

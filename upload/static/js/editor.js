@@ -439,7 +439,7 @@ function pasteWord(str) {
 
 var ctlent_enable = {8:1,9:1,13:1};
 function ctlent(event) {
-	if(postSubmited == false && (event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83) && editorsubmit) {
+/*vot*/	if(postSubmited == false && (event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83) && editorsubmit) { // Enter or Alt-S
 		if(in_array(editorsubmit.name, ['topicsubmit', 'replysubmit', 'editsubmit']) && !validate(editorform)) {
 			doane(event);
 			return;
@@ -449,13 +449,13 @@ function ctlent(event) {
 		editorform.submit();
 		return;
 	}
-	if(ctlent_enable[9] && event.keyCode == 9) {
+/*vot*/	if(ctlent_enable[9] && event.keyCode == 9) { // TAB
 		if(!wysiwyg) {
 			insertText('\t', 1, 0);
 		}
 		doane(event);
 	}
-	if(ctlent_enable[8] && event.keyCode == 8 && wysiwyg) {
+/*vot*/	if(ctlent_enable[8] && event.keyCode == 8 && wysiwyg) { // Backspace
 		var sel = getSel();
 		if(sel) {
 			insertText('', sel.length - 1, 0);
@@ -1205,10 +1205,10 @@ function showEditorMenu(tag, params) {
 		_attachEvent(objs[i], 'keydown', function(e) {
 			e = e ? e : event;
 			obj = BROWSER.ie ? event.srcElement : e.target;
-			if((obj.type == 'text' && e.keyCode == 13) || (obj.type == 'textarea' && e.ctrlKey && e.keyCode == 13)) {
+/*vot*/			if((obj.type == 'text' && e.keyCode == 13) || (obj.type == 'textarea' && e.ctrlKey && e.keyCode == 13)) { // Enter or CTRL-Enter
 				if($(ctrlid + '_submit') && tag != 'image') $(ctrlid + '_submit').click();
 				doane(e);
-			} else if(e.keyCode == 27) {
+/*vot*/			} else if(e.keyCode == 27) { // Escape
 				hideMenu();
 				doane(e);
 			}

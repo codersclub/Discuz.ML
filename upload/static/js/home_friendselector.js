@@ -104,9 +104,9 @@
 			var username = '';
 			this.searchStr = '';
 			if(key != '') {
-				if(event.keyCode == 188 || event.keyCode == 13 || event.keyCode == 59) {
+/*vot*/				if(event.keyCode == 188 || event.keyCode == 13 || event.keyCode == 59) { // Comma, Enter, Semicolon
 					if(this.showType == 3) {
-						if(event.keyCode == 13) {
+/*vot*/						if(event.keyCode == 13) { // Enter
 							var currentnum = this.getCurrentPrompterUser();
 							if(currentnum != -1) {
 								key = this.dataSource[this.prompterUser[currentnum]]['username'];
@@ -119,7 +119,7 @@
 							this.showObj.innerHTML = "";
 						}
 					}
-				} else if(event.keyCode == 38 || event.keyCode == 40) {
+/*vot*/				} else if(event.keyCode == 38 || event.keyCode == 40) { // Up/Down
 				} else {
 					if(this.showType == 3) {
 						this.showObj.innerHTML = "";
@@ -373,7 +373,7 @@
 					event = event ? event : window.event;
 					instance.parentKeyCode = event.keyCode;
 					instance.showObj.style.display = '';
-					if(event.keyCode == 8 && this.value == '') {
+/*vot*/					if(event.keyCode == 8 && this.value == '') { // Backspace
 						var preNode = this.previousSibling;
 						if(preNode.tagName == 'SPAN') {
 							var uid = preNode.getElementsByTagName('input')[0].getAttribute('uid');
@@ -385,7 +385,7 @@
 								this.parentNode.removeChild(preNode);
 							}
 						}
-					} else if(event.keyCode == 38) {
+/*vot*/					} else if(event.keyCode == 38) { // Up
 						if(!instance.prompterUser.length) {
 							doane(event);
 						}
@@ -397,7 +397,7 @@
 						} else {
 							$('prompter_' + instance.prompterUser[0]).className = "a";
 						}
-					} else if(event.keyCode == 40) {
+/*vot*/					} else if(event.keyCode == 40) { // Down
 						if(!instance.prompterUser.length) {
 							doane(event);
 						}
@@ -409,7 +409,7 @@
 						} else {
 							$('prompter_' + instance.prompterUser[0]).className = "a";
 						}
-					} else if(event.keyCode == 13) {
+/*vot*/					} else if(event.keyCode == 13) { // Enter
 						doane(event);
 					}
 					if(typeof instance != "undefined" && instance.pmSelBoxState) {

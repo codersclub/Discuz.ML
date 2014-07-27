@@ -42,7 +42,7 @@ function checkFocus() {
 }
 
 function ctlent(event) {
-	if(postSubmited == false && (event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83) && $('postsubmit')) {
+/*vot*/	if(postSubmited == false && (event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83) && $('postsubmit')) { // Enter or Alt-S
 		if(in_array($('postsubmit').name, ['topicsubmit', 'replysubmit', 'editsubmit']) && !validate($('postform'))) {
 			doane(event);
 			return;
@@ -51,7 +51,7 @@ function ctlent(event) {
 		$('postsubmit').disabled = true;
 		$('postform').submit();
 	}
-	if(event.keyCode == 9) {
+/*vot*/	if(event.keyCode == 9) { // TAB
 		doane(event);
 	}
 }
