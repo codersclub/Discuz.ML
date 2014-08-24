@@ -2441,8 +2441,8 @@ EOT;
 /*vot*/				"<input type=\"text\" class=\"txt\" size=\"66\" name=\"settingnew[langlist][$i][title]\" value=\"{$lang['title']}\">",
 /*vot*/				"<input type=\"text\" class=\"txt\" size=\"16\" name=\"settingnew[langlist][$i][dir]\" value=\"{$lang['dir']}\">",
 /*vot*/				"<img src=\"static/image/admincp/edit.png\" title=\"".cplang('edit')."\" />
-/*vot*/				<span class=\"pipe\"></span>
-/*vot*/				<img src=\"static/image/admincp/delete.gif\" title=\"".cplang('delete')."\" />",
+<!--vot-->			<span class=\"pipe\"></span>
+<!--vot-->			<img src=\"static/image/admincp/delete.gif\" title=\"".cplang('delete')."\" />",
 /*vot*/			));
 /*vot*/		}
 /*vot*/		showtablefooter();
