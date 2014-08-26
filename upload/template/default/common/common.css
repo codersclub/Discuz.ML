@@ -1894,3 +1894,16 @@ DIY image is not loaded when the Hide Slide
 	margin-top: -170px;
 	width:220px;
 }
+/*vot	Forum Icons by Valery Votintsev */
+.icon_forum {
+	display: inline-block;
+	background: url({IMGDIR}/forum.gif) no-repeat 0 0;
+	width: 31px;
+	height: 29px;
+}
+.icon_forum_new {
+	display: inline-block;
+	background: url({IMGDIR}/forum_new.gif) no-repeat 0 0;
+	width: 31px;
+	height: 29px;
+}

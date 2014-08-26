@@ -259,7 +259,7 @@
 									<!--{if $forum[icon]}-->
 										$forum[icon]
 									<!--{else}-->
-										<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if}><img src="{IMGDIR}/forum{if $forum[folder]}_new{/if}.gif" alt="$forum[name]" /></a>
+<!--vot-->									<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if} class="icon_forum{if $forum[folder]}_new{/if}" title="$forum[name]"></a>
 									<!--{/if}-->
 									</div>
 									<dl{if !empty($forum[extra][iconwidth]) && !empty($forum[icon])} style="margin-left: {$forum[extra][iconwidth]}px;"{/if}>
@@ -291,7 +291,7 @@
 									<!--{if $forum[icon]}-->
 										$forum[icon]
 									<!--{else}-->
-										<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if}><img src="{IMGDIR}/forum{if $forum[folder]}_new{/if}.gif" alt="$forum[name]" /></a>
+<!--vot-->									<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if} class="icon_forum{if $forum[folder]}_new{/if}" title="$forum[name]"></a>
 									<!--{/if}-->
 								</td>
 								<td>
@@ -362,7 +362,7 @@
 								<!--{if $forum[icon]}-->
 									$forum[icon]
 								<!--{else}-->
-									<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if}><img src="{IMGDIR}/forum{if $forum[folder]}_new{/if}.gif" alt="$forum[name]" /></a>
+<!--vot-->								<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if} class="icon_forum{if $forum[folder]}_new{/if}" title="$forum[name]"></a>
 								<!--{/if}-->
 								</div>
 								<dl{if !empty($forum[extra][iconwidth]) && !empty($forum[icon])} style="margin-left: {$forum[extra][iconwidth]}px;"{/if}>
@@ -393,7 +393,7 @@
 								<!--{if $forum[icon]}-->
 									$forum[icon]
 								<!--{else}-->
-									<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if}><img src="{IMGDIR}/forum{if $forum[folder]}_new{/if}.gif" alt="$forum[name]" /></a>
+<!--vot-->								<a href="$forumurl"{if $forum[redirect]} target="_blank"{/if} class="icon_forum{if $forum[folder]}_new{/if}" title="$forum[name]"></a>
 								<!--{/if}-->
 							</td>
 							<td>
@@ -459,7 +459,7 @@
 							<!--{/if}-->
 							<td class="fl_g"{if $forumcolwidth} width="$forumcolwidth"{/if}>
 								<div class="fl_icn_g">
-								<a href="forum.php?mod=collection&action=view&ctid={$colletion[ctid]}" target="_blank"><img src="{IMGDIR}/forum.gif" alt="$colletion[name]" /></a>
+<!--vot-->								<a href="forum.php?mod=collection&action=view&ctid={$colletion[ctid]}" target="_blank" class="icon_forum" title="$colletion[name]"></a>
 								</div>
 								<dl>
 									<dt><a href="forum.php?mod=collection&action=view&ctid={$colletion[ctid]}">$colletion[name]</a></dt>
