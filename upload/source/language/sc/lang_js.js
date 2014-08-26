@@ -402,6 +402,10 @@ var lng = {
 	'pocket_forum_ios'	: 'iPhone版本，扫描二维码可以直接下载到手机',//'If iPhone used, Scan thw QR-code can be downloaded directly to the phone',
 	'pocket_forum_ios_alt'	: '适用于苹果手机',//'Suitable for Apple mobile phone',
 	'quick_reply_here'	: '#在这里快速回复#',//'#Quick Reply Here#',
+	'set_cover'		: '设为封面',//'Set as cover',
+	'source'		: '出处',//'Source',
+	'view_all'		: '查看所有',//'View All',
+	'index'			: '目录',//'Thread Index',
 
 //--------------------------------
 //static/js/handlers.js
