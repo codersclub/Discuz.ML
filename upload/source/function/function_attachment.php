@@ -27,13 +27,16 @@ function attachtype($type, $returnval = 'html') {
 			10 => 'flash.gif',
 			11 => 'image.gif',
 			12 => 'pdf.gif',
-			13 => 'torrent.gif'
+/*vot*/			13 => 'torrent.gif',
+/*vot*/			14 => 'android.gif'
 		);
 
 	if(is_numeric($type)) {
 		$typeid = $type;
 	} else {
-		if(preg_match("/bittorrent|^torrent\t/", $type)) {
+/*vot*/		if(preg_match("/apk\t/", $type)) {
+/*vot*/			$typeid = 14;
+/*vot*/		} elseif(preg_match("/bittorrent|^torrent\t/", $type)) {
 			$typeid = 13;
 		} elseif(preg_match("/pdf|^pdf\t/", $type)) {
 			$typeid = 12;
