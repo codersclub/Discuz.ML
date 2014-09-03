@@ -50,7 +50,7 @@ class XMLparse {
 
 	function XMLparse($isnormal) {
 		$this->isnormal = $isnormal;
-/*vot*/		$this->parser = xml_parser_create('UTF-8');// was: 'ISO-8859-1'
+		$this->parser = xml_parser_create('ISO-8859-1');
 		xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);
 		xml_set_object($this->parser, $this);
 		xml_set_element_handler($this->parser, 'open','close');
