@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2,X2.5,X3,X3.1,X3.2]]></item>
+	<item id="Time"><![CDATA[2012-03-29 10:43]]></item>
+	<item id="From"><![CDATA[codersclub.org]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[0]]></item>
+			<item id="name"><![CDATA[Country Flag]]></item>
+			<item id="identifier"><![CDATA[countryflag]]></item>
+			<item id="description"><![CDATA[Display country flag in the user info sidebar]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[countryflag/]]></item>
+			<item id="copyright"><![CDATA[Valery Votintsev, codersclub.org]]></item>
+			<item id="version"><![CDATA[1.8]]></item>
+			<item id="image"><![CDATA[countryflag.gif]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[countryflag]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2,X2.5,X3]]></item>
+                <item id="license"><![CDATA[[list]Thank you for choosing this plug-in to use.
+Before installing this plug-in, please read carefully the following:
+
+[b]Installation Notes[/b]
+
+[1] Written by [url=http://codersclub.org/discuzx/home.php?mod=space&uid=1]Valery Votintsev[/url]
+[2] Original idea by [url="http://codersclub.org/discuzx/home.php?mod=space&uid=1563]KEN[/url]
+[3] This plug-in can be used only with the Discuz! X MultiLingual.
+[4] No need to change the database
+[5] No need to manually modify Discuz files
+
+[b]License[/b]
+
+[1] Licensed under the Creative Commons Attribution 3.0 License.
+[2] Attribution. You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).
+[3] Free for noncommercial use. You may not use this work for commercial purposes! 
+[4] Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
+[5] Any of the above conditions can be waived if you get permission from the copyright holder.
+
+Welcome to [url=http://codersclub.org/discuzx/]CodersClub Community[/url]
+]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[Hide user id (UID)]]></item>
+				<item id="description"><![CDATA[Do not show the country flag for the listed users.
+Separate multiple user ID with a comma (,)]]></item>
+				<item id="variable"><![CDATA[hideuid]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[Template]]></item>
+				<item id="description"><![CDATA[HTML code supported.
+You can use the following variables:
+$flag_image.......Flag Image
+$flag_country.....Country Name]]></item>
+				<item id="variable"><![CDATA[template]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[<p style="white-space: nowrap; overflow: hidden;">$flag_image&nbsp;$flag_country</p>]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+	</item>
+</root>

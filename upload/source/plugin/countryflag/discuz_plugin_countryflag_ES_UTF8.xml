@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2,X2.5,X3,X3.1,X3.2]]></item>
+	<item id="Time"><![CDATA[2012-03-29 10:43]]></item>
+	<item id="From"><![CDATA[codersclub.org]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[0]]></item>
+			<item id="name"><![CDATA[Bandera de País]]></item>
+			<item id="identifier"><![CDATA[countryflag]]></item>
+			<item id="description"><![CDATA[Muestra la bandera del país en la información del usuario en la barra lateral]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[countryflag/]]></item>
+			<item id="copyright"><![CDATA[Valery Votintsev, codersclub.org]]></item>
+			<item id="version"><![CDATA[1.8]]></item>
+			<item id="image"><![CDATA[countryflag.gif]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[countryflag]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2,X2.5,X3]]></item>
+                <item id="license"><![CDATA[[list]Gracias por elegir este plug-in.
+Antes de instalar este plug-in, por favor lea cuidadosamente lo siguiente:
+
+[b]Notas de la instalación[/b]
+
+[1] Escrito por [url=http://codersclub.org/discuzx/home.php?mod=space&uid=1]Valery Votintsev[/url]
+[2] Idea original de [url="http://codersclub.org/discuzx/home.php?mod=space&uid=1563]KEN[/url]
+[3] Este plugin sólo puede ser usado en Discuz! X MultiLingual.
+[4] No necesita hacer cambios en la base de datos
+[5] No necesita modificar manualmente los archivos
+
+[b]Licencia[/b]
+
+[1] Licenciado bajo Creative Commons Attribution licencia 3.0.
+[2] Reconocimiento. Debes usarlo de la manera especificada por el autor o el licenciador (pero no necesitas ninguna aprovación por ellos para su uso).
+[3] Gratis para uso no comercial. No puede utilizar esta obra para fines comerciales! 
+[4] Desarrollo. En caso de alterar, transformar o ampliar este trabajo, deberá distribuir el trabajo resultante sólo bajo una licencia idéntica a ésta.
+[5] Cualquiera de estas condiciones puede no aplicarse si se obtiene el permiso del titular de los derechos de autor.
+
+Bienvenidos a la comunidad de [url=http://codersclub.org/discuzx/]CodersClub[/url]
+]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[Ocultar el id del usuario (UID)]]></item>
+				<item id="description"><![CDATA[No mostrar la bandera del país para los usuarios de la lista.
+ID de usuario Separe con una coma (,)]]></item>
+				<item id="variable"><![CDATA[hideuid]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[Plantilla]]></item>
+				<item id="description"><![CDATA[Código HTML soportado.
+Puedes usar las siguientes variables:
+$flag_image.......Imagen de la bandera
+$flag_country.....Nombre del país]]></item>
+				<item id="variable"><![CDATA[template]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[<p style="white-space: nowrap; overflow: hidden;">$flag_image&nbsp;$flag_country</p>]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+	</item>
+</root>

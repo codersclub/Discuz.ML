@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2,X2.5,X3,X3.1,X3.2]]></item>
+	<item id="Time"><![CDATA[2012-03-29 10:43]]></item>
+	<item id="From"><![CDATA[codersclub.org]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[0]]></item>
+			<item id="name"><![CDATA[Country Flag]]></item>
+			<item id="identifier"><![CDATA[countryflag]]></item>
+			<item id="description"><![CDATA[Показывает флаг страны в информации о пользователе]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[countryflag/]]></item>
+			<item id="copyright"><![CDATA[Valery Votintsev, codersclub.org]]></item>
+			<item id="version"><![CDATA[1.8]]></item>
+			<item id="image"><![CDATA[countryflag.gif]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[countryflag]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2,X2.5,X3]]></item>
+                <item id="license"><![CDATA[[list]Спасибо, что решили использовать плагин countryflag.
+Перед использванием плагина просим вас ознакомиться с информацией:
+
+[b]Особенности установки[/b]
+
+[1] Автор плагина: [url=http://codersclub.org/discuzx/home.php?mod=space&uid=1]Valery Votintsev[/url]
+[2] Автор идеи и первой версии: [url="http://codersclub.org/discuzx/home.php?mod=space&uid=1563]KEN[/url]
+[3] Плагин может быть использован только с МУЛЬТИЯЗЫЧНОЙ версией Discuz! X ML.
+[4] Базу данных не затрагивает
+[5] Файлы Discuz не модифицируются
+
+[b]Лицензия[/b]
+
+[1] Лицензия: Creative Commons Attribution 3.0.
+[2] Бесплатно для НЕкоммерческого использования. Запрещено использование в коммерческих проектах! 
+[3] Если вы используете данный плагин в своём проекте, в коде плагина обязательно должно оставаться указание на оигинальное авторство, даже если вы изменили код плагина в своих целях.
+[4] Если вы используете данный плагин в своём проекте, ваш проект должен иметь такую же лицензию.
+[5] Любое из перечисленных ограничений может быть изменено с письменного согласия автора.
+
+Добро пожаловать в [url=http://codersclub.org/discuzx/]CodersClub[/url]
+]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[Скрытые пользователи)]]></item>
+				<item id="description"><![CDATA[Скрыть страну для указанных пользователей.
+Перечислите UID через запятую (,)]]></item>
+				<item id="variable"><![CDATA[hideuid]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[Шаблон вывода]]></item>
+				<item id="description"><![CDATA[Поддерживается HTML код.
+В шаблоне можно использовать переменные:
+$flag_image.......Картинка флага
+$flag_country.....Название страны]]></item>
+				<item id="variable"><![CDATA[template]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[<p style="white-space: nowrap; overflow: hidden;">$flag_image&nbsp;$flag_country</p>]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+	</item>
+</root>
