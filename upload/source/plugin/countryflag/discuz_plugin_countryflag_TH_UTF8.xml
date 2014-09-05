@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2,X2.5,X3,X3.1,X3.2]]></item>
+	<item id="Time"><![CDATA[2012-03-29 10:43]]></item>
+	<item id="From"><![CDATA[codersclub.org]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[0]]></item>
+			<item id="name"><![CDATA[แสดงธงชาติประเทศ]]></item>
+			<item id="identifier"><![CDATA[countryflag]]></item>
+			<item id="description"><![CDATA[แสดงธงชาติของแต่ละประเทศในแถบเมนูส่วนตัว]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[countryflag/]]></item>
+			<item id="copyright"><![CDATA[Valery Votintsev, codersclub.org]]></item>
+			<item id="version"><![CDATA[1.8]]></item>
+			<item id="image"><![CDATA[countryflag.gif]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[countryflag]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2,X2.5,X3]]></item>
+                <item id="license"><![CDATA[[list]ขอบคุณที่เลือกใช้ปลั๊กอินนี้
+ก่อนที่จะทำการติดตั้งปลั๊กอินนี้ กรุณาอ่านข้อระวังด้านล่างนี้ก่อน:
+
+[b]ข้อมูลการติดตั้ง[/b]
+
+[1] เขียนโดย [url=http://codersclub.org/discuzx/home.php?mod=space&uid=1]Valery Votintsev[/url]
+[2] ต้นฉบับไอเดียโดย [url="http://codersclub.org/discuzx/home.php?mod=space&uid=1563]KEN[/url]
+[3] แปลภาษาไทยโดย [url="http://codersclub.org/discuzx/home.php?mod=space&uid=202]jaideejung007[/url]
+[4] ปลั๊กอินนี้สามารถใช้ได้เฉพาะ Discuz! X MultiLingual เท่านั้น
+[5] ปลั๊กอินนี้ไม่มีการยุ่งเกี่ยวกับฐานข้อมูลแต่อย่างใด
+[6] ปลั๊กอินนี้ไม่มีการเข้าไปแก้ไขไฟล์ใดๆ ในระบบ Discuz!
+
+[b]ใบอนุญาตการใช้งาน[/b]
+
+[1] ใบอนุญาตการใช้งานนี้ อยู่ภายใต้ของตกลงของ Creative Commons Attribution 3.0 License.
+[2] แสดงที่มา — คุณต้องแสดงที่มาของงานดังกล่าว ตามรูปแบบที่ผู้สร้างสรรค์หรือผู้อนุญาตกำหนด (แต่ไม่ใช่ในลักษณะที่ว่า พวกเขาสนับสนุนคุณหรือสนับสนุนการที่คุณนำงานไปใช้) 
+[3] ไม่ใช้เพื่อการค้า — คุณไม่อาจใช้งานนี้เพื่อวัตถุประสงค์ทางการค้า 
+[4] อนุญาตแบบเดียวกัน — หากคุณดัดแปลง เปลี่ยนรูป หรือต่อเติมงานนี้ คุณต้องใช้สัญญาอนุญาตแบบเดียวกันหรือแบบที่เหมือนกับสัญญาอนุญาตที่ใช้กับงานนี้เท่านั้น 
+[5] เงื่อนไขใด ๆ ข้างต้น อาจยกเว้นได้ หากคุณได้รับอนุญาตจากผู้ถือครองลิขสิทธิ์ 
+
+ขอต้อนรับเข้าสู่ [url=http://codersclub.org/discuzx/]กลุ่มผู้ใช้งาน CodersClub[/url]
+]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[ซ่อนยูสเซอร์ id (UID)]]></item>
+				<item id="description"><![CDATA[UID ต่อไปนี้ จะไม่ทำการแสดงธงชาติประเทศ
+เพิ่ม UID หลายรายการ โดยการใช้ตัวแยกด้วย คอมม่า (,)]]></item>
+				<item id="variable"><![CDATA[hideuid]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[เทมเพลท]]></item>
+				<item id="description"><![CDATA[รองรับการใช้โค้ด HTML
+คุณสามารถใช้ตัวแปรต่อไปนี้:
+$flag_image.......ภาพธงชาติ
+$flag_country.....ชื่อประเทศ]]></item>
+				<item id="variable"><![CDATA[template]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[<p style="white-space: nowrap; overflow: hidden;">$flag_image&nbsp;$flag_country</p>]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+	</item>
+</root>
