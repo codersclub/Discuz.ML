@@ -332,6 +332,11 @@ function checkmobile() {
 
 	static $pad_list = array('ipad');
 
+///*vot*/	if(isset($_GET['forcemobile'])) {
+///*vot*/		$_G['mobile'] = intval($_GET['forcemobile']);
+///*vot*/		return $_G['mobile'];
+///*vot*/	}
+
 	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
 
 	if(dstrpos($useragent, $pad_list)) {
