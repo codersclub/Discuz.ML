@@ -15,7 +15,7 @@ http://www.comsenz.com
 		#mdly.cpd h6 { padding-top: 40px; }
 		#mdly.cpd .cp { display: none; }
 		#mdly.cpd #mdct { display: block; position: absolute; margin: 0; left: 3px; top: 0; z-index: 999; width: 32px; height: 32px; color: {NOTICETEXT}; text-align: center; cursor: pointer; }
-/*vot*/	.pg_viewthread #mdly { margin: 20px 0 0 10px; padding: 0; width: auto; height: auto; background: none; }
+/*vot*/	.pg_viewthread #mdly { margin: 0px 0 0 10px; padding: 0; width: auto; height: auto; background: none; }
 
 .cmen { overflow: hidden; width: 63px; }
 	.cmen a { overflow: hidden; float:left; width: 20px; height: 20px; }
