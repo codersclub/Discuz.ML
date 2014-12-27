@@ -9,8 +9,17 @@
 
 error_reporting(0);
 
+$code = @$_GET['code'];
+$apptype = @$_GET['apptype'];
+
+$apptype = strtolower($apptype);
+
 define('IN_COMSENZ', TRUE);
-define('ROOT_PATH', dirname(__FILE__).'/../');
+if($apptype == 'discuzx') {
+	define('ROOT_PATH', dirname(__FILE__).'/../../');
+} else {
+	define('ROOT_PATH', dirname(__FILE__).'/../');
+}
 define('EXPLOR_SUCCESS', 0);
 define('IMPORT_SUCCESS', 0);
 define('DELETE_SQLPATH_SUCCESS', 4);
@@ -27,11 +36,6 @@ define('DB_API_NO_MATCH', 9);
 $sizelimit = 2000;
 $usehex = true;
 
-$code = @$_GET['code'];
-$apptype = @$_GET['apptype'];
-
-$apptype = strtolower($apptype);
-
 if($apptype == 'discuz') {
 	require ROOT_PATH.'./config.inc.php';
 } elseif($apptype == 'uchome' || $apptype == 'supesite' || $apptype == 'supev') {
@@ -42,6 +46,9 @@ if($apptype == 'discuz') {
 	require ROOT_PATH.'./data/inc.config.php';
 } elseif($apptype == 'ecshop') {
 	require ROOT_PATH.'./data/config.php';
+} elseif($apptype == 'discuzx') {
+	require ROOT_PATH.'./config/config_global.php';
+	require ROOT_PATH.'./config/config_ucenter.php';
 } else {
 	api_msg('db_api_no_match', $apptype);
 }
@@ -181,6 +188,10 @@ class dbstuff {
 		return mysql_get_server_info($this->link);
 	}
 
+	function escape_string($str) {
+		return mysql_escape_string($str);
+	}
+
 	function close() {
 		return mysql_close($this->link);
 	}
@@ -189,8 +200,136 @@ class dbstuff {
 		api_msg('run_sql_error', $message.'<br /><br />'.$sql.'<br /> '.mysql_error());
 	}
 }
+class dbstuffi {
+	var $querynum = 0;
+	var $link;
+	var $histories;
+	var $time;
+	var $tablepre;
 
-$db = new dbstuff();
+	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset, $pconnect = 0, $tablepre='', $time = 0) {
+		$this->time = $time;
+		$this->tablepre = $tablepre;
+		$this->link = new mysqli();
+		if(!$this->link->real_connect($dbhost, $dbuser, $dbpw, $dbname, null, null, MYSQLI_CLIENT_COMPRESS)) {
+			$this->halt('Can not connect to MySQL server');
+		}
+
+		if($this->version() > '4.1') {
+			if($dbcharset) {
+				$this->link->set_charset($dbcharset);
+			}
+
+			if($this->version() > '5.0.1') {
+				$this->query("SET sql_mode=''");
+			}
+		}
+
+
+	}
+
+	function fetch_array($query, $result_type = MYSQLI_ASSOC) {
+		return $query ? $query->fetch_array($result_type) : null;
+	}
+
+	function result_first($sql) {
+		$query = $this->query($sql);
+		return $this->result($query, 0);
+	}
+
+	function fetch_first($sql) {
+		$query = $this->query($sql);
+		return $this->fetch_array($query);
+	}
+
+	function fetch_all($sql) {
+		$arr = array();
+		$query = $this->query($sql);
+		while($data = $this->fetch_array($query)) {
+			$arr[] = $data;
+		}
+		return $arr;
+	}
+
+	function cache_gc() {
+		$this->query("DELETE FROM {$this->tablepre}sqlcaches WHERE expiry<$this->time");
+	}
+
+	function query($sql, $type = '', $cachetime = FALSE) {
+		$resultmode = $type == 'UNBUFFERED' ? MYSQLI_USE_RESULT : MYSQLI_STORE_RESULT;
+		if(!($query = $this->link->query($sql, $resultmode)) && $type != 'SILENT') {
+			$this->halt('MySQL Query Error', $sql);
+		}
+		$this->querynum++;
+		$this->histories[] = $sql;
+		return $query;
+	}
+
+	function affected_rows() {
+		return $this->link->affected_rows;
+	}
+
+	function error() {
+		return (($this->link) ? $this->link->error : mysqli_error());
+	}
+
+	function errno() {
+		return intval(($this->link) ? $this->link->errno : mysqli_errno());
+	}
+
+	function result($query, $row) {
+		if(!$query || $query->num_rows == 0) {
+			return null;
+		}
+		$query->data_seek($row);
+		$assocs = $query->fetch_row();
+		return $assocs[0];
+	}
+
+	function num_rows($query) {
+		$query = $query ? $query->num_rows : 0;
+		return $query;
+	}
+
+	function num_fields($query) {
+		return $query ? $query->field_count : 0;
+	}
+
+	function free_result($query) {
+		return $query ? $query->free() : false;
+	}
+
+	function insert_id() {
+		return ($id = $this->link->insert_id) >= 0 ? $id : $this->result($this->query("SELECT last_insert_id()"), 0);
+	}
+
+	function fetch_row($query) {
+		$query = $query ? $query->fetch_row() : null;
+		return $query;
+	}
+
+	function fetch_fields($query) {
+		return $query ? $query->fetch_field() : null;
+	}
+
+	function version() {
+		return $this->link->server_info;
+	}
+
+	function escape_string($str) {
+		return $this->link->escape_string($str);
+	}
+
+	function close() {
+		return $this->link->close();
+	}
+
+	function halt($message = '', $sql = '') {
+		api_msg('run_sql_error', $message.'<br /><br />'.$sql.'<br /> '.$this->link->error());
+	}
+}
+
+$db = function_exists("mysql_connect") ? new dbstuff() : new dbstuffi();
 $version = '';
 if($apptype == 'discuz') {
 
@@ -239,7 +378,7 @@ if($apptype == 'discuz') {
 	define('BACKUP_DIR', ROOT_PATH.'data/backup/');
 	$tablepre = $tablepre;
 	if(empty($dbcharset)) {
-		$dbcharset = in_array(strtolower($charset), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', $charset) : '';
+		$dbcharset = in_array(strtolower($_config['output']['charset']), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', CHARSET) : '';
 	}
 	$db->connect($dbhost, $dbuser, $dbpw, $dbname, $dbcharset, $pconnect, $tablepre);
 
@@ -249,6 +388,18 @@ if($apptype == 'discuz') {
 	$tablepre = $prefix;
 	$dbcharset = 'utf8';
 	$db->connect($db_host, $db_user, $db_pass, $db_name, $dbcharset, 0, $tablepre);
+
+} elseif($apptype == 'discuzx') {
+
+	define('BACKUP_DIR', ROOT_PATH.'data/');
+	extract($_config['db']['1']);
+	if(empty($dbcharset)) {
+		$dbcharset = in_array(strtolower(CHARSET), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', $_config['output']['charset']) : '';
+	}
+	$db->connect($dbhost, $dbuser, $dbpw, $dbname, $dbcharset, $pconnect, $tablepre);
+	define('IN_DISCUZ', true);
+	include ROOT_PATH.'source/discuz_version.php';
+	$version = DISCUZ_VERSION;
 
 }
 
@@ -271,6 +422,22 @@ if($get['method'] == 'export') {
 			}
 		}
 	}
+	if($apptype == 'discuzx') {
+		$query = $db->query("SELECT datatables FROM {$tablepre}common_plugin WHERE datatables<>''");
+		while($plugin = $db->fetch_array($query)) {
+			foreach(explode(',', $plugin['datatables']) as $table) {
+				if($table = trim($table)) {
+					$tables[] = $table;
+				}
+			}
+		}
+	}
+
+	$memberexist = array_search("{$tablepre}common_member", $tables);
+	if($memberexist !== FALSE) {
+		unset($tables[$memberexist]);
+		array_unshift($tables, "{$tablepre}common_member");
+	}
 
 	$get['volume'] = isset($get['volume']) ? intval($get['volume']) : 0;
 	$get['volume'] = $get['volume'] + 1;
@@ -282,10 +449,13 @@ if($get['method'] == 'export') {
 		if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
 			api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
 		}
-	} elseif(!is_dir(BACKUP_DIR.'./'.$get['sqlpath'])) {
-		if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
-			api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
-		}		
+	} else {
+		$get['sqlpath'] = str_replace(array('/', '\\', '.', "'"), '', $get['sqlpath']);
+		if(!is_dir(BACKUP_DIR.'./'.$get['sqlpath'])) {
+			if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
+				api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
+			}
+		}
 	}
 
 	if(!isset($get['backupfilename']) || empty($get['backupfilename'])) {
@@ -296,6 +466,11 @@ if($get['method'] == 'export') {
 	$get['tableid'] = isset($get['tableid']) ? intval($get['tableid']) : 0;
 	$get['startfrom'] = isset($get['startfrom']) ? intval($get['startfrom']) : 0;
 
+	if(!$get['tableid'] && $get['volume'] == 1) {
+		foreach($tables as $table) {
+			$sqldump .= sqldumptablestruct($table);
+		}
+	}
 	$complete = TRUE;
 	for(; $complete && $get['tableid'] < count($tables) && strlen($sqldump) + 500 < $sizelimit * 1000; $get['tableid']++) {
 		$sqldump .= sqldumptable($tables[$get['tableid']], strlen($sqldump));
@@ -419,7 +594,7 @@ if($get['method'] == 'export') {
 	$str .= "</root>";
 	echo $str;
 	exit;
-	
+
 } elseif($get['method'] == 'delete') {
 
 	$sqlpath = trim($get['sqlpath']);
@@ -549,6 +724,30 @@ function encode_arr($get) {
 	return _authcode($tmp, 'ENCODE', UC_KEY);
 }
 
+function sqldumptablestruct($table) {
+	global $db;
+
+	$createtable = $db->query("SHOW CREATE TABLE $table", 'SILENT');
+
+	if(!$db->error()) {
+		$tabledump = "DROP TABLE IF EXISTS $table;\n";
+	} else {
+		return '';
+	}
+
+	$create = $db->fetch_row($createtable);
+
+	if(strpos($table, '.') !== FALSE) {
+		$tablename = substr($table, strpos($table, '.') + 1);
+		$create[1] = str_replace("CREATE TABLE $tablename", 'CREATE TABLE '.$table, $create[1]);
+	}
+	$tabledump .= $create[1];
+
+	$tablestatus = $db->fetch_first("SHOW TABLE STATUS LIKE '$table'");
+	$tabledump .= ($tablestatus['Auto_increment'] ? " AUTO_INCREMENT=$tablestatus[Auto_increment]" : '').";\n\n";
+	return $tabledump;
+}
+
 function sqldumptable($table, $currsize = 0) {
 	global $get, $db, $sizelimit, $startrow, $extendins, $sqlcompat, $sqlcharset, $dumpcharset, $usehex, $complete, $excepttables;
 
@@ -568,30 +767,6 @@ function sqldumptable($table, $currsize = 0) {
 			$tablefields[] = $fieldrow;
 		}
 	}
-	if(!$get['startfrom']) {
-
-		$createtable = $db->query("SHOW CREATE TABLE $table", 'SILENT');
-
-		if(!$db->error()) {
-			$tabledump = "DROP TABLE IF EXISTS $table;\n";
-		} else {
-			return '';
-		}
-
-		$create = $db->fetch_row($createtable);
-
-		if(strpos($table, '.') !== FALSE) {
-			$tablename = substr($table, strpos($table, '.') + 1);
-			$create[1] = str_replace("CREATE TABLE $tablename", 'CREATE TABLE '.$table, $create[1]);
-		}
-		$tabledump .= $create[1];
-
-
-		$tablestatus = $db->fetch_first("SHOW TABLE STATUS LIKE '$table'");
-		$tabledump .= ($tablestatus['Auto_increment'] ? " AUTO_INCREMENT=$tablestatus[Auto_increment]" : '').";\n\n";
-
-	}
-
 
 	$tabledumped = 0;
 	$numrows = $offset;
@@ -611,7 +786,7 @@ function sqldumptable($table, $currsize = 0) {
 		while($row = $db->fetch_row($rows)) {
 			$comma = $t = '';
 			for($i = 0; $i < $numfields; $i++) {
-				$t .= $comma.($usehex && !empty($row[$i]) && (strexists($tablefields[$i]['Type'], 'char') || strexists($tablefields[$i]['Type'], 'text')) ? '0x'.bin2hex($row[$i]) : '\''.mysql_escape_string($row[$i]).'\'');
+				$t .= $comma.($usehex && !empty($row[$i]) && (strexists($tablefields[$i]['Type'], 'char') || strexists($tablefields[$i]['Type'], 'text')) ? '0x'.bin2hex($row[$i]) : '\''.$db->escape_string($row[$i]).'\'');
 				$comma = ',';
 			}
 			if(strlen($t) + $currsize + strlen($tabledump) + 500 < $sizelimit * 1000) {

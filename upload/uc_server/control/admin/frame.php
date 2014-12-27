@@ -136,7 +136,7 @@ class control extends adminbase {
 		$notes = $this->db->result_first("SELECT COUNT(*) FROM ".UC_DBTABLEPRE."notelist WHERE closed='0'");
 		return $notes;
 	}
-	
+
 	function _get_uc_errornotes($applist) {
 		$notelist = $this->db->fetch_all("SELECT * FROM ".UC_DBTABLEPRE."notelist ORDER BY dateline DESC LIMIT 20");
 		$error = array();

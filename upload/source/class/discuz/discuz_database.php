@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_database.php 33326 2013-05-28 08:52:45Z kamichen $
+ *      $Id: discuz_database.php 35054 2014-11-03 05:17:00Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -83,7 +83,7 @@ class discuz_database {
 		return self::$db->insert_id();
 	}
 
-	public static function fetch($resourceid, $type = 'MYSQL_ASSOC') {
+	public static function fetch($resourceid, $type = MYSQL_ASSOC) {
 		return self::$db->fetch_array($resourceid, $type);
 	}
 
@@ -174,7 +174,7 @@ class discuz_database {
 	public static function quote($str, $noarray = false) {
 
 		if (is_string($str))
-			return '\'' . addcslashes($str, "\n\r\\'\"\032") . '\'';
+			return '\'' . mysql_escape_string($str) . '\'';
 
 		if (is_int($str) or is_float($str))
 			return '\'' . $str . '\'';

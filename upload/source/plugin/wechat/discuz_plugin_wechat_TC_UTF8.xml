@@ -11,9 +11,9 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[wechat/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.0.1]]></item>
+			<item id="version"><![CDATA[1.1.3]]></item>
 			<item id="__modules">
-				<item id="0">
+				<item id="1">
 					<item id="name"><![CDATA[wechat]]></item>
 					<item id="param"><![CDATA[]]></item>
 					<item id="menu"><![CDATA[]]></item>
@@ -59,46 +59,124 @@
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[1]]></item>
-					<item id="navtitle"><![CDATA[]]></item>
-					<item id="navicon"><![CDATA[]]></item>
-					<item id="navsubname"><![CDATA[]]></item>
-					<item id="navsuburl"><![CDATA[]]></item>
-				</item>
-				<item id="1">
-					<item id="name"><![CDATA[wechat_setting]]></item>
-					<item id="param"><![CDATA[]]></item>
-					<item id="menu"><![CDATA[微信設置]]></item>
-					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[3]]></item>
-					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[2]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
 					<item id="navtitle"><![CDATA[]]></item>
 					<item id="navicon"><![CDATA[]]></item>
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
 				<item id="5">
-					<item id="name"><![CDATA[menu_setting]]></item>
+					<item id="name"><![CDATA[showactivity_setting]]></item>
 					<item id="param"><![CDATA[]]></item>
-					<item id="menu"><![CDATA[菜單設置]]></item>
+					<item id="menu"><![CDATA[曬圖]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[3]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
 					<item id="navtitle"><![CDATA[]]></item>
 					<item id="navicon"><![CDATA[]]></item>
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
 				<item id="6">
+					<item id="name"><![CDATA[wechat_setting]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[微信設置]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="7">
+					<item id="name"><![CDATA[menu_setting]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[菜單設置]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="8">
 					<item id="name"><![CDATA[response_setting]]></item>
 					<item id="param"><![CDATA[]]></item>
 					<item id="menu"><![CDATA[消息設置]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[4]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="9">
+					<item id="name"><![CDATA[resource_setting]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[素材設置]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="10">
+					<item id="name"><![CDATA[api_setting]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[接口]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="11">
+					<item id="name"><![CDATA[masssend_setting]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[群發設置]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+                		<item id="12">
+					<item id="name"><![CDATA[wsq_stat]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[微社區統計]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="13">
+					<item id="name"><![CDATA[wsq_app]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[應用中心]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
 					<item id="navtitle"><![CDATA[]]></item>
 					<item id="navicon"><![CDATA[]]></item>
 					<item id="navsubname"><![CDATA[]]></item>
@@ -112,12 +190,10 @@
 				<item id="wechat_undefined"><![CDATA[此鏈接已過期，請重新在微信中生成此鏈接]]></item>
 				<item id="wechat_openid_exists"><![CDATA[此微信帳號已綁定其他用戶，請更換]]></item>
 				<item id="wechat_tips"><![CDATA[
-					<li>如果您沒有微信公眾號平台公眾號，請直接進入「微社區設置」開通微社區，即可實現微信登錄</li>
-					<li>插件開發人員在設計新的微信類插件前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文庫</a>》中的內容 <a href="{apiurl}">[查看接口嵌入點]</a></li>
+					<li>選擇「認證服務號」服務的站長請在「開發者中心」的 OAuth2.0 網頁授權設置處設置授權回調頁面域名為本網站域名</li>
 					]]></item>
 				<item id="wechatapi_tips"><![CDATA[
-					<li>這裡列出了統一接口「{url}」的嵌入點及對應的方法列表</li>
-					<li>插件開發人員在設計新的微信類插件前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文庫</a>》中的內容</li>
+					<li>插件開發人員在設計新的微信及 Discuz! 微社區類插件前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文庫</a>》中的內容</li>
 					]]></item>
 				<item id="wsq_tips"><![CDATA[
 					<li>完善以下資料後，您的微社區將自動開通，開通後用戶可以在微信內閱讀您的論壇內容，發帖也將同步到您的論壇</li>
@@ -136,6 +212,10 @@
 					<li>如果您的公眾號沒有「自定義菜單」服務，並且希望在收到信息後響應微社區的訪問功能，請在「響應內容」中填寫「LOGIN_WSQ」</li>
 					<li>我們允許其他插件接管此消息的控制權，請仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文庫</a>》中的內容</li>
 					]]></item>
+				<item id="discuzqr_tips"><![CDATA[
+					<img src="source/plugin/wechat/image/discuz_qr.jpg" align="left" width="80" /><br />掃瞄關注Discuz!官方微信<br /><br />獲取官方最新動態
+					]]></item>
+					
 				<item id="wsq_status_open"><![CDATA[已開通]]></item>
 				<item id="wsq_status_ing"><![CDATA[開通中]]></item>
 				<item id="wsq_status_try"><![CDATA[重試]]></item>
@@ -155,8 +235,8 @@
 				<item id="wechat_mptype_0"><![CDATA[無公眾號/訂閱號/未認證服務號]]></item>
 				<item id="wechat_mptype_1"><![CDATA[訂閱號]]></item>
 				<item id="wechat_mptype_2"><![CDATA[認證服務號]]></item>
-				<item id="wechat_service_setting"><![CDATA[服務器配置 <span class="normal">(如果您已申請微信公眾號，請把此欄中的內容填寫到公眾平台「功能」->「高級功能」的「服務器配置」設置中)</span>]]></item>
-				<item id="wechat_devid_setting"><![CDATA[開發者憑據 <span class="normal">(如果您的微信公眾號擁有「開發者憑據」，請把該信息填寫此欄目中)</span>]]></item>
+				<item id="wechat_service_setting"><![CDATA[服務器配置 <span class="normal">(如果您希望在插件後台使用微信關鍵詞回復等功能，請把此欄中的內容填寫到微信公眾平台「開發者中心」設置中，不填寫不會影響微社區正常使用)</span>]]></item>
+				<item id="wechat_devid_setting"><![CDATA[開發者 ID <span class="normal">(如果您希望在插件後台設置微信自定義菜單並擁有公眾號「開發者 ID」，請把該信息填寫此欄目中)</span>]]></item>
 				<item id="wechat_func_setting"><![CDATA[功能設置]]></item>
 				<item id="wechat_wsq_setting"><![CDATA[微社區設置]]></item>
 				<item id="wechat_url"><![CDATA[URL]]></item>
@@ -164,17 +244,21 @@
 				<item id="wechat_appId"><![CDATA[AppId]]></item>
 				<item id="wechat_appsecret"><![CDATA[AppSecret]]></item>
 				<item id="wechat_responseexts"><![CDATA[擴展嵌入點]]></item>
-				<item id="wechat_devids"><![CDATA[擴展開發者憑據]]></item>
+				<item id="wechat_devids"><![CDATA[擴展開發者 ID]]></item>
 				<item id="wechat_qrcode"><![CDATA[二維碼]]></item>
 				<item id="wechat_qrcode_comment"><![CDATA[請把微信公眾平台「帳號信息」中的二維碼下載後上傳到這裡，服務號可忽略此設置<br />{qrcode}]]></item>
-				<item id="wechat_at_need"><![CDATA[服務號必須填寫開發者憑據]]></item>
-				<item id="wechat_at_geterror"><![CDATA[開發者憑據填寫錯誤或者您的服務器不支持 cURL 的 SSL 模式訪問]]></item>
+				<item id="wechat_at_need"><![CDATA[服務號必須填寫開發者 ID]]></item>
+				<item id="wechat_at_geterror"><![CDATA[開發者 ID 填寫錯誤或者您的服務器不支持 cURL 的 SSL 模式訪問]]></item>
 				<item id="wechat_at_qrgeterror"><![CDATA[獲取二維碼失敗，請確認您的公眾號是否擁有「高級接口」服務及其「生成帶參數二維碼」的內容]]></item>
 				<item id="wechat_float_qrcode"><![CDATA[是否在頁面右側顯示二維碼]]></item>
+				<item id="wechat_float_text"><![CDATA[二維碼下方的提示文字]]></item>
 				<item id="wechat_user"><![CDATA[微信註冊默認用戶名前綴]]></item>
 				<item id="wechat_user_comment"><![CDATA[微信註冊用戶的默認前綴，用戶可自行修改用戶名]]></item>
 				<item id="wechat_newusergroupid"><![CDATA[微信註冊用戶默認用戶組]]></item>
 				<item id="wechat_newusergroupid_comment"><![CDATA[微信註冊用戶的默認用戶組，留空表示使用默認註冊用戶組]]></item>
+				<item id="wechat_followurl"><![CDATA[關注頁面網址]]></item>
+				<item id="wechat_followurl_comment"><![CDATA[方便用戶通過此文章關注您的公眾號。<a href="http://addon.discuz.com/?!wechat_followurl_faq" target="_blank">如何使用？</a>]]></item>
+				<item id="wsq_followurl_error"><![CDATA[關注頁面網址錯誤，必須是「mp.wexin.qq.com」域名下的網站]]></item>
 				<item id="wechat_response_text_codeerror"><![CDATA[您輸入的數字碼無效，請重新輸入]]></item>
 				<item id="wechat_response_text_title"><![CDATA[「{bbname}」微社區]]></item>
 				<item id="wechat_response_text_access"><![CDATA[點擊此鏈接訪問本站的微社區
@@ -197,16 +281,20 @@
 				<item id="wsq_sitesummary"><![CDATA[微社區簡介]]></item>
 				<item id="wsq_siteurl"><![CDATA[網站 URL]]></item>
 				<item id="wsq_siteurl_comment"><![CDATA[用戶通過微信訪問您網站時的 URL 地址，此 URL 必須為在公網環境下]]></item>
+				<item id="wsq_siteip"><![CDATA[網站 IP]]></item>
+				<item id="wsq_siteip_comment"><![CDATA[如果您的微社區始終無法開通，請嘗試填寫您服務器的 IP 地址]]></item>
 				<item id="wsq_url"><![CDATA[微社區 URL]]></item>
-				<item id="wsq_siteid"><![CDATA[微社區 Id]]></item>
+				<item id="wsq_siteid"><![CDATA[微社區 ID]]></item>
 				<item id="wsq_sitetoken"><![CDATA[微社區 Token]]></item>
 				<item id="wsq_fid"><![CDATA[微社區默認版塊]]></item>
 				<item id="wsq_fid_comment"><![CDATA[設置在微社區中默認顯示的版塊]]></item>
 				<item id="wsq_domain"><![CDATA[微社區二級域名]]></item>
 				<item id="wsq_domain_comment"><![CDATA[您可以設置一個二級域名直接訪問本站的微社區(僅限擁有「高級接口」服務的公眾號)。根域名設置完後，此處域名綁定才能生效</a>]]></item>
+				<item id="wechat_forumdisplay_reply"><![CDATA[帖子列表頁是否顯示最新回復]]></item>
 				<item id="wsq_api_register_error"><![CDATA[微社區註冊失敗，請稍後再試]]></item>
+				<item id="wsq_api_servertime_error"><![CDATA[服務器時間錯誤，請修改後再試]]></item>
 				<item id="wsq_api_edit_error"><![CDATA[微社區資料修改失敗，請稍後再試]]></item>
-				<item id="wsq_menu_at_error"><![CDATA[您需要填寫開發者憑據後才能使用此功能]]></item>
+				<item id="wsq_menu_at_error"><![CDATA[您需要填寫微信開發者 ID 後才能使用此功能]]></item>
 				<item id="wsq_menu_name"><![CDATA[菜單標題]]></item>
 				<item id="wsq_menu_keyurl"><![CDATA[菜單KEY值 / 網頁鏈接]]></item>
 				<item id="wsq_menu_sub_button"><![CDATA[添加二級菜單]]></item>
@@ -222,6 +310,19 @@
 				<item id="wsq_menu_pub_error"><![CDATA[菜單發佈失敗（{errno}）]]></item>
 				<item id="wsq_fid_empty"><![CDATA[微社區默認版塊不能為空]]></item>
 				<item id="wsq_mobile_plugin_error"><![CDATA[「掌上論壇」插件缺失，請檢查]]></item>
+				<item id="wsq_wapdefault"><![CDATA[手機版是否默認顯示微社區]]></item>
+				<item id="wsq_apicredit"><![CDATA[微社區使用的積分]]></item>
+				<item id="wsq_apicredit_comment"><![CDATA[設置微社區使用的積分，設置為「無」表示不允許微社區操作論壇積分]]></item>
+				<item id="wsq_apicredit_log_inc"><![CDATA[微社區增加]]></item>
+				<item id="wsq_apicredit_log_dec"><![CDATA[微社區扣減]]></item>
+				<item id="wsq_global_banner"><![CDATA[是否展示全局活動 Banner]]></item>
+				<item id="wsq_global_banner_comment"><![CDATA[選擇「是」，微社區頂部將展示當前的微社區全局活動]]></item>
+				<item id="wsq_viewapp_local"><![CDATA[本地應用]]></item>
+				<item id="wsq_viewapp_local_comment"><![CDATA[通過 Discuz! 應用中心安裝在站長本地的插件應用，查看應用列表請<a href="http://addon.discuz.com/?!wsqapp" class="bold">點擊這裡</a>]]></item>
+				<item id="wsq_viewapp_online"><![CDATA[線上應用]]></item>
+				<item id="wsq_viewapp_online_comment"><![CDATA[線上應用主要是通過接口調用的方式為站長提供運營組件、全局活動等功能（如刮刮卡，紅包等）<br />使用線上應用前需要先在微社區應用平台（<a href="http://mp.wsq.qq.com/bindSite" target="_blank" class="bold">http://mp.wsq.qq.com/bindSite</a>）綁定站點，已綁定的站點請直接管理應用（<a href="http://mp.wsq.qq.com" target="_blank" class="bold">http://mp.wsq.qq.com</a>）]]></item>
+				<item id="api_wsq"><![CDATA[微社區接口]]></item>
+				<item id="api_wechat"><![CDATA[微信接口]]></item>
 				<item id="response_keyword"><![CDATA[關鍵詞]]></item>
 				<item id="response_content"><![CDATA[響應內容]]></item>
 				<item id="response_subscribe"><![CDATA[公眾號關注]]></item>
@@ -235,6 +336,25 @@
 				<item id="response_switch_plugin_mode"><![CDATA[切換為插件模式({plugin})]]></item>
 				<item id="response_plugin_mode"><![CDATA[插件模式({plugin})]]></item>
 				<item id="subscribe"><![CDATA[關注]]></item>
+				<item id="show_title"><![CDATA[活動標題]]></item>
+				<item id="show_starttime"><![CDATA[活動開始時間]]></item>
+				<item id="show_endtime"><![CDATA[活動結束時間]]></item>
+				<item id="show_expiration"><![CDATA[活動報名截止]]></item>
+				<item id="show_applynumber"><![CDATA[參與人數]]></item>
+				<item id="show_memo"><![CDATA[活動介紹]]></item>
+				<item id="show_forum"><![CDATA[活動版塊]]></item>
+				<item id="show_delthread"><![CDATA[刪除曬圖主題]]></item>
+				<item id="show_addthread"><![CDATA[添加曬圖活動]]></item>
+				<item id="show_delthread_succeed"><![CDATA[曬圖活動已刪除]]></item>
+				<item id="show_thread_class"><![CDATA[曬圖]]></item>
+				<item id="show_thread_place"><![CDATA[手機微信曬圖]]></item>
+				<item id="show_input_error"><![CDATA[請填寫完整資料]]></item>
+				<item id="show_addthread_succeed"><![CDATA[曬圖活動已發佈完成]]></item>
+				<item id="show_please_reply"><![CDATA[通過回復上傳圖片後，您將自動參與此活動]]></item>
+				<item id="show_no_cancel"><![CDATA[您無法取消此活動的報名]]></item>
+				<item id="show_disabled"><![CDATA[曬圖活動中您無法進行此操作]]></item>
+				<item id="show_no_begin"><![CDATA[活動尚未開始]]></item>
+				<item id="show_please_upload"><![CDATA[請上傳待參與活動的圖片]]></item>
 				<item id="response_message"><![CDATA[普通消息]]></item>
 				<item id="response_switch_custom_mode"><![CDATA[切換為自定義模式]]></item>
 				<item id="response_add_message"><![CDATA[添加響應消息]]></item>
@@ -268,7 +388,93 @@
 				<item id="lang_wechat_logintip"><![CDATA[掃一掃，訪問微社區]]></item>
 				<item id="lang_wechat_login"><![CDATA[關注本站微信公眾號登錄]]></item>
 				<item id="lang_wechat_bind"><![CDATA[微信掃一掃以綁定帳號]]></item>
-				<item id="lang_wechat_threadmessage"><![CDATA[<br /><a onclick="return false" href="plugin.php?id=wechat:qrcode&threadqr={tid}&access=yes&inajax=yes#post_{pid}" onmouseover="ajaxmenu(this, 500, 1, 2, '43', null, 'p_pop', '');return false;" style="font-size:12px;color:#708090;">來自: 微社區</a]]></item>
+				<item id="lang_wechat_threadmessage"><![CDATA[<br /><a onclick="return false" href="plugin.php?id=wechat:qrcode&threadqr={tid}&access=yes&inajax=yes#post_{pid}" onmouseover="ajaxmenu(this, 500, 1, 2, '43', null, 'p_pop', '');return false;" style="font-size:12px;color:#708090;">來自: 微社區</a>]]></item>
+			    <item id="mass_not_exist"><![CDATA[群發消息不存在]]></item>
+				<item id="mass_sent_succ"><![CDATA[群發消息提交成功]]></item>
+				<item id="mass_send_expire"><![CDATA[創建消息時間超過三天，媒體數據已經過期，請重新創建群發消息]]></item>
+				<item id="mass_created_succ"><![CDATA[群發消息創建成功]]></item>
+				<item id="mass_create"><![CDATA[新建群發消息]]></item>
+				<item id="mass_no_pic"><![CDATA[素材不包含圖片]]></item>
+				<item id="mass_no_found"><![CDATA[未找到素材]]></item>
+				<item id="mass_no_text"><![CDATA[群發文字為空]]></item>
+				<item id="mass_del_tips_1"><![CDATA[群發消息已發送，但未收到結束事件, 是否刪除?]]></item>
+				<item id="mass_del_tips_2"><![CDATA[你確認要刪除此條消息？]]></item>
+				<item id="mass_type"><![CDATA[群發內容]]></item>
+				<item id="mass_select_media"><![CDATA[選擇素材]]></item>
+				<item id="mass_send"><![CDATA[發送]]></item>
+				<item id="mass_list"><![CDATA[消息列表]]></item>
+				<item id="mass_text_oper"><![CDATA[操作]]></item>
+				<item id="mass_text_send"><![CDATA[發佈]]></item>
+				<item id="mass_created_at"><![CDATA[創建時間]]></item>
+				<item id="mass_finish_at"><![CDATA[發送結束時間]]></item>
+				<item id="mass_status"><![CDATA[狀態]]></item>
+				<item id="mass_totalcount"><![CDATA[總粉絲數]]></item>
+				<item id="mass_filtercount"><![CDATA[待發送]]></item>
+				<item id="mass_sendcount"><![CDATA[發送成功 ]]></item>
+				<item id="mass_errorcount"><![CDATA[發送失敗]]></item>
+				<item id="mass_delete"><![CDATA[刪除]]></item>
+				<item id="mass_edit"><![CDATA[編輯]]></item>
+				<item id="mass_oper_succ"><![CDATA[操作成功]]></item>
+				<item id="mass_group_id"><![CDATA[群發用戶組]]></item>
+				<item id="mass_get_group_failed"><![CDATA[獲取微信用戶組失敗]]></item>
+        <item id="mass_main_tips"><![CDATA[
+            <li>由於微信接口限制，群發功能僅限認證服務號使用，訂閱號請到微信公眾平台後台使用相關功能</li>
+        ]]></item>
+        <item id="mass_add_tips"><![CDATA[
+        <li>通過群發素材添加的圖文消息，在服務器保存時間為3天，三天後刪除，所以您建立消息後應在三天內發出。</li>
+        <li>群發用戶組是微信中的用戶分組，用戶組後的數字為這個組的人數。</li>
+        <li>群發內容:支持素材和純文本兩種格式。</li>
+        <li>發送素材請使用選擇素材，選擇的素材必須包含圖片。</li>
+        <li>發送純文本直接在群發素材框裡選擇即可。</li>
+        ]]></item>
+        <item id="menu_root"><![CDATA[微信登錄]]></item>
+        <item id="menu_wsq"><![CDATA[微社區設置]]></item>
+        <item id="menu_wsq_base"><![CDATA[基本設置]]></item>
+        <item id="menu_wsq_show"><![CDATA[曬圖]]></item>
+        <item id="menu_wsq_stat"><![CDATA[統計]]></item>
+        <item id="menu_wechat"><![CDATA[微信設置]]></item>
+        <item id="menu_wechat_base"><![CDATA[基本設置]]></item>
+        <item id="menu_wechat_msg"><![CDATA[消息設置]]></item>
+        <item id="menu_wechat_menu"><![CDATA[菜單設置]]></item>
+        <item id="menu_wechat_resource"><![CDATA[素材設置]]></item>
+        <item id="menu_wechat_masssend"><![CDATA[群發設置]]></item>
+        <item id="menu_app"><![CDATA[應用中心]]></item>
+        <item id="menu_api"><![CDATA[接口設置]]></item>
+        <item id="resource_select"><![CDATA[選擇素材]]></item>
+        <item id="resource_type_all"><![CDATA[全部素材]]></item>
+        <item id="resource_type_s"><![CDATA[獨立素材]]></item>
+        <item id="resource_type_m"><![CDATA[組合素材]]></item>
+        <item id="resource_merge"><![CDATA[組合]]></item>
+        <item id="resource_append_merge"><![CDATA[補充素材]]></item>
+        <item id="resource_edit"><![CDATA[編輯]]></item>
+        <item id="resource_del"><![CDATA[刪除]]></item>
+        <item id="resource_remove"><![CDATA[移除]]></item>
+        <item id="resource_merge_count"><![CDATA[內含 {count} 個素材]]></item>
+        <item id="resource_view"><![CDATA[點擊查看]]></item>
+        <item id="resource_add"><![CDATA[添加新素材]]></item>
+        <item id="resource_cancel_merge"><![CDATA[(取消組合)]]></item>
+        <item id="resource_name"><![CDATA[素材名稱]]></item>
+        <item id="resource_title"><![CDATA[標題]]></item>
+        <item id="resource_pic"><![CDATA[封面]]></item>
+        <item id="resource_desc"><![CDATA[摘要]]></item>
+        <item id="resource_content"><![CDATA[正文]]></item>
+        <item id="resource_url"><![CDATA[原文鏈接]]></item>
+        <item id="resource_order"><![CDATA[順序]]></item>
+        <item id="resource_msg_nofound"><![CDATA[無效的素材]]></item>
+        <item id="resource_msg_del"><![CDATA[你確認要刪除此素材？]]></item>
+        <item id="resource_msg_remove"><![CDATA[你確認要把此素材出此組合中移除？]]></item>
+        <item id="resource_msg_desc_toolong"><![CDATA[摘要字數超長，請控制在 120 字以內]]></item>
+        <item id="resource_thread_push"><![CDATA[主題推送]]></item>
+        <item id="resource_msg_pushed"><![CDATA[已成功推送到微信素材，請到管理中心中查看]]></item>
+        <item id="stat_failed"><![CDATA[沒有統計信息或連接服務器失敗]]></item>
+        <item id="stat_newthread"><![CDATA[發帖數]]></item>
+        <item id="stat_reply"><![CDATA[回帖數]]></item>
+        <item id="stat_share"><![CDATA[分享數]]></item>
+        <item id="stat_reflow"><![CDATA[回流數]]></item>
+        <item id="stat_joinsite"><![CDATA[新註冊用戶數]]></item>
+        <item id="show_export"><![CDATA[導出]]></item>
+        <item id="show_thread_not_found"><![CDATA[曬圖主題未找到]]></item>
+        <item id="show_export_title"><![CDATA[用戶名,點贊數,樓層數]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="wechat_qrcode_inputcode"><![CDATA[請在掃瞄關注後輸入以下數字碼<br />]]></item>
@@ -288,13 +494,17 @@
 				<item id="wechat_bind_comfirm_prompt"><![CDATA[請輸入您的論壇登錄密碼以確認身份]]></item>
 				<item id="quickregister"><![CDATA[立即註冊]]></item>
 				<item id="inputyourname"><![CDATA[請輸入用戶名]]></item>
-				<item id="wsq_indexqr"><![CDATA[用微信掃一掃<br />參與話題互動]]></item>
-				<item id="wsq_threadqr"><![CDATA[用微信掃一掃，參與話題互動]]></item>
+				<item id="wsq_indexqr"><![CDATA[用微信掃一掃<br />互動贏積分]]></item>
+				<item id="wsq_threadqr"><![CDATA[用微信掃一掃，互動贏積分]]></item>
 				<item id="wechat_share"><![CDATA[微信]]></item>
 				<item id="wechat_sharetitle"><![CDATA[分享到微信]]></item>
 				<item id="wechat_register"><![CDATA[填寫以下信息完成微信帳號註冊]]></item>
+				<item id="show_recommend_number"><![CDATA[已有 <strong class="xi1">{$post[voters]}</strong> 人點贊]]></item>
+				<item id="show_scanqr"><![CDATA[通過微信掃瞄二維碼為我拉票]]></item>
+				<item id="resource_push"><![CDATA[推送到微信素材]]></item>
 			</item>
 		</item>
 		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="upgradefile"><![CDATA[install.php]]></item>
 	</item>
 </root>

@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: app.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: app.php 1102 2011-05-30 09:40:42Z svn_project_zhangjie $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -37,11 +37,14 @@ class appcontrol extends base {
 		$appname = getgpc('appname', 'P');
 		$appurl = getgpc('appurl', 'P');
 		$appip = getgpc('appip', 'P');
+		$apifilename = trim(getgpc('apifilename', 'P'));
 		$viewprourl = getgpc('viewprourl', 'P');
 		$appcharset = getgpc('appcharset', 'P');
 		$appdbcharset = getgpc('appdbcharset', 'P');
 		$apptagtemplates = getgpc('apptagtemplates', 'P');
 		$appallowips = getgpc('allowips', 'P');
+
+		$apifilename = $apifilename ? $apifilename : 'uc.php';
 
 		if(md5(md5($ucfounderpw).UC_FOUNDERSALT) == UC_FOUNDERPW || (strlen($ucfounderpw) == 32 && $ucfounderpw == md5(UC_FOUNDERPW))) {
 			@ob_start();
@@ -56,6 +59,7 @@ class appcontrol extends base {
 					name='$appname',
 					url='$appurl',
 					ip='$appip',
+					apifilename='$apifilename',
 					authkey='$authkey',
 					viewprourl='$viewprourl',
 					synlogin='1',
@@ -69,7 +73,6 @@ class appcontrol extends base {
 				$appid = $this->db->insert_id();
 
 				$_ENV['app']->alter_app_table($appid, 'ADD');
-				//$return = "UC_STATUS_OK|$authkey|$appid|".UC_DBHOST.'|'.UC_DBNAME.'|'.UC_DBUSER.'|'.UC_DBPW.'|'.UC_DBCHARSET.'|'.UC_DBTABLEPRE.'|'.UC_CHARSET;
 				$return = "$authkey|$appid|".UC_DBHOST.'|'.UC_DBNAME.'|'.UC_DBUSER.'|'.UC_DBPW.'|'.UC_DBCHARSET.'|'.UC_DBTABLEPRE.'|'.UC_CHARSET;
 				$this->load('cache');
 				$_ENV['cache']->updatedata('apps');
@@ -81,7 +84,6 @@ class appcontrol extends base {
 				$_ENV['note']->add('updateapps', '', $this->serialize($notedata, 1));
 				$_ENV['note']->send();
 			} else {
-				//$return = "UC_STATUS_OK|$app[authkey]|$app[appid]|".UC_DBHOST.'|'.UC_DBNAME.'|'.UC_DBUSER.'|'.UC_DBPW.'|'.UC_DBCHARSET.'|'.UC_DBTABLEPRE.'|'.UC_CHARSET;
 				$return = "$app[authkey]|$app[appid]|".UC_DBHOST.'|'.UC_DBNAME.'|'.UC_DBUSER.'|'.UC_DBPW.'|'.UC_DBCHARSET.'|'.UC_DBTABLEPRE.'|'.UC_CHARSET;
 			}
 			@ob_end_clean();

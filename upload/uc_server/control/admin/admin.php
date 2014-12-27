@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: admin.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: admin.php 1139 2012-05-08 09:02:11Z liulanbo $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -26,7 +26,6 @@ class control extends adminbase {
 
 	function onls() {
 
-		//include_once UC_ROOT.'view/default/admin.lang.php';
 		$status = 0;
 		if(!empty($_POST['addname']) && $this->submitcheck()) {
 			$addname = getgpc('addname', 'P');
@@ -66,7 +65,7 @@ class control extends adminbase {
 						allowadminlog='$allowadminlog'");
 					$insertid = $this->db->insert_id();
 					if($insertid) {
-						$this->writelog('admin_add', 'username='.htmlspecialchars($addname));
+						$this->writelog('admin_add', 'username='.dhtmlspecialchars($addname));
 						$status = 1;
 					} else {
 						$status = -2;
@@ -165,7 +164,7 @@ class control extends adminbase {
 				allowadminlog='$allowadminlog'
 				WHERE uid='$uid'");
 			$status = $this->db->errno() ? -1 : 1;
-			$this->writelog('admin_priv_edit', 'username='.htmlspecialchars($admin));
+			$this->writelog('admin_priv_edit', 'username='.dhtmlspecialchars($admin));
 		}
 		$admin = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."admins WHERE uid='$uid'");
 		$this->view->assign('uid', $uid);

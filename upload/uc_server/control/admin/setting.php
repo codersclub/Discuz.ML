@@ -4,14 +4,18 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: setting.php 1094 2011-05-05 02:29:01Z svn_project_zhangjie $
+	$Id: setting.php 1174 2014-11-03 04:38:12Z hypowang $
 */
 
 !defined('IN_UC') && exit('Access Denied');
 
 class control extends adminbase {
 
-	var $_setting_items = array('doublee', 'accessemail', 'censoremail', 'censorusername', 'dateformat', 'timeoffset', 'timeformat', 'extra', 'maildefault', 'mailsend', 'mailserver', 'mailport', 'mailauth', 'mailfrom', 'mailauth_username', 'mailauth_password', 'maildelimiter', 'mailusername', 'mailsilent', 'pmcenter', 'privatepmthreadlimit', 'chatpmthreadlimit', 'chatpmmemberlimit', 'pmfloodctrl', 'sendpmseccode', 'pmsendregdays');
+	var $_setting_items = array('doublee', 'accessemail', 'censoremail', 'censorusername',
+		'dateformat', 'timeoffset', 'timeformat', 'extra', 'maildefault', 'mailsend', 'mailserver',
+		'mailport', 'mailauth', 'mailfrom', 'mailauth_username', 'mailauth_password', 'maildelimiter',
+		'mailusername', 'mailsilent', 'pmcenter', 'privatepmthreadlimit', 'chatpmthreadlimit',
+		'chatpmmemberlimit', 'pmfloodctrl', 'sendpmseccode', 'pmsendregdays', 'login_failedtime');
 
 	function __construct() {
 		$this->control();
@@ -40,6 +44,7 @@ class control extends adminbase {
 			$pmsendregdays = getgpc('pmsendregdays', 'P');
 			$pmcenter = getgpc('pmcenter', 'P');
 			$sendpmseccode = getgpc('sendpmseccode', 'P');
+			$login_failedtime = getgpc('login_failedtime', 'P');
 			$dateformat = str_replace(array('yyyy', 'mm', 'dd'), array('y', 'n', 'j'), strtolower($dateformat));
 			$timeformat = $timeformat == 1 ? 'H:i' : 'h:i A';
 			$timeoffset = in_array($timeoffset, array('-12', '-11', '-10', '-9', '-8', '-7', '-6', '-5', '-4', '-3.5', '-3', '-2', '-1', '0', '1', '2', '3', '3.5', '4', '4.5', '5', '5.5', '5.75', '6', '6.5', '7', '8', '9', '9.5', '10', '11', '12')) ? $timeoffset : 8;
@@ -55,6 +60,7 @@ class control extends adminbase {
 			$this->set_setting('pmsendregdays', intval($pmsendregdays));
 			$this->set_setting('pmcenter', $pmcenter);
 			$this->set_setting('sendpmseccode', $sendpmseccode ? 1 : 0);
+			$this->set_setting('login_failedtime', intval($login_failedtime) > 0 ? intval($login_failedtime) : 0);
 			$updated = true;
 
 			$this->updatecache();
@@ -87,6 +93,7 @@ class control extends adminbase {
 		$checkarray = array($timeoffset < 0 ? '0'.substr($timeoffset, 1) : $timeoffset => 'selected="selected"');
 		$this->view->assign('checkarray', $checkarray);
 		$this->view->assign('updated', $updated);
+		$this->view->assign('login_failedtime', $settings['login_failedtime']);
 		$this->view->display('admin_setting');
 	}
 
@@ -139,7 +146,7 @@ class control extends adminbase {
 			$this->_add_note_for_setting($settings);
 		}
 		foreach($items as $item) {
-			$this->view->assign($item, htmlspecialchars($settings[$item]));
+			$this->view->assign($item, dhtmlspecialchars($settings[$item]));
 		}
 
 		$this->view->assign('updated', $updated);
@@ -152,5 +159,3 @@ class control extends adminbase {
 		$_ENV['note']->send();
 	}
 }
-
-?>

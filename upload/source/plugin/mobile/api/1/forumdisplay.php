@@ -36,6 +36,10 @@ class mobile_api {
 					$_G['forum_threadlist'][$k]['cover'] = array('w' => $_img[0], 'h' => $_img[1]);
 				}
 			}
+			if(!$thread['authorid'] || !$thread['author']) {
+				$_G['forum_threadlist'][$k]['author'] = $_G['setting']['anonymoustext'];
+				$_G['forum_threadlist'][$k]['authorid'] = 0;
+			}
 		}
 		$variable = array(
 			'forum' => mobile_core::getvalues($_G['forum'], array('fid', 'fup', 'name', 'threads', 'posts', 'rules', 'autoclose', 'password')),

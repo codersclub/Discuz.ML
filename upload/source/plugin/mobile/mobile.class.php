@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.class.php 34605 2014-06-10 02:37:15Z nemohou $
+ *      $Id: mobile.class.php 35168 2014-12-25 02:29:36Z nemohou $
  */
 
 define("MOBILE_PLUGIN_VERSION", "4");
@@ -88,6 +88,7 @@ class mobile_core {
 			'saltkey' => $_G['cookie']['saltkey'],
 			'member_uid' => $_G['member']['uid'],
 			'member_username' => $_G['member']['username'],
+			'member_avatar' => avatar($_G['member']['uid'], 'small', true),
 			'groupid' => $_G['groupid'],
 			'formhash' => FORMHASH,
 			'ismoderator' => $_G['forum']['ismoderator'],
@@ -106,11 +107,28 @@ class mobile_core {
 				$globals = $globals + mobile_api_sub::getvariable();
 			}
 		}
+		$pluginvariables = array();
+		if(!empty($_G['setting']['mobileapihook'])) {
+			$mobileapihook = unserialize($_G['setting']['mobileapihook']);
+			if(!empty($mobileapihook[$_GET['module']])) {
+				if(!empty($mobileapihook[$_GET['module']]['variables'])) {
+					mobile_core::activeHook($_GET['module'], $mobileapihook, $variables, true);
+					unset($mobileapihook[$_GET['module']]['variables']);
+				}
+				if(!empty($mobileapihook[$_GET['module']])) {
+					$param = array();
+					$pluginvariables = mobile_core::activeHook($_GET['module'], $mobileapihook, $param);
+				}
+			}
+		}
 		$xml = array(
 			'Version' => $_GET['version'],
 			'Charset' => strtoupper($_G['charset']),
 			'Variables' => array_merge($globals, $variables),
 		);
+		if($pluginvariables) {
+			$xml['pluginVariables'] = $pluginvariables;
+		}
 		if(!empty($_G['messageparam'])) {
 			$message_result = lang('plugin/mobile', $_G['messageparam'][0], $_G['messageparam'][2]);
 			if($message_result == $_G['messageparam'][0]) {
@@ -199,6 +217,74 @@ class mobile_core {
 		}
 
 	}
+
+	function usergroupIconId($groupid) {
+		global $_G;
+		if($_G['cache']['usergroupIconId']) {
+			return $_G['cache']['usergroupIconId']['variable'][$groupid];
+		}
+		loadcache('usergroupIconId');
+		if(!$_G['cache']['usergroupIconId'] || TIMESTAMP - $_G['cache']['usergroupIconId']['expiration'] > 3600) {
+			loadcache('usergroups');
+			$memberi = 0;
+			$return = array();
+			foreach($_G['cache']['usergroups'] as $groupid => $data) {
+				if($data['type'] == 'member') {
+					if(!$memberi && $groupid == $_G['setting']['newusergroupid']) {
+						$memberi = 1;
+					}
+					if($memberi > 0) {
+						$return[$groupid] = $memberi++;
+					}
+				} elseif($data['type'] == 'system' && $groupid < 4) {
+					$return[$groupid] = 'admin';
+				} elseif($data['type'] == 'special') {
+					$return[$groupid] = 'special';
+				}
+			}
+			savecache('usergroupIconId', array('variable' => $return, 'expiration' => TIMESTAMP));
+			return $return[$groupid];
+		} else {
+			return $_G['cache']['usergroupIconId']['variable'][$groupid];
+		}
+	}
+
+	function activeHook($module, $mobileapihook, &$param, $isavariables = false) {
+		global $_G;
+		if($isavariables) {
+			$mobileapihook[$module] = array(
+			    'variables' => $mobileapihook[$module]['variables']
+			);
+		}
+		foreach($mobileapihook[$module] as $hookname => $hooks) {
+			foreach($hooks as $plugin => $hook) {
+				if(!$hook['allow'] || !in_array($plugin, $_G['setting']['plugins']['available'])) {
+					continue;
+				}
+				if(!preg_match('/^[\w\_\.]+\.php$/i', $hook['include'])) {
+					continue;
+				}
+				include_once DISCUZ_ROOT . 'source/plugin/' . $plugin . '/' . $hook['include'];
+				if(!class_exists($hook['class'], false)) {
+					continue;
+				}
+				if(!isset($pluginclasses[$hook['class']])) {
+					$pluginclasses[$hook['class']] = new $hook['class'];
+				}
+				if(!method_exists($pluginclasses[$hook['class']], $hook['method'])) {
+					continue;
+				}
+				if(!$isavariables) {
+					$value[$module.'_'.$hookname][$plugin] = $pluginclasses[$hook['class']]->$hook['method']($param);
+				} else {
+					$pluginclasses[$hook['class']]->$hook['method']($param);
+				}
+			}
+		}
+		if(!$isavariables) {
+			return $value;
+		}
+	}
 }
 
 class base_plugin_mobile {
@@ -223,6 +309,33 @@ class base_plugin_mobile {
 		$_G['setting']['cacheindexlife'] = $_G['setting']['cachethreadlife'] = false;
 		if(!$_G['setting']['mobile']['nomobileurl'] && function_exists('diconv') && !empty($_GET['charset'])) {
 			$_GET = mobile_core::diconv_array($_GET, $_GET['charset'], $_G['charset']);
+		}
+		if($_GET['_auth']) {
+			require_once DISCUZ_ROOT.'./source/plugin/wechat/wsq.class.php';
+			$uid = wsq::decodeauth($_GET['_auth']);
+			$disablesec = false;
+			if($uid) {
+				require_once libfile('function/member');
+				$member = getuserbyuid($uid, 1);
+				if($_GET['module'] != 'login') {
+					setloginstatus($member, 1296000);
+					$disablesec = true;
+				} else {
+					$disablesec = logincheck($member['username']);
+				}
+			} elseif($_GET['module'] == 'login') {
+				$disablesec = logincheck($_GET['username']);
+			}
+			if($disablesec) {
+				$_G['setting']['seccodedata'] = array();
+				$_G['setting']['seccodestatus'] = 0;
+				$_G['setting']['secqaa'] = array();
+				unset($_GET['force']);
+				define('IN_MOBILE_AUTH', $uid);
+				if($_SERVER['REQUEST_METHOD'] == 'POST') {
+					$_GET['formhash'] = $_G['formhash'];
+				}
+			}
 		}
 		if(class_exists('mobile_api', false) && method_exists('mobile_api', 'common')) {
 			mobile_api::common();

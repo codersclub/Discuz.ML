@@ -551,7 +551,7 @@ function writeEditorContents(text) {
 			text = '<!DOCTYPE html PUBLIC "-/' + '/W3C/' + '/DTD XHTML 1.0 Transitional/' + '/EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' +
 /*vot*/				'<html'+rtl+'><head id="editorheader"><meta http-equiv="Content-Type" content="text/html; charset=' + charset + '" />' +
 				(BROWSER.ie && BROWSER.ie > 7 ? '<meta http-equiv="X-UA-Compatible" content="IE=7" />' : '' ) +
-/*vot*/				'<link rel="stylesheet" type="text/css" href="misc.php?css=' + STYLEID + '_wysiwyg' + '" />' +
+				'<link rel="stylesheet" type="text/css" href="misc.php?css=' + STYLEID + '_wysiwyg&' + VERHASH + '" />' +
 				(BROWSER.ie ? '<script>window.onerror = function() { return true; }</script>' : '') +
 				'</head><body>' + text + '</body></html>';
 			editdoc.designMode = allowhtml ? 'on' : 'off';
@@ -1216,9 +1216,6 @@ function showEditorMenu(tag, params) {
 	}
 	if($(ctrlid + '_submit')) $(ctrlid + '_submit').onclick = function() {
 		checkFocus();
-		if(BROWSER.ie && wysiwyg) {
-			setCaret(pos[0]);
-		}
 		switch(tag) {
 			case 'url':
 				var href = $(ctrlid + '_param_1').value;

@@ -4,11 +4,15 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: uccode.class.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: uccode.class.php 1166 2014-11-03 01:49:32Z hypowang $
 */
 
 class uccode {
 	var $uccodes;
+
+	function __construct() {
+		$this->uccode();
+	}
 
 	function uccode() {
 		$this->uccode = array(
@@ -27,7 +31,7 @@ class uccode {
 	}
 
 	function complie($message) {
-		$message = htmlspecialchars($message);
+		$message = dhtmlspecialchars($message);
 		if(strpos($message, '[/code]') !== FALSE) {
 			$message = preg_replace("/\s*\[code\](.+?)\[\/code\]\s*/ies", "\$this->codedisp('\\1')", $message);
 		}
@@ -125,18 +129,5 @@ class uccode {
 	}
 }
 
-/*
-
-Usage:
-$str = <<<EOF
-1
-2
-3
-EOF;
-require_once 'lib/uccode.class.php';
-$this->uccode = new uccode();
-echo $this->uccode->complie($str);
-
-*/
 
 ?>

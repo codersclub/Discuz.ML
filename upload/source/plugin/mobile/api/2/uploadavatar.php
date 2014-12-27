@@ -3,7 +3,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
 *      This is NOT a freeware, use is subject to license terms
 *
-*      $Id: uploadavatar.php 32489 2013-01-29 03:57:16Z monkey $
+*      $Id: uploadavatar.php 35024 2014-10-14 07:43:43Z nemohou $
 */
 
 if(!defined('IN_MOBILE_API')) {
@@ -88,6 +88,7 @@ class mobile_api {
 					$variable = array(
 						'uploadavatar' => 'api_uploadavatar_success',
 					);
+					C::t('common_member')->update($_G['uid'], array('avatarstatus'=>'1'));
 					mobile_core::result(mobile_core::variable($variable));
 				} else {
 					self::error('api_uploadavatar_uc_error');

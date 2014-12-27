@@ -244,7 +244,7 @@ $lang = array (
   'magicuse_object_once_limit' => '抱歉，已对该对象使用过此道具，不能重复使用',
   'magicuse_bad_object' => '尚未正确选择道具要作用的对象',
   'magicuse_has_no_valid_friend' => '抱歉，此道具仅对您的好友有效',
-/*3.2*/  'mobile_template_no_found' => '您访问的页面无手机页面，是否进一步访问电脑版？<br /><br /><a href="{url}">继续访问</a><br /><br />',
+  'mobile_template_no_found' => '您访问的页面无手机页面，是否进一步访问电脑版？<br /><br /><a href="{url}">继续访问</a><br /><br />',
 
   'portal_status_off' => '抱歉，门户功能尚未开启',
 

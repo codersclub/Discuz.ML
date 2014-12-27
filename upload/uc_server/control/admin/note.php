@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: note.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: note.php 1155 2013-06-20 08:36:25Z andyzheng $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -65,7 +65,7 @@ class control extends adminbase {
 
 		$this->view->assign('status', $status);
 		$this->view->assign('applist', $this->apps);
-		$this->_format_notlist(&$notelist);
+		$this->_format_notlist($notelist);
 		$this->view->assign('notelist', $notelist);
 		$this->view->assign('multipage', $multipage);
 

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_image.php 34625 2014-06-16 01:51:31Z nemohou $
+ *      $Id: class_image.php 34673 2014-06-26 02:55:52Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -532,7 +532,7 @@ class image {
 				' -gravity '.$gravity.
 				' '.$this->param['watermarkfile'][$type].' '.$this->source.' '.$this->target;
 		} else {
-			$watermarktextcvt = str_replace(array("\n", "\r", "'"), array('', '', '\''), pack("H*", $this->param['watermarktext']['text'][$type]));
+			$watermarktextcvt = escapeshellcmd(pack("H*", $this->param['watermarktext']['text'][$type]));
 			$angle = -$this->param['watermarktext']['angle'][$type];
 			$translate = $this->param['watermarktext']['translatex'][$type] || $this->param['watermarktext']['translatey'][$type] ? ' translate '.$this->param['watermarktext']['translatex'][$type].','.$this->param['watermarktext']['translatey'][$type] : '';
 			$skewX = $this->param['watermarktext']['skewx'][$type] ? ' skewX '.$this->param['watermarktext']['skewx'][$type] : '';

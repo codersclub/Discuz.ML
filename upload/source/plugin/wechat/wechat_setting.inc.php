@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat_setting.inc.php 34555 2014-05-28 06:59:57Z nemohou $
+ *      $Id: wechat_setting.inc.php 35024 2014-10-14 07:43:43Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -17,45 +17,12 @@ $apiurl = $_G['siteurl'].'api/mobile/?module=wechat';
 
 require_once DISCUZ_ROOT.'./source/plugin/wechat/wechat.lib.class.php';
 require_once DISCUZ_ROOT.'./source/plugin/wechat/wsq.class.php';
+require_once DISCUZ_ROOT.'./source/plugin/wechat/setting.class.php';
+WeChatSetting::menu();
 
 if(isset($_GET['viewapi'])) {
-	$redirect = WeChatHook::getRedirect();
-	$response = WeChatHook::getResponse();
-	showtips(lang('plugin/wechat', 'wechatapi_tips', array('url' => $apiurl)));
 
-	showtableheader();
-	echo '<tr class="header"><th>'.lang('plugin/wechat', 'api_hook').'</th><th>'.lang('plugin/wechat', 'api_method').'</th></tr>';
-	if($redirect) {
-		echo '<tr><th>'.lang('plugin/wechat', 'wechatapi_redirect').'</th><th>'.formathook($redirect).'</th></tr>';
-	}
-	foreach($response as $k => $row) {
-		echo '<tr><th>'.lang('plugin/wechat', 'api_'.$k).'('.$k.')</th><th>'.formathook($row).'</th></tr>';
-	}
-	showtablefooter();
-
-	$wechatresponseExts = unserialize($_G['setting']['wechatresponseExts']);
-	if($wechatresponseExts) {
-		showtableheader();
-		foreach($wechatresponseExts as $k => $response) {
-			echo '<tr class="header"><th>'.lang('plugin/wechat', 'wechat_responseexts').' '.$k.'</th><th>'.lang('plugin/wechat', 'api_method').'</th></tr>';
-			foreach($response as $k => $row) {
-				echo '<tr><th>'.lang('plugin/wechat', 'api_'.$k).'('.$k.')</th><th>'.formathook($row).'</th></tr>';
-			}
-		}
-		showtablefooter();
-	}
-
-	$wechatappInfos = unserialize($_G['setting']['wechatappInfos']);
-	if($wechatappInfos) {
-		showtableheader();
-		echo '<tr class="header"><th width="200">'.lang('plugin/wechat', 'wechat_devids').'</th><th>'.lang('plugin/wechat', 'wechat_appId').'</th><th>'.lang('plugin/wechat', 'wechat_appsecret').'</th></tr>';
-		foreach(unserialize($_G['setting']['wechatappInfos']) as $k => $info) {
-			echo '<tr><th>'.$k.'</th><th>'.$info['appId'].'</th><th>'.$info['appSecret'].'</th></tr>';
-		}
-		showtablefooter();
-	}
-
-	exit;
+	dheader('location: '.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=api_setting');
 
 }
 
@@ -67,8 +34,6 @@ if(!submitcheck('settingsubmit')) {
 		C::t('common_setting')->update_batch($settings);
 		updatecache('setting');
 	}
-
-	$apilisturl = ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=wechat_setting&viewapi=yes';
 
 	$groupselect = array();
 	foreach(C::t('common_usergroup')->range_orderby_credit() as $group) {
@@ -82,7 +47,7 @@ if(!submitcheck('settingsubmit')) {
 		($groupselect['specialadmin'] ? '<optgroup label="'.$lang['usergroups_specialadmin'].'">'.$groupselect['specialadmin'].'</optgroup>' : '').
 		'<optgroup label="'.$lang['usergroups_system'].'">'.$groupselect['system'].'</optgroup></select>';
 
-	showtips(lang('plugin/wechat', 'wechat_tips', array('url' => $apiurl, 'apiurl' => $apilisturl)));
+	showtips(lang('plugin/wechat', 'wechat_tips', array('url' => $apiurl)));
 	showformheader('plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=wechat_setting', 'enctype');
 
 	showtableheader();
@@ -95,6 +60,16 @@ if(!submitcheck('settingsubmit')) {
 	showtagfooter('tbody');
 	showtablefooter();
 
+	showtableheader(lang('plugin/wechat', 'wechat_func_setting'));
+	showsetting(lang('plugin/wechat', 'wechat_allowregister'), 'setting[wechat_allowregister]', $setting['wechat_allowregister'], 'radio', 0, 1, lang('plugin/wechat', 'wechat_allowregister_comment'));
+	showsetting(lang('plugin/wechat', 'wechat_allowfastregister'), 'setting[wechat_allowfastregister]', $setting['wechat_allowfastregister'], 'radio', 0, 0, lang('plugin/wechat', 'wechat_allowfastregister_comment'));
+	showsetting(lang('plugin/wechat', 'wechat_disableregrule'), 'setting[wechat_disableregrule]', $setting['wechat_disableregrule'], 'radio', 0, 0, lang('plugin/wechat', 'wechat_disableregrule_comment'));
+	showsetting(lang('plugin/wechat', 'wechat_confirmtype'), 'setting[wechat_confirmtype]', $setting['wechat_confirmtype'], 'radio', 0, 0, lang('plugin/wechat', 'wechat_confirmtype_comment'));
+	showsetting(lang('plugin/wechat', 'wechat_newusergroupid'), '', '', $usergroups, 0, 0, lang('plugin/wechat', 'wechat_newusergroupid_comment'));
+	showtagfooter('tbody');
+	showsetting(lang('plugin/wechat', 'wechat_followurl'), 'setting[wechat_followurl]', $setting['wechat_followurl'], 'text', 0, 0, lang('plugin/wechat', 'wechat_followurl_comment'));
+	showtagfooter('tbody');
+
 	showtableheader(lang('plugin/wechat', 'wechat_service_setting'));
 	showsetting(lang('plugin/wechat', 'wechat_url'), '', '', '<span style="white-space:nowrap">'.$apiurl.'</span>');
 	showsetting(lang('plugin/wechat', 'wechat_token'), 'setting[wechat_token]', $setting['wechat_token'], 'text');
@@ -104,15 +79,6 @@ if(!submitcheck('settingsubmit')) {
 	showsetting(lang('plugin/wechat', 'wechat_appId'), 'setting[wechat_appId]', $setting['wechat_appId'], 'text');
 	showsetting(lang('plugin/wechat', 'wechat_appsecret'), 'setting[wechat_appsecret]', $setting['wechat_appsecret'], 'text');
 	showtablefooter();
-
-	showtableheader(lang('plugin/wechat', 'wechat_func_setting'));
-	showsetting(lang('plugin/wechat', 'wechat_allowregister'), 'setting[wechat_allowregister]', $setting['wechat_allowregister'], 'radio', 0, 1, lang('plugin/wechat', 'wechat_allowregister_comment'));
-	showsetting(lang('plugin/wechat', 'wechat_allowfastregister'), 'setting[wechat_allowfastregister]', $setting['wechat_allowfastregister'], 'radio', 0, 0, lang('plugin/wechat', 'wechat_allowfastregister_comment'));
-	showsetting(lang('plugin/wechat', 'wechat_disableregrule'), 'setting[wechat_disableregrule]', $setting['wechat_disableregrule'], 'radio', 0, 0, lang('plugin/wechat', 'wechat_disableregrule_comment'));
-	showsetting(lang('plugin/wechat', 'wechat_confirmtype'), 'setting[wechat_confirmtype]', $setting['wechat_confirmtype'], 'radio', 0, 0, lang('plugin/wechat', 'wechat_confirmtype_comment'));
-	showsetting(lang('plugin/wechat', 'wechat_user'), 'setting[wechat_user]', $setting['wechat_user'], 'text', 0, 0, lang('plugin/wechat', 'wechat_user_comment'));
-	showsetting(lang('plugin/wechat', 'wechat_newusergroupid'), '', '', $usergroups, 0, 0, lang('plugin/wechat', 'wechat_newusergroupid_comment'));
-	showtagfooter('tbody');
 
 	showtableheader();
 	showsubmit('settingsubmit');
@@ -154,8 +120,27 @@ if(!submitcheck('settingsubmit')) {
 		$_GET['setting']['wechat_qrcode'] = $upload->attach['attachment'];
 	}
 
+	if($_GET['setting']['wechat_followurl']) {
+		$_GET['setting']['wechat_followurl'] = (!preg_match('/^http:\/\//', $_GET['setting']['wechat_followurl']) ? 'http://' : '').$_GET['setting']['wechat_followurl'];
+		$parse = parse_url($_GET['setting']['wechat_followurl']);
+		if(!$parse['host'] || $parse['host'] != 'mp.weixin.qq.com') {
+			cpmsg(lang('plugin/wechat', 'wsq_followurl_error'), '', 'error');
+		}
+	}
+
 	if($setting['wsq_siteid']) {
-		$siteinfo = wsq::edit($setting['wsq_sitename'], $setting['wsq_siteurl'], $setting['wsq_sitelogo'], $setting['wsq_sitesummary'], $_GET['setting']['wechat_mtype'], $_GET['setting']['wechat_qrtype']);
+		$siteinfo = wsq::edit($setting['wsq_sitename'],
+			$setting['wsq_siteurl'],
+			$setting['wsq_sitelogo'],
+			$setting['wsq_sitesummary'],
+			$_GET['setting']['wechat_mtype'],
+			$_GET['setting']['wechat_qrtype'],
+			$setting['wsq_siteip'],
+			$_GET['setting']['wechat_followurl'],
+			$_GET['setting']['wechat_appId'],
+			$_GET['setting']['wechat_appsecret'],
+			$_GET['setting'] + $setting
+		);
 		if(!$siteinfo || $siteinfo->code) {
 			cpmsg(lang('plugin/wechat', 'wsq_api_edit_error'), '', 'error');
 		}

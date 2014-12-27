@@ -22,8 +22,6 @@ class control extends base {
 		$this->time = time();
 		$seccodeauth = getgpc('seccodeauth');
 		$seccode = $this->authcode($seccodeauth, 'DECODE', $authkey);
-		//$seccode = rand(100000, 999999);
-		//$this->setcookie('uc_secc', $this->authcode($seccode."\t".$this->time, 'ENCODE'));
 
 		@header("Expires: -1");
 		@header("Cache-Control: no-store, private, post-check=0, pre-check=0, max-age=0", FALSE);

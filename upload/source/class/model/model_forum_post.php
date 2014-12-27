@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: model_forum_post.php 33881 2013-08-27 03:10:46Z nemohou $
+ *      $Id: model_forum_post.php 34819 2014-08-11 06:46:20Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -412,7 +412,7 @@ class model_forum_post extends discuz_model {
 
 			$this->thread['status'] = setstatus(6, $this->param['allownoticeauthor'] ? 1 : 0, $this->thread['status']);
 
-			$displayorder = empty($this->param['save']) ? ($this->thread['displayorder'] == -4 ? -4 : $this->thread['displayorder']) : -4;
+			$displayorder = (empty($this->param['save']) || $this->thread['displayorder'] != -4 ) ? ($this->thread['displayorder'] == -4 ? -4 : $this->thread['displayorder']) : -4;
 
 
 			$this->param['threadupdatearr']['typeid'] = $this->param['typeid'];

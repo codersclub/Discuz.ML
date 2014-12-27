@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: login.inc.php 34554 2014-05-28 05:31:34Z nemohou $
+ *      $Id: login.inc.php 35024 2014-10-14 07:43:43Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -28,8 +28,17 @@ $ac = !empty($_GET['ac']) ? $_GET['ac'] : 'login';
 if($ac == 'login') {
 	$qrauth = $_G['cookie']['qrauth'] ? authcode(base64_decode($_G['cookie']['qrauth']), 'DECODE', $_G['config']['security']['authkey']) : '';
 	if($_G['uid'] && !$qrauth) {
-		dsetcookie('qrauth', '', -1);
-		showmessage('wechat:wechat_member_bind_qrauth_lost');
+		$showtip = true;
+		if(in_array('qqconnect', $_G['setting']['plugins']['available'])) {
+			$connect = C::t('#qqconnect#common_member_connect')->fetch($_G['uid']);
+			if($connect['conisregister']) {
+				$showtip = false;
+			}
+		}
+		if($showtip) {
+			dsetcookie('qrauth', '', -1);
+			showmessage('wechat:wechat_member_bind_qrauth_lost');
+		}
 	}
 	$url = wsq::qrconnectUrl($_G['uid'], dreferer());
 	dheader('location: '.$url);
@@ -56,7 +65,7 @@ if($ac == 'login') {
 		loaducenter();
 		$user = uc_get_user($defaultusername);
 		if(!empty($user)) {
-			$defaultusername = substr($defaultusername, 0, 9).'_'.random(5);
+			$defaultusername = cutstr($defaultusername, 7, '').'_'.random(5);
 		}
 		$uid = WeChat::register($defaultusername, 1, 8);
 		if(!$uid) {
@@ -122,7 +131,7 @@ function redirectregister($username) {
 	loaducenter();
 	$user = uc_get_user($defaultusername);
 	if(!empty($user)) {
-		$defaultusername = substr($defaultusername, 0, 9).'_'.random(5);
+		$defaultusername = cutstr($defaultusername, 7, '').'_'.random(5);
 	}
 	$auth = urlencode(base64_encode(authcode($_GET['openid']."\t".$_GET['openidsign']."\t".$_GET['referer'], 'ENCODE')));
 	$referer = urlencode($_G['siteurl'].'plugin.php?id=wechat:login&ac=regcallback&auth='.$auth);

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 34486 2014-05-08 01:31:08Z nemohou $
+ *      $Id: lang_admincp.php 35170 2014-12-25 02:42:41Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -17,6 +17,7 @@ $lang = array
 (
 
 	'subscribe_comsenz_email' => '填寫您的郵件地址，訂閱 Discuz! 官方產品動態、安全提醒、官方新聞',
+	'scan_discuz_qrcode' => '<img src="source/plugin/wechat/image/discuz_qr.jpg" align="left" width="80" /><br />掃瞄關注Discuz!官方微信<br /><br />獲取官方最新動態',
 	'reglinkname_default' => '註冊',
 	'yes' => '是',
 	'no' => '否',

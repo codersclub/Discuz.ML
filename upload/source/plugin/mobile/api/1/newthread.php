@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: newthread.php 34468 2014-05-06 02:25:28Z nemohou $
+ *      $Id: newthread.php 35024 2014-10-14 07:43:43Z nemohou $
  */
 
 if(!defined('IN_MOBILE_API')) {
@@ -56,15 +56,17 @@ class mobile_api {
 			}
 			C::t('forum_post')->update(0, $values['pid'], array('status' => $poststatus));
 
-			list($mapx, $mapy, $location) = explode('|', dhtmlspecialchars($_POST['location']));
-			C::t('forum_post_location')->insert(array(
-				'pid' => $values['pid'],
-				'tid' => $values['tid'],
-				'uid' => $_G['uid'],
-				'mapx' => $mapx,
-				'mapy' => $mapy,
-				'location' => $location,
-			));
+			if($_POST['location']) {
+				list($mapx, $mapy, $location) = explode('|', dhtmlspecialchars($_POST['location']));
+				C::t('forum_post_location')->insert(array(
+					'pid' => $values['pid'],
+					'tid' => $values['tid'],
+					'uid' => $_G['uid'],
+					'mapx' => $mapx,
+					'mapy' => $mapy,
+					'location' => $location,
+				));
+			}
 		}
 	}
 
@@ -74,6 +76,9 @@ class mobile_api {
 			'tid' => $GLOBALS['tid'],
 			'pid' => $GLOBALS['pid'],
 		);
+		if(!empty($_G['forum']['threadtypes'])) {
+			$variable['threadtypes'] = $_G['forum']['threadtypes'];
+		}
 		mobile_core::result(mobile_core::variable($variable));
 	}
 

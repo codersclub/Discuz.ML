@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: google.php 34247 2013-11-22 02:41:52Z nemohou $
+ *      $Id: google.php 34713 2014-07-14 02:33:03Z hypowang $
  */
 
 @define('IN_API', true);
@@ -103,7 +103,7 @@ class GoogleAPI
 		if($posts) {
 			$posts[0] = intval($posts[0]);
 			$posts[1] = intval($posts[1]);
-			$posts = implode(',', $posts);
+			$posts = sprintf('%s , %s', $posts[0], $posts[1]);
 		}
 		$xmlcontent .= "<threadsdata>\n";
 		if(is_array($tids) && !empty($tids)) {

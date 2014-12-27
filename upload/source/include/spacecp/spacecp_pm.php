@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_pm.php 33289 2013-05-22 05:44:06Z nemohou $
+ *      $Id: spacecp_pm.php 35056 2014-11-03 08:01:19Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -109,6 +109,10 @@ if($_GET['op'] == 'checknewpm') {
 	$list = uc_pm_view($_G['uid'], 0, $plid, 5, ceil($count/$perpage)-$page+1, $perpage, 1, 1);
 
 } elseif($_GET['op'] == 'delete') {
+
+	if($_GET['formhash'] != formhash()) {
+		showmessage('delete_pm_error_option');
+	}
 
 	$gpmid = is_array($_GET['deletepm_gpmid']) ? $_GET['deletepm_gpmid'] : 0;
 	$deluid = is_array($_GET['deletepm_deluid']) ? $_GET['deletepm_deluid'] : 0;

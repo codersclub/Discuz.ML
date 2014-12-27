@@ -6,7 +6,7 @@
 		<div id="pm_o_$value[pmid]_menu" class="p_pop" style="display: none;">
 			<ul>
 			<!--{if $value['pmtype'] == 1}-->
-				<li><a href="javascript:;" id="a_pmdelete_$value[pmid]" onclick="ajaxget('home.php?mod=spacecp&ac=pm&op=delete&deletepm_pmid[]=$value[pmid]&touid=$touid&deletesubmit=1&handlekey=pmdeletehk_{$value[pmid]}', '', 'ajaxwaitid', '', 'none', 'changedeletedpm($value[pmid])');" title="{lang delete}">{lang delete}</a></li>
+				<li><a href="javascript:;" id="a_pmdelete_$value[pmid]" onclick="ajaxget('home.php?mod=spacecp&ac=pm&op=delete&deletepm_pmid[]=$value[pmid]&touid=$touid&deletesubmit=1&handlekey=pmdeletehk_{$value[pmid]}&formhash={FORMHASH}', '', 'ajaxwaitid', '', 'none', 'changedeletedpm($value[pmid])');" title="{lang delete}">{lang delete}</a></li>
 			<!--{/if}-->
 			<!--{if $value['authorid'] && $value['authorid'] != $_G['uid'] && $_G['setting']['pmreportuser']}-->
 				<li><a href="home.php?mod=spacecp&ac=pm&op=pm_report&pmid=$value[pmid]&handlekey=pmreporthk_{$value[pmid]}" id="a_pmreport_$value[pmid]" onclick="showWindow(this.id, this.href, 'get', 0);" title="{lang pmreport}">{lang pmreport}</a></li>

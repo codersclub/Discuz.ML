@@ -25,7 +25,7 @@ class control extends adminbase {
 		}
 		$this->load('feed');
 		$this->load('misc');
-		$this->apps = $this->cache['apps'];		
+		$this->apps = $this->cache['apps'];
 		$this->check_priv();
 	}
 

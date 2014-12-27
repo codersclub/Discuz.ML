@@ -85,11 +85,13 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 .fixwidth{ width: 100%; }
 	.fixwidthdec{ width:580px; }
 #loginform{ overflow:hidden; margin:90px auto; *padding-top:90px; width:590px; }
-/*vot*/ .login{ float:left; margin-top:5px; text-align:right; font:bold 14px "Times New Roman"; }
+/*vot*/ .login{ float:left; margin-top:5px; text-align:right; font:bold 14px Tahoma, 'Verdana', Sans-serif; }
 	.login p{ margin:10px 5px; }
 	.loginbtn{ padding-left:53px; text-align:left; }
 	.login .txt{ width:160px; }
+	.login .seccode { margin-right:5px; width:85px; }
 	.checkcode{ margin-top:-3px; *margin-top:-6px; width:70px; height:21px; cursor:pointer; vertical-align:middle; }
+	.rstpsw { margin-left:10px; font-size:12px; font-weight:400; }
 .loginbox{ padding-right:40px; width:290px; height:120px; line-height:150%; background:url(bg_login.gif) no-repeat right 50%; }
 	.loginbox h1{ text-indent:-9999px; margin:10px 0 10px; height:25px; background:url(bg_repno.gif) no-repeat 0 -750px; }
 .ajax{ width:360px; border:1px solid #89B3C2; }

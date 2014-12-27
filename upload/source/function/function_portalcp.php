@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_portalcp.php 33715 2013-08-07 01:59:25Z andyzheng $
+ *      $Id: function_portalcp.php 35034 2014-10-27 03:42:17Z laoguozhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -655,7 +655,11 @@ function checkprimaltpl($template) {
 	if(!$template || preg_match("/(\.)(exe|jsp|asp|aspx|cgi|fcgi|pl)(\.|$)/i", $template)) {
 		return 'diy_template_filename_invalid';
 	}
-	if(strpos($tpldirectory, '..') !== false || strpos($tpldirectory, "\0") !== false) {
+	if(strpos($template, '..') !== false || strpos($template, "\0") !== false) {
+		return 'diy_template_filename_invalid';
+	}
+	$tpldirectoryarr = explode('/', trim($tpldirectory, './'));
+	if(strpos($tpldirectory, '..') !== false || strpos($tpldirectory, "\0") !== false || ($tpldirectoryarr[0] != 'template' && $tpldirectoryarr[0] != 'source')) {
 		return 'diy_tpldirectory_invalid';
 	}
 	$primaltplname = (!$tpldirectory ? DISCUZ_ROOT.$_G['cache']['style_default']['tpldir'] : $tpldirectory).'/'.$template.'.htm';
@@ -802,6 +806,9 @@ function updatetopic($topic = ''){
 	}
 	if(empty($_POST['name'])) {
 		$_POST['name'] = $_POST['title'];
+	}
+	if(!preg_match('/^[\w\_\.]+$/i', $_POST['name'])) {
+		return 'topic_created_failed';
 	}
 	if(!$topicid || $_POST['name'] != $topic['name']) {
 		if(($value = C::t('portal_topic')->fetch_by_name($_POST['name']))) {

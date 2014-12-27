@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_stat.php 28361 2012-02-28 07:12:03Z monkey $
+ *      $Id: misc_stat.php 34937 2014-09-04 03:08:56Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -54,7 +54,10 @@ if(!empty($_GET['xml'])) {
 		if(empty($_GET['types'])) {
 			$_GET['types'] = array_merge($cols['login'], $cols['forum'], $cols['tgroup'], $cols['home'], $cols['space']);
 		}
-		$field = 'daytime,`'.implode('`+`', $_GET['types']).'` AS statistic';
+
+		if (!array_diff($_GET['types'], array_merge($cols['login'], $cols['forum'], $cols['tgroup'], $cols['home'], $cols['space']))) {
+			$field = 'daytime,`' . implode('`+`', $_GET['types']) . '` AS statistic';
+		}
 		$type = 'statistic';
 	}
 	foreach(C::t('common_stat')->fetch_all($begin, $end, $field) as $value) {

@@ -30,7 +30,7 @@ class feedmodel {
 		return $data;
 	}
 
-	function get_list($page, $ppp, $totalnum) {		
+	function get_list($page, $ppp, $totalnum) {
 		$start = $this->base->page_get_start($page, $ppp, $totalnum);
 		$data = $this->db->fetch_all("SELECT * FROM ".UC_DBTABLEPRE."feeds LIMIT $start, $ppp");
 

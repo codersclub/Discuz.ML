@@ -4,6 +4,7 @@
 	<form id="registerform"method="post" class="block" autocomplete="off" action="{$selfurl}register">
 		<input type="hidden" name="formhash" value="{FORMHASH}" />
 		<input type="hidden" name="wxopenid" value="$wxopenid" />
+		<input type="hidden" name="avatar" value="$_GET[avatar]" />
 		<input type="hidden" name="submit" value="yes" />
 		<div class="loginbox registerbox">
 			<div class="login_from">

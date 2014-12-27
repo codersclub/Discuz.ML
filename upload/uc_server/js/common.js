@@ -89,7 +89,6 @@ function addMouseEvent(obj){
 	}
 }
 
-// editor.js
 if(is_ie) document.documentElement.addBehavior("#default#userdata");
 
 function setdata(key, value){

@@ -4,7 +4,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: seccode.class.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: seccode.class.php 1164 2014-10-31 06:58:24Z hypowang $
 	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -29,6 +29,13 @@ class seccode {
 	var $fontcolor;
 	var $im;
 
+    static function seccode_check($code, $input) {
+        if ($code == '' || $input == '') {
+            return false;
+        }
+        self::seccodeconvert($code);
+        return $input === $code;
+    }
 
 	function seccodeconvert(&$seccode) {
 		$s = sprintf('%04s', base_convert($seccode, 10, 20));

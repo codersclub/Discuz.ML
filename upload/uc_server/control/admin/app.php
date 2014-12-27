@@ -4,8 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: app.php 1090 2011-05-03 07:33:28Z cnteacher $
-	Modified by Valery Votintsev, codersclub.org
+	$Id: app.php 1165 2014-10-31 06:58:43Z hypowang $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -28,7 +27,7 @@ class control extends adminbase {
 
 	function onls() {
 		$status = $affectedrows = 0;
-		if(!empty($_POST['delete'])) {
+		if($this->submitcheck() && !empty($_POST['delete'])) {
 			$affectedrows += $_ENV['app']->delete_apps($_POST['delete']);
 			foreach($_POST['delete'] as $k => $appid) {
 				$_ENV['app']->alter_app_table($appid, 'REMOVE');
@@ -72,7 +71,6 @@ class control extends adminbase {
 			$synlogin = getgpc('synlogin', 'P');
 			$recvnote = getgpc('recvnote', 'P');
 			$apifilename = trim(getgpc('apifilename', 'P'));
-			//$allowips = getgpc('allowips', 'P');
 
 			$tagtemplates = array();
 			$tagtemplates['template'] = getgpc('tagtemplates', 'P');
@@ -153,7 +151,6 @@ class control extends adminbase {
 			$synlogin = getgpc('synlogin', 'P');
 			$recvnote = getgpc('recvnote', 'P');
 			$extraurl = getgpc('extraurl', 'P');
-			//$allowips = getgpc('allowips', 'P');
 			if(getgpc('apppath', 'P')) {
 				$app['extra']['apppath'] = $this->_realpath(getgpc('apppath', 'P'));
 				if($app['extra']['apppath']) {
@@ -165,7 +162,6 @@ class control extends adminbase {
 					preg_match("/define\(\'UC_CLIENT_VERSION\'\, \'([^\']+?)\'\)/i", $s, $m);
 					$uc_client_version = @$m[1];
 
-					// Check version
 					if(!$uc_client_version || $uc_client_version <= '1.0.0') {
 						$this->message('app_apifile_too_low', 'BACK', 0, array('$apifile' => $apifile));
 					}
@@ -197,7 +193,7 @@ class control extends adminbase {
 			$extra = addslashes(serialize($app['extra']));
 			$this->db->query("UPDATE ".UC_DBTABLEPRE."applications SET appid='$appid', name='$name', url='$url',
 				type='$type', ip='$ip', viewprourl='$viewprourl', apifilename='$apifilename', authkey='$authkey',
-				synlogin='$synlogin', recvnote='$recvnote', extra='$extra', 
+				synlogin='$synlogin', recvnote='$recvnote', extra='$extra',
 				tagtemplates='$tagtemplates'
 				WHERE appid='$appid'");
 			$updated = true;
@@ -210,7 +206,7 @@ class control extends adminbase {
 			$app = $_ENV['app']->get_app_by_appid($appid);
 		}
 		$tagtemplates = $this->unserialize($app['tagtemplates']);
-		$template = htmlspecialchars($tagtemplates['template']);
+		$template = dhtmlspecialchars($tagtemplates['template']);
 		$tmp = '';
 		if(is_array($tagtemplates['fields'])) {
 			foreach($tagtemplates['fields'] as $field => $memo) {
@@ -254,7 +250,7 @@ class control extends adminbase {
 		$notedata = $this->_format_notedata($notedata);
 		$notedata['UC_API'] = UC_API;
 		$_ENV['note']->add('updateapps', '', $this->serialize($notedata, 1));
-		$_ENV['note']->send();	
+		$_ENV['note']->send();
 	}
 
 	function _format_notedata($notedata) {

@@ -1,17 +1,17 @@
 <?php
 
 /*
-	[UCenter] (C)2001-2099 Comsenz Inc.
+	[UCenter] (C)2001-2009 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: note.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: note.php 1122 2011-11-14 03:06:25Z monkey $
 */
 
 !defined('IN_UC') && exit('Access Denied');
 
-define('UC_NOTE_REPEAT', 5);
+define('UC_NOTE_REPEAT', 2);
 define('UC_NOTE_TIMEOUT', 15);
-define('UC_NOTE_GC', 10000);
+define('UC_NOTE_GC', 5);
 
 define('API_RETURN_FAILED', '-1');
 
@@ -143,7 +143,7 @@ class notemodel {
 			$uc_note = new uc_note();
 			$method = $note['operation'];
 			if(is_string($method) && !empty($method)) {
-				parse_str($note['getdata'], $note['getdata']);				
+				parse_str($note['getdata'], $note['getdata']);
 				if(get_magic_quotes_gpc()) {
 					$note['getdata'] = $this->base->dstripslashes($note['getdata']);
 				}
@@ -159,7 +159,7 @@ class notemodel {
 
 		$returnsucceed = $response != '' && ($response == 1 || is_array(xml_unserialize($response)));
 
-		$closedsqladd = $this->_close_note($note, $this->apps, $returnsucceed, $appid) ? ",closed='1'" : '';//
+		$closedsqladd = $this->_close_note($note, $this->apps, $returnsucceed, $appid) ? ",closed='1'" : '';
 
 		if($returnsucceed) {
 			if($this->operations[$note['operation']][2]) {
@@ -196,7 +196,6 @@ class notemodel {
 		}
 		if($appcount < 1) {
 			return TRUE;
-			//$closedsqladd = ",closed='1'";
 		}
 	}
 

@@ -4,13 +4,14 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: avatar.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: avatar.php 1144 2013-01-31 06:47:43Z zhangjie $
 */
 
 
 error_reporting(0);
 
-define('UC_API', strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
+_get_script_url();
+define('UC_API', strtolower(($_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
 
 $uid = isset($_GET['uid']) ? $_GET['uid'] : 0;
 $size = isset($_GET['size']) ? $_GET['size'] : '';
@@ -53,6 +54,25 @@ function get_avatar($uid, $size = 'middle', $type = '') {
 	$dir3 = substr($uid, 5, 2);
 	$typeadd = $type == 'real' ? '_real' : '';
 	return $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
+}
+
+function _get_script_url() {
+	$scriptName = basename($_SERVER['SCRIPT_FILENAME']);
+	if(basename($_SERVER['SCRIPT_NAME']) === $scriptName) {
+		$_SERVER['PHP_SELF'] = $_SERVER['SCRIPT_NAME'];
+	} else if(basename($_SERVER['PHP_SELF']) === $scriptName) {
+		$_SERVER['PHP_SELF'] = $_SERVER['PHP_SELF'];
+	} else if(isset($_SERVER['ORIG_SCRIPT_NAME']) && basename($_SERVER['ORIG_SCRIPT_NAME']) === $scriptName) {
+		$_SERVER['PHP_SELF'] = $_SERVER['ORIG_SCRIPT_NAME'];
+	} else if(($pos = strpos($_SERVER['PHP_SELF'],'/'.$scriptName)) !== false) {
+		$_SERVER['PHP_SELF'] = substr($_SERVER['SCRIPT_NAME'],0,$pos).'/'.$scriptName;
+	} else if(isset($_SERVER['DOCUMENT_ROOT']) && strpos($_SERVER['SCRIPT_FILENAME'],$_SERVER['DOCUMENT_ROOT']) === 0) {
+		$_SERVER['PHP_SELF'] = str_replace('\\','/',str_replace($_SERVER['DOCUMENT_ROOT'],'',$_SERVER['SCRIPT_FILENAME']));
+		$_SERVER['PHP_SELF'][0] != '/' && $_SERVER['PHP_SELF'] = '/'.$_SERVER['PHP_SELF'];
+	} else {
+		return false;
+	}
+	return $_SERVER['PHP_SELF'];
 }
 
 ?>

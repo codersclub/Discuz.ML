@@ -4,14 +4,14 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: admin.php 1098 2011-05-19 01:28:17Z svn_project_zhangjie $
+	$Id: admin.php 1167 2014-11-03 03:06:21Z hypowang $
 */
 
 !defined('IN_UC') && exit('Access Denied');
 
 class adminbase extends base {
 
-	var $cookie_status = 1;
+	var $cookie_status = 0;
 
 	function __construct() {
 		$this->adminbase();
@@ -19,9 +19,9 @@ class adminbase extends base {
 
 	function adminbase() {
 		parent::__construct();
-		$this->cookie_status = isset($_COOKIE['sid']) ? 1 : 0;
+		$this->cookie_status = 0;
 		$sid = $this->cookie_status ? getgpc('sid', 'C') : rawurlencode(getgpc('sid', 'R'));
-		$this->view->sid = $this->sid_decode($sid) ? $sid : '';
+		$this->sid = $this->view->sid = $this->sid_decode($sid) ? $sid : '';
 		$this->view->assign('sid', $this->view->sid);
 		$this->view->assign('iframe', getgpc('iframe'));
 		$a = getgpc('a');
@@ -64,7 +64,7 @@ class adminbase extends base {
 	}
 
 	function writelog($action, $extra = '') {
-		$log = htmlspecialchars($this->user['username']."\t".$this->onlineip."\t".$this->time."\t$action\t$extra");
+		$log = dhtmlspecialchars($this->user['username']."\t".$this->onlineip."\t".$this->time."\t$action\t$extra");
 		$logfile = UC_ROOT.'./data/logs/'.gmdate('Ym', $this->time).'.php';
 		if(@filesize($logfile) > 2048000) {
 			PHP_VERSION < '4.2.0' && mt_srand((double)microtime() * 1000000);
@@ -120,7 +120,7 @@ class adminbase extends base {
 		@list($username, $check) = explode("\t", $s);
 		if($check == substr(md5($ip.$agent), 0, 8)) {
 			return $username;
-		} else {			
+		} else {
 			return FALSE;
 		}
 	}

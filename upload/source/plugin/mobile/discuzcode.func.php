@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuzcode.func.php 34398 2014-04-14 07:11:22Z nemohou $
+ *      $Id: discuzcode.func.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -71,7 +71,7 @@ function mobile_discuzcode($param) {
 
 		$nest = 0;
 		while(strpos($msglower, '[table') !== FALSE && strpos($msglower, '[/table]') !== FALSE){
-			$message = preg_replace("/\[table(?:=(\d{1,4}%?)(?:,([\(\)%,#\w ]+))?)?\]\s*(.+?)\s*\[\/table\]/ies", "parsetable('\\1', '\\2', '\\3')", $message);
+			$message = preg_replace("/\[table(?:=(\d{1,4}%?)(?:,([\(\)%,#\w ]+))?)?\]\s*(.+?)\s*\[\/table\]/ies", "mobile_parsetable('\\1', '\\2', '\\3')", $message);
 			if(++$nest > 4) break;
 		}
 
@@ -120,7 +120,7 @@ function mobile_discuzcode($param) {
 			}
 		}
 		if(strpos($msglower, '[/media]') !== FALSE) {
-			$message = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/ies", "bbcodeurl('\\2', '<a href=\"{url}\" target=\"_blank\">{url}</a>')", $message);
+			$message = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/ies", "bbcodeurl('\\2', '<a class=\"media\" href=\"{url}\" target=\"_blank\">{url}</a>')", $message);
 		}
 		if(strpos($msglower, '[/audio]') !== FALSE) {
 			$message = preg_replace("/\[audio(=1)*\]\s*([^\[\<\r\n]+?)\s*\[\/audio\]/ies", "bbcodeurl('\\2', '<a href=\"{url}\" target=\"_blank\">{url}</a>')", $message);
@@ -143,7 +143,11 @@ function mobile_discuzcode($param) {
 			}
 			if(strpos($msglower, '[hide]') !== FALSE) {
 				if($authorreplyexist === null) {
-					if($_G['forum']['ismoderator']) {
+					if(!$_G['forum']['ismoderator']) {
+						if($_G['uid']) {
+							$authorreplyexist = C::t('forum_post')->fetch_pid_by_tid_authorid($_G['tid'], $_G['uid']);
+						}
+					} else {
 						$authorreplyexist = TRUE;
 					}
 				}
@@ -191,6 +195,7 @@ function mobile_discuzcode($param) {
 
 	unset($msglower);
 	$message = preg_replace("/(\[groupid=\d+\].*\[\/groupid\])/i", '', $message);
+	$message = preg_replace("/(\r\n|\n|\r){3,}/i", "\\1\\1\\1", $message);
 	return $message;
 }
 
@@ -203,24 +208,14 @@ function mobile_parseurl($url, $text, $scheme) {
 			$text = substr($url, 0, intval($length * 0.5)).' ... '.substr($url, - intval($length * 0.3));
 		}
 		$url = substr(strtolower($url), 0, 4) == 'www.' ? 'http://'.$url : $url;
-		if(strstr($url, $_G['siteurl'])) {
-			$url .= (strstr($url, '?') ? '&' : '?').'_wsq_';
-			return '<a href="'.$url.'">'.$text.'</a>';
-		} else {
-			return '<span class="blue">'.$text.'</span>';
-		}
+		return '<a href="'.$url.'">'.$text.'</a>';
 	} else {
 		$url = substr($url, 1);
 		if(substr(strtolower($url), 0, 4) == 'www.') {
 			$url = 'http://'.$url;
 		}
 		$url = !$scheme ? $_G['siteurl'].$url : $url;
-		if(strstr($url, $_G['siteurl'])) {
-			$url .= (strstr($url, '?') ? '&' : '?').'_wsq_';
-			return '<a href="'.$url.'">'.$text.'</a>';
-		} else {
-			return '<span class="blue">'.$text.'</span>';
-		}
+		return '<a href="'.$url.'">'.$text.'</a>';
 	}
 }
 
@@ -251,15 +246,52 @@ function mobile_parsesmiles(&$message) {
 	global $_G;
 	static $enablesmiles;
 	if($enablesmiles === null) {
+		$url = !in_array(strtolower(substr(STATICURL, 0, 6)), array('http:/', 'https:', 'ftp://')) ? $_G['siteurl'] : '';
 		$enablesmiles = false;
 		if(!empty($_G['cache']['smilies']) && is_array($_G['cache']['smilies'])) {
 			foreach($_G['cache']['smilies']['replacearray'] AS $key => $smiley) {
-				$enablesmiles[$key] = '<img src="'.$_G['siteurl'].STATICURL.'image/smiley/'.$_G['cache']['smileytypes'][$_G['cache']['smilies']['typearray'][$key]]['directory'].'/'.$smiley.'" />';
+				$enablesmiles[$key] = '<img src="'.$url.STATICURL.'image/smiley/'.$_G['cache']['smileytypes'][$_G['cache']['smilies']['typearray'][$key]]['directory'].'/'.$smiley.'" />';
 			}
 		}
 	}
 	$enablesmiles && $message = preg_replace($_G['cache']['smilies']['searcharray'], $enablesmiles, $message, $_G['setting']['maxsmilies']);
 	return $message;
+}
+
+function mobile_parsetable($width, $bgcolor, $message) {
+	if(strpos($message, '[/tr]') === FALSE && strpos($message, '[/td]') === FALSE) {
+		$rows = explode("\n", $message);
+		$s = '<ul>';
+		foreach($rows as $row) {
+			$s .= '<li>'.str_replace(array('\|', '|', '\n'), array('&#124;', '</li><li>', "\n"), $row).'</li>';
+		}
+		$s .= '</ul>';
+		return $s;
+	} else {
+		if(!preg_match("/^\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td([=\d,%]+)?\]/", $message) && !preg_match("/^<tr[^>]*?>\s*<td[^>]*?>/", $message)) {
+			return str_replace('\\"', '"', preg_replace("/\[tr(?:=([\(\)\s%,#\w]+))?\]|\[td([=\d,%]+)?\]|\[\/td\]|\[\/tr\]/", '', $message));
+		}
+		return '<table class="dzcode_table" cellspacing="0" '.
+			($bgcolor ? ' bgcolor="'.$bgcolor.'">' : '>').
+			str_replace('\\"', '"', preg_replace(array(
+					"/\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td(?:=(\d{1,4}%?))?\]/ie",
+					"/\[\/td\]\s*\[td(?:=(\d{1,4}%?))?\]/ie",
+					"/\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td(?:=(\d{1,2}),(\d{1,2})(?:,(\d{1,4}%?))?)?\]/ie",
+					"/\[\/td\]\s*\[td(?:=(\d{1,2}),(\d{1,2})(?:,(\d{1,4}%?))?)?\]/ie",
+					"/\[\/td\]\s*\[\/tr\]\s*/i"
+				), array(
+					"mobile_parsetrtd('\\1', '0', '0', '\\2')",
+					"mobile_parsetrtd('td', '0', '0', '\\1')",
+					"mobile_parsetrtd('\\1', '\\2', '\\3', '\\4')",
+					"mobile_parsetrtd('td', '\\1', '\\2', '\\3')",
+					'</td></tr>'
+				), $message)
+			).'</table>';
+	}
+}
+
+function mobile_parsetrtd($bgcolor, $colspan, $rowspan, $width) {
+	return ($bgcolor == 'td' ? '</td></tr>' : '<tr'.($bgcolor ? ' style="background-color:'.$bgcolor.'"' : '').'>').'<td class="dzcode_td">';
 }
 
 ?>

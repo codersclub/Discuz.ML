@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: user.php 1096 2011-05-13 11:26:36Z svn_project_zhangjie $
+	$Id: user.php 1166 2014-11-03 01:49:32Z hypowang $
 
 	Modified by Valery Votintsev, codersclub.org
 */
@@ -50,30 +50,25 @@ class control extends adminbase {
 		$iframe	  = getgpc('iframe') ? 1 : 0;
 
 		$isfounder = intval(getgpc('isfounder', 'P'));
-		/*
-		echo $sid = $this->sid_encode('admin');
-		echo $this->sid_decode($sid);
-		*/
 		$rand = rand(100000, 999999);
 		$seccodeinit = rawurlencode($this->authcode($rand, 'ENCODE', $authkey, 180));
 		$errorcode = 0;
 		if($this->submitcheck()) {
-			$failedlogin = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."failedlogins WHERE ip='$this->onlineip'");
-			if($failedlogin['count'] > 4) {
-				if($this->time - $failedlogin['lastupdate'] < 15 * 60) {
-					$errorcode = UC_LOGIN_ERROR_FAILEDLOGIN;
-				} else {
-					$expiration = $this->time - 15 * 60;
-					$this->db->query("DELETE FROM ".UC_DBTABLEPRE."failedlogins WHERE lastupdate<'$expiration'");
-				}
-			} else {
 
+			if($isfounder == 1) {
+				$username = 'UCenterAdministrator';
+			}
+
+			$can_do_login = $_ENV['user']->can_do_login($username, $this->onlineip);
+
+			if(!$can_do_login) {
+     			$errorcode = UC_LOGIN_ERROR_FAILEDLOGIN;
+			} else {
 				$seccodehidden = urldecode(getgpc('seccodehidden', 'P'));
 				$seccode = strtoupper(getgpc('seccode', 'P'));
 				$seccodehidden = $this->authcode($seccodehidden, 'DECODE', $authkey);
 				require UC_ROOT.'./lib/seccode.class.php';
-				seccode::seccodeconvert($seccodehidden);
-				if(empty($seccodehidden) || $seccodehidden != $seccode) {
+				if(!seccode::seccode_check($seccodehidden, $seccode)) {
 					$errorcode = UC_LOGIN_ERROR_SECCODE;
 				} else {
 					$errorcode = UC_LOGIN_SUCCEED;
@@ -115,19 +110,13 @@ class control extends adminbase {
 						}
 					} else {
 						$this->writelog('login', 'error: user='.$this->user['username'].'; password='.($pwlen > 2 ? preg_replace("/^(.{".round($pwlen / 4)."})(.+?)(.{".round($pwlen / 6)."})$/s", "\\1***\\3", $password) : $password));
-						if(empty($failedlogin)) {
-							$expiration = $this->time - 15 * 60;
-							$this->db->query("DELETE FROM ".UC_DBTABLEPRE."failedlogins WHERE lastupdate<'$expiration'");
-							$this->db->query("INSERT INTO ".UC_DBTABLEPRE."failedlogins SET ip='$this->onlineip', count=1, lastupdate='$this->time'");
-						} else {
-							$this->db->query("UPDATE ".UC_DBTABLEPRE."failedlogins SET count=count+1,lastupdate='$this->time' WHERE ip='$this->onlineip'");
-						}
+						$_ENV['user']->loginfailed($username, $this->onlineip);
 					}
 				}
 			}
 		}
-		$username = htmlspecialchars($username);
-		$password = htmlspecialchars($password);
+		$username = dhtmlspecialchars($username);
+		$password = dhtmlspecialchars($password);
 		$this->view->assign('seccodeinit', $seccodeinit);
 		$this->view->assign('username', $username);
 		$this->view->assign('password', $password);
@@ -192,9 +181,8 @@ class control extends adminbase {
 				}
 			}
 		}
-		$this->view->assign('status', $status);
 
-		if(!empty($_POST['delete'])) {
+		if($this->submitcheck() && !empty($_POST['delete'])) {
 			$_ENV['user']->delete_user($_POST['delete']);
 			$status = 2;
 			$this->writelog('user_delete', "uid=".implode(',', $_POST['delete']));
@@ -206,7 +194,7 @@ class control extends adminbase {
 		$srchregip = trim(getgpc('srchregip', 'R'));
 		$srchemail = trim(getgpc('srchemail', 'R'));
 
-		$sqladd = '';
+		$sqladd = $urladd = '';
 		if($srchname) {
 			$sqladd .= " AND username LIKE '$srchname%'";
 			$this->view->assign('srchname', $srchname);
@@ -220,14 +208,17 @@ class control extends adminbase {
 			$this->view->assign('srchemail', $srchemail);
 		}
 		if($srchregdatestart) {
+			$urladd .= '&srchregdatestart='.$srchregdatestart;
 			$sqladd .= " AND regdate>'".strtotime($srchregdatestart)."'";
 			$this->view->assign('srchregdatestart', $srchregdatestart);
 		}
 		if($srchregdateend) {
+			$urladd .= '&srchregdateend='.$srchregdateend;
 			$sqladd .= " AND regdate<'".strtotime($srchregdateend)."'";
 			$this->view->assign('srchregdateend', $srchregdateend);
 		}
 		if($srchregip) {
+			$urladd .= '&srchregip='.$srchregip;
 			$sqladd .= " AND regip='$srchregip'";
 			$this->view->assign('srchregip', $srchregip);
 		}
@@ -239,16 +230,16 @@ class control extends adminbase {
 			$user['smallavatar'] = '<img src="avatar.php?uid='.$user['uid'].'&size=small">';
 			$userlist[$key] = $user;
 		}
-		$multipage = $this->page($num, UC_PPP, $_GET['page'], 'admin.php?m=user&a=ls&srchname='.$srchname.'&srchregdate='.$srchregdate);
+		$multipage = $this->page($num, UC_PPP, $_GET['page'], 'admin.php?m=user&a=ls&srchname='.$srchname.$urladd);
 
 		$this->_format_userlist($userlist);
 		$this->view->assign('userlist', $userlist);
-		//$this->view->assign('apps', $this->cache['apps']);
 		$adduser = getgpc('adduser');
 		$a = getgpc('a');
 		$this->view->assign('multipage', $multipage);
 		$this->view->assign('adduser', $adduser);
 		$this->view->assign('a', $a);
+		$this->view->assign('status', $status);
 		$this->view->display('admin_user');
 
 	}
@@ -296,7 +287,7 @@ class control extends adminbase {
 
 			$this->db->query("UPDATE ".UC_DBTABLEPRE."members SET $sqladd email='$email' WHERE uid='$uid'");
 			$status = $this->db->errno() ? -1 : 1;
-		}		
+		}
 		$user = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members WHERE uid='$uid'");
 		$user['bigavatar'] = '<img src="avatar.php?uid='.$uid.'&size=big">';
 		$user['bigavatarreal'] = '<img src="avatar.php?uid='.$uid.'&size=big&type=real">';
@@ -311,8 +302,6 @@ class control extends adminbase {
 		$username = addslashes(trim(stripslashes($username)));
 		if(!$_ENV['user']->check_username($username)) {
 			return UC_USER_CHECK_USERNAME_FAILED;
-/*		} elseif($username != $_ENV['user']->replace_badwords($username)) {
-			return UC_USER_USERNAME_BADWORD;*/
 		} elseif($_ENV['user']->check_usernameexists($username)) {
 			return UC_USER_USERNAME_EXISTS;
 		}

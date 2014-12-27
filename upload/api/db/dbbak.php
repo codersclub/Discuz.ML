@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: dbbak.php 33342 2013-05-30 02:26:21Z kamichen $
+ *      $Id: dbbak.php 35017 2014-10-13 08:19:00Z nemohou $
  */
 
 @define('IN_API', true);
@@ -453,9 +453,12 @@ if($get['method'] == 'export') {
 		if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
 			api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
 		}
-	} elseif(!is_dir(BACKUP_DIR.'./'.$get['sqlpath'])) {
-		if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
-			api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
+	} else {
+		$get['sqlpath'] = str_replace(array('/', '\\', '.', "'"), '', $get['sqlpath']);
+		if(!is_dir(BACKUP_DIR.'./'.$get['sqlpath'])) {
+			if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
+				api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
+			}
 		}
 	}
 

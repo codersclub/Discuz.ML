@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: qrcode.inc.php 34607 2014-06-10 06:01:10Z nemohou $
+ *      $Id: qrcode.inc.php 34716 2014-07-14 08:28:32Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -23,24 +23,29 @@ if($_GET['access']) {
 		include_once template('wechat:wechat_threadqr');
 	} elseif($_GET['tid']) {
 		$qrsize = !empty($_GET['qrsize']) ? $_GET['qrsize'] : 4;
-		$tid = dintval($_GET['tid']);
-		$dtid = sprintf("%09d", $tid);
-		$dir1 = substr($dtid, 0, 3);
-		$dir2 = substr($dtid, 3, 2);
-		$dir3 = substr($dtid, 5, 2);
-		$dir = $dir.$dir1.'/'.$dir2.'/'.$dir3.'/';
-		$file = $dir.'/qr_t'.$tid.'.jpg';
-		if(!file_exists($file) || !filesize($file)) {
-			if(!C::t('forum_thread')->fetch($tid)) {
-				exit;
+		if(empty($_GET['pid'])) {
+			$tid = dintval($_GET['tid']);
+			$dtid = sprintf("%09d", $tid);
+			$dir1 = substr($dtid, 0, 3);
+			$dir2 = substr($dtid, 3, 2);
+			$dir3 = substr($dtid, 5, 2);
+			$dir = $dir.$dir1.'/'.$dir2.'/'.$dir3.'/';
+			$file = $dir.'/qr_t'.$tid.'.jpg';
+			if(!file_exists($file) || !filesize($file)) {
+				if(!C::t('forum_thread')->fetch($tid)) {
+					exit;
+				}
+				dmkdir($dir);
+				require_once DISCUZ_ROOT.'source/plugin/mobile/qrcode.class.php';
+				QRcode::png($url.'viewthread&tid='.$_GET['tid'].'&source=pcscan', $file, QR_ECLEVEL_Q, $qrsize);
 			}
-			dmkdir($dir);
+			dheader('Content-Disposition: inline; filename=qrcode_t'.$tid.'.jpg');
+			dheader('Content-Type: image/pjpeg');
+			@readfile($file);
+		} else {
 			require_once DISCUZ_ROOT.'source/plugin/mobile/qrcode.class.php';
-			QRcode::png($url.'viewthread&tid='.$_GET['tid'].'&source=pcscan', $file, QR_ECLEVEL_Q, $qrsize);
+			QRcode::png($url.'showactivity&tid='.$_GET['tid'].'&viewpid='.$_GET['pid'].'&source=pcscan', false, QR_ECLEVEL_Q, $qrsize);
 		}
-		dheader('Content-Disposition: inline; filename=qrcode_t'.$tid.'.jpg');
-		dheader('Content-Type: image/pjpeg');
-		@readfile($file);
 	} elseif($_GET['fid']) {
 		$qrsize = !empty($_GET['qrsize']) ? $_GET['qrsize'] : 2;
 		$fid = dintval($_GET['fid']);

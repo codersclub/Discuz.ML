@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_usergroups.php 34297 2013-12-26 03:36:51Z hypowang $
+ *      $Id: admincp_usergroups.php 35097 2014-11-17 09:43:10Z laoguozhang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1029,6 +1029,7 @@ EOT;
 			if($_GET['deleteicon']) {
 				$valueparse = parse_url($group['icon']);
 				if(!isset($valueparse['host'])) {
+					$group['icon'] = str_replace(array('..', '//'), array('','/'), $group['icon']);
 					@unlink($_G['setting']['attachurl'].'common/'.$group['icon']);
 				}
 				$dataarr['icon'] = '';

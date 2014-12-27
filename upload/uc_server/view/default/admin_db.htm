@@ -156,14 +156,14 @@ function db_operate(theform, operate) {
 
 	if(theform.operate_uc.checked) {
 		show_status(0, lang_tips);
-		$('operate_iframe_0').src = 'admin.php?m=db&a=operate&t='+operate+'&appid=0&backupdir={$dir}';
+		$('operate_iframe_0').src = 'admin.php?m=db&a=operate&t='+operate+'&appid=0&backupdir={$dir}&sid={$sid}';
 	}
 	for(i = 0; theform[i] != null; i++) {
 		ele = theform[i];
 		if(/^operate\[\]$/.test(ele.name) && ele.type == "checkbox" && ele.checked) {
 			if(operate != 'import' || import_status[ele.value] != false) {
 				show_status(ele.value, lang_tips);
-				$('operate_iframe_'+ele.value).src = 'admin.php?m=db&a=operate&t='+operate+'&appid='+ele.value+'&backupdir={$dir}';
+				$('operate_iframe_'+ele.value).src = 'admin.php?m=db&a=operate&t='+operate+'&appid='+ele.value+'&backupdir={$dir}&sid={$sid}';
 			}
 		}
 	}

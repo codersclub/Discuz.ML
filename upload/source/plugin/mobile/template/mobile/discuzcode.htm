@@ -30,8 +30,7 @@ function mobile_image($url, $extra) {
 function mobile_hide_reply() {
 	global $_G;
 }
-<!--{block return}--><div class="showhide"><h4>{lang post_hide}</h4>\\1</div>
-<!--{/block}-->
+<!--{block return}-->\\1<!--{/block}-->
 <!--{eval return $return;}-->
 {eval
 }
@@ -39,7 +38,7 @@ function mobile_hide_reply() {
 function mobile_hide_reply_hidden() {
 	global $_G;
 }
-<!--{block return}--><div class="locked"><!--{if $_G[uid]}-->{$_G[username]}<!--{else}-->{lang guest}<!--{/if}-->{lang mobileoem:post_hide_reply_hidden}</div><!--{/block}-->
+<!--{block return}--><div class="locked"><!--{if $_G[uid]}-->{$_G[username]}<!--{else}-->{lang guest}<!--{/if}-->{lang mobile:post_hide_reply_hidden}</div><!--{/block}-->
 <!--{eval return $return;}-->
 {eval
 }

@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: user.php 1078 2011-03-30 02:00:29Z monkey $
+	$Id: user.php 1179 2014-11-03 07:11:25Z hypowang $
 	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -98,7 +98,7 @@ class usermodel {
 	}
 
 	function check_emailformat($email) {
-		return strlen($email) > 6 && preg_match("/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/", $email);
+		return strlen($email) > 6 && strlen($email) <= 32 && preg_match("/^([a-z0-9\-_.+]+)@([a-z0-9\-]+[.][a-z0-9\-.]+)$/", $email);
 	}
 
 	function check_emailaccess($email) {
@@ -210,9 +210,9 @@ class usermodel {
 			file_exists($avatar_file = UC_DATADIR.'./avatar/'.$this->base->get_avatar($uid, 'big')) && unlink($avatar_file);
 			file_exists($avatar_file = UC_DATADIR.'./avatar/'.$this->base->get_avatar($uid, 'middle')) && unlink($avatar_file);
 			file_exists($avatar_file = UC_DATADIR.'./avatar/'.$this->base->get_avatar($uid, 'small')) && unlink($avatar_file);
-		}		
+		}
 	}
-	
+
 	function get_total_num($sqladd = '') {
 		$data = $this->db->result_first("SELECT COUNT(*) FROM ".UC_DBTABLEPRE."members $sqladd");
 		return $data;
@@ -248,6 +248,53 @@ class usermodel {
 		return $questionid > 0 && $answer != '' ? substr(md5($answer.md5($questionid)), 16, 8) : '';
 	}
 
-}
+	function can_do_login($username, $ip = '') {
 
-?>
+		$check_times = $this->base->settings['login_failedtime'] < 1 ? 5 : $this->base->settings['login_failedtime'];
+
+		$username = substr(md5($username), 8, 15);
+		$expire = 15 * 60;
+		if(!$ip) {
+			$ip = $this->base->onlineip;
+		}
+
+		$ip_check = $user_check = array();
+		$query = $this->db->query("SELECT * FROM ".UC_DBTABLEPRE."failedlogins WHERE ip='".$ip."' OR ip='$username'");
+		while($row = $this->db->fetch_array($query)) {
+			if($row['ip'] === $username) {
+				$user_check = $row;
+			} elseif($row['ip'] === $ip) {
+				$ip_check = $row;
+			}
+		}
+
+		if(empty($ip_check) || ($this->base->time - $ip_check['lastupdate'] > $expire)) {
+			$ip_check = array();
+			$this->db->query("REPLACE INTO ".UC_DBTABLEPRE."failedlogins (ip, count, lastupdate) VALUES ('{$ip}', '0', '{$this->base->time}')");
+		}
+
+		if(empty($user_check) || ($this->base->time - $user_check['lastupdate'] > $expire)) {
+			$user_check = array();
+			$this->db->query("REPLACE INTO ".UC_DBTABLEPRE."failedlogins (ip, count, lastupdate) VALUES ('{$username}', '0', '{$this->base->time}')");
+		}
+
+		if ($ip_check || $user_check) {
+			$time_left = min(($check_times - $ip_check['count']), ($check_times - $user_check['count']));
+			return $time_left;
+
+		}
+
+		$this->db->query("DELETE FROM ".UC_DBTABLEPRE."failedlogins WHERE lastupdate<".($this->base->time - ($expire + 1)), 'UNBUFFERED');
+
+		return $check_times;
+	}
+
+	function loginfailed($username, $ip = '') {
+		$username = substr(md5($username), 8, 15);
+		if(!$ip) {
+			$ip = $this->base->onlineip;
+		}
+		$this->db->query("UPDATE ".UC_DBTABLEPRE."failedlogins SET count=count+1, lastupdate='".$this->base->time."' WHERE ip='".$ip."' OR ip='$username'");
+	}
+
+}

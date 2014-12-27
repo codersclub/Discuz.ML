@@ -4,8 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: user.php 1059 2011-03-01 07:25:09Z monkey $
-	Modified by Valery Votintsev, codersclub.org
+	$Id: user.php 1177 2014-11-03 05:46:57Z hypowang $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -29,7 +28,6 @@ class usercontrol extends base {
 		$this->load('user');
 	}
 
-	// -1 Is not turned on
 	function onsynlogin() {
 		$this->init_input();
 		$uid = $this->input('uid');
@@ -38,7 +36,9 @@ class usercontrol extends base {
 				$synstr = '';
 				foreach($this->cache['apps'] as $appid => $app) {
 					if($app['synlogin']) {
-						$synstr .= '<script type="text/javascript" src="'.$app['url'].'/api/'.$app['apifilename'].'?time='.$this->time.'&code='.urlencode($this->authcode('action=synlogin&username='.$this->user['username'].'&uid='.$this->user['uid'].'&password='.$this->user['password']."&time=".$this->time, 'ENCODE', $app['authkey'])).'" reload="1"></script>';
+						if($app['appid'] != $this->app['appid']) {
+							$synstr .= '<script type="text/javascript" src="'.$app['url'].'/api/'.$app['apifilename'].'?time='.$this->time.'&code='.urlencode($this->authcode('action=synlogin&username='.$this->user['username'].'&uid='.$this->user['uid'].'&password='.$this->user['password']."&time=".$this->time, 'ENCODE', $app['authkey'])).'" reload="1"></script>';
+						}
 						if(is_array($app['extra']['extraurl'])) foreach($app['extra']['extraurl'] as $extraurl) {
 							$synstr .= '<script type="text/javascript" src="'.$extraurl.'/api/'.$app['apifilename'].'?time='.$this->time.'&code='.urlencode($this->authcode('action=synlogin&username='.$this->user['username'].'&uid='.$this->user['uid'].'&password='.$this->user['password']."&time=".$this->time, 'ENCODE', $app['authkey'])).'" reload="1"></script>';
 						}
@@ -56,7 +56,9 @@ class usercontrol extends base {
 			$synstr = '';
 			foreach($this->cache['apps'] as $appid => $app) {
 				if($app['synlogin']) {
-					$synstr .= '<script type="text/javascript" src="'.$app['url'].'/api/'.$app['apifilename'].'?time='.$this->time.'&code='.urlencode($this->authcode('action=synlogout&time='.$this->time, 'ENCODE', $app['authkey'])).'" reload="1"></script>';
+					if($app['appid'] != $this->app['appid']) {
+						$synstr .= '<script type="text/javascript" src="'.$app['url'].'/api/'.$app['apifilename'].'?time='.$this->time.'&code='.urlencode($this->authcode('action=synlogout&time='.$this->time, 'ENCODE', $app['authkey'])).'" reload="1"></script>';
+					}
 					if(is_array($app['extra']['extraurl'])) foreach($app['extra']['extraurl'] as $extraurl) {
 						$synstr .= '<script type="text/javascript" src="'.$extraurl.'/api/'.$app['apifilename'].'?time='.$this->time.'&code='.urlencode($this->authcode('action=synlogout&time='.$this->time, 'ENCODE', $app['authkey'])).'" reload="1"></script>';
 					}
@@ -118,6 +120,15 @@ class usercontrol extends base {
 		$checkques = $this->input('checkques');
 		$questionid = $this->input('questionid');
 		$answer = $this->input('answer');
+		$ip = $this->input('ip');
+
+		$this->settings['login_failedtime'] = is_null($this->settings['login_failedtime']) ? 5 : $this->settings['login_failedtime'];
+
+		if($ip && $this->settings['login_failedtime'] && !$loginperm = $_ENV['user']->can_do_login($username, $ip)) {
+			$status = -4;
+			return array($status, '', $password, '', 0);
+		}
+
 		if($isuid == 1) {
 			$user = $_ENV['user']->get_user_by_uid($username);
 		} elseif($isuid == 2) {
@@ -131,13 +142,23 @@ class usercontrol extends base {
 			$status = -1;
 		} elseif($user['password'] != md5($passwordmd5.$user['salt'])) {
 			$status = -2;
-		} elseif($checkques && $user['secques'] != '' && $user['secques'] != $_ENV['user']->quescrypt($questionid, $answer)) {
+		} elseif($checkques && $user['secques'] != $_ENV['user']->quescrypt($questionid, $answer)) {
 			$status = -3;
 		} else {
 			$status = $user['uid'];
 		}
+		if($ip && $this->settings['login_failedtime'] && $status <= 0) {
+			$_ENV['user']->loginfailed($username, $ip);
+		}
 		$merge = $status != -1 && !$isuid && $_ENV['user']->check_mergeuser($username) ? 1 : 0;
 		return array($status, $user['username'], $password, $user['email'], $merge);
+	}
+
+	function onlogincheck() {
+		$this->init_input();
+		$username = $this->input('username');
+		$ip = $this->input('ip');
+		return $_ENV['user']->can_do_login($username, $ip);
 	}
 
 	function oncheck_email() {
@@ -173,6 +194,7 @@ class usercontrol extends base {
 
 
 	function ongetprotected() {
+		$this->init_input();
 		$protectedmembers = $this->db->fetch_all("SELECT uid,username FROM ".UC_DBTABLEPRE."protectedmembers GROUP BY username");
 		return $protectedmembers;
 	}
@@ -283,7 +305,6 @@ class usercontrol extends base {
 		@header("Expires: 0");
 		@header("Cache-Control: private, post-check=0, pre-check=0, max-age=0", FALSE);
 		@header("Pragma: no-cache");
-		//header("Content-type: application/xml; charset=utf-8");
 		$this->init_input(getgpc('agent', 'G'));
 
 		$uid = $this->input('uid');
@@ -360,7 +381,8 @@ class usercontrol extends base {
 		$biginfo = @getimagesize($bigavatarfile);
 		$middleinfo = @getimagesize($middleavatarfile);
 		$smallinfo = @getimagesize($smallavatarfile);
-		if(!$biginfo || !$middleinfo || !$smallinfo || $biginfo[2] == 4 || $middleinfo[2] == 4 || $smallinfo[2] == 4) {
+		if(!$biginfo || !$middleinfo || !$smallinfo || $biginfo[2] == 4 || $middleinfo[2] == 4 || $smallinfo[2] == 4
+			|| $biginfo[0] > 200 || $biginfo[1] > 250 || $middleinfo[0] > 120 || $middleinfo[1] > 120 || $smallinfo[0] > 48 || $smallinfo[1] > 48) {
 			file_exists($bigavatarfile) && unlink($bigavatarfile);
 			file_exists($middleavatarfile) && unlink($middleavatarfile);
 			file_exists($smallavatarfile) && unlink($smallavatarfile);

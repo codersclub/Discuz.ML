@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: member_getpasswd.php 32853 2013-03-15 02:10:51Z liulanbo $
+ *      $Id: member_getpasswd.php 35030 2014-10-23 07:43:23Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 
 define('NOROBOT', TRUE);
 
-if($_GET['uid'] && $_GET['id']) {
+if($_GET['uid'] && $_GET['id'] && $_GET['sign'] === make_getpws_sign($_GET['uid'], $_GET['id'])) {
 
 	$discuz_action = 141;
 

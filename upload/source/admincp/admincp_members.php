@@ -4,8 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_members.php 34372 2014-04-01 08:34:39Z hypowang $
- *	Modified by Valery Votintsev aka vot at codersclub.org
+ *      $Id: admincp_members.php 34668 2014-06-23 08:11:09Z hypowang $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -2087,7 +2087,7 @@ EOF;
 		}
 		if($_GET['deletefile'] && is_array($_GET['deletefile'])) {
 			foreach($_GET['deletefile'] as $key => $value) {
-				if(isset($fields[$key])) {
+				if(isset($fields[$key]) && $_G['cache']['profilesetting'][$key]['formtype'] == 'file') {
 					@unlink(getglobal('setting/attachdir').'./profile/'.$member[$key]);
 					$fieldarr[$key] = '';
 				}

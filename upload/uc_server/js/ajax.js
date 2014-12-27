@@ -64,15 +64,6 @@ function Ajax(waitId) {
 		}
 	}
 
-/*	aj.post = function(targetUrl, sendString, resultHandle) {
-		aj.targetUrl = targetUrl;
-		aj.sendString = sendString;
-		aj.request.onreadystatechange = aj.processHandle;
-		aj.resultHandle = resultHandle;
-		aj.request.open('POST', targetUrl);
-		aj.request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		aj.request.send(aj.sendString);
-	}*/
 	return aj;
 }
 
@@ -84,9 +75,6 @@ function show(id, display) {
 	}
 }
 
-/*
-	ajaxget('www.baidu.com', 'showid', 'waitid', 'display(\'showid\', 1)');
-*/
 function ajaxget(url, showId, waitId, display, recall) {
 	e = is_ie ? event : ajaxget.caller.arguments[0];
 	ajaxget2(e, url, showId, waitId, display, recall);
@@ -114,10 +102,6 @@ function ajaxget2(e, url, showId, waitId, display, recall) {
 	_cancelBubble(e);
 }
 
-/*
-function stripscript(s) {
-	return s.replace(/<script.*?>.*?<\/script>/ig, '');
-}*/
 
 var evalscripts = new Array();
 function evalscript(s) {
@@ -200,7 +184,6 @@ function ajaxmenu(url, position) {
 	if(!$(menuid).innerHTML) {
 		ajaxget2(e, url, menuid, menuid, '', "setposition('" + menuid + "', '" + position + "', '" + controlid + "')");
 	} else {
-		//alert(menuid.innerHTML);
 	}
 	_cancelBubble(e);
 }
@@ -231,13 +214,9 @@ function ajaxpost_load() {
 	var s = (is_ie && $(ajaxpostHandle[2])) ? $(ajaxpostHandle[2]).contentWindow.document.XMLDocument.text : $(ajaxpostHandle[2]).contentWindow.document.documentElement.firstChild.nodeValue;
 	evalscript(s);
 	if(s) {
-//		setMenuPosition($(ajaxpostHandle[0]).ctrlid, 0);
 		$(ajaxpostHandle[1]).innerHTML = s;
 		if(ajaxpostHandle[3]) {
 			eval(ajaxpostHandle[3]);
 		}
-//		setTimeout("hideMenu()", 3000);
 	}
-//	$(ajaxpostHandle[2]).target = ajaxpostHandle[3];
-//	ajaxpostHandle = null;
 }

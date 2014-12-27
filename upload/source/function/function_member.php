@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_member.php 33692 2013-08-02 10:26:20Z nemohou $
+ *      $Id: function_member.php 35030 2014-10-23 07:43:23Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -308,5 +308,11 @@ function checkemail($email) {
 	} elseif($ucresult == -6) {
 		showmessage('profile_email_duplicate', '', array(), array('handle' => false));
 	}
+}
+
+function make_getpws_sign($uid, $idstring) {
+	global $_G;
+	$link = "{$_G['siteurl']}member.php?mod=getpasswd&uid={$uid}&id={$idstring}";
+	return dsign($link);
 }
 ?>

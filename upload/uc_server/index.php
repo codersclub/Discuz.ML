@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: index.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: index.php 1139 2012-05-08 09:02:11Z liulanbo $
 	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -16,7 +16,7 @@ $starttime = $mtime[1] + $mtime[0];
 
 define('IN_UC', TRUE);
 define('UC_ROOT', dirname(__FILE__).'/');
-define('UC_API', strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
+/*vot*/ define('UC_API', strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
 define('UC_DATADIR', UC_ROOT.'data/');
 define('UC_DATAURL', UC_API.'/data');
 define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
@@ -111,4 +111,41 @@ function getgpc($k, $var='R') {
 	return isset($var[$k]) ? $var[$k] : NULL;
 }
 
+function fsocketopen($hostname, $port = 80, &$errno, &$errstr, $timeout = 15) {
+	$fp = '';
+	if(function_exists('fsockopen')) {
+		$fp = @fsockopen($hostname, $port, $errno, $errstr, $timeout);
+	} elseif(function_exists('pfsockopen')) {
+		$fp = @pfsockopen($hostname, $port, $errno, $errstr, $timeout);
+	} elseif(function_exists('stream_socket_client')) {
+		$fp = @stream_socket_client($hostname.':'.$port, $errno, $errstr, $timeout);
+	}
+	return $fp;
+}
+function dhtmlspecialchars($string, $flags = null) {
+	if(is_array($string)) {
+		foreach($string as $key => $val) {
+			$string[$key] = dhtmlspecialchars($val, $flags);
+		}
+	} else {
+		if($flags === null) {
+			$string = str_replace(array('&', '"', '<', '>'), array('&amp;', '&quot;', '&lt;', '&gt;'), $string);
+			if(strpos($string, '&amp;#') !== false) {
+				$string = preg_replace('/&amp;((#(\d{3,5}|x[a-fA-F0-9]{4}));)/', '&\\1', $string);
+			}
+		} else {
+			if(PHP_VERSION < '5.4.0') {
+				$string = htmlspecialchars($string, $flags);
+			} else {
+				if(strtolower(CHARSET) == 'utf-8') {
+					$charset = 'UTF-8';
+				} else {
+					$charset = 'ISO-8859-1';
+				}
+				$string = htmlspecialchars($string, $flags, $charset);
+			}
+		}
+	}
+	return $string;
+}
 ?>

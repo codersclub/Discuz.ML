@@ -113,8 +113,8 @@ REPLACE INTO uc_settings(k, v) VALUES ('mailauth_password', 'password');
 REPLACE INTO uc_settings(k, v) VALUES ('maildelimiter', '0');
 REPLACE INTO uc_settings(k, v) VALUES ('mailusername', '1');
 REPLACE INTO uc_settings(k, v) VALUES ('mailsilent', '1');
+REPLACE INTO uc_settings(k, v) VALUES ('login_failedtime', '5');
 REPLACE INTO uc_settings(k, v) VALUES ('version', '1.6.0');
-
 
 DROP TABLE IF EXISTS uc_badwords;
 CREATE TABLE uc_badwords (

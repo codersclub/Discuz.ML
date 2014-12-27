@@ -225,7 +225,7 @@ $lang = array (
   'setting_domain_repeat_error' => '配置中存在重复的域名',
   'setting_domain_need_default_error' => '请设置默认域名',
   'only_two_names_from_english_composition_and_figures' => '抱歉，您设置的二级域名只能含有英文和数字',
-/*3.2*/  'two_domain_have_been_occupied' => '抱歉，二级域名已被占用',
+  'two_domain_have_been_occupied' => '抱歉，二级域名已被占用',
 
   'alipay_not_contract' => '请输入支付宝签约用户信息',
   'alipay_succeed' => '支付宝功能设定成功 ',

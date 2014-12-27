@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: badword.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: badword.php 1139 2012-05-08 09:02:11Z liulanbo $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -40,7 +40,7 @@ class control extends adminbase {
 		if($findnew) {
 			$_ENV['badword']->add_badword($findnew, $replacementnew, $this->user['username']);
 			$status = 1;
-			$this->writelog('badword_add', 'findnew='.htmlspecialchars($findnew).'&replacementnew='.htmlspecialchars($replacementnew));
+			$this->writelog('badword_add', 'findnew='.dhtmlspecialchars($findnew).'&replacementnew='.dhtmlspecialchars($replacementnew));
 		}
 		if(@$delete) {
 

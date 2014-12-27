@@ -150,7 +150,7 @@ var fid = parseInt('$_G[fid]');
 
 			<p class="ptm pnpost">
 				<a href="home.php?mod=spacecp&ac=credit&op=rule&fid=$_G[fid]" class="y" target="_blank">{lang post_credits_rule}</a>
-				<button {if $fastpost}type="submit" {elseif !$_G['uid']}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" {/if}{if !$seccodecheck}onmouseover="checkpostrule('seccheck_fastpost', 'ac=newthread');this.onmouseover=null" {/if}name="topicsubmit" id="fastpostsubmit" value="topicsubmit" tabindex="13" class="pn pnc"><strong>{lang post_newthread}</strong></button>
+				<button {if $fastpost}type="submit" {elseif !$_G['uid']}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" {/if}{if !$seccodecheck && !$secqaacheck}onmouseover="checkpostrule('seccheck_fastpost', 'ac=newthread');this.onmouseover=null" {/if}name="topicsubmit" id="fastpostsubmit" value="topicsubmit" tabindex="13" class="pn pnc"><strong>{lang post_newthread}</strong></button>
 				<!--{hook/forumdisplay_fastpost_btn_extra}-->
 				<!--{if !empty($_G['setting']['pluginhooks']['forumdisplay_fastpost_sync_method'])}-->
 					<span>

@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[mobile/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.3.1]]></item>
+			<item id="version"><![CDATA[1.4.4]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[mobile]]></item>
@@ -39,7 +39,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2]]></item>
 		<item id="language">
 			<item id="scriptlang">
 				<item id="mobile_tip_ios"><![CDATA[<a href="http://www.discuz.net/mobile.php?platform=ios">用掌上论坛访问本站,拥有更好阅读体验</a>]]></item>
@@ -53,6 +53,9 @@
 				<item id="mobile_fromtype_android"><![CDATA[来自: Android客户端]]></item>
 				<item id="mobile_fromtype_windowsphone"><![CDATA[来自: WindowsPhone客户端]]></item>
 				<item id="mobile_post_author_visible"><![CDATA[该帖仅作者可见]]></item>
+                <item id="mobilesign_formhash_failed"><![CDATA[formhash验证失败或未登录]]></item>
+                <item id="mobilesign_success"><![CDATA[签到成功]]></item>
+                <item id="mobilesign_failed"><![CDATA[已进行过签到]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="mobile_tips"><![CDATA[推荐使用二维码收藏并访问论坛<br />使用二维码收藏论坛的方法：<br />1，装掌上论坛应用后，点击使用二维码收藏论坛。<br />2，将二维码置于相机焦点中即可收藏成功。]]></item>
@@ -82,8 +85,12 @@
 				<item id="wapmode"><![CDATA[或者通过以下地址访问:]]></item>
 				<item id="qqregmode1"><![CDATA[完善帐号信息]]></item>
 				<item id="qqregmode2"><![CDATA[绑定已有帐号]]></item>
-				<item id="register_validate_email_tips"><![CDATA[注册需要验证邮箱，请务必填写正确的邮箱，提交后请及时查收邮件。]]></item>				
+				<item id="register_validate_email_tips"><![CDATA[注册需要验证邮箱，请务必填写正确的邮箱，提交后请及时查收邮件。]]></item>
+				<item id="post_hide_reply_hidden"><![CDATA[如果您要查看本帖隐藏内容请回复]]></item>
 			</item>
+            <item id="installlang">
+                <item id="mobilesign"><![CDATA[微社区签到]]></item>
+            </item>
 		</item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 		<item id="upgradefile"><![CDATA[upgrade.php]]></item>

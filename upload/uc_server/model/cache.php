@@ -38,7 +38,6 @@ class cachemodel {
 		);
 	}
 
-	//public
 	function updatedata($cachefile = '') {
 		if($cachefile) {
 			foreach((array)$this->map[$cachefile] as $modules) {
@@ -73,7 +72,6 @@ class cachemodel {
 		$tpl->close();
 	}
 
-	//private
 	function _get_badwords() {
 		$data = $this->db->fetch_all("SELECT * FROM ".UC_DBTABLEPRE."badwords");
 		$return = array();
@@ -86,7 +84,6 @@ class cachemodel {
 		return $return;
 	}
 
-	//private
 	function _get_apps() {
 		$this->base->load('app');
 		$apps = $_ENV['app']->get_apps();
@@ -99,12 +96,10 @@ class cachemodel {
 		return $apps2;
 	}
 
-	//private
 	function _get_settings() {
 		return $this->base->get_setting();
 	}
 
-	//private
 	function _get_plugins() {
 		$this->base->load('plugin');
 		return $_ENV['plugin']->get_plugins();

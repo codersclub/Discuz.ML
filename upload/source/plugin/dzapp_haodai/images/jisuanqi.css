@@ -66,7 +66,7 @@ label {vertical-align: middle;}
 .tl{text-align:left;}
 .tr{text-align:right;}
 .jstra td{height:25px;font-size:12px;}
-/**淇敼-20130418-16:21**/
+/**20130418-16:21**/
 .none {display: none;}
 
 .wy{display:block;height:32px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;border-right:1px solid #ccc;padding:0 5px;line-height:32px;text-align:Center;background:#f8f8f8;_height:30px;_margin-top:1px;}
@@ -84,10 +84,9 @@ label {vertical-align: middle;}
 .jsfcon {float: left; padding-bottom: 10px;}
 .jsf {margin-top: 0px;}
 .clear {clear: both;}
-p.zongjg {line-height: 30px; font-size: 16px; font-family: "寰蒋板呴磷"; color: #666;}
+p.zongjg {line-height: 30px; font-size: 16px; font-family: "Microsoft Yahei"; color: #666;}
 p.zongjg strong {font-size: 18px; color: red;}
 .jgsc {float: left; width: 632px; padding: 10px 15px;}
-/***琛ㄦ牸***/
 .jg_tab {border-left: 1px solid #ddd; border-top: 1px solid #ddd; margin-top: 10px;}
 .jg_tab th ,.jg_tab td {padding:12px 7px; font-size: 12px; line-height: 20px; font-size: 14px;}
 .jg_tab th {border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; color: #444555; background: #f5f5f5;text-align: left;}
@@ -101,7 +100,6 @@ p.zongjg strong {font-size: 18px; color: red;}
 
 .jg_tab td p.js_p1 {padding:0; margin:0; line-height:18px;}/**20130515-16:34**/
 
-/*淇敼镄勬牁寮?/
 .select01{ float: left;  padding: 9px 5px 7px; width: 168px;}
 .lv_1{ text-decoration: none; color: #666;}
 .jsbb_sck a:hover{ color: #ff0000;}

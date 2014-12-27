@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
-	<item id="Version"><![CDATA[X2.5,X3,X3.1]]></item>
+	<item id="Version"><![CDATA[X2.5,X3,X3.1,X3.2]]></item>
 	<item id="Time"><![CDATA[2013-11-29 06:37]]></item>
 	<item id="From"><![CDATA[扬州生活网 (http://www.0514.com/)]]></item>
 	<item id="Data">
@@ -14,7 +14,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[dzapp_haodai/]]></item>
 			<item id="copyright"><![CDATA[BranchZero @ DzAPP]]></item>
-			<item id="version"><![CDATA[2.0.1]]></item>
+			<item id="version"><![CDATA[2.0.2]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[admincp_callback]]></item>
@@ -102,7 +102,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X2.5,X3,X3.1]]></item>
+		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2]]></item>
 		<item id="var">
 			<item id="0">
 				<item id="displayorder"><![CDATA[0]]></item>

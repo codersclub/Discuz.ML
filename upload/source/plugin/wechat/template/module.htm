@@ -3,7 +3,7 @@ function wechat_tpl_login_bar() {
 global $_G;
 }
 <!--{block return}-->
-	<a {if $_G['wechat']['setting']['wechat_qrtype']}href="plugin.php?id=wechat:login"{else}href="javascript:;" onclick="showWindow('wechat_bind', 'plugin.php?id=wechat:bind')"{/if}><img src="source/plugin/wechat/image/wechat_login.png" class="vm" />
+<a {if $_G['wechat']['setting']['wechat_qrtype']}href="plugin.php?id=wechat:login"{else}href="javascript:;" onclick="showWindow('wechat_bind', 'plugin.php?id=wechat:bind')"{/if}><img src="source/plugin/wechat/image/wechat_login.png" class="vm" /></a>
 <!--{/block}-->
 <!--{eval return $return;}-->
 {eval
@@ -40,7 +40,7 @@ global $_G;
 	<div id="wechat_float_qrcode" class="p_pop xg1" style="display:none;text-align:center;float:left;position:fixed;top:220px;z-index:100;margin-left: 2px;width:110px">
 		<p class="cl"><img class="y" style="cursor:pointer" onclick="display('wechat_float_qrcode');setcookie('wechatfqrc', 1, 86400)" src="{STATICURL}image/common/ad_close.gif"></p>
 		<img src="plugin.php?id=wechat:qrcode{$idstr}&access=yes" width="98" />
-		<p>{lang wechat:wsq_indexqr}</p>
+		<p><!--{if $_G['wechat']['setting']['wechat_float_text']}-->{$_G[wechat][setting][wechat_float_text]}<!--{else}-->{lang wechat:wsq_indexqr}<!--{/if}--></p>
 	</div>
 	<script>
 		function wechat_qrcode(type) {
@@ -68,11 +68,29 @@ global $_G;
 {eval
 }
 
-function wechat_tpl_share($idstr = '') {
+function wechat_tpl_share($isshow) {
 global $_G;
 }
 <!--{block return}-->
 	<a href="javascript:;" onclick="showWindow('wechat_share', 'plugin.php?id=wechat:qrcode&threadqr={$_G[tid]}&access=yes&share=yes')"><i><img src="source/plugin/wechat/image/share.png" alt="{lang wechat:wechat_share}" />{lang wechat:wechat_share}</i></a>
+	<!--{if $isshow}-->
+		<script>
+		if(document.getElementsByName('ijoin').length) {
+			if($('post_reply')) {
+				document.getElementsByName('ijoin')[0].onclick = function() {
+					$('post_reply').click();
+				}
+			} else {
+				document.getElementsByName('ijoin')[0].style.display = 'none';
+			}
+		}
+		if($('vfastpost')) {
+			$('vfastpost').style.display = 'none';
+		}
+		</script>
+	<!--{/if}-->
+
+
 <!--{/block}-->
 <!--{eval return $return;}-->
 {eval
@@ -83,6 +101,37 @@ global $_G;
 }
 <!--{block return}-->
 	<div class="rfm pbm">{lang wechat:wechat_register}</div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function wechatshowactivity_tpl_voters($post) {
+global $_G;
+}
+<!--{block return}-->
+	<span class="pipe">|</span> <img src="{STATICURL}image/common/agree.gif" class="vm"> {lang wechat:show_recommend_number}
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function wechatshowactivity_tpl_share($post) {
+global $_G;
+}
+<!--{block return}-->
+	<p class="xs3 quote"><img src="source/plugin/wechat/image/share.png"> <a href="javascript:;" onclick="showWindow('wechat_share', 'plugin.php?id=wechat:qrcode&threadqr={$post[tid]}&pid=$post[pid]&showactivity=yes&access=yes')">{lang wechat:show_scanqr}</a></p>
+	<br /><br />
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function wechat_tpl_resourcepush() {
+global $_G;
+}
+<!--{block return}-->
+	<a href="javascript:;" onclick="showWindow('wechat_resourcepush', 'plugin.php?id=wechat:resourcepush&tid={$_G[tid]}')">{lang wechat:resource_push}</a>
 <!--{/block}-->
 <!--{eval return $return;}-->
 {eval

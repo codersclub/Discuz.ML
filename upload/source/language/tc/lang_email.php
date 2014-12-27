@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_email.php 27449 2012-02-01 05:32:35Z zhangguosheng $
+ *      $Id: lang_email.php 35030 2014-10-23 07:43:23Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -42,7 +42,7 @@ $lang = array
 </p>
 您只需在提交請求後的三天內，通過點擊下面的鏈接重置您的密碼：<br />
 
-<a href="{siteurl}member.php?mod=getpasswd&amp;uid={uid}&amp;id={idstring}" target="_blank">{siteurl}member.php?mod=getpasswd&amp;uid={uid}&amp;id={idstring}</a>
+<a href="{siteurl}member.php?mod=getpasswd&amp;uid={uid}&amp;id={idstring}&amp;sign={sign}" target="_blank">{siteurl}member.php?mod=getpasswd&amp;uid={uid}&amp;id={idstring}&amp;sign={sign}</a>
 <br />
 (如果上面不是鏈接形式，請將該地址手工粘貼到瀏覽器地址欄再訪問)</p>
 

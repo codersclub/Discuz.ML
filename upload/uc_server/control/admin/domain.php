@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: domain.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: domain.php 1139 2012-05-08 09:02:11Z liulanbo $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -34,7 +34,7 @@ class control extends adminbase {
 			}
 			$_ENV['domain']->add_domain($_POST['domainnew'], $_POST['ipnew']);
 			$status = 1;
-			$this->writelog('domain_add', 'domainnew='.htmlspecialchars($_POST['domainnew']).'&ipnew='.htmlspecialchars($_POST['ipnew']));
+			$this->writelog('domain_add', 'domainnew='.dhtmlspecialchars($_POST['domainnew']).'&ipnew='.dhtmlspecialchars($_POST['ipnew']));
 		}
 		if(@$_POST['domain']) {
 			foreach($_POST['domain'] as $id => $arr) {

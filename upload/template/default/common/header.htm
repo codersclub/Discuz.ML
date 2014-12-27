@@ -17,8 +17,10 @@
 		<script type="text/javascript" src="{$_G[setting][jspath]}forum.js?{VERHASH}"></script>
 	<!--{elseif $_G['basescript'] == 'home' || $_G['basescript'] == 'userapp'}-->
 		<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'portal'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
 	<!--{/if}-->
-	<!--{if $_G['basescript'] != 'portal' || $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
+	<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
 		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
 	<!--{/if}-->
 	<!--{if $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->

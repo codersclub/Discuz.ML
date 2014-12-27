@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: helper_makehtml.php 33047 2013-04-12 08:46:56Z zhangguosheng $
+ *      $Id: helper_makehtml.php 34675 2014-07-01 05:58:13Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -29,7 +29,10 @@ class helper_makehtml {
 			$filepath = DISCUZ_ROOT.'/'.self::$htmlfilename.'.'.$_G['setting']['makehtml']['extendname'];
 			dmkdir(dirname($filepath));
 			$cend = '</body></html>';
-			if(file_put_contents($filepath, ob_get_clean().$cend) !== false) {
+			$code = ob_get_clean().$cend;
+			$code = preg_replace('/language\s*=[\s|\'|\"]*php/is', '_', $code);
+			$code = str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $code);
+			if(file_put_contents($filepath, $code) !== false) {
 				$_G['gzipcompress'] ? ob_start('ob_gzhandler') : ob_start();
 				if(self::$callback && is_callable(self::$callback)) {
 					call_user_func(self::$callback);

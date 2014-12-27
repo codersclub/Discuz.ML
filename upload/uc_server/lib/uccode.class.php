@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: uccode.class.php 1059 2011-03-01 07:25:09Z monkey $
+	$Id: uccode.class.php 1139 2012-05-08 09:02:11Z liulanbo $
 */
 
 class uccode {
@@ -31,7 +31,7 @@ class uccode {
 	}
 
 	function complie($message) {
-		$message = htmlspecialchars($message);
+		$message = dhtmlspecialchars($message);
 		if(strpos($message, '[/code]') !== FALSE) {
 			$message = preg_replace("/\s*\[code\](.+?)\[\/code\]\s*/ies", "\$this->codedisp('\\1')", $message);
 		}
@@ -143,4 +143,3 @@ echo $this->uccode->complie($str);
 
 */
 
-?>

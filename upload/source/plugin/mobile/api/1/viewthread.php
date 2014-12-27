@@ -77,8 +77,11 @@ class mobile_api {
 				$variable['postlist'][$k]['message'] = $message;
 			}
 			if($post['anonymous'] && !$_G['forum']['ismoderator']) {
-				$variable['postlist'][$k]['username'] = $variable['postlist'][$k]['author'] = '';
+				$variable['postlist'][$k]['username'] = $variable['postlist'][$k]['author'] = $_G['setting']['anonymoustext'];
 				$variable['postlist'][$k]['adminid'] = $variable['postlist'][$k]['groupid'] = $variable['postlist'][$k]['authorid'] = 0;
+				if($post['first']) {
+					$variable['thread']['authorid'] = 0;
+				}
 			}
 			if(strpos($variable['postlist'][$k]['message'], '[/tthread]') !== FALSE) {
 				$matches = array();

@@ -4,7 +4,7 @@
 [UCenter] (C)2001-2099 Comsenz Inc.
 This is NOT a freeware, use is subject to license terms
 
-$Id: base.php 1059 2011-03-01 07:25:09Z monkey $
+$Id: base.php 1167 2014-11-03 03:06:21Z hypowang $
 	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -23,6 +23,7 @@ $Id: base.php 1059 2011-03-01 07:25:09Z monkey $
 
 class base {
 
+	var $sid;
 	var $time;
 	var $onlineip;
 	var $db;
@@ -47,7 +48,6 @@ class base {
 		$this->init_template();
 		$this->init_note();
 		$this->init_mail();
-		//		$this->cron();
 //vot: Force specified charset!!!
 @header('Content-Type: text/html; charset='.UC_CHARSET);
 	}
@@ -113,7 +113,11 @@ if(!defined('UC_LANG')) {
 	}
 
 	function init_db() {
-		require_once UC_ROOT.'lib/db.class.php';
+		if(function_exists("mysql_connect")) {
+			require_once UC_ROOT.'lib/db.class.php';
+		} else {
+			require_once UC_ROOT.'lib/dbi.class.php';
+		}
 		$this->db = new ucserver_db();
 		$this->db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, UC_DBCHARSET, UC_DBCONNECT, UC_DBTABLEPRE);
 	}
@@ -161,10 +165,11 @@ if(!defined('UC_LANG')) {
 
 	function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
-/*vot*/		$ckey_length = 4;	// random key length value 0-32;
-/*vot*/					// Add random key, the ciphertext can make no law, even if exactly the same text and key, encrypt the result will be different each time, increasing the difficulty is.
-/*vot*/					// Value the greater the change in the law the greater the ciphertext, ciphertext change = 16, $ ckey_length th power
-/*vot*/					// When this value is 0, not generate random keys
+		$ckey_length = 4;
+/*vot*/		// random key length value 0-32;
+/*vot*/		// Add random key, the ciphertext can make no law, even if exactly the same text and key, encrypt the result will be different each time, increasing the difficulty is.
+/*vot*/		// Value the greater the change in the law the greater the ciphertext, ciphertext change = 16, $ ckey_length th power
+/*vot*/		// When this value is 0, not generate random keys
 
 		$key = md5($key ? $key : UC_KEY);
 		$keya = md5(substr($key, 0, 16));
@@ -299,6 +304,13 @@ if(!defined('UC_LANG')) {
 			$message = $lang[$message] ? str_replace(array_keys($vars), array_values($vars), $lang[$message]) : $message;
 		}
 		$this->view->assign('message', $message);
+		if(!strpos($redirect, 'sid=') && (!strpos($redirect, 'ttp://'))) {
+			if(!strpos($redirect, '?')) {
+				$redirect .= '?sid='.$this->sid;
+			} else {
+				$redirect .= '&sid='.$this->sid;
+			}
+		}
 		$this->view->assign('redirect', $redirect);
 		if($type == 0) {
 			$this->view->display('message');
@@ -453,7 +465,7 @@ if(!defined('UC_LANG')) {
 			$value = '';
 			$life = -1;
 		}
-		
+
 		$life = $life > 0 ? $this->time + $life : ($life < 0 ? $this->time - 31536000 : 0);
 		$path = $httponly && PHP_VERSION < '5.2.0' ? UC_COOKIEPATH."; HttpOnly" : UC_COOKIEPATH;
 		$secure = $_SERVER['SERVER_PORT'] == 443 ? 1 : 0;
@@ -465,7 +477,7 @@ if(!defined('UC_LANG')) {
 	}
 
 	function note_exists() {
-		$noteexists = $this->db->fetch_first("SELECT value FROM ".UC_DBTABLEPRE."vars WHERE name='noteexists'");
+		$noteexists = $this->db->result_first("SELECT value FROM ".UC_DBTABLEPRE."vars WHERE name='noteexists'");
 		if(empty($noteexists)) {
 			return FALSE;
 		} else {
@@ -474,7 +486,7 @@ if(!defined('UC_LANG')) {
 	}
 
 	function mail_exists() {
-		$mailexists = $this->db->fetch_first("SELECT value FROM ".UC_DBTABLEPRE."vars WHERE name='mailexists'");
+		$mailexists = $this->db->result_first("SELECT value FROM ".UC_DBTABLEPRE."vars WHERE name='mailexists'");
 		if(empty($mailexists)) {
 			return FALSE;
 		} else {

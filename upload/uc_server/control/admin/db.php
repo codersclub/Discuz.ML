@@ -1,5 +1,15 @@
 <?php
-// Modified by Valery Votintsev, codersclub.org
+
+/*
+	[UCenter] (C)2001-2099 Comsenz Inc.
+	This is NOT a freeware, use is subject to license terms
+
+	$Id: db.php 1167 2014-11-03 03:06:21Z hypowang $
+	Modified by Valery Votintsev, codersclub.org
+*/
+
+!defined('IN_UC') && exit('Access Denied');
+
 class control extends adminbase {
 
 	var $startrow = 0;
@@ -33,7 +43,7 @@ class control extends adminbase {
 				$status = 2;
 				$this->writelog('db_delete', "delete=".implode(',', $_POST['delete']));
 			}
-	
+
 			$baklist = array();
 			if(is_dir(UC_ROOT.'./data/backup/')) {
 				$dir = dir(UC_ROOT.'./data/backup/');
@@ -144,7 +154,7 @@ class control extends adminbase {
 		} else {
 			if(!isset($this->cache['apps'][$appid])) {
 				$this->message($this->_parent_js($appid, 'appid_invalid'));
-			}	
+			}
 			$url = $app['url'].'/api/dbbak.php?apptype='.$app['type'];
 			$code = $this->authcode('&method=delete&sqlpath='.$backupdir.'&time='.time(), 'ENCODE', $app['authkey']);
 			$appname = $app['name'];
@@ -153,7 +163,7 @@ class control extends adminbase {
 		$res = $_ENV['misc']->dfopen2($url, 0, '', '', 1, $app['ip'], 20, TRUE);
 		$next_appid = $this->_next_appid($appid);
 		if($next_appid != $appid) {
-			$this->message($this->_parent_js($backupdir, 'delete_dumpfile_redirect', array('$appname' => $appname)), 'admin.php?m=db&a=delete&appid='.$next_appid.'&backupdir='.$backupdir);
+			$this->message($this->_parent_js($backupdir, 'delete_dumpfile_redirect', array('$appname' => $appname)), 'admin.php?m=db&a=delete&appid='.$next_appid.'&backupdir='.$backupdir.'&sid='.$this->sid);
 		} else {
 			$this->message($this->_parent_js($backupdir, 'delete_dumpfile_success'));
 		}
@@ -248,7 +258,7 @@ class control extends adminbase {
 			while($row = $this->db->fetch_row($rows)) {
 				$comma = $t = '';
 				for($i = 0; $i < $numfields; $i++) {
-					$t .= $comma.($usehex && !empty($row[$i]) && (strpos($tablefields[$i]['Type'], 'char') !== FALSE || strpos($tablefields[$i]['Type'], 'text') !== FALSE) ? '0x'.bin2hex($row[$i]) : '\''.mysql_escape_string($row[$i]).'\'');
+					$t .= $comma.($usehex && !empty($row[$i]) && (strpos($tablefields[$i]['Type'], 'char') !== FALSE || strpos($tablefields[$i]['Type'], 'text') !== FALSE) ? '0x'.bin2hex($row[$i]) : '\''.$this->db->escape_string($row[$i]).'\'');
 					$comma = ',';
 				}
 				if(strlen($t) + $currsize + strlen($tabledump) + 500 < $this->sizelimit * 1000) {

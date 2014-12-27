@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_index.php 29203 2012-03-28 10:16:25Z zhengqingpeng $
+ *      $Id: admincp_index.php 35168 2014-12-25 02:29:36Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -173,6 +173,11 @@ echo '<div id="boardnews"></div>';
 
 echo '<style>.rssbook{margin:8px 0 0 25px;}</style>';
 echo '<script >var nId = "4d1e7b6dd9c5070d1a82aeb8be5e72fc64db42701a1bc4d4",nWidth="400px",sColor="light",sText="'.cplang('subscribe_comsenz_email').'" ;</script><script src="http://list.qq.com/zh_CN/htmledition/js/qf/page/qfcode.js" charset="gb18030"></script>';
+
+showtableheader('', '', '', 0);
+showtablerow('', 'class="tipsblock"', '<ul><li style="line-height:15px">'.cplang('scan_discuz_qrcode').'</li></ul>');
+showtablefooter();
+
 showtableheader('', 'nobottom fixpadding');
 if($membersmod || $threadsmod || $postsmod || $medalsmod || $blogsmod || $picturesmod || $doingsmod || $sharesmod || $commentsmod || $articlesmod || $articlecommentsmod || $topiccommentsmod || $threadsdel || !empty($verify)) {
 	showtablerow('', '', '<h3 class="left margintop">'.cplang('home_mods').': </h3><p class="left difflink">'.
@@ -229,12 +234,7 @@ loaducenter();
 showtableheader('home_sys_info', 'fixpadding');
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_discuz_version'),
-/*vot*/	'Discuz! '.DISCUZ_VERSION.' Release '.DISCUZ_RELEASE.
-/*vot*/ '<br/><b><a href="http://faq.comsenz.com/checkversion.php?product=Discuz&version='.DISCUZ_VERSION.'&release='.DISCUZ_RELEASE.'&charset='.CHARSET.'&dbcharset='.$dbcharset.'" class="lightlink2 smallfont" target="_blank">'.cplang('home_check_newversion').'</a></b>
-	<span class="pipe">|</span>
-        <a href="http://www.comsenz.com/purchase/discuz/" class="lightlink2 smallfont" target="_blank">Professional support and services</a>
-	<span class="pipe">|</span>
-        <a href="http://idc.comsenz.com" class="lightlink2 smallfont" target="_blank">Discuz! Dedicated Hosting</a>'
+/*vot*/	'Discuz! '.DISCUZ_VERSION.' Release '.DISCUZ_RELEASE.' <a href="http://faq.comsenz.com/checkversion.php?product=Discuz&version='.DISCUZ_VERSION.'&release='.DISCUZ_RELEASE.'&charset='.CHARSET.'&dbcharset='.$dbcharset.'" class="lightlink2 smallfont" target="_blank">'.cplang('home_check_newversion').'</a> <a href="http://www.comsenz.com/purchase/discuz/" class="lightlink2 smallfont" target="_blank">Professional support and services</a> <a href="http://idc.comsenz.com" class="lightlink2 smallfont" target="_blank">Discuz! Dedicated Hosting</a>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_ucclient_version'),
@@ -322,7 +322,7 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 ));
 /*vot*/ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 /*vot*/	'MultiLingual version',
-/*vot*/	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Valery Votintsev</a>, Current International Revision: '.DISCUZ_ML_REVISION
+/*vot*/	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">codersclub.org</a>, Rev: '.DISCUZ_ML_REVISION
 /*vot*/));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: menu_setting.inc.php 34492 2014-05-09 02:18:22Z nemohou $
+ *      $Id: menu_setting.inc.php 35024 2014-10-14 07:43:43Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -15,6 +15,9 @@ $setting = C::t('common_setting')->fetch_all(array('wechatmenu'));
 $setting = (array)unserialize($setting['wechatmenu']);
 
 require_once DISCUZ_ROOT . './source/plugin/wechat/wechat.lib.class.php';
+require_once DISCUZ_ROOT.'./source/plugin/wechat/setting.class.php';
+WeChatSetting::menu();
+
 $_G['wechat']['setting'] = unserialize($_G['setting']['mobilewechat']);
 
 if(!$_G['wechat']['setting']['wechat_appId'] || !$_G['wechat']['setting']['wechat_appsecret']) {
@@ -35,7 +38,7 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 
 	showformheader('plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=menu_setting');
 	showtableheader();
-	echo '<tr><th class="td25"></th><th><strong>'.$lang['display_order'].'</stong></th><th style="width:350px"><strong>'.lang('plugin/wechat', 'wsq_menu_name').'</strong></th><th>'.lang('plugin/wechat', 'wsq_menu_keyurl').'</th></tr>';
+	echo '<tr class="header"><th class="td25"></th><th>'.$lang['display_order'].'</th><th style="width:350px">'.lang('plugin/wechat', 'wsq_menu_name').'</th><th>'.lang('plugin/wechat', 'wsq_menu_keyurl').'</th></tr>';
 
 	foreach($setting['button'] as $k => $button) {
 		$disabled = !empty($button['sub_button']) ? 'disabled' : '';

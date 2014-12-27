@@ -59,15 +59,7 @@ class appmodel {
 		return $this->db->affected_rows();
 	}
 
-/*	function update_app($appid, $name, $url, $authkey, $charset, $dbcharset) {
-		if($name && $appid) {
-			$this->db->query("UPDATE ".UC_DBTABLEPRE."applications SET name='$name', url='$url', authkey='$authkey', ip='$ip', synlogin='$synlogin', charset='$charset', dbcharset='$dbcharset' WHERE appid='$appid'");
-			return $this->db->affected_rows();
-		}
-		return 0;
-	}*/
 
-	//private
 	function alter_app_table($appid, $operation = 'ADD') {
 		if($operation == 'ADD') {
 			$this->db->query("ALTER TABLE ".UC_DBTABLEPRE."notelist ADD COLUMN app$appid tinyint NOT NULL", 'SILENT');

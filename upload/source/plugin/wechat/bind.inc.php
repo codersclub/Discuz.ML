@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: bind.inc.php 34557 2014-05-28 09:39:02Z nemohou $
+ *      $Id: bind.inc.php 35024 2014-10-14 07:43:43Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -67,6 +67,18 @@ if(!$_G['wechat']['setting']['wechat_qrtype']) {
 	require_once DISCUZ_ROOT . './source/plugin/wechat/wsq.class.php';
 	list($isqrapi, $qrcodeurl, $codeenc, $code) = WeChat::getqrcode();
 	wsq::report('siteqrshow');
+}
+
+if($_G['uid'] && !$qrauth && in_array('qqconnect', $_G['setting']['plugins']['available'])) {
+	$connect = C::t('#qqconnect#common_member_connect')->fetch($_G['uid']);
+	if($connect['conisregister']) {
+		if(!$_G['wechat']['setting']['wechat_qrtype']) {
+			$qrauth = true;
+		} else {
+			showmessage('', 'plugin.php?id=wechat:login', array(), array('redirectmsg' => 1, 'location' => 1));
+		}
+
+	}
 }
 
 include_once template('wechat:wechat_qrcode');

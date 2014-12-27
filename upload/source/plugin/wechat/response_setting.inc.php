@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: response_setting.inc.php 34522 2014-05-15 02:40:03Z nemohou $
+ *      $Id: response_setting.inc.php 35024 2014-10-14 07:43:43Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -16,8 +16,10 @@ $response = & $_G['cache']['wechat_response'];
 
 require_once DISCUZ_ROOT.'./source/plugin/wechat/wechat.lib.class.php';
 require_once DISCUZ_ROOT.'./source/plugin/wechat/wsq.class.php';
+require_once DISCUZ_ROOT.'./source/plugin/wechat/setting.class.php';
+WeChatSetting::menu();
 
-if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
+if(!submitcheck('menusubmit')) {
 
 	showtips(lang('plugin/wechat', 'response_tips', array('url' => $url)));
 
@@ -51,6 +53,8 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 		cpmsg(lang('plugin/wechat', 'response_message_plugin'), 'action=plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=response_setting', 'succeed');
 	}
 
+	WeChatSetting::showResource();
+
 	showformheader('plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=response_setting');
 	showtableheader();
 	echo '<tr><th class="td25"></th><th style="width:350px"><strong>'.lang('plugin/wechat', 'response_keyword').'</strong></th><th><strong>'.lang('plugin/wechat', 'response_content').'</strong></th></tr>';
@@ -66,7 +70,8 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 		showtablerow('', array('', 'class="td23 td28"', '', 'class="td29"'), array(
 			"",
 			"<i>".lang('plugin/wechat', 'subscribe')."</i>",
-			"<textarea class=\"tarea\" name=\"response[subscribe]\" rows=\"5\" cols=\"40\">".dhtmlspecialchars($response['subscribe'])."</textarea>"
+			"<textarea class=\"tarea\" name=\"response[subscribe]\" id=\"res_subscribe\" rows=\"5\" cols=\"40\">".dhtmlspecialchars($response['subscribe'])."</textarea>"
+			."<br /><a href=\"javascript:;\" id=\"rsel\" onclick=\"showResource('res_subscribe')\">".lang('plugin/wechat', 'resource_select')."</a>"
 		));
 	} else {
 		showtablerow('class="header"', array('', 'class="td23 td28"', '', 'class="td29"'), array(
@@ -84,7 +89,8 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 	showtablerow('', array('', 'class="td23 td28"', '', 'class="td29"'), array(
 		"",
 		"<i>".lang('plugin/wechat', 'access')."</i>",
-		"<textarea class=\"tarea\" name=\"response[access]\" rows=\"5\" cols=\"40\">".dhtmlspecialchars($response['access'])."</textarea>"
+		"<textarea class=\"tarea\" name=\"response[access]\" id=\"res_access\" rows=\"5\" cols=\"40\">".dhtmlspecialchars($response['access'])."</textarea>"
+		."<br /><a href=\"javascript:;\" id=\"rsel\" onclick=\"showResource('res_access')\">".lang('plugin/wechat', 'resource_select')."</a>"
 	));
 
 	showtablerow('class="header"', array('', 'class="td23 td28"', '', 'class="td29"'), array(
@@ -95,7 +101,8 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 	showtablerow('', array('', 'class="td23 td28"', '', 'class="td29"'), array(
 		"",
 		"<i>".lang('plugin/wechat', 'scan')."</i>",
-		"<textarea class=\"tarea\" name=\"response[scan]\" rows=\"5\" cols=\"40\">".dhtmlspecialchars($response['scan'])."</textarea>"
+		"<textarea class=\"tarea\" name=\"response[scan]\" id=\"res_scan\" rows=\"5\" cols=\"40\">".dhtmlspecialchars($response['scan'])."</textarea>"
+		."<br /><a href=\"javascript:;\" id=\"rsel\" onclick=\"showResource('res_scan')\">".lang('plugin/wechat', 'resource_select')."</a>"
 	));
 
 	if($responsehook['receiveMsg::text']['plugin'] == 'wechat' &&
@@ -111,7 +118,8 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 			showtablerow('', array('', 'class="td23 td28"', 'class="td29"'), array(
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"response[text][$k][delete]\" value=\"yes\">",
 				"<div class=\"parentnode\"><input type=\"text\" class=\"txt\" size=\"30\" name=\"response[text][$k][keyword]\" value=\"".dhtmlspecialchars($text['keyword'])."\"></div>",
-				"<textarea class=\"tarea\" name=\"response[text][$k][response]\" rows=\"5\" cols=\"40\">".dhtmlspecialchars($text['response'])."</textarea>",
+				"<textarea class=\"tarea\" name=\"response[text][$k][response]\" rows=\"5\" id=\"res_text_$k\" cols=\"40\">".dhtmlspecialchars($text['response'])."</textarea>"
+				."<br /><a href=\"javascript:;\" id=\"rsel\" onclick=\"showResource('res_text_$k')\">".lang('plugin/wechat', 'resource_select')."</a>"
 			));
 		}
 		echo '<tr><td></td><td class="td23 td28"></td><td colspan="2"><div><a href="###" onclick="addrow(this, 0, 0)" class="addtr">'.lang('plugin/wechat', 'response_add_message').'</a></div></td></tr>';
