@@ -11,6 +11,8 @@
 include_once('../source/class/class_core.php');
 include_once('../source/function/function_core.php');
 
+//Define APPTYPEID, CURSCRIPT
+
 @set_time_limit(0);
 
 $cachelist = array();

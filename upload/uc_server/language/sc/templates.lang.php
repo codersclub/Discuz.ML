@@ -23,17 +23,17 @@ $languages = array(
 	'shortcut_tips'	=> '点击编辑，提交后保存',
 	'welcome'	=> '您好',
 	'edit'		=> '编辑',
-	'plugin'	=> '插件',
+	'plugin'	=> '校验文件',
 	'to'		=> '到',
 	'menu'		=> '菜单',
 
-	'founder'		=> '创始人',
+	'founder'		=> 'UCenter创始人',
 	'login_username'	=> '用户名',
 	'login_password'	=> '密　码',
 	'login_submit'		=> '登 录',
 	'login_seccode'		=> '验证码',
 	'login_incorrect'	=> '<em>登录失败!</em><br />用户名无效，或密码错误。',
-	'login_founder_incorrect'	=> '创始人密码错误',
+	'login_founder_incorrect'	=> 'UCenter创始人密码错误',
 	'login_admin_noexists'	=> '该管理员不存在',
 	'login_seccode_error'	=> '验证码输入错误',
 	'login_failedlogin'	=> '密码重试次数过多，请十五分钟后再重新尝试',
@@ -41,6 +41,7 @@ $languages = array(
 	'login_seccode_tips'	=> '如果您无法识别验证码，请点图片更换',
 	'login_secques'		=> '安全提问',
 	'login_remove_secques'	=> '清除安全提问',
+	'login_getpw'		=> '找回密码',
 
 	'menu_index'		=> '首页',
 	'menu_basic_setting'	=> '基本设置',
@@ -309,6 +310,9 @@ $languages = array(
 	'setting_pmfloodctrl'			=> '发短消息灌水预防',
 	'setting_pmfloodctrl_comment'		=> '两次发短消息间隔小于此时间，单位秒，0 为不限制，此举为了限制通过机器批量发广告',
 
+	'setting_user_failedtime'		=> '允许用户登录失败次数',
+	'setting_user_failedtime_comment'	=> '用户登录失败超过设置的数据，将在15分钟内无法登录，0为不限制次数',
+
 	'setting_register'		=> '注册设置',
 	'setting_register_tips'		=> '允许/禁止的 Email 地址只需填写 Email 的域名部分，每行一个域名，例如 @hotmail.com',
 	'setting_register_doublee'	=> '是否允许同一 Email 地址注册多个用户',
@@ -465,8 +469,9 @@ $languages = array(
 	'admin_pw_newpw2'		=> '请重复输入新密码',
 	'admin_pw_too_short'		=> '您的密码太短，可能会不安全，您确定设定此密码吗？',
 	'admin_founder_pw_modified'	=> '创始人账号密码修改成功',
-	'admin_add_admin'		=> '添加管理员',
-	'admin_modify_founder_pw'	=> '修改创始人密码',
+	'admin_add_admin'		=> '添加UCenter管理员',
+	'admin_modify_founder_pw'	=> '修改UCenter创始人密码',
+	'admin_editfoundertips'		=> '此处密码仅为UCenter后台创始人登陆密码，与各应用管理员密码无关更不会自动同步更改，请务必妥善保存此密码',
 	'admin_privilege'		=> '权　限',
 	'admin_allow_setting'		=> '允许改变设置',
 	'admin_allow_app'		=> '允许管理应用',
@@ -499,7 +504,8 @@ $languages = array(
 
 	'app_allowips'			=> '允许的IP',
 	'app_allowips_comment'		=> '限定终端访问的IP, 设置哪些IP可以访问Ucenter  的数据接口',
-//Added by vot
-	'view_ml_new_version'		=> '查看最新的多语言版本',//'View Latest International Version',
-	'home_dev_international'	=> '多语种版本',//'International Version',
+
+//Added by Valery Votintsev, codersclub.org
+	'view_ml_new_version'		=> '查看最新的多语言版本',//'View Latest ML Version',
+	'home_dev_international'	=> '多语种版本',//'Multilingual Version',
 );

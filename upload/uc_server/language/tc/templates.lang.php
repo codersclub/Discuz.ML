@@ -23,24 +23,25 @@ $languages = array(
 	'shortcut_tips'	=> '點擊編輯，提交後保存',
 	'welcome'	=> '您好',
 	'edit'		=> '編輯',
-	'plugin'	=> '插件',
+	'plugin'	=> '校驗文件',
 	'to'		=> '到',
 	'menu'		=> '菜單',
 
-	'founder'		=> '創始人',
+	'founder'		=> 'UCenter創始人',
 	'login_username'	=> '用戶名',
 	'login_password'	=> '密　碼',
 	'login_submit'		=> '登 錄',
 	'login_seccode'		=> '驗證碼',
 	'login_incorrect'	=> '<em>登錄失敗!</em><br />用戶名無效，或密碼錯誤。',
-	'login_founder_incorrect'	=> '創始人密碼錯誤',
+	'login_founder_incorrect'	=> 'UCenter創始人密碼錯誤',
 	'login_admin_noexists'	=> '該管理員不存在',
 	'login_seccode_error'	=> '驗證碼輸入錯誤',
-	'login_failedlogin'	=> '密碼重試次數過多，請十五分鐘後再重新嘗試',
+	'login_failedlogin'	=> '密碼重試次數過多，請稍後嘗試',
 	'login_tips'		=> 'UCenter 是一個能溝通多個應用的橋樑，使各應用共享一個用戶數據庫，實現統一登錄，註冊，用戶管理。',
 	'login_seccode_tips'	=> '如果您無法識別驗證碼，請點圖片更換',
 	'login_secques'		=> '安全提問',
 	'login_remove_secques'	=> '清除安全提問',
+	'login_getpw'		=> '找回密碼',
 
 	'menu_index'		=> '首頁',
 	'menu_basic_setting'	=> '基本設置',
@@ -309,6 +310,9 @@ $languages = array(
 	'setting_pmfloodctrl'			=> '發短消息灌水預防',
 	'setting_pmfloodctrl_comment'		=> '兩次發短消息間隔小於此時間，單位秒，0 為不限制，此舉為了限制通過機器批量發廣告',
 
+	'setting_user_failedtime'		=> '允許用戶登錄失敗次數',
+	'setting_user_failedtime_comment'	=> '用戶登錄失敗超過設置的數據，將在15分鐘內無法登錄，0為不限制次數',
+
 	'setting_register'			=> '註冊設置',
 	'setting_register_tips'			=> '允許/禁止的 Email 地址只需填寫 Email 的域名部分，每行一個域名，例如 @hotmail.com',
 	'setting_register_doublee'		=> '是否允許同一 Email 地址註冊多個用戶',
@@ -465,8 +469,9 @@ $languages = array(
 	'admin_pw_newpw2'		=> '請重複輸入新密碼',
 	'admin_pw_too_short'		=> '您的密碼太短，可能會不安全，您確定設定此密碼嗎？',
 	'admin_founder_pw_modified'	=> '創始人賬號密碼修改成功',
-	'admin_add_admin'		=> '添加管理員',
-	'admin_modify_founder_pw'	=> '修改創始人密碼',
+	'admin_add_admin'		=> '添加UCenter管理員',
+	'admin_modify_founder_pw'	=> '修改UCenter創始人密碼',
+	'admin_editfoundertips'	=> '此處密碼僅為UCenter後台創始人登陸密碼，與各應用管理員密碼無關更不會自動同步更改，請務必妥善保存此密碼',
 	'admin_privilege'	=> '權　限',
 	'admin_allow_setting'	=> '允許改變設置',
 	'admin_allow_app'	=> '允許管理應用',
@@ -499,7 +504,8 @@ $languages = array(
 
 	'app_allowips'			=> '允許的IP',
 	'app_allowips_comment'		=> '限定終端訪問的IP, 設置哪些IP可以訪問Ucenter  的數據接口',
-//Added by vot
+
+//Added by Valery Votintsev, codersclub.org
 	'view_ml_new_version'		=> '查看最新的多語言版本',//'View Latest International Version',
 	'home_dev_international'	=> '多語種版本',//'International Version',
 );
