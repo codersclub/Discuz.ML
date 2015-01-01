@@ -8,10 +8,12 @@
  *      Modified by Valery Votintsev, codersclub.org
  */
 
+//Define APPTYPEID, CURSCRIPT
+define('APPTYPEID', 2);
+define('CURSCRIPT', 'update');
+
 include_once('../source/class/class_core.php');
 include_once('../source/function/function_core.php');
-
-//Define APPTYPEID, CURSCRIPT
 
 @set_time_limit(0);
 
