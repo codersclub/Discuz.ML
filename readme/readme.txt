@@ -1,5 +1,5 @@
 +--------------------------------------------------------------------------+
- Discuz! ML 3.0 (MultiLingual)
+ Discuz! ML 3.2 (MultiLingual)
  by Valery Votintsev from codersclub.org
  http://codersclub.org/discuzx/
 +--------------------------------------------------------------------------+
@@ -17,10 +17,10 @@ based on original Discuz!X
 +--------------------------------------------------------------------------+
 
 Crossday Discuz! Board (hereinafter referred to as Discuz!,
- China's National Copyright Administration of copyright
- registration number 2008SR11708) - is a common set of community forums
- software system introduced by the Comsenz (Beijing) Technology Co., Ltd.
- (abbreviation is Comsenz).
+China's National Copyright Administration of copyright
+registration number 2008SR11708) - is a common set of community forums
+software system introduced by the Comsenz (Beijing) Technology Co., Ltd.
+(abbreviation is Comsenz).
 
 As the largest software and service provider community, Comsenz's Discuz!
 Products, in terms of functionality, stability, load capacity, security, etc.
@@ -82,3 +82,8 @@ Discuz! Related Products:  http://www.comsenz.com/downloads/install
 
 Discuz! Commercial license purchase:  http://www.comsenz.com/purchase/discuz
 Discuz! Business user support:        http://www.comsenz.com/customer/
+
++--------------------------------------------------------------------------+
+
+This product includes GeoLite data created by MaxMind, available from
+<a href="http://www.maxmind.com">http://www.maxmind.com</a>.
