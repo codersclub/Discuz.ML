@@ -144,7 +144,7 @@ class ucserver_db {
 	}
 
 	function escape_string($str) {
-		return mysql_escape_string($str);
+/*vot*/		return mysql_real_escape_string($str);
 	}
 
 	function close() {
