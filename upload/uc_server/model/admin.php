@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: admin.php 1167 2014-11-03 03:06:21Z hypowang $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -20,6 +21,7 @@ class adminbase extends base {
 	function adminbase() {
 		parent::__construct();
 		$this->cookie_status = 0;
+/*vot*/		$this->cookie_status = isset($_COOKIE['sid']) ? 1 : 0;
 		$sid = $this->cookie_status ? getgpc('sid', 'C') : rawurlencode(getgpc('sid', 'R'));
 		$this->sid = $this->view->sid = $this->sid_decode($sid) ? $sid : '';
 		$this->view->assign('sid', $this->view->sid);

@@ -23,7 +23,7 @@ function loadcalendar() {
 	s += '<tr align="center" id="calendar_week">';
 /*vot*/	s += '<th><a href="###" onclick="refreshcalendar(yy, mm-1)" title="'+lng['prev_month']+'">&laquo;</a></th>';
 /*vot*/	s += '<th colspan="5" style="text-align: center"><a href="###" onclick="showdiv(\'year\');_cancelBubble(event)" title="'+lng['select_year']+'" id="year"></a>&nbsp; - &nbsp;<a id="month" title="'+lng['select_month']+'" href="###" onclick="showdiv(\'month\');_cancelBubble(event)"></a></th>';
-/*vot*/	s += '<th><A href="###" onclick="refreshcalendar(yy, mm+1)" title="'+lng['next_month']+'">&raquo;</A></th>';
+/*vot*/	s += '<th><a href="###" onclick="refreshcalendar(yy, mm+1)" title="'+lng['next_month']+'">&raquo;</A></th>';
 	s += '</tr>';
 /*vot*/	s += '<tr id="calendar_header"><td>'+lng['wday0']+'</td><td>'+lng['wday1']+'</td><td>'+lng['wday2']+'</td><td>'+lng['wday3']+'</td><td>'+lng['wday4']+'</td><td>'+lng['wday5']+'</td><td>'+lng['wday6']+'</td></tr>';
 	s += '</thead>';

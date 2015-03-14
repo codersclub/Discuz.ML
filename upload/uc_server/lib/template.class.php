@@ -155,7 +155,8 @@ class template {
 	}
 
 	function __destruct() {
-		if($_COOKIE['sid']) {
+/*vot*/		if(isset($_COOKIE['sid'])) {
+///*vot*/			return;
 		}
 		$sid = rawurlencode($this->sid);
 		$searcharray = array(

@@ -96,9 +96,10 @@ class control extends adminbase {
 						}
 					}
 
+/*vot*/					$pwlen = strlen($password);
 					if($errorcode == 0) {
 						$this->setcookie('sid', $this->view->sid, 86400);
-						$pwlen = strlen($password);
+//vot						$pwlen = strlen($password);
 						$this->user['admin'] = 1;
 						$this->writelog('login', 'succeed');
 						if($iframe) {
