@@ -10,7 +10,7 @@
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
-@set_magic_quotes_runtime(0);
+/*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
 
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
