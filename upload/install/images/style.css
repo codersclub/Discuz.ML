@@ -92,7 +92,7 @@ table{ border-collapse:collapse; }
 	font-size: 22px;
 	padding: 10px 20px;
 	text-shadow: 2px 2px 2px #000;
-	background: #55AA33 url("./images/download.png") left top no-repeat;
+/*vot*/	background: #55AA33;
 	border-radius: 8px;
 	box-shadow: 4px 4px 10px #777;
 }
