@@ -11,6 +11,9 @@
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
+/*vot*/ if(!defined('APPTYPEID')) {
+/*vot*/		define('APPTYPEID', 2);
+/*vot*/ }
 
 class discuz_application extends discuz_base{
 
