@@ -57,6 +57,16 @@ class adminbase extends base {
 				$this->view->sid = $this->sid_encode($this->user['username']);
 				$this->setcookie('sid', $this->view->sid, 86400);
 			}
+/*vot*/ 		if(!isset($this->user['allowadminapp'])) {$this->user['allowadminapp'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadminuser'])) {$this->user['allowadminuser'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadminpm'])) {$this->user['allowadminpm'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadminnote'])) {$this->user['allowadminnote'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadminsetting'])) {$this->user['allowadminsetting'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadmincredits'])) {$this->user['allowadmincredits'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadminbadword'])) {$this->user['allowadminbadword'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadmindomain'])) {$this->user['allowadmindomain'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadmincache'])) {$this->user['allowadmincache'] = 0;}
+/*vot*/ 		if(!isset($this->user['allowadmindb'])) {$this->user['allowadmindb'] = 0;}
 			$this->view->assign('user', $this->user);
 		}
 	}

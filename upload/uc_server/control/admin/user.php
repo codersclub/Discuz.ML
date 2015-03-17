@@ -188,40 +188,46 @@ class control extends adminbase {
 			$status = 2;
 			$this->writelog('user_delete', "uid=".implode(',', $_POST['delete']));
 		}
-		$srchname = getgpc('srchname', 'R');
-		$srchregdatestart = getgpc('srchregdatestart', 'R');
-		$srchregdateend = getgpc('srchregdateend', 'R');
-		$srchuid = intval(getgpc('srchuid', 'R'));
+/*vot*/		$srchname = trim(getgpc('srchname', 'R'));
+/*vot*/		$this->view->assign('srchname', $srchname);
+/*vot*/		$srchregdatestart = trim(getgpc('srchregdatestart', 'R'));
+/*vot*/		$this->view->assign('srchregdatestart', $srchregdatestart);
+/*vot*/		$srchregdateend = trim(getgpc('srchregdateend', 'R'));
+/*vot*/		$this->view->assign('srchregdateend', $srchregdateend);
+/*vot*/		$srchuid = trim(getgpc('srchuid', 'R'));
+/*vot*/		$this->view->assign('srchuid', $srchuid);
 		$srchregip = trim(getgpc('srchregip', 'R'));
+/*vot*/		$this->view->assign('srchregip', $srchregip);
 		$srchemail = trim(getgpc('srchemail', 'R'));
+/*vot*/		$this->view->assign('srchemail', $srchemail);
 
 		$sqladd = $urladd = '';
 		if($srchname) {
 			$sqladd .= " AND username LIKE '$srchname%'";
-			$this->view->assign('srchname', $srchname);
+//vot			$this->view->assign('srchname', $srchname);
 		}
 		if($srchuid) {
-			$sqladd .= " AND uid='$srchuid'";
-			$this->view->assign('srchuid', $srchuid);
+/*vot*/			$sqladd .= " AND uid='".intval($srchuid)."'";
+//vot			$this->view->assign('srchuid', $srchuid);
 		}
 		if($srchemail) {
 			$sqladd .= " AND email='$srchemail'";
-			$this->view->assign('srchemail', $srchemail);
+//vot			$this->view->assign('srchemail', $srchemail);
 		}
 		if($srchregdatestart) {
 			$urladd .= '&srchregdatestart='.$srchregdatestart;
 			$sqladd .= " AND regdate>'".strtotime($srchregdatestart)."'";
-			$this->view->assign('srchregdatestart', $srchregdatestart);
+//vot			$this->view->assign('srchregdatestart', $srchregdatestart);
 		}
 		if($srchregdateend) {
 			$urladd .= '&srchregdateend='.$srchregdateend;
 			$sqladd .= " AND regdate<'".strtotime($srchregdateend)."'";
-			$this->view->assign('srchregdateend', $srchregdateend);
+//vot			$this->view->assign('srchregdateend', $srchregdateend);
 		}
 		if($srchregip) {
 			$urladd .= '&srchregip='.$srchregip;
 			$sqladd .= " AND regip='$srchregip'";
-			$this->view->assign('srchregip', $srchregip);
+//vot			$this->view->assign('srchregip', $srchregip);
 		}
 		$sqladd = $sqladd ? " WHERE 1 $sqladd" : '';
 

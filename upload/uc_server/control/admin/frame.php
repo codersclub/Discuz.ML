@@ -143,7 +143,7 @@ class control extends adminbase {
 		foreach($notelist as $note) {
 			foreach($applist as $k => $app) {
 				if($note['app'.$app['appid']] < 0) {
-					$error[$k]++;
+/*vot*/					$error[$k]=1;
 				}
 			}
 		}

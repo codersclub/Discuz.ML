@@ -75,6 +75,7 @@ class notemodel {
 
 	function add($operation, $getdata='', $postdata='', $appids=array(), $pri = 0) {
 		$extra = $varextra = '';
+/*vot*/		$appadd = false;
 		foreach((array)$this->apps as $appid => $app) {
 			$appid = $app['appid'];
 			if($appid == intval($appid)) {

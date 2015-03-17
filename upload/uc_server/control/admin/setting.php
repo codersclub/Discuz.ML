@@ -33,6 +33,7 @@ class control extends adminbase {
 	function onls() {
 		$this->load('user');
 		$updated = false;
+/*vot*/		$timearray = array('-12', '-11', '-10', '-9', '-8', '-7', '-6', '-5', '-4', '-3.5', '-3', '-2', '-1', '0', '1', '2', '3', '3.5', '4', '4.5', '5', '5.5', '5.75', '6', '6.5', '7', '8', '9', '9.5', '10', '11', '12');
 		if($this->submitcheck()) {
 			$timeformat = getgpc('timeformat', 'P');
 			$dateformat = getgpc('dateformat', 'P');
@@ -47,7 +48,7 @@ class control extends adminbase {
 			$login_failedtime = getgpc('login_failedtime', 'P');
 			$dateformat = str_replace(array('yyyy', 'mm', 'dd'), array('y', 'n', 'j'), strtolower($dateformat));
 			$timeformat = $timeformat == 1 ? 'H:i' : 'h:i A';
-			$timeoffset = in_array($timeoffset, array('-12', '-11', '-10', '-9', '-8', '-7', '-6', '-5', '-4', '-3.5', '-3', '-2', '-1', '0', '1', '2', '3', '3.5', '4', '4.5', '5', '5.5', '5.75', '6', '6.5', '7', '8', '9', '9.5', '10', '11', '12')) ? $timeoffset : 8;
+/*vot*/			$timeoffset = in_array($timeoffset, $timearray) ? $timeoffset : 8;
 
 			$this->set_setting('dateformat', $dateformat);
 			$this->set_setting('timeformat', $timeformat);
@@ -77,20 +78,25 @@ class control extends adminbase {
 		$this->view->assign('a', $a);
 
 		$this->view->assign('dateformat', $settings['dateformat']);
-		$timeformatchecked = array($settings['timeformat'] => 'checked="checked"');
+/*vot*/		$timeformatchecked = array('','');
+/*vot*/		$timeformatchecked[$settings['timeformat']] = 'checked="checked"';
 		$this->view->assign('timeformat', $timeformatchecked);
 		$this->view->assign('privatepmthreadlimit', $settings['privatepmthreadlimit']);
 		$this->view->assign('chatpmthreadlimit', $settings['chatpmthreadlimit']);
 		$this->view->assign('chatpmmemberlimit', $settings['chatpmmemberlimit']);
 		$this->view->assign('pmsendregdays', $settings['pmsendregdays']);
 		$this->view->assign('pmfloodctrl', $settings['pmfloodctrl']);
-		$pmcenterchecked = array($settings['pmcenter'] => 'checked="checked"');
+/*vot*/		$pmcenterchecked = array('','');
+/*vot*/		$pmcenterchecked[$settings['pmcenter']] = 'checked="checked"';
 		$pmcenterchecked['display'] = $settings['pmcenter'] ? '' : 'style="display:none"';
 		$this->view->assign('pmcenter', $pmcenterchecked);
-		$sendpmseccodechecked = array($settings['sendpmseccode'] => 'checked="checked"');
+/*vot*/		$sendpmseccodechecked = array('','');
+/*vot*/		$sendpmseccodechecked[$settings['sendpmseccode']] = 'checked="checked"';
 		$this->view->assign('sendpmseccode', $sendpmseccodechecked);
 		$timeoffset = intval($settings['timeoffset'] / 3600);
-		$checkarray = array($timeoffset < 0 ? '0'.substr($timeoffset, 1) : $timeoffset => 'selected="selected"');
+/*vot*/		foreach($timearray as $v) {
+/*vot*/			$checkarray[(intval($v) < 0 ? '0'.substr($v, 1) : $v)] = ($timeoffset == $v ? 'selected="selected"' : '');
+/*vot*/		}
 		$this->view->assign('checkarray', $checkarray);
 		$this->view->assign('updated', $updated);
 		$this->view->assign('login_failedtime', $settings['login_failedtime']);
@@ -120,7 +126,8 @@ class control extends adminbase {
 		}
 
 		$this->view->assign('a', getgpc('a'));
-		$doubleechecked = array($settings['doublee'] => 'checked="checked"');
+/*vot*/		$doubleechecked = array('','');
+/*vot*/		$doubleechecked[$settings['doublee']] = 'checked="checked"';
 		$this->view->assign('doublee', $doubleechecked);
 		$this->view->assign('accessemail', $settings['accessemail']);
 		$this->view->assign('censoremail', $settings['censoremail']);
@@ -131,6 +138,7 @@ class control extends adminbase {
 
 	function onmail() {
 		$items = array('maildefault', 'mailsend', 'mailserver', 'mailport', 'mailauth', 'mailfrom', 'mailauth_username', 'mailauth_password', 'maildelimiter', 'mailusername', 'mailsilent');
+/*vot*/		$updated = false;
 		if($this->submitcheck()) {
 			foreach($items as $item) {
 				$value = getgpc($item, 'P');
@@ -149,6 +157,7 @@ class control extends adminbase {
 			$this->view->assign($item, dhtmlspecialchars($settings[$item]));
 		}
 
+/*vot*/		$this->view->assign('a', getgpc('a'));
 		$this->view->assign('updated', $updated);
 		$this->view->display('admin_setting');
 	}
