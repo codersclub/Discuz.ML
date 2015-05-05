@@ -1,0 +1,16 @@
+<div class="threadlist">
+	<b class="thread_tit"><!--{if $keyword}--><font color=green>{lang search_result_keyword}</font> <!--{if $modfid}--><a href="forum.php?mobile=yes" target="_blank">{lang goto_home}</a><!--{/if}--><!--{else}--><font color=brown>{lang search_result}</font><!--{/if}--></b>
+	<!--{if empty($threadlist)}-->
+	<ul><li><a href="forum.php?mobile=yes">{lang search_nomatch}</a></li></ol>
+	<!--{else}-->
+			<ol type="1">
+				<!--{loop $threadlist $thread}-->
+				<li>
+					<a href="forum.php?mod=viewthread&tid=$thread[realtid]&highlight=$index[keywords]" target="_blank" $thread[highlight]>$thread[subject]</a><br /><a href="home.php?mod=space&uid=$thread[authorid]"><font color="gray">$thread[author]</font></a>
+				</li>
+				<br />
+				<!--{/loop}-->
+			</ol>
+	<!--{/if}-->
+	$multipage
+</div>
