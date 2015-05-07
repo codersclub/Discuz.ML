@@ -1,0 +1,47 @@
+<br /><div class="line"></div>
+<form id="scbar_form" method="{if $_G[fid] && !empty($searchparams[url])}get{else}post{/if}" action="{if $_G[fid] && !empty($searchparams[url])}$searchparams[url]{else}search.php?mod=forum&mobile=1{/if}">
+<div class="search">
+<div class="input-group">
+<input type="text" class="form-control" name="srchtxt" placeholder="{lang searchthread}">
+<span class="input-group-btn">
+<button class="btn btn-default" type="submit" name="searchsubmit" value="true">{lang search}</button>
+</span>
+<input type="hidden" name="mod" id="scbar_mod" value="$_G['basescript']" />
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="srchtype" value="title" />
+<input type="hidden" name="srhfid" value="$_G[fid]" />
+<input type="hidden" name="srhlocality" value="$_G['basescript']::{CURMODULE}" />
+
+<!--{if !empty($searchparams[params])}-->
+<!--{loop $searchparams[params] $key $value}-->
+<!--{eval $srchotquery .= '&' . $key . '=' . rawurlencode($value);}-->
+<input type="hidden" name="$key" value="$value" />
+<!--{/loop}-->
+<input type="hidden" name="source" value="discuz" />
+<input type="hidden" name="fId" id="srchFId" value="$_G[fid]" />
+<input type="hidden" name="q" id="cloudsearchquery" value="" />
+<!--{/if}-->
+</div>
+</div>
+</form>
+<!--rameshkiran114-->
+<div id="scbar_hot">
+	<!--{if $_G['setting']['srchhotkeywords']}-->
+	<strong class="xw1">{lang hot_search}: </strong>
+	<!--{loop $_G['setting']['srchhotkeywords'] $val}-->
+		<!--{if $val=trim($val)}-->
+			<!--{eval $valenc=rawurlencode($val);}-->
+			<!--{block srchhotkeywords[]}-->
+				<!--{if !empty($searchparams[url])}-->
+					<a href="$searchparams[url]?q=$valenc&source=hotsearch{$srchotquery}&mobile=1" target="_blank" class="xi2" sc="1">$val</a>
+				<!--{else}-->
+					<a href="search.php?mod=forum&srchtxt=$valenc&formhash={FORMHASH}&searchsubmit=true&source=hotsearch&mobile=1" target="_blank" class="xi2" sc="1">$val</a>
+				<!--{/if}-->
+			<!--{/block}-->
+		<!--{/if}-->
+	<!--{/loop}-->
+	<!--{echo implode('', $srchhotkeywords);}-->
+	<!--{/if}-->
+</div>
+<br />
+<br />

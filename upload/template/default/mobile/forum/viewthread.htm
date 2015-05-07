@@ -1,4 +1,5 @@
 <!--{template common/header}-->
+<!--{subtemplate mobile/common/search}-->
 <!--{if $_G['forum']['type'] != 'sub'}-->
 	<div class="box"><a href="forum.php">{$_G['setting']['navs'][2]['navname']}</a> <em> &gt; </em> <a href="forum.php?mod=forumdisplay&fid=$_G[fid]">{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}</a></div>
 <!--{else}-->
