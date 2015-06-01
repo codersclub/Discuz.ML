@@ -1022,7 +1022,7 @@ Note on the CSS Hack:
 	Explain:		Links
 	Last Modify:	lushnis
 */
-	.lk img { float: left; margin-right: 5px; margin-bottom: 5px; }
+/*vot*/	.lk img { /*float: left;*/ margin-right: 5px; margin-bottom: 5px; }
 	.lk p { color: {MIDTEXT}; }
 	.lk .m li { clear: left; padding: 0 0 10px 98px; }
 		.lk .m img { display: inline; margin-top: 4px; margin-top/*\**/: 1px\9; margin-left: -98px; }
