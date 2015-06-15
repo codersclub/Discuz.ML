@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum_viewthread.js 33862 2013-08-22 09:19:30Z nemohou $
+	$Id: forum_viewthread.js 35220 2015-02-27 08:23:59Z nemohou $
 	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -234,7 +234,7 @@ function succeedhandle_fastpost(locationhref, message, param) {
 		ajaxget('forum.php?mod=viewthread&tid=' + tid + '&viewpid=' + pid + '&from=' + from, 'post_new', 'ajaxwaitid', '', null, 'fastpostappendreply()');
 		if(replyreload) {
 			var reloadpids = replyreload.split(',');
-			for(i = 1;i < reloadpids.length;i++) {
+			for(var i = 1;i < reloadpids.length;i++) {
 				ajaxget('forum.php?mod=viewthread&tid=' + tid + '&viewpid=' + reloadpids[i] + '&from=' + from, 'post_' + reloadpids[i], 'ajaxwaitid');
 			}
 		}

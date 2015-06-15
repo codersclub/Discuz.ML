@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: menu_setting.inc.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: menu_setting.inc.php 35201 2015-02-04 06:32:12Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -17,8 +17,6 @@ $setting = (array)unserialize($setting['wechatmenu']);
 require_once DISCUZ_ROOT . './source/plugin/wechat/wechat.lib.class.php';
 require_once DISCUZ_ROOT.'./source/plugin/wechat/setting.class.php';
 WeChatSetting::menu();
-
-$_G['wechat']['setting'] = unserialize($_G['setting']['mobilewechat']);
 
 if(!$_G['wechat']['setting']['wechat_appId'] || !$_G['wechat']['setting']['wechat_appsecret']) {
 	cpmsg(lang('plugin/wechat', 'wsq_menu_at_error'), '', 'error');

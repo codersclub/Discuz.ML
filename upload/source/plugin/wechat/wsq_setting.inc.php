@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wsq_setting.inc.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: wsq_setting.inc.php 35201 2015-02-04 06:32:12Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -93,13 +93,12 @@ if(!submitcheck('settingsubmit')) {
 	} else {
 		showsetting(lang('plugin/wechat', 'wsq_domain'), 'setting[wsq_domain]', '', 'text', 1, 0, lang('plugin/wechat', 'wsq_domain_comment'));
 	}
-	showsetting(lang('plugin/wechat', 'wechat_forumdisplay_reply'), 'setting[wechat_forumdisplay_reply]', $setting['wechat_forumdisplay_reply'], 'radio', 0, 1);
+	showsetting(lang('plugin/wechat', 'wechat_forumdisplay_reply'), 'setting[wechat_forumdisplay_reply]', $setting['wechat_forumdisplay_reply'], 'radio');
 	showsetting(lang('plugin/wechat', 'wechat_float_qrcode'), 'setting[wechat_float_qrcode]', $setting['wechat_float_qrcode'], 'radio', 0, 1);
 	showsetting(lang('plugin/wechat', 'wechat_float_text'), 'setting[wechat_float_text]', $setting['wechat_float_text'], 'text');
 	showtagfooter('tbody');
 	showsetting(lang('plugin/wechat', 'wsq_wapdefault'), 'setting[wsq_wapdefault]', $setting['wsq_wapdefault'], 'radio');
 	showsetting(lang('plugin/wechat', 'wsq_apicredit'), '', '', '<select name="setting[wsq_apicredit]">'.$apicredits.'</select>', 0, 0, lang('plugin/wechat', 'wsq_apicredit_comment'));
-	showsetting(lang('plugin/wechat', 'wsq_global_banner'), 'setting[wsq_global_banner]', $setting['wsq_global_banner'], 'radio', 0, 0, lang('plugin/wechat', 'wsq_global_banner_comment'));
 	showsubmit('settingsubmit');
 	showtablefooter();
 

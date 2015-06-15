@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuzcode.func.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: discuzcode.func.php 35182 2015-01-12 02:05:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -57,7 +57,7 @@ function mobile_discuzcode($param) {
 
 	if($allowbbcode) {
 		if(strpos($msglower, 'ed2k://') !== FALSE) {
-			$message = preg_replace("/ed2k:\/\/(.+?)\//e", "parseed2k('\\1')", $message);
+			$message = preg_replace("/ed2k:\/\/(.+?)\//e", "mobile_parseed2k('\\1')", $message);
 		}
 	}
 
@@ -292,6 +292,17 @@ function mobile_parsetable($width, $bgcolor, $message) {
 
 function mobile_parsetrtd($bgcolor, $colspan, $rowspan, $width) {
 	return ($bgcolor == 'td' ? '</td></tr>' : '<tr'.($bgcolor ? ' style="background-color:'.$bgcolor.'"' : '').'>').'<td class="dzcode_td">';
+}
+
+function mobile_parseed2k($url) {
+	global $_G;
+	list(,$type, $name, $size,) = explode('|', $url);
+	$name = addslashes($name);
+	if($type == 'file') {
+		return '<a ed2k="'.urlencode($url).'">'.$name.' ('.sizecount($size).')</a>';
+	} else {
+		return '<a ed2k="'.urlencode($url).'">'.$url.'</a>';
+	}
 }
 
 ?>

@@ -299,7 +299,7 @@
 									var postcontent = '';
 									postcontent += newpostlist[i].authorid ? '<dt><a href="home.php?mod=space&uid=' + newpostlist[i].authorid + '" target="_blank">' + newpostlist[i].avatar + '</a></dt>' : '<dt></dt>';
 									postcontent += newpostlist[i].authorid ? '<dd><a href="home.php?mod=space&uid=' + newpostlist[i].authorid + '" target="_blank">' + newpostlist[i].author + '</a></dd>' : '<dd>' + newpostlist[i].author + '</dd>';
-									postcontent += '<dd>' + newpostlist[i].message + '</dd>';
+									postcontent += '<dd>' + htmlspecialchars(newpostlist[i].message) + '</dd>';
 									postcontent += '<dd class="dateline">' + newpostlist[i].dateline + '</dd>';
 									if(replycontentlist[postid]) {
 										$('livereply_' + postid).innerHTML = postcontent;

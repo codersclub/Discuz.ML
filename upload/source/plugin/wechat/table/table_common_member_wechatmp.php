@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_common_member_wechatmp.php 34506 2014-05-13 02:09:15Z nemohou $
+ *      $Id: table_common_member_wechatmp.php 35228 2015-03-05 06:53:53Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -19,6 +19,10 @@ class table_common_member_wechatmp extends discuz_table {
 		$this->_pre_cache_key = 'common_member_wechatmp_';
 
 		parent::__construct();
+	}
+
+	public function fetch_by_openid($openid) {
+		return DB::fetch_all('SELECT * FROM %t WHERE openid=%s', array($this->_table, $openid), 'uid');
 	}
 
 }

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_members.php 34668 2014-06-23 08:11:09Z hypowang $
+ *      $Id: admincp_members.php 35200 2015-02-04 03:50:59Z hypowang $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -3064,7 +3064,7 @@ function notifymembers($operation, $variable) {
 		$current = 0;
 		$subject = $_GET['subject'];
 		$message = $_GET['message'];
-		$subject = trim($subject);
+		$subject = dhtmlspecialchars(trim($subject));
 		$message = trim(str_replace("\t", ' ', $message));
 		$addmsg = '';
 		if(($_GET['notifymembers'] && $_GET['notifymember']) && !($subject && $message)) {

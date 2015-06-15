@@ -3,7 +3,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: home_editor.php 30774 2012-06-19 03:47:07Z zhangguosheng $
+ *      $Id: home_editor.php 35297 2015-06-05 03:28:45Z hypowang $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -95,7 +95,7 @@ if (empty($_GET['op'])) {
 
 				.icons a{width:20px;height:20px;background-repeat:no-repeat;display:block;float:left;border:1px solid #F2F2F2;}
 				*:lang(zh) .icons a{margin-right:1px}
-				.icons a:hover{border-color: #369; #CCC;background-color:#FFF}
+				.icons a:hover{border-color: #369 #CCC;background-color:#FFF}
 				a.icoCut{background-position:-140px -60px;}
 				a.icoCpy{background-position:-160px -60px;}
 				a.icoPse{background-position:-40px -60px}

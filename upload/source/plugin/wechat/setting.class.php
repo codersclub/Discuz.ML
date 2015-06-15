@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: setting.class.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: setting.class.php 35206 2015-02-12 01:40:17Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -38,6 +38,8 @@ EOF;
 	}
 
 	function menu() {
+		global $_G;
+		$_G['wechat']['setting'] = unserialize($_G['setting']['mobilewechat']);
 
 echo <<<EOF
 <style>
@@ -68,6 +70,27 @@ EOF;
 		));
 		echo '</div>';
 
+		if($_G['wechat']['setting']['wsq_siteid']) {
+			$time = TIMESTAMP;
+
+echo <<<EOF
+<script>
+function pubEventCallbackCommon(re) {
+	if(re.errCode) {
+		return;
 	}
+	if(typeof re.data.event.peId != 'undefined') {
+		$('pubEventNum').innerHTML = 'New!';
+		$('pubEventNum').style.display = '';
+	}
+}
+</script>
+<script src="http://api.wsq.qq.com/publicEvent?sId={$_G[wechat][setting][wsq_siteid]}&resType=jsonp&isAjax=1&_=$time&isDiscuz=1&callback=pubEventCallbackCommon">
+</script>
+EOF;
+
+		}
+	}
+
 
 }

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: topicadmin_stickreply.php 30872 2012-06-27 10:11:44Z liulanbo $
+ *      $Id: topicadmin_stickreply.php 35236 2015-03-19 06:29:00Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -32,7 +32,7 @@ if(!submitcheck('modsubmit')) {
 
 	$stickpid = '';
 	foreach($sticktopiclist as $id => $postnum) {
-		$stickpid .= '<input type="hidden" name="topiclist[]" value="'.$id.'" />';
+		$stickpid .= '<input type="hidden" name="topiclist[]" value="'.dintval($id).'" />';
 	}
 
 	include template('forum/topicadmin_action');

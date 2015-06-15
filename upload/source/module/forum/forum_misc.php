@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_misc.php 33825 2013-08-19 08:32:40Z nemohou $
+ *      $Id: forum_misc.php 35222 2015-03-02 02:16:20Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -605,6 +605,9 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 	include template('forum/viewthread_poll_voter');
 
 } elseif($_GET['action'] == 'rate' && $_GET['pid']) {
+
+	$_GET['tid'] = dintval($_GET['tid']);
+	$_GET['pid'] = dintval($_GET['pid']);
 
 	if($_GET['showratetip']) {
 		include template('forum/rate');

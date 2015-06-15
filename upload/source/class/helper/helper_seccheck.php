@@ -114,7 +114,7 @@ class helper_seccheck {
 			return false;
 		}
 		$ssid = $seccheck['ssid'];
-		if(!is_numeric($_G['setting']['seccodedata']['type'])) {
+		if(!is_numeric($_G['setting']['seccodedata']['type']) && preg_match('/^[\w\d:_]+$/i', $_G['setting']['seccodedata']['type'])) {
 			$etype = explode(':', $_G['setting']['seccodedata']['type']);
 			if(count($etype) > 1) {
 				$codefile = DISCUZ_ROOT.'./source/plugin/'.$etype[0].'/seccode/seccode_'.$etype[1].'.php';

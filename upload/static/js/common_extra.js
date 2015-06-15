@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: common_extra.js 33993 2013-09-17 01:39:13Z nemohou $
+	$Id: common_extra.js 35188 2015-01-19 04:22:32Z nemohou $
 	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -371,7 +371,10 @@ function _zoom(obj, zimg, nocover, pn, showexif) {
 		mheight = h + 63;
 		menu.style.height = mheight + 'px';
 		$(menuid + '_zoomlayer').style.height = (mheight < 120 ? 120 : mheight) + 'px';
-		$(menuid + '_img').innerHTML = '<img id="' + zoomid + '" src="' + zimg + '" width="' + w + '" height="' + h + '" w="' + imgw + '" h="' + imgh + '" />' + imgtitle;
+		$(menuid + '_img').innerHTML = '<img id="' + zoomid + '" w="' + imgw + '" h="' + imgh + '">' + imgtitle;
+		$(zoomid).src = zimg;
+		$(zoomid).width = w;
+		$(zoomid).height = h;
 		if($(menuid + '_imglink')) {
 			$(menuid + '_imglink').href = zimg;
 		}

@@ -121,7 +121,7 @@ function succeedhandle_$_GET[action](locationhref, message) {
 				ajaxget('forum.php?mod=viewthread&tid=$_G[tid]&viewpid=' + pid<!--{if $_GET['from']}--> + '&from=$_GET[from]'<!--{/if}-->, 'post_new', 'ajaxwaitid', '', null, 'appendreply()');
 				if(replyreload) {
 					var reloadpids = replyreload.split(',');
-					for(i = 1;i < reloadpids.length;i++) {
+					for(var i = 1;i < reloadpids.length;i++) {
 						ajaxget('forum.php?mod=viewthread&tid=$_G[tid]&viewpid=' + reloadpids[i]<!--{if $_GET['from']}--> + '&from=$_GET[from]'<!--{/if}-->, 'post_' + reloadpids[i]);
 					}
 				}

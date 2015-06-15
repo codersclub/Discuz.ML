@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: extend_thread_activity.php 30673 2012-06-11 07:51:54Z svn_project_zhangjie $
+ *      $Id: extend_thread_activity.php 35202 2015-02-04 08:07:39Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -53,7 +53,7 @@ class extend_thread_activity extends extend_thread_base {
 		$extfield = $_GET['extfield'];
 		$extfield = explode("\n", $_GET['extfield']);
 		foreach($extfield as $key => $value) {
-			$extfield[$key] = censor(trim($value));
+			$extfield[$key] = dhtmlspecialchars(strip_tags(censor(trim($value))));
 			if($extfield[$key] === '' || is_numeric($extfield[$key])) {
 				unset($extfield[$key]);
 			}
@@ -129,7 +129,7 @@ class extend_thread_activity extends extend_thread_base {
 				$extfield = $_GET['extfield'];
 				$extfield = explode("\n", $_GET['extfield']);
 				foreach($extfield as $key => $value) {
-					$extfield[$key] = censor(trim($value));
+					$extfield[$key] = dhtmlspecialchars(strip_tags(censor(trim($value))));
 					if($extfield[$key] === '' || is_numeric($extfield[$key])) {
 						unset($extfield[$key]);
 					}

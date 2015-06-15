@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_discuzcode.php 34308 2014-01-20 09:45:13Z hypowang $
+ *      $Id: function_discuzcode.php 35219 2015-02-27 08:05:27Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -224,7 +224,8 @@ function discuzcode($message, $smileyoff, $bbcodeoff, $htmlon = 0, $allowsmilies
 				if($authorreplyexist === null) {
 					if(!$_G['forum']['ismoderator']) {
 						if($_G['uid']) {
-							$authorreplyexist = C::t('forum_post')->fetch_pid_by_tid_authorid($_G['tid'], $_G['uid']);
+							$_post = C::t('forum_post')->fetch('tid:'.$_G['tid'], $pid);
+							$authorreplyexist = $_post['tid'] == $_G['tid'] ? C::t('forum_post')->fetch_pid_by_tid_authorid($_G['tid'], $_G['uid']) : FALSE;
 						}
 					} else {
 						$authorreplyexist = TRUE;

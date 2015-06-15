@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[wechat/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.1.3]]></item>
+			<item id="version"><![CDATA[1.1.5]]></item>
 			<item id="__modules">
 				<item id="1">
 					<item id="name"><![CDATA[wechat]]></item>
@@ -172,7 +172,7 @@
 				<item id="13">
 					<item id="name"><![CDATA[wsq_app]]></item>
 					<item id="param"><![CDATA[]]></item>
-					<item id="menu"><![CDATA[应用中心]]></item>
+					<item id="menu"><![CDATA[活动中心]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -194,6 +194,7 @@
 					]]></item>
 				<item id="wechatapi_tips"><![CDATA[
 					<li>插件开发人员在设计新的微信及 Discuz! 微社区类插件前请务必仔细阅读《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技术文库</a>》中的内容</li>
+					<li>开发技术交流，欢迎访问“<a href="http://open.discuz.net/?!bbs" target="_blank">Discuz! 开发者交流</a>”论坛</li>
 					]]></item>
 				<item id="wsq_tips"><![CDATA[
 					<li>完善以下资料后，您的微社区将自动开通，开通后用户可以在微信内阅读您的论坛内容，发帖也将同步到您的论坛</li>
@@ -215,7 +216,7 @@
 				<item id="discuzqr_tips"><![CDATA[
 					<img src="source/plugin/wechat/image/discuz_qr.jpg" align="left" width="80" /><br />扫描关注Discuz!官方微信<br /><br />获取官方最新动态
 					]]></item>
-					
+
 				<item id="wsq_status_open"><![CDATA[已开通]]></item>
 				<item id="wsq_status_ing"><![CDATA[开通中]]></item>
 				<item id="wsq_status_try"><![CDATA[重试]]></item>
@@ -321,6 +322,8 @@
 				<item id="wsq_viewapp_local_comment"><![CDATA[通过 Discuz! 应用中心安装在站长本地的插件应用，查看应用列表请<a href="http://addon.discuz.com/?!wsqapp" class="bold">点击这里</a>]]></item>
 				<item id="wsq_viewapp_online"><![CDATA[线上应用]]></item>
 				<item id="wsq_viewapp_online_comment"><![CDATA[线上应用主要是通过接口调用的方式为站长提供运营组件、全局活动等功能（如刮刮卡，红包等）<br />使用线上应用前需要先在微社区应用平台（<a href="http://mp.wsq.qq.com/bindSite" target="_blank" class="bold">http://mp.wsq.qq.com/bindSite</a>）绑定站点，已绑定的站点请直接管理应用（<a href="http://mp.wsq.qq.com" target="_blank" class="bold">http://mp.wsq.qq.com</a>）]]></item>
+				<item id="wsq_viewapp_pubevent"><![CDATA[活动中心]]></item>
+				<item id="wsq_viewapp_na"><![CDATA[目前暂无活动]]></item>
 				<item id="api_wsq"><![CDATA[微社区接口]]></item>
 				<item id="api_wechat"><![CDATA[微信接口]]></item>
 				<item id="response_keyword"><![CDATA[关键词]]></item>
@@ -438,7 +441,7 @@
         <item id="menu_wechat_menu"><![CDATA[菜单设置]]></item>
         <item id="menu_wechat_resource"><![CDATA[素材设置]]></item>
         <item id="menu_wechat_masssend"><![CDATA[群发设置]]></item>
-        <item id="menu_app"><![CDATA[应用中心]]></item>
+        <item id="menu_app"><![CDATA[活动中心<u id="pubEventNum" style="margin-left:1px;background-color:red;padding:1px 2px;color:#fff;text-decoration:none;display:none"></u>]]></item>
         <item id="menu_api"><![CDATA[接口设置]]></item>
         <item id="resource_select"><![CDATA[选择素材]]></item>
         <item id="resource_type_all"><![CDATA[全部素材]]></item>

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: uc.php 34214 2013-11-11 02:33:40Z hypowang $
+ *      $Id: uc.php 35199 2015-02-04 03:48:10Z hypowang $
  */
 
 error_reporting(0);
@@ -237,6 +237,9 @@ class uc_note {
 		$data = array();
 		if(is_array($post)) {
 			foreach($post as $k => $v) {
+				if(substr($v['findpattern'], 0, 1) != '/' || substr($v['findpattern'], -3) != '/is') {
+					$v['findpattern'] = '/' . preg_quote($v['findpattern'], '/') . '/is';
+				}
 				$data['findpattern'][$k] = $v['findpattern'];
 				$data['replace'][$k] = $v['replacement'];
 			}

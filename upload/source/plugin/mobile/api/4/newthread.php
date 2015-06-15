@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: newthread.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: newthread.php 35252 2015-04-09 06:07:41Z nemohou $
  */
 
 if(!defined('IN_MOBILE_API')) {
@@ -18,10 +18,6 @@ include_once 'forum.php';
 class mobile_api {
 
 	function common() {
-		if(defined('IN_MOBILE_AUTH')) {
-			global $_G;
-			$_G['forum']['threadtypes'] = array();
-		}
 	}
 
 	function post_mobile_message($message, $url_forward, $values, $extraparam, $custom) {

@@ -4,10 +4,10 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: checkupdate.inc.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: checkupdate.inc.php 35226 2015-03-04 06:56:12Z nemohou $
  */
 
-define('PLUGIN_RELEASE', '20141201');
+define('PLUGIN_RELEASE', '20150303');
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS pre_common_member_wechatmp (
   `uid` mediumint(8) unsigned NOT NULL,
   `openid` char(32) NOT NULL default '',
   `status` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`uid`)
+  PRIMARY KEY (`uid`),
+  KEY `openid` (`openid`)
 ) ENGINE=MYISAM;
 
 CREATE TABLE IF NOT EXISTS pre_mobile_wsq_threadlist (
