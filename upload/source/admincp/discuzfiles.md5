@@ -50,7 +50,7 @@ d41d8cd98f00b204e9800998ecf8427e *data/backup/index.htm
 d41d8cd98f00b204e9800998ecf8427e *data/cache/index.htm
 d41d8cd98f00b204e9800998ecf8427e *data/download/index.htm
 d41d8cd98f00b204e9800998ecf8427e *data/index.htm
-0afc80dcd318143cd169a824208f37ce *data/ipdata/GeoIP.dat
+df036147160ef073af74dc43ef913091 *data/ipdata/GeoIP.dat
 7215ee9c7d9dc229d2921a40e899ec5f *data/ipdata/index.htm
 b21eeb904d9bcb604ed682343661bcc2 *data/ipdata/tinyipdata.dat
 d41d8cd98f00b204e9800998ecf8427e *data/log/index.htm
@@ -721,7 +721,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-bdbf2398a62d311d1a8d4a55c9df90b5 *source/discuz_version.php
+3f649abd70f5118ea9040a5ae4348267 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
