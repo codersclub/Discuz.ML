@@ -16,15 +16,15 @@ $field = C::t('#security#security_failedlog')->fetch_all_field();
 $table = DB::table('security_failedlog');
 $sql = '';
 if (!$field['scheduletime']) {
-	$sql .= "ALTER TABLE $table ADD `scheduletime` INT(10) NOT NULL DEFAULT '0';\n";
+	$sql .= "ALTER TABLE $table ADD `scheduletime` INT(11) unsigned NOT NULL DEFAULT '0';\n";
 }
 
 if (!$field['lastfailtime']) {
-	$sql .= "ALTER TABLE $table ADD `lastfailtime` INT(10) NOT NULL DEFAULT '0';\n";
+	$sql .= "ALTER TABLE $table ADD `lastfailtime` INT(11) unsigned NOT NULL DEFAULT '0';\n";
 }
 
 if (!$field['posttime']) {
-	$sql .= "ALTER TABLE $table ADD `posttime` INT(10) unsigned NOT NULL DEFAULT '0';\n";
+	$sql .= "ALTER TABLE $table ADD `posttime` INT(11) unsigned NOT NULL DEFAULT '0';\n";
 }
 
 if (!$field['delreason']) {
@@ -32,7 +32,7 @@ if (!$field['delreason']) {
 }
 
 if (!$field['extra1']) {
-	$sql .= "ALTER TABLE $table ADD `extra1` INT(10) unsigned NOT NULL DEFAULT '0';\n";
+	$sql .= "ALTER TABLE $table ADD `extra1` INT(11) unsigned NOT NULL DEFAULT '0';\n";
 }
 
 if (!$field['extra2']) {
@@ -46,7 +46,7 @@ $field = C::t('#security#security_evilpost')->fetch_all_field();
 $table = DB::table('security_evilpost');
 $sql = '';
 if (!$field['censorword']) {
-	$sql .= "ALTER TABLE $table ADD `censorword` char(50) NOT NULL;\n";
+	$sql .= "ALTER TABLE $table ADD `censorword` char(255) NOT NULL;\n";
 }
 
 if ($sql) {
