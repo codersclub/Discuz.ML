@@ -46,7 +46,7 @@ $field = C::t('#security#security_evilpost')->fetch_all_field();
 $table = DB::table('security_evilpost');
 $sql = '';
 if (!$field['censorword']) {
-	$sql .= "ALTER TABLE $table ADD `censorword` char(255) NOT NULL;\n";
+	$sql .= "ALTER TABLE $table ADD `censorword` varchar(255) NOT NULL;\n";
 }
 
 if ($sql) {
