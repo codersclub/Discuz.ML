@@ -494,7 +494,7 @@ function showtime() {
 	for(i=0; i<=DTimers.length; i++) {
 		if(DItemIDs[i]) {
 			if(DTimers[i] == 0) {
-/*vot*/				$(DItemIDs[i]).innerHTML = lng['ended'];
+/*vot*/				$(DItemIDs[i]).innerHTML = lng['finished'];
 				DItemIDs[i] = '';
 				continue;
 			}
@@ -507,13 +507,13 @@ function showtime() {
 /*vot*/				timestr += timer_day + lng['days_num'];
 			}
 			if(timer_hour > 0) {
-/*vot*/				timestr += timer_hour + lng['hours_num']
+/*vot*/				timestr += timer_hour + lng['hours_num'];
 			}
 			if(timer_minute > 0) {
-/*vot*/				timestr += timer_minute + lng['minutes_num']
+/*vot*/				timestr += timer_minute + lng['minutes_num'];
 			}
 			if(timer_second > 0) {
-/*vot*/				timestr += timer_second + lng['seconds']
+/*vot*/				timestr += timer_second + lng['seconds'];
 			}
 			DTimers[i] = DTimers[i] - 1;
 			$(DItemIDs[i]).innerHTML = timestr;
