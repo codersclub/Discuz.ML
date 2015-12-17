@@ -116,7 +116,7 @@ var lng = {
 	'int_qq_test'		: 'QQ互聯接口測試',//'Testing QQ Internet interface',
 	'server_busy'		: '服務器繁忙，請稍後再試',//'The server is busy, please try again later',
 	'tested_ok'		: '測試成功，耗時 ',//'The test is successful, time used: ',
-	'seconds'		: ' 秒',//' sec.',
+//	'seconds'		: ' 秒',//' sec.',
 
 //---------------------------
 //static/image/admincp/cloud/qqgroup.js
@@ -323,6 +323,12 @@ var lng = {
 	'del_thread_sure'	: '您確認要把此主題從熱點主題中移除麼？',
 	'there_are'		: '有',
 	'new_reply_exists'	: '有新回復的主題，點擊查看',
+	'finished'		: '已结束',//'Finished',
+	'days_num'		: '天',//' days',
+	'hours_num'		: '小时',//' hours',
+	'minutes_num'		: '分',//' minutes',
+	'seconds'		: ' 秒',//' sec.',
+
 //--------------------------------
 //static/js/forum_google.js
 
@@ -346,6 +352,7 @@ var lng = {
 	'can_not_save_attach'	: '附件文件無法保存',
 	'invalid_file'		: '沒有合法的文件被上傳',
 	'illegal_operation'	: '非法操作',
+	'today_upload_large'	: '今日您已无法上传那么大的附件',//'Today you can not upload so much attachments',
 	'enter_content'		: '請完成標題或內容欄',
 	'select_category'	: '請選擇主題對應的分類',
 	'select_category_info'	: '請選擇主題對應的分類信息',
@@ -368,6 +375,11 @@ var lng = {
 	'images'		: '圖片',
 	'attachments'		: '附件',
 //	'upload_failed'		: '上傳失敗',
+	'remote_attach_loaded'	: '远程附件下载完成!',//'Remote attachment download is completed!',
+	'select_all'		: '全选',//'Select All',
+	'unused'		: '未使用的',//'Unused',
+	'award_more_total'	: '回帖奖励积分总额过大',//'Reply Reward Points total is too large',
+	'return'		: '返还',//'Return',
 
 	'attach_big'		: '服務器限制無法上傳那麼大的附件',
 	'attach_group_big'	: '用戶組限制無法上傳那麼大的附件',
@@ -429,7 +441,7 @@ var lng = {
 	'security_error'	: 'Security Error',//'',
 	'upload_limit_exceed'	: 'Upload limit exceeded.',//'',
 	'file_not_found'	: 'File not found.',//'',
-	'validation_failed'	: 'Failed Validation.  Upload skipped.',//'',
+	'validation_failed'	: 'Failed Validation. Upload skipped.',//'',
 	'upload_stopped'	: 'Stopped',//'',
 
 //--------------------------------
@@ -492,8 +504,8 @@ var lng = {
 
 //---------------------------
 //static/js/makehtml.js
-	'generate'	: '生成',//'Generate ',
-	'generate_ok'	: '生成成功',//' generated successfully',
+	'generate'		: '生成',//'Generate ',
+	'generate_ok'		: '生成成功',//' generated successfully',
 	'generate_error'	: '生成失败',//' generation failed',
 	'generate_start'	: '开始生成 ',//'Start generating of ',
 	'generate_click_continue'	: '如果您的浏览器没有反应，请点击继续...',//'If your browser does not respond, Click to continue...',
@@ -510,7 +522,7 @@ var lng = {
 	'pages'		: '页',//' pages',
 	'prev_page'	: '上一页',//'Prev',
 	'next_page'	: '下一页',//'Next',
-	
+
 	'click_to_reload'	: '点击重新加载',//'Click to reload',
 	'loading_now'		: '正在加载...',//'Loading...',
 
@@ -639,6 +651,7 @@ var lng = {
 	'username_invalid'	: '用戶名包含敏感字符',
 	'username_short'	: '用戶名小於 2 個字符',
 	'username_long'		: '用戶名超過 15 個字符',
+	'username_long_64'	: '用戶名超過 64 個字符',//'User name is longer than 64 bytes',
 	'passwords_not_equal'	: '兩次輸入的密碼不一致',
 	'email_invalid'		: 'Email 包含敏感字符',
 	'invite_code_invalid'	: '邀請碼包含敏感字符',

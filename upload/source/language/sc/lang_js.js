@@ -116,7 +116,7 @@ var lng = {
 	'int_qq_test'		: 'QQ互联接口测试',
 	'server_busy'		: '服务器繁忙，请稍后再试',//'The server is busy, please try again later',
 	'tested_ok'		: '测试成功，耗时 ',//'The test is successful, time used: ',
-	'seconds'		: ' 秒',//' sec.',
+//	'seconds'		: ' 秒',//' sec.',
 
 //---------------------------
 //static/image/admincp/cloud/qqgroup.js
@@ -323,6 +323,12 @@ var lng = {
 	'del_thread_sure'	: '您确认要把此主题从热点主题中移除么？',
 	'there_are'		: '有',
 	'new_reply_exists'	: '有新回复的主题，点击查看',
+	'finished'		: '已结束',//'Finished',
+	'days_num'		: '天',//' days',
+	'hours_num'		: '小时',//' hours',
+	'minutes_num'		: '分',//' minutes',
+	'seconds'		: ' 秒',//' sec.',
+
 //--------------------------------
 //static/js/forum_google.js
 
@@ -346,6 +352,7 @@ var lng = {
 	'can_not_save_attach'	: '附件文件无法保存',
 	'invalid_file'		: '没有合法的文件被上传',
 	'illegal_operation'	: '非法操作',
+	'today_upload_large'	: '今日您已无法上传那么大的附件',//'Today you can not upload so much attachments',
 	'enter_content'		: '请完成标题或内容栏',
 	'select_category'	: '请选择主题对应的分类',
 	'select_category_info'	: '请选择主题对应的分类信息',
@@ -368,6 +375,11 @@ var lng = {
 	'images'		: '图片',
 	'attachments'		: '附件',
 //	'upload_failed'		: '上传失败',
+	'remote_attach_loaded'	: '远程附件下载完成!'//'Remote attachment download is completed!',
+	'select_all'		: '全选',//'Select All',
+	'unused'		: '未使用的',//'Unused',
+	'award_more_total'	: '回帖奖励积分总额过大',//'Reply Reward Points total is too large',
+	'return'		: '返还',//'Return',
 
 	'attach_big'		: '服务器限制无法上传那么大的附件',
 	'attach_group_big'	: '用户组限制无法上传那么大的附件',
@@ -429,7 +441,7 @@ var lng = {
 	'security_error'	: 'Security Error',//'',
 	'upload_limit_exceed'	: 'Upload limit exceeded.',//'',
 	'file_not_found'	: 'File not found.',//'',
-	'validation_failed'	: 'Failed Validation.  Upload skipped.',//'',
+	'validation_failed'	: 'Failed Validation. Upload skipped.',//'',
 	'upload_stopped'	: 'Stopped',//'',
 
 //--------------------------------
@@ -500,7 +512,7 @@ var lng = {
 	'generate_completed'	: ' 生成完成',//' generation is completed',
 	'generate_total'	: '本次共需要生成 ',//'Total need to generate ',
 	'generate_files'	: ' 文件，成功生成 ',//' files, Successfully generated ',
-	'generate_first'	: '正在生成第 ',//'generated first ',
+	'generate_first'	: '正在生成第 ',//' generated first ',
 	'generate_percent'	: '已经完成 ',//'has been completed ',
 
 //---------------------------
@@ -510,7 +522,7 @@ var lng = {
 	'pages'		: '页',//' pages',
 	'prev_page'	: '上一页',//'Prev',
 	'next_page'	: '下一页',//'Next',
-	
+
 	'click_to_reload'	: '点击重新加载',//'Click to reload',
 	'loading_now'		: '正在加载...',//'Loading...',
 
@@ -639,6 +651,7 @@ var lng = {
 	'username_invalid'	: '用户名包含敏感字符',
 	'username_short'	: '用户名小于 3 个字符',
 	'username_long'		: '用户名超过 15 个字符',
+	'username_long_64'	: '用户名超过 64 个字符',//'User name is longer than 64 bytes',
 	'passwords_not_equal'	: '两次输入的密码不一致',
 	'email_invalid'		: 'Email 包含敏感字符',
 	'invite_code_invalid'	: '邀请码包含敏感字符',
