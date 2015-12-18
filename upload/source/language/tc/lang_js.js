@@ -709,6 +709,7 @@ var lng = {
 
 	'file_not_supported'	: '對不起，不支持上傳此類文件',
 	'wait_upload'		: '等待上传...',//'Wait for upload...',
+	'upload_selectfile'	: '瀏覽',//'Browse',
 
 //-------------------------------------
 //source/function/function_admincp.php

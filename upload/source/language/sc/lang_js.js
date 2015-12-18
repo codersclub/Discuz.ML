@@ -375,7 +375,7 @@ var lng = {
 	'images'		: '图片',
 	'attachments'		: '附件',
 //	'upload_failed'		: '上传失败',
-	'remote_attach_loaded'	: '远程附件下载完成!'//'Remote attachment download is completed!',
+	'remote_attach_loaded'	: '远程附件下载完成!',//'Remote attachment download is completed!',
 	'select_all'		: '全选',//'Select All',
 	'unused'		: '未使用的',//'Unused',
 	'award_more_total'	: '回帖奖励积分总额过大',//'Reply Reward Points total is too large',
@@ -709,6 +709,7 @@ var lng = {
 
 	'file_not_supported'	: '对不起，不支持上传此类文件',
 	'wait_upload'		: '等待上传...',//'Wait for upload...',
+	'upload_selectfile'	: '浏览',//'Browse',
 
 //-------------------------------------
 //source/function/function_admincp.php
