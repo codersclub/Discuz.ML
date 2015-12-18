@@ -720,7 +720,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-59046c52cd719769b92a1eddd1b7e909 *source/discuz_version.php
+cab82e0e2bdb3f2c77e591a5e70023e2 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -1129,7 +1129,7 @@ c51dcc694c892fb203adf6ef77a8f252 *source/language/sc/lang_exif.php
 c69b6786cfed37691dc8608379a51e7e *source/language/sc/lang_feed.php
 0ab608fdfc8ca61f4173362f21bcf823 *source/language/sc/lang_friend.php
 7525625c58542170c59caff311849750 *source/language/sc/lang_install.php
-037afce57d31274146c42263167d36ce *source/language/sc/lang_js.js
+ada1a437871cc1165f4bb5ae6f0f5c26 *source/language/sc/lang_js.js
 65bd461d48c8810a988201153ceae803 *source/language/sc/lang_message.php
 4c5264248b88e95d727236e6fc8ce28f *source/language/sc/lang_notification.php
 598c77b89d9c009d1ed28bf7672665ea *source/language/sc/lang_optimizer.php
@@ -1321,7 +1321,7 @@ d438b186e2aab13aedba88b7d5df6809 *source/language/tc/lang_email.php
 d9e9358751da0788750c1c857b7c5284 *source/language/tc/lang_feed.php
 f29ba23a32ef7dc5ba01762115a83aeb *source/language/tc/lang_friend.php
 f0348a9c135cff2a753e44f16981e8ba *source/language/tc/lang_install.php
-f34b5c8fcd782f880628c8a53cf00335 *source/language/tc/lang_js.js
+de7acc02b7660f94c32a92b3a4e8e17b *source/language/tc/lang_js.js
 e9671cfaf883db3e7032a48faf8da0ed *source/language/tc/lang_message.php
 ffb6b9a8194d5a1dc61233255397c54d *source/language/tc/lang_notification.php
 8e3fcabe3ee097d34f4420a3a06abd8a *source/language/tc/lang_optimizer.php
@@ -3070,7 +3070,7 @@ a95c9744dd374d3858bb9cd201557969 *static/js/space_diy.js
 c6f707b6fa8f4a71e8c9ba65a33375e8 *static/js/swfupload.queue.js
 80655fcf8afc80394efacf8aae1c1769 *static/js/threadsort.js
 9ef45d85a06cde29e0a264893afd2337 *static/js/tree.js
-fa45b1d7dccea15f40e8f7fb239a287d *static/js/upload.js
+106909b8796017247a3dbbf8ccd6e0ad *static/js/upload.js
 2a540d00a7be9c4f0072cdb560ccb739 *static/js/userapp_swfobject.js
 d41d8cd98f00b204e9800998ecf8427e *static/space/index.htm
 f98fce0a9306b4d0778354c5043b06b7 *static/space/t1/images/header.jpg
