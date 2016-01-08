@@ -151,7 +151,7 @@ SWFUpload.prototype.initSettings = function (userSettings) {
 	this.ensureDefault("button_image_url", "");
 	this.ensureDefault("button_width", 1);
 	this.ensureDefault("button_height", 1);
-/*vot*/	this.ensureDefault("button_text", "Browse");
+/*vot*/	this.ensureDefault("button_text", lng['upload_selectfile']);
 	this.ensureDefault("button_text_style", "color: #000000; font-size: 16pt;");
 /*vot*/	this.ensureDefault("button_text_top_padding", 4);
 /*vot*/	this.ensureDefault("button_text_left_padding", 16);
