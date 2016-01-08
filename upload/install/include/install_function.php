@@ -1287,7 +1287,7 @@ function install_uc_server() {
 	$appid = $db->insert_id($link);
 	$db->query("ALTER TABLE {$uctablepre}notelist ADD COLUMN app$appid tinyint NOT NULL");
 
-/*vot*/	$uclang = 'en';
+/*vot*/	$uclang = 'sc';
 /*vot*/	$uclangdir = 'ltr';
 /*vot*/	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip,$uclang,$uclangdir);
 
@@ -1765,7 +1765,7 @@ function lang_exists($lang_id='') {
 }
 
 
-function show_language($lang_list=array(), $lng='en') {
+function show_language($lang_list=array(), $lng='sc') {
 	global $self, $uchidden, $step;
 /*vot*/	global $language;
 

@@ -14,7 +14,7 @@ if(!defined('IN_COMSENZ')) {
 
 define('SOFT_NAME', 'Discuz!');
 
-/*vot*/ define('DEFAULT_LANG', 'en'); // Default Installation Language
+/*vot*/ define('DEFAULT_LANG', 'sc'); // Default Installation Language
 /*vot*/ define('INSTALL_LANG', 'MultiLingual'); // 'EN_UTF8', 'SC_UTF8', 'TC_UTF8'
 
 define('CONFIG', './config/config_global.php');

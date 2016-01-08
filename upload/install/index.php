@@ -29,7 +29,7 @@ if(function_exists('mysql_connect')) {
 require ROOT_PATH.'./install/include/install_function.php';
 //vot: Load the install language
 /*vot*/ $language = getgpc('language');
-/*vot*/ $lng = $language ? $language : 'en';
+/*vot*/ $lng = $language ? $language : 'sc';
 /*vot*/ require ROOT_PATH.'./source/language/' . $lng . '/lang_install.php';
 
 $view_off = getgpc('view_off');

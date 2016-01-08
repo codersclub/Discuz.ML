@@ -136,7 +136,7 @@ $_config['output']['charset'] 		= 'utf-8';	// Page character set
 $_config['output']['forceheader']	= 1;		// Force the output in defined character set, used to avoid page content garbled
 $_config['output']['gzip'] 		= 0;		// Use Gzip compression for output
 $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = off, 1 = On
-$_config['output']['language'] 		= 'en';		// Page language sc/tc/en/...
+$_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
 $_config['output']['iecompatible']	= 0;		// IE compatibility mode
