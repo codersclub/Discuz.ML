@@ -720,7 +720,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-0c13fb333a6364ee75c83daab3b15699 *source/discuz_version.php
+63ad519ba38360f41837dda7f4b2d97d *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -3527,7 +3527,7 @@ b9564fe0901fcc3df745a84b5c69c089 *template/default/home/spacecp_usergroup_header
 034cb20916d6f60f32f00fefac4dc2b8 *template/default/home/space_album_pic.htm
 90401606603666f50c3cd38adfb31c7d *template/default/home/space_album_view.htm
 dd54c0c6b8f75dbc4f759a5c76813889 *template/default/home/space_blog_list.htm
-c4d784b02877bf51938c198b81e3472e *template/default/home/space_blog_view.htm
+5ed451a8cf417d3abef6d934bde7e601 *template/default/home/space_blog_view.htm
 c1a51fd1dc88e29c387c67f7c9dfba3e *template/default/home/space_card.htm
 194f16fa78af5426f5c96419b5375124 *template/default/home/space_click.htm
 9e263e2f0714d86a63495c090882f733 *template/default/home/space_comment_li.htm

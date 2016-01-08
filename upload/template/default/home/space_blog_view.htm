@@ -216,7 +216,7 @@
 								<input type="hidden" name="handlekey" value="qcblog_{$id}" />
 								<input type="hidden" name="commentsubmit" value="true" />
 								<input type="hidden" name="quickcomment" value="true" />
-								<button type="submit" name="commentsubmit_btn"value="true" id="commentsubmit_btn" class="pn"{if !$_G[uid]&&!$_G['group']['allowcomment']} onclick="showWindow(this.id, this.form.action);return false;"{/if}><strong>{lang comment}</strong></button>
+								<button type="submit" name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"{if !$_G[uid]&&!$_G['group']['allowcomment']} onclick="showWindow(this.id, this.form.action);return false;"{/if}><strong>{lang comment}</strong></button>
 								<span id="return_qcblog_{$id}"></span>
 							</p>
 							<input type="hidden" name="formhash" value="{FORMHASH}" />
