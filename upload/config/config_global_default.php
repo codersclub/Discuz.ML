@@ -201,22 +201,22 @@ $_config['input']['compatible'] = 1;
 // Enabled Language List:
 
 $_config['languages'] = array(
-	'ar' => array('icon'=>'ar.gif', 'name'=>'العربية', 'title'=>'Arabic', 'dir'=>'rtl', 'code'=>'ar-AE'),
-	'de' => array('icon'=>'de.gif', 'name'=>'Deutsch', 'title'=>'German', 'dir'=>'ltr', 'code'=>'de-DE'),
-	'en' => array('icon'=>'en.gif', 'name'=>'English', 'title'=>'English', 'dir'=>'ltr', 'code'=>'en-GB'),
-	'es' => array('icon'=>'es.gif', 'name'=>'Español', 'title'=>'Spanish', 'dir'=>'ltr', 'code'=>'es-ES'),
-	'fa' => array('icon'=>'fa.gif', 'name'=>'Farsi', 'title'=>'Persian', 'dir'=>'rtl', 'code'=>'fa-IR'),
-	'fr' => array('icon'=>'fr.gif', 'name'=>'Français', 'title'=>'French', 'dir'=>'ltr', 'code'=>'fr-FR'),
-	'kr' => array('icon'=>'kr.gif', 'name'=>'한국어', 'title'=>'Korean', 'dir'=>'ltr', 'code'=>'ko-KO'),
-	'la' => array('icon'=>'la.gif', 'name'=>'ພາສາລາວ', 'title'=>'Lao', 'dir'=>'ltr', 'code'=>'lo-LA'),
-	'pl' => array('icon'=>'pl.gif', 'name'=>'Polski', 'title'=>'Polish', 'dir'=>'ltr', 'code'=>'pl-PL'),
-	'ru' => array('icon'=>'ru.gif', 'name'=>'Русский', 'title'=>'Russian', 'dir'=>'ltr', 'code'=>'ru-RU'),
+//	'ar' => array('icon'=>'ar.gif', 'name'=>'العربية', 'title'=>'Arabic', 'dir'=>'rtl', 'code'=>'ar-AE'),
+//	'de' => array('icon'=>'de.gif', 'name'=>'Deutsch', 'title'=>'German', 'dir'=>'ltr', 'code'=>'de-DE'),
+//	'en' => array('icon'=>'en.gif', 'name'=>'English', 'title'=>'English', 'dir'=>'ltr', 'code'=>'en-GB'),
+//	'es' => array('icon'=>'es.gif', 'name'=>'Español', 'title'=>'Spanish', 'dir'=>'ltr', 'code'=>'es-ES'),
+//	'fa' => array('icon'=>'fa.gif', 'name'=>'Farsi', 'title'=>'Persian', 'dir'=>'rtl', 'code'=>'fa-IR'),
+//	'fr' => array('icon'=>'fr.gif', 'name'=>'Français', 'title'=>'French', 'dir'=>'ltr', 'code'=>'fr-FR'),
+//	'kr' => array('icon'=>'kr.gif', 'name'=>'한국어', 'title'=>'Korean', 'dir'=>'ltr', 'code'=>'ko-KO'),
+//	'la' => array('icon'=>'la.gif', 'name'=>'ພາສາລາວ', 'title'=>'Lao', 'dir'=>'ltr', 'code'=>'lo-LA'),
+//	'pl' => array('icon'=>'pl.gif', 'name'=>'Polski', 'title'=>'Polish', 'dir'=>'ltr', 'code'=>'pl-PL'),
+//	'ru' => array('icon'=>'ru.gif', 'name'=>'Русский', 'title'=>'Russian', 'dir'=>'ltr', 'code'=>'ru-RU'),
 	'sc' => array('icon'=>'zh.gif', 'name'=>'简体中文', 'title'=>'Simplified Chinese', 'dir'=>'ltr', 'code'=>'zh-CN'),
 	'tc' => array('icon'=>'tw.gif', 'name'=>'繁體中文', 'title'=>'Traditional Chinese', 'dir'=>'ltr', 'code'=>'zh-TW'),
-	'th' => array('icon'=>'th.gif', 'name'=>'ภาษาไทย', 'title'=>'Thai', 'dir'=>'ltr', 'code'=>'th-TH'),
-	'tr' => array('icon'=>'tr.gif', 'name'=>'Türkçe', 'title'=>'Turkish', 'dir'=>'ltr', 'code'=>'tr-TR'),
-	'vn' => array('icon'=>'vn.gif', 'name'=>'Tiếng Việt', 'title'=>'Vietnamese', 'dir'=>'ltr', 'code'=>'vi-VN'),
-	'ui' => array('icon'=>'ui.gif', 'name'=>'Uyghur', 'title'=>'Uighur', 'dir'=>'rtl', 'code'=>'ui-UY'),
+//	'th' => array('icon'=>'th.gif', 'name'=>'ภาษาไทย', 'title'=>'Thai', 'dir'=>'ltr', 'code'=>'th-TH'),
+//	'tr' => array('icon'=>'tr.gif', 'name'=>'Türkçe', 'title'=>'Turkish', 'dir'=>'ltr', 'code'=>'tr-TR'),
+//	'vn' => array('icon'=>'vn.gif', 'name'=>'Tiếng Việt', 'title'=>'Vietnamese', 'dir'=>'ltr', 'code'=>'vi-VN'),
+//	'ui' => array('icon'=>'ui.gif', 'name'=>'Uyghur', 'title'=>'Uighur', 'dir'=>'rtl', 'code'=>'ui-UY'),
 );
 $_config['detect_language'] = true;	// Auto-detect user language: true|false
 $_config['enable_multilingual'] = true;	// Enable/Disable multi-lingual feature
