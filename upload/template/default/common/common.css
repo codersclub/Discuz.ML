@@ -1025,7 +1025,7 @@ Note on the CSS Hack:
 /*vot*/	.lk img { /*float: left;*/ margin-right: 5px; margin-bottom: 5px; }
 	.lk p { color: {MIDTEXT}; }
 	.lk .m li { clear: left; padding: 0 0 10px 98px; }
-		.lk .m img { display: inline; margin-top: 4px; margin-top/*\**/: 1px\9; margin-left: -98px; }
+/*vot*/		.lk .m img { display: inline; margin-top: 4px; margin-top: 1px; /*margin-left: -98px;*/ float: right;}
 /*vot*/	.lk .x li { float: left; margin-right: 8px; width: auto; height: 1.5em; overflow: hidden; }
 	.lk_logo .lk_content { float: left; }
 

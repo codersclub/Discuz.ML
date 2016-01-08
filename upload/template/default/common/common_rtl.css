@@ -1030,7 +1030,7 @@ Note on the CSS Hack:
 	.lk img { float: right; margin-left: 5px; margin-bottom: 5px; }
 	.lk p { color: {MIDTEXT}; }
 	.lk .m li { clear: right; padding: 0 98px 10px 0; }
-		.lk .m img { display: inline; margin-top: 4px; margin-top/*\**/: 1px\9; margin-right: -98px; }
+/*vot*/		.lk .m img { display: inline; margin-top: 4px; margin-top: 1px; /*margin-right: -98px;*/ float: right;}
 /*vot*/	.lk .x li { float: right; margin-left: 8px; width: auto; height: 1.5em; overflow: hidden; }
 	.lk_logo .lk_content { float: right; }
 
