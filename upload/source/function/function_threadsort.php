@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_threadsort.php 34222 2013-11-15 09:36:18Z nemohou $
+ *	Mofified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -368,7 +369,7 @@ function threadsortshow($sortid, $tid) {
 	if($sortoptionarray) {
 
 		foreach(C::t('forum_typeoptionvar')->fetch_all_by_tid_optionid($tid) as $option) {
-			$optiondata[$option['optionid']]['value'] = $option['value'];
+/*vot*/			$optiondata[$option['optionid']]['value'] = stripslashes($option['value']);
 			$optiondata[$option['optionid']]['expiration'] = $option['expiration'] && $option['expiration'] <= TIMESTAMP ? 1 : 0;
 			$sortdataexpiration = $option['expiration'];
 		}
