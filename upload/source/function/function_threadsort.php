@@ -588,7 +588,7 @@ function threadsort_optiondata($pid, $sortid, $sortoptionarray, $templatearray) 
 
 	if($id) {
 		foreach(C::t('forum_typeoptionvar')->fetch_all_by_tid_optionid($id) as $option) {
-			$_G['forum_optiondata'][$option['optionid']] = $option['value'];
+/*jaideejung007*/	$_G['forum_optiondata'][$option['optionid']] = stripslashes($option['value']);
 			$_G['forum_optiondata']['expiration'] = $option['expiration'];
 		}
 	}
