@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: modcp_member.php 33701 2013-08-06 05:04:36Z nemohou $
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_MODCP')) {
@@ -235,7 +236,7 @@ function loadmember(&$uid, &$username, &$error) {
 			$error = 3;
 		} else {
 			$member['groupterms'] = dunserialize($member['groupterms']);
-			$member['banexpiry'] = !empty($member['groupterms']['main']['time']) && ($member['groupid'] == 4 || $member['groupid'] == 5) ? dgmdate($member['groupterms']['main']['time'], 'Y-n-j') : '';
+			$member['banexpiry'] = !empty($member['groupterms']['main']['time']) && ($member['groupid'] == 4 || $member['groupid'] == 5) ? dgmdate($member['groupterms']['main']['time'], 'Y-m-d') : '';
 			$error = 0;
 		}
 

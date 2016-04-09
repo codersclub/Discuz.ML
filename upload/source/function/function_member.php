@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_member.php 35030 2014-10-23 07:43:23Z laoguozhang $
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -212,7 +213,7 @@ function replacesitevar($string, $replaces = array()) {
 	$sitevars = array(
 		'{sitename}' => $_G['setting']['sitename'],
 		'{bbname}' => $_G['setting']['bbname'],
-		'{time}' => dgmdate(TIMESTAMP, 'Y-n-j H:i'),
+		'{time}' => dgmdate(TIMESTAMP, 'Y-m-d H:i'),
 		'{adminemail}' => $_G['setting']['adminemail'],
 		'{username}' => $_G['member']['username'],
 		'{myname}' => $_G['member']['username']

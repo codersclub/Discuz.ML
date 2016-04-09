@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_postcomment.php 25832 2011-11-24 01:11:51Z monkey $
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -35,11 +36,11 @@ if(!submitcheck('postcommentsubmit')) {
 	if(empty($_GET['search'])) {
 		$newlist = 1;
 		$detail = 1;
-		$starttime = dgmdate(TIMESTAMP - 86400 * 7, 'Y-n-j');
+		$starttime = dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d');
 	}
 
-	$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-n-j') : $starttime;
-	$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-n-j') : $endtime;
+	$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
+	$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
 
 	shownav('topic', 'nav_postcomment');
 	showsubmenu('nav_postcomment', array(
@@ -113,7 +114,7 @@ if(submitcheck('searchsubmit') || $newlist) {
 		$starttime = strtotime($starttime);
 	}
 
-	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-n-j')) {
+	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
 		if($endtime != '0') {
 			$endtime = strtotime($endtime);
 		}

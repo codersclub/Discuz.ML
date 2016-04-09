@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_logs.php 29236 2012-03-30 05:34:47Z chenmengshu $
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -143,7 +144,7 @@ if($operation == 'illegal') {
 		if(empty($log[1])) {
 			continue;
 		}
-		$log[1] = dgmdate($log[1], 'y-n-j H:i');
+		$log[1] = dgmdate($log[1], 'Y-m-d H:i');
 		if(strtolower($log[2]) == strtolower($_G['member']['username'])) {
 			$log[2] = "<b>$log[2]</b>";
 		}
@@ -211,7 +212,7 @@ if($operation == 'illegal') {
 		if(empty($log[1])) {
 			continue;
 		}
-		$log[1] = dgmdate($log[1], 'y-n-j H:i');
+		$log[1] = dgmdate($log[1], 'Y-m-d H:i');
 		$log[2] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">$log[2]</a>";
 		$log[3] = $usergroup[$log[3]];
 		if($log[4] == $_G['member']['username']) {
@@ -436,7 +437,7 @@ SEARCH;
 	$members = C::t('common_member')->fetch_all($luid);
 	foreach($logs as $log) {
 		$log['username'] = $members[$log['uid']]['username'];
-		$log['dateline'] = dgmdate($log['dateline'], 'y-n-j H:i');
+		$log['dateline'] = dgmdate($log['dateline'], 'Y-m-d H:i');
 		$log['update'] = '';
 		foreach($_G['setting']['extcredits'] as $id => $credit) {
 			if($log['extcredits'.$id]) {
@@ -509,7 +510,7 @@ SEARCH;
 		if(empty($log[1])) {
 			continue;
 		}
-		$log[1] = dgmdate($log[1], 'y-n-j H:i');
+		$log[1] = dgmdate($log[1], 'Y-m-d H:i');
 		$log[2] = $log[2];
 		$log[3] = $usergroup[$log[3]];
 		$log[4] = $_G['group']['allowviewip'] ? $log[4] : '-';
@@ -555,11 +556,11 @@ SEARCH;
 		if(empty($log[1])) {
 			continue;
 		}
-		$log[1] = dgmdate($log[1], 'y-n-j H:i');
+		$log[1] = dgmdate($log[1], 'Y-m-d H:i');
 		$log[2] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">$log[2]</a> <span class=\"normal\">".$usergroup[$log[3]]."</span>";
 		$log[4] = $_G['group']['allowviewip'] ? $log[4] : '-';
 		$log[5] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[5])."\" target=\"_blank\">$log[5]</a>";
-		$log[8] = trim($log[8]) ? dgmdate($log[8], 'y-n-j') : '';
+		$log[8] = trim($log[8]) ? dgmdate($log[8], 'Y-m-d') : '';
 		if($log[10] == -1) {
 			$operation = 1;
 		} else {
@@ -635,7 +636,7 @@ EOD;
 		if(empty($log[1])) {
 			continue;
 		}
-		$log[1] = dgmdate($log[1], 'y-n-j H:i');
+		$log[1] = dgmdate($log[1], 'Y-m-d H:i');
 		$log[2] = $log[2];
 		$log[2] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">".($log[2] != $_G['member']['username'] ? "<b>$log[2]</b>" : $log[2])."</a>";
 		$log[3] = $usergroup[$log[3]];
@@ -789,8 +790,8 @@ EOD;
 
 				$invite['statuslog'] = $lang['logs_invite_status_'.$invite['status']];
 				$username = "<a href=\"home.php?mod=space&uid=$invite[uid]\">$invite[username]</a>";
-				$invite['dateline'] = dgmdate($invite['dateline'], 'Y-n-j H:i');
-				$invite['expiration'] = dgmdate($invite['endtime'], 'Y-n-j H:i');
+				$invite['dateline'] = dgmdate($invite['dateline'], 'Y-m-d H:i');
+				$invite['expiration'] = dgmdate($invite['endtime'], 'Y-m-d H:i');
 				$stats = $invite['statuslog'].($invite['status'] == 2 ? '&nbsp;[<a href="home.php?mod=space&uid='.$invite['fuid'].'" target="_blank">'.$lang['logs_invite_target'].':'.$invite['fusername'].'</a>]' : '');
 
 				showtablerow('', array('', 'class="bold"'), array(
@@ -883,7 +884,7 @@ EOD;
 		foreach($mlogs as $log) {
 			$log['username'] = $members[$log['uid']]['username'];
 			$log['name'] = $_G['cache']['magics'][$log['magicid']]['name'];
-			$log['dateline'] = dgmdate($log['dateline'], 'Y-n-j H:i');
+			$log['dateline'] = dgmdate($log['dateline'], 'Y-m-d H:i');
 			if($log['action'] == 3) {
 				$targetuids[] = $log['targetuid'];
 			}
@@ -963,8 +964,8 @@ EOD;
 		$users = C::t('common_member')->fetch_all_username_by_uid($uids);
 		foreach($logs as $log) {
 			$log['name'] = $_G['cache']['medals'][$log['medalid']]['name'];
-			$log['dateline'] = dgmdate($log['dateline'], 'Y-n-j H:i');
-			$log['expiration'] = empty($log['expiration']) ? cplang('logs_noexpire') : dgmdate($log['expiration'], 'Y-n-j H:i');
+			$log['dateline'] = dgmdate($log['dateline'], 'Y-m-d H:i');
+			$log['expiration'] = empty($log['expiration']) ? cplang('logs_noexpire') : dgmdate($log['expiration'], 'Y-m-d H:i');
 			showtablerow('', array('class="td23"', 'class="td24"', 'class="td23"', 'class="td24"'), array(
 				"<a href=\"home.php?mod=space&uid=".$log['uid']."\" target=\"_blank\">".$users[$log['uid']],
 				$log['name'],
@@ -1012,8 +1013,8 @@ EOD;
 			$paythread['seller'] = $paythread['tauthorid'] ? "<a href=\"home.php?mod=space&uid=$paythread[tauthorid]\">$paythread[author]</a>" : cplang('logs_payment_del')."(<a href=\"home.php?mod=space&uid=$paythread[authorid]\">".cplang('logs_payment_view')."</a>)";
 			$paythread['buyer'] = "<a href=\"home.php?mod=space&uid=$paythread[uid]\">$paythread[username]</a>";
 			$paythread['subject'] = $paythread['subject'] ? "<a href=\"forum.php?mod=viewthread&tid=$paythread[tid]\">$paythread[subject]</a>" : cplang('logs_payment_del');
-			$paythread['dateline'] = dgmdate($paythread['dateline'], 'Y-n-j H:i');
-			$paythread['postdateline'] = $paythread['postdateline'] ? dgmdate($paythread['postdateline'], 'Y-n-j H:i') : cplang('logs_payment_del');
+			$paythread['dateline'] = dgmdate($paythread['dateline'], 'Y-m-d H:i');
+			$paythread['postdateline'] = $paythread['postdateline'] ? dgmdate($paythread['postdateline'], 'Y-m-d H:i') : cplang('logs_payment_del');
 			foreach($_G['setting']['extcredits'] as $id => $credits) {
 				if($paythread['extcredits'.$id]) {
 					$paythread['amount'] = $credits['title'].':'.abs($paythread['extcredits'.$id]);

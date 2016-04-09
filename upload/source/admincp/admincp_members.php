@@ -1066,7 +1066,7 @@ EOF;
 		$member['groupterms'] = dunserialize($member['groupterms']);
 
 		if($member['groupterms']['main']) {
-			$expirydate = dgmdate($member['groupterms']['main']['time'], 'Y-n-j');
+			$expirydate = dgmdate($member['groupterms']['main']['time'], 'Y-m-d');
 			$expirydays = ceil(($member['groupterms']['main']['time'] - TIMESTAMP) / 86400);
 			$selecteaid = array($member['groupterms']['main']['adminid'] => 'selected');
 			$selectegid = array($member['groupterms']['main']['groupid'] => 'selected');
@@ -1086,7 +1086,7 @@ EOF;
 			if($group['groupid'] && !in_array($group['groupid'], array(4, 5, 6, 7, 8)) && ($group['type'] == 'system' || $group['type'] == 'special')) {
 				$extgroups .= showtablerow('', array('class="td27"', 'style="width:70%"'), array(
 					'<input class="checkbox" type="checkbox" name="extgroupidsnew[]" value="'.$group['groupid'].'" '.(in_array($group['groupid'], $extgrouparray) ? 'checked' : '').' id="extgid_'.$group['groupid'].'" /><label for="extgid_'.$group['groupid'].'"> '.$group['grouptitle'].'</label>',
-					'<input type="text" class="txt" size="9" name="extgroupexpirynew['.$group['groupid'].']" value="'.(in_array($group['groupid'], $extgrouparray) && !empty($member['groupterms']['ext'][$group['groupid']]) ? dgmdate($member['groupterms']['ext'][$group['groupid']], 'Y-n-j') : '').'" onclick="showcalendar(event, this)" />'
+					'<input type="text" class="txt" size="9" name="extgroupexpirynew['.$group['groupid'].']" value="'.(in_array($group['groupid'], $extgrouparray) && !empty($member['groupterms']['ext'][$group['groupid']]) ? dgmdate($member['groupterms']['ext'][$group['groupid']], 'Y-m-d') : '').'" onclick="showcalendar(event, this)" />'
 				), TRUE);
 			}
 			if($group['groupid'] && $group['type'] == 'member' && !($member['credits'] >= $group['creditshigher'] && $member['credits'] < $group['creditslower']) && $member['groupid'] != $group['groupid']) {
@@ -1443,7 +1443,7 @@ EOT;
 	}
 
 	$member['groupterms'] = dunserialize($member['groupterms']);
-	$member['banexpiry'] = !empty($member['groupterms']['main']['time']) && ($member['groupid'] == 4 || $member['groupid'] == 5) ? dgmdate($member['groupterms']['main']['time'], 'Y-n-j') : '';
+	$member['banexpiry'] = !empty($member['groupterms']['main']['time']) && ($member['groupid'] == 4 || $member['groupid'] == 5) ? dgmdate($member['groupterms']['main']['time'], 'Y-m-d') : '';
 
 	if(!submitcheck('bansubmit')) {
 
@@ -1978,8 +1978,8 @@ EOF;
 		$gendercheck = array($member['gender'] => 'checked');
 		$pscheck = array($member['pmsound'] => 'checked');
 
-		$member['regdate'] = dgmdate($member['regdate'], 'Y-n-j h:i A');
-		$member['lastvisit'] = dgmdate($member['lastvisit'], 'Y-n-j h:i A');
+		$member['regdate'] = dgmdate($member['regdate'], 'Y-m-d h:i A');
+		$member['lastvisit'] = dgmdate($member['lastvisit'], 'Y-m-d h:i A');
 
 		$member['bio'] = html2bbcode($member['bio']);
 		$member['signature'] = html2bbcode($member['sightml']);

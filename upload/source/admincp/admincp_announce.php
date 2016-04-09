@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_announce.php 33271 2013-05-13 08:16:21Z kamichen $
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -31,8 +32,8 @@ if(empty($operation)) {
 		$annlist = C::t('forum_announcement')->fetch_all_by_displayorder();
 		foreach ($annlist as $announce) {
 			$disabled = $_G['adminid'] != 1 && $announce['author'] != $_G['member']['username'] ? 'disabled' : NULL;
-			$announce['starttime'] = $announce['starttime'] ? dgmdate($announce['starttime'], 'Y-n-j H:i') : $lang['unlimited'];
-			$announce['endtime'] = $announce['endtime'] ? dgmdate($announce['endtime'], 'Y-n-j H:i') : $lang['unlimited'];
+			$announce['starttime'] = $announce['starttime'] ? dgmdate($announce['starttime'], 'Y-m-d H:i') : $lang['unlimited'];
+			$announce['endtime'] = $announce['endtime'] ? dgmdate($announce['endtime'], 'Y-m-d H:i') : $lang['unlimited'];
 			showtablerow('', array('class="td25"', 'class="td28"'), array(
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$announce[id]\" $disabled>",
 				"<input type=\"text\" class=\"txt\" name=\"displayordernew[{$announce[id]}]\" value=\"$announce[displayorder]\" size=\"2\" $disabled>",
@@ -70,8 +71,8 @@ if(empty($operation)) {
 
 	if(!submitcheck('addsubmit')) {
 
-		$newstarttime = dgmdate(TIMESTAMP, 'Y-n-j H:i');
-		$newendtime = dgmdate(TIMESTAMP + 86400* 7, 'Y-n-j H:i');
+		$newstarttime = dgmdate(TIMESTAMP, 'Y-m-d H:i');
+		$newendtime = dgmdate(TIMESTAMP + 86400* 7, 'Y-m-d H:i');
 
 		shownav('extended', 'announce', 'add');
 		showsubmenu('announce', array(
@@ -130,8 +131,8 @@ if(empty($operation)) {
 
 	if(!submitcheck('editsubmit')) {
 
-		$announce['starttime'] = $announce['starttime'] ? dgmdate($announce['starttime'], 'Y-n-j H:i') : "";
-		$announce['endtime'] = $announce['endtime'] ? dgmdate($announce['endtime'], 'Y-n-j H:i') : "";
+		$announce['starttime'] = $announce['starttime'] ? dgmdate($announce['starttime'], 'Y-m-d H:i') : "";
+		$announce['endtime'] = $announce['endtime'] ? dgmdate($announce['endtime'], 'Y-m-d H:i') : "";
 		$b = $i = $u = $colorselect = $colorcheck = '';
 		if(preg_match('/<b>(.*?)<\/b>/i', $announce['subject'])) {
 			$b = 'class="a"';

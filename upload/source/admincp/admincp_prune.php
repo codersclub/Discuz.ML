@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_prune.php 29900 2012-05-02 08:17:44Z liulanbo $
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -48,8 +49,8 @@ if(!submitcheck('prunesubmit')) {
 		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['starttime']) ? '' : $_GET['starttime'];
 		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['endtime']) ? '' : $_GET['endtime'];
 	} else {
-		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['starttime']) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-n-j') : $_GET['starttime'];
-		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['endtime']) ? dgmdate(TIMESTAMP, 'Y-n-j') : $_GET['endtime'];
+		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['starttime']) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $_GET['starttime'];
+		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['endtime']) ? dgmdate(TIMESTAMP, 'Y-m-d') : $_GET['endtime'];
 	}
 
 	shownav('topic', 'nav_prune'.($operation ? '_'.$operation : ''));
@@ -82,7 +83,7 @@ EOT;
 	}
 	showsetting('prune_search_perpage', '', $_GET['perpage'], "<select name='perpage'><option value='20'>$lang[perpage_20]</option><option value='50'>$lang[perpage_50]</option><option value='100'>$lang[perpage_100]</option></select>");
 	if(!$fromumanage) {
-		empty($_GET['starttime']) && $_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 7, 'Y-n-j');
+		empty($_GET['starttime']) && $_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d');
 	}
 	echo '<input type="hidden" name="fromumanage" value="'.$fromumanage.'">';
 	showsetting('prune_search_time', array('starttime', 'endtime'), array($_GET['starttime'], $_GET['endtime']), 'daterange');
@@ -212,7 +213,7 @@ if(submitcheck('searchsubmit', 1)) {
 		$starttime = strtotime($_GET['starttime']);
 	}
 
-	if($_G['adminid'] == 1 && !empty($_GET['endtime']) && $_GET['endtime'] != dgmdate(TIMESTAMP, 'Y-n-j')) {
+	if($_G['adminid'] == 1 && !empty($_GET['endtime']) && $_GET['endtime'] != dgmdate(TIMESTAMP, 'Y-m-d')) {
 		$endtime = strtotime($_GET['endtime']);
 	} else {
 		$endtime = TIMESTAMP;

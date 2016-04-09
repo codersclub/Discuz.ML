@@ -5,6 +5,8 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: misc_stat.php 31889 2012-10-22 03:27:56Z liulanbo $
+
+        Modified by Valery Votintsev, discuz.ml
 */
 
 if(!defined('IN_DISCUZ')) {
@@ -310,7 +312,7 @@ function getstatvars_modworks() {
 	$modworks_starttime = $_GET['modworks_starttime'];
 	$modworks_endtime = $_GET['modworks_endtime'];
 
-	list($now['year'], $now['month'], $now['day']) = explode("-", dgmdate(TIMESTAMP, 'Y-n-j'));
+	list($now['year'], $now['month'], $now['day']) = explode("-", dgmdate(TIMESTAMP, 'Y-m-d'));
 
 	$monthlinks = array();
 	$uid = !empty($_GET['uid']) ? $_GET['uid'] : 0;

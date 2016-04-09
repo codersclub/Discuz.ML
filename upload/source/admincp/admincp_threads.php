@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_threads.php 33828 2013-08-20 02:29:32Z nemohou $
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -24,7 +25,7 @@ if((!$operation && !$optype) || ($operation == 'group' && empty($optype))) {
 		$_GET['intype'] = '';
 		$_GET['detail'] = 1;
 		$_GET['inforum'] = 'all';
-		$_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 30, 'Y-n-j');
+		$_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 30, 'Y-m-d');
 	}
 	$intypes = '';
 	if($_GET['inforum'] && $_GET['inforum'] != 'all' && $_GET['intype']) {
