@@ -1769,7 +1769,7 @@ function show_language($lang_list=array(), $lng='sc') {
 	global $self, $uchidden, $step;
 /*vot*/	global $language;
 
-	$next = $step + 1;
+	$next = 0;
 
 	show_header();
 

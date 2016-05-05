@@ -67,9 +67,16 @@ if(in_array($method, array('app_reg', 'ext_info'))) {
 	$default_appurl = $bbserver.substr($PHP_SELF, 0, strrpos($PHP_SELF, '/') - 8);
 }
 
+//DEBUG
+//echo '<pre>';
+//echo 'step=', $step, "\n";
+//echo 'method=', $method, "\n";
+//echo 'language=', $language, "\n";
+//echo '<pre>';
+
 if($method == 'show_license') {
     //vot: Select the install language
-    if(!$language) {
+    if(empty($language)) {
 
 	$default_config = $_config = array();
 	$default_configfile = './config/config_global_default.php';
