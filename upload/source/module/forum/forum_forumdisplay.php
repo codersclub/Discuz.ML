@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_forumdisplay.php 34350 2014-03-19 03:16:35Z hypowang $
+ *      $Id: forum_forumdisplay.php 35877 2016-04-20 01:53:57Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -461,7 +461,7 @@ $_GET['ascdesc'] = isset($_G['cache']['forums'][$_G['fid']]['ascdesc']) ? $_G['c
 $check = array();
 $check[$filter] = $check[$_GET['orderby']] = $check[$_GET['ascdesc']] = 'selected="selected"';
 
-if(($_G['forum']['status'] != 3 && $_G['forum']['allowside']) || !empty($_G['forum']['threadsorts']['templatelist'])) {
+if(($_G['forum']['status'] != 3 && $_G['forum']['allowside'])) {
 	updatesession();
 	$onlinenum = C::app()->session->count_by_fid($_G['fid']);
 	if(!IS_ROBOT && ($_G['setting']['whosonlinestatus'] == 2 || $_G['setting']['whosonlinestatus'] == 3)) {
@@ -954,9 +954,7 @@ $swfconfig = getuploadconfig($_G['uid'], $_G['fid']);
 
 $template = 'diy:forum/forumdisplay:'.$_G['fid'];
 
-if(!empty($_G['forum']['threadsorts']['templatelist']) && $_G['forum']['status'] != 3) {
-	$template = 'diy:forum/forumdisplay_'.$_G['forum']['threadsorts']['templatelist'].':'.$_G['fid'];
-} elseif($_G['forum']['status'] == 3) {
+if($_G['forum']['status'] == 3) {
 	$groupviewed_list = get_viewedgroup();
 	write_groupviewed($_G['fid']);
 	$template = 'diy:group/group:'.$_G['fid'];

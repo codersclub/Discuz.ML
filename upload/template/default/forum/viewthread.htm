@@ -28,7 +28,7 @@
 	<div id="pgt" class="pgs mbm cl {if $modmenu['thread']}pbm bbs{/if}">
 		<div class="pgt">$multipage</div>
 		<span class="y pgb"{if $_G['setting']['visitedforums']} id="visitedforums" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'34'})"{/if}><a href="$upnavlink">{lang return_forumdisplay}</a></span>
-		<!--{if $_G['forum']['threadsorts'] && $_G['forum']['threadsorts']['templatelist']}-->
+		<!--{if $_G['forum']['threadsorts']}-->
 			<!--{loop $_G['forum']['threadsorts']['types'] $id $name}-->
 				<button id="newspecial" class="pn pnc" onclick="location.href='forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$extra&sortid=$id'"><strong>{lang i_want}$name</strong></button>
 			<!--{/loop}-->
@@ -207,7 +207,7 @@
 							<a class="psave" href="forum.php?mod=misc&action=pubsave&tid=$_G[tid]">{lang published}</a>
 						<!--{/if}-->
 					<!--{/if}-->
-					<!--{if $_G['setting']['threadhidethreshold'] && $_G['forum_thread']['hidden'] >= $_G['setting']['threadhidethreshold']}-->						
+					<!--{if $_G['setting']['threadhidethreshold'] && $_G['forum_thread']['hidden'] >= $_G['setting']['threadhidethreshold']}-->
 						<!--{if $_G['forum_thread']['authorid'] == $_G['uid']}--><a class="psave" id="hiderecover" title="{lang hiderecover_tips}" href="forum.php?mod=misc&action=hiderecover&tid=$_G[tid]&formhash={FORMHASH}" onclick="showWindow(this.id, this.href, 'get', 0);">{lang hidden}</a><!--{else}-->({lang hidden})<!--{/if}-->
 						&nbsp;
 					<!--{/if}-->

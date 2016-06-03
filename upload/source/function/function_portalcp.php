@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_portalcp.php 35034 2014-10-27 03:42:17Z laoguozhang $
+ *      $Id: function_portalcp.php 35943 2016-05-18 03:26:08Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -984,7 +984,7 @@ function check_articleperm($catid, $aid = 0, $article = array(), $isverify = fal
 		}
 	}
 
-	if($_G['group']['allowmanagearticle'] || (empty($aid) && $_G['group']['allowpostarticle']) || $_GET['modarticlekey'] == modauthkey($aid)) {
+	if($_G['group']['allowmanagearticle'] || (empty($aid) && $_G['group']['allowpostarticle'])) {
 		return true;
 	}
 

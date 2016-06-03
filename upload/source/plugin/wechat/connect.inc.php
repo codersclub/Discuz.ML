@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: connect.inc.php 35047 2014-10-30 07:55:59Z nemohou $
+ *      $Id: connect.inc.php 35933 2016-05-13 05:56:41Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -18,7 +18,7 @@ if(!in_array($op, array('init', 'callback'))) {
 
 $_G['connect']['callback_url'] = $_G['siteurl'].'plugin.php?id=wechat:connect&op=callback';
 parse_str(substr($_GET['referer'], 1), $refererarray);
-$referer = 'http://wsq.discuz.qq.com/'.$_GET['referer'];
+$referer = 'http://wsq.discuz.com/'.$_GET['referer'];
 
 try {
 	$connectOAuthClient = Cloud::loadClass('Service_Client_ConnectOAuth');

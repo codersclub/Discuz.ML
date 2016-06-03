@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 35033 2014-10-23 10:16:00Z laoguozhang $
+ *      $Id: admincp_setting.php 35933 2016-05-13 05:56:41Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -1873,9 +1873,6 @@ EOT;
 			array(0, $lang['setting_attach_image_watermarktype_GD'], array('imagelibext' => 'none')),
 			array(1, $lang['setting_attach_image_watermarktype_IM'], array('imagelibext' => ''))
 		)), $setting['imagelib'], 'mradio');
-		showtagheader('tbody', 'imagelibext', $setting['imagelib'], 'sub');
-		showsetting('setting_attach_image_impath', 'settingnew[imageimpath]', $setting['imageimpath'], 'text');
-		showtagfooter('tbody');
 		showsetting('setting_attach_image_thumbquality', 'settingnew[thumbquality]', $setting['thumbquality'], 'text');
 		showsetting('setting_attach_image_disabledmobile', 'settingnew[thumbdisabledmobile]', !$setting['thumbdisabledmobile'], 'radio');
 		showsetting('setting_attach_image_preview', '', '', cplang('setting_attach_image_thumb_preview_btn'));
@@ -1988,7 +1985,7 @@ EOT;
 		$checkwm['album'] = array($setting['watermarkstatus']['album'] => 'checked');
 		showtableheader('setting_imgwater_image_watermarks_portal', '', 'id="portal"'.($_GET['anchor'] != 'portal' ? ' style="display: none"' : ''));
 		$fontlist['portal'] = '<select name="settingnew[watermarktext][fontpath][portal]">' . $fontlist['portal'];
-		showhiddenfields(array('imagelib' => $_G['setting']['imagelib'], 'imageimpath' => $_G['setting']['imageimpath']));
+		showhiddenfields(array('imagelib' => $_G['setting']['imagelib']));
 		showsetting('setting_imgwater_image_watermarkstatus', '', '', '<table style="margin-bottom: 3px; margin-top:3px;"><tr><td colspan="3"><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="0" '.$checkwm['portal'][0].'>'.$lang['setting_imgwater_image_watermarkstatus_none'].'</td></tr><tr><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="1" '.$checkwm['portal'][1].'> #1</td><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="2" '.$checkwm['portal'][2].'> #2</td><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="3" '.$checkwm['portal'][3].'> #3</td></tr><tr><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="4" '.$checkwm['portal'][4].'> #4</td><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="5" '.$checkwm['portal'][5].'> #5</td><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="6" '.$checkwm['portal'][6].'> #6</td></tr><tr><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="7" '.$checkwm['portal'][7].'> #7</td><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="8" '.$checkwm['portal'][8].'> #8</td><td><input class="radio" type="radio" name="settingnew[watermarkstatus][portal]" value="9" '.$checkwm['portal'][9].'> #9</td></tr></table>');
 		showsetting('setting_imgwater_image_watermarkminwidthheight', array('settingnew[watermarkminwidth][portal]', 'settingnew[watermarkminheight][portal]'), array(intval($setting['watermarkminwidth']['portal']), intval($setting['watermarkminheight']['portal'])), 'multiply');
 		showsetting('setting_imgwater_image_watermarktype', array('settingnew[watermarktype][portal]', array(
@@ -2783,16 +2780,6 @@ EOT;
 		$settingnew['thumbstatus'] = 0;
 	}
 
-	if(!empty($settingnew['imageimpath'])) {
-		if(!is_dir($settingnew['imageimpath'])) {
-			$settingnew['imageimpath'] = '';
-		} else {
-			$settingnew['imageimpath'] = str_replace('\\', '/', $settingnew['imageimpath']);
-			if(!preg_match('/^[\!@#\$%\^&\(\)_\+\-\=\{\}\[\];\',\.\/\:\w\s]+$/', $settingnew['imageimpath'])) {
-				$settingnew['imageimpath'] = '';
-			}
-		}
-	}
 
 	if(!empty($settingnew['memory'])) {
 		$memory = array();

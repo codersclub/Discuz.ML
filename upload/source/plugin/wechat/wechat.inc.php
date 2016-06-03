@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat.inc.php 35228 2015-03-05 06:53:53Z nemohou $
+ *      $Id: wechat.inc.php 35959 2016-05-24 02:35:40Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -26,6 +26,11 @@ if($_GET['fromapp'] == 'index') {
 	$op = 'access';
 } else {
 	$op = $_GET['op'];
+}
+
+$preferer = parse_url($_GET['referer']);
+if(!$preferer['host'] || $preferer['host'] != 'wsq.discuz.com' && $preferer['host'] != 'wsq.discuz.qq.com') {
+	$_GET['referer'] = '';
 }
 
 $selfurl = $_G['siteurl'].'plugin.php?id=wechat&mobile=2&key='.$keyenc.($_GET['referer'] ? '&referer='.urlencode($_GET['referer']) : '').($_GET['username'] ? '&username='.urlencode($_GET['username']) : '').'&ac=';
