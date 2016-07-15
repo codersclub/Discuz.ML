@@ -1559,5 +1559,5 @@ $lang = array (
 	'follow_intro3'		=> '查看收聽的人<br/>和聽眾',//'Check your followings and listeners',
 	'follow_intro4'		=> '您收聽的人發的廣播<br/>會在這裡出現',//'Your content will be shown here',
 	'say_to'		=> '說',
+	'visibility'		=> '能見度',//'Visibility',
 );
-?>
