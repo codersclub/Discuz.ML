@@ -131,7 +131,7 @@ if(submitcheck('profilesubmit')) {
 			continue;
 		} elseif($key == 'timeoffset') {
 			if($value >= -12 && $value <= 12 || $value == 9999) {
-				C::t('common_member')->update($_G['uid'], array('timeoffset' => intval($value)));
+/*vot*/				C::t('common_member')->update($_G['uid'], array('timeoffset' => $value));
 			}
 		} elseif($key == 'site') {
 			if(!in_array(strtolower(substr($value, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $value) && !preg_match('/^data\//', $value)) {
