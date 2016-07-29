@@ -1348,8 +1348,8 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 				.zoominner p a.imgclose:hover { background-position: -80px -39px; }
 
 .zimg_c { position: relative; }
-/*vot*/ .zimg_prev, .zimg_next { display: block; position: absolute; width: 45%; height: 100%; background: url({IMGDIR}/pic-prev.gif) no-repeat 0 -100px; cursor: pointer; }
-/*vot*/ .zimg_next { left: 10px; background-image: url({IMGDIR}/pic-next.gif); background-position: 100% -100px; }
+/*vot*/ .zimg_prev, .zimg_next { display: block; position: absolute; width: 45%; height: 100%; background: url({IMGDIR}/pic-prev.png) no-repeat 0 -100px; cursor: pointer; }
+/*vot*/ .zimg_next { left: 10px; background-image: url({IMGDIR}/pic-next.png); background-position: 100% -100px; }
 .zimg_c img { margin: 0 auto; }
 .zimg_p strong { display: none; }
 /** end **/

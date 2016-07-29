@@ -720,7 +720,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-97aa8fca18b35b3d626340c354da7940 *source/discuz_version.php
+4d2f87a5eb946c5d19b949646b87c33c *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -961,7 +961,7 @@ d088b32256081f1bbb1bfe3ce21c3b94 *source/include/spacecp/spacecp_invite.php
 50e495e8c72226f058ca26d6df5c5984 *source/include/spacecp/spacecp_pm.php
 139054080da8b875a110c7cb750f6098 *source/include/spacecp/spacecp_poke.php
 46701abd4b809377109044820dadbaac *source/include/spacecp/spacecp_privacy.php
-9dba7c90c71b2a018fb635774f5cee17 *source/include/spacecp/spacecp_profile.php
+fad2fd931ff409723e4fc8eed79dc184 *source/include/spacecp/spacecp_profile.php
 6a0fbb877604966c6417e442ff236196 *source/include/spacecp/spacecp_profilevalidate.php
 0602a64356411e7c965e115f05a76154 *source/include/spacecp/spacecp_promotion.php
 26f9ee16a28fb8da6a13e76b535520d9 *source/include/spacecp/spacecp_relatekw.php
@@ -1072,7 +1072,7 @@ a73c7a6964316ea71592c670813d65b2 *source/language/sc/group/lang_misc.php
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/sc/home/index.htm
 c03820cc61fce8c28244b86b0ae757cb *source/language/sc/home/lang_editor.php
 e6f1091f01a20d35925c95d7a62222bc *source/language/sc/home/lang_magic.php
-682e99c97dec8a8af612315a8a0f43b3 *source/language/sc/home/lang_template.php
+a347850ef5be301723ff8dc666124f64 *source/language/sc/home/lang_template.php
 855ea0dda6e5b38a3a5c74d877409402 *source/language/sc/image/help/album.gif
 88bdbb95b48cd28dc4ef7997fef8e1ab *source/language/sc/image/help/blog.gif
 64492757c1cf55705b46861a12671d59 *source/language/sc/image/help/cp.gif
@@ -1264,7 +1264,7 @@ c3a21de6489d7391c829547b647a68b9 *source/language/tc/group/lang_template.php
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/tc/home/index.htm
 b9267f1f04cc25c2001f0a511519a813 *source/language/tc/home/lang_editor.php
 bb66dbcc29bf3d7a3ce691b7da3b1438 *source/language/tc/home/lang_magic.php
-50706930d5a4da0cd39328bdfd931c9c *source/language/tc/home/lang_template.php
+b211cd7f2e7c2e4b29f2ebd47c262c6f *source/language/tc/home/lang_template.php
 855ea0dda6e5b38a3a5c74d877409402 *source/language/tc/image/help/album.gif
 88bdbb95b48cd28dc4ef7997fef8e1ab *source/language/tc/image/help/blog.gif
 64492757c1cf55705b46861a12671d59 *source/language/tc/image/help/cp.gif
@@ -1895,10 +1895,8 @@ c73b8e425406a93deeeaa3bb6c599ca4 *static/image/common/pengyou.png
 407c49741c16ea138cab15894f1decc9 *static/image/common/personal.png
 25c75741e7518b62d97ffa5e97dbfc52 *static/image/common/pg_arw.png
 5b8baa4c131aed98375f901da9006e58 *static/image/common/pg_bg.png
-0569bef8a7e33dad18748bde9d1b7e15 *static/image/common/pic-next.gif
-9b95cba3a80095ce73a3bc9a4781e0a5 *static/image/common/pic-next.png
-6f82872507eefbfd7a0b8f8f14f37504 *static/image/common/pic-prev.gif
-a391b7065702c60b4c549dd1f20dc29f *static/image/common/pic-prev.png
+41de423e82ebefa8c4a878d632d42b77 *static/image/common/pic-next.png
+9f0f6eed6f2922e646f6a1519fd6658a *static/image/common/pic-prev.png
 2e9032c2e2503dd8fb636805bdaaaf38 *static/image/common/pic_nv_next.gif
 0e95a09f6b5d91b6e818c6dad45c49d0 *static/image/common/pic_nv_prev.gif
 5191e9ce394d568e947783b462e51370 *static/image/common/pin.gif
@@ -3309,8 +3307,8 @@ fe9b65c736c55d3e212b2681fd9b1ab3 *template/default/common/header_userstatus.htm
 379fd7b33731f1530096d6fde0362210 *template/default/common/invite.htm
 8d18332c488ef29b14efb05a9565496d *template/default/common/ipnotice.htm
 5846bfc1f9595e357aa4d6bad6539a3a *template/default/common/misc_imgcropper.htm
-2ff354d9b1b530c97f5769e22fe09e0d *template/default/common/module.css
-18eaaaae201a746507ae25674c4a5b1f *template/default/common/module_rtl.css
+13e76465229a5b5c3aa2ce394e718777 *template/default/common/module.css
+004ed0e26b79eaa465b19c5a4fb2e406 *template/default/common/module_rtl.css
 ccedcbecfe9e825aff8b0990f11c0b3f *template/default/common/preview.htm
 5d5e06f2ef55f3e6aed0b984e7e7f89d *template/default/common/pubsearchform.htm
 0ccf90f35d9156b1d9ba420db83bc9f3 *template/default/common/report.htm
@@ -3511,7 +3509,7 @@ e3c96eddf038222df84af8d74bfa3dd3 *template/default/home/spacecp_password.htm
 36315ae8d3f9877635d58f1c4c4ffc72 *template/default/home/spacecp_poke.htm
 85a293aee1ca6905c21e480880444f71 *template/default/home/spacecp_poke_type.htm
 5480b25daa39b51bafc08ed5c68e5086 *template/default/home/spacecp_privacy.htm
-87a31c0b8e6b14d7112c609471ab5302 *template/default/home/spacecp_profile.htm
+3da664a0a3a3dc5f8f43f9ac57719142 *template/default/home/spacecp_profile.htm
 daa67e0e0bb82335c578d3426fbeae2c *template/default/home/spacecp_profile_nav.htm
 a05fc73feac3cd8d7876725430de72f2 *template/default/home/spacecp_promotion.htm
 c4568231fb65d6871df1e6920203a817 *template/default/home/spacecp_search.htm
@@ -3524,7 +3522,7 @@ b9564fe0901fcc3df745a84b5c69c089 *template/default/home/spacecp_usergroup_header
 3c467ef9914518be03d6cb944ec67d52 *template/default/home/spacecp_videophoto.htm
 610b2637365ea72649bbd816d6aaaad7 *template/default/home/space_activity.htm
 68a599308ef3a3dd1e8f70e436d8816e *template/default/home/space_album_list.htm
-034cb20916d6f60f32f00fefac4dc2b8 *template/default/home/space_album_pic.htm
+16b45dcbe8d27712587800c4c8c5d35a *template/default/home/space_album_pic.htm
 90401606603666f50c3cd38adfb31c7d *template/default/home/space_album_view.htm
 dd54c0c6b8f75dbc4f759a5c76813889 *template/default/home/space_blog_list.htm
 5ed451a8cf417d3abef6d934bde7e601 *template/default/home/space_blog_view.htm
@@ -3813,7 +3811,7 @@ ddc1d2f17f115681e7314b994a853f22 *template/default/style/t6/ico_jdt.png
 08916f7663dacf34fff7f1957c9c4050 *template/default/style/t6/ico_mulu.png
 05ce86df6c1a72700734754b1d0c784d *template/default/style/t6/ico_notice.png
 efccbc39b885fb1b0e39a09d20210701 *template/default/style/t6/imgzoom_tb.gif
-790cc9cf96d812da212a9613c7f27bae *template/default/style/t6/Increase.png
+790cc9cf96d812da212a9613c7f27bae *template/default/style/t6/increase.png
 5a148f4bd6abff0ae8b5dc801bf40f00 *template/default/style/t6/mood_input.png
 13a0ce4c9aae8674ea238c7bff2e79c0 *template/default/style/t6/mood_input_btn.png
 9df8c0bbbf3885c3cecc424afda95306 *template/default/style/t6/newarow.gif
@@ -3845,7 +3843,7 @@ ddbbd3b219624524de642156c1e5d5a0 *template/default/style/t6/search.png
 a8b8f3b24cb4d22e732119e4faf6e5f7 *template/default/style/t6/searchbar_rtl.png
 53ccb72a434874eca97c1351e2ada217 *template/default/style/t6/share_btn.png
 80dbd7226ffa90a87b2266d5e49242da *template/default/style/t6/sigline.gif
-d9f5697ea3983d220f2d6a93dd6059a5 *template/default/style/t6/style.css
+c9ed1c1bdf1d541826de297c03176787 *template/default/style/t6/style.css
 3ce2ac193b59f857ed18ee1e36ec997e *template/default/style/t6/style_1_editor.css
 a21e7fb78fef86c0678b6a3b83d36386 *template/default/style/t6/tag.gif
 5df98e6320ac88f910ac4aac9ae34d01 *template/default/style/t6/tb.png

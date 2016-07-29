@@ -101,10 +101,10 @@
 																pre.style.height = next.style.height = tar.height + 'px';
 																pre.innerHTML = next.innerHTML = '<img src="{IMGDIR}/emp.gif" width="' + w + '" height="' + tar.height + '" />';
 
-/*vot*/												pre.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-prev.gif) no-repeat 0 100px'; }
+/*vot*/												pre.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-prev.png) no-repeat 0 100px'; }
 																pre.onclick = function(){ window.location = 'home.php?mod=space&uid=$pic[uid]&do=$do&picid=$upid&goto=up#pic_block'; }
 
-/*vot*/												next.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-next.gif) no-repeat 100% 100px'; }
+/*vot*/												next.onmouseover = function(){ this.style.background = 'url({IMGDIR}/pic-next.png) no-repeat 100% 100px'; }
 																next.onclick = function(){ window.location = 'home.php?mod=space&uid=$pic[uid]&do=$do&picid=$nextid&goto=down#pic_block'; }
 
 																//cont.style.position = 'relative';
