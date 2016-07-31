@@ -85,7 +85,7 @@
 					<!--{if $_G['uid'] || $_G['group']['allowcomment']}-->
 						<textarea id="comment_message" name="message" rows="5" onkeydown="ctrlEnter(event, 'commentsubmit_btn');" class="pt"></textarea>
 					<!--{else}-->
-						<div class="pt hm">{lang login_to_comment} <a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)" class="xi2">{lang login}</a> | <a href="member.php?mod={$_G[setting][regname]}" class="xi2">$_G['setting']['reglinkname']</a></div>
+<!--vot-->					<div class="pt hm">{lang login_to_comment} <a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)" class="xi2">{lang login}</a> | <a href="member.php?mod={$_G[setting][regname]}" class="xi2">{lang register}</a></div>
 					<!--{/if}-->
 				</div>
 			</div>

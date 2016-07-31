@@ -57,7 +57,7 @@
 			<!--{if $param[login]}-->
 				<button type="button" class="pn pnc" onclick="hideWindow('$_GET['handlekey']');showWindow('login', 'member.php?mod=logging&action=login');"><strong>{lang login}</strong></button>
 				<!--{if !$_G['setting']['bbclosed']}-->
-					<button type="button" class="pn pnc" onclick="hideWindow('$_GET['handlekey']');window.open('member.php?mod={$_G[setting][regname]}');"><em>$_G['setting']['reglinkname']</em></button>
+<!--vot-->			<button type="button" class="pn pnc" onclick="hideWindow('$_GET['handlekey']');window.open('member.php?mod={$_G[setting][regname]}');"><em>{lang register}</em></button>
 				<!--{/if}-->
 				<button type="button" class="pn" onclick="hideWindow('$_GET['handlekey']');"><em>{lang cancel}</em></button>
 			<!--{elseif !$param['closetime'] && !$param['locationtime']}-->
