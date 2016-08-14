@@ -720,7 +720,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-f830276d14036c83a65cacfcc09d44bf *source/discuz_version.php
+5bbbd1c003f3315bee4b9897593af3a4 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -961,7 +961,7 @@ d088b32256081f1bbb1bfe3ce21c3b94 *source/include/spacecp/spacecp_invite.php
 50e495e8c72226f058ca26d6df5c5984 *source/include/spacecp/spacecp_pm.php
 139054080da8b875a110c7cb750f6098 *source/include/spacecp/spacecp_poke.php
 46701abd4b809377109044820dadbaac *source/include/spacecp/spacecp_privacy.php
-fad2fd931ff409723e4fc8eed79dc184 *source/include/spacecp/spacecp_profile.php
+ecb6e1ed0191cb9485bb30be6567682e *source/include/spacecp/spacecp_profile.php
 6a0fbb877604966c6417e442ff236196 *source/include/spacecp/spacecp_profilevalidate.php
 0602a64356411e7c965e115f05a76154 *source/include/spacecp/spacecp_promotion.php
 26f9ee16a28fb8da6a13e76b535520d9 *source/include/spacecp/spacecp_relatekw.php

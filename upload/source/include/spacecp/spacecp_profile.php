@@ -503,6 +503,17 @@ if($operation == 'password') {
 
 }
 
+//vot: Translate the Profile Fields
+foreach($settings as $k=>$v) {
+//  echo $k, '=', lang('blockclass', 'blockclass_member_field_'.$k), "\n";
+  $settings[$k]['title'] = lang('blockclass', 'blockclass_member_field_'.$k);
+}
+//DEBUG
+//echo '<pre>';
+//echo 'settings=';
+//print_r($settings);
+//echo '</pre>';
+
 include template("home/spacecp_profile");
 
 function profile_showerror($key, $extrainfo) {
