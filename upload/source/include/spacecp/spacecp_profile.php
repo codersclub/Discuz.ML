@@ -503,6 +503,11 @@ if($operation == 'password') {
 
 }
 
+//vot: Translate the Profile Field Group Names
+foreach($profilegroup as $k=>$v) {
+//  echo $k, '=', lang('blockclass', 'blockclass_member_field_'.$k), "\n";
+  $profilegroup[$k]['title'] = lang('blockclass', 'blockclass_profile_group_'.$k);
+}
 //vot: Translate the Profile Fields
 foreach($settings as $k=>$v) {
 //  echo $k, '=', lang('blockclass', 'blockclass_member_field_'.$k), "\n";
@@ -510,6 +515,8 @@ foreach($settings as $k=>$v) {
 }
 //DEBUG
 //echo '<pre>';
+//echo '$profilegroup=';
+//print_r($profilegroup);
 //echo 'settings=';
 //print_r($settings);
 //echo '</pre>';

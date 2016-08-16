@@ -461,4 +461,10 @@ $lang = array(
 // Added by Valery Votintsev
 	'blockclass_member_field_realname'	=> '姓名',//'Real Name',
 
+	'blockclass_profile_group_base'		=> '基本資料',//'Basic Info',
+	'blockclass_profile_group_contact'	=> '聯繫方式',//'Contact Info',
+	'blockclass_profile_group_edu'		=> '教育情況',//'Education',
+	'blockclass_profile_group_work'		=> '工作情況',//'Work Info',
+	'blockclass_profile_group_info'		=> '個人信息',//'Personal Info',
+
 );
