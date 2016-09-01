@@ -57,23 +57,10 @@ $lang = array (
 	'nav_setfavorite'	=> '<img src="static/image/common/fav.gif" title="收藏本站">',//'<img src="static/image/common/fav.gif" title="Add to Favorites">',
 	'nav_uchome'		=> 'UCHome',//'UCHome',
 
+	'idcardtype_choice'	=> '身份证\n护照\n驾驶证',//'ID\nPassport\nDriving license',//tc:'身份證\n護照\n駕駛證',
+	'education_choice'	=> '博士\n硕士\n本科\n专科\n中学\n小学\n其它',//'Doctor\nMaster\nBachelor\nSpecialist\nSchool\nPrimary School\nOther',//tc:'博士\n碩士\n本科\n專科\n中學\n小學\n其它',
+	'bloodtype_choice'	=> 'A\nB\nAB\nO\n其它',//'A\nB\nAB\nO\nOther',//tc:'A\nB\nAB\nO\n其它',
+
 //	'nav_'		=> '',//'',
 
 );
-
-/* ToDo !!!!!!!!!!
-	'profile_fields'		=> array(
-		'mp.realname'		=> 'Real Name',//'姓名',
-		'mp.gender'		=> 'Gender',//'性别',
-		'mp.birthyear'		=> 'Birth year',//'生日(年)',
-		'mp.birthmonth'		=> 'Birth month',//'生日(月)',
-		'mp.birthday'		=> 'Birth Day',//'生日(日)',
-		'mp.bloodtype'		=> 'Blood type',//'血型',
-		'mp.affectivestatus'	=> 'Emotional category',//'情感状态',
-'mp.birthcountry'	=> 'Birth country',//'家乡(国)',
-		'mp.birthprovince'	=> 'Birth region',//'家乡(省)',
-		'mp.birthcity'		=> 'Birth city',//'家乡(市)',
-		'mp.resideprovince'	=> 'Reside region',//'居住地(省)',
-		'mp.residecity'		=> 'Reside city',//'居住地(市)'
-	),
-*/

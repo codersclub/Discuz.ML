@@ -50,6 +50,20 @@ function profile_setting($fieldid, $space=array(), $showstatus=false, $ignoreunc
 
 	$html = '';
 	$field['unchangeable'] = !$ignoreunchangable && $field['unchangeable'] ? 1 : 0;
+
+//vot Translate Profile Field Choices
+if(trim($field['choices'])) {
+  $lng = lang('setting',$fieldid.'_choice');
+  if($lng != $fieldid.'_choice') {
+    $field['choices'] = str_replace('\\n', "\n", lang('setting',$fieldid.'_choice'));
+  }
+}
+//DEBUG
+//echo '<pre>';
+//echo 'field=';
+//print_r($field);
+//echo '</pre>';
+
 	if($fieldid == 'birthday') {
 		if($field['unchangeable'] && !empty($space[$fieldid])) {
 			return '<span>'.$space['birthyear'].'-'.$space['birthmonth'].'-'.$space['birthday'].'</span>';
