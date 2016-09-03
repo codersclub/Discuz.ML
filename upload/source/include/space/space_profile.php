@@ -119,6 +119,19 @@ foreach($_G['cache']['profilesetting'] as $fieldid => $field) {
 	}
 }
 
+//vot: Translate the Profile Fields
+foreach($profiles as $k=>$v) {
+//  echo $k, '=', lang('blockclass', 'blockclass_member_field_'.$k), "\n";
+  if($val = lang('blockclass', 'blockclass_member_field_'.$k)) {
+    $profiles[$k]['title'] = $val;
+  }
+}
+//DEBUG
+//echo '<pre>';
+//echo 'profiles=';
+//print_r($profiles);
+//echo '</pre>';
+
 $count = C::t('forum_moderator')->count_by_uid($space['uid']);
 if($count) {
 	foreach(C::t('forum_moderator')->fetch_all_by_uid($space['uid']) as $result) {

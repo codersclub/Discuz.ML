@@ -720,7 +720,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-136aa60713d81b0ac76a8ddcb275a1a5 *source/discuz_version.php
+2a7eae020e899eeb7abd7aa4582a1ca1 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -929,7 +929,7 @@ cd13ddcc05b9b725ff410d756a60f180 *source/include/space/space_index.php
 c4add6270e2d4882047efd415cc7fbee *source/include/space/space_plugin.php
 7cc5c913ace570e1256a918807b57af7 *source/include/space/space_pm.php
 2a8890e2002976f36b537419a3575b12 *source/include/space/space_poll.php
-5d93237ba296a01c7cbd2f983edb0a50 *source/include/space/space_profile.php
+34ae13db3ba8312d7f32b4c169e74db1 *source/include/space/space_profile.php
 79444617a433bfe3f2378c5cb81f2e46 *source/include/space/space_reward.php
 8d2e6efaa9717b70edb58bd622eb2fe0 *source/include/space/space_share.php
 30757760ad1b66e473c927f6c1905514 *source/include/space/space_thread.php
@@ -2698,7 +2698,7 @@ d00e1b5f996790ce4413b1f25c10755c *source/language/ru/image/stamp/010.gif
 bf44ee286c58db8c7c8aa4c2b514ad05 *source/language/ru/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/ru/index.htm
 266f8b501b8fd1376de290a75953264c *source/language/ru/lang_action.php
-e1d399f16d6f1c67391d5e7328fd9591 *source/language/ru/lang_admincp.php
+22d2bbd34f8fc691de0e7a333e531279 *source/language/ru/lang_admincp.php
 70dfa8442299259a7b65f9bc841009ba *source/language/ru/lang_admincp_cloud.php
 13b120c7df0bce2dc44d7fcb406c1589 *source/language/ru/lang_admincp_login.php
 06284ca698085813a172eab894acc2f5 *source/language/ru/lang_admincp_menu.php
