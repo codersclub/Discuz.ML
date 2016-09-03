@@ -15,6 +15,34 @@ if(empty($_GET['op']))	$_GET['op'] = 'base';
 if(in_array($_GET['op'], array('transfer', 'exchange'))) {
 	$taxpercent = sprintf('%1.2f', $_G['setting']['creditstax'] * 100).'%';
 }
+//vot Translate Credits
+foreach($_G['setting']['extcredits'] as $key => $value) {
+  $_G['setting']['extcredits'][$key]['title'] = lang('setting','extcredits'.$key);
+}
+
+//vot Make Credit Formula Explanation
+function credits_formula_exp($creditsformula) {
+	$creditsformulaexp = $creditsformula;
+	foreach(array('digestposts', 'posts', 'threads', 'oltime', 'friends', 'doings', 'blogs', 'albums', 'polls', 'sharings', 'extcredits1', 'extcredits2', 'extcredits3', 'extcredits4', 'extcredits5', 'extcredits6', 'extcredits7', 'extcredits8') as $var) {
+		$replacement = lang('setting',$var);
+		$creditsformulaexp = str_replace($var, '<u>'.$replacement.'</u>', $creditsformulaexp);
+	}
+	$creditsformulaexp = str_replace('+', ' + ', $creditsformulaexp);
+	$creditsformulaexp = str_replace('*', '&times;', $creditsformulaexp);
+	return $creditsformulaexp;
+}
+
+//vot Translate Credits Formula
+$formula = $_G['setting']['creditsformula'];
+$formula = str_replace("\$member['",'',$formula);
+$formula = str_replace('\']','',$formula);
+$_G['setting']['creditsformulaexp'] = credits_formula_exp($formula);
+//DEBUG
+//echo '<pre>';
+//echo $formula, "\n";
+//echo $_G['setting']['creditsformulaexp'], "\n";
+//echo '</pre>';
+
 if($_GET['op'] == 'base') {
 	$loglist = $extcredits_exchange = array();
 	if(!empty($_G['setting']['extcredits'])) {
@@ -72,7 +100,7 @@ if($_GET['op'] == 'base') {
 	}
 
 	$navtitle = lang('core', 'title_credit');
-	$creditsformulaexp = str_replace('*', 'X', $_G['setting']['creditsformulaexp']);
+/*vot*/	$creditsformulaexp = str_replace('*', '&times;', $_G['setting']['creditsformulaexp']);
 
 } elseif ($_GET['op'] == 'buy') {
 
@@ -310,6 +338,16 @@ if($_GET['op'] == 'base') {
 		}
 	}
 }
+//vot: Translate the Credit Rule Name
+foreach($list as $k=>$v) {
+  $list[$k]['rulename'] = lang('setting', 'credit_rule_'.$k);
+}
+//DEBUG
+//echo '<pre>';
+//echo 'list=';
+//print_r($list);
+//echo '</pre>';
+
 include_once template("home/spacecp_credit_base");
 
 function checkvalue($value, $creditids) {

@@ -720,7 +720,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-2a7eae020e899eeb7abd7aa4582a1ca1 *source/discuz_version.php
+ed16016f23f175643d30ae5df54cea11 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -945,7 +945,7 @@ b6708bb5967b1a2f54d4e100d20d5d77 *source/include/spacecp/spacecp_class.php
 6c6f3ec8fbb5d99990df1a14044b5596 *source/include/spacecp/spacecp_comment.php
 69032fd282c073ba86ad48d2c50ed5f7 *source/include/spacecp/spacecp_common.php
 8c4f0628f538f3266305b3e5f1779e1c *source/include/spacecp/spacecp_credit.php
-d46bb04557da45dc901c36b6becaac44 *source/include/spacecp/spacecp_credit_base.php
+963cf78c7e97e646b9233e39f4e62710 *source/include/spacecp/spacecp_credit_base.php
 721c69630a50e9d5f25d710e45e5eb7b *source/include/spacecp/spacecp_credit_log.php
 357ed67900619d9552dfff7bcd2e8ba7 *source/include/spacecp/spacecp_doing.php
 5a1b70af27bbc8d7250380ead7fcbe5a *source/include/spacecp/spacecp_domain.php
@@ -1137,7 +1137,7 @@ b7eb80a331b1f5e80f01743775215089 *source/language/ar/lang_optimizer.php
 11ef014b2a75a5d23c8cf6d3570d028f *source/language/ar/lang_portalcp.php
 ae1951f34401a9219caeb77c68314764 *source/language/ar/lang_restore.php
 af4378695651fde667a3d28e9d0e3fed *source/language/ar/lang_seccode.php
-1ccef40afa38445fcdf952caf608eedc *source/language/ar/lang_setting.php
+9e27a4badf79a9ebffd40106a93b09d2 *source/language/ar/lang_setting.php
 8bb209e80e053857de80391b8df16a89 *source/language/ar/lang_space.php
 73b84d78b206ee62551879d15527f749 *source/language/ar/lang_spacecp.php
 3810a24152952b90a1dd8187c6ec3fe1 *source/language/ar/lang_template.php
@@ -1363,7 +1363,7 @@ e52d8b5d780e2f9d03c29b5d03074b00 *source/language/de/lang_feed.php
 86ffbdcc59eddd686fc08af86527c52b *source/language/de/lang_portalcp.php
 c89505183b0206dc83f7edaab00dd261 *source/language/de/lang_restore.php
 af7b4fb0aba78c964dbf91c2b8081741 *source/language/de/lang_seccode.php
-67675fc57ef0032dae1a56a3dd422190 *source/language/de/lang_setting.php
+ede3c1f8722d4f65794728a46285b595 *source/language/de/lang_setting.php
 075883af6adb5ffab9cb8817eb7dad21 *source/language/de/lang_space.php
 430f4a2fd951887da5b333a43c9679e3 *source/language/de/lang_spacecp.php
 96c393375020a56646c94204f4ff0325 *source/language/de/lang_template.php
@@ -1557,7 +1557,7 @@ da463164b00752d269660173b7cc0fdd *source/language/es/lang_notification.php
 905e2a5b7ee2e1bbfc47a2c8e32d5be3 *source/language/es/lang_portalcp.php
 f9e959c817007c8f26d4caf91412e3b3 *source/language/es/lang_restore.php
 9db62bb2d9ba0ec4530ce0619725fe48 *source/language/es/lang_seccode.php
-f8c484267491f99829f25519d37a96a0 *source/language/es/lang_setting.php
+466f5549fc50b6fcd6bdd6672c00372b *source/language/es/lang_setting.php
 35b16089fce201c9997ba26ee5a1cec0 *source/language/es/lang_space.php
 61af4a5b9d90036be3664fd8ce7ab577 *source/language/es/lang_spacecp.php
 ee3943cacf243bc16c998976fdd3165c *source/language/es/lang_template.php
@@ -1751,7 +1751,7 @@ b9f1a7ac0216b0cdc018cb4fb26f2e8a *source/language/fa/lang_install.php
 9126dd9bb18709d22b06f96e6e199bc6 *source/language/fa/lang_portalcp.php
 80d60334ea5cb31bfd6d7d06e24b5c49 *source/language/fa/lang_restore.php
 584360ec4840046fd9845494551eccf6 *source/language/fa/lang_seccode.php
-8df5a503d2862d43a276200b8e5d2863 *source/language/fa/lang_setting.php
+fc4d6d70dc2a5fadf62dbf51dd5b44f7 *source/language/fa/lang_setting.php
 04814408989f7c0adabc4b0e18e7e5d3 *source/language/fa/lang_space.php
 6f58e11ea32ed3cef3920e592e613b21 *source/language/fa/lang_spacecp.php
 5bf820efa62867ba508e9f302f3b4243 *source/language/fa/lang_template.php
@@ -1946,7 +1946,7 @@ c8bcf6c54796b7770746344f71bd7fe4 *source/language/fr/lang_optimizer.php
 f4b367e0acab82a56b6ea98de7d31ee4 *source/language/fr/lang_portalcp.php
 e8a9609c20098fe9b81c52d3d21c9ca2 *source/language/fr/lang_restore.php
 f387ffb41dea50f6f0fd716a5c0d32a4 *source/language/fr/lang_seccode.php
-19b4fb985e2c56d7488e60351e3a91b0 *source/language/fr/lang_setting.php
+b6655d22dd8e0b4bad2c226e597f3887 *source/language/fr/lang_setting.php
 e05719710c53924cc3884c60e3f0f6d8 *source/language/fr/lang_space.php
 04dcb3093367fe90e25adb31dfd110e4 *source/language/fr/lang_spacecp.php
 f85631e83c6853fbb4cbffe0bb57c3c0 *source/language/fr/lang_template.php
@@ -2141,7 +2141,7 @@ b25ebcce29386ed9b9d380cda67a24e7 *source/language/kr/lang_notification.php
 81ee5ba82061bde0dd45978ee21ecac1 *source/language/kr/lang_portalcp.php
 364e33f9e330f37527045187fadcd71a *source/language/kr/lang_restore.php
 481dbfea876bcbed4272b62c28f9bf2e *source/language/kr/lang_seccode.php
-850c7f91766b83a5e7a25d531783d626 *source/language/kr/lang_setting.php
+2ddfe078d81a0a70eb24d1b564b45a4b *source/language/kr/lang_setting.php
 6273dac6bfe56e6cb5e30c3b1c591bb0 *source/language/kr/lang_space.php
 e39498165bfc92580abe4a1161620c57 *source/language/kr/lang_spacecp.php
 0c71320e8bc9518e87127935656cb6dd *source/language/kr/lang_template.php
@@ -2335,7 +2335,7 @@ f599935a7fa3252694009e50b4c8907e *source/language/la/lang_notification.php
 5fc22bc73d41a3a09e50d6442608589a *source/language/la/lang_portalcp.php
 a129a690b02ec739b8acf6524c7a1436 *source/language/la/lang_restore.php
 374f4a121956ad5f7f9ee479c7831a0b *source/language/la/lang_seccode.php
-7415946c0375d62c3d5363351488f99a *source/language/la/lang_setting.php
+969af6e26ebf463ec40669844f3c30dc *source/language/la/lang_setting.php
 40d4b8fa8358305da2753908bbeed892 *source/language/la/lang_space.php
 db582a4dda0c220091deaebc714745c0 *source/language/la/lang_spacecp.php
 66ad4a21c05fb3c00d92efec805bad81 *source/language/la/lang_template.php
@@ -2529,7 +2529,7 @@ b9f3466525fe8341f83b55c59f90fee1 *source/language/pl/lang_feed.php
 6edd18347c616bca4f6f4f4a1478fbb4 *source/language/pl/lang_portalcp.php
 0887b25ca36ad5321480fefa9ad5b707 *source/language/pl/lang_restore.php
 e09ab2ae4ee8370598636bef3ae41448 *source/language/pl/lang_seccode.php
-c3fec684c4229fdcf847a087bb05b08b *source/language/pl/lang_setting.php
+292f36c62d03f2b24e039d6d491cfea6 *source/language/pl/lang_setting.php
 127e81b242d61f066d044a25c8d71962 *source/language/pl/lang_space.php
 9d384252b3effbbcfa13983ef42c6d8b *source/language/pl/lang_spacecp.php
 92387c5fedb3b6d98a8a890ec2b9f299 *source/language/pl/lang_template.php
@@ -2658,7 +2658,7 @@ d550ffd98638646c3a6f1fc167a6b820 *source/language/ru/forum/lang_thread.php
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/ru/home/index.htm
 20865d0189b3651abdf70cc233e8126b *source/language/ru/home/lang_editor.php
 19939819bf5eb488a2e98fb7b6fb3820 *source/language/ru/home/lang_magic.php
-a5cc85a3533aee82be6546324370ff1e *source/language/ru/home/lang_template.php
+5fb07f0c9a66c1884477d7d0fc64aa4f *source/language/ru/home/lang_template.php
 855ea0dda6e5b38a3a5c74d877409402 *source/language/ru/image/help/album.gif
 88bdbb95b48cd28dc4ef7997fef8e1ab *source/language/ru/image/help/blog.gif
 64492757c1cf55705b46861a12671d59 *source/language/ru/image/help/cp.gif
@@ -2723,7 +2723,7 @@ ec813c93aa26c54dafaac7992eb6ecf2 *source/language/ru/lang_optimizer.php
 a5884a2d3f355f66c75d955a107a85e5 *source/language/ru/lang_portalcp.php
 303ca4f31e92a26aae201470184b148f *source/language/ru/lang_restore.php
 097501603f5a3d385815c26dfbcb53ca *source/language/ru/lang_seccode.php
-6c326c4838cb77005eb1579f38734ce0 *source/language/ru/lang_setting.php
+1a4fb1749dcb1cf4029bcdc89f563937 *source/language/ru/lang_setting.php
 16037c878b30841e87aeafe3a5f0468a *source/language/ru/lang_space.php
 5877c4d3e75faba143c87b1c0bd63e61 *source/language/ru/lang_spacecp.php
 dcebfc8ed5bea34d1f442a7e8b371c5d *source/language/ru/lang_template.php
@@ -2916,7 +2916,7 @@ ada1a437871cc1165f4bb5ae6f0f5c26 *source/language/sc/lang_js.js
 5ae53e6d2d59295e6713bb1c8fd59a81 *source/language/sc/lang_portalcp.php
 7cd2b4f92b4e1d2cf00c31ad56fec2ad *source/language/sc/lang_restore.php
 50ff219c0a7461cfac3f02e1c7cd0115 *source/language/sc/lang_seccode.php
-31c7d752829083b5fb68c2d640cffe37 *source/language/sc/lang_setting.php
+b7fa85732f8b77c8f5a73e086c0e4c81 *source/language/sc/lang_setting.php
 a18bcd4030098254719f7549e0e17578 *source/language/sc/lang_space.php
 bd154c3cb87c2fc5511beef3c7fe7b64 *source/language/sc/lang_spacecp.php
 7cea112119a4e31cc6ac1129f95e5d27 *source/language/sc/lang_template.php
@@ -3108,7 +3108,7 @@ ffb6b9a8194d5a1dc61233255397c54d *source/language/tc/lang_notification.php
 79df6c8e87bfb923b49de915dfdf22eb *source/language/tc/lang_portalcp.php
 4f481846506e4b60bfa9f3e6cdac90f9 *source/language/tc/lang_restore.php
 1ba9802b347449463221e687b915a144 *source/language/tc/lang_seccode.php
-a30206f73a84eb409f2495fd492dadb7 *source/language/tc/lang_setting.php
+2d60c6ca07341bfb865de308ebfeb8f9 *source/language/tc/lang_setting.php
 d3605363d77efbbdc141063c412cb358 *source/language/tc/lang_space.php
 619ef74a75e16b67e2421b356060e87f *source/language/tc/lang_spacecp.php
 1e52b16c20c9806619947fa9e162aced *source/language/tc/lang_template.php
@@ -3301,7 +3301,7 @@ bbb375aa21de595458fd85adf111746b *source/language/th/lang_notification.php
 fcee7afc36d5ef27121d8e2941db4bab *source/language/th/lang_portalcp.php
 a129a690b02ec739b8acf6524c7a1436 *source/language/th/lang_restore.php
 08103292cd40662e04372a0211e7e495 *source/language/th/lang_seccode.php
-bd74d26cfbcd67a7f65399c907aaf384 *source/language/th/lang_setting.php
+05a8f73f2c733e01d9508df0670e8f71 *source/language/th/lang_setting.php
 7785b30fa4030f9125144b5bba76e277 *source/language/th/lang_space.php
 094dd0742cbc1e0e1c24b946e4d78e7b *source/language/th/lang_spacecp.php
 0e02a0d663bfab1abd96c8da0765c916 *source/language/th/lang_template.php
@@ -3495,7 +3495,7 @@ c90260e005ef904f233b9e868b551e37 *source/language/tr/lang_optimizer.php
 b567576d586630273a8b826c463f049c *source/language/tr/lang_portalcp.php
 a129a690b02ec739b8acf6524c7a1436 *source/language/tr/lang_restore.php
 584360ec4840046fd9845494551eccf6 *source/language/tr/lang_seccode.php
-8fe36b258d21c7c5e65c9d63d228b76f *source/language/tr/lang_setting.php
+04912adf0a248eabaea1401b060f7011 *source/language/tr/lang_setting.php
 b8fecc109157dd6c4b5cf6cd7aa425d9 *source/language/tr/lang_space.php
 0681e01f6998073be3d936c3f12cd21b *source/language/tr/lang_spacecp.php
 ca4fd3adc4e5c7a9b2cdf62100dd7b65 *source/language/tr/lang_template.php
@@ -3689,7 +3689,7 @@ eff1842277dfb8da8304921ac3355aa4 *source/language/ui/lang_notification.php
 6591fe29690749b36b43eac9644fb3b5 *source/language/ui/lang_portalcp.php
 a129a690b02ec739b8acf6524c7a1436 *source/language/ui/lang_restore.php
 584360ec4840046fd9845494551eccf6 *source/language/ui/lang_seccode.php
-7415946c0375d62c3d5363351488f99a *source/language/ui/lang_setting.php
+969af6e26ebf463ec40669844f3c30dc *source/language/ui/lang_setting.php
 f27249b8c9a14cd2af668feebd39b419 *source/language/ui/lang_space.php
 12ec923fc4bc3303148a64f37ddbb6bb *source/language/ui/lang_spacecp.php
 f78df5799052b0e897b33fadafe3f08b *source/language/ui/lang_template.php
@@ -3887,7 +3887,7 @@ c8929ebc000525c21f2f77e7f1bb22d5 *source/language/vn/lang_message.php
 a327af0f349c760adceb85ebbf930f94 *source/language/vn/lang_portalcp.php
 b036d37d059f6f16714c474c9b31f0cb *source/language/vn/lang_restore.php
 81bbc84abcdaf11b687082f5676c2aa9 *source/language/vn/lang_seccode.php
-5277e62b0a614d57bef6867f094278d5 *source/language/vn/lang_setting.php
+e5644e7eee6f9b21ce6a95fdce6da252 *source/language/vn/lang_setting.php
 fc17861a1cbfa2b35a9e7e7b3b0478af *source/language/vn/lang_space.php
 8dc1f489a0542d59d45011b4023a3fd2 *source/language/vn/lang_spacecp.php
 722d798b426b332cea62f1fe6e1ee5e4 *source/language/vn/lang_template.php
