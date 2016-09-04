@@ -15,7 +15,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 if(@file_exists(DISCUZ_ROOT.'./install/index.php') && !DISCUZ_DEBUG) {
 //vot	@unlink(DISCUZ_ROOT.'./install/index.php');
 	if(@file_exists(DISCUZ_ROOT.'./install/index.php')) {
-		dexit('Please delete install/index.php via FTP!');
+/*vot*/		dexit(cplang('delete_install_index'));
 	}
 }
 

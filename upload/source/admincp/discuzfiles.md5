@@ -104,7 +104,7 @@ aa7f68acc4b1330cac9edfa27ca83ec9 *source/admincp/admincp_forums.php
 813040e4f5aac34d57418cf2b86ce38f *source/admincp/admincp_founder.php
 9100bd5f83e6bffb1d80750b17a608da *source/admincp/admincp_grid.php
 377b4f5663f9d281437cbb1292a54e40 *source/admincp/admincp_group.php
-485ce6178bf0cc1eb319247e3d5a2b9d *source/admincp/admincp_index.php
+9eca5817dc8957ac67fe2f5b7bf8ea1d *source/admincp/admincp_index.php
 37a816f4c461b583f9dece37cecd804f *source/admincp/admincp_login.php
 0669fc5a0a6dadf16fbe727e2ddbd169 *source/admincp/admincp_logs.php
 1bb4886383e494b58807893cdd465f70 *source/admincp/admincp_magics.php
@@ -720,7 +720,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-ed16016f23f175643d30ae5df54cea11 *source/discuz_version.php
+9e4efdd4b83684383c1c9b60262cbbfe *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -1112,7 +1112,7 @@ f5f28563a4949d5facbce96cb14c2ead *source/language/ar/image/stamp/010.gif
 2b678a90025a8c706b38189db2853f2a *source/language/ar/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/ar/index.htm
 2c4b621d0dd84565e7fd098ca443954f *source/language/ar/lang_action.php
-856fe46241ae89cd58a37abc164a28cf *source/language/ar/lang_admincp.php
+04e9d51159f6b620ff7d63061041c39d *source/language/ar/lang_admincp.php
 131eaa17bc41b9e4022bb20b4f0860bb *source/language/ar/lang_admincp_cloud.php
 6b0c9117d450201cba72a85eb920cdee *source/language/ar/lang_admincp_login.php
 b15ed558b51e2fa025e857f2785e6733 *source/language/ar/lang_admincp_menu.php
@@ -1338,7 +1338,7 @@ f42557e8a208852338ae311b12739bfb *source/language/de/image/stamp/010.small.gif
 2b678a90025a8c706b38189db2853f2a *source/language/de/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/de/index.htm
 df9f98a59c26855bbf905618bef6f894 *source/language/de/lang_action.php
-076fb9c2b8dca3e012bdb0b7274b814f *source/language/de/lang_admincp.php
+ed8fb4c371969262e3e143336c946f72 *source/language/de/lang_admincp.php
 0d98d38b497d80a63bf9154dddafc6ca *source/language/de/lang_admincp_cloud.php
 90483080ac427bd2fac638f162d28686 *source/language/de/lang_admincp_login.php
 0b4ccff3e923fa0c6558bd7f321070e3 *source/language/de/lang_admincp_menu.php
@@ -1532,7 +1532,7 @@ f42557e8a208852338ae311b12739bfb *source/language/es/image/stamp/010.small.gif
 2b678a90025a8c706b38189db2853f2a *source/language/es/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/es/index.htm
 7b760c012f3a80bbc5512d1f44e1e0f0 *source/language/es/lang_action.php
-407b19d78c456c5a353dbeb03c3e0113 *source/language/es/lang_admincp.php
+19ce6b948e70da84c5915298ab5a0712 *source/language/es/lang_admincp.php
 0d98d38b497d80a63bf9154dddafc6ca *source/language/es/lang_admincp_cloud.php
 59cad7156d2b4abc3a0c6f29a7c81ac3 *source/language/es/lang_admincp_login.php
 e1ca4a24b835dd0833404272b1df5cc7 *source/language/es/lang_admincp_menu.php
@@ -1726,7 +1726,7 @@ f42557e8a208852338ae311b12739bfb *source/language/fa/image/stamp/010.small.gif
 2b678a90025a8c706b38189db2853f2a *source/language/fa/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/fa/index.htm
 10036480a57b8319f1748a5f1c090d54 *source/language/fa/lang_action.php
-602e20268749e3967164dde797b9ba53 *source/language/fa/lang_admincp.php
+fdff4030e4d7ee787e7ed7de65336992 *source/language/fa/lang_admincp.php
 fd92a6a109bcf10dc04b635224f8a9d2 *source/language/fa/lang_admincp_cloud.php
 c2f22df8a006ba787c1ddf125359f753 *source/language/fa/lang_admincp_login.php
 ded30c821fe9edbb5ac6a97aa91d7906 *source/language/fa/lang_admincp_menu.php
@@ -1920,7 +1920,7 @@ eea16a9049efef15756b10dc83af8e5b *source/language/fr/image/stamp/010.small.gif
 2b678a90025a8c706b38189db2853f2a *source/language/fr/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/fr/index.htm
 052ccaf8943b9ed54595cd872d2ae41f *source/language/fr/lang_action.php
-8402f9329a4e856dc19d217fe590a8af *source/language/fr/lang_admincp.php
+b034a0e1b9c62d671ea9e629cf94c768 *source/language/fr/lang_admincp.php
 f32681c6dcb07e6fb5fdc01a2be54d32 *source/language/fr/lang_admincp_cloud.php
 54b345ed56b5aff5c7e20676f038aaf1 *source/language/fr/lang_admincp_login.php
 f11d51ba5673bfddd4eae6929d7afedd *source/language/fr/lang_admincp_menu.php
@@ -2116,7 +2116,7 @@ f42557e8a208852338ae311b12739bfb *source/language/kr/image/stamp/010.small.gif
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/kr/index.htm
 f3e2d472ac05713b444cd7be33e9d2a7 *source/language/kr/kr.gif
 977c78cee8dffa2a77a1eb515929b4b0 *source/language/kr/lang_action.php
-8ebbcbf511d75f27dadc49306693662b *source/language/kr/lang_admincp.php
+ad03902e6f020799549f7fa46ecb9915 *source/language/kr/lang_admincp.php
 d7eab3331a30be4d177586315ce84d12 *source/language/kr/lang_admincp_cloud.php
 dbb0fc7d06eb4c37f84d62efe8e20710 *source/language/kr/lang_admincp_login.php
 7b3ece7c0e5769e9c8ad5ac66e13228e *source/language/kr/lang_admincp_menu.php
@@ -2310,7 +2310,7 @@ f42557e8a208852338ae311b12739bfb *source/language/la/image/stamp/010.small.gif
 d41d8cd98f00b204e9800998ecf8427e *source/language/la/index.htm
 4ef816874d248f28c3b92cd0143d9669 *source/language/la/la.gif
 b47bf9728f7bcc76cdebea136e332404 *source/language/la/lang_action.php
-8c0b6de5561c5405a3274dab3a174db7 *source/language/la/lang_admincp.php
+636ccf2bc441a754e3f1657ca21b5c94 *source/language/la/lang_admincp.php
 07f6a169b5b70ed56d1f1bfcc5e63c6b *source/language/la/lang_admincp_cloud.php
 a93fe667b4f86d0a3573a86a27ce5e21 *source/language/la/lang_admincp_login.php
 5756ce08f835c1d4bad8883b94f75186 *source/language/la/lang_admincp_menu.php
@@ -2503,7 +2503,7 @@ ecce0e301e4aa51c0b37839ce0fde3e7 *source/language/pl/image/stamp/011.small.gif
 44b3b51871c65f1b68c3ab8395048136 *source/language/pl/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/pl/index.htm
 ad85d7c70c7a22d20d69e3029b7ec814 *source/language/pl/lang_action.php
-6cd0fd287cb303617d590bbea434df52 *source/language/pl/lang_admincp.php
+8dcde55a4f4d9436561a4334ebc62913 *source/language/pl/lang_admincp.php
 25d6824b51b447c8f08072766894c05f *source/language/pl/lang_admincp_cloud.php
 6d059eb86ff937a005f9425dd7ff7898 *source/language/pl/lang_admincp_login.php
 57f35c9762aa498d9f2c5fa6de540b87 *source/language/pl/lang_admincp_menu.php
@@ -2698,7 +2698,7 @@ d00e1b5f996790ce4413b1f25c10755c *source/language/ru/image/stamp/010.gif
 bf44ee286c58db8c7c8aa4c2b514ad05 *source/language/ru/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/ru/index.htm
 266f8b501b8fd1376de290a75953264c *source/language/ru/lang_action.php
-22d2bbd34f8fc691de0e7a333e531279 *source/language/ru/lang_admincp.php
+523df6a3b91a6292319fdcdf005fe86a *source/language/ru/lang_admincp.php
 70dfa8442299259a7b65f9bc841009ba *source/language/ru/lang_admincp_cloud.php
 13b120c7df0bce2dc44d7fcb406c1589 *source/language/ru/lang_admincp_login.php
 06284ca698085813a172eab894acc2f5 *source/language/ru/lang_admincp_menu.php
@@ -2892,7 +2892,7 @@ edfdd063b882d0946c6ecd9f5175f505 *source/language/sc/image/stamp/010.small.gif
 8d0c03e505511e31e3d1f2406604f66f *source/language/sc/image/uploadbutton.png
 d41d8cd98f00b204e9800998ecf8427e *source/language/sc/index.htm
 0e1469673cc7b512bfaef290d974a046 *source/language/sc/lang_action.php
-d9d697e2fbc5dcc0d5533a66f3072fdc *source/language/sc/lang_admincp.php
+e9b8010b2cd507f3f6d0fc98177f0e02 *source/language/sc/lang_admincp.php
 b9c66d9e883a768cac74ae0e90ce6ee7 *source/language/sc/lang_admincp_cloud.php
 d6a2fb315dab1868cca8e9a7944bb5d9 *source/language/sc/lang_admincp_login.php
 9b6e47570427cdc11be399a36320c361 *source/language/sc/lang_admincp_menu.php
@@ -3084,7 +3084,7 @@ edfdd063b882d0946c6ecd9f5175f505 *source/language/tc/image/stamp/010.small.gif
 8d0c03e505511e31e3d1f2406604f66f *source/language/tc/image/uploadbutton.png
 d41d8cd98f00b204e9800998ecf8427e *source/language/tc/index.htm
 869956aa96639ecf59aaa7f593bd715d *source/language/tc/lang_action.php
-08a2dddc1881429a7767e12dfb44af2d *source/language/tc/lang_admincp.php
+5de1aed16b304128d6ddb988de4a4fbb *source/language/tc/lang_admincp.php
 d72922619f0694d384ee3876193039ab *source/language/tc/lang_admincp_cloud.php
 d1d3bb5556730161af6e5e22ab0a9774 *source/language/tc/lang_admincp_login.php
 d6c801552f9bf6aa7097f0f27e1f825a *source/language/tc/lang_admincp_menu.php
@@ -3276,7 +3276,7 @@ ae6c33576bea94c458afbe0263572fd7 *source/language/th/image/stamp/011.small.gif
 21ee8de628c377577cf8bf86806f8e8a *source/language/th/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/th/index.htm
 e627bab291fd866a1fd0466461ffbfda *source/language/th/lang_action.php
-0c948b7a39e27ce09fc854bc168c1c67 *source/language/th/lang_admincp.php
+891b217d40fa00e20320792440f99c8f *source/language/th/lang_admincp.php
 a146bb2324dbb95084c6fed794234651 *source/language/th/lang_admincp_cloud.php
 a000a86bd163c3811141dac353598f1f *source/language/th/lang_admincp_login.php
 ecd955711a54019ae22f1153b2705d67 *source/language/th/lang_admincp_menu.php
@@ -3470,7 +3470,7 @@ f42557e8a208852338ae311b12739bfb *source/language/tr/image/stamp/010.small.gif
 2b678a90025a8c706b38189db2853f2a *source/language/tr/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/tr/index.htm
 62abf43a111cc95b3b7951668b8c859d *source/language/tr/lang_action.php
-4b98ac13bb0e4b4d074e3c19aa0b2438 *source/language/tr/lang_admincp.php
+80711cd8f74f61334c53cb3ebe359145 *source/language/tr/lang_admincp.php
 7e00e5a2dff4b11ffcc56df023afd567 *source/language/tr/lang_admincp_cloud.php
 5bc8082121ead242308c15b3b8d18dc0 *source/language/tr/lang_admincp_login.php
 b9a25e25616a78e12f2076c86b41752a *source/language/tr/lang_admincp_menu.php
@@ -3664,7 +3664,7 @@ f42557e8a208852338ae311b12739bfb *source/language/ui/image/stamp/010.small.gif
 2b678a90025a8c706b38189db2853f2a *source/language/ui/image/uploadbutton.png
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/ui/index.htm
 aadd4a3e360b0906a9cb5e6c0e31c7b3 *source/language/ui/lang_action.php
-21f6d6ebcc39a34cb7824e185b6f5b47 *source/language/ui/lang_admincp.php
+8b23e154cbcf36d60a579be049218078 *source/language/ui/lang_admincp.php
 0d98d38b497d80a63bf9154dddafc6ca *source/language/ui/lang_admincp_cloud.php
 c3526acf5b19648d81e792b43e6256c7 *source/language/ui/lang_admincp_login.php
 fac23d89483da369fc25ba4e3f182b8c *source/language/ui/lang_admincp_menu.php
@@ -3861,7 +3861,7 @@ ea1809500ad5147273682668347784e3 *source/language/vn/image/stamp/011.small.gif
 7c040941cea080b762056906b9286339 *source/language/vn/image/uploadbutton.png
 d41d8cd98f00b204e9800998ecf8427e *source/language/vn/index.htm
 6df5fba645833dcdf10c198ac5039773 *source/language/vn/lang_action.php
-1100b469f9107b6fa7310e1652a40ec1 *source/language/vn/lang_admincp.php
+2c9918be6d0b1671e1b9bcf09d48bf3a *source/language/vn/lang_admincp.php
 929d3dbd93aa9434cb75be6c303f117a *source/language/vn/lang_admincp_cloud.php
 8f3c61d426be6f59360dcf8925049a89 *source/language/vn/lang_admincp_login.php
 3394e70c15aa4ccf510ea4319b087bdf *source/language/vn/lang_admincp_menu.php
