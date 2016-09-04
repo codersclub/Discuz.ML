@@ -56,6 +56,7 @@ $lang = array (
 	'nav_sethomepage'	=> '<img src="static/image/common/home.gif" title="设为首页">',//'<img src="static/image/common/home.gif" title="Set as Homepage">',
 	'nav_setfavorite'	=> '<img src="static/image/common/fav.gif" title="收藏本站">',//'<img src="static/image/common/fav.gif" title="Add to Favorites">',
 	'nav_uchome'		=> 'UCHome',//'UCHome',
+	'nav_darkroom'		=> '小黑屋',//'Dark room',
 
 	'idcardtype_choice'	=> '身份证\n护照\n驾驶证',//'ID\nPassport\nDriving license',//tc:'身份證\n護照\n駕駛證',
 	'education_choice'	=> '博士\n硕士\n本科\n专科\n中学\n小学\n其它',//'Doctor\nMaster\nBachelor\nSpecialist\nSchool\nPrimary School\nOther',//tc:'博士\n碩士\n本科\n專科\n中學\n小學\n其它',
