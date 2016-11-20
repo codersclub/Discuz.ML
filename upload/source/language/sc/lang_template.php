@@ -492,6 +492,8 @@ $lang = array (
 
 	'or'		=> '或者',//'or',
 
+	'upload_selectfile' => '浏览',//'Browse',
+
 // Google Maps
 	'e_map'		=> '地图',//'Map',
 	'e_map_insert'	=> '插入google地图',//'Insert Google Map',
