@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: helper_seo.php 32836 2013-03-14 08:10:02Z zhangguosheng $
+ *      $Id: helper_seo.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -91,14 +91,21 @@ class helper_seo {
 			}
 			if($searcharray && $replacearray) {
 				$_G['trunsform_tmp'] = array();
-				$content = preg_replace("/(<script\s+.*?>.*?<\/script>)|(<a\s+.*?>.*?<\/a>)|(<img\s+.*?[\/]?>)|(\[attach\](\d+)\[\/attach\])/ies", "helper_seo::base64_transform('encode', '<relatedlink>', '\\1\\2\\3\\4', '</relatedlink>')", $content);
+				$content = preg_replace_callback("/(<script\s+.*?>.*?<\/script>)|(<a\s+.*?>.*?<\/a>)|(<img\s+.*?[\/]?>)|(\[attach\](\d+)\[\/attach\])/is", array(__CLASS__, 'parse_related_link_callback_base64_transform_1234'), $content);
 				$content = preg_replace($searcharray, $replacearray, $content, 1);
-				$content = preg_replace("/<relatedlink>(.*?)<\/relatedlink>/ies", "helper_seo::base64_transform('decode', '', '\\1', '')", $content);
+				$content = preg_replace_callback("/<relatedlink>(.*?)<\/relatedlink>/is", array(__CLASS__, 'parse_related_link_callback_base64_transform_1'), $content);
 			}
 		}
 		return $content;
 	}
 
+	static public function parse_related_link_callback_base64_transform_1234($matches) {
+		return self::base64_transform('encode', '<relatedlink>', $matches[1].$matches[2].$matches[3].$matches[4], '</relatedlink>');
+	}
+
+	static function parse_related_link_callback_base64_transform_1($matches) {
+		return self::base64_transform('decode', '', $matches[1], '');
+	}
 
 	public static function base64_transform($type, $prefix, $string, $suffix) {
 		global $_G;

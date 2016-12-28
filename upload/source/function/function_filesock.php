@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_filesock.php 34441 2014-04-29 07:47:26Z nemohou $
+ *      $Id: function_filesock.php 36279 2016-12-09 07:54:31Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 

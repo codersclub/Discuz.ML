@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_common_tag.php 32232 2012-12-03 08:57:08Z zhangjie $
+ *      $Id: table_common_tag.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -60,7 +60,7 @@ class table_common_tag extends discuz_table
 		return DB::fetch_first('SELECT * FROM %t WHERE tagname=%s '.$statussql, array($this->_table, $tagname));
 	}
 
-	public function fetch_info($tagid, $tagname) {
+	public function fetch_info($tagid, $tagname = '') {
 		if(empty($tagid) && empty($tagname)) {
 			return array();
 		}

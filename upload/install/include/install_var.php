@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: install_var.php 33326 2013-05-28 08:52:45Z kamichen $
+ *      $Id: install_var.php 36287 2016-12-12 03:59:05Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -14,7 +14,7 @@ if(!defined('IN_COMSENZ')) {
 
 define('SOFT_NAME', 'Discuz!');
 
-/*vot*/ define('DEFAULT_LANG', 'sc'); // Default Installation Language
+/*vot*/ define('DEFAULT_LANG', 'zh_cn'); // Default Installation Language
 /*vot*/ define('INSTALL_LANG', 'MultiLingual'); // 'EN_UTF8', 'SC_UTF8', 'TC_UTF8'
 
 define('CONFIG', './config/config_global.php');
@@ -72,10 +72,12 @@ $filesock_items = array('fsockopen', 'pfsockopen', 'stream_socket_client', 'curl
 $env_items = array
 (
 	'os' => array('c' => 'PHP_OS', 'r' => 'notset', 'b' => 'unix'),
-/*vot*/ 'php' => array('c' => 'PHP_VERSION', 'r' => '5.2', 'b' => '5.4'),
+	'php' => array('c' => 'PHP_VERSION', 'r' => '5.2', 'b' => '7.0'),
 	'attachmentupload' => array('r' => 'notset', 'b' => '2M'),
 	'gdversion' => array('r' => '1.0', 'b' => '2.0'),
-	'diskspace' => array('r' => '10M', 'b' => 'notset'),
+	'curl' => array('r' => 'notset', 'b' => 'enable'),
+	'opcache' => array('r' => 'notset', 'b' => 'enable'),
+	'diskspace' => array('r' => '30MB', 'b' => 'notset'),
 /*vot*/	'mbstring' => array('r' => 'support', 'b' => 'support'),
 );
 

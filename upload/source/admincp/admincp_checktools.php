@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_checktools.php 35926 2016-05-11 02:21:11Z nemohou $
+ *      $Id: admincp_checktools.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -189,10 +189,10 @@ if($operation == 'filecheck') {
 			$styleid = $_G['setting']['styleid'];
 		}
 		$style = C::t('common_style')->fetch_by_styleid($styleid);
-		checkhook(substr($style['directory'], 2).'/', '\.htm', 1);
+		checkhook(substr($style['directory'], 2).'/', '\.htm|\.php', 1);
 
 		foreach($discuzfiles as $line) {
-			list($file, $hook) = explode(' *', substr($line, 0, -2));
+			list($file, $hook) = explode(' *', trim($line));
 			if($hook) {
 				$discuzhookdata[$file][$hook][] = $hook;
 				$discuzhookdata_hook[$file][] = $hook;
@@ -203,9 +203,10 @@ if($operation == 'filecheck') {
 		$diffnum = 0;
 		foreach($discuzhookdata as $file => $hook) {
 			$dir = dirname($file);
-			if(isset($hookdata[$file])) {
+                        $filen = str_replace('template/default/', substr($style['directory'], 2).'/', $file);
+			if(isset($hookdata[$filen])) {
 				foreach($hook as $k => $hookarr) {
-					if(($diff = count($hookarr) - count($hookdata[$file][$k])) > 0) {
+					if(($diff = count($hookarr) - count($hookdata[$filen][$k])) > 0) {
 						for($i = 0; $i < $diff; $i++) {
 							$diffhooklist[$file][] = $k;
 						}
@@ -219,6 +220,7 @@ if($operation == 'filecheck') {
 		}
 
 		foreach($difffilelist as $dir => $files) {
+                        $dir = str_replace('template/default/', substr($style['directory'], 2).'/', $dir);
 			$result .= '<tbody><tr><td class="td30"><a href="javascript:;" onclick="toggle_group(\'dir_'.$dir.'\')" id="a_dir_'.$dir.'">[-]</a></td><td colspan="3"><div class="ofolder">'.$dir.'</div></td></tr></tbody>';
 			$result .= '<tbody id="dir_'.$dir.'">';
 			foreach($files as $file) {
@@ -574,15 +576,22 @@ function checkhook($currentdir, $ext = '', $sub = 1, $skip = '') {
 			} else {
 				$data = file_get_contents($file);
 				$hooks = array();
-				preg_replace("/\{hook\/(\w+?)(\s+(.+?))?\}/ie", "findhook('\\1', '\\3')", $data);
+				preg_replace_callback("/\{hook\/(\w+?)(\s+(.+?))?\}/i", 'checkhook_callback_findhook_13', $data);
 				if($hooks) {
 					foreach($hooks as $v) {
+                                        	if(preg_match('/\.php$/', $file)) {
+                                                	$file = substr($file, 0, -4).'.htm';
+                                                }
 						$hookdata[$file][$v][] = $v;
 					}
 				}
 			}
 		}
 	}
+}
+
+function checkhook_callback_findhook_13($matches) {
+	return findhook($matches[1], $matches[3]);
 }
 
 function findhook($hookid, $key) {

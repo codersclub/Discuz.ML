@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_editor.php 32078 2012-11-07 05:28:56Z monkey $
+ *      $Id: function_editor.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -115,18 +115,13 @@ function html2bbcode($text) {
 		"/<script.*>.*<\/script>/siU",
 		'/on(mousewheel|mouseover|click|load|onload|submit|focus|blur)="[^"]*"/i',
 		"/(\r\n|\n|\r)/",
-		"/<table([^>]*(width|background|background-color|bgcolor)[^>]*)>/siUe",
 		"/<table.*>/siU",
 		"/<tr.*>/siU",
 		"/<td>/i",
-		"/<td(.+)>/siUe",
 		"/<\/td>/i",
 		"/<\/tr>/i",
 		"/<\/table>/i",
-		'/<h([0-9]+)[^>]*>/siUe',
 		'/<\/h([0-9]+)>/siU',
-		"/<img[^>]+smilieid=\"(\d+)\".*>/esiU",
-		"/<img([^>]*src[^>]*)>/eiU",
 		"/<a\s+?name=.+?\".\">(.+?)<\/a>/is",
 		"/<br.*>/siU",
 		"/<span\s+?style=\"float:\s+(left|right);\">(.+?)<\/span>/is",
@@ -135,23 +130,23 @@ function html2bbcode($text) {
 		'',
 		'',
 		'',
-		"tabletag('\\1')",
 		'[table]',
 		'[tr]',
 		'[td]',
-		"tdtag('\\1')",
 		'[/td]',
 		'[/tr]',
 		'[/table]',
-		"\"[size=\".(7 - \\1).\"]\"",
 		"[/size]\n\n",
-		"smileycode('\\1')",
-		"imgtag('\\1')",
 		'\1',
 		"\n",
 		"[float=\\1]\\2[/float]",
 	);
 	$text = preg_replace($pregfind, $pregreplace, $text);
+	$text = preg_replace_callback("/<table([^>]*(width|background|background-color|bgcolor)[^>]*)>/siU", 'html2bbcode_callback_tabletag_1', $text);
+	$text = preg_replace_callback("/<td(.+)>/siU", 'html2bbcode_callback_tdtag_1', $text);
+	$text = preg_replace_callback('/<h([0-9]+)[^>]*>/siU', 'html2bbcode_callback_1', $text);
+	$text = preg_replace_callback("/<img[^>]+smilieid=\"(\d+)\".*>/siU", 'html2bbcode_callback_smileycode_1', $text);
+	$text = preg_replace_callback("/<img([^>]*src[^>]*)>/iU", 'html2bbcode_callback_imgtag_1', $text);
 
 	$text = recursion('b', $text, 'simpletag', 'b');
 	$text = recursion('strong', $text, 'simpletag', 'b');
@@ -176,6 +171,26 @@ function html2bbcode($text) {
 	$text = str_replace($strfind, $strreplace, $text);
 
 	return dhtmlspecialchars(trim($text));
+}
+
+function html2bbcode_callback_tabletag_1($matches) {
+	return tabletag($matches[1]);
+}
+
+function html2bbcode_callback_tdtag_1($matches) {
+	return tdtag($matches[1]);
+}
+
+function html2bbcode_callback_1($matches) {
+	return '[size='.(7 - $matches[1]).']';
+}
+
+function html2bbcode_callback_smileycode_1($matches) {
+	return smileycode($matches[1]);
+}
+
+function html2bbcode_callback_imgtag_1($matches) {
+	return imgtag($matches[1]);
 }
 
 function imgtag($attributes) {
@@ -236,11 +251,7 @@ function parsestyle($tagoptions, &$prependtags, &$appendtags) {
 	);
 
 	$style = getoptionvalue('style', $tagoptions);
-	$style = preg_replace(
-		"/(?<![a-z0-9-])color:\s*rgb\((\d+),\s*(\d+),\s*(\d+)\)(;?)/ie",
-		'sprintf("color: #%02X%02X%02X$4", $1, $2, $3)',
-		$style
-	);
+	$style = preg_replace_callback("/(?<![a-z0-9-])color:\s*rgb\((\d+),\s*(\d+),\s*(\d+)\)(;?)/i", 'parsestyle_callback_sprintf_4123', $style);
 	foreach($searchlist as $searchtag) {
 		if(preg_match('/'.$searchtag['regex'].'/i', $style, $match)) {
 			$opnvalue = $match["$searchtag[match]"];
@@ -248,6 +259,10 @@ function parsestyle($tagoptions, &$prependtags, &$appendtags) {
 			$appendtags = '[/'.$searchtag['tag']."]$appendtags";
 		}
 	}
+}
+
+function parsestyle_callback_sprintf_4123($matches) {
+	return sprintf("color: #%02X%02X%02X".$matches[4], $matches[1], $matches[2], $matches[3]);
 }
 
 function ptag($poptions, $text) {

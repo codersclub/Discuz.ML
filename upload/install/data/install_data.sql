@@ -47,7 +47,7 @@ INSERT INTO pre_common_credit_rule VALUES ('31','Collection followed','followedc
 -- INSERT INTO pre_common_credit_rule VALUES ('38','Delete avatar','delavatar','0','0','1','0','0','0','0','0','0','0','0','0','');
 
 
---
+
 INSERT INTO pre_common_cron VALUES ('1','1','system','Clean today posted daily','cron_todaypost_daily.php','1269746623','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('2','1','system','Clean Online Time Monthly','cron_onlinetime_monthly.php','1269682366','1270051200','-1','1','0','0');
 INSERT INTO pre_common_cron VALUES ('3','1','system','Clean data daily','cron_cleanup_daily.php','1269746634','1269811800','-1','-1','5','30');
@@ -70,7 +70,7 @@ INSERT INTO pre_common_cron VALUES ('19','1','system','Count today hot posts','c
 INSERT INTO pre_common_cron VALUES ('20','1','system','Update Forum Last Post (related to Waterproof wall)','cron_security_cleanup_lastpost.php','1269746623','1269792000','-1','-1','7','0');
 --
 INSERT INTO pre_common_friendlink VALUES ('1','0','Official Forum','http://www.discuz.net','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
-INSERT INTO pre_common_friendlink VALUES ('2','4','My Territory','http://www.5d6d.com/','','','2');
+INSERT INTO pre_common_friendlink VALUES ('2','4','VeryDz.com','http://www.verydz.com/','','','2');
 INSERT INTO pre_common_friendlink VALUES ('3','2','Open Application Platform','http://www.manyou.com/','','','2');
 INSERT INTO pre_common_friendlink VALUES ('4','3','Yeswan','http://www.yeswan.com','','','2');
 INSERT INTO pre_common_friendlink VALUES ('5','1','Comsenz','http://www.comsenz.com','','','2');
@@ -594,9 +594,9 @@ INSERT INTO pre_common_setting VALUES ('collectionnum', '10');
 INSERT INTO pre_common_setting VALUES ('blockmaxaggregationitem','20000');
 INSERT INTO pre_common_setting VALUES ('moddetail','0');
 INSERT INTO pre_common_setting VALUES ('antitheft','a:2:{s:5:"allow";i:0;s:3:"max";i:200;}');
-INSERT INTO pre_common_setting VALUES ('repliesrank','1');
+INSERT INTO pre_common_setting VALUES ('repliesrank','0');
 INSERT INTO pre_common_setting VALUES ('threadblacklist','1');
-INSERT INTO pre_common_setting VALUES ('threadhotreplies','3');
+INSERT INTO pre_common_setting VALUES ('threadhotreplies','0');
 INSERT INTO pre_common_setting VALUES ('threadfilternum','10');
 INSERT INTO pre_common_setting VALUES ('hidefilteredpost','0');
 INSERT INTO pre_common_setting VALUES ('forumdisplaythreadpreview','1');

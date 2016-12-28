@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_threadsort.php 34222 2013-11-15 09:36:18Z nemohou $
+ *      $Id: function_threadsort.php 36284 2016-12-12 00:47:50Z nemohou $
  *	Mofified by Valery Votintsev, codersclub.org
  */
 
@@ -275,11 +275,11 @@ function showsorttemplate($sortid, $fid, $sortoptionarray, $templatearray, $thre
 		foreach($sortoptionarray as $sortid => $optionarray) {
 			foreach($optionarray as $option) {
 				if($option['subjectshow']) {
-					$searchtitle[$sortid][] = '/{('.$option['identifier'].')}/e';
-					$searchvalue[$sortid][] = '/\[('.$option['identifier'].')value\]/e';
-					$searchvalue[$sortid][] = '/{('.$option['identifier'].')_value}/e';
-					$searchunit[$sortid][] = '/\[('.$option['identifier'].')unit\]/e';
-					$searchunit[$sortid][] = '/{('.$option['identifier'].')_unit}/e';
+					$searchtitle[$sortid][] = '/{('.$option['identifier'].')}/';
+					$searchvalue[$sortid][] = '/\[('.$option['identifier'].')value\]/';
+					$searchvalue[$sortid][] = '/{('.$option['identifier'].')_value}/';
+					$searchunit[$sortid][] = '/\[('.$option['identifier'].')unit\]/';
+					$searchunit[$sortid][] = '/{('.$option['identifier'].')_unit}/';
 				}
 			}
 		}
@@ -295,9 +295,9 @@ function showsorttemplate($sortid, $fid, $sortoptionarray, $templatearray, $thre
 								$sortdata[$tid]['subject'],
 								"<a href=\"forum.php?mod=viewthread&tid=$tid\">\\1</a>"
 							), stripslashes($templatearray[$sortid]));
-			$stemplate[$sortid][$tid] = preg_replace($searchtitle[$sortid], "showlistoption('\\1', 'title', '$tid', '$sortid')", $stemplate[$sortid][$tid]);
-			$stemplate[$sortid][$tid] = preg_replace($searchvalue[$sortid], "showlistoption('\\1', 'value', '$tid', '$sortid')", $stemplate[$sortid][$tid]);
-			$stemplate[$sortid][$tid] = preg_replace($searchunit[$sortid], "showlistoption('\\1', 'unit', '$tid', '$sortid')", $stemplate[$sortid][$tid]);
+			$stemplate[$sortid][$tid] = preg_replace_callback($searchtitle[$sortid], create_function('$matches', 'return showlistoption($matches[1], \'title\', '.intval($tid).', '.intval($sortid).');'), $stemplate[$sortid][$tid]);
+			$stemplate[$sortid][$tid] = preg_replace_callback($searchvalue[$sortid], create_function('$matches', 'return showlistoption($matches[1], \'value\', '.intval($tid).', '.intval($sortid).');'), $stemplate[$sortid][$tid]);
+			$stemplate[$sortid][$tid] = preg_replace_callback($searchunit[$sortid], create_function('$matches', 'return showlistoption($matches[1], \'unit\', '.intval($tid).', '.intval($sortid).');'), $stemplate[$sortid][$tid]);
 		}
 	}
 
@@ -369,7 +369,7 @@ function threadsortshow($sortid, $tid) {
 	if($sortoptionarray) {
 
 		foreach(C::t('forum_typeoptionvar')->fetch_all_by_tid_optionid($tid) as $option) {
-/*vot*/			$optiondata[$option['optionid']]['value'] = stripslashes($option['value']);
+			$optiondata[$option['optionid']]['value'] = $option['value'];
 			$optiondata[$option['optionid']]['expiration'] = $option['expiration'] && $option['expiration'] <= TIMESTAMP ? 1 : 0;
 			$sortdataexpiration = $option['expiration'];
 		}
@@ -440,18 +440,18 @@ function threadsortshow($sortid, $tid) {
 		$typetemplate = '';
 		if($templatearray['viewthread']) {
 			foreach($sortoptionarray as $option) {
-				$searchtitle[] = '/{('.$option['identifier'].')}/e';
-				$searchvalue[] = '/\[('.$option['identifier'].')value\]/e';
-				$searchvalue[] = '/{('.$option['identifier'].')_value}/e';
-				$searchunit[] = '/\[('.$option['identifier'].')unit\]/e';
-				$searchunit[] = '/{('.$option['identifier'].')_unit}/e';
+				$searchtitle[] = '/{('.$option['identifier'].')}/';
+				$searchvalue[] = '/\[('.$option['identifier'].')value\]/';
+				$searchvalue[] = '/{('.$option['identifier'].')_value}/';
+				$searchunit[] = '/\[('.$option['identifier'].')unit\]/';
+				$searchunit[] = '/{('.$option['identifier'].')_unit}/';
 			}
 
 			$threadexpiration = $sortdataexpiration ? dgmdate($sortdataexpiration) : lang('forum/misc', 'never_expired');
 			$typetemplate = preg_replace(array("/\{expiration\}/i"), array($threadexpiration), stripslashes($templatearray['viewthread']));
-			$typetemplate = preg_replace($searchtitle, "showoption('\\1', 'title')", $typetemplate);
-			$typetemplate = preg_replace($searchvalue, "showoption('\\1', 'value')", $typetemplate);
-			$typetemplate = preg_replace($searchunit, "showoption('\\1', 'unit')", $typetemplate);
+			$typetemplate = preg_replace_callback($searchtitle, "threadsortshow_callback_showoption_title1", $typetemplate);
+			$typetemplate = preg_replace_callback($searchvalue, "threadsortshow_callback_showoption_value1", $typetemplate);
+			$typetemplate = preg_replace_callback($searchunit, "threadsortshow_callback_showoption_unit1", $typetemplate);
 		}
 	}
 
@@ -460,6 +460,18 @@ function threadsortshow($sortid, $tid) {
 	$threadsortshow['expiration'] = dgmdate($sortdataexpiration, 'd');
 
 	return $threadsortshow;
+}
+
+function threadsortshow_callback_showoption_title1($matches) {
+	return showoption($matches[1], 'title');
+}
+
+function threadsortshow_callback_showoption_value1($matches) {
+	return showoption($matches[1], 'value');
+}
+
+function threadsortshow_callback_showoption_unit1($matches) {
+	return showoption($matches[1], 'unit');
 }
 
 function showoption($var, $type) {
@@ -631,24 +643,24 @@ function threadsort_optiondata($pid, $sortid, $sortoptionarray, $templatearray) 
 			$showoption = gettypetemplate($option, $_G['forum_optionlist'][$optionid], $optionid);
 			$_G['forum_option'][$option['identifier']]['value'] = $showoption[$option['identifier']]['value'];
 
-			$searchcontent['title'][] = '/{('.$option['identifier'].')}/e';
-			$searchcontent['value'][] = '/\[('.$option['identifier'].')value\]/e';
-			$searchcontent['value'][] = '/{('.$option['identifier'].')_value}/e';
-			$searchcontent['unit'][] = '/\[('.$option['identifier'].')unit\]/e';
-			$searchcontent['unit'][] = '/{('.$option['identifier'].')_unit}/e';
-			$searchcontent['description'][] = '/\[('.$option['identifier'].')description\]/e';
-			$searchcontent['description'][] = '/{('.$option['identifier'].')_description}/e';
-			$searchcontent['required'][] = '/\[('.$option['identifier'].')required\]/e';
-			$searchcontent['required'][] = '/{('.$option['identifier'].')_required}/e';
-			$searchcontent['tips'][] = '/\[('.$option['identifier'].')tips\]/e';
-			$searchcontent['tips'][] = '/{('.$option['identifier'].')_tips}/e';
+			$searchcontent['title'][] = '/{('.$option['identifier'].')}/';
+			$searchcontent['value'][] = '/\[('.$option['identifier'].')value\]/';
+			$searchcontent['value'][] = '/{('.$option['identifier'].')_value}/';
+			$searchcontent['unit'][] = '/\[('.$option['identifier'].')unit\]/';
+			$searchcontent['unit'][] = '/{('.$option['identifier'].')_unit}/';
+			$searchcontent['description'][] = '/\[('.$option['identifier'].')description\]/';
+			$searchcontent['description'][] = '/{('.$option['identifier'].')_description}/';
+			$searchcontent['required'][] = '/\[('.$option['identifier'].')required\]/';
+			$searchcontent['required'][] = '/{('.$option['identifier'].')_required}/';
+			$searchcontent['tips'][] = '/\[('.$option['identifier'].')tips\]/';
+			$searchcontent['tips'][] = '/{('.$option['identifier'].')_tips}/';
 		}
 	}
 
 	if($templatearray['post']) {
 		$typetemplate = $templatearray['post'];
 		foreach($searchcontent as $key => $content) {
-			$typetemplate = preg_replace($searchcontent[$key], "showoption('\\1', '$key')", stripslashes($typetemplate));
+			$typetemplate = preg_replace_callback($searchcontent[$key], create_function('$matches', 'return showoption($matches[1], \''.addslashes($key).'\');'), stripslashes($typetemplate));
 		}
 
 		$_G['forum_typetemplate'] = $typetemplate;

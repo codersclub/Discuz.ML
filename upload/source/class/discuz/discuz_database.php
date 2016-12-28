@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_database.php 35054 2014-11-03 05:17:00Z hypowang $
+ *      $Id: discuz_database.php 36294 2016-12-14 03:11:30Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -60,7 +60,7 @@ class discuz_database {
 		return self::query("$cmd $table SET $sql", null, $silent, !$return_insert_id);
 	}
 
-	public static function update($table, $data, $condition, $unbuffered = false, $low_priority = false) {
+	public static function update($table, $data, $condition = '', $unbuffered = false, $low_priority = false) {
 		$sql = self::implode($data);
 		if(empty($sql)) {
 			return false;
@@ -84,6 +84,7 @@ class discuz_database {
 	}
 
 	public static function fetch($resourceid, $type = MYSQL_ASSOC) {
+		if(self::$db->drivertype == 'mysqli') $type = MYSQLI_ASSOC;
 		return self::$db->fetch_array($resourceid, $type);
 	}
 
@@ -174,7 +175,7 @@ class discuz_database {
 	public static function quote($str, $noarray = false) {
 
 		if (is_string($str))
-/*vot*/			return '\'' . mysql_real_escape_string($str) . '\'';
+			return '\'' . self::$db->escape_string($str) . '\'';
 
 		if (is_int($str) or is_float($str))
 			return '\'' . $str . '\'';

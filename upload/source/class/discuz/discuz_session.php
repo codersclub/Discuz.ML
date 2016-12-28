@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_session.php 33707 2013-08-06 08:22:12Z andyzheng $
+ *      $Id: discuz_session.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -132,7 +132,7 @@ class discuz_session {
 		return $this->table->count_by_fid($fid);
 	}
 
-	public function fetch_all_by_fid($fid, $limit) {
+	public function fetch_all_by_fid($fid, $limit = 0) {
 		$data = array();
 		if(!($fid = dintval($fid))) {
 			return $data;

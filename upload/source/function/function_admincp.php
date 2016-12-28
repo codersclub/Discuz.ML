@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_admincp.php 34645 2014-06-16 09:08:07Z hypowang $
+ *      $Id: function_admincp.php 36299 2016-12-15 06:35:18Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -59,75 +59,6 @@ function checkpermission($action, $break = 1) {
 	} else {
 		return $_G['config']['admincp'][$action];
 	}
-}
-
-function siteinformation() {
-//vot	!!!!!!!!!! Review the data reported to Comsenz !!!!!!!!!!!!!!!!!!!!
-	global $_G, $siteuniqueid, $save_mastermobile, $save_masterqq, $save_masteremail;
-	$db = DB::object();
-	$update = array(
-				'uniqueid' => $siteuniqueid,
-				'version' => DISCUZ_VERSION,
-				'release' => DISCUZ_RELEASE,
-				'php' => PHP_VERSION,
-				'mysql' => $db->version(),
-				'charset' => CHARSET,
-				'bbname' => $_G['setting']['bbname'],
-				'mastermobile' => $save_mastermobile,
-				'masterqq' => $save_masterqq,
-				'masteremail' => $save_masteremail,
-				'software' => $_SERVER['SERVER_SOFTWARE'],
-				'my_siteid' => $_G['setting']['my_siteid'],
-				'my_sitekey' => $_G['setting']['my_sitekey'],
-			);
-
-	$updatetime = @filemtime(DISCUZ_ROOT.'./data/updatetime.lock');
-	if(empty($updatetime) || (TIMESTAMP - $updatetime > 3600 * 4)) {
-		@touch(DISCUZ_ROOT.'./data/updatetime.lock');
-		$tableprelen = strlen($db->tablepre);
-		$table = array(
-			'forum_thread' => 'threads',
-			'forum_post' => 'posts',
-			'forum_attachment' => 'fattachments',
-			'common_member' => 'members',
-			'home_album' => 'albums',
-			'home_blog' => 'blogs',
-			'home_doing' => 'doings',
-			'home_poke' => 'pokes',
-			'home_share' => 'shares',
-			'portal_topic' => 'topics',
-			'portal_article_title' => 'articles',
-			'portal_attachment' => 'pattachments',
-		);
-		foreach(C::t('common_setting')->fetch_all_table_status() as $row) {
-			$tablename = substr($row['Name'], $tableprelen);
-			if(!isset($table[$tablename])) continue;
-			$update[$table[$tablename]] = $row['Rows'];
-		}
-		foreach(C::t('forum_thread')->count_special_group_by_special() as $thread) {
-			$thread['special'] = intval($thread['special']);
-			$update['spt_'.$thread['special']] = $thread['spcount'];
-		}
-		$update['groups'] = C::t('forum_forum')->fetch_forum_num('group');
-		$update['forums'] = C::t('forum_forum')->fetch_forum_num();
-		$update['adminemail'] = $_G['setting']['adminemail'];
-		if($_G['setting']['msn']['on'] && $_G['setting']['msn']['domain']) {
-			$update['msn_domain'] = $_G['setting']['msn']['domain'];
-		}
-
-		$comma = '';
-		foreach(C::t('common_patch')->fetch_patch_by_status(array(1, 2)) as $patch) {
-			$update['patch'] .= $comma.$patch['serial'];
-			$comma = ',';
-		}
-	}
-
-	$data = '';
-	foreach($update as $key => $value) {
-		$data .= $key.'='.rawurlencode($value).'&';
-	}
-
-	return 'os=dx&update='.rawurlencode(base64_encode($data)).'&md5hash='.substr(md5($_SERVER['HTTP_USER_AGENT'].implode('', $update).TIMESTAMP), 8, 8).'&timestamp='.TIMESTAMP;
 }
 
 function upgradeinformation($status = 0) {
@@ -972,37 +903,6 @@ function cpfooter() {
 		function_exists('debugmessage') && debugmessage();
 	}
 
-	if($_G['adminid'] == 1 && $_GET['action'] == 'index') {
-		$release = DISCUZ_RELEASE;
-
-/*vot*/		$newsurl =  'http://customer.discuz.net/news.php?'.siteinformation();
-/*vot*/		$subscribe = cplang('subscribe');
-/*vot*/		$lang = DISCUZ_LANG;
-/*vot*/		$uptodate = cplang('version_uptodate');
-		echo <<<EOT
-<script type="text/javascript">
-	var newhtml = '';
-/*vot*/	var lang = '{$lang}';
-/*vot*/	var code;
-/*vot*/	newhtml += '<table class="tb tb2"><tr><th class="partition edited">{$uptodate}</th></tr>';
-	newhtml += '<tr><td class="tipsblock"><a href="http://faq.comsenz.com/checkversion.php?product=Discuz&version={$version}&release={$release}&charset={$charset}" target="_blank"><img src="{$newsurl}" onload="shownews()" /></a></td></tr></table>';
-/*vot*/	var elem = document.getElementsByClassName('rssbutton')[0];
-/*vot*/	if((lang == 'sc') || (lang == 'tc')) {
-/*vot*/	  code = elem.innerHTML;
-/*vot*/	} else {
-/*vot*/	  code = elem.innerHTML.replace(/订阅/, '{$subscribe}');//Translate
-/*vot*/	}
-
-/*vot*/	elem.innerHTML = code;
-	\$('boardnews').style.display = 'none';
-//vot	\$('boardnews').innerHTML = newhtml;
-	function shownews() {
-		\$('boardnews').style.display = '';
-	}
-</script>
-EOT;
-	}
-
 	echo "\n</body>\n</html>";
 
 }
@@ -1349,48 +1249,48 @@ function rewritedata($alldata = 1) {
 	$data = array();
 	if(!$alldata) {
 		if(in_array('portal_topic', $_G['setting']['rewritestatus'])) {
-			$data['search']['portal_topic'] = "/".$_G['domain']['pregxprw']['portal']."\?mod\=topic&(amp;)?topic\=([^#]+?)?\"([^\>]*)\>/e";
-			$data['replace']['portal_topic'] = "rewriteoutput('portal_topic', 0, '\\1', '\\3', '\\4')";
+			$data['search']['portal_topic'] = "/".$_G['domain']['pregxprw']['portal']."\?mod\=topic&(amp;)?topic\=([^#]+?)?\"([^\>]*)\>/";
+			$data['replace']['portal_topic'] = 'rewriteoutput(\'portal_topic\', 0, $matches[1], $matches[3], $matches[4])';
 		}
 
 		if(in_array('portal_article', $_G['setting']['rewritestatus'])) {
-			$data['search']['portal_article'] = "/".$_G['domain']['pregxprw']['portal']."\?mod\=view&(amp;)?aid\=(\d+)(&amp;page\=(\d+))?\"([^\>]*)\>/e";
-			$data['replace']['portal_article'] = "rewriteoutput('portal_article', 0, '\\1', '\\3', '\\5', '\\6')";
+			$data['search']['portal_article'] = "/".$_G['domain']['pregxprw']['portal']."\?mod\=view&(amp;)?aid\=(\d+)(&amp;page\=(\d+))?\"([^\>]*)\>/";
+			$data['replace']['portal_article'] = 'rewriteoutput(\'portal_article\', 0, $matches[1], $matches[3], $matches[5], $matches[6])';
 		}
 
 		if(in_array('forum_forumdisplay', $_G['setting']['rewritestatus'])) {
-			$data['search']['forum_forumdisplay'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=forumdisplay&(amp;)?fid\=(\w+)(&amp;page\=(\d+))?\"([^\>]*)\>/e";
-			$data['replace']['forum_forumdisplay'] = "rewriteoutput('forum_forumdisplay', 0, '\\1', '\\3', '\\5', '\\6')";
+			$data['search']['forum_forumdisplay'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=forumdisplay&(amp;)?fid\=(\w+)(&amp;page\=(\d+))?\"([^\>]*)\>/";
+			$data['replace']['forum_forumdisplay'] = 'rewriteoutput(\'forum_forumdisplay\', 0, $matches[1], $matches[3], $matches[5], $matches[6])';
 		}
 
 		if(in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
-			$data['search']['forum_viewthread'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=viewthread&(amp;)?tid\=(\d+)(&amp;extra\=(page\%3D(\d+))?)?(&amp;page\=(\d+))?\"([^\>]*)\>/e";
-			$data['replace']['forum_viewthread'] = "rewriteoutput('forum_viewthread', 0, '\\1', '\\3', '\\8', '\\6', '\\9')";
+			$data['search']['forum_viewthread'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=viewthread&(amp;)?tid\=(\d+)(&amp;extra\=(page\%3D(\d+))?)?(&amp;page\=(\d+))?\"([^\>]*)\>/";
+			$data['replace']['forum_viewthread'] = 'rewriteoutput(\'forum_viewthread\', 0, $matches[1], $matches[3], $matches[8], $matches[6], $matches[9])';
 		}
 
 		if(in_array('group_group', $_G['setting']['rewritestatus'])) {
-			$data['search']['group_group'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=group&(amp;)?fid\=(\d+)(&amp;page\=(\d+))?\"([^\>]*)\>/e";
-			$data['replace']['group_group'] = "rewriteoutput('group_group', 0, '\\1', '\\3', '\\5', '\\6')";
+			$data['search']['group_group'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=group&(amp;)?fid\=(\d+)(&amp;page\=(\d+))?\"([^\>]*)\>/";
+			$data['replace']['group_group'] = 'rewriteoutput(\'group_group\', 0, $matches[1], $matches[3], $matches[5], $matches[6])';
 		}
 
 		if(in_array('home_space', $_G['setting']['rewritestatus'])) {
-			$data['search']['home_space'] = "/".$_G['domain']['pregxprw']['home']."\?mod=space&(amp;)?(uid\=(\d+)|username\=([^&]+?))\"([^\>]*)\>/e";
-			$data['replace']['home_space'] = "rewriteoutput('home_space', 0, '\\1', '\\4', '\\5', '\\6')";
+			$data['search']['home_space'] = "/".$_G['domain']['pregxprw']['home']."\?mod=space&(amp;)?(uid\=(\d+)|username\=([^&]+?))\"([^\>]*)\>/";
+			$data['replace']['home_space'] = 'rewriteoutput(\'home_space\', 0, $matches[1], $matches[4], $matches[5], $matches[6])';
 		}
 
 		if(in_array('home_blog', $_G['setting']['rewritestatus'])) {
-			$data['search']['home_blog'] = "/".$_G['domain']['pregxprw']['home']."\?mod=space&(amp;)?uid\=(\d+)&(amp;)?do=blog&(amp;)?id=(\d+)\"([^\>]*)\>/e";
-			$data['replace']['home_blog'] = "rewriteoutput('home_blog', 0, '\\1', '\\3', '\\6', '\\7')";
+			$data['search']['home_blog'] = "/".$_G['domain']['pregxprw']['home']."\?mod=space&(amp;)?uid\=(\d+)&(amp;)?do=blog&(amp;)?id=(\d+)\"([^\>]*)\>/";
+			$data['replace']['home_blog'] = 'rewriteoutput(\'home_blog\', 0, $matches[1], $matches[3], $matches[6], $matches[7])';
 		}
 
 		if(in_array('forum_archiver', $_G['setting']['rewritestatus'])) {
-			$data['search']['forum_archiver'] = "/<a href\=\"\?(fid|tid)\-(\d+)\.html(&page\=(\d+))?\"([^\>]*)\>/e";
-			$data['replace']['forum_archiver'] = "rewriteoutput('forum_archiver', 0, '\\1', '\\2', '\\4', '\\5')";
+			$data['search']['forum_archiver'] = "/<a href\=\"\?(fid|tid)\-(\d+)\.html(&page\=(\d+))?\"([^\>]*)\>/";
+			$data['replace']['forum_archiver'] = 'rewriteoutput(\'forum_archiver\', 0, $matches[1], $matches[2], $matches[4], $matches[5])';
 		}
 
 		if(in_array('plugin', $_G['setting']['rewritestatus'])) {
-			$data['search']['plugin'] = "/<a href\=\"plugin\.php\?id=([a-z]+[a-z0-9_]*):([a-z0-9_\-]+)(&amp;|&)?(.*?)?\"([^\>]*)\>/e";
-			$data['replace']['plugin'] = "rewriteoutput('plugin', 0, '\\1', '\\2', '\\3', '\\4', '\\5')";
+			$data['search']['plugin'] = "/<a href\=\"plugin\.php\?id=([a-z]+[a-z0-9_]*):([a-z0-9_\-]+)(&amp;|&)?(.*?)?\"([^\>]*)\>/";
+			$data['replace']['plugin'] = 'rewriteoutput(\'plugin\', 0, $matches[1], $matches[2], $matches[3], $matches[4], $matches[5])';
 		}
 	} else {
 		$data['rulesearch']['portal_topic'] = 'topic-{name}.html';

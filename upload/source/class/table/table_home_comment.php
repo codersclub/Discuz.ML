@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_home_comment.php 31996 2012-10-30 06:15:14Z liulanbo $
+ *      $Id: table_home_comment.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -120,7 +120,7 @@ class table_home_comment extends discuz_table
 		return DB::fetch_first('SELECT * FROM '.DB::table($this->_table).' '.$wheresql);
 	}
 
-	public function fetch_all_search($fetchtype, $ids, $authorid, $uids, $useip, $keywords, $idtype, $starttime, $endtime, $start, $limit, $basickeywords = 0) {
+	public function fetch_all_search($fetchtype, $ids, $authorid, $uids, $useip, $keywords, $idtype, $starttime, $endtime, $start = 0, $limit = 0, $basickeywords = 0) {
 		$parameter = array($this->_table);
 		$wherearr = array();
 		if($ids) {

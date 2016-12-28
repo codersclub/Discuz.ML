@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_setting.php 35933 2016-05-13 05:56:41Z nemohou $
+ *      $Id: admincp_setting.php 36297 2016-12-15 03:13:27Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -3442,6 +3442,9 @@ EOT;
 	$updatecache = FALSE;
 	$settings = array();
 	foreach($settingnew as $key => $val) {
+		if(in_array($key, array('siteuniqueid', 'my_sitekey', 'my_siteid')))  {
+			continue;
+		}
 		if($setting[$key] != $val) {
 			$updatecache = TRUE;
 			if(in_array($key, array('newbiespan', 'topicperpage', 'postperpage', 'hottopic', 'starthreshold', 'delayviewcount', 'attachexpire',
@@ -3616,7 +3619,7 @@ function showdetial(&$forum, $varname, $type = '', $last = '', $toggle = false) 
 }
 
 function getmemorycachekeys() {
-	return array('common_member', 'forum_thread', 'forum_thread_forumdisplay','forum_postcache',
+	return array('common_member', 'forum_forum', 'forum_thread', 'forum_thread_forumdisplay','forum_postcache',
 				'forum_collectionrelated', 'forum_collection', 'home_follow', 'forumindex', 'diyblock', 'diyblockoutput');
 }
 

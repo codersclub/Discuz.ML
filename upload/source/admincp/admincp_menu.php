@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_menu.php 34521 2014-05-14 09:07:25Z nemohou $
+ *      $Id: admincp_menu.php 36284 2016-12-12 00:47:50Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -252,7 +252,6 @@ if($isfounder) {
 		array('menu_membersplit', 'membersplit_check'),
 		array('menu_postsplit', 'postsplit_manage'),
 		array('menu_threadsplit', 'threadsplit_manage'),
-		array('menu_upgrade', 'upgrade'),
 		array('menu_optimizer', 'optimizer_performance'),
 	);
 

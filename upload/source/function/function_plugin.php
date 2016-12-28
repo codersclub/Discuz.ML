@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_plugin.php 34534 2014-05-21 02:58:28Z nemohou $
+ *      $Id: function_plugin.php 36284 2016-12-12 00:47:50Z nemohou $
  * Modified by Valery Votintsev, codersclub.org
  */
 
@@ -190,7 +190,6 @@ function updatepluginlanguage($pluginarray) {
 	}
 	foreach(array('script', 'template', 'install', 'system') as $type) {
 		loadcache('pluginlanguage_'.$type, 1);
-//		loadcache('pluginlanguage_'.$type.'_'.DISCUZ_LANG, 1);
 		if($type != 'system') {
 			if(!empty($pluginarray['language'][$type.'lang'])) {
 				$_G['cache']['pluginlanguage_'.$type][$pluginarray['plugin']['identifier']] = $pluginarray['language'][$type.'lang'];
@@ -212,7 +211,6 @@ function updatepluginlanguage($pluginarray) {
 //echo 'savecache: ','pluginlanguage_'.$type, "\n";
 //echo '</pre>';
 		savecache('pluginlanguage_'.$type, $_G['cache']['pluginlanguage_'.$type]);
-//		savecache('pluginlanguage_'.$type.'_'.DISCUZ_LANG, $_G['cache']['pluginlanguage_'.$type);
 	}
 	return true;
 }
@@ -404,7 +402,7 @@ function updatetable_remakesql($value) {
 	return $value;
 }
 
-function cron_create($pluginid, $filename, $name, $weekday, $day, $hour, $minute) {
+function cron_create($pluginid, $filename = null, $name = null, $weekday = null, $day = null, $hour = null, $minute = null) {
 	if(!ispluginkey($pluginid)) {
 		return false;
 	}

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_home_friend.php 31044 2012-07-12 01:50:32Z chenmengshu $
+ *      $Id: table_home_friend.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -49,7 +49,7 @@ class table_home_friend extends discuz_table
 		return DB::fetch_all('SELECT * FROM %t WHERE uid=%d OR uid=%d', array($this->_table, $uid, $fuid));
 	}
 
-	public function fetch_all_by_uid($uid, $start, $limit, $order = false) {
+	public function fetch_all_by_uid($uid, $start = 0, $limit = 0, $order = false) {
 		return $this->fetch_all_search($uid, '', '', false, $start, $limit, $order);
 	}
 

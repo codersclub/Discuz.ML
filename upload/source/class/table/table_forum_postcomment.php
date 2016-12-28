@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_forum_postcomment.php 32456 2013-01-21 05:18:56Z monkey $
+ *      $Id: table_forum_postcomment.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -13,6 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 class table_forum_postcomment extends discuz_table
 {
+	private $cic_for_fetch_postcomment_by_pid;
+
 	public function __construct() {
 
 		$this->_table = 'forum_postcomment';
@@ -87,7 +89,7 @@ class table_forum_postcomment extends discuz_table
 		return DB::fetch_all('SELECT * FROM %t WHERE authorid>-1 %i ORDER BY dateline DESC '.DB::limit($start, $limit), array($this->_table, $sql));
 	}
 
-	public function fetch_all_by_authorid($authorid, $start, $limit) {
+	public function fetch_all_by_authorid($authorid, $start = 0, $limit = 0) {
 		return DB::fetch_all('SELECT * FROM %t WHERE authorid=%d ORDER BY dateline DESC '.DB::limit($start, $limit), array($this->_table, $authorid));
 	}
 
@@ -159,8 +161,8 @@ class table_forum_postcomment extends discuz_table
 				$comments[$comment['pid']][] = $comment;
 			}
 			if($comment['authorid'] == '-1') {
-				$cic = 0;
-				$totalcomment[$comment['pid']] = preg_replace('/<i>([\.\d]+)<\/i>/e', "'<i class=\"cmstarv\" style=\"background-position:20px -'.(intval(\\1) * 16).'px\">'.sprintf('%1.1f', \\1).'</i>'.(\$cic++ % 2 ? '<br />' : '');", $comment['comment']);
+				$this->cic_for_fetch_postcomment_by_pid = 0;
+				$totalcomment[$comment['pid']] = preg_replace_callback('/<i>([\.\d]+)<\/i>/', array($this, 'fetch_postcomment_by_pid_callback_1'), $comment['comment']);
 			}
 			$postcache[$comment['pid']]['comment']['count'] = $commentcount[$comment['pid']];
 			$postcache[$comment['pid']]['comment']['data'] = $comments[$comment['pid']];
@@ -169,6 +171,9 @@ class table_forum_postcomment extends discuz_table
 		return array($comments, $postcache, $commentcount, $totalcomment);
 	}
 
+	public function fetch_postcomment_by_pid_callback_1($matches) {
+		return '<i class="cmstarv" style="background-position:20px -'.(intval($matches[1]) * 16).'px">'.sprintf('%1.1f', $matches[1]).'</i>'.($this->cic_for_fetch_postcomment_by_pid++ % 2 ? '<br />' : '');
+	}
 }
 
 ?>

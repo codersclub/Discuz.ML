@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_blog.php 34348 2014-03-19 03:13:00Z hypowang $
+ *      $Id: function_blog.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -71,13 +71,8 @@ function blog_post($POST, $olds=array()) {
 	} else {
 		$POST['message'] = getstr($POST['message'], 0, 0, 0, 0, 1);
 		$POST['message'] = censor($POST['message']);
-		$POST['message'] = preg_replace(array(
-			"/\<div\>\<\/div\>/i",
-			"/\<a\s+href\=\"([^\>]+?)\"\>/ie"
-		), array(
-			'',
-			'blog_check_url(\'\\1\')'
-		), $POST['message']);
+		$POST['message'] = preg_replace("/\<div\>\<\/div\>/i", '', $POST['message']);
+		$POST['message'] = preg_replace_callback("/\<a\s+href\=\"([^\>]+?)\"\>/i", 'blog_post_callback_blog_check_url_1', $POST['message']);
 	}
 	$message = $POST['message'];
 	if(censormod($message) || censormod($POST['subject']) || $_G['group']['allowblogmod']) {
@@ -268,6 +263,10 @@ function blog_post($POST, $olds=array()) {
 	return $blogarr;
 }
 
+function blog_post_callback_blog_check_url_1($matches) {
+	return blog_check_url($matches[1]);
+}
+
 function checkhtml($html) {
 	if(!checkperm('allowhtml')) {
 
@@ -313,8 +312,12 @@ function checkhtml($html) {
 }
 
 function blog_bbcode($message) {
-	$message = preg_replace("/\[flash\=?(media|real|mp3)*\](.+?)\[\/flash\]/ie", "blog_flash('\\2', '\\1')", $message);
+	$message = preg_replace_callback("/\[flash\=?(media|real|mp3)*\](.+?)\[\/flash\]/i", 'blog_bbcode_callback_blog_flash_21', $message);
 	return $message;
+}
+
+function blog_bbcode_callback_blog_flash_21($matches) {
+	return blog_flash($matches[2], $matches[1]);
 }
 function blog_flash($swf_url, $type='') {
 	$width = '520';

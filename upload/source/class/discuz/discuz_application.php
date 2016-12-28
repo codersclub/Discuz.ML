@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuz_application.php 34608 2014-06-11 02:07:39Z nemohou $
+ *      $Id: discuz_application.php 36284 2016-12-12 00:47:50Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -901,9 +901,11 @@ class discuz_application extends discuz_base{
 			$arr[] = '&mobile='.$mobiletype;
 			$arr[] = 'mobile='.$mobiletype;
 		}
-		$arr = array_merge(array(strstr($_SERVER['QUERY_STRING'], '&simpletype'), strstr($_SERVER['QUERY_STRING'], 'simpletype')), $arr);
-		$query_sting_tmp = str_replace($arr, '', $_SERVER['QUERY_STRING']);
-		$this->var['setting']['mobile']['nomobileurl'] = ($this->var['setting']['domain']['app']['forum'] ? 'http://'.$this->var['setting']['domain']['app']['forum'].'/' : $this->var['siteurl']).$this->var['basefilename'].($query_sting_tmp ? '?'.$query_sting_tmp.'&' : '?').'mobile=no';
+                parse_str($_SERVER['QUERY_STRING'], $query);
+                $query['mobile'] = 'no';
+                unset($query['simpletype']);
+                $query_sting_tmp = http_build_query($query);
+                $this->var['setting']['mobile']['nomobileurl'] = ($this->var['setting']['domain']['app']['forum'] ? 'http://'.$this->var['setting']['domain']['app']['forum'].'/' : $this->var['siteurl']).$this->var['basefilename'].'?'.$query_sting_tmp;
 
 		$this->var['setting']['lazyload'] = 0;
 

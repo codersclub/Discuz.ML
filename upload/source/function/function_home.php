@@ -4,14 +4,14 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_home.php 30195 2012-05-16 07:15:03Z zhengqingpeng $
+ *      $Id: function_home.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-function getstr($string, $length, $in_slashes=0, $out_slashes=0, $bbcode=0, $html=0) {
+function getstr($string, $length = 0, $in_slashes=0, $out_slashes=0, $bbcode=0, $html=0) {
 	global $_G;
 
 	$string = trim($string);

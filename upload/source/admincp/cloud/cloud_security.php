@@ -4,7 +4,7 @@
  *		[Discuz!] (C)2001-2099 Comsenz Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
- *		$Id: cloud_security.php 33861 2013-08-22 09:16:38Z nemohou $
+ *		$Id: cloud_security.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
@@ -315,7 +315,8 @@ function convertOperate($id = 0) {
 }
 
 function getEvilList($type, $start, $ppp) {
-	$datas = $data = $evilids = '';
+	$datas = $data = '';
+	$evilids = array();
 
 	if ($type == 'member') {
 		$type = 'user';

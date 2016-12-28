@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_spacecp.php 33714 2013-08-07 01:42:26Z andyzheng $
+ *      $Id: function_spacecp.php 36294 2016-12-14 03:11:30Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -710,7 +710,7 @@ function geturltitle($link, $charset = '') {
 	return $title;
 }
 
-function allowverify($vid) {
+function allowverify($vid = 0) {
 	global $_G;
 
 	if(empty($_G['setting']['verify'])) {

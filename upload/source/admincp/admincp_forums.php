@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_forums.php 35877 2016-04-20 01:53:57Z nemohou $
+ *      $Id: admincp_forums.php 36284 2016-12-12 00:47:50Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -921,7 +921,7 @@ var rowtypedata = [
 					cplang('thread_activity'),
 					cplang('thread_debate')
 				)), $forum['allowpostspecial'], 'binmcheckbox');
-				$threadpluginarray = '';
+				$threadpluginarray = array();
 				if(is_array($_G['setting']['threadplugins'])) foreach($_G['setting']['threadplugins'] as $tpid => $data) {
 					$threadpluginarray[] = array($tpid, $data['name']);
 				}

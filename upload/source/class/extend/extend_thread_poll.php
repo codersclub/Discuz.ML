@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: extend_thread_poll.php 31107 2012-07-17 07:48:13Z zhengqingpeng $
+ *      $Id: extend_thread_poll.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -100,7 +100,7 @@ class extend_thread_poll extends extend_thread_base {
 		$isorigauthor = $this->member['uid'] && $this->member['uid'] == $this->post['authorid'];
 		if($isfirstpost) {
 			if($this->thread['special'] == 1 && ($this->group['alloweditpoll'] || $isorigauthor) && !empty($_GET['polls'])) {
-				$pollarray = '';
+				$pollarray = array();
 				foreach($_GET['polloption'] as $key => $val) {
 					if(trim($val) === '') {
 						unset($_GET['polloption'][$key]);
@@ -146,7 +146,7 @@ class extend_thread_poll extends extend_thread_base {
 							$pollarray['expiration'] = TIMESTAMP + 86400 * $expiration;
 						}
 					}
-					$optid = '';
+					$optid = array();
 					$query = C::t('forum_polloption')->fetch_all_by_tid($this->thread['tid']);
 					foreach($query as $tempoptid) {
 						$optid[] = $tempoptid['polloptionid'];

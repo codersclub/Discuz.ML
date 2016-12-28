@@ -18,6 +18,7 @@ class table_common_member_newprompt extends discuz_table
 		$this->_table = 'common_member_newprompt';
 		$this->_pk    = 'uid';
 		$this->_pre_cache_key = 'common_member_newprompt_';
+		$this->_cache_ttl = 60;
 
 		parent::__construct();
 	}

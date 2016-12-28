@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_cloudaddons.php 35704 2015-12-01 05:13:54Z nemohou $
+ *      $Id: function_cloudaddons.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -76,7 +76,7 @@ function cloudaddons_check() {
 	}
 }
 
-function cloudaddons_open($extra, $post = '', $timeout = 999) {
+function cloudaddons_open($extra, $post = '', $timeout = 15) {
 	return dfsockopen(cloudaddons_url('&from=s').$extra, 0, $post, '', false, CLOUDADDONS_DOWNLOAD_IP, $timeout);
 }
 
@@ -195,7 +195,7 @@ function cloudaddons_savemd5($md5file, $end, $md5) {
 	}
 }
 
-function cloudaddons_comparetree($new, $old, $basedir, $md5file, $first = 0) {
+function cloudaddons_comparetree($new, $old, $basedir, $md5file = '', $first = 0) {
 	global $_G;
 	if($first && file_exists(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml')) {
 		require_once libfile('class/xml');

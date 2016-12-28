@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_cloudaddons.php 35705 2015-12-01 06:14:33Z nemohou $
+ *      $Id: admincp_cloudaddons.php 35706 2015-12-01 06:15:03Z nemohou $
  */
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');

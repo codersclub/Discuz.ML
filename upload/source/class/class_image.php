@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_image.php 35933 2016-05-13 05:56:41Z nemohou $
+ *      $Id: class_image.php 35929 2016-05-11 07:00:01Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -38,12 +38,12 @@ class image {
 				'imageimpath'		=> $_G['setting']['imageimpath'],
 				'thumbquality'		=> $_G['setting']['thumbquality'],
 				'watermarkstatus'	=> dunserialize($_G['setting']['watermarkstatus']),
-			'watermarkminwidth'	=> dunserialize($_G['setting']['watermarkminwidth']),
-			'watermarkminheight'	=> dunserialize($_G['setting']['watermarkminheight']),
-			'watermarktype'		=> $_G['setting']['watermarktype'],
-			'watermarktext'		=> $_G['setting']['watermarktext'],
-			'watermarktrans'	=> dunserialize($_G['setting']['watermarktrans']),
-			'watermarkquality'	=> dunserialize($_G['setting']['watermarkquality']),
+				'watermarkminwidth'	=> dunserialize($_G['setting']['watermarkminwidth']),
+				'watermarkminheight'	=> dunserialize($_G['setting']['watermarkminheight']),
+				'watermarktype'		=> $_G['setting']['watermarktype'],
+				'watermarktext'		=> $_G['setting']['watermarktext'],
+				'watermarktrans'	=> dunserialize($_G['setting']['watermarktrans']),
+				'watermarkquality'	=> dunserialize($_G['setting']['watermarkquality']),
 		);
 	}
 
@@ -350,15 +350,15 @@ class image {
 					$im->cropImage($cutw, $cuth, $startx, $starty);
 					if(!$im->writeImage($this->target)) {
 						$im->destroy();
-							return -3;
-						}
+						return -3;
+					}
 
-						$im->readImage(realpath($this->target));
-						$im->setImageCompressionQuality($this->param['thumbquality']);
-						$im->thumbnailImage($this->param['thumbwidth'], $this->param['thumbheight']);
-						$im->resizeImage($this->param['thumbwidth'], $this->param['thumbheight']);
-						$im->setGravity(imagick::GRAVITY_CENTER );
-						$im->extentImage($this->param['thumbwidth'], $this->param['thumbheight']);
+					$im->readImage(realpath($this->target));
+					$im->setImageCompressionQuality($this->param['thumbquality']);
+					$im->thumbnailImage($this->param['thumbwidth'], $this->param['thumbheight']);
+					$im->resizeImage($this->param['thumbwidth'], $this->param['thumbheight']);
+					$im->setGravity(imagick::GRAVITY_CENTER );
+					$im->extentImage($this->param['thumbwidth'], $this->param['thumbheight']);
 
 					if(!$im->writeImage($this->target)) {
 						$im->destroy();
@@ -375,13 +375,13 @@ class image {
 					$im->cropImage($this->param['thumbwidth'], $this->param['thumbheight'], $startx, $starty);
 					if(!$im->writeImage($this->target)) {
 						$im->destroy();
-							return -3;
-						}
+						return -3;
+					}
 
-						$im->readImage(realpath($this->target));
-						$im->setImageCompressionQuality($this->param['thumbquality']);
-						$im->thumbnailImage($this->param['thumbwidth'], $this->param['thumbheight']);
-						$im->setGravity(imagick::GRAVITY_CENTER );
+					$im->readImage(realpath($this->target));
+					$im->setImageCompressionQuality($this->param['thumbquality']);
+					$im->thumbnailImage($this->param['thumbwidth'], $this->param['thumbheight']);
+					$im->setGravity(imagick::GRAVITY_CENTER );
 					$im->extentImage($this->param['thumbwidth'], $this->param['thumbheight']);
 					if(!$im->writeImage($this->target)) {
 						$im->destroy();
@@ -574,17 +574,17 @@ class image {
 			}
 
 
-				$canvas = new Imagick(realpath($this->source));
-				$canvas->setImageCompressionQuality($this->param['watermarkquality'][$type]);
+			$canvas = new Imagick(realpath($this->source));
+			$canvas->setImageCompressionQuality($this->param['watermarkquality'][$type]);
 
-				$dw = new ImagickDraw();
-				$dw->setGravity($gravity);
-				$dw->composite($watermark->getImageCompose(), 0, 0, 0, 0, $watermark);
-				$canvas->drawImage($dw);
+			$dw = new ImagickDraw();
+			$dw->setGravity($gravity);
+			$dw->composite($watermark->getImageCompose(), 0, 0, 0, 0, $watermark);
+			$canvas->drawImage($dw);
 
-				$result = $canvas->writeImage($this->target);
-				$watermark->destroy();
-				$canvas->destroy();
+			$result = $canvas->writeImage($this->target);
+			$watermark->destroy();
+			$canvas->destroy();
 			$dw->destroy();
 
 			if(!$result) {
@@ -604,23 +604,7 @@ class image {
 			$dw->setFont($this->param['watermarktext']['fontpath'][$type]);
 			$dw->setFontSize($this->param['watermarktext']['size'][$type]);
 
-				if(($this->param['watermarktext']['shadowx'][$type] || $this->param['watermarktext']['shadowy'][$type]) && $this->param['watermarktext']['shadowcolor'][$type]) {
-					$dw->setFillColor(new ImagickPixel($this->param['watermarktext']['shadowcolor'][$type]));
-					$dw->setGravity($gravity);
-					if($translate) {
-						$dw->translate($this->param['watermarktext']['translatex'][$type], $this->param['watermarktext']['translatey'][$type]);
-					}
-					if($skewX) {
-						$dw->skewX($this->param['watermarktext']['skewx'][$type]);
-					}
-					if($skewY) {
-						$dw->skewY($this->param['watermarktext']['skewy'][$type]);
-					}
-					$dw->annotation($this->param['watermarktext']['shadowx'][$type], $this->param['watermarktext']['shadowy'][$type], escapeshellcmd(pack("H*", $this->param['watermarktext']['text'][$type])));
-					$canvas->drawImage($dw);
-
-				}
-
+			if(($this->param['watermarktext']['shadowx'][$type] || $this->param['watermarktext']['shadowy'][$type]) && $this->param['watermarktext']['shadowcolor'][$type]) {
 				$dw->setFillColor(new ImagickPixel($this->param['watermarktext']['shadowcolor'][$type]));
 				$dw->setGravity($gravity);
 				if($translate) {
@@ -632,12 +616,28 @@ class image {
 				if($skewY) {
 					$dw->skewY($this->param['watermarktext']['skewy'][$type]);
 				}
-				$dw->rotate($angle);
-				$dw->annotation(0, 0, escapeshellcmd(pack("H*", $this->param['watermarktext']['text'][$type])));
-
+				$dw->annotation($this->param['watermarktext']['shadowx'][$type], $this->param['watermarktext']['shadowy'][$type], escapeshellcmd(pack("H*", $this->param['watermarktext']['text'][$type])));
 				$canvas->drawImage($dw);
 
-				$result = $canvas->writeImage($this->target);
+			}
+
+			$dw->setFillColor(new ImagickPixel($this->param['watermarktext']['shadowcolor'][$type]));
+			$dw->setGravity($gravity);
+			if($translate) {
+				$dw->translate($this->param['watermarktext']['translatex'][$type], $this->param['watermarktext']['translatey'][$type]);
+			}
+			if($skewX) {
+				$dw->skewX($this->param['watermarktext']['skewx'][$type]);
+			}
+			if($skewY) {
+				$dw->skewY($this->param['watermarktext']['skewy'][$type]);
+			}
+			$dw->rotate($angle);
+			$dw->annotation(0, 0, escapeshellcmd(pack("H*", $this->param['watermarktext']['text'][$type])));
+
+			$canvas->drawImage($dw);
+
+			$result = $canvas->writeImage($this->target);
 			$canvas->destroy();
 			$dw->destroy();
 			if(!$result) {

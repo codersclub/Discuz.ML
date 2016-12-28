@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_home_notification.php 34369 2014-04-01 02:00:04Z jeffjzhang $
+ *      $Id: table_home_notification.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -102,7 +102,7 @@ class table_home_notification extends discuz_table
 		return DB::result_first("SELECT COUNT(*) FROM %t WHERE uid=%d %i %i %i", array($this->_table, $uid, $new, $category, $type));
 	}
 
-	public function fetch_all_by_uid($uid, $new, $type, $start, $perpage, $category = '') {
+	public function fetch_all_by_uid($uid, $new, $type = 0, $start = 0, $perpage = 0, $category = '') {
 		$new = intval($new);
 		$type = $type ? ' AND '.DB::field('type', $type) : '';
 		if($category !== '') {

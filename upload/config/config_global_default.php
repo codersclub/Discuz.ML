@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: config_global_default.php 34020 2013-09-22 05:48:16Z nemohou $
+ *      $Id: config_global_default.php 36287 2016-12-12 03:59:05Z nemohou $
  *      Modified by Valery Votintsev at codersclub.org
  */
 
@@ -30,7 +30,7 @@ $_config = array();
  */
 $_config['db'][1]['dbhost']  	= 'localhost';	// DB Server address
 $_config['db'][1]['dbuser']  	= 'root';	// DB User Name
-$_config['db'][1]['dbpw'] 	= 'root';	// DB User Password
+$_config['db'][1]['dbpw'] 		= 'root';	// DB User Password
 $_config['db'][1]['dbcharset'] 	= 'utf8';	// DB Charset
 $_config['db'][1]['pconnect'] 	= 0;		// Enable DB persistent connection
 $_config['db'][1]['dbname']  	= 'ultrax';	// DB Name
@@ -134,9 +134,9 @@ $_config['download']['xsendfile']['dir'] = '/down/';
 // Page output settings
 $_config['output']['charset'] 		= 'utf-8';	// Page character set
 $_config['output']['forceheader']	= 1;		// Force the output in defined character set, used to avoid page content garbled
-$_config['output']['gzip'] 		= 0;		// Use Gzip compression for output
+$_config['output']['gzip'] 			= 0;		// Use Gzip compression for output
 $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = off, 1 = On
-$_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/...
+$_config['output']['language'] 		= 'zh_cn';	// Page language en/fr/zh_cn/zh_tw/etc...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
 $_config['output']['iecompatible']	= 0;		// IE compatibility mode
@@ -185,6 +185,18 @@ $_config['remote']['cron'] = 0;
 // $_GET|$_POST compatibility processing. 0 is off, 1 is on, Turned to $_G['gp_xx'](xx is a Variable name, $_GET and $_POST Collection of all variable names), Value has been addslashes() treated
 $_config['input']['compatible'] = 1;
 
+// Addon Setting
+//$_config['addonsource'] = 'xx1';
+//$_config['addon'] = array(
+//    'xx1' => array(
+//	'website_url' => 'http://127.0.0.1/AppCenter',
+//	'download_url' => 'http://127.0.0.1/AppCenter/index.php',
+//	'download_ip' => '',
+//	'check_url' => 'http://127.0.0.1/AppCenter/?ac=check&file=',
+//	'check_ip' => ''
+//    )
+//);
+
 //-----------------------------------------------------------------------
 // Multi-Lingual support by Valery Votintsev
 //-----------------------------------------------------------------------
@@ -211,8 +223,8 @@ $_config['languages'] = array(
 //	'la' => array('icon'=>'la.gif', 'name'=>'ພາສາລາວ', 'title'=>'Lao', 'dir'=>'ltr', 'code'=>'lo-LA'),
 //	'pl' => array('icon'=>'pl.gif', 'name'=>'Polski', 'title'=>'Polish', 'dir'=>'ltr', 'code'=>'pl-PL'),
 //	'ru' => array('icon'=>'ru.gif', 'name'=>'Русский', 'title'=>'Russian', 'dir'=>'ltr', 'code'=>'ru-RU'),
-	'sc' => array('icon'=>'zh.gif', 'name'=>'简体中文', 'title'=>'Simplified Chinese', 'dir'=>'ltr', 'code'=>'zh-CN'),
-	'tc' => array('icon'=>'tw.gif', 'name'=>'繁體中文', 'title'=>'Traditional Chinese', 'dir'=>'ltr', 'code'=>'zh-TW'),
+	'zh_cn' => array('icon'=>'zh.gif', 'name'=>'简体中文', 'title'=>'Simplified Chinese', 'dir'=>'ltr', 'code'=>'zh-CN'),
+	'zh_tw' => array('icon'=>'tw.gif', 'name'=>'繁體中文', 'title'=>'Traditional Chinese', 'dir'=>'ltr', 'code'=>'zh-TW'),
 //	'th' => array('icon'=>'th.gif', 'name'=>'ภาษาไทย', 'title'=>'Thai', 'dir'=>'ltr', 'code'=>'th-TH'),
 //	'tr' => array('icon'=>'tr.gif', 'name'=>'Türkçe', 'title'=>'Turkish', 'dir'=>'ltr', 'code'=>'tr-TR'),
 //	'vn' => array('icon'=>'vn.gif', 'name'=>'Tiếng Việt', 'title'=>'Vietnamese', 'dir'=>'ltr', 'code'=>'vi-VN'),

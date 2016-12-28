@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: install_function.php 33326 2013-05-28 08:52:45Z kamichen $
+ *      $Id: install_function.php 36287 2016-12-12 03:59:05Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -128,6 +128,7 @@ function dirfile_check(&$dirfile_items) {
 }
 
 function env_check(&$env_items) {
+	global $lang;
 	foreach($env_items as $key => $item) {
 		if($key == 'php') {
 			$env_items[$key]['current'] = PHP_VERSION;
@@ -141,12 +142,26 @@ function env_check(&$env_items) {
 /*vot*/			$env_items[$key]['current'] = function_exists('mb_get_info') ? 'support' : 'noext';
 		} elseif($key == 'diskspace') {
 			if(function_exists('disk_free_space')) {
-				$env_items[$key]['current'] = floor(disk_free_space(ROOT_PATH) / (1024*1024)).'M';
+				$space = disk_free_space(ROOT_PATH);
+				if($space > 1048576) {
+					if($space > 1073741824) {
+						$space = floor($space / 1073741824).'GB';
+					} else {
+						$space = floor($space / 1048576).'MB';
+					}
+				}
+				$env_items[$key]['current'] = $space;
 			} else {
 				$env_items[$key]['current'] = 'unknow';
 			}
 		} elseif(isset($item['c'])) {
 			$env_items[$key]['current'] = constant($item['c']);
+		} elseif($key == 'opcache') {
+			$opcache_data = function_exists('opcache_get_configuration') ? opcache_get_configuration() : array();
+			$env_items[$key]['current'] = !empty($opcache_data['directives']['opcache.enable']) ? $lang['enable'] : $lang['disable'];
+		} elseif($key == 'curl') {
+			$v = curl_version();
+			$env_items[$key]['current'] = function_exists('curl_init') && function_exists('curl_version') ? $lang['enable'].' '.$v['version'] : $lang['disable'];
 		}
 
 		$env_items[$key]['status'] = 1;
@@ -550,9 +565,9 @@ EOT;
 
 function show_footer($quit = true) {
 
-/*vot*/	echo <<<EOT
+/*vot*/	$y = date('Y'); echo <<<EOT
 	</div>
-	<div class="footer">&copy;2001 - 2013 <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
+	<div class="footer">&copy;2001 - {$y} <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
 		&nbsp;&nbsp;&nbsp;
 		<b>MultiLingual</b> version by <a href="http://codersclub.org/discuzx/">CodersClub.org</a>
 	</div>
@@ -701,7 +716,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 function generate_key() {
 	$random = random(32);
 	$info = md5($_SERVER['SERVER_SOFTWARE'].$_SERVER['SERVER_NAME'].$_SERVER['SERVER_ADDR'].$_SERVER['SERVER_PORT'].$_SERVER['HTTP_USER_AGENT'].time());
-	$return = '';
+	$return = array();
 	for($i=0; $i<64; $i++) {
 		$p = intval($i/2);
 		$return[$i] = $i % 2 ? $random[$p] : $info[$p];

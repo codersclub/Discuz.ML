@@ -83,9 +83,15 @@ class helper_seccheck {
 		if($_G['cache']['secqaa'][$secqaakey]['type']) {
 			$etype = explode(':', $_G['cache']['secqaa'][$secqaakey]['question']);
 			if(count($etype) > 1) {
+				if(!preg_match('/^\w+$/', $etype[0]) || !preg_match('/^\w+$/', $etype[1])) {
+					return;
+				}
 				$qaafile = DISCUZ_ROOT.'./source/plugin/'.$etype[0].'/secqaa/secqaa_'.$etype[1].'.php';
 				$class = $etype[1];
 			} else {
+				if(!preg_match('/^\w+$/', $_G['cache']['secqaa'][$secqaakey]['question'])) {
+					return;
+				}
 				$qaafile = libfile('secqaa/'.$_G['cache']['secqaa'][$secqaakey]['question'], 'class');
 				$class = $_G['cache']['secqaa'][$secqaakey]['question'];
 			}
@@ -114,12 +120,18 @@ class helper_seccheck {
 			return false;
 		}
 		$ssid = $seccheck['ssid'];
-		if(!is_numeric($_G['setting']['seccodedata']['type']) && preg_match('/^[\w\d:_]+$/i', $_G['setting']['seccodedata']['type'])) {
+		if(!is_numeric($_G['setting']['seccodedata']['type'])) {
 			$etype = explode(':', $_G['setting']['seccodedata']['type']);
 			if(count($etype) > 1) {
+				if(!preg_match('/^\w+$/', $etype[0]) || !preg_match('/^\w+$/', $etype[1])) {
+					return false;
+				}
 				$codefile = DISCUZ_ROOT.'./source/plugin/'.$etype[0].'/seccode/seccode_'.$etype[1].'.php';
 				$class = $etype[1];
 			} else {
+				if(!preg_match('/^\w+$/', $_G['setting']['seccodedata']['type'])) {
+					return false;
+				}
 				$codefile = libfile('seccode/'.$_G['setting']['seccodedata']['type'], 'class');
 				$class = $_G['setting']['seccodedata']['type'];
 			}

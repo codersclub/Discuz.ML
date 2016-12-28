@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_forum_forum.php 33548 2013-07-04 08:19:27Z laoguozhang $
+ *      $Id: table_forum_forum.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -17,6 +17,7 @@ class table_forum_forum extends discuz_table
 
 		$this->_table = 'forum_forum';
 		$this->_pk    = 'fid';
+		$this->_pre_cache_key = 'forum_forum_';
 
 		parent::__construct();
 	}
@@ -37,7 +38,11 @@ class table_forum_forum extends discuz_table
 		return DB::fetch_all("SELECT * FROM ".DB::table($this->_table)." WHERE $typesql $statussql $fupsql $limitsql");
 	}
 	public function fetch_info_by_fid($fid) {
-		return DB::fetch_first("SELECT ff.*, f.* FROM %t f LEFT JOIN %t ff ON ff.fid=f.fid WHERE f.fid=%d", array($this->_table, 'forum_forumfield', $fid));
+		if(($data = $this->fetch_cache($fid)) === false) {
+			$data = DB::fetch_first("SELECT ff.*, f.* FROM %t f LEFT JOIN %t ff ON ff.fid=f.fid WHERE f.fid=%d", array($this->_table, 'forum_forumfield', $fid));
+			$this->store_cache($fid, $data);
+		}
+		return $data;
 	}
 	public function fetch_all_name_by_fid($fids) {
 		if(empty($fids)) {
@@ -101,8 +106,12 @@ class table_forum_forum extends discuz_table
 	public function fetch_threadcacheon_num() {
 		return DB::result_first("SELECT COUNT(*) FROM ".DB::table($this->_table)." WHERE status='1' AND threadcaches>0");
 	}
-	public function fetch_all_by_recyclebin($recyclebin) {
+	public function fetch_all_by_recyclebin($recyclebin = 0) {
 		return DB::fetch_all('SELECT fid, name FROM %t WHERE status<3 AND type IN (\'forum\', \'sub\') AND recyclebin=%d', array($this->_table, $recyclebin));
+	}
+	public function update($val, $data, $unbuffered = false, $low_priority = false) {
+		$this->clear_cache($val);
+		return parent::update($val, $data, $unbuffered, $low_priority);
 	}
 	public function update_threadcaches($threadcache, $fids) {
 		if(empty($fids)) {

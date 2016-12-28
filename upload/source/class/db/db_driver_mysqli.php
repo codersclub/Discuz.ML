@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: db_driver_mysqli.php 35735 2016-01-22 01:24:02Z nemohou $
+ *      $Id: db_driver_mysqli.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -112,7 +112,6 @@ class db_driver_mysqli
 	}
 
 	function fetch_array($query, $result_type = MYSQLI_ASSOC) {
-		if($result_type == 'MYSQL_ASSOC') $result_type = MYSQLI_ASSOC;
 		return $query ? $query->fetch_array($result_type) : null;
 	}
 

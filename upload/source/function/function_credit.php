@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_credit.php 31380 2012-08-21 07:25:54Z monkey $
+ *      $Id: function_credit.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -85,7 +85,7 @@ function _updatemembercount($uids, $dataarr = array(), $checkgroup = true, $oper
 	}
 }
 
-function credit_log($uids, $operation, $relatedid, $data, $customtitle, $custommemo) {
+function credit_log($uids, $operation, $relatedid, $data, $customtitle = '', $custommemo = '') {
 	if((!$operation || empty($relatedid)) && !strlen($customtitle) || empty($uids) || empty($data)) {
 		return;
 	}
