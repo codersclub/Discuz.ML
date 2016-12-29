@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: upgrade.php 34702 2014-07-10 10:08:30Z nemohou $
+ *      $Id: upgrade.php 34692 2014-07-09 01:17:48Z qingrongfu $
  *	Modified by Valery Votintsev, codersclub.org
  */
 

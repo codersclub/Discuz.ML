@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: portalcp_article.php 34294 2013-12-26 01:50:00Z hypowang $
+ *      $Id: portalcp_article.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -673,13 +673,13 @@ function portalcp_get_postmessage($post, $getauthorall = '') {
 
 	$msglower = strtolower($post['message']);
 	if(strpos($msglower, '[/media]') !== FALSE) {
-		$post['message'] = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/ies", "parsearticlemedia('\\1', '\\2')", $post['message']);
+		$post['message'] = preg_replace_callback("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", 'portalcp_get_postmessage_callback_parsearticlemedia_12', $post['message']);
 	}
 	if(strpos($msglower, '[/audio]') !== FALSE) {
-		$post['message'] = preg_replace("/\[audio(=1)*\]\s*([^\[\<\r\n]+?)\s*\[\/audio\]/ies", "parsearticlemedia('mid,0,0', '\\2')", $post['message']);
+		$post['message'] = preg_replace_callback("/\[audio(=1)*\]\s*([^\[\<\r\n]+?)\s*\[\/audio\]/is", 'portalcp_get_postmessage_callback_parsearticlemedia_2', $post['message']);
 	}
 	if(strpos($msglower, '[/flash]') !== FALSE) {
-		$post['message'] = preg_replace("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/ies", "parsearticlemedia('swf,0,0', '\\4');", $post['message']);
+		$post['message'] = preg_replace_callback("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/is", 'portalcp_get_postmessage_callback_parsearticlemedia_4', $post['message']);
 	}
 
 	$post['message'] = discuzcode($post['message'], $post['smileyoff'], $post['bbcodeoff'], $post['htmlon'] & 1, $forum['allowsmilies'], $forum['allowbbcode'], ($forum['allowimgcode'] && $_G['setting']['showimages'] ? 1 : 0), $forum['allowhtml'], 0, 0, $post['authorid'], $forum['allowmediacode'], $post['pid']);
@@ -690,6 +690,19 @@ function portalcp_get_postmessage($post, $getauthorall = '') {
 	}
 	return $post['message'].$_message;
 }
+
+function portalcp_get_postmessage_callback_parsearticlemedia_12($matches) {
+	return parsearticlemedia($matches[1], $matches[2]);
+}
+
+function portalcp_get_postmessage_callback_parsearticlemedia_2($matches) {
+	return parsearticlemedia('mid,0,0', $matches[2]);
+}
+
+function portalcp_get_postmessage_callback_parsearticlemedia_4($matches) {
+	return parsearticlemedia('swf,0,0', $matches[4]);
+}
+
 function portalcp_parse_postattch(&$post) {
 	static $allpostattchs = null;
 	if($allpostattchs === null) {

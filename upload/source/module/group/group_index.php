@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: group_index.php 25246 2011-11-02 03:34:53Z zhangguosheng $
+ *      $Id: group_index.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -15,8 +15,8 @@ $navtitle = '';
 
 $gid = intval(getgpc('gid'));
 $sgid = intval(getgpc('sgid'));
-$groupids = array();
-$groupnav = $typelist = '';
+$groupids = $typelist = array();
+$groupnav = '';
 $selectorder = array('default' => '', 'thread' => '', 'membernum' => '', 'dateline' => '', 'activity' => '');
 if(!empty($_GET['orderby'])) {
 	$selectorder[$_GET['orderby']] = 'selected';
@@ -108,6 +108,7 @@ $list = array();
 if($groupids) {
 	$orderby = in_array(getgpc('orderby'), array('membernum', 'dateline', 'thread', 'activity')) ? getgpc('orderby') : 'displayorder';
 	$page = intval(getgpc('page')) ? intval($_GET['page']) : 1;
+	$page = $page > 65535 ? 1 : $page;
 	$start = ($page - 1) * $perpage;
 	$getcount = grouplist('', '', '', $groupids, 1, 1);
 	if($getcount) {

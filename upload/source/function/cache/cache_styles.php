@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cache_styles.php 34182 2013-10-29 08:48:22Z nemohou $
+ *      $Id: cache_styles.php 36278 2016-12-09 07:52:35Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -128,7 +128,10 @@ function writetocsscache($data) {
 					}
 				}
 			}
-			$cssdata = preg_replace("/\{([A-Z0-9]+)\}/e", '\$data[strtolower(\'\1\')]', $cssdata);
+
+			writetocsscache_callback_1($data, 1);
+
+			$cssdata = preg_replace_callback("/\{([A-Z0-9]+)\}/", 'writetocsscache_callback_1', $cssdata);
 			$cssdata = preg_replace("/<\?.+?\?>\s*/", '', $cssdata);
 			$cssdata = !preg_match('/^http:\/\//i', $data['styleimgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['styleimgdir'], '/')."/i", "url(\\1$_G[siteurl]$data[styleimgdir]", $cssdata) : $cssdata;
 			$cssdata = !preg_match('/^http:\/\//i', $data['imgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['imgdir'], '/')."/i", "url(\\1$_G[siteurl]$data[imgdir]", $cssdata) : $cssdata;
@@ -147,3 +150,12 @@ function writetocsscache($data) {
 	}
 }
 
+function writetocsscache_callback_1($matches, $action = 0) {
+	static $data = null;
+
+	if($action == 1) {
+		$data = $matches;
+	} else {
+		return $data[strtolower($matches[1])];
+	}
+}

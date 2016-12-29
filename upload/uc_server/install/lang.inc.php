@@ -147,7 +147,7 @@ $lang = array(
 	'install_succeed'	=> 'Installed Succesufully, click here to next step',
 	'license'		=> '<div class="license"><h1>License</h1>
 
-<p>Copyright (c) 2001-2011, Hong Sing Imagination (Beijing) Co., Ltd. All rights reserved.</p>
+<p>Copyright (c) 2001-2017, Hong Sing Imagination (Beijing) Co., Ltd. All rights reserved.</p>
 
 <p>Thank you for choosing UCenter product. We hope that our efforts to provide you with a fast and powerful and efficient site solution.</p>
 

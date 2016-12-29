@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_profile.php 34668 2014-06-23 08:11:09Z hypowang $
+ *      $Id: spacecp_profile.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -131,7 +131,7 @@ if(submitcheck('profilesubmit')) {
 			continue;
 		} elseif($key == 'timeoffset') {
 			if($value >= -12 && $value <= 12 || $value == 9999) {
-/*vot*/				C::t('common_member')->update($_G['uid'], array('timeoffset' => $value));
+/*vot*/				C::t('common_member')->update($_G['uid'], array('timeoffset' => $value)); // Time Offset can be "3.5"
 			}
 		} elseif($key == 'site') {
 			if(!in_array(strtolower(substr($value, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $value) && !preg_match('/^data\//', $value)) {
@@ -523,7 +523,7 @@ foreach($settings as $k=>$v) {
 
 include template("home/spacecp_profile");
 
-function profile_showerror($key, $extrainfo) {
+function profile_showerror($key, $extrainfo = '') {
 	echo '<script>';
 	echo 'parent.show_error("'.$key.'", "'.$extrainfo.'");';
 	echo '</script>';
@@ -536,5 +536,3 @@ function profile_showsuccess($message = '') {
 	echo '</script>';
 	exit();
 }
-
-?>

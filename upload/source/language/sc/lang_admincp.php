@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 35170 2014-12-25 02:42:41Z nemohou $
+ *      $Id: lang_admincp.php 36278 2016-12-09 07:52:35Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1557,6 +1557,8 @@ $lang = array
 	'setting_memory_func_diyblockoutput_comment' => '<span class="vtop tips2">推荐开启，时间设置为30秒，模块ID为单位，缓存时间内数据不更新</span>',
 	'setting_memory_func_common_member' => '用户数据',
 	'setting_memory_func_common_member_comment' => '<span class="vtop tips2">推荐开启，时间设置为0，永不过期，UID为单位，表数据更新时缓存数据会同步更新</span>',
+	'setting_memory_func_forum_forum' => '版块数据',
+	'setting_memory_func_forum_forum_comment' => '<span class="vtop tips2">推荐开启，时间设置为0，永不过期，FID为单位，表数据更新时缓存数据会同步更新</span>',
 	'setting_memory_func_forum_thread' => '主题数据',
 	'setting_memory_func_forum_thread_comment' => '<span class="vtop tips2">推荐开启，时间设置为172800秒，两天，TID为单位，表数据更新时缓存数据会同步更新</span>',
 	'setting_memory_func_forum_thread_forumdisplay' => '版块列表数据',
@@ -1576,6 +1578,7 @@ $lang = array
 	'setting_memory_data_diyblock_comment' => '<span class="vtop tips2">模块BID</span>',
 	'setting_memory_data_diyblockoutput_comment' => '<span class="vtop tips2">模块BID</span>',
 	'setting_memory_data_common_member_comment' => '<span class="vtop tips2">用户UID</span>',
+	'setting_memory_data_forum_forum_comment' => '<span class="vtop tips2">版块FID</span>',
 	'setting_memory_data_forum_post_comment' => '<span class="vtop tips2">主题TID</span>',
 	'setting_memory_data_forum_thread_comment' => '<span class="vtop tips2">主题TID</span>',
 	'setting_memory_data_forum_thread_forumdisplay_comment' => '<span class="vtop tips2">版块FID</span>',
@@ -2306,7 +2309,7 @@ $lang = array
 	'setting_attach_image_thumb_preview_btn' => '<input type="button" class="btn" onclick="var oldaction = $(\'cpform\').action;var oldoperation = $(\'cpform\').operation.value;$(\'cpform\').operation.value = \'imagepreview\';$(\'cpform\').action=\''.ADMINSCRIPT.'?action=checktools&operation=imagepreview&previewthumb=yes&frame=no\';$(\'cpform\').target=\'_blank\';$(\'cpform\').submit();$(\'cpform\').action=oldaction;$(\'cpform\').operation.value=oldoperation;$(\'cpform\').target=\'\';return false;" value="预览缩略图效果" style="vertical-align: middle">',
 	'setting_attach_remote_preview_btn' => '<input type="button" class="btn" onclick="var oldaction = $(\'cpform\').action;var oldoperation = $(\'cpform\').operation.value;$(\'cpform\').operation.value = \'ftpcheck\';$(\'cpform\').action=\''.ADMINSCRIPT.'?action=checktools&operation=ftpcheck&frame=no\';this.form.target=\'ftpcheckiframe\';this.form.submit();$(\'cpform\').action=oldaction;$(\'cpform\').operation.value=oldoperation;$(\'cpform\').target=\'\';return false;" value="测试远程附件" style="vertical-align: middle"><iframe name="ftpcheckiframe" style="display: none"></iframe>',
 	'setting_attach_image_lib' => '图片处理库类型',
-	'setting_attach_image_lib_comment' => '请选择 Discuz! 用来处理缩略图和水印的图像处理库。GD 是最广泛的处理库但是使用的系统资源较多。ImageMagick 速度快系统资源占用少，但需要服务器有执行命令行命令的权限。如果您的服务器有条件安装此程序，请到 <a href="http://www.imagemagick.org" target="_blank">http://www.imagemagick.org</a> 下载，安装后在下面指定安装的路径',
+	'setting_attach_image_lib_comment' => '请选择 Discuz! 用来处理缩略图和水印的图像处理库。GD 是最广泛的处理库但是使用的系统资源较多。ImageMagick 速度快系统资源占用少，但需要服务器安装 ImageMagick 扩展。如果您的服务器有条件安装此程序，请到 <a href="http://www.imagemagick.org" target="_blank">http://www.imagemagick.org</a> 下载',
 	'setting_attach_image_watermarktype_GD' => 'GD',
 	'setting_attach_image_watermarktype_IM' => 'ImageMagick',
 	'setting_attach_image_impath' => 'ImageMagick 程序安装路径',

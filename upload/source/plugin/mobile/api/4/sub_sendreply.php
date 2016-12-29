@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: sub_sendreply.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: sub_sendreply.php 35073 2014-11-04 09:14:30Z anezhou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');

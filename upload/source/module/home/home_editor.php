@@ -3,7 +3,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: home_editor.php 35297 2015-06-05 03:28:45Z hypowang $
+ *      $Id: home_editor.php 35193 2015-02-02 02:15:19Z hypowang $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');

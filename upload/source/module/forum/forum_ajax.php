@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_ajax.php 34303 2014-01-15 04:32:19Z hypowang $
+ *      $Id: forum_ajax.php 36278 2016-12-09 07:52:35Z nemohou $
  * Modified by Valery Votintsev, codersclub.org
  */
 
@@ -531,8 +531,8 @@ EOF;
 					unset($list[$pid]);
 				} else {
 					$post['message'] = preg_replace($_G['cache']['smilies']['searcharray'], '', $post['message']);
-					$post['message'] = preg_replace("/\{\:soso_((e\d+)|(_\d+_\d))\:\}/e", '', $post['message']);
-					$list[$pid]['message'] = cutstr(preg_replace("/\[.+?\]/ies", '', dhtmlspecialchars($post['message'])), 300) ;
+					$post['message'] = preg_replace("/\{\:soso_((e\d+)|(_\d+_\d))\:\}/", '', $post['message']);
+					$list[$pid]['message'] = cutstr(preg_replace("/\[.+?\]/is", '', dhtmlspecialchars($post['message'])), 300) ;
 				}
 			}
 			krsort($list);

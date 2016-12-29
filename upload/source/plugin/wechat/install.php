@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: install.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: install.php 34824 2014-08-12 02:27:09Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: newthread.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: newthread.php 34771 2014-07-30 09:29:44Z nemohou $
  */
 
 if(!defined('IN_MOBILE_API')) {

@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: misc.php 1182 2014-11-17 08:57:52Z andyzheng $
+	$Id: misc.php 1127 2011-12-14 04:24:58Z svn_project_zhangjie $
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -139,7 +139,7 @@ class miscmodel {
 		$s = $sep = '';
 		if($arr && is_array($arr)) {
 			foreach($arr as $k => $v) {
-				$s .= $sep.addslashes($k).UC_ARRAY_SEP_1.$v;
+				$s .= $sep.$k.UC_ARRAY_SEP_1.$v;
 				$sep = UC_ARRAY_SEP_2;
 			}
 		}

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat.lib.class.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: wechat.lib.class.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -47,7 +47,7 @@ class WeChatServer {
 		}
 		$param = func_get_args();
 		array_shift($param);
-		return $this->classes[$hook['class']]->$hook['method']($param);
+		return call_user_func(array($this->classes[$hook['class']], $hook['method']), $param);
 	}
 
 	private function _checkSignature() {

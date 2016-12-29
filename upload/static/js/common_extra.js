@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: common_extra.js 35188 2015-01-19 04:22:32Z nemohou $
+	$Id: common_extra.js 35187 2015-01-19 04:22:13Z nemohou $
 	Modified by Valery Votintsev, codersclub.org
 */
 

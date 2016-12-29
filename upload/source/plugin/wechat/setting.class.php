@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: setting.class.php 35206 2015-02-12 01:40:17Z nemohou $
+ *      $Id: setting.class.php 35205 2015-02-12 01:39:25Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {

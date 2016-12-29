@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: db.class.php 1171 2014-11-03 03:33:47Z hypowang $
+        Modified by Valery Votintsev, http://discuz.ml
 */
 
 

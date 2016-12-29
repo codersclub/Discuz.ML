@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forumupload.php 35182 2015-01-12 02:05:50Z nemohou $
+ *      $Id: forumupload.php 35181 2015-01-08 01:51:31Z nemohou $
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');

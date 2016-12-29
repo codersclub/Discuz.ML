@@ -4,7 +4,7 @@
 	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: db.php 1167 2014-11-03 03:06:21Z hypowang $
+	$Id: db.php 35059 2014-11-03 08:54:20Z hypowang $
 	Modified by Valery Votintsev, codersclub.org
 */
 

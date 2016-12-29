@@ -6,24 +6,23 @@
  *
  *      $Id: misc_stat.php 34937 2014-09-04 03:08:56Z hypowang $
  */
-
-if(!defined('IN_DISCUZ')) {
+if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-if(empty($_G['setting']['updatestat'])) {
+if (empty($_G['setting']['updatestat'])) {
 	showmessage('not_open_updatestat');
 }
 
-$stat_hash = md5($_G['setting']['siteuniqueid']."\t".substr($_G['timestamp'], 0, 6));
+$stat_hash = md5($_G['setting']['siteuniqueid'] . "\t" . substr($_G['timestamp'], 0, 6));
 
-if(!checkperm('allowstatdata') && $_GET['hash'] != $stat_hash) {
+if (!checkperm('allowstatdata') && $_GET['hash'] != $stat_hash) {
 	showmessage('no_privilege_statdata');
 }
 
 $cols = array();
-$cols['login'] = array('login','mobilelogin','connectlogin','register','invite','appinvite');
-if(!$_G['setting']['connect']['allow']) {
+$cols['login'] = array('login', 'mobilelogin', 'connectlogin', 'register', 'invite', 'appinvite');
+if (!$_G['setting']['connect']['allow']) {
 	unset($cols['login'][2]);
 }
 $cols['forum'] = array('thread', 'poll', 'activity', 'reward', 'debate', 'trade', 'post');
@@ -31,27 +30,27 @@ $cols['tgroup'] = array('group', 'groupthread', 'grouppost');
 $cols['home'] = array('doing', 'docomment', 'blog', 'blogcomment', 'pic', 'piccomment', 'share', 'sharecomment');
 $cols['space'] = array('wall', 'poke', 'click', 'sendpm', 'addfriend', 'friend');
 
-$type = !empty($_GET['types']) ? array() : (empty($_GET['type'])?'all':$_GET['type']);
+$type = !empty($_GET['types']) ? array() : (empty($_GET['type']) ? 'all' : $_GET['type']);
 
-$primarybegin = !empty($_GET['primarybegin']) ? $_GET['primarybegin'] : dgmdate($_G['timestamp']-2592000, 'Y-m-d');
+$primarybegin = !empty($_GET['primarybegin']) ? $_GET['primarybegin'] : dgmdate($_G['timestamp'] - 2592000, 'Y-m-d');
 $primaryend = !empty($_GET['primaryend']) ? $_GET['primaryend'] : dgmdate($_G['timestamp'], 'Y-m-d');
 
 $beginunixstr = strtotime($primarybegin);
 $endunixstr = strtotime($primaryend);
-if($beginunixstr > $endunixstr) {
-	showmessage('start_time_is_greater_than_end_time', NULL, array(), array('return'=>true));
-} else if($beginunixstr == $endunixstr) {
-	showmessage('start_time_end_time_is_equal_to', NULL, array(), array('return'=>true));
+if ($beginunixstr > $endunixstr) {
+	showmessage('start_time_is_greater_than_end_time', NULL, array(), array('return' => true));
+} else if ($beginunixstr == $endunixstr) {
+	showmessage('start_time_end_time_is_equal_to', NULL, array(), array('return' => true));
 }
-if(!empty($_GET['xml'])) {
+if (!empty($_GET['xml'])) {
 	$xaxis = '';
 	$graph = array();
 	$count = 1;
 	$begin = dgmdate($beginunixstr, 'Ymd');
 	$end = dgmdate($endunixstr, 'Ymd');
 	$field = '*';
-	if(!empty($_GET['merge'])) {
-		if(empty($_GET['types'])) {
+	if (!empty($_GET['merge'])) {
+		if (empty($_GET['types'])) {
 			$_GET['types'] = array_merge($cols['login'], $cols['forum'], $cols['tgroup'], $cols['home'], $cols['space']);
 		}
 
@@ -60,11 +59,11 @@ if(!empty($_GET['xml'])) {
 		}
 		$type = 'statistic';
 	}
-	foreach(C::t('common_stat')->fetch_all($begin, $end, $field) as $value) {
-		$xaxis .= "<value xid='$count'>".substr($value['daytime'], 4, 4)."</value>";
-		if($type == 'all') {
+	foreach (C::t('common_stat')->fetch_all($begin, $end, $field) as $value) {
+		$xaxis .= "<value xid='$count'>" . substr($value['daytime'], 4, 4) . "</value>";
+		if ($type == 'all') {
 			foreach ($cols as $ck => $cvs) {
-				if($ck == 'login') {
+				if ($ck == 'login') {
 					$graph['login'] .= "<value xid='$count'>$value[login]</value>";
 					$graph['register'] .= "<value xid='$count'>$value[register]</value>";
 				} else {
@@ -72,28 +71,28 @@ if(!empty($_GET['xml'])) {
 					foreach ($cvs as $cvk) {
 						$num = $value[$cvk] + $num;
 					}
-					$graph[$ck] .= "<value xid='$count'>".$num."</value>";
+					$graph[$ck] .= "<value xid='$count'>" . $num . "</value>";
 				}
 			}
 		} else {
-			if(empty($_GET['types']) || !empty($_GET['merge'])) {
-				$graph[$type] .= "<value xid='$count'>".$value[$type]."</value>";
+			if (empty($_GET['types']) || !empty($_GET['merge'])) {
+				$graph[$type] .= "<value xid='$count'>" . $value[$type] . "</value>";
 			} else {
-				foreach($_GET['types'] as $t) {
-					$graph[$t] .= "<value xid='$count'>".$value[$t]."</value>";
+				foreach ($_GET['types'] as $t) {
+					$graph[$t] .= "<value xid='$count'>" . $value[$t] . "</value>";
 				}
 			}
 		}
 		$count++;
 	}
 	$xml = '';
-	$xml .= '<'."?xml version=\"1.0\" encoding=\"utf-8\"?>";
+	$xml .= '<' . "?xml version=\"1.0\" encoding=\"utf-8\"?>";
 	$xml .= '<chart><xaxis>';
 	$xml .= $xaxis;
 	$xml .= "</xaxis><graphs>";
 	$count = 0;
 	foreach ($graph as $key => $value) {
-		$xml .= "<graph gid='$count' title='".diconv(lang('spacecp', "do_stat_$key"), CHARSET, 'utf8')."'>";
+		$xml .= "<graph gid='$count' title='" . diconv(lang('spacecp', "do_stat_$key"), CHARSET, 'utf8') . "'>";
 		$xml .= $value;
 		$xml .= '</graph>';
 		$count++;
@@ -114,11 +113,10 @@ require_once libfile('function/home');
 $siteurl = getsiteurl();
 $types = '';
 $merge = !empty($_GET['merge']) ? '&merge=1' : '';
-foreach($_GET['types'] as $value) {
-	$types .= '&types[]='.$value;
+foreach ($_GET['types'] as $value) {
+	$types .= '&types[]=' . $value;
 	$actives[$value] = ' class="a"';
 }
-$statuspara = "path=&settings_file=data/stat_setting.xml&data_file=".urlencode("misc.php?mod=stat&op=trend&xml=1&type=$type&primarybegin=$primarybegin&primaryend=$primaryend{$types}{$merge}&hash=$stat_hash");
+$statuspara = "path=&settings_file=data/stat_setting.xml&data_file=" . urlencode("misc.php?mod=stat&op=trend&xml=1&type=$type&primarybegin=$primarybegin&primaryend=$primaryend{$types}{$merge}&hash=$stat_hash");
 
 include template('home/misc_stat');
-?>

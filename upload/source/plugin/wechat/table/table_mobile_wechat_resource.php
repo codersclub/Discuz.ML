@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_mobile_wechat_resource.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: table_mobile_wechat_resource.php 34748 2014-07-28 08:09:07Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {

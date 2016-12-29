@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_index.php 34291 2013-12-17 03:47:28Z hypowang $
+ *      $Id: forum_index.php 36265 2016-11-04 07:10:47Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -204,7 +204,7 @@ if($_G['setting']['grid']['showgrid']) {
 				$grids['slide'][$ithread['tid']] = array(
 						'image' => $imageurl,
 						'url' => 'forum.php?mod=viewthread&tid='.$ithread['tid'],
-						'subject' => $ithread['subject']
+						'subject' => addslashes($ithread['subject'])
 					);
 			}
 		}

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: masssend_setting.inc.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id$
  */
 if (!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');

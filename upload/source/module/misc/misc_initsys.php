@@ -4,10 +4,14 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_initsys.php 34546 2014-05-26 07:35:56Z nemohou $
+ *      $Id: misc_initsys.php 35993 2016-06-30 03:10:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
+if(file_exists(DISCUZ_ROOT.'./data/install.lock')) {
 	exit('Access Denied');
 }
 

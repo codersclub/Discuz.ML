@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: checkcookie.php 35044 2014-10-30 05:32:05Z nemohou $
+ *      $Id: checkcookie.php 35028 2014-10-21 09:55:55Z nemohou $
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');

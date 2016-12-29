@@ -312,7 +312,7 @@ function getstatvars_modworks() {
 	$modworks_starttime = $_GET['modworks_starttime'];
 	$modworks_endtime = $_GET['modworks_endtime'];
 
-	list($now['year'], $now['month'], $now['day']) = explode("-", dgmdate(TIMESTAMP, 'Y-m-d'));
+/*vot*/	list($now['year'], $now['month'], $now['day']) = explode("-", dgmdate(TIMESTAMP, 'Y-m-d'));
 
 	$monthlinks = array();
 	$uid = !empty($_GET['uid']) ? $_GET['uid'] : 0;

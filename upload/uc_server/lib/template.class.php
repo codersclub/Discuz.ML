@@ -77,28 +77,28 @@ class template {
 	function complie() {
 		$template = file_get_contents($this->tplfile);
 		$template = preg_replace("/\<\!\-\-\{(.+?)\}\-\-\>/s", "{\\1}", $template);
-		$template = preg_replace("/\{lang\s+(\w+?)\}/ise", "\$this->lang('\\1')", $template);
+		$template = preg_replace_callback("/\{lang\s+(\w+?)\}/is", array($this, 'complie_callback_lang_1'), $template);
 
 		$template = preg_replace("/\{($this->var_regexp)\}/", "<?=\\1?>", $template);
 		$template = preg_replace("/\{($this->const_regexp)\}/", "<?=\\1?>", $template);
 		$template = preg_replace("/(?<!\<\?\=|\\\\)$this->var_regexp/", "<?=\\0?>", $template);
 
-		$template = preg_replace("/\<\?=(\@?\\\$[a-zA-Z_]\w*)((\[[\\$\[\]\w]+\])+)\?\>/ies", "\$this->arrayindex('\\1', '\\2')", $template);
+		$template = preg_replace_callback("/\<\?=(\@?\\\$[a-zA-Z_]\w*)((\[[\\$\[\]\w]+\])+)\?\>/is", array($this, 'complie_callback_arrayindex_12'), $template);
 
-		$template = preg_replace("/\{\{eval (.*?)\}\}/ies", "\$this->stripvtag('<? \\1?>')", $template);
-		$template = preg_replace("/\{eval (.*?)\}/ies", "\$this->stripvtag('<? \\1?>')", $template);
-		$template = preg_replace("/\{for (.*?)\}/ies", "\$this->stripvtag('<? for(\\1) {?>')", $template);
+		$template = preg_replace_callback("/\{\{eval (.*?)\}\}/is", array($this, 'complie_callback_stripvtag_1'), $template);
+		$template = preg_replace_callback("/\{eval (.*?)\}/is", array($this, 'complie_callback_stripvtag_1'), $template);
+		$template = preg_replace_callback("/\{for (.*?)\}/is", array($this, 'complie_callback_stripvtag_for1'), $template);
 
-		$template = preg_replace("/\{elseif\s+(.+?)\}/ies", "\$this->stripvtag('<? } elseif(\\1) { ?>')", $template);
+		$template = preg_replace_callback("/\{elseif\s+(.+?)\}/is", array($this, 'complie_callback_stripvtag_elseif1'), $template);
 
 		for($i=0; $i<2; $i++) {
-			$template = preg_replace("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/ies", "\$this->loopsection('\\1', '\\2', '\\3', '\\4')", $template);
-			$template = preg_replace("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/ies", "\$this->loopsection('\\1', '', '\\2', '\\3')", $template);
+			$template = preg_replace_callback("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/is", array($this, 'complie_callback_loopsection_1234'), $template);
+			$template = preg_replace_callback("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/is", array($this, 'complie_callback_loopsection_123'), $template);
 		}
-		$template = preg_replace("/\{if\s+(.+?)\}/ies", "\$this->stripvtag('<? if(\\1) { ?>')", $template);
+		$template = preg_replace_callback("/\{if\s+(.+?)\}/is", array($this, 'complie_callback_stripvtag_if1'), $template);
 
 		$template = preg_replace("/\{template\s+(\w+?)\}/is", "<? include \$this->gettpl('\\1');?>", $template);
-		$template = preg_replace("/\{template\s+(.+?)\}/ise", "\$this->stripvtag('<? include \$this->gettpl(\\1); ?>')", $template);
+		$template = preg_replace_callback("/\{template\s+(.+?)\}/is", array($this, 'complie_callback_stripvtag_template1'), $template);
 
 
 		$template = preg_replace("/\{else\}/is", "<? } else { ?>", $template);
@@ -116,6 +116,42 @@ class template {
 		$fp = fopen($this->objfile, 'w');
 		fwrite($fp, $template);
 		fclose($fp);
+	}
+
+	function complie_callback_lang_1($matches) {
+		return $this->lang($matches[1]);
+	}
+
+	function complie_callback_arrayindex_12($matches) {
+		return $this->arrayindex($matches[1], $matches[2]);
+	}
+
+	function complie_callback_stripvtag_1($matches) {
+		return $this->stripvtag('<? '.$matches[1].'?>');
+	}
+
+	function complie_callback_stripvtag_for1($matches) {
+		return $this->stripvtag('<? for('.$matches[1].') {?>');
+	}
+
+	function complie_callback_stripvtag_elseif1($matches) {
+		return $this->stripvtag('<? } elseif('.$matches[1].') { ?>');
+	}
+
+	function complie_callback_loopsection_1234($matches) {
+		return $this->loopsection($matches[1], $matches[2], $matches[3], $matches[4]);
+	}
+
+	function complie_callback_loopsection_123($matches) {
+		return $this->loopsection($matches[1], '', $matches[2], $matches[3]);
+	}
+
+	function complie_callback_stripvtag_if1($matches) {
+		return $this->stripvtag('<? if('.$matches[1].') { ?>');
+	}
+
+	function complie_callback_stripvtag_template1($matches) {
+		return $this->stripvtag('<? include $this->gettpl('.$matches[1].'); ?>');
 	}
 
 	function arrayindex($name, $items) {
@@ -156,22 +192,17 @@ class template {
 
 	function __destruct() {
 /*vot*/		if(isset($_COOKIE['sid'])) {
-///*vot*/			return;
 		}
 		$sid = rawurlencode($this->sid);
-		$searcharray = array(
-			"/\<a(\s*[^\>]+\s*)href\=([\"|\']?)([^\"\'\s]+)/ies",
-			"/(\<form.+?\>)/is"
-		);
-		$replacearray = array(
-			"\$this->_transsid('\\3','<a\\1href=\\2')",
-			"\\1\n<input type=\"hidden\" name=\"sid\" value=\"".rawurldecode(rawurldecode(rawurldecode($sid)))."\" />"
-		);
-		$content = preg_replace($searcharray, $replacearray, ob_get_contents());
+		$content = preg_replace_callback("/\<a(\s*[^\>]+\s*)href\=([\"|\']?)([^\"\'\s]+)/is", array($this, 'destruct_callback_transsid_312'), ob_get_contents());
+		$content = preg_replace("/(\<form.+?\>)/is", "\\1\n<input type=\"hidden\" name=\"sid\" value=\"".rawurldecode(rawurldecode(rawurldecode($sid)))."\" />", $content);
 		ob_end_clean();
 		echo $content;
 	}
 
+	function destruct_callback_transsid_312($matches) {
+		return $this->_transsid($matches[3],'<a'.$matches[1].'href='.$matches[2]);
+	}
 }
 
 /*

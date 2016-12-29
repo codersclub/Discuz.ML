@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_misc.php 35222 2015-03-02 02:16:20Z nemohou $
+ *      $Id: forum_misc.php 36284 2016-12-12 00:47:50Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -250,6 +250,16 @@ if($_GET['action'] == 'paysucceed') {
 
 } elseif($_GET['action'] == 'commentmore') {
 
+	function forum_misc_commentmore_callback_1($matches, $action = 0) {
+		static $cic = 0;
+
+		if($action == 1) {
+			$cic = $matches;
+		} else {
+			return '<i class="cmstarv" style="background-position:20px -'.(intval($matches[1]) * 16).'px">'.sprintf('%1.1f', $matches[1]).'</i>'.($cic++ % 2 ? '<br />' : '');
+		}
+	}
+
 	if(!$_G['setting']['commentnumber'] || !$_G['inajax']) {
 		showmessage('postcomment_closed');
 	}
@@ -264,9 +274,10 @@ if($_GET['action'] == 'paysucceed') {
 		$comment['comment'] = str_replace(array('[b]', '[/b]', '[/color]'), array('<b>', '</b>', '</font>'), preg_replace("/\[color=([#\w]+?)\]/i", "<font color=\"\\1\">", $comment['comment']));
 		$comments[] = $comment;
 	}
+	forum_misc_commentmore_callback_1(0, 1);
 	$totalcomment = C::t('forum_postcomment')->fetch_standpoint_by_pid($_GET['pid']);
 	$totalcomment = $totalcomment['comment'];
-	$totalcomment = preg_replace('/<i>([\.\d]+)<\/i>/e', "'<i class=\"cmstarv\" style=\"background-position:20px -'.(intval(\\1) * 16).'px\">'.sprintf('%1.1f', \\1).'</i>'.(\$cic++ % 2 ? '<br />' : '');", $totalcomment);
+	$totalcomment = preg_replace_callback('/<i>([\.\d]+)<\/i>/', 'forum_misc_commentmore_callback_1', $totalcomment);
 	$count = C::t('forum_postcomment')->count_by_search(null, $_GET['pid']);
 	$multi = multi($count, $commentlimit, $page, "forum.php?mod=misc&action=commentmore&tid=$_G[tid]&pid=$_GET[pid]");
 	include template('forum/comment_more');
@@ -517,7 +528,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 		$polloptionid[] = $pollarray['polloptionid'];
 	}
 
-	$polloptionids = '';
+	$polloptionids = array();
 	foreach($_GET['pollanswers'] as $key => $id) {
 		if(!in_array($id, $polloptionid)) {
 			showmessage('parameters_error');
@@ -1678,13 +1689,14 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 			$class_tag = new tag();
 			$tagarray = $class_tag->add_tag($_GET['tags'], 0, 'uid', 1);
 			if($tagarray) {
-				$uids = '';
+				$uids = array();
 				if($_G['thread']['special'] == 1) {
 					if($_GET['polloptions']) {
 						$query = C::t('forum_polloption')->fetch_all($_GET['polloptions']);
 					} else {
 						$query = C::t('forum_polloption')->fetch_all_by_tid($_G['tid']);
 					}
+					$uids = '';
 					foreach($query as $row) {
 						$uids .= $row['voterids'];
 					}

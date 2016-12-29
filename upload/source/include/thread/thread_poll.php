@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: thread_poll.php 31107 2012-07-17 07:48:13Z zhengqingpeng $
+ *      $Id: thread_poll.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -49,7 +49,7 @@ if($count = C::t('forum_polloption')->fetch_count_by_tid($_G['tid'])) {
 			'polloption'	=> $option,
 			'votes'		=> $options['votes'],
 			'width'		=> $options['votes'] > 0 ? (@round($options['votes'] * 100 / $count['total'])).'%' : '8px',
-			'percent'	=> @sprintf("%01.2f", $options['votes'] * 100 / $count['total']),
+			'percent'	=> $count['total'] ? sprintf("%01.2f", $options['votes'] * 100 / $count['total']) : 0,
 			'color'		=> $colors[$ci],
 			'imginfo'	=> $attach
 		);

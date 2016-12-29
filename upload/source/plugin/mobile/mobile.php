@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: mobile.php 35114 2014-11-27 01:07:53Z nemohou $
  */
 
 define('IN_MOBILE_API', 1);

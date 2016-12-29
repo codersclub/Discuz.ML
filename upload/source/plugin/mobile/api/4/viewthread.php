@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: viewthread.php 35159 2014-12-23 02:22:03Z nemohou $
+ *      $Id: viewthread.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');
@@ -192,7 +192,11 @@ class mobile_api {
 	}
 
 	function _findimg($string) {
-		return preg_replace('/(<img src=\")(.+?)(\".*?\>)/ise', "mobile_api::_parseimg('\\1', '\\2', '\\3')", $string);
+		return preg_replace_callback('/(<img src=\")(.+?)(\".*?\>)/is', array(__CLASS__, 'findimg_callback_parseimg_123'), $string);
+	}
+
+	static function findimg_callback_parseimg_123($matches) {
+		return mobile_api::_parseimg($matches[1], $matches[2], $matches[3]);
 	}
 
 	function _parseimg($before, $img, $after) {

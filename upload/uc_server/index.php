@@ -9,7 +9,10 @@
 */
 
 error_reporting(0);
-/*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
+
+if(function_exists('set_magic_quotes_runtime')) {
+	set_magic_quotes_runtime(0);
+}
 
 $mtime = explode(' ', microtime());
 $starttime = $mtime[1] + $mtime[0];

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_mobile.php 25221 2011-10-31 09:24:20Z liulanbo $
+ *      $Id: misc_mobile.php 36284 2016-12-12 00:47:50Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 if(!defined('IN_DISCUZ')) {
@@ -62,11 +62,16 @@ function output_preview() {
 	$content = ob_get_contents();
 	ob_end_clean();
 	ob_start();
-	$content = preg_replace("/\<a href=\"(.*?)\"[\s]?\>(.*?)\<\/a\>/e", "replace_href('\\2', '\\1')", $content);
+	$content = preg_replace_callback("/\<a href=\"(.*?)\"[\s]?\>(.*?)\<\/a\>/", 'output_preview_callback_replace_href_21', $content);
 	echo $content;
 	exit;
 }
-function replace_href($html_str, $other1, $other2) {
+
+function output_preview_callback_replace_href_21($matches) {
+	return replace_href($matches[2]);
+}
+
+function replace_href($html_str) {
 	$string = "<span class='lkcss'>".stripslashes($html_str)."</span>";
 	return $string;
 }

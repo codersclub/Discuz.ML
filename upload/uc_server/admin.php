@@ -9,7 +9,10 @@
 */
 
 error_reporting(0);
-/*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
+
+if(function_exists('set_magic_quotes_runtime')) {
+	set_magic_quotes_runtime(0);
+}
 
 $mtime = explode(' ', microtime());
 $starttime = $mtime[1] + $mtime[0];
@@ -41,6 +44,8 @@ $m = empty($m) ? 'frame' : $m;
 $a = empty($a) ? 'index' : $a;
 
 define('RELEASE_ROOT', '');
+
+header('Content-Type: text/html; charset='.CHARSET);
 
 if(in_array($m, array('admin', 'app', 'badword', 'cache', 'db', 'domain', 'frame', 'log', 'note', 'feed', 'mail', 'setting', 'user', 'credit', 'seccode', 'tool', 'plugin', 'pm'))) {
 	include UC_ROOT."control/admin/$m.php";

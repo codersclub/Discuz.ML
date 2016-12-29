@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: table_common_member_wechatmp.php 35228 2015-03-05 06:53:53Z nemohou $
+ *      $Id: table_common_member_wechatmp.php 35227 2015-03-05 06:49:24Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wsqapi.class.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: wsqapi.class.php 34924 2014-08-27 06:33:08Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {

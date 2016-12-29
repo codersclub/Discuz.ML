@@ -4,7 +4,7 @@
  *		[Discuz!] (C)2001-2099 Comsenz Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
- *		$Id: Connect.php 33543 2013-07-03 06:01:33Z nemohou $
+ *		$Id: Connect.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -202,9 +202,22 @@ class Cloud_Service_Connect {
 			$attachIds[] = $aid;
 			$attachImages[] = $imageItem;
 		}
-		$content = preg_replace('/\[attach\](\d+)\[\/attach\]/ie', '$this->connectParseAttachTag(\\1, $attachNames)', $content);
+
+		$this->connectParseAttach_callback_connectParseAttachTag_1($attachNames, 1);
+
+		$content = preg_replace_callback('/\[attach\](\d+)\[\/attach\]/i', array($this, 'connectParseAttach_callback_connectParseAttachTag_1'), $content);
 
 		return $content;
+	}
+
+	public function connectParseAttach_callback_connectParseAttachTag_1($matches, $action = 0) {
+		static $attachNames = '';
+
+		if($action == 1) {
+			$attachNames = $matches;
+		} else {
+			return $this->connectParseAttachTag($matches[1], $attachNames);
+		}
 	}
 
 	public function connectParseAttachTag($attachId, $attachNames) {

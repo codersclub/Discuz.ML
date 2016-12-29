@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: setting.php 1174 2014-11-03 04:38:12Z hypowang $
+        Modified by Valery Votintsev, http://discuz.ml
 */
 
 !defined('IN_UC') && exit('Access Denied');

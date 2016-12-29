@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: thread_activity.php 28709 2012-03-08 08:53:48Z liulanbo $
+ *      $Id: thread_activity.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 }
 
 $isverified = $applied = 0;
-$ufielddata = $applyinfo = '';
+$ufielddata = $applyinfo = array();
 if($_G['uid']) {
 	$applyinfo = C::t('forum_activityapply')->fetch_info_for_user($_G['uid'], $_G['tid']);
 	if($applyinfo) {

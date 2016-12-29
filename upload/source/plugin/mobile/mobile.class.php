@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.class.php 35933 2016-05-13 05:56:41Z nemohou $
+ *      $Id: mobile.class.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 define("MOBILE_PLUGIN_VERSION", "4");
@@ -275,9 +275,9 @@ class mobile_core {
 					continue;
 				}
 				if(!$isavariables) {
-					$value[$module.'_'.$hookname][$plugin] = $pluginclasses[$hook['class']]->$hook['method']($param);
+					$value[$module.'_'.$hookname][$plugin] = call_user_func(array($pluginclasses[$hook['class']], $hook['method']), $param);
 				} else {
-					$pluginclasses[$hook['class']]->$hook['method']($param);
+					call_user_func(array($pluginclasses[$hook['class']], $hook['method']), $param);
 				}
 			}
 		}

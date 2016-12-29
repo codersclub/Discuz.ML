@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: update.php 33990 2013-09-13 10:20:02Z nemohou $
+ *      $Id: update.php 36284 2016-12-12 00:47:50Z nemohou $
  *      Modified by Valery Votintsev, codersclub.org
  */
 
@@ -837,7 +837,7 @@ if($_GET['step'] == 'start') {
 		}
 
 		$group_userperm = dunserialize($settings['group_userperm']);
-		if(!isset($$group_userperm['allowlivethread'])) {
+		if(!isset($group_userperm['allowlivethread'])) {
 			$group_userperm['allowlivethread'] = '1';
 			$newsettings['group_userperm'] = serialize($group_userperm);
 		}
@@ -2203,7 +2203,7 @@ EOT;
 	return 1;
 }
 
-function setdefault($var, $default, $deletevar) {
+function setdefault($var, $default, $deletevar = array()) {
 	foreach ($default as $k => $v) {
 		if(!isset($var[$k])) {
 			$var[$k] = $default[$k];

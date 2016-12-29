@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 35494 2015-08-06 09:31:59Z nemohou $
+ *      $Id: forum_viewthread.php 36293 2016-12-14 02:50:56Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -21,6 +21,7 @@ $forum = & $_G['forum'];
 if(!empty($_GET['checkrush']) && preg_match('/[^0-9_]/', $_GET['checkrush'])) {
 	$_GET['checkrush'] = '';
 }
+
 if(!$_G['forum_thread'] || !$_G['forum']) {
 	showmessage('thread_nonexistence');
 }
@@ -314,8 +315,8 @@ $_G['forum']['allowreply'] = isset($_G['forum']['allowreply']) ? $_G['forum']['a
 $_G['forum']['allowpost'] = isset($_G['forum']['allowpost']) ? $_G['forum']['allowpost'] : '';
 
 $allowpostreply = ($_G['forum']['allowreply'] != -1) && (($_G['forum_thread']['isgroup'] || (!$_G['forum_thread']['closed'] && !checkautoclose($_G['forum_thread']))) || $_G['forum']['ismoderator']) && ((!$_G['forum']['replyperm'] && $_G['group']['allowreply']) || ($_G['forum']['replyperm'] && forumperm($_G['forum']['replyperm'])) || $_G['forum']['allowreply']);
-$fastpost = $_G['setting']['fastpost'] && !$_G['forum_thread']['archiveid'] && ($_G['forum']['status'] != 3 || $_G['isgroupuser']);
-$allowfastpost = $_G['setting']['fastpost'] && $allowpostreply;
+$fastpost = $_G['setting']['allowfastreply'] && !$_G['forum_thread']['archiveid'] && ($_G['forum']['status'] != 3 || $_G['isgroupuser']);
+$allowfastpost = $_G['setting']['allowfastreply'] && $allowpostreply;
 if(!$_G['uid'] && ($_G['setting']['need_avatar'] || $_G['setting']['need_email'] || $_G['setting']['need_friendnum']) || !$_G['adminid'] && (!cknewuser(1) || $_G['setting']['newbiespan'] && (!getuserprofile('lastpost') || TIMESTAMP - getuserprofile('lastpost') < $_G['setting']['newbiespan'] * 60) && TIMESTAMP - $_G['member']['regdate'] < $_G['setting']['newbiespan'] * 60)) {
 	$allowfastpost = false;
 }
@@ -381,12 +382,15 @@ $onlyauthoradd = $threadplughtml = '';
 
 $maxposition = 0;
 if(empty($_GET['viewpid'])) {
-	$disablepos = !$rushreply && C::t('forum_threaddisablepos')->fetch($_G['tid']) ? 1 : 0;
-	if(!$disablepos && !in_array($_G['forum_thread']['special'], array(2,3,5))) {
-		if($_G['forum_thread']['maxposition']) {
-			$maxposition = $_G['forum_thread']['maxposition'];
-		} else {
-			$maxposition = C::t('forum_post')->fetch_maxposition_by_tid($posttableid, $_G['tid']);
+	if(!in_array($_G['forum_thread']['special'], array(2,3,5))) {
+		$disablepos = !$rushreply && C::t('forum_threaddisablepos')->fetch($_G['tid']) ? 1 : 0;
+		if(!$disablepos) {
+			if($_G['forum_thread']['maxposition']) {
+				$maxposition = $_G['forum_thread']['maxposition'];
+			} else {
+				$maxposition = C::t('forum_post')->fetch_maxposition_by_tid($posttableid, $_G['tid']);
+				C::t('forum_thread')->update($_G['tid'], array('maxposition' => $maxposition));
+			}
 		}
 	}
 
@@ -1166,7 +1170,7 @@ function viewthread_procpost($post, $lastvisit, $ordertype, $maxposition = 0) {
 		}
 	}
 	$post['attachments'] = array();
-	$post['imagelist'] = $post['attachlist'] = '';
+	$post['imagelist'] = $post['attachlist'] = array();
 
 	if($post['attachment']) {
 		if((!empty($_G['setting']['guestviewthumb']['flag']) && !$_G['uid']) || $_G['group']['allowgetattach'] || $_G['group']['allowgetimage']) {
@@ -1197,7 +1201,7 @@ function viewthread_procpost($post, $lastvisit, $ordertype, $maxposition = 0) {
 			if(!defined('IN_MOBILE')) {
 				$messageindex = false;
 				if(strpos($post['message'], '[/index]') !== FALSE) {
-					$post['message'] = preg_replace("/\s?\[index\](.+?)\[\/index\]\s?/ies", "parseindex('\\1', '$post[pid]')", $post['message']);
+					$post['message'] = preg_replace_callback("/\s?\[index\](.+?)\[\/index\]\s?/is", create_function('$matches', 'return parseindex($matches[1], '.intval($post['pid']).');'), $post['message']);
 					$messageindex = true;
 					unset($_GET['threadindex']);
 				}
@@ -1239,7 +1243,7 @@ function viewthread_procpost($post, $lastvisit, $ordertype, $maxposition = 0) {
 					$post['message'] = parse_related_link($post['message'], $relatedtype);
 				}
 				if(strpos($post['message'], '[/begin]') !== FALSE) {
-					$post['message'] = preg_replace("/\[begin(=\s*([^\[\<\r\n]*?)\s*,(\d*),(\d*),(\d*),(\d*))?\]\s*([^\[\<\r\n]+?)\s*\[\/begin\]/ies", $_G['cache']['usergroups'][$post['groupid']]['allowbegincode'] ? "parsebegin('\\2', '\\7', '\\3', '\\4', '\\5', '\\6');" : '', $post['message']);
+					$post['message'] = preg_replace_callback("/\[begin(=\s*([^\[\<\r\n]*?)\s*,(\d*),(\d*),(\d*),(\d*))?\]\s*([^\[\<\r\n]+?)\s*\[\/begin\]/is", create_function('$matches', 'return '.intval($_G['cache']['usergroups'][$post['groupid']]['allowbegincode']).' ? parsebegin($matches[2], $matches[7], $matches[3], $matches[4], $matches[5], $matches[6]) : \'\';'), $post['message']);
 				}
 			}
 		}
@@ -1252,7 +1256,7 @@ function viewthread_procpost($post, $lastvisit, $ordertype, $maxposition = 0) {
 			$post['message'] = preg_replace("/\s?\[index\](.+?)\[\/index\]\s?/is", '', $post['message']);
 		}
 		if(strpos($post['message'], '[/begin]') !== FALSE) {
-			$post['message'] = preg_replace("/\[begin(=\s*([^\[\<\r\n]*?)\s*,(\d*),(\d*),(\d*),(\d*))?\]\s*([^\[\<\r\n]+?)\s*\[\/begin\]/ies", '', $post['message']);
+			$post['message'] = preg_replace("/\[begin(=\s*([^\[\<\r\n]*?)\s*,(\d*),(\d*),(\d*),(\d*))?\]\s*([^\[\<\r\n]+?)\s*\[\/begin\]/is", '', $post['message']);
 		}
 	}
 	if($imgcontent) {

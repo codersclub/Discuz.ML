@@ -3,13 +3,17 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: misc_imgcropper.php 33562 2013-07-08 06:52:29Z jeffjzhang $
+ *      $Id: misc_imgcropper.php 36267 2016-11-11 09:03:24Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
+$_GET['img'] = htmlspecialchars($_GET['img']);
+$_GET['bid'] = intval($_GET['bid']);
+$_GET['picflag'] = intval($_GET['picflag']);
+$_GET['ictype'] = !empty($_GET['ictype']) ? 'block' : '';
 
 if(!submitcheck('imgcroppersubmit')) {
 	if($_GET['op'] == 'loadcropper') {

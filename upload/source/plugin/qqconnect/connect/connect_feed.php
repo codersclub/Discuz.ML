@@ -4,7 +4,7 @@
  *	  [Discuz!] (C)2001-2099 Comsenz Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
- *	  $Id: connect_feed.php 32449 2013-01-17 09:11:53Z liulanbo $
+ *	  $Id: connect_feed.php 36278 2016-12-09 07:52:35Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -53,10 +53,10 @@ if ($op == 'new') {
 			$post['message'] = preg_replace('/\[quote\].*\[\/quote\](\r\n|\n|\r){0,}/is', '', $post['message']);
 		}
 		if(strpos($msglower, '[/media]') !== FALSE) {
-			$post['message'] = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/ies", '', $post['message']);
+			$post['message'] = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", '', $post['message']);
 		}
 		if(strpos($msglower, '[/flash]') !== FALSE) {
-			$post['message'] = preg_replace("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/ies", '', $post['message']);
+			$post['message'] = preg_replace("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/is", '', $post['message']);
 		}
 		if(strpos($msglower, '[/hide]') !== FALSE) {
 			$post['message'] = preg_replace("/\[hide[=]?(d\d+)?[,]?(\d+)?\]\s*(.*?)\s*\[\/hide\]/is", '', $post['message']);
@@ -216,10 +216,10 @@ if ($op == 'new') {
 			$post['message'] = preg_replace('/\[quote\].*\[\/quote\](\r\n|\n|\r){0,}/is', '', $post['message']);
 		}
 		if(strpos($msglower, '[/media]') !== FALSE) {
-			$post['message'] = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/ies", '', $post['message']);
+			$post['message'] = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", '', $post['message']);
 		}
 		if(strpos($msglower, '[/flash]') !== FALSE) {
-			$post['message'] = preg_replace("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/ies", '', $post['message']);
+			$post['message'] = preg_replace("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/is", '', $post['message']);
 		}
 		$html_content = $connectService->connectParseBbcode($post['message'], $post['fid'], $post['pid'], $post['htmlon'], $attach_images);
 		$html_content = strip_tags(preg_replace('/(&nbsp;)+/', ' ', $html_content));

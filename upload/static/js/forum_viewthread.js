@@ -2,7 +2,7 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: forum_viewthread.js 35220 2015-02-27 08:23:59Z nemohou $
+	$Id: forum_viewthread.js 35221 2015-02-27 08:24:39Z nemohou $
 	Modified by Valery Votintsev, codersclub.org
 */
 

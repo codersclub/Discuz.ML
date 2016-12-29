@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: post_editpost.php 34144 2013-10-21 05:56:02Z nemohou $
+ *      $Id: post_editpost.php 36284 2016-12-12 00:47:50Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -94,7 +94,7 @@ if(!submitcheck('editsubmit')) {
 	$showthreadsorts = ($thread['sortid'] || !empty($sortid)) && $isfirstpost;
 	$sortid = empty($sortid) ? $thread['sortid'] : $sortid;
 
-	$poll = $temppoll = '';
+	$poll = $temppoll = array();
 	if($isfirstpost) {
 		if($postinfo['tags']) {
 			$tagarray_all = $array_temp = $threadtag_array = array();
@@ -526,4 +526,3 @@ if(!submitcheck('editsubmit')) {
 	}
 
 }
-

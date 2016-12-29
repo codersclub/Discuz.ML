@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: topicadmin_stickreply.php 35236 2015-03-19 06:29:00Z nemohou $
+ *      $Id: topicadmin_stickreply.php 35235 2015-03-19 06:27:54Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {

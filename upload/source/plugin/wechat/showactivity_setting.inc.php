@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: showactivity_setting.inc.php 35159 2014-12-23 02:22:03Z nemohou $
+ *      $Id: showactivity_setting.inc.php 35147 2014-12-11 06:21:50Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

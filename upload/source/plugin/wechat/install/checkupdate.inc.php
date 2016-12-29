@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: checkupdate.inc.php 35226 2015-03-04 06:56:12Z nemohou $
+ *      $Id: checkupdate.inc.php 35224 2015-03-03 09:48:38Z nemohou $
  */
 
 define('PLUGIN_RELEASE', '20150303');

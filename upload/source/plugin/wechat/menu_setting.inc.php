@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: menu_setting.inc.php 35201 2015-02-04 06:32:12Z nemohou $
+ *      $Id: menu_setting.inc.php 35194 2015-02-02 02:37:34Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

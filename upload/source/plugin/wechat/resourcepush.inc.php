@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: resourcepush.inc.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: resourcepush.inc.php 34814 2014-08-07 01:46:48Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');

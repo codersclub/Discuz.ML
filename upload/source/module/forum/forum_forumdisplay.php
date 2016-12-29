@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_forumdisplay.php 35877 2016-04-20 01:53:57Z nemohou $
+ *      $Id: forum_forumdisplay.php 36295 2016-12-14 07:22:08Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -407,7 +407,7 @@ if($filter && $filter != 'hot') {
 			}
 
 			foreach($geturl as $field => $value) {
-				if($field != 'page' && $field != 'fid' && $field != 'searchoption') {
+				if($field != 'page' && $field != 'fid' && $field != 'searchoption' && $field != 't') {
 					$multiadd[] = rawurlencode($field).'='.rawurlencode($value);
 					if(in_array($field, $filterfield)) {
 						if($field == 'digest') {
@@ -545,13 +545,15 @@ if(empty($filter) && empty($_GET['sortid']) && empty($_G['forum']['relatedgroup'
 
 $thisgid = $_G['forum']['type'] == 'forum' ? $_G['forum']['fup'] : (!empty($_G['cache']['forums'][$_G['forum']['fup']]['fup']) ? $_G['cache']['forums'][$_G['forum']['fup']]['fup'] : 0);
 $forumstickycount = $stickycount = 0;
-$stickytids = '';
+$stickytids = array();
 $showsticky = !defined('MOBILE_HIDE_STICKY') || !MOBILE_HIDE_STICKY;
 if($showsticky) {
 	$forumstickytids = array();
 	if($_G['page'] !== 1 || $filterbool === false) {
 		if($_G['setting']['globalstick'] && $_G['forum']['allowglobalstick']) {
-			$stickytids = explode(',', str_replace("'", '', $_G['cache']['globalstick']['global']['tids']));
+			if(!empty($_G['cache']['globalstick']['global']['tids'])) {
+				$stickytids = explode(',', str_replace("'", '', $_G['cache']['globalstick']['global']['tids']));
+			}
 			if(!empty($_G['cache']['globalstick']['categories'][$thisgid]['count'])) {
 				$stickytids = array_merge($stickytids, explode(',', str_replace("'", '', $_G['cache']['globalstick']['categories'][$thisgid]['tids'])));
 			}
@@ -875,6 +877,8 @@ if(!empty($grouptids)) {
 	foreach($groupnames as $gtid => $value) {
 		$gfid = $groupnames[$gtid]['fid'];
 		$groupnames[$gtid]['name'] = $forumsinfo[$gfid]['name'];
+		$groupnames[$gtid]['type'] = $forumsinfo[$gfid]['type'];
+		$groupnames[$gtid]['status'] = $forumsinfo[$gfid]['status'];
 	}
 }
 
@@ -968,6 +972,8 @@ if(!defined('IN_ARCHIVER')) {
 
 
 function forumdisplay_verify_author($ids) {
+	global $_G;
+	$verify = array();
 	foreach(C::t('common_member_verify')->fetch_all($ids) as $value) {
 		foreach($_G['setting']['verify'] as $vid => $vsetting) {
 			if($vsetting['available'] && $vsetting['showicon'] && $value['verify'.$vid] == 1) {

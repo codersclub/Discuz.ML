@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: response_setting.inc.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: response_setting.inc.php 34817 2014-08-11 02:59:38Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

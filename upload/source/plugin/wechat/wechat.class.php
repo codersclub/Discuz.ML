@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat.class.php 35166 2014-12-23 07:12:44Z nemohou $
+ *      $Id: wechat.class.php 36284 2016-12-12 00:47:50Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -268,7 +268,7 @@ class WeChat {
 		return array($isqrapi, $qrcodeurl, $codeenc, $code);
 	}
 
-	static public function redirect($type) {
+	static public function redirect($type = '') {
 		global $_G;
 		$hook = unserialize($_G['setting']['wechatredirect']);
 		if (!$hook || !in_array($hook['plugin'], $_G['setting']['plugins']['available'])) {
@@ -285,7 +285,7 @@ class WeChat {
 		if (!method_exists($class, $hook['method'])) {
 			return;
 		}
-		$return = $class->$hook['method']($type);
+		$return = call_user_func(array($class, $hook['method']), $type);
 		if($return) {
 			return $return;
 		}
