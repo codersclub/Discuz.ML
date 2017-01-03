@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_template.php 33872 2013-08-23 08:54:40Z nemohou $
+ *      $Id: lang_template.php 36334 2017-01-03 01:32:35Z nemohou $
  *
  *	Modified by Valery Votintsev, codersclub.org
  */
@@ -217,7 +217,7 @@ $lang = array (
   'forum_threads' => '主题',
   'forum_todayposts' => '今日',
   'hotthreads_forum' => '$_G[setting][navs][2][navname]热点',
-/*vot*/  'index_guests' => '游客',
+  'index_guests' => '位游客',
   'index_invisibles' => '隐身',
   'index_members' => '会员',
   'index_mostonlines' => '最高记录是',
