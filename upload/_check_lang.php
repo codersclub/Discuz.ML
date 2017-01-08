@@ -1,6 +1,6 @@
 <?
 
-echo "<h2>X2ML LANGUAGE PACK VERIFIER</h2>";
+echo "<h2>Discuz!ML Language Pack Verifier</h2>";
 echo "(c) by Valery Votintsev (vot), http://codersclub.org/discuzx/<br>";
 echo "-------------------------------------------------------------<br>";
 
@@ -52,7 +52,7 @@ $files = array(
 	"lang_space.php",
 	"lang_spacecp.php",
 	"lang_template.php",
-	"lang_title.php",
+//	"lang_title.php",
 	"lang_install.php",
 	"lang_restore.php",
 	"lang_update.php",
