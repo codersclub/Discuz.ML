@@ -25,6 +25,7 @@ $lang = array(
 	'check_plugins'			=> '升级完成后会关闭所有插件以确保正常运行，请站长逐个开启每一个插件检测是否兼容新版本。',//'After the upgrade is completed, turn off all the plug-ins to ensure the site is work properly. Only after this open plugins one by one for detect if each plug-in is compatible with a new version.',
 	'upgade_start'			=> '准备完毕,升级开始',//'Ready, start the upgrade',
 	'contacts'			=> ' 联系方式:',//' Contacts: ',
+	'contact'			=> ' 联系方式',//' Contacts',
 	'ready_to_db_upgrade'		=> '准备完毕,进入下一步数据库结构升级',//'Ready, the next step will upgrade the database structure',
 	'sql_empty'			=> 'SQL文件内容为空,请确认',//'SQL file is empty, make sure',
 	'db_structure_upgraded'		=> '数据库结构升级完毕,进入下一步数据升级操作',//'The database structure upgrade is completed, enter to update the next data',
