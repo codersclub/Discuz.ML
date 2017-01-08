@@ -24,7 +24,7 @@ define('IN_COMSENZ',1);
 
 <center>
 
-<h2>Language Pack Diff, v.2.0</h2>
+<h2>Discuz!ML Language Pack Diff, v.2.0</h2>
 
 &copy; 2012-<?= date('Y')?> by <a href="http://codersclub.org/discuzx/">codersclub.org</a>
 <br>
