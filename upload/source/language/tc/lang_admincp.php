@@ -273,6 +273,8 @@ $lang = array
 	'admincp_maptext' => '管理中心導航(ESC鍵)',
 	'admincp_maptitle' => '管理中心導航',
 
+	'tiny_bbcode_support' => '<em>(支持[color][b][u][i][s])</em>',
+
 	'nav_newwin' => '新窗口打開',
 	'nav_index' => '首頁',
 	'nav_global' => '全局',
