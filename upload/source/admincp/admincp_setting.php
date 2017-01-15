@@ -2298,6 +2298,7 @@ EOT;
 						C::t('common_member_profile')->clear_cache($uid);
 						C::t('common_member_field_home')->clear_cache($uid);
 						C::t('common_member_field_forum')->clear_cache($uid);
+						C::t('common_member_verify')->clear_cache($uid);		
 					} elseif($k == 'forum_thread_forumdisplay') {
 						memory('rm', $id, 'forumdisplay_');
 					} elseif($k == 'forumindex') {
