@@ -2,8 +2,8 @@
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
-	$Id: common.js 34611 2014-06-11 10:28:49Z nemohou $
-//	Modified by Valery Votintsev, codersclub.org
+	$Id: common.js 36348 2017-01-13 06:36:44Z nemohou $
+	Modified by Valery Votintsev, codersclub.org
 */
 
 function $(id) {
@@ -1376,7 +1376,7 @@ function simulateSelect(selectId, widthvalue) {
 	$(selectId + '_ctrl').onkeyup = function(e) {
 		e = e ? e : window.event;
 		value = e.keyCode;
-		if(value == 40 || value == 38) { // Up/Down
+/*vot*/		if(value == 40 || value == 38) { // Up/Down
 			if(menuObj.style.display == 'none') {
 				$(selectId + '_ctrl').onclick();
 			} else {
@@ -1474,7 +1474,7 @@ function showColorBox(ctrlid, layer, k, bgcolor) {
 
 function ctrlEnter(event, btnId, onlyEnter) {
 	if(isUndefined(onlyEnter)) onlyEnter = 0;
-	if((event.ctrlKey || onlyEnter) && event.keyCode == 13) { // Enter
+/*vot*/	if((event.ctrlKey || onlyEnter) && event.keyCode == 13) { // Enter
 		$(btnId).click();
 		return false;
 	}
@@ -1500,6 +1500,11 @@ function parseurl(str, mode, parsecode) {
 function codetag(text, br) {
 	var br = !br ? 1 : br;
 	DISCUZCODE['num']++;
+
+	text = text.replace(/<\/blockquote><blockquote>/ig, '<br>');
+	text = text.replace(/<div>([\s\S]*?)<\/div>/ig, "$1");
+	text = text.replace(/<p>([\s\S]*?)<\/p>/ig, "$1");
+
 	if(br > 0 && typeof wysiwyg != 'undefined' && wysiwyg) text = text.replace(/<br[^\>]*>/ig, '\n');
 	text = text.replace(/\$/ig, '$$');
 	DISCUZCODE['html'][DISCUZCODE['num']] = '[code]' + text + '[/code]';
@@ -1750,7 +1755,6 @@ function strLenCalc(obj, checklen, maxlen) {
 	if(curlen >= len) {
 		$(checklen).innerHTML = curlen - len;
 	} else {
-//vot		obj.value = mb_cutstr(v, maxlen, 0);
 /*vot*/		obj.value = obj.value.substr(v, maxlen);
 	}
 }
