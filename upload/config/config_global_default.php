@@ -116,6 +116,7 @@ $_config['memory']['apc'] = 1;			// Start support for apc
 $_config['memory']['xcache'] = 1;		// Start the support for xcache
 $_config['memory']['eaccelerator'] = 1;		// Start the support for eaccelerator
 $_config['memory']['wincache'] = 1;		// Stert the support for wincache
+$_config['memory']['yac'] = 1;			// Start YAC support
 // Server-related settings
 $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID to identify the current server
 
