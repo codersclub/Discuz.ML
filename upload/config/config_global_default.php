@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: config_global_default.php 36287 2016-12-12 03:59:05Z nemohou $
+ *      $Id: config_global_default.php 36362 2017-02-04 02:02:03Z nemohou $
  *      Modified by Valery Votintsev at codersclub.org
  */
 
@@ -113,6 +113,7 @@ $_config['memory']['memcache']['pconnect'] = 1;	// memcache persistent connectio
 $_config['memory']['memcache']['timeout'] = 1;	// memcache server connection timeout
 
 $_config['memory']['apc'] = 1;			// Start support for apc
+$_config['memory']['apcu'] = 1;			// Start APCu support
 $_config['memory']['xcache'] = 1;		// Start the support for xcache
 $_config['memory']['eaccelerator'] = 1;		// Start the support for eaccelerator
 $_config['memory']['wincache'] = 1;		// Stert the support for wincache
