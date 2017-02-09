@@ -112,12 +112,13 @@ $_config['memory']['memcache']['port'] = 11211;	// memcache server port
 $_config['memory']['memcache']['pconnect'] = 1;	// memcache persistent connection
 $_config['memory']['memcache']['timeout'] = 1;	// memcache server connection timeout
 
-$_config['memory']['apc'] = 1;			// Start support for apc
-$_config['memory']['apcu'] = 1;			// Start APCu support
-$_config['memory']['xcache'] = 1;		// Start the support for xcache
-$_config['memory']['eaccelerator'] = 1;		// Start the support for eaccelerator
-$_config['memory']['wincache'] = 1;		// Stert the support for wincache
-$_config['memory']['yac'] = 1;			// Start YAC support
+$_config['memory']['apc'] = 0;			// Start support for apc
+$_config['memory']['apcu'] = 0;			// Start APCu support
+$_config['memory']['xcache'] = 0;		// Start the support for xcache
+$_config['memory']['eaccelerator'] = 0;		// Start the support for eaccelerator
+$_config['memory']['wincache'] = 0;		// Start the support for wincache
+$_config['memory']['yac'] = 0;			// Start YAC support
+$_config['memory']['file']['server'] = 'data/cache/filecache'; // Start File Cache support
 // Server-related settings
 $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID to identify the current server
 
