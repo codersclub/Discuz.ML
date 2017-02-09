@@ -40,7 +40,7 @@ class usermodel {
 	}
 
 	function check_username($username) {
-		$guestexp = '\xA1\xA1|\xAC\xA3|^Guest|^\xD3\xCE\xBF\xCD|\xB9\x43\xAB\xC8';
+/*vot*/		$guestexp = '^Guest|^\xD3\xCE\xBF\xCD|\xB9\x43\xAB\xC8';
 		$len = $this->dstrlen($username);
 /*vot*/		$bytelen = strlen($username);
 /*vot*/		if($bytelen > 64) {
