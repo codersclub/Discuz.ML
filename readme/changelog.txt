@@ -1,9 +1,9 @@
 +======================================================+
-   Discuz! ML v.3.2 (MultiLingual)
+   Discuz! ML v.3.3 (MultiLingual)
    (c) by Valery Votintsev and CodersClub community
    http://codersclub.org/discuzx/
 
-   Based on Discuz! X3.2
+   Based on Discuz! X3.3
 +======================================================+
 
 Main differences from the official Discuz!X:
@@ -22,34 +22,15 @@ Main differences from the official Discuz!X:
 11. UCenter upgraded to v.1.6.0
 12. UCenter API Development Guide translated to English
 
-+======================================+
-   Discuz! X3.2 Release 20160601
-+======================================+
-Fixed security issues, stable version
-+======================================+
-   Discuz! X3.2 Release 20151208
-+======================================+
-Fixed security issues, stable version
-+======================================+
-   Discuz! X3.2 Release 20150609
-+======================================+
-Fixed security issues, stable version
-+======================================+
-   Discuz! X3.2 Release 20141225
-+======================================+
-Fixed some security problems, stable version
-+======================================+
-   Discuz! X3.2 Release 20140618
-+======================================+
-Fixed some problems, the stable version
 
 +======================================+
-   Discuz! X3.2 Release 20140603
+   Discuz! X3.3 Release 20170210
 +======================================+
-Optimized: Improve efficiency of the page sections
-Improvement: Plug-in mechanism provide more interfaces 
-New: Log on with micro-channel, Support micro-communities
-Fix: Fixed known issues and security risks from the previous versions
+Compatible with PHP7
+Optimized SQL queries
+Fixed security issues
+Optimized the cache mechanism, it can be expanded freely
+New cache drivers: APCu, Yac, file, the file cache is turned on by default
 
 +--------------------------------------+
 Old Versions
@@ -65,3 +46,4 @@ Discuz! X2
 Discuz! X2.5
 Discuz! X3
 Discuz! X3.1
+Discuz! X3.2
