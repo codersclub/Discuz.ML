@@ -33,7 +33,7 @@ deconcept.SWFObjectUtil.cleanupSWFs=function(){var objects=document.getElementsB
 if(!document.getElementById&&document.all){document.getElementById=function(id){return document.all[id];}}
 var getQueryParamValue=deconcept.util.getRequestParameter;var FlashObject=deconcept.SWFObject;var SWFObject=deconcept.SWFObject;var flash_update_dialog_shown=false;function spawn_flash_update_dialog(have_version,need_version){if(flash_update_dialog_shown)return;flash_update_dialog_shown=true;dialog=new pop_dialog('errorDialog');new AsyncRequest().setURI('/ajax/flash_update_dialog.php').setData({have_version:have_version,need_version:need_version}).setHandler(function(response){message_data=response.getPayload();dialog.show_message(message_data.title,message_data.body,'Close');}).send();}
 function setFlashFallback(id,required_version){var fallback=ge(id);var version=deconcept.SWFObjectUtil.getPlayerVersion();if(fallback&&version['major']>0){var current_version=version['major']+'.'+version['minor']+'.'+version['rev'];fallback.innerHTML=tx('flash:upgrade-explanation',{'required-version':required_version,'current-version':current_version});}}
-function getFlashPlayer(){goURI('http://adobe.com/go/getflashplayer');return false;}
+function getFlashPlayer(){goURI('https://adobe.com/go/getflashplayer');return false;}
 function htmlspecialchars(text){if(typeof(text)=='undefined'||!text.toString){return'';}
 if(text===false){return'0';}else if(text===true){return'1';}
 return text.toString().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#039;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}

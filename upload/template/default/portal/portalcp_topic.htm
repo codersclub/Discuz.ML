@@ -37,7 +37,7 @@
 							<th>{lang topic_domain}</th>
 							<td>
 								<!--{if !empty($_G['setting']['domain']['root']['topic'])}-->
-								http://<input type="text" name="domain" value="$topic[domain]" class="px" style="width:100px" />.$_G['setting']['domain']['root']['topic']
+								{$_G['scheme']}://<input type="text" name="domain" value="$topic[domain]" class="px" style="width:100px" />.$_G['setting']['domain']['root']['topic']
 								<!--{else}-->
 								<input type="text" name="domain" value="" disabled="disabled" class="px" />
 								<!--{/if}-->

@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 function absoluteurl($url) {
 	global $_G;
 	if($url{0} == '/') {
-		return 'http://'.$_SERVER['HTTP_HOST'].$url;
+		return $_G['scheme'].'://'.$_SERVER['HTTP_HOST'].$url;
 	} else {
 		return $_G['siteurl'].$url;
 	}

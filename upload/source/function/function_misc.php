@@ -237,18 +237,18 @@ function convertip_full($ip, $ipdatafile) {
 	}
 	fclose($fd);
 
-	if(preg_match('/http/i', $ipAddr2)) {
+	if(preg_match('/https?/i', $ipAddr2)) {
 		$ipAddr2 = '';
 	}
 	$ipaddr = "$ipAddr1 $ipAddr2";
 	$ipaddr = preg_replace('/CZ88\.NET/is', '', $ipaddr);
 	$ipaddr = preg_replace('/^\s*/is', '', $ipaddr);
 	$ipaddr = preg_replace('/\s*$/is', '', $ipaddr);
-	if(preg_match('/http/i', $ipaddr) || $ipaddr == '') {
+	if(preg_match('/https?/i', $ipaddr) || $ipaddr == '') {
 		$ipaddr = '- Unknown';
 	}
 
-	return '- '.diconv($ipaddr, 'GBK');
+	return '- '.diconv($ipaddr, 'GBK'); //vot?: WHY from GBK?
 
 }
 
@@ -294,7 +294,7 @@ function procthread($thread, $timeformat = 'd') {
 	$pagelinks = '';
 	if($postsnum  > $_G['ppp']) {
 		if($_G['setting']['domain']['app']['forum'] || $_G['setting']['domain']['app']['default']) {
-			$domain = 'http://'.($_G['setting']['domain']['app']['forum'] ? $_G['setting']['domain']['app']['forum'] : ($_G['setting']['domain']['app']['default'] ? $_G['setting']['domain']['app']['default'] : '')).'/';
+			$domain =  $_G['scheme'].'://'.($_G['setting']['domain']['app']['forum'] ? $_G['setting']['domain']['app']['forum'] : ($_G['setting']['domain']['app']['default'] ? $_G['setting']['domain']['app']['default'] : '')).'/';
 		} else {
 			$domain = $_G['siteurl'];
 		}

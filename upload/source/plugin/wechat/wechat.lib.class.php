@@ -305,7 +305,7 @@ class WeChatClient {
 
 	public static $_URL_API_ROOT = 'https://api.weixin.qq.com';
 	public static $_URL_FILE_API_ROOT = 'http://file.api.weixin.qq.com';
-	public static $_URL_QR_ROOT = 'http://mp.weixin.qq.com';
+	public static $_URL_QR_ROOT = 'https://mp.weixin.qq.com';
 	public static $_QRCODE_TICKET_DEFAULT_ID = 1;
 	public static $ERRCODE_MAP = array(
 	    '-1' => '&#x7CFB;&#x7EDF;&#x7E41;&#x5FD9;',

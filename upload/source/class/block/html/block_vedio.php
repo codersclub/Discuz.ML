@@ -27,7 +27,7 @@ class block_vedio extends commonblock_html {
 			'url' => array(
 				'title' => 'vedio_url',
 				'type' => 'text',
-				'default' => 'http://'
+				'default' => $_G['scheme'] . '://'
 			),
 			'width' => array(
 				'title' => 'vedio_width',

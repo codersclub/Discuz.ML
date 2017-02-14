@@ -721,7 +721,7 @@ var geo = {
 		geo.errmsg = '';
 		$.ajax({
 			type:'POST',
-			url:'http://maps.google.com/maps/api/geocode/json?latlng=' + geo.latitude + ',' + geo.longitude + '&language=zh-CN&sensor=true',
+			url:'https://maps.google.com/maps/api/geocode/json?latlng=' + geo.latitude + ',' + geo.longitude + '&language=zh-CN&sensor=true',
 			dataType:'json'
 		})
 		.success(function(s) {
