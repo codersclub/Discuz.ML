@@ -30,7 +30,7 @@ Compatible with PHP7
 Optimized SQL queries
 Fixed security issues
 Optimized the cache mechanism, it can be expanded freely
-New cache drivers: APCu, Yac
+New cache drivers: APCu, Yac, File
 
 +--------------------------------------+
 Old Versions
