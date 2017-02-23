@@ -35,7 +35,7 @@
 			<!--{/if}-->
 		</span>
 		<h3 id="layer_reginfo_t" class="xs2">
-			<!--{if $_GET[action] != 'activation'}-->{lang register}<!--{else}-->{lang index_activation}<!--{/if}-->
+<!--vot-->		<!--{if $_GET[action] != 'activation'}-->{lang register}<!--{else}-->{lang index_activation}<!--{/if}-->
 		</h3>
 	</div>
 
@@ -231,7 +231,7 @@
 								<!--{if $_GET[action] != 'activation'}--><em>&nbsp;</em><!--{/if}-->
 									<button class="pn pnc" id="registerformsubmit" type="submit" name="regsubmit" value="true" tabindex="1"><strong><!--{if $_GET[action] == 'activation'}-->{lang activation}<!--{else}-->{lang submit}<!--{/if}--></strong></button>
 								<!--{if $bbrules}-->
-									<input type="checkbox" class="pc" name="agreebbrule" value="$bbrulehash" id="agreebbrule" checked="checked" /> <label for="agreebbrule">{lang agree}<a href="javascript:;" onclick="showBBRule()">{lang rulemessage}</a></label>
+<!--vot-->								<input type="checkbox" class="pc" name="agreebbrule" value="$bbrulehash" id="agreebbrule" checked="checked" /> <label for="agreebbrule">{lang agree_with} <a href="javascript:;" onclick="showBBRule()">{lang rulemessage}</a></label>
 								<!--{/if}-->
 							</span>
 						</td>
