@@ -1908,6 +1908,7 @@ function getexpiration() {
 function return_bytes($val) {
     $val = trim($val);
     $last = strtolower($val{strlen($val)-1});
+/*vot*/    $val = trim($val);
     switch($last) {
         case 'g': $val *= 1024;
         case 'm': $val *= 1024;
