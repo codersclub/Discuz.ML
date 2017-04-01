@@ -1,5 +1,5 @@
 +======================================================+
-   Discuz! ML v.3.3 (MultiLingual)
+   Discuz! ML 3.3 (MultiLingual)
    (c) by Valery Votintsev and CodersClub community
    http://codersclub.org/discuzx/
 
@@ -24,7 +24,7 @@ Main differences from the official Discuz!X:
 
 
 +======================================+
-   Discuz! X3.3 Release 20170210
+   Discuz! X3.3 Release 20170401
 +======================================+
 Compatible with PHP7
 Optimized SQL queries
