@@ -408,6 +408,7 @@ function showmessagenoperm($type, $fid, $formula = '') {
 
 function loadforum($fid = null, $tid = null) {
 	global $_G;
+/*vot*/	$forum = array();
 	$tid = intval(isset($tid) ? $tid : getgpc('tid'));
 	if(isset($fid)) {
 		$fid = intval($fid);
