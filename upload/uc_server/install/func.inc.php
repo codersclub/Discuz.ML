@@ -755,7 +755,7 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 	$scheme = $matches['scheme'];
 	$host = $matches['host'];
 	$path = $matches['path'] ? $matches['path'].(isset($matches['query']) && $matches['query'] ? '?'.$matches['query'] : '') : '/';
-	$port = !empty($matches['port']) ? $matches['port'] : ($matches['scheme'] == 'https' ? 443 : 80);
+/*vot*/	$port = !empty($matches['port']) ? $matches['port'] : ($scheme == 'https' ? 443 :80);
 
 	if($post) {
 		$out = "POST $path HTTP/1.0\r\n";
