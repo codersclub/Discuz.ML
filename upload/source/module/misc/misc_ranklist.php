@@ -440,9 +440,6 @@ function getranklistdata($type, $view = '', $orderby = 'all') {
 
 	$ranklistvars = array();
 	loadcache('ranklist_'.$type);
-/*Zhuge*/if(!isset($_G['cache']['ranklist_'.$type][$view][$orderby]) || !is_array($_G['cache']['ranklist_'.$type][$view][$orderby])){
-/*Zhuge*/	$_G['cache']['ranklist_'.$type][$view][$orderby] = array();
-/*Zhuge*/}
 	$ranklistvars = & $_G['cache']['ranklist_'.$type][$view][$orderby];
 
 	if(empty($ranklistvars['lastupdated']) || (TIMESTAMP - $ranklistvars['lastupdated'] > $cache_time)) {
