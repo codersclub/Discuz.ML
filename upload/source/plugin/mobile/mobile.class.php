@@ -70,14 +70,14 @@ class mobile_core {
 		return $return;
 	}
 
-	static function arraystring($array) {
+	public static function arraystring($array) {
 		foreach($array as $k => $v) {
 			$array[$k] = is_array($v) ? mobile_core::arraystring($v) : (string)$v;
 		}
 		return $array;
 	}
 
-	static function variable($variables = array()) {
+	public static function variable($variables = array()) {
 		global $_G;
 		if(in_array('mobileoem', $_G['setting']['plugins']['available'])) {
 			$check = C::t('#mobileoem#mobileoem_member')->fetch($_G['uid']);
