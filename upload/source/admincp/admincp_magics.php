@@ -264,7 +264,7 @@ if($operation == 'admin') {
 
 		$magicclass = new $magicclass;
 		$magicclass->setsetting($magicperm, $_GET['perm']);
-		$magicpermnew = addslashes(serialize($magicperm));
+/*Zhuge*/	$magicpermnew = serialize($magicperm);
 
 		$supplytypenew = intval($_GET['supplytypenew']);
 		$supplynumnew = $_GET['supplytypenew'] ? intval($_GET['supplynumnew']) : 0;
