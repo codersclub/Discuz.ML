@@ -428,6 +428,9 @@ function getranklist_member_post($num, $orderby) {
 
 function getranklistdata($type, $view = '', $orderby = 'all') {
 	global $_G;
+/*Zhuge*/if (!function_exists('getranklist_'.$type)) {
+/*Zhuge*/	return array();
+/*Zhuge*/}
 	$cache_time = $_G['setting']['ranklist'][$type]['cache_time'];
 	$cache_num =  $_G['setting']['ranklist'][$type]['show_num'];
 	if($cache_time <= 0 ) {
@@ -440,9 +443,10 @@ function getranklistdata($type, $view = '', $orderby = 'all') {
 
 	$ranklistvars = array();
 	loadcache('ranklist_'.$type);
-	if(!isset($_G['cache']['ranklist_'.$type][$view][$orderby]) || !is_array($_G['cache']['ranklist_'.$type][$view][$orderby])){
-		$_G['cache']['ranklist_'.$type][$view][$orderby] = array();
-	}
+/*Zhuge*/	(!isset($_G['cache']['ranklist_'.$type]) || !is_array($_G['cache']['ranklist_'.$type])) && $_G['cache']['ranklist_'.$type] = array();
+/*Zhuge*/	(!isset($_G['cache']['ranklist_'.$type][$view]) || !is_array($_G['cache']['ranklist_'.$type][$view])) && $_G['cache']['ranklist_'.$type][$view] = array();
+/*Zhuge*/	(!isset($_G['cache']['ranklist_'.$type][$view][$orderby]) || !is_array($_G['cache']['ranklist_'.$type][$view][$orderby])) && $_G['cache']['ranklist_'.$type][$view][$orderby] = array();
+	
 	$ranklistvars = & $_G['cache']['ranklist_'.$type][$view][$orderby];
 
 	if(empty($ranklistvars['lastupdated']) || (TIMESTAMP - $ranklistvars['lastupdated'] > $cache_time)) {
