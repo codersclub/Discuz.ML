@@ -118,7 +118,7 @@ $_config['memory']['xcache'] = 0;		// Start the support for xcache
 $_config['memory']['eaccelerator'] = 0;		// Start the support for eaccelerator
 $_config['memory']['wincache'] = 0;		// Start the support for wincache
 $_config['memory']['yac'] = 0;			// Start YAC support
-$_config['memory']['file']['server'] = 'data/cache/filecache';	// Start File Cache support
+$_config['memory']['file']['server'] = '';	// Start File Cache support
 // Server-related settings
 $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID to identify the current server
 
