@@ -160,6 +160,7 @@ $_config['security']['querysafe']['daction']	= array('@','intooutfile','intodump
 $_config['security']['querysafe']['dnote']	= array('/*','*/','#','--','"');
 $_config['security']['querysafe']['dlikehex']	= 1;
 $_config['security']['querysafe']['afullnote']	= 0;
+$_config['security']['onlyremoteaddr']	= 0;		// Show only Remote IP address
 
 $_config['admincp']['founder']		= '1';	// Site Founder: site management background with the highest authority, each site can be set to one or more founders
 						// You can use the user uid or user name. Separate multiple users with a comma;
