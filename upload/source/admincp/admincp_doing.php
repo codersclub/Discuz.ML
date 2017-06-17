@@ -36,8 +36,8 @@ if(!submitcheck('doingsubmit')) {
 		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? '' : $starttime;
 		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? '' : $endtime;
 	} else {
-		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
-		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
+/*vot*/		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
+/*vot*/		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
 	}
 
 	shownav('topic', 'nav_doing');
@@ -111,7 +111,7 @@ if(submitcheck('searchsubmit', 1) || $newlist) {
 		$error = 'prune_mod_range_illegal';
 	}
 
-	if(!($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d'))) {
+/*vot*/	if(!($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d'))) {
 		$endtime = TIMESTAMP;
 	}
 

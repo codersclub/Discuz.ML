@@ -104,6 +104,7 @@ echo <<<EOT
 <ul id="topmenu">
 
 EOT;
+
 foreach($topmenu as $k => $v) {
 	if($k == 'cloud') {
 		continue;

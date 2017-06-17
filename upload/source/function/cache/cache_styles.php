@@ -100,7 +100,7 @@ function setcssbackground(&$data, $code) {
 
 function writetocsscache($data) {
 	global $_G;
-/*vot*/	$dir = DISCUZ_ROOT.'template/default/common/';
+	$dir = DISCUZ_ROOT.'./template/default/common/';
 //DEBUG
 //echo "writetocsscache: discuz_root=".DISCUZ_ROOT."<br>";
 //echo "writetocsscache: dir=".$dir."<br>";
@@ -108,7 +108,7 @@ function writetocsscache($data) {
 	$data['staticurl'] = STATICURL;
 	while(($entry = readdir($dh)) !== false) {
 		if(fileext($entry) == 'css') {
-/*vot*/			$cssfile = DISCUZ_ROOT.$data['tpldir'].'/common/'.$entry;
+			$cssfile = DISCUZ_ROOT.'./'.$data['tpldir'].'/common/'.$entry;
 //DEBUG
 //echo "writetocsscache: entry=".$entry."<br>";
 //echo "writetocsscache: cssfile=".$cssfile."<br>";

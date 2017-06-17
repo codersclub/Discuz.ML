@@ -531,7 +531,7 @@ class register_ctl {
 				}
 				$sendurl = false;
 			}
-			if(!$activationauth && ($sendurl || !$_G['setting']['forgeemail'])) {
+			if(!$activationauth && $sendurl) {
 				checkemail($_GET['email']);
 			}
 			if($sendurl) {
