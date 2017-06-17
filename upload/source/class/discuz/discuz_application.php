@@ -60,6 +60,9 @@ class discuz_application extends discuz_base{
 	public function __construct() {
 		$this->_init_env();
 		$this->_init_config();
+
+/*vot*/		$this->var['clientip'] = $this->_get_client_ip();
+
 		$this->_init_input();
 		$this->_init_output();
 	}
@@ -122,7 +125,7 @@ class discuz_application extends discuz_base{
 			'connectguest' => 0,
 			'timestamp' => TIMESTAMP,
 			'starttime' => microtime(true),
-			'clientip' => $this->_get_client_ip(),
+//vot			'clientip' => $this->_get_client_ip(),
 			'remoteport' => $_SERVER['REMOTE_PORT'],
 			'referer' => '',
 			'charset' => '',
