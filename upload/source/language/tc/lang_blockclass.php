@@ -65,6 +65,7 @@ $lang = array(
 	'blockclass_thread_field_sorturl' => '分類信息URL',
 	'blockclass_thread_field_posts' => '總發帖數',
 	'blockclass_thread_field_todayposts' => '今日發帖數',
+	'blockclass_thread_field_lastposter' => '最後回復作者',
 	'blockclass_thread_field_lastpost' => '最後回復時間',
 	'blockclass_thread_field_dateline' => '發帖時間',
 	'blockclass_thread_field_replies' => '回複數',
