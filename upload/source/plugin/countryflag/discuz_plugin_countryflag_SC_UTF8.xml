@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2,X2.5,X3,X3.1,X3.2]]></item>
+	<item id="Time"><![CDATA[2012-03-29 10:43]]></item>
+	<item id="From"><![CDATA[codersclub.org]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[0]]></item>
+			<item id="name"><![CDATA[国家标志]]></item>
+			<item id="identifier"><![CDATA[countryflag]]></item>
+			<item id="description"><![CDATA[在用户信息侧边栏显示国旗]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[countryflag/]]></item>
+			<item id="copyright"><![CDATA[Valery Votintsev, codersclub.org]]></item>
+			<item id="version"><![CDATA[1.8]]></item>
+			<item id="image"><![CDATA[countryflag.gif]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[countryflag]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2,X2.5,X3]]></item>
+                <item id="license"><![CDATA[[list]感谢您选择使用这个插件。
+在安装此插件之前，请仔细阅读以下：
+
+[b]安装注意事项[/b]
+
+[1] 撰稿 [url=http://codersclub.org/discuzx/home.php?mod=space&uid=1]Valery Votintsev[/url]
+[2] 由最初的想法 [url="http://codersclub.org/discuzx/home.php?mod=space&uid=1563]KEN[/url]
+[3] 这个插件可以用来只用了Discuz！所述多。
+[4] 无需更改数据库。
+[5] 无需手动修改Discuz!文件。
+
+[b]许可证[/b]
+
+[1] 授权下的 Creative Commons Attribution 3.0 许可证.
+[2] 署名。 您必须按照作者或授权人（但不得以任何方式暗示他们认可您或您使用的工作）的方式指定工作。
+[3] 用于非商业用途免费。您不得使用本作品用于商业目的！
+[4] 相同方式共享。 如果您改变，转换，或建设这项工作时，你可能会产生的工作分配，只有在这个相同或相似的许可证。
+[5] 可豁免上述任何条件，如果你得到版权持有人的许可。
+
+欢迎光临 [url=http://codersclub.org/discuzx/]CodersClub社区[/url]
+]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[隐藏用户id (UID)]]></item>
+				<item id="description"><![CDATA[上市用户不显示国旗。
+用逗号分隔多个用户ID (,)]]></item>
+				<item id="variable"><![CDATA[hideuid]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[模板]]></item>
+				<item id="description"><![CDATA[支持HTML代码。
+您可以使用下面的变量：
+$flag_image.......国旗图片
+$flag_country.....国家名称]]></item>
+				<item id="variable"><![CDATA[template]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[<p style="white-space: nowrap; overflow: hidden;">$flag_image&nbsp;$flag_country</p>]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+	</item>
+</root>
