@@ -1754,12 +1754,6 @@ function strLenCalc(obj, checklen, maxlen) {
 	}
 }
 
-function patchNotice() {
-	if($('patch_notice')) {
-		ajaxget('misc.php?mod=patch&action=patchnotice', 'patch_notice', '');
-	}
-}
-
 function pluginNotice() {
 	if($('plugin_notice')) {
 		ajaxget('misc.php?mod=patch&action=pluginnotice', 'plugin_notice', '');
