@@ -15,7 +15,7 @@ require './source/class/class_core.php';
 
 $discuz = C::app();
 
-$modarray = array('my', 'user', 'curforum', 'newthread');
+$modarray = array('user', 'curforum', 'newthread');
 
 $cachelist = $slist = array();
 $mod = '';

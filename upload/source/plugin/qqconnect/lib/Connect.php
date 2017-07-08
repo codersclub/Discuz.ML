@@ -47,13 +47,13 @@ class Cloud_Service_Connect {
 				$_G['member']['is_feed'] = 0;
 			} elseif ($user_auth_fields == 1) {
 				$_G['member']['is_user_info'] = 1;
-				$_G['member']['is_feed'] = 1;
+				$_G['member']['is_feed'] = 0;
 			} elseif ($user_auth_fields == 2) {
 				$_G['member']['is_user_info'] = 1;
 				$_G['member']['is_feed'] = 0;
 			} elseif ($user_auth_fields == 3) {
 				$_G['member']['is_user_info'] = 0;
-				$_G['member']['is_feed'] = 1;
+				$_G['member']['is_feed'] = 0;
 			}
 			unset($connect_member, $_G['member']['conisfeed']);
 		}

@@ -22,7 +22,8 @@ if (!in_array($pluginop, array('config', 'share', 'new', 'sync_tthread'))) {
 }
 $sh_type = trim(intval($_GET['sh_type']));
 $tid = trim(intval($_GET['thread_id']));
-$connectService = Cloud::loadClass('Service_Connect');
+require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Connect.php';
+$connectService = new Cloud_Service_Connect();
 if ($pluginop == 'config') {
 
 	$connectService->connectMergeMember();
@@ -107,8 +108,10 @@ if ($pluginop == 'config') {
 		$url = $_G['siteurl'].'forum.php?mod=viewthread&tid='.$tid;
 	}
 
-	$connectOAuthClient = Cloud::loadClass('Service_Client_ConnectOAuth');
-	$connectService = Cloud::loadClass('Service_Connect');
+	require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/ConnectOAuth.php';
+	$connectOAuthClient = new Cloud_Service_Client_ConnectOAuth();
+	require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Connect.php';
+	$connectService = new Cloud_Service_Connect();
 	if($sh_type == 3) {
 
 		$firstpost = C::t('forum_post')->fetch_threadpost_by_tid_invisible($tid, 0);
@@ -257,7 +260,8 @@ if ($pluginop == 'config') {
 		exit;
 	}
 
-	$connectOAuthClient = Cloud::loadClass('Service_Client_ConnectOAuth');
+	require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/ConnectOAuth.php';
+	$connectOAuthClient = new Cloud_Service_Client_ConnectOAuth();
 	$connectmember = C::t('#qqconnect#common_member_connect')->fetch_fields_by_openid($tthread['conopenid']);
 	$param = array();
 	$param['format'] = 'xml';

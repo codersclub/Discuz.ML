@@ -90,7 +90,8 @@ class Cloud_Service_Client_OAuth {
 	}
 
 	public function customHmac($str, $key) {
-		$utilService = Cloud::loadClass('Service_Util');
+		require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Util.php';
+		$utilService = new Cloud_Service_Util();
 		return base64_encode($utilService->hashHmac('sha1', $str, $key, true));
 	}
 

@@ -11,8 +11,10 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-Cloud::loadFile('Service_Connect');
-Cloud::loadFile('Service_Client_OAuth');
+require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/OAuth.php';
+
+// Cloud::loadFile('Service_Connect');
+// Cloud::loadFile('Service_Client_OAuth');
 
 class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 
@@ -113,7 +115,8 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 			'oauth_consumer_key' => $this->_appKey,
 			'oauth_token' => $requestToken,
 		);
-		$utilService = Cloud::loadClass('Service_Util');
+		require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Util.php';
+		$utilService = new Cloud_Service_Util();
 		$oAuthAuthorizeURL = $this->_oAuthAuthorizeURL.'?'.$utilService->httpBuildQuery($params, '', '&');
 
 		return $oAuthAuthorizeURL;
@@ -188,7 +191,8 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 
 	private function _xmlParse($data) {
 
-		$connectService = Cloud::loadClass('Service_Connect');
+		require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Connect.php';
+		$connectService = new Cloud_Service_Connect();
 		$data = $connectService->connectParseXml($data);
 		if (strtoupper(CHARSET) != 'UTF-8') {
 			$data = $this->_iconv($data, 'UTF-8', CHARSET);
@@ -365,7 +369,8 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 			'state' => md5(FORMHASH),
 			'scope' => 'get_user_info,add_share,add_t,add_pic_t,get_repost_list',
 		);
-		$utilService = Cloud::loadClass('Service_Util');
+		require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Util.php';
+		$utilService = new Cloud_Service_Util();
 		return $this->_oAuthAuthorizeURL_V2.'?'.$utilService->httpBuildQuery($params, '', '&');
 	}
 
@@ -377,7 +382,8 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 			'client_secret' => $this->_appSecret,
 			'code' => $code
 		);
-		$utilService = Cloud::loadClass('Service_Util');
+		require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Util.php';
+		$utilService = new Cloud_Service_Util();
 		$response = $this->dfsockopen($this->_accessTokenURL_V2.'?'.$utilService->httpBuildQuery($params, '', '&'));
 		parse_str($response, $result);
 		if($result['access_token'] && $result['refresh_token']) {
@@ -409,7 +415,8 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 			'openid' => $openId,
 			'format' => 'xml'
 		);
-		$utilService = Cloud::loadClass('Service_Util');
+		require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/Util.php';
+		$utilService = new Cloud_Service_Util();
 		$response = $this->dfsockopen($this->_getUserInfoURL_V2.'?'.$utilService->httpBuildQuery($params, '', '&'));
 
 		$data = $this->_xmlParse($response);
