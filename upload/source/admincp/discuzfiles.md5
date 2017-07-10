@@ -683,7 +683,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-ea49103cf89494645dfc284ae2fcdb1e *source/discuz_version.php
+8d980fc59bdbf28528f9d7a52d7de674 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -1410,7 +1410,7 @@ aed09ee91f0152cf394e8fe7eb83d007 *source/module/misc/misc_faq.php
 0c2a7a825561f1cbb9d74112086bc430 *source/module/misc/misc_getatuser.php
 2f752a5e9a3383b142a79a618e8cbbea *source/module/misc/misc_googlemap.php
 670249a9c4264680aeaef53d39d9da8e *source/module/misc/misc_imgcropper.php
-b1a34f7ea3cd6fc805ca632d314eb529 *source/module/misc/misc_initsys.php
+b36104c795c8ab6e47c81126e60d4f93 *source/module/misc/misc_initsys.php
 c41c71f883fd0e79e84bd620edc6e747 *source/module/misc/misc_invite.php
 07c19fb6c730e9e8811082e0c500d838 *source/module/misc/misc_mobile.php
 0c9c86676b498665572e81219536bbb0 *source/module/misc/misc_patch.php
