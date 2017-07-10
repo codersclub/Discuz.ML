@@ -100,9 +100,6 @@ if($op == 'edit') {
 			}
 			if(!$member['adminid']) {
 				$member_status = C::t('common_member_status')->fetch($member['uid']);
-				if($member_status) {
-					captcha::report($member_status['lastip']);
-				}
 			}
 			$adminidnew = -1;
 			C::t('forum_postcomment')->delete_by_authorid($member['uid'], false, true);
@@ -236,7 +233,7 @@ function loadmember(&$uid, &$username, &$error) {
 			$error = 3;
 		} else {
 			$member['groupterms'] = dunserialize($member['groupterms']);
-			$member['banexpiry'] = !empty($member['groupterms']['main']['time']) && ($member['groupid'] == 4 || $member['groupid'] == 5) ? dgmdate($member['groupterms']['main']['time'], 'Y-m-d') : '';
+/*vot*/			$member['banexpiry'] = !empty($member['groupterms']['main']['time']) && ($member['groupid'] == 4 || $member['groupid'] == 5) ? dgmdate($member['groupterms']['main']['time'], 'Y-m-d') : '';
 			$error = 0;
 		}
 
@@ -291,7 +288,6 @@ function ipbanadd($ip1new, $ip2new, $ip3new, $ip4new, $validitynew, &$error) {
 			'expiration' => $expiration
 		);
 		C::t('common_banned')->insert($data);
-		captcha::report($ip1new.'.'.$ip2new.'.'.$ip3new.'.'.$ip4new);
 
 		return TRUE;
 

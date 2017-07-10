@@ -6858,7 +6858,7 @@ $lang = array
 	'postsplit_move_threads_per_time_1000' => '1000 (推薦獨立服務器用戶使用，可提高處理速度)',
 	'postsplit_manage_submit' => '確認分表',
 
-	'optimizer_security_tips' => '<li>體檢可以幫助您發現網站問題，消除安全風險</li><li>設置項安全檢測</li><li>產品新版本及安全補丁檢測</li><li>安裝插件安全及更新檢測</li>',
+	'optimizer_security_tips' => '<li>體檢可以幫助您發現網站問題，消除安全風險</li><li>設置項安全檢測</li><li>安裝插件安全及更新檢測</li>',
 	'optimizer_check_unit_optimizer_plugin' => '檢測應用是否有新的更新',
 	'optimizer_check_unit_optimizer_upgrade' => '查看是否有新的產品版本',
 	'optimizer_check_unit_optimizer_patch' => '檢測產品是有有漏洞補丁發佈',

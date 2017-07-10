@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 36345 2017-01-12 01:55:04Z nemohou $
+ *      $Id: lang_admincp.php 36362 2017-02-04 02:02:03Z nemohou $
  *	Modified by Valery Votintsev, codersclub.org
  */
 
@@ -1104,7 +1104,7 @@ $lang = array
 	'setting_styles_viewthread_usernamepos' => '作者用户名显示位置',
 	'setting_styles_viewthread_imgcontent' => '主题内容生成图片宽度',
 	'setting_styles_viewthread_imgcontent_comment' => '本功能需要PHP支持GD库，内容里有中文需要将中文 TTF 字体文件放到 static/image/seccode/font/ch/ 目录下。默认100个汉字，字体不同宽度略有差别，请跟据实际效果调整。',
-	'setting_styles_viewthread_fast_reply' => '开启帖子快速回复',
+	'setting_styles_viewthread_fast_reply' => '开启主题帖快速回复',
 	'setting_styles_viewthread_fast_reply_comment' => '开启后将在主题帖下方展示快速回复框',
 	'setting_styles_viewthread_allow_replybg' => '开启帖子快速回复框背景',
 	'setting_styles_viewthread_allow_replybg_comment' => '开启后允许给帖子快速回复框添加背景图片',
@@ -6858,7 +6858,7 @@ $lang = array
 	'postsplit_move_threads_per_time_1000' => '1000 (推荐独立服务器用户使用，可提高处理速度)',
 	'postsplit_manage_submit' => '确认分表',
 
-	'optimizer_security_tips' => '<li>体检可以帮助您发现网站问题，消除安全风险</li><li>设置项安全检测</li><li>产品新版本及安全补丁检测</li><li>安装插件安全及更新检测</li>',
+	'optimizer_security_tips' => '<li>体检可以帮助您发现网站问题，消除安全风险</li><li>设置项安全检测</li><li>安装插件安全及更新检测</li>',
 	'optimizer_check_unit_optimizer_plugin' => '检测应用是否有新的更新',
 	'optimizer_check_unit_optimizer_upgrade' => '查看是否有新的产品版本',
 	'optimizer_check_unit_optimizer_patch' => '检测产品是有有漏洞补丁发布',

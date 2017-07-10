@@ -57,7 +57,7 @@ foreach($logs as $logrow) {
 	if(empty($log[1])) {
 		continue;
 	}
-	$log[1] = dgmdate($log[1], 'Y-m-d H:i');
+/*vot*/	$log[1] = dgmdate($log[1], 'Y-m-d H:i');
 	if(strtolower($log[2]) == strtolower($_G['member']['username'])) {
 		$log[2] = '<a href="home.php?mod=space&username='.rawurlencode($log[2]).'" target="_blank"><b>'.$log[2].'</b></a>';
 	}

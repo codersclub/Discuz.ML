@@ -168,8 +168,7 @@ $menu['group'] = array(
 );
 
 $menu['safe'] = array(
-	array('menu_safe_setting', 'setting_sec'),
-	array('menu_safe_security', 'cloud_security'),
+	array('menu_safe_setting', 'setting_sec'),	
 	array('menu_safe_seccheck', 'setting_seccheck'),
 	array('menu_security', 'optimizer_security'),
 	array('menu_safe_accountguard', 'setting_accountguard'),
@@ -244,7 +243,7 @@ if($isfounder) {
 
 	$menu['founder'] = array(
 		array('menu_founder_perm', 'founder_perm'),
-		array('menu_setting_mail', 'setting_mail'),
+		array('menu_setting_mail', 'setting_mail'),		
 		array('menu_setting_uc', 'setting_uc'),
 		array('menu_db', 'db_export'),
 		array('menu_membersplit', 'membersplit_check'),
