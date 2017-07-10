@@ -49,8 +49,8 @@ if(!submitcheck('prunesubmit')) {
 		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['starttime']) ? '' : $_GET['starttime'];
 		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['endtime']) ? '' : $_GET['endtime'];
 	} else {
-		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['starttime']) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $_GET['starttime'];
-		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['endtime']) ? dgmdate(TIMESTAMP, 'Y-m-d') : $_GET['endtime'];
+/*vot*/		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['starttime']) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $_GET['starttime'];
+/*vot*/		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $_GET['endtime']) ? dgmdate(TIMESTAMP, 'Y-m-d') : $_GET['endtime'];
 	}
 
 	shownav('topic', 'nav_prune'.($operation ? '_'.$operation : ''));
@@ -83,7 +83,7 @@ EOT;
 	}
 	showsetting('prune_search_perpage', '', $_GET['perpage'], "<select name='perpage'><option value='20'>$lang[perpage_20]</option><option value='50'>$lang[perpage_50]</option><option value='100'>$lang[perpage_100]</option></select>");
 	if(!$fromumanage) {
-		empty($_GET['starttime']) && $_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d');
+/*vot*/		empty($_GET['starttime']) && $_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d');
 	}
 	echo '<input type="hidden" name="fromumanage" value="'.$fromumanage.'">';
 	showsetting('prune_search_time', array('starttime', 'endtime'), array($_GET['starttime'], $_GET['endtime']), 'daterange');
@@ -103,7 +103,6 @@ EOT;
 
 	loadcache('posttableids');
 	$posttable = in_array($_GET['posttableid'], $_G['cache']['posttableids']) ? $_GET['posttableid'] : 0;
-	$log_handler = Cloud::loadClass('Cloud_Service_SearchHelper');
 	foreach(C::t('forum_post')->fetch_all($posttable, ($pids ? explode(',', $pids) : $_GET['pidarray']), false) as $post) {
 		$prune['forums'][] = $post['fid'];
 		$prune['thread'][$post['tid']]++;
@@ -111,12 +110,6 @@ EOT;
 		$pidsdelete[] = $post['pid'];
 		if($post['first']) {
 			$tidsdelete[] = $post['tid'];
-		}
-
-		if($post['first']) {
-			$log_handler->myThreadLog('delete', array('tid' => $post['tid']));
-		} else {
-			$log_handler->myPostLog('delete', array('pid' => $post['pid']));
 		}
 	}
 
@@ -213,7 +206,7 @@ if(submitcheck('searchsubmit', 1)) {
 		$starttime = strtotime($_GET['starttime']);
 	}
 
-	if($_G['adminid'] == 1 && !empty($_GET['endtime']) && $_GET['endtime'] != dgmdate(TIMESTAMP, 'Y-m-d')) {
+/*vot*/	if($_G['adminid'] == 1 && !empty($_GET['endtime']) && $_GET['endtime'] != dgmdate(TIMESTAMP, 'Y-m-d')) {
 		$endtime = strtotime($_GET['endtime']);
 	} else {
 		$endtime = TIMESTAMP;

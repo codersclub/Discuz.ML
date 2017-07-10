@@ -60,7 +60,6 @@ INSERT INTO pre_common_cron VALUES ('10','1','system','Update Q & A verification
 INSERT INTO pre_common_cron VALUES ('11','1','system','Update Tags Daily','cron_tag_daily.php','1269746633','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('12','1','system','Update Medals Daily','cron_medal_daily.php','1269746634','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('13','1','system','Clean expired feeds','cron_cleanfeed.php','1269746634','1269792000','-1','-1','0','0');
-INSERT INTO pre_common_cron VALUES ('14','1','system','Daily access to security patches','cron_checkpatch_daily.php','1269746639','1269792000','-1','-1','2','22');
 INSERT INTO pre_common_cron VALUES ('15','1','system','Regular topics published','cron_publish_halfhourly.php','1269746639','1269792000','-1','-1','-1','0	30');
 INSERT INTO pre_common_cron VALUES ('16','1','system','Weekly broadcast archive','cron_follow_daily.php','1269746639','1269792000','-1','-1','02','0');
 INSERT INTO pre_common_cron VALUES ('17','1','system','Views daily update','cron_todayviews_daily.php','1321500558','1321556400','-1','-1','3','0	5	10	15	20	25	30	35	40	45	50	55');

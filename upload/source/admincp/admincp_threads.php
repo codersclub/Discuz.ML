@@ -25,7 +25,7 @@ if((!$operation && !$optype) || ($operation == 'group' && empty($optype))) {
 		$_GET['intype'] = '';
 		$_GET['detail'] = 1;
 		$_GET['inforum'] = 'all';
-		$_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 30, 'Y-m-d');
+/*vot*/		$_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 30, 'Y-m-d');
 	}
 	$intypes = '';
 	if($_GET['inforum'] && $_GET['inforum'] != 'all' && $_GET['intype']) {
@@ -368,12 +368,7 @@ EOT;
 
 		foreach(explode(',', $_GET['fids'].','.$_GET['toforum']) as $fid) {
 			updateforumcount(intval($fid));
-		}
-
-		$log_handler = Cloud::loadClass('Cloud_Service_SearchHelper');
-		foreach($_GET['tidarray'] as $tid) {
-			$log_handler->myThreadLog('move', array('tid' => $tid, 'otherid' => $_GET['toforum']));
-		}
+		}		
 
 		$cpmsg = cplang('threads_succeed');
 
@@ -400,11 +395,7 @@ EOT;
 		foreach(explode(',', $_GET['fids']) as $fid) {
 			updateforumcount(intval($fid));
 		}
-
-		$log_handler = Cloud::loadClass('Cloud_Service_SearchHelper');
-		foreach($_GET['tidarray'] as $tid) {
-			$log_handler->myThreadLog('delete', array('tid' => $tid));
-		}
+		
 		$cpmsg = cplang('threads_succeed');
 
 	} elseif($optype == 'deleteattach') {
@@ -424,11 +415,6 @@ EOT;
 
 		C::t('forum_thread')->update($tidsarray, array('displayorder'=>$_GET['stick_level']));
 		$my_act = $_GET['stick_level'] ? 'sticky' : 'update';
-
-		$log_handler = Cloud::loadClass('Cloud_Service_SearchHelper');
-		foreach($_GET['tidarray'] as $tid) {
-			$log_handler->myThreadLog($my_act, array('tid' => $tid));
-		}
 
 		if($_G['setting']['globalstick']) {
 			updatecache('globalstick');
@@ -451,22 +437,13 @@ EOT;
 		}
 		C::t('forum_thread')->update($tidsarray, array('digest'=>$_GET['digest_level']));
 		$my_act = $_GET['digest_level'] ? 'digest' : 'update';
-
-		$log_handler = Cloud::loadClass('Cloud_Service_SearchHelper');
-		foreach($_GET['tidarray'] as $tid) {
-			$log_handler->myThreadLog($my_act, array('tid' => $tid));
-		}
+		
 		$cpmsg = cplang('threads_succeed');
 
 	} elseif($optype == 'addstatus') {
 
 		C::t('forum_thread')->update($tidsarray, array('closed'=>$_GET['status']));
-		$my_opt = $_GET['status'] ? 'close' : 'open';
-
-		$log_handler = Cloud::loadClass('Cloud_Service_SearchHelper');
-		foreach($_GET['tidarray'] as $tid) {
-			$log_handler->myThreadLog($my_opt, array('tid' => $tid));
-		}
+		$my_opt = $_GET['status'] ? 'close' : 'open';	
 
 		$cpmsg = cplang('threads_succeed');
 
