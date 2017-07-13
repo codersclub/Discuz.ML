@@ -40,7 +40,7 @@ a834a78b2e9ca92ca9149f537ec76e94 *./cp.php
 6e4fbf3939402cf67a6c00367382988b *./crossdomain.xml
 cba7beb32835268b64190bc95a4ba48c *./data
 d41d8cd98f00b204e9800998ecf8427e *data/index.htm
-50af1382535a4ce04bc1ac52855fc8b9 *data/ipdata/GeoIP.dat
+9bd9e09797f062ad1b2c6d7bb304141c *data/ipdata/GeoIP.dat
 7215ee9c7d9dc229d2921a40e899ec5f *data/ipdata/index.htm
 b21eeb904d9bcb604ed682343661bcc2 *data/ipdata/tinyipdata.dat
 93d0ac4235e553d6cfe0ce65a55ef446 *data/stat_setting.xml
@@ -392,6 +392,7 @@ d41d8cd98f00b204e9800998ecf8427e *source/class/memory/index.htm
 9c96bd705b9fd5cf3ea2bef7fe6ca5df *source/class/memory/memory_driver_eaccelerator.php
 25f5709030549e20a66fe25772bc5642 *source/class/memory/memory_driver_file.php
 180500c56a1b96c1e037f3912b2a0227 *source/class/memory/memory_driver_memcache.php
+4cb6580ceabf0b3a880556a94187b5bd *source/class/memory/memory_driver_memcached.php
 94f8281f4fc8872f638a09ae228e3175 *source/class/memory/memory_driver_redis.php
 8c7f65df61b3f14f2ee37c75898d6eed *source/class/memory/memory_driver_wincache.php
 717cfdbae201aa8a248d75ae5722d1c5 *source/class/memory/memory_driver_xcache.php
@@ -683,7 +684,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-8d980fc59bdbf28528f9d7a52d7de674 *source/discuz_version.php
+d3af29091effef75207ed81def27324c *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
