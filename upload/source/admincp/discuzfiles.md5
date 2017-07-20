@@ -531,7 +531,7 @@ b24101ac31fb996e17f97aed925ce64d *source/class/table/table_common_statuser.php
 f3695d5c1d13eb6fee367a48ab582495 *source/class/table/table_common_syscache.php
 208445d9a8b3458753cb5c7b434e6fb2 *source/class/table/table_common_tag.php
 bb0b673f9ba2f92aca30ff19baea66df *source/class/table/table_common_tagitem.php
-c026775e5fbaa075609092d602dcd5b1 *source/class/table/table_common_task.php
+e92545e95be0c7974d67ba37dfe0363f *source/class/table/table_common_task.php
 b36f3aa41966c4681b523617512b0247 *source/class/table/table_common_taskvar.php
 e4fd5484f4ce0610e557c34ab96d00e4 *source/class/table/table_common_template.php
 60fa85d70a34cfd2708f310c4647ab45 *source/class/table/table_common_template_block.php
@@ -684,7 +684,7 @@ abd512fece315d07b28d7765a979caae *source/class/task/task_gift.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-d3af29091effef75207ed81def27324c *source/discuz_version.php
+33e373d3b59c359e447e0f9e9009177c *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -757,7 +757,7 @@ b0f83c415816a9cca680e183595a3218 *source/function/function_cloudaddons.php
 064908e04976fe5c57f287694df8b5d1 *source/function/function_core.php
 9bc78bc4596f7711cd5d338a791bc9be *source/function/function_credit.php
 6b84825949097e1d3671b613b2551e04 *source/function/function_delete.php
-b5a0254a759a826843bd342ac02d95bc *source/function/function_discuzcode.php
+908d7f1f349804c1619a0eda63a17385 *source/function/function_discuzcode.php
 9270deaa36c685a3f408bb9cee2db317 *source/function/function_domain.php
 aaca86dc933b77a2313a4d463cf356a6 *source/function/function_ec_credit.php
 1697d84a4d22ab0c3bab3691abca8775 *source/function/function_editor.php
@@ -2653,7 +2653,7 @@ d41d8cd98f00b204e9800998ecf8427e *static/image/mobile/index.htm
 bf5fc406bbbbf9f46e81f72240443cb5 *static/image/mobile/input_bg.gif
 adb137d7cf21ab51c034554459b01a5f *static/image/mobile/logo.gif
 77819b593db21462286e7230fce31191 *static/image/mobile/preview.png
-9d84f6d2540bd21c1903a769b2666038 *static/image/mobile/style.css
+dfb12f242e8b33b6561d6c8232b1b28f *static/image/mobile/style.css
 c3b3072f448b5cbae2d1ebec911c6e4a *static/image/mobile/style_rtl.css
 88e410a5c22851c99e7a1f7ad1501b10 *static/image/poke/cyx.gif
 cdf45371d07da97e82a328367bb283b1 *static/image/poke/dyx.gif
@@ -4056,6 +4056,5 @@ cfcf3bb6aeff9a878f5bf8061f19a707 *uc_server/view/default/pm_blackls.htm
 1dcfb1c220e5381901fa44b300b234bd *uc_server/view/default/pm_view.htm
 42fa0f40e601b24e3dbdd91ac05ce696 *uc_server/view/default/user_avatar.htm
 7215ee9c7d9dc229d2921a40e899ec5f *uc_server/view/index.htm
-17c2ccb49fd7ff99c98cc6330822db40 *./userapp.php
 e43cd8502f2588815cc889622d7a4311 *./_check_lang.php
 d5b46a9fcedf08872578affd948d98c0 *./_langdiff.php
