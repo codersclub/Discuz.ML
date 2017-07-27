@@ -339,9 +339,10 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 /*vot*/));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),
-/*vot*/	'<a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
-	<a href="http://www.discuz.net/redirect.php?service" class="lightlink2" target="_blank">Comsenz service</a>,
-	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Forum</a>,
+/*vot*/	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
+	<a href="https://bitbucket.org/vot/discuz.ml" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
+        <a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
+	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Discuz Chinese Forum</a>,
 	<a href="'.ADMINSCRIPT.'?action=cloudaddons" class="lightlink2" target="_blank">Discuz! Cloud Addons</a>
 '));
 showtablefooter();
