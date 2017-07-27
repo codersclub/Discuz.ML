@@ -152,7 +152,7 @@
 					<tr>
 						<th>{lang username}</th>
 						<td>$_G[member][username]</td>
-						<td>{lang visibility}</td>
+						<td>&nbsp;</td>
 					</tr>
 				<!--{loop $settings $key $value}-->
 				<!--{if $value[available]}-->
@@ -218,7 +218,7 @@
 					<th id="th_timeoffset">{lang time_zone}</th>
 					<td id="td_timeoffset">
 						<!--{eval $timeoffset = array({lang timezone});}-->
-						<select name="timeoffset" class="tfm">
+						<select name="timeoffset">
 							<!--{loop $timeoffset $key $desc}-->
 							<option value="$key"{if $key==$space[timeoffset]} selected="selected"{/if}>$desc</option>
 							<!--{/loop}-->

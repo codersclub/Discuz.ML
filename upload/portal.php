@@ -14,7 +14,7 @@ define('CURSCRIPT', 'portal');
 require './source/class/class_core.php';
 $discuz = C::app();
 
-$cachelist = array('userapp', 'portalcategory', 'diytemplatenameportal');
+$cachelist = array('portalcategory', 'diytemplatenameportal');
 $discuz->cachelist = $cachelist;
 $discuz->init();
 
