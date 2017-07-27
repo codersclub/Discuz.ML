@@ -10,13 +10,13 @@
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
+
 /*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
 
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
 /*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(dirname(__FILE__))).'/');
 //DEBUG //echo "root_path=",ROOT_PATH,"<br>";
-/*vot*/ header("Content-Type:text/html;charset=utf-8");
 $language = '';
 
 require ROOT_PATH.'./source/discuz_version.php';
@@ -40,6 +40,8 @@ define('VIEW_OFF', $view_off ? TRUE : FALSE);
 
 $step = intval(getgpc('step', 'R')) ? intval(getgpc('step', 'R')) : 0;
 $method = getgpc('method');
+
+/*vot*/ header('Content-Type:text/html; charset=utf-8');
 
 if(empty($method) || !in_array($method, $allow_method)) {
 	$method = isset($allow_method[$step]) ? $allow_method[$step] : '';
