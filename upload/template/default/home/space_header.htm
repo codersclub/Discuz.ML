@@ -40,7 +40,7 @@
 <!--vot-->
 		<!--{elseif !empty($_G['cookie']['loginuser'])}-->
 <!--vot			<div class="y">-->
-				<a id="loginuser" class="xw1">$_G['cookie']['loginuser']</a>
+				<a id="loginuser" class="xw1"><!--{echo dhtmlspecialchars($_G['cookie']['loginuser'])}--></a>
 				<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang activation}</a>
 				<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a>
 <!--vot-->
