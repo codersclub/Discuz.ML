@@ -70,8 +70,6 @@ INSERT INTO pre_common_cron VALUES ('20','1','system','Update Forum Last Post (r
 --
 INSERT INTO pre_common_friendlink VALUES ('1','0','Official Forum','http://www.discuz.net','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
 INSERT INTO pre_common_friendlink VALUES ('2','4','VeryDz.com','http://www.verydz.com/','','','2');
-INSERT INTO pre_common_friendlink VALUES ('3','2','Open Application Platform','http://www.manyou.com/','','','2');
-INSERT INTO pre_common_friendlink VALUES ('4','3','Yeswan','http://www.yeswan.com','','','2');
 INSERT INTO pre_common_friendlink VALUES ('5','1','Comsenz','http://www.comsenz.com','','','2');
 
 
