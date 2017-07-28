@@ -37,15 +37,15 @@ function getuploadconfig($uid=0, $fid=0, $limit=true) {
 	loadcache('attachtype');
 	$fid = isset($_G['cache']['attachtype'][$fid]) ? $fid : 0;
 	$filter = array();
-/*Zhu*/	if(is_array($_G['cache']['attachtype'][$fid])){
+	if(is_array($_G['cache']['attachtype'][$fid])) {
 		foreach($_G['cache']['attachtype'][$fid] as $extension => $maxsize) {
 			if($maxsize == 0) {
 				$notallow[] = $extension;
 			} else {
 				$filter[] = "'$extension':$maxsize";
 			}
- 		}
- 	}
+		}
+	}
 	if(!empty($filter)) {
 		$config['filtertype'] = '{'.implode(',', $filter).'}';
 	}
