@@ -382,7 +382,7 @@ if(!defined('UC_LANG')) {
 	}
 
 	function input($k) {
-/*Zhuge*/	if($k == 'uid' && !preg_match("/^[0-9]+$/", $this->input[$k])){
+		if($k == 'uid' && !preg_match("/^[0-9]+$/", $this->input[$k])){
 			return NULL;
 		}
 		return isset($this->input[$k]) ? (is_array($this->input[$k]) ? $this->input[$k] : trim($this->input[$k])) : NULL;
