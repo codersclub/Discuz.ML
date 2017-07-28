@@ -480,14 +480,14 @@ function getblockhtml($blockname,$parameters = array()) {
 					$html .= '<div class="d">'.$value['body_template'].'</div>';
 					if ($value['type'] == 'video') {
 						if(!empty($value['body_data']['imgurl'])) {
-							$html .= '<table class="mtm" title="'.lang('space', 'click_play').'" onclick="javascript:showFlash(\''.$value['body_data']['host'].'\', \''.$value['body_data']['flashvar'].'\', this, \''.$value['sid'].'\');"><tr><td class="vdtn hm" style="background: url('.$value['body_data']['imgurl'].') no-repeat"><img src="'.STATICURL.'image/common/vds.png" alt="'.lang('space', 'click_play').'" /></td></tr></table>';
+/*vot*/							$html .= '<table class="mtm" title="'.lang('space', 'click_play').'" onclick="javascript:showFlash(\''.$value['body_data']['host'].'\', \''.$value['body_data']['flashvar'].'\', this, \''.$value['sid'].'\');"><tr><td class="vdtn hm" style="background: url('.$value['body_data']['imgurl'].') no-repeat"><img src="'.STATICURL.'image/common/vds.png" alt="'.lang('space', 'click_play').'" /></td></tr></table>';
 						} else {
-							$html .= "<img src=\"".STATICURL."image/common/vd.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('{$value['body_data']['host']}', '{$value['body_data']['flashvar']}', this, '{$value['sid']}');\" class=\"tn\" />";
+/*vot*/							$html .= "<img src=\"".STATICURL."image/common/vd.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('{$value['body_data']['host']}', '{$value['body_data']['flashvar']}', this, '{$value['sid']}');\" class=\"tn\" />";
 						}
 					}elseif ($value['type'] == 'music') {
-						$html .= "<img src=\"".STATICURL."image/common/music.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('music', '{$value['body_data']['musicvar']}', this, '{$value['sid']}');\" class=\"tn\" />";
+/*vot*/						$html .= "<img src=\"".STATICURL."image/common/music.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('music', '{$value['body_data']['musicvar']}', this, '{$value['sid']}');\" class=\"tn\" />";
 					}elseif ($value['type'] == 'flash') {
-						$html .= "<img src=\"".STATICURL."image/common/flash.gif\" alt=\"".lang('space', 'click_view')."\" onclick=\"javascript:showFlash('flash', '{$value['body_data']['flashaddr']}', this, '{$value['sid']}');\" class=\"tn\" />";
+/*vot*/						$html .= "<img src=\"".STATICURL."image/common/flash.gif\" alt=\"".lang('space', 'click_view')."\" onclick=\"javascript:showFlash('flash', '{$value['body_data']['flashaddr']}', this, '{$value['sid']}');\" class=\"tn\" />";
 					}
 
 					if ($value['body_general']) {
@@ -571,29 +571,7 @@ function getblockhtml($blockname,$parameters = array()) {
 			break;
 
 		case 'myapp':
-			$html = '';
-			$listclass = 'ptm ml mls cl';
-			$userapps = C::t('home_userapp')->fetch_all_by_uid_appid($uid, 0, 'menuorder', 'DESC', 0, $shownum);
-			$appids = array();
-			foreach($userapps as $app) {
-				$appids[$app['appid']] = $app['appid'];
-			}
-			if(!empty($appids)) {
-				$myapps = C::t('common_myapp')->fetch_all($appids);
-			}
-			foreach($userapps as $value) {
-				$value['iconstatus'] = $myapps[$value['appid']]['iconstatus'];
-				if(!empty($value['appname'])) {
-					$replace = array('appid'=>$value['appid'], 'appname'=>$value['appname']);
-					$parameters['logotype'] = !empty($parameters['logotype']) && in_array($parameters['logotype'], array('icon', 'logo')) ? $parameters['logotype'] : 'logo';
-					if($parameters['logotype'] == 'icon') {
-						$listclass = 'xl xl1 cl';
-						$replace['icon'] = getmyappiconpath($value['appid'], $value['iconstatus']);
-					}
-					$html .= lang('space', 'myapp_li_'.$parameters['logotype'], $replace);
-				}
-			}
-			$html = !$html ? '<p class="emp">'.lang('space','block_myapp_no_content').($space['self'] ? lang('space', 'block_myapp_no_content_publish', $space) : '').'</p>' : '<ul class="'.$listclass.'">'.$html.'</ul>';
+			$html = '';		
 			break;
 		case 'block1':
 		case 'block2':
@@ -683,14 +661,14 @@ function mkfeedhtml($value) {
 
 	if (!empty($value['body_data']['flashvar'])) {
 		if(!empty($value['body_data']['imgurl'])) {
-			$html .= '<table class="mtm" title="'.lang('space', 'click_play').'" onclick="javascript:showFlash(\''.$value['body_data']['host'].'\', \''.$value['body_data']['flashvar'].'\', this, \''.$value['sid'].'\');"><tr><td class="vdtn hm" style="background: url('.$value['body_data']['imgurl'].') no-repeat"><img src="'.STATICURL.'image/common/vds.png" alt="'.lang('space', 'click_play').'" /></td></tr></table>';
+/*vot*/			$html .= '<table class="mtm" title="'.lang('space', 'click_play').'" onclick="javascript:showFlash(\''.$value['body_data']['host'].'\', \''.$value['body_data']['flashvar'].'\', this, \''.$value['sid'].'\');"><tr><td class="vdtn hm" style="background: url('.$value['body_data']['imgurl'].') no-repeat"><img src="'.STATICURL.'image/common/vds.png" alt="'.lang('space', 'click_play').'" /></td></tr></table>';
 		} else {
-			$html .= "<img src=\"".STATICURL."image/common/vd.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('{$value['body_data']['host']}', '{$value['body_data']['flashvar']}', this, '{$value['sid']}');\" class=\"tn\" />";
+/*vot*/			$html .= "<img src=\"".STATICURL."image/common/vd.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('{$value['body_data']['host']}', '{$value['body_data']['flashvar']}', this, '{$value['sid']}');\" class=\"tn\" />";
 		}
 	}elseif (!empty($value['body_data']['musicvar'])) {
-		$html .= "<img src=\"".STATICURL."image/common/music.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('music', '{$value['body_data']['musicvar']}', this, '{$value['feedid']}');\" class=\"tn\" />";
+/*vot*/		$html .= "<img src=\"".STATICURL."image/common/music.gif\" alt=\"".lang('space', 'click_play')."\" onclick=\"javascript:showFlash('music', '{$value['body_data']['musicvar']}', this, '{$value['feedid']}');\" class=\"tn\" />";
 	}elseif (!empty($value['body_data']['flashaddr'])) {
-		$html .= "<img src=\"".STATICURL."image/common/flash.gif\" alt=\"".lang('space', 'click_view')."\" onclick=\"javascript:showFlash('flash', '{$value['body_data']['flashaddr']}', this, '{$value['feedid']}');\" class=\"tn\" />";
+/*vot*/		$html .= "<img src=\"".STATICURL."image/common/flash.gif\" alt=\"".lang('space', 'click_view')."\" onclick=\"javascript:showFlash('flash', '{$value['body_data']['flashaddr']}', this, '{$value['feedid']}');\" class=\"tn\" />";
 	}
 
 	if ($value['body_general']) {
