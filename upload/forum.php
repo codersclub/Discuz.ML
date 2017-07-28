@@ -4,8 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum.php 31999 2012-10-30 07:19:49Z cnteacher $
- *	Modified by Valery Votintsev, codersclub.org
+ *      $Id: forum.php 33828 2013-08-20 02:29:32Z nemohou $
+ *	Modified by Valery Votintsev, http://discuz.ml
  */
 
 //DEBUG
@@ -43,6 +43,7 @@ $modcachelist = array(
 			'domainwhitelist', 'albumcategory'),
 	'space'		=> array('fields_required', 'fields_optional', 'custominfo'),
 	'group'		=> array('grouptype', 'diytemplatenamegroup'),
+	'topicadmin'	=> array('usergroups'),
 );
 
 $mod = !in_array(C::app()->var['mod'], $modarray) ? 'index' : C::app()->var['mod'];
@@ -66,13 +67,9 @@ C::app()->init();
 
 loadforum();
 
-
 set_rssauth();
 
-
 runhooks();
-
-
 
 $navtitle = str_replace('{bbname}', $_G['setting']['bbname'], $_G['setting']['seotitle']['forum']);
 $_G['setting']['threadhidethreshold'] = 1;
