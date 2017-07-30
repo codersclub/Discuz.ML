@@ -32,7 +32,7 @@ fa6e51baef21c1104e6a9c9bea515b93 *control/version.php
 d666e14b539c99003494c33090b68bad *model/admin.php
 4a0b4c85f1e53dd995b9785f8811846a *model/app.php
 5cbfa5b5ff6bf0bfd4aee2419bdc72c4 *model/badword.php
-f68b753024fdf23c32112f9d9be650af *model/base.php
+e7e904da7dff88322adaf796c2210105 *model/base.php
 f715376b3450807e6a9382c1314107c1 *model/cache.php
 d4fde3d32ba28d296f8b7b069bff016c *model/cron.php
 74b4e3c17a429bfba12edee20d4e13ba *model/domain.php
@@ -42,7 +42,7 @@ d6436d71a2819b37a7260fa97b6f17c1 *model/mail.php
 e2b20e4e6463b7b73a4f203984335b92 *model/misc.php
 ff66a998dc58086127c2b05b60ffde2a *model/note.php
 bb9c95148eda27df11628934ac5e3963 *model/plugin.php
-6f9d1f095926e9ecf930234b41d945c4 *model/pm.php
+08bad046d93403080b6d0ab5fd71d953 *model/pm.php
 ba787d675b6b8db7549ae1a1eb97dc20 *model/setting.php
 d7b379d38fbc0e8a120454a334a54499 *model/tag.php
 1be0c3e3ffb7fb554c1d044d1de75b93 *model/user.php
