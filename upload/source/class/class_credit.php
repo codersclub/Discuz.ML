@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: class_credit.php 32967 2013-03-28 10:57:48Z zhengqingpeng $
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -234,12 +235,30 @@ class credit {
 			$this->updatemembercount($creditarr, $uids, is_array($uids) ? false : true, $this->coef > 0 ? urldecode($rule['rulenameuni']) : '');
 		}
 	}
+	
+/*vot*/	function frequencycheck($uids) {
+		global $_G;
+		if(empty($_G['config']['security']['creditsafe']['second']) || empty($_G['config']['security']['creditsafe']['times'])) {
+			return true;
+		}		
+		foreach($uids as $uid) {
+			$key = 'credit_fc'.$uid;
+			$v = intval(memory('get', $key));
+			memory('set', $key, ++$v, $_G['config']['security']['creditsafe']['second']);
+			if($v > $_G['config']['security']['creditsafe']['times']) {
+				system_error('credit fequency limit', true);
+				return false;
+			}
+		}
+		return true;
+	}
 
 	function updatemembercount($creditarr, $uids = 0, $checkgroup = true, $ruletxt = '') {
 		global $_G;
 
 		if(!$uids) $uids = intval($_G['uid']);
 		$uids = is_array($uids) ? $uids : array($uids);
+/*vot*/		$this->frequencycheck($uids);
 		if($uids && ($creditarr || $this->extrasql)) {
 			if($this->extrasql) $creditarr = array_merge($creditarr, $this->extrasql);
 			$sql = array();
@@ -274,7 +293,7 @@ class credit {
 			}
 			if($sql) {
 				C::t('common_member_count')->increase($uids, $sql);
-			}
+/*vot*/			}
 			if($checkgroup && count($uids) == 1) $this->checkusergroup($uids[0]);
 			$this->extrasql = array();
 		}
