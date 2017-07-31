@@ -3768,6 +3768,32 @@ CREATE TABLE pre_home_specialuser (
   KEY displayorder (`status`,displayorder)
 ) TYPE=MyISAM;
 
+DROP TABLE IF EXISTS pre_home_userapp;
+CREATE TABLE pre_home_userapp (
+  uid int(11) unsigned NOT NULL DEFAULT '0',
+  appid int(11) unsigned NOT NULL DEFAULT '0',
+  appname varchar(255) NOT NULL DEFAULT '',
+  privacy tinyint(1) NOT NULL DEFAULT '0',
+  allowsidenav tinyint(1) NOT NULL DEFAULT '0',
+  allowfeed tinyint(1) NOT NULL DEFAULT '0',
+  allowprofilelink tinyint(1) NOT NULL DEFAULT '0',
+  narrow tinyint(1) NOT NULL DEFAULT '0',
+  menuorder int(11) NOT NULL DEFAULT '0',
+  displayorder int(11) NOT NULL DEFAULT '0',
+  KEY uid (uid,appid),
+  KEY menuorder (uid,menuorder),
+  KEY displayorder (uid,displayorder)
+) TYPE=MyISAM;
+
+DROP TABLE IF EXISTS pre_home_userappfield;
+CREATE TABLE pre_home_userappfield (
+  uid int(11) unsigned NOT NULL DEFAULT '0',
+  appid int(11) unsigned NOT NULL DEFAULT '0',
+  profilelink text NOT NULL,
+  myml text NOT NULL,
+  KEY uid (uid,appid)
+) TYPE=MyISAM;
+
 DROP TABLE IF EXISTS pre_home_visitor;
 CREATE TABLE pre_home_visitor (
   uid int(11) unsigned NOT NULL DEFAULT '0',
