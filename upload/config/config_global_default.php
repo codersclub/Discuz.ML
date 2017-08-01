@@ -162,7 +162,7 @@ $_config['security']['querysafe']['dlikehex']	= 1;
 $_config['security']['querysafe']['afullnote']	= 0;
 $_config['security']['onlyremoteaddr']	= 0;		// Show only Remote IP address
 
-$_config['security']['creditsafe']['second'] 	= 1;	// Open the user credit info security, can prevent the concurrent point flood. If is greater than times(freequency)/second then the operation could not be committed
+$_config['security']['creditsafe']['second'] 	= 0;	// Open the user credit info security, can prevent the concurrent point flood. If it is greater than times(freequency)/second then the operation could not be committed
 $_config['security']['creditsafe']['times'] 	= 10;
 
 $_config['admincp']['founder']		= '1';	// Site Founder: site management background with the highest authority, each site can be set to one or more founders
