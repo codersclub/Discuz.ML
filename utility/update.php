@@ -60,6 +60,11 @@ if($_GET['from']) {
 }
 
 $lockfile = DISCUZ_ROOT.'./data/update.lock';
+if($_GET['lock']){
+    @touch($lockfile);
+    @unlink(DISCUZ_ROOT.'./install/update.php');
+/*vot*/ show_msg('<span id="finalmsg">' .lang('database_updated') . '</span>');
+}
 if(file_exists($lockfile) && !$_GET['from']) {
 /*vot*/	show_msg(lang('update','del_update_lock'));
 }
@@ -1898,14 +1903,6 @@ if($_GET['step'] == 'start') {
 
 } elseif ($_GET['step'] == 'cache') {
 
-	if($result == true) {
-/*vot*/		$opensoso = lang('update','open_soso') . ' <a href=\\\'../admin.php?frames=yes&action=cloud&operation=search\\\' target=\\\'_blank\\\'>' . lang('update','open_soso_link') . '</a>.';
-	}
-	if(!$devmode && @$fp = fopen($lockfile, 'w')) {
-		fwrite($fp, ' ');
-		fclose($fp);
-	}
-
 	dir_clear(ROOT_PATH.'./data/template');
 	dir_clear(ROOT_PATH.'./data/cache');
 	dir_clear(ROOT_PATH.'./data/threadcache');
@@ -1913,11 +1910,7 @@ if($_GET['step'] == 'start') {
 	dir_clear(ROOT_PATH.'./uc_client/data/cache');
 	savecache('setting', '');
 
-	if($_GET['from']) {
-/*vot*/		show_msg('<span id="finalmsg">'.lang('update','cache_update').'</span><iframe src="../misc.php?mod=initsys" style="display:none;" onload="window.location.href=\''.$_GET['from'].'\'"></iframe>');
-	} else {
-/*vot*/		show_msg('<span id="finalmsg">'.lang('update','cache_update').'</span><iframe src="../misc.php?mod=initsys" style="display:none;" onload="document.getElementById(\'finalmsg\').innerHTML = \''.lang('update','database_updated').'\'"></iframe>');
-	}
+/*vot*/	show_msg('<span id="finalmsg">'.lang('update','cache_update').'</span><iframe src="../misc.php?mod=initsys" style="display:none;" onload="window.location.href=\''.$theurl.'?lock=true\'"></iframe>');
 
 }
 
