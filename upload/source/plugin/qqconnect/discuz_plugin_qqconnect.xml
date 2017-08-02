@@ -73,7 +73,7 @@
 		<item id="language">
 			<item id="scriptlang">
 				<item id="qqconnect_closed"><![CDATA[Sorry, QQ Internet feature is not yet open]]></item>
-				<item id="connect_appid_desc"><![CDATA[Please fill application appid and appkey in "<a href="http://connect.qq.com" target="_blank">QQ Connect Service</a>"]]></item>
+				<item id="connect_appid_desc"><![CDATA[Please fill in the application appid and appkey (connect.qq.com)]]></item>
 				<item id="connect_app_invalid"><![CDATA[Sorry, QQ Internet function is temporarily unavailable]]></item>
 				<item id="connect_register_bind_already"><![CDATA[Sorry, this QQ account is already bound by another user and can not be re-binded]]></item>
 				<item id="connect_register_uinlimit"><![CDATA[Sorry, each QQ account can be registered only for {limit} accounts]]></item>
