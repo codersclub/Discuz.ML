@@ -6224,7 +6224,7 @@ $lang = array
 	'adv_custom_edit' => '編輯自定義廣告位',
 	'adv_custom_delete' => '刪除此自定義廣告位嗎？',
 	'adv_customnamenew' => '請輸入此自定義廣告位的新名稱:',
-	'adv_list_tip' => '<li>您可以使用「自定義廣告位」在頁面的任意位置添加廣告位。<li>系統廣告位位於 source/class/adv/ 目錄中，插件廣告位位於 source/plugin/插件目錄/adv/ 目錄中。</li><li>插件開發人員在設計新的廣告位前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li><li><a href="http://union.discuz.qq.com/?ADTAG=CP.DISCUZ. ADSET.TIP1" target="_blank">Discuz!聯盟</a>免費提供更豐富的廣告形式，讓您賺取更豐厚的廣告收益，快來看看吧。</li>',
+	'adv_list_tip' => '<li>您可以使用「自定義廣告位」在頁面的任意位置添加廣告位。<li>系統廣告位位於 source/class/adv/ 目錄中，插件廣告位位於 source/plugin/插件目錄/adv/ 目錄中。</li><li>插件開發人員在設計新的廣告位前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
 	'adv_custom_target' => '自定義投放範圍，輸入站點根目錄程序文件名(無擴展名)，多個用逗號分隔',
 
 	'adv_edit' => '編輯廣告',
