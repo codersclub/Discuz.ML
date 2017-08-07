@@ -6253,7 +6253,7 @@ $lang = array
 	'adv_edit_endtime_comment' => '設置廣告廣告結束的時間，格式 yyyy-mm-dd，留空為不限制結束時間',
 	'adv_edit_style_code' => 'HTML 代碼',
 	'adv_edit_style_code_html' => '廣告 HTML 代碼',
-	'adv_edit_style_code_html_comment' => '請直接輸入需要展現的廣告的 HTML 代碼<br /><a href="http://union.discuz.qq.com/?ADTAG=CP.DISCUZ. ADSET.TIP2" target="_blank">Discuz!聯盟</a>算法精準，分成比例高，給您帶來更多收益，點擊查看詳情。',
+	'adv_edit_style_code_html_comment' => '請直接輸入需要展現的廣告的 HTML 代碼',
 	'adv_edit_style_text' => '文字廣告',
 	'adv_edit_style_text_title' => '文字內容(必填)',
 	'adv_edit_style_text_title_comment' => '請輸入文字廣告的顯示內容',
