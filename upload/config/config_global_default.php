@@ -88,6 +88,9 @@ $_config['db']['common']['slave_except_table'] = '';
  * can not be enabled when the memcache automatically when you open the other two optimization models)
  */
 
+//Set the cache lifetime value, default = 30 seconds
+$_config['cache']['empty_ttl'] = 30;
+
 //Memory variable prefix, change, to avoid reference to the same server process disorder
 $_config['memory']['prefix'] = 'discuz_';
 
