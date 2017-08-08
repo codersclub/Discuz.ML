@@ -32,7 +32,7 @@ fa6e51baef21c1104e6a9c9bea515b93 *control/version.php
 d666e14b539c99003494c33090b68bad *model/admin.php
 4a0b4c85f1e53dd995b9785f8811846a *model/app.php
 5cbfa5b5ff6bf0bfd4aee2419bdc72c4 *model/badword.php
-e7e904da7dff88322adaf796c2210105 *model/base.php
+487be9af3798e2347bdf9bb998531fc2 *model/base.php
 f715376b3450807e6a9382c1314107c1 *model/cache.php
 d4fde3d32ba28d296f8b7b069bff016c *model/cron.php
 74b4e3c17a429bfba12edee20d4e13ba *model/domain.php
