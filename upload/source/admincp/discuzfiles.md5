@@ -39,7 +39,7 @@ f6ff047850e8f46685e3753f446fdffc *config/config_ucenter_default.php
 6e4fbf3939402cf67a6c00367382988b *./crossdomain.xml
 cba7beb32835268b64190bc95a4ba48c *./data
 d41d8cd98f00b204e9800998ecf8427e *data/index.htm
-9bd9e09797f062ad1b2c6d7bb304141c *data/ipdata/GeoIP.dat
+d3190f2a007bc49ad5136d47f72f4bf2 *data/ipdata/GeoIP.dat
 7215ee9c7d9dc229d2921a40e899ec5f *data/ipdata/index.htm
 b21eeb904d9bcb604ed682343661bcc2 *data/ipdata/tinyipdata.dat
 93d0ac4235e553d6cfe0ce65a55ef446 *data/stat_setting.xml
@@ -315,7 +315,7 @@ d2343fb3bea0e16b574a1ea601a9f871 *source/class/discuz/discuz_ftp.php
 71d235d9888002f280852f5fd46fd9be *source/class/discuz/discuz_rank.php
 6eaf391fc0d88b9becccf4aa413759eb *source/class/discuz/discuz_session.php
 f166e9c0b21d8198b065abc20b2309f0 *source/class/discuz/discuz_session_close.php
-b8d68f7f017b26033edd47e8cf722003 *source/class/discuz/discuz_table.php
+7f92dfc0de0cf70c65570d519fdb38c1 *source/class/discuz/discuz_table.php
 bc5940c2be4338f2288f0cb179ecb685 *source/class/discuz/discuz_table_archive.php
 75165506ebe77239c8a624b4383a5a17 *source/class/discuz/discuz_upgrade.php
 2080f1fcd41de9c60032b01326ae57ab *source/class/discuz/discuz_upload.php
@@ -678,7 +678,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-88d72060495f5c507fe98b877c6b5e10 *source/discuz_version.php
+9d9e73e31a40559a203c7254eab3f2e2 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -746,7 +746,7 @@ ea0804418f05dc8372abb669d3b4c67e *source/function/function_blog.php
 b0f83c415816a9cca680e183595a3218 *source/function/function_cloudaddons.php
 77f06f33b827d1155c5c3c2f28bc7909 *source/function/function_collection.php
 90ee4789682564336c6043e19dc2dcb8 *source/function/function_comment.php
-6fe25a9651b602f28fe39c8a159a0cf3 *source/function/function_core.php
+7ae70b9a2d30b9fdc03659b1e13011a8 *source/function/function_core.php
 9bc78bc4596f7711cd5d338a791bc9be *source/function/function_credit.php
 03aff6c8176555ae2bfd0d7abb2cc8dd *source/function/function_delete.php
 908d7f1f349804c1619a0eda63a17385 *source/function/function_discuzcode.php
