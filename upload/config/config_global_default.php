@@ -89,7 +89,7 @@ $_config['db']['common']['slave_except_table'] = '';
  */
 
 //Set the cache lifetime value, default = 30 seconds
-$_config['cache']['empty_ttl'] = 30;
+//$_config['cache']['empty_ttl'] = 30;
 
 //Memory variable prefix, change, to avoid reference to the same server process disorder
 $_config['memory']['prefix'] = 'discuz_';
@@ -182,10 +182,10 @@ $_config['admincp']['dbimport']		= 1;	// Allow the data recovery in the backgrou
 // Remote call: master switch 0 = off, 1 = On
 $_config['remote']['on'] = 0;
 
-// Rremote call: the program directory name. For security reasons, you can change the directory name, change is completed, the actual directory manually modify the program
+// Remote call: the program directory name. For security reasons, you can change the directory name, change is completed, the actual directory manually modify the program
 $_config['remote']['dir'] = 'remote';
 
-// Rremote call: Communication key. for the client and the server communication encryption. length of not less than 32
+// Remote call: Communication key. for the client and the server communication encryption. length of not less than 32
 //          default value of $_config ['security']['authkey'] is md5, you can also manually specify the$_config['remote']['appkey'] = md5($_config['security']['authkey']);
 $_config['remote']['appkey'] = md5($_config['security']['authkey']);
 
