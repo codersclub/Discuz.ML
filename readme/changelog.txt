@@ -1,9 +1,9 @@
 +======================================================+
-   Discuz! ML 3.3 (MultiLingual)
+   Discuz! ML 3.4 (MultiLingual) Release 20170820
    (c) by Valery Votintsev and CodersClub community
    http://codersclub.org/discuzx/
 
-   Based on Discuz! X3.3
+   Based on Discuz! X3.4 Release 20170820
 +======================================================+
 
 Main differences from the official Discuz!X:

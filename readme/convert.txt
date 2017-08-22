@@ -1,8 +1,8 @@
 ||==================================||
-||  Discuz! X Conversion document   ||
+||  Discuz! ML (Multilingual)       ||
 ||----------------------------------||
-|| English Version                  ||
-|| by Valery Votintsev at sources.ru||
+|| Conversion Programm              ||
+|| by Valery Votintsev, discuz.ml   ||
 ||==================================||
 
 This document is designed to help you to convert the existing
@@ -43,51 +43,48 @@ the following precautions:
  Conversion methods and steps
 +--------------------------------------+
 
-1. Shut down your curent system.
+1. Shut down your curent Discuz system.
 
 2. Backup all the files.
 
 3. Backup your database.
 
-4. Back up your system configuration files
-   such as config.inc.php, config_global.php, config_ucenter.php
+4. Backup your system configuration files
+   uc_server/data/config.inc.php, config_global.php, config_ucenter.php
 
-5. By Discuz! X program directory to your site
+5. Upload new Discuz!ML version files to your site
 
-6. Correctly Discuz! X (if you Ucenter Server is a stand-alone installation,
-   you need to provide access to his
-   Path and the founder of the password)
+6. If your Ucenter Server is installed in separated place,
+   then you need to correct the config_ucenter.php file
+   and set a real path to uc_server and the founder password
 
-7. Upload utilities directory to your site convert program.
-   Meanwhile, the convert/data directory
-   Writable (777)
+7. Upload the "convert" directory from the "utility" directory to your site.
+   Make the convert/data directory writable (777)
 
-8. Visit http://your_domain/convert/ to start the conversion/transformation
+8. Visit http://your_domain/convert/ to start the conversion
 
-9. Convert program integrates a variety of programs which can be converted
-   to the Discuz! X, you select the system
+9. Convert program integrates a variety of older programs
+   that can be converted to the Discuz!ML
 
-10. The conversion process is usually a conversion or the installation
-    instructions carefully before you begin to read him
+10. Read the installation instructions carefully before you start the conversion programm
 
-11. In accordance with the program prompts, until all the conversion is
+11. Follow the program prompts until all the conversion is
     finished
 
 +--------------------------------------+
  Conversion Troubleshooting
 +--------------------------------------+
-You encounter any problems during the conversion process can be resolved
-through the following channels
+If you encounter any problems during the conversion process
+you can get a help from the following channels:
 
-1. To our forum to seek help and support
+1. Official Discuz!ML site
    http://www.discuz.net
 
-2. See detailed guidance document conversion
-   http://faq.comsenz.com/category-202
+2. Official Discuz!ML Forum
+   http://codersclub.org/discuzx/
 
-3. Commercial users can purchase according to your service,
-   phone calls, MSN, QQ, forums for technical support and other means
-
+3. Official Discuz!X Forum (Chinese)
+   http://www.discuz.net
 
 +--------------------------------------+
  FAQ

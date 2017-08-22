@@ -336,7 +336,7 @@ function tpl_spacecp_profile_bottom() {
 		if (response.errCode == '0') {
 			seditor_insertunit('sightml', response.result);
 		} else {
-/*vot*/			// Request failed
+/*vot*/		// Request failed
 			showDialog('{lang qqconnect:connect_wbsign_no_account}');
 		}
 	}
