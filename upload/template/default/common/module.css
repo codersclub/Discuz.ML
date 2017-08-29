@@ -573,7 +573,7 @@ Modified by Valery Votintsev, codersclub.org
 			#fh .h .y { float: right; }
 			#fh .o a { float: left; margin-right: 10px; }
 	#fh.m { padding-top: 0; background-color: {COMMONBG}; }
-	.xst { font-family: {THREADTITLEFONT}; font-size: {THREADTITLEFONTSIZE}; }
+/*vot*/	.xst { font-family: {THREADTITLEFONT}; font-size: {THREADTITLEFONTSIZE}; margin-right: 3px;}
 		.xst i { font-style: italic; }
 
 	/* threadtype Thread Type */
