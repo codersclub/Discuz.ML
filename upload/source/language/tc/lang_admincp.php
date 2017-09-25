@@ -2581,6 +2581,8 @@ $lang = array
 	'setting_mobile_status_tips' => '<li>提供方便手機方式瀏覽的頁面，此功能僅限論壇範圍內。</li><li>本手機功能頁僅支持WAP2.0(XHTML方式)以上的手機瀏覽器進行訪問。</li><li>手機瀏覽圖片寬度為200像素以內縮略圖。</li>',
 	'setting_mobile_allowmobile' => '開啟手機版',
 	'setting_mobile_allowmobile_comment' => '開啟本功能，用戶使用手機訪問論壇時，將自動跳轉到手機版界面<br />手機訪問域名配置請進入: <a href="?action=domain&operation=app">全局 - 域名設置 - 應用域名</a><br />底部導航設置請進入：<a href="?action=nav&operation=footernav">界面 - 導航設置 - 底部導航</a>',
+	'setting_mobile_allowmnew' => '启用新触屏版',
+	'setting_mobile_allowmnew_comment' => '使用新触屏版，新触屏版的 URL 为“' . $_G['siteurl'] . 'm/”',
 	'setting_mobile_mobileforward' => '開啟手機瀏覽器自動跳轉',
 	'setting_mobile_mobileforward_comment' => '開啟後用戶使用手機瀏覽器訪問社區論壇功能頁以外頁面時自動跳轉到論壇首頁進行訪問',
 	'setting_mobile_preview' => '開啟電腦訪問手機版預覽功能',
