@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33861 2013-08-22 09:16:38Z nemohou $
  *
- *      Modified by Valery Votintsev
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 $lang = array (
@@ -954,6 +954,7 @@ $lang = array (
   'setting_avatar_message' => '如果您還沒有設置自己的頭像，系統會顯示為默認頭像，您需要自己上傳一張新照片來作為自己的個人頭像 ',
   'setting_my_new_avatar' => '設置我的新頭像',
   'setting_my_new_avatar_message' => '請選擇一個新照片進行上傳編輯。<br />頭像保存後，您可能需要刷新一下本頁面(按F5鍵)，才能查看最新的頭像效果 ',
+  'setting_my_new_avatar_old' => '如無法正常上傳頭像，請點此處切換為 Flash 方式上傳',
   'auto_keyword' => '自動獲取',
   'cancel_stick_blog' => '取消置頂日誌',
   'change_default_settings' => '更改默認配置',

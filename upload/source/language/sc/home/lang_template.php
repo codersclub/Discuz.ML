@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33861 2013-08-22 09:16:38Z nemohou $
  *
- *	Modified by Valery Votintsev, codersclub.org
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 $lang = array (
