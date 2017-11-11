@@ -860,6 +860,7 @@ function cutstr($string, $length, $dot = ' ...') {
 /*vot*/	if(dstrlen($string) <= $length) {
 		return $string;
 	}
+//*vot*/	return mb_substr($string);
 
 	$pre = chr(1);
 	$end = chr(1);

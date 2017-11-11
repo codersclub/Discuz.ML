@@ -94,7 +94,7 @@ if(empty($op) || $op == 'add') {
 		}
 
 		$newCollectionTitle = censor(dhtmlspecialchars($_GET['title']));
-		$newCollectionTitle = cutstr($newCollectionTitle, 30, '');
+/*vot*/		$newCollectionTitle = cutstr($newCollectionTitle, 255, '');
 
 		$newcollection = array(
 		    'name' => $newCollectionTitle,

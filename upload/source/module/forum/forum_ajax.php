@@ -145,7 +145,7 @@ if($_GET['action'] == 'checkusername') {
 		showmessage('group_name_empty', '', array(), array('msgtype' => 3));
 	}
 //vot	$tmpname = cutstr($groupname, 20, '');
-/*vot*/	if(dstrlen($groupname) < 2 || dstrlen($groupname) > 80) {
+/*vot*/	if(dstrlen($groupname) < 2 || dstrlen($groupname) > 255) {
 		showmessage('group_name_oversize', '', array(), array('msgtype' => 3));
 	}
 	if(C::t('forum_forum')->fetch_fid_by_name($groupname)) {
