@@ -32,7 +32,7 @@ function blog_post($POST, $olds=array()) {
 		$_G['username'] = addslashes($olds['username']);
 	}
 
-	$POST['subject'] = getstr(trim($POST['subject']), 80);
+/*vot*/	$POST['subject'] = getstr(trim($POST['subject']), 255);
 	$POST['subject'] = censor($POST['subject']);
 	if(strlen($POST['subject'])<1) $POST['subject'] = dgmdate($_G['timestamp'], 'Y-m-d');
 	$POST['friend'] = intval($POST['friend']);

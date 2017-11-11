@@ -76,7 +76,7 @@ function validate(theform) {
 	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "") || !sortid && !special && trim(message) == "") {
 /*vot*/		showError(lng['enter_content']);
 		return false;
-/*vot*/	} else if(theform.subject.value.length > 80) {
+/*vot*/	} else if(theform.subject.value.length > 255) {
 /*vot*/		showError(lng['title_long']);
 		return false;
 	}
