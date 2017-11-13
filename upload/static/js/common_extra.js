@@ -186,25 +186,6 @@ function _copycode(obj) {
 /*vot*/	setCopy(BROWSER.ie ? obj.innerText.replace(/\r\n\r\n/g, '\r\n') : obj.textContent, lng['code_clipboard']);
 }
 
-function _setCopy(text, msg){
-	if(BROWSER.ie) {
-		var r = clipboardData.setData('Text', text);
-		if(r) {
-			if(msg) {
-				showPrompt(null, null, '<span>' + msg + '</span>', 1500);
-			}
-		} else {
-/*vot*/			showDialog('<div class="c"><div style="width: 200px; text-align: center;">'+lng['copy_failed']+'</div></div>', 'alert');
-		}
-	} else {
-/*vot*/		var msg = '<div class="c"><div style="width: 200px; text-align: center; text-decoration:underline;">'+lng['copy2clipboard']+'</div>' +
-		AC_FL_RunContent('id', 'clipboardswf', 'name', 'clipboardswf', 'devicefont', 'false', 'width', '200', 'height', '40', 'src', STATICURL + 'image/common/clipboard.swf', 'menu', 'false',  'allowScriptAccess', 'sameDomain', 'swLiveConnect', 'true', 'wmode', 'transparent', 'style' , 'margin-top:-20px') + '</div>';
-		showDialog(msg, 'info');
-		text = text.replace(/[\xA0]/g, ' ');
-		CLIPBOARDSWFDATA = text;
-	}
-}
-
 function _showselect(obj, inpid, t, rettype) {
 	var showselect_row = function (inpid, s, v, notime, rettype) {
 		if(v >= 0) {
@@ -516,9 +497,9 @@ function _zoom(obj, zimg, nocover, pn, showexif) {
 			}
 			if(authorcurrent !== '') {
 				paid = authorcurrent > 0 ? authorimgs[authorcurrent - 1] : authorimgs[authorlength - 1];
-/*vot*/				picpage += ' <div id="zimg_prev" onmouseover="dragMenuDisabled=true;this.style.backgroundPosition=\'0 50px\'" onmouseout="dragMenuDisabled=false;this.style.backgroundPosition=\'0 -100px\';" onclick="_zoom_page(\'' + paid + '\', ' + (showexif ? 1 : 0) + ')" class="zimg_prev"><strong>'+lng['prev']+'</strong></div> ';
+/*vot*/			picpage += ' <div id="zimg_prev" onmouseover="dragMenuDisabled=true;this.style.backgroundPosition=\'0 50px\'" onmouseout="dragMenuDisabled=false;this.style.backgroundPosition=\'0 -100px\';" onclick="_zoom_page(\'' + paid + '\', ' + (showexif ? 1 : 0) + ')" class="zimg_prev"><strong>'+lng['prev']+'</strong></div> ';
 				paid = authorcurrent < authorlength - 1 ? authorimgs[authorcurrent + 1] : authorimgs[0];
-/*vot*/				picpage += ' <div id="zimg_next" onmouseover="dragMenuDisabled=true;this.style.backgroundPosition=\'100% 50px\'" onmouseout="dragMenuDisabled=false;this.style.backgroundPosition=\'100% -100px\';" onclick="_zoom_page(\'' + paid + '\', ' + (showexif ? 1 : 0) + ')" class="zimg_next"><strong>'+lng['next']+'</strong></div> ';
+/*vot*/			picpage += ' <div id="zimg_next" onmouseover="dragMenuDisabled=true;this.style.backgroundPosition=\'100% 50px\'" onmouseout="dragMenuDisabled=false;this.style.backgroundPosition=\'100% -100px\';" onclick="_zoom_page(\'' + paid + '\', ' + (showexif ? 1 : 0) + ')" class="zimg_next"><strong>'+lng['next']+'</strong></div> ';
 			}
 			if(picpage) {
 				$(menuid + '_picpage').innerHTML = picpage;
