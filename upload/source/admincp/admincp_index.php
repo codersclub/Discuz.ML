@@ -14,9 +14,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 if(@file_exists(DISCUZ_ROOT.'./install/index.php') && !DISCUZ_DEBUG) {
 //vot	@unlink(DISCUZ_ROOT.'./install/index.php');
-	if(@file_exists(DISCUZ_ROOT.'./install/index.php')) {
 /*vot*/		echo '<div class="error">'.cplang('delete_install_index').'</div>';
-	}
 }
 
 @include_once DISCUZ_ROOT.'./source/discuz_version.php';
