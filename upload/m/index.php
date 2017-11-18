@@ -1,5 +1,7 @@
 <?php
 
+/*vot*/ define('APPTYPEID', 2);
+/*vot*/ define('CURSCRIPT', 'forum');
 define('IN_MOBILE', 4);
 define('IN_NEWMOBILE', true);
 

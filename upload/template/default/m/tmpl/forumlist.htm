@@ -3,11 +3,11 @@
         var catList = json.Variables.catlist;
         var forumList = json.Variables.forumlist;
     %>
-    <!--循环论坛分区-->
+    <!--Forum Section Loop-->
     <% for(var c in catList){%>
         <% for(var forumId in catList[c]["forums"]){%>
             <% var fId = catList[c]["forums"][forumId];%>
-            <!--循环分区下的一级版块-->
+            <!--Forum loop under the category-->
             <% for(var f in forumList){%>
                 <% if(forumList[f]["fid"]===fId){ %>
                 <div class="interestList">
@@ -18,7 +18,7 @@
                     <% if(forum["sublist"]!=undefined){%>
                         <% var subNum=forum["sublist"].length; %>
                     <%}%>
-                    <!--展示一级版块-->
+                    <!--Show the forum-->
                     <ul class="hd<%if(subNum>0){%> iL<%}%>">
                         <li>
                             <div onclick="openForum(<%= forum['fid']%>)">
@@ -32,7 +32,7 @@
                             <%}%>
                         </li>
                     </ul>
-                    <!--展示当前版块的子版-->
+                    <!--Show Sub-forums-->
                     <%if(subNum>0){%>
                     <ul class="bd" style="display:none;">
                         <% for(var sf in forum["sublist"]){ %>
