@@ -413,9 +413,9 @@ EOF;
 					header('Content-Disposition: attachment; filename='.$filename);
 					header('Pragma: no-cache');
 					header('Expires: 0');
-					if($_G['charset'] != 'gbk') {
-						$verifylist = diconv($verifylist, $_G['charset'], 'GBK');
-					}
+//vot					if($_G['charset'] != 'gbk') {
+//vot						$verifylist = diconv($verifylist, $_G['charset'], 'GBK');
+//vot					}
 					echo $verifylist;
 					exit();
 				} else {

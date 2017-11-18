@@ -243,10 +243,9 @@ EOF;
 	header('Content-Disposition: attachment; filename='.$filename);
 	header('Pragma: no-cache');
 	header('Expires: 0');
-//vot !!!!!!! VERIFY THIS !!!!!!!!!!!!!!!!!!!!!!!!!!!
-	if($_G['charset'] != 'gbk') {
+//vot	if($_G['charset'] != 'gbk') {
 //vot		$detail = diconv($detail, $_G['charset'], 'GBK');
-	}
+//vot	}
 	echo $detail;
 	exit();
 

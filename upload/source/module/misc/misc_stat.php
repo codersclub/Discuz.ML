@@ -52,9 +52,9 @@ if($op == 'basic') {
 		header('Content-Disposition: attachment; filename='.$filename);
 		header('Pragma: no-cache');
 		header('Expires: 0');
-		if($_G['charset'] != 'gbk') {
-			$csvstr = diconv($csvstr, $_G['charset'], 'GBK');
-		}
+//vot		if($_G['charset'] != 'gbk') {
+//vot			$csvstr = diconv($csvstr, $_G['charset'], 'GBK');
+//vot		}
 		echo $csvstr;
 		exit;
 	} else {

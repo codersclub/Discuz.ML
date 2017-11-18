@@ -425,7 +425,8 @@ IconIndex=1
 	if(!strexists($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
 		$filename = diconv($filename, CHARSET, 'UTF-8');
 	} else {
-		$filename = diconv($filename, CHARSET, 'GBK');
+//vot		$filename = diconv($filename, CHARSET, 'GBK');
+/*vot*/		$filename = diconv($filename, CHARSET, 'UTF-8');
 	}
 	dheader('Content-type: application/octet-stream');
 	dheader('Content-Disposition: attachment; filename="'.$filename.'"');
@@ -1402,9 +1403,9 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 	header('Content-Disposition: attachment; filename='.$filename);
 	header('Pragma: no-cache');
 	header('Expires: 0');
-	if($_G['charset'] != 'gbk') {
+//vot	if($_G['charset'] != 'gbk') {
 //vot		$csvstr = diconv($csvstr, $_G['charset'], 'GBK');
-	}
+//vot	}
 	echo $csvstr;
 } elseif($_GET['action'] == 'tradeorder') {
 
