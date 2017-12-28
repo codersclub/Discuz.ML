@@ -1,9 +1,9 @@
 +======================================================+
-   Discuz! ML 3.4 (MultiLingual) Release 20170820
+   Discuz! ML 3.4 (MultiLingual) Release 20180101
    (c) by Valery Votintsev and CodersClub community
    http://codersclub.org/discuzx/
 
-   Based on Discuz! X3.4 Release 20170820
+   Based on Discuz! X3.4 Release 20180101
 +======================================================+
 
 Main differences from the official Discuz!X:
@@ -22,6 +22,18 @@ Main differences from the official Discuz!X:
 11. UCenter upgraded to v.1.6.0
 12. UCenter API Development Guide translated to English
 
+
++======================================+
+   Discuz! X3.4 Release 20180101
++======================================+
+Add HTML upload mechanism for avatar
+Optimized Media into an expanded form
+
++======================================+
+   Discuz! X3.4 Release 20171001
++======================================+
+Cloud platform support removed
+Added a new touch screen template version (localized front end for micro community)
 
 +======================================+
    Discuz! X3.3 Release 20170401
