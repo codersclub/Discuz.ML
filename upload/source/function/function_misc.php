@@ -21,13 +21,14 @@ function convertip($ip) {
 			$fullipfile = DISCUZ_ROOT.'./data/ipdata/wry.dat';
 /*vot*/			if(@file_exists($geoipfile)) {
 /*vot*/				$return = convertip_geo($ip, $geoipfile);
+/*vot*/         	$return = lang('country', $return);
 /*vot*/			} elseif(@file_exists($tinyipfile)) {
 				$return = convertip_tiny($ip, $tinyipfile);
 			} elseif(@file_exists($fullipfile)) {
 				$return = convertip_full($ip, $fullipfile);
 			}
 
-	return lang('country',$return);
+	return $return;
 
 }
 
@@ -247,7 +248,7 @@ function convertip_full($ip, $ipdatafile) {
 		$ipaddr = '- Unknown';
 	}
 
-	return '- '.$ipaddr;
+	return '- '.diconv($ipaddr, 'GBK');
 
 }
 
