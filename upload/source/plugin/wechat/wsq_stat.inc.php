@@ -49,7 +49,7 @@ foreach($langarray as $l) {
 }
 
 echo <<<EOF
-<script src="./source/plugin/wechat/js/jquery.min.js"></script>
+<!--vot--><script src="./static/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="./source/plugin/wechat/js/highcharts.js"></script>
 <script type="text/javascript">
 var jq=$.noConflict();

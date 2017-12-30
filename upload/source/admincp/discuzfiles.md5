@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-d972a94c78ab581c0222561c363b89f9 *source/discuz_version.php
+994bfd8f2d89cb60f9d3fff07b896cbd *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -770,7 +770,7 @@ abe3f94e960d66f15bb08ec6195c029f *source/function/function_grouplog.php
 b74cbfbee4f378cf3f0ea3e3982edfec *source/function/function_mail.php
 f2a777758dcdc0cd23dbe4dc869122fe *source/function/function_member.php
 40ee75482ffa0542df601d1e6184e940 *source/function/function_message.php
-d99094672b60590a6b492184a3a77cf9 *source/function/function_misc.php
+93d63a93370f053992697bccf7f36b77 *source/function/function_misc.php
 038c62611390f3537163cd9d79656d9a *source/function/function_plugin.php
 4a53087b86b6d059e1d3fb7c38eb279d *source/function/function_portal.php
 e139d307f95fc9a421a5aadf04407e9e *source/function/function_portalcp.php
@@ -1452,7 +1452,6 @@ ba59ae3abc3a75b97fb6186cfe9115ea *static/avatar/avatar_finishback.png
 38c8a1e48fa4003201af428a3515866b *static/avatar/avatar_lattice.png
 05190dde781043370d7aa22bda21a716 *static/avatar/avatar_save.gif
 8ab9e499a4f73143cc6881ff3a9eaaa8 *static/avatar/avatar_upload.gif
-6a8d2ad2b8a68c521fa71d81dfea6142 *static/avatar/jquery-ui-1.11.4.min.js
 18e2222cdf584db09ad3d83a1c9cb686 *static/avatar/ui-bg_flat_0_aaaaaa_40x100.png
 3c739f0850728b9d2b21fabce555c8bf *static/avatar/ui-bg_flat_75_ffffff_40x100.png
 3f439c206bd6e523e0075ee3e82cc5e2 *static/avatar/ui-bg_glass_55_fbf9ee_1x400.png
@@ -1507,7 +1506,6 @@ d7c09056c2ae064ce19ca340825abfff *static/image/admincp/cloud/fwin_menu.jpg
 a00377557a7ff64f000544f75d5857d7 *static/image/admincp/cloud/ico_d.png
 05c8604eef60244ef86ad8db73975bc2 *static/image/admincp/cloud/image_s.gif
 d41d8cd98f00b204e9800998ecf8427e *static/image/admincp/cloud/index.htm
-e267e9698c04747911a183f01529478c *static/image/admincp/cloud/jquery.min.js
 39756e054c0a930d1f4f7f7708fa572a *static/image/admincp/cloud/line.png
 65ca935e8760357956d9820af8cd67cf *static/image/admincp/cloud/message.png
 7899e665e913b4ba1d8d433e16f99e3a *static/image/admincp/cloud/pn.png
@@ -3037,13 +3035,13 @@ e267e9698c04747911a183f01529478c *static/js/jquery/jquery-1.5.1.min.js
 3576a6e73c9dccdbbc4a2cf8ff544ad7 *static/js/jquery/jquery-1.8.3.min.js
 00eb501df470e62ee14bde91f787b4c3 *static/js/jquery/jquery-1.9.0.min.js
 6a8d2ad2b8a68c521fa71d81dfea6142 *static/js/jquery/jquery-ui.min.js
+00eb501df470e62ee14bde91f787b4c3 *static/js/jquery/jquery.min.js
 92ddc79dff91e0a9be13c94f3122aae9 *static/js/logging.js
 1ad6ac605f78e36a286dc8d368aaa750 *static/js/makehtml.js
 ef058f07a773acf03f6d2f7f6ecb68fd *static/js/md5.js
 ed88708e2be8db3e81cedd63851109c1 *static/js/mobile/ajaxfileupload.js
 ff352f0645ea7e926caaa3ef2c48da02 *static/js/mobile/buildfileupload.js
 8a14c2b3644f9779b1f5af87c87ee76c *static/js/mobile/common.js
-3576a6e73c9dccdbbc4a2cf8ff544ad7 *static/js/mobile/jquery.min.js
 e4cefe8cb869b82e4ebbed60c60e891d *static/js/portal.js
 ea4ee8ddada860a6d3cd25ed22c1893c *static/js/portal_diy.js
 10ec25fd3bb3e624388f6f1a8b0848fd *static/js/portal_diy_data.js
@@ -3286,7 +3284,7 @@ dcecf9502c1ceadebea0ae4c229d3364 *template/default/common/footer_ajax.htm
 95b2d0e6d5b7c60b139c07e2d5ca57ce *template/default/common/forum_moderator.css
 251b5318f0f39fa41bd44bcb61f431ff *template/default/common/forum_moderator_rtl.css
 d1c62c93f25fe2f5cc98e6b6092cf7fa *template/default/common/getatuser.htm
-3859a7c8ec66c5b66d42ef8420524d2e *template/default/common/googlemap.htm
+df26201774543c665c488f95c4e4d646 *template/default/common/googlemap.htm
 514f9f2be6bc66a0143cc33cd24e507b *template/default/common/header.htm
 3f84349f5b5107b1ec966cd254be3a03 *template/default/common/header_ajax.htm
 10ba448aad3b572d02327da2e6834c33 *template/default/common/header_common.htm
@@ -3469,7 +3467,7 @@ a2ef6c8789cd6ddf0e36e724861f67a0 *template/default/home/misc_inputpwd.htm
 9fd97473360fe8cd42201fb632ba537d *template/default/home/sendmail.htm
 5df4d255563a355f3cfe3f138f88607f *template/default/home/spacecp_album.htm
 a718218be5290867108436b7a0d6302c *template/default/home/spacecp_avatar.htm
-352f04bfcf7f03fc3f7a9641b42ac3bb *template/default/home/spacecp_avatar_body.htm
+a47a7c3e2abb27a57e30e69cecc13cdc *template/default/home/spacecp_avatar_body.htm
 3d7c1647b590769c940819196a7bf2ab *template/default/home/spacecp_blog.htm
 ba5dd21681d916d53a6e92db12275f3b *template/default/home/spacecp_class.htm
 6c6f7c62e245db11742e4608b56577a7 *template/default/home/spacecp_click.htm
@@ -3580,7 +3578,7 @@ eb67b9bfb98b3e7f046c9d03ff7fc858 *template/default/m/fonts/icomoon.ttf
 6d4bf0e3a696c4b7cec2143e79d390ca *template/default/m/fonts/icomoon.woff
 9aca73d28649b755b4a8b75e87fcd8aa *template/default/m/footer.htm
 60a13b3b1b77bf33240abb701ad52394 *template/default/m/forumlist.htm
-5123eaa93d440405182f1d11c9ef9eae *template/default/m/header.htm
+fc97dd21aa5d00db25b01372dd98b45d *template/default/m/header.htm
 4e9e9be0541471b7041748264d0d7ce8 *template/default/m/images/36Kr_logo.png
 bf461c79fb6875a2240a6ac5fe7f6d8c *template/default/m/images/addBtn.png
 5780060fa4bc0e968c9f1410e2cfc0f2 *template/default/m/images/apitest_qr.jpg
@@ -3626,7 +3624,6 @@ b1db49e97c3ebbd1b6d11b4f5169b432 *template/default/m/js/imageview.js
 10ca412077570d8b7fd17358370e2ea0 *template/default/m/js/info_center.js
 18352aaea942aaba640cac8ad602c837 *template/default/m/js/jpeg.encoder.basic.js
 073d5ba085da576de3eb84b0da0144dd *template/default/m/js/jpegmeta.js
-00eb501df470e62ee14bde91f787b4c3 *template/default/m/js/jquery.min.js
 9a716920f330eaf63e166b52b2cc5096 *template/default/m/js/jscache.js
 c575a123247ec0dc739816e98ab7714f *template/default/m/js/loadingmore.js
 e1e3393fc734e7b387cde3b99538976d *template/default/m/js/login.js
@@ -3893,7 +3890,7 @@ a2fd1ff07a0b84526d53906a32e8a317 *template/default/style/t5/bgimg.jpg
 e072f562c3bbfe198bc6c233dc8b8b4b *template/default/tag/tagitem.htm
 59fd4ef56b3593440d0c35fefd582f6e *template/default/touch/common/footer.htm
 dcecf9502c1ceadebea0ae4c229d3364 *template/default/touch/common/footer_ajax.htm
-7ef00b0d1edead1f5bff84488b72cd37 *template/default/touch/common/header.htm
+49a47ec051634a8caf07919be22a504f *template/default/touch/common/header.htm
 3f84349f5b5107b1ec966cd254be3a03 *template/default/touch/common/header_ajax.htm
 d41d8cd98f00b204e9800998ecf8427e *template/default/touch/common/index.htm
 79e3ef0bb60bec594c909f9d31ee83dd *template/default/touch/common/preview.htm
