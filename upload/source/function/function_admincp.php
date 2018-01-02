@@ -310,6 +310,7 @@ function cpheader() {
 	$charset = CHARSET;
 	$basescript = ADMINSCRIPT;
 /*vot*/	$rtl_suffix = RTLSUFFIX;
+/*vot*/	$DISCUZ_LANG = DISCUZ_LANG;
 
 /*vot*/	echo <<<EOT
 
@@ -325,6 +326,7 @@ function cpheader() {
 <body>
 <script type="text/JavaScript">
 var admincpfilename = '$basescript', IMGDIR = '$IMGDIR', STYLEID = '$STYLEID', VERHASH = '$VERHASH', IN_ADMINCP = true, ISFRAME = $frame, STATICURL='static/', SITEURL = '$_G[siteurl]', JSPATH = '{$_G[setting][jspath]}';
+/*vot*/ var LANG = '{$DISCUZ_LANG}', LANGURL = '{$_G[langurl]}', LANGDIR = '{$_G[langdir]}', RTLSUFFIX = '$rtl_suffix';
 </script>
 <script src="{$_G[setting][jspath]}common.js?{$_G[style][verhash]}" type="text/javascript"></script>
 <script src="{$_G[setting][jspath]}admincp.js?{$_G[style][verhash]}" type="text/javascript"></script>

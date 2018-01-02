@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-994bfd8f2d89cb60f9d3fff07b896cbd *source/discuz_version.php
+35e9c0240cb3982756dae308e2cc7dc4 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -740,7 +740,7 @@ fe617c17728d90c0b60d9a7346af4191 *source/function/cache/cache_threadsorts.php
 1afccc6a7e13889e3e8ac245498304b5 *source/function/cache/cache_usergroups.php
 8dffc3b7045a96be9bee7e6915769e59 *source/function/cache/cache_userstats.php
 d41d8cd98f00b204e9800998ecf8427e *source/function/cache/index.htm
-8163d0cc5c1686a93e0642fbc6106f81 *source/function/function_admincp.php
+afb06ceffd12969e87d717b8c74480b2 *source/function/function_admincp.php
 531f0489fd8e79017467e0af2ed3cb59 *source/function/function_attachment.php
 8a47914961ea955600827005f38b4daa *source/function/function_block.php
 c716e382317d9f2a7ce01a3093d0a2f4 *source/function/function_blog.php
@@ -3029,11 +3029,6 @@ d7a8bd74631a00d21b42b48b24bb7a83 *static/js/home_friendselector.js
 b08bf61b84ef721e469547870a0002e7 *static/js/html5notification.js
 b9301c42bcf9505f689b87a32bbdad57 *static/js/imgcropper.js
 d41d8cd98f00b204e9800998ecf8427e *static/js/index.htm
-10092eee563dec2dca82b77d2cf5a1ae *static/js/jquery/jquery-1.4.2.min.js
-e267e9698c04747911a183f01529478c *static/js/jquery/jquery-1.5.1.min.js
-51c070724f506556a4d14f6a9a3c3757 *static/js/jquery/jquery-1.8.2.min.js
-3576a6e73c9dccdbbc4a2cf8ff544ad7 *static/js/jquery/jquery-1.8.3.min.js
-00eb501df470e62ee14bde91f787b4c3 *static/js/jquery/jquery-1.9.0.min.js
 6a8d2ad2b8a68c521fa71d81dfea6142 *static/js/jquery/jquery-ui.min.js
 00eb501df470e62ee14bde91f787b4c3 *static/js/jquery/jquery.min.js
 92ddc79dff91e0a9be13c94f3122aae9 *static/js/logging.js
