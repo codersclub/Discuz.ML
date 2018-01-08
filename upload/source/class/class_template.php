@@ -354,7 +354,7 @@ class template {
 			} else {
 				exit('Can not write to cache files, please check directory ./data/ and ./data/cache/ .');
 			}
-			$scripts[] = STYLEID.'_'.$_G['basescript'].'_'.CURMODULE;
+/*vot*/			$scripts[] = STYLEID.'_'.$_G['basescript'].'_'.CURMODULE.RTLSUFFIX;
 		}
 		$scriptcss = '';
 		foreach($scripts as $css) {
