@@ -1022,12 +1022,12 @@ Note on the CSS Hack:
 	Explain:		Links
 	Last Modify:	lushnis
 */
-/*vot*/	.lk img { /*float: left;*/ margin-right: 5px; margin-bottom: 5px; }
+/*vot*/	.lk img { float: left; margin-right: 5px; margin-bottom: 5px; }
 	.lk p { color: {MIDTEXT}; }
-	.lk .m li { clear: left; padding: 0 0 10px 98px; }
-/*vot*/		.lk .m img { display: inline; margin-top: 4px; margin-top: 1px; /*margin-left: -98px;*/ float: right;}
-/*vot*/	.lk .x li { float: left; margin-right: 8px; width: auto; height: 1.5em; overflow: hidden; }
-	.lk_logo .lk_content { float: left; }
+/*vot*/	.lk .m li { clear: left; padding: 0 0 10px; }
+/*vot*/		.lk .m img { display: inline; margin-top: 4px; margin-top: 1px; }
+/*vot*/	.lk .x li { float: left; margin-right: 5px; width: auto; height: 1.5em; overflow: hidden; }
+/*vot*/	.lk_logo .lk_content {}
 
 /* ---------------- Other function-specific blocks ------------------ */
 /* Simple Editor */
@@ -1080,7 +1080,6 @@ Note on the CSS Hack:
 /*vot*/	#sslct_menu { padding: 2px; }
 /*vot*/		 .sslct_btn { display: block; margin: 0; cursor: pointer; }
 /*vot*/			.sslct_btn i { float: left; display: inline; margin: 2px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
-/*vot*/	#toptb a.switchblind{ width: 16px !important; overflow: hidden; }
 /* pop-up menu and pop-up window */
 /*vot*/	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; width: auto; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 1px 2px 2px rgba(0,0,0,0.3); }
 		.ie6 .p_pop { width: 100px; }

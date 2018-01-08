@@ -580,18 +580,14 @@ Note on the CSS Hack:
 
 /* Header */
 	#toptb { line-height: 24px; }
-		#toptb a { float: right; padding: 0 4px; height: 24px; }
-		#toptb a.showmenu { padding-left: 20px; }
+		#toptb a { float: right; padding: 0 2px; height: 24px; }
+		#toptb a.showmenu { padding-left: 15px; }
 		#toptb a.hover { background-color: #FFF; }
 		#toptb .pipe { float: right;}/* display: none; */
-/*vot*/		#toptb img { vertical-align: middle; }
+/*vot*/		#toptb img { vertical-align: middle; padding: 3px 0; }
 
 	#hd { border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} }
 		#hd .wp { padding: 10px 0 0; }
-			#diy-tg { width: 55px; background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 1px; text-indent: -9999px; overflow: hidden; }
-/*vot*/				#diy-tg_menu { position: absolute; margin: -2px 0 0 -1px; padding: 0 6px; width: auto; /*height: 48px; background: url({STATICURL}image/diy/panel-toggle-drop.png) no-repeat 0 0; text-align: center;*/ border: 1px solid #E0883A; border-radius: 5px; background: #FBF5E4; }
-/*vot*/				#diy-tg_menu a { float: none !important; white-space: nowrap; }
-/*vot*/			#toptb #diy-tg_menu { margin: 2px 0 0 0; }
 
 			.hdc { min-height: 70px; }
 				.ie6 .hdc { height: 70px; }
@@ -1029,9 +1025,9 @@ Note on the CSS Hack:
 */
 	.lk img { float: right; margin-left: 5px; margin-bottom: 5px; }
 	.lk p { color: {MIDTEXT}; }
-	.lk .m li { clear: right; padding: 0 98px 10px 0; }
-/*vot*/		.lk .m img { display: inline; margin-top: 4px; margin-top: 1px; /*margin-right: -98px;*/ float: right;}
-/*vot*/	.lk .x li { float: right; margin-left: 8px; width: auto; height: 1.5em; overflow: hidden; }
+/*vot*/	.lk .m li { clear: right; padding: 0 0 10px 0; }
+/*vot*/		.lk .m img { display: inline; margin-top: 4px; margin-top: 1px; float: right;}
+/*vot*/	.lk .x li { float: right; margin-left: 5px; width: auto; height: 1.5em; overflow: hidden; }
 	.lk_logo .lk_content { float: right; }
 
 /* ---------------- Other function-specific blocks ------------------ */
@@ -1067,7 +1063,7 @@ Note on the CSS Hack:
 	Last Modify:	Pony 1207021442
 */
 /*vot*/			#diy-tg { /*float: left;*/ width: 55px; /*background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 1px; text-indent: -9999px; overflow: hidden;*/ }
-/*vot*/				#diy-tg_menu { position: absolute; margin: -2px 0 0 -1px; padding: 0 6px; width: auto; height: 48px; /*background: url({STATICURL}image/diy/panel-toggle-drop.png) no-repeat 0 0; text-align: center;*/ border: 1px solid #E0883A; border-radius: 5px; background: #FBF5E4; }
+/*vot*/				#diy-tg_menu { position: absolute; margin: -2px 0 0 -1px; padding: 0 6px; width: auto; /*height: 48px; background: url({STATICURL}image/diy/panel-toggle-drop.png) no-repeat 0 0; text-align: center;*/ border: 1px solid #E0883A; border-radius: 5px; background: #FBF5E4; }
 /*vot*/				#diy-tg_menu a { float: none !important; white-space: nowrap; }
 /*vot*/			#toptb #diy-tg_menu { margin: 2px 0 0 0; }
 
@@ -1082,10 +1078,9 @@ Note on the CSS Hack:
 /*vot*/	#toptb a.switchblind { width: 16px; overflow: hidden; }
 /*vot*/	#sslct img { vertical-align:middle; }
 	.switchwidth:hover{ background: url({IMGDIR}/switch_width.png) no-repeat 100% -36px; }
-/*vot*/	#sslct_menu { padding: 2px; left:18px;}
+/*vot*/	#sslct_menu { padding: 2px; }
 /*vot*/		 .sslct_btn { display: block; margin: 0; cursor: pointer; }
 /*vot*/			.sslct_btn i { float: right; display: inline; margin: 2px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
-/*vot*/	#toptb a.switchblind{ width: 16px !important; overflow: hidden; }
 /* pop-up menu and pop-up window */
 /*vot*/	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; width: auto; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 1px 2px 2px rgba(0,0,0,0.3); }
 		.ie6 .p_pop { width: 100px; }
@@ -1833,6 +1828,7 @@ DIY image is not loaded when the Hide Slide
 */
 .flag {
 	vertical-align: middle;
+	margin-top: 2px;
 }
 .language_icon img {opacity:0.4;}
 	.language_icon:hover img {opacity:1;}
