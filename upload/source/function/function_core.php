@@ -2079,9 +2079,6 @@ function browserversion($type) {
 }
 
 function currentlang() {
-//vot !!!! ToDo: Check this for other languages !!!!!!!!!!!!!!!!!!!!!
-/*vot*/	return strtoupper(DISCUZ_LANG) . '_UTF8';
-
 	$charset = strtoupper(CHARSET);
 	if($charset == 'GBK') {
 		return 'SC_GBK';
@@ -2093,6 +2090,9 @@ function currentlang() {
 			return 'SC_UTF8';
 		} elseif ($_G['config']['output']['language'] == 'zh_tw') {
 			return 'TC_UTF8';
+		} else {
+//vot !!!! ToDo: Check this for other languages !!!!!!!!!!!!!!!!!!!!!
+/*vot*/			return strtoupper(DISCUZ_LANG) . '_UTF8';
 		}
 	} else {
 		return '';
