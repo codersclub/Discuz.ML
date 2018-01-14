@@ -4,7 +4,7 @@
 
 	Javascript Language variables
 
-	$Id: lang_js.js by Valery Votintsev, codersclub.org
+	$Id: lang_js.js by Valery Votintsev, codersclub.org, discuz.ml
 
 */
 
@@ -670,7 +670,7 @@ var lng = {
 	'capitals'		: '大寫字母',//'Capital letters',
 	'specials'		: '特殊符號',//'Special symbols',
 	'pw_weak_info'		: '密碼太弱，密碼中必須包含 ',//'Weak password, the password must contain ',
-	'leave_blank_old_pass'	: '如不需要更改密码，此处请留空',//'Leave blank if you do not need to change the password',
+	'leave_blank_old_pass'	: '如不需要更改密碼，此處請留空',//'Leave blank if you do not need to change the password',
 
 //--------------------------------
 //static/js/seditor.js
@@ -713,7 +713,7 @@ var lng = {
 
 //-------------------------------------
 //source/function/function_admincp.php
-	'version_uptodate'	: 'You are currently using Up-to-date version of Discuz! program. Please refer to the following tips to make timely upgrades.',
+	'version_uptodate'	: 'You are currently using an Up-to-date version of Discuz!. Please refer to the following tips to make upgrades timely.',
 
 //-------------------------------------
 //api/manyou/cloud_iframe.js
@@ -728,9 +728,14 @@ var lng = {
 	'map_center_changed'	: '地圖中心已經改變！',//'The map center is changed!',
 	'map_wrong_address'	: ' 地址錯誤，未找到當前地址',//'Wrong address! Current address was not found',
 
+//---------------------------
+//upload/static/js/avatar.js
+	'avatar_upload_ok'	: '上傳成功!',//'Uploaded successfully!',
+	'avatar_3_sizes'	: '以上是您頭像的三種尺寸',//'These are three sizes of your avatar',
+	'avatar_upload_failed'	: '上傳失敗',//'Upload failed',
+
 //-------------------------------------
 //	''	: '',//'',
-
 'fiction'	: '' // This key MUST BE THE LAST row!
 
 };

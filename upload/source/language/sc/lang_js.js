@@ -4,7 +4,7 @@
 
 	Javascript Language variables
 
-	$Id: lang_js.js by Valery Votintsev, codersclub.org
+	$Id: lang_js.js by Valery Votintsev, codersclub.org, discuz.ml
 
 */
 
@@ -713,7 +713,7 @@ var lng = {
 
 //-------------------------------------
 //source/function/function_admincp.php
-	'version_uptodate'	: 'You are currently using Up-to-date version of Discuz! program. Please refer to the following tips to make timely upgrades.',
+	'version_uptodate'	: 'You are currently using an Up-to-date version of Discuz!. Please refer to the following tips to make upgrades timely.',
 
 //-------------------------------------
 //api/manyou/cloud_iframe.js
@@ -728,9 +728,14 @@ var lng = {
 	'map_center_changed'	: '地图中心已经改变！',//'The map center is changed!',
 	'map_wrong_address'	: ' 地址错误，未找到当前地址',//'Wrong address! Current address was not found',
 
+//---------------------------
+//upload/static/js/avatar.js
+	'avatar_upload_ok'	: '上传成功!',//'Uploaded successfully!',
+	'avatar_3_sizes'	: '以上是您头像的三种尺寸',//'These are three sizes of your avatar',
+	'avatar_upload_failed'	: '上传失败',//'Upload failed',
+
 //-------------------------------------
 //	''	: '',//'',
-
 'fiction'	: '' // This key MUST BE THE LAST row!
 
 };
