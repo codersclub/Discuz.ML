@@ -39,7 +39,7 @@ f6ff047850e8f46685e3753f446fdffc *config/config_ucenter_default.php
 6e4fbf3939402cf67a6c00367382988b *./crossdomain.xml
 cba7beb32835268b64190bc95a4ba48c *./data
 d41d8cd98f00b204e9800998ecf8427e *data/index.htm
-d3190f2a007bc49ad5136d47f72f4bf2 *data/ipdata/GeoIP.dat
+1e43a1a5c531cc8e11fb4f83a1c0ec7a *data/ipdata/GeoIP.dat
 7215ee9c7d9dc229d2921a40e899ec5f *data/ipdata/index.htm
 b21eeb904d9bcb604ed682343661bcc2 *data/ipdata/tinyipdata.dat
 93d0ac4235e553d6cfe0ce65a55ef446 *data/stat_setting.xml
@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-6bdd866f403170271844e2d488e3276e *source/discuz_version.php
+2e7c0e9c16860c8a9edb36502cb207c6 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
