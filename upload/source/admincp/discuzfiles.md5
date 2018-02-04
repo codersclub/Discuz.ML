@@ -289,7 +289,7 @@ f586ad9557c88be3630b8263da72ec19 *source/class/class_optimizer.php
 6458a7fe20f3e3b9fd8212191b1e3d39 *source/class/class_seccode.php
 ba8f93e2baa105875cbca0152cdd8645 *source/class/class_sphinx.php
 1a50bfab1b9481e9302157185480936c *source/class/class_tag.php
-c06d0078f78d3c10743914daa92a2822 *source/class/class_task.php
+88c34701bf987844b9278e0d666c2c98 *source/class/class_task.php
 db317b9cf1d0ef94f0f0269d491cc322 *source/class/class_template.php
 ac28fb8ef358523452d1960aa73ffd53 *source/class/class_xml.php
 0243c69f103b8167e4e75aae836b3886 *source/class/class_zip.php
@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-2e7c0e9c16860c8a9edb36502cb207c6 *source/discuz_version.php
+310ac69d187af24bdba49c68c589ac63 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
