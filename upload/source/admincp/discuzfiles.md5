@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-38d7192d876e3bea01bd4ca3a4c710c1 *source/discuz_version.php
+6cf3601baaf319d0083e3f1c5b71d643 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -757,7 +757,7 @@ aaca86dc933b77a2313a4d463cf356a6 *source/function/function_ec_credit.php
 1697d84a4d22ab0c3bab3691abca8775 *source/function/function_editor.php
 ed60f1ffa5730c849ff679cf8fd5efcb *source/function/function_exif.php
 3d6eec4caba420c1b033139a77503ec1 *source/function/function_feed.php
-332a76f024e8e0b1011496e15bdb0de8 *source/function/function_filesock.php
+44786af6a222c3924c6bb3865dfa8080 *source/function/function_filesock.php
 03b8b4f3f3346f498e8fa36543545cec *source/function/function_followcode.php
 4a2e6ac03f69c27cb7eed949162d5dd2 *source/function/function_forum.php
 ad6ec12539ad4343bedbcaf69458b53b *source/function/function_forumlist.php
