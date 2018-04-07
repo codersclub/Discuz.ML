@@ -982,7 +982,7 @@ Note on the CSS Hack:
 
 /* Application list */
 	.appl ul { margin: 3px 0; }
-	.appl li { display: block; height: 28px; line-height: 28px; white-space: nowrap; word-wrap: normal; font-size: 14px; text-overflow: ellipsis; overflow: hidden; }
+	.appl li { display: block; height: 28px; line-height: 28px; white-space: nowrap; word-wrap: normal; font-size: 12px; text-overflow: ellipsis; overflow: hidden; }
 	.appl li a { text-decoration: none !important; }
 	.appl img { margin: 5px 5px -3px 0; }
 	.appl span { float: right; font-size: 12px; }
