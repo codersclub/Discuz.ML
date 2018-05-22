@@ -1861,3 +1861,15 @@ EOT;
 	show_footer();
 
 }
+
+/*vot*//* Compare 2 string versions */
+/* Usage:
+   if(v_compare($mysql_version, "4.1") > 0) {
+     echo '$version_compare > 4.1', "\n";
+   }
+*/
+function v_compare($version1='', $version2='') {
+    $version1 = preg_replace('/[^\d\.].*$/', '', $version1);
+    $version2 = preg_replace('/[^\d\.].*$/', '', $version2);
+    return version_compare($version1, $version2);
+}

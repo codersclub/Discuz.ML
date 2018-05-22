@@ -330,7 +330,7 @@ if($method == 'show_license') {
 				}
 			}
 			$mysql_version = ($mysqlmode == 'mysql') ? mysql_get_server_info() : $link->server_info;
-			if($mysql_version > '4.1') {
+/*vot*/			if(v_compare($mysql_version, '4.1') > 0) {
 				if($mysqlmode == 'mysql') {
 					mysql_query("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET ".DBCHARSET, $link);
 				} else {
