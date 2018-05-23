@@ -406,12 +406,12 @@ if($method == 'show_license') {
 		$sql = file_get_contents($sqlfile);
 		$sql = str_replace("\r\n", "\n", $sql);
 
-		runquery($sql);
-		runquery($extrasql);
+/*vot*/		runquery($sql, ORIG_TABLEPRE, $tablepre);
+/*vot*/		runquery($extrasql, ORIG_TABLEPRE, $tablepre);
 
 		$sql = file_get_contents(ROOT_PATH.'./install/data/install_data.sql');
 		$sql = str_replace("\r\n", "\n", $sql);
-		runquery($sql);
+/*vot*/		runquery($sql, ORIG_TABLEPRE, $tablepre);
 
 		$onlineip = $_SERVER['REMOTE_ADDR'];
 		$timestamp = time();

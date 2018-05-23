@@ -508,7 +508,7 @@ function createtable($sql, $dbver) {
 	$type = strtoupper(preg_replace("/^\s*CREATE TABLE\s+.+\s+\(.+?\).*(ENGINE|TYPE)\s*=\s*([a-z]+?).*$/isU", "\\2", $sql));
 	$type = in_array($type, array('MYISAM', 'HEAP', 'MEMORY')) ? $type : 'MYISAM';
 	return preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $sql).
-	($dbver > '4.1' ? " ENGINE=$type DEFAULT CHARSET=".DBCHARSET : " TYPE=$type");
+/*vot*/	(v_compare($dbver, '4.1') > 0) ? " ENGINE=$type DEFAULT CHARSET=".DBCHARSET : " TYPE=$type");
 }
 
 function dir_writeable($dir) {
@@ -763,13 +763,13 @@ function initinput() {
 <?php
 }
 
-function runquery($sql) {
-	global $lang, $tablepre, $db;
+/*vot*/ function runquery($sql, $orig_tablepre, $tablepre) {
+/*vot*/	global $lang, $db;
 
 	if(!isset($sql) || empty($sql)) return;
 
-	$sql = str_replace("\r", "\n", str_replace(' '.ORIG_TABLEPRE, ' '.$tablepre, $sql));
-	$sql = str_replace("\r", "\n", str_replace(' `'.ORIG_TABLEPRE, ' `'.$tablepre, $sql));
+/*vot*/	$sql = str_replace("\r", "\n", str_replace(' '.$orig_tablepre, ' '.$tablepre, $sql));
+/*vot*/	$sql = str_replace("\r", "\n", str_replace(' `'.$orig_tablepre, ' `'.$tablepre, $sql));
 	$ret = array();
 	$num = 0;
 	foreach(explode(";\n", trim($sql)) as $query) {
@@ -798,42 +798,6 @@ function runquery($sql) {
 	}
 
 }
-
-function runucquery($sql, $tablepre) {
-	global $lang, $db;
-
-	if(!isset($sql) || empty($sql)) return;
-
-	$sql = str_replace("\r", "\n", str_replace(' uc_', ' '.$tablepre, $sql));
-	$ret = array();
-	$num = 0;
-	foreach(explode(";\n", trim($sql)) as $query) {
-		$ret[$num] = '';
-		$queries = explode("\n", trim($query));
-		foreach($queries as $query) {
-			$ret[$num] .= (isset($query[0]) && $query[0] == '#') || (isset($query[1]) && isset($query[1]) && $query[0].$query[1] == '--') ? '' : $query;
-		}
-		$num++;
-	}
-	unset($sql);
-
-	foreach($ret as $query) {
-		$query = trim($query);
-		if($query) {
-
-			if(substr($query, 0, 12) == 'CREATE TABLE') {
-				$name = preg_replace("/CREATE TABLE ([a-z0-9_]+) .*/is", "\\1", $query);
-				showjsmessage(lang('create_table').' '.$name.' ... '.lang('succeed'));
-				$db->query(createtable($query, $db->version()));
-			} else {
-				$db->query($query);
-			}
-
-		}
-	}
-
-}
-
 
 function charcovert($string) {
 	if(!get_magic_quotes_gpc()) {
@@ -1292,7 +1256,7 @@ function install_uc_server() {
 	$ucsql = file_get_contents(ROOT_PATH.'./uc_server/install/uc.sql');
 	$uctablepre = $tablepre.'ucenter_';
 	$ucsql = str_replace(' uc_', ' '.$uctablepre, $ucsql);
-	$ucsql && runucquery($ucsql, $uctablepre);
+/*vot*/	$ucsql && runquery($ucsql, 'uc_', $uctablepre);
 	$appauthkey = _generate_key();
 	$ucdbhost = $dbhost;
 	$ucdbname = $dbname;
@@ -1380,7 +1344,7 @@ function install_testdata($username, $uid) {
 		if(file_exists($sqlfileid)) {
 			$sql = file_get_contents($sqlfileid);
 			$sql = str_replace("\r\n", "\n", $sql);
-			runquery($sql);
+			runquery($sql, ORIG_TABLEPRE, $tablepre);
 		}
 	}
 }
@@ -1865,7 +1829,7 @@ EOT;
 /*vot*//* Compare 2 string versions */
 /* Usage:
    if(v_compare($mysql_version, "4.1") > 0) {
-     echo '$version_compare > 4.1', "\n";
+     echo '$mysql_version(' . $mysql_version . ') > 4.1', "\n";
    }
 */
 function v_compare($version1='', $version2='') {
