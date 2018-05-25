@@ -31,7 +31,7 @@ class table_forum_optionvalue extends discuz_table
 		if(DB::num_rows($query) != 1) {
 			$create_table_sql = "CREATE TABLE ".DB::table($this->_table)." ($fields) TYPE=MyISAM;";
 			$db = DB::object();
-			$create_table_sql = $this->syntablestruct($create_table_sql, $db->version() > '4.1', $dbcharset);
+/*vot*/			$create_table_sql = $this->syntablestruct($create_table_sql, v_compare($db->version(), '4.1') > 0, $dbcharset);
 			DB::query($create_table_sql);
 		}
 	}
@@ -52,7 +52,7 @@ class table_forum_optionvalue extends discuz_table
 		$sortid = intval($sortid);
 		$this->_table = 'forum_optionvalue'.$sortid;
 		$db = DB::object();
-		if($db->version() > '4.1') {
+/*vot*/		if(v_compare($db->version(), '4.1') > 0) {
 			$query = DB::query("SHOW FULL COLUMNS FROM %t", array($this->_table), true);
 		} else {
 			$query = DB::query("SHOW COLUMNS FROM %t", array($this->_table), true);

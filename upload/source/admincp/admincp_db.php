@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $db = & DB::object();
 
-$tabletype = $db->version() > '4.1' ? 'Engine' : 'Type';
+/*vot*/ $tabletype = v_compare($db->version(), '4.1') > 0 ? 'Engine' : 'Type';
 $tablepre = $_G['config']['db'][1]['tablepre'];
 $dbcharset = $_G['config']['db'][1]['dbcharset'];
 
@@ -96,7 +96,7 @@ if($operation == 'export') {
 		showtagfooter('tbody');
 
 		showtagheader('tbody', 'advanceoption');
-		showsetting('db_export_method', '', '', '<ul class="nofloat"><li><input class="radio" type="radio" name="method" value="shell" '.$shelldisabled.' onclick="if(\''.intval($db->version() < '4.1').'\') {if(this.form.sqlcompat[2].checked==true) this.form.sqlcompat[0].checked=true; this.form.sqlcompat[2].disabled=true; this.form.sizelimit.disabled=true;} else {this.form.sqlcharset[0].checked=true; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=true;}}" id="method_shell" /><label="method_shell"> '.$lang['db_export_shell'].'</label></li><li><input class="radio" type="radio" name="method" value="multivol" checked="checked" onclick="this.form.sqlcompat[2].disabled=false; this.form.sizelimit.disabled=false; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=false;}" id="method_multivol" /><label for="method_multivol"> '.$lang['db_export_multivol'].'</label> <input type="text" class="txt" size="40" name="sizelimit" value="2048" /></li></ul>');
+/*vot*/		showsetting('db_export_method', '', '', '<ul class="nofloat"><li><input class="radio" type="radio" name="method" value="shell" '.$shelldisabled.' onclick="if(\''.intval(v_compare($db->version(), '4.1') < 0).'\') {if(this.form.sqlcompat[2].checked==true) this.form.sqlcompat[0].checked=true; this.form.sqlcompat[2].disabled=true; this.form.sizelimit.disabled=true;} else {this.form.sqlcharset[0].checked=true; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=true;}}" id="method_shell" /><label="method_shell"> '.$lang['db_export_shell'].'</label></li><li><input class="radio" type="radio" name="method" value="multivol" checked="checked" onclick="this.form.sqlcompat[2].disabled=false; this.form.sizelimit.disabled=false; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=false;}" id="method_multivol" /><label for="method_multivol"> '.$lang['db_export_multivol'].'</label> <input type="text" class="txt" size="40" name="sizelimit" value="2048" /></li></ul>');
 		showtitle('db_export_options');
 		showsetting('db_export_options_extended_insert', 'extendins', 0, 'radio');
 		showsetting('db_export_options_sql_compatible', array('sqlcompat', array(
@@ -107,7 +107,7 @@ if($operation == 'export') {
 		showsetting('db_export_options_charset', array('sqlcharset', array(
 			array('', cplang('default')),
 			$dbcharset ? array($dbcharset, strtoupper($dbcharset)) : array(),
-			$db->version() > '4.1' && $dbcharset != 'utf8' ? array('utf8', 'UTF-8') : array()
+/*vot*/			v_compare($db->version(), '4.1') > 0 && $dbcharset != 'utf8' ? array('utf8', 'UTF-8') : array()
 /*vot*/		), TRUE), '', 'mradio');
 /*vot*/		showsetting('db_export_usehex', 'usehex', 0, 'radio');
 		if(function_exists('gzcompress')) {
@@ -159,8 +159,8 @@ if($operation == 'export') {
 
 
 		$dumpcharset = $_GET['sqlcharset'] ? $_GET['sqlcharset'] : str_replace('-', '', $_G['charset']);
-		$setnames = ($_GET['sqlcharset'] && $db->version() > '4.1' && (!$_GET['sqlcompat'] || $_GET['sqlcompat'] == 'MYSQL41')) ? "SET NAMES '$dumpcharset';\n\n" : '';
-		if($db->version() > '4.1') {
+/*vot*/		$setnames = ($_GET['sqlcharset'] && v_compare($db->version(), '4.1') > 0 && (!$_GET['sqlcompat'] || $_GET['sqlcompat'] == 'MYSQL41')) ? "SET NAMES '$dumpcharset';\n\n" : '';
+/*vot*/		if(v_compare($db->version(), '4.1') > 0) {
 			if($_GET['sqlcharset']) {
 				DB::query('SET NAMES %s', array($_GET['sqlcharset']));
 			}
@@ -309,7 +309,7 @@ if($operation == 'export') {
 			@unlink($dumpfile);
 
 			$mysqlbin = $mysql_base == '/' ? '' : addslashes($mysql_base).'bin/';
-			@shell_exec($mysqlbin.'mysqldump --force --quick '.($db->version() > '4.1' ? '--skip-opt --create-options' : '-all').' --add-drop-table'.($_GET['extendins'] == 1 ? ' --extended-insert' : '').''.($db->version() > '4.1' && $_GET['sqlcompat'] == 'MYSQL40' ? ' --compatible=mysql40' : '').' --host="'.$dbhost.($dbport ? (is_numeric($dbport) ? ' --port='.$dbport : ' --socket="'.$dbport.'"') : '').'" --user="'.$dbuser.'" --password="'.$dbpw.'" "'.$dbname.'" '.$tablesstr.' > '.$dumpfile);
+/*vot*/			@shell_exec($mysqlbin.'mysqldump --force --quick '.(v_compare($db->version(), '4.1') > 0 ? '--skip-opt --create-options' : '-all').' --add-drop-table'.($_GET['extendins'] == 1 ? ' --extended-insert' : '').''.(v_compare($db->version(), '4.1') > 0 && $_GET['sqlcompat'] == 'MYSQL40' ? ' --compatible=mysql40' : '').' --host="'.$dbhost.($dbport ? (is_numeric($dbport) ? ' --port='.$dbport : ' --socket="'.$dbport.'"') : '').'" --user="'.$dbuser.'" --password="'.$dbpw.'" "'.$dbname.'" '.$tablesstr.' > '.$dumpfile);
 
 			if(@file_exists($dumpfile)) {
 
@@ -572,7 +572,7 @@ if($operation == 'export') {
 		$affected_rows = 0;
 		foreach($sqlquery as $sql) {
 			if(trim($sql) != '') {
-				$sql = !empty($_GET['createcompatible']) ? syntablestruct(trim($sql), $db->version() > '4.1', $dbcharset) : $sql;
+/*vot*/				$sql = !empty($_GET['createcompatible']) ? syntablestruct(trim($sql), v_compare($db->version(), '4.1') > 0, $dbcharset) : $sql;
 
 				DB::query($sql, 'SILENT');
 				if($sqlerror = DB::error()) {
@@ -649,7 +649,7 @@ if($operation == 'export') {
 					showtablerow('', '', array(
 						$optimizeinput,
 						$table[Name],
-						$db->version() > '4.1' ?  $table['Engine'] : $table['Type'],
+/*vot*/						v_compare($db->version(), '4.1') > 0 ?  $table['Engine'] : $table['Type'],
 						$table[Rows],
 						$table[Data_length],
 						$table[Index_length],
@@ -802,7 +802,7 @@ if($operation == 'export') {
 				while($fields = DB::fetch($fieldsquery)) {
 					$r = '/^'.$tablepre.'/';
 					$cuttable = preg_replace($r, '', $dbtable);
-					if($db->version() < '4.1' && $cuttable == 'sessions' && $fields['Field'] == 'sid') {
+/*vot*/					if(v_compare($db->version(), '4.1') < 0 && $cuttable == 'sessions' && $fields['Field'] == 'sid') {
 						$fields['Type'] = str_replace(' binary', '', $fields['Type']);
 					}
 					if($cuttable == 'memberfields' && preg_match('/^field\_\d+$/', $fields['Field'])) {
@@ -822,7 +822,7 @@ if($operation == 'export') {
 			}
 		}
 
-		if($db->version() > '4.1') {
+/*vot*/		if(v_compare($db->version(), '4.1') > 0) {
 			$dbcharset = strtoupper($dbcharset) == 'UTF-8' ? 'UTF8' : strtoupper($dbcharset);
 			$query = DB::query("SHOW TABLE STATUS LIKE '$tablepre%'");
 			while($tables = DB::fetch($query)) {
@@ -1006,7 +1006,7 @@ function createtable($sql, $dbcharset) {
 	$type = strtoupper(preg_replace("/^\s*CREATE TABLE\s+.+\s+\(.+?\).*(ENGINE|TYPE)\s*=\s*([a-z]+?).*$/isU", "\\2", $sql));
 	$type = in_array($type, array('MYISAM', 'HEAP', 'MEMORY')) ? $type : 'MYISAM';
 	return preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $sql).
-		(DB::$db->version() > '4.1' ? " ENGINE=$type DEFAULT CHARSET=$dbcharset" : " TYPE=$type");
+/*vot*/		(v_compare(DB::$db->version(), '4.1') > 0 ? " ENGINE=$type DEFAULT CHARSET=$dbcharset" : " TYPE=$type");
 }
 
 function fetchtablelist($tablepre = '') {
@@ -1077,16 +1077,16 @@ function sqldumptablestruct($table) {
 	}
 	$tabledump .= $create[1];
 
-	if($_GET['sqlcompat'] == 'MYSQL41' && $db->version() < '4.1') {
+/*vot*/	if($_GET['sqlcompat'] == 'MYSQL41' && v_compare($db->version(), '4.1') < 0) {
 		$tabledump = preg_replace("/TYPE\=(.+)/", "ENGINE=\\1 DEFAULT CHARSET=".$dumpcharset, $tabledump);
 	}
-	if($db->version() > '4.1' && $_GET['sqlcharset']) {
+/*vot*/	if(v_compare($db->version(), '4.1') > 0 && $_GET['sqlcharset']) {
 		$tabledump = preg_replace("/(DEFAULT)*\s*CHARSET=.+/", "DEFAULT CHARSET=".$_GET['sqlcharset'], $tabledump);
 	}
 
 	$tablestatus = DB::fetch_first("SHOW TABLE STATUS LIKE '$table'");
 	$tabledump .= ($tablestatus['Auto_increment'] ? " AUTO_INCREMENT=$tablestatus[Auto_increment]" : '').";\n\n";
-	if($_GET['sqlcompat'] == 'MYSQL40' && $db->version() >= '4.1' && $db->version() < '5.1') {
+/*vot*/	if($_GET['sqlcompat'] == 'MYSQL40' && v_compare($db->version(), '4.1') >= 0 && v_compare($db->version(), '5.1') < 0) {
 		if($tablestatus['Auto_increment'] <> '') {
 			$temppos = strpos($tabledump, ',');
 			$tabledump = substr($tabledump, 0, $temppos).' auto_increment'.substr($tabledump, $temppos);

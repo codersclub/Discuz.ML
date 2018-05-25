@@ -26,12 +26,12 @@ class dbstuff {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-		if($this->version() > '4.1') {
+/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				$this->link->set_charset($dbcharset);
 			}
 
-			if($this->version() > '5.0.1') {
+/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
 				$this->link->query("SET sql_mode=''");
 			}
 		}

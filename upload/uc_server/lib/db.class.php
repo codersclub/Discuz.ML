@@ -43,12 +43,12 @@ class ucserver_db {
 			}
 		}
 
-		if($this->version() > '4.1') {
+/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				mysql_query("SET character_set_connection=".$dbcharset.", character_set_results=".$dbcharset.", character_set_client=binary", $this->link);
 			}
 
-			if($this->version() > '5.0.1') {
+/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
 				mysql_query("SET sql_mode=''", $this->link);
 			}
 		}

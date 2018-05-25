@@ -88,12 +88,12 @@ class dbstuff {
 			}
 		}
 
-		if($this->version() > '4.1') {
+/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				mysql_query("SET character_set_connection=".$dbcharset.", character_set_results=".$dbcharset.", character_set_client=binary", $this->link);
 			}
 
-			if($this->version() > '5.0.1') {
+/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
 				mysql_query("SET sql_mode=''", $this->link);
 			}
 		}
@@ -215,12 +215,12 @@ class dbstuffi {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-		if($this->version() > '4.1') {
+/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				$this->link->set_charset($dbcharset);
 			}
 
-			if($this->version() > '5.0.1') {
+/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
 				$this->query("SET sql_mode=''");
 			}
 		}
@@ -529,7 +529,7 @@ if($get['method'] == 'export') {
 	unset($sqldump);
 
 	foreach($sqlquery as $sql) {
-		$sql = syntablestruct(trim($sql), $db->version() > '4.1', $dbcharset);
+/*vot*/		$sql = syntablestruct(trim($sql), v_compare($db->version(), '4.1') > 0, $dbcharset);
 
 		if($sql != '') {
 			$db->query($sql, 'SILENT');

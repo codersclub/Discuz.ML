@@ -49,7 +49,7 @@ class table_common_remote_port extends discuz_table {
 			$type = strtoupper(preg_replace("/^\s*CREATE TABLE\s+.+\s+\(.+?\).*(ENGINE|TYPE)\s*=\s*([a-z]+?).*$/isU", "\\2", $porttable));
 			$type = in_array($type, array('MYISAM', 'HEAP', 'MEMORY')) ? $type : 'MYISAM';
 			$dbver = DB::$db->version();
-			$porttable = preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $porttable).($dbver > '4.1' ? " ENGINE=$type DEFAULT CHARSET=".$dbcharset : " TYPE=$type");
+/*vot*/			$porttable = preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $porttable).(v_compare($dbver, '4.1') > 0 ? " ENGINE=$type DEFAULT CHARSET=".$dbcharset : " TYPE=$type");
 			DB::query($porttable);
 			C::t('common_setting')->update('porttable', 1);
 			require_once libfile('function/cache');

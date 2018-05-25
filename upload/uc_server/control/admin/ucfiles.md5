@@ -47,8 +47,8 @@ ba787d675b6b8db7549ae1a1eb97dc20 *model/setting.php
 d7b379d38fbc0e8a120454a334a54499 *model/tag.php
 1be0c3e3ffb7fb554c1d044d1de75b93 *model/user.php
 cdc453e23980b4f7f894a3b15042a76c *model/version.php
-f3bff715ffddf204397b3f11651b10ef *lib/db.class.php
-698bc9329b06c63e410fa25042d835e1 *lib/dbi.class.php
+30bef9f4245ea71e3c73583f8fb82e8e *lib/db.class.php
+204ef46eaa38872f915796ac3c5797ca *lib/dbi.class.php
 03fc780a051e61bb9d179632185548f7 *lib/seccode.class.php
 d4fbe5acd2ebfd7d4fd42ecaaccdcdf0 *lib/sendmail.inc.php
 8b4b47af237395f297a1f163b926e5cd *lib/template.class.php
