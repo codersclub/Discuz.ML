@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: table_forum_post.php 30080 2012-05-09 08:19:20Z liulanbo $
+ *      Modified by Valery Votintsev, http://discuz.ml
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -729,7 +730,7 @@ class table_forum_post extends discuz_table
 			for($i = 0; $i < count($keywords); $i++) {
 				if(preg_match("/\{(\d+)\}/", $keywords[$i])) {
 					$keywords[$i] = preg_replace("/\\\{(\d+)\\\}/", ".{0,\\1}", preg_quote($keywords[$i], '/'));
-					$sqlkeywords .= " $or p.subject REGEXP '".$keywords[$i]."' OR p.message REGEXP '".$keywords[$i]."'";
+					$sqlkeywords .= " $or p.subject REGEXP '".$keywords[$i]."' OR p.message REGEXP '".addslashes(stripsearchkey($keywords[$i]))."'";
 				} else {
 					$keywords[$i] = addslashes($keywords[$i]);
 					$sqlkeywords .= " $or p.subject LIKE '%".$keywords[$i]."%' OR p.message LIKE '%".$keywords[$i]."%'";
@@ -776,7 +777,7 @@ class table_forum_post extends discuz_table
 			for($i = 0; $i < count($keywords); $i++) {
 				if(preg_match("/\{(\d+)\}/", $keywords[$i])) {
 					$keywords[$i] = preg_replace("/\\\{(\d+)\\\}/", ".{0,\\1}", preg_quote($keywords[$i], '/'));
-					$sqlkeywords .= " $or p.subject REGEXP '".$keywords[$i]."' OR p.message REGEXP '".$keywords[$i]."'";
+					$sqlkeywords .= " $or p.subject REGEXP '".$keywords[$i]."' OR p.message REGEXP '".addslashes(stripsearchkey($keywords[$i]))."'";
 				} else {
 					$keywords[$i] = addslashes($keywords[$i]);
 					$sqlkeywords .= " $or p.subject LIKE '%".$keywords[$i]."%' OR p.message LIKE '%".$keywords[$i]."%'";
