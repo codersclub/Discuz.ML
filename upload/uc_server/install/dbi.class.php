@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: db.class.php 976 2009-12-03 03:02:44Z zhaoxiongfei $
+    Modified by Valery Votintsev, http://discuz.ml
 */
 
 if(!defined('IN_COMSENZ')) {

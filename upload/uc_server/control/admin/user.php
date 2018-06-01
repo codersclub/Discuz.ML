@@ -165,7 +165,7 @@ class control extends adminbase {
 
 	function onls() {
 
-/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/admin.lang.php';
+		include_once UC_ROOT.'view/default/admin.lang.php';
 
 		$status = 0;
 		if(!empty($_POST['addname']) && $this->submitcheck()) {

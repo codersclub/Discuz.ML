@@ -5,6 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: note.php 1122 2011-11-14 03:06:25Z monkey $
+	Modified by Valery Votintsev, http://discuz.ml
 */
 
 !defined('IN_UC') && exit('Access Denied');

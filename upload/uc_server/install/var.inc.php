@@ -5,7 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: forum.func.php 14122 2008-08-20 06:06:33Z cnteacher $
-	English by Valery Votintsev at sources.ru
+	Modified by Valery Votintsev, http://discuz.ml, codersclub.org
 */
 
 if(!defined('IN_COMSENZ')) {

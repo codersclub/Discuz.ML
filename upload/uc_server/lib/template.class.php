@@ -6,6 +6,13 @@
 
 	$Id: template.class.php 1167 2014-11-03 03:06:21Z hypowang $
 	Modified by Valery Votintsev, codersclub.org
+
+Usage:
+    require_once 'lib/template.class.php';
+    $this->view = new template();
+    $this->view->assign('page', $page);
+    $this->view->assign('userlist', $userlist);
+    $this->view->display("user_ls");
 */
 
 class template {
@@ -36,9 +43,7 @@ class template {
 		$this->defaulttpldir = UC_ROOT.'./view/default';
 		$this->tpldir = UC_ROOT.'./view/default';
 		$this->objdir = UC_DATADIR.'./view';
-/*vot*/		$this->langfile = UC_ROOT.'./language/'.UC_LANG.'/templates.lang.php';
-//DEBUG
-//echo "langfile=".$this->langfile."<br>";
+		$this->langfile = UC_ROOT.'./view/default/templates.lang.php';
 		if (version_compare(PHP_VERSION, '5') == -1) {
 			register_shutdown_function(array(&$this, '__destruct'));
 		}
@@ -204,14 +209,3 @@ class template {
 		return $this->_transsid($matches[3],'<a'.$matches[1].'href='.$matches[2]);
 	}
 }
-
-/*
-
-Usage:
-require_once 'lib/template.class.php';
-$this->view = new template();
-$this->view->assign('page', $page);
-$this->view->assign('userlist', $userlist);
-$this->view->display("user_ls");
-
-*/

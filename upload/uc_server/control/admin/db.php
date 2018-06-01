@@ -5,7 +5,6 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: db.php 35059 2014-11-03 08:54:20Z hypowang $
-	Modified by Valery Votintsev, codersclub.org
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -181,7 +180,7 @@ class control extends adminbase {
 	}
 
 	function _parent_js($extid, $message, $vars = array()) {
-/*vot*/		include UC_ROOT.'language/'.UC_LANG.'/messages.lang.php';
+		include UC_ROOT.'view/default/messages.lang.php';
  		if(isset($lang[$message])) {
  			$message = $lang[$message] ? str_replace(array_keys($vars), array_values($vars), $lang[$message]) : $message;
  		}
