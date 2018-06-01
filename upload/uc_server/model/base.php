@@ -10,16 +10,24 @@ $Id: base.php 1167 2014-11-03 03:06:21Z hypowang $
 
 !defined('IN_UC') && exit('Access Denied');
 
+//------------------------------------------------------------------
 //vot Define UC Language !!!
-//vot		include_once UC_ROOT.'./view/default/main.lang.php';
 //vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
-//DEBUG
-//echo "base.php: uc_lang1=", UC_LANG, "<br>\n";
-/*vot*/		define('UC_LANG',UC_DEFAULT_LANG);
-/*vot*/		define('RTLSUFFIX',UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
-///*vot*/		include_once UC_ROOT.'./language/'.UC_LANG.'/main.lang.php';
-//DEBUG
-//echo "base.php: uc_lang2=", UC_LANG, "<br>\n";
+/*vot*/	define('UC_LANG',UC_DEFAULT_LANG);
+/*vot*/	define('RTLSUFFIX',UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
+
+/*vot*//* Compare 2 string versions */
+/* Usage:
+   if(v_compare($mysql_version, "4.1") > 0) {
+     echo '$mysql_version(' . $mysql_version . ') > 4.1', "\n";
+   }
+*/
+function v_compare($version1='', $version2='') {
+    $version1 = preg_replace('/[^\d\.].*$/', '', $version1);
+    $version2 = preg_replace('/[^\d\.].*$/', '', $version2);
+    return version_compare($version1, $version2);
+}
+//------------------------------------------------------------------
 
 class base {
 
