@@ -1,6 +1,10 @@
-//-------------------------------
-// Google Maps javascript support
-//-------------------------------
+/*
+	Google Maps javascript support
+	by Valery Votintsev, http://discuz.ml, codersclub.org
+	for
+	[Discuz!] (C)2001-2099 Comsenz Inc.
+*/
+
 var mapWidth = 512;
 var mapHeight = 320;
 var mapType;
@@ -61,7 +65,7 @@ function searchMap(zoom) {
 function gelMapURL() {
 	if (marker_lat == 0) marker_lat = center_lat;
 	if (marker_lng == 0) marker_lng = center_lng;
-	document.getElementById("mapurl").value = "http://maps.google.com/maps/api/staticmap?center=" + center_lat + ',' + center_lng + "&zoom=" + setZoom + "&size=" + mapWidth + 'x' + mapHeight + "&maptype=" + mapType + "&markers=" + marker_lat + ',' + marker_lng + "&sensor=false";
+	document.getElementById("mapurl").value = "https://maps.google.com/maps/api/staticmap?center=" + center_lat + ',' + center_lng + "&zoom=" + setZoom + "&size=" + mapWidth + 'x' + mapHeight + "&maptype=" + mapType + "&markers=" + marker_lat + ',' + marker_lng + "&sensor=false";
 }
 
 function pageInit() {
