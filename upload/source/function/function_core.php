@@ -310,7 +310,7 @@ function checkrobot($useragent = '') {
 
 	$useragent = strtolower(empty($useragent) ? $_SERVER['HTTP_USER_AGENT'] : $useragent);
 	if(dstrpos($useragent, $kw_spiders)) return true;
-	if(preg_match('/https?:\/\//is') && dstrpos($useragent, $kw_browsers)) return false;
+/*vot*/	if(!preg_match('/^https?:\/\//is',$useragent) && dstrpos($useragent, $kw_browsers)) return false;
 	return false;
 }
 function checkmobile() {
@@ -2148,24 +2148,12 @@ function settings_localize() {
 
 	$lang = & $_G['lang']['setting'];
 
-//DEBUG
-//echo "function settings_localize started.<br>\n";
-//echo "<pre>";
-//echo "lang=";
-//print_r($lang);
-//echo "</pre>";
-//exit;
 	//-------------------------------------
 	// Localize the Settings Values
 
 	//-------------------------------------
 	// Localize the Navigation Links
 
-//DEBUG
-//echo "<pre>";
-//echo "setting=";
-//print_r($_G['setting']);
-//echo "</pre>";
 	$navtypes = array('navs','footernavs','spacenavs','mynavs','topnavs');
 	foreach($navtypes AS $type) {
 		if($type=='topnavs') {
@@ -2173,13 +2161,6 @@ function settings_localize() {
 		} else {
 			$navs = $_G['setting'][$type];
 		}
-//DEBUG
-//echo "<pre>";
-//echo "type=".$type.", navs=";
-//print_r($_G['setting'][$type]);
-//print_r($_G['setting'][$type]);
-//print_r($navs);
-//echo "</pre>";
 
 		foreach($navs AS $id=>$nav) {
 			$newname = $nav['navname'];
@@ -2192,34 +2173,11 @@ function settings_localize() {
 				} else {
 					$_G['setting'][$type][$id]['navname'] = $newname;
 				}
-//DEBUG
-//echo "<pre>";
-//echo $oldname." ---&gt; ".$newname." ---&gt; ".$_G['setting'][$type][$nav['id']]['navname']."\n";
-//echo "</pre>";
 			}
 		}
 	}
-//DEBUG
-//echo "<pre>";
-//echo "lng=".$_G['language']."\n";
-//echo "setting=";
-//print_r($_G['setting']);
-//echo "\nnavs=";
-//print_r($_G['setting']['navs']);
-//echo "\ntopnavs=";
-//print_r($_G['setting']['topnavs']);
-//echo "\nfooternavs=";
-//print_r($_G['setting']['footernavs']);
-//echo "\nmynavs=";
-//print_r($_G['setting']['mynavs']);
-//echo "\nspacenavs=";
-//print_r($_G['setting']['spacenavs']);
-//echo "\nusergroups=";
-//print_r($_G['setting']['usergroups']);
-//echo "</pre>";
 
 	// Localize the Sub-Navigation Links
-
 	$navtypes = array('menunavs', 'subnavs');
 	foreach($navtypes AS $type) {
 
@@ -2230,13 +2188,6 @@ function settings_localize() {
 						$newname = $lang['nav_'.$sub['identifier']];
 						$_G['setting'][$type][$navid][$subid]['name'] = $newname;
 					}
-//DEBUG
-//echo "<pre>";
-//echo $type.'['.$navid.']['.$subid.']=';
-//print_r($sub);
-//print_r($_G['setting'][$type][$navid][$subid]);
-//echo "</pre>";
-
 				}
 			}
 		}
