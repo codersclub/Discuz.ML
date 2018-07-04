@@ -52,6 +52,8 @@ $lang = array (
   'register_username_tips' => '用戶名由 3 到 15 個字符組成',
   'register_validate_email_tips' => '註冊需要驗證郵箱，請務必填寫正確的郵箱，提交後請及時查收郵件。<br />您可能需要等待幾分鐘才能收到郵件，如果收件箱沒有，請檢查一下垃圾郵件箱。',
   'rulemessage' => '網站服務條款',
+// Added by Valery Votintsev, discuz.ml
+	'agree_with'			=> '同意',//'I agree with the ',
 );
 
 ?>
