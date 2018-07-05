@@ -235,7 +235,7 @@ if($attach['remote'] && !$_G['setting']['ftp']['hideurl'] && $isimage) {
 }
 
 $filesize = !$attach['remote'] ? filesize($filename) : $attach['filesize'];
-$attach['filename'] = '"'.(strtolower(CHARSET) == 'utf-8' && strexists($_SERVER['HTTP_USER_AGENT'], 'MSIE') ? urlencode($attach['filename']) : $attach['filename']).'"';
+/*vot*/ $attach['filename'] = '"'.(strtolower(CHARSET) == 'utf-8' && strexists(@$_SERVER['HTTP_USER_AGENT'], 'MSIE') ? urlencode($attach['filename']) : $attach['filename']).'"';
 
 dheader('Date: '.gmdate('D, d M Y H:i:s', $attach['dateline']).' GMT');
 dheader('Last-Modified: '.gmdate('D, d M Y H:i:s', $attach['dateline']).' GMT');

@@ -308,7 +308,7 @@ function checkrobot($useragent = '') {
 	static $kw_spiders = array('bot', 'crawl', 'spider' ,'slurp', 'sohu-search', 'lycos', 'robozilla');
 	static $kw_browsers = array('msie', 'netscape', 'opera', 'konqueror', 'mozilla');
 
-	$useragent = strtolower(empty($useragent) ? $_SERVER['HTTP_USER_AGENT'] : $useragent);
+/*vot*/	$useragent = strtolower(empty($useragent) ? @$_SERVER['HTTP_USER_AGENT'] : $useragent);
 	if(dstrpos($useragent, $kw_spiders)) return true;
 /*vot*/	if(!preg_match('/^https?:\/\//is',$useragent) && dstrpos($useragent, $kw_browsers)) return false;
 	return false;
@@ -334,7 +334,7 @@ function checkmobile() {
 ///*vot*/		return $_G['mobile'];
 ///*vot*/	}
 
-	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
+/*vot*/	$useragent = strtolower(@$_SERVER['HTTP_USER_AGENT']);
 
 	if(dstrpos($useragent, $pad_list)) {
 		return false;
@@ -2060,7 +2060,7 @@ function browserversion($type) {
 	static $return = array();
 	static $types = array('ie' => 'msie', 'firefox' => '', 'chrome' => '', 'opera' => '', 'safari' => '', 'mozilla' => '', 'webkit' => '', 'maxthon' => '', 'qq' => 'qqbrowser');
 	if(!$return) {
-		$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
+/*vot*/		$useragent = strtolower(@$_SERVER['HTTP_USER_AGENT']);
 		$other = 1;
 		foreach($types as $i => $v) {
 			$v = $v ? $v : $i;

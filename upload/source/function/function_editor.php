@@ -209,7 +209,7 @@ function imgtag($attributes) {
 }
 
 function ismozilla() {
-	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
+/*vot*/	$useragent = strtolower(@$_SERVER['HTTP_USER_AGENT']);
 	if(strpos($useragent, 'gecko') !== FALSE) {
 		preg_match("/gecko\/(\d+)/", $useragent, $regs);
 		return $regs[1];

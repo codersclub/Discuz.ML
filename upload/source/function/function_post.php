@@ -499,7 +499,7 @@ function updatemodlog($tids, $action, $expiration = 0, $iscron = 0, $reason = ''
 }
 
 function isopera() {
-	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
+/*vot*/	$useragent = strtolower(@$_SERVER['HTTP_USER_AGENT']);
 	if(strpos($useragent, 'opera') !== false) {
 		preg_match('/opera(\/| )([0-9\.]+)/', $useragent, $regs);
 		return $regs[2];

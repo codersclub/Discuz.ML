@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 
 $visitor = array();
 
-$visitor['agent'] = $_SERVER['HTTP_USER_AGENT'];
+/*vot*/ $visitor['agent'] = @$_SERVER['HTTP_USER_AGENT'];
 list($visitor['month'], $visitor['week'], $visitor['hour']) = explode("\t", dgmdate(TIMESTAMP, "Ym\tw\tH"));
 
 if(!$sessionexists) {

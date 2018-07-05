@@ -422,7 +422,7 @@ IconIndex=1
 		$filename = $_G['setting']['bbname'].'.url';
 	}
 
-	if(!strexists($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
+/*vot*/	if(!strexists(@$_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
 		$filename = diconv($filename, CHARSET, 'UTF-8');
 	} else {
 //vot		$filename = diconv($filename, CHARSET, 'GBK');
