@@ -305,7 +305,7 @@ function formhash($specialadd = '') {
 }
 
 function checkrobot($useragent = '') {
-	static $kw_spiders = array('bot', 'crawl', 'spider' ,'slurp', 'sohu-search', 'lycos', 'robozilla');
+/*vot*/	static $kw_spiders = array('bot', 'crawl', 'spider' ,'slurp', 'sohu-search', 'lycos', 'robozilla', 'apis-google', 'mediapartners-google');
 	static $kw_browsers = array('msie', 'netscape', 'opera', 'konqueror', 'mozilla');
 
 /*vot*/	$useragent = strtolower(empty($useragent) ? @$_SERVER['HTTP_USER_AGENT'] : $useragent);
