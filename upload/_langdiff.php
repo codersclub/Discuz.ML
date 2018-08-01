@@ -257,3 +257,7 @@ function error($s='') {
   echo '<font color="red">'.$s.'</font>'."<br>\n";
 }
 
+function htmlspecialarray($var) {
+//    return array_map("htmlspecialchars", $myArray, array(ENT_QUOTES, 'UTF-8'));
+    return array_map("htmlspecialchars", $myArray, [ENT_QUOTES], ['UTF-8']);
+}

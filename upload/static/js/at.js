@@ -20,7 +20,7 @@ function extrafunc_atMenu() {
 	if(BROWSER.opera) {
 		return;
 	}
-	if(wysiwyg && EXTRAEVENT.shiftKey && EXTRAEVENT.keyCode == 50 && postaction && (postaction == 'newthread' || postaction == 'reply' || postaction == 'edit')) { // Shift-2
+/*vot*/	if(wysiwyg && EXTRAEVENT.shiftKey && EXTRAEVENT.keyCode == 50 && postaction && (postaction == 'newthread' || postaction == 'reply' || postaction == 'edit')) { // Shift-2
 		keyMenu('@', atMenu);
 		ctlent_enable[13] = 0;
 		doane(EXTRAEVENT);
