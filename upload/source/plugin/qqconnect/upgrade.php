@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: upgrade.php 33545 2013-07-04 07:06:27Z nemohou $
- *	Modified by Valery Votintsev, codersclub.org
+ *	Modified by Valery Votintsev, discuz.ml
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS pre_connect_tthreadlog (
   PRIMARY KEY (twid),
   KEY nexttime (tid,nexttime),
   KEY updatetime (tid,updatetime)
-) ENGINE=MyISAM;
+) TYPE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
   `conopenid` varchar(255) NOT NULL default '',
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
   `conqqnick` varchar(255) NOT NULL default '',
   `conuintoken` char(32) NOT NULL DEFAULT '',
   PRIMARY KEY (conopenid)
-) ENGINE=MyISAM;
+) TYPE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
   `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Task ID',
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
   PRIMARY KEY (`taskid`),
   KEY `openid` (`openid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM COMMENT='Network Disk Download Task';
+) TYPE=MyISAM COMMENT='Network Disk Download Task';
 
 EOF;
 
