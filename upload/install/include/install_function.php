@@ -139,7 +139,7 @@ function env_check(&$env_items) {
 			$env_items[$key]['current'] = empty($tmp['GD Version']) ? 'noext' : $tmp['GD Version'];
 			unset($tmp);
 /*vot*/		} elseif($key == 'mbstring') {
-/*vot*/			$env_items[$key]['current'] = function_exists('mb_get_info') ? 'support' : 'noext';
+/*vot*/			$env_items[$key]['current'] = extension_loaded('mbstring') ? 'support' : 'noext';
 		} elseif($key == 'diskspace') {
 			if(function_exists('disk_free_space')) {
 				$env_items[$key]['current'] = disk_free_space(ROOT_PATH);
