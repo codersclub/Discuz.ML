@@ -31,7 +31,7 @@ $dir = 'source/language/'.$language.'/';
 $files = array(
 	"lang_action.php",
 	"lang_admincp.php",
-	"lang_admincp_cloud.php",
+//	"lang_admincp_cloud.php",
 	"lang_admincp_login.php",
 	"lang_admincp_menu.php",
 	"lang_admincp_msg.php",
