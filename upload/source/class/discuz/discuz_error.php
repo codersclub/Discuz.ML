@@ -168,6 +168,7 @@ class discuz_error
 
 				$fun .= ')';
 				$error['function'] = $fun;
+/*vot*/			        $error['file'] = str_replace('\\', '/', $error['file']);
 			}
 			$phpmsg[] = array(
 			    'file' => str_replace(array(DISCUZ_ROOT, '\\'), array('', '/'), $error['file']),
