@@ -1,10 +1,22 @@
-<?
+<?php
+/*
+ * Discuz!ML Language Pack Verifier
+ * Idea by fanha99, http://codersclub.org/discuzx/?1906
+ * Rewritten by Valery Votintsev (vot), http://codersclub.org/discuzx/?1
+ * -------------------------------------------------------------
+ * Usage:
+ *   copy this file to the Discuz root folder
+ *   and call it by a browser:
+ *   http://your_site.tld/discuz_folder/_check_lang.php
+ */
+?>
 
-echo "<h2>Discuz!ML Language Pack Verifier</h2>";
-echo "(c) by Valery Votintsev (vot), http://codersclub.org/discuzx/<br>";
-echo "-------------------------------------------------------------<br>";
+<h2>Discuz!ML Language Pack Verifier</h2>
+<br>
+-------------------------------------------------------------
+<br>
 
-//=======================================
+<?php
 
 function getgpc($k, $t='GP') {
 	return '';

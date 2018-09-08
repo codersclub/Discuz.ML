@@ -4,6 +4,11 @@
  * (c) by http://codersclub.org
  * Idea by fanha99, http://codersclub.org/discuzx/?1906
  * Rewritten by Valery Votintsev, http://codersclub.org/discuzx/?1
+ * -------------------------------------------------------------
+ * Usage:
+ *   copy this file to the Discuz root folder
+ *   and call it by a browser:
+ *   http://your_site.tld/discuz_folder/_lang_diff.php
  */
 
 // Language Packs Root Directory:

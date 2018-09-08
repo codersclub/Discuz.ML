@@ -307,7 +307,7 @@ e4b42ae2732c2dba007cd29c0a139de4 *source/class/discuz/discuz_container.php
 2afe7f21611c1ddb08750c68e29426ca *source/class/discuz/discuz_core.php
 4beda424464c4de67cedaba60b306124 *source/class/discuz/discuz_cron.php
 8fcb0cdc851e301d9c47e6fb6738dba4 *source/class/discuz/discuz_database.php
-6fc84eddc7d641b0f341cdcc9784c4ea *source/class/discuz/discuz_error.php
+43f8a1283b32650e85c4f52b3e7787a6 *source/class/discuz/discuz_error.php
 770b5620f235ec9e7bbd0950f524e3d9 *source/class/discuz/discuz_extend.php
 d2343fb3bea0e16b574a1ea601a9f871 *source/class/discuz/discuz_ftp.php
 977fe6c468bba17c85886c3198e9553f *source/class/discuz/discuz_memory.php
@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-abdd0d36f2668a4ad17c62e6d6756d17 *source/discuz_version.php
+a5014a1940d08199368c1950887cc3d3 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -4200,5 +4200,3 @@ cfcf3bb6aeff9a878f5bf8061f19a707 *uc_server/view/default/pm_blackls.htm
 dac5c0e9b6bc07bf43e58789ea70eec7 *uc_server/view/default/templates.lang.php
 42fa0f40e601b24e3dbdd91ac05ce696 *uc_server/view/default/user_avatar.htm
 7215ee9c7d9dc229d2921a40e899ec5f *uc_server/view/index.htm
-e7efc16ea0e5277966962c5cbdaa908e *./_check_lang.php
-a6964f681f1bc11e9edfdf93009b169e *./_langdiff.php
