@@ -32,7 +32,7 @@ a014963f4ea09d3a9389b9100f9512e8 *api/trade/notify_trade.php
 925d38a86571e4736546218f0ed030d8 *./archiver
 f70832049116fe3d7b04488f8dfe721b *archiver/index.php
 c92a71303bcc841344e07d1bf49d1f9b *./config
-5873e94e857be6bedbe1848e91e1b9d7 *config/config_global_default.php
+f6ccdb019ea7f0c7ee178e23864a11a9 *config/config_global_default.php
 f6ff047850e8f46685e3753f446fdffc *config/config_ucenter_default.php
 7215ee9c7d9dc229d2921a40e899ec5f *config/index.htm
 602558b7faa14aabd9b9b8118d941a1c *./connect.php
@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-a5014a1940d08199368c1950887cc3d3 *source/discuz_version.php
+e855b903bddbac48547f553331250d61 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
