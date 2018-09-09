@@ -1225,12 +1225,16 @@ body .ui-tooltip {
 }
 
 /* Avatar */
-#avatardesigner{border: 1px solid #CCC; padding: 10px;overflow: hidden;}
+#avatardesigner{border: 1px solid #CCC; padding: 10px; overflow: hidden; margin-right: 10px; float:left;}
 #avataradjuster, #avatardisplayer{position: relative; display:none;}
 #avatardisplaycanvas{position: absolute; top: 0px; left: 0px;background:#FFF;}
 #avatarfileselector{
     background:url(avatar_upload.gif) no-repeat;
     position:relative;
+/*vot*/ text-align: center;
+/*vot*/ padding: 100px 0 0 20px;
+/*vot*/ font-size: 120%;
+/*vot*/ text-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff, 2px 2px 1px #fff;
 }
 #avatarfile{
 		font-size: 300px;
@@ -1247,18 +1251,17 @@ body .ui-tooltip {
     position: absolute;
     right: 8px;
     top: 0px;
-    background:url(avatar_back.gif) no-repeat;
 }
 .backfileselection{
 		width: 104px;
-    height: 33px;
-		padding: 2px;
-    position:absolute;
-    right:0;
-    top:0;
-    opacity: 0;
-    filter:alpha(opacity=0);
+/*vot*/ height: 39px;
     cursor:pointer;
+/*vot*/ text-align: center;
+/*vot padding: 100px 0 0 20px;*/
+/*vot*/ font-size: 120%;
+/*vot*/ text-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff, 2px 2px 1px #fff;
+    background: #ccc;
+    border-radius: 8px;
 }
 .saveAvatardiv{
     width: 104px;
@@ -1266,18 +1269,16 @@ body .ui-tooltip {
     position: absolute;
     right: 8px;
     top: 180px; 
-    background:url(avatar_save.gif) no-repeat;
 }
 .saveAvatar{
     width: 104px;
     height: 39px;
-		padding: 2px;
-    position:absolute;
-    right:0;
-    top:0;
-    opacity: 0;
-    filter:alpha(opacity=0);
     cursor:pointer;
+/*vot*/ text-align: center;
+/*vot*/ font-size: 120%;
+/*vot*/ text-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff, 2px 2px 1px #fff;
+/*vot*/ background: #99ccff;
+/*vot*/ border-radius: 8px;
 }
 .finishbuttondiv{
     width: 92px;
@@ -1285,7 +1286,6 @@ body .ui-tooltip {
     position: absolute;
     right: 60px;
     top: 190px;
-    background:url(avatar_finishbutton.gif) no-repeat;
 }
 .finishbutton{
     width: 92px;
@@ -1294,12 +1294,21 @@ body .ui-tooltip {
     position:absolute;
     right:0;
     top:0;
-    opacity: 0;
-    filter:alpha(opacity=0);
     cursor:pointer;
+/*vot*/ text-align: center;
+/*vot*/ font-size: 120%;
+/*vot*/ text-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff, 2px 2px 1px #fff;
+/*vot*/ background: #99ccff;
+/*vot*/ border-radius: 8px;
 }
 #slider .ui-state-default {
     background: white url(arrow_down_big.gif) no-repeat scroll 50% 50%;
-    margin-top: -8px;
+/*vot*/ margin-top: -13px;
     border-width: 0px;
+}
+#avatarextra {
+    display: inline-block;
+    font-size: 120%;
+    padding-top: 30px;
+    margin-top: 50px;
 }

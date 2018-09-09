@@ -1,6 +1,7 @@
 <!-- Modified by Valery Votintsev, http://discuz.ml -->
 <div id="avatardesigner">
 	<div id="avatarfileselector">
+<!--vot-->	{lang select_pic}
 		<input type="file" name="Filedata" id="avatarfile" accept="image/*" />
 	</div>
 	<div id="avataradjuster">
@@ -12,7 +13,7 @@
 		</div>
 		
 		<div class="backfileselectiondiv">
-				<input type="button" name="backfileselection" class="backfileselection" value="Select File" onclick="showAvatarFileSelector();" />
+<!--vot-->		<input type="button" name="backfileselection" class="backfileselection" value="{lang reset}" onclick="showAvatarFileSelector();" />
 		</div>
 		
 		<div id="slider" style="height: 0px; position: absolute; right: 9px; top: 105px; width: 100px;"></div>
@@ -33,6 +34,8 @@
 		</div>
 	</div>
 </div>														
+
+<span id="avatarextra"></span>
 
 <!--vot--><script src="{STATICURL}js/jquery/jquery.min.js?{VERHASH}"></script>
 <script type="text/javascript">

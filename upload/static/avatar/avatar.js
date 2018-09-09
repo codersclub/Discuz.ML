@@ -284,12 +284,17 @@ function refreshAvatarCanvasForDisplay() {
     }
     ctx.drawImage(img, sl, st, sw, sh, ctl, ctt, tw, th);
 
-    ctx.fillStyle = "black";
-    ctx.font = "bold 16px Arial";
-/*vot*/    ctx.fillText(lng['avatar_upload_ok'], dwidth - 160,155);
-    ctx.fillStyle = "grey";
-    ctx.font = "bold 12px Arial";
-/*vot*/    ctx.fillText(lng['avatar_3_sizes'], dwidth - 200, 180);        
+//*vot*/    ctx.fillStyle = "black";
+//*vot*/    ctx.font = "bold 16px Arial";
+//*vot*/    ctx.fillText(lng['avatar_upload_ok'], dwidth - 160,155);
+
+//*vot*/    ctx.fillStyle = "grey";
+//*vot*/    ctx.font = "bold 12px Arial";
+//*vot*/    ctx.fillText(lng['avatar_3_sizes'], dwidth - 200, 180);        
+/*vot*/    document.querySelector('#avatarextra').innerHTML='<h1>'
+                             + lng['avatar_upload_ok']
+                             + '</h1><br>'
+                             + lng['avatar_3_sizes'];
 }
 
 function rectAvatarDone(res) {
