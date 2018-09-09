@@ -1561,4 +1561,5 @@ $lang = array (
 	'follow_intro4'		=> '您收聽的人發的廣播<br/>會在這裡出現',//'Your content will be shown here',
 	'say_to'		=> '說',
 	'visibility'		=> '能見度',//'Visibility',
+	'reset'			=> '重啟',//'Reset',
 );

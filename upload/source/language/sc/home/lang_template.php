@@ -1561,4 +1561,5 @@ $lang = array (
 	'follow_intro4'		=> '您收听的人发的广播<br/>会在这里出现',//'Your content will be shown here',
 	'say_to'		=> '说',
 	'visibility'		=> '能见度',//'Visibility',
+	'reset'			=> '重启',//'Reset',
 );
