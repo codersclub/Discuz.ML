@@ -63,6 +63,7 @@ class discuz_error
 		$debug_backtrace = debug_backtrace();
 		krsort($debug_backtrace);
 		foreach ($debug_backtrace as $k => $error) {
+/*vot*/			$error['file'] = str_replace('\\', '/', $error['file']);
 			$file = str_replace(DISCUZ_ROOT, '', $error['file']);
 			$func = isset($error['class']) ? $error['class'] : '';
 			$func .= isset($error['type']) ? $error['type'] : '';
@@ -168,8 +169,8 @@ class discuz_error
 
 				$fun .= ')';
 				$error['function'] = $fun;
-/*vot*/			        $error['file'] = str_replace('\\', '/', $error['file']);
 			}
+/*vot*/			$error['file'] = str_replace('\\', '/', $error['file']);
 			$phpmsg[] = array(
 			    'file' => str_replace(array(DISCUZ_ROOT, '\\'), array('', '/'), $error['file']),
 			    'line' => $error['line'],
