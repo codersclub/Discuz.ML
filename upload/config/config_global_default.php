@@ -168,6 +168,8 @@ $_config['security']['onlyremoteaddr']	= 0;		// Show only Remote IP address
 $_config['security']['creditsafe']['second'] 	= 0;	// Open the user credit info security, can prevent the concurrent point flood. If it is greater than times(freequency)/second then the operation could not be committed
 $_config['security']['creditsafe']['times'] 	= 10;
 
+$_config['security']['fsockopensafe']['port']	= array(80);	//fsockopen enabled ports
+
 $_config['admincp']['founder']		= '1';	// Site Founder: site management background with the highest authority, each site can be set to one or more founders
 						// You can use the user uid or user name. Separate multiple users with a comma;
 $_config['admincp']['forcesecques']	= 0;	// Force managers to set the security question for access to the system settings: 0 = no, 1 = yes [secure]
