@@ -13,3 +13,9 @@ You may fork the site code, but without permission ** Prohibited ** On the whole
  
 - Discuz! ML official site: http://discuz.ml
 - Discuz! ML official forum: http://codersclub.org/discuzx/
+
+### **Chinese Related Sites**
+
+- Discuz! Official Website: http://www.discuz.net
+- Discuz! Application Center: https://addon.discuz.com
+- Discuz! Open Platform: https://open.discuz.net

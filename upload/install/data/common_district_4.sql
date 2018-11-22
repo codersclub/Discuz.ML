@@ -11,11 +11,11 @@
 
 
 -- 2) MOVE TOP CHINESE SUBDIVISIONS BELOW THE CHINA COUNTRY
-UPDATE `pre_common_district` SET upid=45550 WHERE upid=0 AND id<35;
+UPDATE `pre_common_district` SET `upid`=45550 WHERE `upid`=0 AND `id`<35;
 
 
 -- 3) MOVE ALL THE LOCATIONS TO THE NEXT LEVEL BELOW
-UPDATE `pre_common_district` SET level=(level+1);
+UPDATE `pre_common_district` SET `level`=(`level`+1);
 
 
 -- 4) UPDATE EXISTING COUNTRIES:
