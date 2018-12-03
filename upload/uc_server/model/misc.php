@@ -65,7 +65,7 @@ class miscmodel {
 		$scheme = $matches['scheme'];
 		$host = $matches['host'];
 		$path = $matches['path'] ? $matches['path'].($matches['query'] ? '?'.$matches['query'] : '') : '/';
-		$port = !empty($matches['port']) ? $matches['port'] : ($matches['scheme'] == 'https' ? 443 : 80);
+/*vot*/		$port = !empty($matches['port']) ? $matches['port'] : ($scheme == 'https' ? 443 : 80);
 
 		if($post) {
 			$out = "POST $path HTTP/1.0\r\n";
@@ -92,7 +92,7 @@ class miscmodel {
 		}
 
 		$fpflag = 0;
-		if(!$fp = @fsocketopen(($scheme == 'https' ? 'ssl' : $scheme).'://'.($scheme == 'https' ? $host : ($ip ? $ip : $host)), $port, $errno, $errstr, $timeout)) {
+/*vot*/		if(!$fp = @fsocketopen(($scheme == 'https' ? 'ssl://'.$host : ($ip ? $ip : $host)), $port, $errno, $errstr, $timeout)) {
 			$context = array(
 				'http' => array(
 					'method' => $post ? 'POST' : 'GET',

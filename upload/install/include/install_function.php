@@ -851,7 +851,7 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 	$scheme = $matches['scheme'];
 	$host = $matches['host'];
 	$path = $matches['path'] ? $matches['path'].($matches['query'] ? '?'.$matches['query'] : '') : '/';
-	$port = !empty($matches['port']) ? $matches['port'] : ($matches['scheme'] == 'https' ? 443 : 80);
+	$port = !empty($matches['port']) ? $matches['port'] : $scheme == 'https' ? 443 : 80;
 
 	if(function_exists('curl_init') && $allowcurl) {
 		$ch = curl_init();

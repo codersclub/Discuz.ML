@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-04a5dfe5284ca19da4df8f4937da9831 *source/discuz_version.php
+b9fdb90c72e8af4ef3c52047746c15cb *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -757,7 +757,7 @@ aaca86dc933b77a2313a4d463cf356a6 *source/function/function_ec_credit.php
 e55b7388ec23730b2dfebb185604f7fb *source/function/function_editor.php
 ed60f1ffa5730c849ff679cf8fd5efcb *source/function/function_exif.php
 3d6eec4caba420c1b033139a77503ec1 *source/function/function_feed.php
-a92550b88c943cf9c480b76d1b6036c5 *source/function/function_filesock.php
+665ee71ba69f24833cb20450e97d9412 *source/function/function_filesock.php
 03b8b4f3f3346f498e8fa36543545cec *source/function/function_followcode.php
 4a2e6ac03f69c27cb7eed949162d5dd2 *source/function/function_forum.php
 ad6ec12539ad4343bedbcaf69458b53b *source/function/function_forumlist.php
@@ -3969,7 +3969,7 @@ f75f60d1250abd0aec04d0e5f8bfed26 *uc_client/model/cache.php
 87d25e6d940ccc1358c63e83e21474a3 *uc_client/model/friend.php
 7215ee9c7d9dc229d2921a40e899ec5f *uc_client/model/index.htm
 d6436d71a2819b37a7260fa97b6f17c1 *uc_client/model/mail.php
-39e5117c09a4cf32368669a4a91bf6d4 *uc_client/model/misc.php
+a14a99769aeb5a88d9d37dafa9d84407 *uc_client/model/misc.php
 a50c65bec6a8df812545849b74a2dd30 *uc_client/model/note.php
 93c9a588d2e6e7c710bc67b8e8404459 *uc_client/model/pm.php
 d7b379d38fbc0e8a120454a334a54499 *uc_client/model/tag.php
@@ -3994,7 +3994,7 @@ f293062e41c34699258e088bec2b98b4 *uc_server/control/admin/plugin.php
 9b0a32b21c13acbccdf36087e5dad5bc *uc_server/control/admin/pm.php
 0e9c93d9204b5f232eea6617ca594979 *uc_server/control/admin/seccode.php
 fcad15b4713a14d59729589b22b3b0ec *uc_server/control/admin/setting.php
-a22a9defeed0a4572e169962b3ef2b95 *uc_server/control/admin/ucfiles.md5
+c22c973585f289917d52eb9dff8f9a3c *uc_server/control/admin/ucfiles.md5
 5a1f9ecb607d8ae8787324377370f486 *uc_server/control/admin/user.php
 eb97f93ba800073cdb5ab9aae4dc8087 *uc_server/control/app.php
 81ffcc49fe313577c966d5c64759992b *uc_server/control/credit.php
@@ -4140,7 +4140,7 @@ c0dec6b7bcbf660a3fe9d9de1d782629 *uc_server/model/feed.php
 87d25e6d940ccc1358c63e83e21474a3 *uc_server/model/friend.php
 7215ee9c7d9dc229d2921a40e899ec5f *uc_server/model/index.htm
 d6436d71a2819b37a7260fa97b6f17c1 *uc_server/model/mail.php
-e2b20e4e6463b7b73a4f203984335b92 *uc_server/model/misc.php
+38ef181f731419674610054b4c3c78fa *uc_server/model/misc.php
 de5fcd5fbdc644e4ca5efcb7fd89b22a *uc_server/model/note.php
 bb9c95148eda27df11628934ac5e3963 *uc_server/model/plugin.php
 e07b645ad6318c754fe055d1abd38f66 *uc_server/model/pm.php
