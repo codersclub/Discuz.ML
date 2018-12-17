@@ -1018,7 +1018,7 @@ var TOOLS = {
 		}
 	},
 	attachUrl: function (url) {
-		if (url.indexOf('http:/') != -1) {
+		if (url.search(/https*:\/\//i) == 0) {
 			return url;
 		} else {
 			return DOMAIN + url;
