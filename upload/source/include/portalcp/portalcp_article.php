@@ -73,7 +73,7 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 		$_GET['url'] = '';
 	}
 
-/*vot*/	if(!preg_match('/^https?:\/\//', $_GET['fromurl'])) {
+	if(!preg_match('/^https?:\/\//', $_GET['fromurl'])) {
 		$_GET['fromurl'] = '';
 	}
 

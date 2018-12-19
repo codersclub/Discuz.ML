@@ -619,6 +619,7 @@ var rowtypedata = [
 
 		if(count($mforum) == 1 && $mforum[0]['type'] == 'group') {
 			$mforum[0]['extra'] = dunserialize($mforum[0]['extra']);
+			/*search={"forums_admin":"action=forums","forums_edit":"action=forums&operation=edit"}*/
 			showtableheader();
 			showsetting('forums_edit_basic_cat_name', 'namenew', $mforum[0]['name'], 'text');
 			showsetting('forums_edit_basic_cat_name_color', 'extranew[namecolor]', $mforum[0]['extra']['namecolor'], 'color');
@@ -626,7 +627,7 @@ var rowtypedata = [
 			showsetting('forums_edit_extend_forum_horizontal', 'forumcolumnsnew', $mforum[0]['forumcolumns'], 'text');
 			showsetting('forums_edit_extend_cat_sub_horizontal', 'catforumcolumnsnew', $mforum[0]['catforumcolumns'], 'text');
 			if(!empty($_G['setting']['domain']['root']['forum'])) {
-				showsetting('forums_edit_extend_domain', '', '', $_G['scheme'] . '://<input type="text" name="domainnew" class="txt" value="'.$mforum[0]['domain'].'" style="width:100px; margin-right:0px;" >.'.$_G['setting']['domain']['root']['forum']);
+				showsetting('forums_edit_extend_domain', '', '', $_G['scheme'].'://<input type="text" name="domainnew" class="txt" value="'.$mforum[0]['domain'].'" style="width:100px; margin-right:0px;" >.'.$_G['setting']['domain']['root']['forum']);
 			} else {
 				showsetting('forums_edit_extend_domain', 'domainnew', '', 'text', 'disabled');
 			}
@@ -640,6 +641,7 @@ var rowtypedata = [
 			showsetting('forums_edit_basic_seodescription', 'seodescriptionnew', dhtmlspecialchars($mforum[0]['seodescription']), 'textarea');
 			showsubmit('detailsubmit');
 			showtablefooter();
+			/*search*/
 
 		} else {
 
@@ -757,6 +759,7 @@ var rowtypedata = [
 
 				$_G['multisetting'] = $multiset ? 1 : 0;
 				showmultititle();
+				/*search={"forums_admin":"action=forums","forums_edit_basic":"action=forums&operation=edit&anchor=basic"}*/
 				showtagheader('div', 'basic', $anchor == 'basic');
 				if(!$multiset) {
 					showtips('forums_edit_tips');
@@ -798,7 +801,7 @@ var rowtypedata = [
 				showsetting('forums_edit_basic_keys', 'keysnew', $forumkeys[$fid], 'text');
 				if(!empty($_G['setting']['domain']['root']['forum'])) {
 					$iname = $multiset ? "multinew[{$_G[showsetting_multi]}][domainnew]" : 'domainnew';
-					showsetting('forums_edit_extend_domain', '', '', $_G['scheme'] . '://<input type="text" name="'.$iname.'" class="txt" value="'.$forum['domain'].'" style="width:100px; margin-right:0px;" >.'.$_G['setting']['domain']['root']['forum']);
+					showsetting('forums_edit_extend_domain', '', '', $_G['scheme'].'://<input type="text" name="'.$iname.'" class="txt" value="'.$forum['domain'].'" style="width:100px; margin-right:0px;" >.'.$_G['setting']['domain']['root']['forum']);
 				} elseif(!$multiset) {
 					showsetting('forums_edit_extend_domain', 'domainnew', '', 'text', 'disabled');
 				}
@@ -812,7 +815,9 @@ var rowtypedata = [
 				showsetting('forums_edit_basic_seodescription', 'seodescriptionnew', dhtmlspecialchars($forum['seodescription']), 'textarea');
 				showtablefooter();
 				showtagfooter('div');
+				/*search*/
 
+				/*search={"forums_admin":"action=forums","forums_edit_extend":"action=forums&operation=edit&anchor=extend"}*/
 				showtagheader('div', 'extend', $anchor == 'extend');
 				if(!$multiset) {
 					showtips('forums_edit_tips');
@@ -888,7 +893,9 @@ var rowtypedata = [
 				showsetting('forums_edit_extend_recommend_dateline', 'modrecommendnew[dateline]', $forum['modrecommend']['dateline'], 'text');
 				showtablefooter();
 				showtagfooter('div');
+				/*search*/
 
+				/*search={"forums_admin":"action=forums","forums_edit_posts":"action=forums&operation=edit&anchor=posts"}*/
 				showtagheader('div', 'posts', $anchor == 'posts');
 				if(!$multiset) {
 					showtips('forums_edit_tips');
@@ -943,8 +950,10 @@ var rowtypedata = [
 
 				showtablefooter();
 				showtagfooter('div');
+				/*search*/
 
 				if(!$multiset) {
+					/*search={"forums_admin":"action=forums","forums_edit_attachtype":"action=forums&operation=edit&anchor=attachtype"}*/
 					showtagheader('div', 'attachtype', $anchor == 'attachtype');
 					showtips('forums_edit_attachtype_tips');
 					showtableheader();
@@ -953,7 +962,9 @@ var rowtypedata = [
 					echo '<tr><td></td><td colspan="2"><div><a href="###" onclick="addrow(this, 1)" class="addtr">'.$lang['misc_attachtype_add'].'</a></div></tr>';
 					showtablefooter();
 					showtagfooter('div');
+					/*search*/
 
+					/*search={"forums_admin":"action=forums","forums_edit_credits_policy":"action=forums&operation=edit&anchor=credits"}*/
 					showtagheader('div', 'credits', $anchor == 'credits');
 					if(!$multiset) {
 						showtips('forums_edit_tips');
@@ -1012,6 +1023,7 @@ var rowtypedata = [
 					</script>
 EOF;
 					showtagfooter('div');
+					/*search*/
 				}
 
 				if($allowthreadtypes && !$multiset) {
@@ -1037,6 +1049,7 @@ EOF;
 		];
 	</script>
 EOT;
+					/*search={"forums_admin":"action=forums","forums_edit_threadtypes_config":"action=forums&operation=edit&anchor=threadtypes"}*/
 					showtagheader('div', 'threadtypes', $anchor == 'threadtypes');
 					if(!$multiset) {
 						showtips('forums_edit_tips');
@@ -1071,7 +1084,9 @@ EOT;
 					showtablefooter();
 					showtagfooter('div');
 					showtagfooter('div');
+					/*search*/
 
+					/*search={"forums_admin":"action=forums","forums_edit_threadsorts":"action=forums&operation=edit&anchor=threadsorts"}*/
 					showtagheader('div', 'threadsorts', $anchor == 'threadsorts');
 					if(!$multiset) {
 						showtips('forums_edit_tips');
@@ -1095,8 +1110,10 @@ EOT;
 					showtablefooter();
 					showtagfooter('div');
 					showtagfooter('div');
+					/*search*/
 				}
 
+				/*search={"forums_admin":"action=forums","forums_edit_perm_forum":"action=forums&operation=edit&anchor=perm"}*/
 				showtagheader('div', 'perm', $anchor == 'perm');
 				if(!$multiset) {
 					showtips('forums_edit_tips');
@@ -1253,6 +1270,7 @@ EOT;
 					showsetting('forums_edit_perm_spview', array('spviewpermnew', $spviewgroup), $forum['spviewperm'], 'mcheckbox');
 					showsetting('forums_edit_perm_formulapermmessage', 'formulapermmessagenew', $forum['formulapermmessage'], 'textarea');
 					showtablefooter();
+					/*search*/
 
 				}
 				if($pluginsetting) {

@@ -776,7 +776,7 @@ class discuz_application extends discuz_base{
 
 		$lastact = TIMESTAMP."\t".dhtmlspecialchars(basename($this->var['PHP_SELF']))."\t".dhtmlspecialchars($this->var['mod']);
 		dsetcookie('lastact', $lastact, 86400);
-		setglobal('currenturl_encode', base64_encode($this->var['scheme'] . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']));
+		setglobal('currenturl_encode', base64_encode($this->var['scheme'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']));
 
 		if((!empty($_GET['fromuid']) || !empty($_GET['fromuser'])) && ($this->var['setting']['creditspolicy']['promotion_visit'] || $this->var['setting']['creditspolicy']['promotion_register'])) {
 			require_once libfile('misc/promotion', 'include');
@@ -890,7 +890,7 @@ class discuz_application extends discuz_base{
 
 		if($nomobile || (!$this->var['setting']['mobile']['mobileforward'] && !$mobileflag)) {
 			if($_SERVER['HTTP_HOST'] == $this->var['setting']['domain']['app']['mobile'] && $this->var['setting']['domain']['app']['default']) {
-				dheader("Location:" . $this->var['scheme'] . "://".$this->var['setting']['domain']['app']['default'].$_SERVER['REQUEST_URI']);
+				dheader('Location:'.$this->var['scheme'].'://'.$this->var['setting']['domain']['app']['default'].$_SERVER['REQUEST_URI']);
 				return false;
 			} else {
 				return false;
@@ -899,10 +899,10 @@ class discuz_application extends discuz_base{
 
 		if(strpos($this->var['setting']['domain']['defaultindex'], CURSCRIPT) !== false && CURSCRIPT != 'forum' && !$_GET['mod']) {
 			if($this->var['setting']['domain']['app']['mobile']) {
-				$mobileurl = $this->var['scheme'] . '://'.$this->var['setting']['domain']['app']['mobile'];
+				$mobileurl = $this->var['scheme'].'://'.$this->var['setting']['domain']['app']['mobile'];
 			} else {
 				if($this->var['setting']['domain']['app']['forum']) {
-					$mobileurl = $this->var['scheme'] . '://'.$this->var['setting']['domain']['app']['forum'].'?mobile=yes';
+					$mobileurl = $this->var['scheme'].'://'.$this->var['setting']['domain']['app']['forum'].'?mobile=yes';
 				} else {
 					$mobileurl = $this->var['siteurl'].'forum.php?mobile=yes';
 				}
@@ -933,7 +933,7 @@ class discuz_application extends discuz_base{
                 $query['mobile'] = 'no';
                 unset($query['simpletype']);
                 $query_sting_tmp = http_build_query($query);
-                $this->var['setting']['mobile']['nomobileurl'] = ($this->var['setting']['domain']['app']['forum'] ? $this->var['scheme'] . '://'.$this->var['setting']['domain']['app']['forum'].'/' : $this->var['siteurl']).$this->var['basefilename'].'?'.$query_sting_tmp;
+                $this->var['setting']['mobile']['nomobileurl'] = ($this->var['setting']['domain']['app']['forum'] ? $this->var['scheme'].'://'.$this->var['setting']['domain']['app']['forum'].'/' : $this->var['siteurl']).$this->var['basefilename'].'?'.$query_sting_tmp;
 
 		$this->var['setting']['lazyload'] = 0;
 

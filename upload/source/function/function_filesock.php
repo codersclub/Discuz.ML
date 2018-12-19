@@ -101,6 +101,7 @@ function _dfsockopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FAL
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HEADER, 1);
+		curl_setopt($ch, CURLOPT_PROXY, 'http://127.0.0.1:12759');
 		if($post) {
 			curl_setopt($ch, CURLOPT_POST, 1);
 			if($encodetype == 'URLENCODE') {
@@ -184,7 +185,7 @@ function _dfsockopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FAL
 	}
 
 	$fpflag = 0;
-	if(!$fp = @fsocketopen(($scheme == 'https' ? 'ssl://'.$host : ($ip ? $ip : $host)), $port, $errno, $errstr, $timeout)) {
+/*vot*/	if(!$fp = @fsocketopen(($scheme == 'https' ? 'ssl://'.$host : ($ip ? $ip : $host)), $port, $errno, $errstr, $timeout)) {
 		$context = array(
 			'http' => array(
 				'method' => $post ? 'POST' : 'GET',

@@ -202,7 +202,7 @@ function imgtag($attributes) {
 		}
 	}
 	@extract($value);
-/*vot*/	if(!preg_match("/^https*:\/\//i", $src)) {
+	if(!preg_match("/^https?:\/\//i", $src)) {
 		$src = absoluteurl($src);
 	}
 	return $src ? ($width && $height ? '[img='.$width.','.$height.']'.$src.'[/img]' : '[img]'.$src.'[/img]') : '';
