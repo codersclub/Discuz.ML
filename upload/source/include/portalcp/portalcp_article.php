@@ -69,11 +69,11 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 	$_GET['fromurl'] = str_replace('&amp;', '&', dhtmlspecialchars($_GET['fromurl']));
 	$_GET['dateline'] = !empty($_GET['dateline']) ? strtotime($_GET['dateline']) : TIMESTAMP;
 
-	if(!preg_match('/^https?:\/\//', $_GET['url'])) {
+	if(!preg_match('/^https?:\/\//is', $_GET['url'])) {
 		$_GET['url'] = '';
 	}
 
-	if(!preg_match('/^https?:\/\//', $_GET['fromurl'])) {
+	if(!preg_match('/^https?:\/\//is', $_GET['fromurl'])) {
 		$_GET['fromurl'] = '';
 	}
 

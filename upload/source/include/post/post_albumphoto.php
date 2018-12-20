@@ -23,8 +23,8 @@ foreach($query as $value) {
 	$value['bigpic'] = pic_get($value['filepath'], 'album', $value['thumb'], $value['remote'], 0);
 	$value['pic'] = pic_get($value['filepath'], 'album', $value['thumb'], $value['remote']);
 	$value['count'] = $count;
-	$value['url'] = (preg_match('/^https?:\/\//', $value['bigpic']) ? '' : $_G['siteurl']) . $value['bigpic'];
-	$value['thumburl'] = (preg_match('/^https?:\/\//', $value['pic']) ? '' : $_G['siteurl']) . $value['pic'];
+	$value['url'] = (preg_match('/^https?:\/\//is', $value['bigpic']) ? '' : $_G['siteurl']) . $value['bigpic'];
+	$value['thumburl'] = (preg_match('/^https?:\/\//is', $value['pic']) ? '' : $_G['siteurl']) . $value['pic'];
 	$photolist[] = $value;
 }
 $_GET['ajaxtarget'] = 'albumphoto';

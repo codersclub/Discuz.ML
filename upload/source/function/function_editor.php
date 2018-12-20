@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 function absoluteurl($url) {
 	global $_G;
 	if($url{0} == '/') {
-		return $_G['scheme'].'://'.$_SERVER['HTTP_HOST'].$url;
+/*vot*/		return $_G['scheme'].'://'.$_SERVER['HTTP_HOST'].$url;
 	} else {
 		return $_G['siteurl'].$url;
 	}
@@ -202,7 +202,7 @@ function imgtag($attributes) {
 		}
 	}
 	@extract($value);
-	if(!preg_match("/^https?:\/\//i", $src)) {
+	if(!preg_match("/^https?:\/\//is", $src)) {
 		$src = absoluteurl($src);
 	}
 	return $src ? ($width && $height ? '[img='.$width.','.$height.']'.$src.'[/img]' : '[img]'.$src.'[/img]') : '';

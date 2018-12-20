@@ -237,14 +237,14 @@ function convertip_full($ip, $ipdatafile) {
 	}
 	fclose($fd);
 
-	if(preg_match('/https?/i', $ipAddr2)) {
+/*vot*/	if(preg_match('/https?/i', $ipAddr2)) {
 		$ipAddr2 = '';
 	}
 	$ipaddr = "$ipAddr1 $ipAddr2";
 	$ipaddr = preg_replace('/CZ88\.NET/is', '', $ipaddr);
 	$ipaddr = preg_replace('/^\s*/is', '', $ipaddr);
 	$ipaddr = preg_replace('/\s*$/is', '', $ipaddr);
-	if(preg_match('/https?/i', $ipaddr) || $ipaddr == '') {
+/*vot*/	if(preg_match('/https?/i', $ipaddr) || $ipaddr == '') {
 		$ipaddr = '- Unknown';
 	}
 
