@@ -156,6 +156,7 @@ $_config['cookie']['cookiepath'] 	= '/'; 		// COOKIE path
 $_config['security']['authkey']		= 'asdfasfas';	// Site encryption key
 $_config['security']['urlxssdefend']	= true;		// Use own URL XSS defense
 $_config['security']['attackevasive']	= 0;		// CC Attack Defense 1 | 2 | 4
+$_config['security']['onlyremoteaddr']	= 0;		// Get User IP address method: 0 = Trust HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR; 1 = Tust only REMOTE_ADDR
 
 $_config['security']['querysafe']['status']	= 1;	// Enable the SQL security detection, prevent the SQL injection attacks automatically
 $_config['security']['querysafe']['dfunction']	= array('load_file','hex','substring','if','ord','char');
