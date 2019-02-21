@@ -299,7 +299,7 @@ fb05c4f082d4098a9e567b2d56cb8344 *source/class/db/db_driver_mysqli_slave.php
 e28eb546c80966c63d5cca19063b7d53 *source/class/db/db_driver_mysql_slave.php
 d41d8cd98f00b204e9800998ecf8427e *source/class/db/index.htm
 1ceced2869a2fa890163e144db1397a0 *source/class/discuz/discuz_admincp.php
-7bd08c4addb44a844af2b6bae7f2d0b5 *source/class/discuz/discuz_application.php
+50470516bc441b89c56cc2ac6a3e7424 *source/class/discuz/discuz_application.php
 5bb1ba4480bcfd862809bf5f5951d5cf *source/class/discuz/discuz_base.php
 b0b7df7926c2cdd89957cca31ba54c41 *source/class/discuz/discuz_block.php
 65b49f9945e59899ad73b61f343e585a *source/class/discuz/discuz_censor.php
@@ -680,7 +680,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-1c5d7748aa82102c4353f6242311aeb9 *source/discuz_version.php
+f1392a3a25b91ffaa38f89b822b5fccb *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -925,12 +925,12 @@ e50ada76cc3ab116504dc5195a86bf15 *source/include/spacecp/spacecp_favorite.php
 198bd7bdfb786b5eb713382a319eb6a0 *source/include/spacecp/spacecp_follow.php
 da16cf4ed8a5cac1843c7ccdb5c547dd *source/include/spacecp/spacecp_friend.php
 ad92c93d91c645e4f7651b70b3a7e7d0 *source/include/spacecp/spacecp_index.php
-d088b32256081f1bbb1bfe3ce21c3b94 *source/include/spacecp/spacecp_invite.php
+c23ea89b754a09d5e9aba5d8eddfd520 *source/include/spacecp/spacecp_invite.php
 55e9eb2515f9c2de66657f612a6ece79 *source/include/spacecp/spacecp_magic.php
 3237cef7fb24b80104ed107e47a0aa2c *source/include/spacecp/spacecp_plugin.php
 3fe7a6ede92b635cbe5d1d49d7f69049 *source/include/spacecp/spacecp_pm.php
 139054080da8b875a110c7cb750f6098 *source/include/spacecp/spacecp_poke.php
-46701abd4b809377109044820dadbaac *source/include/spacecp/spacecp_privacy.php
+d18f4bf4dd2bddccc1f15c04fb36d35b *source/include/spacecp/spacecp_privacy.php
 4df3eb31572210f3645398544f21251f *source/include/spacecp/spacecp_profile.php
 6a0fbb877604966c6417e442ff236196 *source/include/spacecp/spacecp_profilevalidate.php
 0602a64356411e7c965e115f05a76154 *source/include/spacecp/spacecp_promotion.php
@@ -1365,7 +1365,7 @@ e97999d84ce8c382080055a08a1e34a9 *source/module/forum/forum_attachment.php
 69eaf8ffb0d30188d8fb4b595c904afa *source/module/forum/forum_guide.php
 044aabe6823ceff3bd01b082776d5fe5 *source/module/forum/forum_image.php
 3e85721c26e180813b03e51e962b2547 *source/module/forum/forum_index.php
-a5fac90482028d716da9c3548cbd21f2 *source/module/forum/forum_misc.php
+1662902b0cecc07c7b9d9ae66d31b342 *source/module/forum/forum_misc.php
 eb619810a79382286ebea525af541369 *source/module/forum/forum_modcp.php
 84a80da6f850d1f511fc95b7971ce511 *source/module/forum/forum_post.php
 856837c63d08a8920978342ebae1a39b *source/module/forum/forum_redirect.php
@@ -3006,7 +3006,7 @@ a3a7665cbf1d6ac9216776240bf8f667 *static/js/ajax.js
 2e0edd7ce0b90b91978dab02a1a685a5 *static/js/at.js
 857720b8f1fea33a6bd9038c0ae55640 *static/js/autoloadpage.js
 1b9876416208d0b8ba403b4f9083f702 *static/js/bbcode.js
-b23102d7576a11c39f6bc996ef166557 *static/js/calendar.js
+08a8a21ffad46a58db930f53276cdf25 *static/js/calendar.js
 e0f891b69930e5f3b1f9a7434c933cac *static/js/common.js
 91c4c9e92b207214f13840b3bbc4c175 *static/js/common_diy.js
 9941719fc4e8b6a8c135aa4faa4092ce *static/js/common_extra.js
@@ -3293,7 +3293,7 @@ fe9b65c736c55d3e212b2681fd9b1ab3 *template/default/common/header_userstatus.htm
 c10fe13eda5cd6f4c3c98296a231dce8 *template/default/common/module.css
 8f4308d13513e52543904e2b5919a1ae *template/default/common/module_rtl.css
 6a237d22ff398d89834dd8132880fb3d *template/default/common/preview.htm
-5d5e06f2ef55f3e6aed0b984e7e7f89d *template/default/common/pubsearchform.htm
+100a4b93944d93b71c9dfc51f4804c6a *template/default/common/pubsearchform.htm
 58597888b2bef9f05737e58a2b60ddd7 *template/default/common/report.htm
 bc7e59b08b56e703fb673dffb2a1d548 *template/default/common/rss.css
 d0450662384b9326f0aba57aaaa9f8a8 *template/default/common/rss_rtl.css
