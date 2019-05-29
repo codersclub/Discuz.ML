@@ -253,7 +253,7 @@ function cpmsg($message, $url = '', $type = '', $values = array(), $extra = '', 
 		default: $classname = 'marginbot normal';break;
 	}
 	if($url) {
-		$url = preg_match('/^(https?:)?\/\//i', $url) ? $url : ADMINSCRIPT.'?'.$url;
+		$url = preg_match('/^https?:\/\//is', $url) ? $url : ADMINSCRIPT.'?'.$url;
 	}
 	$message = "<h4 class=\"$classname\">$message</h4>";
 	$url .= $url && !empty($_GET['scrolltop']) ? '&scrolltop='.intval($_GET['scrolltop']) : '';
