@@ -1359,7 +1359,7 @@ $lang = array
 	'setting_profile_time_zone' => '時區',
 	'setting_profile_tips' => '<li>用戶欄目分組至少必須啟用一項，如果都不啟用，默認為全部啟用</li>',
 
-	'setting_threadprofile_tpl_tpls' => '<li>{<b>標記</b>} 不含參數的貼內用戶信息標記調用。</li><li>{<b>標記</b>=<b>參數</b>} 含參數的貼內用戶信息標記調用，多個參數用","分割</li><li>{<b>標記</b>}<b>HTML</b>{<b>*</b>}<b>HTML</b>{/<b>標記</b>} 當有調用內容有值時顯示 {*} 前後的 HTML 內容</li><li>「<b>plugin:插件標識</b>」格式的<b>標記</b>為插件增加的貼內用戶信息標記調用。插件開發人員在設計新的貼內用戶信息標記前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
+	'setting_threadprofile_tpl_tpls' => '<li>{<b>標記</b>} 不含參數的貼內用戶信息標記調用。</li><li>{<b>標記</b>=<b>參數</b>} 含參數的貼內用戶信息標記調用，多個參數用","分割</li><li>{<b>標記</b>}<b>HTML</b>{<b>*</b>}<b>HTML</b>{/<b>標記</b>} 當有調用內容有值時顯示 {*} 前後的 HTML 內容</li><li>「<b>plugin:插件標識</b>」格式的<b>標記</b>為插件增加的貼內用戶信息標記調用。插件開發人員在設計新的貼內用戶信息標記前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
 
 	'setting_numbercard' => '用戶屬性名片',
 	'setting_numbercard_row' => '第 {i} 列',
@@ -2067,7 +2067,7 @@ $lang = array
 	'setting_seccheck' => '驗證設置',
 	'setting_accountguard' => '帳號保鏢',
 	'setting_sec_code_tips' => '<li>使用圖片作為驗證碼文字，圖片必須包含字符「2346789BCEFGHJKMPQRTVWXY」24 個字符，且必須為 GIF 透明圖片、背景透明、前景黑色，黑色為圖片的第一個索引色。圖片大小不限制，但建議寬度不大於驗證碼寬度的 1/4，高度不大於驗證碼高度。製作完畢後在 static/image/seccode/gif/ 下創建一個新的子目錄，目錄名任意，把製作完畢的 24 個 GIF 圖片上傳到新子目錄下</li><li>使用圖片作為驗證碼的背景，把製作好的 JPG 圖片上傳到 static/image/seccode/background/ 目錄下，站點將隨機使用裡面的圖片作為驗證碼的背景</li><li>使用 TTF 字體作為驗證碼文字，把下載的 TTF 英文字體文件上傳到 static/image/seccode/font/en/ 目錄下，站點將隨機使用裡面的字體文件作為驗證碼的文字</li><li>使用中文圖片驗證碼前，需要把包含完整中文漢字的 TTF 中文字體文件上傳到 static/image/seccode/font/ch/ 目錄下，站點將隨機使用裡面的字體文件作為驗證碼的文字</li><li>系統驗證碼位於 source/class/seccode/ 目錄中，插件驗證碼位於 source/plugin/插件目錄/seccode/ 目錄中。</li>',
-	'setting_sec_qaa_tips' => '<li>驗證問題應該言簡意賅，沒有歧義，正常人都能夠正確作答。請經常更新驗證問答的問題及答案以防止被猜測！</li><li>系統驗證問答位於 source/class/secqaa/ 目錄中，插件驗證問答位於 source/plugin/插件目錄/secqaa/ 目錄中。</li><li>插件開發人員在設計新的驗證問答腳本前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
+	'setting_sec_qaa_tips' => '<li>驗證問題應該言簡意賅，沒有歧義，正常人都能夠正確作答。請經常更新驗證問答的問題及答案以防止被猜測！</li><li>系統驗證問答位於 source/class/secqaa/ 目錄中，插件驗證問答位於 source/plugin/插件目錄/secqaa/ 目錄中。</li><li>插件開發人員在設計新的驗證問答腳本前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
 
 	'setting_sec_seclevel' => '安全驗證模式',
 	'setting_sec_seclevel_comment' => '通常情況下，我們推薦您使用高級驗證模式。當您站點有較多用戶遇到驗證碼無法通過的時候，您可以使用一般驗證模式',
@@ -3660,7 +3660,7 @@ $lang = array
 	'members_newsletter_posttype' => '內容解析方式',
 	'members_newsletter_posttype_text' => '文本方式',
 	'members_newsletter_posttype_html' => 'html方式',
-	'members_newsletter_mobile_tips' => '<li>您可以通過該功能給手機客戶端用戶發送通知，為了您更好的觸達用戶建議大力推廣我們的手機客戶端。</li><li>要使用本功能需要開啟雲平台服務、手機客戶端插件</li><li><strong>請關注應用中心中"<a href="http://addon.discuz.com/?@mobile.plugin">手機客戶端</a>"的更新，功能啟用時將會在插件中做詳細說明</strong></li>',
+	'members_newsletter_mobile_tips' => '<li>您可以通過該功能給手機客戶端用戶發送通知，為了您更好的觸達用戶建議大力推廣我們的手機客戶端。</li><li>要使用本功能需要開啟雲平台服務、手機客戶端插件</li><li><strong>請關注應用中心中"<a href="https://addon.dismall.com/?@mobile.plugin">手機客戶端</a>"的更新，功能啟用時將會在插件中做詳細說明</strong></li>',
 
 	'members_grouppmlist' => '群發短消息記錄',
 	'members_grouppmlist_newsletter' => '發送通知',
@@ -5212,7 +5212,7 @@ $lang = array
 	'plugins_vars_variable' => '配置變量名(必填)',
 	'plugins_vars_type' => '配置類型',
 	'plugins_add' => '設計新插件',
-	'plugins_add_tips' => '<li><b>本功能僅供插件開發者使用。</b></li><li>插件開發人員在使用本功能前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li><li>警告: 不正確的插件設計或安裝可能危及到整個站點的正常使用。</li>',
+	'plugins_add_tips' => '<li><b>本功能僅供插件開發者使用。</b></li><li>插件開發人員在使用本功能前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li><li>警告: 不正確的插件設計或安裝可能危及到整個站點的正常使用。</li>',
 	'plugins_import' => '導入插件數據',
 	'plugins_import_ignore_version' => '允許導入老版本 Discuz! 的插件(易產生錯誤!!)',
 	'plugins_update_to' => '更新到 ',
@@ -5227,7 +5227,7 @@ $lang = array
 	'plugins_config_uninstallplugin' => '卸載此插件',
 	'plugins_edit' => '設計插件',
 	'plugins_edit_available' => ' (插件已啟用)',
-	'plugins_edit_tips' => '<li><b>本功能僅供插件開發者使用，如果您只是安裝或使用本插件，切勿修改本設置。</b></li><li>插件開發人員在使用本功能前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li><li>警告: 不正確的插件設計或安裝可能危及到整個站點的正常使用。</li><li>把設計完的插件發佈到<a href="http://addon.discuz.com" target="_blank">「Discuz! 應用中心」</a>分享給廣大站長。</li>',
+	'plugins_edit_tips' => '<li><b>本功能僅供插件開發者使用，如果您只是安裝或使用本插件，切勿修改本設置。</b></li><li>插件開發人員在使用本功能前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li><li>警告: 不正確的插件設計或安裝可能危及到整個站點的正常使用。</li><li>把設計完的插件發佈到<a href="https://addon.dismall.com" target="_blank">「Discuz! 應用中心」</a>分享給廣大站長。</li>',
 	'plugins_edit_name' => '插件名稱(name)',
 	'plugins_edit_name_comment' => '此插件的名稱，中英文均可，最多 40 個字節',
 	'plugins_edit_version' => '插件版本號(version)',
@@ -5441,7 +5441,7 @@ $lang = array
 
 
 	'magics' => '道具中心',
-	'magics_tips' => '<li>系統道具位於 source/class/magic/ 目錄中，插件道具位於 source/plugin/插件目錄/magic/ 目錄中</li><li>插件開發人員在設計新的道具前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
+	'magics_tips' => '<li>系統道具位於 source/class/magic/ 目錄中，插件道具位於 source/plugin/插件目錄/magic/ 目錄中</li><li>插件開發人員在設計新的道具前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
 
 	'magics_config' => '道具基本設置',
 	'magics_config_open' => '是否打開道具中心',
@@ -5515,7 +5515,7 @@ $lang = array
 	'tasks_tips_edit' => '<li>只有任務標示為「可用」狀態，會員才可能看到並參與他。</li><li>任務是可以設置開始時間的，您可以預定某個任務何時開始。如果沒有設置，那麼這個任務默認就是開始了。</li>',
 	'tasks_tips_add_member' => '<li>會員類任務目前包括三種：添加好友、收藏主題、使用道具，此類任務用來鼓勵和引導會員使用論壇的某個功能，活躍論壇的氛圍。</li><li>設置不同的完成任務條件，可以創造出適合您論壇的任務。</li>',
 	'tasks_tips_add_post' => '<li>帖子類任務目前包括三種：發新主題、發新回復、發新主題/回復。</li><li>帖子類任務如果指定了版塊，那麼請您注意用戶組及版塊的權限設置，否則有的用戶申請了任務，可能由於無權在該版塊發帖，而永遠無法完成任務。</li><li>發新回復的任務您可以指定回復某個主題或者某個作者的主題，但請注意該主題必須存在，否則用戶無法完成任務。</li>',
-	'tasks_tips_add_type' => '<li>系統任務位於 source/class/task/ 目錄中，插件任務位於 source/plugin/插件目錄/task/ 目錄中。</li><li>插件開發人員在設計新的任務類型前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
+	'tasks_tips_add_type' => '<li>系統任務位於 source/class/task/ 目錄中，插件任務位於 source/plugin/插件目錄/task/ 目錄中。</li><li>插件開發人員在設計新的任務類型前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
 	'tasks_edit' => '編輯任務',
 	'tasks_list' => '任務列表',
 	'tasks_edit_basic' => '編輯任務設置',
@@ -6226,7 +6226,7 @@ $lang = array
 	'adv_custom_edit' => '編輯自定義廣告位',
 	'adv_custom_delete' => '刪除此自定義廣告位嗎？',
 	'adv_customnamenew' => '請輸入此自定義廣告位的新名稱:',
-	'adv_list_tip' => '<li>您可以使用「自定義廣告位」在頁面的任意位置添加廣告位。<li>系統廣告位位於 source/class/adv/ 目錄中，插件廣告位位於 source/plugin/插件目錄/adv/ 目錄中。</li><li>插件開發人員在設計新的廣告位前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
+	'adv_list_tip' => '<li>您可以使用「自定義廣告位」在頁面的任意位置添加廣告位。<li>系統廣告位位於 source/class/adv/ 目錄中，插件廣告位位於 source/plugin/插件目錄/adv/ 目錄中。</li><li>插件開發人員在設計新的廣告位前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
 	'adv_custom_target' => '自定義投放範圍，輸入站點根目錄程序文件名(無擴展名)，多個用逗號分隔',
 
 	'adv_edit' => '編輯廣告',
@@ -6704,7 +6704,7 @@ $lang = array
 	'blockstyle_add_parity' => '當前數據是否在奇數行',
 
 	'blockxml' => '第三方模塊',
-	'blockxml_tips' => '<li>插件開發人員在設計新的第三方模塊前請務必仔細閱讀《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
+	'blockxml_tips' => '<li>插件開發人員在設計新的第三方模塊前請務必仔細閱讀《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技術文檔</a>》中的內容。</li>',
 	'blockxml_list' => '第三方模塊列表',
 	'blockxml_name' => '模塊名稱',
 	'blockxml_signtype_no' => '不使用簽名',
