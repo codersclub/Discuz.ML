@@ -84,6 +84,7 @@ class db_driver_mysqli
 			$halt && $this->halt('notconnect', $this->errno());
 		} else {
 			$this->curlink = $link;
+			$link->options(MYSQLI_OPT_LOCAL_INFILE, false);
 /*vot*/			if(v_compare($this->version(), '4.1') > 0) {
 				$link->set_charset($dbcharset ? $dbcharset : $this->config[1]['dbcharset']);
 /*vot*/				$serverset = v_compare($this->version(), '5.0.1') > 0 ? 'sql_mode=\'\',' : '';
