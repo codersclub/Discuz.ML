@@ -70,14 +70,14 @@ class mobile_core {
 		return $return;
 	}
 
-	public static function arraystring($array) {
+	static function arraystring($array) {
 		foreach($array as $k => $v) {
 			$array[$k] = is_array($v) ? mobile_core::arraystring($v) : (string)$v;
 		}
 		return $array;
 	}
 
-	public static function variable($variables = array()) {
+	static function variable($variables = array()) {
 		global $_G;
 		if(in_array('mobileoem', $_G['setting']['plugins']['available'])) {
 			$check = C::t('#mobileoem#mobileoem_member')->fetch($_G['uid']);
@@ -307,9 +307,6 @@ class base_plugin_mobile {
 		$_G['siteurl'] = preg_replace('/api\/mobile\/$/', '', $_G['siteurl']);
 		$_G['setting']['msgforward'] = '';
 		$_G['setting']['cacheindexlife'] = $_G['setting']['cachethreadlife'] = false;
-		if(!$_G['setting']['mobile']['nomobileurl'] && function_exists('diconv') && !empty($_GET['charset'])) {
-			$_GET = mobile_core::diconv_array($_GET, $_GET['charset'], $_G['charset']);
-		}
 		if($_GET['_auth']) {
 			require_once DISCUZ_ROOT.'./source/plugin/wechat/wsq.class.php';
 			$uid = wsq::decodeauth($_GET['_auth']);
