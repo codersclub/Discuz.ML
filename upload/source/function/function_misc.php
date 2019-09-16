@@ -16,7 +16,7 @@ function convertip($ip) {
 
 	$return = '';
 
-/*vot*/			$geoipfile = DISCUZ_ROOT.'./data/ipdata/GeoIP.dat';
+/*vot*/			$geoipfile = DISCUZ_ROOT.'./data/ipdata/GeoLite2-Country.mmdb';
 			$tinyipfile = DISCUZ_ROOT.'./data/ipdata/tinyipdata.dat';
 			$fullipfile = DISCUZ_ROOT.'./data/ipdata/wry.dat';
 /*vot*/			if(@file_exists($geoipfile)) {
@@ -40,33 +40,36 @@ function convertip_geo($ip='', $ipdatafile='') {
 
 }
 
-function geoip_country($ip='', $ipdatafile='') {
+//---------------------------------------------------------
+//vot: Detect IP country using the maxmind.com GeoLite2 database
+function geoip_country($ip='', $ipdatafile='GeoLite2-Country.mmdb') {
 
 	if(preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/", $ip)) {
 
 		$iparray = explode('.', $ip);
 
-/*vot*/		if($iparray[0] == 127) {
-/*vot*/			$return = 'LOC';
-/*vot*/		} elseif($iparray[0] == 10 || ($iparray[0] == 192 && $iparray[1] == 168) || ($iparray[0] == 172 && ($iparray[1] >= 16 && $iparray[1] <= 31))) {
-/*vot*/			$return = 'LAN';
+		if($iparray[0] == 127) {
+			$return = 'LOC';
+		} elseif($iparray[0] == 10 || ($iparray[0] == 192 && $iparray[1] == 168) || ($iparray[0] == 172 && ($iparray[1] >= 16 && $iparray[1] <= 31))) {
+			$return = 'LAN';
 		} elseif($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
-/*vot*/			$return = 'ERR';
+			$return = 'ERR';
 		} else {
 
-			require_once(DISCUZ_ROOT.'./source/function/geoip.inc');
+			require_once(DISCUZ_ROOT . './source/function/geoip2.phar');
 
-			$ipdatafile = DISCUZ_ROOT.'./data/ipdata/GeoIP.dat';
+			$ipdatafile = DISCUZ_ROOT . './data/ipdata/' . $ipdatafile;
 
-			$gi = geoip_open($ipdatafile,GEOIP_STANDARD);
+                        // This creates the Reader object, which should be reused across lookups.
+                        $reader = new GeoIp2\Database\Reader($ipdatafile);
 
-			$return = geoip_country_code_by_addr($gi, $ip);
-
-			geoip_close($gi);
-
+                        try {
+                            $record = $reader->country($ip);
+                            $return = $record->country->isoCode; // 'US'
+                        } catch (Exception $e) {
+			    $return = 'ERR';
+                        }
 		}
-	} else {
-/*vot*/			$return = 'ERR';
 	}
 
 	if(!$return) {
