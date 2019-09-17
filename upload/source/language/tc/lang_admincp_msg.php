@@ -23,7 +23,7 @@ $lang = array (
   'blogcategory_move_category_failed' => '無法移動日誌到指定分類',
   'blogcategory_delete_succeed' => '刪除日誌分類成功 ',
   'filecheck_nofound_md5file' => '不存在校驗文件，無法進行此操作 {upgradeurl}',
-  'cloudaddons_download_error' => '數據下載錯誤({ErrorCode})',
+  'cloudaddons_download_error' => '數據下載錯誤({ErrorCode})，<a href="https://www.dismall.com/thread-101-1-1.html" target="_blank">點擊查看常見問題解決辦法</a>',
   'cloudaddons_downloading' => '應用 {addonid} 下載中，請稍候 ......',
   'collection_admin_updated' => '專輯管理操作成功',
   'counter_member_succeed' => '用戶發帖數重建完成',
@@ -630,6 +630,7 @@ $lang = array (
 
   'cloudaddons_check_url_fopen_error' => '您的服務器無法訪問應用中心，這將會導致應用無法安裝。請聯繫您的服務商或者網站技術人員，確保您的服務器能夠正常訪問 addon.dismall.com 或 addon1.discuz.com',
   'cloudaddons_check_gzuncompress_error' => '您的服務器不支持 Zlib，這將會導致應用無法安裝。請聯繫您的服務商或者網站技術人員。',
+  'cloudaddons_check_curl_error' => '您的服務器不支持 CURL，這將會導致應用無法安裝。請聯繫您的服務商或者網站技術人員。',
   'cloudaddons_genuine_message' => '對不起，您安裝的不是正版應用，安裝程序無法繼續執行<br /><br /><a href="admin.php?action=cloudaddons&id={addonid}">點擊這裡安裝正版應用</a>',
 
   'admincp_makehtml_cleanhtml_error' => '對不起，開啟生成HTML靜態文件時，不能清理HTML文件。',

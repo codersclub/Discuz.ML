@@ -114,12 +114,14 @@ shownav();
 require_once libfile('function/cloudaddons');
 $newversion = dunserialize($_G['setting']['cloudaddons_newversion']);
 if(empty($newversion['newversion']) || !is_array($newversion['newversion']) || abs($_G['timestamp'] - $newversion['updatetime']) > 86400 || (isset($_GET['checknewversion']) && $_G['formhash'] == $_GET['formhash'])) {
-    $newversion = json_decode(cloudaddons_open('&mod=app&ac=upgrade'), true);
-    if(!empty($newversion['newversion'])){
-      $newversion['updatetime'] = $_G['timestamp'];
-      C::t('common_setting')->update('cloudaddons_newversion', $newversion);
-      updatecache('setting');
-    }
+	$newversion = json_decode(cloudaddons_open('&mod=app&ac=upgrade'), true);
+	if(!empty($newversion['newversion'])){
+		$newversion['updatetime'] = $_G['timestamp'];
+		C::t('common_setting')->update('cloudaddons_newversion', $newversion);
+		updatecache('setting');
+	}else{
+		$newversion = array();
+	}
 }
 
 showsubmenu('home_welcome', array(), '', array('bbname' => $_G['setting']['bbname']));
@@ -260,7 +262,7 @@ if(empty($newversion['newversion']['qqqun'])){
 showtableheader('home_sys_info', 'fixpadding left" style="width : 48%;');
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_discuz_version'),
-/*vot*/	'Discuz! '.DISCUZ_VERSION.' R'.DISCUZ_RELEASE
+	'Discuz! '.DISCUZ_VERSION.' R'.DISCUZ_RELEASE.' '.strtoupper(CHARSET).''
 ));
 
 $newversion['newversion'] = !empty($newversion['newversion']) ? $newversion['newversion'] : array();
@@ -272,9 +274,9 @@ foreach ($newversion['newversion']['downlist'] as $key => $value){
 
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_check_newversion'),
-    ($newversion ? ($newversion['newversion']['release'] != DISCUZ_RELEASE ? '<b style="color:red;">' : '').'Discuz! '.$newversion['newversion']['version'].' R'.$newversion['newversion']['release'].' '.strtoupper(CHARSET).' '.($newversion['newversion']['release'] != DISCUZ_RELEASE ? '</b>' : '') : '').
-	  '<a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ &#x5237;&#x65B0; ]</a>&nbsp;&nbsp;<br><br>'.
-    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;QQ&#x7FA4;&#xFF1A;'.$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" class="lightlink2" target="_blank">&#x6700;&#x65B0;&#x7248;&#x6253;&#x5305;&#x4E0B;&#x8F7D;</a> | QQ&#x7FA4;&#xFF1A;73'.'21'.'03'.'690</span>')
+/*vot*/    ($newversion['newversion']['release'] ? ($newversion['newversion']['release'] != DISCUZ_RELEASE ? '<b style="color:red;">' : '').'Discuz! '.$newversion['newversion']['version'].' R'.$newversion['newversion']['release'].' '.strtoupper(CHARSET).' '.($newversion['newversion']['release'] != DISCUZ_RELEASE ? '</b>' : '') : '<a href="https://www.dismall.com/thread-73-1-1.html" target="_blank">Your server can not detect the new version, please click to view the new version.</a>').
+	  ' <a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ &#x5237;&#x65B0; ]</a>&nbsp;&nbsp;<br><br>'.
+/*vot*/    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;QQ&#x7FA4;&#xFF1A;'.$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" class="lightlink2" target="_blank">Download the latest version of the package</a> | QQ group: 732103690</span>')
 ));
 
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
