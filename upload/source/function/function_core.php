@@ -1773,13 +1773,16 @@ function sysmessage($message) {
 
 function forumperm($permstr, $groupid = 0) {
 	global $_G;
-
 	$groupidarray = array($_G['groupid']);
 	if($groupid) {
 		return preg_match("/(^|\t)(".$groupid.")(\t|$)/", $permstr);
 	}
+	$groupterms = dunserialize(getuserprofile('groupterms'));
 	foreach(explode("\t", $_G['member']['extgroupids']) as $extgroupid) {
 		if($extgroupid = intval(trim($extgroupid))) {
+			if($groupterms['ext'][$extgroupid] && $groupterms['ext'][$extgroupid] < TIMESTAMP){
+				continue;
+			}
 			$groupidarray[] = $extgroupid;
 		}
 	}
