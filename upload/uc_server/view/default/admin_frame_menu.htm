@@ -6,8 +6,8 @@
 <meta name="author" content="Valery Votintsev, http://codersclub.org/discuzx/" />
 <title>UCenter Administrator's Control Panel</title>
 <!--vot--> <link rel="stylesheet" href="images/admincp{RTLSUFFIX}.css" type="text/css" media="all" />
-<meta content="Comsenz Inc." name="Copyright" />
 <!--vot--> <script src="language/{UC_LANG}/lang_js.js" type="text/javascript"></script>
+<meta content="Comsenz Inc." name="Copyright" />
 </head>
 <body>
 <div class="menu">
@@ -29,7 +29,7 @@
 		<!--{if $user['isfounder']}--><li><a href="admin.php?m=plugin&a=filecheck" target="main">{lang plugin}</a></li><!--{/if}-->
 	</ul>
 </div>
-<div class="footer">Powered by UCenter {UC_SERVER_VERSION}<br />&copy; 2001 - 2017 <a href="http://www.comsenz.com/" target="_blank">Comsenz</a> Inc.</div>
+<!--vot--><div class="footer">Powered by UCenter {UC_SERVER_VERSION}<br />&copy; 2001 - <?= date('Y') ?>, Tencent Cloud.</div>
 <script type="text/javascript">
 	function cleartabon() {
 		if(lastmenu) {

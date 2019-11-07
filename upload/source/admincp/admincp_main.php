@@ -171,7 +171,7 @@ echo <<<EOT
 <div class="copyright">
 <!--vot-->	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
 <!--vot-->	<p>Release {$_G['setting']['release']}</p>
-<!--vot-->	<p>&copy; 2001-{$year}, <a href="http://www.comsenz.com/" target="_blank">Comsenz Inc.</a></p>
+<!--vot-->	<p>&copy; 2001-{$year}, Tencent Cloud.</p>
 <!--vot-->	<p><strong>MultiLingual version</strong><br>by <a href="http://codersclub.org/discuzx/" target="_blank">Valery Votintsev</a></p>
 </div>
 

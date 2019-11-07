@@ -2068,7 +2068,7 @@ function show_footer() {
 /*vot*/	$y = date('Y');
 /*vot*/	print <<<END
 	</div>
-	<div id="footer">&copy; Comsenz Inc. 2001-{$y} http://www.comsenz.com
+	<div id="footer">&copy; Comsenz Inc. 2001-{$y}, Tencent Cloud.
 	<br />MultiLingual Version by Valery Votintsev, codersclub.org</div>
 	</div>
 	<br>

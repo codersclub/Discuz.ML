@@ -470,10 +470,10 @@ EOT;
 }
 
 function show_footer($quit = true) {
-
+/*vot*/	$y = date('Y');
 	echo <<< EOT
 	</div>
-	<div id="footer">&copy; 2001 - 2011 <a href="http://www.comsenz.com/">Comsenz</a> Inc.</div>
+	<div id="footer">&copy; 2001 - {$y}, Tencent Cloud.</div>
 </div>
 </body>
 </html>

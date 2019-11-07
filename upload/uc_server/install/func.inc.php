@@ -489,7 +489,7 @@ EOT;
 function show_footer($quit = true) {
 /*vot*/	$y = date('Y');
 /*vot*/	echo <<<EOT
-		<div class="footer">&copy;2001-{$y} <a href="http://www.comsenz.com/">Comsenz Inc.</a>
+		<div class="footer">&copy;2001-{$y}, Tencent Cloud.
 		  <div>Multilingual version by <a href="http://codersclub.org/discuzx/">codersclub.org</a></div>
                 </div>
 	</div>
@@ -585,11 +585,6 @@ function config_edit() {
 function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
 	$ckey_length = 4;
-//vot Comment
-	// random key length value 0-32; 
-	// Add random key, the ciphertext can make no law, even if exactly the same text and key, encrypt the result will be different each time, increasing the difficulty is. 
-	// Value the greater the change in the law the greater the ciphertext, ciphertext change = 16, $ ckey_length th power 
-	// When this value is 0, do not generate random key
 
 	$key = md5($key ? $key : UC_KEY);
 	$keya = md5(substr($key, 0, 16));

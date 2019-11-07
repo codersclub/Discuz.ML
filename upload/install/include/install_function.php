@@ -584,9 +584,9 @@ function show_footer($quit = true) {
 
 /*vot*/	$y = date('Y'); echo <<<EOT
 	</div>
-	<div class="footer">&copy;2001 - {$y} <a href="http://www.comsenz.com/">Comsenz</a> Inc.,
-		&nbsp;&nbsp;&nbsp;
-		<b>MultiLingual</b> version by <a href="http://codersclub.org/discuzx/">CodersClub.org</a>
+	<div class="footer">&copy;2001-{$y}, Tencent Cloud.
+		,&nbsp;&nbsp;&nbsp;
+		<b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
 	</div>
 </div>
 </body>

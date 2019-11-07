@@ -93,7 +93,7 @@ function html_login_footer($halt = true) {
 	<td colspan="2" class="footer">
 		<div class="copyright">
 <!--vot-->	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> $version, Release $release</p>
-<!--vot-->	<p>&copy; 2001-{$year}, <a href="http://www.comsenz.com/" target="_blank">Comsenz</a> Inc.</p>
+<!--vot-->	<p>&copy; 2001-{$year}, Tencent Cloud.</p>
 <!--vot-->	<p><br><strong>MultiLingual version</strong> by <a href="http://codersclub.org/discuzx/" target="_blank">codersclub.org</a></p>
 		</div>
 	</td>

@@ -336,7 +336,7 @@ echo '<div class="clear"></div>';
 showtableheader('home_dev', 'fixpadding');
 showtablerow('', array('class="vtop td24 lineheight"'), array(
 	cplang('home_dev_copyright'),
-/*vot*/	'<span class="bold"><a href="http://www.comsenz.com" class="lightlink2" target="_blank">Beijing ups Technology Co., Ltd. Hong Sing Company</a></span>'
+/*vot*/	'<span class="bold">Tencent Cloud Computing (Beijing) Co., Ltd.</span>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont team"'), array(
 	cplang('home_dev_manager'),

@@ -40,7 +40,7 @@ available from
 +-----------------------------------------------------------+
 
 Official Discuz!X downloads:
-	http://download.comsenz.com/DiscuzX/
+	https://gitee.com/ComsenzDiscuz/DiscuzX.git
 
 Official Discuz! Forum:
-    http://www.discuz.net
+    http://www.dismall.com

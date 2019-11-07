@@ -10,16 +10,16 @@
 	<meta name="description" content="{if !empty($metadescription)}{echo dhtmlspecialchars($metadescription)} {/if}{if empty($nobbname)},$_G['setting']['bbname']{/if}" />
 	<meta name="generator" content="Discuz! $_G['setting']['version']" />
 	<meta name="author" content="Discuz! Team and Comsenz UI Team" />
-	<meta name="copyright" content="2001-2017 Comsenz Inc." />
+	<meta name="copyright" content="2001-2020 Tencent Cloud." />
 	<meta name="MSSmartTagsPreventParsing" content="True" />
 	<meta http-equiv="MSThemeCompatible" content="Yes" />
 	<base href="{$_G['siteurl']}" />
-	<link rel="shortcut icon" href="favicon.ico">
 	<!--{csstemplate}-->
-
+	<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]', JSPATH = '$_G[setting][jspath]', CSSPATH = '$_G[setting][csspath]', DYNAMICURL = '$_G[dynamicurl]';</script>
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
 <!--vot--><script type="text/javascript" src="{$_G[langurl]}lang_js.js?{VERHASH}"></script>
-<!--vot--><script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]', JSPATH = '$_G[setting][jspath]', CSSPATH = '$_G[setting][csspath]', DYNAMICURL = '$_G[dynamicurl]', LANG = '{DISCUZ_LANG}', LANGURL = '$_G[siteurl]source/language/{DISCUZ_LANG}/', LANGDIR = '{$_G[langdir]}', RTLSUFFIX = '{RTLSUFFIX}';</script>
+<!--vot--><script type="text/javascript">var LANG = '{DISCUZ_LANG}', LANGURL = '$_G[siteurl]source/language/{DISCUZ_LANG}/', LANGDIR = '{$_G[langdir]}', RTLSUFFIX = '{RTLSUFFIX}';</script>
+	<link rel="shortcut icon" href="favicon.ico">
 
 	<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
 	<!--{if empty($_GET['diy'])}--><!--{eval $_GET['diy'] = '';}--><!--{/if}-->
