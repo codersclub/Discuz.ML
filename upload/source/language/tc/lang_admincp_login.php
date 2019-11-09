@@ -30,7 +30,7 @@ $lang = array
 	'security_question_6' => '您最喜歡的餐館名稱',
 	'security_question_7' => '駕駛執照最後四位數字',
 
-	'login_tips' => 'Discuz! 是 <a href="http://www.tencent.com" target="_blank">騰訊</a> 旗下 <a href="http://www.comsenz.com" target="_blank">Comsenz</a> 公司推出的以社區為基礎的專業建站平台，幫助網站實現一站式服務。',
+	'login_tips' => 'Discuz! 是 <a href="http://cloud.tencent.com" target="_blank">騰訊雲</a>推出的以社區為基礎的專業建站平台，幫助網站實現一站式服務。',
 	'login_nosecques' => '您還沒有使用安全登錄，請在個人中心設置您的安全提問後，再訪問管理中心。您可以 <a href="forum.php?mod=memcp&action=profile&typeid=1" target="_blank">點擊這裡</a> 進入安全提問的設置。',
 
 	'login_cplock' => '您的管理面板已經鎖定! <br>請在<b> {ltime} </b>秒以後重新訪問管理中心',
