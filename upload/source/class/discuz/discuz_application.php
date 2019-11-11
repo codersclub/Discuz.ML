@@ -303,6 +303,9 @@ class discuz_application extends discuz_base{
 			// set language from cookies
 			if($this->var['cookie']['language']) {
 				$lng = strtolower($this->var['cookie']['language']);
+				if(!isset($this->var['config']['languages'][$lng])) {
+					$lng = '';
+				}
 //DEBUG
 //echo "Cookie lang=",$lng,"<br>";
 			}
