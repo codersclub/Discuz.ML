@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 
 if(!defined('DISCUZ_VERSION')) {
 	define('DISCUZ_VERSION', 'X3.4');
-	define('DISCUZ_RELEASE', '20191104');
+	define('DISCUZ_RELEASE', '20191117');
 	define('DISCUZ_FIXBUG', '34000000');
-	define('DISCUZ_ML_REVISION', '908');
+	define('DISCUZ_ML_REVISION', '932');
 }

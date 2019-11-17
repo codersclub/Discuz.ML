@@ -6,7 +6,7 @@ b17b7d08db108a14fc27d15bc35d1d48 *control/admin/app.php
 bb19aa03231cb8ffa29cbdb41449dfdf *control/admin/badword.php
 72a4339c80c4a1dea4a2e644fa783e53 *control/admin/cache.php
 1e56f9c812d87b392080b99ea584709a *control/admin/credit.php
-1e2c26c2efeececfe0b417526d21659e *control/admin/db.php
+d0c64f60c26ef0c902fdcfc5da6eae4c *control/admin/db.php
 f53e0119b7e5a24c2ac6dfa68913d631 *control/admin/domain.php
 9139008dd986bca1b8f9f203de4fde81 *control/admin/feed.php
 7f428fca60ab7411a4236400d556d377 *control/admin/frame.php
@@ -66,10 +66,10 @@ e7c9d9336c808d322ddd304d583d8523 *view/default/admin_cache.htm
 602038f1ec76c304dc5730597357fdce *view/default/admin_feed.htm
 b5c9e6b8ec715ae4441860cae44ed086 *view/default/admin_frame_header.htm
 757a1c584637b6d7f1421a9bc57e7230 *view/default/admin_frame_index.htm
-a7e706f246c293c8dd191a312220b292 *view/default/admin_frame_main.htm
-9aea9e5e3c60599142be93bbe50405be *view/default/admin_frame_menu.htm
+e7a595b3eca1d821d3b342f0b7010609 *view/default/admin_frame_main.htm
+6c81a029b8951f7314efc4087a7e2909 *view/default/admin_frame_menu.htm
 9b748ad443e19d99e6f64de338e7abae *view/default/admin_log.htm
-e3f0e65d7a1f9e89edeef4f83757b734 *view/default/admin_login.htm
+ec02ef9ba0f02f83ae4771bc8731e9a7 *view/default/admin_login.htm
 d85f6017aa35b5ef3d91cc28362dee17 *view/default/admin_mail.htm
 f58c17f54b74ad9685edc0a672694c69 *view/default/admin_note.htm
 d0f78db9349b7baef5483c12357896e1 *view/default/admin_pm_clear.htm
