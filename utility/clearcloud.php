@@ -42,4 +42,4 @@ foreach($plugins as $pluginid) {
 	}
 }
 
-/*vot*/ echo '<b>Clean the Cloud Service Utility</b>.<br>All the Cloud platform plug-ins have been downgraded to non-system-level plug-ins.<br>Please remove the clearcloud.php tool!'; //"云平台插件已降为非系统级插件，请删除本工具";
+/*vot*/ echo '<b>Clean the Cloud Service Utility</b>.<br>All the Cloud platform plug-ins have been downgraded to non-system-level plug-ins.<br>Please remove the clearcloud.php tool!';

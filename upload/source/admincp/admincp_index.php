@@ -14,7 +14,9 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 if(@file_exists(DISCUZ_ROOT.'./install/index.php') && !DISCUZ_DEBUG) {
 //vot	@unlink(DISCUZ_ROOT.'./install/index.php');
+	if(@file_exists(DISCUZ_ROOT.'./install/index.php')) {
 /*vot*/		echo '<div class="error">'.cplang('delete_install_index').'</div>';
+	}
 }
 
 @include_once DISCUZ_ROOT.'./source/discuz_version.php';
@@ -320,11 +322,11 @@ if(!empty($newversion['news'])){
     }
 } else {
     showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
-/*vot*/        '<a href="https://www.dismall.com/" target="_blank">If you not get the news yet, please log in to Discuz! Community to view.</a>',//'暂未获取到动态，请登录 Discuz! 社区 查看。',
+/*vot*/        '<a href="https://www.dismall.com/" target="_blank">If you not get the news yet, please log in to Discuz! Community to view.</a>',
         '',
     ));
 /*vot    showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
-        '<a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">Discuz! X3.4 latest version download</a>',//'Discuz! X3.4 最新版本下载',
+        '<a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">Discuz! X3.4 latest version download</a>',
         '',
     ));
 */

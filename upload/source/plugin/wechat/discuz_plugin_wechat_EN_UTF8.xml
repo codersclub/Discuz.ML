@@ -279,7 +279,7 @@ This post contains personal information, please don't share it]]></item>
 				<item id="wsq_sitename"><![CDATA[Micro-community name]]></item>
 				<item id="wsq_sitelogo"><![CDATA[Micro-community LOGO]]></item>
 				<item id="wsq_sitelogo_comment"><![CDATA[It is recommended to upload am image with size 200x200 pixels<br />{sitelogo}]]></item>
-				<item id="wsq_sitesummary"><![CDATA[Micro-сommunity Introduction]]></item>
+				<item id="wsq_sitesummary"><![CDATA[Micro-community Introduction]]></item>
 				<item id="wsq_siteurl"><![CDATA[Website URL]]></item>
 				<item id="wsq_siteurl_comment"><![CDATA[The URL address when the user accesses your website through WeChat. This URL must be in the public network environment.]]></item>
 				<item id="wsq_siteip"><![CDATA[Website IP]]></item>
