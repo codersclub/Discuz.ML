@@ -277,8 +277,8 @@ foreach ($newversion['newversion']['downlist'] as $key => $value){
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_check_newversion'),
 /*vot*/    ($newversion['newversion']['release'] ? ($newversion['newversion']['release'] != DISCUZ_RELEASE ? '<b style="color:red;">' : '').'Discuz! '.$newversion['newversion']['version'].' R'.$newversion['newversion']['release'].' '.strtoupper(CHARSET).' '.($newversion['newversion']['release'] != DISCUZ_RELEASE ? '</b>' : '') : '<a href="https://www.dismall.com/thread-73-1-1.html" target="_blank">Your server can not detect the new version, please click to view the new version.</a>').
-	  ' <a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ &#x5237;&#x65B0; ]</a>&nbsp;&nbsp;<br><br>'.
-/*vot*/    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;QQ&#x7FA4;&#xFF1A;'.$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" class="lightlink2" target="_blank">Download the latest version of the package</a> | QQ group: 732103690</span>')
+/*vot*/	  ' <a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ Refresh ]</a>&nbsp;&nbsp;<br><br>'.
+/*vot*/    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;QQ Group: '.$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" class="lightlink2" target="_blank">Download the latest version of the package</a> | QQ group: 732103690</span>')
 ));
 
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
@@ -396,12 +396,15 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 /*vot*/));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),
-/*vot*/	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
+/*vot*/
+	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
 	<a href="https://bitbucket.org/vot/discuz.ml" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
-	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! &#24212;&#29992;&#x8BA8;&#x8BBA;&#x533A;</a>,
-    <a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
+	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! Application Chinese Forum</a>,
+	<a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
+	<a href="http://www.discuz.net/redirect.php?service" class="lightlink2" target="_blank">Purchase authorization</a>,
 	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Discuz Chinese Forum</a>,
 	<a href="'.ADMINSCRIPT.'?action=cloudaddons" class="lightlink2" target="_blank">Discuz! Cloud Addons</a>
+	<a href="https://gitee.com/ComsenzDiscuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
 '));
 showtablefooter();
 
