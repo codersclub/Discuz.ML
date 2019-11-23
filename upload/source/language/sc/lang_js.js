@@ -734,6 +734,20 @@ var lng = {
 	'avatar_3_sizes'	: '以上是您头像的三种尺寸',//'These are three sizes of your avatar',
 	'avatar_upload_failed'	: '上传失败',//'Upload failed',
 
+//---------------------------
+//upload/static/js/webuploader/webuploader.min.js
+	'upload_button_error'	: '按钮指定错误',//'Press button assignment error',
+
+//---------------------------
+//upload/static/js/webuploader.js
+	'file_single_size_limit': '单个文件大小不得超过',//'Single file size must not exceed ',
+	'file_num_limit'	: '最多只能上传',//'Can only upload at most ',
+	'_files'		: '个！',//' files!',
+	'file_size_limit'	: '上传文件总大小超出',//'The total size of all uploaded files is exceeded ',
+	'file_invalid_type'	: '无效文件类型，请上传正确的文件格式！',//'Invalid file type, please upload the correct file format!',
+	'file_no_repeat'	: '请不要重复上传相同文件！',//'Please do not upload the same file repeatedly!',
+	'upload_error_try_again': '上传错误，请刷新重试！',//'Upload error, please refresh and try again! ',
+
 //-------------------------------------
 //	''	: '',//'',
 'fiction'	: '' // This key MUST BE THE LAST row!
