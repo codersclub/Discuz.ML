@@ -67,10 +67,9 @@ INSERT INTO pre_common_cron VALUES ('18','0','system','Daily users table optimiz
 INSERT INTO pre_common_cron VALUES ('19','1','system','Count today hot posts','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('20','1','system','Update Forum Last Post (related to Waterproof wall)','cron_security_cleanup_lastpost.php','1269746623','1269792000','-1','-1','7','0');
 -- INSERT INTO pre_common_cron VALUES ('4','1','system', 'Clean e-mail Statistics and birthday wishes daily', 'cron_birthday_daily.php','1269746627','1269792000','-1','-1','0','0');
---
-INSERT INTO pre_common_friendlink VALUES ('1','0','Official Forum','http://www.discuz.net','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
-INSERT INTO pre_common_friendlink VALUES ('2','4','VeryDz.com','http://www.verydz.com/','','','2');
-INSERT INTO pre_common_friendlink VALUES ('3','1','Comsenz','http://www.comsenz.com','','','2');
+
+INSERT INTO pre_common_friendlink VALUES ('1','0','Official Discuz!X Forum','http://www.discuz.net','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
+INSERT INTO pre_common_friendlink VALUES ('2','4','Discuz!X Application Center','https://addon.dismall.com/','','','2');
 
 
 
