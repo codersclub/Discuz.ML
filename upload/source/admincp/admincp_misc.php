@@ -693,7 +693,7 @@ EOT;
 	} else {
 
 		if($ids = dimplode($_GET['delete'])) {
-			DB::delete('common_word', "id IN ($ids) AND ('{$_G['adminid']}'='1' OR admin='{$_G['username']}')");
+			DB::delete('common_word', "id IN ($ids) AND ('{$_G['adminid']}'='1' OR `admin`='{$_G['username']}')");
 		}
 
 		if(is_array($_GET['find'])) {
@@ -708,7 +708,7 @@ EOT;
 					'find' => $_GET['find'][$id],
 					'replacement' => $_GET['replace'][$id],
 					'type' => $_GET['wordtype_select'][$id],
-				), DB::field("id", $id)." AND ('{$_G['adminid']}'='1' OR admin='{$_G['username']}')");
+				), DB::field("id", $id)." AND ('{$_G['adminid']}'='1' OR `admin`='{$_G['username']}')");
 			}
 		}
 
