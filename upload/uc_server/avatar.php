@@ -19,14 +19,17 @@ $random = isset($_GET['random']) ? $_GET['random'] : '';
 $type = isset($_GET['type']) ? $_GET['type'] : '';
 $check = isset($_GET['check_file_exists']) ? $_GET['check_file_exists'] : '';
 
+// ts=1, Indicates that 301 is not required, At the same time, the last modification time of the image file is added after the entire URL.
+$ts = isset($_GET['ts']) ? $_GET['ts'] : '';
+
 $avatar = './data/avatar/'.get_avatar($uid, $size, $type);
-if(file_exists(dirname(__FILE__).'/'.$avatar)) {
+$avatar_file = dirname(__FILE__).'/'.$avatar;
+if(file_exists($avatar_file)) {
 	if($check) {
 		echo 1;
 		exit;
 	}
-	$random = !empty($random) ? rand(1000, 9999) : '';
-	$avatar_url = empty($random) ? $avatar : $avatar.'?random='.$random;
+	$avatar_url = $avatar;
 } else {
 	if($check) {
 		echo 0;
@@ -34,12 +37,19 @@ if(file_exists(dirname(__FILE__).'/'.$avatar)) {
 	}
 	$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
 	$avatar_url = 'images/noavatar_'.$size.'.gif';
+	$avatar_file = dirname(__FILE__).'/'.$avatar_url;
 }
 
 if(empty($random)) {
-	header("HTTP/1.1 301 Moved Permanently");
-	header("Last-Modified:".date('r'));
-	header("Expires: ".date('r', time() + 86400));
+	if (empty($ts)) { // If you do not add a random number, do not add the last modification time
+		header("HTTP/1.1 301 Moved Permanently");
+		header("Last-Modified:".date('r'));
+		header("Expires: ".date('r', time() + 86400));	
+	} else { // If you do not add a random number, add the last modified time
+		$avatar_url .= '?ts='.filemtime($avatar_file);
+	}
+} else { // If adding a random number
+	$avatar_url .= '?random='.rand(1000, 9999);
 }
 
 header('Location: '.UC_API.'/'.$avatar_url);
