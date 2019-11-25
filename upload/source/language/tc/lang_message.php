@@ -236,6 +236,7 @@ $lang = array (
   'task_not_found' => '任務文件丟失，{taskclassname}',
   'task_not_underway' => '不是進行中的任務',
   'user_banned' => '抱歉，您的 IP 地址不在允許範圍內，或您的賬號被禁用，無法訪問本站點',
+  'user_banned_has_expiry' => '抱歉，您的賬號被禁用，暫無法訪問本站點。 <br />預計解禁時間：'.dgmdate($_G['member']['groupexpiry'], 'Y-m-d H:i:s'),
   'submit_seccode_invalid' => '抱歉，驗證碼填寫錯誤',
   'submit_invalid' => '抱歉，您的請求來路不正確或表單驗證串不符，無法提交',
   'word_banned' => '抱歉，您填寫的內容包含不良信息而無法提交',
