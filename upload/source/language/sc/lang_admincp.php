@@ -7115,21 +7115,25 @@ RepeatLimit 32
 	'change_language'	=> '更改语言',//'Change language',
 	'change_style'		=> '更改风格',//'Change style',
 
-	'language'				=> 'Languages',
-	'setting_language'			=> 'Language Settings',
-	'setting_language_tips'			=> '<li>Add/Modify your language packs</li>',
-	'setting_language_available'		=> 'Enable',
-	'setting_language_id'			=> 'Id',
-	'setting_language_order'		=> 'Order',
-	'setting_language_flag'			=> 'Flag',
-	'setting_language_name'			=> 'Name (National!)',
-	'setting_language_title'		=> 'Title (English!)',
-	'setting_language_dir'			=> 'Direction',
-	'setting_language_actions'		=> 'Actions',
+	'language'			=> 'Languages',
+	'setting_language'		=> 'Language Settings',
+	'setting_language_tips'		=> '<li>Add/Modify your language packs</li>',
+	'setting_language_available'	=> 'Enable',
+	'setting_language_id'		=> 'Id',
+	'setting_language_order'	=> 'Order',
+	'setting_language_flag'		=> 'Flag',
+	'setting_language_name'		=> 'Name (National!)',
+	'setting_language_title'	=> 'Title (English!)',
+	'setting_language_dir'		=> 'Direction',
+	'setting_language_actions'	=> 'Actions',
 
-	'nav_language'				=> 'Languages',
+	'nav_language'			=> 'Languages',
 
-	'delete_install_index'			=> 'Please delete install/index.php via FTP!',
+	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
+
+	'contributors'			=> 'Discuz! &#x5F00;&#x6E90;&#x8D21;&#x732E;&#x8005;',//'Discuz! Open Source Contributors',
+
+	'contributors_link'		=> 'Click Here To See Them',
 );
 
 //------------------------------------------------------

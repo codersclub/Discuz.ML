@@ -7128,6 +7128,10 @@ RepeatLimit 32
 	'nav_language'			=> 'Languages',
 
 	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
+
+	'contributors'			=> 'Discuz! 開源貢獻者',//'Discuz! Open Source Contributors',
+
+	'contributors_link'		=> 'Click Here To See Them',
 );
 
 //------------------------------------------------------
