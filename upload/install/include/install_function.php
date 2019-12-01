@@ -799,6 +799,11 @@ function initinput() {
 
 }
 
+/*vot REMOVED: (Use runquery instead!)
+function runucquery($sql, $tablepre) {
+*/
+
+
 function charcovert($string) {
 	if(!get_magic_quotes_gpc()) {
 		$string = str_replace('\'', '\\\'', $string);
@@ -851,7 +856,7 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 	$scheme = $matches['scheme'];
 	$host = $matches['host'];
 	$path = $matches['path'] ? $matches['path'].($matches['query'] ? '?'.$matches['query'] : '') : '/';
-	$port = !empty($matches['port']) ? $matches['port'] : $scheme == 'https' ? 443 : 80;
+/*vot*/	$port = !empty($matches['port']) ? $matches['port'] : ($scheme == 'https' ? 443 : 80);
 
 	if(function_exists('curl_init') && $allowcurl) {
 		$ch = curl_init();
