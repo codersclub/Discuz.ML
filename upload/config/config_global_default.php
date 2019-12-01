@@ -19,7 +19,7 @@ $_config = array();
  * $_config['db']['1']['dbhost'] = 'localhost'; // Server Address
  * $_config['db']['1']['dbuser'] = 'root'; // User name
  * $_config['db']['1']['dbpw'] = 'root';// Password
- * $_config['db']['1']['dbcharset'] = 'utf8';// Character Set
+ * $_config['db']['1']['dbcharset'] = 'utf8';// Character Set, 'utf8mb4' for MySQL >= 5.5.3
  * $_config['db']['1']['pconnect'] = '0';// Persistent connection
  * $_config['db']['1']['dbname'] = 'x1';// Database name
  * $_config['db']['1']['tablepre'] = 'pre_';// Table prefix
@@ -31,7 +31,7 @@ $_config = array();
 $_config['db'][1]['dbhost']  	= 'localhost';	// DB Server address
 $_config['db'][1]['dbuser']  	= 'root';	// DB User Name
 $_config['db'][1]['dbpw'] 		= 'root';	// DB User Password
-$_config['db'][1]['dbcharset'] 	= 'utf8';	// DB Charset
+$_config['db'][1]['dbcharset'] 	= 'utf8';	// DB Charset, 'utf8mb4' for MySQL >= 5.5.3
 $_config['db'][1]['pconnect'] 	= 0;		// Enable DB persistent connection
 $_config['db'][1]['dbname']  	= 'ultrax';	// DB Name
 $_config['db'][1]['tablepre'] 	= 'pre_';	// DB Table Prefix
@@ -42,7 +42,7 @@ $_config['db'][1]['tablepre'] 	= 'pre_';	// DB Table Prefix
  * $_config['db']['1']['slave']['1']['dbhost'] = 'localhost';
  * $_config['db']['1']['slave']['1']['dbuser'] = 'root';
  * $_config['db']['1']['slave']['1']['dbpw'] = 'root';
- * $_config['db']['1']['slave']['1']['dbcharset'] = 'utf8';//vot
+ * $_config['db']['1']['slave']['1']['dbcharset'] = 'utf8';//'utf8mb4' for MySQL >= 5.5.3
  * $_config['db']['1']['slave']['1']['pconnect'] = '0';
  * $_config['db']['1']['slave']['1']['dbname'] = 'x1';
  * $_config['db']['1']['slave']['1']['tablepre'] = 'pre_';

@@ -15,7 +15,7 @@ define('UC_DBHOST', 'localhost');		// UCenter Database Host
 define('UC_DBUSER', 'root');			// UCenter Database user name
 define('UC_DBPW', 'root');			// UCenter Database Password
 define('UC_DBNAME', 'ucenter');			// UCenter Database Name
-define('UC_DBCHARSET', 'utf8');			// UCenter Database character set
+define('UC_DBCHARSET', 'utf8');			// UCenter Database character set, 'utf8mb4' for MySQL >= 5.5.3
 define('UC_DBTABLEPRE', '`ucenter`.uc_');	// UCenter Database table prefix
 define('UC_DBCONNECT', '0');			// UCenter Database persistent connection 0 = off, 1 = On
 

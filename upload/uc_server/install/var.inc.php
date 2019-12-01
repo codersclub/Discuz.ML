@@ -31,7 +31,7 @@ $sqlfile = ROOT_PATH.'./install/uc.sql';
 $lockfile = ROOT_PATH.'./data/install.lock';
 
 define('CHARSET', 'UTF-8');
-define('DBCHARSET', 'utf8');
+define('DBCHARSET', 'utf8');//'utf8mb4' for MySQL >= 5.5.3
 
 define('ORIG_TABLEPRE', 'uc_');
 
