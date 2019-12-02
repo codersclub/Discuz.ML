@@ -5,7 +5,7 @@ CREATE TABLE uc_applications (
   `name` varchar(255) NOT NULL default '',
   `url` varchar(255) NOT NULL default '',
   `authkey` varchar(255) NOT NULL default '',
-  `ip` varchar(15) NOT NULL default '',
+  `ip` varchar(45) NOT NULL default '',
   `viewprourl` varchar(255) NOT NULL,
   `apifilename` varchar( 255 ) NOT NULL DEFAULT 'uc.php',
   `charset` varchar(16) NOT NULL default '',
@@ -26,7 +26,7 @@ CREATE TABLE uc_members (
   `email` varchar(255) NOT NULL DEFAULT '',
   `myid` varchar(255)  NOT NULL DEFAULT '',
   `myidkey` varchar(255) NOT NULL DEFAULT '',
-  `regip` varchar(15) NOT NULL DEFAULT '',
+  `regip` varchar(45) NOT NULL DEFAULT '',
   `regdate` int(11) unsigned NOT NULL DEFAULT '0',
   `lastloginip` int(11) NOT NULL DEFAULT '0',
   `lastlogintime` int(11) unsigned NOT NULL DEFAULT '0',
@@ -79,14 +79,14 @@ CREATE TABLE uc_sqlcache (
   `expiry` int(11) unsigned NOT NULL,
   PRIMARY KEY  (sqlid),
   KEY(expiry)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_settings;
 CREATE TABLE uc_settings (
   `k` varchar(32) NOT NULL default '',
   `v` text NOT NULL,
   PRIMARY KEY  (k)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 REPLACE INTO uc_settings(k, v) VALUES ('accessemail','');
 REPLACE INTO uc_settings(k, v) VALUES ('censoremail','');
@@ -125,7 +125,7 @@ CREATE TABLE uc_badwords (
   `findpattern` varchar(255) NOT NULL default '',
   PRIMARY KEY  (id),
   UNIQUE KEY `find` (`find`)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_notelist;
 CREATE TABLE uc_notelist (
@@ -141,15 +141,15 @@ CREATE TABLE uc_notelist (
   PRIMARY KEY  (noteid),
   KEY closed (closed,pri,noteid),
   KEY dateline (dateline)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_domains;
 CREATE TABLE uc_domains (
   `id` int(11) unsigned NOT NULL auto_increment,
   `domain` varchar(64) NOT NULL default '',
-  `ip` varchar(15) NOT NULL default '',
+  `ip` varchar(45) NOT NULL default '',
   PRIMARY KEY  (id)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_feeds;
 CREATE TABLE uc_feeds (
@@ -177,7 +177,7 @@ CREATE TABLE uc_feeds (
   `target_ids` varchar(255) NOT NULL default '',
   PRIMARY KEY  (feedid),
   KEY uid (uid,dateline)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_admins;
 CREATE TABLE uc_admins (
@@ -197,15 +197,15 @@ CREATE TABLE uc_admins (
   `allowadminlog` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (uid),
   UNIQUE KEY username (username)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_failedlogins;
 CREATE TABLE uc_failedlogins (
-  `ip` varchar(15) NOT NULL default '',
+  `ip` varchar(45) NOT NULL default '',
   `count` tinyint(1) unsigned NOT NULL default '0',
   `lastupdate` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (ip)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_protectedmembers;
 CREATE TABLE uc_protectedmembers (
@@ -215,14 +215,14 @@ CREATE TABLE uc_protectedmembers (
   `dateline` int(11) unsigned NOT NULL default '0',
   `admin` varchar(64) NOT NULL default '0',
   UNIQUE KEY(username, appid)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_mergemembers;
 CREATE TABLE uc_mergemembers (
   `appid` int(11) unsigned NOT NULL,
   `username` varchar(64) NOT NULL,
   PRIMARY KEY  (appid,username)
-) TYPE=InnoDB;
+) Type=InnoDB;
 
 DROP TABLE IF EXISTS uc_vars;
 CREATE TABLE uc_vars (
