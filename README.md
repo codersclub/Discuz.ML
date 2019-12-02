@@ -1,13 +1,22 @@
 ### **Introduction**
 
-Discuz! ML v.3.4 (MultiLingual)
+Discuz! ML v.3.5 (MultiLingual)
 
 Based on Discuz! X, http://www.discuz.net
+
+### **V3.5 branch**
+
+This branch is used for the following tasks:
+
+* UTF8/UTF8MB4 full support
+* InnoDB support
+* Clean up PHP deprecated methods
+* Partially support for IPv6
 
 Discuz! ML repository: https://bitbucket.org/vot/discuz.ml
 
 ### **Statement**
-You may fork the site code, but without permission ** Prohibited ** On the whole or any part of the product to develop any derivative, modified or third party version for use ** Redistribution **
+You can fork the site code, but it is **Prohibited** to **redistribute** of any derivative, modified or third-party dveloped version based on the whole or any part of this product without a permission.
 
 ### **Related Sites**
  
