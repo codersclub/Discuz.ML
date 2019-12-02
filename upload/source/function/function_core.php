@@ -388,7 +388,7 @@ function random($length, $numeric = 0) {
 	}
 	$max = strlen($seed) - 1;
 	for($i = 0; $i < $length; $i++) {
-		$hash .= $seed{mt_rand(0, $max)};
+		$hash .= $seed[mt_rand(0, $max)];
 	}
 	return $hash;
 }
@@ -846,82 +846,14 @@ function dstrlen($str) {
 		return strlen($str);
 	}
 /*vot*/	return mb_strlen($str);
-	$count = 0;
-	for($i = 0; $i < strlen($str); $i++){
-		$value = ord($str[$i]);
-		if($value > 127) {
-			$count++;
-			if($value >= 192 && $value <= 223) $i++;
-			elseif($value >= 224 && $value <= 239) $i = $i + 2;
-			elseif($value >= 240 && $value <= 247) $i = $i + 3;
-	    	}
-    		$count++;
-	}
-	return $count;
 }
 
 function cutstr($string, $length, $dot = ' ...') {
 /*vot*/	if(dstrlen($string) <= $length) {
 		return $string;
 	}
-//*vot*/	return mb_substr($string);
 
-	$pre = chr(1);
-	$end = chr(1);
-	$string = str_replace(array('&amp;', '&quot;', '&lt;', '&gt;'), array($pre.'&'.$end, $pre.'"'.$end, $pre.'<'.$end, $pre.'>'.$end), $string);
-
-	$strcut = '';
-	if(strtolower(CHARSET) == 'utf-8') {
-
-		$n = $tn = $noc = 0;
-		while($n < strlen($string)) {
-
-			$t = ord($string[$n]);
-			if($t == 9 || $t == 10 || (32 <= $t && $t <= 126)) {
-				$tn = 1; $n++; $noc++;
-			} elseif(194 <= $t && $t <= 223) {
-				$tn = 2; $n += 2; $noc += 2;
-			} elseif(224 <= $t && $t <= 239) {
-				$tn = 3; $n += 3; $noc += 2;
-			} elseif(240 <= $t && $t <= 247) {
-				$tn = 4; $n += 4; $noc += 2;
-			} elseif(248 <= $t && $t <= 251) {
-				$tn = 5; $n += 5; $noc += 2;
-			} elseif($t == 252 || $t == 253) {
-				$tn = 6; $n += 6; $noc += 2;
-			} else {
-				$n++;
-			}
-
-			if($noc >= $length) {
-				break;
-			}
-
-		}
-		if($noc > $length) {
-			$n -= $tn;
-		}
-
-		$strcut = substr($string, 0, $n);
-
-	} else {
-		$_length = $length - 1;
-		for($i = 0; $i < $length; $i++) {
-			if(ord($string[$i]) <= 127) {
-				$strcut .= $string[$i];
-			} else if($i < $_length) {
-				$strcut .= $string[$i].$string[++$i];
-			}
-		}
-	}
-
-	$strcut = str_replace(array($pre.'&'.$end, $pre.'"'.$end, $pre.'<'.$end, $pre.'>'.$end), array('&amp;', '&quot;', '&lt;', '&gt;'), $strcut);
-
-	$pos = strrpos($strcut, chr(1));
-	if($pos !== false) {
-		$strcut = substr($strcut,0,$pos);
-	}
-	return $strcut.$dot;
+/*vot*/	return mb_substr($string);
 }
 
 function dstripslashes($string) {
@@ -1471,7 +1403,7 @@ function space_merge(&$values, $tablename, $isarchive = false) {
 			if(($_G[$var] = C::t('common_member_'.$tablename.$ext)->fetch($uid)) !== false) {
 				if($tablename == 'field_home') {
 					$_G['setting']['privacy'] = empty($_G['setting']['privacy']) ? array() : (is_array($_G['setting']['privacy']) ? $_G['setting']['privacy'] : dunserialize($_G['setting']['privacy']));
-					$_G[$var]['privacy'] = empty($_G[$var]['privacy'])? array() : is_array($_G[$var]['privacy']) ? $_G[$var]['privacy'] : dunserialize($_G[$var]['privacy']);
+					$_G[$var]['privacy'] = empty($_G[$var]['privacy']) ? array() : (is_array($_G[$var]['privacy']) ? $_G[$var]['privacy'] : dunserialize($_G[$var]['privacy']));
 					foreach (array('feed','view','profile') as $pkey) {
 						if(empty($_G[$var]['privacy'][$pkey]) && !isset($_G[$var]['privacy'][$pkey])) {
 							$_G[$var]['privacy'][$pkey] = isset($_G['setting']['privacy'][$pkey]) ? $_G['setting']['privacy'][$pkey] : array();
@@ -1912,7 +1844,7 @@ function getexpiration() {
 }
 
 function return_bytes($val) {
-	$last = strtolower($val{strlen($val)-1});
+	$last = strtolower($val[strlen($val)-1]);
 	if (!is_numeric($val)) {
 		$val = substr(trim($val), 0, -1);
 	}
@@ -1960,7 +1892,7 @@ function getattachtablebyaid($aid) {
 
 function getattachtableid($tid) {
 	$tid = (string)$tid;
-	return intval($tid{strlen($tid)-1});
+	return intval($tid[strlen($tid)-1]);
 }
 
 function getattachtablebytid($tid) {
@@ -2112,12 +2044,11 @@ function currentlang() {
 		return '';
 	}
 }
-if(PHP_VERSION < '7.0.0') {
-	function dpreg_replace($pattern, $replacement, $subject, $limit = -1, &$count) {
+
+function dpreg_replace($pattern, $replacement, $subject, $limit = -1, &$count) {
+	if(PHP_VERSION < '7.0.0') {
 		return preg_replace($pattern, $replacement, $subject, $limit, $count);
-	}
-} else {
-	function dpreg_replace($pattern, $replacement, $subject, $limit = -1, &$count) {
+	} else {
 		require_once libfile('function/preg');
 		return _dpreg_replace($pattern, $replacement, $subject, $limit, $count);
 	}
