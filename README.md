@@ -6,6 +6,10 @@ Based on Discuz! X, http://www.discuz.net
 
 ### **V3.5 branch**
 
+**WARNING:**
+
+It is not recommended to download this branch code for ordinary users
+
 This branch is used for the following tasks:
 
 * UTF8/UTF8MB4 full support
