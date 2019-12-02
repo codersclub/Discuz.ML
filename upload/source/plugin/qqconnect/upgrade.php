@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS pre_connect_postfeedlog (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (flid),
   UNIQUE KEY pid (pid)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_connect_tthreadlog (
   twid varchar(16) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS pre_connect_tthreadlog (
   PRIMARY KEY (twid),
   KEY nexttime (tid,nexttime),
   KEY updatetime (tid,updatetime)
-) TYPE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
   `conopenid` varchar(255) NOT NULL default '',
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
   `conqqnick` varchar(255) NOT NULL default '',
   `conuintoken` char(32) NOT NULL DEFAULT '',
   PRIMARY KEY (conopenid)
-) TYPE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
   `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Task ID',
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
   PRIMARY KEY (`taskid`),
   KEY `openid` (`openid`),
   KEY `status` (`status`)
-) TYPE=MyISAM COMMENT='Network Disk Download Task';
+) ENGINE=INNODB COMMENT='Network Disk Download Task';
 
 EOF;
 

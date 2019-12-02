@@ -47,7 +47,7 @@ class table_common_remote_port extends discuz_table {
 			$porttable = str_replace("\r", "\n", str_replace(' `'.$orig_tablepre, ' `'.$tablepre, $porttable));
 
 			$type = strtoupper(preg_replace("/^\s*CREATE TABLE\s+.+\s+\(.+?\).*(ENGINE|TYPE)\s*=\s*([a-z]+?).*$/isU", "\\2", $porttable));
-			$type = in_array($type, array('MYISAM', 'HEAP', 'MEMORY')) ? $type : 'MYISAM';
+			$type = in_array($type, array('INNODB', 'MYISAM', 'HEAP', 'MEMORY')) ? $type : 'INNODB';
 			$dbver = DB::$db->version();
 /*vot*/			$porttable = preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $porttable).(v_compare($dbver, '4.1') > 0 ? " ENGINE=$type DEFAULT CHARSET=".$dbcharset : " TYPE=$type");
 			DB::query($porttable);

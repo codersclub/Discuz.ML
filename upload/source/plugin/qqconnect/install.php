@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS pre_common_member_connect (
   PRIMARY KEY  (`uid`),
   KEY `conuin` (`conuin`),
   KEY `conopenid` (`conopenid`)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_connect_feedlog (
   flid int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS pre_connect_feedlog (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (flid),
   UNIQUE KEY tid (tid)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_connect_postfeedlog (
   flid int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS pre_connect_postfeedlog (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (flid),
   UNIQUE KEY pid (pid)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_connect_memberbindlog (
   mblid int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS pre_connect_memberbindlog (
   KEY uid (uid),
   KEY uin (uin),
   KEY dateline (dateline)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_connect_tthreadlog (
   twid varchar(16) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS pre_connect_tthreadlog (
   PRIMARY KEY (twid),
   KEY nexttime (tid,nexttime),
   KEY updatetime (tid,updatetime)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_common_uin_black (
   uin varchar(255) NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS pre_common_uin_black (
   dateline int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (uin),
   UNIQUE KEY uid (uid)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
   `conopenid` varchar(255) NOT NULL default '',
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
   `conqqnick` varchar(255) NOT NULL default '',
   `conuintoken` char(32) NOT NULL DEFAULT '',
   PRIMARY KEY (conopenid)
-) ENGINE=MyISAM;
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
   `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Task ID',
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
   PRIMARY KEY (`taskid`),
   KEY `openid` (`openid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM COMMENT='Network Disk Download Task';
+) ENGINE=INNODB COMMENT='Network Disk Download Task';
 
 
 REPLACE INTO pre_common_setting VALUES ('regconnect', '1');
