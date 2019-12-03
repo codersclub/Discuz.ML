@@ -26,7 +26,7 @@ $lockfile = ROOT_PATH.'./data/install.lock';
 @include ROOT_PATH.CONFIG;
 
 define('CHARSET', 'utf-8');
-define('DBCHARSET', 'utf8');
+define('DBCHARSET', 'utf8'); // 'utf8mb4' for MySQL v.5.5.3+
 
 define('ORIG_TABLEPRE', 'pre_');
 
@@ -78,6 +78,7 @@ $env_items = array
 	'curl' => array('r' => 'notset', 'b' => 'enable'),
 	'opcache' => array('r' => 'notset', 'b' => 'enable'),
 	'diskspace' => array('r' => 30 * 1048576, 'b' => 'notset'),
+	'filter_var' => array('f' => 'filter_var', 'r' => 'enable', 'b' => 'enable'),
 /*vot*/	'mbstring' => array('r' => 'support', 'b' => 'support'),
 );
 
