@@ -160,10 +160,7 @@ CREATE TABLE pre_common_advertisement_custom (
 DROP TABLE IF EXISTS pre_common_banned;
 CREATE TABLE pre_common_banned (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `ip1` smallint(3) NOT NULL DEFAULT '0',
-  `ip2` smallint(3) NOT NULL DEFAULT '0',
-  `ip3` smallint(3) NOT NULL DEFAULT '0',
-  `ip4` smallint(3) NOT NULL DEFAULT '0',
+  `ip` varchar(45) NOT NULL DEFAULT '',
   `admin` varchar(255) NOT NULL DEFAULT '',
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
   `expiration` int(11) unsigned NOT NULL DEFAULT '0',
