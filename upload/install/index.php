@@ -16,16 +16,10 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
 /*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(dirname(__FILE__))).'/');
-//DEBUG //echo "root_path=",ROOT_PATH,"<br>";
-$language = '';
 
 require ROOT_PATH.'./source/discuz_version.php';
 require ROOT_PATH.'./install/include/install_var.php';
-if(function_exists('mysql_connect')) {
-	require ROOT_PATH.'./install/include/install_mysql.php';
-} else {
-	require ROOT_PATH.'./install/include/install_mysqli.php';
-}
+require ROOT_PATH.'./install/include/install_mysqli.php';
 require ROOT_PATH.'./install/include/install_function.php';
 //vot: Load the install language
 /*vot*/ $language = getgpc('language');
@@ -69,13 +63,6 @@ if(in_array($method, array('app_reg', 'ext_info'))) {
 	$default_ucapi = $bbserver.'/ucenter';
 	$default_appurl = $bbserver.substr($PHP_SELF, 0, strrpos($PHP_SELF, '/') - 8);
 }
-
-//DEBUG
-//echo '<pre>';
-//echo 'step=', $step, "\n";
-//echo 'method=', $method, "\n";
-//echo 'language=', $language, "\n";
-//echo '<pre>';
 
 if($method == 'show_license') {
     //vot: Select the install language
@@ -318,11 +305,10 @@ if($method == 'show_license') {
 			show_msg('dbname_invalid', $dbname, 0);
 		} else {
 			if (strpos($dbhost, ":") === FALSE) $dbhost .= ":3306";
-			$mysqlmode = function_exists("mysql_connect") ? 'mysql' : 'mysqli';
-			$link = ($mysqlmode == 'mysql') ? @mysql_connect($dbhost, $dbuser, $dbpw) : new mysqli($dbhost, $dbuser, $dbpw);
-			if(!$link) {
-				$errno = ($mysqlmode == 'mysql') ? mysql_errno($link) : $link->errno;
-				$error = ($mysqlmode == 'mysql') ? mysql_error($link) : $link->error;
+			$link = new mysqli($dbhost, $dbuser, $dbpw);
+			if($link->errno) {
+				$errno = $link->errno;
+				$error = $link->error;
 				if($errno == 1045) {
 					show_msg('database_errno_1045', $error, 0);
 				} elseif($errno == 2003) {
@@ -331,29 +317,17 @@ if($method == 'show_license') {
 					show_msg('database_connect_error', $error, 0);
 				}
 			}
-			$mysql_version = ($mysqlmode == 'mysql') ? mysql_get_server_info() : $link->server_info;
+			$mysql_version = $link->server_info;
 /*vot*/			if(v_compare($mysql_version, '4.1') > 0) {
-				if($mysqlmode == 'mysql') {
-					mysql_query("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET ".DBCHARSET, $link);
-				} else {
-					$link->query("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET ".DBCHARSET);
-				}
+				$link->query("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET ".DBCHARSET);
 			} else {
-				if($mysqlmode == 'mysql') {
-					mysql_query("CREATE DATABASE IF NOT EXISTS `$dbname`", $link);
-				} else {
-					$link->query("CREATE DATABASE IF NOT EXISTS `$dbname`");
-				}
+				$link->query("CREATE DATABASE IF NOT EXISTS `$dbname`");
 			}
 
-			if(($mysqlmode == 'mysql') ? mysql_errno($link) : $link->errno) {
-				show_msg('database_errno_1044', ($mysqlmode == 'mysql') ? mysql_error($link) : $link->error, 0);
+			if($link->errno) {
+				show_msg('database_errno_1044', $link->error, 0);
 			}
-			if($mysqlmode == 'mysql') {
-				mysql_close($link);
-			} else {
-				$link->close();
-			}
+			$link->close();
 		}
 
 		if(strpos($tablepre, '.') !== false || intval($tablepre{0})) {
@@ -494,7 +468,6 @@ if($method == 'show_license') {
 		$data = addslashes(serialize($userstats));
 		$db->query("REPLACE INTO {$tablepre}common_syscache (cname, ctype, dateline, data) VALUES ('userstats', '$ctype', '".time()."', '$data')");
 
-		touch($lockfile);
 		VIEW_OFF && show_msg('initdbresult_succ');
 
 /*vot*/		showjsmessage('completed');
