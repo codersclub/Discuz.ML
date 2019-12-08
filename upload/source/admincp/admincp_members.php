@@ -2280,7 +2280,7 @@ EOF;
 		} else {
 			$iplist = explode("\n", $_GET['inputipbanlist']);
 			foreach($iplist as $banip) {
-				//TODO: Check if you have permissions to set CIRD and verify whether each IP and CIDR is legal
+				//TODO: Check if you have permission to set CIDR during batch import and verify that each IP and CIDR segment is legal
 				if(strpos($banip, ',') !== false) {
 					list($banipaddr, $expiration) = explode(',', $banip);
 					$expiration = strtotime($expiration);
