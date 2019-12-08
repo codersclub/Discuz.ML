@@ -336,6 +336,7 @@ $lang = array (
   'members_ipban_illegal' => '操作錯誤！請不要禁止您自己的 IP',
   'members_ipban_cidrerror' => '操作錯誤！您輸入的CIDR地址不合法',
   'members_ipban_invalid' => '新的禁止 IP 已經存在於列表中',
+  'members_ipban_formaterror' => '操作錯誤！您輸入的IP地址不合法',
   'members_ipban_succeed' => 'IP 禁止列表更新成功 ',
   'members_profile_edit_title_empty_error' => '欄目標題不能為空',
   'members_stat_do_stepstat' => '更新統計數據中({i} / {t})，請稍候...',

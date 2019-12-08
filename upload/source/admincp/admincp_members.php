@@ -2219,30 +2219,34 @@ EOF;
 			}
 
 			if($_GET['ipnew'] != '') {
-
-				if(strpos($_GET['ipnew'], '/') !== false) {
-					//Todo: Detailed settings of CIDR address
-					//Since you entered from the background, let me believe it
-					$explode = explode('/', $_GET['ipnew']);
-					if($explode[1] <= 0) {
+				$newip = $_GET['ipnew'];
+				if(strpos($newip, '/') !== false) {
+					list($newip, $cidr) = explode('/', $newip);
+					if($cidr <= 0) {
 						cpmsg('members_ipban_cidrerror', '', 'error');
-					} else {
-						$cidr = $explode[1];
 					}
 				} else {
 					$cidr = false;
 				}
-
+				// Converting possible IPv6 expressions back to real IP format
+				$newip = ip::to_ip($newip);
+				if (!ip::validate_ip($newip)) {
+					cpmsg('members_ipban_formaterror', '', 'error');
+				}
+				if ($cidr) {
+					$newip .= "/" . $cidr;
+				}
+				
 				if($_G['adminid'] != 1 && !$cidr) {
 					cpmsg('members_ipban_nopermission', '', 'error');
 				}
 
-				if($_G['clientip'] == $_GET['ipnew']) {
+				if($_G['clientip'] == $newip) {
 					cpmsg('members_ipban_illegal', '', 'error');
 				}
 
 				foreach(C::t('common_banned')->fetch_all_order_dateline() as $banned) {
-					if ($banned['ip'] == $_GET['ipnew']) {
+					if ($banned['ip'] == $newip) {
 						cpmsg('members_ipban_invalid', '', 'error');
 					}
 				}
@@ -2250,7 +2254,7 @@ EOF;
 				$expiration = TIMESTAMP + $_GET['validitynew'] * 86400;
 
 				$data = array(
-					'ip' => $_GET['ipnew'],
+					'ip' => $newip,
 					'admin' => $_G['username'],
 					'dateline' => $_G['timestamp'],
 					'expiration' => $expiration,
