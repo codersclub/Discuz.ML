@@ -2297,7 +2297,6 @@ EOF;
 					continue;
 				}
 
-				C::app()->session->update_by_ipban($banipaddr);
 				$data = array(
 					'ip' => $banipaddr,
 					'admin' => $_G['username'],
