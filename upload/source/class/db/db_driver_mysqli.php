@@ -223,6 +223,29 @@ class db_driver_mysqli
 		throw new DbException($message, $code, $sql);
 	}
 
+	function begin_transaction() {
+/*vot*/	if (v_compare(PHP_VERSION, '5.5') < 0) {
+			return $this->curlink->autocommit(false);
+		}
+		return $this->curlink->begin_transaction();
+	}
+
+	function commit() {
+		$cr = $this->curlink->commit();
+/*vot*/	if (v_compare(PHP_VERSION, '5.5') < 0) {
+			$this->curlink->autocommit(true);
+		}
+		return $cr;
+	}
+
+	function rollback() {
+		$rr = $this->curlink->rollback();
+/*vot*/	if (v_compare(PHP_VERSION, '5.5') < 0) {
+			$this->curlink->autocommit(true);
+		}
+		return $cr;
+	}
+
 }
 
 ?>

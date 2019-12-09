@@ -2684,7 +2684,7 @@ CREATE TABLE pre_forum_post (
   `tags` varchar(255) NOT NULL DEFAULT '0',
   `comment` tinyint(1) NOT NULL DEFAULT '0',
   `replycredit` int(11) NOT NULL DEFAULT '0',
-  `position` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `position` int(11) unsigned NOT NULL,
   PRIMARY KEY (tid,position),
   UNIQUE KEY pid (pid),
   KEY fid (fid),
