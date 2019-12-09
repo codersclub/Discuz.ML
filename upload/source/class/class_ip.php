@@ -106,6 +106,26 @@ class ip {
 		return true;
 	}
 
+	public static function check_ip4($requestIp, $ip)
+	{
+		if (false !== strpos($ip, '/')) {
+			list($address, $netmask) = explode('/', $ip, 2);
+			if ('0' === $netmask) {
+				return false;
+			}
+			if ($netmask < 0 || $netmask > 32) {
+				return false;
+			}
+		} else {
+			$address = $ip;
+			$netmask = 32;
+		}
+		if (false === ip2long($address)) {
+			return false;
+		}
+		return 0 === substr_compare(sprintf('%032b', ip2long($requestIp)), sprintf('%032b', ip2long($address)), 0, $netmask);
+	}
+
 	public static function convert($ip) {
 		global $_G;
 		if(!self::validate_ip($ip)) {
@@ -145,7 +165,7 @@ class ip {
 			return true;
 		}
 		foreach(C::t('common_banned')->fetch_all_order_dateline() as $banned) {
-			if (cidr::match($ip, $banned['ip'])) {
+			if (self::check_ip($ip, $banned['ip'])) {
 				return true;
 			}
 		}
