@@ -1456,7 +1456,7 @@ function dreferer($default = '') {
 	}
 
 	$reurl = parse_url($_G['referer']);
-/*vot*/	$hostwithport = $reurl['host'].':'.$reurl['port'];//$_SERVER['HTTP_HOST'] Can contain port number
+	$hostwithport = $reurl['host'] . (isset($reurl['port']) ? ':' . $reurl['port'] : '');
 
 	if(!$reurl || (isset($reurl['scheme']) && !in_array(strtolower($reurl['scheme']), array('http', 'https')))) {
 		$_G['referer'] = '';
