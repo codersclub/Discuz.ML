@@ -7137,6 +7137,8 @@ RepeatLimit 32
 	'contributors'			=> 'Discuz! &#x5F00;&#x6E90;&#x8D21;&#x732E;&#x8005;',//'Discuz! Open Source Contributors',
 
 	'contributors_link'		=> 'Click Here To See Them',
+
+	'detect_environment'		=> '运行环境检测',//'Detect operating environment',
 );
 
 //------------------------------------------------------

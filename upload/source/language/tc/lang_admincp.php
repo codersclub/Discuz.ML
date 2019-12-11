@@ -7116,25 +7116,27 @@ RepeatLimit 32
 	'change_language'	=> '更改語言',//'Change language',
 	'change_style'		=> '更改風格',//'Change style',
 
-	'language'			=> 'Languages',
-	'setting_language'		=> 'Language Settings',
-	'setting_language_tips'		=> '<li>Add/Modify your language packs</li>',
-	'setting_language_available'	=> 'Enable',
+	'language'			=> '語言能力',
+	'setting_language'		=> '語言設定',
+	'setting_language_tips'		=> '<li>添加/修改您的語言包</li>',
+	'setting_language_available'	=> '啟用',
 	'setting_language_id'		=> 'Id',
-	'setting_language_order'	=> 'Order',
-	'setting_language_flag'		=> 'Flag',
-	'setting_language_name'		=> 'Name (National!)',
-	'setting_language_title'	=> 'Title (English!)',
-	'setting_language_dir'		=> 'Direction',
-	'setting_language_actions'	=> 'Actions',
+	'setting_language_order'	=> '訂購',
+	'setting_language_flag'		=> '旗',
+	'setting_language_name'		=> '名稱（全國！）',
+	'setting_language_title'	=> '標題（英語！）',
+	'setting_language_dir'		=> '方向',
+	'setting_language_actions'	=> '動作',
 
-	'nav_language'			=> 'Languages',
+	'nav_language'			=> '語言能力',
 
-	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
+	'delete_install_index'		=> '請通過FTP刪除install/index.php!',
 
 	'contributors'			=> 'Discuz! 開源貢獻者',//'Discuz! Open Source Contributors',
 
-	'contributors_link'		=> 'Click Here To See Them',
+	'contributors_link'		=> '點擊此處查看它們',
+
+	'detect_environment'		=> '運行環境檢測',
 );
 
 //------------------------------------------------------

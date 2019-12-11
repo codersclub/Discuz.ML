@@ -227,7 +227,7 @@ if(isfounder()) {
 	}
 }
 
-showtableheader('&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x68C0;&#x6D4B;', 'fixpadding');
+/*vot*/ showtableheader(cplang('detect_environment');
 $env_ok = true;
 $now_ver = array('PHP' => constant('PHP_VERSION'), 'MySQL' => helper_dbtool::dbversion(), 'gethostbyname' => function_exists('gethostbyname'), 'file_get_contents' => function_exists('file_get_contents'), 'xml_parser_create' => function_exists('xml_parser_create'),
 'FileSock Function' => (function_exists('fsockopen') || function_exists('pfsockopen') || function_exists('stream_socket_client') || function_exists('curl_init')), 'GD' => (function_exists('gd_info') ? preg_replace('/[^0-9.]+/', '', gd_info()['GD Version']) : false));
