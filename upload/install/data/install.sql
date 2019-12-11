@@ -166,7 +166,8 @@ CREATE TABLE pre_common_banned (
   `admin` varchar(255) NOT NULL DEFAULT '',
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
   `expiration` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  KEY iprange (lowerip, upperip)
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_block;
