@@ -450,6 +450,7 @@ $lang = array (
   'setting_extcredits_must_available' => '您需要開啟至少一種擴展積分',
   'uc_database_connect_error' => '連接用戶中心數據庫服務器失敗檢查設置',
   'uc_config_write_error' => '配置文件寫入失敗，請檢查設置',
+  'uc_config_appid_error' => 'UCenter 應用 ID 必須為數字，請檢查設置',
   'uc_config_load_data_local_infile_error' => '服務器開啟了 MySQL LOAD DATA LOCAL IN FILE 功能，為避免可能發生的安全威脅，不允許在線編輯 UCenter 數據庫服務器地址，如需修改請編輯 config/config_ucenter.php 內 UC_DBHOST 常量',
   'setting_ipaccess_invalid' => '操作錯誤！您必須將自己的 IP 加入到允許訪問站點的 IP 列表中',
   'setting_adminipaccess_invalid' => '操作錯誤！您必須將自己的 IP 加入到允許訪問後台的 IP 列表中',
