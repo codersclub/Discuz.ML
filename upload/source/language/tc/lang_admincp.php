@@ -16,6 +16,9 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 
+	'req_ver_too_low' => '您當前系統環境內的 {req} 版本 ({now_ver}) 過低，程序無法按預期正常運行。我們強烈建議您升級到 {sug_ver} 版本，程序正常運行最低要求為 {req_ver} 版本。',
+	'req_not_found' => '您當前系統環境內未安裝或開啟 {req} 模塊，程序無法按預期正常運行。我們強烈建議您安裝或開啟此模塊，以滿足程序正常運行的最低要求。',
+	'req_ok' => '您當前系統環境適合當前版本的 Discuz! {version}。',
 	'subscribe_comsenz_email' => '填寫您的郵件地址，訂閱 Discuz! 官方產品動態、安全提醒、官方新聞',
 	'scan_discuz_qrcode' => '<img src="source/plugin/wechat/image/discuz_qr.jpg" align="left" width="80" /><br />掃瞄關注Discuz!官方微信<br /><br />獲取官方最新動態',
 	'reglinkname_default' => '註冊',
