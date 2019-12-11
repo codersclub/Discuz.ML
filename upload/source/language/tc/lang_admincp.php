@@ -16,6 +16,9 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 
+	'req_ver_too_low' => '您當前系統環境內的 {req} 版本 ({now_ver}) 過低，程序無法按預期正常運行。我們強烈建議您升級到 {sug_ver} 版本，程序正常運行最低要求為 {req_ver} 版本。',
+	'req_not_found' => '您當前系統環境內未安裝或開啟 {req} 模塊，程序無法按預期正常運行。我們強烈建議您安裝或開啟此模塊，以滿足程序正常運行的最低要求。',
+	'req_ok' => '您當前系統環境適合當前版本的 Discuz! {version}。',
 	'subscribe_comsenz_email' => '填寫您的郵件地址，訂閱 Discuz! 官方產品動態、安全提醒、官方新聞',
 	'scan_discuz_qrcode' => '<img src="source/plugin/wechat/image/discuz_qr.jpg" align="left" width="80" /><br />掃瞄關注Discuz!官方微信<br /><br />獲取官方最新動態',
 	'reglinkname_default' => '註冊',
@@ -3427,6 +3430,7 @@ $lang = array
 	'members_edit_password_comment' => '如果不更改密碼此處請留空',
 	'members_edit_clearquestion' => '清除用戶安全提問',
 	'members_edit_status' => '鎖定當前用戶',
+	'members_edit_freeze' => '凍結當前用戶',
 	'members_edit_clearquestion_comment' => '選擇「是」將清除用戶安全提問，該用戶將不需要回答安全提問即可登錄；選擇「否」為不改變用戶的安全提問設置',
 	'members_edit_nickname' => '暱稱',
 	'members_edit_gender' => '性別',
@@ -7113,25 +7117,27 @@ RepeatLimit 32
 	'change_language'	=> '更改語言',//'Change language',
 	'change_style'		=> '更改風格',//'Change style',
 
-	'language'			=> 'Languages',
-	'setting_language'		=> 'Language Settings',
-	'setting_language_tips'		=> '<li>Add/Modify your language packs</li>',
-	'setting_language_available'	=> 'Enable',
+	'language'			=> '語言能力',
+	'setting_language'		=> '語言設定',
+	'setting_language_tips'		=> '<li>添加/修改您的語言包</li>',
+	'setting_language_available'	=> '啟用',
 	'setting_language_id'		=> 'Id',
-	'setting_language_order'	=> 'Order',
-	'setting_language_flag'		=> 'Flag',
-	'setting_language_name'		=> 'Name (National!)',
-	'setting_language_title'	=> 'Title (English!)',
-	'setting_language_dir'		=> 'Direction',
-	'setting_language_actions'	=> 'Actions',
+	'setting_language_order'	=> '訂購',
+	'setting_language_flag'		=> '旗',
+	'setting_language_name'		=> '名稱（全國！）',
+	'setting_language_title'	=> '標題（英語！）',
+	'setting_language_dir'		=> '方向',
+	'setting_language_actions'	=> '動作',
 
-	'nav_language'			=> 'Languages',
+	'nav_language'			=> '語言能力',
 
-	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
+	'delete_install_index'		=> '請通過FTP刪除install/index.php!',
 
 	'contributors'			=> 'Discuz! 開源貢獻者',//'Discuz! Open Source Contributors',
 
-	'contributors_link'		=> 'Click Here To See Them',
+	'contributors_link'		=> '點擊此處查看它們',
+
+	'detect_environment'		=> '運行環境檢測',
 );
 
 //------------------------------------------------------
