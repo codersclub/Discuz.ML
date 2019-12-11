@@ -81,14 +81,7 @@ class base {
 		define('FORMHASH', $this->formhash());
 		$_GET['page'] =  max(1, intval(getgpc('page')));
 
-//vot Define UC Language !!!
-//vot		include_once UC_ROOT.'./view/default/main.lang.php';
-//vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
-if(!defined('UC_LANG')) {
-/*vot*/		define('UC_LANG',UC_DEFAULT_LANG);
-/*vot*/		define('RTLSUFFIX',UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
-}
-/*vot*/		include_once UC_ROOT.'./language/'.UC_LANG.'/main.lang.php';
+		include_once UC_ROOT.'./view/default/main.lang.php';
 		$this->lang = &$lang;
 	}
 
