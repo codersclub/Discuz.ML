@@ -3430,6 +3430,7 @@ $lang = array
 	'members_edit_password_comment' => '如果不更改密碼此處請留空',
 	'members_edit_clearquestion' => '清除用戶安全提問',
 	'members_edit_status' => '鎖定當前用戶',
+	'members_edit_freeze' => '凍結當前用戶',
 	'members_edit_clearquestion_comment' => '選擇「是」將清除用戶安全提問，該用戶將不需要回答安全提問即可登錄；選擇「否」為不改變用戶的安全提問設置',
 	'members_edit_nickname' => '暱稱',
 	'members_edit_gender' => '性別',
