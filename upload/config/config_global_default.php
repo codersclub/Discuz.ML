@@ -201,6 +201,10 @@ $_config['input']['compatible'] = 1;
 /**
  * IP database detection extension
  * $_config['ipdb'] - IP detection setting. It can be used to set a custom IP detection database. You are also welcome to pull request your own IP library.
+ * For the setting of the extended IP library, please use the format:
+ * 		$_config['ipdb']['Extended ip library name']['Setting item name'] = 'value';
+ * for example:
+ * 		$_config['ipdb']['redis_ip']['server'] = '172.16.1.8';
  */
 $_config['ipdb']['setting']['default'] = 'tiny';	// Default IP library (Chinese)
 $_config['ipdb']['setting']['ipv4'] = '';	// IPv4 library used by the system. Leave blank to use the default library.
