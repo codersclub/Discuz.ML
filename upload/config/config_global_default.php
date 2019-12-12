@@ -199,12 +199,12 @@ $_config['remote']['cron'] = 0;
 $_config['input']['compatible'] = 1;
 
 /**
- * IP数据库扩展
- * $_config['ipdb']下除setting外均可用作自定义扩展IP库设置选项，也欢迎大家PR自己的扩展IP库。
+ * IP database detection extension
+ * $_config['ipdb'] - IP detection setting. It can be used to set a custom IP detection database. You are also welcome to pull request your own IP library.
  */
-$_config['ipdb']['setting']['default'] = 'tiny';	// 系统使用的默认IP库
-$_config['ipdb']['setting']['ipv4'] = '';	// 系统使用的默认IPv4库，留空为使用默认库
-$_config['ipdb']['setting']['ipv6'] = ''; // 系统使用的默认IPv6库，留空为使用默认库
+$_config['ipdb']['setting']['default'] = 'tiny';	// Default IP library (Chinese)
+$_config['ipdb']['setting']['ipv4'] = '';	// IPv4 library used by the system. Leave blank to use the default library.
+$_config['ipdb']['setting']['ipv6'] = ''; // IPv6 library used by the system. Leave blank to use the default library.
 
 // Addon Setting
 //$_config['addonsource'] = 'xx1';
