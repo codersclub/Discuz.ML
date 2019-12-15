@@ -32,7 +32,7 @@ fa6e51baef21c1104e6a9c9bea515b93 *control/version.php
 d666e14b539c99003494c33090b68bad *model/admin.php
 4a0b4c85f1e53dd995b9785f8811846a *model/app.php
 5cbfa5b5ff6bf0bfd4aee2419bdc72c4 *model/badword.php
-2e5df1c73702a2a6c98c68ba639c40d1 *model/base.php
+dbc6671b51f712688340d922f98b4952 *model/base.php
 f715376b3450807e6a9382c1314107c1 *model/cache.php
 d4fde3d32ba28d296f8b7b069bff016c *model/cron.php
 74b4e3c17a429bfba12edee20d4e13ba *model/domain.php
@@ -84,7 +84,7 @@ dabac4291522834583db23cb345570e7 *view/default/header.htm
 b5a4f84b23fdefbc19ec2b02169ad626 *view/default/header_ajax.htm
 d76bda70ef15b7bfc3956868c87be639 *view/default/header_client.htm
 7215ee9c7d9dc229d2921a40e899ec5f *view/default/index.htm
-386e8be956e59304f2934794fd41e5a1 *view/default/main.lang.php
+f623ad7672b78ffcdc60301ab72f022e *view/default/main.lang.php
 998b620c83be4e7caff9311f767327ae *view/default/message.htm
 f097578901dfbb9caa1fe292da9f857a *view/default/messages.lang.php
 7819252a557b50879b0e80396013683d *view/default/message_client.htm
