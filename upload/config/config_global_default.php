@@ -208,7 +208,7 @@ $_config['input']['compatible'] = 1;
  */
 $_config['ipdb']['setting']['default'] = 'tiny';	// Default IP library (Chinese)
 $_config['ipdb']['setting']['ipv4'] = '';	// IPv4 library used by the system. Leave blank to use the default library.
-$_config['ipdb']['setting']['ipv6'] = ''; // IPv6 library used by the system. Leave blank to use the default library.
+$_config['ipdb']['setting']['ipv6'] = 'v6wry'; // IPv6 library used by the system. Leave blank to use the default library.
 
 // Addon Setting
 //$_config['addonsource'] = 'xx1';
