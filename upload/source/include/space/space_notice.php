@@ -28,7 +28,7 @@ $multi = '';
 if(empty($_G['member']['category_num']['manage']) && !in_array($_G['adminid'], array(1,2,3))) {
 	unset($_G['notice_structure']['manage']);
 }
-$view = (!empty($_GET['view']) && (isset($_G['notice_structure'][$_GET[view]]) || in_array($_GET['view'], array('userapp'))))?$_GET['view']:'mypost';
+$view = (!empty($_GET['view']) && (isset($_G['notice_structure'][$_GET[view]]) || in_array($_GET['view'], array('userapp'))))?$_GET['view']:'all';
 $actives = array($view=>' class="a"');
 $opactives[$view] = 'class="a"';
 $categorynum = $newprompt = array();
@@ -91,16 +91,6 @@ if($view == 'userapp') {
 			if($value['from_num'] > 0) $value['from_num'] = $value['from_num'] - 1;
 /*vot*/	$value['note'] = stripslashes($value['note']);
 /*vot*/	$notevars = @unserialize($value['note']);
-
-//DEBUG
-//echo "<pre>";
-//echo "source/include/space/space_notice.php.\n";
-//$value['note'] = htmlspecialchars($value['note']);
-//echo "value=";
-//print_r($value);
-//echo "notevars (", gettype($notevars), ")=";
-//print_r($notevars);
-//echo "</pre>";
 
 /*vot*/	if(gettype($notevars)=='array') {
 /*vot*/	  $template = $notevars['template'];

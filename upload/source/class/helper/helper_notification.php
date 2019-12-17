@@ -110,18 +110,6 @@ class helper_notification {
 			$setarr['author'] = '';
 		}
 		$pkId = 0;
-//DEBUG
-//$log = 'notification_add::'."\n";
-//$log .= ' touid='.$touid.';'."\n";
-//$log .= ' type='.$type.';'."\n";
-//$log .= ' system='.$system.';'."\n";
-//$log .= ' note='.var_export($note,true).';'."\n";
-//$log .= ' notevars='.var_export($notevars,true).';'."\n";
-//$log .= ' setarr='.var_export($setarr,true).';'."\n";
-//$log .= "-----------------------------------------\n";
-//$log .= "\n";
-//writelog('notification', $log);
-
 		if($oldnote['id']) {
 			C::t('home_notification')->update($oldnote['id'], $setarr);
 			$pkId = $oldnote['id'];
@@ -201,7 +189,9 @@ class helper_notification {
 			$tmpprompt = $_G['member']['newprompt_num'];
 			$num = 0;
 			$updateprompt = 0;
-			if(!empty($tmpprompt[$type])) {
+			if(!$type) {
+				$tmpprompt = [];
+			} elseif(!empty($tmpprompt[$type])) {
 				unset($tmpprompt[$type]);
 				$updateprompt = true;
 			}

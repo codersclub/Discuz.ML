@@ -297,6 +297,7 @@ $lang = array (
   'notice_mypost_activity' => '活動',
   'notice_mypost_reward' => '懸賞',
   'notice_mypost_goods' => '商品',
+  'notice_all' => '全部提醒',
   'notice_interactive' => '壇友互動',
   'notice_interactive_follow' => '我關注的',
   'notice_interactive_follower' => '新聽眾',
