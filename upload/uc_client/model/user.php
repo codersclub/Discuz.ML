@@ -41,7 +41,25 @@ class usermodel {
 	}
 
 	function check_username($username) {
-/*vot*/		$guestexp = '^Guest|^\xD3\xCE\xBF\xCD|\xB9\x43\xAB\xC8';
+		$charset = strtolower(UC_CHARSET);
+		if ($charset === 'utf-8') {
+			// \xE3\x80\x80: utf-8 Full-width space
+			// \xE6\xB8\xB8\xE5\xAE\xA2: utf-8 Guest
+			// \xE9\x81\x8A\xE5\xAE\xA2: utf-8 Guest
+			$guestexp = '\xE3\x80\x80|\xE6\xB8\xB8\xE5\xAE\xA2|\xE9\x81\x8A\xE5\xAE\xA2';
+		} elseif ($charset === 'gbk') {
+			// \xA1\xA1: GBK Full-width space
+			// \xD3\xCE\xBF\xCD: GBK Guest
+			$guestexp = '\xA1\xA1|\xD3\xCE\xBF\xCD';
+		} elseif ($charset === 'big5') {
+			// \xA1\x40: BIG5 Full-width space
+			// \xB9\x43\xAB\xC8: BIG5 Guest
+			$guestexp = '\xA1\x40|\xB9\x43\xAB\xC8';
+		} else {
+			return FALSE;
+		}
+		$guestexp .= '|^Guest';
+
 		$len = $this->dstrlen($username);
 /*vot*/		$lenbyte = strlen($username);
 /*vot*/		if($len > 15 || $len < 2) {
