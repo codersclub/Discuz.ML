@@ -101,14 +101,9 @@ $_config['memory']['redis']['pconnect'] = 1;
 $_config['memory']['redis']['timeout'] = 0;
 $_config['memory']['redis']['requirepass'] = '';
 /**
- * Whether to use Redis::SERIALIZER_IGBINARY option, Need igbinary Support. If windows testing is closed otherwise they will be out > Is now error Reading from client: Connection reset by peer
- * Supports the following options, the default using PHP serializer
- * [Important] This option has been to replace the original $_config['memory']['redis']['igbinary'] option
- * Redis::SERIALIZER_IGBINARY =2
- * Redis::SERIALIZER_PHP =1
- * Redis::SERIALIZER_NONE =0 //If not use serialize, It can not be saved as array
+ * This configuration is now canceled. By default, the array is saved using json encoding, and other data is saved directly as is.
  */
-$_config['memory']['redis']['serializer'] = 1;
+// $_config['memory']['redis']['serializer'] = 1;
 
 $_config['memory']['memcache']['server'] = '';	// memcache server address
 $_config['memory']['memcache']['port'] = 11211;	// memcache server port
