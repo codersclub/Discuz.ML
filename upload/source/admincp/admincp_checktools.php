@@ -59,7 +59,7 @@ if($operation == 'filecheck') {
 //vot		checkfiles('data/addonmd5/', '\.htm', 0);
 //vot		checkfiles('data/avatar/', '\.htm', 0);
 //vot		checkfiles('data/cache/', '\.htm', 0);
-		checkfiles('data/ipdata/', '\.htm|\.dat', 0);
+/*vot*/		checkfiles('data/ipdata/', '\.htm|\.dat|\.mmdb', 0); // Thanx to evanhenry!
 //vot		checkfiles('data/template/', '\.htm', 0);
 //vot		checkfiles('data/threadcache/', '\.htm', 0);
 		checkfiles('template/', '');
