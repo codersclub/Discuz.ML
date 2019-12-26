@@ -1004,7 +1004,7 @@ function set_atlist_cookie($uids) {
 
 function viewthread_is_search_referer() {
 	$regex = "((http|https)\:\/\/)?";
-	$regex .= "([a-z]*.)?(toutiao.com|m.sm.cn|www.so.com|sogou.com|bing.com|baidu.com|google.com|google.cn|google.com.hk)(.[a-z]{2,3})?\/";
+/*vot*/	$regex .= "([a-z]*.)?(toutiao.com|m.sm.cn|www.so.com|sogou.com|bing.com|baidu.com|google.com|google.cn|google.com.hk|yandex.ru|yandex.net|yandex.com)(.[a-z]{2,3})?\/";
 	if(preg_match("/^$regex/", $_SERVER['HTTP_REFERER'])) {
 		return true;
 	}
