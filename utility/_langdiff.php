@@ -1,6 +1,7 @@
 <?php
 /*
- * Language Pack Diff, v.2.0
+ * Language Pack Diff, v.2.1
+ * Last modified date: 29.12.2019
  * (c) by http://codersclub.org
  * Idea by fanha99, http://codersclub.org/discuzx/?1906
  * Rewritten by Valery Votintsev, http://codersclub.org/discuzx/?1
@@ -11,8 +12,11 @@
  *   http://your_site.tld/discuz_folder/_lang_diff.php
  */
 
+// Discuz Root Directory
+define('DISCUZ_ROOT', str_replace('\\', '/', dirname(__FILE__)));
+
 // Language Packs Root Directory:
-$lang_dir = str_replace('\\','/',dirname(__FILE__)) . '/source/language';
+$lang_dir = DISCUZ_ROOT . '/source/language';
 
 
 $fromlang = isset($_GET['fromlang']) ? $_GET['fromlang'] : '';
@@ -21,7 +25,6 @@ $tolang   = isset($_GET['tolang']) ? $_GET['tolang'] : '';
 
 define('IN_DISCUZ',1);
 define('IN_COMSENZ',1);
-
 
 @header('Content-Type: text/html; charset=UTF-8');
 
@@ -101,6 +104,12 @@ function lfile2array($f) {
 //----------------------------------------------------------
 // Fiction
 function getgpc($f) {
+  return '';
+}
+
+//----------------------------------------------------------
+// Fiction
+function dgmdate($f) {
   return '';
 }
 
