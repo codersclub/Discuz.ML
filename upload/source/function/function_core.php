@@ -1646,12 +1646,20 @@ function getposttable($tableid = 0, $prefix = false) {
 }
 
 /*
- * getrm$valueprefix
+ * In the following command, $value is passed in prefix, and other commands prefix are the last parameter.
+ * 		get, rm, scard, smembers, hgetall, zcard
+ * eval when passing in the parameters:
+ * 		$cmd = 'eval', $key = script, $value = argv, 
+ * 		$ttl = Used to store the key of the script hash, $ prefix will automatically become the first parameter of the script, and the sequence numbers of other parameters will be postponed.
+ * zadd parameters are as follows:
+ * 		$cmd = 'zadd', $key = key, $value = member, $ttl = score
+ * zrevrange parameters are as follows:
+ * 		$cmd = 'zrevrange', $key = key, $value = start, $ttl = end
  */
 function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 	if($cmd == 'check') {
 		return  C::memory()->enable ? C::memory()->type : '';
-	} elseif(C::memory()->enable && in_array($cmd, array('set', 'get', 'rm', 'inc', 'dec'))) {
+	} elseif(C::memory()->enable && in_array($cmd, array('set', 'get', 'rm', 'inc', 'dec', 'sadd', 'srem', 'scard', 'smembers', 'hmset', 'hgetall', 'eval', 'zadd', 'zcard', 'zrem', 'zrevrange'))) {
 		if(defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) {
 			if(is_array($key)) {
 				foreach($key as $k) {
@@ -1663,10 +1671,21 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 		}
 		switch ($cmd) {
 			case 'set': return C::memory()->set($key, $value, $ttl, $prefix); break;
-			case 'get': return C::memory()->get($key, $value); break;
-			case 'rm': return C::memory()->rm($key, $value); break;
+			case 'get': return C::memory()->get($key, $value/*prefix*/); break;
+			case 'rm': return C::memory()->rm($key, $value/*prefix*/); break;
 			case 'inc': return C::memory()->inc($key, $value ? $value : 1, $prefix); break;
 			case 'dec': return C::memory()->dec($key, $value ? $value : -1, $prefix); break;
+			case 'sadd': return C::memory()->sadd($key, $value, $prefix); break;
+			case 'srem': return C::memory()->srem($key, $value, $prefix); break;
+			case 'scard': return C::memory()->scard($key, $value/*prefix*/); break;
+			case 'smembers': return C::memory()->smembers($key, $value/*prefix*/); break;
+			case 'hmset': return C::memory()->hmset($key, $value, $prefix); break;
+			case 'hgetall': return C::memory()->hgetall($key, $value/*prefix*/); break;
+			case 'eval': return C::memory()->eval($key/*script*/, $value/*args*/, $ttl/*sha key*/, $prefix); break;
+			case 'zadd': return C::memory()->zadd($key, $value, $ttl/*score*/, $prefix); break;
+			case 'zrem': return C::memory()->zrem($key, $value, $prefix); break;
+			case 'zcard': return C::memory()->zcard($key, $value/*prefix*/); break;
+			case 'zrevrange': return C::memory()->zrevrange($key, $value/*start*/, $ttl/*end*/, $prefix); break;
 		}
 	}
 	return null;
