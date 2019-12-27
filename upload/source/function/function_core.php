@@ -1653,13 +1653,23 @@ function getposttable($tableid = 0, $prefix = false) {
  * 		$ttl = Used to store the key of the script hash, $ prefix will automatically become the first parameter of the script, and the sequence numbers of other parameters will be postponed.
  * zadd parameters are as follows:
  * 		$cmd = 'zadd', $key = key, $value = member, $ttl = score
- * zrevrange parameters are as follows:
+ * zincrby parameters are as follows:
+ * 		$cmd = 'zincrby', $key = key, $value = member, $ttl = value to increase
+ * When zrevrange and zrevrangewithscore parameters are as follows:
  * 		$cmd = 'zrevrange', $key = key, $value = start, $ttl = end
  */
 function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
+	static $supported_command = array(
+		'set', 'get', 'rm', 'inc', 'dec', 
+		'sadd', 'srem', 'scard', 'smembers', 
+		'hmset', 'hgetall', 
+		'eval', 
+		'zadd', 'zcard', 'zrem', 'zscore', 'zrevrange', 'zincrby', 'zrevrangewithscore' /* Return with score */
+	);
+
 	if($cmd == 'check') {
 		return  C::memory()->enable ? C::memory()->type : '';
-	} elseif(C::memory()->enable && in_array($cmd, array('set', 'get', 'rm', 'inc', 'dec', 'sadd', 'srem', 'scard', 'smembers', 'hmset', 'hgetall', 'eval', 'zadd', 'zcard', 'zrem', 'zrevrange'))) {
+	} elseif(C::memory()->enable && in_array($cmd, $supported_command)) {
 		if(defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) {
 			if(is_array($key)) {
 				foreach($key as $k) {
@@ -1684,8 +1694,11 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 			case 'eval': return C::memory()->eval($key/*script*/, $value/*args*/, $ttl/*sha key*/, $prefix); break;
 			case 'zadd': return C::memory()->zadd($key, $value, $ttl/*score*/, $prefix); break;
 			case 'zrem': return C::memory()->zrem($key, $value, $prefix); break;
+			case 'zscore': return C::memory()->zscore($key, $value, $prefix); break;
 			case 'zcard': return C::memory()->zcard($key, $value/*prefix*/); break;
 			case 'zrevrange': return C::memory()->zrevrange($key, $value/*start*/, $ttl/*end*/, $prefix); break;
+			case 'zrevrangewithscore': return C::memory()->zrevrange($key, $value/*start*/, $ttl/*end*/, $prefix, true); break;
+			case 'zincrby': return C::memory()->zincrby($key, $value/*member*/, $ttl ? $ttl : 1/*to increase*/, $prefix); break;
 		}
 	}
 	return null;
