@@ -1661,7 +1661,7 @@ function getposttable($tableid = 0, $prefix = false) {
 function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 	static $supported_command = array(
 		'set', 'get', 'rm', 'inc', 'dec', 
-		'sadd', 'srem', 'scard', 'smembers', 
+		'sadd', 'srem', 'scard', 'smembers', 'sismember',
 		'hmset', 'hgetall', 
 		'eval', 
 		'zadd', 'zcard', 'zrem', 'zscore', 'zrevrange', 'zincrby', 'zrevrangewithscore' /* Return with score */
@@ -1689,6 +1689,7 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 			case 'srem': return C::memory()->srem($key, $value, $prefix); break;
 			case 'scard': return C::memory()->scard($key, $value/*prefix*/); break;
 			case 'smembers': return C::memory()->smembers($key, $value/*prefix*/); break;
+			case 'sismember': return C::memory()->sismember($key, $value, $prefix); break;
 			case 'hmset': return C::memory()->hmset($key, $value, $prefix); break;
 			case 'hgetall': return C::memory()->hgetall($key, $value/*prefix*/); break;
 			case 'eval': return C::memory()->eval($key/*script*/, $value/*args*/, $ttl/*sha key*/, $prefix); break;
