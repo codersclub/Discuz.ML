@@ -1,6 +1,6 @@
 ### **Introduction**
 
-Discuz! ML v.3.5 (MultiLingual)
+Discuz! ML v.3.5 (Discuz MultiLingual)
 
 Based on Discuz! X, http://www.discuz.net
 
