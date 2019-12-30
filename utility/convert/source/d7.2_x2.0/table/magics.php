@@ -58,7 +58,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." magicid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." magicid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	if(!$db_target->result_first("SELECT COUNT(*) FROM $table_target WHERE credit>'0'")) {
 		$settings_creditstrans = $db_target->result_first("SELECT svalue FROM $table_target_setting WHERE skey='creditstrans'");
@@ -66,9 +66,9 @@ if($nextid) {
 		$creditstran = $creditstranssi[3] ? $creditstranssi[3] : $creditstranssi[0];
 		$db_target->query("UPDATE $table_target SET credit='$creditstran'");
 	}
-	$db_target->query("UPDATE $table_target SET name='Color card', description='You can highlight a thread or blog title, change color' WHERE identifier='highlight'");
-	$db_target->query("UPDATE $table_target SET name='Discover card', description='You can see a real identity of an anonymous user.' WHERE identifier='namepost'");
-	$db_target->query("UPDATE $table_target SET name='Anonymous card', description='Show your name as Anonymous in designated areas.' WHERE identifier='anonymouspost'");
+/*vot*/	$db_target->query("UPDATE $table_target SET name='Color card', description='You can highlight a thread or blog title, change color' WHERE identifier='highlight'");
+/*vot*/	$db_target->query("UPDATE $table_target SET name='Discover card', description='You can see a real identity of an anonymous user.' WHERE identifier='namepost'");
+/*vot*/	$db_target->query("UPDATE $table_target SET name='Anonymous card', description='Show your name as Anonymous in designated areas.' WHERE identifier='anonymouspost'");
 }
 
 ?>

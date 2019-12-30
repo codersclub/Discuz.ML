@@ -2180,6 +2180,10 @@ EOF;
 
 } elseif($operation == 'ipban') {
 
+	if (array_key_exists('security', $_G['config']) && array_key_exists('useipban', $_G['config']['security']) && $_G['config']['security']['useipban'] == 0) {
+		cpmsg('members_ipban_closed', '', 'error');
+	}
+
 	if(!$_GET['ipact']) {
 		if(!submitcheck('ipbansubmit')) {
 

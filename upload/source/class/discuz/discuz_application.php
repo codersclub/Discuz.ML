@@ -201,7 +201,7 @@ class discuz_application extends discuz_base{
 		if(defined('IN_NEWMOBILE')) {
 			$sitepath = preg_replace("/\/m/i", '', $sitepath);
 		}
-/*vot*/		$_G['isHTTPS'] = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
+/*vot*/		$_G['isHTTPS'] = (array_key_exists('HTTPS', $_SERVER) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
 		$_G['scheme'] = 'http'.($_G['isHTTPS'] ? 's' : '');
 		$_G['siteurl'] = dhtmlspecialchars($_G['scheme'].'://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
 
@@ -377,7 +377,7 @@ class discuz_application extends discuz_base{
 		@include DISCUZ_ROOT.'./config/config_global.php';
 		if(empty($_config)) {
 			if(!file_exists(DISCUZ_ROOT.'./data/install.lock')) {
-/*vot*/				header('location: install/');
+				header('location: install/');
 				exit;
 			} else {
 				system_error('config_notfound');
@@ -542,10 +542,8 @@ class discuz_application extends discuz_base{
 				dsetcookie('sid', $this->var['sid'], 86400);
 			}
 
-			if($this->session->isnew) {
-				if(ipbanned($this->var['clientip'])) {
-					$this->session->set('groupid', 6);
-				}
+			if(ip::checkbanned($this->var['clientip'])) {
+				$this->session->set('groupid', 6);
 			}
 
 			if($this->session->get('groupid') == 6) {

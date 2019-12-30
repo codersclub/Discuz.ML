@@ -25,8 +25,8 @@ if(!empty($eventfid)) {
 	}
 }
 if(empty($eventfid)) {
-	$board_name = lang('uchome_data');//vot
-	$forum_name = lang('uchome_events');//vot
+/*vot*/	$board_name = lang('uchome_data');
+/*vot*/	$forum_name = lang('uchome_events');
 	$value = $db_target->fetch_first('SELECT fid FROM '.$db_target->table_name('forum_forum')." WHERE type='forum' AND status='1' AND `name`='$forum_name'");
 	if(!empty($value)) {
 		$eventfid = intval($value['fid']);
@@ -54,7 +54,7 @@ if(empty($eventfid)) {
 		$eventfid = $db_target->insert('forum_forum', $forum, true);
 		$forumfield = array(
 			'fid' => $eventfid,
-			'description' => lang('uchome_events_convert')//vot
+/*vot*/			'description' => lang('uchome_events_convert')
 		);
 		$db_target->insert('forum_forumfield', $forumfield);
 	}
@@ -114,7 +114,7 @@ while ($event = $db_source->fetch_array($event_query)) {
 		'place' => '['.$event['province'].$event['city'].'] '.$event['location'],
 		'class' => $eventclass[$event['classid']],
 		'number' => $event['limitnum'],
-		'applynumber' => $event['membernum'] - 1,// Home in the events of members, including founder
+/*vot*/		'applynumber' => $event['membernum'] - 1,// Home in the events of members, including founder
 		'expiration' => $event['deadline']
 	);
 	$db_target->insert('forum_activity', daddslashes($activityarr));
@@ -147,7 +147,7 @@ while ($event = $db_source->fetch_array($event_query)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." eventid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." eventid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 $maxpid = $db_target->result_first("SELECT MAX(pid) FROM ".$db_target->table('forum_post'));

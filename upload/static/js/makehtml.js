@@ -17,7 +17,6 @@ function make_html(url, obj) {
 			if(obj) {
 				obj.style.color = 'blue';
 /*vot*/				obj.innerHTML = '<a href="'+ret['path']+'" target="_blank">'+title+lng['generate_ok']+'</a>';
-
 			}
 			if(ret['nexturl']) {
 				if(obj) {

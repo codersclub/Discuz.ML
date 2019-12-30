@@ -844,7 +844,8 @@ CREATE TABLE pre_common_member_grouppm (
   `gpmid` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (uid,gpmid)
+  PRIMARY KEY (uid,gpmid),
+  KEY gpmid (gpmid)
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_member_log;
@@ -1170,7 +1171,7 @@ CREATE TABLE pre_common_plugin (
   `copyright` varchar(255) NOT NULL DEFAULT '',
   `modules` text NOT NULL,
   `version` varchar(255) NOT NULL DEFAULT '',
-  `image` VARCHAR(255) NOT NULL DEFAULT '',
+  `image` VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'Plugin Icon Image',
   PRIMARY KEY (pluginid),
   UNIQUE KEY identifier (identifier)
 ) ENGINE=InnoDB;
@@ -2427,7 +2428,7 @@ CREATE TABLE pre_forum_groupfield (
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
   `type` varchar(255) NOT NULL,
   `data` text NOT NULL,
-  UNIQUE KEY types (fid,`type`),
+  UNIQUE KEY `types` (fid,`type`),
   KEY fid (fid),
   KEY `type` (`type`)
 ) ENGINE=InnoDB;

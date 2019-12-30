@@ -293,8 +293,8 @@ function attachinpost($attach, $post) {
 		</span>
 		<div class="tip tip_4" id="attach_$attach[aid]_menu" style="position: absolute; display: none" disautofocus="true">
 			<div class="tip_c xs0">
-<!--kaaleth-->			<p>{lang upload_time}: $attach[dateline]</p>
-				<p>{lang clicktodownload}</p>
+<!--kaaleth-->			<div class="y">{lang upload_time}: $attach[dateline]</div>
+				{lang clicktodownload}
 				<!--{if $attach['description']}--><br />$attach[description]<!--{/if}-->
 				<!--{if $attach['readperm']}--><br />{lang readperm}: $attach[readperm]<!--{/if}-->
 	<!--{/if}-->

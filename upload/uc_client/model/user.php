@@ -5,7 +5,6 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: user.php 1179 2014-11-03 07:11:25Z hypowang $
-
 	Modified by Valery Votintsev at sources.ru
 */
 
@@ -41,16 +40,27 @@ class usermodel {
 	}
 
 	function check_username($username) {
-/*vot*/		$guestexp = '^Guest|^\xD3\xCE\xBF\xCD|\xB9\x43\xAB\xC8';
+		$charset = strtolower(UC_CHARSET);
+		if ($charset === 'utf-8') {
+			// \xE3\x80\x80: utf-8 full-width space
+			// \xE6\xB8\xB8\xE5\xAE\xA2: utf-8 Guest
+			// \xE9\x81\x8A\xE5\xAE\xA2: utf-8 Guest
+			$guestexp = '\xE3\x80\x80|\xE6\xB8\xB8\xE5\xAE\xA2|\xE9\x81\x8A\xE5\xAE\xA2';
+		} elseif ($charset === 'gbk') {
+			// \xA1\xA1: GBK full-width space
+			// \xD3\xCE\xBF\xCD: GBK Guest
+			$guestexp = '\xA1\xA1|\xD3\xCE\xBF\xCD';
+		} elseif ($charset === 'big5') {
+			// \xA1\x40: BIG5 full-width space
+			// \xB9\x43\xAB\xC8: BIG5 Guest
+			$guestexp = '\xA1\x40|\xB9\x43\xAB\xC8';
+		} else {
+			return FALSE;
+		}
+		$guestexp .= '|^Guest';
+
 		$len = $this->dstrlen($username);
-/*vot*/		$lenbyte = strlen($username);
-/*vot*/		if($len > 15 || $len < 2) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif($lenbyte > 64) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif(preg_match("/[\t\%,\*\"\<\>\&]|\s{2}|^c:\\con\\con/is", $username)) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif(preg_match("/$guestexp/is", $username)) {
+/*vot*/		if($len > 64 || $len < 3 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $username)) {
 			return FALSE;
 		} else {
 			return TRUE;

@@ -14,7 +14,7 @@ class table_forum_threaddisablepos extends discuz_table {
 	private $enable_set = false;
 
 	/*
-	 * memorySetSet
+	 * When memory supports Set, all data is stored under one Set
 	 */
 	public function __construct() {
 		$this->_table = 'forum_threaddisablepos';
@@ -23,8 +23,8 @@ class table_forum_threaddisablepos extends discuz_table {
 		$this->_cache_ttl = 0;
 		parent::__construct();
 
-		// set
-		// _allowmemSet
+		// Depends on set
+		// Does not affect the original _allowmem variable, so that the original cache acceleration scheme can be used without Set
 		$this->enable_set = $this->_allowmem && C::memory()->gotset;
 	}
 

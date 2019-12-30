@@ -75,7 +75,7 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." fid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." fid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 $db_target->query("UPDATE $table_target SET seodescription=description WHERE membernum='0'");

@@ -85,12 +85,12 @@ if($op=='magic') {
 		$creditstran = $creditstranssi[3] ? $creditstranssi[3] : $creditstranssi[0];
 		$db_target->query("UPDATE ".$db_target->table('common_magic')." SET credit='$creditstran'");
 	}
-	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Color card', description='You can highlight a thread or blog title, change color' WHERE identifier='highlight'");//vot
-	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Discover card', description='You can see a real identity of an anonymous user.' WHERE identifier='namepost'");//vot
-	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Anonymous card', description='Show your name as Anonymous in designated areas.' WHERE identifier='anonymouspost'");//vot
+/*vot*/	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Color card', description='You can highlight a thread or blog title, change color' WHERE identifier='highlight'");
+/*vot*/	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Discover card', description='You can see a real identity of an anonymous user.' WHERE identifier='namepost'");
+/*vot*/	$db_target->query("UPDATE ".$db_target->table('common_magic')." SET name='Anonymous card', description='Show your name as Anonymous in designated areas.' WHERE identifier='anonymouspost'");
 
 	$table_source = $db_source->tablepre.'magic';
-	showmessage(lang('continue_convert_table').$table_source. lang('user_magic'), "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=0");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source. lang('user_magic'), "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=0");
 
 } elseif($op == 'usermagic') {
 
@@ -130,9 +130,9 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'usermagic';
 	if($done == false) {
-		showmessage(lang('continue_convert_table').$table_source. lang('user_magic')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=$nextid");//vot
+/*vot*/		showmessage(lang('continue_convert_table').$table_source. lang('user_magic')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=usermagic&start=$nextid");
 	} else {
-		showmessage(lang('continue_convert_table').$table_source. lang('magic_records')."->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=0");//vot
+/*vot*/		showmessage(lang('continue_convert_table').$table_source. lang('magic_records')."->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=0");
 	}
 
 } elseif($op == 'magicinlog') {
@@ -161,9 +161,9 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'magicinlog';
 	if($done == false) {
-		showmessage(lang('continue_convert_table').$table_source. lang('magic_records')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=$nextid");//vot
+/*vot*/		showmessage(lang('continue_convert_table').$table_source. lang('magic_records')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicinlog&start=$nextid");
 	} else {
-		showmessage(lang('continue_convert_table').$table_source. lang('magic_use_records')."->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=0");//vot
+/*vot*/		showmessage(lang('continue_convert_table').$table_source. lang('magic_use_records')."->0", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=0");
 	}
 
 } elseif($op == 'magicuselog') {
@@ -188,7 +188,7 @@ if($op=='magic') {
 
 	$table_source = $db_source->tablepre.'magicuselog';
 	if($done == false) {
-		showmessage(lang('continue_convert_table').$table_source. lang('magic_use_records')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=$nextid");//vot
+/*vot*/		showmessage(lang('continue_convert_table').$table_source. lang('magic_use_records')."-> $nextid", "index.php?a=$action&source=$source&prg=$curprg&op=magicuselog&start=$nextid");
 	}
 }
 

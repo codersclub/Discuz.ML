@@ -103,7 +103,7 @@
         <div class="topicList">
             <ul>
                 <% for(j = 0; j < Variables.forum_threadlist[i].reply.length; j ++) { %>
-                <li><img data-original="<% if(Variables.forum_threadlist[i].reply[j].avatar) { %><%= Variables.forum_threadlist[i].reply[j].avatar %><% } else { %><%= Variables.ucenterurl %>/avatar.php?uid=<%= Variables.forum_threadlist[i].reply[j].authorid %>&size=small<% } %>" onerror="javascript:this.src=DATA_DIR+'/images/personImg.jpg'" class="sImg db fl lazy" width="25" height="25" alt="头像"><a href="javascript:;" class="sW fl"><span><%= Variables.forum_threadlist[i].reply[j].author %>: </span><%= Variables.forum_threadlist[i].reply[j].message %></a></li>
+<!--vot-->          <li><img data-original="<% if(Variables.forum_threadlist[i].reply[j].avatar) { %><%= Variables.forum_threadlist[i].reply[j].avatar %><% } else { %><%= Variables.ucenterurl %>/avatar.php?uid=<%= Variables.forum_threadlist[i].reply[j].authorid %>&size=small<% } %>" onerror="javascript:this.src=DATA_DIR+'/images/personImg.jpg'" class="sImg db fl lazy" width="25" height="25" alt="头像"><a href="javascript:;" class="sW fl"><span><%= Variables.forum_threadlist[i].reply[j].author %>: </span><%= Variables.forum_threadlist[i].reply[j].message %></a></li>
                 <% } %>
             </ul>
             <% if(Variables.forum_threadlist[i].replies > 3) { %>

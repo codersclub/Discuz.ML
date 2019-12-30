@@ -408,7 +408,7 @@ class table_common_session extends discuz_table
 		}
 	}
 
-	// $prefix_idx_ip_$ipaddress: SortedSetmembersid, scorelastactivity
+	// $prefix_idx_ip_$ipaddress: SortedSet, member is sid, score is lastactivity
 	public function count_by_ip($ip) {
 		if (empty($ip)) return 0;
 		if ($this->_allowmem) {
@@ -418,7 +418,7 @@ class table_common_session extends discuz_table
 		}
 	}
 
-	// $prefix_idx_ip_$ipaddress: SortedSetmembersid, scorelastactivity
+	// $prefix_idx_ip_$ipaddress: SortedSet, member is sid, score is lastactivity
 	public function fetch_all_by_ip($ip, $start = 0, $limit = 0) {
 		if (empty($ip)) return array();
 		if ($this->_allowmem) {

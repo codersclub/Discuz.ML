@@ -67,16 +67,16 @@ if(submitcheck()) {
 
 	show_form_header();
 	show_table_header();
-	show_table_row(array(array('colspan="3"', lang('config_usergroup'))), 'header title');//vot
+/*vot*/	show_table_row(array(array('colspan="3"', lang('config_usergroup'))), 'header title');
 	show_table_row(
 		array(
-			lang('config_from_usergroup'),//vot
+/*vot*/			lang('config_from_usergroup'),
 			array('class="bg1" width="10%" align="center"', '->'),
-			lang('config_target_usergroup')//vot
+/*vot*/			lang('config_target_usergroup')
 		)
 	);
 	foreach($sourcegroup as $key => $value) {
-		$addmsg = $error && $key == 'dbhost' ? lang($error) : '';//vot
+/*vot*/		$addmsg = $error && $key == 'dbhost' ? lang($error) : '';
 		$key = intval($key);
 		show_table_row(
 			array(
@@ -90,24 +90,24 @@ if(submitcheck()) {
 	echo '<br/>';
 
 	show_table_header();
-	show_table_row(array(array('colspan="3"', lang('config_extcredits'))), 'header title');//vot
+/*vot*/	show_table_row(array(array('colspan="3"', lang('config_extcredits'))), 'header title');
 	show_table_row(
 		array(
-			lang('config_from_credit'),//vot
+/*vot*/			lang('config_from_credit'),
 			array('class="bg1" width="10%" align="center"', '->'),
-			lang('config_target_credit')//vot
+/*vot*/			lang('config_target_credit')
 		)
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_credit')),//vot
+/*vot*/			array('class="bg2" width="45%"', lang('config_credit')),
 			array('class="bg1" width="10%" align="center"', '->'),
 			array('class="bg2" width="45%"', '<select name="extcredits[credit]">'.$extcredits.'</select>')
 		),'bg1'
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_experience')),//vot
+/*vot*/			array('class="bg2" width="45%"', lang('config_experience')),
 			array('class="bg1" width="10%" align="center"', '->'),
 			array('class="bg2" width="45%"', '<select name="extcredits[experience]">'.$extcredits.'</select>')
 		),'bg1'
@@ -116,26 +116,26 @@ if(submitcheck()) {
 	echo '<br/>';
 
 	show_table_header();
-	show_table_row(array(array('colspan="3"', lang('config_convert_forum'))), 'header title');//vot
+/*vot*/	show_table_row(array(array('colspan="3"', lang('config_convert_forum'))), 'header title');
 	show_table_row(
 		array(
-			lang('config_from_data'),//vot
+/*vot*/			lang('config_from_data'),
 			array('class="bg1" width="10%" align="center"', '->'),
-			lang('config_target_forum')//vot
+/*vot*/			lang('config_target_forum')
 		)
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_poll')),//vot
+/*vot*/			array('class="bg2" width="45%"', lang('config_poll')),
 			array('class="bg1" width="10%" align="center"', '->'),
-			array('class="bg2" width="45%"', '<select name="forum[poll]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')//vot
+/*vot*/			array('class="bg2" width="45%"', '<select name="forum[poll]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')
 		),'bg1'
 	);
 	show_table_row(
 		array(
-			array('class="bg2" width="45%"', lang('config_event')),//vot
+/*vot*/			array('class="bg2" width="45%"', lang('config_event')),
 			array('class="bg1" width="10%" align="center"', '->'),
-			array('class="bg2" width="45%"', '<select name="forum[event]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')//vot
+/*vot*/			array('class="bg2" width="45%"', '<select name="forum[event]"><option value="0" selected>'.lang('config_auto_create').'</option>'.$forumoption.'</select>')
 		),'bg1'
 	);
 	show_table_footer();

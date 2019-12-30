@@ -96,7 +96,7 @@
 			if(curpage + 1 > totalpage) {
 				autopbn.style.display = 'none';
 			} else {
-				autopbn.innerHTML = lng['next'] + ' &darr;';
+/*vot*/				autopbn.innerHTML = lng['next'] + ' &darr;';
 			}
 			loadstatus = 0;
 		});

@@ -18,7 +18,7 @@ $start = intval(getgpc('start'));
 $home = load_process('home');
 $fid = intval(getgpc('fid')) ? intval(getgpc('fid')) : intval($home['forum']['poll']) ? intval($home['forum']['poll']) : 0;
 if(!$fid) {
-	$forumname = lang('uchome_polls');//vot
+/*vot*/	$forumname = lang('uchome_polls');
 
 	$value = $db_target->fetch_first('SELECT fid FROM '.$db_target->table_name('forum_forum')." WHERE status IN('1','2') AND type='forum' AND `name`='$forumname'");
 	if(!empty($value)) {
@@ -47,7 +47,7 @@ if(!$fid) {
 		$fid = $db_target->insert('forum_forum', $forum, true);
 		$forumfield = array(
 			'fid' => $fid,
-			'description' => lang('uchome_polls_convert')//vot
+/*vot*/			'description' => lang('uchome_polls_convert')
 		);
 		$db_target->insert('forum_forumfield', $forumfield);
 	}
@@ -116,8 +116,8 @@ while($value = $db_source->fetch_array($pollquery)) {
 	$query = $db_source->query("SELECT * FROM {$db_source->tablepre}polluser WHERE pid='$value[pid]'");
 	while($puser = $db_source->fetch_array($query)) {
 		$puser['option'] = str_replace('"', '', $puser['option']);
-		$puser['option'] = str_replace('、', '.', $puser['option']);//vot
-		$puser['option'] = explode('.', $puser['option']);//vot
+/*vot*/		$puser['option'] = str_replace('、', '.', $puser['option']);
+/*vot*/		$puser['option'] = explode('.', $puser['option']);
 		$optionuser[$puser['uid']] = $puser;
 	}
 	$changeoid = array();
@@ -198,7 +198,7 @@ while($value = $db_source->fetch_array($pollquery)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." pid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid&fid=$fid");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." pid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid&fid=$fid");
 }
 
 $maxpid = $db_target->result_first("SELECT MAX(pid) FROM ".$db_target->table('forum_post'));

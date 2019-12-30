@@ -58,7 +58,7 @@
                 <div class="topicList">
                     <ul>
                         <% for(i = 0; i< comments.length; i++) { %>
-                            <li><a href="javascript:;" class="f13 c3"><span class="c7"><%==comments[i].author%><% if(comments[i].authorid == post.authorid) { %><i class="cardBtn br fn db c2">楼主</i><% } %>: </span><%==stripCode(comments[i].comment) %></a>
+<!--vot-->                  <li><a href="javascript:;" class="f13 c3"><span class="c7"><%==comments[i].author%><% if(comments[i].authorid == post.authorid) { %><i class="cardBtn br fn db c2">楼主</i><% } %>: </span><%==stripCode(comments[i].comment) %></a>
                         </li>
                         <% } %>
                     </ul>
@@ -92,7 +92,7 @@
     <h2><%== threadsortshow.threadsortname %></h2>
     <ul class="threadsort">
         <% for(var option in threadsortshow.optionlist) {%>
-            <li><%=threadsortshow.optionlist[option].title%>:
+<!--vot-->  <li><%=threadsortshow.optionlist[option].title%>:
             <span><% if(threadsortshow.optionlist[option].type == 'image') {%><%=threadsortshowImage(threadsortshow.optionlist[option].value, post.pid)%><% } else { %><%== stripCode(threadsortshow.optionlist[option].value)%><% } %></span>
             </li>
         <% } %>

@@ -70,7 +70,7 @@ if(!$res) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." adid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." adid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 function encodeadvcode($advnew) {

@@ -360,7 +360,8 @@ if(!empty($newversion['news'])){
 /*vot*/        '<a href="https://www.dismall.com/" target="_blank">If you not get the news yet, please log in to Discuz! Community to view.</a>',
         '',
     ));
-/*vot    showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
+/*vot
+    showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
         '<a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">Discuz! X3.4 latest version download</a>',
         '',
     ));

@@ -33,7 +33,7 @@ while ($log = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." logid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." logid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

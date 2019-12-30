@@ -406,8 +406,8 @@ function sizecount($size) {
 function show_header() {
 	ob_start();
 	$charset = CHARSET;
-/*vot*/	$title = lang('restore_title');//vot
-/*vot*/	$intro = lang('restore_questions');//vot
+/*vot*/	$title = lang('restore_title');
+/*vot*/	$intro = lang('restore_questions');
 /*vot*/	print <<< EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

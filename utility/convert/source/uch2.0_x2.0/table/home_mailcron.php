@@ -53,7 +53,7 @@ if (!empty($mcids)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." mcid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." mcid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

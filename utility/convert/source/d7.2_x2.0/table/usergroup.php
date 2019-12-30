@@ -65,7 +65,7 @@ while ($data = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." groupid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." groupid > $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
 	$db_target->query("UPDATE $table_target SET allowvisit='2' WHERE groupid='1'");
 }

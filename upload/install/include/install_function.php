@@ -226,7 +226,7 @@ function show_env_result(&$env_items, &$dirfile_items, &$func_items, &$filesock_
 			$env_str .= "<td>".lang($key)."</td>\n";
 			$env_str .= "<td class=\"padleft\">".lang($item['r'])."</td>\n";
 			$env_str .= "<td class=\"padleft\">".lang($item['b'])."</td>\n";
-/*vot*/		$env_str .= ($status ? "<td class=\"w pdleft1\">" : "<td class=\"nw pdleft1\">").lang($item['current']). (isset($item['version']) ? $item['version'] : '') . "</td>\n";
+/*vot*/			$env_str .= ($status ? "<td class=\"w pdleft1\">" : "<td class=\"nw pdleft1\">").lang($item['current']). (isset($item['version']) ? $item['version'] : '') . "</td>\n";
 			$env_str .= "</tr>\n";
 		}
 	}

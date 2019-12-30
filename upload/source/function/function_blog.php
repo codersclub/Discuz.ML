@@ -17,7 +17,7 @@ function blog_check_url($url) {
 	if(preg_match("/^(https?|ftp|gopher|news|telnet|rtsp|mms|callto|bctp|thunder|qqdl|synacast){1}:\/\//i", $url)) {
 		$return = '<a href="'.$url.'" target="_blank">';
 	} else {
-		$return = '<a href="'.(!empty($GLOBALS['_G']['siteurl']) ? $GLOBALS['_G']['siteurl'] : $GLOBALS['_G']['scheme'].'://').$url.'" target="_blank">';
+/*vot*/		$return = '<a href="'.(!empty($GLOBALS['_G']['siteurl']) ? $GLOBALS['_G']['siteurl'] : $GLOBALS['_G']['scheme'].'://').$url.'" target="_blank">';
 	}
 	return $return;
 }

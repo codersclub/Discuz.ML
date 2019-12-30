@@ -26,7 +26,7 @@ $lockfile = ROOT_PATH.'./data/install.lock';
 @include ROOT_PATH.CONFIG;
 
 define('CHARSET', 'utf-8');
-define('DBCHARSET', 'utf8'); // 'utf8mb4' for MySQL v.5.5.3+
+define('DBCHARSET', 'utf8mb4');
 
 define('ORIG_TABLEPRE', 'pre_');
 
@@ -251,8 +251,8 @@ $serialize_sql_setting = array (
   'recommendthread' =>
   array (
     'status' => '0',
-    'addtext'		=> 'Like',//'支持',
-    'subtracttext'	=> 'Not like',//'反对',
+/*vot*/    'addtext'		=> 'Like',//'支持',
+/*vot*/    'subtracttext'	=> 'Not like',//'反对',
     'defaultshow' => '1',
     'daycount' => '0',
     'ownthread' => '0',
@@ -260,34 +260,34 @@ $serialize_sql_setting = array (
   ),
   'seotitle' =>
   array (
-    'portal'	=> 'Portal',//'门户',
-    'forum'	=> 'Forum',//'论坛',
-    'group'	=> 'Groups',//'群组',
-    'home'	=> 'Home',//'家园',
-    'userapp'	=> 'Apps',//'应用',
+/*vot*/    'portal'	=> 'Portal',//'门户',
+/*vot*/    'forum'	=> 'Forum',//'论坛',
+/*vot*/    'group'	=> 'Groups',//'群组',
+/*vot*/    'home'	=> 'Home',//'家园',
+/*vot*/    'userapp'	=> 'Apps',//'应用',
   ),
   'activityfield' =>
   array (
-    'realname'	=> 'Real Name',//'真实姓名',
-    'mobile'	=> 'Mobile Phone',//'手机',
-    'qq'	=> 'QQ number',//'QQ号',
+/*vot*/    'realname'	=> 'Real Name',//'真实姓名',
+/*vot*/    'mobile'	=> 'Mobile Phone',//'手机',
+/*vot*/    'qq'	=> 'QQ number',//'QQ号',
   ),
   'article_tags' =>
   array (
-    1 => 'Original',//'原创',
-    2 => 'Hot',//'热点',
-    3 => 'Photos',//'组图',
-    4 => 'Breaking News',//'爆料',
-    5 => 'Headline',//'头条',
-    6 => 'Slideshow',//'幻灯',
-    7 => 'Scroll',//'滚动',
-    8 => 'Recommended',//'推荐',
+/*vot*/    1 => 'Original',//'原创',
+/*vot*/    2 => 'Hot',//'热点',
+/*vot*/    3 => 'Photos',//'组图',
+/*vot*/    4 => 'Breaking News',//'爆料',
+/*vot*/    5 => 'Headline',//'头条',
+/*vot*/    6 => 'Slideshow',//'幻灯',
+/*vot*/    7 => 'Scroll',//'滚动',
+/*vot*/    8 => 'Recommended',//'推荐',
   ),
   'verify' =>
   array (
     6 =>
     array (
-      'title' => 'Real-name verification',//'实名认证',
+/*vot*/      'title' => 'Real-name verification',//'实名认证',
       'available' => '0',
       'showicon' => '0',
       'viewrealname' => '0',
@@ -320,7 +320,7 @@ $serialize_sql_setting = array (
     ),
     7 =>
     array (
-      'title' => 'Video Verification',//'视频认证',
+/*vot*/      'title' => 'Video Verification',//'视频认证',
       'available' => '0',
       'showicon' => '0',
       'viewvideophoto' => '0',
@@ -329,7 +329,7 @@ $serialize_sql_setting = array (
   ),
   'focus' =>
   array (
-    'title' => 'Webmaster Recommended',//'站长推荐',
+/*vot*/    'title' => 'Webmaster Recommended',//'站长推荐',
     'data' =>
     array (
     ),
@@ -341,7 +341,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 0,
-      'title' => 'Basic Info',//'基本资料',
+/*vot*/      'title' => 'Basic Info',//'基本资料',
       'field' =>
       array (
         'realname' => 'realname',
@@ -365,7 +365,7 @@ $serialize_sql_setting = array (
     ),
     'contact' =>
     array (
-      'title' => 'Contact Info',//'联系方式',
+/*vot*/      'title' => 'Contact Info',//'联系方式',
       'available' => '1',
       'displayorder' => '1',
       'field' =>
@@ -383,7 +383,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 2,
-      'title' => 'Education',//'教育情况',
+/*vot*/      'title' => 'Education',//'教育情况',
       'field' =>
       array (
         'graduateschool' => 'graduateschool',
@@ -394,7 +394,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 3,
-      'title' => 'Work Info',//'工作情况',
+/*vot*/      'title' => 'Work Info',//'工作情况',
       'field' =>
       array (
         'occupation' => 'occupation',
@@ -405,7 +405,7 @@ $serialize_sql_setting = array (
     ),
     'info' =>
     array (
-      'title' => 'Personal Info',//'个人信息',
+/*vot*/      'title' => 'Personal Info',//'个人信息',
       'available' => '1',
       'displayorder' => '4',
       'field' =>

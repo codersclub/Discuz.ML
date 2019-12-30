@@ -1664,7 +1664,7 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 		'sadd', 'srem', 'scard', 'smembers', 'sismember',
 		'hmset', 'hgetall', 
 		'eval', 
-		'zadd', 'zcard', 'zrem', 'zscore', 'zrevrange', 'zincrby', 'zrevrangewithscore' /* Return with score */
+/*vot*/		'zadd', 'zcard', 'zrem', 'zscore', 'zrevrange', 'zincrby', 'zrevrangewithscore' /* Return with score */
 	);
 
 	if($cmd == 'check') {

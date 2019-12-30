@@ -34,7 +34,7 @@ class table_common_seccheck extends discuz_table
 				memory('rm', $ssid . "_code", $this->_pre_cache_key);
 				memory('rm', $ssid . "_dateline", $this->_pre_cache_key);
 			}
-			// cache
+			// In other cases, the expiration is handled by the cache itself
 		} else {
 			if($ssid) {
 				$ssid = dintval($ssid);
@@ -65,15 +65,15 @@ class table_common_seccheck extends discuz_table
 
 	public function truncate() {
 		if ($this->_allowmem) {
-			// Cache
+			// Expiration is handled by Cache itself
 		} else {
 			DB::query("TRUNCATE %t", array($this->_table));
 		}
 	}
 
 	/*
-	 * common_seccheck_pkID
-	 * common_seccheck_$id_$key
+	 * Generate unique ID with a single common_seccheck_pk
+	 * All values are recorded in the format of common_seccheck_$id_$key
 	 */
 	public function insert($data, $return_insert_id = false, $replace = false, $silent = false) {
 		if (!$this->_allowmem) {

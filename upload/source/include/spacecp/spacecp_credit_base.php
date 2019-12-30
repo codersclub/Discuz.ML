@@ -37,11 +37,6 @@ $formula = $_G['setting']['creditsformula'];
 $formula = str_replace("\$member['",'',$formula);
 $formula = str_replace('\']','',$formula);
 $_G['setting']['creditsformulaexp'] = credits_formula_exp($formula);
-//DEBUG
-//echo '<pre>';
-//echo $formula, "\n";
-//echo $_G['setting']['creditsformulaexp'], "\n";
-//echo '</pre>';
 
 if($_GET['op'] == 'base') {
 	$loglist = $extcredits_exchange = array();
@@ -345,11 +340,6 @@ if($_GET['op'] == 'base') {
 foreach($list as $k=>$v) {
   $list[$k]['rulename'] = lang('setting', 'credit_rule_'.$k);
 }
-//DEBUG
-//echo '<pre>';
-//echo 'list=';
-//print_r($list);
-//echo '</pre>';
 
 include_once template("home/spacecp_credit_base");
 

@@ -1,5 +1,5 @@
 +----------------------------------+
- Discuz! ML 3.4 (MultiLingual)
+ Discuz! ML 3.5 (MultiLingual)
  by Valery Votintsev, codersclub.org
  http://codersclub.org/discuzx/
 +----------------------------------+
@@ -9,7 +9,7 @@ ATTENTION!
 This package is NOT ORIGINAL Discuz!X !!!
 
 This is a modified MULTILINGUAL VERSION
-based on original Discuz!X v3.4
+based on original Discuz!X v3.5
 
 
 +----------------------------------+

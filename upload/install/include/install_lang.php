@@ -12,7 +12,7 @@ if(!defined('IN_COMSENZ')) {
 	exit('Access Denied');
 }
 
-/*vot*/ define('UC_VERNAME', 'MultiLingual Version');
+/*vot*/ define('UC_VERNAME', '多语种版本');//'MultiLingual Version'
 $lang = array(
 	'SC_GBK' => '简体中文版',
 	'TC_BIG5' => '繁体中文版',
@@ -175,7 +175,7 @@ $lang = array(
 
 	'install_in_processed' => '正在安装...',
 	'install_succeed' => '安装成功，点击进入',
-/*vot*/	'install_cloud' => '安装成功，欢迎开通Discuz!云平台<br>Discuz!云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Discuz!云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、漫游应用、SOSO表情服务。Discuz!云平台将陆续提供更多优质服务项目。<br>开通Discuz!平台之前，请确保您的网站（Discuz!、UCHome或SupeSite）已经升级到Discuz! X。',
+	'install_cloud' => '安装成功，欢迎开通Discuz!云平台<br>Discuz!云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Discuz!云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、漫游应用、SOSO表情服务。Discuz!云平台将陆续提供更多优质服务项目。<br>开通Discuz!平台之前，请确保您的网站（Discuz!、UCHome或SupeSite）已经升级到Discuz! X3。',
 	'to_install_cloud' => '到后台开通',
 	'to_index' => '暂不开通',
 
@@ -239,7 +239,7 @@ $lang = array(
 	'init_default_style' => '默认风格',
 	'init_default_forum' => '默认版块',
 	'init_default_template' => '默认模板套系',
-	'init_default_template_copyright' => '北京康盛新创科技有限责任公司',
+	'init_default_template_copyright' => '腾讯云计算（北京）有限责任公司',
 
 	'init_dataformat' => 'Y-n-j',
 	'init_modreasons' => '广告/SPAM\r\n恶意灌水\r\n违规内容\r\n文不对题\r\n重复发帖\r\n\r\n我很赞同\r\n精品文章\r\n原创内容',
@@ -253,7 +253,7 @@ $lang = array(
 
 	'license' => '<div class="license"><h1>中文版授权协议 适用于中文用户</h1>
 
-<p>版权所有 (c) 2001-2017，北京康盛新创科技有限责任公司保留所有权利。</p>
+<p>版权所有 (c) 2001-2020，腾讯云计算（北京）有限责任公司(原北京康盛新创科技有限责任公司)保留所有权利。</p>
 
 <p>感谢您选择康盛产品。希望我们的努力能为您提供一个高效快速、强大的站点解决方案，和强大的社区论坛解决方案。康盛公司网址为 http://www.comsenz.com，产品官方讨论区网址为 http://www.discuz.net。</p>
 

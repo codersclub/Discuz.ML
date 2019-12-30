@@ -8,12 +8,6 @@
  *	Modified by Valery Votintsev, http://discuz.ml
  */
 
-//DEBUG
-//echo '<pre>';
-//echo '_FILE=', __FILE__, "\n";
-//echo '_ENV=';
-//print_r($_ENV);
-//echo '</pre>', "\n";
 
 define('APPTYPEID', 2);
 define('CURSCRIPT', 'forum');

@@ -52,7 +52,7 @@
                         <div class="topicList">
                             <ul>
                             <% for(i = 0; i< comments.length; i++) { %>
-                                <li><a href="javascript:;" class="f13 c3"><span class="c7"><%==comments[i].author%><% if(comments[i].authorid == post.authorid) { %><i class="cardBtn br fn db c2">楼主</i><% } %>: </span><%== stripCode(comments[i].comment) %></a></li>
+<!--vot-->                      <li><a href="javascript:;" class="f13 c3"><span class="c7"><%==comments[i].author%><% if(comments[i].authorid == post.authorid) { %><i class="cardBtn br fn db c2">楼主</i><% } %>: </span><%== stripCode(comments[i].comment) %></a></li>
                             <% } %>
                             </ul>
                             <% if(commentCount > 5) { %>

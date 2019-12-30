@@ -42,7 +42,7 @@ class table_common_remote_port extends discuz_table {
 			$orig_tablepre = 'pre_';
 			$tablepre = getglobal('config/db/1/tablepre');
 			$dbcharset = getglobal('config/db/1/dbcharset');
-/*vot*/			$porttable = "CREATE TABLE pre_common_remote_port (id int(11) unsigned NOT NULL default '0' COMMENT '',idtype varchar(16) NOT NULL default '' COMMENT '',useip varchar(15) NOT NULL default '' COMMENT '',port int(11) unsigned NOT NULL default '0' COMMENT '',PRIMARY KEY (id, idtype)) ENGINE=MyISAM COMMENT=''";
+/*vot*/			$porttable = "CREATE TABLE pre_common_remote_port (id int(11) unsigned NOT NULL default '0' COMMENT '',idtype varchar(16) NOT NULL default '' COMMENT '',useip varchar(15) NOT NULL default '' COMMENT '',port int(11) unsigned NOT NULL default '0' COMMENT '',PRIMARY KEY (id, idtype)) ENGINE=INNODB COMMENT=''";
 			$porttable = str_replace("\r", "\n", str_replace(' '.$orig_tablepre, ' '.$tablepre, $porttable));
 			$porttable = str_replace("\r", "\n", str_replace(' `'.$orig_tablepre, ' `'.$tablepre, $porttable));
 

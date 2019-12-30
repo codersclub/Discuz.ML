@@ -17,7 +17,7 @@ class ip {
 	}
 
 	/*
-	 * 将IPv6地址外面加方括号，用于显示
+	 * Add square brackets outside the IPv6 address for display
 	 */
 	public static function to_display($ip) {
 		if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -27,13 +27,13 @@ class ip {
 	}
 
 	/*
-	 * 将各种显示格式的IPv6地址处理回标准IPv6格式
+	 * Process IPv6 addresses in various display formats back to standard IPv6 format
 	 * [::1] -> ::1
 	 * [::1]/16 -> ::1/16
 	 */
 	public static function to_ip($ip) {
 		if (strlen($ip) == 0) return $ip;
-		if (preg_match('/(.*?)\[((.*?:)+.*)\](.*)/', $ip, $m)) { // [xx:xx:xx]格式
+		if (preg_match('/(.*?)\[((.*?:)+.*)\](.*)/', $ip, $m)) { // Format: [xx:xx:xx]
 			if (filter_var($m[2], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
 				$ip = $m[1].$m[2].$m[4];
 			}
@@ -42,20 +42,20 @@ class ip {
 	}
 
 	/*
-	 * 验证IP是否合法，支持v4和v6
+	 * Verify whether the IP is legal, support v4 and v6
 	 */
 	public static function validate_ip($ip) {
 		return filter_var($ip, FILTER_VALIDATE_IP) !== false;
 	}
 
 	/*
-	 * 验证是否是合法的CIDR:
-	 * 	- 包含 /
-	 * 	- / 后面大于0
-	 * 	- / 前面是合法的IP
-	 * 返回值：
-	 * 	- TRUE，表示是合法的CIDR，$new_str为处理过的CIDR(IP部分调用了to_ip)
-	 * 	- FALSE, 不是合法的CIDR
+	 * Verify that it is a valid CIDR:
+	 * 	- Include /
+	 * 	- / back is greater than 0
+	 * 	- / The front is a legal IP
+	 * Return value:
+	 * 	- TRUE, eans it is a legal CIDR, $new_str is the processed CIDR (the IP part calls to_ip)
+	 * 	- FALSE, means not a valid CIDR
 	 */
 	public static function validate_cidr($str, &$new_str) {
 		if(strpos($str, '/') !== false) {
@@ -74,8 +74,8 @@ class ip {
 	}
 
 	/*
-	 * 给一个ipv4或v6的cidr，计算最小IP和最大IP
-	 * 如果输入的是一个IP，那最大最小IP都等于其自身
+	 * Given a cidr of ipv4 or v6, calculate the minimum IP and maximum IP
+	 * If the input is an IP, the maximum and minimum IP are equal to itself
 	 */
 	public static function calc_cidr_range($str, $as_hex = false) {
 		if(self::validate_cidr($str, $str)) {
@@ -126,7 +126,7 @@ class ip {
 	}
 
 	/*
-	 * 将一个IP地址转为16个字符的字符串
+	 * Convert an IP address to a 16-character string
 	 */
 	public static function ip_to_hex_str($ip)
 	{
@@ -142,7 +142,7 @@ class ip {
 	}
 
 	/*
-	 * 以下三个函数，检查$requestIp是否在$ip给出的cidr范围内
+	 * The following three functions check whether $requestIp is within the range of cidr given by $ip
 	 */
 
 	public static function check_ip($requestIp, $ips)
@@ -213,7 +213,7 @@ class ip {
 	}
 
 	/*
-	 * Turn IP into location, support incoming CIDR
+	 * Convert IP to location, support incoming CIDR
 	 */
 	public static function convert($ip) {
 		global $_G;
@@ -222,29 +222,30 @@ class ip {
 		}
 		if(!self::validate_ip($ip)) {
 			return '- Invalid';
-		} else {
-			if (!(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE) !== false)) {
-				return '- LAN';
-			}
-			if (!(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_RES_RANGE) !== false)) {
-				return '- Reserved';
-			}
-			if (array_key_exists('ipdb', $_G['config']) && array_key_exists('setting', $_G['config']['ipdb'])) {
-				$s = $_G['config']['ipdb']['setting'];
-				if (!empty($s['ipv4']) && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) !== false) {
-					$c = 'ip_'.$s['ipv4'];
-				} else if (!empty($s['ipv6']) && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false) {
-					$c = 'ip_'.$s['ipv6'];
-				} else if (!empty($s['default'])) {
-					$c = 'ip_'.$s['default'];
-				} else {
-					$c = 'ip_tiny';
-				}
+		}
+		if (!(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE) !== false)) {
+			return '- LAN';
+		}
+		if (!(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_RES_RANGE) !== false)) {
+			return '- Reserved';
+		}
+		if (array_key_exists('ipdb', $_G['config']) && array_key_exists('setting', $_G['config']['ipdb'])) {
+			$s = $_G['config']['ipdb']['setting'];
+			if (!empty($s['fullstack'])) {
+				$c = 'ip_'.$s['fullstack'];
+			} else if (!empty($s['ipv4']) && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) !== false) {
+				$c = 'ip_'.$s['ipv4'];
+			} else if (!empty($s['ipv6']) && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false) {
+				$c = 'ip_'.$s['ipv6'];
+			} else if (!empty($s['default'])) {
+				$c = 'ip_'.$s['default'];
 			} else {
 				$c = 'ip_tiny';
 			}
-			return $c::getInstance()->convert($ip);
+		} else {
+			$c = 'ip_tiny';
 		}
+		return $c::getInstance()->convert($ip);
 	}
 
 	public static function checkaccess($ip, $accesslist) {
@@ -253,6 +254,11 @@ class ip {
 
 	public static function checkbanned($ip) {
 		global $_G;
+
+		if (array_key_exists('security', $_G['config']) && array_key_exists('useipban', $_G['config']['security']) && $_G['config']['security']['useipban'] == 0) {
+			return false;
+		}
+
 		if($_G['setting']['ipaccess'] && self::checkaccess($ip, $_G['setting']['ipaccess'])) {
 			return true;
 		}

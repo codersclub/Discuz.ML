@@ -14,16 +14,14 @@ if(!defined('IN_DISCUZ')) {
 
 $sql = <<<EOF
 
-DROP TABLE IF EXISTS pre_common_devicetoken;
-CREATE TABLE pre_common_devicetoken (
+CREATE TABLE IF NOT EXISTS pre_common_devicetoken (
   `uid` int(11) unsigned NOT NULL,
   `token` char(50) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `token` (`token`)
 ) ENGINE=INNODB;
 
-DROP TABLE IF EXISTS pre_mobile_setting;
-CREATE TABLE pre_mobile_setting (
+CREATE TABLE IF NOT EXISTS pre_mobile_setting (
   `skey` varchar(255) NOT NULL DEFAULT '',
   `svalue` text NOT NULL,
   PRIMARY KEY (`skey`)

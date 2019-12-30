@@ -103,7 +103,7 @@ if($nextid) {
 		$mtag = $db_source->fetch_first("SELECT * FROM ".$db_source->table('mtag')." WHERE tagid='$tagid'");
 	}
 	$profield = $db_source->fetch_first("SELECT * FROM ".$db_source->table('profield')." WHERE fieldid='$fieldid'");
-	showmessage(lang('continue_convert_table').$table_source." : $profield[title] ".(!empty($mtag) ? "&rsaquo; $mtag[tagname] &rsaquo; tid > $nextid":""), "index.php?a=$action&source=$source&prg=$curprg&start=$nextid&gid=$gid&fid=$fid&sid=$sid&fieldid=$fieldid&tagid=$tagid");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." : $profield[title] ".(!empty($mtag) ? "&rsaquo; $mtag[tagname] &rsaquo; tid > $nextid":""), "index.php?a=$action&source=$source&prg=$curprg&start=$nextid&gid=$gid&fid=$fid&sid=$sid&fieldid=$fieldid&tagid=$tagid");
 }
 
 $maxpid = $db_target->result_first("SELECT MAX(pid) FROM ".$db_target->table('forum_post'));
@@ -195,7 +195,7 @@ function getprofield($start) {
 	global $db_source, $db_target, $fieldid, $gid, $fid, $tagid;
 
 	if(!$gid) {
-		$gid = $db_target->insert('forum_forum', array('type' => 'group', 'name' => lang('group_home'), 'status' => 3), 1);//vot
+/*vot*/		$gid = $db_target->insert('forum_forum', array('type' => 'group', 'name' => lang('group_home'), 'status' => 3), 1);
 		$db_target->insert('forum_forumfield', array('fid' => $gid));
 	}
 

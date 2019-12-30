@@ -58,7 +58,7 @@ if($typetids) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table')." fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+/*vot*/	showmessage(lang('continue_convert_table')." fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 }
 
 ?>

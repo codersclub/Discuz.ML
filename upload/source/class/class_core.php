@@ -13,11 +13,6 @@ error_reporting(E_ALL);
 define('IN_DISCUZ', true);
 /*vot*/ define('DISCUZ_ROOT', substr(dirname(str_replace('\\','/',__FILE__)), 0, -12));
 
-//DEBUG
-//echo '<pre>';
-//echo 'DISCUZ_ROOT=', DISCUZ_ROOT, "\n";
-//echo '</pre>', "\n";
-
 define('DISCUZ_CORE_DEBUG', false);
 define('DISCUZ_TABLE_EXTENDABLE', false);
 

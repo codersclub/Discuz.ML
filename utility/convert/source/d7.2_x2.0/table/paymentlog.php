@@ -75,6 +75,6 @@ while($row = $db_source->fetch_array($query)) {
 }
 $nextstep = $step + 1;
 if($continue) {
-	showmessage(lang('continue_convert_table').$table_source.lang('converted').$total.lang('records'), "index.php?a=$action&source=$source&prg=$curprg&step=$nextstep&total=$total");
+/*vot*/	showmessage(lang('continue_convert_table').$table_source.lang('converted').$total.lang('records'), "index.php?a=$action&source=$source&prg=$curprg&step=$nextstep&total=$total");
 }
 ?>

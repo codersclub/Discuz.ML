@@ -1,4 +1,3 @@
-//Common
 var userAgent = navigator.userAgent.toLowerCase();
 var is_opera = userAgent.indexOf('opera') != -1 && opera.version();
 var is_moz = (navigator.product == 'Gecko') && userAgent.substr(userAgent.indexOf('firefox') + 8, 3);
@@ -34,7 +33,6 @@ function strlen(str) {
 	return (is_ie && str.indexOf('\n') != -1) ? str.replace(/\r?\n/g, '_').length : str.length;
 }
 
-//Menu
 var menus = new menu_handler();
 
 function menu_handler() {
@@ -129,7 +127,6 @@ function lockmenu(id, value) {
 	menus.menu[id].allowhide = value;
 }
 
-//Editor
 var lang = new Array();
 function insertunit(text, textend, moveend) {
 	$('pm_textarea').focus();

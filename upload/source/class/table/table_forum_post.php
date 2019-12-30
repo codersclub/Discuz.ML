@@ -604,7 +604,7 @@ class table_forum_post extends discuz_table
 	}
 
 	/*
-	 * tidposition01MyISAM
+	 * To ensure that under each tid, the position starts from 0 and increases by 1 each time, which has the same semantics as MyISAM
 	 */
 	public function insert($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
 		try {

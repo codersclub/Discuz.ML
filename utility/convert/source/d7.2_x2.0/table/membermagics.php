@@ -45,7 +45,7 @@ if($nextid) {
 			$db_target->query("INSERT INTO $table_target SET uid='$row[uid]', magicid='$row[magicid]', num='$row[num]'");
 		}
 	}
-	showmessage(lang('continue_convert_table').$table_source." $start ".lang('to')." ".($start+$limit)." ".lang('records')." ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." $start ".lang('to')." ".($start+$limit)." ".lang('records')." ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 }
 
 ?>

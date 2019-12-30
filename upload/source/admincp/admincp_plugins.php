@@ -170,12 +170,6 @@ if(!$operation) {
 					$entrytitle = $entry;
 					$entryversion = $entrycopyright = $importtxt = '';
 					$extra = currentlang();
-//DEBUG
-//echo '<pre>';
-//echo 'extra=', $extra, "\n";
-//print_r($langs);
-//echo '</pre>';
-
 /*vot*/					if(isset($langs[$extra])) {
 /*vot*/						$entryfile = $entrydir.'/discuz_plugin_'.$entry.'_'.$extra.'.xml';
 /*vot*/					} else if(!empty($default)) {
@@ -186,17 +180,8 @@ if(!$operation) {
 /*vot*/					if(file_exists($entryfile)) {
 /*vot*/						$importtxt = @implode('', file($entryfile));
 					}
-//DEBUG
-//echo '<pre>';
-//echo 'entryfile=', $entryfile, "\n";
-//print_r($importtxt);
-//echo '</pre>';
 					if($importtxt) {
 						$pluginarray = getimportdata('Discuz! Plugin', 0, 1);
-//DEBUG
-//echo '<pre>';
-//print_r($pluginarray);
-//echo '</pre>';
 						if(!empty($pluginarray['plugin']['name'])) {
 							$entrytitle = dhtmlspecialchars($pluginarray['plugin']['name']);
 							$entryversion = dhtmlspecialchars($pluginarray['plugin']['version']);

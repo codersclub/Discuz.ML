@@ -127,8 +127,8 @@ if($_GET['step'] == 'start') {
 /*vot*/		show_msg(lang('update','ucenter160update'));
 	} else {
 /*vot*/		show_msg(lang('update','db_will_upgrade').'<br>' 
-			.lang('update','check_latest_version').'<br><br>'
-			.lang('update','check_plugins').'<br><br>'
+/*vot*/			.lang('update','check_latest_version').'<br><br>'
+/*vot*/			.lang('update','check_plugins').'<br><br>'
 /*vot*/			.'<a href="'.$theurl.'?step=prepare'.($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '').'">'.lang('update','update_start').'</a>');
 	}
 } elseif ($_GET['step'] == 'waitingdb') {

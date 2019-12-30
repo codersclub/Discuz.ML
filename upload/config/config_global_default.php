@@ -30,8 +30,8 @@ $_config = array();
  */
 $_config['db'][1]['dbhost']  	= 'localhost';	// DB Server address
 $_config['db'][1]['dbuser']  	= 'root';	// DB User Name
-$_config['db'][1]['dbpw'] 		= 'root';	// DB User Password
-$_config['db'][1]['dbcharset'] 	= 'utf8';	// DB Charset, 'utf8mb4' for MySQL >= 5.5.3
+$_config['db'][1]['dbpw'] 	= 'root';	// DB User Password
+$_config['db'][1]['dbcharset'] 	= 'utf8mb4';	// DB Charset, 'utf8mb4' for MySQL >= 5.5.3
 $_config['db'][1]['pconnect'] 	= 0;		// Enable DB persistent connection
 $_config['db'][1]['dbname']  	= 'ultrax';	// DB Name
 $_config['db'][1]['tablepre'] 	= 'pre_';	// DB Table Prefix
@@ -87,9 +87,6 @@ $_config['db']['common']['slave_except_table'] = '';
  * The following settings need to be PHP extension support component, which memcache priority over other settings,
  * can not be enabled when the memcache automatically when you open the other two optimization models)
  */
-
-//Set the cache lifetime value, default = 30 seconds
-//$_config['cache']['empty_ttl'] = 30;
 
 //Memory variable prefix, change, to avoid reference to the same server process disorder
 $_config['memory']['prefix'] = 'discuz_';
@@ -153,18 +150,18 @@ $_config['security']['urlxssdefend']	= true;		// Use own URL XSS defense
 $_config['security']['attackevasive']	= 0;		// CC Attack Defense 1 | 2 | 4
 $_config['security']['onlyremoteaddr']	= 0;		// Get User IP address method: 0 = Trust HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR; 1 = Tust only REMOTE_ADDR
 
+$_config['security']['useipban']		= 1;	// Whether to enable the function of banning IP, high-load sites can release this function to HTTP Server/CDN/SLB/WAF to reduce server loading
 $_config['security']['querysafe']['status']	= 1;	// Enable the SQL security detection, prevent the SQL injection attacks automatically
 $_config['security']['querysafe']['dfunction']	= array('load_file','hex','substring','if','ord','char');
 $_config['security']['querysafe']['daction']	= array('@','intooutfile','intodumpfile','unionselect','(select', 'unionall', 'uniondistinct');
 $_config['security']['querysafe']['dnote']	= array('/*','*/','#','--','"');
 $_config['security']['querysafe']['dlikehex']	= 1;
 $_config['security']['querysafe']['afullnote']	= 0;
-$_config['security']['onlyremoteaddr']	= 0;		// Show only Remote IP address
 
 $_config['security']['creditsafe']['second'] 	= 0;	// Open the user credit info security, can prevent the concurrent point flood. If it is greater than times(freequency)/second then the operation could not be committed
 $_config['security']['creditsafe']['times'] 	= 10;
 
-$_config['security']['fsockopensafe']['port']	= array(80,443); // Enabled ports for REMOTE downloads by fsockopen
+$_config['security']['fsockopensafe']['port']	= array(80, 443); // Enabled ports for REMOTE downloads by fsockopen
 
 $_config['admincp']['founder']		= '1';	// Site Founder: site management background with the highest authority, each site can be set to one or more founders
 						// You can use the user uid or user name. Separate multiple users with a comma;
@@ -201,9 +198,10 @@ $_config['input']['compatible'] = 1;
  * for example:
  * 		$_config['ipdb']['redis_ip']['server'] = '172.16.1.8';
  */
-$_config['ipdb']['setting']['default'] = 'tiny';	// Default IP library (Chinese)
-$_config['ipdb']['setting']['ipv4'] = '';	// IPv4 library used by the system. Leave blank to use the default library.
-$_config['ipdb']['setting']['ipv6'] = 'v6wry'; // IPv6 library used by the system. Leave blank to use the default library.
+$_config['ipdb']['setting']['fullstack'] = '';	// The full-stack IP library used by the system has the highest priority
+$_config['ipdb']['setting']['default'] = '';	// Default IP library (Chinese)
+$_config['ipdb']['setting']['ipv4'] = 'tiny';	// IPv4 library used by the system. Leave blank to use the default library.
+$_config['ipdb']['setting']['ipv6'] = 'v6wry';	// IPv6 library used by the system. Leave blank to use the default library.
 
 // Addon Setting
 //$_config['addonsource'] = 'xx1';

@@ -803,8 +803,8 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 		$out .= $header.$post;
 	} else {
 		$out = "GET $path HTTP/1.0\r\n";
-//vot		$header = "Accept: */*\r\n";
-		$header .= "Accept-Language: zh-cn\r\n";
+		$header = "Accept: */*\r\n";
+//vot		$header .= "Accept-Language: zh-cn\r\n";
 		$header .= "User-Agent: $_SERVER[HTTP_USER_AGENT]\r\n";
 		$header .= "Host: $host\r\n";
 		$header .= "Connection: Close\r\n";

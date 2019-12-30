@@ -38,8 +38,8 @@ if(!submitcheck('sharesubmit')) {
 		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? '' : $starttime;
 		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? '' : $endtime;
 	} else {
-		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
-		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
+/*vot*/		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
+/*vot*/		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
 	}
 
 	shownav('topic', 'nav_share');
@@ -51,7 +51,9 @@ if(!submitcheck('sharesubmit')) {
 		array('share_search', !$searchsubmit),
 		array('nav_share', $searchsubmit)
 	));
+	/*search={"nav_share":"action=share"}*/
 	showtips('share_tips');
+	/*search*/
 	echo <<<EOT
 <script type="text/javascript" src="static/js/calendar.js"></script>
 <script type="text/JavaScript">
@@ -62,6 +64,7 @@ function page(number) {
 </script>
 EOT;
 	showtagheader('div', 'searchposts', !$searchsubmit && empty($newlist));
+	/*search={"nav_share":"action=share","search":"action=share&search=true"}*/
 	showformheader("share".(!empty($_GET['search']) ? '&search=true' : ''), '', 'shareforum');
 	showhiddenfields(array('page' => $page, 'pp' => $_GET['pp'] ? $_GET['pp'] : $_GET['perpage']));
 	showtableheader();
@@ -82,6 +85,7 @@ EOT;
 	showtablefooter();
 	showformfooter();
 	showtagfooter('div');
+	/*search*/
 
 } else {
 	$sids = authcode($sids, 'DECODE');
@@ -123,7 +127,7 @@ if(submitcheck('searchsubmit', 1) || $newlist) {
 		$sql .= " AND s.dateline>'$starttime'";
 	}
 
-	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
+/*vot*/	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
 		if($endtime != '') {
 			$endtime = strtotime($endtime);
 			$sql .= " AND s.dateline<'$endtime'";

@@ -89,7 +89,7 @@ while ($space = $db_source->fetch_array($query)) {
 	}
 
 	if(empty($home['extcredits']['credit']) || empty($home['extcredits']['experience'])) {
-		showmessage(lang('space_home_error'));//vot
+/*vot*/		showmessage(lang('space_home_error'));
 	}
 
 	$setarr[$home['extcredits']['credit']] = $space['credit'] + intval($newspace[$home['extcredits']['credit']]);
@@ -206,7 +206,7 @@ while ($space = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table'). " {$oldpre}space uid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
+/*vot*/	showmessage(lang('continue_convert_table'). " {$oldpre}space uid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 function getupdatesql($setarr) {

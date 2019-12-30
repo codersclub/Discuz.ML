@@ -58,11 +58,6 @@ if(trim($field['choices'])) {
     $field['choices'] = str_replace('\\n', "\n", lang('setting',$fieldid.'_choice'));
   }
 }
-//DEBUG
-//echo '<pre>';
-//echo 'field=';
-//print_r($field);
-//echo '</pre>';
 
 	if($fieldid == 'birthday') {
 		if($field['unchangeable'] && !empty($space[$fieldid])) {

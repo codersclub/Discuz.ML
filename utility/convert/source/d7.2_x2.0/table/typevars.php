@@ -33,7 +33,7 @@ while ($data = $db_source->fetch_array($query)) {
 }
 
 if($next) {
-	showmessage(lang('continue_convert_table').$table_source." $start ".lang('to')." ".($start+$limit)." ".lang('records')." ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." $start ".lang('to')." ".($start+$limit)." ".lang('records')." ", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 } else {
 	if(!$db_target->result_first("SELECT count(*) FROM $table_target WHERE search > 2 LIMIT 1")) {
 		$db_target->query("UPDATE $table_target SET search = '3' WHERE search = '1'");

@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 class table_common_visit extends discuz_table
 {
 	/*
-	 * memorySortedSetmember = ip, score = view
+	 * In the case of memory, all data is stored in a SortedSet, member = ip, score = view
 	 */
 	public function __construct() {
 
@@ -25,7 +25,7 @@ class table_common_visit extends discuz_table
 		$this->_cache_ttl = -1;
 
 		parent::__construct();
-		// SortedSet
+		// Depends on the SortedSet data type
 		$this->_allowmem = $this->_allowmem && C::memory()->gotsortedset;
 	}
 
@@ -92,8 +92,8 @@ class table_common_visit extends discuz_table
 	}
 
 	/*
-	 * $start$limitstartend
-	 * $limit0$startlimit
+	 * Calculate start and end from $start and $limit
+	 * When $limit is 0, the $start parameter indicates limit
 	 */
 	private function get_start_and_end($start, $limit) {
 		$limit = intval($limit > 0 ? $limit : 0);

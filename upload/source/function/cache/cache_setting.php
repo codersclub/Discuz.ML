@@ -765,14 +765,14 @@ function get_cachedata_mainnav() {
 				$liparam = !$nav['subtype'] || !$nav['subcols'] ? '' : ' style="width:'.sprintf('%1.1f', (1 / $nav['subcols']) * 100).'%"';
 //vot				$subnavs .= '<li'.$liparam.'>'.$item.'</li>';
 
-/*vot*/			$subnavs[$subindex] = $subnav;
-/*vot*/			$extra = " hidefocus=\"true\" ".($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']);
+/*vot*/				$subnavs[$subindex] = $subnav;
+/*vot*/				$extra = " hidefocus=\"true\" ".($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']);
 
-//			$subnavs[$subindex]['title'] = $title; // Translate this!,
-			$subnavs[$subindex]['extra'] = $extra;
-			$subnavs[$subindex]['liparam'] = $liparam;
+//				$subnavs[$subindex]['title'] = $title; // Translate this!,
+				$subnavs[$subindex]['extra'] = $extra;
+				$subnavs[$subindex]['liparam'] = $liparam;
 
-/*vot*/			$subindex++;
+/*vot*/				$subindex++;
 /*vot*/			}
 		}
 		list($navid) = explode('.', basename($nav['url']));

@@ -6,21 +6,21 @@ Based on Discuz! X, http://www.discuz.net
 
 ### **V3.5 branch**
 
-**WARNING:**
+This branch is used for the following work:
 
-It is not recommended to download this branch code for ordinary users
-
-This branch is used for the following tasks:
-
-* UTF8/UTF8MB4 full support
+* Full support for UTF8MB4
 * InnoDB support
-* Clean up PHP deprecated methods
-* Partially support for IPv6
+* Clean up PHP's deprecated methods
+* Partial work on IPv6 support
+* If there is spare time for other work
+
+
+### **Introduction**
 
 Discuz! ML repository: https://bitbucket.org/vot/discuz.ml
 
 ### **Statement**
-You can fork the site code, but it is **Prohibited** to **redistribute** of any derivative, modified or third-party dveloped version based on the whole or any part of this product without a permission.
+You may fork the code of this site, but **redistribution** for **redistribution** in the development of any derivative, modified or third-party version based on the whole or any part of this product is **prohibited** without permission
 
 ### **Related Sites**
  

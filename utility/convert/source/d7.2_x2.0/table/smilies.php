@@ -33,10 +33,10 @@ while ($row = $db_source->fetch_array($query)) {
 }
 
 if($nextid) {
-	showmessage(lang('continue_convert_table').$table_source." id > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." id > $nextid ", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 } else {
-	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('83','4','9','stamp','Editor Choice','010.gif')");
-	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('84','0','18','stamplist','Editor Choice','010.small.gif')");
+/*vot*/	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('83','4','9','stamp','Editor Choice','010.gif')");
+/*vot*/	$db_target->query("REPLACE INTO $table_target (id, typeid, displayorder, type, code, url) VALUES ('84','0','18','stamplist','Editor Choice','010.small.gif')");
 
 }
 

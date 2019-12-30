@@ -180,11 +180,6 @@ function modulecmp($a, $b) {
 
 function updatepluginlanguage($pluginarray) {
 	global $_G;
-//DEBUG
-//echo '<pre>';
-//print_r($pluginarray);
-//echo 'DISCUZ_LANG=', DISCUZ_LANG, "\n";
-//echo '</pre>';
 	if(!$pluginarray['language']) {
 		return false;
 	}
@@ -209,10 +204,6 @@ function updatepluginlanguage($pluginarray) {
 				}
 			}
 		}
-//DEBUG
-//echo '<pre>';
-//echo 'savecache: ','pluginlanguage_'.$type, "\n";
-//echo '</pre>';
 		savecache('pluginlanguage_'.$type, $_G['cache']['pluginlanguage_'.$type]);
 	}
 	return true;

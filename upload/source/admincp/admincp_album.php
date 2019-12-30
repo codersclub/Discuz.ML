@@ -68,9 +68,11 @@ if(!submitcheck('albumsubmit')) {
 		array('album_search', !$searchsubmit),
 		array('nav_album', $searchsubmit)
 	));
+	/*search={"nav_album":"action=album","newlist":"action=album"}*/
 	if($muticondition) {
 		showtips('album_tips');
 	}
+	/*search*/
 	echo <<<EOT
 <script type="text/javascript" src="static/js/calendar.js"></script>
 <script type="text/JavaScript">
@@ -81,6 +83,7 @@ function page(number) {
 </script>
 EOT;
 	showtagheader('div', 'searchposts', !$searchsubmit && empty($newlist));
+	/*search={"nav_album":"action=album","search":"action=album&search=true"}*/
 	showformheader("album".(!empty($_GET['search']) ? '&search=true' : ''), '', 'albumforum');
 	showhiddenfields(array('page' => $page, 'pp' => $_GET['pp'] ? $_GET['pp'] : $_GET['perpage']));
 	showtableheader();
@@ -99,6 +102,7 @@ EOT;
 	showtablefooter();
 	showformfooter();
 	showtagfooter('div');
+	/*search*/
 
 } else {
 	if($_GET['albumids']) {

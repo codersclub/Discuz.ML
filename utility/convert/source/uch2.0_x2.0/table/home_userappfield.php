@@ -35,7 +35,7 @@ while ($value = $db_source->fetch_array($query)) {
 }
 
 if($done == false) {
-	showmessage(lang('continue_convert_table').$table_source." uid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");//vot
+/*vot*/	showmessage(lang('continue_convert_table').$table_source." uid> $nextid", "index.php?a=$action&source=$source&prg=$curprg&start=$nextid");
 }
 
 ?>

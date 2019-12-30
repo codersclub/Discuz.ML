@@ -81,7 +81,8 @@ function securitymessage($subject, $message, $reload = TRUE, $form = FALSE) {
 		'attackevasive_2_message' => 'Access to the site through a proxy servers is restricted for mow. Please remove your proxy setting configuration, and access to the site directly.',
 		'attackevasive_4_subject' => 'Open the page reload',
 		'attackevasive_4_message' => 'Welcome to the site, the page is re-loading, please wait ...'
-	);*/
+	);
+*/
 
 /*vot*/	$subject = lang('core', $subject) ? lang('core', $subject) : $subject;
 /*vot*/	$message = lang('core', $message) ? lang('core', $message) : $message;
