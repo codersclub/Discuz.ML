@@ -147,10 +147,6 @@ $lang = array
 
 	'eccredit_explain' => '解釋',
 
-	'google_site_0' => '網頁搜索',
-	'google_site_1' => '站內搜索',
-	'google_sa' => '搜索',
-
 	'modcp_logs_action_home' => '內部留言',
 	'modcp_logs_action_moderate' => '審核',
 	'modcp_logs_action_member' => '用戶管理',

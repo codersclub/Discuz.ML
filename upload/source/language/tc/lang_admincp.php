@@ -6460,8 +6460,6 @@ $lang = array
 	'cplog_ecommerce_ec_credit' => '信用評級體系',
 	'cplog_tradelog' => '商品交易訂單',
 
-	'cplog_google_config' => 'Google 基本設置',
-
 	'cplog_database_export' => '數據備份',
 	'cplog_database_import' => '數據恢復',
 	'cplog_database_importzip' => '資料恢復',
