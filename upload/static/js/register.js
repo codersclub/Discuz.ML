@@ -194,9 +194,8 @@ function emailMenuOp(op, e, id) {
 	} else if(op == 4) {
 	       	e = e ? e : window.event;
                 var obj = $(id);
-/*vot*/        	if(e.keyCode == 13) { // Enter
-                        var v = obj.value.indexOf('@') != -1 ? obj.value.substring(0, obj.value.indexOf('@')) : obj.value;
-                        obj.value = v + '@' + emaildomains[emailMenui];
+/*vot*/        	if(e.keyCode == 13 && obj.value.indexOf('@') == -1) { // Enter
+                        obj.value = obj.value + '@' + emaildomains[emailMenui];
                         doane(e);
         	}
 	} else if(op == 5) {
