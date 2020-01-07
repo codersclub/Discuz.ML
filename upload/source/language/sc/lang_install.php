@@ -8,8 +8,11 @@
  *      $Id: lang_install.php by Valery Votintsev, codersclub.org
  */
 
-define('UC_VERNAME', 'International Version');
+if(!defined('IN_COMSENZ')) {
+	exit('Access Denied');
+}
 
+define('UC_VERNAME', 'International Version');
 $lang = array(
 	'SC_GBK' => '简体中文版',
 	'TC_BIG5' => '繁体中文版',
@@ -22,6 +25,8 @@ $lang = array(
 	'agreement_yes' => '我同意',
 	'agreement_no' => '我不同意',
 	'notset' => '不限制',
+	'enable' => '开启',
+	'disable' => '关闭',
 
 	'message_title' => '提示信息',
 	'error_message' => '错误信息',
@@ -120,7 +125,7 @@ $lang = array(
 	'uc_url_invalid' => 'URL 格式错误',
 	'uc_url_unreachable' => 'UCenter 的 URL 地址可能填写错误，请检查',
 	'uc_ip_invalid' => '无法解析该域名，请填写站点的 IP',
-	'uc_admin_invalid' => 'UCenter 创始人密码错误，请重新填写',
+	'uc_admin_invalid' => 'UCenter 创始人密码校验未通过, 可能原因有:<br />1. UCenter 创始人密码不正确<br />2. 多次错误输入密码导致创始人用户和 IP 地址被锁定<br />3. UCenter 后台 “ 通过 URL 添加应用功能 ” 未开启',
 	'uc_data_invalid' => '通信失败，请检查 UCenter 的URL 地址是否正确 ',
 	'uc_dbcharset_incorrect' => 'UCenter 数据库字符集与当前应用字符集不一致',
 	'uc_api_add_app_error' => '向 UCenter 添加应用错误',
@@ -319,6 +324,8 @@ $lang = array(
 	'allow' => '允许 ',
 	'unix' => '类Unix',
 	'diskspace' => '磁盘空间',
+	'opcache' => 'OPcache',
+	'curl' => 'cURL 库',
 	'priv_check' => '目录、文件权限检查',
 	'func_depend' => '函数依赖性检查',
 	'func_name' => '函数名称',
