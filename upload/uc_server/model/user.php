@@ -60,12 +60,7 @@ class usermodel {
 		$guestexp .= '|^Guest';
 
 		$len = $this->dstrlen($username);
-/*vot*/		$bytelen = strlen($username);
-/*vot*/		if($bytelen > 64) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif($len < 2) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif(preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $username)) {
+/*vot*/	if($len > 64 || $len < 2 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $username)) {
 			return FALSE;
 		} else {
 			return TRUE;
@@ -116,7 +111,7 @@ class usermodel {
 	}
 
 	function check_emailformat($email) {
-		return strlen($email) > 6 && strlen($email) <= 32 && preg_match("/^([a-z0-9\-_.+]+)@([a-z0-9\-]+[.][a-z0-9\-.]+)$/", $email);
+/*vot*/		return strlen($email) > 6 && strlen($email) <= 128 && preg_match("/^([a-z0-9\-_.+]+)@([a-z0-9\-]+[.][a-z0-9\-.]+)$/", $email);
 	}
 
 	function check_emailaccess($email) {
