@@ -2,7 +2,7 @@ a8916bf8a31ba89995ac0304175d0e52 *./admin.php
 27548301e705c729cfc1f545ff876206 *./avatar.php
 e4d74830dec46b4189ed80538b081c1c *./index.php
 90b101dd0e881816c7587f04df2c3db0 *control/admin/admin.php
-b17b7d08db108a14fc27d15bc35d1d48 *control/admin/app.php
+9484d3693f3e4ffabcdce38aacb1c2c9 *control/admin/app.php
 bb19aa03231cb8ffa29cbdb41449dfdf *control/admin/badword.php
 72a4339c80c4a1dea4a2e644fa783e53 *control/admin/cache.php
 1e56f9c812d87b392080b99ea584709a *control/admin/credit.php
@@ -16,9 +16,9 @@ f53e0119b7e5a24c2ac6dfa68913d631 *control/admin/domain.php
 f293062e41c34699258e088bec2b98b4 *control/admin/plugin.php
 9b0a32b21c13acbccdf36087e5dad5bc *control/admin/pm.php
 0e9c93d9204b5f232eea6617ca594979 *control/admin/seccode.php
-fcad15b4713a14d59729589b22b3b0ec *control/admin/setting.php
-5a1f9ecb607d8ae8787324377370f486 *control/admin/user.php
-eb97f93ba800073cdb5ab9aae4dc8087 *control/app.php
+ff568e0204dfa796ef9a947091bb9482 *control/admin/setting.php
+8b51ca1028e3525a3869b6db7bfd4099 *control/admin/user.php
+73848d3c004bbf8341138005fc58865f *control/app.php
 81ffcc49fe313577c966d5c64759992b *control/credit.php
 aba07c0e38ad0875a303ef418658afc2 *control/domain.php
 42a0f7a167224fbcba01a9a6dc561493 *control/feed.php
@@ -39,13 +39,13 @@ d4fde3d32ba28d296f8b7b069bff016c *model/cron.php
 c0dec6b7bcbf660a3fe9d9de1d782629 *model/feed.php
 87d25e6d940ccc1358c63e83e21474a3 *model/friend.php
 d6436d71a2819b37a7260fa97b6f17c1 *model/mail.php
-38ef181f731419674610054b4c3c78fa *model/misc.php
+1baea4d71382a33e528243ff49c7ed7b *model/misc.php
 de5fcd5fbdc644e4ca5efcb7fd89b22a *model/note.php
 bb9c95148eda27df11628934ac5e3963 *model/plugin.php
 e07b645ad6318c754fe055d1abd38f66 *model/pm.php
 ba787d675b6b8db7549ae1a1eb97dc20 *model/setting.php
 d7b379d38fbc0e8a120454a334a54499 *model/tag.php
-cd45cad1dae7a7d5b3ca9be020c86fe0 *model/user.php
+71f9fb432462ebc43a03d0c396f89deb *model/user.php
 cdc453e23980b4f7f894a3b15042a76c *model/version.php
 30bef9f4245ea71e3c73583f8fb82e8e *lib/db.class.php
 26d9575be772f907ef683fbabbce3d10 *lib/dbi.class.php
@@ -57,7 +57,7 @@ d4fbe5acd2ebfd7d4fd42ecaaccdcdf0 *lib/sendmail.inc.php
 dd8f21e6948c6c12ae073a59fcea5895 *lib/xml.class.php
 340293b792e96e6d65a25d1e16645269 *view/default/admin.lang.php
 6ca32db1f256095aa8fcedf496b64d17 *view/default/admin_admin.htm
-99d6766136e8f101a9b2843d677624ec *view/default/admin_app.htm
+261691150ce396fc020a120f30bb1efb *view/default/admin_app.htm
 8c2c7c164be3d2e880fc34ae29de11fe *view/default/admin_badword.htm
 e7c9d9336c808d322ddd304d583d8523 *view/default/admin_cache.htm
 9c0247562c6e7c19fa499862d387ada2 *view/default/admin_credit.htm
@@ -74,7 +74,7 @@ d85f6017aa35b5ef3d91cc28362dee17 *view/default/admin_mail.htm
 f58c17f54b74ad9685edc0a672694c69 *view/default/admin_note.htm
 d0f78db9349b7baef5483c12357896e1 *view/default/admin_pm_clear.htm
 e1584613d0dc1a88c08e28889166dab4 *view/default/admin_pm_search.htm
-de4183ba9c478ba74f26e8732d6fcd50 *view/default/admin_setting.htm
+0f8adc045295cfb1ceac6e50133959e9 *view/default/admin_setting.htm
 cacb0172cbdd597afbe8282682dcd121 *view/default/admin_tag.htm
 3d1cc35907cb078376023c8510582ee7 *view/default/admin_user.htm
 008d9c24de6c0976c5c519382d1e5636 *view/default/footer.htm
