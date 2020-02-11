@@ -47,6 +47,24 @@ class memory_driver_redis {
 		}
 	}
 
+	function feature($feature) {
+		switch ($feature) {
+			case 'set':
+			case 'hash':
+			case 'sortedset':
+			case 'pipeline':
+				return true;
+			case 'eval':
+				$ret = $this->obj->eval("return 1");
+				return ($ret === 1);
+			case 'cluster':
+				$ret = $this->obj->info("cluster");
+				return ($ret['cluster_enabled'] === 1);
+			default:
+				return false;
+		}
+	}
+
 	function &instance() {
 		static $object;
 		if (empty($object)) {
@@ -174,7 +192,15 @@ class memory_driver_redis {
 		return $this->obj->hGetAll($key);
 	}
 
-	function eval($script, $argv) {
+	function hget($key, $field) {
+		return $this->obj->hGet($key, $field);
+	}
+
+	function hexists($key, $field) {
+		return $this->obj->hExists($key, $field);
+	}
+
+	function evalscript($script, $argv) {
 		return $this->obj->eval($script, $argv);
 	}
 
@@ -220,6 +246,18 @@ class memory_driver_redis {
 
 	function clear() {
 		return $this->obj->flushAll();
+	}
+
+	function pipeline() {
+		return $this->obj->multi(Redis::PIPELINE);
+	}
+
+	function commit() {
+		return $this->obj->exec();
+	}
+
+	function discard() {
+		return $this->obj->discard();
 	}
 
 	private function _try_deserialize($data) {

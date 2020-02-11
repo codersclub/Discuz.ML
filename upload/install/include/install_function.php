@@ -20,6 +20,7 @@ function show_msg($error_no, $error_msg = 'ok', $success = 1, $quit = TRUE) {
 		$str = "<root>\n";
 		$str .= "\t<error errorCode=\"$error_code\" errorMessage=\"$error_msg\" />\n";
 		$str .= "</root>";
+		send_mime_type_header();
 		echo $str;
 		exit;
 	} else {
@@ -137,8 +138,6 @@ function env_check(&$env_items) {
 			$tmp = function_exists('gd_info') ? gd_info() : array();
 			$env_items[$key]['current'] = empty($tmp['GD Version']) ? 'noext' : $tmp['GD Version'];
 			unset($tmp);
-/*vot*/		} elseif($key == 'mbstring') {
-/*vot*/			$env_items[$key]['current'] = extension_loaded('mbstring') ? 'support' : 'noext';
 		} elseif($key == 'diskspace') {
 			if(function_exists('disk_free_space')) {
 				$env_items[$key]['current'] = disk_free_space(ROOT_PATH);
@@ -272,6 +271,7 @@ function show_env_result(&$env_items, &$dirfile_items, &$func_items, &$filesock_
 		$str .= "\t</FileDirs>\n";
 		$str .= "\t<error errorCode=\"$error_code\" errorMessage=\"\" />\n";
 		$str .= "</root>";
+		send_mime_type_header();
 		echo $str;
 		exit;
 
@@ -354,6 +354,15 @@ function show_env_result(&$env_items, &$dirfile_items, &$func_items, &$filesock_
 function show_next_step($step, $error_code) {
 	global $uchidden;
 /*vot*/	global $language;
+	if(!empty($uchidden)) {
+		$uc_info_transfer = unserialize(urldecode($uchidden));
+		if(!isset($uc_info_transfer['ucapi']) && !isset($uc_info_transfer['ucfounderpw'])){
+			$uchidden = '';
+		} else {
+			$uchidden = dhtmlspecialchars($uchidden);
+		}
+	}
+
 	echo "<form action=\"index.php\" method=\"post\">\n";
 	echo "<input type=\"hidden\" name=\"step\" value=\"$step\" />";
 /*vot*/	echo "<input type='hidden' name='language' value='$language' />";
@@ -532,7 +541,7 @@ function dir_writeable($dir) {
 
 function dir_clear($dir) {
 	global $lang;
-	showjsmessage($lang['clear_dir'].' '.str_replace(ROOT_PATH, '', $dir));
+	showjsmessage($lang['clear_dir'] . ' ' . str_replace(ROOT_PATH, '', $dir) . "\n");
 	if($directory = @dir($dir)) {
 		while($entry = $directory->read()) {
 			$filename = $dir.'/'.$entry;
@@ -602,7 +611,7 @@ EOT;
 
 function loginit($logfile) {
 	global $lang;
-	showjsmessage($lang['init_log'].' '.$logfile);
+	showjsmessage($lang['init_log'].' '.$logfile . "\n");
 	if($fp = @fopen('./forumdata/logs/'.$logfile.'.php', 'w')) {
 		fwrite($fp, '<'.'?PHP exit(); ?'.">\n");
 		fclose($fp);
@@ -611,9 +620,7 @@ function loginit($logfile) {
 
 function showjsmessage($message) {
 	if(VIEW_OFF) return;
-	echo '<script type="text/javascript">showmessage(\''.addslashes($message).' \');</script>'."\r\n";
-	flush();
-	ob_flush();
+	append_to_install_log_file($message);
 }
 
 function random($length) {
@@ -751,17 +758,68 @@ function generate_key() {
 	return implode('', $return);
 }
 
-function show_install() {
-/*vot*/	global $language;
+function show_db_install() {
 	if(VIEW_OFF) return;
+	global $dbhost, $dbuser, $dbpw, $dbname, $tablepre, $username, $password, $email;
+	$dzucfull = DZUCFULL;
+	$allinfo = base64_encode(serialize(compact('dbhost', 'dbuser', 'dbpw', 'dbname', 'tablepre', 'username', 'password', 'email', 'dzucfull')));
+	init_install_log_file();
 ?>
 <script type="text/javascript">
-function showmessage(message) {
-	document.getElementById('notice').innerHTML += message + '<br />';
-	document.getElementById('notice').scrollTop = 100000000;
+var ajax = {};
+ajax.x = function () {
+    if (typeof XMLHttpRequest !== 'undefined') {return new XMLHttpRequest();}
+    var versions = ["MSXML2.XmlHttp.6.0", "MSXML2.XmlHttp.5.0", "MSXML2.XmlHttp.4.0", "MSXML2.XmlHttp.3.0", "MSXML2.XmlHttp.2.0", "Microsoft.XmlHttp"];
+    var xhr;for (var i = 0; i < versions.length; i++) {try {xhr = new ActiveXObject(versions[i]);break;} catch (e) {}}return xhr;
+};
+
+ajax.send = function (url, callback, method, data, async) {
+    if (async === undefined) {async = true;}
+    var x = ajax.x();x.open(method, url, async);x.onreadystatechange = function () {if (x.readyState == 4) {callback(x.responseText)}};if (method == 'POST') {x.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');}
+    x.send(data);
+};
+
+ajax.get = function (url, data, callback, async) {
+    var query = [];for (var key in data) {query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));}ajax.send(url + (query.length ? '?' + query.join('&') : ''), callback, 'GET', null, async);
+};
+
+function request_do_db_init() {
+    ajax.get('index.php?method=do_db_init&allinfo=<?= $allinfo ?>');
 }
-function initinput() {
-/*vot*/	window.location='index.php?method=ext_info&language=<? echo $language; ?>';
+
+function set_notice(str) {
+    document.getElementById('notice').innerHTML = str;
+    document.getElementById('notice').scrollTop = 100000000;
+}
+
+function append_notice(str) {
+    document.getElementById('notice').innerHTML += str;
+    document.getElementById('notice').scrollTop = 100000000;
+}
+
+function request_log() {
+    ajax.get('index.php?method=check_db_init_progress', "", function (data) {
+        set_notice(data.split("\n").map(l => l + '<br/>').join(''));
+        if (data.indexOf('<?= lang("initdbresult_succ") ?>') !== -1) {
+            append_notice("<?= lang('initsys') ?> ... ");
+
+            ajax.get("../misc.php?mod=initsys", "", function() {
+                append_notice("<?= lang('succeed') ?><br/>");
+                document.getElementById("laststep").value = '<?= lang("initdbresult_succ") ?>';
+                document.getElementById("laststep").disabled = false;
+                window.setTimeout(function() {
+                    window.location='index.php?method=ext_info';
+                }, 2000);
+            });
+        } else {
+            request_log();
+        }
+    });
+}
+
+window.onload = function() {
+    request_do_db_init();
+    request_log();
 }
 </script>
 		<div id="notice"></div>
@@ -773,13 +831,13 @@ function initinput() {
 <?php
 }
 
-/*vot*/ function runquery($sql, $orig_tablepre, $tablepre) {
-/*vot*/	global $lang, $db;
+function runquery($sql) {
+	global $lang, $tablepre, $db;
 
 	if(!isset($sql) || empty($sql)) return;
 
-/*vot*/	$sql = str_replace("\r", "\n", str_replace(' '.$orig_tablepre, ' '.$tablepre, $sql));
-/*vot*/	$sql = str_replace("\r", "\n", str_replace(' `'.$orig_tablepre, ' `'.$tablepre, $sql));
+	$sql = str_replace("\r", "\n", str_replace(' '.ORIG_TABLEPRE, ' '.$tablepre, $sql));
+	$sql = str_replace("\r", "\n", str_replace(' `'.ORIG_TABLEPRE, ' `'.$tablepre, $sql));
 	$ret = array();
 	$num = 0;
 	foreach(explode(";\n", trim($sql)) as $query) {
@@ -798,8 +856,9 @@ function initinput() {
 
 			if(substr($query, 0, 12) == 'CREATE TABLE') {
 				$name = preg_replace("/CREATE TABLE ([a-z0-9_]+) .*/is", "\\1", $query);
-				showjsmessage(lang('create_table').' '.$name.' ... '.lang('succeed'));
+				showjsmessage(lang('create_table').' '.$name.' ... ');
 				$db->query(createtable($query, $db->version()));
+				showjsmessage(lang('succeed') . "\n");
 			} else {
 				$db->query($query);
 			}
@@ -809,9 +868,41 @@ function initinput() {
 
 }
 
-/*vot REMOVED: (Use runquery instead!)
 function runucquery($sql, $tablepre) {
-*/
+	global $lang, $db;
+
+	if(!isset($sql) || empty($sql)) return;
+
+	$sql = str_replace("\r", "\n", str_replace(' uc_', ' '.$tablepre, $sql));
+	$ret = array();
+	$num = 0;
+	foreach(explode(";\n", trim($sql)) as $query) {
+		$ret[$num] = '';
+		$queries = explode("\n", trim($query));
+		foreach($queries as $query) {
+			$ret[$num] .= (isset($query[0]) && $query[0] == '#') || (isset($query[1]) && isset($query[1]) && $query[0].$query[1] == '--') ? '' : $query;
+		}
+		$num++;
+	}
+	unset($sql);
+
+	foreach($ret as $query) {
+		$query = trim($query);
+		if($query) {
+
+			if(substr($query, 0, 12) == 'CREATE TABLE') {
+				$name = preg_replace("/CREATE TABLE ([a-z0-9_]+) .*/is", "\\1", $query);
+				showjsmessage(lang('create_table').' '.$name.' ... ');
+				$db->query(createtable($query, $db->version()));
+				showjsmessage(lang('succeed') . "\n");
+			} else {
+				$db->query($query);
+			}
+
+		}
+	}
+
+}
 
 
 function charcovert($string) {
@@ -866,7 +957,7 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 	$scheme = $matches['scheme'];
 	$host = $matches['host'];
 	$path = $matches['path'] ? $matches['path'].($matches['query'] ? '?'.$matches['query'] : '') : '/';
-/*vot*/	$port = !empty($matches['port']) ? $matches['port'] : ($scheme == 'https' ? 443 : 80);
+	$port = !empty($matches['port']) ? $matches['port'] : ($matches['scheme'] == 'https' ? 443 : 80);
 
 	if(function_exists('curl_init') && function_exists('curl_exec') && $allowcurl) {
 		$ch = curl_init();
@@ -1274,7 +1365,7 @@ function install_uc_server() {
 	$ucsql = file_get_contents(ROOT_PATH.'./uc_server/install/uc.sql');
 	$uctablepre = $tablepre.'ucenter_';
 	$ucsql = str_replace(' uc_', ' '.$uctablepre, $ucsql);
-/*vot*/	$ucsql && runquery($ucsql, 'uc_', $uctablepre);
+	$ucsql && runucquery($ucsql, $uctablepre);
 	$appauthkey = _generate_key();
 	$ucdbhost = $dbhost;
 	$ucdbname = $dbname;
@@ -1286,7 +1377,7 @@ function install_uc_server() {
 
 	$pathinfo = pathinfo($_SERVER['PHP_SELF']);
 	$pathinfo['dirname'] = substr($pathinfo['dirname'], 0, -8);
-/*vot*/	$isHTTPS = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
+/*vot*/	$isHTTPS = (@$_SERVER['HTTPS'] && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
 	$appurl = 'http'.($isHTTPS ? 's' : '').'://'. $_SERVER['HTTP_HOST'].$pathinfo['dirname'];
 	$ucapi = $appurl.'/uc_server';
 	$ucip = '';
@@ -1341,7 +1432,7 @@ function install_uc_server() {
 
 function install_data($username, $uid) {
 	global $_G, $db, $tablepre;
-	showjsmessage(lang('install_data')." ... ".lang('succeed'));
+	showjsmessage(lang('install_data')." ... ");
 
 	$_G = array('db'=>$db,'tablepre'=>$tablepre, 'uid'=>$uid, 'username'=>$username);
 
@@ -1351,10 +1442,12 @@ function install_data($username, $uid) {
 	foreach ($arr as $v) {
 		import_diy($v['importfile'], $v['primaltplname'], $v['targettplname']);
 	}
+
+	showjsmessage(lang('succeed') . "\n");
 }
 function install_testdata($username, $uid) {
 	global $_G, $db, $tablepre;
-	showjsmessage(lang('install_test_data')." ... ".lang('succeed'));
+	showjsmessage(lang('install_test_data')." ... ");
 
 	$sqlfile = ROOT_PATH.'./install/data/common_district_{#id}.sql';
 /*vot*/	for($i = 1; $i < 6; $i++) {
@@ -1362,9 +1455,10 @@ function install_testdata($username, $uid) {
 		if(file_exists($sqlfileid)) {
 			$sql = file_get_contents($sqlfileid);
 			$sql = str_replace("\r\n", "\n", $sql);
-/*vot*/		runquery($sql, ORIG_TABLEPRE, $tablepre);
+			runquery($sql);
 		}
 	}
+	showjsmessage(lang('succeed') . "\n");
 }
 
 function getvars($data, $type = 'VAR') {
@@ -1772,6 +1866,19 @@ function format_space($space) {
 		}
 	}
 	return $space;
+}
+
+function init_install_log_file() {
+	$file = __DIR__ . '/install.log';
+	if (file_exists($file)) unlink($file);
+}
+
+function append_to_install_log_file($message) {
+	$file = __DIR__ . '/install.log';
+	file_put_contents($file, $message, FILE_APPEND);
+}
+function send_mime_type_header($type = 'application/xml') {
+	header("Content-Type: ".$type);
 }
 
 //-------------------------------------------------

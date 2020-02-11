@@ -617,13 +617,16 @@ function addpolloption() {
 		addUploadEvent(imgid, proid)
 
 	} else {
-/*vot*/		$('polloption_new').outerHTML = '<span>'+lng['vote_max_reached']+maxoptions+'</span>';
+/*vot*/		$('polloption_new').innerHTML = '<span>'+lng['vote_max_reached']+maxoptions+'</span>';
 	}
 }
 
 function delpolloption(obj) {
 	obj.parentNode.parentNode.removeChild(obj.parentNode);
 	curoptions--;
+	if (curoptions < maxoptions) {
+		$('polloption_new').innerHTML = '';
+	}
 }
 
 function insertsave(pid) {

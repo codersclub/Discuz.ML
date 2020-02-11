@@ -194,9 +194,8 @@ function emailMenuOp(op, e, id) {
 	} else if(op == 4) {
 	       	e = e ? e : window.event;
                 var obj = $(id);
-/*vot*/        	if(e.keyCode == 13) { // Enter
-                        var v = obj.value.indexOf('@') != -1 ? obj.value.substring(0, obj.value.indexOf('@')) : obj.value;
-                        obj.value = v + '@' + emaildomains[emailMenui];
+/*vot*/        	if(e.keyCode == 13 && obj.value.indexOf('@') == -1) { // Enter
+                        obj.value = obj.value + '@' + emaildomains[emailMenui];
                         doane(e);
         	}
 	} else if(op == 5) {
@@ -280,17 +279,12 @@ function checkusername(id) {
 	}
 //vot	var unlen = username.replace(/[^\x00-\xff]/g, "**").length;
 /*vot*/	var unlen = username.length;
-/*vot*/	var utf8len = utf8length(username);
-
 /*vot*/	if(unlen < 2) {
 /*vot*/		errormessage(id, lng['username_short']);
 		return;
 /*vot*/	} else if(unlen > 15) {
 		errormessage(id, lng['username_long']);
 		return;
-/*vot*/	} else if(utf8len > 64) { // Max DB Field Length in bytes
-/*vot*/		errormessage(id, lng['username_long']);
-/*vot*/		return;
 	}
 	var x = new Ajax();
 	$('tip_' + id).parentNode.className = $('tip_' + id).parentNode.className.replace(/ p_right/, '');

@@ -31,6 +31,7 @@ if($_GET['action'] == 'update') {
 	$message = preg_replace("/\r|\n/", '', $question);
 	$message = str_replace("'", "\'", $message);
 	$seclang = lang('forum/misc');
+	header("Content-Type: application/javascript");
 echo <<<EOF
 if($('$showid')) {
 	var sectpl = seccheck_tpl['$idhash'] != '' ? seccheck_tpl['$idhash'].replace(/<hash>/g, 'code$idhash') : '';
@@ -47,7 +48,7 @@ EOF;
 } elseif($_GET['action'] == 'check') {
 
 	include template('common/header_ajax');
-	echo check_secqaa($_GET['secverify'], $idhash) ? 'succeed' : 'invalid';
+	echo helper_seccheck::check_secqaa($_GET['secverify'], $idhash, true) ? 'succeed' : 'invalid';
 	include template('common/footer_ajax');
 
 }

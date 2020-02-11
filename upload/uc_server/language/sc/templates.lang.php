@@ -36,7 +36,7 @@ $languages = array(
 	'login_founder_incorrect'	=> 'UCenter创始人密码错误',
 	'login_admin_noexists'	=> '该管理员不存在',
 	'login_seccode_error'	=> '验证码输入错误',
-	'login_failedlogin'	=> '密码重试次数过多，请十五分钟后再重新尝试',
+	'login_failedlogin'	=> '密码重试次数过多，请稍后尝试',
 	'login_tips'		=> 'UCenter 是一个能沟通多个应用的桥梁，使各应用共享一个用户数据库，实现统一登录，注册，用户管理。',
 	'login_seccode_tips'	=> '如果您无法识别验证码，请点图片更换',
 	'login_secques'		=> '安全提问',
@@ -196,7 +196,7 @@ $languages = array(
 	'app_api_filename_comment'	=> '应用接口文件名称，不含路径，默认为uc.php',
 	'app_code'			=> '应用的 UCenter 配置信息',
 	'app_code_comment'		=> '当应用的 UCenter 配置信息丢失时可复制左侧的代码到应用的配置文件中',
-
+	'app_not_add_tips'		=> '不能通过 URL 添加应用的可能原因：1. 通过 URL 添加应用开关被关闭；2. 连续多次错误输入 UCenter 创始人密码',
 
 	'tag_tips'		=> '设置当前应用获取其他应用标签数据的比例以及扩展数据模板。模板中“&#123;xxx&#125;”表示标签数据的索引，代表相应的数据。',
 	'tag_global_template'	=> '全局模板',
@@ -309,6 +309,8 @@ $languages = array(
 	'setting_chatpmmemberlimit_comment'	=> '同一会话最多能有多少用户参与设置，建议在 30 - 100 范围内取值，0为不限制',
 	'setting_pmfloodctrl'			=> '发短消息灌水预防',
 	'setting_pmfloodctrl_comment'		=> '两次发短消息间隔小于此时间，单位秒，0 为不限制，此举为了限制通过机器批量发广告',
+	'setting_addappbyurl'			=> '启用通过 URL 添加应用功能',
+	'setting_addappbyurl_comment'		=> '是否启用通过 URL 添加应用功能，建议只有必须通过 URL 添加应用时开启',
 
 	'setting_user_failedtime'		=> '允许用户登录失败次数',
 	'setting_user_failedtime_comment'	=> '用户登录失败超过设置的数据，将在15分钟内无法登录，0为不限制次数',

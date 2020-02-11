@@ -8,6 +8,8 @@
  *      Modified by Valery Votintsev at codersclub.org
  */
 
+/* 提示：自X3.5版本起，本文件不支持调用系统内任何变量或函数，请依赖此行为的站点修正实现 */
+
 $_config = array();
 
 // ----------------------------  CONFIG DB  ----------------------------- //
@@ -149,6 +151,9 @@ $_config['security']['authkey']		= 'asdfasfas';	// Site encryption key
 $_config['security']['urlxssdefend']	= true;		// Use own URL XSS defense
 $_config['security']['attackevasive']	= 0;		// CC Attack Defense 1 | 2 | 4
 $_config['security']['onlyremoteaddr']	= 0;		// Get User IP address method: 0 = Trust HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR; 1 = Tust only REMOTE_ADDR
+							// Considering the risk of preventing IP credential stuffing attacks and invalidating IP restriction policies,
+							// it is recommended that you set it to 1. Users using CDN can configure ipgetter options
+							// Security Tip: Due to the independence of UCenter and UC_Client, you need to define constants in the two applications separately to enable the function
 
 $_config['security']['useipban']		= 1;	// Whether to enable the function of banning IP, high-load sites can release this function to HTTP Server/CDN/SLB/WAF to reduce server loading
 $_config['security']['querysafe']['status']	= 1;	// Enable the SQL security detection, prevent the SQL injection attacks automatically
@@ -202,6 +207,27 @@ $_config['ipdb']['setting']['fullstack'] = '';	// The full-stack IP library used
 $_config['ipdb']['setting']['default'] = '';	// Default IP library (Chinese)
 $_config['ipdb']['setting']['ipv4'] = 'tiny';	// IPv4 library used by the system. Leave blank to use the default library.
 $_config['ipdb']['setting']['ipv6'] = 'v6wry';	// IPv6 library used by the system. Leave blank to use the default library.
+
+/**
+ * IP获取扩展
+ * 考虑到不同的CDN服务供应商提供的判断CDN源IP的策略不同，您可以定义自己服务供应商的IP获取扩展。
+ * 为空为使用默认体系，非空情况下会自动调用source/class/ip/getter_值.php内的get方法获取IP地址。
+ * 系统提供dnslist(IP反解析域名白名单)、serverlist(IP地址白名单，支持CIDR)、header扩展，具体请参考扩展文件。
+ * 性能提示：自带的两款工具由于依赖RDNS、CIDR判定等操作，对系统效率有较大影响，建议大流量站点使用HTTP Server
+ * 或CDN/SLB/WAF上的IP黑白名单等逻辑实现CDN IP地址白名单，随后使用header扩展指定服务商提供的IP头的方式实现。
+ * 安全提示：由于UCenter、UC_Client独立性及扩展性原因，您需要单独修改相关文件的相关业务逻辑，从而实现此类功能。
+ * $_config['ipgetter']下除setting外均可用作自定义IP获取模型设置选项，也欢迎大家PR自己的扩展IP获取模型。
+ * 扩展IP获取模型的设置，请使用格式：
+ * 		$_config['ipgetter']['IP获取扩展名称']['设置项名称'] = '值';
+ * 比如：
+ * 		$_config['ipgetter']['onlinechk']['server'] = '100.64.10.24';
+ */
+$_config['ipgetter']['setting'] = '';
+$_config['ipgetter']['header']['header'] = 'HTTP_X_FORWARDED_FOR';
+$_config['ipgetter']['iplist']['header'] = 'HTTP_X_FORWARDED_FOR';
+$_config['ipgetter']['iplist']['list']['0'] = '127.0.0.1';
+$_config['ipgetter']['dnslist']['header'] = 'HTTP_X_FORWARDED_FOR';
+$_config['ipgetter']['dnslist']['list']['0'] = 'comsenz.com';
 
 // Addon Setting
 //$_config['addonsource'] = 'xx1';

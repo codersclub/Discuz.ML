@@ -329,11 +329,6 @@ function checkmobile() {
 
 	static $pad_list = array('ipad');
 
-///*vot*/	if(isset($_GET['forcemobile'])) {
-///*vot*/		$_G['mobile'] = intval($_GET['forcemobile']);
-///*vot*/		return $_G['mobile'];
-///*vot*/	}
-
 /*vot*/	$useragent = strtolower(@$_SERVER['HTTP_USER_AGENT']);
 
 	if(dstrpos($useragent, $pad_list)) {
@@ -1289,12 +1284,12 @@ function getfocus_rand($module) {
 	return $focusid;
 }
 
-function check_seccode($value, $idhash, $fromjs = 0, $modid = '') {
-	return helper_seccheck::check_seccode($value, $idhash, $fromjs, $modid);
+function check_seccode($value, $idhash, $fromjs = 0, $modid = '', $verifyonly = false) {
+	return helper_seccheck::check_seccode($value, $idhash, $fromjs, $modid, $verifyonly);
 }
 
-function check_secqaa($value, $idhash) {
-	return helper_seccheck::check_secqaa($value, $idhash);
+function check_secqaa($value, $idhash, $verifyonly = false) {
+	return helper_seccheck::check_secqaa($value, $idhash, $verifyonly);
 }
 
 function seccheck($rule, $param = array()) {
@@ -1647,7 +1642,7 @@ function getposttable($tableid = 0, $prefix = false) {
 
 /*
  * In the following command, $value is passed in prefix, and other commands prefix are the last parameter.
- * 		get, rm, scard, smembers, hgetall, zcard
+ * 		get, rm, scard, smembers, hgetall, zcard, exists
  * eval when passing in the parameters:
  * 		$cmd = 'eval', $key = script, $value = argv, 
  * 		$ttl = Used to store the key of the script hash, $ prefix will automatically become the first parameter of the script, and the sequence numbers of other parameters will be postponed.
@@ -1660,11 +1655,12 @@ function getposttable($tableid = 0, $prefix = false) {
  */
 function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 	static $supported_command = array(
-		'set', 'get', 'rm', 'inc', 'dec', 
+		'set', 'get', 'rm', 'inc', 'dec', 'exists',
 		'sadd', 'srem', 'scard', 'smembers', 'sismember',
-		'hmset', 'hgetall', 
+		'hmset', 'hgetall', 'hexists', 'hget',
 		'eval', 
-/*vot*/		'zadd', 'zcard', 'zrem', 'zscore', 'zrevrange', 'zincrby', 'zrevrangewithscore' /* Return with score */
+/*vot*/		'zadd', 'zcard', 'zrem', 'zscore', 'zrevrange', 'zincrby', 'zrevrangewithscore' /* Return with score */,
+		'pipeline', 'commit', 'discard'
 	);
 
 	if($cmd == 'check') {
@@ -1676,13 +1672,20 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 					C::memory()->debug[$cmd][] = ($cmd == 'get' || $cmd == 'rm' ? $value : '').$prefix.$k;
 				}
 			} else {
-				C::memory()->debug[$cmd][] = ($cmd == 'get' || $cmd == 'rm' ? $value : '').$prefix.$key;
+				if ($cmd === 'hget') {
+					C::memory()->debug[$cmd][] = $prefix . $key . "->" . $value;
+				} elseif ($cmd === 'eval') {
+					C::memory()->debug[$cmd][] = $key . "->" . $ttl;
+				} else {
+					C::memory()->debug[$cmd][] = ($cmd == 'get' || $cmd == 'rm' ? $value : '').$prefix.$key;
+				}
 			}
 		}
 		switch ($cmd) {
 			case 'set': return C::memory()->set($key, $value, $ttl, $prefix); break;
 			case 'get': return C::memory()->get($key, $value/*prefix*/); break;
 			case 'rm': return C::memory()->rm($key, $value/*prefix*/); break;
+			case 'exists': return C::memory()->exists($key, $value/*prefix*/); break;
 			case 'inc': return C::memory()->inc($key, $value ? $value : 1, $prefix); break;
 			case 'dec': return C::memory()->dec($key, $value ? $value : -1, $prefix); break;
 			case 'sadd': return C::memory()->sadd($key, $value, $prefix); break;
@@ -1692,7 +1695,9 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 			case 'sismember': return C::memory()->sismember($key, $value, $prefix); break;
 			case 'hmset': return C::memory()->hmset($key, $value, $prefix); break;
 			case 'hgetall': return C::memory()->hgetall($key, $value/*prefix*/); break;
-			case 'eval': return C::memory()->eval($key/*script*/, $value/*args*/, $ttl/*sha key*/, $prefix); break;
+			case 'hexists': return C::memory()->hexists($key, $value/*field*/, $prefix); break;
+			case 'hget': return C::memory()->hget($key, $value/*field*/, $prefix); break;
+			case 'eval': return C::memory()->evalscript($key/*script*/, $value/*args*/, $ttl/*sha key*/, $prefix); break;
 			case 'zadd': return C::memory()->zadd($key, $value, $ttl/*score*/, $prefix); break;
 			case 'zrem': return C::memory()->zrem($key, $value, $prefix); break;
 			case 'zscore': return C::memory()->zscore($key, $value, $prefix); break;
@@ -1700,6 +1705,9 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 			case 'zrevrange': return C::memory()->zrevrange($key, $value/*start*/, $ttl/*end*/, $prefix); break;
 			case 'zrevrangewithscore': return C::memory()->zrevrange($key, $value/*start*/, $ttl/*end*/, $prefix, true); break;
 			case 'zincrby': return C::memory()->zincrby($key, $value/*member*/, $ttl ? $ttl : 1/*to increase*/, $prefix); break;
+			case 'pipeline': return C::memory()->pipeline(); break;
+			case 'commit': return C::memory()->commit(); break;
+			case 'discard': return C::memory()->discard(); break;
 		}
 	}
 	return null;

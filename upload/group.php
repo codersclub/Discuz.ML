@@ -21,6 +21,10 @@ $discuz->init();
 
 /*vot*/	settings_localize(); // Localize Navigation & Settings
 
+if(!$_G['setting']['groupstatus']) {
+	showmessage('group_module_status_off');
+}
+
 $_G['disabledwidthauto'] = 0;
 
 $modarray = array('index', 'my', 'attentiongroup');

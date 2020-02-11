@@ -15,10 +15,25 @@ class helper_seccheck {
 
 	private function _check($type) {
 		global $_G;
-		if(!isset($_G['cookie']['sec'.$type])) {
+		$secappend = '';
+		if(!defined('IN_MOBILE')) {
+			if(isset($_GET['idhash']) && $_GET['idhash']) {
+				$secappend = $_GET['idhash'];
+			} elseif($type == 'code') {
+				if(isset($_GET['seccodehash']) && $_GET['seccodehash']) {
+					$secappend = $_GET['seccodehash'];
+				}
+			} elseif($type == 'qaa') {
+				if(isset($_GET['secqaahash']) && $_GET['secqaahash']) {
+					$secappend = $_GET['secqaahash'];
+				}
+			}
+			$secappend = str_replace($_G['sid'], '', $secappend);
+		}
+		if(!isset($_G['cookie']['sec'.$type.$secappend])) {
 			return false;
 		}
-		list($ssid, $sign) = explode('.', $_G['cookie']['sec'.$type]);
+		list($ssid, $sign) = explode('.', $_G['cookie']['sec'.$type.$secappend]);
 		if($sign != substr(md5($ssid.$_G['uid'].$_G['authkey']), 8, 18)) {
 			return false;
 		}
@@ -35,13 +50,28 @@ class helper_seccheck {
 
 	function _create($type, $code = '') {
 		global $_G;
+		$secappend = '';
+		if(!defined('IN_MOBILE')) {
+			if(isset($_GET['idhash']) && $_GET['idhash']) {
+				$secappend = $_GET['idhash'];
+			} elseif($type == 'code') {
+				if(isset($_GET['seccodehash']) && $_GET['seccodehash']) {
+					$secappend = $_GET['seccodehash'];
+				}
+			} elseif($type == 'qaa') {
+				if(isset($_GET['secqaahash']) && $_GET['secqaahash']) {
+					$secappend = $_GET['secqaahash'];
+				}
+			}
+			$secappend = str_replace($_G['sid'], '', $secappend);
+		}
 		$ssid = C::t('common_seccheck')->insert(array(
 		    'dateline' => TIMESTAMP,
 		    'code' => $code,
 		    'succeed' => 0,
 		    'verified' => 0,
 		), true);
-		dsetcookie('sec'.$type, $ssid.'.'.substr(md5($ssid.$_G['uid'].$_G['authkey']), 8, 18));
+		dsetcookie('sec'.$type.$secappend, $ssid.'.'.substr(md5($ssid.$_G['uid'].$_G['authkey']), 8, 18));
 	}
 
 	public static function make_seccode($seccode = ''){
@@ -110,7 +140,7 @@ class helper_seccheck {
 		return $_G['cache']['secqaa'][$secqaakey]['question'];
 	}
 
-	public static function check_seccode($value, $idhash, $fromjs = 0, $modid = '') {
+	public static function check_seccode($value, $idhash, $fromjs = 0, $modid = '', $verifyonly = false) {
 		global $_G;
 		if(!$_G['setting']['seccodestatus']) {
 			return true;
@@ -141,7 +171,7 @@ class helper_seccheck {
 				if(class_exists($class)) {
 					$code = new $class();
 					if(method_exists($code, 'check')) {
-						$return = $code->check($value, $idhash, $seccheck, $fromjs, $modid);
+						$return = $code->check($value, $idhash, $seccheck, $fromjs, $modid, $verifyonly);
 					}
 				}
 			} else {
@@ -155,10 +185,13 @@ class helper_seccheck {
 		} else {
 			C::t('common_seccheck')->update_verified($ssid);
 		}
+		if(!$verifyonly) {
+			C::t('common_seccheck')->delete($ssid);
+		}
 		return $return;
 	}
 
-	public static function check_secqaa($value, $idhash) {
+	public static function check_secqaa($value, $idhash, $verifyonly = false) {
 		global $_G;
 		if(!$_G['setting']['secqaa']) {
 			return true;
@@ -173,6 +206,9 @@ class helper_seccheck {
 			C::t('common_seccheck')->update_succeed($ssid);
 		} else {
 			C::t('common_seccheck')->update_verified($ssid);
+		}
+		if(!$verifyonly) {
+			C::t('common_seccheck')->delete($ssid);
 		}
 		return $return;
 	}

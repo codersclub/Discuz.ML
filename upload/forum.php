@@ -20,7 +20,7 @@ require './source/function/function_forum.php';
 
 
 $modarray = array('ajax','announcement','attachment','forumdisplay',
-	'group','image','index','medal','misc','modcp','notice','post','redirect',
+	'group','image','index','misc','modcp','post','redirect',
 	'rss','topicadmin','trade','viewthread','tag','collection','guide'
 );
 
@@ -56,6 +56,10 @@ if(C::app()->var['mod'] == 'group') {
 
 C::app()->cachelist = $cachelist;
 C::app()->init();
+
+if(!$_G['setting']['forumstatus'] && !in_array($mod, array('ajax', 'misc', 'modcp'))) {
+	showmessage('forum_status_off');
+}
 
 /*vot*/	settings_localize(); // Localize Navigation & Settings
 

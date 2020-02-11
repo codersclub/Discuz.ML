@@ -10,6 +10,10 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
+if(!$_G['setting']['followstatus']) {
+	showmessage('follow_status_off');
+}
+
 if(!$_G['uid']) {
 	showmessage('login_before_enter_home', null, array(), array('showmsg' => true, 'login' => 1));
 }
@@ -167,8 +171,7 @@ if($do == 'feed') {
 	if(helper_access::check_module('follow')) {
 		$followerlist = C::t('home_follow')->fetch_all_following_by_uid($uid, 0, 9);
 	}
-	$seccodecheck = ($_G['setting']['seccodestatus'] & 4) && (!$_G['setting']['seccodedata']['minposts'] || getuserprofile('posts') < $_G['setting']['seccodedata']['minposts']);
-	$secqaacheck = $_G['setting']['secqaa']['status'] & 2 && (!$_G['setting']['secqaa']['minposts'] || getuserprofile('posts') < $_G['setting']['secqaa']['minposts']);
+	list($seccodecheck, $secqaacheck) = seccheck('publish');
 } elseif($do == 'follower') {
 	$count = C::t('home_follow')->count_follow_user($uid, 1);
 	if($viewself && !empty($_G['member']['newprompt_num']['follower'])) {

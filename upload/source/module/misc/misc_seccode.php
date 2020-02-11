@@ -60,6 +60,7 @@ if($_GET['action'] == 'update') {
 	$imemode = $_G['setting']['seccodedata']['type'] != 1 ? 'ime-mode:disabled;' : '';
 	$message = str_replace("'", "\'", $message);
 	$seclang = lang('forum/misc');
+	header("Content-Type: application/javascript");
 echo <<<EOF
 if($('$showid')) {
 	if(!$('v$showid')) {
@@ -83,7 +84,7 @@ EOF;
 } elseif($_GET['action'] == 'check') {
 
 	include template('common/header_ajax');
-	echo check_seccode($_GET['secverify'], $_GET['idhash'], 1, $modid) ? 'succeed' : 'invalid';
+	echo helper_seccheck::check_seccode($_GET['secverify'], $_GET['idhash'], 1, $modid, true) ? 'succeed' : 'invalid';
 	include template('common/footer_ajax');
 
 } else {

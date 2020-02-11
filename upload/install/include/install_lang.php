@@ -37,9 +37,6 @@ $lang = array(
 	'nodir' => '目录不存在',
 	'redirect' => '浏览器会自动跳转页面，无需人工干预。<br>除非当您的浏览器没有自动跳转时，请点击这里',
 	'auto_redirect' => '浏览器会自动跳转页面，无需人工干预',
-	'database_errno_2003' => '无法连接数据库，请检查数据库是否启动，数据库服务器地址是否正确',
-	'database_errno_1044' => '无法创建新的数据库，请检查数据库名称填写是否正确',
-	'database_errno_1045' => '无法连接数据库，请检查数据库用户名或者密码是否正确',
 	'database_errno_1064' => 'SQL 语法错误',
 
 	'dbpriv_createtable' => '没有CREATE TABLE权限，无法继续安装',
@@ -120,12 +117,14 @@ $lang = array(
 	'dbhost_comment' => '数据库服务器地址, 一般为 localhost',
 	'tablepre_comment' => '同一数据库运行多个论坛时，请修改前缀',
 	'forceinstall_check_label' => '我要删除数据，强制安装 !!!',
+	'initdbresult_succ' => '数据库安装完成',
+	'initsys' => '正在系统初始化',
 
 	'uc_url_empty' => '您没有填写 UCenter 的 URL，请返回填写',
 	'uc_url_invalid' => 'URL 格式错误',
 	'uc_url_unreachable' => 'UCenter 的 URL 地址可能填写错误，请检查',
 	'uc_ip_invalid' => '无法解析该域名，请填写站点的 IP',
-	'uc_admin_invalid' => 'UCenter 创始人密码错误，请重新填写',
+	'uc_admin_invalid' => 'UCenter 创始人密码校验未通过, 可能原因有:<br />1. UCenter 创始人密码不正确<br />2. 多次错误输入密码导致创始人用户和 IP 地址被锁定<br />3. UCenter 后台 “ 通过 URL 添加应用功能 ” 未开启',
 	'uc_data_invalid' => '通信失败，请检查 UCenter 的URL 地址是否正确 ',
 	'uc_dbcharset_incorrect' => 'UCenter 数据库字符集与当前应用字符集不一致',
 	'uc_api_add_app_error' => '向 UCenter 添加应用错误',
@@ -333,7 +332,6 @@ $lang = array(
 	'suggestion' => '建议',
 	'advice_mysql' => '请检查 mysql 模块是否正确加载',
 	'advice_fopen' => '该函数需要 php.ini 中 allow_url_fopen 选项开启。请联系空间商，确定开启了此项功能',
-	'advice_file_get_contents' => '该函数需要 php.ini 中 allow_url_fopen 选项开启。请联系空间商，确定开启了此项功能',
 	'advice_xml' => '该函数需要 PHP 支持 XML。请联系空间商，确定开启了此项功能',
 	'none' => '无',
 
@@ -352,6 +350,7 @@ $lang = array(
 	'create_table' => '建立数据表',
 	'succeed' => '成功 ',
 
+	'init_table_data' => '正在初始化数据表中的数据',
 	'install_data' => '正在安装数据',
 	'install_test_data' => '正在安装附加数据',
 

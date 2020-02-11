@@ -26,6 +26,8 @@ class discuz_memory extends discuz_base
 	public $gothash = false; // Wwhether to support Hash data type
 	public $goteval = false; // Whether to support lua script eval
 	public $gotsortedset = false; // Whether SortedSet is supported
+	public $gotcluster = false; // Is it a cluster environment
+	public $gotpipeline = false; // Whether to support pipeline
 
 	public function __construct() {
 	}
@@ -46,10 +48,13 @@ class discuz_memory extends discuz_base
 				} else {
 					$this->type = $this->memory->cacheName;
 					$this->enable = true;
-					$this->gotset = $this->type === 'Redis';
-					$this->gothash = $this->type === 'Redis';
-					$this->goteval = $this->type === 'Redis';
-					$this->gotsortedset = $this->type === 'Redis';
+					$this->gotset = method_exists($this->memory, 'feature') && $this->memory->feature('set');
+					$this->gothash = method_exists($this->memory, 'feature') && $this->memory->feature('hash');
+					$this->goteval = method_exists($this->memory, 'feature') && $this->memory->feature('eval');
+					$this->gotsortedset = method_exists($this->memory, 'feature') && $this->memory->feature('sortedset');;
+					$this->gotcluster = method_exists($this->memory, 'feature') && $this->memory->feature('cluster');
+					$this->gotpipeline = method_exists($this->memory, 'feature') && $this->memory->feature('pipeline');
+					break;
 				}
 			}
 		}
@@ -96,6 +101,15 @@ class discuz_memory extends discuz_base
 		if($this->enable) {
 			$this->userprefix = $prefix;
 			$ret = $this->memory->set($this->_key($key), $value, $ttl);
+		}
+		return $ret;
+	}
+
+	public function exists($key, $prefix = '') {
+		$ret = false;
+		if ($this->enable) {
+			$this->userprefix = $prefix;
+			$ret = $this->memory->exists($this->_key($key));
 		}
 		return $ret;
 	}
@@ -210,13 +224,28 @@ class discuz_memory extends discuz_base
 		return $this->memory->hgetall($this->_key($key));
 	}
 
+	public function hexists($key, $field, $prefix = '') {
+		if (!$this->enable || !$this->gothash) {
+			return false;
+		}
+		$this->userprefix = $prefix;
+		return $this->memory->hexists($this->_key($key), $field);
+	}
+
+	public function hget($key, $field, $prefix = '') {
+		if (!$this->enable || !$this->gothash) {
+			return false;
+		}
+		$this->userprefix = $prefix;
+		return $this->memory->hget($this->_key($key), $field);
+	}
 
 	/*
 	 * If sha_key is set, load the script and save sha in $prefix_$sha_key
 	 * If sha_key has sha, then execute evalSha
 	 * If there is no sha_key, eval the script
 	 */
-	public function eval($script, $argv, $sha_key, $prefix = '') {
+	public function evalscript($script, $argv, $sha_key, $prefix = '') {
 		if (!$this->enable || !$this->goteval) {
 			return false;
 		}
@@ -227,12 +256,13 @@ class discuz_memory extends discuz_base
 		if ($sha_key) {
 			$sha = $this->memory->get($this->_key($sha_key));
 			if (!$sha) {
+				if (!$script) return false;
 				$sha = $this->memory->loadscript($script);
 				$this->memory->set($this->_key($sha_key), $sha);
 			}
-/*vot*/			return $this->memory->evalSha($sha, array_merge(array($this->_key('')), $argv));
+			return $this->memory->evalSha($sha, array_merge(array($this->_key('')), $argv));				
 		} else {
-/*vot*/			return $this->memory->eval($script, array_merge(array($this->_key('')), $argv));
+			return $this->memory->evalscript($script, array_merge(array($this->_key('')), $argv));				
 		}
 	}
 
@@ -282,6 +312,27 @@ class discuz_memory extends discuz_base
 		}
 		$this->userprefix = $prefix;
 		return $this->memory->zincrby($this->_key($key), $member, $value);
+	}
+
+	public function pipeline() {
+		if (!$this->enable || !$this->gotpipeline) {
+			return false;
+		}
+		return $this->memory->pipeline();
+	}
+
+	public function commit() {
+		if (!$this->enable || !$this->gotpipeline) {
+			return false;
+		}
+		return $this->memory->commit();
+	}
+
+	public function discard() {
+		if (!$this->enable || !$this->gotpipeline) {
+			return false;
+		}
+		return $this->memory->discard();
 	}
 
 	private function _key($str) {
