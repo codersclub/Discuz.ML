@@ -1065,7 +1065,7 @@ $lang = array
 	'setting_styles_viewthread_userinfo_creditinfo' => '信用度',
 	'setting_styles_viewthread_userinfo_follower' => '听众数',
 	'setting_styles_viewthread_userinfo_following' => '收听数',
-//vot	'setting_styles_viewthread_userinfo_friends' => '好友',
+	'setting_styles_viewthread_userinfo_friends' => '好友',
 	'setting_styles_viewthread_userinfo_readperm' => '阅读权限',
 	'setting_styles_viewthread_userinfo_gender' => '性别',
 	'setting_styles_viewthread_userinfo_location' => '来自',
@@ -2305,7 +2305,7 @@ $lang = array
 	'setting_attach_basic_multi' => '批量上传',
 	'setting_attach_basic_simple' => '普通上传',
 	'setting_attach_basic_allowattachurl' => '附件 URL 地址、媒体附件播放',
-	'setting_attach_basic_allowattachurl_comment' => '开启附件 URL 地址后，上传附件的地址可通过 "attach://aid" 方式在任何帖内引用，并支持媒体类附件的直接播放，此项设置需要在 <a href="'.ADMINSCRIPT.'?action=usergroups">用户组</a> - 帖子相关 中允许用户组使用多媒体代码方可生效',
+	'setting_attach_basic_allowattachurl_comment' => '开启附件 URL 地址后，上传附件的地址可通过 "attach://aid" 方式在任何帖内引用，并支持媒体类附件的直接播放，此项设置需要在 <a href="'.ADMINSCRIPT.'?action=usergroups">用户组</a> - 帖子相关 中允许用户组使用多媒体代码方可生效，此项设置需选择的附件读取模式支持 Range 头和正确的 MIME 类型头才可正常运行',
 	'setting_attach_basic_swfupload_comment' => '批量上传采用 Flash 机制上传，可一次上传多个附件，上传时还会有进度显示',
 
 	'setting_attach_forumattach' => '论坛附件',
@@ -3449,11 +3449,9 @@ $lang = array
 	'members_edit_online_total' => '总在线时间(分钟)',
 	'members_edit_online_thismonth' => '本月在线时间(分钟)',
 	'members_edit_regip' => '注册 IP',
-	'members_edit_regport' => '注册端口号',
 	'members_edit_regdate' => '注册时间',
 	'members_edit_lastvisit' => '上次访问',
 	'members_edit_lastip' => '上次访问 IP',
-	'members_edit_port' => '上次访问端口号',
 	'members_edit_addsize' => '额外附件容量',
 	'members_edit_addfriend' => '额外好友数',
 	'members_edit_statistics' => '统计信息',
@@ -3619,7 +3617,7 @@ $lang = array
 	'members_verify_newvalue' => '提交信息',
 	'members_verify_submit' => '提交',
 
-//vot	'members_verify' => '认证设置',
+	'members_verify' => '认证设置',
 	'members_verify_base' => '基本设置',
 	'members_verify_add' => '添加认证',
 	'members_verify_verify' => '审核资料',
@@ -5643,7 +5641,7 @@ $lang = array
 	'ec_tenpay_checklink_virtualgoods' => '虚拟商品订单测试',
 	'ec_tenpay_checklink_goods' => '实物商品订单测试',
 	'ec_tenpay_tips' => '<li>“财付通”(<a href="http://www.tenpay.com" target="_blank">http://www.tenpay.com</a>)是腾讯公司创办的中国领先的在线支付平台，为 Discuz! 用户提供积分购买交易平台。</li><li>如需启用积分充值即时到账，请使用财付通<b>企业版</b>并开通<b>即时到账交易</b>；否则，只需要开通“<b>中介担保交易</b>”即可。</li>
-<li><b>由于涉及现金交易，为避免因操作不当而造成的资金损失，请在开始使用财付通积分交易功能(不包含财付通按钮功能)前，务必仔细阅读《用户使用说明书》中有关电子商务的部分，当确认完全理解和接受相关流程及使用方法后再进行相关设置。</b></li><li>您可以设置允许用户通过现金在线支付的方式，为其交易积分账户充值，用于购买帖子内容、购买用户组权限、积分转账或用户组升级等功能。财付通积分交易功能，需在“积分设置”中启用交易积分，并同时设置相应的积分策略以满足不同场合的需要。请务必正确设置您的收款财付通账号，否则将造成用户付款后积分无法实时到账，造成大量需要人工处理的订单信息。</li><li>除 Discuz! 官方网站或官方论坛另行通知以外，Discuz! 提供的财付通支付服务每笔交易收取 1% 的手续费。请及时关注相关业务的最新通知，各项政策或流程的变更、调整，以 Discuz! 官方网站或官方论坛提供的信息为准。</li><li>您使用财付通服务是建立在完全自愿的基础上，除 Discuz! 因主观恶意的因素造成的资金损失以外，北京康盛新创科技有限责任公司不对因使用此功能造成的任何损失承担责任。</li><li>财付通服务热线：0755-83762288-2(全天24小时服务热线)</li>',
+<li><b>由于涉及现金交易，为避免因操作不当而造成的资金损失，请在开始使用财付通积分交易功能(不包含财付通按钮功能)前，务必仔细阅读《用户使用说明书》中有关电子商务的部分，当确认完全理解和接受相关流程及使用方法后再进行相关设置。</b></li><li>您可以设置允许用户通过现金在线支付的方式，为其交易积分账户充值，用于购买帖子内容、购买用户组权限、积分转账或用户组升级等功能。财付通积分交易功能，需在“积分设置”中启用交易积分，并同时设置相应的积分策略以满足不同场合的需要。请务必正确设置您的收款财付通账号，否则将造成用户付款后积分无法实时到账，造成大量需要人工处理的订单信息。</li><li>除 Discuz! 官方网站或官方论坛另行通知以外，Discuz! 提供的财付通支付服务每笔交易收取 1% 的手续费。请及时关注相关业务的最新通知，各项政策或流程的变更、调整，以 Discuz! 官方网站或官方论坛提供的信息为准。</li><li>您使用财付通服务是建立在完全自愿的基础上，除 Discuz! 因主观恶意的因素造成的资金损失以外，腾讯云不对因使用此功能造成的任何损失承担责任。</li><li>财付通服务热线：0755-83762288-2(全天24小时服务热线)</li>',
 
 	'ec_orders' => '积分充值订单',
 	'ec_orders_tips' => '<li>请在开始使用支付宝积分交易订单管理功能(不包含支付宝按钮功能)前，务必仔细阅读《用户使用说明书》中有关电子商务的部分，当确认完全理解和接受相关流程及使用方法后再进行相关操作。</li><li>如果您的用户反映在线支付后无法自动为其积分账户充值，可能是由于您的支付宝账户的通知接口设置有误，或您的网站无法被支付宝通知系统正常访问所致。您可以登录支付宝交易管理界面，通过比对交易详情人工确认相关订单。</li><li>订单信息保留 60 天，因此您只能查询和管理 60 天之内的订单信息，超过 60 天的信息将被自动删除。</li>',
@@ -6964,17 +6962,17 @@ $lang = array
 	'category_area' => '地区管理',
 	'category_counter' => '统计数据',
 
-//vot	'category_channel' => '基本设置',
-//vot	'category_channel_config' => '基本设置',
-//vot	'category_channel_open' => '是否开启',
-//vot	'category_channel_title' => '名称',
-//vot	'category_channel_identifier' => '标识',
-//vot	'category_channel_identifier_comment' => '做为改模块的唯一标识，如无必要请勿修改',
-//vot
-//vot	'category_option' => '选项管理',
-//vot	'category_sort' => '分类管理',
-//vot	'category_area' => '地区管理',
-//vot	'category_counter' => '统计数据',
+	'category_channel' => '基本设置',
+	'category_channel_config' => '基本设置',
+	'category_channel_open' => '是否开启',
+	'category_channel_title' => '名称',
+	'category_channel_identifier' => '标识',
+	'category_channel_identifier_comment' => '做为改模块的唯一标识，如无必要请勿修改',
+
+	'category_option' => '选项管理',
+	'category_sort' => '分类管理',
+	'category_area' => '地区管理',
+	'category_counter' => '统计数据',
 
 	'setting_manyou' => 'Manyou 设置',
 	'setting_manyou_tips' => '<li>开启漫游应用功能后，用户可以自由选择各种不同的应用(诸如开心农场、快乐庄园、德克萨斯扑克、荣光医院......)在站内进行使用。</li>

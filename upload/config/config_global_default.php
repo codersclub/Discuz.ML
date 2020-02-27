@@ -127,7 +127,7 @@ $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID 
 
 // Download attachments
 //
-// local file reading mode; Mode 2 means the most to save memory, but does not support multi-threaded download
+// Local file reading mode; Mode 2 is the most memory-saving way, but it does not support multi-thread download
 // 1=fread, 2=readfile, 3=fpassthru, 4=fpassthru+multiple
 $_config['download']['readmod'] = 2;
 
