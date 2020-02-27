@@ -21,6 +21,13 @@ if($_GET['hash']) {
 
 if($uid && isemail($email) && $time > TIMESTAMP - 86400) {
 	$member = getuserbyuid($uid);
+	// Verify the token and timestamp stored in the authstr field in the user forum field table, so that email links cannot be reused
+	$member = array_merge(C::t('common_member_field_forum')->fetch($uid), $member);
+	list($dateline, $operation, $idstring) = explode("\t", $member['authstr']);
+	if($dateline != $time || $operation != 3 || $idstring != substr(md5($email), 0, 6)) {
+		showmessage('email_check_error', 'index.php');
+	}
+
 	$setarr = array('email'=>$email, 'emailstatus'=>'1');
 	if($_G['member']['freeze'] == 2) {
 		$setarr['freeze'] = 0;
@@ -42,6 +49,8 @@ if($uid && isemail($email) && $time > TIMESTAMP - 86400) {
 	}
 	updatecreditbyaction('realemail', $uid);
 	C::t('common_member')->update($uid, $setarr);
+	// Clear the authstr field saved in the user forum field table
+	C::t('common_member_field_forum')->update($uid, array('authstr' => ''));
 	C::t('common_member_validate')->delete($uid);
 	dsetcookie('newemail', "", -1);
 

@@ -610,7 +610,12 @@ function emailcheck_send($uid, $email) {
 	global $_G;
 
 	if($uid && $email) {
-		$hash = authcode("$uid\t$email\t$_G[timestamp]", 'ENCODE', md5(substr(md5($_G['config']['security']['authkey']), 0, 16)));
+		// The authstr field in the user forum field table stores the token and timestamp, so that email links cannot be reused
+		$timestamp = $_G['timestamp'];
+		$idstring = substr(md5($email), 0, 6);
+		C::t('common_member_field_forum')->update($uid, array('authstr' => "$timestamp\t3\t$idstring"));
+
+		$hash = authcode("$uid\t$email\t$timestamp", 'ENCODE', md5(substr(md5($_G['config']['security']['authkey']), 0, 16)));
 		$verifyurl = $_G['siteurl'].'home.php?mod=misc&amp;ac=emailcheck&amp;hash='.urlencode($hash);
 		$mailsubject = lang('email', 'email_verify_subject');
 		$mailmessage = lang('email', 'email_verify_message', array(
