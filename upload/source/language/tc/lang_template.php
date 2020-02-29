@@ -132,6 +132,7 @@ $lang = array (
   'unselected' => '未選',
   'imgcropper' => '裁切圖片',
   'imgcropper_crop' => '裁切',
+  'parse_av_tips' => '如果無法播放，請點擊此處在新窗口打開',
   'preview_footertext' => '版權及頁腳信息',
   'preview_highlightlink' => '高亮鏈接',
   'preview_lighttext' => '淺色文字',
