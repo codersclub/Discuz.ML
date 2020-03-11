@@ -16,7 +16,7 @@ CREATE TABLE uc_applications (
   `tagtemplates` text NOT NULL,
   `allowips` text NOT NULL,
   PRIMARY KEY  (appid)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_members;
 CREATE TABLE uc_members (
@@ -35,20 +35,29 @@ CREATE TABLE uc_members (
   PRIMARY KEY(uid),
   UNIQUE KEY username(username),
   KEY email(email)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_memberfields;
 CREATE TABLE uc_memberfields (
   `uid` int(11) unsigned NOT NULL,
   `blacklist` text NOT NULL,
   PRIMARY KEY(uid)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS uc_memberlogs;
+CREATE TABLE uc_memberlogs (
+  lid int(10) unsigned NOT NULL AUTO_INCREMENT,
+  uid mediumint(8) unsigned NOT NULL,
+  action varchar(32) NOT NULL DEFAULT '',
+  extra varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY(lid)
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_newpm;
 CREATE TABLE uc_newpm (
   `uid` int(11) unsigned NOT NULL,
   PRIMARY KEY  (uid)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_friends;
 CREATE TABLE uc_friends (
@@ -61,7 +70,7 @@ CREATE TABLE uc_friends (
   PRIMARY KEY(version),
   KEY uid(uid),
   KEY friendid(friendid)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_tags;
 CREATE TABLE uc_tags (
@@ -70,7 +79,7 @@ CREATE TABLE uc_tags (
   `data` mediumtext,
   `expiration` int(11) unsigned NOT NULL,
   KEY tagname (tagname,appid)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_sqlcache;
 CREATE TABLE uc_sqlcache (
@@ -79,14 +88,14 @@ CREATE TABLE uc_sqlcache (
   `expiry` int(11) unsigned NOT NULL,
   PRIMARY KEY  (sqlid),
   KEY(expiry)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_settings;
 CREATE TABLE uc_settings (
   `k` varchar(32) NOT NULL default '',
   `v` text NOT NULL,
   PRIMARY KEY  (k)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 REPLACE INTO uc_settings(k, v) VALUES ('accessemail','');
 REPLACE INTO uc_settings(k, v) VALUES ('censoremail','');
@@ -103,7 +112,7 @@ REPLACE INTO uc_settings(k, v) VALUES ('pmcenter','1');
 REPLACE INTO uc_settings(k, v) VALUES ('sendpmseccode','1');
 REPLACE INTO uc_settings(k, v) VALUES ('pmsendregdays','0');
 REPLACE INTO uc_settings(k, v) VALUES ('addappbyurl','0');
-REPLACE INTO uc_settings(k, v) VALUES ('maildefault', 'admin@localhost.com');
+REPLACE INTO uc_settings(k, v) VALUES ('insecureuserdelete','0');
 REPLACE INTO uc_settings(k, v) VALUES ('maildefault', 'username@21cn.com');
 REPLACE INTO uc_settings(k, v) VALUES ('mailsend', '1');
 REPLACE INTO uc_settings(k, v) VALUES ('mailserver', 'smtp.localhost.com');
@@ -126,8 +135,8 @@ CREATE TABLE uc_badwords (
   `replacement` varchar(255) NOT NULL default '',
   `findpattern` varchar(255) NOT NULL default '',
   PRIMARY KEY  (id),
-  UNIQUE KEY `find` (`find`)
-) Type=InnoDB;
+  UNIQUE KEY `find` (`find`(100))
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_notelist;
 CREATE TABLE uc_notelist (
@@ -143,7 +152,7 @@ CREATE TABLE uc_notelist (
   PRIMARY KEY  (noteid),
   KEY closed (closed,pri,noteid),
   KEY dateline (dateline)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_domains;
 CREATE TABLE uc_domains (
@@ -151,7 +160,7 @@ CREATE TABLE uc_domains (
   `domain` varchar(64) NOT NULL default '',
   `ip` varchar(45) NOT NULL default '',
   PRIMARY KEY  (id)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_feeds;
 CREATE TABLE uc_feeds (
@@ -179,7 +188,7 @@ CREATE TABLE uc_feeds (
   `target_ids` varchar(255) NOT NULL default '',
   PRIMARY KEY  (feedid),
   KEY uid (uid,dateline)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_admins;
 CREATE TABLE uc_admins (
@@ -199,7 +208,7 @@ CREATE TABLE uc_admins (
   `allowadminlog` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (uid),
   UNIQUE KEY username (username)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_failedlogins;
 CREATE TABLE uc_failedlogins (
@@ -207,7 +216,7 @@ CREATE TABLE uc_failedlogins (
   `count` tinyint(1) unsigned NOT NULL default '0',
   `lastupdate` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (ip)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_protectedmembers;
 CREATE TABLE uc_protectedmembers (
@@ -217,21 +226,21 @@ CREATE TABLE uc_protectedmembers (
   `dateline` int(11) unsigned NOT NULL default '0',
   `admin` varchar(64) NOT NULL default '0',
   UNIQUE KEY(username, appid)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_mergemembers;
 CREATE TABLE uc_mergemembers (
   `appid` int(11) unsigned NOT NULL,
   `username` varchar(64) NOT NULL,
   PRIMARY KEY  (appid,username)
-) Type=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_vars;
 CREATE TABLE uc_vars (
   `name` varchar(32) NOT NULL default '',
   `value` varchar(255) NOT NULL default '',
   PRIMARY KEY(name)
-) TYPE=HEAP;
+) ENGINE=HEAP;
 
 DROP TABLE IF EXISTS uc_mailqueue;
 CREATE TABLE uc_mailqueue (
@@ -250,7 +259,7 @@ CREATE TABLE uc_mailqueue (
   PRIMARY KEY  (mailid),
   KEY appid (appid),
   KEY level (level,failures)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_members;
 CREATE TABLE uc_pm_members (
@@ -264,7 +273,7 @@ CREATE TABLE uc_pm_members (
   KEY isnew (isnew),
   KEY lastdateline (uid,lastdateline),
   KEY lastupdate (uid,lastupdate)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_lists;
 CREATE TABLE uc_pm_lists (
@@ -280,7 +289,7 @@ CREATE TABLE uc_pm_lists (
   KEY pmtype (pmtype),
   KEY min_max (min_max),
   KEY authorid (authorid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_indexes;
 CREATE TABLE uc_pm_indexes (
@@ -288,7 +297,7 @@ CREATE TABLE uc_pm_indexes (
   `plid` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (pmid),
   KEY plid (plid)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_0;
 CREATE TABLE uc_pm_messages_0 (
@@ -301,7 +310,7 @@ CREATE TABLE uc_pm_messages_0 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_1;
 CREATE TABLE uc_pm_messages_1 (
@@ -314,7 +323,7 @@ CREATE TABLE uc_pm_messages_1 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_2;
 CREATE TABLE uc_pm_messages_2 (
@@ -327,7 +336,7 @@ CREATE TABLE uc_pm_messages_2 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_3;
 CREATE TABLE uc_pm_messages_3 (
@@ -340,7 +349,7 @@ CREATE TABLE uc_pm_messages_3 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_4;
 CREATE TABLE uc_pm_messages_4 (
@@ -353,7 +362,7 @@ CREATE TABLE uc_pm_messages_4 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_5;
 CREATE TABLE uc_pm_messages_5 (
@@ -366,7 +375,7 @@ CREATE TABLE uc_pm_messages_5 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_6;
 CREATE TABLE uc_pm_messages_6 (
@@ -379,7 +388,7 @@ CREATE TABLE uc_pm_messages_6 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_7;
 CREATE TABLE uc_pm_messages_7 (
@@ -392,7 +401,7 @@ CREATE TABLE uc_pm_messages_7 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_8;
 CREATE TABLE uc_pm_messages_8 (
@@ -405,7 +414,7 @@ CREATE TABLE uc_pm_messages_8 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS uc_pm_messages_9;
 CREATE TABLE uc_pm_messages_9 (
@@ -418,4 +427,4 @@ CREATE TABLE uc_pm_messages_9 (
   PRIMARY KEY  (pmid),
   KEY plid (plid,delstatus,dateline),
   KEY dateline (plid,dateline)
-) TYPE=InnoDB;
+) ENGINE=InnoDB;

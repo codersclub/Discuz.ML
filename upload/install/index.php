@@ -45,7 +45,7 @@ if(empty($method)) {
 	show_msg('method_undefined', $method, 0);
 }
 
-if(file_exists($lockfile) && $method != 'ext_info') {
+if(file_exists($lockfile) && $method != 'ext_info' && $method != 'check_db_init_progress') {
 	show_msg('install_locked', '', 0);
 } elseif(!class_exists('dbstuff')) {
 	show_msg('database_nonexistence', '', 0);
@@ -385,7 +385,6 @@ if($method == 'show_license') {
 
 } elseif($method == 'ext_info') {
 	@touch($lockfile);
-	init_install_log_file();
 	if(VIEW_OFF) {
 		show_msg('ext_info_succ');
 	} else {
@@ -426,13 +425,15 @@ if($method == 'show_license') {
 
 	$sql = file_get_contents($sqlfile);
 	$sql = str_replace("\r\n", "\n", $sql);
-	runquery($sql);
+	if (!runquery($sql)) {
+		exit();
+	}
 
-	showjsmessage(lang('init_table_data') . ' ... ');
 	$sql = file_get_contents(ROOT_PATH.'./install/data/install_data.sql');
 	$sql = str_replace("\r\n", "\n", $sql);
-	runquery($sql);
-	showjsmessage(lang('succeed') . "\n");
+	if (!runquery($sql)) {
+		exit();
+	}
 
 	$onlineip = $_SERVER['REMOTE_ADDR'];
 	$timestamp = time();
@@ -515,9 +516,10 @@ if($method == 'show_license') {
 
 	!VIEW_OFF && showjsmessage(lang('initdbresult_succ'));
 } elseif($method == 'check_db_init_progress') {
-	header("Content-Type: text/plain");
+	@set_time_limit(5);
+	send_mime_type_header("text/plain");
 	ob_start();
-	readfile(__DIR__ . '/include/install.log');
+	read_install_log_file();
 	ob_end_flush();
 	exit();
 }

@@ -17,7 +17,7 @@ class control extends adminbase {
 		'mailport', 'mailauth', 'mailfrom', 'mailauth_username', 'mailauth_password', 'maildelimiter',
 		'mailusername', 'mailsilent', 'pmcenter', 'privatepmthreadlimit', 'chatpmthreadlimit',
 		'chatpmmemberlimit', 'pmfloodctrl', 'sendpmseccode', 'pmsendregdays', 'login_failedtime',
-		'addappbyurl');
+		'addappbyurl', 'insecureuserdelete');
 
 	function __construct() {
 		$this->control();
@@ -49,6 +49,7 @@ class control extends adminbase {
 			$sendpmseccode = getgpc('sendpmseccode', 'P');
 			$login_failedtime = getgpc('login_failedtime', 'P');
 			$addappbyurl = getgpc('addappbyurl', 'P');
+			$insecureuserdelete = getgpc('insecureuserdelete', 'P');
 			$dateformat = str_replace(array('yyyy', 'mm', 'dd'), array('y', 'n', 'j'), strtolower($dateformat));
 			$timeformat = $timeformat == 1 ? 'H:i' : 'h:i A';
 /*vot*/			$timeoffset = in_array($timeoffset, $timearray) ? $timeoffset : 8;
@@ -66,6 +67,7 @@ class control extends adminbase {
 			$this->set_setting('sendpmseccode', $sendpmseccode ? 1 : 0);
 			$this->set_setting('login_failedtime', intval($login_failedtime) > 0 ? intval($login_failedtime) : 0);
 			$this->set_setting('addappbyurl', $addappbyurl);
+			$this->set_setting('insecureuserdelete', $insecureuserdelete);
 			$updated = true;
 
 			$this->updatecache();
@@ -94,11 +96,13 @@ class control extends adminbase {
 /*vot*/		$pmcenterchecked[$settings['pmcenter']] = 'checked="checked"';
 		$pmcenterchecked['display'] = $settings['pmcenter'] ? '' : 'style="display:none"';
 		$addappbyurlchecked = array($settings['addappbyurl'] => 'checked="checked"');
+		$insecureuserdeletechecked = array($settings['insecureuserdelete'] => 'checked="checked"');
 		$this->view->assign('pmcenter', $pmcenterchecked);
 /*vot*/		$sendpmseccodechecked = array('','');
 /*vot*/		$sendpmseccodechecked[$settings['sendpmseccode']] = 'checked="checked"';
 		$this->view->assign('sendpmseccode', $sendpmseccodechecked);
 		$this->view->assign('addappbyurl', $addappbyurlchecked);
+		$this->view->assign('insecureuserdelete', $insecureuserdeletechecked);
 		$timeoffset = intval($settings['timeoffset'] / 3600);
 /*vot*/		foreach($timearray as $v) {
 /*vot*/			$checkarray[(intval($v) < 0 ? '0'.substr($v, 1) : $v)] = ($timeoffset == $v ? 'selected="selected"' : '');

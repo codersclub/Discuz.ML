@@ -548,9 +548,9 @@ function writeEditorContents(text) {
 			editdoc.body.innerHTML = text;
 		} else {
 /*vot*/			var rtl = (LANGDIR == 'rtl') ? ' dir="rtl"' : '';
-			text = '<!DOCTYPE html PUBLIC "-/' + '/W3C/' + '/DTD XHTML 1.0 Transitional/' + '/EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' +
-/*vot*/				'<html'+rtl+'><head id="editorheader"><meta http-equiv="Content-Type" content="text/html; charset=' + charset + '" />' +
-				(BROWSER.ie && BROWSER.ie > 7 ? '<meta http-equiv="X-UA-Compatible" content="IE=7" />' : '' ) +
+			text = '<!DOCTYPE html>' +
+/*vot*/				'<html'+rtl+'><head id="editorheader"><meta charset="' + charset + '" />' +
+				'<meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />' +
 				'<link rel="stylesheet" type="text/css" href="misc.php?css=' + STYLEID + '_wysiwyg&' + VERHASH + '" />' +
 				(BROWSER.ie ? '<script>window.onerror = function() { return true; }</script>' : '') +
 				'</head><body>' + text + '</body></html>';
@@ -1335,7 +1335,7 @@ function showEditorMenu(tag, params) {
 				var posque = mediaUrl.lastIndexOf('?');
 				posque = posque === -1 ? mb_strlen(mediaUrl) : posque;
 				var ext = mediaUrl.lastIndexOf('.') === -1 ? '' : mediaUrl.substring(mediaUrl.lastIndexOf('.') + 1, posque).toLowerCase();
-				ext = in_array(ext, ['mp3', 'wma', 'ra', 'rm', 'ram', 'mid', 'asx', 'wmv', 'avi', 'mpg', 'mpeg', 'rmvb', 'asf', 'mov', 'flv', 'swf']) ? ext : 'x';
+				ext = in_array(ext, ['mp3', 'wav', 'wma', 'ra', 'rm', 'ram', 'mid', 'asx', 'wmv', 'avi', 'mpg', 'mpeg', 'rmvb', 'asf', 'mov', 'flv', 'swf', 'mp4', 'm4a', 'm4v', '3gp', 'ogv', 'ogg', 'webm', 'weba', 'aac', 'flac']) ? ext : 'x';
 				if(ext == 'x') {
 					if(/^mms:\/\//.test(mediaUrl)) {
 						ext = 'mms';

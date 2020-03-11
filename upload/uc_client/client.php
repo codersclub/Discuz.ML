@@ -418,7 +418,7 @@ function uc_user_edit($username, $oldpw, $newpw, $email, $ignoreoldpw = 0, $ques
 }
 
 function uc_user_delete($uid) {
-	return call_user_func(UC_API_FUNC, 'user', 'delete', array('uid'=>$uid));
+	return call_user_func(UC_API_FUNC, 'user', 'delete', array('uid'=>$uid, 'action'=>'delete'));
 }
 
 function uc_user_deleteavatar($uid) {
@@ -449,6 +449,10 @@ function uc_user_getprotected() {
 function uc_get_user($username, $isuid=0) {
 	$return = call_user_func(UC_API_FUNC, 'user', 'get_user', array('username'=>$username, 'isuid'=>$isuid));
 	return UC_CONNECT == 'mysql' ? $return : uc_unserialize($return);
+}
+
+function uc_user_chgusername($uid, $newusername) {
+	return call_user_func(UC_API_FUNC, 'user', 'chgusername', array('uid'=>$uid, 'newusername'=>$newusername));
 }
 
 function uc_user_merge($oldusername, $newusername, $uid, $password, $email) {

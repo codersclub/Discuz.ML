@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS pre_common_admincp_perm;
 CREATE TABLE pre_common_admincp_perm (
   `cpgroupid` int(11) unsigned NOT NULL,
   `perm` varchar(255) NOT NULL,
-  UNIQUE KEY cpgroupperm (cpgroupid,perm)
+  UNIQUE KEY cpgroupperm (cpgroupid,perm(40))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_admincp_session;
@@ -154,7 +154,7 @@ CREATE TABLE pre_common_advertisement_custom (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (id),
-  KEY `name` (`name`)
+  KEY `name` (`name`(100))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_banned;
@@ -302,8 +302,8 @@ CREATE TABLE pre_common_block_style (
   `fields` text NOT NULL,
   `moreurl` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (styleid),
-  KEY `hash` (`hash`),
-  KEY blockclass (blockclass)
+  KEY `hash` (`hash`(10)),
+  KEY blockclass (blockclass(50))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_block_xml;
@@ -324,7 +324,7 @@ CREATE TABLE pre_common_cache (
   `cachekey` varchar(255) NOT NULL DEFAULT '',
   `cachevalue` mediumblob NOT NULL,
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (cachekey)
+  PRIMARY KEY (cachekey(50))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_card;
@@ -341,7 +341,7 @@ CREATE TABLE pre_common_card (
   `cleardateline` int(11) unsigned NOT NULL DEFAULT '0',
   `useddateline` int(11) unsigned NOT NULL DEFAULT '0',
   `uid` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (id),
+  PRIMARY KEY (id(50)),
   KEY dateline (dateline)
 ) ENGINE=InnoDB;
 
@@ -954,7 +954,7 @@ CREATE TABLE pre_common_member_profile_setting (
   `size` int(11) unsigned NOT NULL DEFAULT '0',
   `choices` text NOT NULL,
   `validate` text NOT NULL,
-  PRIMARY KEY (fieldid)
+  PRIMARY KEY (fieldid(30))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_member_security;
@@ -967,7 +967,7 @@ CREATE TABLE pre_common_member_security (
   `newvalue` text NOT NULL,
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (securityid),
-  KEY uid (uid,fieldid),
+  KEY uid (uid,fieldid(40)),
   KEY dateline (dateline)
 ) ENGINE=InnoDB;
 
@@ -987,7 +987,7 @@ CREATE TABLE pre_common_member_stat_field (
   `users` int(11) unsigned NOT NULL DEFAULT '0',
   `updatetime` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (optionid),
-  KEY fieldid (fieldid)
+  KEY fieldid (fieldid(40))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_member_status;
@@ -1217,15 +1217,6 @@ CREATE TABLE pre_common_relatedlink (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS pre_common_remote_port;
-CREATE TABLE pre_common_remote_port (
-  `id` int(11) unsigned NOT NULL DEFAULT '0',
-  `idtype` varchar(16) NOT NULL DEFAULT '',
-  `useip` varchar(45) NOT NULL DEFAULT '',
-  `port` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (id,idtype)
-) ENGINE=InnoDB;
-
 DROP TABLE IF EXISTS pre_common_report;
 CREATE TABLE pre_common_report (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -1300,13 +1291,13 @@ CREATE TABLE pre_common_session (
   `tid` int(11) unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY sid (sid),
   KEY uid (uid)
-) TYPE=HEAP;
+) ENGINE=HEAP;
 
 DROP TABLE IF EXISTS pre_common_setting;
 CREATE TABLE pre_common_setting (
   `skey` varchar(255) NOT NULL DEFAULT '',
   `svalue` text NOT NULL,
-  PRIMARY KEY (skey)
+  PRIMARY KEY (skey(40))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_smiley;
@@ -2428,9 +2419,9 @@ CREATE TABLE pre_forum_groupfield (
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
   `type` varchar(255) NOT NULL,
   `data` text NOT NULL,
-  UNIQUE KEY `types` (fid,`type`),
+  UNIQUE KEY `types` (fid,`type`(40)),
   KEY fid (fid),
-  KEY `type` (`type`)
+  KEY `type` (`type`(40))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_forum_groupinvite;
@@ -3508,8 +3499,8 @@ CREATE TABLE pre_home_favorite (
   `description` text NOT NULL,
   `dateline` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (favid),
-  KEY idtype (id,idtype),
-  KEY uid (uid,idtype,dateline)
+  KEY idtype (id,idtype(40)),
+  KEY uid (uid,idtype(40),dateline)
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_home_feed;
@@ -3652,7 +3643,7 @@ CREATE TABLE pre_home_friendlog (
 
 DROP TABLE IF EXISTS pre_home_notification;
 CREATE TABLE pre_home_notification (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(11) unsigned NOT NULL DEFAULT '0',
   `type` varchar(255) NOT NULL DEFAULT '',
   `new` tinyint(1) NOT NULL DEFAULT '0',
@@ -3845,7 +3836,7 @@ DROP TABLE IF EXISTS pre_mobile_setting;
 CREATE TABLE pre_mobile_setting (
   `skey` varchar(255) NOT NULL DEFAULT '',
   `svalue` text NOT NULL,
-  PRIMARY KEY (skey)
+  PRIMARY KEY (skey(40))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_portal_article_content;
@@ -4065,7 +4056,7 @@ CREATE TABLE pre_portal_topic (
   `htmlmade` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `htmldir` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (topicid),
-  KEY `name` (`name`)
+  KEY `name` (`name`(40))
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_portal_topic_pic;

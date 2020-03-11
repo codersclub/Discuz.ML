@@ -84,6 +84,12 @@ $_config['db']['common'] = array();
  */
 $_config['db']['common']['slave_except_table'] = '';
 
+/*
+ * 数据库引擎，根据自己的数据库引擎进行设置，3.5之后默认为innodb，之前为myisam
+ * 对于从3.4升级到3.5，并且没有转换数据库引擎的用户，在此设置为myisam
+ */
+$_config['db']['common']['engine'] = 'innodb';
+
 /**
  * Memory server optimization settings
  * The following settings need to be PHP extension support component, which memcache priority over other settings,
@@ -99,6 +105,7 @@ $_config['memory']['redis']['port'] = 6379;
 $_config['memory']['redis']['pconnect'] = 1;
 $_config['memory']['redis']['timeout'] = 0;
 $_config['memory']['redis']['requirepass'] = '';
+$_config['memory']['redis']['db'] = 0;				//这里可以填写0到15的数字，每个站点使用不同的db
 /**
  * This configuration is now canceled. By default, the array is saved using json encoding, and other data is saved directly as is.
  */
@@ -108,6 +115,10 @@ $_config['memory']['memcache']['server'] = '';	// memcache server address
 $_config['memory']['memcache']['port'] = 11211;	// memcache server port
 $_config['memory']['memcache']['pconnect'] = 1;	// memcache persistent connection
 $_config['memory']['memcache']['timeout'] = 1;	// memcache server connection timeout
+
+$_config['memory']['memcached']['server'] = '';			// memcached server address
+$_config['memory']['memcached']['port'] = 11211;		// memcached server port
+
 
 $_config['memory']['apc'] = 0;			// Start support for apc
 $_config['memory']['apcu'] = 0;			// Start APCu support
@@ -121,7 +132,7 @@ $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID 
 
 // Download attachments
 //
-// local file reading mode; Mode 2 means the most to save memory, but does not support multi-threaded download
+// Local file reading mode; mode 2 is the most memory-saving mode, but does not support multi-threaded download If you need the URL address of the attachment and the playback of the media attachment, you need to select the reading mode 1 or 4 that supports the Range parameter
 // 1=fread, 2=readfile, 3=fpassthru, 4=fpassthru+multiple
 $_config['download']['readmod'] = 2;
 
@@ -139,7 +150,6 @@ $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = 
 $_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/fr/etc...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
-$_config['output']['iecompatible']	= 0;		// IE compatibility mode
 
 // COOKIE settings
 $_config['cookie']['cookiepre'] 	= 'discuz_'; 	// COOKIE prefix
@@ -150,7 +160,7 @@ $_config['cookie']['cookiepath'] 	= '/'; 		// COOKIE path
 $_config['security']['authkey']		= 'asdfasfas';	// Site encryption key
 $_config['security']['urlxssdefend']	= true;		// Use own URL XSS defense
 $_config['security']['attackevasive']	= 0;		// CC Attack Defense 1 | 2 | 4
-$_config['security']['onlyremoteaddr']	= 0;		// Get User IP address method: 0 = Trust HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR; 1 = Tust only REMOTE_ADDR
+$_config['security']['onlyremoteaddr']	= 1;		// Get User IP address method: 0 = Trust HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR; 1 = Tust only REMOTE_ADDR
 							// Considering the risk of preventing IP credential stuffing attacks and invalidating IP restriction policies,
 							// it is recommended that you set it to 1. Users using CDN can configure ipgetter options
 							// Security Tip: Due to the independence of UCenter and UC_Client, you need to define constants in the two applications separately to enable the function
@@ -167,6 +177,9 @@ $_config['security']['creditsafe']['second'] 	= 0;	// Open the user credit info 
 $_config['security']['creditsafe']['times'] 	= 10;
 
 $_config['security']['fsockopensafe']['port']	= array(80, 443); // Enabled ports for REMOTE downloads by fsockopen
+
+$_config['security']['error']['showerror'] = '1';	//Whether to display error details when the database or system is seriously abnormal, 0=do not display (safer), 1=display detailed information (default), 2=only display the error itself
+$_config['security']['error']['guessplugin'] = '1';	//Whether to guess the plug-in that may report an error when the database or system is seriously abnormal, 0=no guess, 1=guess (default)
 
 $_config['admincp']['founder']		= '1';	// Site Founder: site management background with the highest authority, each site can be set to one or more founders
 						// You can use the user uid or user name. Separate multiple users with a comma;

@@ -2316,7 +2316,7 @@ $lang = array
 	'setting_attach_basic_multi' => '批量上传',
 	'setting_attach_basic_simple' => '普通上传',
 	'setting_attach_basic_allowattachurl' => '附件 URL 地址、媒体附件播放',
-	'setting_attach_basic_allowattachurl_comment' => '开启附件 URL 地址后，上传附件的地址可通过 "attach://aid" 方式在任何帖内引用，并支持媒体类附件的直接播放，此项设置需要在 <a href="'.ADMINSCRIPT.'?action=usergroups">用户组</a> - 帖子相关 中允许用户组使用多媒体代码方可生效',
+	'setting_attach_basic_allowattachurl_comment' => '开启附件 URL 地址后，上传附件的地址可通过 "attach://aid" 方式在任何帖内引用，并支持媒体类附件的直接播放，此项设置需要在 <a href="'.ADMINSCRIPT.'?action=usergroups">用户组</a> - 帖子相关 中允许用户组使用多媒体代码方可生效，此项设置需选择的附件读取模式支持 Range 头和正确的 MIME 类型头才可正常运行',
 	'setting_attach_basic_swfupload_comment' => '批量上传采用 Flash 机制上传，可一次上传多个附件，上传时还会有进度显示',
 
 	'setting_attach_forumattach' => '论坛附件',
@@ -3562,6 +3562,11 @@ $lang = array
 	'members_ban_delavatar' => '头像',
 	'members_ban_reason' => '理由',
 	'members_ban_reason_comment' => '禁止或解禁用户的理由',
+
+	'members_chgusername' => '发起更名',
+	'members_chgusername_tips' => '<li>此操作需要在管理组内开启相关权限</li><li>本操作对于站点所属 UCenter 下支持此类通知的应用均可生效，但会导致不支持此类通知并以用户名作为外键的应用出现异常，敬请注意</li><li>提交后本请求将会发送至 UCenter 处理，由于数据交互需要时间，一般本操作会在几分钟内生效，如超时未生效请更新缓存或检查 UCenter 和站点通信是否正常</li>',
+	'members_chgusername_oldusername' => '该用户在本应用的用户名',
+	'members_chgusername_newusername' => '新用户名',
 
 	'members_search' => '搜索用户',
 	'members_delete' => '删除用户',

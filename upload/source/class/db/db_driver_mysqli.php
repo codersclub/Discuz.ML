@@ -78,7 +78,7 @@ class db_driver_mysqli
 	}
 
 	function _dbconnect($dbhost, $dbuser, $dbpw, $dbcharset, $dbname, $pconnect, $halt = true) {
-/*vot*/		if ($pconnect === '1') $dbhost = 'p:' . $dbhost; // p: prefix to indicate persistent connection
+/*vot*/		if (intval($pconnect) === 1) $dbhost = 'p:' . $dbhost; // p: prefix to indicate persistent connection
 		$link = new mysqli();
 		if(!$link->real_connect($dbhost, $dbuser, $dbpw, $dbname, null, null, MYSQLI_CLIENT_COMPRESS)) {
 			$halt && $this->halt('notconnect', $this->errno());
@@ -243,7 +243,7 @@ class db_driver_mysqli
 /*vot*/	if (v_compare(PHP_VERSION, '5.5') < 0) {
 			$this->curlink->autocommit(true);
 		}
-		return $cr;
+		return $rr;
 	}
 
 }

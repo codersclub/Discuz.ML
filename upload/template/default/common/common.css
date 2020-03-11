@@ -805,7 +805,7 @@ Note on the CSS Hack:
 	#uhd .tb a { border-width: 1px 0; border-top-color: {SPECIALBG}; border-bottom-color: {WRAPBORDERCOLOR}; }
 	#uhd .tb .a a { border: 1px solid #CCC; border-bottom-color: #FFF; }
 	.ie6 #uhd .tb .a { position: relative; }
-	#uhd .mn { float: right; margin-right: 15px; margin-bottom: -30px; line-height: 28px; }
+	#uhd .mn { float: right; margin-right: 15px; margin-bottom: -30px; width: auto; line-height: 28px; }
 		#uhd .mn a { padding: 2px 0 2px 20px; background: no-repeat 0 50%; color: {MIDTEXT}; }
 			#uhd .mn a:hover { color: {HIGHLIGHTLINK}; }
 			#uhd .mn .addflw a { background-image: url({IMGDIR}/flw_ico.png); }
@@ -1795,11 +1795,19 @@ DIY image is not loaded when the Hide Slide
 	.waterfall .auth { padding: 0 10px 10px; border-width: 0 1px 1px; border-style: solid; border-color: transparent #EAEAEA #B9B9B9; background: #F8F8F8; }
 		.waterfall .auth img { display: inline-block; margin: 0 1px; }
 		
-/* ????? by theo */
+/* Big pagination button by theo */
 .pgbtn { margin: 5px 0 10px; }
 	.pgbtn a { display: block; height: 40px; line-height: 40px; letter-spacing: 5px; text-align: center; border: 1px solid #DCDCDC; font-size: 14px; outline: none; border-radius: 5px; box-shadow: 0 1px 0 #F5F5F5; }
 		.pgbtn a:hover { border-color: #BABABA; text-decoration: none; }
 		.pgbtn a:active { background: #EEE; border-color: #D0D0D0; box-shadow: none; }
+
+/* Media style */
+.media { display: block; margin-bottom: 20px; }
+	.media_container { display: block; width: 100%; height: 100%; min-height: 20px; background: url("{IMGDIR}/img_loader.gif") no-repeat center; }
+		.media_container a { text-decoration: none !important; }
+	.media_tips { display: block; margin: 10px 0; text-align: center; }
+		.media_tips a { font-size: 12px !important; color: #999 !important; text-decoration: none !important; }
+			.media_tips a:hover { text-decoration: underline !important; }
 
 /*----------------------------------------------------*/
 /*------- Added by Valery Votintsev -----*/

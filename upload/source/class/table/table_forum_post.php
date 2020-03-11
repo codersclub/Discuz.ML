@@ -604,9 +604,14 @@ class table_forum_post extends discuz_table
 	}
 
 	/*
-	 * To ensure that under each tid, the position starts from 0 and increases by 1 each time, which has the same semantics as MyISAM
+	 * In the case of InnoDB, it is necessary to ensure that under each tid, the position starts from 0 and increases by 1 each time, which has the same semantics as MyISAM
+	 * In non-InnoDB (MyISAM), insert directly
 	 */
 	public function insert($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
+		if (getglobal("config/db/common/engine") !== 'innodb') {
+			return DB::insert(self::get_tablename($tableid), $data, $return_insert_id, $replace, $silent);
+		}
+
 		try {
 			$tablename = self::get_tablename($tableid);
 			DB::begin_transaction();

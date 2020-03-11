@@ -1,10 +1,10 @@
 <?php
 
 /*
-[Discuz!] (C)2001-2099 Comsenz Inc.
-This is NOT a freeware, use is subject to license terms
+	[Discuz!] (C)2001-2099 Comsenz Inc.
+	This is NOT a freeware, use is subject to license terms
 
-$Id: index.php 1162 2014-10-31 06:57:07Z hypowang $
+	$Id: index.php 1059 2011-03-01 07:25:09Z monkey $
 */
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -186,6 +186,8 @@ if($method == 'show_license') {
 		header("Location:../admin.php?m=frame&a=index&mainurl=".urlencode('admin.php?m=app&a=add'));
 
 	}
+
+	@unlink(ROOT_PATH.'./install/index.php'); // Delete UCenter installation file, Git added
 
 } elseif($method == 'install_check') {
 
