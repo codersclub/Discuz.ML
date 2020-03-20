@@ -1,7 +1,7 @@
 <?php
 /*
- * Language Pack Diff, v.2.1
- * Last modified date: 29.12.2019
+ * Language Pack Diff, v.2.2
+ * Last modified date: 20.03.2020
  * (c) by http://codersclub.org
  * Idea by fanha99, http://codersclub.org/discuzx/?1906
  * Rewritten by Valery Votintsev, http://codersclub.org/discuzx/?1
@@ -11,6 +11,9 @@
  *   and call it by a browser:
  *   http://your_site.tld/discuz_folder/_lang_diff.php
  */
+
+// Script Version
+$version = '2.2';
 
 // Discuz Root Directory
 define('DISCUZ_ROOT', str_replace('\\', '/', dirname(__FILE__)));
@@ -32,7 +35,7 @@ define('IN_COMSENZ',1);
 
 <center>
 
-<h2>Discuz!ML Language Pack Diff, v.2.0</h2>
+<h2>Discuz!ML Language Pack Diff, v.<?= $version ?></h2>
 
 &copy; 2012-<?= date('Y')?> by <a href="http://codersclub.org/discuzx/">codersclub.org</a>
 <br>
@@ -252,8 +255,11 @@ function checkdir($dir = '') {
         }
 
         foreach (array_diff($target_keys, $source_keys) as $key) {
+//dump($key, '$key');
           $right .= "<br/>" . $indent . $key;
-          if(is_numeric($key)) $right .= "='" . htmlspecialchars($target[$key]) ."'";
+          if(is_numeric($key)) {
+            if(is_string($target[$key])) $right .= "='" . htmlspecialchars($target[$key]) ."'";
+          }
         }
       }
 
@@ -274,4 +280,22 @@ function error($s='') {
 function htmlspecialarray($var) {
 //    return array_map("htmlspecialchars", $myArray, array(ENT_QUOTES, 'UTF-8'));
     return array_map("htmlspecialchars", $myArray, [ENT_QUOTES], ['UTF-8']);
+}
+
+//----------------------------------------------------------
+// Dump variable value for debug
+function dump($data, $name='') {
+    $buf = var_export($data, true);
+
+    $buf = str_replace('\\r', '', $buf);
+    $buf = preg_replace('/\=\>\s*\n\s*array/s', '=> array', $buf);
+
+    echo '<pre>';
+
+    if($name) {
+        echo $name, '=';
+    }
+
+    echo $buf;
+    echo '</pre>';
 }
