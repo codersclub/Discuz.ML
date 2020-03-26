@@ -785,7 +785,7 @@ $lang = array
 	'setting_access_register_maildomain_white' => '白名單模式',
 	'setting_access_register_maildomain_black' => '黑名單模式',
 	'setting_access_register_maildomain_list' => '限制名單',
-	'setting_access_register_maildomain_list_comment' => '當郵箱的域名處於本列表中的地址時，將根據上述選項進行相應限制操作。輸入要限制的郵箱域名即可，例如屏蔽 xxx@xxx.com 的域，只需輸入 xxx.com。每行一個域名。',
+	'setting_access_register_maildomain_list_comment' => '當郵箱的域名處於本列表中的地址時，將根據上述選項進行相應限制操作。輸入要限制的郵箱域名即可，例如屏蔽 xxx@xxx.com 的域，只需輸入 @xxx.com。每行一個域名。',
 	'setting_access_register_ctrl' => '同一 IP 註冊間隔限制(小時)',
 	'setting_access_register_ctrl_comment' => '同一 IP 在本時間間隔內將只能註冊一個帳號，0 為不限制',
 	'setting_access_register_floodctrl' => '同一 IP 在 24 小時允許註冊的最大次數',
@@ -2281,7 +2281,7 @@ $lang = array
 	'setting_sec_accountguard_loginpwcheck_prompt' => '開啟並提示',
 	'setting_sec_accountguard_loginpwcheck_force' => '開啟並強制修改弱密碼',
 	'setting_sec_accountguard_loginoutofdate' => '異常登錄檢測',
-	'setting_sec_accountguard_loginoutofdate_comment' => '當用戶異地登錄且距離上次登錄超過 90 天時，帳號會進入未審核組，用戶可以通過驗證郵箱或者申訴解凍帳號，QQ登錄的用戶不受此功能影響 <a href="'.ADMINSCRIPT.'?frames=yes&action=moderate&operation=members">審核用戶</a>',
+	'setting_sec_accountguard_loginoutofdate_comment' => '當用戶異地登錄且距離上次登錄超過 90 天時，帳號會進入未審核組，用戶可以通過驗證郵箱或者申訴解凍帳號，QQ登錄的用戶不受此功能影響 <a href="'.ADMINSCRIPT.'?action=moderate&operation=members">審核用戶</a>',
 
 
 	'setting_attach' => '上傳設置',
