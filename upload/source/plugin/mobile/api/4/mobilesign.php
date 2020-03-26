@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobilesign.php 34702 2014-07-10 10:08:30Z nemohou $
+ *      $Id$
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');

@@ -471,7 +471,13 @@ class discuz_application extends discuz_base{
 		static $check = array('"', '>', '<', '\'', '(', ')', 'CONTENT-TRANSFER-ENCODING');
 
 		if(isset($_GET['formhash']) && $_GET['formhash'] !== formhash()) {
-			system_error('request_tainting');
+			if(constant('CURMODULE') == 'logging' && isset($_GET['action']) && $_GET['action'] == 'logout') {
+				header("HTTP/1.1 302 Found");// Fixed the occasional "Your current access request contains illegal characters and has been rejected by the system" when clicking multiple times to exit
+				header("Location: index.php");
+				exit();
+			} else {
+				system_error('request_tainting');
+			}
 		}
 
 		if($_SERVER['REQUEST_METHOD'] == 'GET' ) {
@@ -589,9 +595,9 @@ class discuz_application extends discuz_base{
 				$memberfieldforum = C::t('common_member_field_forum')->fetch($discuz_uid);
 				$groupterms = dunserialize($memberfieldforum['groupterms']);
 				if(!empty($groupterms['main'])) {
-					C::t("common_member")->update($user['uid'], array('groupexpiry'=> 0, 'groupid' => $groupterms['main']['groupid'], 'adminid' => $groupterms['main']['adminid']));
-					$user['groupid'] = $groupterms['main']['groupid'];
+					$user['groupid'] = $groupterms['main']['groupid'] ? $groupterms['main']['groupid'] : C::t('common_usergroup')->fetch_by_credits($user['credits'])['groupid'];
 					$user['adminid'] = $groupterms['main']['adminid'];
+					C::t("common_member")->update($user['uid'], array('groupexpiry'=> 0, 'groupid' => $user['groupid'], 'adminid' => $user['adminid']));
 					unset($groupterms['main'], $groupterms['ext'][$this->var['member']['groupid']]);
 					$this->var['member'] = $user;
 					C::t('common_member_field_forum')->update($discuz_uid, array('groupterms' => serialize($groupterms)));

@@ -201,9 +201,10 @@ if(!$ac) {
 	header('Expires: 0');
 	krsort($array);
 	$detail = lang('plugin/wechat', 'show_export_title')."\r\n".implode("\r\n", $array);
-//vot	if($_G['charset'] != 'gbk') {
-//vot		$detail = diconv($detail, $_G['charset'], 'GBK');
-//vot	}
+//vot: Not required for UTF-8
+	if($_G['charset'] != 'gbk') {
+		$detail = diconv($detail, $_G['charset'], 'GBK');
+	}
 	define('FOOTERDISABLED', true);
 	echo $detail;
 	exit();
