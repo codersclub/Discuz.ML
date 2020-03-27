@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_spacecp.php 32426 2013-01-15 10:00:21Z liulanbo $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -210,7 +209,7 @@ $lang = array(
 	'do_stat_eventcomment' => '活动评论',
 	'do_stat_eventjoin' => '参加活动',
 	'do_stat_sharecomment' => '分享评论',
-//vot	'do_stat_post' => '主题回帖',
+	'do_stat_post' => '主题回帖',
 	'do_stat_click' => '表态',
 	'do_stat_wall' => '留言',
 	'do_stat_poke' => '打招呼',
