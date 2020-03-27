@@ -432,8 +432,9 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),
 /*vot*/
-	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
-	<a href="https://bitbucket.org/vot/discuz.ml" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
+	'<a href="https://discuz.ml/" class="lightlink2" target="_blank">Discuz!ML Official Site</a>,
+    <a href="https://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
+	<a href="https://sourceforge.net/projects/discuz-ml/" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
 	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! Application Chinese Forum</a>,
 	<a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
 	<a href="http://www.discuz.net/redirect.php?service" class="lightlink2" target="_blank">Purchase authorization</a>,
