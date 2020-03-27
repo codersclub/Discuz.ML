@@ -58,8 +58,8 @@ if(!submitcheck('picsubmit')) {
 		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? '' : $starttime;
 		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? '' : $endtime;
 	} else {
-		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
-		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
+/*vot*/		$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
+/*vot*/		$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
 	}
 
 	shownav('topic', 'nav_pic');
@@ -71,9 +71,11 @@ if(!submitcheck('picsubmit')) {
 		array('pic_search', !$searchsubmit),
 		array('nav_pic', $searchsubmit)
 	));
+	/*search={"nav_pic":"action=pic"}*/
 	if($muticondition) {
 		showtips('pic_tips');
 	}
+	/*search*/
 	echo <<<EOT
 <script type="text/javascript" src="static/js/calendar.js"></script>
 <script type="text/JavaScript">
@@ -84,6 +86,7 @@ function page(number) {
 </script>
 EOT;
 	showtagheader('div', 'searchposts', !$searchsubmit && empty($newlist));
+	/*search={"nav_pic":"action=pic","search":"action=pic&search=true"}*/
 	showformheader("pic".(!empty($_GET['search']) ? '&search=true' : ''), '', 'picforum');
 	showhiddenfields(array('page' => $page, 'pp' => $_GET['pp'] ? $_GET['pp'] : $_GET['perpage']));
 	showtableheader();
@@ -103,6 +106,7 @@ EOT;
 	showtablefooter();
 	showformfooter();
 	showtagfooter('div');
+	/*search*/
 
 } else {
 	$picids = authcode($picids, 'DECODE');
@@ -128,7 +132,7 @@ if(submitcheck('searchsubmit', 1) || $newlist) {
 		$sql .= ' AND p.'.DB::field('dateline', $starttime, '>');
 	}
 
-	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
+/*vot*/	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
 		if($endtime != '') {
 			$endtime = strtotime($endtime);
 			$sql .= ' AND p.'.DB::field('dateline', $endtime, '<');

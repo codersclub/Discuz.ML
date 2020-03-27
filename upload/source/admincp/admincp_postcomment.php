@@ -36,11 +36,11 @@ if(!submitcheck('postcommentsubmit')) {
 	if(empty($_GET['search'])) {
 		$newlist = 1;
 		$detail = 1;
-		$starttime = dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d');
+/*vot*/		$starttime = dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d');
 	}
 
-	$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
-	$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
+/*vot*/	$starttime = !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $starttime) ? dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d') : $starttime;
+/*vot*/	$endtime = $_G['adminid'] == 3 || !preg_match("/^(0|\d{4}\-\d{1,2}\-\d{1,2})$/", $endtime) ? dgmdate(TIMESTAMP, 'Y-m-d') : $endtime;
 
 	shownav('topic', 'nav_postcomment');
 	showsubmenu('nav_postcomment', array(
@@ -51,10 +51,12 @@ if(!submitcheck('postcommentsubmit')) {
 		array('postcomment_search', !$searchsubmit),
 		array('nav_postcomment', $searchsubmit)
 	));
+	/*search={"nav_postcomment":"action=postcomment"}*/
 	if(empty($newlist)) {
 		$search_tips = 1;
 		showtips('postcomment_tips');
 	}
+	/*search*/
 	echo <<<EOT
 <script type="text/javascript" src="static/js/calendar.js"></script>
 <script type="text/JavaScript">
@@ -65,6 +67,7 @@ function page(number) {
 </script>
 EOT;
 	showtagheader('div', 'searchposts', !$searchsubmit && empty($newlist));
+	/*search={"nav_postcomment":"action=postcomment","search":"action=postcomment&search=true"}*/
 	showformheader("postcomment".(!empty($_GET['search']) ? '&search=true' : ''), '', 'postcommentforum');
 	showhiddenfields(array('page' => $page, 'pp' => $_GET['pp'] ? $_GET['pp'] : $_GET['perpage']));
 	showtableheader();
@@ -81,6 +84,7 @@ EOT;
 	showtablefooter();
 	showformfooter();
 	showtagfooter('div');
+	/*search*/
 
 } else {
 	$cids = authcode($cids, 'DECODE');
@@ -114,7 +118,7 @@ if(submitcheck('searchsubmit') || $newlist) {
 		$starttime = strtotime($starttime);
 	}
 
-	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
+/*vot*/	if($_G['adminid'] == 1 && $endtime != dgmdate(TIMESTAMP, 'Y-m-d')) {
 		if($endtime != '0') {
 			$endtime = strtotime($endtime);
 		}

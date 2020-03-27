@@ -84,9 +84,11 @@ if(!submitcheck('blogsubmit')) {
 		array('blog_search', !$searchsubmit),
 		array('nav_blog_recycle_bin', $searchsubmit)
 	));
+	/*search={"nav_blog_recycle_bin":"action=blogrecyclebin","bloglist":"action=blogrecyclebin"}*/
 	if($muticondition) {
 		showtips('blog_tips');
 	}
+	/*search*/
 	echo <<<EOT
 <script type="text/javascript" src="static/js/calendar.js"></script>
 <script type="text/JavaScript">
@@ -97,6 +99,7 @@ function page(number) {
 </script>
 EOT;
 	showtagheader('div', 'searchposts', !$searchsubmit && empty($newlist));
+	/*search={"nav_blog":"action=blog","search":"action=blog&search=true"}*/
 	showformheader("blogrecyclebin".(!empty($_GET['search']) ? '&search=true' : ''), '', 'blogforum');
 	showhiddenfields(array('page' => $page, 'pp' => $_GET['pp'] ? $_GET['pp'] : $_GET['perpage']));
 	showtableheader();
@@ -120,6 +123,7 @@ EOT;
 	showtablefooter();
 	showformfooter();
 	showtagfooter('div');
+	/*search*/
 
 } else {
     if($_GET['blogids']) {
