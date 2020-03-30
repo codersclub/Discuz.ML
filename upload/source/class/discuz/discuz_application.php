@@ -445,6 +445,10 @@ class discuz_application extends discuz_base{
 			@header('Content-Type: text/html; charset='.CHARSET);
 		}
 
+		if($this->var['isHTTPS'] && ($this->config['output']['upgradeinsecure'] || !isset($this->config['output']['upgradeinsecure']))) {
+			@header('Content-Security-Policy: upgrade-insecure-requests');
+		}
+
 		//vot MultiLingual Support
 		// Reload current page if the language is changed
 /*vot*/		if(isset($this->var['gp_language'])) {

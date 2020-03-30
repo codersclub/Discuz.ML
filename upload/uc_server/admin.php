@@ -19,7 +19,7 @@ $starttime = $mtime[1] + $mtime[0];
 
 define('IN_UC', TRUE);
 /*vot*/ define('UC_ROOT', str_replace('\\','/',substr(__FILE__, 0, -9)));
-define('UC_API', strtolower((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
+define('UC_API', strtolower((is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
 define('UC_DATADIR', UC_ROOT.'data/');
 define('UC_DATAURL', UC_API.'/data');
 define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());

@@ -12,6 +12,8 @@ if(!defined('IN_COMSENZ')) {
 	exit('Access Denied');
 }
 
+/*vot*/ require_once(ROOT_PATH . 'source/function/function.inc.php');
+
 function show_msg($error_no, $error_msg = 'ok', $success = 1, $quit = TRUE) {
 	if(VIEW_OFF) {
 		$error_code = $success ? 0 : constant(strtoupper($error_no));
@@ -1287,7 +1289,7 @@ function install_uc_server() {
 
 	$pathinfo = pathinfo($_SERVER['PHP_SELF']);
 	$pathinfo['dirname'] = substr($pathinfo['dirname'], 0, -8);
-/*vot*/	$isHTTPS = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
+	$isHTTPS = is_https();
 	$appurl = 'http'.($isHTTPS ? 's' : '').'://'.preg_replace("/\:\d+/", '', $_SERVER['HTTP_HOST']).($_SERVER['SERVER_PORT'] && $_SERVER['SERVER_PORT'] != 80 && $_SERVER['SERVER_PORT'] != 443 ? ':'.$_SERVER['SERVER_PORT'] : '').$pathinfo['dirname'];
 	$ucapi = $appurl.'/uc_server';
 	$ucip = '';
