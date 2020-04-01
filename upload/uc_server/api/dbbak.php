@@ -16,6 +16,10 @@ $apptype = @$_GET['apptype'];
 $apptype = strtolower($apptype);
 
 define('IN_COMSENZ', TRUE);
+
+/*vot*/ define('UC_ROOT', str_replace('\\','/',dirname(__DIR__)).'/');
+/*vot*/ require_once(UC_ROOT . 'lib/function.inc.php');
+
 if($apptype == 'discuzx') {
 	define('ROOT_PATH', dirname(__FILE__).'/../../');
 } else {

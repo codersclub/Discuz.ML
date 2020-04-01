@@ -10,6 +10,9 @@
 
 error_reporting(0);
 
+/*vot*/ define('UC_ROOT', str_replace('\\','/',dirname(__FILE__)).'/');
+/*vot*/ require UC_ROOT . 'lib/function.inc.php';
+
 _get_script_url();
 define('UC_API', strtolower((is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
 

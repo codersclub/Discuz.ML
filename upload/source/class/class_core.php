@@ -11,7 +11,8 @@
 error_reporting(E_ALL);
 
 define('IN_DISCUZ', true);
-/*vot*/ define('DISCUZ_ROOT', substr(dirname(str_replace('\\','/',__FILE__)), 0, -12));
+/*vot*/ define('DISCUZ_ROOT', str_replace('\\','/',dirname(dirname(dirname(__FILE__)))).'/');
+/*vot*/ require_once(DISCUZ_ROOT . 'source/function/function.inc.php');
 
 //DEBUG
 //echo '<pre>';

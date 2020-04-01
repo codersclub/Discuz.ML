@@ -195,7 +195,7 @@ class discuz_application extends discuz_base{
 		if(defined('IN_NEWMOBILE')) {
 			$sitepath = preg_replace("/\/m/i", '', $sitepath);
 		}
-/*vot*/		$_G['isHTTPS'] = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
+/*vot*/		$_G['isHTTPS'] = is_https();
 		$_G['scheme'] = 'http'.($_G['isHTTPS'] ? 's' : '');
 		$_G['siteurl'] = dhtmlspecialchars($_G['scheme'].'://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
 

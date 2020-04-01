@@ -46,6 +46,7 @@ if($apptype == 'discuz') {
 	require ROOT_PATH.'./config.php';
 } elseif($apptype == 'ucenter') {
 	require ROOT_PATH.'./data/config.inc.php';
+/*vot*/	require_once(ROOT_PATH . 'lib/function.inc.php');
 } elseif($apptype == 'ecmall') {
 	require ROOT_PATH.'./data/inc.config.php';
 } elseif($apptype == 'ecshop') {
@@ -53,6 +54,7 @@ if($apptype == 'discuz') {
 } elseif($apptype == 'discuzx') {
 	require ROOT_PATH.'./config/config_global.php';
 	require ROOT_PATH.'./config/config_ucenter.php';
+/*vot*/	require_once(ROOT_PATH . 'source/function/function.inc.php');
 } else {
 	api_msg('db_api_no_match', $apptype);
 }
