@@ -94,12 +94,12 @@ class dbstuff {
 			}
 		}
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				mysql_query("SET character_set_connection=".$dbcharset.", character_set_results=".$dbcharset.", character_set_client=binary", $this->link);
 			}
 
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '5.0.1') > 0) {
 				mysql_query("SET sql_mode=''", $this->link);
 			}
 		}
@@ -221,12 +221,12 @@ class dbstuffi {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				$this->link->set_charset($dbcharset);
 			}
 
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '5.0.1') > 0) {
 				$this->query("SET sql_mode=''");
 			}
 		}
@@ -917,5 +917,3 @@ function strexists($haystack, $needle) {
 function send_mime_type_header($type = 'application/xml') {
 	header("Content-Type: ".$type);
 }
-
-?>

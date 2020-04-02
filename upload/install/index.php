@@ -16,8 +16,6 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
 /*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(dirname(__FILE__))).'/');
-//DEBUG //echo "root_path=",ROOT_PATH,"<br>";
-$language = '';
 
 require ROOT_PATH.'./source/discuz_version.php';
 require ROOT_PATH.'./install/include/install_var.php';
@@ -36,12 +34,13 @@ $view_off = getgpc('view_off');
 
 define('VIEW_OFF', $view_off ? TRUE : FALSE);
 
-/*vot*/ $allow_method = array('show_license', 'env_check', 'app_reg', 'db_init', 'ext_info', 'install_check', 'tablepre_check', 'language');
+$allow_method = array('show_license', 'env_check', 'app_reg', 'db_init', 'ext_info', 'install_check', 'tablepre_check');
+/*vot*/ $allow_method[] = 'language';
 
 $step = intval(getgpc('step', 'R')) ? intval(getgpc('step', 'R')) : 0;
 $method = getgpc('method');
 
-/*vot*/ header('Content-Type:text/html; charset=utf-8');
+header('Content-Type: text/html; charset='.CHARSET);
 
 if(empty($method) || !in_array($method, $allow_method)) {
 	$method = isset($allow_method[$step]) ? $allow_method[$step] : '';
@@ -69,13 +68,6 @@ if(in_array($method, array('app_reg', 'ext_info'))) {
 	$default_ucapi = $bbserver.'/ucenter';
 	$default_appurl = $bbserver.substr($PHP_SELF, 0, strrpos($PHP_SELF, '/') - 8);
 }
-
-//DEBUG
-//echo '<pre>';
-//echo 'step=', $step, "\n";
-//echo 'method=', $method, "\n";
-//echo 'language=', $language, "\n";
-//echo '<pre>';
 
 if($method == 'show_license') {
     //vot: Select the install language
@@ -493,7 +485,7 @@ if($method == 'show_license') {
 		$data = addslashes(serialize($userstats));
 		$db->query("REPLACE INTO {$tablepre}common_syscache (cname, ctype, dateline, data) VALUES ('userstats', '$ctype', '".time()."', '$data')");
 
-		touch($lockfile);
+/*vot*/		touch($lockfile);
 		VIEW_OFF && show_msg('initdbresult_succ');
 
 /*vot*/		showjsmessage('completed');

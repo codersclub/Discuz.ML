@@ -5,7 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: dbbak.php 17033 2008-12-04 02:24:03Z zhaoxiongfei $
-*		Modified by Valery Votintsev, http://discuz.ml
+	Modified by Valery Votintsev, http://discuz.ml
 */
 
 error_reporting(0);
@@ -93,12 +93,12 @@ class dbstuff {
 			}
 		}
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				mysql_query("SET character_set_connection=".$dbcharset.", character_set_results=".$dbcharset.", character_set_client=binary", $this->link);
 			}
 
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '5.0.1') > 0) {
 				mysql_query("SET sql_mode=''", $this->link);
 			}
 		}
@@ -220,12 +220,12 @@ class dbstuffi {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '4.1') > 0) {
 			if($dbcharset) {
 				$this->link->set_charset($dbcharset);
 			}
 
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
+/*vot*/	if(v_compare($this->version(), '5.0.1') > 0) {
 				$this->query("SET sql_mode=''");
 			}
 		}
@@ -534,7 +534,7 @@ if($get['method'] == 'export') {
 	unset($sqldump);
 
 	foreach($sqlquery as $sql) {
-/*vot*/		$sql = syntablestruct(trim($sql), v_compare($db->version(), '4.1') > 0, $dbcharset);
+/*vot*/		$sql = syntablestruct(trim($sql), (v_compare($db->version(), '4.1') > 0), $dbcharset);
 
 		if($sql != '') {
 			$db->query($sql, 'SILENT');
