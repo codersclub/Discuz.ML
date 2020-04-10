@@ -2095,7 +2095,7 @@ function html5APlayer(randomid, ext, src, width, height) {
 			audio: [{
 				name: ' ',
 				artist: ' ',
-				url: src,
+				url: src
 			}]
 		});
 	} else {
@@ -2118,7 +2118,7 @@ function html5DPlayer(randomid, ext, src, width, height) {
 			mutex: true,
 			listFolded: true,
 			video: {
-				url: src,
+				url: src
 			}
 		});
 	} else {
