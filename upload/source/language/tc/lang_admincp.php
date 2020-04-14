@@ -1814,6 +1814,8 @@ $lang = array
 	'setting_functions_other_uidlogin_comment' => '選擇「是」，站點登錄時允許通過 UID的方式登錄驗證',
 	'setting_functions_other_autoidselect' => '啟用登錄自動選擇帳號',
 	'setting_functions_other_autoidselect_comment' => '選擇「是」，站點登錄時的將自動按 UID、E-mail、用戶名的順序逐一去匹配，其中UID驗證只有UID登錄方式被啟用後才有效',
+	'setting_functions_other_submitlock' => '<span class="spectitle">啟用表單防並發功能</span>',
+	'setting_functions_other_submitlock_comment' => '選擇“是”，將會防止用戶同一時間提交多次表單，可有效防止可能刷分的問題。注意: 在未使用內存緩存(Redis、Memcached)的情況下，本功能可能會加重服務器負擔',
 	'setting_functions_other_rssstatus' => '<span class="spectitle">啟用 RSS</span>',
 	'setting_functions_other_rssstatus_comment' => '選擇「是」，將允許用戶使用 RSS 客戶端軟件接收最新的帖子、文章更新。注意: 在分類很多的情況下，本功能可能會加重服務器負擔',
 	'setting_functions_other_rssttl' => '<span class="spectitle">RSS TTL(分鐘)</span>',
