@@ -518,17 +518,17 @@ class base {
 	}
 
 	function detectescape($basepath, $relativepath) {
-		//  oldhu 
-		// base
+		// Thanks to oldhu for contributing this code
+		// If the base path does not exist, there is a problem
 		if(!file_exists($basepath)) {
 			return FALSE;
 		}
 
-		// 
+		// If the file or directory does not exist, it may be the pre-creation check, use its parent path
 		if(!file_exists($basepath . $relativepath)) {
 			$relativepath = dirname($relativepath);
-			// 
-			// 
+			// The upper level does not yet exist, and is handled according to the worst case to prevent the request
+			// The purpose of not distinguishing the return value is also to avoid giving the attacker valuable information
 			if(!file_exists($basepath . $relativepath)) {
 				return FALSE;
 			}
@@ -537,9 +537,9 @@ class base {
 		$real_base = realpath($basepath);
 		$real_target = realpath($basepath . $relativepath);
 
-		// $real_base$real_targetbase
-		// 
-		// $real_target$real_basebase/
+		// if $real_base is equal to $real_target, this means that you are accessing the base directory, allowing
+		// or
+		// if the beginning of $real_target is equal to $real_base, this means that accessing file/directory under base, allows
 		if(strcmp($real_target, $real_base) !== 0 && strpos($real_target, $real_base . DIRECTORY_SEPARATOR) !== 0) {
 			return FALSE;
 		}
