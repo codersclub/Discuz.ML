@@ -425,7 +425,6 @@ IconIndex=1
 /*vot*/	if(!strexists(@$_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
 		$filename = diconv($filename, CHARSET, 'UTF-8');
 	} else {
-//vot		$filename = diconv($filename, CHARSET, 'GBK');
 /*vot*/		$filename = diconv($filename, CHARSET, 'UTF-8');
 	}
 	dheader('Content-type: application/octet-stream');
@@ -678,6 +677,9 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 		include template('forum/rate');
 
 	} else {
+		if($_G['setting']['submitlock'] && discuz_process::islocked('ratelock_'.$_G['uid'].'_'.$_GET['pid'], 0, 1)){
+			showmessage('thread_rate_locked');
+		}
 
 		$reason = checkreasonpm();
 		$rate = $ratetimes = 0;
