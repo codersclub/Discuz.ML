@@ -517,6 +517,36 @@ class base {
 		return $string;
 	}
 
+	function detectescape($basepath, $relativepath) {
+		//  oldhu 
+		// base
+		if(!file_exists($basepath)) {
+			return FALSE;
+		}
+
+		// 
+		if(!file_exists($basepath . $relativepath)) {
+			$relativepath = dirname($relativepath);
+			// 
+			// 
+			if(!file_exists($basepath . $relativepath)) {
+				return FALSE;
+			}
+		}
+
+		$real_base = realpath($basepath);
+		$real_target = realpath($basepath . $relativepath);
+
+		// $real_base$real_targetbase
+		// 
+		// $real_target$real_basebase/
+		if(strcmp($real_target, $real_base) !== 0 && strpos($real_target, $real_base . DIRECTORY_SEPARATOR) !== 0) {
+			return FALSE;
+		}
+
+		return TRUE;
+	}
+
 }
 
 ?>
