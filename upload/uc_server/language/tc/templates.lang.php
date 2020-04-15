@@ -284,7 +284,7 @@ $languages = array(
 	'anonymity'		=> '匿名',
 	'mail_send'		=> '發送郵件',
 	'mail_list_updated'	=> '郵件列表成功更新。',
-//vot	'mail_send'		=> '郵件發送',
+	'mail_send'		=> '郵件發送',
 
 	'setting'			=> '設置',
 	'setting_tips'			=> '',
@@ -309,6 +309,8 @@ $languages = array(
 	'setting_chatpmmemberlimit_comment'	=> '同一會話最多能有多少用戶參與設置，建議在 30 - 100 範圍內取值，0為不限制',
 	'setting_pmfloodctrl'			=> '發短消息灌水預防',
 	'setting_pmfloodctrl_comment'		=> '兩次發短消息間隔小於此時間，單位秒，0 為不限制，此舉為了限制通過機器批量發廣告',
+	'setting_addappbyurl' => '啟用通過 URL 添加應用功能',
+	'setting_addappbyurl_comment' => '是否啟用通過 URL 添加應用功能，建議只有必須通過 URL 添加應用時開啟',
 
 	'setting_user_failedtime'		=> '允許用戶登錄失敗次數',
 	'setting_user_failedtime_comment'	=> '用戶登錄失敗超過設置的數據，將在15分鐘內無法登錄，0為不限制次數',

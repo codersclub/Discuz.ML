@@ -5236,6 +5236,7 @@ $lang = array
 	'plugins_config_uninstall' => '卸載',
 	'plugins_config_upgrade' => '更新',
 	'plugins_config_delete' => '卸載',
+	'plugins_config_uninstall_tips' => '您確定要把{pluginname}插件卸載而不是可逆的刪除由{pluginname}插件產生的所有數據麼？',
 	'plugins_config_upgrade_other' => '您確定要把 {pluginname} {version} 插件更新到以下版本嗎？',
 	'plugins_config_uninstallplugin' => '卸載此插件',
 	'plugins_edit' => '設計插件',

@@ -20,6 +20,8 @@ $lang = array(
 	'agreement_yes' => '我同意',
 	'agreement_no' => '我不同意',
 	'notset' => '不限制',
+	'enable' => '開啟',
+	'disable' => '關閉',
 
 	'message_title' => '提示信息',
 	'error_message' => '錯誤信息',
@@ -317,6 +319,8 @@ $lang = array(
 	'allow' => '允許 ',
 	'unix' => '類Unix',
 	'diskspace' => '磁盤空間',
+	'opcache' => 'OPcache',
+	'curl' => 'cURL 庫',
 	'priv_check' => '目錄、文件權限檢查',
 	'func_depend' => '函數依賴性檢查',
 	'func_name' => '函數名稱',
