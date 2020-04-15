@@ -9,7 +9,7 @@
 // by Valery Votintsev, codersclub.org
 //------------------------------------------------------
 
-$languages = array(
+$lang = array(
 	'title'=>'标题',
 	'return'=>'返回',
 	'dateline'=>'时间',
