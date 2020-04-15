@@ -785,7 +785,7 @@ $lang = array
 	'setting_access_register_maildomain_white' => '白名單模式',
 	'setting_access_register_maildomain_black' => '黑名單模式',
 	'setting_access_register_maildomain_list' => '限制名單',
-	'setting_access_register_maildomain_list_comment' => '當郵箱的域名處於本列表中的地址時，將根據上述選項進行相應限制操作。輸入要限制的郵箱域名即可，例如屏蔽 xxx@xxx.com 的域，只需輸入 @xxx.com。每行一個域名。',
+	'setting_access_register_maildomain_list_comment' => '當郵箱的域名處於本列表中的地址時，將根據上述選項進行相應限制操作。輸入要限制的郵箱域名即可，例如屏蔽 xxx@xxx.com 的域，只需輸入 @xxx.com。每行一個域名。 ',
 	'setting_access_register_ctrl' => '同一 IP 註冊間隔限制(小時)',
 	'setting_access_register_ctrl_comment' => '同一 IP 在本時間間隔內將只能註冊一個帳號，0 為不限制',
 	'setting_access_register_floodctrl' => '同一 IP 在 24 小時允許註冊的最大次數',
@@ -2283,7 +2283,7 @@ $lang = array
 	'setting_sec_accountguard_loginpwcheck_prompt' => '開啟並提示',
 	'setting_sec_accountguard_loginpwcheck_force' => '開啟並強制修改弱密碼',
 	'setting_sec_accountguard_loginoutofdate' => '異常登錄檢測',
-	'setting_sec_accountguard_loginoutofdate_comment' => '當用戶異地登錄且距離上次登錄超過 90 天時，帳號會進入未審核組，用戶可以通過驗證郵箱或者申訴解凍帳號，QQ登錄的用戶不受此功能影響 <a href="'.ADMINSCRIPT.'?action=moderate&operation=members">審核用戶</a>',
+	'setting_sec_accountguard_loginoutofdate_comment' => '當用戶異地登錄且距離上次登錄超過90 天時，帳號會進入未審核組，用戶可以通過驗證郵箱或者申訴解凍帳號，QQ登錄的用戶不受此功能影響<a href=" '.ADMINSCRIPT.'?action=moderate&operation=members">審核用戶</a>',
 
 
 	'setting_attach' => '上傳設置',
@@ -2307,7 +2307,7 @@ $lang = array
 	'setting_attach_basic_multi' => '批量上傳',
 	'setting_attach_basic_simple' => '普通上傳',
 	'setting_attach_basic_allowattachurl' => '附件 URL 地址、媒體附件播放',
-	'setting_attach_basic_allowattachurl_comment' => '開啟附件URL 地址後，上傳附件的地址可通過"attach://aid" 方式在任何帖內引用，並支持媒體類附件的直接播放，此項設置需要在<a href="'.ADMINSCRIPT.'?action=usergroups">用戶組</a> - 帖子相關中允許用戶組使用多媒體代碼方可生效，此項設置需選擇的附件讀取模式支持Range 頭和正確的MIME 類型頭才可正常運行',
+	'setting_attach_basic_allowattachurl_comment' => '開啟附件URL 地址後，上傳附件的地址可通過"attach://aid" 方式在任何帖內引用，並支持媒體類附件的直接播放，此項設置需要在<a href= "'.ADMINSCRIPT.'?action=usergroups">用戶組</a> - 帖子相關中允許用戶組使用多媒體代碼方可生效，此項設置需選擇的附件讀取模式支持Range 頭和正確的MIME 類型頭才可正常運行',
 	'setting_attach_basic_swfupload_comment' => '批量上傳採用 Flash 機制上傳，可一次上傳多個附件，上傳時還會有進度顯示',
 
 	'setting_attach_forumattach' => '論壇附件',
@@ -5643,8 +5643,8 @@ $lang = array
 	'ec_tenpay_checklink_credit' => '積分充值訂單測試',
 	'ec_tenpay_checklink_virtualgoods' => '虛擬商品訂單測試',
 	'ec_tenpay_checklink_goods' => '實物商品訂單測試',
-	'ec_tenpay_tips' => '<li>「財付通」(<a href="http://www.tenpay.com" target="_blank">http://www.tenpay.com</a>)是騰訊公司創辦的中國領先的在線支付平台，為 Discuz! 用戶提供積分購買交易平台。</li><li>如需啟用積分充值即時到賬，請使用財付通<b>企業版</b>並開通<b>即時到賬交易</b>；否則，只需要開通「<b>中介擔保交易</b>」即可。</li>
-<li><b>由於涉及現金交易，為避免因操作不當而造成的資金損失，請在開始使用財付通積分交易功能(不包含財付通按鈕功能)前，務必仔細閱讀《用戶使用說明書》中有關電子商務的部分，當確認完全理解和接受相關流程及使用方法後再進行相關設置。</b></li><li>您可以設置允許用戶通過現金在線支付的方式，為其交易積分賬戶充值，用於購買帖子內容、購買用戶組權限、積分轉賬或用戶組升級等功能。財付通積分交易功能，需在「積分設置」中啟用交易積分，並同時設置相應的積分策略以滿足不同場合的需要。請務必正確設置您的收款財付通賬號，否則將造成用戶付款後積分無法實時到賬，造成大量需要人工處理的訂單信息。</li><li>除 Discuz! 官方網站或官方論壇另行通知以外，Discuz! 提供的財付通支付服務每筆交易收取 1% 的手續費。請及時關注相關業務的最新通知，各項政策或流程的變更、調整，以 Discuz! 官方網站或官方論壇提供的信息為準。</li><li>您使用財付通服務是建立在完全自願的基礎上，除 Discuz! 因主觀惡意的因素造成的資金損失以外，北京康盛新創科技有限責任公司不對因使用此功能造成的任何損失承擔責任。</li><li>財付通服務熱線：0755-83762288-2(全天24小時服務熱線)</li>',
+	'ec_tenpay_tips' => '<li>“財付通”(<a href="http://www.tenpay.com" target="_blank">http://www.tenpay.com</a>)是騰訊公司創辦的中國領先的在線支付平台，為Discuz! 用戶提供積分購買交易平台。 </li><li>如需啟用積分充值即時到賬，請使用財付通<b>企業版</b>並開通<b>即時到賬交易</b>；否則，只需要開通“ <b>中介擔保交易</b>”即可。 </li>
+<li><b>由於涉及現金交易，為避免因操作不當而造成的資金損失，請在開始使用財付通積分交易功能(不包含財付通按鈕功能)前，務必仔細閱讀《用戶使用說明書》中有關電子商務的部分，當確認完全理解和接受相關流程及使用方法後再進行相關設置。 </b></li><li>您可以設置允許用戶通過現金在線支付的方式，為其交易積分賬戶充值，用於購買帖子內容、購買用戶組權限、積分轉賬或用戶組升級等功能。財付通積分交易功能，需在“積分設置”中啟用交易積分，並同時設置相應的積分策略以滿足不同場合的需要。請務必正確設置您的收款財付通賬號，否則將造成用戶付款後積分無法實時到賬，造成大量需要人工處理的訂單信息。 </li><li>除 Discuz! 官方網站或官方論壇另行通知以外，Discuz! 提供的財付通支付服務每筆交易收取 1% 的手續費。請及時關注相關業務的最新通知，各項政策或流程的變更、調整，以 Discuz! 官方網站或官方論壇提供的信息為準。 </li><li>您使用財付通服務是建立在完全自願的基礎上，除 Discuz! 因主觀惡意的因素造成的資金損失以外，騰訊云不對因使用此功能造成的任何損失承擔責任。 </li><li>財付通服務熱線：0755-83762288-2(全天24小時服務熱線)</li>',
 
 	'ec_orders' => '積分充值訂單',
 	'ec_orders_tips' => '<li>請在開始使用支付寶積分交易訂單管理功能(不包含支付寶按鈕功能)前，務必仔細閱讀《用戶使用說明書》中有關電子商務的部分，當確認完全理解和接受相關流程及使用方法後再進行相關操作。</li><li>如果您的用戶反映在線支付後無法自動為其積分賬戶充值，可能是由於您的支付寶賬戶的通知接口設置有誤，或您的網站無法被支付寶通知系統正常訪問所致。您可以登錄支付寶交易管理界面，通過比對交易詳情人工確認相關訂單。</li><li>訂單信息保留 60 天，因此您只能查詢和管理 60 天之內的訂單信息，超過 60 天的信息將被自動刪除。</li>',

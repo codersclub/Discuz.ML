@@ -119,6 +119,7 @@ $lang = array
 	'optimizer_white_list_need' => '您設置了防水牆白名單，白名單用戶發垃圾貼不被處理，請慎重',
 	'optimizer_white_list_no_need' => '未設置白名單',
 	'optimizer_security_daily_need' => '開啟防水牆每日優化，可清除刪帖後首頁痕跡',
+//vot	'optimizer_white_list_no_need' => '该计划任务已开启',
 /*vot*/	'optimizer_security_daily_no_need' => '該計劃任務已開啟',
 );
 ?>
