@@ -7,8 +7,12 @@
 	$Id: functions.inc.php 2020-03-31 Valery Votintsev, discuz.ml $
 */
 
-!defined('IN_UC') && exit('Access Denied');
-
+/**
+ * Check for access by httpS
+ * Idea by laozhoubuluo@126.com
+ * @author Valery Votintsev
+ * @return bool
+ */
 function is_https() {
 	if (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) != "off") {
 		return true;
