@@ -1,7 +1,7 @@
 <?php
 /*
  * Language Pack Diff, v.2.2
- * Last modified date: 20.03.2020
+ * Last modified date: 24.03.2020
  * (c) by http://codersclub.org
  * Idea by fanha99, http://codersclub.org/discuzx/?1906
  * Rewritten by Valery Votintsev, http://codersclub.org/discuzx/?1
@@ -19,7 +19,8 @@ $version = '2.2';
 define('DISCUZ_ROOT', str_replace('\\', '/', dirname(__FILE__)));
 
 // Language Packs Root Directory:
-$lang_dir = DISCUZ_ROOT . '/source/language';
+$dz_dir = DISCUZ_ROOT . '/source/language';
+$uc_dir = DISCUZ_ROOT . '/uc_server/language';
 
 
 $fromlang = isset($_GET['fromlang']) ? $_GET['fromlang'] : '';
@@ -43,10 +44,6 @@ Idea by <a href="http://codersclub.org/discuzx/?1906">fanha99</a>,
 Rewritten by <a href="http://codersclub.org/discuzx/?1">Valery Votintsev</a>
 <hr>
 
-Base directory: <b><?= $lang_dir?></b>
-<br>
-<br>
-
 <form>
   <input type="text" name="fromlang" value="<?= $fromlang?>">
   <input type="text" name="tolang" value="<?= $tolang?>">
@@ -59,6 +56,31 @@ if($fromlang && $tolang) {
 
 ?>
 
+Base directory: <b><?= $dz_dir?></b>
+<br>
+<br>
+
+	<table align="center" border="1">
+  <tr>
+    <th>Left Language pack: <?= $fromlang?></th>
+    <th>#</th>
+    <th>#</th>
+    <th>Right Language pack: <?= $tolang?></th>
+  </tr>
+
+<?php
+  checkdir($dz_dir, '');
+?>
+
+</table>
+
+<br>
+<br>
+
+UCenter directory: <b><?= $uc_dir?></b>
+<br>
+<br>
+
 <table align="center" border="1">
   <tr>
     <th>Left Language pack: <?= $fromlang?></th>
@@ -68,9 +90,7 @@ if($fromlang && $tolang) {
   </tr>
 
 <?php
-
-  checkdir('');
-
+  checkdir($uc_dir, '');
 ?>
 
 </table>
@@ -117,8 +137,8 @@ function dgmdate($f) {
 }
 
 //----------------------------------------------------------
-function checkdir($dir = '') {
-  global $lang_dir, $fromlang, $tolang;
+function checkdir($lang_dir='', $dir='') {
+  global $fromlang, $tolang;
 
   $dir = str_replace('\\','/',$dir);	// Replace Backslash with right slash
   $dir = preg_replace('/\/$/','',$dir);	// Remove trailing slash
@@ -173,7 +193,7 @@ function checkdir($dir = '') {
     if(is_dir($sourcefile)) {
 
       $newdir = ($dir ? $dir . '/' : '') . $file;
-      checkdir($newdir);
+      checkdir($lang_dir, $newdir);
 
     } else if( substr($file, -4) == '.php') {
 
