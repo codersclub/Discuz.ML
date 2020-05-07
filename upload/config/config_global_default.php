@@ -230,7 +230,7 @@ $_config['languages']['ar'] = array('icon'=>'ar.gif', 'name'=>'العربية', 
 $_config['languages']['de'] = array('icon'=>'de.gif', 'name'=>'Deutsch', 'title'=>'German', 'dir'=>'ltr', 'code'=>'de-DE');
 $_config['languages']['en'] = array('icon'=>'en.gif', 'name'=>'English', 'title'=>'English', 'dir'=>'ltr', 'code'=>'en-GB');
 $_config['languages']['es'] = array('icon'=>'es.gif', 'name'=>'Español', 'title'=>'Spanish', 'dir'=>'ltr', 'code'=>'es-ES');
-$_config['languages']['fa'] = array('icon'=>'fa.gif', 'name'=>'Farsi', 'title'=>'Persian', 'dir'=>'rtl', 'code'=>'fa-IR');
+$_config['languages']['fa'] = array('icon'=>'fa.gif', 'name'=>'فارسی', 'title'=>'Persian', 'dir'=>'rtl', 'code'=>'fa-IR');
 $_config['languages']['fr'] = array('icon'=>'fr.gif', 'name'=>'Français', 'title'=>'French', 'dir'=>'ltr', 'code'=>'fr-FR');
 $_config['languages']['kr'] = array('icon'=>'kr.gif', 'name'=>'한국어', 'title'=>'Korean', 'dir'=>'ltr', 'code'=>'ko-KO');
 $_config['languages']['la'] = array('icon'=>'la.gif', 'name'=>'ພາສາລາວ', 'title'=>'Lao', 'dir'=>'ltr', 'code'=>'lo-LA');
@@ -241,7 +241,7 @@ $_config['languages']['tc'] = array('icon'=>'tw.gif', 'name'=>'繁體中文', 't
 $_config['languages']['th'] = array('icon'=>'th.gif', 'name'=>'ภาษาไทย', 'title'=>'Thai', 'dir'=>'ltr', 'code'=>'th-TH');
 $_config['languages']['tr'] = array('icon'=>'tr.gif', 'name'=>'Türkçe', 'title'=>'Turkish', 'dir'=>'ltr', 'code'=>'tr-TR');
 $_config['languages']['vn'] = array('icon'=>'vn.gif', 'name'=>'Tiếng Việt', 'title'=>'Vietnamese', 'dir'=>'ltr', 'code'=>'vi-VN');
-$_config['languages']['ui'] = array('icon'=>'ui.gif', 'name'=>'Uyghur', 'title'=>'Uighur', 'dir'=>'rtl', 'code'=>'ui-UY');
+$_config['languages']['ui'] = array('icon'=>'ui.gif', 'name'=>'ئۇيغۇر', 'title'=>'Uighur', 'dir'=>'rtl', 'code'=>'ui-UY');
 
 $_config['detect_language'] = true;	// Auto-detect user language: true|false
 $_config['enable_multilingual'] = true;	// Enable/Disable multi-lingual feature
