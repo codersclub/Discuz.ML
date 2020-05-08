@@ -433,7 +433,7 @@ function _zoom(obj, zimg, nocover, pn, showexif) {
 				ratio = step/ele.height;
 				ele.height += step;
 				ele.width = imgw*(ele.height/imgh);
-			} else if(imgw < imgh) {
+			} else {
 				ratio = step/ele.width;
 				ele.width += step;
 				ele.height = imgh*(ele.width/imgw);
