@@ -22,6 +22,7 @@ define('ROOT_PATH', dirname(__FILE__).'/../');
 define('CHARSET', $_config['output']['charset']);
 define('DBCHARSET', $_config['db']['1']['dbcharset']);
 /*vot*/ define('DISCUZ_LANG', $_config['output']['language']);
+/*vot*/	require_once(ROOT_PATH . 'source/function/function.inc.php');
 
 $lock_file = ROOT_PATH.'./data/restore.lock';
 if(file_exists($lock_file)) {
@@ -33,7 +34,7 @@ require_once ROOT_PATH.'./source/discuz_version.php';
 $operation = trim(getgpc('operation', 'G'));
 $operation = $operation ? $operation : 'import';
 $phpself = htmlspecialchars($_SERVER['SCRIPT_NAME'] ? $_SERVER['SCRIPT_NAME'] : $_SERVER['PHP_SELF']);
-$siteurl = htmlspecialchars('http://'.$_SERVER['HTTP_HOST'].preg_replace("/\/+(api)?\/*$/i", '', substr($phpself, 0, strrpos($phpself, '/'))).'/');
+$siteurl = htmlspecialchars((is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].preg_replace("/\/+(api)?\/*$/i", '', substr($phpself, 0, strrpos($phpself, '/'))).'/');
 
 $db = function_exists("mysql_connect") ? new dbstuff : new dbstuffi;
 if(!@$db->connect($_config['db']['1']['dbhost'], $_config['db']['1']['dbuser'], $_config['db']['1']['dbpw'], $_config['db']['1']['dbname'], $_config['db']['1']['dbcharset'])) {
@@ -600,6 +601,10 @@ function syntablestruct($sql, $version, $dbcharset) {
 		return preg_replace(array('/character set \w+/i', '/collate \w+/i', '/ENGINE=MEMORY/i', '/\s*DEFAULT CHARSET=\w+/is', '/\s*COLLATE=\w+/is', '/ENGINE=(\w+)(.*)/is'), array('', '', 'ENGINE=HEAP', '', '', 'TYPE=\\1\\2'), $sql);
 	}
 }
+
+/*
+function is_https() MOVED to source/function/function.inc.php
+*/
 
 class dbstuff {
 	var $querynum = 0;
