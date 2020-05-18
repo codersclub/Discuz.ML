@@ -80,7 +80,7 @@ function setcssbackground(&$data, $code) {
 	for($i = 0; $i < count($codes); $i++) {
 		if($i < 2) {
 			if($codes[$i] != '') {
-				if($codes[$i]{0} == '#') {
+				if($codes[$i][0] == '#') {
 					$css .= strtoupper($codes[$i]).' ';
 					$codevalue = strtoupper($codes[$i]);
 				} elseif(preg_match('/^(https?:)?\/\//i', $codes[$i])) {
@@ -101,28 +101,18 @@ function setcssbackground(&$data, $code) {
 function writetocsscache($data) {
 	global $_G;
 	$dir = DISCUZ_ROOT.'./template/default/common/';
-//DEBUG
-//echo "writetocsscache: discuz_root=".DISCUZ_ROOT."<br>";
-//echo "writetocsscache: dir=".$dir."<br>";
 	$dh = opendir($dir);
 	$data['staticurl'] = STATICURL;
 	while(($entry = readdir($dh)) !== false) {
 		if(fileext($entry) == 'css') {
 			$cssfile = DISCUZ_ROOT.'./'.$data['tpldir'].'/common/'.$entry;
-//DEBUG
-//echo "writetocsscache: entry=".$entry."<br>";
-//echo "writetocsscache: cssfile=".$cssfile."<br>";
 			!file_exists($cssfile) && $cssfile = $dir.$entry;
 			$cssdata = @implode('', file($cssfile));
-//DEBUG
-//echo "writetocsscache: check 1 for cssfile=".DISCUZ_ROOT.$data['tpldir'].'/common/extend_'.$entry."<br>";
 			if(file_exists($cssfile = DISCUZ_ROOT.'./'.$data['tpldir'].'/common/extend_'.$entry)) {
 				$cssdata .= @implode('', file($cssfile));
 			}
 			if(is_array($_G['setting']['plugins']['available']) && $_G['setting']['plugins']['available']) {
 				foreach($_G['setting']['plugins']['available'] as $plugin) {
-//DEBUG
-//echo "writetocsscache: check 2 for cssfile=".DISCUZ_ROOT.'./source/plugin/'.$plugin.'/template/extend_'.$entry."<br>";
 					if(file_exists($cssfile = DISCUZ_ROOT.'./source/plugin/'.$plugin.'/template/extend_'.$entry)) {
 						$cssdata .= @implode('', file($cssfile));
 					}
