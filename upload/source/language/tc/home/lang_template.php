@@ -9,6 +9,10 @@
  *      Modified by Valery Votintsev, codersclub.org
  */
 
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
 $lang = array (
   'cancel' => '取消',
   'close' => '關閉',
