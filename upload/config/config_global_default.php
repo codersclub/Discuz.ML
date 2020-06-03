@@ -146,7 +146,7 @@ $_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/fr/etc...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
 $_config['output']['iecompatible']	= 0;		// IE compatibility mode
-$_config['output']['upgradeinsecure']	= 1;		// Require the browser to upgrade from HTTP link to HTTPS. 0 = off, 1 = on (default)
+$_config['output']['upgradeinsecure']	= 0;		// Require the browser to upgrade from HTTP link to HTTPS. 0 = off, 1 = on (default)
 
 // COOKIE settings
 $_config['cookie']['cookiepre'] 	= 'discuz_'; 	// COOKIE prefix
