@@ -174,12 +174,12 @@ function function_check(&$func_items) {
 	}
 }
 
-function dintval($int, $allowarray = false) {
+function dfloatval($int, $allowarray = false) {
 	$ret = floatval($int);
 	if($int == $ret || !$allowarray && is_array($int)) return $ret;
 	if($allowarray && is_array($int)) {
 		foreach($int as &$v) {
-			$v = dintval($v, true);
+			$v = dfloatval($v, true);
 		}
 		return $int;
 	} elseif($int <= 0xffffffff) {
@@ -202,8 +202,8 @@ function show_env_result(&$env_items, &$dirfile_items, &$func_items, &$filesock_
 		}
 		$status = 1;
 		if($item['r'] != 'notset') {
-			if(dintval($item['current']) && dintval($item['r'])) {
-				if(dintval($item['current']) < dintval($item['r'])) {
+			if(dfloatval($item['current']) && dfloatval($item['r'])) {
+				if(dfloatval($item['current']) < dfloatval($item['r'])) {
 					$status = 0;
 					$error_code = ENV_CHECK_ERROR;
 				}
@@ -599,11 +599,12 @@ EOT;
 
 function show_footer($quit = true) {
 
-/*vot*/	$y = date('Y'); echo <<<EOT
-	</div>
-	<div class="footer">&copy;2001-{$y}, Tencent Cloud.
-		,&nbsp;&nbsp;&nbsp;
-		<b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
+	$copy = lang('copyright');
+
+	echo <<<EOT
+<!--vot-->	<div class="footer">$copy
+<!--vot-->			,&nbs<b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
+<!--vot-->	</div>
 	</div>
 </div>
 </body>
@@ -790,7 +791,7 @@ ajax.get = function (url, callback) {
 };
 
 function request_do_db_init() {
-    ajax.get('index.php?method=do_db_init&allinfo=<?= $allinfo ?>', function() {
+    ajax.get('index.php?<?= http_build_query(array('method'=>'do_db_init','allinfo'=>$allinfo)) ?>', function() {
             append_notice("<?= lang('initsys') ?> ... ");
 
             ajax.get("../misc.php?mod=initsys", function() {
@@ -1064,6 +1065,10 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 				'header' => $header,
 				'content' => $post,
 				'timeout' => $timeout,
+			),
+			'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false,
 			),
 		);
 		$context = stream_context_create($context);
@@ -1418,7 +1423,7 @@ function install_uc_server() {
 
 	$pathinfo = pathinfo($_SERVER['PHP_SELF']);
 	$pathinfo['dirname'] = substr($pathinfo['dirname'], 0, -8);
-/*vot*/	$isHTTPS = (@$_SERVER['HTTPS'] && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
+	$isHTTPS = is_https();
 	$appurl = 'http'.($isHTTPS ? 's' : '').'://'. $_SERVER['HTTP_HOST'].$pathinfo['dirname'];
 	$ucapi = $appurl.'/uc_server';
 	$ucip = '';
@@ -1940,6 +1945,25 @@ function read_install_log_file() {
 
 function send_mime_type_header($type = 'application/xml') {
 	header("Content-Type: ".$type);
+}
+
+function is_https() {
+/*vot*/	if (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) == "on") {
+		return true;
+	}
+	if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && strtolower($_SERVER["HTTP_X_FORWARDED_PROTO"]) == "https") {
+		return true;
+	}
+	if (isset($_SERVER["HTTP_SCHEME"]) && strtolower($_SERVER["HTTP_SCHEME"]) == "https") {
+		return true;
+	}
+/*vot*/	if (isset($_SERVER["HTTP_FROM_HTTPS"]) && strtolower($_SERVER["HTTP_FROM_HTTPS"]) == "on") {
+		return true;
+	}
+	if (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] == 443) {
+		return true;
+	}
+	return false;
 }
 
 //-------------------------------------------------

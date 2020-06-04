@@ -105,9 +105,9 @@ $_config['memory']['redis']['port'] = 6379;
 $_config['memory']['redis']['pconnect'] = 1;
 $_config['memory']['redis']['timeout'] = 0;
 $_config['memory']['redis']['requirepass'] = '';
-$_config['memory']['redis']['db'] = 0;				//这里可以填写0到15的数字，每个站点使用不同的db
+$_config['memory']['redis']['db'] = 0;				//Here you can fill in numbers from 0 to 15, each site uses a different db
 /**
- * This configuration is now canceled. By default, the array is saved using json encoding, and other data is saved directly as is.
+ * This configuration has been cancelled. By default, the array is encoded and saved using php serializer, and other data is saved directly as it is.
  */
 // $_config['memory']['redis']['serializer'] = 1;
 
@@ -150,6 +150,8 @@ $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = 
 $_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/fr/etc...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
+$_config['output']['iecompatible']		= 0;		// 页面 IE 兼容模式
+$_config['output']['upgradeinsecure']		= 0;		// 在HTTPS环境下请求浏览器升级HTTP内链到HTTPS，此选项影响外域资源链接且与自定义CSP冲突 0=关闭(默认)，1=打开
 
 // COOKIE settings
 $_config['cookie']['cookiepre'] 	= 'discuz_'; 	// COOKIE prefix

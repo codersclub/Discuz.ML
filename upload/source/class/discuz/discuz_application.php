@@ -202,7 +202,7 @@ class discuz_application extends discuz_base{
 		if(defined('IN_NEWMOBILE')) {
 			$sitepath = preg_replace("/\/m/i", '', $sitepath);
 		}
-/*vot*/		$_G['isHTTPS'] = (array_key_exists('HTTPS', $_SERVER) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
+		$_G['isHTTPS'] = $this->_is_https();
 		$_G['scheme'] = 'http'.($_G['isHTTPS'] ? 's' : '');
 		$_G['siteurl'] = dhtmlspecialchars($_G['scheme'].'://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
 
@@ -455,15 +455,15 @@ class discuz_application extends discuz_base{
 			@header('Content-Type: text/html; charset='.CHARSET);
 		}
 
+		if($this->var['isHTTPS'] && isset($this->config['output']['upgradeinsecure']) && $this->config['output']['upgradeinsecure']) {
+			@header('Content-Security-Policy: upgrade-insecure-requests');
+		}
+
 		//vot MultiLingual Support
 		// Reload current page if the language is changed
 /*vot*/		if(isset($this->var['gp_language'])) {
 /*vot*/			$url = $_SERVER['REQUEST_URI'];
 /*vot*/			$url = preg_replace("~[\?\&]language\=\w*~i",'',$url);
-
-//DEBUG
-//echo $this->var['language'],"=>", $this->var['oldlanguage'],"<br>";
-//echo $url;
 
 /*vot*/			header('Location: '.$url);
 /*vot*/			exit;
@@ -481,7 +481,13 @@ class discuz_application extends discuz_base{
 		static $check = array('"', '>', '<', '\'', '(', ')', 'CONTENT-TRANSFER-ENCODING');
 
 		if(isset($_GET['formhash']) && $_GET['formhash'] !== formhash()) {
-			system_error('request_tainting');
+			if(constant('CURMODULE') == 'logging' && isset($_GET['action']) && $_GET['action'] == 'logout') {
+				header("HTTP/1.1 302 Found");// 修复多次点击退出时偶发“您当前的访问请求当中含有非法字符，已经被系统拒绝”的Bug
+				header("Location: index.php");
+				exit();
+			} else {
+				system_error('request_tainting');
+			}
 		}
 
 		if($_SERVER['REQUEST_METHOD'] == 'GET' ) {
@@ -503,6 +509,25 @@ class discuz_application extends discuz_base{
 		}
 
 		return true;
+	}
+
+	private function _is_https() {
+		if (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) != "off") {
+			return true;
+		}
+		if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && strtolower($_SERVER["HTTP_X_FORWARDED_PROTO"]) == "https") {
+			return true;
+		}
+		if (isset($_SERVER["HTTP_SCHEME"]) && strtolower($_SERVER["HTTP_SCHEME"]) == "https") {
+			return true;
+		}
+		if (isset($_SERVER["HTTP_FROM_HTTPS"]) && strtolower($_SERVER["HTTP_FROM_HTTPS"]) != "off") {
+			return true;
+		}
+		if (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] == 443) {
+			return true;
+		}
+		return false;
 	}
 
 	private function _get_client_ip() {
@@ -547,7 +572,7 @@ class discuz_application extends discuz_base{
 			$this->var['sid'] = $this->session->sid;
 			$this->var['session'] = $this->session->var;
 
-			if(!empty($this->var['sid']) && $this->var['sid'] != $this->var['cookie']['sid']) {
+			if(isset($this->var['sid']) && $this->var['sid'] !== $this->var['cookie']['sid']) {
 				dsetcookie('sid', $this->var['sid'], 86400);
 			}
 
@@ -602,9 +627,14 @@ class discuz_application extends discuz_base{
 				$memberfieldforum = C::t('common_member_field_forum')->fetch($discuz_uid);
 				$groupterms = dunserialize($memberfieldforum['groupterms']);
 				if(!empty($groupterms['main'])) {
-					C::t("common_member")->update($user['uid'], array('groupexpiry'=> 0, 'groupid' => $groupterms['main']['groupid'], 'adminid' => $groupterms['main']['adminid']));
-					$user['groupid'] = $groupterms['main']['groupid'];
+					if($groupterms['main']['groupid']) {
+						$user['groupid'] = $groupterms['main']['groupid'];
+					} else {
+						$groupnew = C::t('common_usergroup')->fetch_by_credits($user['credits']);
+						$user['groupid'] = $groupnew['groupid'];
+					}
 					$user['adminid'] = $groupterms['main']['adminid'];
+					C::t("common_member")->update($user['uid'], array('groupexpiry'=> 0, 'groupid' => $user['groupid'], 'adminid' => $user['adminid']));
 					unset($groupterms['main'], $groupterms['ext'][$this->var['member']['groupid']]);
 					$this->var['member'] = $user;
 					C::t('common_member_field_forum')->update($discuz_uid, array('groupterms' => serialize($groupterms)));

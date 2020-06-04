@@ -166,7 +166,7 @@
 							</li>
 						<!--{/loop}-->
 					<!--{/if}-->
-					<li class="xi2"><a href="forum.php?mod=guide&view=my&type=thread&filter=save&fid=0" target="_blank">{lang post_message3}</a></li>
+					<li class="xi2"><a href="home.php?mod=space&do=thread&view=me&type=thread&filter=save" target="_blank">{lang post_message3}</a></li>
 				</ul>
 			</div>
 
@@ -223,7 +223,7 @@
 				<!--{elseif $_GET[action] == 'edit'}--><span>{lang edit_save}</span>
 				<!--{/if}-->
 				</button>
-				<!--{if $_G['uid']}-->
+				<!--{if $_G['uid'] && $_G['group']['allowsave']}-->
 					<input type="hidden" id="postsave" name="save" value="" />
 					<!--{if $_GET[action] == 'newthread' && !$modnewthreads || $_GET[action] == 'edit' && $isfirstpost && !$modnewreplies && $thread['displayorder'] == -4}-->
 						<button type="button" id="postsubmit" class="pn" value="true" onclick="$('postsave').value = 1;$('postsubmit').click();"><em>{lang save_draft}</em></button>

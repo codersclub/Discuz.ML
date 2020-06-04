@@ -79,7 +79,6 @@ $env_items = array
 	'opcache' => array('r' => 'notset', 'b' => 'enable'),
 	'diskspace' => array('r' => 30 * 1048576, 'b' => 'notset'),
 	'filter_var' => array('f' => 'filter_var', 'r' => 'enable', 'b' => 'enable'),
-/*vot*/	'mbstring' => array('r' => 'support', 'b' => 'support'),
 );
 
 $dirfile_items = array
@@ -98,8 +97,14 @@ $dirfile_items = array
 	'threadcache' => array('type' => 'dir', 'path' => './data/threadcache'),
 	'attach' => array('type' => 'dir', 'path' => './data/attachment'),
 	'attach_album' => array('type' => 'dir', 'path' => './data/attachment/album'),
+	'attach_category' => array('type' => 'dir', 'path' => './data/attachment/category'),
+	'attach_common' => array('type' => 'dir', 'path' => './data/attachment/common'),
 	'attach_forum' => array('type' => 'dir', 'path' => './data/attachment/forum'),
 	'attach_group' => array('type' => 'dir', 'path' => './data/attachment/group'),
+	'attach_portal' => array('type' => 'dir', 'path' => './data/attachment/portal'),
+	'attach_profile' => array('type' => 'dir', 'path' => './data/attachment/profile'),
+	'attach_swfupload' => array('type' => 'dir', 'path' => './data/attachment/swfupload'),
+	'attach_temp' => array('type' => 'dir', 'path' => './data/attachment/temp'),
 
 	'logs' => array('type' => 'dir', 'path' => './data/log'),
 	'uccache' => array('type' => 'dir', 'path' => './uc_client/data/cache'),

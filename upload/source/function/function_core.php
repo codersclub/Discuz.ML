@@ -269,7 +269,7 @@ function dsetcookie($var, $value = '', $life = 0, $prefix = 1, $httponly = false
 	$var = ($prefix ? $config['cookiepre'] : '').$var;
 	$_COOKIE[$var] = $value;
 
-	if($value == '' || $life < 0) {
+	if($value === '' || $life < 0) {
 		$value = '';
 		$life = -1;
 	}
@@ -281,7 +281,7 @@ function dsetcookie($var, $value = '', $life = 0, $prefix = 1, $httponly = false
 	$life = $life > 0 ? getglobal('timestamp') + $life : ($life < 0 ? getglobal('timestamp') - 31536000 : 0);
 	$path = $httponly && PHP_VERSION < '5.2.0' ? $config['cookiepath'].'; HttpOnly' : $config['cookiepath'];
 
-	$secure = $_SERVER['SERVER_PORT'] == 443 ? 1 : 0;
+	$secure = $_G['isHTTPS'];
 	if(PHP_VERSION < '5.2.0') {
 		setcookie($var, $value, $life, $path, $config['cookiedomain'], $secure);
 	} else {
@@ -1604,7 +1604,7 @@ function g_icon($groupid, $return = 0) {
 	if(empty($_G['cache']['usergroups'][$groupid]['icon'])) {
 		$s =  '';
 	} else {
-		if(substr($_G['cache']['usergroups'][$groupid]['icon'], 0, 5) == 'http:') {
+		if(preg_match('/^https?:\/\//is', $_G['cache']['usergroups'][$groupid]['icon'])) {
 			$s = '<img src="'.$_G['cache']['usergroups'][$groupid]['icon'].'" alt="" class="vm" />';
 		} else {
 			$s = '<img src="'.$_G['setting']['attachurl'].'common/'.$_G['cache']['usergroups'][$groupid]['icon'].'" alt="" class="vm" />';
@@ -1669,7 +1669,7 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 		if(defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) {
 			if(is_array($key)) {
 				foreach($key as $k) {
-					C::memory()->debug[$cmd][] = ($cmd == 'get' || $cmd == 'rm' ? $value : '').$prefix.$k;
+					C::memory()->debug[$cmd][] = ($cmd == 'get' || $cmd == 'rm' || $cmd == 'add' ? $value : '').$prefix.$k;
 				}
 			} else {
 				if ($cmd === 'hget') {
@@ -1677,12 +1677,13 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 				} elseif ($cmd === 'eval') {
 					C::memory()->debug[$cmd][] = $key . "->" . $ttl;
 				} else {
-					C::memory()->debug[$cmd][] = ($cmd == 'get' || $cmd == 'rm' ? $value : '').$prefix.$key;
+					C::memory()->debug[$cmd][] = ($cmd == 'get' || $cmd == 'rm' || $cmd == 'add' ? $value : '').$prefix.$key;
 				}
 			}
 		}
 		switch ($cmd) {
 			case 'set': return C::memory()->set($key, $value, $ttl, $prefix); break;
+			case 'add': return C::memory()->add($key, $value, $ttl, $prefix); break;
 			case 'get': return C::memory()->get($key, $value/*prefix*/); break;
 			case 'rm': return C::memory()->rm($key, $value/*prefix*/); break;
 			case 'exists': return C::memory()->exists($key, $value/*prefix*/); break;
@@ -1960,7 +1961,7 @@ function userappprompt() {
 }
 
 function dintval($int, $allowarray = false) {
-	$ret = floatval($int);
+	$ret = intval($int);
 	if($int == $ret || !$allowarray && is_array($int)) return $ret;
 	if($allowarray && is_array($int)) {
 		foreach($int as &$v) {

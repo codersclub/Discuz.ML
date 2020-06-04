@@ -79,24 +79,24 @@ class WeChatServer {
 
 		switch ($result['type']) {
 			case 'text':
-				$result['content'] = (string) $postObj->Content; // Content ��Ϣ����
+				$result['content'] = (string) $postObj->Content; // Content 消息内容
 				break;
 
 			case 'location':
-				$result['X'] = (float) $postObj->Location_X; // Location_X ����λ��γ��
-				$result['Y'] = (float) $postObj->Location_Y; // Location_Y ����λ�þ���
-				$result['S'] = (float) $postObj->Scale;      // Scale ��ͼ���Ŵ�С
-				$result['I'] = (string) $postObj->Label;     // Label ����λ����Ϣ
+				$result['X'] = (float) $postObj->Location_X; // Location_X 地理位置纬度
+				$result['Y'] = (float) $postObj->Location_Y; // Location_Y 地理位置经度
+				$result['S'] = (float) $postObj->Scale;      // Scale 地图缩放大小
+				$result['I'] = (string) $postObj->Label;     // Label 地理位置信息
 				break;
 
 			case 'image':
-				$result['url'] = (string) $postObj->PicUrl;  // PicUrl ͼƬ���ӣ������߿�����HTTP GET��ȡ
-				$result['mid'] = (string) $postObj->MediaId; // MediaId ͼƬ��Ϣý��id�����Ե��ö�ý���ļ����ؽӿ���ȡ���ݡ�
+				$result['url'] = (string) $postObj->PicUrl;  // PicUrl 图片链接，开发者可以用HTTP GET获取
+				$result['mid'] = (string) $postObj->MediaId; // MediaId 图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
 				break;
 
 			case 'video':
-				$result['mid'] = (string) $postObj->MediaId;      // MediaId ͼƬ��Ϣý��id�����Ե��ö�ý���ļ����ؽӿ���ȡ���ݡ�
-				$result['thumbmid'] = (string) $postObj->ThumbMediaId; // ThumbMediaId ��Ƶ��Ϣ����ͼ��ý��id�����Ե��ö�ý���ļ����ؽӿ���ȡ���ݡ�
+				$result['mid'] = (string) $postObj->MediaId;      // MediaId 图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
+				$result['thumbmid'] = (string) $postObj->ThumbMediaId; // ThumbMediaId 视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
 				break;
 
 			case 'link':
@@ -305,7 +305,7 @@ class WeChatClient {
 
 	public static $_URL_API_ROOT = 'https://api.weixin.qq.com';
 	public static $_URL_FILE_API_ROOT = 'http://file.api.weixin.qq.com';
-/*vot*/	public static $_URL_QR_ROOT = 'https://mp.weixin.qq.com';
+	public static $_URL_QR_ROOT = 'https://mp.weixin.qq.com';
 	public static $_QRCODE_TICKET_DEFAULT_ID = 1;
 	public static $ERRCODE_MAP = array(
 	    '-1' => '&#x7CFB;&#x7EDF;&#x7E41;&#x5FD9;',

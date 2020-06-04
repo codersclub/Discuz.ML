@@ -433,7 +433,7 @@ function _zoom(obj, zimg, nocover, pn, showexif) {
 				ratio = step/ele.height;
 				ele.height += step;
 				ele.width = imgw*(ele.height/imgh);
-			} else if(imgw < imgh) {
+			} else {
 				ratio = step/ele.width;
 				ele.width += step;
 				ele.height = imgh*(ele.width/imgw);
@@ -1092,10 +1092,6 @@ function _extstyle(css) {
 	$('css_extstyle').href = css ? css + '/style.css' : STATICURL + 'image/common/extstyle_none.css';
 	currentextstyle = css;
 	setcookie('extstyle', css, 86400 * 30);
-	if($('css_widthauto') && !$('css_widthauto').disabled) {
-		CSSLOADED['widthauto'] = 0;
-		loadcss('widthauto');
-	}
 }
 
 function _widthauto(obj) {

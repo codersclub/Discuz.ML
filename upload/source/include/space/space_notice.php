@@ -101,7 +101,7 @@ if($view == 'userapp') {
 		}
 
 		$multi = '';
-		$multi = multi($count, $perpage, $page, "home.php?mod=space&do=$do&view=$view&isread=1");
+		$multi = multi($count, $perpage, $page, "home.php?mod=space&do=$do&view=$view&type=$type&isread=1");
 	}
 
 	if($newnotify) {
@@ -128,4 +128,5 @@ if($view == 'userapp') {
 }
 dsetcookie('promptstate_'.$_G['uid'], $newprompt, 31536000);
 include_once template("diy:home/space_notice");
+
 

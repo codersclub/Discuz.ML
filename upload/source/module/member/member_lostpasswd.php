@@ -69,7 +69,7 @@ if(submitcheck('lostpwsubmit')) {
 		array(
 			'username' => $member['username'],
 			'bbname' => $_G['setting']['bbname'],
-			'siteurl' => $_G['siteurl'],
+			'siteurl' => $_G['setting']['securesiteurl'],
 			'uid' => $member['uid'],
 			'idstring' => $idstring,
 			'clientip' => $_G['clientip'],

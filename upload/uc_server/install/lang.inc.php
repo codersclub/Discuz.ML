@@ -145,45 +145,46 @@ $lang = array(
 
 	'install_in_processed'	=> 'Installing...',
 	'install_succeed'	=> 'Installed Succesufully, click here to next step',
-	'license'		=> '<div class="license"><h1>License</h1>
+	'copyright'		=> 'Copyright &copy; 2001-'.date('Y').' Tencent Cloud.',
+	'license'		=> '<div class="license"><h1>Chinese version license agreement for Chinese users</h1>
 
-<p>Copyright (c) 2001-2017, Hong Sing Imagination (Beijing) Co., Ltd. All rights reserved.</p>
+<p>Copyright (c) 2001-'.date('Y').', Tencent Cloud Computing (Beijing) Co., Ltd. (formerly Beijing Kangsheng Xinchuang Technology Co., Ltd.) All rights reserved. </p>
 
-<p>Thank you for choosing UCenter product. We hope that our efforts to provide you with a fast and powerful and efficient site solution.</p>
+<p>Thank you for choosing a UCenter product. We hope that our efforts can provide you with an efficient, fast and powerful site solution. </p>
 
-<p>Sing Imagination (Beijing) Technology Co., Ltd. for the UCenter product developers, and they shall have UCenter products copyright. Sing Imagination (Beijing) Technology Co., Ltd. website http://www.comsenz.com, UCenter official website address is http://www.discuz.com, UCenter official forum site at http://www.discuz.net.</p>
+<p>Beijing Kangsheng Xinchuang Technology Co., Ltd. is the developer of UCenter products and independently owns the copyright of UCenter products according to law. The website of Beijing Comsenz Technology Co., Ltd. is http://www.comsenz.com, the website of UCenter’s official website is http://www.discuz.com, and the website of UCenter’s official discussion area is http://www.discuz.net. </p>
 
-<p>UCenter copyright has registered in The Peoples Republic of China National Copyright Administration, copyright law and by international treaties. User: whether individuals or organizations, profit or not, how to use (including study and research purposes), are required to carefully read this agreement, understand, agree to and comply with all the terms of this agreement only after the start using UCenter software.</p>
+<p>The copyright of UCenter has been registered with the National Copyright Administration of the People's Republic of China, and the copyright is protected by laws and international conventions. Users: Regardless of individual or organization, profit or not, and use (including for learning and research purposes), you must read this agreement carefully, and you can start using UCenter only after understanding, agreeing, and complying with all the terms of this agreement software. </p>
 
-<p>this License applies and only applies to UCenter 1.x version, Hong Sing Imagination (Beijing) Technology Co., Ltd. has the power of final interpretation of the licensing agreement.</p>
+<p>This license agreement is applicable and only applicable to UCenter 1.x version. Beijing Kangsheng Xinchuang Technology Co., Ltd. has the final interpretation right of this license agreement. </p>
 
-<h3>I. license agreement right </h3>
+<h3>I. Rights Licensed by Agreement</h3>
 <ol>
-<li>you can fully comply with the end user license agreement, based on the software used in this non-commercial use, without having to pay for software copyright licensing fees.</li>
-<li>agreement you can within the constraints and limitations UCenter modify the source code (if provided) or interface styles to suit your site requirements.</li>
-<li>you have to use this software to build the site all the members of the information, articles and related information of ownership, and is independent of commitment and legal obligations related to the article content.</li>
-<li>a commercial license, you can use this software for commercial applications, while according to the type of license purchased to determine the period of technical support, technical support, technical support form and content, from the moment of purchase, within the period of technical support have a way to get through the specified designated areas of technical support services. Business authorized users have the power to reflect and comment, relevant comments will be a primary consideration, but not necessarily be accepted promise or guarantee.</li>
+<li>You can use this software for non-commercial purposes on the basis of fully complying with this end user license agreement, without paying software copyright licensing fees. </li>
+<li>You may modify the UCenter source code (if provided) or the interface style to suit your website requirements within the constraints and limitations of the agreement. </li>
+<li>You have the ownership of all member materials, articles and related information in the website built by using this software, and independently assume the relevant legal obligations related to the content of the articles. </li>
+<li>After obtaining the commercial authorization, you can use this software for commercial purposes. At the same time, according to the technical support period, technical support method and technical support content determined in the purchased authorization type, from the moment of purchase, within the technical support period Obtain technical support services within the specified scope through specified methods. Commercial authorized users have the right to reflect and put forward opinions, and relevant opinions will be considered as the first priority, but there is no promise or guarantee that they will be adopted. </li>
 </ol>
 
-<h3>II. agreement constraints and limitations </h3>
+<h3>II. Restrictions and Limitations of the Agreement</h3>
 <ol>
-<li>business license has not been before, may not use this software for commercial purposes (including but not limited to business sites, business operations, for commercial purpose or profit web site). Purchase of commercial license, please visit http://www.discuz.com reference instructions, call 8610-51657885 for more details.</li>
-<li>may not associated with the software or business license for rental, sale, mortgage or grant sub-licenses.</li>
-<li>In any case, that no matter how used, whether modified or landscaping, changes to what extent, just use UCenter whole or any part, without the written permission of the page footer Department UCenter name and Sing Imagination (Beijing) Technology Co., Ltd. affiliated website (http://www.comsenz.com, http://www.discuz.com or http://www.discuz.net) the link must be retained, not removed or modified.</li>
-<li>prohibited UCenter whole or any part of the basis for the development of any derivative version, modified version or third-party version for redistribution.</li>
-<li>If you failed to comply with the terms of this Agreement, your authorization will be terminated by the license rights will be recovered, and bear the corresponding legal responsibility.</li>
+<li>The software may not be used for commercial purposes (including but not limited to corporate websites, commercial websites, profit-making or profit-making websites) without commercial authorization. To purchase a commercial license, please visit http://www.discuz.com for reference, or call 8610-51657885 for details. </li>
+<li>The software or commercial licenses associated with it may not be rented, sold, mortgaged or sublicensed. </li>
+<li>In any case, regardless of the purpose, whether it has been modified or beautified, and the degree of modification, as long as the whole or any part of UCenter is used without written permission, the name of UCenter at the footer of the page and Beijing Kangsheng Xinchuang Technology Co., Ltd. Links to affiliated websites (http://www.comsenz.com, http://www.discuz.com or http://www.discuz.net) must remain and cannot be removed or modified. </li>
+<li>The development of any derivative, modified or third-party versions of UCenter, in whole or in part, for redistribution is prohibited. </li>
+<li>If you fail to comply with the terms of this agreement, your authorization will be terminated, the licensed rights will be withdrawn, and you will bear corresponding legal liabilities. </li>
 </ol>
 
-<h3>III. Limited Warranty and Disclaimer </h3>
+<h3>III. Limited Warranty and Disclaimer</h3>
 <ol>
-<li>the software and the accompanying documents as not to provide any express or implied, or guarantee in the form of compensation provided.</li>
-<li>user voluntary use of this software, you must understand the risks of using this software, technical services in the not to buy products, we do not promise to provide any form of technical support, use the warrant or assume any use of this software issues related to liability arising.</li>
-<li>Sing Imagination (Beijing) Technology Co., Ltd. does not use the software to build the site responsible for articles or information.</li>
+<li>This software and accompanying documentation are provided without warranty or warranty of any kind, express or implied. </li>
+<li>Users use this software voluntarily. You must understand the risks of using this software. Before purchasing product technical services, we do not promise to provide any form of technical support, use guarantee, nor assume any responsibility for using this software. Responsibility for problems arising. </li>
+<li>Beijing Kangsheng Xinchuang Technology Co., Ltd. is not responsible for the articles or information in the website built using this software. </li>
 </ol>
 
-<p>the UCenter end user license agreement, business license and technical services to the details provided by UCenter exclusive official website. Sing Imagination (Beijing) Technology Co., Ltd. has, without prior notice, modify the license agreement and the power of service price list, the revised agreement or change list from the date of the new authorized user effect.</p>
+<p>Details about the UCenter End User License Agreement, commercial authorization and technical services are exclusively provided by the UCenter official website. Beijing Kangsheng Xinchuang Technology Co., Ltd. has the right to modify the authorization agreement and service price list without prior notice, and the revised agreement or price list will take effect for new authorized users from the date of change. </p>
 
-<p>electronic text form of license agreement as the two sides signed an agreement in writing as a complete and equivalent legal effect. Once you start the installation UCenter, shall be deemed to fully understand and accept the terms of this Agreement, in the enjoyment of the powers conferred by these provisions, while subject to restrictions and limitations related. Acts outside the scope of protocol licensing will be a direct violation of the licensing agreement and constitutes infringement, we have the right to terminate the authorization, shall be ordered to stop the damage, and reserves the power to investigate ?? responsibility.</p></div>',
+<p>The authorization agreement in the form of electronic text has the same legal effect as the written agreement signed by both parties. Once you start installing UCenter, you are deemed to have fully understood and accepted the terms of this agreement, and while enjoying the rights granted by the above terms, you are subject to relevant constraints and restrictions. Behavior outside the scope of the agreement will directly violate this authorization agreement and constitute infringement. We have the right to terminate the authorization at any time, order to stop the damage, and reserve the right to pursue relevant responsibilities. </p></div>',
 
 	'uc_installed'		=> 'You have already installed UCenter. If you want to re-install it, please delete "data/install.lock"',
 	'i_agree'		=> 'I Agree',

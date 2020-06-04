@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 
 class logging_ctl {
 
-	function logging_ctl() {
+	function __construct() {
 		require_once libfile('function/misc');
 		loaducenter();
 	}
@@ -63,7 +63,7 @@ class logging_ctl {
 			$cookietimecheck = !empty($_G['cookie']['cookietime']) || !empty($_GET['cookietime']) ? 'checked="checked"' : '';
 
 			if($seccodecheck) {
-				$seccode = random(6, 1) + $seccode{0} * 1000000;
+				$seccode = random(6, 1) + $seccode[0] * 1000000;
 			}
 
 			if($this->extrafile && file_exists($this->extrafile)) {
@@ -336,7 +336,7 @@ class register_ctl {
 
 	var $showregisterform = 1;
 
-	function register_ctl() {
+	function __construct() {
 		global $_G;
 		if($_G['setting']['bbclosed']) {
 			if(($_GET['action'] != 'activation' && !$_GET['activationauth']) || !$_G['setting']['closedallowactivation'] ) {
@@ -537,10 +537,10 @@ class register_ctl {
 			}
 			if($sendurl) {
 				$hashstr = urlencode(authcode("$_GET[email]\t$_G[timestamp]", 'ENCODE', $_G['config']['security']['authkey']));
-				$registerurl = "{$_G[siteurl]}member.php?mod=".$this->setting['regname']."&amp;hash={$hashstr}&amp;email={$_GET[email]}";
+				$registerurl = $_G['setting']['securesiteurl']."member.php?mod=".$this->setting['regname']."&amp;hash={$hashstr}&amp;email={$_GET[email]}";
 				$email_register_message = lang('email', 'email_register_message', array(
 					'bbname' => $this->setting['bbname'],
-					'siteurl' => $_G['siteurl'],
+					'siteurl' => $_G['setting']['securesiteurl'],
 					'url' => $registerurl
 				));
 				if(!sendmail("$_GET[email] <$_GET[email]>", lang('email', 'email_register_subject'), $email_register_message)) {
@@ -896,11 +896,11 @@ class register_ctl {
 					$idstring = random(6);
 					$authstr = $this->setting['regverify'] == 1 ? "$_G[timestamp]\t2\t$idstring" : '';
 					C::t('common_member_field_forum')->update($_G['uid'], array('authstr' => $authstr));
-					$verifyurl = "{$_G[siteurl]}member.php?mod=activate&amp;uid={$_G[uid]}&amp;id=$idstring";
+					$verifyurl = $_G['setting']['securesiteurl']."member.php?mod=activate&amp;uid={$_G[uid]}&amp;id=$idstring";
 					$email_verify_message = lang('email', 'email_verify_message', array(
 						'username' => $_G['member']['username'],
 						'bbname' => $this->setting['bbname'],
-						'siteurl' => $_G['siteurl'],
+						'siteurl' => $_G['setting']['securesiteurl'],
 						'url' => $verifyurl
 					));
 					if(!sendmail("$username <$email>", lang('email', 'email_verify_subject'), $email_verify_message)) {
@@ -945,7 +945,7 @@ class crime_action_ctl {
 
 	static $actions = array('all', 'crime_delpost', 'crime_warnpost', 'crime_banpost', 'crime_banspeak', 'crime_banvisit', 'crime_banstatus', 'crime_avatar', 'crime_sightml', 'crime_customstatus');
 
-	function crime_action_ctl() {}
+	function __construct() {}
 
 	function &instance() {
 		static $object;

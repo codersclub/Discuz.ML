@@ -491,11 +491,13 @@ EOT;
 }
 
 function show_footer($quit = true) {
-/*vot*/	$y = date('Y');
-/*vot*/	echo <<<EOT
-		<div class="footer">&copy;2001-{$y}, Tencent Cloud.
-		  <div>Multilingual version by <a href="http://codersclub.org/discuzx/">codersclub.org</a></div>
-                </div>
+
+	$copy = lang('copyright');
+
+	echo <<<EOT
+		<div class="footer">$copy
+			<div>Multilingual version by <a href="http://codersclub.org/discuzx/">codersclub.org</a></div>
+		</div>
 	</div>
 </div>
 </body>
@@ -824,6 +826,10 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 				'header' => $header,
 				'content' => $post,
 				'timeout' => $timeout,
+			),
+			'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false,
 			),
 		);
 		$context = stream_context_create($context);

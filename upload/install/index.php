@@ -56,7 +56,7 @@ timezone_set();
 $uchidden = getgpc('uchidden');
 
 if(in_array($method, array('app_reg', 'ext_info'))) {
-/*vot*/	$isHTTPS = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? true : false;
+	$isHTTPS = is_https();
 	$PHP_SELF = $_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
 	// The port used by $bbserver can't come from SERVER_PORT, because the server port of dz is not necessarily the port that the user accesses (i.e. because of the load balancing)
 	$bbserver = 'http'.($isHTTPS ? 's' : '').'://'.$_SERVER['HTTP_HOST'];

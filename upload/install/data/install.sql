@@ -976,7 +976,7 @@ CREATE TABLE pre_common_member_secwhite (
   `uid` int(10) NOT NULL,
   `dateline` int(11) NOT NULL,
   PRIMARY KEY (uid)
-) TYPE=HEAP;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_member_stat_field;
 CREATE TABLE pre_common_member_stat_field (
@@ -1198,7 +1198,7 @@ CREATE TABLE pre_common_process (
   `extra` int(11) DEFAULT NULL,
   PRIMARY KEY (processid),
   KEY expiry (expiry)
-) TYPE=HEAP;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_regip;
 CREATE TABLE pre_common_regip (
@@ -1265,7 +1265,7 @@ CREATE TABLE pre_common_seccheck (
   KEY dateline (dateline),
   KEY succeed (succeed),
   KEY verified (verified)
-) TYPE=HEAP;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_secquestion;
 CREATE TABLE pre_common_secquestion (
@@ -1291,7 +1291,7 @@ CREATE TABLE pre_common_session (
   `tid` int(11) unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY sid (sid),
   KEY uid (uid)
-) ENGINE=HEAP;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_setting;
 CREATE TABLE pre_common_setting (
@@ -1616,6 +1616,9 @@ CREATE TABLE pre_common_usergroup_field (
   `allowmediacode` tinyint(1) NOT NULL DEFAULT '0',
   `allowbegincode` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allowat` int(11) unsigned NOT NULL DEFAULT '0',
+  `allowsave` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `allowsavereply` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `allowsavenum` int(11) unsigned NOT NULL DEFAULT '0',
   `allowsetpublishdate` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allowfollowcollection` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allowcommentcollection` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -1634,7 +1637,7 @@ CREATE TABLE pre_common_visit (
   `view` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (ip),
   KEY ip (ip,`view`)
-) TYPE=HEAP;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_common_word;
 CREATE TABLE pre_common_word (
@@ -2963,7 +2966,7 @@ DROP TABLE IF EXISTS pre_forum_threaddisablepos;
 CREATE TABLE pre_forum_threaddisablepos (
   `tid` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (tid)
-) TYPE=HEAP;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS pre_forum_threadhidelog;
 CREATE TABLE pre_forum_threadhidelog (

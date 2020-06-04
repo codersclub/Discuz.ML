@@ -21,6 +21,7 @@ $title = cplang('admincp_title');
 $header_welcome = cplang('header_welcome');
 $header_logout = cplang('header_logout');
 $header_bbs = cplang('header_bbs');
+$now = date('Y');
 if(isfounder()) {
 	cplang('founder_admin');
 } else {
@@ -169,9 +170,10 @@ echo <<<EOT
 	<span onclick="menuScroll(1)"><img src="static/image/admincp/scrollu.gif" /></span><span onclick="menuScroll(2)"><img src="static/image/admincp/scrolld.gif" /></span>
 </div>
 <div class="copyright">
-<!--vot-->	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
-<!--vot-->	<p>Release {$_G['setting']['release']}</p>
+	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
+	<p>Copyright &copy; 2001-$now</p>
 <!--vot-->	<p>&copy; 2001-{$year}, Tencent Cloud.</p>
+<!--vot-->	<p>Release {$_G['setting']['release']}</p>
 <!--vot-->	<p><strong>MultiLingual version</strong><br>by <a href="http://codersclub.org/discuzx/" target="_blank">Valery Votintsev</a></p>
 </div>
 

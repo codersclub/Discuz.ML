@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 
 class membersearch {
 
-	function membersearch(){}
+	function __construct(){}
 
 	function getfield($fieldid='') {
 /*vot*/		static $fields = array(
