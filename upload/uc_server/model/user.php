@@ -60,7 +60,7 @@ class usermodel {
 		$guestexp .= '|^Guest';
 
 		$len = $this->dstrlen($username);
-/*vot*/	if($len > 64 || $len < 2 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&]|$guestexp/is", $username)) {
+/*vot*/	if($len > 64 || $len < 2 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&\(\)']|$guestexp/is", $username)) {
 			return FALSE;
 		} else {
 			return TRUE;

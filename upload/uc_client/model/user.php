@@ -62,13 +62,7 @@ class usermodel {
 
 		$len = $this->dstrlen($username);
 /*vot*/		$lenbyte = strlen($username);
-/*vot*/		if($len > 15 || $len < 2) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif($lenbyte > 64) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif(preg_match("/[\t\%,\*\"\<\>\&]|\s{2}|^c:\\con\\con/is", $username)) {
-/*vot*/			return FALSE;
-/*vot*/		} elseif(preg_match("/$guestexp/is", $username)) {
+/*vot*/	if($len > 15 || $len < 2 || $lenbyte > 64 || preg_match("/\s+|^c:\\con\\con|[%,\*\"\s\<\>\&\(\)']|$guestexp/is", $username)) {
 			return FALSE;
 		} else {
 			return TRUE;

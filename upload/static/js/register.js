@@ -273,7 +273,7 @@ function checkusername(id) {
 	} else {
 		lastusername = username;
 	}
-	if(username.match(/<|"/ig)) {
+	if(username.match(/<|>|"|\(|\)|'/ig)) {
 /*vot*/		errormessage(id, lng['username_invalid']);
 		return;
 	}
