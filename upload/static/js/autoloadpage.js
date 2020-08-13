@@ -93,10 +93,12 @@
 			nextpageurl = nextpageurl.replace(/&page=\d+/, '&page=' + (curpage + 1));
 
 			$('fd_page_bottom').innerHTML = pageinfo[1];
-			if(curpage + 1 > totalpage) {
-				autopbn.style.display = 'none';
-			} else {
-				autopbn.innerHTML = lng['next'] + ' &darr;';
+			autopbn.style.display = 'none';
+			if (curpage + 1 <= totalpage) {
+/*vot*/				autopbn.innerHTML = lng['next'] + ' &darr;';
+				setTimeout(function () {
+					autopbn.style.display = 'block';
+				}, 100);
 			}
 			loadstatus = 0;
 		});
