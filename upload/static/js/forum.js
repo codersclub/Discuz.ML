@@ -312,7 +312,7 @@ function loadData(quiet, formobj) {
 
 	if(in_array((data = trim(data)), ['', 'null', 'false', null, false])) {
 		if(!quiet) {
-/*vot*/			showDialog(lng['no_data_recover'], 'info');
+/*vot*/			showDialog(lng['no_data_recover'], 'notice');
 		}
 		return;
 	}
