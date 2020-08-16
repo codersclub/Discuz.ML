@@ -3541,6 +3541,7 @@ $lang = array
 	'members_ban_validity_comment' => '在有效期过后该用户可以自动解除限制，成为普通用户',
 	'members_ban_delpost' => '帖子',
 	'members_ban_delfollow' => '广播',
+	'members_ban_delfollower' => '广播收听关系',
 	'members_ban_delblog' => '日志',
 	'members_ban_delalbum' => '相册',
 	'members_ban_deldoing' => '记录',
@@ -7135,8 +7136,6 @@ RepeatLimit 32
 	'setting_language_actions'	=> 'Actions',
 
 	'nav_language'			=> 'Languages',
-
-	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
 
 	'contributors'			=> 'Discuz! &#x5F00;&#x6E90;&#x8D21;&#x732E;&#x8005;',//'Discuz! Open Source Contributors',
 

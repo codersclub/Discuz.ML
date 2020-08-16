@@ -1494,7 +1494,7 @@ EOT;
 			<tr>
 				<td colspan="2">
 					<ul class="dblist" onmouseover="altStyle(this);">
-						<li style="width: 100%;"><input type="checkbox" name="chkall" onclick="checkAll('prefix', this.form, 'clear')" class="checkbox">&nbsp;$lang[select_all]</li>
+						<li style="width: 100%;"><input type="checkbox" name="chkall" onclick="checkAll('prefix', this.form, 'clear', 'chkall', true)" class="checkbox">&nbsp;$lang[select_all]</li>
 <!--vot-->					<li><input type="checkbox" value="post" name="clear[post]" class="checkbox">&nbsp;$lang[members_ban_delpost]</li>
 <!--vot-->					<li><input type="checkbox" value="follow" name="clear[follow]" class="checkbox">&nbsp;$lang[members_ban_delfollow]</li>
 <!--vot-->					<li><input type="checkbox" value="postcomment" name="clear[postcomment]" class="checkbox">&nbsp;$lang[members_ban_postcomment]</li>
@@ -1504,6 +1504,7 @@ EOT;
 <!--vot-->					<li><input type="checkbox" value="share" name="clear[share]" class="checkbox">&nbsp;$lang[members_ban_delshare]</li>
 <!--vot-->					<li><input type="checkbox" value="avatar" name="clear[avatar]" class="checkbox">&nbsp;$lang[members_ban_delavatar]</li>
 <!--vot-->					<li><input type="checkbox" value="comment" name="clear[comment]" class="checkbox">&nbsp;$lang[members_ban_delcomment]</li>
+<!--vot-->              	<li><input type="checkbox" value="follower" name="clear[follower]" class="checkbox">&nbsp;$lang[members_ban_delfollower]</li>
 <!--vot-->              	<li><input type="checkbox" value="profile" name="clear[profile]" class="checkbox">&nbsp;$lang[members_ban_delprofile]</li>
 					</ul>
 				</td>
@@ -1793,10 +1794,15 @@ EOF;
 			if(in_array('profile', $_GET['clear'])) {
 				C::t('common_member_profile'.$tableext)->delete($member['uid']);
 				C::t('common_member_profile'.$tableext)->insert(array('uid' => $member['uid']));
-                		C::t('common_member_field_forum'.$tableext)->update($member['uid'], array('customstatus' => '', 'sightml' => ''));
-                		C::t('common_member_field_home'.$tableext)->update($member['uid'], array('spacename' => '', 'spacedescription' => ''));
+				C::t('common_member_field_forum'.$tableext)->update($member['uid'], array('customstatus' => '', 'sightml' => ''));
+				C::t('common_member_field_home'.$tableext)->update($member['uid'], array('spacename' => '', 'spacedescription' => ''));
 			}
-            
+
+			if(in_array('follower', $_GET['clear'])) {
+				C::t('home_follow')->delete_by_uid($member['uid']);
+				C::t('home_follow')->delete_by_followuid($member['uid']);
+			}
+
 			if($membercount) {
 				DB::update('common_member_count'.$tableext, $membercount, "uid='$member[uid]'");
 			}

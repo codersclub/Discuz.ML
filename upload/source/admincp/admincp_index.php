@@ -12,10 +12,14 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-if(@file_exists(DISCUZ_ROOT.'./install/index.php') && !DISCUZ_DEBUG) {
-//vot	@unlink(DISCUZ_ROOT.'./install/index.php');
-	if(@file_exists(DISCUZ_ROOT.'./install/index.php')) {
-/*vot*/		echo '<div class="error">'.cplang('delete_install_index').'</div>';
+$sensitivedirs = array('./', './uc_server/', './ucenter/');
+
+foreach ($sensitivedirs as $sdir) {
+	if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php') && !DISCUZ_DEBUG) {
+//vot	@unlink(DISCUZ_ROOT.$sdir.'install/index.php');
+		if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php')) {
+			dexit('Please delete '.$sdir.'install/index.php via FTP!');
+		}
 	}
 }
 
