@@ -7136,8 +7136,6 @@ RepeatLimit 32
 
 	'nav_language'			=> '語言能力',
 
-	'delete_install_index'		=> '請通過FTP刪除install/index.php!',
-
 	'contributors'			=> 'Discuz! 開源貢獻者',//'Discuz! Open Source Contributors',
 
 	'contributors_link'		=> '點擊此處查看它們',

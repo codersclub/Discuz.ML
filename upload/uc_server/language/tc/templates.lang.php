@@ -457,6 +457,7 @@ $lang = array(
 	'home_member_count'		=> '用戶總數',
 	'home_app_count'		=> '應用總數',
 	'home_env'			=> '系統信息',
+	'home_envstatus' => '運行環境檢測',
 	'home_team'			=> 'UCenter 開發團隊',
 
 	'admin_add_succeed'		=> '添加 $addname 為管理員成功',
@@ -506,6 +507,11 @@ $lang = array(
 
 	'app_allowips'			=> '允許的IP',
 	'app_allowips_comment'		=> '限定終端訪問的IP, 設置哪些IP可以訪問Ucenter  的數據接口',
+
+	'envstatus_result' => '檢測結果',
+	'envstatus_ver_too_low' => '您當前系統環境內的 $envstatus[req] 版本 ($envstatus[now_ver]) 過低，程序無法按預期正常運行。我們強烈建議您升級到 $envstatus[sug_ver] 版本，程序正常運行最低要求為 $envstatus[req_ver] 版本。',
+	'envstatus_not_found' => '您當前系統環境內未安裝或開啟 $envstatus[req] 模塊，程序無法按預期正常運行。我們強烈建議您安裝或開啟此模塊，以滿足程序正常運行的最低要求。',
+	'envstatus_ok' => '您當前系統環境適合當前版本的 UCenter $envstatus[version] 。',
 
 //Added by Valery Votintsev, codersclub.org
 	'view_ml_new_version'		=> '查看最新的多語言版本',//'View Latest International Version',
