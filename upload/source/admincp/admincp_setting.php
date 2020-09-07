@@ -3620,7 +3620,7 @@ EOT;
 
 function dateformat($string, $operation = 'formalise') {
 	$string = dhtmlspecialchars(trim($string));
-	$replace = $operation == 'formalise' ? array(array('n', 'j', 'y', 'Y'), array('mm', 'dd', 'yy', 'yyyy')) : array(array('mm', 'dd', 'yyyy', 'yy'), array('n', 'j', 'Y', 'y'));
+/*vot*/	$replace = $operation == 'formalise' ? array(array('m', 'n', 'd', 'j', 'y', 'Y'), array('mm', 'mm', 'dd', 'dd', 'yy', 'yyyy')) : array(array('mm', 'dd', 'yyyy', 'yy'), array('m', 'd', 'Y', 'y'));
 	return str_replace($replace[0], $replace[1], $string);
 }
 
