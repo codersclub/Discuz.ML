@@ -290,7 +290,7 @@ showformfooter();
 
 /*vot*/ showtableheader(cplang('contributors'), 'fixpadding');
 showtablerow('', array('', 'class="td21" style="text-align:right;"'),
-/*vot*/	'<a href="https://gitee.com/ComsenzDiscuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_link') . '</a>'
+/*vot*/	'<a href="https://gitee.com/discuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_link') . '</a>'
 );
 showtablefooter();
 
@@ -437,15 +437,14 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),
 /*vot*/
-	'<a href="https://discuz.ml/" class="lightlink2" target="_blank">Discuz!ML Official Site</a>,
+	'<a href="https://codersclub.org/discuz.ml/" class="lightlink2" target="_blank">Discuz!ML Official Site</a>,
     <a href="https://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
 	<a href="https://sourceforge.net/projects/discuz-ml/" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
-	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! Application Chinese Forum</a>,
-	<a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
+	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! Chinese Application Center</a>,
 	<a href="http://www.discuz.net/redirect.php?service" class="lightlink2" target="_blank">Purchase authorization</a>,
-	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Discuz Chinese Forum</a>,
+	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Discuz! Chinese Forum</a>,
 	<a href="'.ADMINSCRIPT.'?action=cloudaddons" class="lightlink2" target="_blank">Discuz! Cloud Addons</a>
-	<a href="https://gitee.com/ComsenzDiscuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
+	<a href="https://gitee.com/discuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
 '));
 showtablefooter();
 
