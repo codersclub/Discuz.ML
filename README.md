@@ -11,11 +11,16 @@ You may fork the site code, but without permission ** Prohibited ** On the whole
  
 - Discuz! ML official site: https://codersclub.org/discuz.ml/
 - Discuz! ML official forum: https://codersclub.org/discuzx/
-
 - Discuz! ML repository: https://hg.code.sf.net/p/discuz-ml/
 
 ### **Chinese Related Sites**
 
-- Discuz! Official Website: https://www.discuz.net
-- Discuz! Application Center: https://addon.dismall.com
-- Discuz! Official Repository: https://gitee.com/Discuz/DiscuzX.git
+[Discuz! Official Website](https://discuz.com)
+
+[Discuz! X Official Forum](https://www.discuz.net)
+
+[Discuz! X Application Center](https://addon.dismall.com)
+
+[Discuz! X Official Repository](https://gitee.com/Discuz/DiscuzX.git)
+
+[Discuz! Q Official Forum](https://discuz.chat)
