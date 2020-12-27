@@ -637,6 +637,7 @@ $lang = array (
   'admincp_makehtml_cleanhtml_error' => '對不起，開啟生成HTML靜態文件時，不能清理HTML文件。',
   'admincp_makehtml_cleanhtml_succeed' => '清理HTML文件成功。',
   'admincp_makehtml_cleanhtml_choose_item' => '對不起，請選擇需要清理HTML文件。',
+  'attach_readmod_error' => '抱歉，當前的本地文件讀取模式會導致部分瀏覽器下視頻播放異常，如需開啟附件URL地址、媒體附件播放，請在config_global.php 內修改本地文件讀取模式為1 或4 後再試',
 );
 
 ?>
