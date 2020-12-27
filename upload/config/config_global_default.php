@@ -128,6 +128,7 @@ $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID 
 // Download attachments
 //
 // Local file reading mode; Mode 2 is the most memory-saving way, but it does not support multi-thread download
+// If you need the attachment URL address and media attachment playback, you need to select the read mode 1 or 4 that supports the Range parameter. Other modes will cause abnormal video playback in some browsers
 // 1=fread, 2=readfile, 3=fpassthru, 4=fpassthru+multiple
 $_config['download']['readmod'] = 2;
 

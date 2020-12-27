@@ -3242,6 +3242,10 @@ EOT;
 	}
 
 	if($operation == 'attach') {
+		if($settingnew['allowattachurl'] && !in_array($_G['config']['download']['readmod'], array(1, 4))) {
+			// If you need the attachment URL address and media attachment playback, you need to select the reading mode 1 or 4 that supports the Range parameter. Other modes will cause abnormal video playback in some browsers.
+			cpmsg('attach_readmod_error', '', 'error');
+		}
 		$settingnew['thumbwidth'] = intval($settingnew['thumbwidth']) > 0 ? intval($settingnew['thumbwidth']) : 200;
 		$settingnew['thumbheight'] = intval($settingnew['thumbheight']) > 0 ? intval($settingnew['thumbheight']) : 300;
 		$settingnew['maxthumbwidth'] = intval($settingnew['maxthumbwidth']);
