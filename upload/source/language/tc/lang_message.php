@@ -310,6 +310,7 @@ $lang = array (
   'attachment_yetpay' => '您已購買過此附件，無需重複購買，現在將開始附件下載',
   'attachment_buyall' => '本帖所有附件購買成功 ',
   'attachment_buy' => '附件購買成功，開始下載「{filename}」',
+  'attachment_mobile_buy' => '附件購買成功',
   'no_privilege_postimage' => '抱歉，您目前沒有權限上傳圖片，<a href="home.php?mod=spacecp&ac=usergroup" target="_blank">點擊這裡查看權限</a>',
   'no_privilege_postattach' => '抱歉，您目前沒有權限上傳附件，<a href="home.php?mod=spacecp&ac=usergroup" target="_blank">點擊這裡查看權限</a>',
   'thread_closed' => '該帖子已被關閉，不能評論！',
