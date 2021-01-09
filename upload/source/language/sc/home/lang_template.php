@@ -1570,4 +1570,5 @@ $lang = array (
 	'say_to'		=> '说',
 	'visibility'		=> '能见度',//'Visibility',
 	'reset'			=> '重启',//'Reset',
+	'lastupdate'		=> '更新',//'最后更新',//'Updated',
 );
