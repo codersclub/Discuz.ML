@@ -1287,10 +1287,10 @@ function viewthread_loadcache() {
 /*vot*/	$_G['thread']['lastpostdays'] = ceil((TIMESTAMP - $_G['thread']['lastpost']) / 86400);	// Last post days, at least 1 day
 
 	$threadcachemark = 100 - (
-		$_G['thread']['digest'] * 20 +							// 精华，占20分
-		min($_G['thread']['views'] / max($_G['thread']['livedays'], 10) * 2, 50) +	// 阅读数与天数关系，占50分。阅读越多分越高，天数越久分越低
-		max(-10, (15 - $_G['thread']['lastpostdays'])) +				// 最后回复时间，占15分，超过15天开始倒扣分，最多扣10分
-		min($_G['thread']['replies'] / $_G['setting']['postperpage'] * 1.5, 15));	// 帖子页数，占15分，10页以上就是满分
+/*vot*/		$_G['thread']['digest'] * 20 +							// Essence, 20 points
+/*vot*/		min($_G['thread']['views'] / max($_G['thread']['livedays'], 10) * 2, 50) +	// The relationship between readings and days, accounting for 50 points. The more you read, the higher the score, the longer the number of days, the lower the score
+/*vot*/		max(-10, (15 - $_G['thread']['lastpostdays'])) +				// The last response time is 15 points. Points will be deducted after 15 days, up to 10 points
+/*vot*/		min($_G['thread']['replies'] / $_G['setting']['postperpage'] * 1.5, 15));	// The number of post pages, accounting for 15 points, and 10 pages or more are full
 	if($threadcachemark < $_G['forum']['threadcaches']) {
 
 		$threadcache = getcacheinfo($_G['tid']);
