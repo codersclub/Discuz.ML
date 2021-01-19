@@ -47,6 +47,7 @@ function convertip($ip, $file = 'full') {
 					$return = convertip_full($ip, $fullipfile);
 				}
  			}
+ 			}
 		}
 /*vot*/	}
 	return $return;
