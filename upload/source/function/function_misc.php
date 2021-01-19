@@ -12,22 +12,43 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-function convertip($ip) {
+function convertip($ip, $file = 'full') {
 
 	$return = '';
 
-/*vot*/			$geoipfile = DISCUZ_ROOT.'./data/ipdata/GeoLite2-Country.mmdb';
+	if(preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/", $ip)) {
+
+		$iparray = explode('.', $ip);
+
+/*vot*/		if($iparray[0] == 10 || ($iparray[0] == 192 && $iparray[1] == 168) || ($iparray[0] == 172 && ($iparray[1] >= 16 && $iparray[1] <= 31))) {
+/*vot*/			$return = 'LAN';
+/*vot*/		} elseif($iparray[0] == 127) {
+/*vot*/			$return = 'Localhost';
+		} elseif($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
+/*vot*/			$return = 'Invalid IP Address';
+		} else {
 			$tinyipfile = DISCUZ_ROOT.'./data/ipdata/tinyipdata.dat';
 			$fullipfile = DISCUZ_ROOT.'./data/ipdata/wry.dat';
+/*vot*/			$geoipfile = DISCUZ_ROOT.'./data/ipdata/GeoLite2-Country.mmdb';
 /*vot*/			if(@file_exists($geoipfile)) {
 /*vot*/				$return = convertip_geo($ip, $geoipfile);
-/*vot*/         	$return = lang('country', $return);
-/*vot*/			} elseif(@file_exists($tinyipfile)) {
-				$return = convertip_tiny($ip, $tinyipfile);
-			} elseif(@file_exists($fullipfile)) {
-				$return = convertip_full($ip, $fullipfile);
-			}
-
+/*vot*/				$return = lang('country', $return);
+/*vot*/			} else {
+			if($file == 'full') {
+				if(@file_exists($fullipfile)) {
+					$return = convertip_full($ip, $fullipfile);
+				} elseif(@file_exists($tinyipfile)) {
+					$return = convertip_tiny($ip, $tinyipfile);
+				}
+			} elseif($file == 'tiny') {
+				if(@file_exists($tinyipfile)) {
+					$return = convertip_tiny($ip, $tinyipfile);
+				} elseif(@file_exists($fullipfile)) {
+					$return = convertip_full($ip, $fullipfile);
+				}
+ 			}
+		}
+/*vot*/	}
 	return $return;
 
 }
@@ -44,35 +65,21 @@ function convertip_geo($ip='', $ipdatafile='') {
 //vot: Detect IP country using the maxmind.com GeoLite2 database
 function geoip_country($ip='', $ipdatafile='GeoLite2-Country.mmdb') {
 
-	if(preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/", $ip)) {
+	require_once(DISCUZ_ROOT . './source/function/geoip2.phar');
 
-		$iparray = explode('.', $ip);
+	$ipdatafile = DISCUZ_ROOT . './data/ipdata/' . $ipdatafile;
 
-		if($iparray[0] == 127) {
-			$return = 'LOC';
-		} elseif($iparray[0] == 10 || ($iparray[0] == 192 && $iparray[1] == 168) || ($iparray[0] == 172 && ($iparray[1] >= 16 && $iparray[1] <= 31))) {
-			$return = 'LAN';
-		} elseif($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
-			$return = 'ERR';
-		} else {
+	// This creates the Reader object, which should be reused across lookups.
+	$reader = new GeoIp2\Database\Reader($ipdatafile);
 
-			require_once(DISCUZ_ROOT . './source/function/geoip2.phar');
-
-			$ipdatafile = DISCUZ_ROOT . './data/ipdata/' . $ipdatafile;
-
-                        // This creates the Reader object, which should be reused across lookups.
-                        $reader = new GeoIp2\Database\Reader($ipdatafile);
-
-                        try {
-                            $record = $reader->country($ip);
-                            $return = $record->country->isoCode; // 'US'
-                        } catch (Exception $e) {
-			    $return = 'ERR';
-                        }
-		}
+	try {
+		$record = $reader->country($ip);
+		$return = $record->country->isoCode; // 'US'
+	} catch (Exception $e) {
+		$return = 'ERR';
 	}
 
-	if(!$return) {
+	if(!@$return) {
 		$return = '??';
 	}
 
@@ -251,7 +258,7 @@ function convertip_full($ip, $ipdatafile) {
 		$ipaddr = '- Unknown';
 	}
 
-	return '- '.diconv($ipaddr, 'GBK'); //vot?: WHY from GBK?
+	return '- '.diconv($ipaddr, 'GBK');
 
 }
 
