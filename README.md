@@ -147,7 +147,19 @@ You may fork the code from this site, but **redistribution** in the development 
 
 ### **Related Sites**
  
-[Discuz! Official Site](http://www.discuz.net)
+[Discuz! Official Site](https://discuz.com)
+|
+[Discuz! X Official Forum](https://www.discuz.net)
+|
+[Discuz! Q Official Forum](https://discuz.chat)
+ 
+[DNSPod](https://www.dnspod.cn)
+|
+[Trademark Registration](https://tm.cloud.tencent.com/)
+|
+[Domain name registration](https://dnspod.cloud.tencent.com/)
+
+
 
 ### **Thanks Fans**
 
