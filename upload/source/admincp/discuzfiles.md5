@@ -349,7 +349,7 @@ cd6ed5c1af415245d93e3235c8ede908 *source/class/helper/helper_log.php
 f467fbd2185aaf87818699c642a09a9a *source/class/helper/helper_mobile.php
 183c7e05b3fa791283f4090a0dcf3df6 *source/class/helper/helper_notification.php
 fbecf04eacbdce0e05d105c45e66051b *source/class/helper/helper_output.php
-7f6bfc8f913438196c7abe21865c6805 *source/class/helper/helper_page.php
+a2f2d9d076697b1c25eea29e8a57f36e *source/class/helper/helper_page.php
 fabc124614f30c6dccbf7371ec2f3d60 *source/class/helper/helper_pm.php
 2a7f2005c5991b12350bb768934814fd *source/class/helper/helper_seccheck.php
 b8eaa904d338d1c953032877d06748f4 *source/class/helper/helper_seo.php
@@ -678,7 +678,7 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-b5ad786a8e7ee8f7c91fbe8e440b3c61 *source/discuz_version.php
+b1df5c2c44f2512b4ba777d9d0107a91 *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -769,7 +769,7 @@ c7b201f1fbbee7b2d9f3e9c06277cc61 *source/function/function_home.php
 eb878fd7b572c27022979390a4c721ea *source/function/function_mail.php
 f2a777758dcdc0cd23dbe4dc869122fe *source/function/function_member.php
 40ee75482ffa0542df601d1e6184e940 *source/function/function_message.php
-aaa1c1a5f13148edbd56d303031dcd6d *source/function/function_misc.php
+a95a381b96f8ab7aff838536f635ab41 *source/function/function_misc.php
 c370c12c945194fc1fd52d253f0e567b *source/function/function_plugin.php
 4a53087b86b6d059e1d3fb7c38eb279d *source/function/function_portal.php
 e139d307f95fc9a421a5aadf04407e9e *source/function/function_portalcp.php
@@ -1362,7 +1362,7 @@ bdd5d6283fce2cb038b890f54ecc2a35 *source/module/forum/forum_announcement.php
 28031a26398547ff20359989263cd3b6 *source/module/forum/forum_collection.php
 52a3e6f358155315e06abe5674593b99 *source/module/forum/forum_forumdisplay.php
 1312bff0db68d03c8d0f820841f20584 *source/module/forum/forum_group.php
-69eaf8ffb0d30188d8fb4b595c904afa *source/module/forum/forum_guide.php
+671496bee811316ce8f92bb9c10cb763 *source/module/forum/forum_guide.php
 044aabe6823ceff3bd01b082776d5fe5 *source/module/forum/forum_image.php
 b36ee858077628fb232246f66805bf46 *source/module/forum/forum_index.php
 ca2a8e7a49245b179b2c5ec5f56b556d *source/module/forum/forum_misc.php
@@ -3368,7 +3368,7 @@ db17c79b92c0ee7551bbaab7a2b894ee *template/default/forum/forumdisplay_leftside.h
 bd55f788f5954a153a69497971d0e841 *template/default/forum/forumdisplay_sort.htm
 6b226a0197b30d5ea628f7df57b2b182 *template/default/forum/forumdisplay_subforum.htm
 4aa6c90ab4621088798aaa7d87aeda5b *template/default/forum/guide.htm
-347748f3e65c9e32795472199593727f *template/default/forum/guide_list_row.htm
+7111b0e62e95de0dbd06cbf44d2095f6 *template/default/forum/guide_list_row.htm
 5fc89c347d01826e27850867948bf2c8 *template/default/forum/hiderecover.htm
 7215ee9c7d9dc229d2921a40e899ec5f *template/default/forum/index.htm
 9e10b12e97d6efb3a814ac71e7ec3cad *template/default/forum/index_navbar.htm
