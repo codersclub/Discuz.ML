@@ -419,7 +419,7 @@ function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $stat
 		$dir2 = substr($uid, 3, 2);
 		$dir3 = substr($uid, 5, 2);
 		$file = $ucenterurl.'/data/avatar/'.$dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).($real ? '_real' : '').'_avatar_'.$size.'.jpg';
-		return $returnsrc ? $file : '<img src="'.$file.'" onerror="this.onerror=null;this.src=\''.$ucenterurl.'/images/noavatar_'.$size.'.gif\'" />';
+		return $returnsrc ? $file : '<img src="'.$file.'" onerror="this.onerror=null;this.src=\''.$ucenterurl.'/images/noavatar.svg\'" />';
 	}
 }
 
@@ -632,6 +632,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 				$tplfile = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $tplfile);
 				$file = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $file);
 				define('TPL_DEFAULT', true);
+				define('TPL_DEFAULT_FILE', $mobiletplfile);
 			} else {
 				$tplfile = $mobiletplfile;
 			}
@@ -1652,10 +1653,12 @@ function getposttable($tableid = 0, $prefix = false) {
  * 		$cmd = 'zincrby', $key = key, $value = member, $ttl = value to increase
  * When zrevrange and zrevrangewithscore parameters are as follows:
  * 		$cmd = 'zrevrange', $key = key, $value = start, $ttl = end
+ * inc, dec, incex 的 $ttl 无效
  */
 function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 	static $supported_command = array(
-		'set', 'get', 'rm', 'inc', 'dec', 'exists',
+		'set', 'add', 'get', 'rm', 'inc', 'dec', 'exists',
+		'incex', /* 存在时才inc */
 		'sadd', 'srem', 'scard', 'smembers', 'sismember',
 		'hmset', 'hgetall', 'hexists', 'hget',
 		'eval', 
@@ -1688,7 +1691,8 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 			case 'rm': return C::memory()->rm($key, $value/*prefix*/); break;
 			case 'exists': return C::memory()->exists($key, $value/*prefix*/); break;
 			case 'inc': return C::memory()->inc($key, $value ? $value : 1, $prefix); break;
-			case 'dec': return C::memory()->dec($key, $value ? $value : -1, $prefix); break;
+			case 'incex': return C::memory()->incex($key, $value ? $value : 1, $prefix); break;
+			case 'dec': return C::memory()->dec($key, $value ? $value : 1, $prefix); break;
 			case 'sadd': return C::memory()->sadd($key, $value, $prefix); break;
 			case 'srem': return C::memory()->srem($key, $value, $prefix); break;
 			case 'scard': return C::memory()->scard($key, $value/*prefix*/); break;

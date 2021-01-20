@@ -640,6 +640,7 @@ if(!submitcheck('settingsubmit')) {
 		showsetting('setting_styles_viewthread_starthreshold', 'settingnew[starthreshold]', $setting['starthreshold'], 'text');
 		showsetting('setting_styles_viewthread_maxsigrows', 'settingnew[maxsigrows]', $setting['maxsigrows'], 'text');
 		showsetting('setting_styles_viewthread_sigviewcond', 'settingnew[sigviewcond]', $setting['sigviewcond'], 'text');
+		showsetting('setting_styles_viewthread_sigimgclick_on', 'settingnew[sigimgclick]', $setting['sigimgclick'], 'radio');
 		showsetting('setting_styles_viewthread_rate_on', 'settingnew[ratelogon]', $setting['ratelogon'], 'radio');
 		showsetting('setting_styles_viewthread_rate_number', 'settingnew[ratelogrecord]', $setting['ratelogrecord'], 'text');
 		showsetting('setting_styles_viewthread_collection_number', 'settingnew[collectionnum]', $setting['collectionnum'], 'text');
@@ -1892,6 +1893,7 @@ EOT;
 		showsetting('setting_sec_floodctrl', 'settingnew[floodctrl]', $setting['floodctrl'], 'text');
 		showsetting('setting_sec_base_need_email', 'settingnew[need_email]', $setting['need_email'], 'radio');
 		showsetting('setting_sec_base_need_avatar', 'settingnew[need_avatar]', $setting['need_avatar'], 'radio');
+		showsetting('setting_sec_base_change_email', 'settingnew[change_email]', $setting['change_email'], 'radio');
 		showsetting('setting_sec_base_need_friendnum', 'settingnew[need_friendnum]', $setting['need_friendnum'], 'text');
 		showtablefooter();
 		/*search*/
@@ -1945,7 +1947,7 @@ EOT;
 		showsetting('setting_datetime_visitbanperiods', 'settingnew[visitbanperiods]', $setting['visitbanperiods'], 'textarea');
 		showsetting('setting_datetime_ban_downtime', 'settingnew[attachbanperiods]', $setting['attachbanperiods'], 'textarea');
 		showsetting('setting_datetime_searchbanperiods', 'settingnew[searchbanperiods]', $setting['searchbanperiods'], 'textarea');
-		/*search}*/
+		/*search*/
 
 	} elseif($operation == 'attach') {
 
@@ -3132,15 +3134,15 @@ EOT;
 		cpmsg('setting_update_succeed', 'action=setting&operation=styles&anchor=threadprofile', 'succeed');
 	}
 
-	if(isset($settingnew['visitbanperiods']) && isset($settingnew['postbanperiods']) && isset($settingnew['postmodperiods']) && isset($settingnew['searchbanperiods'])) {
-		foreach(array('visitbanperiods', 'postbanperiods', 'postmodperiods', 'searchbanperiods') as $periods) {
+	if((isset($settingnew['postbanperiods']) && isset($settingnew['postmodperiods']))||(isset($settingnew['visitbanperiods'])&&isset($settingnew['attachbanperiods'])&&isset($settingnew['searchbanperiods'])) ) {
+		foreach(array('visitbanperiods', 'postbanperiods','attachbanperiods', 'postmodperiods', 'searchbanperiods') as $periods) {
 			$periodarray = array();
 			foreach(explode("\n", $settingnew[$periods]) as $period) {
 				if(preg_match("/^\d{1,2}\:\d{2}\-\d{1,2}\:\d{2}$/", $period = trim($period))) {
 					$periodarray[] = $period;
 				}
 			}
-			$settingnew[$periods] = implode("\r\n", $periodarray);
+			isset($settingnew[$periods])&&$settingnew[$periods] = implode("\r\n", $periodarray);
 		}
 	}
 
@@ -3170,8 +3172,8 @@ EOT;
 		$settingnew['accountguard'] = serialize($settingnew['accountguard']);
 	}
 
-	if(!empty($_G['gp_aggid'])) {
-		foreach($_G['gp_aggid'] as $gid => $v) {
+	if(!empty($_POST['aggid'])) {
+		foreach(daddslashes($_POST['aggid']) as $gid => $v) {
 			C::t('common_usergroup_field')->update($gid, array('forcelogin' => $v));
 		}
 		updatecache('usergroups');
@@ -3240,6 +3242,10 @@ EOT;
 	}
 
 	if($operation == 'attach') {
+		if($settingnew['allowattachurl'] && !in_array($_G['config']['download']['readmod'], array(1, 4))) {
+			// 如需附件URL地址、媒体附件播放，需选择支持Range参数的读取模式1或4，其他模式会导致部分浏览器下视频播放异常
+			cpmsg('attach_readmod_error', '', 'error');
+		}
 		$settingnew['thumbwidth'] = intval($settingnew['thumbwidth']) > 0 ? intval($settingnew['thumbwidth']) : 200;
 		$settingnew['thumbheight'] = intval($settingnew['thumbheight']) > 0 ? intval($settingnew['thumbheight']) : 300;
 		$settingnew['maxthumbwidth'] = intval($settingnew['maxthumbwidth']);

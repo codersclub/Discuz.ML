@@ -220,156 +220,20 @@ function checkImage(url) {
 	return url.match(re);
 }
 
-function quick_validate(obj) {
-	if($('seccode')) {
-		var code = $('seccode').value;
-		var x = new Ajax();
-		x.get('cp.php?ac=common&op=seccode&code=' + code, function(s){
-			s = trim(s);
-			if(s != 'succeed') {
-				alert(s);
-				$('seccode').focus();
-		   		return false;
-			} else {
-				obj.form.submit();
-				return true;
-			}
-		});
-	} else {
-		obj.form.submit();
-		return true;
-	}
-}
-
-function stopMusic(preID, playerID) {
-	var musicFlash = preID.toString() + '_' + playerID.toString();
-	if($(musicFlash)) {
-		$(musicFlash).SetVariable('closePlayer', 1);
-	}
-}
 function showFlash(host, flashvar, obj, shareid) {
-	var flashAddr = {
-		'youku.com' : 'http://player.youku.com/player.php/sid/FLASHVAR=/v.swf',
-		'ku6.com' : 'http://player.ku6.com/refer/FLASHVAR/v.swf',
-		'youtube.com' : 'http://www.youtube.com/v/FLASHVAR',
-		'5show.com' : 'http://www.5show.com/swf/5show_player.swf?flv_id=FLASHVAR',
-		'sina.com.cn' : 'http://vhead.blog.sina.com.cn/player/outer_player.swf?vid=FLASHVAR',
-		'sohu.com' : 'http://v.blog.sohu.com/fo/v4/FLASHVAR',
-		'mofile.com' : 'http://tv.mofile.com/cn/xplayer.swf?v=FLASHVAR',
-		'music' : 'FLASHVAR',
-		'flash' : 'FLASHVAR'
-	};
-	var flash = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="480" height="400">'
-	    + '<param name="movie" value="FLASHADDR" />'
-	    + '<param name="quality" value="high" />'
-	    + '<param name="bgcolor" value="#FFFFFF" />'
-	    + '<param name="allowScriptAccess" value="never" />'
-	    + '<param name="allowNetworking" value="internal" />'
-	    + '<embed width="480" height="400" menu="false" quality="high" allowScriptAccess="never" allowNetworking="internal" src="FLASHADDR" type="application/x-shockwave-flash" />'
-	    + '</object>';
-	var videoFlash = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="480" height="450">'
-		+ '<param value="transparent" name="wmode"/>'
-		+ '<param value="FLASHADDR" name="movie" />'
-		+ '<param name="allowScriptAccess" value="never" />'
-		+ '<param name="allowNetworking" value="none" />'
-		+ '<embed src="FLASHADDR" wmode="transparent" allowfullscreen="true" type="application/x-shockwave-flash" width="480" height="450" allowScriptAccess="never" allowNetworking="internal"></embed>'
-		+ '</object>';
-	var musicFlash = '<object id="audioplayer_SHAREID" height="24" width="290" data="' + STATICURL + 'image/common/player.swf" type="application/x-shockwave-flash">'
-		+ '<param value="' + STATICURL + 'image/common/player.swf" name="movie"/>'
-		+ '<param value="autostart=yes&bg=0xCDDFF3&leftbg=0x357DCE&lefticon=0xF2F2F2&rightbg=0xF06A51&rightbghover=0xAF2910&righticon=0xF2F2F2&righticonhover=0xFFFFFF&text=0x357DCE&slider=0x357DCE&track=0xFFFFFF&border=0xFFFFFF&loader=0xAF2910&soundFile=FLASHADDR" name="FlashVars"/>'
-		+ '<param value="high" name="quality"/>'
-		+ '<param value="false" name="menu"/>'
-		+ '<param value="#FFFFFF" name="bgcolor"/>'
-	    + '</object>';
-	var musicMedia = '<object height="64" width="290" data="FLASHADDR" type="audio/x-ms-wma">'
-	    + '<param value="FLASHADDR" name="src"/>'
-	    + '<param value="1" name="autostart"/>'
-	    + '<param value="true" name="controller"/>'
-	    + '</object>';
-	var flashHtml = videoFlash;
-	var videoMp3 = true;
-	if('' == flashvar) {
-/*vot*/		alert(lng['audio_url_invalid']);
-		return false;
-	}
-	if('music' == host) {
-		var mp3Reg = new RegExp('.mp3$', 'ig');
-		var flashReg = new RegExp('.swf$', 'ig');
-		flashHtml = musicMedia;
-		videoMp3 = false;
-		if(mp3Reg.test(flashvar)) {
-			videoMp3 = true;
-			flashHtml = musicFlash;
-		} else if(flashReg.test(flashvar)) {
-			videoMp3 = true;
-			flashHtml = flash;
-		}
-	}
-	flashvar = encodeURI(flashvar);
-	if(flashAddr[host]) {
-		var flash = flashAddr[host].replace('FLASHVAR', flashvar);
-		flashHtml = flashHtml.replace(/FLASHADDR/g, flash);
-		flashHtml = flashHtml.replace(/SHAREID/g, shareid);
-	}
-
-	if(!obj) {
-		$('flash_div_' + shareid).innerHTML = flashHtml;
-		return true;
-	}
-	if($('flash_div_' + shareid)) {
-		$('flash_div_' + shareid).style.display = '';
-		$('flash_hide_' + shareid).style.display = '';
-		obj.style.display = 'none';
-		return true;
-	}
-	if(flashAddr[host]) {
+	// Refer to the detectPlayer introduced earlier to play the resource
+	var re = new RegExp('.[A-Za-z0-9]+$', 'ig');
+	var ext = flashvar.match(re).pop().substr(1);
+	if (obj) {
 		var flashObj = document.createElement('div');
 		flashObj.id = 'flash_div_' + shareid;
 		obj.parentNode.insertBefore(flashObj, obj);
-		flashObj.innerHTML = flashHtml;
+		var containerObj = document.createElement('div');
+		containerObj.id = flashObj.id + '_container';
+		flashObj.appendChild(containerObj);
 		obj.style.display = 'none';
-		var hideObj = document.createElement('div');
-		hideObj.id = 'flash_hide_' + shareid;
-/*vot*/		var nodetxt = document.createTextNode(lng['collapse']);
-		hideObj.appendChild(nodetxt);
-		obj.parentNode.insertBefore(hideObj, obj);
-		hideObj.style.cursor = 'pointer';
-		hideObj.onclick = function() {
-			if(true == videoMp3) {
-				stopMusic('audioplayer', shareid);
-				flashObj.parentNode.removeChild(flashObj);
-				hideObj.parentNode.removeChild(hideObj);
-			} else {
-				flashObj.style.display = 'none';
-				hideObj.style.display = 'none';
-			}
-			obj.style.display = '';
-		};
 	}
-}
-
-function userapp_open() {
-	var x = new Ajax();
-	x.get('home.php?mod=spacecp&ac=common&op=getuserapp&inajax=1', function(s){
-		$('my_userapp').innerHTML = s;
-		$('a_app_more').className = 'fold';
-/*vot*/		$('a_app_more').innerHTML = lng['collapse'];
-		$('a_app_more').onclick = function() {
-			userapp_close();
-		};
-	});
-}
-
-function userapp_close() {
-	var x = new Ajax();
-	x.get('home.php?mod=spacecp&ac=common&op=getuserapp&subop=off&inajax=1', function(s){
-		$('my_userapp').innerHTML = s;
-		$('a_app_more').className = 'unfold';
-/*vot*/		$('a_app_more').innerHTML = lng['expand'];
-		$('a_app_more').onclick = function() {
-			userapp_open();
-		};
-	});
+	return detectPlayer('flash_div_' + shareid, ext, flashvar, 480, 400);
 }
 
 function startMarquee(h, speed, delay, sid) {
@@ -783,14 +647,6 @@ function resend_mail(mid) {
 	}
 }
 
-function userapp_delete(id, result) {
-	if(result) {
-		var ids = explode('_', id);
-		var appid = ids[1];
-		$('space_app_'+appid).style.display = "none";
-	}
-}
-
 function docomment_get(doid, key) {
 	var showid = key + '_' + doid;
 	var opid = key + '_do_a_op_'+doid;
@@ -1169,4 +1025,43 @@ function removeVisitor(event, uid) {
 	window.location = 'home.php?mod=space&uid='+uid+'&do=index&view=admin&additional=removevlog';
 	event.preventDefault();
 	event.stopPropagation();
+}
+
+function spaceMusicPlayer(url, height) {
+	if (JSLOADED[STATICURL + 'js/player/aplayer.min.js']) {
+		var x = new Ajax('JSON');
+		x.getJSON(url, function(s) {
+			// 后端直接返回, 由前端负责将原始数据调整为所需格式
+			var audio = new Array();
+			s.mp3list.forEach(function (s) {
+				var obj = new Object();
+				obj.name = s.mp3name;
+				obj.artist = ' ';
+				obj.url = s.mp3url;
+				obj.cover = s.cdbj;
+				audio.push(obj);
+			});
+			// 设置样式, 保证播放器展示空间
+			$('music_content').style.height = height + 'px';
+			$('music_content').style.padding = '0px';
+			$('music_content').style.margin = '0px';
+			// 初始化APlayer
+			window['music_content'] = new APlayer({
+				container: $('music_content'),
+				autoplay: s.config.autorun == 'true',
+				theme: s.config.crontabcolor,
+				loop: 'all',
+				order: s.config.shuffle == 'true' ? 'random' : 'list',
+				preload: 'none',
+				volume: 1,
+				mutex: true,
+				listFolded: s.config.showmod == 'big' ? false : true,
+				audio: audio
+			});
+		});
+	} else {
+		setTimeout(function () {
+			spaceMusicPlayer(url, height);
+		}, 50);
+	}
 }

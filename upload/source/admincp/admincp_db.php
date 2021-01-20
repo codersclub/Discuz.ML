@@ -92,7 +92,7 @@ if($operation == 'export') {
 		)), $db_export_key, 'mradio');
 
 		showtagheader('tbody', 'showtables');
-		showtablerow('', '', '<input class="checkbox" name="chkall" onclick="checkAll(\'prefix\', this.form, \'customtables\', \'chkall\', true)" checked="checked" type="checkbox" id="chkalltables" /><label for="chkalltables"> '.cplang('db_export_custom_select_all').' - '.$db_export_discuz_table ).'</label>';
+		showtablerow('', '', '<input class="checkbox" name="chkall" onclick="checkAll(\'prefix\', this.form, \'customtables\', \'chkall\', true)" checked="checked" type="checkbox" id="chkalltables" /><label for="chkalltables"> '.cplang('db_export_custom_select_all').' - '.$db_export_discuz_table.'</label>');
 		showtablerow('', 'colspan="2"', mcheckbox('customtables', $dztables));
 		showtagfooter('tbody');
 
@@ -1235,4 +1235,3 @@ function slowcheck($type1, $type2) {
 	}
 	return FALSE;
 }
-

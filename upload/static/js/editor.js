@@ -512,9 +512,9 @@ function checkFocus() {
 			return;
 		}
 		try {
-			editwin.focus();
-		} catch(e) {
 			editwin.document.body.focus();
+		} catch(e) {
+			editwin.focus();
 		}
 	} else {
 		textobj.focus();
@@ -797,7 +797,7 @@ function discuzcode(cmd, arg) {
 		return;
 	} else if(!wysiwyg && cmd == 'removeformat') {
 		var simplestrip = new Array('b', 'i', 'u');
-		var complexstrip = new Array('font', 'color', 'backcolor', 'size');
+		var complexstrip = new Array('font', 'color', 'backcolor', 'size', 'align', 'float');
 
 		var str = getSel();
 		if(str === false) {
@@ -1038,7 +1038,12 @@ function showEditorMenu(tag, params) {
 		sel = wysiwyg ? editdoc.selection.createRange() : document.selection.createRange();
 		selection = wysiwyg ? sel.htmlText : sel.text;
 	} catch(e) {
-		sel = wysiwyg ? editdoc.getSelection().getRangeAt(0) : undefined;
+		if (wysiwyg) {
+			var gSel = editdoc.getSelection();
+			if (gSel.rangeCount > 0) {
+				sel = gSel.getRangeAt(0);
+			}
+		}
 		selection = getSel();
 	}
 
@@ -1493,6 +1498,9 @@ function insertText(text, movestart, moveend, select, sel) {
 			} catch(e) {
 				if(!sel) {
 					var sel = editdoc.getSelection();
+					if (sel.rangeCount == 0) {
+						sel.collapse(editdoc.body, 0);
+					}
 					var range = sel.getRangeAt(0);
 				} else {
 					var range = sel;

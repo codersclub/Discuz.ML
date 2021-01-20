@@ -23,6 +23,7 @@ if(!empty($_GET['checkrush']) && preg_match('/[^0-9_]/', $_GET['checkrush'])) {
 }
 
 if(!$_G['forum_thread'] || !$_G['forum']) {
+	header("HTTP/1.1 404 Not Found");
 	showmessage('thread_nonexistence');
 }
 
@@ -33,7 +34,7 @@ if($page === 1 && !empty($_G['setting']['antitheft']['allow']) && empty($_G['set
 	helper_antitheft::check($_G['forum_thread']['tid'], 'tid');
 }
 
-if($_G['setting']['cachethreadlife'] && $_G['forum']['threadcaches'] && !$_G['uid'] && $page == 1 && !$_G['forum']['special'] && empty($_GET['do']) && !defined('IN_ARCHIVER') && !defined('IN_MOBILE')) {
+if($_G['setting']['cachethreadlife'] && $_G['forum']['threadcaches'] && !$_G['uid'] && $page == 1 && !$_G['forum']['special'] && empty($_GET['do']) && empty($_GET['threadindex']) && !defined('IN_ARCHIVER') && !defined('IN_MOBILE')) {
 	viewthread_loadcache();
 }
 
@@ -1629,15 +1630,6 @@ function parsebegin($linkaddr, $imgflashurl, $w = 0, $h = 0, $type = 0, $s = 0) 
 		case 'gif':
 		case 'png':
 			$content = '<img style="position:absolute;width:'.$w.'px;height:'.$h.'px;" src="'.$imgflashurl.'" />';
-			break;
-		case 'flv':
-			$content = '<span id="'.$randomid.'" style="position:absolute;"></span>'.
-				'<script type="text/javascript" reload="1">$(\''.$randomid.'\').innerHTML='.
-				'AC_FL_RunContent(\'width\', \''.$w.'\', \'height\', \''.$h.'\', '.
-				'\'allowNetworking\', \'internal\', \'allowScriptAccess\', \'never\', '.
-				'\'src\', \''.STATICURL.'image/common/flvplayer.swf\', '.
-				'\'flashvars\', \'file='.rawurlencode($imgflashurl).'\', \'quality\', \'high\', '.
-				'\'wmode\', \'transparent\', \'allowfullscreen\', \'true\');</script>';
 			break;
 		case 'swf':
 			$content = '<span id="'.$randomid.'" style="position:absolute;"></span>'.

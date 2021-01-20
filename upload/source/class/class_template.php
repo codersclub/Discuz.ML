@@ -108,7 +108,7 @@ class template {
 
 		$template = preg_replace_callback("/\"(http)?[\w\.\/:]+\?[^\"]+?&[^\"]+?\"/", array($this, 'parse_template_callback_transamp_0'), $template);
 		$template = preg_replace_callback("/\<script[^\>]*?src=\"(.+?)\"(.*?)\>\s*\<\/script\>/is", array($this, 'parse_template_callback_stripscriptamp_12'), $template);
-		$template = preg_replace_callback("/[\n\r\t]*\{block\s+([a-zA-Z0-9_\[\]]+)\}(.+?)\{\/block\}/is", array($this, 'parse_template_callback_stripblock_12'), $template);
+		$template = preg_replace_callback("/[\n\r\t]*\{block\s+([a-zA-Z0-9_\[\]']+)\}(.+?)\{\/block\}/is", array($this, 'parse_template_callback_stripblock_12'), $template);
 		$template = preg_replace("/\<\?(\s{1})/is", "<?php\\1", $template);
 		$template = preg_replace("/\<\?\=(.+?)\?\>/is", "<?php echo \\1;?>", $template);
 
@@ -361,6 +361,9 @@ class template {
 			$scriptcss .= '<link rel="stylesheet" type="text/css" href="'.$_G['setting']['csspath'].$css.'.css?{VERHASH}" />';
 		}
 		$scriptcss .= '{if $_G[uid] && isset($_G[cookie][extstyle]) && strpos($_G[cookie][extstyle], TPLDIR) !== false}<link rel="stylesheet" id="css_extstyle" type="text/css" href="$_G[cookie][extstyle]/style.css" />{elseif $_G[style][defaultextstyle]}<link rel="stylesheet" id="css_extstyle" type="text/css" href="$_G[style][defaultextstyle]/style.css" />{/if}';
+		if(isset($_G['config']['output']['css4legacyie']) && $_G['config']['output']['css4legacyie']) {
+			$scriptcss .= '<!--[if IE]><link rel="stylesheet" type="text/css" href="'.$_G['setting']['csspath'].STYLEID.'_iefix'.'.css?{VERHASH}" /><![endif]-->';
+		}
 		return $scriptcss;
 	}
 

@@ -156,11 +156,15 @@ if($_GET['action'] == 'paysucceed') {
 			$aidencode = aidencode($aid, 0, $_GET['tid']);
 		}
 		discuz_process::unlock($lockid);
-		if(count($aids) > 1) {
-			showmessage('attachment_buyall', 'forum.php?mod=redirect&goto=findpost&ptid='.$attach['tid'].'&pid='.$attach['pid']);
+		if(defined('IN_MOBILE')) {
+			showmessage('attachment_mobile_buy', 'forum.php?mod=redirect&goto=findpost&ptid='.$attach['tid'].'&pid='.$attach['pid']);
 		} else {
-			$_G['forum_attach_filename'] = $attach['filename'];
-			showmessage('attachment_buy', "forum.php?mod=attachment&aid=$aidencode", array('filename' => $_G['forum_attach_filename']), array('redirectmsg' => 1));
+			if(count($aids) > 1) {
+				showmessage('attachment_buyall', 'forum.php?mod=redirect&goto=findpost&ptid='.$attach['tid'].'&pid='.$attach['pid']);
+			} else {
+				$_G['forum_attach_filename'] = $attach['filename'];
+				showmessage('attachment_buy', "forum.php?mod=attachment&aid=$aidencode", array('filename' => $_G['forum_attach_filename']), array('redirectmsg' => 1));
+			}
 		}
 	}
 
@@ -260,7 +264,7 @@ if($_GET['action'] == 'paysucceed') {
 		if($action == 1) {
 			$cic = $matches;
 		} else {
-			return '<i class="cmstarv" style="background-position:20px -'.(intval($matches[1]) * 16).'px">'.sprintf('%1.1f', $matches[1]).'</i>'.($cic++ % 2 ? '<br />' : '');
+			return '<i class="cmstarv">'.sprintf('%1.1f', $matches[1]).'</i>'.str_repeat('<span class="fico-star fc-l fnmr"></span>',intval($matches[1])).str_repeat('<span class="fico-star fc-s fnmr"></span>',(5-intval($matches[1]))).($cic++ % 2 ? '<br />' : '');
 		}
 	}
 

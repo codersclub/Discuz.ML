@@ -4,7 +4,7 @@
 		<h2 class="mbn">
 			{$space[username]}
 			<!--{if $_G['ols'][$space[uid]]}-->
-				<img src="{IMGDIR}/ol.gif" alt="online" title="{lang online}" class="vm" />&nbsp;
+				<span title="{lang online}" class="olicon vm"></span>&nbsp;
 			<!--{/if}-->
 			<span class="xw0">(UID: {$space[uid]}
 			<!--{eval $isfriendinfo = 'home_friend_info_'.$space['uid'].'_'.$_G[uid];}-->
@@ -30,7 +30,6 @@
 <!--vot-->		<li><em>{lang email}: </em>$space[email]</li>
 			<!--{/if}-->
 <!--vot-->		<li><em>{lang email_status}: </em><!--{if $space[emailstatus] > 0}-->{lang profile_verified}<!--{else}-->{lang profile_no_verified}<!--{/if}--></li>
-<!--vot-->		<li><em>{lang video_certification}: </em><!--{if $space[videophotostatus] > 0}-->{lang profile_certified} <!--{if $showvideophoto}-->&nbsp;&nbsp;(<a href="home.php?mod=space&uid=$space[uid]&do=videophoto" id="viewphoto" onclick="showWindow(this.id, this.href, 'get', 0)">{lang view_certification_photos}</a>)<!--{/if}--><!--{else}-->{lang profile_no_certified}<!--{/if}--></li>
 		</ul>
 		<ul>
 <!--vot-->		<!--{if $space[spacenote]}--><li><em class="xg1">{lang spacenote}:</em>$space[spacenote]</li><!--{/if}-->

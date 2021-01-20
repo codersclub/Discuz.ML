@@ -128,7 +128,7 @@ function discuzcode($message, $smileyoff = false, $bbcodeoff = false, $htmlon = 
 			$message = preg_replace_callback("/\[url(=((https?|ftp|gopher|news|telnet|rtsp|mms|callto|bctp|thunder|qqdl|synacast){1}:\/\/|www\.|mailto:)?([^\r\n\[\"']+?))?\](.+?)\[\/url\]/is", 'discuzcode_callback_parseurl_152', $message);
 		}
 		if(strpos($msglower, '[/email]') !== FALSE) {
-			$message = preg_replace_callback("/\[email(=([a-z0-9\-_.+]+)@([a-z0-9\-_]+[.][a-z0-9\-_.]+))?\](.+?)\[\/email\]/is", 'discuzcode_callback_parseemail_14', $message);
+			$message = preg_replace_callback("/\[email(=([A-Za-z0-9\-_.+]+)@([A-Za-z0-9\-_]+[.][A-Za-z0-9\-_.]+))?\](.+?)\[\/email\]/is", 'discuzcode_callback_parseemail_14', $message);
 		}
 
 		$nest = 0;
@@ -349,14 +349,9 @@ function parseurl($url, $text, $scheme) {
 function parseflash($w, $h, $url) {
 	$w = !$w ? 550 : $w;
 	$h = !$h ? 400 : $h;
-/*vot*/	preg_match("/((https?:)?\/\/|www\.)[^\r\n\[\"'\?]+(\.swf|\.flv)(\?[^\r\n\[\"'\?]+)?/i", $url, $matches);
-	$url = $matches[0];
-	$randomid = 'swf_'.random(3);
-	if(fileext($url) != 'flv') {
-		return '<span id="'.$randomid.'"></span><script type="text/javascript" reload="1">$(\''.$randomid.'\').innerHTML=AC_FL_RunContent(\'width\', \''.$w.'\', \'height\', \''.$h.'\', \'allowNetworking\', \'internal\', \'allowScriptAccess\', \'never\', \'src\', encodeURI(\''.$url.'\'), \'quality\', \'high\', \'bgcolor\', \'#ffffff\', \'wmode\', \'transparent\', \'allowfullscreen\', \'true\');</script>';
-	} else {
-		return '<span id="'.$randomid.'"></span><script type="text/javascript" reload="1">$(\''.$randomid.'\').innerHTML=AC_FL_RunContent(\'width\', \''.$w.'\', \'height\', \''.$h.'\', \'allowNetworking\', \'internal\', \'allowScriptAccess\', \'never\', \'src\', \''.STATICURL.'image/common/flvplayer.swf\', \'flashvars\', \'file='.rawurlencode($url).'\', \'quality\', \'high\', \'wmode\', \'transparent\', \'allowfullscreen\', \'true\');</script>';
-	}
+	$ext = fileext($url) == 'flv' ? 'flv' : 'swf';
+	$params = "$ext,$w,$h";
+	return parsemedia($params, $url);
 }
 
 function parseed2k($url) {
@@ -380,7 +375,7 @@ function parseattachurl($aid, $ext, $ignoretid = 0) {
 
 function parseemail($email, $text) {
 	$text = str_replace('\"', '"', $text);
-	if(!$email && preg_match("/\s*([a-z0-9\-_.+]+)@([a-z0-9\-_]+[.][a-z0-9\-_.]+)\s*/i", $text, $matches)) {
+	if(!$email && preg_match("/\s*([A-Za-z0-9\-_.+]+)@([A-Za-z0-9\-_]+[.][A-Za-z0-9\-_.]+)\s*/i", $text, $matches)) {
 		$email = trim($matches[0]);
 		return '<a href="mailto:'.$email.'">'.$email.'</a>';
 	} else {

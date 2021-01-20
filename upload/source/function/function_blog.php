@@ -57,7 +57,7 @@ function blog_post($POST, $olds=array()) {
 		$POST['target_ids'] = '';
 	}
 	if($POST['friend'] !== 4) {
-		$POST['password'] == '';
+		$POST['password'] = '';
 	}
 
 	$POST['tag'] = dhtmlspecialchars(trim($POST['tag']));
@@ -72,7 +72,7 @@ function blog_post($POST, $olds=array()) {
 		$POST['message'] = getstr($POST['message'], 0, 0, 0, 0, 1);
 		$POST['message'] = censor($POST['message']);
 		$POST['message'] = preg_replace("/\<div\>\<\/div\>/i", '', $POST['message']);
-		$POST['message'] = preg_replace_callback("/\<a\s+href\=\"([^\>]+?)\"\>/i", 'blog_post_callback_blog_check_url_1', $POST['message']);
+		$POST['message'] = preg_replace_callback("/<a .*?href=\"(.*?)\".*?>/is", 'blog_post_callback_blog_check_url_1', $POST['message']);
 	}
 	$message = $POST['message'];
 	if(censormod($message) || censormod($POST['subject']) || $_G['group']['allowblogmod']) {

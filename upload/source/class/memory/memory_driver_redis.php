@@ -112,7 +112,8 @@ class memory_driver_redis {
 	}
 
 	function add($key, $value, $ttl = 0) {
-		return $this->obj->set($key, $value, array('nx', 'ex' => $ttl));
+		if ($ttl > 0) return $this->obj->set($key, $value, array('nx', 'ex' => $ttl));
+		return $this->obj->setnx($key, $value);
 	}
 
 	function rm($key) {
@@ -131,6 +132,11 @@ class memory_driver_redis {
 
 	function inc($key, $step = 1) {
 		return $this->obj->incr($key, $step);
+	}
+
+	function incex($key, $step = 1) {
+		$script = "if redis.call('exists', ARGV[1]) == 1 then return redis.call('incrby', ARGV[1], ARGV[2]) end";
+		return $this->evalscript($script, array($key, $step));
 	}
 
 	function dec($key, $step = 1) {

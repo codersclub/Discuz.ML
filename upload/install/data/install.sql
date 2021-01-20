@@ -1416,6 +1416,7 @@ DROP TABLE IF EXISTS pre_common_task;
 CREATE TABLE pre_common_task (
   `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `relatedtaskid` int(11) unsigned NOT NULL DEFAULT '0',
+  exclusivetaskid int(11) unsigned NOT NULL DEFAULT '0',
   `available` tinyint(1) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `description` text NOT NULL,

@@ -90,7 +90,7 @@ function atMenu(x, y) {
 	$('at_menu').style.left = x + 'px';
 	$('at_menu').style.top = y + 'px';
 	$('at_menu').style.display = '';
-/*vot*/	$('at_menu').innerHTML = '<img src="' + IMGDIR + '/loading.gif" class="vm"> '+lng['wait_please'];
+/*vot*/	$('at_menu').innerHTML = '<div class="loadicon vm"></div> '+lng['wait_please'];
 }
 
 function atSearch(kw, call) {

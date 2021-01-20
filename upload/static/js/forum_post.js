@@ -242,7 +242,7 @@ function uploadAttach(curId, statusid, prefix, sizelimit) {
 			FAILEDATTACHS += '<br />' + mb_cutstr($(prefix + 'attachnew_' + curId).value.substr($(prefix + 'attachnew_' + curId).value.replace(/\\/g, '/').lastIndexOf('/') + 1), 25) + ': ' + STATUSMSG[statusid] + sizelimit;
 			UPLOADFAILED++;
 		}
-		$(prefix + 'cpdel_' + curId).innerHTML = '<img src="' + IMGDIR + '/check_' + (statusid == 0 ? 'right' : 'error') + '.gif" alt="' + STATUSMSG[statusid] + '" />';
+		$(prefix + 'cpdel_' + curId).innerHTML = '<i class="fico' + (statusid == 0 ? 'check_right fc-v' : 'error fc-i') + ' fic4" alt="' + STATUSMSG[statusid] + '"></i>';
 		if(nextId == curId || in_array(statusid, [6, 8])) {
 			if(prefix == 'img') {
 				updateImageList();
@@ -276,7 +276,7 @@ function uploadAttach(curId, statusid, prefix, sizelimit) {
 		$(prefix + 'uploadbtn').style.display = 'none';
 		$(prefix + 'uploading').style.display = '';
 	}
-/*vot*/	$(prefix + 'cpdel_' + nextId).innerHTML = '<img src="' + IMGDIR + '/loading.gif" alt="'+lng['uploading']+'" />';
+/*vot*/	$(prefix + 'cpdel_' + nextId).innerHTML = '<div class="loadicon" title="'+lng['uploading']+'"></div>';
 	UPLOADSTATUS = 1;
 	$(prefix + 'attachform_' + nextId).submit();
 }
@@ -814,6 +814,7 @@ function getreplycredit() {
 
 	var reply_credits_sum = Math.ceil(parseInt(credit_once * times));
 
+	$('replycredit_sum').innerHTML = reply_credits_sum > 0 ? reply_credits_sum : 0 ;
 	if(real_reply_credit > userextcredit) {
 /*vot*/		$('replycredit').innerHTML = '<b class="xi1">'+lng['award_more_total']+' ('+real_reply_credit+')</b>';
 	} else {
@@ -822,7 +823,6 @@ function getreplycredit() {
 		} else {
 			$('replycredit').innerHTML = replycredit_result_lang + (real_reply_credit > 0 ? real_reply_credit : 0 );
 		}
-		$('replycredit_sum').innerHTML = reply_credits_sum > 0 ? reply_credits_sum : 0 ;
 	}
 }
 

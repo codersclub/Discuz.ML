@@ -416,7 +416,7 @@ EOT;
 } elseif ($operation == 'makehtmlsetting') {
 
 	if(!submitcheck('makehtmlsetting')) {
-		/*search={"html":"action=makehtml&operation=makehtmlsetting","setting_functions_makehtml":"action=makehtml&operation=makehtmlsetting"}*/
+		/*search={"nav_makehtml":"action=makehtml","setting_functions_makehtml":"action=makehtml&operation=makehtmlsetting"}*/
 		$setting = $_G['setting'];
 		showformheader("makehtml&operation=makehtmlsetting");
 		showtableheader('', 'nobottom', 'id="makehtml"'.($_GET['operation'] != 'makehtmlsetting' ? ' style="display: none"' : ''));

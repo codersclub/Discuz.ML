@@ -12,10 +12,14 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-if(@file_exists(DISCUZ_ROOT.'./install/index.php') && !DISCUZ_DEBUG) {
-//vot	@unlink(DISCUZ_ROOT.'./install/index.php');
-	if(@file_exists(DISCUZ_ROOT.'./install/index.php')) {
-/*vot*/		echo '<div class="error">'.cplang('delete_install_index').'</div>';
+$sensitivedirs = array('./', './uc_server/', './ucenter/');
+
+foreach ($sensitivedirs as $sdir) {
+	if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php') && !DISCUZ_DEBUG) {
+		@unlink(DISCUZ_ROOT.$sdir.'install/index.php');
+		if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php')) {
+			dexit('Please delete '.$sdir.'install/index.php via FTP!');
+		}
 	}
 }
 
@@ -114,12 +118,12 @@ cpheader();
 shownav();
 
 require_once libfile('function/cloudaddons');
-$newversion = dunserialize($_G['setting']['cloudaddons_newversion']);
+$newversion = (CHARSET == 'utf-8') ? dunserialize($_G['setting']['cloudaddons_newversion']) : json_decode($_G['setting']['cloudaddons_newversion'],true);
 if(empty($newversion['newversion']) || !is_array($newversion['newversion']) || abs($_G['timestamp'] - $newversion['updatetime']) > 86400 || (isset($_GET['checknewversion']) && $_G['formhash'] == $_GET['formhash'])) {
 	$newversion = json_decode(cloudaddons_open('&mod=app&ac=upgrade'), true);
 	if(!empty($newversion['newversion'])){
 		$newversion['updatetime'] = $_G['timestamp'];
-		C::t('common_setting')->update('cloudaddons_newversion', $newversion);
+		C::t('common_setting')->update('cloudaddons_newversion', ((CHARSET == 'utf-8') ? $newversion : json_encode($newversion)));
 		updatecache('setting');
 	}else{
 		$newversion = array();
@@ -229,8 +233,9 @@ if(isfounder()) {
 
 /*vot*/ showtableheader(cplang('detect_environment');
 $env_ok = true;
+$now_ver_gd = function_exists('gd_info')? gd_info() : false;
 $now_ver = array('PHP' => constant('PHP_VERSION'), 'MySQL' => helper_dbtool::dbversion(), 'gethostbyname' => function_exists('gethostbyname'), 'file_get_contents' => function_exists('file_get_contents'), 'xml_parser_create' => function_exists('xml_parser_create'),
-'FileSock Function' => (function_exists('fsockopen') || function_exists('pfsockopen') || function_exists('stream_socket_client') || function_exists('curl_init')), 'GD' => (function_exists('gd_info') ? preg_replace('/[^0-9.]+/', '', gd_info()['GD Version']) : false));
+'FileSock Function' => (function_exists('fsockopen') || function_exists('pfsockopen') || function_exists('stream_socket_client') || function_exists('curl_init')), 'GD' => ($now_ver_gd ? preg_replace('/[^0-9.]+/', '', $now_ver_gd['GD Version']) : false));
 $req_ver = array('PHP' => '5.3', 'MySQL' => '5.0', 'filter_var' => true, 'gethostbyname' => true, 'file_get_contents' => true, 'xml_parser_create' => true, 'FileSock Function' => true, 'GD' => '1.0');
 $sug_ver = array('PHP' => '7.1', 'MySQL' => '5.7', 'filter_var' => true, 'gethostbyname' => true, 'file_get_contents' => true, 'xml_parser_create' => true, 'FileSock Function' => true, 'GD' => '2.0');
 foreach ($now_ver as $key => $value) {
@@ -437,10 +442,7 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), ar
 	<a href="https://bitbucket.org/vot/discuz.ml" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
 	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! Application Chinese Forum</a>,
 	<a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
-	<a href="http://www.discuz.net/redirect.php?service" class="lightlink2" target="_blank">Purchase authorization</a>,
-	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Discuz Chinese Forum</a>,
-	<a href="'.ADMINSCRIPT.'?action=cloudaddons" class="lightlink2" target="_blank">Discuz! Cloud Addons</a>
-	<a href="https://gitee.com/ComsenzDiscuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
+	<a href="https://gitee.com/discuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
 '));
 showtablefooter();
 

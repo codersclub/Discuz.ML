@@ -185,7 +185,7 @@ function setcookie(cookieName, cookieValue, seconds, path, domain, secure) {
 	path = !path ? cookiepath : path;
 	document.cookie = escape(cookiepre + cookieName) + '=' + escape(cookieValue)
 		+ (expires ? '; expires=' + expires.toGMTString() : '')
-		+ (path ? '; path=' + path : '/')
+		+ '; path=' + (path ? path : '/')
 		+ (domain ? '; domain=' + domain : '')
 		+ (secure ? '; secure' : '');
 }
@@ -243,7 +243,7 @@ function Ajax(recvType, waitId) {
 	aj.showLoading = function() {
 		if(aj.waitId && (aj.XMLHttpRequest.readyState != 4 || aj.XMLHttpRequest.status != 200)) {
 			aj.waitId.style.display = '';
-			aj.waitId.innerHTML = '<span><img src="' + IMGDIR + '/loading.gif" class="vm"> ' + aj.loading + '</span>';
+			aj.waitId.innerHTML = '<span><div class="loadicon vm"></div> ' + aj.loading + '</span>';
 		}
 	};
 	aj.processHandle = function() {
@@ -1174,7 +1174,7 @@ function showWindow(k, url, mode, cache, menuv) {
 			ajaxpost(url, 'fwin_content_' + k, '', '', '', function() {initMenu();show();});
 		}
 		if(parseInt(BROWSER.ie) != 6) {
-/*vot*/			loadingst = setTimeout(function() {showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> '+lng['wait_please'])}, 500);
+			loadingst = setTimeout(function() {showDialog('', 'info', '<div class="loadicon"></div> '+lng['wait_please'])}, 500);
 		}
 	};
 	var initMenu = function() {

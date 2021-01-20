@@ -171,7 +171,7 @@ function checkoption(identifier, required, checktype, checkmaxnum, checkminnum, 
 /*vot*/			warning(ce, lng['required_fill']);
 			return false;
 		} else if(required == '0' && ($('typeoption_' + identifier) == null || $('typeoption_' + identifier).value == '0')) {
-/*vot*/			ce.innerHTML = '<img src="' + IMGDIR + '/check_error.gif" width="16" height="16" class="vm" /> '+lng['select_next_level'];
+/*vot*/			ce.innerHTML = '<i class="fico-error fic4 fc-l vm"></i> '+lng['select_next_level'];
 			ce.className = "warning";
 			return true;
 		}
@@ -204,7 +204,7 @@ function checkoption(identifier, required, checktype, checkmaxnum, checkminnum, 
 /*vot*/			warning(ce, lng['required_fill']);
 			return false;
 		} else {
-			ce.innerHTML = '<img src="' + IMGDIR + '/check_right.gif" width="16" height="16" class="vm" />';
+			ce.innerHTML = '<i class="fico-check_right fic4 fc-v vm"></i>';
 		}
 	}
 
@@ -230,7 +230,7 @@ function checkoption(identifier, required, checktype, checkmaxnum, checkminnum, 
 /*vot*/			warning(ce, lng['enter_valid_url']);
 			return false;
 		}
-		ce.innerHTML = '<img src="' + IMGDIR + '/check_right.gif" width="16" height="16" class="vm" />';
+		ce.innerHTML = '<i class="fico-check_right fic4 fc-v vm"></i>';
 	}
 	return true;
 }

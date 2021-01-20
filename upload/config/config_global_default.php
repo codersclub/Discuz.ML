@@ -132,8 +132,9 @@ $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID 
 
 // Download attachments
 //
-// Local file reading mode; mode 2 is the most memory-saving mode, but does not support multi-threaded download If you need the URL address of the attachment and the playback of the media attachment, you need to select the reading mode 1 or 4 that supports the Range parameter
-// 1=fread, 2=readfile, 3=fpassthru, 4=fpassthru+multiple
+// Local file reading mode; mode 2 is the most memory-saving method, but does not support multi-threaded downloading
+// If you want to play the attachment URL address and media attachment, you need to select the reading mode 1 or 4 that supports the Range parameter. Other modes will cause abnormal video playback in some browsers.
+// 1=fread 2=readfile 3=fpassthru 4=fpassthru+multiple
 $_config['download']['readmod'] = 2;
 
 // Enable X-Sendfile feature(required server support) 0=disable, 1=nginx, 2=lighttpd, 3=apache
@@ -150,8 +151,8 @@ $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = 
 $_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/fr/etc...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
-$_config['output']['iecompatible']		= 0;		// 页面 IE 兼容模式
 $_config['output']['upgradeinsecure']		= 0;		// 在HTTPS环境下请求浏览器升级HTTP内链到HTTPS，此选项影响外域资源链接且与自定义CSP冲突 0=关闭(默认)，1=打开
+$_config['output']['css4legacyie']		= 1;		// 是否加载兼容低版本IE的css文件 0=关闭，1=打开（默认），关闭可避免现代浏览器加载不必要的数据，但IE6-8的显示效果会受较大影响，IE9受较小影响。
 
 // COOKIE settings
 $_config['cookie']['cookiepre'] 	= 'discuz_'; 	// COOKIE prefix
@@ -208,7 +209,8 @@ $_config['remote']['appkey'] = md5($_config['security']['authkey']);
 $_config['remote']['cron'] = 0;
 
 // $_GET|$_POST compatibility processing. 0 is off, 1 is on, Turned to $_G['gp_xx'](xx is a Variable name, $_GET and $_POST Collection of all variable names), Value has been addslashes() treated
-$_config['input']['compatible'] = 1;
+// 考虑到安全风险，自X3.5版本起本开关恢复默认值为0的设定，后续版本可能取消此功能，请各位开发人员注意
+$_config['input']['compatible'] = 0;
 
 /**
  * IP database detection extension

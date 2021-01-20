@@ -28,36 +28,8 @@ if ($_GET['op'] == 'getmusiclist') {
 	if($reauthcode == $_GET['hash']) {
 		space_merge($space,'field_home');
 		$userdiy = getuserdiydata($space);
-		$musicmsgs = $userdiy['parameters']['music'];
-		$outxml = '<?xml version="1.0" encoding="UTF-8" ?>'."\n";
-		$outxml .= '<playlist version="1">'."\n";
-		$outxml .= '<mp3config>'."\n";
-		$showmod = 'big' == $musicmsgs['config']['showmod'] ? 'true' : 'false';
-		$outxml .= '<showdisplay>'.$showmod.'</showdisplay>'."\n";
-		$outxml .= '<autostart>'.$musicmsgs['config']['autorun'].'</autostart>'."\n";
-		$outxml .= '<showplaylist>true</showplaylist>'."\n";
-		$outxml .= '<shuffle>'.$musicmsgs['config']['shuffle'].'</shuffle>'."\n";
-		$outxml .= '<repeat>all</repeat>'."\n";
-		$outxml .= '<volume>100</volume>';
-		$outxml .= '<linktarget>_top</linktarget> '."\n";
-		$outxml .= '<backcolor>0x'.substr($musicmsgs['config']['crontabcolor'], -6).'</backcolor> '."\n";
-		$outxml .= '<frontcolor>0x'.substr($musicmsgs['config']['buttoncolor'], -6).'</frontcolor>'."\n";
-		$outxml .= '<lightcolor>0x'.substr($musicmsgs['config']['fontcolor'], -6).'</lightcolor>'."\n";
-		$outxml .= '<jpgfile>'.$musicmsgs['config']['crontabbj'].'</jpgfile>'."\n";
-		$outxml .= '<callback></callback> '."\n";
-		$outxml .= '</mp3config>'."\n";
-		$outxml .= '<trackList>'."\n";
-		foreach ($musicmsgs['mp3list'] as $value){
-			$outxml .= '<track><annotation>'.$value['mp3name'].'</annotation><location>'.$value['mp3url'].'</location><image>'.$value['cdbj'].'</image></track>'."\n";
-		}
-		$outxml .= '</trackList></playlist>';
-		$outxml = diconv($outxml, CHARSET, 'UTF-8');
-		obclean();
-		@header("Expires: -1");
-		@header("Cache-Control: no-store, private, post-check=0, pre-check=0, max-age=0", FALSE);
-		@header("Pragma: no-cache");
-		@header("Content-type: application/xml; charset=utf-8");
-		echo $outxml;
+		// 后端直接返回, 由前端负责将原始数据调整为所需格式
+		helper_output::json($userdiy['parameters']['music']);
 	}
 	exit();
 
@@ -69,28 +41,8 @@ if ($_GET['op'] == 'getmusiclist') {
 		dsetcookie('viewid', 'uid_'.$space['uid']);
 	}
 
-	if(!$space['self'] && $_G['uid'] && $_GET['additional'] != 'removevlog') {
-		$visitor = C::t('home_visitor')->fetch_by_uid_vuid($space['uid'], $_G['uid']);
-		$is_anonymous = empty($_G['cookie']['anonymous_visit_'.$_G['uid'].'_'.$space['uid']]) ? 0 : 1;
-		if(empty($visitor['dateline'])) {
-			$setarr = array(
-				'uid' => $space['uid'],
-				'vuid' => $_G['uid'],
-				'vusername' => $is_anonymous ? '' : $_G['username'],
-				'dateline' => $_G['timestamp']
-			);
-			C::t('home_visitor')->insert($setarr, false, true);
-			show_credit();
-		} else {
-			if($_G['timestamp'] - $visitor['dateline'] >= 300) {
-				C::t('home_visitor')->update_by_uid_vuid($space['uid'], $_G['uid'], array('dateline'=>$_G['timestamp'], 'vusername'=>$is_anonymous ? '' : $_G['username']));
-			}
-			if($_G['timestamp'] - $visitor['dateline'] >= 3600) {
-				show_credit();
-			}
-		}
-		updatecreditbyaction('visit', 0, array(), $space['uid']);
-	}
+	show_view();
+
 	if($_GET['additional'] == 'removevlog') {
 		C::t('home_visitor')->delete_by_uid_vuid($space['uid'], $_G['uid']);
 	}
@@ -139,18 +91,4 @@ function formatdata($data, $position, $space) {
 	return $list;
 }
 
-function show_credit() {
-	global $_G, $space;
-
-	$showinfo = C::t('home_show')->fetch($space['uid']);
-	if($showinfo['credit'] > 0) {
-		$showinfo['unitprice'] = intval($showinfo['unitprice']);
-		if($showinfo['credit'] <= $showinfo['unitprice']) {
-			notification_add($space['uid'], 'show', 'show_out');
-			C::t('home_show')->delete($space['uid']);
-		} else {
-			C::t('home_show')->update_credit_by_uid($space['uid'], -$showinfo['unitprice']);
-		}
-	}
-}
 ?>
