@@ -37,14 +37,6 @@ INSERT INTO pre_common_credit_rule VALUES ('28','Rate object','click','1','0','1
 INSERT INTO pre_common_credit_rule VALUES ('29','Modify domain','modifydomain','0','0','1','0','0','0','0','0','0','0','0','0','');
 INSERT INTO pre_common_credit_rule VALUES ('30','Comment Article','portalcomment','1','0','40','1','0','1','0','0','0','0','0','0','');
 INSERT INTO pre_common_credit_rule VALUES ('31','Collection followed','followedcollection','1','0','3','0','0','1','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('31','Upload image','uploadimage','1','0','10','0','0','1','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('32','Report abuse','report','4','0','0','0','0','1','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('33','Successfully invite friends','invitefriend','4','0','0','0','0','2','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('34','Registration','register','0','0','1','0','0','5','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('35','Real name verification','realname','0','0','1','0','0','10','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('36','Modify real name','editrealname','0','0','1','0','0','0','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('37','Change verified E-mail','editrealemail','0','0','1','0','0','0','0','0','0','0','0','0','');
--- INSERT INTO pre_common_credit_rule VALUES ('38','Delete avatar','delavatar','0','0','1','0','0','0','0','0','0','0','0','0','');
 
 
 
@@ -66,7 +58,6 @@ INSERT INTO pre_common_cron VALUES ('17','1','system','Views daily update','cron
 INSERT INTO pre_common_cron VALUES ('18','0','system','Daily users table optimization','cron_member_optimize_daily.php','1321500558','1321556400','-1','-1','2','0	5	10	15	20	25	30	35	40	45	50	55');
 INSERT INTO pre_common_cron VALUES ('19','1','system','Count today hot posts','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0');
 INSERT INTO pre_common_cron VALUES ('20','1','system','Update Forum Last Post (related to Waterproof wall)','cron_security_cleanup_lastpost.php','1269746623','1269792000','-1','-1','7','0');
--- INSERT INTO pre_common_cron VALUES ('4','1','system', 'Clean e-mail Statistics and birthday wishes daily', 'cron_birthday_daily.php','1269746627','1269792000','-1','-1','0','0');
 
 INSERT INTO pre_common_friendlink VALUES ('1','0','Official Discuz!X Forum','http://www.discuz.net','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
 INSERT INTO pre_common_friendlink VALUES ('2','4','Discuz!X Application Center','https://addon.dismall.com/','','','2');
@@ -1708,11 +1699,3 @@ INSERT INTO `pre_common_admincp_perm` (`cpgroupid`, `perm`) VALUES (5, '_allowpo
 INSERT INTO `pre_common_admincp_perm` (`cpgroupid`, `perm`) VALUES (5, 'verify_verify');
 
 INSERT INTO `pre_forum_threadprofile` (`id`, `name`, `template`, `global`) VALUES (1, 'Default layout', 'a:2:{s:4:\"left\";s:399:\"{numbercard}\r\n{groupicon}<p>{*}</p>{/groupicon}\r\n{authortitle}<p><em>{*}</em></p>{/authortitle}\r\n{customstatus}<p class=\"xg1\">{*}</p>{/customstatus}\r\n{star}<p>{*}</p>{/star}\r\n{upgradeprogress}<p>{*}</p>{/upgradeprogress}\r\n<dl class=\"pil cl\">\r\n\t<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\r\n{medal}<p class=\"md_ctrl\">{*}</p>{/medal}\r\n<dl class=\"pil cl\">{baseinfo=field_qq,0}</dl>\";s:3:\"top\";s:82:\"<dl class=\"cl\">\r\n<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\";}', 1);
-
--- added by vot
--- INSERT INTO pre_common_member_profile_setting VALUES('birthcountry', 1, 0, 0, 'Birth Country', '', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '');
--- INSERT INTO pre_common_member_profile_setting VALUES('residecountry', 1, 0, 0, 'Living Country', '', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '');
--- added by vot
--- INSERT INTO pre_forum_bbcode VALUES ('5','1','icq','bb_icq.gif','<a href=\"http://www.icq.com/msgrd?V=1&Uin={1}&amp;Site=[Discuz!]&amp;Menu=yes\" target=\"_blank\"><img src=\"http://www.icq.com/pa?p=1:{1}:1\" border=\"0\"></a>','[icq]688888[/icq]','Show ICQ online status. Click to this icon for chat with this member','1','Please enter a ICQ number to show online status:','1','21','1	2	3	12	13	14	15	16	17	18	19');
-
-
