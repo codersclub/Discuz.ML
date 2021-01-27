@@ -290,7 +290,7 @@ showformfooter();
 
 /*vot*/ showtableheader(cplang('contributors'), 'fixpadding');
 showtablerow('', array('', 'class="td21" style="text-align:right;"'),
-/*vot*/	'<a href="https://gitee.com/discuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_link') . '</a>'
+/*vot*/	'<a href="https://gitee.com/Discuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_link') . '</a>'
 );
 showtablefooter();
 

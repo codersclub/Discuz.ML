@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: install_lang.php 33770 2013-08-12 05:57:10Z nemohou $
+ *      $Id: install_lang.php 36287 2016-12-12 03:59:05Z nemohou $
  *      $Id: lang_install.php by Valery Votintsev, codersclub.org
  */
 
@@ -253,7 +253,7 @@ $lang = array(
 
 	'license' => '<div class="license"><h1>中文版授权协议 适用于中文用户</h1>
 
-<p>版权所有 (c) 2001-2020，腾讯云计算（北京）有限责任公司(原北京康盛新创科技有限责任公司)保留所有权利。</p>
+<p>版权所有 (c) 2001-2021，腾讯云计算（北京）有限责任公司(原北京康盛新创科技有限责任公司)保留所有权利。</p>
 
 <p>感谢您选择康盛产品。希望我们的努力能为您提供一个高效快速、强大的站点解决方案，和强大的社区论坛解决方案。康盛公司网址为 http://www.comsenz.com，产品官方讨论区网址为 http://www.discuz.net。</p>
 
