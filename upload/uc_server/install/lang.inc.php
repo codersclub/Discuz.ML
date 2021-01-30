@@ -24,7 +24,7 @@ $lang = array(
 	'config_nonexistence'	=> 'Configuration File is not exists',
 	'nodir'			=> 'Folder is not exists',
 	'short_open_tag_invalid'	=> 'Sorry, please set "short_open_tag" to On in php.ini.',
-	'redirect'		=> 'The Installation will run automatically.<br>If you browser do not jump automatically, please click here',
+	'redirect'			=> 'The Installation will run automatically.<br>If you browser do not jump automatically, please click here',
 
 	'database_errno_2003'	=> 'Unable to connect to database, please ensure your database is running and check your database configuration',
 	'database_errno_1044'	=> 'Unable to create new database, please check your database name',
@@ -60,21 +60,21 @@ $lang = array(
 	'step1_status'		=> 'Current',
 	'not_continue'		=> 'Please solve the problems marked in red, and then try again',
 
-	'tips_dbinfo'		=> 'Input Database Information',
-	'tips_dbinfo_comment'	=> '',
-	'tips_admininfo'	=> 'Input Administartor Information',
+	'tips_dbinfo'			=> 'Input Database Information',
+	'tips_dbinfo_comment'		=> '',
+	'tips_admininfo'		=> 'Input Administartor Information',
 	'tips_admininfo_comment'	=> 'Please remember UCenter Founder\'s Password, it will be needed to login UCenter.',
-	'step_ext_info_title'	=> 'Installed Successfully',
-	'step_ext_info_desc'	=> 'Click here to Login',
+	'step_ext_info_title'		=> 'Installed Successfully',
+	'step_ext_info_desc'		=> 'Click here to Login',
 
-	'ext_info_succ'		=> 'Installed Successfully',
-	'install_locked'	=> 'Installation is Locked due to previous installation, if you want to install again, please delete <br /> '.str_replace(ROOT_PATH, '', $lockfile),
-	'error_quit_msg'	=> 'You must solve the problem above',
+	'ext_info_succ'			=> 'Installed Successfully',
+	'install_locked'		=> 'Installation is Locked due to previous installation, if you want to install again, please delete <br /> '.str_replace(ROOT_PATH, '', $lockfile),
+	'error_quit_msg'		=> 'You must solve the problem above',
 
-	'step_app_reg_title'	=> 'Setup Environment',
-	'step_app_reg_desc'	=> 'Check Server and Set UCenter',
-	'tips_ucenter'		=> 'Please fill in related info of UCenter',
-	'tips_ucenter_comment'	=> 'UCenter is a core software of Comsenz. Discuz! Board is required this program. If you have installed UCenter, please fill the Information of UCenter, Or please goto <a href="http://www.discuz.com/" target="blank">Comsenz Products Center</a> to download UCenter and install it, then continue',
+	'step_app_reg_title'		=> 'Setup Environment',
+	'step_app_reg_desc'		=> 'Check Server and Set UCenter',
+	'tips_ucenter'			=> 'Please fill in related info of UCenter',
+	'tips_ucenter_comment'		=> 'UCenter is a core software of Comsenz. Discuz! Board is required this program. If you have installed UCenter, please fill the Information of UCenter, Or please goto <a href="http://www.discuz.com/" target="blank">Comsenz Products Center</a> to download UCenter and install it, then continue',
 
 	'advice_mysql_connect'		=> 'Please make sure to load mysql module correctly',
 	'advice_fsockopen'		=> 'You need to set "allow_url_fopen" as on in "php.ini". Please contact space provider to make sure it is enabled',
@@ -82,12 +82,12 @@ $lang = array(
 	'advice_file_get_contents'	=> 'You need to set "allow_url_fopen" as on in "php.ini". Please contact space provider to make sure it is enabled',
 	'advice_xml_parser_create'	=> 'This function need XML support in PHP. Please contact space provider to make sure it is enabled',
 
-	'ucurl'			=> 'UCenter\'s URL',
-	'ucpw'			=> 'UCenter Founder Password',
+	'ucurl'				=> 'UCenter\'s URL',
+	'ucpw'				=> 'UCenter Founder Password',
 
-	'tips_siteinfo'		=> 'Fill in Site Information',
-	'sitename'		=> 'Site Name',
-	'siteurl'		=> 'Site URL',
+	'tips_siteinfo'			=> 'Fill in Site Information',
+	'sitename'			=> 'Site Name',
+	'siteurl'			=> 'Site URL',
 
 	'forceinstall'			=> 'Force Install',
 	'dbinfo_forceinstall_invalid'	=> 'You may modify table prefix to prevent data loss if current database contains data with the same table prefix; force install will erase all the previous data!',
@@ -147,7 +147,7 @@ $lang = array(
 	'install_succeed'	=> 'Installed Succesufully, click here to next step',
 	'license'		=> '<div class="license"><h1>License</h1>
 
-<p>Copyright (c) 2001-2017, Hong Sing Imagination (Beijing) Co., Ltd. All rights reserved.</p>
+<p>Copyright (c) 2001-' . date('Y') . ', Tencent Cloud Computing (Beijing) Co., Ltd. (formerly Beijing Kangsheng Xinchuang Technology Co., Ltd.), All rights reserved.</p>
 
 <p>Thank you for choosing UCenter product. We hope that our efforts to provide you with a fast and powerful and efficient site solution.</p>
 

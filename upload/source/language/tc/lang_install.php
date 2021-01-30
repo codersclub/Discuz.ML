@@ -7,6 +7,10 @@
  *      $Id: lang_install.php modified by Valery Votintsev, codersclub.org
  */
 
+if(!defined('IN_COMSENZ')) {
+	exit('Access Denied');
+}
+
 define('UC_VERNAME', 'International Version');
 $lang = array(
 	'SC_GBK' => '簡體中文版',
