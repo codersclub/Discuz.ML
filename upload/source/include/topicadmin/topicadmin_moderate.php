@@ -707,6 +707,13 @@ if(!submitcheck('modsubmit')) {
 				set_stamp($stampstatus, $stampaction, $threadlist, $expiration);
 			}
 
+			// After performing management operations, update the forum section cache
+			$fidarr = array();
+			foreach ($threadlist as $thread) {
+				$fidarr[] = $thread['fid'];
+			}
+			C::t('forum_thread')->clear_cache($fidarr, 'forumdisplay_');
+
 		}
 		showmessage('admin_succeed', $_G['referer']);
 	}

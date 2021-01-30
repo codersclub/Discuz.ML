@@ -176,7 +176,7 @@ spaceDiy.extend({
 		if ($('spaceinfoshow')) $('spaceinfoshow').style.display = 'inline';
 	},
 	spaceInfoSave : function () {
-		ajaxpost('savespaceinfo','spaceinfoshow');
+		ajaxpost('savespaceinfo','spaceinfoshow','','onerror');
 	},
 	init : function () {
 		drag.init();
