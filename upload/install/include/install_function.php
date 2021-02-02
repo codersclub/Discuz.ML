@@ -77,6 +77,7 @@ function check_db($dbhost, $dbuser, $dbpw, $dbname, $tablepre) {
 		} else {
 			show_msg('database_connect_error', $error, 0);
 		}
+		return false;
 	} else {
 		if($query = (($mysqlmode == 'mysql') ? @mysql_query("SHOW TABLES FROM $dbname") : $link->query("SHOW TABLES FROM $dbname"))) {
 			if(!$query) {
