@@ -347,8 +347,7 @@ if($method == 'show_license') {
 			}
 		}
 
-		// Restrict the last character to _ in the table prefix format, to avoid the table prefix like pre_1 from being generated and causing the program processing errors
-		if(strpos($tablepre, '.') !== false || intval($tablepre[0]) || strrpos($tablepre, '_') !== strlen($tablepre) - 1) {
+		if(strpos($tablepre, '.') !== false || intval($tablepre[0])) {
 			show_msg('tablepre_invalid', $tablepre, 0);
 		}
 
