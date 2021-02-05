@@ -221,16 +221,15 @@ $lang = array
 
 	'close' => '關閉',
 
+	'attackevasive_1_subject' => '刷新頻率限制',
+	'attackevasive_1_message' => '您訪問網站的速度太快，不到兩秒鐘！請等一下...',
+	'attackevasive_2_subject' => '通過代理服務器的訪問是受到限制',
+	'attackevasive_2_message' => '通過代理服務器訪問網站限制畝。請刪除您的代理設置配置，並直接訪問該網站。',
+	'attackevasive_4_subject' => '打開頁面重載',
+	'attackevasive_4_message' => '歡迎的網站，頁面重新載入，請稍候...',
+
 //--------------------------------------------------------------------------
 // Added by Valery Votintsev
-
-//source/include/misc/misc_security.php
-	'attackevasive_1_subject'	=> '刷新頻率限制',//'Refresh frequency limit',
-	'attackevasive_1_message'	=> '您訪問網站的速度太快，不到兩秒鐘！請等一下...',//'You visit the site too fast, less than two seconds! Please wait a little...',
-	'attackevasive_2_subject'	=> '通過代理服務器的訪問是受到限制',//'Access throug proxy servers is restricted',
-	'attackevasive_2_message'	=> '通過代理服務器訪問網站限制畝。請刪除您的代理設置配置，並直接訪問該網站。',//'Access to the site through a proxy servers is restricted for mow. Please remove your proxy setting configuration, and access to the site directly.',
-	'attackevasive_4_subject'	=> '打開頁面重載',//'Open the page reload',
-	'attackevasive_4_message'	=> '歡迎的網站，頁面重新載入，請稍候...',//'Welcome to the site, the page is re-loading, please wait ...',
 
 // Months Names
 	'month_name'	=> array('月','一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'),//array('Month','January','February','March','April','May','June','July','August','September','October','November','December'),
