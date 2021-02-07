@@ -7074,6 +7074,11 @@ RewriteBase /discuz
 {apache2}
 </pre>
 
+<h1>Nginx Web Server</h1>
+<pre class="colorbox">
+{nginx}
+</pre>
+
 <h1>IIS Web Server(独立主机用户)</h1>
 <pre class="colorbox">
 [ISAPI_Rewrite]
@@ -7096,14 +7101,15 @@ RepeatLimit 32
 &lt;/rewrite&gt;
 </pre>
 
-<h1>Zeus Web Server</h1>
+<h1>Lighttpd Web Server</h1>
 <pre class="colorbox">
-{zeus}
+url.rewrite-once = (
+{lighttpd})
 </pre>
 
-<h1>Nginx Web Server</h1>
+<h1>Caddy Web Server</h1>
 <pre class="colorbox">
-{nginx}
+{caddy}
 </pre>',
 
 //---------------------------
