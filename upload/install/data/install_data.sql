@@ -157,7 +157,7 @@ INSERT INTO pre_common_nav VALUES ('','0','Doings','Doing','home.php?mod=space&d
 INSERT INTO pre_common_nav VALUES ('', '0', 'Statistics', '', 'misc.php?mod=stat', 'stat', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 1, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Report', '', '#', 'report', 0, 0, 1, 2, 0, 0, 0, 0, '', '', '', 1, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Archiver', '', 'archiver/', 'archiver', 0, 0, 1, 3, 0, 0, 0, 0, '', '', '', 1, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Mobile', '', 'forum.php?mobile=yes', 'mobile', 0, 0, 1, 3, 0, 0, 0, 0, '', '', '', 1, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Mobile', '', 'forum.php?mobile=yes', 'mobile', 0, 0, 0, 3, 0, 0, 0, 0, '', '', '', 1, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Dark room', '', 'forum.php?mod=misc&action=showdarkroom', 'darkroom', 0, 0, 1, 3, 0, 0, 0, 0, '', '', '', 1, '');
 
 INSERT INTO pre_common_nav VALUES ('', '0', 'Blogs', '', 'home.php?mod=space&do=blog', 'blog', 0, 0, -1, 2, 0, 0, 0, 0, '{STATICURL}image/feed/blog.gif', '[+]', 'home.php?mod=spacecp&ac=blog', 2, '');
