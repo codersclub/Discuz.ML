@@ -498,7 +498,7 @@ if($operation == 'export') {
 					"",
 					''
 				));
-
+			}
 		}
 
 		showsubmit('deletesubmit', 'submit', 'del');
