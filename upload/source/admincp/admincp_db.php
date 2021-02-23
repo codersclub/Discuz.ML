@@ -124,7 +124,7 @@ if($operation == 'export') {
 		showsubmit('exportsubmit', 'submit', '', 'more_options');
 		showtablefooter();
 		showformfooter();
-		/*search}*/
+		/*search*/
 
 	} else {
 
