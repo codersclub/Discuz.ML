@@ -231,7 +231,7 @@ if(isfounder()) {
 	}
 }
 
-/*vot*/ showtableheader(cplang('detect_environment'));
+showtableheader('detect_environment', 'fixpadding');
 $env_ok = true;
 $now_ver_gd = function_exists('gd_info')? gd_info() : false;
 $now_ver = array('PHP' => constant('PHP_VERSION'), 'MySQL' => helper_dbtool::dbversion(), 'gethostbyname' => function_exists('gethostbyname'), 'file_get_contents' => function_exists('file_get_contents'), 'xml_parser_create' => function_exists('xml_parser_create'),
@@ -288,9 +288,9 @@ showtablerow('', array(), array(
 showtablefooter();
 showformfooter();
 
-/*vot*/ showtableheader(cplang('contributors'), 'fixpadding');
+showtableheader('contributors', 'fixpadding');
 showtablerow('', array('', 'class="td21" style="text-align:right;"'),
-/*vot*/	'<a href="https://gitee.com/Discuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_link') . '</a>'
+	'<a href="https://gitee.com/Discuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_see') . '</a>'
 );
 showtablefooter();
 
@@ -316,9 +316,9 @@ foreach ($newversion['newversion']['downlist'] as $key => $value){
 
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_check_newversion'),
-/*vot*/    ($newversion['newversion']['release'] ? ($newversion['newversion']['release'] != DISCUZ_RELEASE ? '<b style="color:red;">' : '').'Discuz! '.$newversion['newversion']['version'].' R'.$newversion['newversion']['release'].' '.strtoupper(CHARSET).' '.($newversion['newversion']['release'] != DISCUZ_RELEASE ? '</b>' : '') : '<a href="https://www.dismall.com/thread-73-1-1.html" target="_blank">Your server can not detect the new version, please click to view the new version.</a>').
-/*vot*/	  ' <a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ Refresh ]</a>&nbsp;&nbsp;<br><br>'.
-/*vot*/    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;QQ Group: '.$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" class="lightlink2" target="_blank">Download the latest version of the package</a> | QQ group: 732103690</span>')
+    ($newversion['newversion']['release'] ? ($newversion['newversion']['release'] != DISCUZ_RELEASE ? '<b style="color:red;">' : '').'Discuz! '.$newversion['newversion']['version'].' R'.$newversion['newversion']['release'].' '.strtoupper(CHARSET).' '.($newversion['newversion']['release'] != DISCUZ_RELEASE ? '</b>' : '') : '<a href="https://www.dismall.com/thread-73-1-1.html" target="_blank">'.cplang('detect_environment_error').'</a>').
+	  ' <a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ '.cplang('refresh').' ]</a>&nbsp;&nbsp;<br><br>'.
+    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;'.cplang('qq_group').$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">'.cplang('download_latest').'</a> | '.cplang('qq_group').'73'.'21'.'03'.'690</span>')
 ));
 
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
@@ -351,7 +351,7 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallf
 ));
 showtablefooter();
 
-/*vot*/ showtableheader('Discuz! Feed', 'fixpadding left" style="width : 48%; margin-left: 2%; clear: none;', '', '3');
+showtableheader('discuz_news', 'fixpadding left" style="width : 48%; margin-left: 2%; clear: none;', '', '3');
 if(!empty($newversion['news'])){
     $newversion['news'] = dhtmlspecialchars($newversion['news']);
     foreach ($newversion['news'] as $v){
@@ -362,11 +362,12 @@ if(!empty($newversion['news'])){
     }
 } else {
     showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
-/*vot*/        '<a href="https://www.dismall.com/" target="_blank">If you not get the news yet, please log in to Discuz! Community to view.</a>',
+        '<a href="https://www.dismall.com/" target="_blank">'.cplang('log_in_to_update').'</a>',
         '',
     ));
-/*vot    showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
-        '<a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">Discuz! X3.4 latest version download</a>',
+/*vot
+    showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
+        '<a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">'.cplang('download_latest').'</a>',
         '',
     ));
 */
@@ -378,11 +379,11 @@ echo '<div class="clear"></div>';
 showtableheader('home_dev', 'fixpadding');
 showtablerow('', array('class="vtop td24 lineheight"'), array(
 	cplang('home_dev_copyright'),
-/*vot*/	'<span class="bold">Tencent Cloud Computing (Beijing) Co., Ltd.</span>'
+	'<span class="bold">'.cplang('org_name').'</span>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont team"'), array(
 	cplang('home_dev_manager'),
-/*vot*/	'<a href="http://www.discuz.net/home.php?mod=space&uid=1" class="lightlink2 smallfont" target="_blank">Kevin \'Crossday\'</a>'
+	'<a href="http://www.discuz.net/home.php?mod=space&uid=1" class="lightlink2 smallfont" target="_blank">'.cplang('dev_manager').'</a>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont team"'), array(
 	cplang('home_dev_team'),
@@ -440,11 +441,11 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), ar
 	'<a href="https://codersclub.org/discuz.ml/" class="lightlink2" target="_blank">Discuz!ML Official Site</a>,
     <a href="https://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
 	<a href="https://sourceforge.net/projects/discuz-ml/" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
-	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! Chinese Application Center</a>,
-	<a href="http://www.discuz.net/redirect.php?service" class="lightlink2" target="_blank">Purchase authorization</a>,
-	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">Discuz! Chinese Forum</a>,
-	<a href="'.ADMINSCRIPT.'?action=cloudaddons" class="lightlink2" target="_blank">Discuz! Cloud Addons</a>
-	<a href="https://gitee.com/discuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
+	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">'.cplang('app_discussion').'</a>,
+	<a href="http://www.discuz.net/redirect.php?service" class="lightlink2" target="_blank">'.cplang('purchase_service').'</a>,
+	<a href="http://www.discuz.net/" class="lightlink2" target="_blank">'.cplang('discussion_area').'</a>,
+	<a href="'.ADMINSCRIPT.'?action=cloudaddons" class="lightlink2" target="_blank">'.cplang('app_center').'</a>,
+	<a href="https://gitee.com/Discuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
 '));
 showtablefooter();
 
