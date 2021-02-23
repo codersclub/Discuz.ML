@@ -7111,15 +7111,32 @@ url.rewrite-once = (
 {caddy}
 </pre>',
 
+	'detect_environment' => '運行環境檢測',
+	'contributors' => 'Discuz! 開源貢獻者',
+	'contributors_see' => '點擊此處查看它們',
+	'detect_environment_error' => '你的服務器無法檢測新版，請點擊查看新版',
+	'refresh' => '刷新',
+	'qq_group' => 'QQ群：',
+	'discuz_news' => 'Discuz! 動態',
+	'log_in_to_update' => '暫未獲取到動態，請登錄 Discuz! 社區 查看。',
+	'download_latest' => 'Discuz! X3.4 最新版本下載',
+	'org_name' => '騰訊雲計算（北京）有限責任公司',
+	'dev_manager' => '戴誌康 (Kevin \'Crossday\' Day)',
+	'app_discussion' => 'Discuz! 應用討論區',
+	'org_site' => '公司網站',
+	'purchase_service' => '購買授權',
+	'discussion_area' => '討論區',
+	'app_center' => 'Discuz! 應用中心',
+
 //---------------------------
 // Added by Valery Votintsev
 
 //source/function/function_admincp.php
-	'upload_selectfile'		=> '瀏覽',//'Browse',
-	'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
+	//'upload_selectfile'		=> '瀏覽',//'Browse',
+	//version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
 
 //source/admincp/admincp_index.php - javascript function shownews()
-	'subscribe'		=> '訂閱',//'Subscribe',
+	//'subscribe'		=> '訂閱',//'Subscribe',
 
 //source/admincp/admincp_plugins.php
 	'disable'		=> '禁用',//'Disable',
@@ -7143,11 +7160,6 @@ url.rewrite-once = (
 
 	'nav_language'			=> '語言能力',
 
-	'contributors'			=> 'Discuz! 開源貢獻者',//'Discuz! Open Source Contributors',
-
-	'contributors_link'		=> '點擊此處查看它們',
-
-	'detect_environment'		=> '運行環境檢測',
 );
 
 //------------------------------------------------------
