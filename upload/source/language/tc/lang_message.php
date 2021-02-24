@@ -469,7 +469,7 @@ $lang = array (
   'lostpasswd_many_users_use_email' => '抱歉，存在多個使用此 Email 的用戶，請填寫您需要找回密碼的用戶名',
   'getpasswd_account_invalid' => '抱歉，創始人、受保護用戶、擁有站點設置權限的用戶不能使用取回密碼功能',
   'getpasswd_send_succeed' => '取回密碼的方法已通過 Email 發送到您的信箱中，<br />請在 3 天之內修改您的密碼',
-  'getpasswd_has_send' => '取回密碼的方法已通過 Email 發送到您的信箱中，如果您沒有收到，請稍等15分鐘後重試',
+  'getpasswd_has_send' => '您已經申請過取回密碼郵件了，如果您沒有收到，請稍等15分鐘後重試',
 
   'submit_verify_succeed' => '審核請求提交成功，現在將返回個人中心',
 
