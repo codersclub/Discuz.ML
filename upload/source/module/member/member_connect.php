@@ -96,7 +96,7 @@ if(!$_G['setting']['connect']['allow']) {
 		$ctl_obj->setting['secqaa']['status'] = $_G['setting']['secqaa']['status'];
 	}
 
-	//
+	// Compatible mobile phone terminal has the situation of filling in the password
 	if(!defined('IN_MOBILE') || empty($_GET[$_G['setting']['reginput']['password']])) {
 		$ctl_obj->setting['ignorepassword'] = 1;
 	}

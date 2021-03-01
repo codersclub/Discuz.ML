@@ -375,7 +375,7 @@ class register_ctl {
 				}
 			} elseif(!$this->setting['regstatus']) {
 				if($this->setting['regconnect']) {
-					//QQQQ
+					// If you are not logging in with QQ, you will jump to QQ to avoid completing normal registration without authentication
 					if(CURMODULE != 'connect'){
 						dheader('location:connect.php?mod=login&op=init&referer=forum.php&statfrom=login_simple');
 					}
