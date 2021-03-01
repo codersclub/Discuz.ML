@@ -639,8 +639,7 @@ var formdialog = {
 				evalscript(s.lastChild.firstChild.nodeValue);
 			})
 			.error(function() {
-				window.location.href = obj.attr('href');
-				popup.close();
+/*vot*/			popup.open(lng['submit_error'], 'alert');
 			});
 			return false;
 		});
