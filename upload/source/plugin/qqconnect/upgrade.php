@@ -52,20 +52,20 @@ CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
 ) TYPE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
-  `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Task ID',
-  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Attachment ID',
-  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'User ID',
-  `openid` varchar(255) NOT NULL DEFAULT '' COMMENT 'openId',
-  `filename` varchar(255) NOT NULL DEFAULT '' COMMENT 'Attachment Name',
-  `verifycode` varchar(255) NOT NULL DEFAULT '' COMMENT 'Download verification code',
-  `status` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Download Status',
-  `dateline` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Add the time of the task',
-  `downloadtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Download time',
-  `extra` text COMMENT 'Reserved field',
+  `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `aid` int(11) unsigned NOT NULL DEFAULT '0',
+  `uid` int(11) unsigned NOT NULL DEFAULT '0',
+  `openid` varchar(255) NOT NULL DEFAULT '',
+  `filename` varchar(255) NOT NULL DEFAULT '',
+  `verifycode` varchar(255) NOT NULL DEFAULT '',
+  `status` int(11) unsigned NOT NULL DEFAULT '0',
+  `dateline` int(11) unsigned NOT NULL DEFAULT '0',
+  `downloadtime` int(11) unsigned NOT NULL DEFAULT '0',
+  `extra` text,
   PRIMARY KEY (`taskid`),
   KEY `openid` (`openid`),
   KEY `status` (`status`)
-) TYPE=MyISAM COMMENT='Network Disk Download Task';
+) TYPE=MyISAM;
 
 EOF;
 
