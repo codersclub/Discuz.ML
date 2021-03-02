@@ -1219,7 +1219,7 @@ $lang = array
 	'setting_home_base_topcachetime_comment' => '用戶排行榜中，除競價排行、在線成員、全部成員外，其餘排行榜是緩存處理的。<br>請根據服務器的負載情況，設置合理的更新時間間隔。最少不能低於5分鐘',
 	'setting_home_base_starcredit' => '星星經驗閾值',
 	'setting_home_base_starcredit_comment' => '(默認為 100)當用戶經驗數到此閾值時，增加一個星星。最小為2，否則此功能無效，不顯示星星數',
-	'setting_home_base_starlevelnum' =>  '星星升級閾值',
+	'setting_home_base_starlevelnum' => '星星升級閾值',
 	'setting_home_base_starlevelnum_comment' => '(默認為 5)星星數在達到此閾值時，會升級為高級別的圖標。最小為2，否則此項功能無效，始終以星星顯示',
 	'setting_home_base_groupnum' => '好友用戶組個數',
 	'setting_home_base_groupnum_comment' => '(默認為 8)設置每個用戶最多擁有的好友用戶組個數',
@@ -7146,7 +7146,7 @@ if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.
 	foreach($adminextend as $extend) {
 		$extend_lang = array();
 		@include DISCUZ_ROOT.'./source/language/lang_admincp_'.$extend;
-/*vot*/	@include DISCUZ_ROOT.'./source/language/en/lang_admincp_'.$extend;
+/*vot*/	@include DISCUZ_ROOT.'./source/language/tc/lang_admincp_'.$extend;
 		$lang = array_merge($lang, $extend_lang);
 	}
 }
