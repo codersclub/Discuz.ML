@@ -7146,8 +7146,8 @@ if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.
 	@include $adminextendfile;
 	foreach($adminextend as $extend) {
 		$extend_lang = array();
-/*vot*/		@include DISCUZ_ROOT.'./source/language/sc/lang_admincp_'.$extend;
+		@include DISCUZ_ROOT.'./source/language/lang_admincp_'.$extend;
+/*vot*/	@include DISCUZ_ROOT.'./source/language/en/lang_admincp_'.$extend;
 		$lang = array_merge($lang, $extend_lang);
 	}
 }
-
