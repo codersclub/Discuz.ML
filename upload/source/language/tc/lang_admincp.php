@@ -3539,6 +3539,7 @@ $lang = array
 	'members_ban_validity_comment' => '在有效期過後該用戶可以自動解除限制，成為普通用戶',
 	'members_ban_delpost' => '帖子',
 	'members_ban_delfollow' => '廣播',
+	'members_ban_delfollower' => '廣播收聽關係',
 	'members_ban_delblog' => '日誌',
 	'members_ban_delalbum' => '相冊',
 	'members_ban_deldoing' => '記錄',
