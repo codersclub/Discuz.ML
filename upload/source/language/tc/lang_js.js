@@ -532,6 +532,7 @@ var lng = {
 	'unknown_error'		: '发生未知错误',//'Unknown error occurred',
 	'touch_down_refresh'	: '下拉可以刷新',//'Touch down to refresh',
 	'touch_up_refresh'	: '松开可以刷新',//'Touch UP to refresh',
+	'submit_error'		: '表單提交異常，無法完成您的請求',//'The form submission was abnormal and your request could not be completed',
 
 //--------------------------------
 //static/js/portal.js
