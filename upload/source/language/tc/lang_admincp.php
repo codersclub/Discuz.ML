@@ -6032,7 +6032,7 @@ $lang = array
 	'db_import_confirm' => '導入和當前 Discuz! 版本不一致的數據極有可能產生無法解決的故障，您確定繼續嗎？',
 	'db_import_confirm_sql' => '您確定導入該備份嗎？',
 	'db_import_confirm_zip' => '您確定解壓該備份嗎？',
-	'db_import_tips' => '<li>本功能在恢復備份數據的同時，將全部覆蓋原有數據，請確定恢復前已將論壇關閉，恢復全部完成後可以將論壇重新開放。</li><li>恢複數據前請在 Discuz! X2.5 安裝文件目錄下utility文件夾內找到 restore.php 文件，然後將 restore.php 文件上傳到程序文件夾data目錄下。<b>為了您站點的安全，成功恢複數據後請務必及時刪除 restore.php 文件。</b></li><li>您可以在數據備份記錄處查看站點的備份文件的詳細信息，刪除過期的備份,並導入需要的備份。</li>',
+	'db_import_tips' => '<li>本功能在恢復備份數據的同時，將全部覆蓋原有數據，請確定恢復前已將論壇關閉，恢復全部完成後可以將論壇重新開放。</li><li>恢復數據前請在 Discuz! 安裝文件目錄下 utility 文件夾內找到 restore.php 文件，然後將 restore.php 文件上傳到程序文件夾data目錄下。 <b>為了您站點的安全，成功恢復數據後請務必及時刪除 restore.php 文件。</b></li><li>您可以在數據備份記錄處查看站點的備份文件的詳細信息，刪除過期的備份,並導入需要的備份。</li>',
 	'do_import_option' => '<ul><li>您可以在本頁面數據備份記錄處導入備份恢複數據，也可以通過在瀏覽器中執行 <a href="{restore_url}" target="_blank">{restore_url}</a> 恢複數據',
 	'db_import_from_server' => '從服務器(填寫文件名或 URL)',
 	'db_import_from_local' => '從本地文件',
