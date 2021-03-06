@@ -36,6 +36,7 @@ $lang = array(
 	'database_import_format_illegal'	=> '数据文件非 Discuz! 格式，无法导入',//'Data file is non-Discuz! format, can not be imported',
 	'database_import_unzip'			=> '{info}<br />备份文件解压缩完毕，您需要自动导入备份吗？导入后解压缩的文件将会被删除',//'{info}<br />Unzip the backup file is completed. Do you need to automatically import the backup? After importing the extracted files will be deleted',
 	'database_import_multivol_unzip'	=> '{info}<br />备份文件解压缩完毕，您需要自动解压缩其他的分卷文件吗？',//'{info}<br />Unzip the backup sub-volume file is completed. Do you need to self-extract other sub-volume?',
+	'database_import_multivol_unzip_start'	=> '正在解压备份文件，程序将自动继续',
 	'database_import_multivol_unzip_redirect'	=> '数据文件 #{multivol} 解压缩成功，程序将自动继续',//'Data file # {multivol} successfully extracted, the program will automatically continue',
 	'database_import_confirm'		=> '导入和当前 Discuz! 版本不一致的数据极有可能产生无法解决的故障，您确定继续吗？',//'Imported file data and current Discuz! Version are incompatible and may cause a failure',
 	'database_import_confirm_sql'		=> '您确定导入该备份吗？',//'Are you sure you want to import the backup?',
