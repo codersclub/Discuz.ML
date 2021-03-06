@@ -29,11 +29,13 @@ $topmenu = array (
 	'safe' => '',
 	'extended' => '',
 	'plugin' => $isfounder ? 'plugins' : '',
+	'template' => '',
 	'tools' => '',
 );
 
 $menu['index'] = array(
 	array('menu_home', 'index'),
+	array('menu_cloudaddons', 'cloudaddons', '_blank'),
 	array('menu_custommenu_manage', 'misc_custommenu'),
 );
 
@@ -67,7 +69,6 @@ $menu['style'] = array(
 	array('menu_setting_customnav', 'nav'),
 	array('menu_setting_styles', 'setting_styles'),
 	array('menu_styles', 'styles'),
-	$isfounder ? array('menu_styles_templates', 'templates') : null,
 	array('menu_posting_smilies', 'smilies'),
 	array('menu_click', 'click'),
 	array('menu_thread_stamp', 'misc_stamp'),
@@ -168,7 +169,7 @@ $menu['group'] = array(
 );
 
 $menu['safe'] = array(
-	array('menu_safe_setting', 'setting_sec'),	
+	array('menu_safe_setting', 'setting_sec'),
 	array('menu_safe_seccheck', 'setting_seccheck'),
 	array('menu_security', 'optimizer_security'),
 	array('menu_safe_accountguard', 'setting_accountguard'),
@@ -212,10 +213,16 @@ if(file_exists($menudir = DISCUZ_ROOT.'./source/admincp/menu')) {
 
 if($isfounder) {
 	$menu['plugin'] = array(
-		array('menu_addons', 'cloudaddons'),
+		array('menu_addons', 'cloudaddons', '_blank'),
 		array('menu_plugins', 'plugins'),
 	);
 }
+
+$menu['template'] = array(
+	array('menu_styles', 'styles'),
+	array('menu_setting_mobile', 'setting_mobile'),
+);
+
 loadcache('adminmenu');
 if(is_array($_G['cache']['adminmenu'])) {
 	foreach($_G['cache']['adminmenu'] as $row) {
@@ -238,12 +245,18 @@ $menu['tools'] = array(
 	$isfounder ? array('menu_tools_filecheck', 'checktools_filecheck') : null,
 	$isfounder ? array('menu_tools_hookcheck', 'checktools_hookcheck') : null,
 );
+
+$topmenu['cloudaddons'] = '';
+$menu['cloudaddons'] = array(
+	array('menu_addons', 'cloudaddons', '_blank'),
+);
+
 if($isfounder) {
 	$topmenu['founder'] = '';
 
 	$menu['founder'] = array(
 		array('menu_founder_perm', 'founder_perm'),
-		array('menu_setting_mail', 'setting_mail'),		
+		array('menu_setting_mail', 'setting_mail'),
 		array('menu_setting_uc', 'setting_uc'),
 		array('menu_db', 'db_export'),
 		array('menu_membersplit', 'membersplit_check'),

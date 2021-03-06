@@ -4,9 +4,9 @@
 	<item id="Data">
 		<item id="name"><![CDATA[Default style]]></item>
 		<item id="templateid"><![CDATA[1]]></item>
-		<item id="tplname"><![CDATA[Part of the default template set]]></item>
+		<item id="tplname"><![CDATA[Default template set]]></item>
 		<item id="directory"><![CDATA[./template/default]]></item>
-		<item id="copyright"><![CDATA[Comsenz (Beijing) Technology Co., Ltd.]]></item>
+		<item id="copyright"><![CDATA[Tencent Cloud Computing (Beijing) Co., Ltd.]]></item>
 		<item id="style">
 			<item id="smfont"><![CDATA[Verdana,Arial,sans-serif]]></item>
 			<item id="threadtitlefontsize"><![CDATA[14px]]></item>
