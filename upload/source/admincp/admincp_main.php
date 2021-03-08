@@ -153,7 +153,6 @@ foreach ($menu as $k => $v) {
 }
 unset($menu);
 
-$plugindefaultkey = $isfounder ? 1 : 0;
 /*vot*/	$year = date('Y');
 
 echo <<<EOT
@@ -223,7 +222,7 @@ echo <<<EOT
 			parent.main.location = admincpfilename + '?action=' + url;
 			var hrefs = $('menu_' + key).getElementsByTagName('a');
 			for(var j = 0; j < hrefs.length; j++) {
-				hrefs[j].className = j == (key == 'plugin' ? $plugindefaultkey : 0) ? 'tabon' : '';
+				hrefs[j].className = j == 0 ? 'tabon' : '';
 			}
 		}
 		if(key == 'uc') {
