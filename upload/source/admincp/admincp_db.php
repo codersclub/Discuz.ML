@@ -922,7 +922,15 @@ if($operation == 'export') {
 					} elseif(!isset($discuzdbnew[$dbtable][$key])) {
 						$dellist[] = $value;
 					} elseif($tempvalue != $discuzdbnew[$dbtable][$key]) {
-						$modifylist[] = $value;
+						// MySQL 8.0.17 no longer supports the display width of any int data type except tinyint(1). When this behavior is detected, the value will be removed. 
+						if((strpos($tempvalue['Type'], 'int(') !== false) && (strpos($discuzdbnew[$dbtable][$key]['Type'], '(') === false)) {
+							$tempvalue['Type'] = preg_replace('/\(\d+\)/', '', $tempvalue['Type']);
+							if($tempvalue != $discuzdbnew[$dbtable][$key]) {
+								$modifylist[] = $value;
+							}
+						} else {
+							$modifylist[] = $value;
+						}
 					}
 				}
 				if(is_array($discuzdbnew[$dbtable])) {
