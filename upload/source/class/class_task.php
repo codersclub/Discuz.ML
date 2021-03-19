@@ -519,6 +519,52 @@ class task {
 		return true;
 	}
 
+	function update_available($update = 0) {
+		global $_G;
+		$updatetasknext = 0;
+		loadcache('tasknext');
+		$tasknext = getglobal('cache/tasknext');
+		if(!is_array($tasknext)) {
+			$tasknext = array();
+		}
+		if(!isset($tasknext['starttime']) || $tasknext['starttime'] > TIMESTAMP + 86400) {
+			$tasknext['starttime'] = 0;
+		}
+		if(!isset($tasknext['endtime']) || $tasknext['endtime'] > TIMESTAMP + 86400) {
+			$tasknext['endtime'] = 0;
+		}
+		if(TIMESTAMP >= $tasknext['starttime'] || TIMESTAMP >= $tasknext['endtime'] || $update) {
+			$processname = 'update_task_available';
+			if($update || !discuz_process::islocked($processname, 600)) {
+				if(TIMESTAMP >= $tasknext['starttime'] || $update) {
+/*vot*/				//Task Start Time
+					C::t('common_task')->update_available(2);
+/*vot*/				//Next Task Start Time
+					$starttime = C::t('common_task')->fetch_next_starttime();
+/*vot*/				//Next Task Start Time will not exceed 24 hours
+					$tasknext['starttime'] = $starttime ? min($starttime, TIMESTAMP + 86400) : TIMESTAMP + 86400;
+					$updatetasknext = 1;
+				}
+
+				if(TIMESTAMP >= $tasknext['endtime'] || $update) {
+/*vot*/				//Hide tasks that have ended or yet not started
+					C::t('common_task')->update_available(1);
+/*vot*/				//Next Task End Time
+					$endtime = C::t('common_task')->fetch_next_endtime();
+/*vot*/				//Next Task End Time will not exceed 24 hours
+					$tasknext['endtime'] = $endtime ? min($endtime, TIMESTAMP + 86400) : TIMESTAMP + 86400;
+					$updatetasknext = 1;
+				}
+
+				if($updatetasknext) {
+					savecache('tasknext', $tasknext);
+				}
+				discuz_process::unlock($processname);
+			}
+		}
+		return true;
+	}
+
 	function reward() {
 		switch($this->task['reward']) {
 			case 'credit': return $this->reward_credit($this->task['prize'], $this->task['bonus']); break;

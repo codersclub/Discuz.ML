@@ -52,8 +52,24 @@ class table_common_task extends discuz_table
 		return DB::query("UPDATE %t SET achievers=achievers+%s WHERE taskid=%d", array($this->_table, $v, $taskid));
 	}
 
-	public function update_available() {
-		DB::query("UPDATE %t SET available='2' WHERE available='1' AND starttime>'0' AND starttime<=%d AND (endtime IS NULL OR endtime>%d)", array($this->_table, TIMESTAMP, TIMESTAMP), false, true);
+	public function update_available($available = 2) {
+		if($available == 2) {
+			//Task Start Time
+			DB::query("UPDATE %t SET available='2' WHERE available='1' AND starttime<=%d AND (endtime='0' OR endtime>%d)", array($this->_table, TIMESTAMP, TIMESTAMP), false, true);
+		} else {
+			//Hide tasks that have ended or yet not started
+			DB::query("UPDATE %t SET available='1' WHERE available='2' AND (starttime>%d || (endtime<=%d && endtime>'0'))", array($this->_table, TIMESTAMP, TIMESTAMP), false, true);
+		}
+	}
+
+	public function fetch_next_starttime() {
+		//Next Task Start Time
+		return DB::result_first("SELECT starttime FROM %t WHERE available='1' AND starttime>'0' AND (endtime='0' OR endtime>%d) ORDER BY starttime ASC", array($this->_table, TIMESTAMP, TIMESTAMP));
+	}
+
+	public function fetch_next_endtime() {
+		//Next Task End Time
+		return DB::result_first("SELECT endtime FROM %t WHERE available='2' AND endtime>'0' ORDER BY endtime ASC", array($this->_table));
 	}
 
 	public function fetch_all_by_status($uid, $status) {
