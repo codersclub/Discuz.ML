@@ -121,5 +121,9 @@ $lang = array
 	'optimizer_security_daily_need' => '開啟防水牆每日優化，可清除刪帖後首頁痕跡',
 //vot	'optimizer_white_list_no_need' => '该计划任务已开启',
 /*vot*/	'optimizer_security_daily_no_need' => '該計劃任務已開啟',
+	'optimizer_dos8p3_need' => 'DOS 8.3 文件名支持錯誤開啟',
+	'optimizer_dos8p3_no_need' => 'DOS 8.3 文件名支持未開啟或底層不支持',
+	'optimizer_httphost_need' => '空 HOST 訪問已開啟',
+	'optimizer_httphost_no_need' => '空 HOST 訪問支持未開啟或底層不支持',
 );
 ?>
