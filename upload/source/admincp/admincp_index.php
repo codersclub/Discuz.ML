@@ -433,7 +433,7 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 ));
 /*vot*/ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 /*vot*/	'MultiLingual version',
-/*vot*/	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">codersclub.org</a>, Rev: '.DISCUZ_ML_REVISION
+/*vot*/	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">codersclub.org</a>, Rev: '.DISCUZ_REVISION
 /*vot*/));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),

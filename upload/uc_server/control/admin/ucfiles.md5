@@ -39,8 +39,8 @@ d4fde3d32ba28d296f8b7b069bff016c *model/cron.php
 c0dec6b7bcbf660a3fe9d9de1d782629 *model/feed.php
 87d25e6d940ccc1358c63e83e21474a3 *model/friend.php
 d6436d71a2819b37a7260fa97b6f17c1 *model/mail.php
-935bd8d72e20ff038b1512c72a30a5cf *model/misc.php
-c947a7665f037749dd15fdead293986d *model/note.php
+00a8a376fef6d45168e99566caedf68d *model/misc.php
+267daa9793cde12a21ada1973604e172 *model/note.php
 bb9c95148eda27df11628934ac5e3963 *model/plugin.php
 e07b645ad6318c754fe055d1abd38f66 *model/pm.php
 ba787d675b6b8db7549ae1a1eb97dc20 *model/setting.php
@@ -48,7 +48,7 @@ d7b379d38fbc0e8a120454a334a54499 *model/tag.php
 e31958f44f4884fe7b3575b8c103418f *model/user.php
 cdc453e23980b4f7f894a3b15042a76c *model/version.php
 30bef9f4245ea71e3c73583f8fb82e8e *lib/db.class.php
-26d9575be772f907ef683fbabbce3d10 *lib/dbi.class.php
+5b928f3bf2756505e3e772e4841024aa *lib/dbi.class.php
 25be74f04adc49a3606d5211fc975173 *lib/function.inc.php
 4a83e84bdb2ff80ecb180f330255e825 *lib/seccode.class.php
 d4fbe5acd2ebfd7d4fd42ecaaccdcdf0 *lib/sendmail.inc.php
@@ -68,7 +68,7 @@ e7c9d9336c808d322ddd304d583d8523 *view/default/admin_cache.htm
 b5c9e6b8ec715ae4441860cae44ed086 *view/default/admin_frame_header.htm
 757a1c584637b6d7f1421a9bc57e7230 *view/default/admin_frame_index.htm
 48e361aa1cfd02d365d7a0972c4c2d06 *view/default/admin_frame_main.htm
-6c81a029b8951f7314efc4087a7e2909 *view/default/admin_frame_menu.htm
+06b5c80aa1e28d4fd7de0db60bdd8e14 *view/default/admin_frame_menu.htm
 9b748ad443e19d99e6f64de338e7abae *view/default/admin_log.htm
 ec02ef9ba0f02f83ae4771bc8731e9a7 *view/default/admin_login.htm
 d85f6017aa35b5ef3d91cc28362dee17 *view/default/admin_mail.htm
