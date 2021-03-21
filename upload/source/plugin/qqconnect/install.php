@@ -116,7 +116,6 @@ CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
   KEY `status` (`status`)
 ) ENGINE=MyISAM;
 
-
 REPLACE INTO pre_common_setting VALUES ('regconnect', '1');
 
 EOF;
