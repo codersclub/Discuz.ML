@@ -2476,7 +2476,7 @@ $lang = array
 	'search_item_name' => '搜索項目',
 	'setting_search_srchhotkeywords' => '熱門關鍵詞',
 	'setting_search_srchhotkeywords_comment' => '每行一個',
-	'setting_search_srchhotkeywords_disabled' => '<strong>您已開啟縱橫搜索服務，搜索相關設置請到<a href="'.ADMINSCRIPT.'?action=cloud&operation=search">雲平台->縱橫搜索</a>設置</strong>”,
+	'setting_search_srchhotkeywords_disabled' => '<strong>您已開啟縱橫搜索服務，搜索相關設置請到<a href="'.ADMINSCRIPT.'?action=cloud&operation=search">雲平台->縱橫搜索</a> 設置</strong>',
 
 	'settings_sphinx' => 'Sphinx 全文檢索設置',
 	'settings_sphinx_sphinxon' => '是否開啟',
