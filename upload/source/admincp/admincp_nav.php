@@ -260,7 +260,7 @@ EOT;
 
 			$string = sprintf('%02d', $nav['highlight']);
 
-			shownav('global', 'misc_customnav');
+			shownav('style', 'nav_setting_customnav');
 			showsubmenu('nav_setting_customnav', $navdata);
 			$parentselect = array(array('0', cplang('misc_customnav_parent_top')));
 			$parentname = '';
@@ -489,7 +489,7 @@ EOT;
 
 			$string = sprintf('%02d', $nav['highlight']);
 
-			shownav('global', 'misc_customnav');
+			shownav('style', 'nav_setting_customnav');
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader("nav&operation=footernav&do=edit&id=$id");
@@ -694,7 +694,7 @@ EOT;
 				}
 				$naviconhtml = '<br /><label><input type="checkbox" class="checkbox" name="deleteicon" value="yes" /> '.$lang['delete'].'</label><br /><img src="'.$navicon.'" width="16" height="16" />';
 			}
-			shownav('global', 'misc_customnav');
+			shownav('style', 'nav_setting_customnav');
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader("nav&operation=spacenav&do=edit&id=$id", 'enctype');
@@ -903,7 +903,7 @@ EOT;
 				}
 				$naviconhtml = '<br /><label><input type="checkbox" class="checkbox" name="deleteicon" value="yes" /> '.$lang['delete'].'</label><br /><img src="'.$navicon.'" width="40" height="40" />';
 			}
-			shownav('global', 'misc_customnav');
+			shownav('style', 'nav_setting_customnav');
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader("nav&operation=mynav&do=edit&id=$id", 'enctype');
@@ -1091,7 +1091,7 @@ EOT;
 
 			$string = sprintf('%02d', $nav['highlight']);
 
-			shownav('global', 'misc_customnav');
+			shownav('style', 'nav_setting_customnav');
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader("nav&operation=topnav&do=edit&id=$id");
