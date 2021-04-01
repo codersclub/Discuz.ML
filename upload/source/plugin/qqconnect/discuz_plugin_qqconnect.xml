@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[qqconnect/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[2.1.2]]></item>
+			<item id="version"><![CDATA[2.1.3]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[connect]]></item>
@@ -80,15 +80,15 @@
 				<item id="connect_register_closed"><![CDATA[QQ registration feature has been closed]]></item>
 				<item id="connect_register_bind"><![CDATA[Bind existing account]]></item>
 				<item id="connect_register_profile"><![CDATA[Complete the account information]]></item>
-				<item id="connect_get_access_token_failed"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
+                <item id="connect_get_access_token_failed"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
 				<item id="connect_get_access_token_failed_code"><![CDATA[Sorry, there are network problems or server is busy, error code: <a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>, Please try again later. Thank you.]]></item>
 				<item id="connect_get_request_token_failed"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
-		                <item id="connect_get_request_token_failed_code"><![CDATA[Sorry, there are network problems or server is busy, error code: <a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>, Please try again later. Thank you.]]></item>
+                <item id="connect_get_request_token_failed_code"><![CDATA[Sorry, there are network problems or server is busy, error code: <a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>, Please try again later. Thank you.]]></item>
 				<item id="connect_register_bind_uin_already"><![CDATA[Sorry, this QQ account is allready have been bound by another user, can not bind again]]></item>
 				<item id="connect_config_success"><![CDATA[QQ Internet settings updated successfully]]></item>
 				<item id="connect_login_first"><![CDATA[Please use the QQ for login and then access this page again]]></item>
 				<item id="connect_config_unbind_failed"><![CDATA[Sorry, unbind failed, please try to use QQ login before unbind operation]]></item>
-				<item id="connect_config_unbind_busy"><![CDATA[Sorry, currently there are network problems or the server is busy, please wait and then try to unbind. Thank you.]]></item>
+                <item id="connect_config_unbind_busy"><![CDATA[Sorry, currently there are network problems or the server is busy, please wait and then try to unbind. Thank you.]]></item>
 				<item id="connect_config_unbind_busy_code"><![CDATA[Sorry, there are network problems or server is busy, error code: <a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>, Please try again later. Thank you.]]></item>
 				<item id="connect_config_unbind_success"><![CDATA[Your QQ account was successful unbind.]]></item>
 				<item id="connect_uin_in_blacklist"><![CDATA[Sorry, this QQ accounts is locked at the site, you can <a href="{changeqqurl}">Use other QQ account for login</a>]]></item>
@@ -105,13 +105,9 @@
 				<item id="connect_share_success"><![CDATA[Shared successfully]]></item>
 				<item id="connect_qzone_share_same_url"><![CDATA[The post is allready shared, Not need to repeat sharing]]></item>
 				<item id="connect_qzone_weibo_same_content"><![CDATA[The post is allready broadcasted, not need to repeat broadcasting]]></item>
-				<item id="connect_weibo_account_not_signup"><![CDATA[Sorry, but you have not yet opened a microblogging account, can not share the content, <a href=http://t.qq.com/reg/index.php target=_blank style=color:#336699>Click here for open immediately</a>]]></item>
-				<item id="connect_user_unauthorized"><![CDATA[Sorry, you are not authorized to share thread to the QQ space, Tencent Microblog and Tencent Friends, click <a href={login_url}><img src=static/image/common/qq_login.gif class=vm alt="QQ login" /></a>, Authorize now]]></item>
+				<item id="connect_user_unauthorized"><![CDATA[Sorry, you are not authorized to share the thread to the QQ space and Tencent Friends. Click <a href={login_url}><img src=static/image/common/qq_login.gif class=vm alt="QQ login" /></a>, Authorize now]]></item>
 				<item id="connect_errlog_server_no_response"><![CDATA[Server did not respond]]></item>
-				<item id="connect_tthread_broadcast"><![CDATA[Broadcast to microblog]]></item>
-				<item id="connect_tthread_message"><![CDATA[<br><br><img class="vm" src="static/image/common/weibo.png">&nbsp;<a href="http://t.qq.com/{username}" target="_blank">Come from {nick} Tencent microblog</a>]]></item>
-				<item id="connect_tthread_comment"><![CDATA[Microblog comments]]></item>
-				<item id="connect_server_busy"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
+                <item id="connect_server_busy"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
 				<item id="connect_server_busy_code"><![CDATA[Sorry, there are network problems or server is busy, error code: {code}, Please try again later. Thank you.]]></item>
 				<item id="connectguest_message_complete_or_bind"><![CDATA[Sorry, You are yet not <a href="member.php?mod=connect" class="xi2">provide the account information</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">Bind existing account</a>, This action can not be performed]]></item>
 				<item id="connect_error_code_999"><![CDATA[Request failed]]></item>
@@ -228,8 +224,6 @@
 				<item id="connect_header_login_tip"><![CDATA[One step, quick start]]></item>
 				<item id="connect_register_by"><![CDATA[You can also]]></item>
 				<item id="connect_or"><![CDATA[or]]></item>
-				<item id="connect_publish_feed"><![CDATA[This thread sent to the QQ space feed]]></item>
-				<item id="connect_publish_t"><![CDATA[This thread is broadcasted to Tencent microblog]]></item>
 				<item id="connect_register_complete"><![CDATA[Provide little information, and immediately start browsing]]></item>
 				<item id="connect_register_bind"><![CDATA[Bind existing account]]></item>
 				<item id="connect_register_profile"><![CDATA[Complete the account information]]></item>
@@ -247,9 +241,6 @@
 				<item id="connect_register_sex_female"><![CDATA[Female]]></item>
 				<item id="connect_register_sex_secret"><![CDATA[Secret]]></item>
 				<item id="connect_register_public_email"><![CDATA[E-mail address is public]]></item>
-				<item id="connect_register_use_qzone_avatar"><![CDATA[Use QQ Avatar]]></item>
-				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[Use QQ Avatar and QQ show]]></item>
-				<item id="connect_register_use_qqshow"><![CDATA[<span title="QQ image will be displayed on the left side of the forum posts and at personal space">Show QQ image</span>]]></item>
 				<item id="connect_register_agree"><![CDATA[Agree with the Terms of Service]]></item>
 				<item id="connect_register_must_agree"><![CDATA[You must agree to the Terms of Service for register]]></item>
 				<item id="connect_register_finish"><![CDATA[Completed, continue browsing]]></item>
@@ -265,14 +256,10 @@
 				<item id="connect_config_desc_title1"><![CDATA[Easily login with QQ account]]></item>
 				<item id="connect_config_desc_content1"><![CDATA[No need to remember the site username and password, ready to use QQ account password for easy login]]></item>
 				<item id="connect_config_newpassword_comment"><![CDATA[You are currently using QQ account Bind site, Here you can set up individual password, The corresponding functions of this site need to fill in the password to use the only set up an independent password]]></item>
-				<item id="connect_config_desc_title2"><![CDATA[Post new topics and at the same time push it to the QQ space and Tencent microblog]]></item>
-				<item id="connect_config_desc_content2"><![CDATA[Push Forum threads to the QQ space and Tencent microblog, let your friends to know more from you]]></item>
-				<item id="connect_config_desc_title3"><![CDATA[Put the site content to share space QQ, Tencent microblogging and Tencent friends]]></item>
 				<item id="connect_config_desc_content3"><![CDATA[Each content Never put before, Forum thread simple and quick can be shared to friends and listeners]]></item>
 				<item id="connect_config_profile"><![CDATA[Profile]]></item>
 				<item id="connect_config_link_name"><![CDATA[QQ Bind settings]]></item>
 				<item id="connect_config_default_pulish_feed_title"><![CDATA[When you post new topic, send a feed to the QQ space by default]]></item>
-				<item id="connect_config_default_pulish_t_title"><![CDATA[When you post new topic, send it to Tencent microblog by default]]></item>
 				<item id="connect_config_save"><![CDATA[Save Settings]]></item>
 				<item id="connect_config_newpassword"><![CDATA[For individual Login to the site, Create a login password]]></item>
 				<item id="connect_config_new_password"><![CDATA[New password]]></item>
@@ -281,9 +268,6 @@
 				<item id="connect_config_modify_authorization"><![CDATA[Modify the site authorization?]]></item>
 				<item id="connect_config_modify_authorization_desc"><![CDATA[You can add or delete QQ accounts for authorizing  any time according to your needs. You can use various fetures and services according to your privacy preferrence.]]></item>
 				<item id="connect_config_set_password"><![CDATA[Set this site password?]]></item>
-				<item id="connect_config_sync_post"><![CDATA[Synchronous post to the QQ space and Tencent microblog?]]></item>
-				<item id="connect_config_sync_post_desc1"><![CDATA[Your friends or listeners can see the topic you published and recorded.]]></item>
-				<item id="connect_config_sync_post_desc2"><![CDATA[After authorization, You will be able to share the this site content to QQ space, Tencent microblog and Tencent friends, To share with you each life moment.]]></item>
 				<item id="connect_config_unbind_desc1"><![CDATA[Your current QQ account bound to the {$_G[setting][bbname]}]]></item>
 				<item id="connect_config_unbind_desc2"><![CDATA[In order to continue to use this site account <strong>$_G[member][username]</strong>, Please set the this site login password]]></item>
 				<item id="connect_config_unbind_desc3"><![CDATA[Are you sure you want to unbind relationship with site account?]]></item>
@@ -303,25 +287,17 @@
 				<item id="connect_post_by_readperm"><![CDATA[With(out) the special read privileges you could not sent a post to QQ space news]]></item>
 				<item id="connect_post_by_price"><![CDATA[The message with a price could not be sent to QQ space news]]></item>
 				<item id="connect_post_by_invisible_forum"><![CDATA[A mpost from invisible forum could not be sent to QQ space news]]></item>
-				<item id="connect_post_unbind"><![CDATA[After bnding QQ account, you can easily share QQ space with Tencent microblog]]></item>
-				<item id="connect_post_sync_tip"><![CDATA[This topic will be synchronized to Tencent microblog, and your followers can see your published topic.]]></item>
-				<item id="connect_post_sync_tip_close"><![CDATA[Close the post synchronization prompt]]></item>
+				<item id="connect_post_unbind"><![CDATA[Bind QQ account, easily share to QQ space and Tencent Weibo]]></item>
 				<item id="connect_post_sync_cancel"><![CDATA[Cancel synchronization]]></item>
-				<item id="connect_post_sync_cancel_tip"><![CDATA[When the Post Thread synchronization to Tencent microblog is cancelled, you can go to the page "Settings -&raquo; QQ Binding" again later.]]></item>
 				<item id="connect_post_sync_qzone1"><![CDATA[Synchronization with QQ space have been set]]></item>
-				<item id="connect_post_sync_t1"><![CDATA[Synchronization with Tencent Microblog have been set]]></item>
 				<item id="connect_post_sync_qzone2"><![CDATA[Sync to QQ space is not set]]></item>
-				<item id="connect_post_sync_t2"><![CDATA[Sync to Tencent microblog is not set]]></item>
 				<item id="connect_post_sync_yes"><![CDATA[Yes]]></item>
 				<item id="connect_post_sync_no"><![CDATA[No]]></item>
 				<item id="connect_post_sync_unauthorized_title"><![CDATA[Authorization prompt]]></item>
-				<item id="connect_post_sync_unauthorized_desc"><![CDATA[When you authorized, You will be able to synchronize Post Thread to the QQ space and Tencent microblog, and so share your new activity to your news feed]]></item>
 				<item id="connect_access_token_out_of_date_feed"><![CDATA[For your account security, please use the QQ account to log in again, this will enchance your account security mechanisms<br/><br/>Click <a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ Log in" /></a> for redirect the page, Make sure that you have saved your good post data]]></item>
 				<item id="connect_access_token_out_of_date_share"><![CDATA[For your account security, please use the QQ account to log in again, this will enchance your account security mechanisms<br/><br/>Click <a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ Log in" /></a> Page jump will occur]]></item>
 				<item id="connect_access_token_outofdate_button"><![CDATA[I know]]></item>
-				<item id="connect_post_sync_not_bind_desc"><![CDATA[After binding QQ account, You will be able to synchronize Post Thread to the QQ space and Tencent microblog, and so share your new activity to your news feed]]></item>
 				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ Space]]></item>
-				<item id="connect_viewthread_share_to_t"><![CDATA[Tencent microblog]]></item>
 				<item id="connect_viewthread_share_to_qq"><![CDATA[QQ Friends and Groups]]></item>
 				<item id="connect_viewthread_share_to_pengyou"><![CDATA[Tencent Friends]]></item>
 				<item id="connect_createpassword"><![CDATA[<b>Create password</b>]]></item>
@@ -341,24 +317,12 @@
 				<item id="connect_spacecp_qzone_space"><![CDATA[&nbsp;]]></item>
 				<item id="connect_spacecp_qzone_subject_is_empty"><![CDATA[Please enter the share title]]></item>
 				<item id="connect_spacecp_qzone_subject_is_long"><![CDATA[Share title exceeds the length limit]]></item>
-				<item id="connect_spacecp_qzone_reason_is_long"><![CDATA[Share reason exceeds the length limit]]></item>
-				<item id="connect_share_unauthorized"><![CDATA[To be together is better than alone! After the authorization you will be able to put this site wonderful content to QQ Space, Tencent Microblog and Tencent Friends, and share with your friends your every wonderful moment.]]></item>
-				<item id="connect_share_unbind"><![CDATA[Sorry, Because of the sharing feature is upgraded, You need to use QQ account to log in to the site, You can immediately experience with the new Share to QQ Space, Tencent Microblog and Tencent Friends functions.<br /><span style="font-size: 12px;">Prompt: Click <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">Log out</a>, and then re-use QQ account login.</span>]]></item>
+				<item id="connect_share_unbind"><![CDATA[Sorry, due to the upgrade of the sharing function, you need to log in to this site again with your QQ account to immediately experience the new sharing to QQ space and Tencent friends function.<br /><span style="font-size: 12px;">Tip: Click <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">here to log out</a> afterwards, log in with your QQ account again.</span>]]></item>
 				<item id="connect_share_unbind_know_button"><![CDATA[I know]]></item>
-				<item id="connect_spacecp_weibo_to"><![CDATA[Transmit to Tencent microblog]]></item>
-				<item id="connect_spacecp_weibo_input"><![CDATA[You can enter yet <strong id="checklen"></strong> characters]]></item>
-				<item id="connect_spacecp_weibo_input_over"><![CDATA[Exceeding <strong id="checklen" style="color:#E56C0A;"></strong> characters]]></item>
-				<item id="connect_spacecp_weibo_reason"><![CDATA[Microblog content]]></item>
-				<item id="connect_spacecp_weibo_share"><![CDATA[Share]]></item>
-				<item id="connect_spacecp_weibo_reason_is_long"><![CDATA[Microblog content exceeds the length limit]]></item>
-				<item id="connect_spacecp_weibo_reason_is_short"><![CDATA[Please enter your microblog content to be broadcasted]]></item>
 				<item id="connect_member_register_tip"><![CDATA[After improving the Account information you can get more features and  experience]]></item>
 				<item id="connect_member_loginbind_tip"><![CDATA[Binding of QQ account enable to use your QQ account for quick log in to the site]]></item>
 				<item id="connect_member_register_button_tip"><![CDATA[Get more experience with more site features]]></item>
 				<item id="connect_member_loginbind_button_tip"><![CDATA[Use QQ account for quick log in to the site]]></item>
-				<item id="connect_wbsign_no_account"><![CDATA[Network is busy, Tencent Microblog signature function is temporarily unavailable]]></item>
-				<item id="connect_wbsign_no_bind"><![CDATA[You need to bind QQ account before using the Tencent Microblog signature function]]></item>
-				<item id="connect_wbsign_tip"><![CDATA[Inserting the Tencent Microblog as forum signature will enable show your latest microblog info to the site members and visitors]]></item>
 				<item id="connect_mobile_login"><![CDATA[Use QQ account for log in]]></item>
 			</item>
 			<item id="installlang">

@@ -13,6 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 require_once DISCUZ_ROOT.'/source/plugin/qqconnect/lib/OAuth.php';
 
+// Cloud::loadFile('Service_Connect');
+// Cloud::loadFile('Service_Client_OAuth');
 
 class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 
@@ -25,8 +27,6 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 	private $_getUserInfoURL = 'http://openapi.qzone.qq.com/user/get_user_info';
 
 	private $_addShareURL = 'http://openapi.qzone.qq.com/share/add_share';
-
-	private $_addWeiBoURL = 'http://openapi.qzone.qq.com/wb/add_weibo';
 
 	private $_addTURL = 'http://openapi.qzone.qq.com/t/add_t';
 
