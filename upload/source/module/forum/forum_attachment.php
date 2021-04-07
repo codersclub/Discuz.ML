@@ -152,8 +152,7 @@ if(!$requestmode) {
 	}
 
 	// Check the section permissions, if the topic has been paid, let it go
-	if(!$ispaid && !$allowgetattach)
-	{
+	if(!$ispaid && !$allowgetattach) {
 		if(($forum['getattachperm'] && !forumperm($forum['getattachperm'])) || ($forum['viewperm'] && !forumperm($forum['viewperm']))) {
 			showmessagenoperm('getattachperm', $forum['fid']);
 		} else {
