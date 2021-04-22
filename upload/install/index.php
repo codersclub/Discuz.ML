@@ -11,7 +11,9 @@
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
 
-/*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
+if(function_exists('set_magic_quotes_runtime')) {
+	@set_magic_quotes_runtime(0);
+}
 
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
@@ -433,6 +435,15 @@ if($method == 'show_license') {
 		$password = md5(random(10));
 
 		$db->query("REPLACE INTO {$tablepre}common_member (uid, username, password, adminid, groupid, email, regdate) VALUES ('$uid', '$username', '$password', '1', '1', '$email', '".time()."');");
+
+		// UID is a variable. Invalid value will cause problems with the integration operations
+		if($uid) {
+			$db->query("REPLACE INTO {$tablepre}common_member_count SET uid='$uid';");
+			$db->query("REPLACE INTO {$tablepre}common_member_status SET uid='$uid';");
+			$db->query("REPLACE INTO {$tablepre}common_member_field_forum SET uid='$uid';");
+			$db->query("REPLACE INTO {$tablepre}common_member_field_home SET uid='$uid';");
+			$db->query("REPLACE INTO {$tablepre}common_member_profile SET uid='$uid';");
+		}
 
 		$notifyusers = addslashes('a:1:{i:1;a:2:{s:8:"username";s:'.strlen($username).':"'.$username.'";s:5:"types";s:20:"11111111111111111111";}}');
 		$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('notifyusers', '$notifyusers')");
