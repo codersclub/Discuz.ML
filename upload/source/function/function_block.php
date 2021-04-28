@@ -389,16 +389,24 @@ function block_template($bid) {
 					}
 				} elseif($field['datatype'] == 'pic') {
 					if($blockitem['picflag'] == '1') {
-						$replacevalue = $_G['setting']['attachurl'].$replacevalue;
+						if(!$_G['setting']['ftp']['on'] || file_exists($_G['setting']['attachdir'].$replacevalue)) {
+							$replacevalue = $_G['setting']['attachurl'].$replacevalue;
+						} else {
+							$replacevalue = (preg_match('/^https?:\/\//is', $replacevalue) ? '' : $_G['setting']['ftp']['attachurl']).$replacevalue;
+						}
 					} elseif ($blockitem['picflag'] == '2') {
-						$replacevalue = $_G['setting']['ftp']['attachurl'].$replacevalue;
+						$replacevalue = (preg_match('/^https?:\/\//is', $replacevalue) ? '' : $_G['setting']['ftp']['attachurl']).$replacevalue;
 					}
 					if($blockitem['picflag'] && $block['picwidth'] && $block['picheight'] && $block['picwidth'] != 'auto' && $block['picheight'] != 'auto') {
 						if($blockitem['makethumb'] == 1) {
 							if($blockitem['picflag'] == '1') {
-								$replacevalue = $_G['setting']['attachurl'].$blockitem['thumbpath'];
+								if(!$_G['setting']['ftp']['on'] || file_exists($_G['setting']['attachdir'].$blockitem['thumbpath'])) {
+									$replacevalue = $_G['setting']['attachurl'].$blockitem['thumbpath'];
+								} else {
+									$replacevalue = (preg_match('/^https?:\/\//is', $blockitem['thumbpath']) ? '' : $_G['setting']['ftp']['attachurl']).$blockitem['thumbpath'];
+								}
 							} elseif ($blockitem['picflag'] == '2') {
-								$replacevalue = $_G['setting']['ftp']['attachurl'].$blockitem['thumbpath'];
+								$replacevalue = (preg_match('/^https?:\/\//is', $blockitem['thumbpath']) ? '' : $_G['setting']['ftp']['attachurl']).$blockitem['thumbpath'];
 							}
 						} elseif(!$_G['block_makethumb'] && !$blockitem['makethumb']) {
 							C::t('common_block_item')->update($itemid, array('makethumb'=>2));
@@ -412,6 +420,8 @@ function block_template($bid) {
 /*vot*/									$picflag = 1; //common_block_pic Table picture flag identity (0=local, 1=remote)
 									$_G['block_makethumb'] = true;
 									@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
+									C::t('common_block_item')->update($itemid, array('picflag' => 2));
+									$replacevalue = (preg_match('/^https?:\/\//is', $thumbpath) ? '' : $_G['setting']['ftp']['attachurl']).$thumbpath;
 								}
 							} elseif(file_exists($_G['setting']['attachdir'].$thumbpath) || ($return = $image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2))) {
 /*vot*/								$picflag = 0; //common_block_pic Table picture flag identity (0=local, 1=remote)
