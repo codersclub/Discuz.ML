@@ -32,7 +32,7 @@ $lang = array (
   'database_export_multivol_succeed' => '恭喜您，成功創建 {volume} 個備份文件，備份全部完成。<br /> {filelist}',
   'database_export_zip_succeed' => '數據成功備份並壓縮至服務器 <a href="{filename}">{filename}</a> 中',
   'setting_update_succeed' => '當前設置更新成功 ',
-  'setting_domain_http_error' => '您填寫的域名不要以「http://」、「.」開頭或者以「/」、「.」結尾',
+  'setting_domain_http_error' => '請您填寫合法的域名，常見錯誤為以 “http://”、“.”開頭或者以“/”、“/index.php”、“.”結尾，或域名包含未轉換為 Punycode 的國際化域名等',
   'orders_validate_succeed' => '訂單處理成功 ',
   'faq_list_update' => '幫助列表更新成功 ',
   'forums_edit_succeed' => '版塊設置更新成功 ',

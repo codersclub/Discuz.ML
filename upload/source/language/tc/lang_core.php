@@ -170,6 +170,7 @@ $lang = array
 	'title_memcp_promotion' => '訪問推廣',
 	'title_task' => '任務',
 	'title_login' => '登錄',
+	'title_getpasswd' => '找回密碼',
 	'title_ranklist_picture' => '圖片排行',
 	'title_ranklist_member' => '用戶排行',
 	'title_ranklist_thread' => '帖子排行',
