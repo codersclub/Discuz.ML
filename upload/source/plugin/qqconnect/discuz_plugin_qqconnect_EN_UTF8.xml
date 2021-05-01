@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[qqconnect/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[2.1.3]]></item>
+			<item id="version"><![CDATA[2.1.4]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[connect]]></item>
@@ -256,7 +256,8 @@
 				<item id="connect_config_desc_title1"><![CDATA[Easily login with QQ account]]></item>
 				<item id="connect_config_desc_content1"><![CDATA[No need to remember the site username and password, ready to use QQ account password for easy login]]></item>
 				<item id="connect_config_newpassword_comment"><![CDATA[You are currently using QQ account Bind site, Here you can set up individual password, The corresponding functions of this site need to fill in the password to use the only set up an independent password]]></item>
-				<item id="connect_config_desc_content3"><![CDATA[Each content Never put before, Forum thread simple and quick can be shared to friends and listeners]]></item>
+				<item id="connect_config_desc_title2"><![CDATA[Share the wonderful content of this site to QQ space and Tencent friends]]></item>
+				<item id="connect_config_desc_content2"><![CDATA[Every wonderful content will never be overlooked, and you can share forum topics with friends and listeners quickly and easily]]></item>
 				<item id="connect_config_profile"><![CDATA[Profile]]></item>
 				<item id="connect_config_link_name"><![CDATA[QQ Bind settings]]></item>
 				<item id="connect_config_default_pulish_feed_title"><![CDATA[When you post new topic, send a feed to the QQ space by default]]></item>
