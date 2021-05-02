@@ -84,10 +84,16 @@ class discuz_application extends discuz_base{
 
 /*vot*/		error_reporting(E_ALL);
 		if(PHP_VERSION < '5.3.0') {
-/*vot*/			ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
+			set_magic_quotes_runtime(0);
 		}
 
-		define('MAGIC_QUOTES_GPC', function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc());
+/*vot*/	if(PHP_VERSION < '5.4.0') {
+/*vot*/			$MAGIC_QUOTES_GPC = function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc();
+/*vot*/	} else {
+/*vot*/			$MAGIC_QUOTES_GPC = false;
+/*vot*/	}
+/*vot*/	define('MAGIC_QUOTES_GPC', $MAGIC_QUOTES_GPC);
+
 		define('ICONV_ENABLE', function_exists('iconv'));
 		define('MB_ENABLE', function_exists('mb_convert_encoding'));
 		define('EXT_OBGZIP', function_exists('ob_gzhandler'));
