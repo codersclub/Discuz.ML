@@ -434,7 +434,7 @@ if($method == 'show_license') {
 
 		$password = md5(random(10));
 
-		$db->query("REPLACE INTO {$tablepre}common_member (uid, username, password, adminid, groupid, email, regdate) VALUES ('$uid', '$username', '$password', '1', '1', '$email', '".time()."');");
+		$db->query("REPLACE INTO {$tablepre}common_member (uid, username, password, adminid, groupid, email, regdate, timeoffset) VALUES ('$uid', '$username', '$password', '1', '1', '$email', '".time()."', '9999');");
 
 		// UID is a variable. Invalid value will cause problems with the integration operations
 		if($uid) {
