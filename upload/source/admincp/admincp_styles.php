@@ -281,9 +281,9 @@ if($operation == 'admin') {
 							cpheader();
 							$addonid = basename($sarray[$defaultnew]['directory']).'.template';
 							$array = cloudaddons_getmd5($addonid);
-							if(cloudaddons_open('&mod=app&ac=validator&ver=2&addonid='.$addonid.($array !== false ? '&rid='.$array['RevisionID'].'&sn='.$array['SN'].'&rd='.$array['RevisionDateline'] : '')) === '0') {
-								cpmsg('clo'.'uda'.'ddon'.'s_gen'.'uine_'.'mes'.'sage', '', 'error', array('addonid' => $addonid));
-							}
+//zhogong						if(cloudaddons_open('&mod=app&ac=validator&ver=2&addonid='.$addonid.($array !== false ? '&rid='.$array['RevisionID'].'&sn='.$array['SN'].'&rd='.$array['RevisionDateline'] : '')) === '0') {
+//zhogong							cpmsg('clo'.'uda'.'ddon'.'s_gen'.'uine_'.'mes'.'sage', '', 'error', array('addonid' => $addonid));
+//zhogong						}
 						}
 						$defaultids[] = $defaultnew;
 					}
