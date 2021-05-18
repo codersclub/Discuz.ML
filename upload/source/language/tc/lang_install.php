@@ -116,7 +116,10 @@ $lang = array(
 	'click_to_back' => '點擊返回上一步',
 	'adminemail' => '系統信箱 Email',
 	'adminemail_comment' => '用於發送程序錯誤報告',
-	'dbhost_comment' => '數據庫服務器地址, 一般為 localhost',
+	'dbhost_comment' => '一般為 127.0.0.1 或 localhost',
+	'dbname_comment' => '用於安裝 Discuz! 的數據庫',
+	'dbuser_comment' => '您的數據庫用戶名',
+	'dbpw_comment' => '您的數據庫密碼',
 	'tablepre_comment' => '同一數據庫運行多個論壇時，請修改前綴',
 	'forceinstall_check_label' => '我要刪除數據，強制安裝 !!!',
 
