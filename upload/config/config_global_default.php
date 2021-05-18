@@ -28,7 +28,7 @@ $_config = array();
  * ...
  *
  */
-$_config['db'][1]['dbhost']  	= 'localhost';	// DB Server address
+$_config['db'][1]['dbhost']  	= '127.0.0.1';	// DB Server address
 $_config['db'][1]['dbuser']  	= 'root';	// DB User Name
 $_config['db'][1]['dbpw'] 		= 'root';	// DB User Password
 $_config['db'][1]['dbcharset'] 	= 'utf8';	// DB Charset
