@@ -30,7 +30,7 @@ d4eab86918808b578d08edaab073ac8e *api/uc.php
 925d38a86571e4736546218f0ed030d8 *./archiver
 fee4806bed2bad3fad5fa78359ddb9e6 *archiver/index.php
 c92a71303bcc841344e07d1bf49d1f9b *./config
-954568ddb34e56a1399582ef81e2b83a *config/config_global_default.php
+d32b68da566212055e51792da5020be1 *config/config_global_default.php
 f6ff047850e8f46685e3753f446fdffc *config/config_ucenter_default.php
 7215ee9c7d9dc229d2921a40e899ec5f *config/index.htm
 9fae5bbb53f47a30fc29c8fec86ad16e *./connect.php
@@ -40,6 +40,7 @@ d41d8cd98f00b204e9800998ecf8427e *data/index.htm
 b86205bdf3a3a0a6e8dee75d9e065130 *data/ipdata/GeoLite2-Country.mmdb
 7215ee9c7d9dc229d2921a40e899ec5f *data/ipdata/index.htm
 b21eeb904d9bcb604ed682343661bcc2 *data/ipdata/tinyipdata.dat
+93d0ac4235e553d6cfe0ce65a55ef446 *data/stat_setting.xml
 c028c4822428e83a358c60a93ef65381 *./favicon.ico
 f39006916773d443d103d496ebdd8106 *./forum.php
 f21c89ac3dec18dd88a221e507347c3a *./group.php
@@ -51,7 +52,6 @@ b02c95a1cf4b6ff8671830e6723c9a2c *./member.php
 46168bd9822733d7dd39bf52502992d7 *./misc.php
 a6eb96cbf9fbbcdc610cf574f438693a *./plugin.php
 913d8df752d8a802d387a72f066bf3c0 *./portal.php
-e4c3bfe695710c5610cf51723b3bdae2 *./robots.txt
 e424cc88db3f5e8aee0fd08396cdd2de *./search.php
 08066574cc9c9cfa186b8e1a7ba35b5c *./source
 05f937856f452831f86ebff06b86afdf *source/admincp/admincp_admingroup.php
@@ -103,7 +103,7 @@ a970b3eff661bed025b52bfef0324dcc *source/admincp/admincp_nav.php
 21606cee451f3b1fdd96c3216755418d *source/admincp/admincp_optimizer.php
 1f3c59f706eb00a835546445e535836b *source/admincp/admincp_perm.php
 ee4c5cc034d2e32ebc2872473b69fd51 *source/admincp/admincp_pic.php
-a4a23fa7a6b8745020b4dc463ec38eb1 *source/admincp/admincp_plugins.php
+a5e87f63b1be72b1048e15a211f963d6 *source/admincp/admincp_plugins.php
 5417f71fdf0659ee3fc6ba39fe313a55 *source/admincp/admincp_portalcategory.php
 969afc1130dccb5d8ff826e4206b6d2a *source/admincp/admincp_portalpermission.php
 f3d3f8de57b54a515b07d0ea766e24fe *source/admincp/admincp_postcomment.php
@@ -118,13 +118,13 @@ ad3f9285aa16d1f73fcd27272f524fd0 *source/admincp/admincp_setting.php
 d566092906932e416a46cefa0e798b04 *source/admincp/admincp_share.php
 e71d936fe6bbe7b93728ea3733e15c52 *source/admincp/admincp_smilies.php
 007a086e911f690b1ae821a31bf53eaf *source/admincp/admincp_specialuser.php
-30688fbd02fa9ea36953d6566a9e4ff5 *source/admincp/admincp_styles.php
+92ff0d3bfc76001b23364ac229a987dd *source/admincp/admincp_styles.php
 472aa792b1671056c0b4f19892143a5d *source/admincp/admincp_tag.php
 3ed5b843570848bfdb0a93329edc7cf4 *source/admincp/admincp_tasks.php
 70b447bd12b533bff81cb3b10c3aa861 *source/admincp/admincp_templates.php
 dc92e00b36a93400f20f93f0c2a984f2 *source/admincp/admincp_threads.php
 a4db26377d53aac6a858c7abeaebb3d9 *source/admincp/admincp_threadsplit.php
-7db879e1107ba0e814d18c6970708bb4 *source/admincp/admincp_threadtypes.php
+dae99ec3f19c1577d17d10ef599a49fa *source/admincp/admincp_threadtypes.php
 4f5d082f25f79040a00d6f217276ae31 *source/admincp/admincp_tools.php
 cb659766c1ca2ad229ed094a7b4a2187 *source/admincp/admincp_topic.php
 d44745dad9ecd4a464394605476ad4f2 *source/admincp/admincp_tradelog.php
@@ -296,7 +296,7 @@ fb05c4f082d4098a9e567b2d56cb8344 *source/class/db/db_driver_mysqli_slave.php
 e28eb546c80966c63d5cca19063b7d53 *source/class/db/db_driver_mysql_slave.php
 d41d8cd98f00b204e9800998ecf8427e *source/class/db/index.htm
 1ceced2869a2fa890163e144db1397a0 *source/class/discuz/discuz_admincp.php
-2b9960424ea39cb7800a2d9cad3cf981 *source/class/discuz/discuz_application.php
+f8b7e7d3961f9618e3aa4481c75e37e7 *source/class/discuz/discuz_application.php
 5bb1ba4480bcfd862809bf5f5951d5cf *source/class/discuz/discuz_base.php
 b0b7df7926c2cdd89957cca31ba54c41 *source/class/discuz/discuz_block.php
 70a91a45e71b11974c678de26118dea8 *source/class/discuz/discuz_censor.php
@@ -350,7 +350,7 @@ f467fbd2185aaf87818699c642a09a9a *source/class/helper/helper_mobile.php
 fbecf04eacbdce0e05d105c45e66051b *source/class/helper/helper_output.php
 a2f2d9d076697b1c25eea29e8a57f36e *source/class/helper/helper_page.php
 fabc124614f30c6dccbf7371ec2f3d60 *source/class/helper/helper_pm.php
-2a7f2005c5991b12350bb768934814fd *source/class/helper/helper_seccheck.php
+11d3e9b1bd8da6c86f3b8706e47a9997 *source/class/helper/helper_seccheck.php
 b8eaa904d338d1c953032877d06748f4 *source/class/helper/helper_seo.php
 90d1cd3362048052870cb51777adb365 *source/class/helper/helper_sysmessage.php
 971f0eae86647e401fd99aacfc643ee9 *source/class/helper/helper_util.php
@@ -679,12 +679,12 @@ f095ccece3f8511afe44af11d8241790 *source/class/task/task_member.php
 d7a4bcad63d5d32061c4d7db49db5c79 *source/class/task/task_post.php
 f9fabd8329b3a8a91c7a8996bd0bc4cc *source/class/task/task_profile.php
 163b0fa720322c66fa18e0232af5e6a8 *source/class/task/task_promotion.php
-4c620351deedfdc8002dd400ee9cf536 *source/discuz_version.php
+f4cb57306fe8da10390f677121ac7ebb *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 50b0811c23739eef7c549d94569b6a32 *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
 cfc733f1857e46418d72ed2bd756dbc1 *source/function/cache/cache_announcements.php
-8db2f221cb95a6234363756f6b25cdb1 *source/function/cache/cache_announcements_forum.php
+7e2e8e80c4570b903ed84b5ddebf7d68 *source/function/cache/cache_announcements_forum.php
 e021105c5b17a0e35ec68e27f5737be3 *source/function/cache/cache_antitheft.php
 a50db5fd4e333874b2322c8d4a6d64e8 *source/function/cache/cache_attachtype.php
 4be2022e6a886cd20cfe6d93cc560669 *source/function/cache/cache_bbcodes.php
@@ -756,7 +756,7 @@ ec12fe7f82e44d9d2e53ddf0213d2038 *source/function/function_block.php
 30b1bdd6288e8703448aebcefef24b3f *source/function/function_ec_credit.php
 0dcd4a8255c47746ade931949ffb9b80 *source/function/function_editor.php
 ed60f1ffa5730c849ff679cf8fd5efcb *source/function/function_exif.php
-249aa1713576bfb2015abc0925de1c11 *source/function/function_feed.php
+d1df9c09283fec31ddf1972712d16fa2 *source/function/function_feed.php
 6d56b50ab750117aa6a059f3acdb46f7 *source/function/function_filesock.php
 9823c87e973aedf53a1ac0495b805519 *source/function/function_followcode.php
 e92475fe187e5e87410a6c9d043f22b4 *source/function/function_forum.php
@@ -776,10 +776,10 @@ c370c12c945194fc1fd52d253f0e567b *source/function/function_plugin.php
 4b27de76e51a6e25e7d7218a93b68887 *source/function/function_portalcp.php
 3069b0ed0d1b223f04ba964accdd0b3c *source/function/function_post.php
 253e7351a622b3f30d10e37daebcb9dd *source/function/function_preg.php
-bc7ebb56b7777af14ddd70cae3a8f9c4 *source/function/function_profile.php
+34c8bce6429489eb5c2da4d9088b4b07 *source/function/function_profile.php
 1af32e0738148efe6d6f6ef7c6fec714 *source/function/function_search.php
-5031c2ba4cfb83236a222901b5eda794 *source/function/function_share.php
-b959deb261a621fb32d40352f7e997bc *source/function/function_space.php
+bceebf4fa1aeb10668424fe88dcca4b8 *source/function/function_share.php
+0f0a795363d52eefa3dfa997409dcfb5 *source/function/function_space.php
 acbcc88880ffb058afe1341098b0d636 *source/function/function_spacecp.php
 8b8fc621a0f24e3fab045d20d6c23dcb *source/function/function_stat.php
 a7c98dd0029505bc1d3ba453475fa050 *source/function/function_threadsort.php
@@ -938,10 +938,10 @@ d18f4bf4dd2bddccc1f15c04fb36d35b *source/include/spacecp/spacecp_privacy.php
 0602a64356411e7c965e115f05a76154 *source/include/spacecp/spacecp_promotion.php
 74e5acdd6acbe6b0167adbd6e9eeb1dd *source/include/spacecp/spacecp_search.php
 94ed4dc5da80ed7a048abd914ddea080 *source/include/spacecp/spacecp_sendmail.php
-67bebb3372042457018f3f47cdd9d92d *source/include/spacecp/spacecp_share.php
+ab5ae0e9bf9b217b159f6580fe0932bf *source/include/spacecp/spacecp_share.php
 9375e53280ff41883f172a29a29a7395 *source/include/spacecp/spacecp_top.php
 4f20561173a21516f1cfefe7c5e6387a *source/include/spacecp/spacecp_upload.php
-4061afe2f6b14b0247bf46aa4215b89c *source/include/spacecp/spacecp_usergroup.php
+d470e5881e64eb669b6037d8b07ed400 *source/include/spacecp/spacecp_usergroup.php
 4217e1ac85203907b449f7e6aea450fc *source/include/spacecp/spacecp_videophoto.php
 731e494c7d4cf8833967b87c63915ef2 *source/include/table/big5-unicode.table
 4e9faa7d1dd08e36b19895a4f4db53db *source/include/table/gb-big5.table
@@ -1042,7 +1042,7 @@ a73c7a6964316ea71592c670813d65b2 *source/language/sc/group/lang_misc.php
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/sc/home/index.htm
 c03820cc61fce8c28244b86b0ae757cb *source/language/sc/home/lang_editor.php
 e6f1091f01a20d35925c95d7a62222bc *source/language/sc/home/lang_magic.php
-55358762598f830c71e840fab5ec9154 *source/language/sc/home/lang_template.php
+05270fb8f9041c674cd30c6007142c2a *source/language/sc/home/lang_template.php
 855ea0dda6e5b38a3a5c74d877409402 *source/language/sc/image/help/album.gif
 88bdbb95b48cd28dc4ef7997fef8e1ab *source/language/sc/image/help/blog.gif
 64492757c1cf55705b46861a12671d59 *source/language/sc/image/help/cp.gif
@@ -1097,9 +1097,9 @@ a436318f2cb1b7917420258d030e369a *source/language/sc/lang_country.php
 c51dcc694c892fb203adf6ef77a8f252 *source/language/sc/lang_exif.php
 c69b6786cfed37691dc8608379a51e7e *source/language/sc/lang_feed.php
 0ab608fdfc8ca61f4173362f21bcf823 *source/language/sc/lang_friend.php
-9735ea596388cbb8a4bca1a389f6a6fd *source/language/sc/lang_install.php
+fce1412336273aa7b3023126a6932d6c *source/language/sc/lang_install.php
 a490cc080c3a5ec7266bcac989f3e8e2 *source/language/sc/lang_js.js
-478c43ed8f724897a25ef3e826478ca1 *source/language/sc/lang_message.php
+871155bef778b496b2d00af27c5745cf *source/language/sc/lang_message.php
 ccacd7e9f9cc0d2a287e068f4604a31c *source/language/sc/lang_notification.php
 d6c0a52979b934fcd95842774f2da4fd *source/language/sc/lang_optimizer.php
 5ae53e6d2d59295e6713bb1c8fd59a81 *source/language/sc/lang_portalcp.php
@@ -1233,7 +1233,7 @@ c3a21de6489d7391c829547b647a68b9 *source/language/tc/group/lang_template.php
 7215ee9c7d9dc229d2921a40e899ec5f *source/language/tc/home/index.htm
 b9267f1f04cc25c2001f0a511519a813 *source/language/tc/home/lang_editor.php
 bb66dbcc29bf3d7a3ce691b7da3b1438 *source/language/tc/home/lang_magic.php
-2a162837747effc441522158c1280a87 *source/language/tc/home/lang_template.php
+73be8e33c37e7e9eccdf19e46b728238 *source/language/tc/home/lang_template.php
 855ea0dda6e5b38a3a5c74d877409402 *source/language/tc/image/help/album.gif
 88bdbb95b48cd28dc4ef7997fef8e1ab *source/language/tc/image/help/blog.gif
 64492757c1cf55705b46861a12671d59 *source/language/tc/image/help/cp.gif
@@ -1288,9 +1288,9 @@ d438b186e2aab13aedba88b7d5df6809 *source/language/tc/lang_email.php
 6eb9968e29c5abac6f187236c0f6a29c *source/language/tc/lang_exif.php
 d9e9358751da0788750c1c857b7c5284 *source/language/tc/lang_feed.php
 f29ba23a32ef7dc5ba01762115a83aeb *source/language/tc/lang_friend.php
-bc153a00c865bd492605c79822432d88 *source/language/tc/lang_install.php
+fba3ca44faa7b8c85e95db88f2f2d180 *source/language/tc/lang_install.php
 7f8ac246176a873f431d44324850ebec *source/language/tc/lang_js.js
-ef59fae8140b86915d4f530c2744933a *source/language/tc/lang_message.php
+8e679504975beb59e0f9e7a6b72d9bed *source/language/tc/lang_message.php
 2715b2c68b07153e7a5747948347b468 *source/language/tc/lang_notification.php
 95239f1d05bf927e479c3eb0db8efc88 *source/language/tc/lang_optimizer.php
 79df6c8e87bfb923b49de915dfdf22eb *source/language/tc/lang_portalcp.php
@@ -1375,7 +1375,7 @@ cb51cfe16559084716000b0725fb111a *source/module/forum/forum_rss.php
 9eacb72a42d21156d35b2a8956cc0fdc *source/module/forum/forum_tag.php
 571fc4f66dc650cdf4548ff0d8d60e40 *source/module/forum/forum_topicadmin.php
 e7d4e8fed8d979a928cd8960eec25f2d *source/module/forum/forum_trade.php
-3b545e70756ea50c4fe6f77d0c18c958 *source/module/forum/forum_viewthread.php
+e54a165c8fabd5da8d026e43c7317012 *source/module/forum/forum_viewthread.php
 d41d8cd98f00b204e9800998ecf8427e *source/module/forum/index.htm
 6ac2bc80c87d24ef37a87e02cf9f31cd *source/module/group/group_attentiongroup.php
 8263a15c6d7dc0246cf7426d16cd9195 *source/module/group/group_index.php
@@ -1439,7 +1439,7 @@ d41d8cd98f00b204e9800998ecf8427e *source/module/search/index.htm
 83a0de5b8bbec75f07586f1ae29fc493 *source/module/search/search_album.php
 fdbc28de3ddfbdcbe973558d834d4526 *source/module/search/search_blog.php
 d1d027932f1ea96ff120548d71dcfa06 *source/module/search/search_collection.php
-f936bdbfbcd9f9e070d7469d652319cd *source/module/search/search_forum.php
+5bc294819bf070f12a9273fe4aed75de *source/module/search/search_forum.php
 c4ad9c58ee1c98c90158a936139e70f3 *source/module/search/search_group.php
 fb7ea5226a204a93e5bcde2a892cac85 *source/module/search/search_portal.php
 29aa3a7fc9ffac315adf350e760f1880 *source/module/search/search_user.php
@@ -1868,6 +1868,7 @@ b02c0551341677c53349001303d4151d *static/image/common/nv.png
 59a0f7ffa0c5cf1d6acd08ecfe97252d *static/image/common/n_rate.png
 eb407f23eed9ac9c2e1eab6b2020d6c2 *static/image/common/ol.gif
 192969dc12128cec078a00106e342dba *static/image/common/online_admin.gif
+3c37a7182fd9d703623c49627a04237f *static/image/common/online_ban.gif
 d095a57d1db2add618fa56b4db299eb7 *static/image/common/online_guest.gif
 e679735ca6f5ed898ba98e4433565003 *static/image/common/online_member.gif
 2d29fcf160d9f89f258c06713df3673c *static/image/common/online_moderator.gif
@@ -3042,7 +3043,7 @@ d41d8cd98f00b204e9800998ecf8427e *static/js/index.htm
 ef058f07a773acf03f6d2f7f6ecb68fd *static/js/md5.js
 ed88708e2be8db3e81cedd63851109c1 *static/js/mobile/ajaxfileupload.js
 ff352f0645ea7e926caaa3ef2c48da02 *static/js/mobile/buildfileupload.js
-fe2d5b95c9e2429f318f04c114103fe9 *static/js/mobile/common.js
+56362d2545184381d648e6d25aede8e6 *static/js/mobile/common.js
 d41d8cd98f00b204e9800998ecf8427e *static/js/mobile/index.htm
 c7a06100ded36c16acd06454e6932de0 *static/js/player/aplayer.min.css
 45e6c849cb21cc7c5271e0e794bae1ca *static/js/player/aplayer.min.css.map
@@ -3315,7 +3316,7 @@ d41d8cd98f00b204e9800998ecf8427e *template/default/common/index.htm
 379fd7b33731f1530096d6fde0362210 *template/default/common/invite.htm
 8d18332c488ef29b14efb05a9565496d *template/default/common/ipnotice.htm
 ffb5266f81adc96f713a279c71a1b7fc *template/default/common/misc_imgcropper.htm
-05617a8d8bf646504381048fd9a54d03 *template/default/common/module.css
+58af02b45579f05083a1cd67419be77f *template/default/common/module.css
 8f4308d13513e52543904e2b5919a1ae *template/default/common/module_rtl.css
 6a237d22ff398d89834dd8132880fb3d *template/default/common/preview.htm
 100a4b93944d93b71c9dfc51f4804c6a *template/default/common/pubsearchform.htm
@@ -3372,7 +3373,7 @@ d69e262b416d88786187808952b7b536 *template/default/forum/debate_umpire.htm
 7e3765e5eb3e341716d068883978ba28 *template/default/forum/forumdisplay.htm
 aaefcf5fa4a11e03610b399588ce2157 *template/default/forum/forumdisplay_fastpost.htm
 db17c79b92c0ee7551bbaab7a2b894ee *template/default/forum/forumdisplay_leftside.htm
-79244f0d0c15e00f33b7ae3f7452d299 *template/default/forum/forumdisplay_list.htm
+18f144e44abd4e5ce1bf4b26a0b08378 *template/default/forum/forumdisplay_list.htm
 59ce0d2a156b316b4b05da263b161a70 *template/default/forum/forumdisplay_passwd.htm
 8e3a24898257c4afac88594c8f411e1a *template/default/forum/forumdisplay_pay.htm
 bd55f788f5954a153a69497971d0e841 *template/default/forum/forumdisplay_sort.htm
@@ -3449,7 +3450,7 @@ c861a70c9ed2c1dfd9fe9ea49faf3523 *template/default/forum/viewthread_node.htm
 1d34a7ea27af7d731617bccdb4966635 *template/default/forum/viewthread_poll.htm
 531d1b15f0fc510bf592bfc6ceba8bd8 *template/default/forum/viewthread_poll_voter.htm
 122655ab97b8da643eff1edbfb2981d4 *template/default/forum/viewthread_portal.htm
-b71d5c7881f8d5ea936851d246b79a90 *template/default/forum/viewthread_preview.htm
+e06f0f25b7c03fa2e25a0871e4210671 *template/default/forum/viewthread_preview.htm
 505caa58a4c5ac5084fee336b07dc799 *template/default/forum/viewthread_preview_node.htm
 79fee4d69564a8e2c15fbb8431f4e255 *template/default/forum/viewthread_printable.htm
 0db7f94967f562ed51334f03de1d95ed *template/default/forum/viewthread_profile_node.htm
@@ -3545,7 +3546,7 @@ b73f17f83db11ca669644c1066b88b74 *template/default/home/space_doing.htm
 843378acbf7953fc2fd760196c41048f *template/default/home/space_doing_li.htm
 04bb3f5042ab904f02f73a19d4c33334 *template/default/home/space_eccredit.htm
 93075dc574de8d8a24b6dc8df275ea2e *template/default/home/space_favorite.htm
-0ee5fb771c2f977cb5ce76d86c80c2d9 *template/default/home/space_feed_li.htm
+dc843127a9c7f528ae2f661a58b6a5ac *template/default/home/space_feed_li.htm
 f785aa1683b97e9a80d7d917c5c6d694 *template/default/home/space_friend.htm
 72f15f23e3cb5b17497b3b57951359d2 *template/default/home/space_friend_nav.htm
 96174ed7102733017526ad219343a803 *template/default/home/space_header.htm
@@ -3573,9 +3574,9 @@ cbfb462a1269283ac208c9c8fcd83bdc *template/default/home/space_poll.htm
 97f9086571954ad05ae8e74cd944b46f *template/default/home/space_prompt_nav.htm
 7586071a9bd5aecc85821db82d3c71f5 *template/default/home/space_reward.htm
 c2e6fbaf5ee15a8e88c487740734a245 *template/default/home/space_share_form.htm
-46ff33d1215ffebc2874fa146835b8d0 *template/default/home/space_share_li.htm
+2d42f7150e2342aa77b0378f650d710e *template/default/home/space_share_li.htm
 8173e0c34df1dca709aeaff4e5bac9a9 *template/default/home/space_share_list.htm
-920aa433ae03233518532417947e3337 *template/default/home/space_share_view.htm
+d86ee9cc24b47254e1f0cbdfd03e8ac5 *template/default/home/space_share_view.htm
 f11705f9f30d402dc14dca5d908a6198 *template/default/home/space_status.htm
 9bd529ccc1e182f23bdd48651e7f150b *template/default/home/space_task.htm
 db9b21c491b406291b33f5ec399b5955 *template/default/home/space_task_detail.htm
@@ -3830,7 +3831,7 @@ d41d8cd98f00b204e9800998ecf8427e *template/default/search/index.htm
 8d68ce30fe23628b79d94f79a01f22a7 *template/default/search/portal_list.htm
 0bdfc3208b9f9c99caa2e488c8fdefac *template/default/search/pubsearch.htm
 51e6de6f0783d769894c22b93f8a094f *template/default/search/sortoption.htm
-75bd0c6a803128ea53b6b13bc05005ed *template/default/search/thread_list.htm
+6fc65c7a6115f88b87e2812e76c993b2 *template/default/search/thread_list.htm
 d41d8cd98f00b204e9800998ecf8427e *template/default/style/index.htm
 e0b6d3936de0af62620be813c9c9f462 *template/default/style/t1/background.png
 c3d7951c6be4da58487a6da76b9b4b08 *template/default/style/t1/bgimg.jpg
@@ -4042,7 +4043,7 @@ dea62a81dcb69b255a4deaac38602e0d *uc_server/control/admin/plugin.php
 9b0a32b21c13acbccdf36087e5dad5bc *uc_server/control/admin/pm.php
 0e9c93d9204b5f232eea6617ca594979 *uc_server/control/admin/seccode.php
 ff568e0204dfa796ef9a947091bb9482 *uc_server/control/admin/setting.php
-0ae7f75415aa22de6157e4d6c80f44b7 *uc_server/control/admin/ucfiles.md5
+75e80bcd851d145a914d26dd4576615b *uc_server/control/admin/ucfiles.md5
 8b51ca1028e3525a3869b6db7bfd4099 *uc_server/control/admin/user.php
 73848d3c004bbf8341138005fc58865f *uc_server/control/app.php
 45f65148d59e61a608d57af8544ff5e5 *uc_server/control/credit.php
@@ -4200,7 +4201,7 @@ d7b379d38fbc0e8a120454a334a54499 *uc_server/model/tag.php
 e31958f44f4884fe7b3575b8c103418f *uc_server/model/user.php
 cdc453e23980b4f7f894a3b15042a76c *uc_server/model/version.php
 d41d8cd98f00b204e9800998ecf8427e *uc_server/plugin/filecheck/index.htm
-72de92d385ed77b1f5574d593016af93 *uc_server/plugin/filecheck/plugin.php
+98d75a449925522bb4e800121967006c *uc_server/plugin/filecheck/plugin.php
 0a29c3f57465e4ee4e1e682532542546 *uc_server/plugin/filecheck/plugin.xml
 5d44be262da492a25c5e62f3387c8e6c *uc_server/plugin/filecheck/plugin_filecheck.htm
 d41d8cd98f00b204e9800998ecf8427e *uc_server/plugin/index.htm
@@ -4215,8 +4216,8 @@ d41d8cd98f00b204e9800998ecf8427e *uc_server/release/index.htm
 0ab45bb9ded2cfd294563e3724b8f0be *uc_server/release/release.php
 15dde9868cbc402f19261bd376496d38 *uc_server/robots.txt
 d41d8cd98f00b204e9800998ecf8427e *uc_server/upgrade/index.htm
-fc55340a4e4c274a07710ce66670f616 *uc_server/upgrade/upgrade2.php
-4377df028e682d957ecd8d8ff6f36e4b *uc_server/upgrade/upgrade3.php
+9d3ba8344868d0f6e58871621c03ddcb *uc_server/upgrade/upgrade2.php
+26c906c69296743b2fdf9a128799c52b *uc_server/upgrade/upgrade3.php
 340293b792e96e6d65a25d1e16645269 *uc_server/view/default/admin.lang.php
 6ca32db1f256095aa8fcedf496b64d17 *uc_server/view/default/admin_admin.htm
 261691150ce396fc020a120f30bb1efb *uc_server/view/default/admin_app.htm
@@ -4262,4 +4263,3 @@ cfcf3bb6aeff9a878f5bf8061f19a707 *uc_server/view/default/pm_blackls.htm
 dac5c0e9b6bc07bf43e58789ea70eec7 *uc_server/view/default/templates.lang.php
 42fa0f40e601b24e3dbdd91ac05ce696 *uc_server/view/default/user_avatar.htm
 7215ee9c7d9dc229d2921a40e899ec5f *uc_server/view/index.htm
-e58db32bff1262b8a4cb7e6db1445a50 *./_langdiff.php
