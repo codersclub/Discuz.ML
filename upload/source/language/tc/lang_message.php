@@ -873,6 +873,7 @@ $lang = array (
   'usergroups_join_succeed' => '您已加入用戶組 {group}',
   'usergroups_exit_succeed' => '您已退出用戶組 {group}',
   'usergroup_switch_not_allow' => '您當前的用戶組未到期，無法切換到其他用戶組',
+  'usergroup_switch_not_allowvisit' => '抱歉，您無法切換到不能訪問論壇的用戶組',
   'usergroups_switch_succeed' => '您已切換到用戶組 {group}',
 
   'no_privilege_banpost' => '抱歉，您沒有權限屏蔽主題',
