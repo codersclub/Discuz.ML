@@ -2604,8 +2604,8 @@ $lang = array
 	'setting_mobile_hotthread_comment' => '「觸屏版」功能，開啟則在首頁顯示熱貼',
 	'setting_mobile_displayorder3' => '是否顯示置頂貼',
 	'setting_mobile_displayorder3_comment' => '「觸屏版」功能，在帖子列表頁面中是否顯示置頂貼，否為不顯示',
-	'setting_mobile_simpletype' => '開啟不顯示圖片',
-	'setting_mobile_simpletype_comment' => '默認顯示圖片，開啟後，「觸屏版」不顯示帖子圖片，「標準版」不顯示帖子圖片、小圖標、主題列表日期等頁面元素',
+	'setting_mobile_simpletype' => '開啟無圖模式',
+	'setting_mobile_simpletype_comment' => '默認顯示圖片，開啟後，“觸屏版”不顯示帖子圖片，“簡易版”不顯示帖子圖片、小圖標、主題列表日期等頁面元素',
 	'setting_mobile_simpletype_yes' => '無圖精簡版',
 	'setting_mobile_simpletype_no' => '標準版',
 	'setting_mobile_topicperpage' => '每頁顯示主題數',
@@ -2618,8 +2618,8 @@ $lang = array
 	'setting_mobile_index_forumview_comment' => '如「收起」，論壇首頁將默認只展示分區標題<br />用戶需點擊分區展開該分區下的版塊列表',
 	'setting_mobile_come_from' => '手機發帖來源自定義',
 	'setting_mobile_come_from_comment' => '默認留空，如果填寫，將在看帖頁面"來自手機"處增加自定義文字或圖標<br />如:&lt;a href=\'http://m.x.com\'&gt;手機頻道&lt;/a&gt;<br />此處支持HTML標籤有：&lt;a&gt;&lt;font&gt;&lt;span&gt;&lt;strong&gt;&lt;b&gt;&lt;img&gt;<br />如果使用圖標，請保證圖片高度在16px(像素)以內',
-	'setting_mobile_wml' => '是否啟用極簡版',
-	'setting_mobile_wml_comment' => '極簡版為一些僅支持WML語言的較早期的設備瀏覽網站的內容',
+	'setting_mobile_wml' => '是否啟用WML版',
+	'setting_mobile_wml_comment' => 'WML版為一些僅支持WML語言的較早期的設備瀏覽網站的內容',
 	'pack' => '收起',
 	'unwind' => '展開',
 
@@ -3362,9 +3362,9 @@ $lang = array
 
 	'styles_default' => '默認風格',
 	'styles_default0' => '電腦版',
-	'styles_default1' => '手機標準版',
+	'styles_default1' => '手機簡易版',
 	'styles_default2' => '手機觸屏版',
-	'styles_default3' => '手機極簡版',
+	'styles_default3' => '手機WML版',
 
 	'styles_import' => '導入界面方案',
 	'styles_import_ignore_version' => '允許導入老版本 Discuz! 的界面(易產生錯誤!!)',
