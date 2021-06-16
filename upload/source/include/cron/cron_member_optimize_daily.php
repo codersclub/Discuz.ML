@@ -10,6 +10,10 @@
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
-C::t('common_member')->split(100);
+
+// Before the user sub-table operation, check ifr the user sub-table is turned on
+if(getglobal('setting/membersplit')) {
+	C::t('common_member')->split(100);
+}
 
 ?>

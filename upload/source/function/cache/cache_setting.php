@@ -485,6 +485,12 @@ function build_cache_setting() {
 
 	$data['securesiteurl'] = $_G['siteurl'];
 
+	// If the site has done user sub-tables, you need to determine whether the user sub-table exists when updating the cache, and if it does not exist, you need to add it.
+	// Fix the problem that the program error caused by the loss of the user sub-table due to the site's own problems.
+	if($data['membersplit']) {
+		C::t('common_member_archive')->check_table();
+	}
+
 	savecache('setting', $data);
 	$_G['setting'] = $data;
 }
