@@ -247,7 +247,7 @@ $_config['languages']['ui'] = array('icon'=>'ui.gif', 'name'=>'ئۇيغۇر', 't
 $_config['detect_language'] = true;	// Auto-detect user language: true|false
 $_config['enable_multilingual'] = true;	// Enable/Disable multi-lingual feature
 $_config['language_horizontal'] = false; // Arrange Language List Horizontally
-
+$_config['login_strike'] = 5; // Maximum number of login tries inside 15 minutes
 
 //  CONFIG CACHE
 $_config['cache']['type'] 		= 'file';	// Cache type: file = file cache, sql = database cache
