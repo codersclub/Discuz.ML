@@ -40,7 +40,7 @@ function getblockhtml($blockname,$parameters = array()) {
 			$privacy = $space['privacy']['profile'] ? $space['privacy']['profile'] : array();
 
 			foreach($_G['cache']['profilesetting'] as $fieldid=>$field) {
-				// 个人空间内不展现个人信息
+				// No personal information is displayed in the personal space
 				if($_G['setting']['nsprofiles']) {
 					break;
 				}
