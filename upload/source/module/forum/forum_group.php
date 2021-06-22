@@ -309,7 +309,7 @@ if($action == 'index') {
 	} else {
 		$parentid = intval($_GET['parentid']);
 		$fup = intval($_GET['fup']);
-/*vot*/		$name = stripslashes(trim($_GET['name']));
+/*vot*/		$name = censor(dhtmlspecialchars(trim($_GET['name'])), NULL, FALSE, FALSE);
 /*vot*/		if(dstrlen($name) < 2 || dstrlen($name) > 80) {	// Name length in Characters
 /*vot*/			showmessage('group_name_oversize');
 /*vot*/		}
@@ -336,7 +336,7 @@ if($action == 'index') {
 			showmessage('group_name_exist');
 		}
 		require_once libfile('function/discuzcode');
-		$descriptionnew = discuzcode(dhtmlspecialchars(censor(trim($_GET['descriptionnew']))), 0, 0, 0, 0, 1, 1, 0, 0, 1);
+		$descriptionnew = discuzcode(dhtmlspecialchars(censor(trim($_GET['descriptionnew']), NULL, FALSE, FALSE)), 0, 0, 0, 0, 1, 1, 0, 0, 1);
 		$censormod = censormod($descriptionnew);
 		if($censormod) {
 			showmessage('group_description_failed');
@@ -419,7 +419,7 @@ if($action == 'index') {
 				$parentid = intval($_GET['parentid']);
 
 				if(isset($_GET['name'])) {
-/*vot*/					$name = stripslashes(trim($_GET['name']));
+/*vot*/					$name = censor(dhtmlspecialchars(trim($_GET['name'])), NULL, FALSE, FALSE);
 /*vot*/					if(dstrlen($name) < 2 || dstrlen($name) > 80) {	// Name length in Characters
 /*vot*/						showmessage('group_name_oversize');
 /*vot*/					}
@@ -481,7 +481,7 @@ if($action == 'index') {
 				@unlink($_G['forum']['banner']);
 			}
 			require_once libfile('function/discuzcode');
-			$_GET['descriptionnew'] = discuzcode(censor(trim($_GET['descriptionnew'])), 0, 0, 0, 0, 1, 1, 0, 0, 1);
+			$_GET['descriptionnew'] = discuzcode(censor(trim($_GET['descriptionnew']), NULL, FALSE, FALSE), 0, 0, 0, 0, 1, 1, 0, 0, 1);
 			$censormod = censormod($_GET['descriptionnew']);
 			if($censormod) {
 				showmessage('group_description_failed');

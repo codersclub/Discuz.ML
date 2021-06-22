@@ -1412,6 +1412,8 @@ EOF;
 		showsetting('setting_permissions_post_append', 'settingnew[postappend]', $setting['postappend'], 'radio');
 		showsetting('setting_permissions_maxpolloptions', 'settingnew[maxpolloptions]', $setting['maxpolloptions'], 'text');
 		showsetting('setting_permissions_editby', 'settingnew[editedby]', $setting['editedby'], 'radio');
+		showsetting('setting_permissions_nsprofiles', 'settingnew[nsprofiles]', $setting['nsprofiles'], 'radio');
+		showsetting('setting_permissions_modasban', 'settingnew[modasban]', $setting['modasban'], 'radio');
 
 		showtitle('nav_setting_rate');
 		showsetting('setting_permissions_karmaratelimit', 'settingnew[karmaratelimit]', $setting['karmaratelimit'], 'text');
@@ -2236,6 +2238,10 @@ EOT;
 		showtablerow('', '', $search_collection);
 		showtablefooter();
 		
+		showtableheader('setting_search_srchsetting');
+		showsetting('setting_search_srchcensor', 'settingnew[srchcensor]', $setting['srchcensor'], 'radio');
+		showtablefooter();
+
 		showtableheader('setting_search_srchhotkeywords');
 		showsetting('setting_search_srchhotkeywords', 'settingnew[srchhotkeywords]', $setting['srchhotkeywords'], 'textarea');
 

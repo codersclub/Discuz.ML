@@ -53,5 +53,9 @@ if($mod == 'curforum') {
 	$_GET['srhfid'] = 0;
 }
 
+if(!empty($_GET['srchtxt']) && getglobal('setting/srchcensor')) {
+	$_GET['srchtxt'] = censor($_GET['srchtxt']);
+}
+
 require DISCUZ_ROOT.'./source/module/search/search_'.$mod.'.php';
 
