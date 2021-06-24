@@ -1916,6 +1916,10 @@ $lang = array
 	'setting_permissions_editby_comment' => '在 60 秒後編輯帖子添加「本帖由 xxx 於 xxxx-xx-xx 編輯」字樣。管理員編輯不受此限制',
 	'setting_permissions_post_append' => '啟用帖子補充功能',
 	'setting_permissions_post_append_comment' => '啟用後，當用戶無法編輯自己的帖子時，可以補充內容',
+	'setting_permissions_nsprofiles' => '個人空間內不展現個人信息',
+	'setting_permissions_nsprofiles_comment' => '啟用後個人空間內將不展現個人信息',
+	'setting_permissions_modasban' => '不忽略審核關鍵詞',
+	'setting_permissions_modasban_comment' => '啟用後在不支持審核關鍵詞的模塊內發現此類關鍵詞將拒絕提交，關閉則允許提交',
 
 	'setting_credits' => '積分設置',
 	'setting_credits_base' => '基本設置',
@@ -2285,7 +2289,9 @@ $lang = array
 	'setting_sec_accountguard_loginpwcheck_prompt' => '開啟並提示',
 	'setting_sec_accountguard_loginpwcheck_force' => '開啟並強制修改弱密碼',
 	'setting_sec_accountguard_loginoutofdate' => '異常登錄檢測',
-	'setting_sec_accountguard_loginoutofdate_comment' => '當用戶異地登錄且距離上次登錄超過90 天時，帳號會進入未審核組，用戶可以通過驗證郵箱或者申訴解凍帳號，QQ登錄的用戶不受此功能影響<a href=" '.ADMINSCRIPT.'?action=moderate&operation=members">審核用戶</a>',
+	'setting_sec_accountguard_loginoutofdate_comment' => '當用戶距離上次登錄超過一定期限時，帳號會進入未審核組，用戶可以通過驗證郵箱或者申訴解凍帳號，QQ登錄的用戶不受此功能影響 <a href="'.ADMINSCRIPT.'?action=moderate&operation=members">審核用戶</a>',
+	'setting_sec_accountguard_loginoutofdatenum' => '異常登錄檢測天數',
+	'setting_sec_accountguard_loginoutofdatenum_comment' => '配置異常登錄檢測天數，默認值為 90 天',
 
 
 	'setting_attach' => '上傳設置',
@@ -2474,6 +2480,10 @@ $lang = array
 	'setting_search_status_comment' => '勾選您要開啟的搜索欄目',
 	'setting_search_onoff' => '開啟',
 	'search_item_name' => '搜索項目',
+
+	'setting_search_srchsetting' => '搜索選項設置',
+	'setting_search_srchcensor' => '搜索受詞語過濾控制',
+
 	'setting_search_srchhotkeywords' => '熱門關鍵詞',
 	'setting_search_srchhotkeywords_comment' => '每行一個',
 	'setting_search_srchhotkeywords_disabled' => '<strong>您已開啟縱橫搜索服務，搜索相關設置請到<a href="'.ADMINSCRIPT.'?action=cloud&operation=search">雲平台->縱橫搜索</a> 設置</strong>',
