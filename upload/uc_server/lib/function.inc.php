@@ -14,17 +14,28 @@
  * @return bool
  */
 function is_https() {
-	if (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) != "off") {
+	// PHP standard server variables
+	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 		return true;
-	} else if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && strtolower($_SERVER["HTTP_X_FORWARDED_PROTO"]) == "https") {
+	// X-Forwarded-Proto de facto standard header, used for anti-generation transparent transmission of HTTPS status
+	} else if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
 		return true;
-	} else if (isset($_SERVER["HTTP_SCHEME"]) && strtolower($_SERVER["HTTP_SCHEME"]) == "https") {
+	} else if(isset($_SERVER['HTTP_SCHEME']) && strtolower($_SERVER['HTTP_SCHEME']) == 'https') {
 		return true;
-	} else if (isset($_SERVER["HTTP_FROM_HTTPS"]) && strtolower($_SERVER["HTTP_FROM_HTTPS"]) != "off") {
+	// Apache 2.4 Rewrite Engine header
+	} else if (isset($_SERVER['REQUEST_SCHEME']) && strtolower($_SERVER['REQUEST_SCHEME']) == 'https') {
 		return true;
-	} else if (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] == 443) {
+	// Alibaba Cloud site-wide accelerated private HTTPS status header 
+	// Git feedback https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	} else if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
 		return true;
-	} else {
-		return false;
+	// The private HTTPS status header of Western Digital Site Assistant
+	// Official website feedback https://www.discuz.net/thread-3849819-1-1.html
+	} else if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
+		return true;
+	// The server port number is the last place to check
+	} else if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
+		return true;
 	}
+	return false;
 }

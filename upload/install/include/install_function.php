@@ -12,8 +12,6 @@ if(!defined('IN_COMSENZ')) {
 	exit('Access Denied');
 }
 
-/*vot*/ require_once(ROOT_PATH . 'source/function/function.inc.php');
-
 function show_msg($error_no, $error_msg = 'ok', $success = 1, $quit = TRUE) {
 	if(VIEW_OFF) {
 		$error_code = $success ? 0 : constant(strtoupper($error_no));
@@ -1814,6 +1812,15 @@ function send_mime_type_header($type = 'application/xml') {
 
 //-------------------------------------------------
 // Added by Valery Votintsev, codersclub.org
+
+/*
+//vot: function is_https() moved to source/function/function.inc.php
+function is_https() {
+}
+*/
+
+/*vot*/ require_once(ROOT_PATH . 'source/function/function.inc.php');
+
 function lang_exists($lang_id='') {
 
 	if(!$lang_id) {
