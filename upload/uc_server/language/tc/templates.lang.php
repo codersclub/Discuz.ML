@@ -313,7 +313,7 @@ $lang = array(
 	'setting_addappbyurl_comment' => '是否啟用通過 URL 添加應用功能，建議只有必須通過 URL 添加應用時開啟',
 
 	'setting_user_failedtime'		=> '允許用戶登錄失敗次數',
-	'setting_user_failedtime_comment'	=> '用戶登錄失敗超過設置的數據，將在15分鐘內無法登錄，0為不限制次數',
+	'setting_user_failedtime_comment'	=> '用戶登錄失敗超過設置的次數，將在 15 分鐘內無法登錄，0 為使用默認設置，負數為不限制次數（不安全）',
 
 	'setting_register'			=> '註冊設置',
 	'setting_register_tips'			=> '允許/禁止的 Email 地址只需填寫 Email 的域名部分，每行一個域名，例如 @hotmail.com',
