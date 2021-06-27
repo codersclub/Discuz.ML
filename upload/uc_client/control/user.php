@@ -113,9 +113,11 @@ class usercontrol extends base {
 		$answer = $this->input('answer');
 		$ip = $this->input('ip');
 
-		$this->settings['login_failedtime'] = is_null($this->settings['login_failedtime']) ? 5 : $this->settings['login_failedtime'];
+		// Check_times represents the number of login failures allowed by the user, the value of this variable is 0 for unlimited, and a positive number is the number of times
+		// Due to a historical bug, the original value of 0 used to represent unlimited in the system configuration must represent the normal value of 5, so it can only be mapped here. Negative numbers are mapped to 0, positive numbers are normal, and 0 is mapped to 5.
+		$check_times = $this->settings['login_failedtime'] > 0 ? $this->settings['login_failedtime'] : ($this->settings['login_failedtime'] < 0 ? 0 : 5);
 
-		if($ip && $this->settings['login_failedtime'] && !$loginperm = $_ENV['user']->can_do_login($username, $ip)) {
+		if($ip && $check_times && !$loginperm = $_ENV['user']->can_do_login($username, $ip)) {
 			$status = -4;
 			return array($status, '', $password, '', 0);
 		}
@@ -138,7 +140,7 @@ class usercontrol extends base {
 		} else {
 			$status = $user['uid'];
 		}
-		if($ip && $this->settings['login_failedtime'] && $status <= 0) {
+		if($ip && $check_times && $status <= 0) {
 			$_ENV['user']->loginfailed($username, $ip);
 		}
 		$merge = $status != -1 && !$isuid && $_ENV['user']->check_mergeuser($username) ? 1 : 0;

@@ -252,7 +252,13 @@ class usermodel {
 
 	function can_do_login($username, $ip = '') {
 
-		$check_times = $this->base->settings['login_failedtime'] < 1 ? 5 : $this->base->settings['login_failedtime'];
+		// Check_times represents the number of login failures allowed by the user, the value of this variable is 0 for unlimited, and a positive number is the number of times
+		// Due to a historical bug, the original value of 0 used to represent unlimited in the system configuration must represent the normal value of 5, so it can only be mapped here. Negative numbers are mapped to 0, positive numbers are normal, and 0 is mapped to 5.
+		$check_times = $this->base->settings['login_failedtime'] > 0 ? $this->base->settings['login_failedtime'] : ($this->base->settings['login_failedtime'] < 0 ? 0 : 5);
+
+		if($check_times == 0) {
+			return -1;
+		}
 
 		$username = substr(md5($username), 8, 15);
 		$expire = 15 * 60;
