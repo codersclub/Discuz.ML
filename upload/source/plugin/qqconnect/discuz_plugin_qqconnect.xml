@@ -80,16 +80,16 @@
 				<item id="connect_register_closed"><![CDATA[QQ registration feature has been closed]]></item>
 				<item id="connect_register_bind"><![CDATA[Bind existing account]]></item>
 				<item id="connect_register_profile"><![CDATA[Complete the account information]]></item>
-                <item id="connect_get_access_token_failed"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
+				<item id="connect_get_access_token_failed"><![CDATA[Sorry, there is a network problem or the server is busy. Please try again later. Thank you.]]></item>
 				<item id="connect_get_access_token_failed_code"><![CDATA[Sorry, there are network problems or server is busy, error code: <a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>, Please try again later. Thank you.]]></item>
 				<item id="connect_get_request_token_failed"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
-                <item id="connect_get_request_token_failed_code"><![CDATA[Sorry, there are network problems or server is busy, error code: <a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>, Please try again later. Thank you.]]></item>
+				<item id="connect_get_request_token_failed_code"><![CDATA[Sorry, there is a network problem or the server is busy. Detailed error: {codeMessage}, error code: <a target=_blank href="https://wiki.connect.qq.com/%e5%85%ac%e5 %85%b1%e8%bf%94%e5%9b%9e%e7%a0%81%e8%af%b4%e6%98%8e">{code}</a>, please try again later . Thank you.]]></item>
 				<item id="connect_register_bind_uin_already"><![CDATA[Sorry, this QQ account is allready have been bound by another user, can not bind again]]></item>
 				<item id="connect_config_success"><![CDATA[QQ Internet settings updated successfully]]></item>
 				<item id="connect_login_first"><![CDATA[Please use the QQ for login and then access this page again]]></item>
 				<item id="connect_config_unbind_failed"><![CDATA[Sorry, unbind failed, please try to use QQ login before unbind operation]]></item>
-                <item id="connect_config_unbind_busy"><![CDATA[Sorry, currently there are network problems or the server is busy, please wait and then try to unbind. Thank you.]]></item>
-				<item id="connect_config_unbind_busy_code"><![CDATA[Sorry, there are network problems or server is busy, error code: <a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>, Please try again later. Thank you.]]></item>
+				<item id="connect_config_unbind_busy"><![CDATA[Sorry, there is a network problem or the server is busy. Please try to unbind again later. Thank you.]]></item>
+				<item id="connect_config_unbind_busy_code"><![CDATA[Sorry, there are network problems or the server is busy. Detailed error: {codeMessage}, error code: <a target=_blank href="https://wiki.connect.qq.com/%e5%85%ac%e5%85 %b1%e8%bf%94%e5%9b%9e%e7%a0%81%e8%af%b4%e6%98%8e">{code}</a>, please try to unbind later . Thank you.]]></item>
 				<item id="connect_config_unbind_success"><![CDATA[Your QQ account was successful unbind.]]></item>
 				<item id="connect_uin_in_blacklist"><![CDATA[Sorry, this QQ accounts is locked at the site, you can <a href="{changeqqurl}">Use other QQ account for login</a>]]></item>
 				<item id="connect_reauth_success"><![CDATA[QQ Internet authorization modified successfully]]></item>
@@ -107,7 +107,7 @@
 				<item id="connect_qzone_weibo_same_content"><![CDATA[The post is allready broadcasted, not need to repeat broadcasting]]></item>
 				<item id="connect_user_unauthorized"><![CDATA[Sorry, you are not authorized to share the thread to the QQ space and Tencent Friends. Click <a href={login_url}><img src=static/image/common/qq_login.gif class=vm alt="QQ login" /></a>, Authorize now]]></item>
 				<item id="connect_errlog_server_no_response"><![CDATA[Server did not respond]]></item>
-                <item id="connect_server_busy"><![CDATA[Sorry, currently there are network problems or the server is busy, please try again later. Thank you.]]></item>
+				<item id="connect_server_busy"><![CDATA[Sorry, there is a network problem or the server is busy. Please try again later. Thank you.]]></item>
 				<item id="connect_server_busy_code"><![CDATA[Sorry, there are network problems or server is busy, error code: {code}, Please try again later. Thank you.]]></item>
 				<item id="connectguest_message_complete_or_bind"><![CDATA[Sorry, You are yet not <a href="member.php?mod=connect" class="xi2">provide the account information</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">Bind existing account</a>, This action can not be performed]]></item>
 				<item id="connect_error_code_999"><![CDATA[Request failed]]></item>
