@@ -195,7 +195,7 @@ spaceDiy.extend({
 /*vot*/				dom.innerHTML = lng['edit'];
 				$('spacename').appendChild(dom);
 			}
-			$('spaceinfoshow').onmousedown = function () {spaceDiy.showEditSpaceInfo();};
+			$('infoedit').onmousedown = function () {spaceDiy.showEditSpaceInfo();};
 		}
 		if ($('nv')) {
 			if(!$('nv').getElementsByTagName('li').length) {
