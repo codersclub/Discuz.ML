@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_admincp_menu.php 34034 2013-09-24 01:23:05Z nemohou $
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -109,6 +110,7 @@ $lang = array
 	'menu_setting_collection' => '淘帖管理',
 	'menu_posting_tags' => '标签管理',
 	'menu_posting_censors' => '词语过滤',
+	'menu_remoderate' => '内容重新审核',
 	'menu_maint_report' => '用户举报',
 	'menu_threads_forumstick' => '版块/群组置顶',
 	'menu_post_position_index' => '帖子优化',
