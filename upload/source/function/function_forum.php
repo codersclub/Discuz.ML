@@ -129,7 +129,7 @@ function formulaperm($formula) {
 			}
 		}
 	}
-	$formulaperm = @eval($formula) ? true : false;
+	@eval("\$formulaperm = ($formula) ? TRUE : FALSE;");
 	if(!$formulaperm) {
 		if(!$permmessage) {
 			$language = lang('forum/misc');
@@ -236,7 +236,7 @@ function medalformulaperm($formula, $type) {
 			}
 		}
 	}
-	$formulaperm = @eval($formula) ? true : false;
+	@eval("\$formulaperm = ($formula) ? TRUE : FALSE;");
 	if(!$formulaperm || $type == 2) {
 		if(!$permmessage) {
 			$language = lang('forum/misc');
