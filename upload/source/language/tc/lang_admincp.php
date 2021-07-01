@@ -455,6 +455,7 @@ $lang = array
 	'nav_misc_links' => '友情鏈接',
 	'nav_misc_relatedlink' => '關聯鏈接',
 	'nav_posting_censor' => '詞語過濾',
+	'nav_remoderate' => '內容重新審核',
 	'nav_posting_bbcode' => '編輯 Discuz! 代碼',
 	'nav_thread_icon' => '主題圖標',
 	'nav_thread_stamp' => '主題鑒定',
@@ -715,6 +716,7 @@ $lang = array
 	'home_sys_info' => '系統信息',
 	'home_discuz_version' => 'Discuz! 程序版本',
 	'home_ucclient_version' => 'UCenter 客戶端版本',
+	'home_git_version' => '（非正式版）',
 	'home_check_newversion' => '查看最新版本',
 	'home_environment' => '服務器系統及 PHP',
 	'home_serversoftware' => '服務器軟件',
@@ -6034,6 +6036,22 @@ $lang = array
 	'counter_forumid' => '版塊ID',
 	'counter_have_cover' => '包含已有封面主題',
 	'counter_tips' => '<li>當下列數據不正常時，可以使用此功能對數據進行更新校正。請盡量避開會員訪問的高峰時間</li>
+				<li>每個循環更新數量：數值請在一個合理範圍，不要過大，否則會給服務器帶來負載壓力</li>
+				',
+
+	'remoderate' => '內容重新審核',
+	'remoderate_thread' => '主題/帖子標題及內容重新審核',
+	'remoderate_blog' => '日誌標題及內容重新審核',
+	'remoderate_pic' => '圖片標題重新審核',
+	'remoderate_doing' => '記錄內容重新審核',
+	'remoderate_share' => '分享內容重新審核',
+	'remoderate_comment' => '家園評論內容重新審核',
+	'remoderate_article' => '文章標題及內容重新審核',
+	'remoderate_articlecomment' => '文章評論內容重新審核',
+	'remoderate_topiccomment' => '專題評論內容重新審核',
+	'remoderate_amount' => '每個循環更新數量',
+	'remoderate_processing' => '正在處理 從 {current} 到 {next}',
+	'remoderate_tips' => '<li>當詞語過濾參數有較大變動或鄰近敏感時間點時，可以使用此功能對歷史數據進行重新審核。請盡量避開會員訪問的高峰時間</li>
 				<li>每個循環更新數量：數值請在一個合理範圍，不要過大，否則會給服務器帶來負載壓力</li>
 				',
 
