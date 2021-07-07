@@ -19,8 +19,8 @@ d41d8cd98f00b204e9800998ecf8427e *control/admin/index.htm
 dea62a81dcb69b255a4deaac38602e0d *control/admin/plugin.php
 9b0a32b21c13acbccdf36087e5dad5bc *control/admin/pm.php
 0e9c93d9204b5f232eea6617ca594979 *control/admin/seccode.php
-ff568e0204dfa796ef9a947091bb9482 *control/admin/setting.php
-4dd31df25f7c84c9e994efca53c76059 *control/admin/ucfiles.md5
+c16bcae4f1f0f777d0092d7ba88a5f4a *control/admin/setting.php
+75e80bcd851d145a914d26dd4576615b *control/admin/ucfiles.md5
 8b51ca1028e3525a3869b6db7bfd4099 *control/admin/user.php
 73848d3c004bbf8341138005fc58865f *control/app.php
 45f65148d59e61a608d57af8544ff5e5 *control/credit.php
@@ -32,7 +32,7 @@ aba07c0e38ad0875a303ef418658afc2 *control/domain.php
 a4f51b281ebc27ba4b71408caa4f3f52 *control/pm.php
 2360bfbf4ddc7b75dc4fb49cc68ac952 *control/pm_client.php
 0d2d3e7e61f7834c5133d1151e493368 *control/tag.php
-ffb2614d7b3f30240266a1fa1571dea8 *control/user.php
+3c5702882067871ad8c96b0222c1d863 *control/user.php
 fa6e51baef21c1104e6a9c9bea515b93 *control/version.php
 7215ee9c7d9dc229d2921a40e899ec5f *data/avatar/index.htm
 7215ee9c7d9dc229d2921a40e899ec5f *data/backup/index.htm
@@ -139,7 +139,7 @@ f1c5e779fdbf024d19fb578b7e06ea2c *images/gif/Small_Fonts/x.gif
 cca7e1ae3e066aec5f6d8bc1096d08fd *js/pm_editor.js
 30bef9f4245ea71e3c73583f8fb82e8e *lib/db.class.php
 5b928f3bf2756505e3e772e4841024aa *lib/dbi.class.php
-25be74f04adc49a3606d5211fc975173 *lib/function.inc.php
+61db612a6970c255d37a95f32d10462c *lib/function.inc.php
 7215ee9c7d9dc229d2921a40e899ec5f *lib/index.htm
 4a83e84bdb2ff80ecb180f330255e825 *lib/seccode.class.php
 d4fbe5acd2ebfd7d4fd42ecaaccdcdf0 *lib/sendmail.inc.php
@@ -164,12 +164,12 @@ bb9c95148eda27df11628934ac5e3963 *model/plugin.php
 e07b645ad6318c754fe055d1abd38f66 *model/pm.php
 ba787d675b6b8db7549ae1a1eb97dc20 *model/setting.php
 d7b379d38fbc0e8a120454a334a54499 *model/tag.php
-e31958f44f4884fe7b3575b8c103418f *model/user.php
+c85fc16414876296a672ba69507ab671 *model/user.php
 cdc453e23980b4f7f894a3b15042a76c *model/version.php
 d41d8cd98f00b204e9800998ecf8427e *plugin/filecheck/index.htm
-98d75a449925522bb4e800121967006c *plugin/filecheck/plugin.php
-0a29c3f57465e4ee4e1e682532542546 *plugin/filecheck/plugin.xml
-5d44be262da492a25c5e62f3387c8e6c *plugin/filecheck/plugin_filecheck.htm
+847adca8fa9930b3846185de6b83d402 *plugin/filecheck/plugin.php
+c44eda05e35cdecd5152b7af6d9bee20 *plugin/filecheck/plugin.xml
+5259f76ce41387e0218eb54c38a616c9 *plugin/filecheck/plugin_filecheck.htm
 d41d8cd98f00b204e9800998ecf8427e *plugin/index.htm
 558a63b8f3215be4dd5f922d69c4e7b2 *release/20080429/control/pm.php
 da658b223bf8d5f0d09129a29727671d *release/20080429/lib/xml.class.php
@@ -196,7 +196,7 @@ d85f6017aa35b5ef3d91cc28362dee17 *view/default/admin_mail.htm
 f58c17f54b74ad9685edc0a672694c69 *view/default/admin_note.htm
 d0f78db9349b7baef5483c12357896e1 *view/default/admin_pm_clear.htm
 e1584613d0dc1a88c08e28889166dab4 *view/default/admin_pm_search.htm
-0f8adc045295cfb1ceac6e50133959e9 *view/default/admin_setting.htm
+17f6a43b142b001b01baf62bdfc7214a *view/default/admin_setting.htm
 cacb0172cbdd597afbe8282682dcd121 *view/default/admin_tag.htm
 3d1cc35907cb078376023c8510582ee7 *view/default/admin_user.htm
 008d9c24de6c0976c5c519382d1e5636 *view/default/footer.htm
