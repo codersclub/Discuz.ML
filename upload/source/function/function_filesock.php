@@ -100,7 +100,6 @@ function _dfsockopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FAL
 		//  IP ,  PHP  >= 5.5.0 ,  CURLOPT_RESOLVE  IP 
 		//  PHP ,  SNI 
 		if(!filter_var($host, FILTER_VALIDATE_IP) && version_compare(PHP_VERSION, '5.5.0', 'ge')) {
-			curl_setopt($ch, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 			curl_setopt($ch, CURLOPT_RESOLVE, array("$host:$port:$ip"));
 			curl_setopt($ch, CURLOPT_URL, $scheme.'://'.$host.':'.$port.$path);
 		} else {
