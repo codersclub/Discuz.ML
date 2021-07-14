@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: spacecp_friend.php 36272 2016-11-23 06:35:37Z nemohou $
- *      Modified by Valery Votintsev, http://discuz.ml
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -52,7 +51,7 @@ if($op == 'add') {
 
 	$maxfriendnum = checkperm('maxfriendnum');
 	if($maxfriendnum && $space['friends'] >= $maxfriendnum + $space['addfriend']) {
-		if($_G['magic']['friendnum']) {
+		if($_G['setting']['magics']['friendnum']) {
 			showmessage('enough_of_the_number_of_friends_with_magic');
 		} else {
 			showmessage('enough_of_the_number_of_friends');
