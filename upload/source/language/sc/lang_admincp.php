@@ -5955,7 +5955,7 @@ $lang = array
 				<li>模板缓存：更新论坛模板、风格等缓存文件，当您修改了模板或者风格，但是没有立即生效的时候使用</li>
 				<li>DIY 模块分类缓存：更新 DIY 模块分类，当您安装或修改了 DIY 模块分类，但是没有立即生效的时候使用</li>
 				',
-
+/*5*/
 	'tools_updatecache_data'=>'数据缓存',
 	'tools_updatecache_tpl'=>'模板缓存',
 	'tools_updatecache_blockclass'=>'DIY 模块分类缓存',
