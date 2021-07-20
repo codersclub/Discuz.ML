@@ -1225,11 +1225,22 @@ body .ui-tooltip {
 }
 
 /* Avatar */
-#avatardesigner{border: 1px solid #CCC; padding: 10px; overflow: hidden; margin-right: 10px; float:left;}
+#avatardesigner{border: 1px solid #CCC; padding: 10px; overflow: hidden; margin-right: 10px; float:left;
+/*vot*/ background: url(avatar_upload.gif);
+/*vot*/ vertical-align: middle;
+/*vot*/}
+/*vot*/ #avatarlabel{
+/*vot*/    display: inline-block;
+/*vot*/    background: #9CF;
+/*vot*/    padding: 5px 8px;
+/*vot*/    border: 3px solid #666;
+/*vot*/    border-radius: 5px;
+/*vot*/    box-shadow: 2px 2px 2px #999;
+/*vot*/}
 #avataradjuster, #avatardisplayer{position: relative; display:none;}
 #avatardisplaycanvas{position: absolute; top: 0px; left: 0px;background:#FFF;}
 #avatarfileselector{
-    background:url(avatar_upload.gif) no-repeat;
+/*vot    background:url(avatar_upload.gif);*/
     position:relative;
 /*vot*/ text-align: center;
 /*vot*/ padding: 100px 0 0 20px;
