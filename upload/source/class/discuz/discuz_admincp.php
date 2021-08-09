@@ -98,7 +98,9 @@ class discuz_admincp
 			} elseif ($session['dateline'] < $this->sessionlimit) {
 				$this->cpaccess = 1;
 
-			} elseif ($this->cpsetting['checkip'] && ($session['ip'] != $this->core->var['clientip'])) {
+			} elseif ($this->cpsetting['checkip'] && ($session['ip'] != substr($this->core->var['clientip'], 0, strlen($session['ip'])))) {
+				// Since the current CDN has generally enabled IPv6 support, the verification is modified here to achieve the function of verifying only the first 15 bits
+				// The X3.5 version or the parties own modification of the website supporting IPv6 can not synchronize this modification
 				$this->cpaccess = 1;
 
 			} elseif ($session['errorcount'] >= 0 && $session['errorcount'] <= 3) {
