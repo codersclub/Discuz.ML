@@ -1505,7 +1505,7 @@ EOT;
 <!--vot-->					<li><input type="checkbox" value="share" name="clear[share]" class="checkbox">&nbsp;$lang[members_ban_delshare]</li>
 <!--vot-->					<li><input type="checkbox" value="avatar" name="clear[avatar]" class="checkbox">&nbsp;$lang[members_ban_delavatar]</li>
 <!--vot-->					<li><input type="checkbox" value="comment" name="clear[comment]" class="checkbox">&nbsp;$lang[members_ban_delcomment]</li>
-<!--vot-->              	<li><input type="checkbox" value="follower" name="clear[follower]" class="checkbox">&nbsp;$lang[members_ban_delfollower]</li>
+<!--vot-->              	<li><input type="checkbox" value="others" name="clear[others]" class="checkbox">&nbsp;$lang[members_ban_delothers]</li>
 <!--vot-->              	<li><input type="checkbox" value="profile" name="clear[profile]" class="checkbox">&nbsp;$lang[members_ban_delprofile]</li>
 					</ul>
 				</td>
@@ -1799,9 +1799,25 @@ EOF;
 				C::t('common_member_field_home'.$tableext)->update($member['uid'], array('spacename' => '', 'spacedescription' => ''));
 			}
 
-			if(in_array('follower', $_GET['clear'])) {
+			if(in_array('others', $_GET['clear'])) {
+				// Clean the Space visit log
+				C::t('home_clickuser')->delete_by_uid($member['uid']);
+				C::t('home_visitor')->delete_by_uid_or_vuid($member['uid']);
+				// Clean the Space folowings
 				C::t('home_follow')->delete_by_uid($member['uid']);
 				C::t('home_follow')->delete_by_followuid($member['uid']);
+				// Clean Friendship and friend request
+				C::t('home_friend')->delete_by_uid_fuid($member['uid']);
+				C::t('home_friend_request')->delete_by_uid_or_fuid($member['uid']);
+				// Feed cleanup
+				C::t('home_feed')->delete_by_uid($member['uid']);
+				// Notification cleanup
+				C::t('home_notification')->delete_by_uid($member['uid']);
+				// Hello clean up
+				C::t('home_poke')->delete_by_uid_or_fromuid($member['uid']);
+				C::t('home_pokearchive')->delete_by_uid_or_fromuid($member['uid']);
+				// Forum promotion cleanup
+				C::t('forum_promotion')->delete_by_uid($member['uid']);
 			}
 
 			if($membercount) {
