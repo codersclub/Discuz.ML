@@ -426,9 +426,13 @@ IconIndex=1
 		$filename = $_G['setting']['bbname'].'.url';
 	}
 
+	// Follow the RFC 6266 international standard, and encode the file name according to the rules in RFC 5987
 	$filenameencode = strtolower(CHARSET) == 'utf-8' ? rawurlencode($filename) : rawurlencode(diconv($filename, CHARSET, 'UTF-8'));
+	// Blacklist of browser vendors that even the international standards released in 2011 did not support correctly
+	// Currently includes: UC, Quark, Sogou, Baidu
+	$rfc6266blacklist = strexists($_SERVER['HTTP_USER_AGENT'], 'UCBrowser') || strexists($_SERVER['HTTP_USER_AGENT'], 'Quark') || strexists($_SERVER['HTTP_USER_AGENT'], 'SogouM') || strexists($_SERVER['HTTP_USER_AGENT'], 'baidu');
 	dheader('Content-type: application/octet-stream');
-	dheader('Content-Disposition: attachment; filename="'.(($filename == $filenameencode) ? $filename.'"' : $filenameencode.'"; filename*=utf-8\'\''.$filenameencode));
+	dheader('Content-Disposition: attachment; filename="'.$filenameencode.'"'.(($filename == $filenameencode || $rfc6266blacklist) ? '' : '; filename*=utf-8\'\''.$filenameencode));
 	echo $shortcut;
 	exit;
 } elseif($_GET['action'] == 'livelastpost') {

@@ -44,13 +44,17 @@ if($op == 'basic') {
 	extract($statvars);
 	if($_GET['exportexcel']) {
 		$filename = 'stat_modworks_'.($username ? $username.'_' : '').$starttime.'_'.$endtime.'.csv';
+		// Follow the RFC 6266 international standard, and encode the file name according to the rules in RFC 5987
 		$filenameencode = strtolower(CHARSET) == 'utf-8' ? rawurlencode($filename) : rawurlencode(diconv($filename, CHARSET, 'UTF-8'));
+		// Blacklist of browser vendors that even the international standards released in 2011 did not support correctly
+		// Currently includes: UC, Quark, Sogou, Baidu
+		$rfc6266blacklist = strexists($_SERVER['HTTP_USER_AGENT'], 'UCBrowser') || strexists($_SERVER['HTTP_USER_AGENT'], 'Quark') || strexists($_SERVER['HTTP_USER_AGENT'], 'SogouM') || strexists($_SERVER['HTTP_USER_AGENT'], 'baidu');
 		include template('forum/stat_misc_export');
 		$csvstr = ob_get_contents();
 		ob_end_clean();
 		header('Content-Encoding: none');
 		header('Content-Type: application/octet-stream');
-		header('Content-Disposition: attachment; filename="'.(($filename == $filenameencode) ? $filename.'"' : $filenameencode.'"; filename*=utf-8\'\''.$filenameencode));
+		header('Content-Disposition: attachment; filename="'.$filenameencode.'"'.(($filename == $filenameencode || $rfc6266blacklist) ? '' : '; filename*=utf-8\'\''.$filenameencode));
 		header('Pragma: no-cache');
 		header('Expires: 0');
 //vot		if($_G['charset'] != 'gbk') {

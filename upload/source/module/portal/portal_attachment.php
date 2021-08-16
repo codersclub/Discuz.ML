@@ -65,12 +65,17 @@ if($operation == 'delete') {
 	}
 
 	$filesize = $attach['filesize'];
+	// Follow the RFC 6266 international standard, and encode the file name according to the rules in RFC 5987
 	$filenameencode = strtolower(CHARSET) == 'utf-8' ? rawurlencode($attach['filename']) : rawurlencode(diconv($attach['filename'], CHARSET, 'UTF-8'));
+
+	// Blacklist of browser vendors that even the international standards released in 2011 did not support correctly
+	// Currently includes: UC, Quark, Sogou, Baidu
+	$rfc6266blacklist = strexists($_SERVER['HTTP_USER_AGENT'], 'UCBrowser') || strexists($_SERVER['HTTP_USER_AGENT'], 'Quark') || strexists($_SERVER['HTTP_USER_AGENT'], 'SogouM') || strexists($_SERVER['HTTP_USER_AGENT'], 'baidu');
 
 	dheader('Date: '.gmdate('D, d M Y H:i:s', $attach['dateline']).' GMT');
 	dheader('Last-Modified: '.gmdate('D, d M Y H:i:s', $attach['dateline']).' GMT');
 	dheader('Content-Encoding: none');
-	dheader('Content-Disposition: attachment; filename="'.(($attach['filename'] == $filenameencode) ? $attach['filename'].'"' : $filenameencode.'"; filename*=utf-8\'\''.$filenameencode));
+	dheader('Content-Disposition: attachment; filename="'.$filenameencode.'"'.(($attach['filename'] == $filenameencode || $rfc6266blacklist) ? '' : '; filename*=utf-8\'\''.$filenameencode));
 	dheader('Content-Type: '.$attach['filetype']);
 	dheader('Content-Length: '.$filesize);
 
