@@ -220,13 +220,6 @@ $lang = array
 
 	'close' => '關閉',
 
-	'attackevasive_1_subject' => '刷新頻率限制',
-	'attackevasive_1_message' => '您訪問網站的速度太快，不到兩秒鐘！請等一下...',
-	'attackevasive_2_subject' => '通過代理服務器的訪問是受到限制',
-	'attackevasive_2_message' => '通過代理服務器訪問網站限制畝。請刪除您的代理設置配置，並直接訪問該網站。',
-	'attackevasive_4_subject' => '打開頁面重載',
-	'attackevasive_4_message' => '歡迎的網站，頁面重新載入，請稍候...',
-
 //--------------------------------------------------------------------------
 // Added by Valery Votintsev
 
