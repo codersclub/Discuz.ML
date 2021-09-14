@@ -83,8 +83,8 @@ class discuz_application extends discuz_base{
 	private function _init_env() {
 
 /*vot*/		error_reporting(E_ALL);
-		if(PHP_VERSION < '5.3.0') {
-			set_magic_quotes_runtime(0);
+/*vot*/		if(function_exists('set_magic_quotes_runtime')) {
+/*vot*/			@set_magic_quotes_runtime(0);
 		}
 
 /*vot*/	if(PHP_VERSION < '5.4.0') {

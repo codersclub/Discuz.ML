@@ -9,7 +9,10 @@ $Id: index.php 1162 2014-10-31 06:57:07Z hypowang $
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
-/*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
+
+/*vot*/ if(function_exists('set_magic_quotes_runtime')) {
+/*vot*/		@set_magic_quotes_runtime(0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
+/*vot*/ }
 
 define('IN_COMSENZ', TRUE);
 define('ROOT_PATH', dirname(__FILE__).'/../');
