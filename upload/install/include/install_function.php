@@ -1181,7 +1181,7 @@ function lang($lang_key, $force = true) {
 function check_adminuser($username, $password, $email) {
 
 	include ROOT_PATH.CONFIG_UC;
-	include ROOT_PATH.'./uc_client/client.php';
+/*vot*/	include_once ROOT_PATH.'./uc_client/client.php';
 
 	$error = '';
 	$ucresult = uc_user_login($username, $password);
