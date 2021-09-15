@@ -142,7 +142,7 @@ function dhtmlspecialchars($string, $flags = null) {
 			if(PHP_VERSION < '5.4.0') {
 				$string = htmlspecialchars($string, $flags);
 			} else {
-				if(strtolower(CHARSET) == 'utf-8') {
+				if(strtolower(UC_CHARSET) == 'utf-8') {
 					$charset = 'UTF-8';
 				} else {
 					$charset = 'ISO-8859-1';

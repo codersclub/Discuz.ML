@@ -47,7 +47,7 @@ $a = empty($a) ? 'index' : $a;
 
 define('RELEASE_ROOT', '');
 
-header('Content-Type: text/html; charset='.CHARSET);
+header('Content-Type: text/html; charset='.UC_CHARSET);
 
 if(in_array($m, array('admin', 'app', 'badword', 'cache', 'db', 'domain', 'frame', 'log', 'note', 'feed', 'mail', 'setting', 'user', 'credit', 'seccode', 'tool', 'plugin', 'pm'))) {
 	include UC_ROOT."control/admin/$m.php";
@@ -117,7 +117,7 @@ function dhtmlspecialchars($string, $flags = null) {
 			if(PHP_VERSION < '5.4.0') {
 				$string = htmlspecialchars($string, $flags);
 			} else {
-				if(strtolower(CHARSET) == 'utf-8') {
+				if(strtolower(UC_CHARSET) == 'utf-8') {
 					$charset = 'UTF-8';
 				} else {
 					$charset = 'ISO-8859-1';

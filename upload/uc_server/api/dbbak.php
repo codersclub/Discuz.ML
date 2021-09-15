@@ -383,7 +383,7 @@ if($apptype == 'discuz') {
 	define('BACKUP_DIR', ROOT_PATH.'data/backup/');
 	$tablepre = $tablepre;
 	if(empty($dbcharset)) {
-		$dbcharset = in_array(strtolower($_config['output']['charset']), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', CHARSET) : '';
+		$dbcharset = in_array(strtolower($_config['output']['charset']), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', UC_CHARSET) : '';
 	}
 	$db->connect($dbhost, $dbuser, $dbpw, $dbname, $dbcharset, $pconnect, $tablepre);
 
@@ -399,7 +399,7 @@ if($apptype == 'discuz') {
 	define('BACKUP_DIR', ROOT_PATH.'data/');
 	extract($_config['db']['1']);
 	if(empty($dbcharset)) {
-		$dbcharset = in_array(strtolower(CHARSET), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', $_config['output']['charset']) : '';
+		$dbcharset = in_array(strtolower(UC_CHARSET), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', $_config['output']['charset']) : '';
 	}
 	$db->connect($dbhost, $dbuser, $dbpw, $dbname, $dbcharset, $pconnect, $tablepre);
 	define('IN_DISCUZ', true);
