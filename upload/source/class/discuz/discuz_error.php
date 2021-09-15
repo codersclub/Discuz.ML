@@ -11,6 +11,8 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
+/*vot*/ require_once(DISCUZ_ROOT . 'source/function/function.inc.php');
+
 class discuz_error
 {
 

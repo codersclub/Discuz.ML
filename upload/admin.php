@@ -16,6 +16,7 @@ define('APPTYPEID', 0);
 
 
 require './source/class/class_core.php';
+/*vot*/	require_once('./source/function/function.inc.php');
 require './source/function/function_misc.php';
 require './source/function/function_forum.php';
 require './source/function/function_admincp.php';
