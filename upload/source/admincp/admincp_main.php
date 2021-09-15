@@ -180,7 +180,7 @@ echo <<<EOT
 </div>
 
 <script type="text/JavaScript">
-	var cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}';
+/*vot*/	var cookiepre = '{$_G['config']['cookie']['cookiepre']}', cookiedomain = '{$_G['config']['cookie']['cookiedomain']}', cookiepath = '{$_G['config']['cookie']['cookiepath']}';
 	var headers = new Array($headers), admincpfilename = '$basescript', menukey = '';
 	function switchheader(key) {
 		if(!key || !$('header_' + key)) {
