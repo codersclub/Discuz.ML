@@ -60,7 +60,10 @@ if($apptype == 'discuz') {
 }
 
 parse_str(_authcode($code, 'DECODE', UC_KEY), $get);
-if(get_magic_quotes_gpc()) {
+
+!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', magic_quotes(););
+
+if(MAGIC_QUOTES_GPC) {
 	$get = _stripslashes($get);
 }
 

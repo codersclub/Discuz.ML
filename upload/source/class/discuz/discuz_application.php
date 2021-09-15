@@ -87,12 +87,7 @@ class discuz_application extends discuz_base{
 /*vot*/			@set_magic_quotes_runtime(0);
 		}
 
-/*vot*/	if(PHP_VERSION < '5.4.0') {
-/*vot*/			$MAGIC_QUOTES_GPC = function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc();
-/*vot*/	} else {
-/*vot*/			$MAGIC_QUOTES_GPC = false;
-/*vot*/	}
-/*vot*/	define('MAGIC_QUOTES_GPC', $MAGIC_QUOTES_GPC);
+/*vot*/		define('MAGIC_QUOTES_GPC', magic_quotes());
 
 		define('ICONV_ENABLE', function_exists('iconv'));
 		define('MB_ENABLE', function_exists('mb_convert_encoding'));

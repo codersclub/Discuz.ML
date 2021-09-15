@@ -13,6 +13,8 @@ if(!defined('UC_API')) {
 
 error_reporting(0);
 
+/*vot*/	!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', magic_quotes());
+
 define('IN_UC', TRUE);
 define('UC_CLIENT_VERSION', '1.6.0');
 define('UC_CLIENT_RELEASE', '20170101');
@@ -23,7 +25,6 @@ define('UC_API_FUNC', UC_CONNECT == 'mysql' ? 'uc_api_mysql' : 'uc_api_post');
 $GLOBALS['uc_controls'] = array();
 
 function uc_addslashes($string, $force = 0, $strip = FALSE) {
-	!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 	if(!MAGIC_QUOTES_GPC || $force) {
 		if(is_array($string)) {
 			foreach($string as $key => $val) {
@@ -86,7 +87,6 @@ if(!function_exists('fsocketopen')) {
 }
 
 function uc_stripslashes($string) {
-	!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 	if(MAGIC_QUOTES_GPC) {
 		return stripslashes($string);
 	} else {

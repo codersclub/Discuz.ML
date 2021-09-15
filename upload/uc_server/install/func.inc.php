@@ -701,7 +701,7 @@ function runquery($sql) {
 }
 
 function charcovert($string) {
-	if(!get_magic_quotes_gpc()) {
+/*vot*/	if(!magic_quotes()) {
 		$string = str_replace('\'', '\\\'', $string);
 	} else {
 		$string = str_replace('\"', '"', $string);

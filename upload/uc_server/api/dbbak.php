@@ -59,7 +59,7 @@ if($apptype == 'discuz') {
 }
 
 parse_str(_authcode($code, 'DECODE', UC_KEY), $get);
-if(get_magic_quotes_gpc()) {
+/*vot*/ if(magic_quotes()) {
 	$get = _stripslashes($get);
 }
 

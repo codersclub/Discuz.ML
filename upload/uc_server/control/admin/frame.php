@@ -71,7 +71,7 @@ class control extends adminbase {
 			$dbsize += $table['Data_length'] + $table['Index_length'];
 		}
 		$dbsize = $dbsize ? $this->_sizecount($dbsize) : $lang['unknown'];
-		$magic_quote_gpc = get_magic_quotes_gpc() ? 'On' : 'Off';
+/*vot*/		$magic_quote_gpc = magic_quotes() ? 'On' : 'Off';
 		$allow_url_fopen = ini_get('allow_url_fopen') ? 'On' : 'Off';
 		$envstatus = $this->_get_uc_envstatus();
 		$this->view->assign('serverinfo', $serverinfo);

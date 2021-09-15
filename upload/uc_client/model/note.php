@@ -123,7 +123,7 @@ class notemodel {
 			$method = $note['operation'];
 			if(is_string($method) && !empty($method)) {
 				parse_str($note['getdata'], $note['getdata']);
-				if(get_magic_quotes_gpc()) {
+/*vot*/				if(MAGIC_QUOTES_GPC) {
 					$note['getdata'] = $this->base->dstripslashes($note['getdata']);
 				}
 				$note['postdata'] = xml_unserialize($note['postdata']);
