@@ -103,7 +103,7 @@ function discuzcode($message, $smileyoff = false, $bbcodeoff = false, $htmlon = 
 		$message = preg_replace("/<script[^\>]*?>(.*?)<\/script>/i", '', $message);
 	}
 
-	if($_G['setting']['plugins']['func'][HOOKTYPE]['discuzcode']) {
+/*vot*/	if(@$_G['setting']['plugins']['func'][HOOKTYPE]['discuzcode']) {
 		$_G['discuzcodemessage'] = & $message;
 		$param = func_get_args();
 		hookscript('discuzcode', 'global', 'funcs', array('param' => $param, 'caller' => 'discuzcode'), 'discuzcode');

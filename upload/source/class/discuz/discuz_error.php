@@ -188,7 +188,7 @@ class discuz_error
 	public static function show_error($type, $errormsg, $phpmsg = '', $typemsg = '') {
 		global $_G;
 
-		ob_end_clean();
+/*vot*/		@ob_end_clean();
 		$gzip = getglobal('gzipcompress');
 		ob_start($gzip ? 'ob_gzhandler' : null);
 

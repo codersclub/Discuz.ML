@@ -76,7 +76,7 @@ class control extends adminbase {
 			$this->_add_note_for_setting($settings);
 		}
 		$settings['dateformat'] = str_replace(array('y', 'n', 'j'), array('yyyy', 'mm', 'dd'), $settings['dateformat']);
-		$settings['timeformat'] = $settings['timeformat'] == 'H:i' ? 1 : 0;
+/*vot*/		$settings['timeformat'] = @$settings['timeformat'] == 'H:i' ? 1 : 0;
 		$settings['pmcenter'] = $settings['pmcenter'] ? 1 : 0;
 		$a = getgpc('a');
 		$this->view->assign('a', $a);
@@ -93,7 +93,14 @@ class control extends adminbase {
 /*vot*/		$pmcenterchecked = array('','');
 /*vot*/		$pmcenterchecked[$settings['pmcenter']] = 'checked="checked"';
 		$pmcenterchecked['display'] = $settings['pmcenter'] ? '' : 'style="display:none"';
-		$addappbyurlchecked = array($settings['addappbyurl'] => 'checked="checked"');
+/*vot*/		if(!isset($settings['addappbyurl'])) {
+/*vot*/			$settings['addappbyurl'] = '';
+/*vot*/		}
+		$addappbyurlchecked = array(
+/*vot*/			0 => $settings['addappbyurl'] ? '' : 'checked="checked"',
+/*vot*/			1 => $settings['addappbyurl'] ? 'checked="checked"' : '',
+		);
+
 		$this->view->assign('pmcenter', $pmcenterchecked);
 /*vot*/		$sendpmseccodechecked = array('','');
 /*vot*/		$sendpmseccodechecked[$settings['sendpmseccode']] = 'checked="checked"';

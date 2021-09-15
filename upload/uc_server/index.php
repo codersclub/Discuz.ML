@@ -41,7 +41,9 @@ if(!@include UC_DATADIR.'config.inc.php') {
 }
 
 /*vot*/ if(strtolower(UC_CHARSET)=='utf-8') {
-/*vot*/   ini_set('mbstring.internal_encoding','UTF-8');
+/*vot*/	  if (version_compare(PHP_VERSION, '5.6.0') < 0) {
+/*vot*/     ini_set('mbstring.internal_encoding','UTF-8');
+/*vot*/	  }
 /*vot*/ }
 
 $m = getgpc('m');
