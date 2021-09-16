@@ -59,7 +59,7 @@ if(submitcheck('threadsubmit', 1)) {
 	foreach(C::t('home_blog')->range($current, $pertask, 'ASC', 'dateline', null, 0) as $blog) {
 		$processed = 1;
 		$post = C::t('home_blogfield')->fetch($blog['blogid']);
-		if($censor->check($blog['subject']) || $censor->check($post['message'])) {
+		if((!empty($blog['subject']) && $censor->check($blog['subject'])) || (!empty($post['message']) && $censor->check($post['message']))) {
 			C::t('home_blog')->update($blog['blogid'], array('status' => 1));
 			updatemoderate('blogid', $blog['blogid']);
 		}
@@ -82,7 +82,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 	foreach(C::t('home_pic')->fetch_all_by_sql('`status` = 0', 'picid', $current, $pertask, 0, 0) as $pic) {
 		$processed = 1;
-		if($censor->check($pic['title'])) {
+		if(!empty($pic['title']) && $censor->check($pic['title'])) {
 			C::t('home_pic')->update($pic['picid'], array('status' => 1));
 			updatemoderate('picid', $pic['picid']);
 		}
@@ -105,7 +105,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 	foreach(C::t('home_doing')->fetch_all_by_status(0, $current, $pertask) as $doing) {
 		$processed = 1;
-		if($censor->check($doing['message'])) {
+		if(!empty($doing['message']) && $censor->check($doing['message'])) {
 			C::t('home_doing')->update($doing['doid'], array('status' => 1));
 			updatemoderate('doid', $doing['doid']);
 		}
@@ -128,7 +128,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 	foreach(C::t('home_share')->fetch_all_by_status(0, $current, $pertask) as $share) {
 		$processed = 1;
-		if($censor->check($share['body_general'])) {
+		if(!empty($share['body_general']) && $censor->check($share['body_general'])) {
 			C::t('home_share')->update($share['sid'], array('status' => 1));
 			updatemoderate('sid', $share['sid']);
 		}
@@ -151,7 +151,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 	foreach(C::t('home_comment')->fetch_all_by_status(0, $current, $pertask) as $comment) {
 		$processed = 1;
-		if($censor->check($comment['message'])) {
+		if(!empty($comment['message']) && $censor->check($comment['message'])) {
 			C::t('home_comment')->update($comment['cid'], array('status' => 1));
 			updatemoderate($comment['idtype'].'_cid', $comment['cid']);
 		}
@@ -174,9 +174,9 @@ if(submitcheck('threadsubmit', 1)) {
 
 	foreach(C::t('portal_article_title')->fetch_all_by_sql('`status` = 0', '', $current, $pertask) as $article) {
 		$processed = 1;
-		if(!$censor->check($post['subject'])) {
+		if(empty($post['subject']) || !$censor->check($post['subject'])) {
 			foreach(C::t('portal_article_content')->fetch_all($article['aid']) as $post) {
-				if($censor->check($post['content'])) {
+				if(!empty($post['content']) && $censor->check($post['content'])) {
 					C::t('portal_article_title')->update($article['aid'], array('status' => 1));
 					updatemoderate('aid', $article['aid']);
 					break;
@@ -205,7 +205,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 	foreach(C::t('portal_comment')->fetch_all_by_idtype_status('aid', 0, $current, $pertask) as $comment) {
 		$processed = 1;
-		if($censor->check($comment['message'])) {
+		if(!empty($comment['message']) && $censor->check($comment['message'])) {
 			C::t('portal_comment')->update($comment['cid'], array('status' => 1));
 			updatemoderate($comment['idtype'].'_cid', $comment['cid']);
 		}
@@ -228,7 +228,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 	foreach(C::t('portal_comment')->fetch_all_by_idtype_status('topicid', 0, $current, $pertask) as $comment) {
 		$processed = 1;
-		if($censor->check($comment['message'])) {
+		if(!empty($comment['message']) && $censor->check($comment['message'])) {
 			C::t('portal_comment')->update($comment['cid'], array('status' => 1));
 			updatemoderate($comment['idtype'].'_cid', $comment['cid']);
 		}
@@ -255,47 +255,47 @@ if(submitcheck('threadsubmit', 1)) {
 	// Thread/post title and content re-review
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_thread']}:",
-		'<input name="pertask1" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="threadsubmit" onclick="this.form.pertask.value=this.form.pertask1.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask1" type="text" class="txt" value="100" /><input type="submit" class="btn" name="threadsubmit" onclick="this.form.pertask.value=this.form.pertask1.value" value="'.$lang['submit'].'" />'
 	));
 	// Re-review of blog title and content
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_blog']}:",
-		'<input name="pertask2" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="blogsubmit" onclick="this.form.pertask.value=this.form.pertask2.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask2" type="text" class="txt" value="100" /><input type="submit" class="btn" name="blogsubmit" onclick="this.form.pertask.value=this.form.pertask2.value" value="'.$lang['submit'].'" />'
 	));
 	// Image title review
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_pic']}:",
-		'<input name="pertask3" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="picsubmit" onclick="this.form.pertask.value=this.form.pertask3.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask3" type="text" class="txt" value="100" /><input type="submit" class="btn" name="picsubmit" onclick="this.form.pertask.value=this.form.pertask3.value" value="'.$lang['submit'].'" />'
 	));
 	// Doing content review
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_doing']}:",
-		'<input name="pertask4" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="doingsubmit" onclick="this.form.pertask.value=this.form.pertask4.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask4" type="text" class="txt" value="100" /><input type="submit" class="btn" name="doingsubmit" onclick="this.form.pertask.value=this.form.pertask4.value" value="'.$lang['submit'].'" />'
 	));
 	// Share content review
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_share']}:",
-		'<input name="pertask5" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="sharesubmit" onclick="this.form.pertask.value=this.form.pertask5.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask5" type="text" class="txt" value="100" /><input type="submit" class="btn" name="sharesubmit" onclick="this.form.pertask.value=this.form.pertask5.value" value="'.$lang['submit'].'" />'
 	));
 	// Home Space comment re-review
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_comment']}:",
-		'<input name="pertask6" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="commentsubmit" onclick="this.form.pertask.value=this.form.pertask6.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask6" type="text" class="txt" value="100" /><input type="submit" class="btn" name="commentsubmit" onclick="this.form.pertask.value=this.form.pertask6.value" value="'.$lang['submit'].'" />'
 	));
 	// Article title and content review
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_article']}:",
-		'<input name="pertask7" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="articlesubmit" onclick="this.form.pertask.value=this.form.pertask7.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask7" type="text" class="txt" value="100" /><input type="submit" class="btn" name="articlesubmit" onclick="this.form.pertask.value=this.form.pertask7.value" value="'.$lang['submit'].'" />'
 	));
 	// Review the content of article comments
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_articlecomment']}:",
-		'<input name="pertask8" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="articlecommentsubmit" onclick="this.form.pertask.value=this.form.pertask8.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask8" type="text" class="txt" value="100" /><input type="submit" class="btn" name="articlecommentsubmit" onclick="this.form.pertask.value=this.form.pertask8.value" value="'.$lang['submit'].'" />'
 	));
 	// Special comment content re-review
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_topiccomment']}:",
-		'<input name="pertask9" type="text" class="txt" value="1000" /><input type="submit" class="btn" name="topiccommentsubmit" onclick="this.form.pertask.value=this.form.pertask9.value" value="'.$lang['submit'].'" />'
+		'<input name="pertask9" type="text" class="txt" value="100" /><input type="submit" class="btn" name="topiccommentsubmit" onclick="this.form.pertask.value=this.form.pertask9.value" value="'.$lang['submit'].'" />'
 	));
 
 	showtablefooter();
