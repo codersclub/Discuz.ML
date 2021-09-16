@@ -158,7 +158,7 @@ class logging_ctl {
 				if($_G['member']['adminid'] != 1) {
 					if($this->setting['accountguard']['loginoutofdate'] && $_G['member']['lastvisit'] && TIMESTAMP - $_G['member']['lastvisit'] > ($this->setting['accountguard']['loginoutofdatenum'] >= 1 ? (int)$this->setting['accountguard']['loginoutofdatenum'] : 90) * 86400 && $_G['member']['freeze'] != -1) {
 						C::t('common_member')->update($_G['uid'], array('freeze' => 2));
-						showmessage('location_login_outofdate', 'home.php?mod=spacecp&ac=profile&op=password&resend=1', array('type' => 1), array('showdialog' => true, 'striptags' => false, 'locationtime' => true));
+						showmessage('location_login_outofdate', 'home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash='.FORMHASH, array('type' => 1), array('showdialog' => true, 'striptags' => false, 'locationtime' => true));
 					}
 
 					if($this->setting['accountguard']['loginpwcheck'] && $pwold && $_G['member']['freeze'] == 0) {
@@ -580,12 +580,9 @@ class register_ctl {
 			if(!$activation) {
 /*vot*/				$username = trim(dstripslashes($username));
 				$usernamelen = dstrlen($username);
-/*vot*/				$username_mblen = mb_strlen($username);
 /*vot*/				if($username_mblen < 2) {
 					showmessage('profile_username_tooshort');
-/*vot*/				} elseif($username_mblen > 15) {
-/*vot*/					showmessage('profile_username_toolong');
-/*vot*/				} elseif($usernamelen > 64) {
+				} elseif($usernamelen > 15) {
 					showmessage('profile_username_toolong');
 				}
 				if(uc_get_user(addslashes($username)) && !C::t('common_member')->fetch_uid_by_username($username) && !C::t('common_member_archive')->fetch_uid_by_username($username)) {

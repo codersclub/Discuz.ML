@@ -610,6 +610,15 @@ function emailcheck_send($uid, $email) {
 	global $_G;
 
 	if($uid && $email) {
+		// Read the time in theforum  user table and limit the resending interval
+		$memberauthstr = C::t('common_member_field_forum')->fetch($uid);
+		if(!empty($memberauthstr['authstr'])) {
+			list($dateline) = explode("\t", $memberauthstr['authstr']);
+			$interval = $_G['setting']['mailinterval'] > 0 ? (int)$_G['setting']['mailinterval'] : 300;
+			if($dateline && $dateline > TIMESTAMP - $interval) {
+				return false;
+			}
+		}
 		// The authstr field in the user forum field table stores the token and timestamp, so that email links cannot be reused
 		$timestamp = $_G['timestamp'];
 		$idstring = substr(md5($email), 0, 6);
@@ -630,6 +639,7 @@ function emailcheck_send($uid, $email) {
 			runlog('sendmail', "$email sendmail failed.");
 		}
 	}
+	return true;
 }
 
 function picurl_get($picurl, $maxlenth='200') {
