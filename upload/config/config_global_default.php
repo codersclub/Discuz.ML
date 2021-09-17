@@ -30,7 +30,7 @@ $_config = array();
  */
 $_config['db'][1]['dbhost']  	= '127.0.0.1';	// DB Server address
 $_config['db'][1]['dbuser']  	= 'root';	// DB User Name
-$_config['db'][1]['dbpw'] 		= 'root';	// DB User Password
+$_config['db'][1]['dbpw'] 		= '';	// DB User Password
 $_config['db'][1]['dbcharset'] 	= 'utf8';	// DB Charset
 $_config['db'][1]['pconnect'] 	= 0;		// Enable DB persistent connection
 $_config['db'][1]['dbname']  	= 'ultrax';	// DB Name
@@ -143,7 +143,7 @@ $_config['output']['charset'] 		= 'utf-8';	// Page character set
 $_config['output']['forceheader']	= 1;		// Force the output in defined character set, used to avoid page content garbled
 $_config['output']['gzip'] 		= 0;		// Use Gzip compression for output
 $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = off, 1 = On
-$_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/fr/etc...
+$_config['output']['language'] 		= 'zh_cn';		// Page language sc/tc/en/fr/etc...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
 $_config['output']['iecompatible']	= 0;		// IE compatibility mode
