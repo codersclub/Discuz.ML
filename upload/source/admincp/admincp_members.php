@@ -1505,8 +1505,8 @@ EOT;
 <!--vot-->					<li><input type="checkbox" value="share" name="clear[share]" class="checkbox">&nbsp;$lang[members_ban_delshare]</li>
 <!--vot-->					<li><input type="checkbox" value="avatar" name="clear[avatar]" class="checkbox">&nbsp;$lang[members_ban_delavatar]</li>
 <!--vot-->					<li><input type="checkbox" value="comment" name="clear[comment]" class="checkbox">&nbsp;$lang[members_ban_delcomment]</li>
-<!--vot-->              	<li><input type="checkbox" value="others" name="clear[others]" class="checkbox">&nbsp;$lang[members_ban_delothers]</li>
 <!--vot-->              	<li><input type="checkbox" value="profile" name="clear[profile]" class="checkbox">&nbsp;$lang[members_ban_delprofile]</li>
+<!--vot-->              	<li><input type="checkbox" value="others" name="clear[others]" class="checkbox">&nbsp;$lang[members_ban_delothers]</li>
 					</ul>
 				</td>
 			</tr>
