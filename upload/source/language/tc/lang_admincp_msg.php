@@ -618,8 +618,6 @@ $lang = array (
   'members_verify_update_title_error' => '認證啟用時認證名稱不能為空修改',
   'members_verify_title_invalid' => '您沒有為啟用的認證設置認證名稱',
 
-  'connect_like_url_error' => 'QQ空間喜歡的鏈接必須是 qq.com 域名',
-  'connect_like_url_miss' => '您沒有填寫QQ空間喜歡鏈接 URL',
   'connect_update_succeed' => 'QQ綁定設置更新成功 ',
 
   'my_app_status_off' => '請先正常開啟漫遊功能',

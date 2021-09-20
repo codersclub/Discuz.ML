@@ -469,7 +469,7 @@ $lang = array (
   'lostpasswd_many_users_use_email' => '抱歉，存在多個使用此 Email 的用戶，請填寫您需要找回密碼的用戶名',
   'getpasswd_account_invalid' => '抱歉，創始人、受保護用戶、擁有站點設置權限的用戶不能使用取回密碼功能',
   'getpasswd_send_succeed' => '取回密碼的方法已通過 Email 發送到您的信箱中，<br />請在 3 天之內修改您的密碼',
-  'getpasswd_has_send' => '您已經申請過取回密碼郵件了，如果您沒有收到，請稍等15分鐘後重試',
+  'getpasswd_has_send' => '您已經發送過取回密碼郵件了，如果您沒有收到，請稍等 {interval} 秒後重試發送取回密碼郵件',
 
   'submit_verify_succeed' => '審核請求提交成功，現在將返回個人中心',
 
@@ -840,7 +840,7 @@ $lang = array (
   'profile_email_verify' => '確認 Email 已發送，請用郵件中提供的方法激活您的帳號。如果您尚未收到我們發送的系統郵件，請點擊密碼安全中的「重新接收驗證郵件」，或嘗試更換另外一個地址',
   'profile_succeed' => '個人資料保存成功 ',
   'send_activate_mail_succeed' => '郵件已發送，可能需要幾分鐘後才能收到郵件',
-  'send_activate_mail_error' => '抱歉，郵件發送失敗，請過5分鐘後重試發送驗證激活郵件',
+  'send_activate_mail_error' => '抱歉，郵件發送失敗，請稍等 {interval} 秒後重試發送驗證激活郵件',
 
   'no_privilege_sendmailday' => '抱歉，本站尚未開啟郵件提醒功能',
   'email_input' => '抱歉，您尚未設置郵箱，請在<a href="home.php?mod=spacecp&ac=profile&op=password">聯繫方式</a>中準確填寫您的郵箱',
@@ -1082,9 +1082,6 @@ $lang = array (
   'author_not_uploadpic' => '樓主暫時沒有上傳圖片',
   'noreply_yourself_error' => '您不能對自己的回帖進行投票',
   'noreply_voted_error' => '您已經對此回帖投過票了',
-
-// Added by Valery Votintsev
-	'timeout_or_data_error'	=> '操作超時或者數據來源錯誤',//'Operation timeout or data source error',
 );
 
 ?>

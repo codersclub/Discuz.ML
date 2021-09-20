@@ -332,7 +332,7 @@ $lang = array(
 	'card_update_doing' => ' <a class="xi2" href="###">[更新記錄]</a>',
 	'email_acitve_message' => '<img src="{imgdir}/mail_inactive.png" alt="未驗證" class="vm" /> <span class="xi1">新郵箱({newemail})等待驗證中...</span><br />
 								系統已經向該郵箱發送了一封驗證激活郵件，請查收郵件，進行驗證激活。<br>
-								如果沒有收到驗證郵件，您可以更換一個郵箱，或者<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1" class="xi2">重新接收驗證郵件</a>',
+								如果沒有收到驗證郵件，您可以更換一個郵箱，或者<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash={formhash}" class="xi2">重新接收驗證郵件</a>',
 	'qq_set_status' => '設置我的QQ在線狀態',
 	'qq_dialog' => '發起QQ聊天',
 
