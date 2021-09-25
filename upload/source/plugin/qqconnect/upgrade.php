@@ -127,8 +127,7 @@ if ($connect['guest_groupid']) {
 }
 
 $newConnect = array();
-/*vot*/	include DISCUZ_ROOT . 'source/language/'. DISCUZ_LANG. '/lang_admincp_cloud.php';
-$name = $extend_lang['connect_guest_group_name'];
+$name = $installlang['connect_guest_group_name'];
 if ($needCreateGroup) {
 	$userGroupData = array(
 		'type' => 'special',
