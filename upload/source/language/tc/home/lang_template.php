@@ -1546,7 +1546,7 @@ $lang = array (
   'save_to_album' => '保存到相冊',
   'usergroup_expired' => '您當前的用戶組已經到期，請選擇繼續續費還是要切換到其他用戶組',
   'freeze_pw_tips' => '您當前的帳號已經被凍結，請修改密碼解除凍結狀態',
-  'freeze_email_tips' => '您當前的帳號已經被凍結，必須點擊下方重新接收驗證郵件鏈接驗證郵箱後才能解除凍結狀態',
+  'freeze_email_tips' => '您當前的帳號已經被凍結，必須驗證郵箱後才能解除凍結狀態 <a href="home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash={FORMHASH}" class="xi2">重新接收驗證郵件</a>',
   'freeze_admincp_tips' => '您當前的帳號已經被凍結，必須在本頁面填寫申訴理由，並經管理中心審核通過後才能解除凍結狀態',
   'freeze_reason' => '申訴理由',
   'freeze_reason_comment' => '如果您無法通過郵箱驗證，請填寫申訴理由',
