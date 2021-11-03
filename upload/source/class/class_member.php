@@ -580,7 +580,7 @@ class register_ctl {
 			if(!$activation) {
 /*vot*/				$username = trim(dstripslashes($username));
 				$usernamelen = dstrlen($username);
-/*vot*/				if($username_mblen < 2) {
+/*vot*/				if($usernamelen < 2) {
 					showmessage('profile_username_tooshort');
 				} elseif($usernamelen > 15) {
 					showmessage('profile_username_toolong');
