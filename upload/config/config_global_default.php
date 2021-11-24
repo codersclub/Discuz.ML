@@ -10,6 +10,8 @@
 
 $_config = array();
 
+// Tip: Since the current version, this file does not support calling any variables or functions in the system, please rely on the site correction implementation of this behavior //
+
 // ----------------------------  CONFIG DB  ----------------------------- //
 // Database server settings
 

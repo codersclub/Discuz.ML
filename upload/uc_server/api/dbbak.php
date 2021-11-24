@@ -220,16 +220,13 @@ class dbstuffi {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-/*vot*/	if(v_compare($this->version(), '4.1') > 0) {
-			if($dbcharset) {
-				$this->link->set_charset($dbcharset);
-			}
-
-/*vot*/	if(v_compare($this->version(), '5.0.1') > 0) {
-				$this->query("SET sql_mode=''");
-			}
+		if($dbcharset) {
+			$this->link->set_charset($dbcharset);
 		}
 
+		$this->link->query("SET sql_mode=''");
+
+		$this->link->query("SET character_set_client=binary");
 
 	}
 
@@ -915,3 +912,8 @@ function strexists($haystack, $needle) {
 function send_mime_type_header($type = 'application/xml') {
 	header("Content-Type: ".$type);
 }
+
+/*vot
+function is_https() {
+vot: !!! MOVED to uc_server/lib/function.inc.php
+*/

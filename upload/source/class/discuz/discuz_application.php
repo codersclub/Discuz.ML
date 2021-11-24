@@ -58,6 +58,7 @@ class discuz_application extends discuz_base{
 	}
 
 	public function __construct() {
+		$this->_init_cnf();
 		$this->_init_env();
 		$this->_init_config();
 
@@ -144,7 +145,7 @@ class discuz_application extends discuz_base{
 
 			'pluginrunlist' => !defined('PLUGINRUNLIST') ? array() : explode(',', PLUGINRUNLIST),
 
-			'config' => array(),
+			'config' => & $this->config,
 			'setting' => array(),
 			'member' => array(),
 			'group' => array(),
@@ -366,7 +367,7 @@ class discuz_application extends discuz_base{
 
 	}
 
-	private function _init_config() {
+	private function _init_cnf() {// Newly added this method is used to pre-load the configuration file, which is convenient to use the options in the configuration file to control the initialization process through $this->config when the environment is initialized
 
 		$_config = array();
 		@include DISCUZ_ROOT.'./config/config_global.php';
@@ -379,26 +380,6 @@ class discuz_application extends discuz_base{
 			}
 		}
 
-		if(empty($_config['security']['authkey'])) {
-			$_config['security']['authkey'] = md5($_config['cookie']['cookiepre'].$_config['db'][1]['dbname']);
-		}
-
-		if(empty($_config['debug']) || !file_exists(libfile('function/debug'))) {
-			define('DISCUZ_DEBUG', false);
-			error_reporting(0);
-		} elseif($_config['debug'] === 1 || $_config['debug'] === 2 || !empty($_REQUEST['debug']) && $_REQUEST['debug'] === $_config['debug']) {
-			define('DISCUZ_DEBUG', true);
-			error_reporting(E_ERROR);
-			if($_config['debug'] === 2) {
-				error_reporting(E_ALL);
-			}
-		} else {
-			define('DISCUZ_DEBUG', false);
-			error_reporting(0);
-		}
-		define('STATICURL', !empty($_config['output']['staticurl']) ? $_config['output']['staticurl'] : 'static/');
-		$this->var['staticurl'] = STATICURL;
-
 /*vot*/ $server_id = $_config['server'][id];
 /*vot*/ $dbcharset = $_config['db'][$server_id]['dbcharset'];
 /*vot*/ if(empty($dbcharset)) $dbcharset = 'utf8';
@@ -406,9 +387,32 @@ class discuz_application extends discuz_base{
 
 
 		$this->config = & $_config;
-		$this->var['config'] = & $_config;
 
-		if(substr($_config['cookie']['cookiepath'], 0, 1) != '/') {
+	}
+
+	private function _init_config() {// The original method of setting up a site based on a configuration file retains the original method name and uses $this->var['config'] to read and write config instead
+
+		if(empty($this->var['config']['security']['authkey'])) {
+			$this->var['config']['security']['authkey'] = md5($this->var['config']['cookie']['cookiepre'].$this->var['config']['db'][1]['dbname']);
+		}
+
+		if(empty($this->var['config']['debug']) || !file_exists(libfile('function/debug'))) {
+			define('DISCUZ_DEBUG', false);
+			error_reporting(0);
+		} elseif($this->var['config']['debug'] === 1 || $this->var['config']['debug'] === 2 || !empty($_REQUEST['debug']) && $_REQUEST['debug'] === $this->var['config']['debug']) {
+			define('DISCUZ_DEBUG', true);
+			error_reporting(E_ERROR);
+			if($this->var['config']['debug'] === 2) {
+				error_reporting(E_ALL);
+			}
+		} else {
+			define('DISCUZ_DEBUG', false);
+			error_reporting(0);
+		}
+		define('STATICURL', !empty($this->var['config']['output']['staticurl']) ? $this->var['config']['output']['staticurl'] : 'static/');
+		$this->var['staticurl'] = STATICURL;
+
+		if(substr($this->var['config']['cookie']['cookiepath'], 0, 1) != '/') {
 			$this->var['config']['cookie']['cookiepath'] = '/'.$this->var['config']['cookie']['cookiepath'];
 		}
 		$this->var['config']['cookie']['cookiepre'] = $this->var['config']['cookie']['cookiepre'].substr(md5($this->var['config']['cookie']['cookiepath'].'|'.$this->var['config']['cookie']['cookiedomain']), 0, 4).'_';
@@ -506,6 +510,10 @@ class discuz_application extends discuz_base{
 		return true;
 	}
 
+/*vot
+	private function _is_https() {
+vot: MOVED to source/function/function.inc.php
+*/
 	private function _get_client_ip() {
 		$ip = $_SERVER['REMOTE_ADDR'];
 		if (!$this->config['security']['onlyremoteaddr']) {

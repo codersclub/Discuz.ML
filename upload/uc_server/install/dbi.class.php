@@ -5,7 +5,6 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: db.class.php 976 2009-12-03 03:02:44Z zhaoxiongfei $
-    Modified by Valery Votintsev, http://discuz.ml
 */
 
 if(!defined('IN_COMSENZ')) {
@@ -27,15 +26,13 @@ class dbstuff {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
-			if($dbcharset) {
-				$this->link->set_charset($dbcharset);
-			}
-
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
-				$this->link->query("SET sql_mode=''");
-			}
+		if($dbcharset) {
+			$this->link->set_charset($dbcharset);
 		}
+
+		$this->link->query("SET sql_mode=''");
+
+		$this->link->query("SET character_set_client=binary");
 
 	}
 
