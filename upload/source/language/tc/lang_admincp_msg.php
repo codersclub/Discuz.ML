@@ -346,6 +346,7 @@ $lang = array (
   'members_edit_credits_failure' => '已優化的用戶將不能編輯積分 ',
   'members_edit_credits_succeed' => '用戶積分編輯成功 ',
   'members_edit_medals_succeed' => '用戶勳章編輯成功 ',
+  'members_edit_lock' => '您不能直接鎖定該用戶，請<a href="{ADMINSCRIPT}?action=members&operation=search&uid={uid}&submit=yes&frames=yes" target="_blank">編輯</a>去掉其“{grouptitle}”身份',
   'members_edit_illegal' => '您不能直接禁止該用戶，請<a href="{ADMINSCRIPT}?action=members&operation=search&uid={uid}&submit=yes&frames=yes" target="_blank">編輯</a>去掉其「{grouptitle}」身份',
   'members_edit_illegal_portal' => '您不能直接禁止該用戶，請<a href="{ADMINSCRIPT}?action=portalpermission&uid={uid}" target="_blank">查詢其門戶相關權限</a>並清除',
   'members_edit_reason_invalid' => '您沒有輸入執行此變更的理由',
