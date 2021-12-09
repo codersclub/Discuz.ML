@@ -352,6 +352,11 @@ var lng = {
 	'can_not_save_attach'	: '附件文件无法保存',
 	'invalid_file'		: '没有合法的文件被上传',
 	'illegal_operation'	: '非法操作',
+	'illegal_attach_name'	: '因文件名包含敏感词而无法提交',//'Cannot submit because the file name contains sensitive words',
+	'illegal_attach_resolution'	: '服务器限制无法上传分辨率过高的附件',//'Cannot upload attachments with high resolution because of server limit',
+
+
+
 	'today_upload_large'	: '今日您已无法上传那么大的附件',//'Today you can not upload so much attachments',
 	'enter_content'		: '请完成标题或内容栏',
 	'select_category'	: '请选择主题对应的分类',

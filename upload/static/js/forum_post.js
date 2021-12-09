@@ -29,7 +29,9 @@ var STATUSMSG = {
 /*vot*/	'8' :  lng['can_not_save_attach'],
 /*vot*/	'9' :  lng['invalid_file'],
 /*vot*/	'10' : lng['illegal_operation'],
-/*vot*/	'11' : lng['today_upload_large']
+/*vot*/	'11' : lng['today_upload_large'],
+/*vot*/	'12' : lng['illegal_attach_name'],
+/*vot*/	'13' : lng['illegal_attach_resolution']
 };
 
 EXTRAFUNC['validator'] = [];
