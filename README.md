@@ -1,6 +1,6 @@
 ### **Introduction**
 
-Discuz! ML v.3.4 (MultiLingual)
+Discuz! ML v.3.4 (MultiLingual Discuz)
 
 Based on Discuz! X, http://www.discuz.net
 
@@ -15,12 +15,8 @@ You may fork the site code, but without permission ** Prohibited ** On the whole
 
 ### **Chinese Related Sites**
 
-[Discuz! Official Website](https://discuz.com)
-
-[Discuz! X Official Forum](https://www.discuz.net)
-
-[Discuz! X Application Center](https://addon.dismall.com)
-
-[Discuz! X Official Repository](https://gitee.com/Discuz/DiscuzX.git)
-
-[Discuz! Q Official Forum](https://discuz.chat)
+- [Discuz! X Official Forum](https://www.discuz.net/)
+- [Discuz! X Official Repository](https://gitee.com/Discuz/DiscuzX.git)
+- [Discuz! Application Center](https://addon.dismall.com/)
+- [Discuz! Open Platform](https://open.dismall.com/)
+- [Discuz! Development Documentation](https://open.dismall.com/?ac=document&page=dev)
