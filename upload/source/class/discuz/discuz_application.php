@@ -380,10 +380,12 @@ class discuz_application extends discuz_base{
 			}
 		}
 
-/*vot*/ $server_id = $_config['server'][id];
-/*vot*/ $dbcharset = $_config['db'][$server_id]['dbcharset'];
-/*vot*/ if(empty($dbcharset)) $dbcharset = 'utf8';
-/*vot*/ $_config['dbcharset'] = $dbcharset;
+/*vot*/		$server_id = $_config['server']['id'];
+/*vot*/		$dbcharset = $_config['db'][$server_id]['dbcharset'];
+/*vot*/		if(empty($dbcharset)) {
+/*vot*/			$dbcharset = 'utf8';
+/*vot*/		}
+/*vot*/		$_config['dbcharset'] = $dbcharset;
 
 
 		$this->config = & $_config;
