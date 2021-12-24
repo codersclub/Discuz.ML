@@ -1,4 +1,5 @@
 <?php
+
 /**
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
@@ -6,12 +7,15 @@
  *      $Id: searchindex.php
  *      Background search index generation tool
  *      Must be executed in the forum root directory
- *      Modified by Valery Votintsev, discuz.ml
+ *      Modified by Valery Votintsev, codersclub.org/discuz.ml/
  */
 
 error_reporting(E_ALL);
 
 $sourcedir = './';
+
+/*vot*/ include './source/function/function.inc.php';
+/*vot*/ define('DISCUZ_LANG', 'vn');
 
 chdir($sourcedir);
 
@@ -28,23 +32,24 @@ include './source/function/function_forum.php';
 include './source/function/function_admincp.php';
 include './source/function/function_cache.php';
 
-$discuz = & discuz_core::instance();
+$discuz = discuz_core::instance();
 $discuz->init();
 
 $admincp = new discuz_admincp();
-$admincp->core  = & $discuz;
+$admincp->core  = $discuz;
 $admincp->init();
 
 $admincpdir = 'source/admincp/';
-$langfile = 'source/language/lang_admincp.php';
-$menulangfile = 'source/language/lang_admincp_menu.php';
-$searchindex = 'source/language/lang_admincp_searchindex.php';
+$langfile = 'source/language/' . DISCUZ_LANG . '/lang_admincp.php';
+$menulangfile = 'source/language/' . DISCUZ_LANG . '/lang_admincp_menu.php';
+$searchindex = 'source/language/' . DISCUZ_LANG . '/lang_admincp_searchindex.php';
 
 define('IN_DISCUZ', 1);
 define('IN_ADMINCP', 1);
 
 include $menulangfile;
 $menulang = $lang;
+$_G['siteurl'] = '';
 include $langfile;
 $lang = $lang + $menulang;
 $indexdata = array();
@@ -53,10 +58,12 @@ include $sourcedir.'function/function_admincp.php';
 include $admincpdir.'admincp_menu.php';
 foreach($menu as $topmenu => $leftmenu) {
 	foreach($leftmenu as $item) {
-		list($action, $operation, $do) = explode('_', $item[1]);
-		$indexdata[] = array('index' => array(
-			$menulang[$item[0]] => 'action='.$action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '')
-		), 'text' => array($menulang[$item[0]]));
+		if(!isset($item[2]) && isset($menulang[$item[0]])) {
+			list($action, $operation, $do) = explode('_', $item[1]);
+			$indexdata[] = array('index' => array(
+				$menulang[$item[0]] => 'action='.$action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '')
+			), 'text' => array($menulang[$item[0]]));
+		}
 	}
 }
 
@@ -69,19 +76,18 @@ while($entry = readdir($dir)) {
 		$adminfile = $admincpdir.$entry;		
 		$data = file_get_contents($adminfile);
 		$data = preg_replace('/\/\/.+?\r/', '', $data);
-		$data = preg_replace('/\/\*(.+?)\*\//se', "clearnote('\\1')", $data);
+		$data = preg_replace_callback('/\/\*(.+?)\*\//s', 'clearnote', $data);
 
 		preg_match_all('#/\*search=\s*(\{.+?\})\s*\*/(.+?)/\*search\*/#is', $data, $search);
 		if($search) {
 			foreach($search[0] as $k => $item) {
 				$search[1][$k] = stripslashes($search[1][$k]);
-				$search[1][$k] = unicode_encode($search[1][$k]);
 				$titles = json_decode($search[1][$k], 1);
 				$titlesnew = $titletext = array();
 				foreach($titles as $title => $url) {
-					$titlekey = strip_tags(isset($lang[$title]) ? $lang[$title] : iconv('UTF-8', 'GBK', $title));
+					$titlekey = strip_tags(isset($lang[$title]) ? $lang[$title] : $title);
 					$titlesnew[$titlekey] = $url;
-					if($titlekey{0} != '_') {
+					if($titlekey[0] != '_') {
 						$titletext[] = $titlekey;
 					}
 				}
@@ -92,7 +98,12 @@ while($entry = readdir($dir)) {
 					if($titletext) {
 						$l[] = implode(' &raquo; ', $titletext);
 					}
+					$tm = array();
 					foreach($r[2] as $i) {
+						if(in_array($i,$tm)) {
+							continue;
+						}
+						$tm[] = $i;
 						$l[] = strip_tags($i);
 						$l[] = strip_tags($lang[$i]);
 						$preg = '/\|('.preg_quote($i).'_comment)\|/';
@@ -131,10 +142,10 @@ file_put_contents($searchindex, $return);
 echo 'Done!';
 
 function clearnote($s) {
-	if(!preg_match('/^search/i', $s)) {
+	if(!preg_match('/^search/i', $s[1])) {
 		return '';
 	} else {
-		return '/*'.$s.'*/';
+		return '/*'.$s[1].'*/';
 	}
 }
 
