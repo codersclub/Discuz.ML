@@ -24,6 +24,14 @@ $minhot = $_G['setting']['feedhotmin']<1?3:$_G['setting']['feedhotmin'];
 
 space_merge($space, 'count');
 
+if($_G['uid'] != $space['uid'] && !$_G['group']['allowviewprofile']) {
+	if(!$_G['uid']) {
+		showmessage('home_no_privilege', '', array(), array('login' => true));
+	} else {
+		showmessage('no_privilege_profile');
+	}
+}
+
 if(empty($_GET['view'])) {
 	if($space['self']) {
 		if($_G['setting']['showallfriendnum'] && $space['friends'] < $_G['setting']['showallfriendnum']) {
@@ -61,7 +69,6 @@ $gets = array(
 	'do' => 'home',
 	'view' => $_GET['view'],
 	'order' => $_GET['order'],
-	'appid' => $_GET['appid'],
 	'type' => $_GET['type'],
 	'icon' => $_GET['icon']
 );
@@ -130,60 +137,6 @@ if(!IS_ROBOT) {
 		$diymode = 1;
 		if($space['self'] && $_GET['from'] != 'space') $diymode = 0;
 
-	} elseif($_GET['view'] == 'app' && $_G['setting']['my_app_status']) {
-
-		$uids = null;
-		if ($_GET['type'] == 'all') {
-
-			$ordersql = "dateline DESC";
-			$f_index = '';
-			$findex = '';
-
-		} else {
-
-
-			if($_GET['type'] == 'me') {
-				$uids = $_G['uid'];
-				$ordersql = "dateline DESC";
-				$f_index = '';
-				$findex = '';
-
-			} else {
-				$uids = array_merge(explode(',', $space['feedfriend']), 0);
-				$ordersql = "dateline DESC";
-				$f_index = 'USE INDEX(dateline)';
-				$findex = 'dateline';
-				$_GET['type'] = 'we';
-				$_G['home_tpl_hidden_time'] = 1;
-			}
-		}
-
-		$icon = empty($_GET['icon'])?'':trim($_GET['icon']);
-
-		$feed_list = $appfeed_list = $hiddenfeed_list = $filter_list = $hiddenfeed_num = $icon_num = array();
-		$count = $filtercount = 0;
-		foreach(C::t('home_feed_app')->fetch_all_by_uid_icon($uids, $icon, $start, $perpage) as $value) {
-			$feed_list[$value['icon']][] = $value;
-			$count++;
-		}
-		$multi = simplepage($count, $perpage, $page, $theurl);
-		require_once libfile('function/feed');
-
-		$list = array();
-		foreach ($feed_list as $key => $values) {
-			$nowcount = 0;
-			foreach ($values as $value) {
-				$value = mkfeed($value);
-				$nowcount++;
-				if($nowcount>5 && empty($icon)) {
-					break;
-				}
-				$list[$key][] = $value;
-			}
-		}
-		$need_count = false;
-		$typeactives = array($_GET['type'] => ' class="a"');
-
 	} else {
 
 		space_merge($space, 'field_home');
@@ -198,7 +151,6 @@ if(!IS_ROBOT) {
 		}
 	}
 
-	$appid = empty($_GET['appid'])?0:intval($_GET['appid']);
 	$icon = empty($_GET['icon'])?'':trim($_GET['icon']);
 	$gid = !isset($_GET['gid'])?'-1':intval($_GET['gid']);
 	if($gid>=0) {
@@ -219,7 +171,7 @@ if(!IS_ROBOT) {
 
 	if($need_count) {
 
-		$query = C::t('home_feed')->fetch_all_by_search(1, $uids, $icon, '', '', '', $hot, '', $start, $perpage, $findex, $appid);
+		$query = C::t('home_feed')->fetch_all_by_search(1, $uids, $icon, '', '', '', $hot, '', $start, $perpage, $findex);
 
 		if($_GET['view'] == 'me') {
 			foreach ($query as $value) {
@@ -285,7 +237,7 @@ if(!IS_ROBOT) {
 							}
 
 						} else {
-							$user_list[$value['hash_data']][] = "<a href=\"home.php?mod=space&uid=$value[uid]\">$value[username]</a>";
+							$user_list[$value['hash_data']][] = "<a href=\"home.php?mod=space&uid={$value['uid']}\">{$value['username']}</a>";
 						}
 
 
@@ -378,7 +330,7 @@ if($space['self'] && empty($start)) {
 		}
 
 		if($space['feedfriend']) {
-			$birthdaycache = C::t('forum_spacecache')->fetch($_G['uid'], 'birthday');
+			$birthdaycache = C::t('forum_spacecache')->fetch_spacecache($_G['uid'], 'birthday');
 			if(empty($birthdaycache) || TIMESTAMP > $birthdaycache['expiration']) {
 				$birthlist = C::t('common_member_profile')->fetch_all_will_birthday_by_uid($space['feedfriend']);
 
@@ -393,11 +345,11 @@ if($space['self'] && empty($start)) {
 			}
 		}
 
-		if($_G['setting']['taskon']) {
+		if($_G['setting']['taskstatus']) {
 			require_once libfile('class/task');
 			$tasklib = & task::instance();
 			$taskarr = $tasklib->tasklist('canapply');
-			$task = $taskarr[array_rand($taskarr)];
+			$task = count($taskarr) ? $taskarr[array_rand($taskarr)] : array();
 		}
 		if($_G['setting']['magicstatus']) {
 			loadcache('magics');

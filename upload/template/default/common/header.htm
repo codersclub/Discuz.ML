@@ -45,7 +45,7 @@
 			    {lang your_mobile_browser}<a href="{$_G['siteurl']}forum.php?mobile=yes">{lang go_to_mobile}</a> <span class="xg1">|</span> <a href="$_G['setting']['mobile']['nomobileurl']">{lang to_be_continue}</a>
 			</div>
 		<!--{/if}-->
-		<!--{if $_G['setting']['shortcut'] && $_G['member'][credits] >= $_G['setting']['shortcut']}-->
+		<!--{if !empty($_G['setting']['shortcut']) && $_G['member'][credits] >= $_G['setting']['shortcut']}-->
 			<div id="shortcut">
 				<span><a href="javascript:;" id="shortcutcloseid" title="{lang close}">{lang close}</a></span>
 				{lang shortcut_notice}
@@ -59,7 +59,7 @@
 			<div class="wp">
 				<div class="z">
 					<!--{loop $_G['setting']['topnavs'][0] $nav}-->
-<!--vot-->					<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
+<!--vot-->					<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
 					<!--{/loop}-->
 					<!--{hook/global_cpnav_extra1}-->
 				</div>
@@ -89,7 +89,7 @@
 <!--vot-->				<span class="pipe">|</span>
 					<!--{hook/global_cpnav_extra2}-->
 					<!--{loop $_G['setting']['topnavs'][1] $nav}-->
-<!--vot-->					<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
+<!--vot-->					<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav['code']}{$nav['navname']}</a><span class="pipe">|</span><!--{/if}-->
 					<!--{/loop}-->
 					<!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
 <!--vot-->					<a href="javascript:;" onclick="widthauto(this)" title="<!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}-->"><img src="{IMGDIR}/<!--{if widthauto()}-->shrink<!--{else}-->expand<!--{/if}-->.png"></a>
@@ -155,7 +155,7 @@
 <!--vot-->				<a href="javascript:;" id="qmenu" onmouseover="delayShow(this, function () {showMenu({'ctrlid':'qmenu','pos':'<!--{if $_G['langdir']=='rtl'}-->43<!--{else}-->34<!--{/if}-->!','ctrlclass':'a','duration':2});showForummenu($_G[fid]);})">{lang my_nav}</a>
 					<ul>
 						<!--{loop $_G['setting']['navs'] $nav}-->
-<!--vot-->						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if $mnid == $nav[navid]}class="a" {/if}$nav[nav]>$nav[navname]</a></li><!--{/if}-->
+<!--vot-->						<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if $mnid == $nav[navid]}class="a" {/if}{$nav['nav']}>{$nav['navname']}</a></li><!--{/if}-->
 						<!--{/loop}-->
 					</ul>
 					<!--{hook/global_nav_extra}-->
@@ -163,7 +163,7 @@
 				<!--{if !empty($_G['setting']['plugins']['jsmenu'])}-->
 					<ul class="p_pop h_pop" id="plugin_menu" style="display: none">
 					<!--{loop $_G['setting']['plugins']['jsmenu'] $module}-->
-						 <!--{if !$module['adminid'] || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}-->
+						 <!--{if in_array($module['adminid'], array(0, -1)) || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}-->
 						 <li>$module[url]</li>
 						 <!--{/if}-->
 					<!--{/loop}-->

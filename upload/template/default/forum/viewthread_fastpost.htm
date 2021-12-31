@@ -1,6 +1,8 @@
 <script type="text/javascript">
 var postminchars = parseInt('$_G['setting']['minpostsize']');
 var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+var postminsubjectchars = parseInt('$_G['setting']['minsubjectsize']');
+var postmaxsubjectchars = parseInt('$_G['setting']['maxsubjectsize']');
 var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
 </script>
 
@@ -141,10 +143,10 @@ var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
 							progressTarget : "attachlist",
 							uploadSource: 'forum',
 							uploadType: 'attach',
-							<!--{if $swfconfig['maxsizeperday']}-->
+							<!--{if !empty($swfconfig['maxsizeperday'])}-->
 							maxSizePerDay: $swfconfig['maxsizeperday'],
 							<!--{/if}-->
-							<!--{if $swfconfig['maxattachnum']}-->
+							<!--{if !empty($swfconfig['maxattachnum'])}-->
 							maxAttachNum: $swfconfig['maxattachnum'],
 							<!--{/if}-->
 							uploadFrom: 'fastpost'

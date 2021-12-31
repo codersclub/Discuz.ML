@@ -24,11 +24,18 @@ ckstart($start, $perpage);
 
 checkusergroup();
 
-$operation = in_array($_GET['op'], array('base', 'buy', 'transfer', 'exchange', 'log', 'rule')) ? trim($_GET['op']) : 'base';
+$operation = in_array(getgpc('op'), array('base', 'buy', 'transfer', 'exchange', 'log', 'rule')) ? trim($_GET['op']) : 'base';
 $opactives = array($operation =>' class="a"');
 if(in_array($operation, array('base', 'buy', 'transfer', 'exchange', 'rule'))) {
 	$operation = 'base';
 }
+
+if($_G['setting']['ec_ratio']) {
+	$is_enable_pay = payment::enable();
+} else {
+	$is_enable_pay = false;
+}
+
 include_once libfile('spacecp/credit_'.$operation, 'include');
 
 
@@ -154,14 +161,14 @@ function getotherinfo($aids, $pids, $tids, $taskids, $uids) {
 			$tids[$value['tid']] = $value['tid'];
 		}
 		foreach($attachtable as $id => $value) {
-			$attachs = C::t('forum_attachment_n')->fetch_all($id, $value);
+			$attachs = C::t('forum_attachment_n')->fetch_all_attachment($id, $value);
 			foreach($attachs as $value) {
 				$otherinfo['attachs'][$value['aid']] = $value;
 			}
 		}
 	}
 	if(!empty($pids)) {
-		foreach(C::t('forum_post')->fetch_all(0, $pids) as $value) {
+		foreach(C::t('forum_post')->fetch_all_post(0, $pids) as $value) {
 			$tids[$value['tid']] = $value['tid'];
 			$otherinfo['post'][$value['pid']] = $value['tid'];
 		}

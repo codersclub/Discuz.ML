@@ -28,7 +28,7 @@ class tag
 		$tagcount = 0;
 		foreach($tagarray as $tagname) {
 			$tagname = trim($tagname);
-			if(preg_match('/^([\x7f-\xff_-]|\w|\s){3,20}$/', $tagname)) {
+			if(preg_match('/^([\x7f-\xff_-]|\w|\s){2,20}$/', $tagname)) {
 				$status = $idtype != 'uid' ? 0 : 3;
 				$result = C::t('common_tag')->get_bytagname($tagname, $idtype);
 				if($result['tagid']) {
@@ -36,7 +36,7 @@ class tag
 						$tagid = $result['tagid'];
 					}
 				} else {
-					$tagid = C::t('common_tag')->insert($tagname,$status);
+					$tagid = C::t('common_tag')->insert_tag($tagname,$status);
 				}
 				if($tagid) {
 					if($itemid) {
@@ -80,7 +80,7 @@ class tag
 		if($tagidarray) {
 			$results = C::t('common_tag')->get_byids($tagidarray);
 			foreach($results as $result) {
-				$tagarray[$result[tagid]] = $result['tagname'];
+				$tagarray[$result['tagid']] = $result['tagname'];
 			}
 		}
 		$tags = $this->add_tag($tags, $itemid, $idtype, 1);
@@ -92,7 +92,7 @@ class tag
 		}
 		foreach($tagarray as $tagid => $tagname) {
 			if(!in_array($tagname, $tagarraynew)) {
-				C::t('common_tagitem')->delete($tagid, $itemid, $idtype);
+				C::t('common_tagitem')->delete_tagitem($tagid, $itemid, $idtype);
 				$tagstr = str_replace("$tagid,$tagname\t", '', $tagstr);
 			}
 		}
@@ -116,7 +116,7 @@ class tag
 		if(!$newtag) {
 			return 'tag_empty';
 		}
-		if(preg_match('/^([\x7f-\xff_-]|\w|\s){3,20}$/', $newtag)) {
+		if(preg_match('/^([\x7f-\xff_-]|\w|\s){2,20}$/', $newtag)) {
 			$tidarray = $blogidarray = array();
 			$newtaginfo = $this->add_tag($newtag, 0, $idtype, 1);
 			foreach($newtaginfo as $tagid => $tagname) {
@@ -127,21 +127,21 @@ class tag
 				$tagnames = C::t('common_tag')->get_byids($tagidarray);
 				$results = C::t('common_tagitem')->select($tagidarray);
 				foreach($results as $result) {
-					$result['tagname'] = addslashes($tagnames[$result[tagid]]['tagname']);
+					$result['tagname'] = addslashes($tagnames[$result['tagid']]['tagname']);
 					if($result['idtype'] == 'tid') {
-						$itemid = $result[itemid];
+						$itemid = $result['itemid'];
 						if(!isset($tidarray[$itemid])) {
 							$post = C::t('forum_post')->fetch_threadpost_by_tid_invisible($itemid);
 							$tidarray[$itemid] = $post['tags'];
 						}
-						$tidarray[$itemid] = str_replace("$result[tagid],$result[tagname]\t", '', $tidarray[$itemid]);
+						$tidarray[$itemid] = str_replace("{$result['tagid']},{$result['tagname']}\t", '', $tidarray[$itemid]);
 					} elseif($result['idtype'] == 'blogid') {
-						$itemid = $result[itemid];
+						$itemid = $result['itemid'];
 						if(!isset($blogidarray[$itemid])) {
 							$blogfield = C::t('home_blogfield')->fetch($itemid);
 							$blogidarray[$itemid] = $blogfield['tag'];
 						}
-						$blogidarray[$itemid] = str_replace("$result[tagid],$result[tagname]\t", '', $blogidarray[$itemid]);
+						$blogidarray[$itemid] = str_replace("{$result['tagid']},{$result['tagname']}\t", '', $blogidarray[$itemid]);
 					}
 				}
 			}
@@ -188,21 +188,21 @@ class tag
 			$tagnames = C::t('common_tag')->get_byids($tagidarray);
 			$items = C::t('common_tagitem')->select($tagidarray);
 			foreach($items as $result) {
-				$result['tagname'] = addslashes($tagnames[$result[tagid]]['tagname']);
+				$result['tagname'] = addslashes($tagnames[$result['tagid']]['tagname']);
 				if($result['idtype'] == 'tid') {
-					$itemid = $result[itemid];
+					$itemid = $result['itemid'];
 					if(!isset($tidarray[$itemid])) {
 						$post = C::t('forum_post')->fetch_threadpost_by_tid_invisible($itemid);
 						$tidarray[$itemid] = $post['tags'];
 					}
-					$tidarray[$itemid] = str_replace("$result[tagid],$result[tagname]\t", '', $tidarray[$itemid]);
+					$tidarray[$itemid] = str_replace("{$result['tagid']},{$result['tagname']}\t", '', $tidarray[$itemid]);
 				} elseif($result['idtype'] == 'blogid') {
-					$itemid = $result[itemid];
+					$itemid = $result['itemid'];
 					if(!isset($blogidarray[$itemid])) {
 						$blogfield = C::t('home_blogfield')->fetch($itemid);
 						$blogidarray[$itemid] = $blogfield['tag'];
 					}
-					$blogidarray[$itemid] = str_replace("$result[tagid],$result[tagname]\t", '', $blogidarray[$itemid]);
+					$blogidarray[$itemid] = str_replace("{$result['tagid']},{$result['tagname']}\t", '', $blogidarray[$itemid]);
 				}
 			}
 		}
@@ -218,7 +218,7 @@ class tag
 			}
 		}
 		C::t('common_tag')->delete_byids($tagidarray);
-		C::t('common_tagitem')->delete($tagidarray);
+		C::t('common_tagitem')->delete_tagitem($tagidarray);
 		return true;
 	}
 

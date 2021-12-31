@@ -17,7 +17,7 @@ $id = intval($_GET['id']);
 $membervars = array('act', 'num', 'time');
 $postvars = array('act', 'forumid', 'num', 'time', 'threadid', 'authorid');
 $modvars = array();
-$custom_types = C::t('common_setting')->fetch('tasktypes', true);
+$custom_types = C::t('common_setting')->fetch_setting('tasktypes', true);
 $custom_scripts = array_keys($custom_types);
 
 $submenus = array();
@@ -37,7 +37,7 @@ if(!($operation)) {
 		));
 		showformheader('tasks');
 		showtableheader('tasks_list', 'fixpadding');
-		showsubtitle(array('display_order', 'available', 'name', 'tasks_reward', 'time', ''));
+		showsubtitle(array('display_order', 'available', 'name', 'tasks_reward', 'time', 'tasks_status', ''));
 
 		$starttasks = array();
 		foreach(C::t('common_task')->fetch_all_data() as $task) {
@@ -75,13 +75,23 @@ if(!($operation)) {
 				$task['time'] = cplang('nolimit');
 			}
 
+			if($task['available'] == 2 && ($task['starttime'] > TIMESTAMP || ($task['endtime'] && $task['endtime'] <= TIMESTAMP))) {
+				$task['available'] = 1;
+				C::t('common_task')->update($task['taskid'], array('available' => 1));
+			}
+			if($task['available'] == 1 && (!$task['starttime'] || $task['starttime'] <= TIMESTAMP) && (!$task['endtime'] || $task['endtime'] > TIMESTAMP)) {
+				$task['available'] = 2;
+				C::t('common_task')->update($task['taskid'], array('available' => 2));
+			}
+
 			showtablerow('', array('class="td25"', 'class="td25"'), array(
 				'<input type="text" class="txt" name="displayordernew['.$task['taskid'].']" value="'.$task['displayorder'].'" size="3" />',
-				"<input class=\"checkbox\" type=\"checkbox\" name=\"availablenew[$task[taskid]]\" value=\"1\"$checked><input type=\"hidden\" name=\"availableold[$task[taskid]]\" value=\"$task[available]\">",
-				"<input type=\"text\" class=\"txt\" name=\"namenew[$task[taskid]]\" size=\"20\" value=\"$task[name]\"><input type=\"hidden\" name=\"nameold[$task[taskid]]\" value=\"$task[name]\">",
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"availablenew[{$task['taskid']}]\" value=\"1\"$checked><input type=\"hidden\" name=\"availableold[{$task['taskid']}]\" value=\"{$task['available']}\">",
+				"<input type=\"text\" class=\"txt\" name=\"namenew[{$task['taskid']}]\" size=\"20\" value=\"{$task['name']}\"><input type=\"hidden\" name=\"nameold[{$task['taskid']}]\" value=\"{$task['name']}\">",
 				$reward,
 				$task['time'].'<input type="hidden" name="scriptnamenew['.$task['taskid'].']" value="'.$task['scriptname'].'">',
-				"<a href=\"".ADMINSCRIPT."?action=tasks&operation=edit&id=$task[taskid]\" class=\"act\">$lang[edit]</a>&nbsp;&nbsp;<a href=\"".ADMINSCRIPT."?action=tasks&operation=delete&id=$task[taskid]\" class=\"act\">$lang[delete]</a>"
+				($task['available'] == 1 ? ($task['endtime'] && $task['endtime'] <= TIMESTAMP ? cplang('tasks_status_3') : cplang('tasks_status_1')) : ($task['available'] == 2 ? cplang('tasks_status_2') : cplang('tasks_status_0'))),
+				"<a href=\"".ADMINSCRIPT."?action=tasks&operation=edit&id={$task['taskid']}\" class=\"act\">{$lang['edit']}</a>&nbsp;&nbsp;<a href=\"".ADMINSCRIPT."?action=tasks&operation=delete&id={$task['taskid']}\" class=\"act\">{$lang['delete']}</a>"
 			));
 
 		}
@@ -143,7 +153,7 @@ if(!($operation)) {
 
 	if(!submitcheck('addsubmit')) {
 
-		echo '<script type="text/javascript" src="static/js/calendar.js"></script>';
+		echo '<script type="text/javascript" src="'.STATICURL.'/js/calendar.js"></script>';
 		shownav('extended', 'nav_tasks');
 		showsubmenu('nav_tasks', array(
 			array('admin', 'tasks', 0),
@@ -158,7 +168,7 @@ if(!($operation)) {
 		if(count($escript) > 1 && file_exists(DISCUZ_ROOT.'./source/plugin/'.$escript[0].'/task/task_'.$escript[1].'.gif')) {
 			$defaulticon = 'source/plugin/'.$escript[0].'/task/task_'.$escript[1].'.gif';
 		} else {
-			$defaulticon = 'static/image/task/task.gif';
+			$defaulticon =  STATICURL . '/image/task/task.gif';
 		}
 		showsetting('tasks_add_icon', 'iconnew', $task_icon, 'text', '', 0, cplang('tasks_add_icon_comment', array('defaulticon' => $defaulticon)));
 		showsetting('tasks_add_starttime', 'starttime', '', 'calendar', '', 0, '', 1);
@@ -337,7 +347,7 @@ if(!($operation)) {
 
 	if(!submitcheck('editsubmit')) {
 
-		echo '<script type="text/javascript" src="static/js/calendar.js"></script>';
+		echo '<script type="text/javascript" src="'.STATICURL.'/js/calendar.js"></script>';
 		shownav('extended', 'nav_tasks');
 		showsubmenu('nav_tasks', array(
 			array('admin', 'tasks', 0),
@@ -534,6 +544,9 @@ if(!($operation)) {
 				C::t('common_taskvar')->update_by_taskid($id, $item, array('value' => is_array($value) ? serialize($value) : $value));
 			}
 		}
+		require_once libfile('class/task');
+		$tasklib = & task::instance();
+		$tasklib->update_available(1);
 
 		cpmsg('tasks_succeed', "action=tasks", 'succeed');
 
@@ -547,7 +560,7 @@ if(!($operation)) {
 
 	C::t('common_task')->delete($id);
 	C::t('common_taskvar')->delete_by_taskid($id);
-	C::t('common_mytask')->delete(0, $id);
+	C::t('common_mytask')->delete_mytask(0, $id);
 
 	cpmsg('tasks_del', 'action=tasks', 'succeed');
 
@@ -572,7 +585,7 @@ if(!($operation)) {
 				$task['name'].($task['filemtime'] > TIMESTAMP - 86400 ? ' <font color="red">New!</font>' : ''),
 				$task['version'],
 				$task['copyright'],
-				in_array($task['class'], $custom_scripts) ? "<a href=\"".ADMINSCRIPT."?action=tasks&operation=upgrade&script=$task[class]\" class=\"act\">$lang[tasks_upgrade]</a> <a href=\"".ADMINSCRIPT."?action=tasks&operation=uninstall&script=$task[class]\" class=\"act\">$lang[tasks_uninstall]</a><br />" : "<a href=\"".ADMINSCRIPT."?action=tasks&operation=install&script=$task[class]\" class=\"act\">$lang[tasks_install]</a>"
+				in_array($task['class'], $custom_scripts) ? "<a href=\"".ADMINSCRIPT."?action=tasks&operation=upgrade&script={$task['class']}\" class=\"act\">{$lang['tasks_upgrade']}</a> <a href=\"".ADMINSCRIPT."?action=tasks&operation=uninstall&script={$task['class']}\" class=\"act\">{$lang['tasks_uninstall']}</a><br />" : "<a href=\"".ADMINSCRIPT."?action=tasks&operation=install&script={$task['class']}\" class=\"act\">{$lang['tasks_install']}</a>"
 			));
 		}
 	} else {
@@ -601,7 +614,7 @@ if(!($operation)) {
 	}
 
 	$custom_types[$_GET['script']] = array('name' => lang('task/'.$_GET['script'], $task->name), 'version' => $task->version);
-	C::t('common_setting')->update('tasktypes', $custom_types);
+	C::t('common_setting')->update_setting('tasktypes', $custom_types);
 
 	cpmsg('tasks_installed', 'action=tasks&operation=type', 'succeed');
 
@@ -618,7 +631,7 @@ if(!($operation)) {
 	if($ids) {
 		C::t('common_task')->delete($ids);
 		C::t('common_taskvar')->delete_by_taskid($ids);
-		C::t('common_mytask')->delete(0, $ids);
+		C::t('common_mytask')->delete_mytask(0, $ids);
 	}
 
 	$escript = explode(':', $_GET['script']);
@@ -635,7 +648,7 @@ if(!($operation)) {
 	}
 
 	unset($custom_types[$_GET['script']]);
-	C::t('common_setting')->update('tasktypes', $custom_types);
+	C::t('common_setting')->update_setting('tasktypes', $custom_types);
 	cpmsg('tasks_uninstalled', 'action=tasks&operation=type', 'succeed');
 
 } elseif($operation == 'upgrade' && $_GET['script']) {
@@ -662,7 +675,7 @@ if(!($operation)) {
 
 	C::t('common_task')->update_by_scriptname($_GET['script'], array('version' => $task->version));
 	$custom_types[$_GET['script']] = array('name' => $task->name, 'version' => $task->version);
-	C::t('common_setting')->update('tasktypes', $custom_types);
+	C::t('common_setting')->update_setting('tasktypes', $custom_types);
 
 	cpmsg('tasks_updated', 'action=tasks&operation=type', 'succeed');
 

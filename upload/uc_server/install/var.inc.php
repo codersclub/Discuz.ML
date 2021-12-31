@@ -70,14 +70,16 @@ define('UNDEFINE_FUNC', 32);
 define('MISSING_PARAMETER', 33);
 define('LOCK_FILE_NOT_TOUCH', 34);
 
-$func_items = array('mysqli_connect', 'gethostbyname', 'file_get_contents', 'xml_parser_create');// MySQLi Only, Git新增
+$func_items = array('mysqli_connect', 'xml_parser_create', 'json_encode');// MySQLi Only, Git新增
 
 $env_items = array
 (
 	'os' => array('c' => 'PHP_OS', 'r' => 'notset', 'b' => 'unix'),
-	'php' => array('c' => 'PHP_VERSION', 'r' => '4.0', 'b' => '5.0'),
+	'php' => array('c' => 'PHP_VERSION', 'r' => '5.6', 'b' => '7.3'),
 	'attachmentupload' => array('r' => 'notset', 'b' => '2M'),
 	'gdversion' => array('r' => '1.0', 'b' => '2.0'),
+	'curl' => array('r' => 'notset', 'b' => 'enable'),
+	'opcache' => array('r' => 'notset', 'b' => 'enable'),
 	'diskspace' => array('r' => '10M', 'b' => 'notset'),
 );
 
@@ -100,7 +102,7 @@ $form_db_init_items = array
 		'dbhost' => array('type' => 'text', 'required' => 1, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => 'localhost')),
 		'dbname' => array('type' => 'text', 'required' => 1, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => 'ucenter')),
 		'dbuser' => array('type' => 'text', 'required' => 0, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => 'root')),
-		'dbpw' => array('type' => 'password', 'required' => 0, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => '')),
+		'dbpw' => array('type' => 'text', 'required' => 0, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => '')),
 		'tablepre' => array('type' => 'text', 'required' => 0, 'reg' => '/^.*$/', 'value' => array('type' => 'string', 'var' => 'uc_')),
 	),
 	'admininfo' => array

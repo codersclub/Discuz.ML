@@ -10,6 +10,7 @@
 
 // ============================================================================
 define('UC_CONNECT', 'mysql');			// UCenter connection method:
+define('UC_STANDALONE', 1);
 // Database Related (mysql connection)
 define('UC_DBHOST', 'localhost');		// UCenter Database Host
 define('UC_DBUSER', 'root');			// UCenter Database user name
@@ -18,6 +19,9 @@ define('UC_DBNAME', 'ucenter');			// UCenter Database Name
 define('UC_DBCHARSET', 'utf8');			// UCenter Database character set, 'utf8mb4' for MySQL >= 5.5.3
 define('UC_DBTABLEPRE', '`ucenter`.uc_');	// UCenter Database table prefix
 define('UC_DBCONNECT', '0');			// UCenter Database persistent connection 0 = off, 1 = On
+// Avatar related
+define('UC_AVTURL', '');
+define('UC_AVTPATH', '');
 
 // Communication related
 define('UC_KEY', 'yeN3g9EbNfiaYfodV63dI1j8Fbk5HaL7W4yaW4y7u2j4Mf45mfg2v899g451k576');	// UCenter communication key, consistent with the UCenter

@@ -28,12 +28,12 @@ if(!($deletepids = dimplode($topiclist))) {
 	showmessage('admin_nopermission');
 }  else {
 	$posttable = getposttablebytid($_G['tid']);
-	foreach(C::t('forum_post')->fetch_all('tid:'.$_G['tid'], $topiclist, false) as $post) {
+	foreach(C::t('forum_post')->fetch_all_post('tid:'.$_G['tid'], $topiclist, false) as $post) {
 		if($post['tid'] != $_G['tid']) {
 			continue;
 		}
 		if($post['first'] == 1) {
-			dheader("location: $_G[siteurl]forum.php?mod=topicadmin&action=moderate&operation=delete&optgroup=3&fid=$_G[fid]&moderate[]=$thread[tid]&inajax=yes".($_GET['infloat'] ? "&infloat=yes&handlekey={$_GET['handlekey']}" : ''));
+			dheader("location: {$_G['siteurl']}forum.php?mod=topicadmin&action=moderate&operation=delete&optgroup=3&fid={$_G['fid']}&moderate[]={$thread['tid']}&inajax=yes".($_GET['infloat'] ? "&infloat=yes&handlekey={$_GET['handlekey']}" : ''));
 		} else {
 			$authors[$post['authorid']] = 1;
 			$pids[] = $post['pid'];
@@ -74,13 +74,13 @@ if(!submitcheck('modsubmit')) {
 		} else {
 			$logs = array();
 			$ratelog = C::t('forum_ratelog')->fetch_all_by_pid($pids);
-			$rposts = C::t('forum_post')->fetch_all('tid:'.$_G['tid'], $pids, false);
+			$rposts = C::t('forum_post')->fetch_all_post('tid:'.$_G['tid'], $pids, false);
 			foreach(C::t('forum_ratelog')->fetch_all_by_pid($pids) as $rpid => $author) {
 				if($author['score'] > 0) {
 					$rpost = $rposts[$rpid];
 					updatemembercount($rpost['authorid'], array($author['extcredits'] => -$author['score']));
 					$author['score'] = $_G['setting']['extcredits'][$id]['title'].' '.-$author['score'].' '.$_G['setting']['extcredits'][$id]['unit'];
-					$logs[] = dhtmlspecialchars("$_G[timestamp]\t{$_G[member][username]}\t$_G[adminid]\t$rpost[author]\t$author[extcredits]\t$author[score]\t$thread[tid]\t$thread[subject]\t$delpostsubmit");
+					$logs[] = dhtmlspecialchars("{$_G['timestamp']}\t{$_G['member']['username']}\t{$_G['adminid']}\t{$rpost['author']}\t{$author['extcredits']}\t{$author['score']}\t{$thread['tid']}\t{$thread['subject']}\t$delpostsubmit");
 				}
 			}
 			if(!empty($logs)) {
@@ -128,7 +128,7 @@ if(!submitcheck('modsubmit')) {
 	$modaction = 'DLP';
 
 	$resultarray = array(
-	'redirect'	=> "forum.php?mod=viewthread&tid=$_G[tid]&page=$_GET[page]",
+	'redirect'	=> "forum.php?mod=viewthread&tid={$_G['tid']}&page={$_GET['page']}",
 	'reasonpm'	=> ($sendreasonpm ? array('data' => $posts, 'var' => 'post', 'item' => 'reason_delete_post', 'notictype' => 'post') : array()),
 	'reasonvar'	=> array('tid' => $thread['tid'], 'subject' => $thread['subject'], 'modaction' => $modaction, 'reason' => $reason),
 	'modtids'	=> 0,

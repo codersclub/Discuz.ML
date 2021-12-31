@@ -19,7 +19,7 @@ class credit {
 
 	function __construct() {}
 
-	function &instance() {
+	public static function &instance() {
 		static $object;
 		if(empty($object)) {
 			$object = new credit();
@@ -115,7 +115,7 @@ class credit {
 							$logarr = array(
 								'cyclenum' => "cyclenum=$cyclenunm",
 								'total' => "total=total+'$coef'",
-								'dateline' => "dateline='$_G[timestamp]'"
+								'dateline' => "dateline='{$_G['timestamp']}'"
 							);
 							$updatecredit = true;
 						}
@@ -148,7 +148,7 @@ class credit {
 							$logarr = array(
 								'cyclenum' => "cyclenum=cyclenum+'$coef'",
 								'total' => "total=total+'$coef'",
-								'dateline' => "dateline='$_G[timestamp]'"
+								'dateline' => "dateline='{$_G['timestamp']}'"
 							);
 							$updatecredit = true;
 						} elseif($_G['timestamp'] >= $nextcycle) {
@@ -156,8 +156,8 @@ class credit {
 							$logarr = array(
 								'cyclenum' => "cyclenum=$coef",
 								'total' => "total=total+'$coef'",
-								'dateline' => "dateline='$_G[timestamp]'",
-								'starttime' => "starttime='$_G[timestamp]'",
+								'dateline' => "dateline='{$_G['timestamp']}'",
+								'starttime' => "starttime='{$_G['timestamp']}'",
 							);
 							$updatecredit = true;
 						}
@@ -360,7 +360,7 @@ class credit {
 
 	}
 
-	function deletelogbyfid($rid, $fid) {
+	public static function deletelogbyfid($rid, $fid) {
 
 		$fid = intval($fid);
 		if($rid && $fid) {
@@ -396,7 +396,7 @@ class credit {
 				$logarr['uid'] = $rulelog['uid'];
 				C::t('common_credit_rule_log_field')->insert($logarr);
 			} elseif($logarr) {
-				C::t('common_credit_rule_log_field')->update($rulelog['uid'], $rulelog['clid'],$logarr);
+				C::t('common_credit_rule_log_field')->update_field($rulelog['uid'], $rulelog['clid'],$logarr);
 			}
 		}
 	}
@@ -405,7 +405,7 @@ class credit {
 		global $_G;
 
 		for($i = 1; $i <= 8; $i++) {
-			if($_G['setting']['extcredits'][$i]) {
+			if(getglobal('setting/extcredits/'.$i)) {
 				$extcredit = intval($rule['extcredits'.$i]) * $this->coef;
 				if($issql) {
 					$logarr['extcredits'.$i] = 'extcredits'.$i."='$extcredit'";
@@ -504,7 +504,7 @@ class credit {
 		global $_G;
 
 		$uid = $uid ? $uid : $_G['uid'];
-		return C::t('common_credit_rule_log_field')->fetch($uid, $clid);
+		return C::t('common_credit_rule_log_field')->fetch_field($uid, $clid);
 	}
 }
 

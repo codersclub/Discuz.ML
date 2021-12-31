@@ -26,12 +26,12 @@ class table_common_tagitem extends discuz_table
 	}
 
 	public function select($tagid = 0, $itemid = 0, $idtype = '', $orderfield = '', $ordertype = 'DESC', $limit = 0, $count = 0, $itemidglue = '=', $returnnum = 0) {
-		$data = self::make_where($tagid, $itemid, $idtype, $itemidglue);
+		$data = $this->make_where($tagid, $itemid, $idtype, $itemidglue);
 		$ordersql = $limitsql = '';
 		if($orderfield) {
 			$ordersql = ' ORDER BY '.DB::order($orderfield, $ordertype);
 		}
-		if($limit) {
+		if($limit || $count) {
 			$limitsql = DB::limit($limit, $count);
 		}
 		if($data) {
@@ -44,8 +44,19 @@ class table_common_tagitem extends discuz_table
 		}
 	}
 
-	public function delete($tagid = 0, $itemid = 0, $idtype = '') {
-		$data = self::make_where($tagid, $itemid, $idtype);
+	public function delete($val, $unbuffered = false, $null = '') {
+		// $null 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::delete($val, $unbuffered);
+		} else {
+			$unbuffered = $unbuffered === false ? 0 : $unbuffered;
+			return $this->delete_tagitem($val, $unbuffered);
+		}
+	}
+
+	public function delete_tagitem($tagid = 0, $itemid = 0, $idtype = '') {
+		$data = $this->make_where($tagid, $itemid, $idtype);
 		if($data) {
 			return DB::query('DELETE FROM %t WHERE '.$data['where'], $data['data']);
 		} else {

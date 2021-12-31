@@ -11,8 +11,6 @@
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
 
-/*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
-
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
 /*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(dirname(__FILE__))).'/');
@@ -62,6 +60,13 @@ if(in_array($method, array('app_reg', 'ext_info'))) {
 	$bbserver = 'http'.($isHTTPS ? 's' : '').'://'.$_SERVER['HTTP_HOST'];
 	$default_ucapi = $bbserver.'/ucenter';
 	$default_appurl = $bbserver.substr($PHP_SELF, 0, strrpos($PHP_SELF, '/') - 8);
+}
+
+if(isset($_COOKIE['ULTRAXINSTID']) && strpos($_COOKIE['ULTRAXINSTID'], 'ULTRAXINSTID') === 0) {
+	$instid = $_COOKIE['ULTRAXINSTID'];
+} else {
+	$instid = uniqid('ULTRAXINSTID', true);
+	setcookie('ULTRAXINSTID', $instid);
 }
 
 if($method == 'show_license') {
@@ -124,7 +129,7 @@ if($method == 'show_license') {
 			}
 			foreach($items as $k => $v) {
 				$tmp = $$key;
-				$$k = $tmp[$k];
+				$$k = addslashes($tmp[$k]);
 				if(empty($$k) || !preg_match($v['reg'], $$k)) {
 					if(empty($$k) && !$v['required']) {
 						continue;
@@ -266,7 +271,7 @@ if($method == 'show_license') {
 			}
 			foreach($items as $k => $v) {
 				$tmp = $$key;
-				$$k = $tmp[$k];
+				$$k = addslashes($tmp[$k]);
 				if(empty($$k) || !preg_match($v['reg'], $$k)) {
 					if(empty($$k) && !$v['required']) {
 						continue;
@@ -305,6 +310,9 @@ if($method == 'show_license') {
 			show_msg('dbname_invalid', $dbname, 0);
 		} else {
 			if (strpos($dbhost, ":") === FALSE) $dbhost .= ":3306";
+
+			mysqli_report(MYSQLI_REPORT_OFF);
+
 			$link = new mysqli($dbhost, $dbuser, $dbpw);
 			if($link->connect_errno) {
 				$errno = $link->connect_errno;
@@ -317,12 +325,8 @@ if($method == 'show_license') {
 					show_msg('database_connect_error', $error, 0);
 				}
 			}
-			$mysql_version = $link->server_info;
-/*vot*/			if(v_compare($mysql_version, '4.1') > 0) {
-				$link->query("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET ".DBCHARSET);
-			} else {
-				$link->query("CREATE DATABASE IF NOT EXISTS `$dbname`");
-			}
+
+			$link->query("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET " . constant('DBCHARSET'));
 
 			if($link->errno) {
 				show_msg('database_errno_1044', $link->error, 0);
@@ -353,7 +357,7 @@ if($method == 'show_license') {
 
 
 		$uid = DZUCFULL ? 1 : $adminuser['uid'];
-		$authkey = md5($_SERVER['SERVER_ADDR'].$_SERVER['HTTP_USER_AGENT'].$dbhost.$dbuser.$dbpw.$dbname.$username.$password.$pconnect.substr($timestamp, 0, 8)).random(18);
+		$authkey = md5((isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '').$_SERVER['HTTP_USER_AGENT'].$dbhost.$dbuser.$dbpw.$dbname.$username.$password.substr(time(), 0, 8)).secrandom(32);
 		$_config['db'][1]['dbhost'] = $dbhost;
 		$_config['db'][1]['dbname'] = $dbname;
 		$_config['db'][1]['dbpw'] = $dbpw;
@@ -361,8 +365,8 @@ if($method == 'show_license') {
 		$_config['db'][1]['tablepre'] = $tablepre;
 		$_config['admincp']['founder'] = (string)$uid;
 		$_config['security']['authkey'] = $authkey;
-		$_config['cookie']['cookiepre'] = random(4).'_';
-		$_config['memory']['prefix'] = random(6).'_';
+		$_config['cookie']['cookiepre'] = secrandom(4).'_';
+		$_config['memory']['prefix'] = secrandom(6).'_';
 
 		save_config_file(ROOT_PATH.CONFIG, $_config, $default_config);
 
@@ -390,7 +394,8 @@ if($method == 'show_license') {
 	} else {
 		show_header();
 		echo '</div><div class="main" style="margin-top: -123px;padding-left:30px"><span id="platformIntro"></span>';
-		echo '<p align="center"><a href="'.$default_appurl.'">'.$lang['install_finish'].'</a></p><br />';
+		echo '<iframe frameborder="0" width="700" height="550" allowTransparency="true" src="https://addon.dismall.com/api/outer.php?id=installed&siteurl='.urlencode($default_appurl).'&version='.DISCUZ_VERSION.'&release='.DISCUZ_RELEASE.'"></iframe>';
+		echo '<p align="center"><a href="'.$default_appurl.'" style="padding: 10px 20px;color: #fff;background: #09C;border-radius: 4px;height: 40px;line-height: 40px;font-size: 16px;">'.$lang['install_finish'].'</a></p><br />';
 		echo '</div>';
 		show_footer();
 	}
@@ -413,7 +418,8 @@ if($method == 'show_license') {
 	}
 } elseif($method == 'do_db_init') {
 	$allinfo = getgpc('allinfo');
-	extract(unserialize(base64_decode($allinfo)));
+	$allinfo_arr = unserialize(base64_decode($allinfo));
+	extract($allinfo_arr);
 
 	$db = new dbstuff;
 	$db->connect($dbhost, $dbuser, $dbpw, $dbname, DBCHARSET);
@@ -436,7 +442,7 @@ if($method == 'show_license') {
 
 	$onlineip = $_SERVER['REMOTE_ADDR'];
 	$timestamp = time();
-	$backupdir = substr(md5($_SERVER['SERVER_ADDR'].$_SERVER['HTTP_USER_AGENT'].substr($timestamp, 0, 4)), 8, 6);
+	$backupdir = substr(md5((isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '').$_SERVER['HTTP_USER_AGENT'].substr($timestamp, 0, 4)), 8, 6);
 	$ret = false;
 	if(is_dir(ROOT_PATH.'data/backup')) {
 		$ret = @rename(ROOT_PATH.'data/backup', ROOT_PATH.'data/backup_'.$backupdir);
@@ -450,7 +456,7 @@ if($method == 'show_license') {
 	$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
 	$siteuniqueid = 'DX'.$chars[date('y')%60].$chars[date('n')].$chars[date('j')].$chars[date('G')].$chars[date('i')].$chars[date('s')].substr(md5($onlineip.$timestamp), 0, 4).random(4);
 
-	$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('authkey', '$authkey')");
+	$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('authkey', '')");
 	$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('siteuniqueid', '$siteuniqueid')");
 	$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('adminemail', '$email')");
 
@@ -460,7 +466,16 @@ if($method == 'show_license') {
 
 	$password = md5(random(10));
 
-	$db->query("REPLACE INTO {$tablepre}common_member (uid, username, password, adminid, groupid, email, regdate) VALUES ('$uid', '$username', '$password', '1', '1', '$email', '".time()."');");
+	$db->query("REPLACE INTO {$tablepre}common_member (uid, username, password, adminid, groupid, email, regdate, timeoffset) VALUES ('$uid', '$username', '$password', '1', '1', '$email', '".time()."', '9999');");
+
+	// UID 是变量, 不做适配会导致积分操作等异常
+	if($uid) {
+		$db->query("REPLACE INTO {$tablepre}common_member_count SET uid='$uid';");
+		$db->query("REPLACE INTO {$tablepre}common_member_status SET uid='$uid';");
+		$db->query("REPLACE INTO {$tablepre}common_member_field_forum SET uid='$uid';");
+		$db->query("REPLACE INTO {$tablepre}common_member_field_home SET uid='$uid';");
+		$db->query("REPLACE INTO {$tablepre}common_member_profile SET uid='$uid';");
+	}
 
 	$notifyusers = addslashes('a:1:{i:1;a:2:{s:8:"username";s:'.strlen($username).':"'.$username.'";s:5:"types";s:20:"11111111111111111111";}}');
 	$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('notifyusers', '$notifyusers')");

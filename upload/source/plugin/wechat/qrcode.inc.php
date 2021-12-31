@@ -32,7 +32,7 @@ if($_GET['access']) {
 			$dir = $dir.$dir1.'/'.$dir2.'/'.$dir3.'/';
 			$file = $dir.'/qr_t'.$tid.'.jpg';
 			if(!file_exists($file) || !filesize($file)) {
-				if(!C::t('forum_thread')->fetch($tid)) {
+				if(!C::t('forum_thread')->fetch_thread($tid)) {
 					exit;
 				}
 				dmkdir($dir);
@@ -85,9 +85,11 @@ if($ticket) {
 	if(!file_exists($file) || !filesize($file)) {
 		dmkdir($dir);
 		$qrcode = dfsockopen($wechat_client->getQrcodeImgUrlByTicket($ticket));
-		$fp = @fopen($file, 'wb');
-		@fwrite($fp, $qrcode);
-		@fclose($fp);
+		$fp = fopen($file, 'cb');
+		if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, $qrcode) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
+			flock($fp, LOCK_UN);
+			fclose($fp);
+		}
 	}
 	dheader('Content-Disposition: inline; filename=qrcode.jpg');
 	dheader('Content-Type: image/pjpeg');

@@ -82,7 +82,7 @@ if(empty($op) || $op == 'add') {
 	if(!submitcheck('formhash')) {
 		showmessage('undefined_action', NULL);
 	} else {
-		if(!$_G['collection']['ctid'] || !checkcollectionperm($_G['collection'], $_G['uid']) || count($_GET['delcomment']) == 0) {
+		if(!$_G['collection']['ctid'] || !checkcollectionperm($_G['collection'], $_G['uid']) || empty($_GET['delcomment']) || !is_array($_GET['delcomment']) || count($_GET['delcomment']) == 0) {
 			showmessage('undefined_action', NULL);
 		}
 		$delrows = C::t('forum_collectioncomment')->delete_by_cid_ctid($_GET['delcomment'], $_G['collection']['ctid']);
@@ -95,7 +95,7 @@ if(empty($op) || $op == 'add') {
 	if(!$collectionthread['ctid']) {
 		showmessage('collection_permission_deny');
 	}
-	$thread = C::t('forum_thread')->fetch($tid);
+	$thread = C::t('forum_thread')->fetch_thread($tid);
 
 	include template('forum/collection_commentpop');
 } elseif($op == 'recommend') {

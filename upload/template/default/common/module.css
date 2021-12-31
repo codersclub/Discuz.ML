@@ -39,7 +39,6 @@ Modified by Valery Votintsev, codersclub.org
 6. Articles, log, etc. page styles
 7. Spatial related Styles
 8. Portal related Styles
-9. Roaming related styles
 10. Search-related styles
 11. Top-List Related Styles
 12. Statistics related Styles
@@ -100,7 +99,7 @@ Modified by Valery Votintsev, codersclub.org
 			#category_grid td:first-child { border-left: 0; }
 		.category_l1, .category_l2, .category_l3, .category_l4 { line-height: 25px; background: #fff; overflow: hidden; }
 			.category_l1 { line-height: normal; }
-			.slidebox_grid { position: relative; margin: 10px; border: 1px #ccc solid; }
+			.slidebox_grid { position: relative; margin: 10px auto; border: 1px #ccc solid; }
 			#category_grid h4 { width:100%; height: 30px; line-height: 30px; text-indent:10px; font-size: 12px; cursor: pointer; {TITLEBGCODE}; position:relative; }
 		.category_newlist { padding: 10px; }
 			.category_newlist li { height: 21px; line-height:21px; overflow: hidden; }
@@ -141,7 +140,7 @@ Modified by Valery Votintsev, codersclub.org
 /** end **/
 
 
-/** home::space,home::spacecp,group::group,userapp::userapp,misc::ranklist,portal::view,forum::viewthread,group::viewthread,home::medal,misc::tag **/
+/** home::space,home::spacecp,group::group,misc::ranklist,portal::view,forum::viewthread,group::viewthread,home::medal,misc::tag **/
 	/* .el -> feed_list Deed List by Pony */
 	.e { overflow: hidden; }
 		.e .i, .el .i { padding: 6px 10px; border-bottom: 1px dashed {COMMONBORDER}; background: #F7F7F7; }
@@ -824,15 +823,15 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 .tl tbody:last-child th, .tl tbody:last-child td { border-bottom: none; }
 .tl tbody:last-child .threadpre .threadpretd { border: 1px solid {CONTENTSEPARATE};}
 /*
-	Name:			showhide
+	Name:			closeprev
 	Level:			Function
 	Explain:		Topics list page Hide top posts button style
 	Last Modify:	Jane
 */
-.showhide { width: 12px; height: 12px; background: transparent; line-height: 12px; text-align: center; cursor: pointer; overflow: hidden; margin: 5px 5px 0px 5px; }
-.showhide:hover { background: #09C; }
-.showhide:before { content: "\d7"; font-weight: 700; color: #CCC; }
-.showhide:hover:before { color: #FFF;} 
+.closeprev { width: 12px; height: 12px; background: transparent; line-height: 12px; text-align: center; cursor: pointer; overflow: hidden; margin: 5px 5px 0px 5px; }
+.closeprev:hover { background: #09C; }
+.closeprev:before { content: "\d7"; font-weight: 700; color: #CCC; }
+.closeprev:hover:before { color: #FFF;} 
 .pcb .jammer { font-size: 10px; color: {WRAPBG}; }
 /* Hidden Prompt */
 #hiddenthread { border-top: 1px solid #C2D5E3; border-bottom: 1px solid #C2D5E3; line-height:40px;padding-left:20px;background: #FFFAF3; font-size: 12px; text-align: center; }
@@ -957,7 +956,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 					#p_btn span { padding-left: 2px; color: {LIGHTTEXT}; }
 			.tshare { padding-bottom: 10px; }
 				.tshare strong { float: left; margin-right: 10px; }
-				#p_btn .tshare a, #p_btn .tshare i { padding: 0; background-image: none; }
+				#p_btn .tshare a, #p_btn .tshare i { padding: 0; background: none; }
 					#p_btn .tshare a { margin-right: 10px; color: {HIGHLIGHTLINK}; }
 					#p_btn .tshare a:hover { text-decoration: underline; }
 		.rate { margin: 20px 0; font-size: 12px; }
@@ -1551,7 +1550,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	#moodfm {}
 		#moodfm textarea { width: 600px; height: 56px; border: 1px solid; border-color: {INPUTBORDERDARKCOLOR} {INPUTBORDER} {INPUTBORDER} {INPUTBORDERDARKCOLOR}; overflow-y: auto; }
 		.mi .moodfm_input { width: 350px; height: 58px; }
-			.mi #moodfm textarea { float: left; margin: 0; padding: 3px; width: 342px; height: 50px; outline: none; border: 1px solid {COMMONBORDER}; background: #FFF; border-radius: 4px; }
+			.mi #moodfm textarea { float: left; margin: 0; padding: 3px; width: 552px; height: 50px; outline: none; border: 1px solid {COMMONBORDER}; background: #FFF; border-radius: 4px; }
 			.mi #moodfm.hover textarea { border-color: {SPECIALBORDER}; }
 		.moodfm_btn { padding-left: 5px; }
 			.moodfm_btn button { cursor: pointer; padding: 22px 11px; }
@@ -1780,6 +1779,16 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.creditl .cl { clear: both; float: none; width: auto; }
 			.creditl li em { font-weight: 700; }
 		.creditl u { text-decoration: none; }
+
+/* 订单状态 */
+	.order-status-0 { color: #444; }
+	.order-status-1 { color: green; }
+	.order-status-2 { color: #ddd; }
+/* 电脑端支付图标样式 */
+	.channel-select { padding-bottom: 10px; }
+	.channel-select input { margin: 5px 8px 0 0; }
+	.channel-select img { vertical-align: top; }
+
 /** end **/
 
 
@@ -1794,9 +1803,9 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.tdats th, .tdats td { overflow: hidden; padding: 0 5px; height: 26px; border-width: 0 1px 0 0; border-color: {WRAPBG}; white-space: nowrap; }
 		.tdats th { height: 40px; font-weight: 700; }
 			.tdats .h th { height: 24px; border-top: 1px solid {COMMONBORDER}; border-bottom: 1px solid #E5E5E5; background: linear-gradient(0deg, #efefef, #fcfcfc); color: {MIDTEXT}; zoom: 1; }
-		.tdats .tdat { float: left; width: 150px; border: none; table-layout: fixed; }
+		.tdats .tdat { float: left; width: 240px; border: none; table-layout: fixed; }
 		.tdats .tfx { width: 300px; }
-			.tdats .tfxf { width: 650px; }
+			.tdats .tfxf { width: 800px; }
 			.tfx th, .tfx td { border-width: 0 3px !important; background: #FFF2DF; }
 			.tfx .alt, .tfx .alt th, .tfx .alt td { background: #FAEDDA; }
 			.tfx .h th { padding: 1px 5px; }
@@ -1908,7 +1917,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 /** home::magic,home::medal **/
 /* .mgcl -> Magic list by lushnis */
-	.mgcl li { float: left; width: 132px; height: 180px; text-align: center; }
+	.mgcl li { float: left; width: 126px; height: 180px; text-align: center; }
 		.mgcl .mg_img { margin: 0 auto 5px; }
 			.pg_medal .mgcl img { margin-top: 20px; width: auto; height: auto; }
 
@@ -1920,41 +1929,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 
-/* --------------------- Portal related Styles --------------------------------------------------- */
-
-
-
-/* --------------------- Applications related styling --------------------------------------------------- */
-/** userapp::userapp **/
-/* Application Management by Pony */
-	.myset { margin-top: 15px; padding: 5px 0; }
-		.mgapp { float: left; padding: 0 15px; width: 777px; }
-		.apps { padding: 7px 0; height: 20px; line-height: 20px; border-bottom: 1px dashed #DDD; }
-			.dragable { padding-left: 25px; background: url({IMGDIR}/drag.gif) no-repeat 2px 50%; cursor: move; }
-			.dragable:hover { background-color: {COMMONBG}; }
-		.apps img { vertical-align: middle; }
-		.apps .y a { margin-right: 20px; }
-	.note { padding: 0 15px; }
-		.note li { margin-left: 20px; }
-
-/* Home Applications list by Pony */
-	.appmaxh .bm_c { height: 140px; }
-	.apl li { margin: 5px 0; }
-
-/* Application of new applications and the list of popular applications icon by Pony */
-	.appl li { position: relative; }
-		.appnew, .apphot { position: absolute; right: 0; width: 20px; height: 100%; background-color: {SIDEBGCOLOR}; background-repeat: no-repeat; background-position: 100% 50%; }
-			.appnew { background-image: url({IMGDIR}/appnew.png); }
-			.apphot { background-image: url({IMGDIR}/apphot.png); }
-/** end **/
-
-
-/** home::space,home::spacecp,userapp::userapp,forum::forumdisplay **/
-/* Collapse button by Pony */
-	.unfold, .fold { float: right; cursor: pointer; outline: none; }
-		.unfold::before, .fold::before { display: inline-block; margin-right: 0.255em; vertical-align: 0.255em; content: ""; border-top: 0.3em solid; border-right: 0.3em solid transparent; border-bottom: 0; border-left: 0.3em solid transparent; }
-		.fold::before { border-top: 0; border-bottom: 0.3em solid; }
-/** end **/
+/* ------------------------------------------------------------------------ 门户相关样式 */
 
 
 
@@ -2011,7 +1986,7 @@ body { background: none !important; }
 
 /* Bid Ranking by Pony */
 .bid { margin: 2px -4px -2px 2px; zoom: 1; }
-.biduser { width: 780px; background: url({IMGDIR}/avatar_blank.gif); }
+.biduser { width: 988px; background: url({IMGDIR}/avatar_blank.gif); }
 	.biduser li { float: left; margin: 0 4px 4px 0; }
 	.biduser a { display: block; }
 		.biduser img { width: 48px; height: 48px; }
@@ -2021,7 +1996,7 @@ body { background: none !important; }
 
 /* Redefinition */
 .xl2 { background: url({IMGDIR}/vline.png) repeat-y 50% 0; }
-	.xl2 li { margin-right: 20px; width: 378px; }
+	.xl2 li { margin-right: 20px; width: 482px; }
 		.xl2 li.xl2_r { margin-right: 0; }
 
 .hasrank dl { padding-left: 110px; }
@@ -2266,4 +2241,15 @@ body { background: none !important; }
 	.livethreadtitle .replynumber { float: right; line-height: 25px; }
 		.livethreadtitle .replynumber .xi1 { background:{NOTICETEXT}; padding:0 5px; border-radius: 5px; color: #FFF; font-weight: 700; }
 	.livethreadcon { line-height:160%; font-size:14px;}
+/** end **/
+
+/** misc::mobile **/
+.dzphone { width: 484px; height: 980px; margin-right: 10px; border-radius: 75px; box-shadow: inset #000 0 0 3px 1px; }
+.dzphone>div { width: 428px; height: 924px; margin: 8px; border: 20px solid #222; border-radius: 68px; overflow: hidden; }
+.dzphone .scrtop { height: 105px; background: #f2f2f2 url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='92' height='12'%3e%3cpath d='M15 0h3v12h-3V0zm-5 3h3v9h-3V3zM5 6h3v6H5V6zM0 9h3v3H0V9zm35.8.2C35.1 8.5 34.1 8 33 8s-2.1.4-2.8 1.2L33 12l2.8-2.8zm-8.5-2.9l1.4 1.4c1.1-1.1 2.6-1.8 4.2-1.8s3.2.7 4.2 1.8l1.4-1.4C37.1 4.9 35.1 4 32.8 4c-2 0-4 .9-5.5 2.3zm-2.8-2.8l1.4 1.4C27.7 3.1 30.2 2 33 2s5.3 1.1 7.1 2.9l1.4-1.4C39.3 1.3 36.3 0 33 0s-6.3 1.3-8.5 3.5zM50 2h20v8H50V2zm22 10H48V0h24v12zm-23-1h22V1H49v10zm24-8h2v6h-2V3z'/%3e%3c/svg%3e") no-repeat 100% 18px; border-bottom: 1px solid #e1e1e1; font-family: system-ui; }
+#ifm0 { width: 100%; height: 780px; vertical-align: middle; }
+.dzphone .time { width: 70px; height: 39px; float: left; text-align: right; padding-top: 13px; padding-right: 25px; font-size: 16px; font-weight: 700; color: #000; }
+.dzphone .defect { width: 238px; height: 33px; background: #222; border-radius: 0 0 25px 25px; float: left; }
+.dzphone .siteurl { margin: 0 12px; padding: 0 35px; height: 40px; line-height: 40px; font-size: 14px; text-align: center; border-radius: 10px; background: #d8d8d8 url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='21'%3e%3cpath d='M17 12.5h-1c0 4.1-3.4 7.5-7.5 7.5S1 16.6 1 12.5 4.4 5 8.5 5c1.1 0 2.2.3 3.1.7L8 9.3v1.4l5.2-5.2L8 .3v1.4l2.6 2.6C9.9 4.1 9.2 4 8.5 4 3.8 4 0 7.8 0 12.5S3.8 21 8.5 21s8.5-3.8 8.5-8.5z'/%3e%3c/svg%3e") no-repeat 100% 10px; color: #000; }
+.dzphone .homebar { width: 152px; height: 6px; border-radius: 3px; background: #000; margin-left: 138px; margin-top: 20px; }
 /** end **/

@@ -13,7 +13,7 @@ if(!defined('IN_MOBILE_API')) {
 include_once 'forum.php';
 
 class mobile_api {
-	function common() {
+	public static function common() {
 		global $_G;
 		if(!defined('IN_DISCUZ') || empty($_GET['aid']) || empty($_GET['size']) || empty($_GET['key'])) {
 			header('location: '.$_G['siteurl'].'static/image/common/none.gif');
@@ -48,7 +48,7 @@ class mobile_api {
 			dheader('location: '.$_G['siteurl'].'static/image/common/none.gif');
 		}
 
-		if($attach = C::t('forum_attachment_n')->fetch('aid:'.$daid, $daid, array(1, -1))) {
+		if($attach = C::t('forum_attachment_n')->fetch_attachment('aid:'.$daid, $daid, array(1, -1))) {
 			if(!$dw && !$dh && $attach['tid'] != $id) {
 			       dheader('location: '.$_G['siteurl'].'static/image/common/none.gif');
 			}

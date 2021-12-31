@@ -42,7 +42,7 @@ if($id) {
 		include template('home/space_privacy');
 		exit();
 	} elseif(!$space['self'] && $blog['friend'] == 4 && $_G['adminid'] != 1) {
-		$cookiename = "view_pwd_blog_$blog[blogid]";
+		$cookiename = "view_pwd_blog_{$blog['blogid']}";
 		$cookievalue = empty($_G['cookie'][$cookiename])?'':$_G['cookie'][$cookiename];
 		if($cookievalue != md5(md5($blog['password']))) {
 			$invalue = $blog;
@@ -112,7 +112,7 @@ if($id) {
 		}
 	}
 
-	$multi = multi($count, $perpage, $page, "home.php?mod=space&uid=$blog[uid]&do=$do&id=$id#comment");
+	$multi = multi($count, $perpage, $page, "home.php?mod=space&uid={$blog['uid']}&do=$do&id=$id#comment");
 
 	if(!$_G['setting']['preventrefresh'] || !$space['self'] && $_G['cookie']['viewid'] != 'blog_'.$blog['blogid']) {
 		C::t('home_blog')->increase($blog['blogid'], 0, array('viewnum' => 1));
@@ -266,7 +266,7 @@ if($id) {
 				$fuid_actives = array($fuid=>' selected');
 			} else {
 				$uids = explode(',', $space['feedfriend']);
-				$theurl = "home.php?mod=space&uid=$space[uid]&do=$do&view=we";
+				$theurl = "home.php?mod=space&uid={$space['uid']}&do=$do&view=we";
 				$f_index = 'dateline';
 			}
 
@@ -355,7 +355,7 @@ if($id) {
 function blog_get_stick($uid, $stickblogs, $summarylen) {
 	$list = array_flip($stickblogs);
 	if($stickblogs) {
-		$data_blog = C::t('home_blog')->fetch_all($stickblogs);
+		$data_blog = C::t('home_blog')->fetch_all_blog($stickblogs);
 		$data_blogfield = C::t('home_blogfield')->fetch_all($stickblogs);
 		foreach($data_blog as $curblogid=>$value) {
 			$value = array_merge($value, (array)$data_blogfield[$curblogid]);

@@ -218,7 +218,7 @@ function ismozilla() {
 /*vot*/	$useragent = strtolower(@$_SERVER['HTTP_USER_AGENT']);
 	if(strpos($useragent, 'gecko') !== FALSE) {
 		preg_match("/gecko\/(\d+)/", $useragent, $regs);
-		return $regs[1];
+		return isset($regs[1]) ? $regs[1] : FALSE;
 	}
 	return FALSE;
 }
@@ -260,7 +260,7 @@ function parsestyle($tagoptions, &$prependtags, &$appendtags) {
 	$style = preg_replace_callback("/(?<![a-z0-9-])color:\s*rgb\((\d+),\s*(\d+),\s*(\d+)\)(;?)/i", 'parsestyle_callback_sprintf_4123', $style);
 	foreach($searchlist as $searchtag) {
 		if(preg_match('/'.$searchtag['regex'].'/i', $style, $match)) {
-			$opnvalue = $match["$searchtag[match]"];
+			$opnvalue = $match["{$searchtag['match']}"];
 			$prependtags .= '['.$searchtag['tag'].($searchtag['option'] == TRUE ? '='.$opnvalue.']' : ']');
 			$appendtags = '[/'.$searchtag['tag']."]$appendtags";
 		}

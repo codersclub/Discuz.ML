@@ -20,6 +20,10 @@ $discuz->init_mobile = false;
 
 $discuz->init();
 
+if (!$_G['setting']['mobile']['allowmnew']) {
+	dheader('location: ' . $_G['siteurl']);
+}
+
 if(!file_exists(DISCUZ_ROOT . $_G['style']['tpldir'] . '/m')) {
 	$_G['style']['tpldir'] = './template/default';
 }
@@ -67,10 +71,6 @@ $site = array(
     'siteLogo' => $_G['siteurl'] . '/static/image/common/logom.png',
     'openApi' => array(),
 );
-
-if (!$_G['setting']['mobile']['allowmnew']) {
-	dheader('location: ' . $_G['siteurl']);
-}
 
 $a = $_GET['a'] && preg_match('/^\w+$/', $_GET['a']) ? $_GET['a'] : 'forumlist';
 

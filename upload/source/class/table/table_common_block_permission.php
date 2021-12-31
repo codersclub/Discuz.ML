@@ -21,7 +21,17 @@ class table_common_block_permission extends discuz_table
 		parent::__construct();
 	}
 
-	public function fetch($bid, $uid){
+	public function fetch($id, $force_from_db = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::fetch($id, $force_from_db);
+		} else {
+			$force_from_db = $force_from_db === false ? 0 : $force_from_db;
+			return $this->fetch_by_bid_uid($id, $force_from_db);
+		}
+	}
+
+	public function fetch_by_bid_uid($bid, $uid){
 		return ($bid = dintval($bid)) && ($uid = dintval($uid)) ? DB::fetch_first('SELECT * FROM %t WHERE bid=%d AND uid=%d', array($this->_table, $bid, $uid)) : array();
 	}
 
@@ -98,7 +108,7 @@ class table_common_block_permission extends discuz_table
 					$tplname = !empty($user['inheritedtplname']) ? $user['inheritedtplname'] : $tplname;
 					foreach ($bids as $bid) {
 						if(empty($notinherit[$bid][$user['uid']])) {
-							$blockperms[] = "('$bid','$user[uid]','$user[allowmanage]','$user[allowrecommend]','$user[needverify]','$tplname')";
+							$blockperms[] = "('$bid','{$user['uid']}','{$user['allowmanage']}','{$user['allowrecommend']}','{$user['needverify']}','$tplname')";
 						}
 					}
 				}
@@ -119,7 +129,7 @@ class table_common_block_permission extends discuz_table
 		if(!empty($bid) && !empty($users)) {
 			foreach ($users as $v) {
 				if(($v['uid'] = dintval($v['uid']))) {
-					$sqlarr[] = "('$bid','$v[uid]','$v[allowmanage]','$v[allowrecommend]','$v[needverify]','')";
+					$sqlarr[] = "('$bid','{$v['uid']}','{$v['allowmanage']}','{$v['allowrecommend']}','{$v['needverify']}','')";
 					$uids[] = $v['uid'];
 				}
 			}

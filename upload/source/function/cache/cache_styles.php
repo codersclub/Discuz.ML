@@ -40,8 +40,10 @@ function build_cache_styles() {
 			$data['boardlogo'] = "<embed src=\"".$flash[0]."\" width=\"".trim($flash[1])."\" height=\"".trim($flash[2])."\" type=\"application/x-shockwave-flash\" wmode=\"transparent\"></embed>";
 		} else {
 			$data['boardimg'] = preg_match('/^(https?:)?\/\//i', $data['boardimg']) ? $data['boardimg'] : $data['styleimgdir'].'/'.$data['boardimg'];
-			$data['boardlogo'] = "<img src=\"$data[boardimg]\" alt=\"".$_G['setting']['bbname']."\" border=\"0\" />";
+			$data['boardlogo'] = "<img src=\"{$data['boardimg']}\" alt=\"".$_G['setting']['bbname']."\" border=\"0\" />";
 		}
+		$data['searchimg'] = empty($data['searchimg']) ? $data['imgdir'].'/logo_sc.svg' : (preg_match('/^(https?:)?\/\//i', $data['searchimg']) ? $data['searchimg'] : $data['styleimgdir'].'/'.$data['searchimg']);
+		$data['searchlogo'] = "<img src=\"{$data['searchimg']}\" alt=\"".$_G['setting']['bbname']."\" border=\"0\" />";
 		$data['bold'] = $data['nobold'] ? 'normal' : 'bold';
 		$contentwidthint = intval($data['contentwidth']);
 		$contentwidthint = $contentwidthint ? $contentwidthint : 600;
@@ -123,17 +125,14 @@ function writetocsscache($data) {
 
 			$cssdata = preg_replace_callback("/\{([A-Z0-9]+)\}/", 'writetocsscache_callback_1', $cssdata);
 			$cssdata = preg_replace("/<\?.+?\?>\s*/", '', $cssdata);
-			$cssdata = !preg_match('/^(https?:)?\/\//i', $data['styleimgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['styleimgdir'], '/')."/i", "url(\\1$_G[siteurl]$data[styleimgdir]", $cssdata) : $cssdata;
-			$cssdata = !preg_match('/^(https?:)?\/\//i', $data['imgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['imgdir'], '/')."/i", "url(\\1$_G[siteurl]$data[imgdir]", $cssdata) : $cssdata;
-			$cssdata = !preg_match('/^(https?:)?\/\//i', $data['staticurl']) ? preg_replace("/url\(([\"'])?".preg_quote($data['staticurl'], '/')."/i", "url(\\1$_G[siteurl]$data[staticurl]", $cssdata) : $cssdata;
+			$cssdata = !preg_match('/^(https?:)?\/\//i', $data['styleimgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['styleimgdir'], '/')."/i", "url(\\1{$_G['siteurl']}{$data['styleimgdir']}", $cssdata) : $cssdata;
+			$cssdata = !preg_match('/^(https?:)?\/\//i', $data['imgdir']) ? preg_replace("/url\(([\"'])?".preg_quote($data['imgdir'], '/')."/i", "url(\\1{$_G['siteurl']}{$data['imgdir']}", $cssdata) : $cssdata;
+			$cssdata = !preg_match('/^(https?:)?\/\//i', $data['staticurl']) ? preg_replace("/url\(([\"'])?".preg_quote($data['staticurl'], '/')."/i", "url(\\1{$_G['siteurl']}{$data['staticurl']}", $cssdata) : $cssdata;
 /*vot*/			if($entry == 'module.css' || $entry == 'module_rtl.css') {
 				$cssdata = preg_replace('/\/\*\*\s*(.+?)\s*\*\*\//', '[\\1]', $cssdata);
 			}
 			$cssdata = preg_replace(array('/\s*([,;:\{\}])\s*/', '/[\t\n\r]/', '/\/\*.+?\*\//'), array('\\1', '',''), $cssdata);
-			if(@$fp = fopen(DISCUZ_ROOT.'./data/cache/style_'.$data['styleid'].'_'.$entry, 'w')) {
-				fwrite($fp, $cssdata);
-				fclose($fp);
-			} else {
+			if(file_put_contents(DISCUZ_ROOT.'./data/cache/style_'.$data['styleid'].'_'.$entry, $cssdata, LOCK_EX) === false) {
 				exit('Can not write to cache files, please check directory ./data/ and ./data/cache/ .');
 			}
 		}
@@ -141,7 +140,7 @@ function writetocsscache($data) {
 }
 
 function writetocsscache_callback_1($matches, $action = 0) {
-	static $data = null;
+	static $data = array();
 
 	if($action == 1) {
 		$data = $matches;

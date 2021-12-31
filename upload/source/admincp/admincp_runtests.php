@@ -59,25 +59,9 @@ if ($operation === "fetch") {
         $sl3->close();
         header('Content-Type: application/json');
         ob_start();
-        echo json_encode(array_to_utf8($rsa));
+        echo json_encode($rsa);
         ob_end_flush();
         exit();
-}
-
-function array_to_utf8($val) {
-        $charset = strtolower(CHARSET);
-        if ($charset === 'utf-8') {
-                return $val;
-        }
-        if (is_array($val)) {
-                // array_map会丢失key
-                $data = array();
-                foreach ($val as $k => $v) {
-                        $data[$k] = $this->to_utf8($v);
-                }
-                return $data;
-        }
-        return mb_convert_encoding($val, "utf-8", $charset);
 }
 
 // 以下为没有任何operation时显示的默认页面
@@ -164,7 +148,7 @@ ajax.get = function (url, data, callback, async) {
 var MAX_ID = 0;
 
 function read_status() {
-        ajax.get('/admin.php?action=runtests&operation=fetch&from=' + MAX_ID, '', function(s) {
+        ajax.get('<?php echo ADMINSCRIPT; ?>?action=runtests&operation=fetch&from=' + MAX_ID, '', function(s) {
                 try {
                         var items = JSON.parse(s);
                         for (i = 0; i < items.length; ++i) {
@@ -181,10 +165,10 @@ function read_status() {
 }
 
 function prepare() {
-        ajax.get('/admin.php?action=runtests&operation=prepare', "", function(s) {
+        ajax.get('<?php echo ADMINSCRIPT; ?>?action=runtests&operation=prepare', "", function(s) {
                 top.frames['main'].document.getElementById('content').innerHTML += "previous log deleted <br/> <br/>";
                 MAX_ID = 0;
-                ajax.get('/admin.php?action=runtests&operation=start');
+                ajax.get('<?php echo ADMINSCRIPT; ?>?action=runtests&operation=start');
                 read_status();
         });
 }

@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-$setting = C::t('common_setting')->fetch_all(array('mobilewechat'));
+$setting = C::t('common_setting')->fetch_all_setting(array('mobilewechat'));
 $setting = (array)unserialize($setting['mobilewechat']);
 $ac = !empty($_GET['ac']) ? $_GET['ac'] : '';
 
@@ -21,9 +21,16 @@ loadcache('forums');
 require_once DISCUZ_ROOT.'./source/plugin/wechat/setting.class.php';
 WeChatSetting::menu();
 
+if(!$setting['wsq_sitetoken']) {
+	cpmsg(lang('plugin/wechat', 'wsq_api_register_close'), '', 'error');
+}
+
 if(!$ac) {
 
 	$ppp = 20;
+	if(!is_array($setting['showactivity']['tids'])) {
+		$setting['showactivity']['tids'] = array();
+	}
 	arsort($setting['showactivity']['tids']);
 	$page = max(1, $_GET['page']);
 	$tids = array_slice($setting['showactivity']['tids'], ($page - 1) * $ppp, $ppp);
@@ -74,7 +81,7 @@ if(!$ac) {
 } elseif($ac == 'add') {
 	if(!submitcheck('submit')) {
 
-		echo '<script type="text/javascript" src="static/js/calendar.js"></script>';
+		echo '<script type="text/javascript" src="'.STATICURL.'js/calendar.js"></script>';
 		$forumselect = "<select name=\"fid\">\n<option value=\"\">&nbsp;&nbsp;> ".cplang('select')."</option><option value=\"\">&nbsp;</option>".str_replace('%', '%%', forumselect(FALSE, 0, 0, TRUE)).'</select>';
 
 		showformheader('plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=showactivity_setting&ac=add', 'enctype');
@@ -190,7 +197,7 @@ if(!$ac) {
 	}
 	$posttableid = $thread['posttableid'];
 	$posts = DB::fetch_all("SELECT * FROM %t WHERE tid=%d", array('forum_debatepost', $_GET['tid']), 'pid');
-	foreach(C::t('forum_post')->fetch_all($posttableid, array_keys($posts), false) as $post) {
+	foreach(C::t('forum_post')->fetch_all_post($posttableid, array_keys($posts), false) as $post) {
 		$array[$posts[$post['pid']]['voters'].'.'.$post['position']] = $post['author'].','.$posts[$post['pid']]['voters'].','.$post['position'];
 	}
 	ob_end_clean();

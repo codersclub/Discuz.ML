@@ -8,9 +8,9 @@
  *      Modified by Valery Votintsev at codersclub.org
  */
 
-/* 提示：自X3.5版本起，本文件不支持调用系统内任何变量或函数，请依赖此行为的站点修正实现 */
-
 $_config = array();
+
+// 提示：自当前版本起，本文件不支持调用系统内任何变量或函数，请依赖此行为的站点修正实现 //
 
 // ----------------------------  CONFIG DB  ----------------------------- //
 // Database server settings
@@ -30,9 +30,9 @@ $_config = array();
  * ...
  *
  */
-$_config['db'][1]['dbhost']  	= 'localhost';	// DB Server address
+$_config['db'][1]['dbhost']  	= '127.0.0.1';	// DB Server address
 $_config['db'][1]['dbuser']  	= 'root';	// DB User Name
-$_config['db'][1]['dbpw'] 	= 'root';	// DB User Password
+$_config['db'][1]['dbpw'] 	= '';		// DB User Password
 $_config['db'][1]['dbcharset'] 	= 'utf8mb4';	// DB Charset, 'utf8mb4' for MySQL >= 5.5.3
 $_config['db'][1]['pconnect'] 	= 0;		// Enable DB persistent connection
 $_config['db'][1]['dbname']  	= 'ultrax';	// DB Name
@@ -180,6 +180,8 @@ $_config['security']['creditsafe']['second'] 	= 0;	// Open the user credit info 
 $_config['security']['creditsafe']['times'] 	= 10;
 
 $_config['security']['fsockopensafe']['port']	= array(80, 443); // Enabled ports for REMOTE downloads by fsockopen
+$_config['security']['fsockopensafe']['ipversion']	= array('ipv6', 'ipv4');	//fsockopen 有效的IP协议
+$_config['security']['fsockopensafe']['verifypeer']	= false;	// fsockopen是否验证证书有效性，开启可提升安全性，但需自行解决证书配置问题
 
 $_config['security']['error']['showerror'] = '1';	//Whether to display error details when the database or system is seriously abnormal, 0=do not display (safer), 1=display detailed information (default), 2=only display the error itself
 $_config['security']['error']['guessplugin'] = '1';	//Whether to guess the plug-in that may report an error when the database or system is seriously abnormal, 0=no guess, 1=guess (default)

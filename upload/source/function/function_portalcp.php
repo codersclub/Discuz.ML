@@ -68,7 +68,7 @@ function get_upload_content($attachs, $dotype='') {
 				$html .= '<span class="pipe">|</span><span class="cur1 xi2" onclick="deleteAttach(\''.$attach['attachid'].'\', \'portal.php?mod=attachment&id='.$attach['attachid'].'&aid='.$aid.'&op=delete\');">'.lang('portalcp', 'delete').'</span>';
 			}
 		} else {
-			$html .= '<img src="static/image/editor/editor_file_thumb.png" class="cur1" onclick="insertFile(\''.$attach['filename'].'\', \'portal.php?mod=attachment&id='.$attach['attachid'].'\');" tip="'.$attach['filename'].'" onmouseover="showTip(this);" /><br/>';
+			$html .= '<img src="'.STATICURL.'image/editor/editor_file_thumb.png" class="cur1" onclick="insertFile(\''.$attach['filename'].'\', \'portal.php?mod=attachment&id='.$attach['attachid'].'\');" tip="'.$attach['filename'].'" onmouseover="showTip(this);" /><br/>';
 			$html .= '<span onclick="deleteAttach(\''.$attach['attachid'].'\', \'portal.php?mod=attachment&id='.$attach['attachid'].'&op=delete\');" class="cur1 xi2">'.lang('portalcp', 'delete').'</span>';
 		}
 		$html .= '</td>';
@@ -200,7 +200,7 @@ function save_diy_data($tpldirectory, $primaltplname, $targettplname, $data, $da
 	} else {
 		if (file_exists($tplfile) && !$flag) copy($tplfile, $tplfile.'.bak');
 	}
-	$r = file_put_contents($tplfile, $content);
+	$r = file_put_contents($tplfile, $content, LOCK_EX);
 	if ($r && $database && !$flag) {
 		$diytplname = getdiytplname($targettplname, $tpldirectory);
 		C::t('common_diy_data')->insert(array(
@@ -262,10 +262,11 @@ function getdiytplnames($tpls) {
 }
 
 function getdiytplname($targettplname, $tpldirectory) {
-	$diydata = C::t('common_diy_data')->fetch($targettplname, $tpldirectory);
+	$diydata = C::t('common_diy_data')->fetch_diy($targettplname, $tpldirectory);
 	$diytplname = $diydata ? $diydata['name'] : '';
 	if(empty($diytplname) && ($data = getdiytplnames(array($targettplname)))) {
-		$diytplname = array_shift(array_shift($data));
+		$diytplname = array_shift($data);
+		$diytplname = array_shift($diytplname);
 	}
 	return $diytplname;
 }
@@ -517,8 +518,8 @@ function block_import($data) {
 		$newid = C::t('common_block')->insert($block, true);
 		$blockmapping[$oid] = $newid;
 	}
-	include_once libfile('function/cache');
-	updatecache('blockclass');
+	require_once libfile('function/block');
+	blockclass_cache();
 	return $blockmapping;
 }
 
@@ -588,8 +589,12 @@ function import_diy($file) {
 	$content = file_get_contents($file);
 	require_once libfile('class/xml');
 	if (empty($content)) return $arr;
+	if(fileext($file) == 'php') {
+		$content = preg_replace("/^\<\?php(.+?)\?\>\s+/i", '', $content);
+	}
 	$content = preg_replace("/\<\!\-\-\[name\](.+?)\[\/name\]\-\-\>\s+/i", '', $content);
 	$diycontent = xml2array($content);
+	$diycontent = is_array($diycontent) ? $diycontent : array();
 
 	if ($diycontent) {
 
@@ -634,6 +639,7 @@ function import_diy($file) {
 	if (!empty($html)) {
 		$xml = array2xml($html, true);
 		require_once libfile('function/block');
+		$mapping = is_array($mapping) ? $mapping : array($mapping);
 		block_get_batch(implode(',', $mapping));
 		foreach ($mapping as $bid) {
 			$blocktag[] = '<!--{block/'.$bid.'}-->';
@@ -727,17 +733,17 @@ function category_showselect($type, $name='catid', $shownull=true, $current='') 
 	foreach ($category as $value) {
 		if($value['level'] == 0) {
 			$selected = ($current && $current==$value['catid']) ? 'selected="selected"' : '';
-			$select .= "<option value=\"$value[catid]\"$selected>$value[catname]</option>";
+			$select .= "<option value=\"{$value['catid']}\"$selected>{$value['catname']}</option>";
 			if(!$value['children']) {
 				continue;
 			}
 			foreach ($value['children'] as $catid) {
 				$selected = ($current && $current==$catid) ? 'selected="selected"' : '';
-				$select .= "<option value=\"{$category[$catid][catid]}\"$selected>-- {$category[$catid][catname]}</option>";
+				$select .= "<option value=\"{$category[$catid]['catid']}\"$selected>-- {$category[$catid]['catname']}</option>";
 				if($category[$catid]['children']) {
 					foreach ($category[$catid]['children'] as $catid2) {
 						$selected = ($current && $current==$catid2) ? 'selected="selected"' : '';
-						$select .= "<option value=\"{$category[$catid2][catid]}\"$selected>---- {$category[$catid2][catname]}</option>";
+						$select .= "<option value=\"{$category[$catid2]['catid']}\"$selected>---- {$category[$catid2]['catname']}</option>";
 					}
 				}
 			}
@@ -872,7 +878,7 @@ function updatetopic($topic = ''){
 
 	if($topicid) {
 		C::t('portal_topic')->update($topicid, $setarr);
-		C::t('common_diy_data')->update('portal/portal_topic_content_'.$topicid, getdiydirectory($topic['primaltplname']), array('name'=>$setarr['title']));
+		C::t('common_diy_data')->update_diy('portal/portal_topic_content_'.$topicid, getdiydirectory($topic['primaltplname']), array('name'=>$setarr['title']));
 	} else {
 		$setarr['uid'] = $_G['uid'];
 		$setarr['username'] = $_G['username'];
@@ -895,7 +901,7 @@ function updatetopic($topic = ''){
 		if(strpos($primaltplname, ':') !== false) {
 			list($tpldirectory, $primaltplname) = explode(':', $primaltplname);
 		}
-		C::t('common_diy_data')->update($targettplname, getdiydirectory($topic['primaltplname']), array('primaltplname'=>$primaltplname, 'tpldirectory'=>$tpldirectory));
+		C::t('common_diy_data')->update_diy($targettplname, getdiydirectory($topic['primaltplname']), array('primaltplname'=>$primaltplname, 'tpldirectory'=>$tpldirectory));
 		updatediytemplate($targettplname);
 	}
 
@@ -907,7 +913,7 @@ function updatetopic($topic = ''){
 		if (!is_dir($tplpath)) {
 			dmkdir($tplpath);
 		}
-		file_put_contents($tplfile, $content);
+		file_put_contents($tplfile, $content, LOCK_EX);
 	}
 
 	include_once libfile('function/cache');
@@ -1025,8 +1031,8 @@ function addportalarticlecomment($id, $message, $idtype = 'aid') {
 		return 'comment_comment_notallowed';
 	}
 
-	$message = censor($message);
-	if(censormod($message)) {
+	$message = censor($message, NULL, FALSE, FALSE);
+	if(censormod($message) || $_G['group']['allowcommentarticlemod']) {
 		$comment_status = 1;
 	} else {
 		$comment_status = 0;

@@ -7,7 +7,7 @@
 	<div class="locked">{lang message_ishidden_hiddenreplies}</div>
 <!--{elseif $post['first'] && $_G['forum_threadpay']}-->
 	<!--{template forum/viewthread_pay}-->
-<!--{elseif $_G['forum_discuzcode']['passwordlock'][$post[pid]]}-->
+<!--{elseif !empty($_G['forum_discuzcode']['passwordlock'][$post[pid]])}-->
 	<div class="locked">{lang message_password_exists} {lang pleaseinputpw}<input type="text" id="postpw_$post[pid]" class="vm" />&nbsp;<button class="pn vm" type="button" onclick="submitpostpw($post[pid]{if $_GET['from'] == 'preview'},{$post[tid]}{else}{/if})"><strong>{lang submit}</strong></button></div>
 <!--{else}-->
 	<!--{if !$post['first'] && !empty($post[subject])}-->
@@ -52,11 +52,11 @@
 			<!--{/if}-->
 		<!--{/if}-->
 	<!--{/if}-->
-	<!--{if $_G['forum_discuzcode']['passwordauthor'][$post[pid]]}-->
+	<!--{if !empty($_G['forum_discuzcode']['passwordauthor'][$post[pid]])}-->
 		<div class="locked">{lang message_password_exists}</div>
 	<!--{/if}-->
 	<div class="{if !$_G[forum_thread][special]}t_fsz{else}pcbs{/if}">
-		$_G['forum_posthtml']['header'][$post[pid]]
+		{$_G['forum_posthtml']['header'][$post[pid]] or ''}
 		<!--{if $post['first']}-->
 			<!--{if !$_G[forum_thread][special]}-->
 				<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_$post[pid]">
@@ -104,7 +104,7 @@
 			<!--{/if}-->
 			<!--{if $post['invisible'] != '-2' || $_G['forum']['ismoderator']}-->$post[message]<!--{else}--><span class="xg1">{lang moderate_need}</span><!--{/if}--></td></tr></table>
 		<!--{/if}-->
-		$_G['forum_posthtml']['footer'][$post[pid]]
+		{$_G['forum_posthtml']['footer'][$post[pid]] or ''}
 
 		<!--{if $post['first'] && ($post[tags] || $relatedkeywords) && $_GET['from'] != 'preview'}-->
 			<div class="ptg mbm mtn">
@@ -119,7 +119,7 @@
 			</div>
 		<!--{/if}-->
 
-		<!--{if !IS_ROBOT && $post['first'] && !$_G['forum_thread']['archiveid']}-->
+		<!--{if !IS_ROBOT && $post['first'] && !$_G['forum_thread']['archiveid'] && $_GET['from'] != 'portal'}-->
 			<!--{if !empty($lastmod['modaction'])}--><div class="modact"><a href="forum.php?mod=misc&action=viewthreadmod&tid=$_G[tid]" title="{lang thread_mod}" onclick="showWindow('viewthreadmod', this.href)"><!--{if $lastmod['modactiontype'] == 'REB'}-->{lang thread_mod_recommend_by}<!--{else}-->{lang thread_mod_by}<!--{/if}--></a></div><!--{/if}-->
 			<!--{hook/viewthread_modaction}-->
 		<!--{/if}-->
@@ -136,7 +136,7 @@
 			<div class="pattl">
 				<!--{if $post['imagelist'] && $_G['setting']['imagelistthumb'] && $post['imagelistcount'] >= $_G['setting']['imagelistthumb']}-->
 					<!--{if !isset($imagelistkey)}-->
-						<!--{eval $imagelistkey = rawurlencode(dsign($_G[tid].'|100|100'))}-->
+						<!--{eval $imagelistkey = rawurlencode(dsign($_G['tid'].'|100|100'))}-->
 						<script type="text/javascript" reload="1">var imagelistkey = '$imagelistkey';</script>
 					<!--{/if}-->
 					<!--{eval $post['imagelistthumb'] = true;}-->
@@ -199,7 +199,7 @@
 						<a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&repquote=$comment[rpid]&extra=$_GET[extra]&page=$page{if $_GET[from]}&from=$_GET[from]{/if}" class="xi2" onclick="showWindow('reply', this.href)">{lang reply}</a>
 					<!--{/if}-->
 					<span class="xg1">
-						{lang poston} <!--{date($comment[dateline], 'u')}-->
+						{lang poston} <!--{date($comment['dateline'], 'u')}-->
 						<!--{if $comment['useip'] && $_G['group']['allowviewip']}-->&nbsp;IP:$comment[useip]{if $comment[port]}:$comment[port]{/if}<!--{/if}-->
 						<!--{if $_G['forum']['ismoderator'] && $_G['group']['allowdelpost']}-->&nbsp;<a href="javascript:;" onclick="modaction('delcomment', $comment[id])">{lang delete}</a><!--{/if}-->
 					</span>

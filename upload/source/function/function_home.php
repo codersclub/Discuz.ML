@@ -90,13 +90,6 @@ function ckstart($start, $perpage) {
 	}
 }
 
-
-function get_my_app() {
-}
-
-function get_my_userapp() {
-}
-
 function getspace($uid) {
 	return getuserbyuid($uid);
 }
@@ -315,9 +308,6 @@ function sarray_rand($arr, $num=1) {
 	return $r_values;
 }
 
-function my_showgift() {
-}
-
 function getsiteurl() {
 	global $_G;
 	return $_G['siteurl'];
@@ -450,7 +440,7 @@ function getdefaultdoing() {
 	$result = array();
 	$key = 0;
 
-	if(($result = C::t('common_setting')->fetch('defaultdoing'))) {
+	if(($result = C::t('common_setting')->fetch_setting('defaultdoing'))) {
 		$_G['setting']['defaultdoing'] = explode("\r\n", $result);
 		$key = rand(0, count($_G['setting']['defaultdoing'])-1);
 	} else {
@@ -502,7 +492,6 @@ function getuserdefaultdiy() {
 									'block`wall' => array('attr' => array('name'=>'wall'))
 							),
 							'column`frame1_right' => array(
-									'block`myapp' => array('attr' => array('name'=>'myapp')),
 									'block`friend' => array('attr' => array('name'=>'friend')),
 									'block`visitor' => array('attr' => array('name'=>'visitor')),
 									'block`group' => array('attr' => array('name'=>'group'))
@@ -520,7 +509,6 @@ function getuserdefaultdiy() {
 					'visitor' => array('shownum' => 18),
 					'wall' => array('shownum' => 16),
 					'feed' => array('shownum' => 16),
-					'myapp' => array('shownum' => 9, 'logotype'=> 'logo'),
 			),
 		'nv' => array(
 			'nvhidden' => 0,

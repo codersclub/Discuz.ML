@@ -59,14 +59,14 @@
 										</p>
 									</div>
 								</div>
-								<div id="medal_$medal[medalid]" class="mg_img" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'medal_$medal[medalid]_menu', 'pos':'12!'});"><img src="{STATICURL}image/common/$medal[image]" alt="$medal[name]" style="margin-top: 20px;width:auto; height: auto;" /></div>
+								<div id="medal_$medal['medalid']" class="mg_img" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'medal_$medal['medalid']_menu', 'pos':'12!'});"><img src="$medal['image']" alt="$medal['name']" style="margin-top: 20px;width:auto; height: auto;" /></div>
 								<p class="xw1">$medal[name]</p>
 								<p>
-									<!--{if in_array($medal[medalid], $membermedal)}-->
+									<!--{if is_array($membermedal) && in_array($medal['medalid'], $membermedal)}-->
 										{lang space_medal_have}
 									<!--{else}-->
 										<!--{if $medal[type] && $_G['uid']}-->
-											<!--{if in_array($medal[medalid], $mymedals)}-->
+											<!--{if is_array($mymedals) && in_array($medal['medalid'], $mymedals)}-->
 												<!--{if $medal['price']}-->
 													{lang space_medal_purchased}
 												<!--{else}-->
@@ -108,7 +108,7 @@
 					<ul class="el ptm pbw mbw">
 						<!--{loop $lastmedals $lastmedal}-->
 						<li>
-							<a href="home.php?mod=space&uid=$lastmedal[uid]" class="t"><!--{avatar($lastmedal[uid],small)}--></a>
+							<a href="home.php?mod=space&uid=$lastmedal[uid]" class="t"><!--{avatar($lastmedal['uid'], 'small')}--></a>
 							<a href="home.php?mod=space&uid=$lastmedal[uid]" class="xi2">$lastmedalusers[$lastmedal[uid]][username]</a> {lang medals_message1} $lastmedal[dateline] {lang medals_message2} <strong>$medallist[$lastmedal['medalid']]['name']</strong> {lang medals}
 						</li>
 						<!--{/loop}-->
@@ -120,7 +120,7 @@
 					<ul class="mtm mgcl cl">
 						<!--{loop $mymedals $mymedal}-->
 						<li>
-							<div class="mg_img"><img src="{STATICURL}image/common/$mymedal[image]" alt="$mymedal[name]" style="margin-top: 20px;width:auto; height: auto;" /></div>
+							<div class="mg_img"><img src="$mymedal['image']" alt="$mymedal['name']" style="margin-top: 20px;width:auto; height: auto;" /></div>
 							<p><strong>$mymedal[name]</strong></p>
 						</li>
 						<!--{/loop}-->

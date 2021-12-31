@@ -34,6 +34,7 @@ if(isfounder()) {
 }
 require './source/admincp/admincp_menu.php';
 $basescript = ADMINSCRIPT;
+$staticurl = STATICURL;
 
 //vot Multi-Lingual
 $change_language = cplang('change_language');
@@ -51,11 +52,11 @@ echo <<<EOT
 <meta http-equiv="Content-Type" content="text/html; charset=$charset">
 <title>$title</title>
 <meta content="Comsenz Inc." name="Copyright" />
-<link rel="stylesheet" href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" type="text/css" media="all" />
+<link rel="stylesheet" href="{$staticurl}image/admincp/admincp{$rtl_suffix}.css?{$_G['style']['verhash']}" type="text/css" media="all" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$_G[style][verhash]}"></script>
+<script src="{$_G[langurl]}lang_js.js?{$_G[style][verhash]}" type="text/javascript"></script>
 
-<script src="{$_G[setting][jspath]}common.js?{$_G[style][verhash]}" type="text/javascript"></script>
+<script src="{$_G['setting']['jspath']}common.js?{$_G['style']['verhash']}" type="text/javascript"></script>
 </head>
 <body style="margin: 0px" scroll="no">
 <div id="append_parent"></div>
@@ -111,7 +112,7 @@ foreach($topmenu as $k => $v) {
 		continue;
 	}
 	if($v === '') {
-		$v = @array_keys($menu[$k]);
+		$v = is_array($menu[$k]) ? array_keys($menu[$k]) : array();
 		$v = $menu[$k][$v[0]][1];
 	}
 	showheader($k, $v);
@@ -120,9 +121,11 @@ foreach($topmenu as $k => $v) {
 $uc_api_url = '';
 if($isfounder) {
 	loaducenter();
-	$uc_api_url = UC_API;
-	echo '<li><em><a id="header_uc" hidefocus="true" href="'.UC_API.'/admin.php?m=frame" onmouseover="previewheader(\'uc\')" onmouseout="previewheader()" onclick="uc_login=1;toggleMenu(\'uc\', \'\');doane(event);">'.cplang('header_uc').'</a></em></li>';
-	$topmenu['uc'] = '';
+	if(!UC_STANDALONE) {
+		$uc_api_url = UC_API;
+		echo '<li><em><a id="header_uc" hidefocus="true" href="'.UC_API.'/admin.php?m=frame" onmouseover="previewheader(\'uc\')" onmouseout="previewheader()" onclick="uc_login=1;toggleMenu(\'uc\', \'\');doane(event);">'.cplang('header_uc').'</a></em></li>';
+		$topmenu['uc'] = '';
+	}
 }
 
 $headers = "'".implode("','", array_keys($topmenu))."'";
@@ -135,9 +138,9 @@ echo <<<EOT
 </div>
 <div class="navbd"></div>
 <div class="sitemapbtn">
-	<div style="float: left; margin:-7px 10px 0 0"><form name="search" method="post" autocomplete="off" action="$basescript?action=search" target="main"><input type="text" name="keywords" value="" class="txt" x-webkit-speech speech /> <input type="hidden" name="searchsubmit" value="yes" class="btn" /><input type="submit" name="searchsubmit" value="$lang[search]" class="btn" style="margin-top: 5px;vertical-align:middle" /></form></div>
+	<div style="float: left; margin:-7px 10px 0 0"><form name="search" method="post" autocomplete="off" action="$basescript?action=search" target="main"><input type="text" name="keywords" value="" class="txt" x-webkit-speech speech /> <input type="hidden" name="searchsubmit" value="yes" class="btn" /><input type="submit" name="searchsubmit" value="{$lang['search']}" class="btn" style="margin-top: 5px;vertical-align:middle" /></form></div>
 	<span id="add2custom" style="display: none"></span>
-	<a href="###" id="cpmap" onclick="showMap();return false;"><img src="static/image/admincp/btn_map.gif" title="$lang[admincp_maptext]" width="46" height="18" /></a>
+	<a href="###" id="cpmap" onclick="showMap();return false;"><img src="{$staticurl}image/admincp/btn_map.gif" title="{$lang['admincp_maptext']}" width="46" height="18" /></a>
 </div>
 </div>
 <!--vot /div-->
@@ -154,9 +157,7 @@ foreach ($menu as $k => $v) {
 }
 unset($menu);
 
-$plugindefaultkey = $isfounder ? 1 : 0;
 /*vot*/	$year = date('Y');
-
 echo <<<EOT
 
 </div>
@@ -167,7 +168,7 @@ echo <<<EOT
 </tr>
 </table>
 <div id="scrolllink" style="display: none">
-	<span onclick="menuScroll(1)"><img src="static/image/admincp/scrollu.gif" /></span><span onclick="menuScroll(2)"><img src="static/image/admincp/scrolld.gif" /></span>
+	<span onclick="menuScroll(1)"><img src="{$staticurl}image/admincp/scrollu.gif" /></span><span onclick="menuScroll(2)"><img src="{$staticurl}image/admincp/scrolld.gif" /></span>
 </div>
 <div class="copyright">
 	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
@@ -183,7 +184,7 @@ echo <<<EOT
 </div>
 
 <script type="text/JavaScript">
-	var cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}';
+	var cookiepre = '{$_G['config']['cookie']['cookiepre']}', cookiedomain = '{$_G['config']['cookie']['cookiedomain']}', cookiepath = '{$_G['config']['cookie']['cookiepath']}';
 	var headers = new Array($headers), admincpfilename = '$basescript', menukey = '';
 	function switchheader(key) {
 		if(!key || !$('header_' + key)) {
@@ -225,7 +226,7 @@ echo <<<EOT
 			parent.main.location = admincpfilename + '?action=' + url;
 			var hrefs = $('menu_' + key).getElementsByTagName('a');
 			for(var j = 0; j < hrefs.length; j++) {
-				hrefs[j].className = j == (key == 'plugin' ? $plugindefaultkey : 0) ? 'tabon' : '';
+				hrefs[j].className = j == 0 ? 'tabon' : '';
 			}
 		}
 		if(key == 'uc') {
@@ -416,7 +417,7 @@ echo <<<EOT
 			}
 		}
 		var width = 720;
-		s = '<div class="cnote" style="width:' + width + 'px"><span class="right"><a href="###" class="flbc" onclick="hideMenu();return false;"></a></span><h3>$lang[admincp_maptitle]</h3></div>' +
+		s = '<div class="cnote" style="width:' + width + 'px"><span class="right"><a href="###" class="flbc" onclick="hideMenu();return false;"></a></span><h3>{$lang['admincp_maptitle']}</h3></div>' +
 			'<div class="cmlist" style="width:' + width + 'px;height: 410px"><table id="mapmenu" cellspacing="0" cellpadding="0">' + s +
 			'</table></div>';
 		$('cmain').innerHTML = s;
@@ -454,7 +455,7 @@ echo <<<EOT
 		leftmenu.innerHTML = '';
 		var html_str = '';
 		for(var i=0;i<uc_menu_data.length;i+=2) {
-			html_str += '<li><a href="'+uc_menu_data[(i+1)]+'" hidefocus="true" onclick="uc_left_switch(this)" target="main"><em onclick="menuNewwin(this)" title="$lang[nav_newwin]"></em>'+uc_menu_data[i]+'</a></li>';
+			html_str += '<li><a href="'+uc_menu_data[(i+1)]+'" hidefocus="true" onclick="uc_left_switch(this)" target="main"><em onclick="menuNewwin(this)" title="{$lang['nav_newwin']}"></em>'+uc_menu_data[i]+'</a></li>';
 		}
 		leftmenu.innerHTML = html_str;
 	}

@@ -16,18 +16,18 @@ include_once 'forum.php';
 
 class mobile_api {
 
-	function common() {
+	public static function common() {
 
 	}
 
-	function post_mobile_message($message, $url_forward, $values, $extraparam, $custom) {
+	public static function post_mobile_message($message, $url_forward, $values, $extraparam, $custom) {
 		if($message == 'comment_add_succeed') {
 			showmessage($message);
 		}
 		if ($values['tid'] && $values['pid']) {
 			global $_G;
 
-			$threadstatus = DB::result_first("SELECT status FROM " . DB::table('forum_thread') . " WHERE tid='$values[tid]'");
+			$threadstatus = DB::result_first("SELECT status FROM " . DB::table('forum_thread') . " WHERE tid='{$values['tid']}'");
 			$setstatusold = base_convert(getstatus($threadstatus, 13) . getstatus($threadstatus, 12) . getstatus($threadstatus, 11), 2, 10);
 			$updatestatus = false;
 			if (!empty($_POST['allowsound'])) {
@@ -50,7 +50,7 @@ class mobile_api {
 			}
 
 			$posttable = getposttablebytid($values['tid']);
-			$poststatus = DB::result_first("SELECT status FROM " . DB::table($posttable) . " WHERE pid='$values[pid]'");
+			$poststatus = DB::result_first("SELECT status FROM " . DB::table($posttable) . " WHERE pid='{$values['pid']}'");
 			$poststatus = setstatus(4, 1, $poststatus);
 			if (!empty($_POST['allowlocal'])) {
 				$poststatus = setstatus(6, 1, $poststatus);
@@ -65,7 +65,7 @@ class mobile_api {
 					$poststatus = setstatus(10 - $i, $mobiletype[$i], $poststatus);
 				}
 			}
-			C::t('forum_post')->update('tid:' . $values['tid'], $values['pid'], array('status' => $poststatus));
+			C::t('forum_post')->update_post('tid:' . $values['tid'], $values['pid'], array('status' => $poststatus));
 
 			if($_POST['location']) {
 				list($mapx, $mapy, $location) = explode('|', dhtmlspecialchars($_POST['location']));
@@ -81,7 +81,7 @@ class mobile_api {
 		}
 	}
 
-	function output() {
+	public static function output() {
 		global $_G;
 		$variable = array(
 		    'tid' => $_G['tid'],

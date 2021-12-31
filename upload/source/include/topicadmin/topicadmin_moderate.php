@@ -67,10 +67,10 @@ $single = $modpostsnum == 1 ? TRUE : FALSE;
 $frommodcp = getgpc('frommodcp');
 switch($frommodcp) {
 	case '1':
-		$_G['referer'] = "forum.php?mod=modcp&action=thread&fid=$_G[fid]&op=thread&do=list";
+		$_G['referer'] = "forum.php?mod=modcp&action=thread&fid={$_G['fid']}&op=thread&do=list";
 		break;
 	case '2':
-		$_G['referer'] = "forum.php?mod=modcp&action=forum&op=recommend".(getgpc('show') ? "&show=getgpc('show')" : '')."&fid=$_G[fid]";
+		$_G['referer'] = "forum.php?mod=modcp&action=forum&op=recommend".(getgpc('show') ? "&show=getgpc('show')" : '')."&fid={$_G['fid']}";
 		break;
 	default:
 		if(in_array('delete', $operations) || in_array('move', $operations) && !strpos($_SERVER['HTTP_REFERER'], 'search.php?mod=forum')) {
@@ -169,7 +169,7 @@ if(!submitcheck('modsubmit')) {
 				foreach($delkeys as $k) {
 					unset($forumstickthreads[$k]);
 				}
-				C::t('common_setting')->update('forumstickthreads', $forumstickthreads);
+				C::t('common_setting')->update_setting('forumstickthreads', $forumstickthreads);
 
 				$stickmodify = 0;
 				foreach($threadlist as $thread) {
@@ -354,7 +354,7 @@ if(!submitcheck('modsubmit')) {
 
 
 				C::t('forum_thread')->update($tidsarr, array('lastpost'=>$expiration, 'moderated'=>1), true);
-				C::t('forum_forum')->update($_G['fid'], array('lastpost' => "$thread[tid]\t$thread[subject]\t$expiration\t$thread[lastposter]"));
+				C::t('forum_forum')->update($_G['fid'], array('lastpost' => "{$thread['tid']}\t{$thread['subject']}\t$expiration\t{$thread['lastposter']}"));
 
 				$_G['forum']['threadcaches'] && deletethreadcaches($thread['tid']);
 			} elseif($operation == 'down') {
@@ -428,7 +428,7 @@ if(!submitcheck('modsubmit')) {
 				foreach($delkeys as $k) {
 					unset($forumstickthreads[$k]);
 				}
-				C::t('common_setting')->update('forumstickthreads', $forumstickthreads);
+				C::t('common_setting')->update_setting('forumstickthreads', $forumstickthreads);
 
 				C::t('forum_forum_threadtable')->delete_none_threads();
 				if(!empty($deleteredirect)) {
@@ -581,7 +581,7 @@ if(!submitcheck('modsubmit')) {
 				$typeoptionvars = C::t('forum_typeoptionvar')->fetch_all_by_tid_optionid($tidsarr);
 				foreach($typeoptionvars as $typeoptionvar) {
 					C::t('forum_typeoptionvar')->update_by_tid($typeoptionvar['tid'], array('fid' => $moveto));
-					C::t('forum_optionvalue')->update($typeoptionvar['sortid'], $typeoptionvar['tid'], $_G['fid'], "fid='$moveto'");
+					C::t('forum_optionvalue')->update_optionvalue($typeoptionvar['sortid'], $typeoptionvar['tid'], $_G['fid'], "fid='$moveto'");
 				}
 
 				if($_G['setting']['globalstick'] && $stickmodify) {
@@ -678,11 +678,7 @@ if(!submitcheck('modsubmit')) {
 			}
 
 			if($updatemodlog) {
-				if($operation != 'delete') {
-					updatemodlog($moderatetids, $modaction, $expiration);
-				} else {
-					updatemodlog($moderatetids, $modaction, $expiration, 0, $reason);
-				}
+				updatemodlog($moderatetids, $modaction, $expiration, 0, $reason);
 			}
 
 			updatemodworks($modaction, $modpostsnum);
@@ -706,6 +702,13 @@ if(!submitcheck('modsubmit')) {
 			if($stampstatus) {
 				set_stamp($stampstatus, $stampaction, $threadlist, $expiration);
 			}
+
+			// 当进行管理操作后, 更新相关板块的板块缓存
+			$fidarr = array();
+			foreach ($threadlist as $thread) {
+				$fidarr[] = $thread['fid'];
+			}
+			C::t('forum_thread')->clear_cache($fidarr, 'forumdisplay_');
 
 		}
 		showmessage('admin_succeed', $_G['referer']);

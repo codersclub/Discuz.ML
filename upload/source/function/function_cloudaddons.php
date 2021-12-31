@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-$addonsource = $_G['config']['addonsource'] ? $_G['config']['addonsource'] : ($_G['setting']['addon_source'] ? $_G['setting']['addon_source'] : array());
+$addonsource = !empty($_G['config']['addonsource']) ? $_G['config']['addonsource'] : (!empty($_G['setting']['addon_source']) ? $_G['setting']['addon_source'] : array());
 $addon = $addonsource ?
 	$_G['config']['addon'][$addonsource] :
 	array(
@@ -29,18 +29,18 @@ define('CLOUDADDONS_CHECK_URL', $addon['check_url']);
 define('CLOUDADDONS_CHECK_IP', $addon['check_ip']);
 
 function cloudaddons_md5($file) {
-	return dfsockopen(CLOUDADDONS_CHECK_URL.$file, 0, '', '', false, CLOUDADDONS_CHECK_IP, 60);
+	return dfsockopen(CLOUDADDONS_CHECK_URL.$file, 0, '', '', false, CLOUDADDONS_CHECK_IP, 999);
 }
 
 function cloudaddons_getuniqueid() {
 	global $_G;
 	if(CLOUDADDONS_WEBSITE_URL == 'https://addon.dismall.com') {
-		return $_G['setting']['siteuniqueid'] ? $_G['setting']['siteuniqueid'] : C::t('common_setting')->fetch('siteuniqueid');
+		return $_G['setting']['siteuniqueid'] ? $_G['setting']['siteuniqueid'] : C::t('common_setting')->fetch_setting('siteuniqueid');
 	} else {
 		if(!$_G['setting']['addon_uniqueid']) {
 			$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
 			$addonuniqueid = $chars[date('y')%60].$chars[date('n')].$chars[date('j')].$chars[date('G')].$chars[date('i')].$chars[date('s')].substr(md5($_G['clientip'].TIMESTAMP), 0, 4).random(6);
-			C::t('common_setting')->update('addon_uniqueid', $addonuniqueid);
+			C::t('common_setting')->update_setting('addon_uniqueid', $addonuniqueid);
 			require_once libfile('function/cache');
 			updatecache('setting');
 		}
@@ -51,7 +51,7 @@ function cloudaddons_url($extra) {
 	global $_G;
 
 	require_once DISCUZ_ROOT.'./source/discuz_version.php';
-	$data = 'siteuniqueid='.rawurlencode(cloudaddons_getuniqueid()).'&siteurl='.rawurlencode($_G['siteurl']).'&sitever='.DISCUZ_VERSION.'/'.DISCUZ_RELEASE.'&sitecharset='.CHARSET.'&mysiteid='.$_G['setting']['my_siteid'].'&addonversion=1&dlip='.CLOUDADDONS_DOWNLOAD_IP;
+	$data = 'siteuniqueid='.rawurlencode(cloudaddons_getuniqueid()).'&siteurl='.rawurlencode($_G['siteurl']).'&sitever='.DISCUZ_VERSION.'/'.DISCUZ_RELEASE.'&sitecharset='.CHARSET.'&mysiteid='.$_G['setting']['my_siteid'].'&addonversion=1&dlip='.CLOUDADDONS_DOWNLOAD_IP.'&os='.PHP_OS .'&php='.PHP_VERSION.'&web='.$_SERVER['SERVER_SOFTWARE'].'&db='.helper_dbtool::dbversion().'&lang='.currentlang();
 	$param = 'data='.rawurlencode(base64_encode($data));
 	$param .= '&md5hash='.substr(md5($data.TIMESTAMP), 8, 8).'&timestamp='.TIMESTAMP;
 	return CLOUDADDONS_DOWNLOAD_URL.'?'.$param.$extra;
@@ -125,7 +125,9 @@ function cloudaddons_upgradecheck($addonids) {
 	$post = array();
 	foreach($addonids as $addonid) {
 		$array = cloudaddons_getmd5($addonid);
-		$post[] = 'rid['.$addonid.']='.$array['RevisionID'].'&sn['.$addonid.']='.$array['SN'].'&rd['.$addonid.']='.$array['RevisionDateline'];
+		if($array) {
+			$post[] = 'rid['.$addonid.']='.$array['RevisionID'].'&sn['.$addonid.']='.$array['SN'].'&rd['.$addonid.']='.$array['RevisionDateline'];
+		}
 	}
 	return cloudaddons_open('&mod=app&ac=validator&ver=2', implode('&', $post), 15);
 }
@@ -186,14 +188,10 @@ function cloudaddons_savemd5($md5file, $end, $md5) {
 	$array['Data'] = $array['Data'] ? array_merge($array['Data'], $md5) : $md5;
 	if(!isset($_G['siteftp'])) {
 		dmkdir(DISCUZ_ROOT.'./data/addonmd5/', 0777, false);
-		$fp = fopen(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml', 'w');
-		fwrite($fp, array2xml($array));
-		fclose($fp);
+		file_put_contents(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml', array2xml($array), LOCK_EX);
 	} else {
 		$localfile = DISCUZ_ROOT.'./data/'.random(5);
-		$fp = fopen($localfile, 'w');
-		fwrite($fp, array2xml($array));
-		fclose($fp);
+		file_put_contents($localfile, array2xml($array), LOCK_EX);
 		dmkdir(DISCUZ_ROOT.'./data/addonmd5/', 0777, false);
 		siteftp_upload($localfile, 'data/addonmd5/'.$md5file.'.xml');
 		@unlink($localfile);
@@ -419,7 +417,7 @@ function versioncompatible($versions) {
 	$versions = strip_tags($versions);
 	foreach(explode(',', $versions) as $version) {
 		list($version) = explode(' ', trim($version));
-		if($version && ($currentversion === $version || $version === 'X3' || $version === 'X3.1' || $version === 'X3.2')) {
+		if($version && ($currentversion === $version)) {
 			return true;
 		}
 	}

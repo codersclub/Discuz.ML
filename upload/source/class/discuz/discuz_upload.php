@@ -95,16 +95,16 @@ Class discuz_upload{
 		return lang('error', 'file_upload_error_'.$this->errorcode);
 	}
 
-	function fileext($filename) {
+	public static function fileext($filename) {
 		return addslashes(strtolower(substr(strrchr($filename, '.'), 1, 10)));
 	}
 
-	function is_image_ext($ext) {
+	public static function is_image_ext($ext) {
 		static $imgext  = array('jpg', 'jpeg', 'gif', 'png', 'bmp');
 		return in_array($ext, $imgext) ? 1 : 0;
 	}
 
-	function get_image_info($target, $allowswf = false) {
+	public static function get_image_info($target, $allowswf = false) {
 		$ext = discuz_upload::fileext($target);
 		$isimage = discuz_upload::is_image_ext($ext);
 		if(!$isimage && ($ext != 'swf' || !$allowswf)) {
@@ -114,7 +114,8 @@ Class discuz_upload{
 		} elseif($imageinfo = @getimagesize($target)) {
 			list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array('', '', '');
 			$size = $width * $height;
-			if($size > 16777216 || $size < 16 ) {
+			// Imagick 不受最大大小限制, GD 限制值从数据库读取
+			if((!getglobal('setting/imagelib') && $size > (getglobal('setting/gdlimit') ? getglobal('setting/gdlimit') : 16777216)) || $size < 16 ) {
 				return false;
 			} elseif($ext == 'swf' && $type != 4 && $type != 13) {
 				return false;
@@ -129,11 +130,11 @@ Class discuz_upload{
 		}
 	}
 
-	function is_upload_file($source) {
+	public static function is_upload_file($source) {
 		return $source && ($source != 'none') && (is_uploaded_file($source) || is_uploaded_file(str_replace('\\\\', '\\', $source)));
 	}
 
-	function get_target_filename($type, $extid = 0, $forcename = '') {
+	public static function get_target_filename($type, $extid = 0, $forcename = '') {
 		if($type == 'group' || ($type == 'common' && $forcename != '')) {
 			$filename = $type.'_'.intval($extid).($forcename != '' ? "_$forcename" : '');
 		} else {
@@ -142,12 +143,12 @@ Class discuz_upload{
 		return $filename;
 	}
 
-	function get_target_extension($ext) {
+	public static function get_target_extension($ext) {
 		static $safeext  = array('attach', 'jpg', 'jpeg', 'gif', 'png', 'swf', 'bmp', 'txt', 'zip', 'rar', 'mp3');
 		return strtolower(!in_array(strtolower($ext), $safeext) ? 'attach' : $ext);
 	}
 
-	function get_target_dir($type, $extid = '', $check_exists = true) {
+	public static function get_target_dir($type, $extid = '', $check_exists = true) {
 
 		$subdir = $subdir1 = $subdir2 = '';
 		if($type == 'album' || $type == 'forum' || $type == 'portal' || $type == 'category' || $type == 'profile') {
@@ -163,11 +164,11 @@ Class discuz_upload{
 		return $subdir;
 	}
 
-	function check_dir_type($type) {
+	public static function check_dir_type($type) {
 		return !in_array($type, array('forum', 'group', 'album', 'portal', 'common', 'temp', 'category', 'profile')) ? 'temp' : $type;
 	}
 
-	function check_dir_exists($type = '', $sub1 = '', $sub2 = '') {
+	public static function check_dir_exists($type = '', $sub1 = '', $sub2 = '') {
 
 		$type = discuz_upload::check_dir_type($type);
 
@@ -194,13 +195,18 @@ Class discuz_upload{
 			$succeed = true;
 		}elseif(function_exists('move_uploaded_file') && @move_uploaded_file($source, $target)) {
 			$succeed = true;
-		}elseif (@is_readable($source) && (@$fp_s = fopen($source, 'rb')) && (@$fp_t = fopen($target, 'wb'))) {
-			while (!feof($fp_s)) {
-				$s = @fread($fp_s, 1024 * 512);
-				@fwrite($fp_t, $s);
+		}elseif (@is_readable($source) && (@$fp_s = fopen($source, 'rb')) && (@$fp_t = fopen($target, 'cb'))) {
+			if($fp_t && flock($fp_t, LOCK_EX) && ftruncate($fp_t, 0)) {
+				while (!feof($fp_s)) {
+					$s = @fread($fp_s, 1024 * 512);
+					@fwrite($fp_t, $s);
+				}
+				fflush($fp_t);
+				$succeed = true;
 			}
-			fclose($fp_s); fclose($fp_t);
-			$succeed = true;
+			flock($fp_t, LOCK_UN);
+			fclose($fp_s);
+			fclose($fp_t);
 		}
 		if($succeed)  {
 			$this->errorcode = 0;
@@ -212,7 +218,7 @@ Class discuz_upload{
 		return $succeed;
 	}
 
-	function make_dir($dir, $index = true) {
+	public static function make_dir($dir, $index = true) {
 		$res = true;
 		if(!is_dir($dir)) {
 			$res = @mkdir($dir, 0777);

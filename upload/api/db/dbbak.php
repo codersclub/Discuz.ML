@@ -58,9 +58,6 @@ if($apptype == 'discuz') {
 }
 
 parse_str(_authcode($code, 'DECODE', UC_KEY), $get);
-if(get_magic_quotes_gpc()) {
-	$get = _stripslashes($get);
-}
 
 if(empty($get)) {
 	exit('Invalid Request');
@@ -68,142 +65,10 @@ if(empty($get)) {
 
 $timestamp = time();
 if($timestamp - $get['time'] > 3600) {
-	exit('Authracation has expiried');
+	exit('Authorization has expired');
 }
 $get['time'] = $timestamp;
 
-class dbstuff {
-	var $querynum = 0;
-	var $link;
-	var $histories;
-	var $time;
-	var $tablepre;
-
-	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset, $pconnect = 0, $tablepre='', $time = 0) {
-		$this->time = $time;
-		$this->tablepre = $tablepre;
-		if($pconnect) {
-			if(!$this->link = mysql_pconnect($dbhost, $dbuser, $dbpw)) {
-				$this->halt('Can not connect to MySQL server');
-			}
-		} else {
-			if(!$this->link = mysql_connect($dbhost, $dbuser, $dbpw, 1)) {
-				$this->halt('Can not connect to MySQL server');
-			}
-		}
-
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
-			if($dbcharset) {
-				mysql_query("SET character_set_connection=".$dbcharset.", character_set_results=".$dbcharset.", character_set_client=binary", $this->link);
-			}
-
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
-				mysql_query("SET sql_mode=''", $this->link);
-			}
-		}
-
-		if($dbname) {
-			mysql_select_db($dbname, $this->link);
-		}
-
-	}
-
-	function fetch_array($query, $result_type = MYSQL_ASSOC) {
-		return mysql_fetch_array($query, $result_type);
-	}
-
-	function result_first($sql) {
-		$query = $this->query($sql);
-		return $this->result($query, 0);
-	}
-
-	function fetch_first($sql) {
-		$query = $this->query($sql);
-		return $this->fetch_array($query);
-	}
-
-	function fetch_all($sql) {
-		$arr = array();
-		$query = $this->query($sql);
-		while($data = $this->fetch_array($query)) {
-			$arr[] = $data;
-		}
-		return $arr;
-	}
-
-	function cache_gc() {
-		$this->query("DELETE FROM {$this->tablepre}sqlcaches WHERE expiry<$this->time");
-	}
-
-	function query($sql, $type = '', $cachetime = FALSE) {
-		$func = $type == 'UNBUFFERED' && @function_exists('mysql_unbuffered_query') ? 'mysql_unbuffered_query' : 'mysql_query';
-		if(!($query = $func($sql, $this->link)) && $type != 'SILENT') {
-			$this->halt('MySQL Query Error', $sql);
-		}
-		$this->querynum++;
-		$this->histories[] = $sql;
-		return $query;
-	}
-
-	function affected_rows() {
-		return mysql_affected_rows($this->link);
-	}
-
-	function error() {
-		return (($this->link) ? mysql_error($this->link) : mysql_error());
-	}
-
-	function errno() {
-		return intval(($this->link) ? mysql_errno($this->link) : mysql_errno());
-	}
-
-	function result($query, $row) {
-		$query = @mysql_result($query, $row);
-		return $query;
-	}
-
-	function num_rows($query) {
-		$query = mysql_num_rows($query);
-		return $query;
-	}
-
-	function num_fields($query) {
-		return mysql_num_fields($query);
-	}
-
-	function free_result($query) {
-		return mysql_free_result($query);
-	}
-
-	function insert_id() {
-		return ($id = mysql_insert_id($this->link)) >= 0 ? $id : $this->result($this->query("SELECT last_insert_id()"), 0);
-	}
-
-	function fetch_row($query) {
-		$query = mysql_fetch_row($query);
-		return $query;
-	}
-
-	function fetch_fields($query) {
-		return mysql_fetch_field($query);
-	}
-
-	function version() {
-		return mysql_get_server_info($this->link);
-	}
-
-	function escape_string($str) {
-/*vot*/		return mysql_real_escape_string($str);
-	}
-
-	function close() {
-		return mysql_close($this->link);
-	}
-
-	function halt($message = '', $sql = '') {
-		api_msg('run_sql_error', $message.'<br /><br />'.$sql.'<br /> '.mysql_error());
-	}
-}
 class dbstuffi {
 	var $querynum = 0;
 	var $link;
@@ -211,24 +76,24 @@ class dbstuffi {
 	var $time;
 	var $tablepre;
 
-	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset, $pconnect = 0, $tablepre='', $time = 0) {
+	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset = '', $pconnect = 0, $tablepre='', $time = 0) {
 		$this->time = $time;
 		$this->tablepre = $tablepre;
+
+		mysqli_report(MYSQLI_REPORT_OFF);
+
 		$this->link = new mysqli();
 		if(!$this->link->real_connect($dbhost, $dbuser, $dbpw, $dbname, null, null, MYSQLI_CLIENT_COMPRESS)) {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
-			if($dbcharset) {
-				$this->link->set_charset($dbcharset);
-			}
-
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
-				$this->query("SET sql_mode=''");
-			}
+		if($dbcharset) {
+			$this->link->set_charset($dbcharset);
 		}
 
+		$this->link->query("SET sql_mode=''");
+
+		$this->link->query("SET character_set_client=binary");
 
 	}
 
@@ -274,11 +139,11 @@ class dbstuffi {
 	}
 
 	function error() {
-		return (($this->link) ? $this->link->error : mysqli_error());
+		return $this->link->error;
 	}
 
 	function errno() {
-		return intval(($this->link) ? $this->link->errno : mysqli_errno());
+		return $this->link->errno;
 	}
 
 	function result($query, $row) {
@@ -334,7 +199,7 @@ class dbstuffi {
 }
 
 
-$db = function_exists("mysql_connect") ? new dbstuff() : new dbstuffi();
+$db = new dbstuffi();
 $version = '';
 if($apptype == 'discuz') {
 
@@ -447,7 +312,7 @@ if($get['method'] == 'export') {
 	$get['volume'] = isset($get['volume']) ? intval($get['volume']) : 0;
 	$get['volume'] = $get['volume'] + 1;
 	$version = $version ? $version : $apptype;
-	$idstring = '# Identify: '.base64_encode("$timestamp,$version,$apptype,multivol,$get[volume]")."\n";
+	$idstring = '# Identify: '.base64_encode("$timestamp,$version,$apptype,multivol,{$get['volume']}")."\n";
 
 	if(!isset($get['sqlpath']) || empty($get['sqlpath'])) {
 		$get['sqlpath'] = 'backup_'.date('ymd', $timestamp).'_'.random(6);
@@ -489,7 +354,7 @@ if($get['method'] == 'export') {
 	if(trim($sqldump)) {
 		$sqldump = "$idstring".
 			"# <?exit();?>\n".
-			"# $apptype Multi-Volume Data Dump Vol.$get[volume]\n".
+			"# $apptype Multi-Volume Data Dump Vol.{$get['volume']}\n".
 			"# Time: $time\n".
 			"# Type: $apptype\n".
 			"# Table Prefix: $tablepre\n".
@@ -498,13 +363,12 @@ if($get['method'] == 'export') {
 			"# Please visit our website for newest infomation about $apptype\n".
 			"# --------------------------------------------------------\n\n\n".
 			$sqldump;
-		@$fp = fopen($dumpfile, 'wb');
-		@flock($fp, 2);
-		if(@!fwrite($fp, $sqldump)) {
-			@fclose($fp);
+		$fp = fopen($dumpfile, 'cb');
+		if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, $sqldump) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
+			flock($fp, LOCK_UN);
+			fclose($fp);
 			api_msg('database_export_file_invalid', $dumpfile);
 		} else {
-			fclose($fp);
 			auto_next($get, $dumpfile);
 		}
 	} else {
@@ -712,7 +576,7 @@ function auto_next($get, $sqlfile) {
 	$out = "<root>\n";
 	$out .= "\t<error errorCode=\"0\" errorMessage=\"ok\" />\n";
 	$out .= "\t<fileinfo>\n";
-	$out .= "\t\t<file_num>$get[volume]</file_num>\n";
+	$out .= "\t\t<file_num>{$get['volume']}</file_num>\n";
 	$out .= "\t\t<file_size>".filesize($sqlfile)."</file_size>\n";
 	$out .= "\t\t<file_name>".basename($sqlfile)."</file_name>\n";
 	$out .= "\t\t<file_url>".str_replace(ROOT_PATH, (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/', $sqlfile)."</file_url>\n";
@@ -753,7 +617,7 @@ function sqldumptablestruct($table) {
 	$tabledump .= $create[1];
 
 	$tablestatus = $db->fetch_first("SHOW TABLE STATUS LIKE '$table'");
-	$tabledump .= ($tablestatus['Auto_increment'] ? " AUTO_INCREMENT=$tablestatus[Auto_increment]" : '').";\n\n";
+	$tabledump .= ($tablestatus['Auto_increment'] ? " AUTO_INCREMENT={$tablestatus['Auto_increment']}" : '').";\n\n";
 	return $tabledump;
 }
 
@@ -783,9 +647,9 @@ function sqldumptable($table, $currsize = 0) {
 
 	while($currsize + strlen($tabledump) + 500 < $sizelimit * 1000 && $numrows == $offset) {
 		if($firstfield['Extra'] == 'auto_increment') {
-			$selectsql = "SELECT * FROM $table WHERE $firstfield[Field] > $get[startfrom] LIMIT $offset";
+			$selectsql = "SELECT * FROM $table WHERE {$firstfield['Field']} > {$get['startfrom']} LIMIT $offset";
 		} else {
-			$selectsql = "SELECT * FROM $table LIMIT $get[startfrom], $offset";
+			$selectsql = "SELECT * FROM $table LIMIT {$get['startfrom']}, $offset";
 		}
 		$tabledumped = 1;
 		$rows = $db->query($selectsql);
@@ -818,16 +682,17 @@ function sqldumptable($table, $currsize = 0) {
 }
 
 function random($length, $numeric = 0) {
-	PHP_VERSION < '4.2.0' && mt_srand((double)microtime() * 1000000);
+	$seed = base_convert(md5(microtime().$_SERVER['DOCUMENT_ROOT']), 16, $numeric ? 10 : 35);
+	$seed = $numeric ? (str_replace('0', '', $seed).'012340567890') : ($seed.'zZ'.strtoupper($seed));
 	if($numeric) {
-		$hash = sprintf('%0'.$length.'d', mt_rand(0, pow(10, $length) - 1));
-	} else {
 		$hash = '';
-		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
-		$max = strlen($chars) - 1;
-		for($i = 0; $i < $length; $i++) {
-			$hash .= $chars[mt_rand(0, $max)];
-		}
+	} else {
+		$hash = chr(rand(1, 26) + rand(0, 1) * 32 + 64);
+		$length--;
+	}
+	$max = strlen($seed) - 1;
+	for($i = 0; $i < $length; $i++) {
+		$hash .= $seed[mt_rand(0, $max)];
 	}
 	return $hash;
 }
@@ -847,39 +712,36 @@ function fetchtablelist($tablepre = '') {
 	return $tables;
 }
 
-function _stripslashes($string) {
-	if(is_array($string)) {
-		foreach($string as $key => $val) {
-			$string[$key] = _stripslashes($val);
-		}
-	} else {
-		$string = stripslashes($string);
-	}
-	return $string;
-}
-
 function _authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
+	// 动态密钥长度, 通过动态密钥可以让相同的 string 和 key 生成不同的密文, 提高安全性
 	$ckey_length = 4;
 
 	$key = md5($key ? $key : UC_KEY);
+	// a参与加解密, b参与数据验证, c进行密文随机变换
 	$keya = md5(substr($key, 0, 16));
 	$keyb = md5(substr($key, 16, 16));
 	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
 
+	// 参与运算的密钥组
 	$cryptkey = $keya.md5($keya.$keyc);
 	$key_length = strlen($cryptkey);
 
+	// 前 10 位用于保存时间戳验证数据有效性, 10 - 26位保存 $keyb , 解密时通过其验证数据完整性
+	// 如果是解码的话会从第 $ckey_length 位开始, 因为密文前 $ckey_length 位保存动态密匙以保证解密正确 
 	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
 	$string_length = strlen($string);
 
 	$result = '';
 	$box = range(0, 255);
 
+	// 产生密钥簿
 	$rndkey = array();
 	for($i = 0; $i <= 255; $i++) {
 		$rndkey[$i] = ord($cryptkey[$i % $key_length]);
 	}
 
+	// 打乱密钥簿, 增加随机性
+	// 类似 AES 算法中的 SubBytes 步骤
 	for($j = $i = 0; $i < 256; $i++) {
 		$j = ($j + $box[$i] + $rndkey[$i]) % 256;
 		$tmp = $box[$i];
@@ -887,6 +749,7 @@ function _authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		$box[$j] = $tmp;
 	}
 
+	// 从密钥簿得出密钥进行异或，再转成字符
 	for($a = $j = $i = 0; $i < $string_length; $i++) {
 		$a = ($a + 1) % 256;
 		$j = ($j + $box[$a]) % 256;
@@ -897,12 +760,16 @@ function _authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 	}
 
 	if($operation == 'DECODE') {
-		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
+		// 这里按照算法对数据进行验证, 保证数据有效性和完整性
+		// $result 01 - 10 位是时间, 如果小于当前时间或为 0 则通过
+		// $result 10 - 26 位是加密时的 $keyb , 需要和入参的 $keyb 做比对
+		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 				return '';
 			}
 	} else {
+		// 把动态密钥保存在密文里, 并用 base64 编码保证传输时不被破坏
 		return $keyc.str_replace('=', '', base64_encode($result));
 	}
 
@@ -917,19 +784,26 @@ function send_mime_type_header($type = 'application/xml') {
 }
 
 function is_https() {
-	if (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) != "off") {
+	// PHP 标准服务器变量
+	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 		return true;
 	}
-	if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && strtolower($_SERVER["HTTP_X_FORWARDED_PROTO"]) == "https") {
+	// X-Forwarded-Proto 事实标准头部, 用于反代透传 HTTPS 状态
+	if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
 		return true;
 	}
-	if (isset($_SERVER["HTTP_SCHEME"]) && strtolower($_SERVER["HTTP_SCHEME"]) == "https") {
+	// 阿里云全站加速私有 HTTPS 状态头部
+	// Git 意见反馈 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
 		return true;
 	}
-	if (isset($_SERVER["HTTP_FROM_HTTPS"]) && strtolower($_SERVER["HTTP_FROM_HTTPS"]) != "off") {
+	// 西部数码建站助手私有 HTTPS 状态头部
+	// 官网意见反馈 https://www.discuz.net/thread-3849819-1-1.html
+	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	if (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] == 443) {
+	// 服务器端口号兜底判断
+	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}
 	return false;

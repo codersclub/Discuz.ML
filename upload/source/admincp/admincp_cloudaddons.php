@@ -18,19 +18,32 @@ if(!$admincp->isfounder) {
 	cpmsg('noaccess_isfounder', '', 'error');
 }
 
-if(!$operation) {
+if(!$operation || in_array($operation, array('plugins', 'templates'))) {
 
 	cloudaddons_check();
 	shownav('cloudaddons');
 	$extra = '';
-	if(!empty($_GET['id'])) {
-		$extra .= '&mod=app&ac=item&id='.rawurlencode($_GET['id']);
+	if(empty($_GET['frame'])) {
+		parse_str($_SERVER['QUERY_STRING'], $query);
+		$query['frame'] = 'no';
+		$query_sting_tmp = http_build_query($query);
+		$url = ADMINSCRIPT.'?'.$query_sting_tmp;
+		echo '<script type="text/javascript">top.location.href=\''.$url.'\';</script>';
+	} else {
+		if(!empty($operation)) {
+			$extra .= '&view='.rawurlencode($operation);
+		}elseif(!empty($_GET['id'])) {
+			$extra .= '&mod=app&ac=item&id='.rawurlencode($_GET['id']);
+		}
+		if(!empty($_GET['from'])) {
+			$extra .= '&from='.rawurlencode($_GET['from']);
+		}
+		if(!empty($_GET['extra'])) {
+			$extra .= '&'.addslashes($_GET['extra']);
+		}
+		$url = cloudaddons_url($extra);
+		echo '<script type="text/javascript">location.href=\''.$url.'\';</script>';
 	}
-	if(!empty($_GET['extra'])) {
-		$extra .= '&'.addslashes($_GET['extra']);
-	}
-	$url = cloudaddons_url($extra);
-	echo '<script type="text/javascript">location.href=\''.$url.'\';</script>';
 
 } elseif($operation == 'download') {
 	$step = intval($_GET['step']);
@@ -41,7 +54,7 @@ if(!$operation) {
 	$addonids = explode(',', $_GET['addonids']);
 	list($_GET['key'], $_GET['type'], $_GET['rid']) = explode('.', isset($addonids[$addoni]) ? $addonids[$addoni] : $addonids[0]);
 	if($step == 0) {
-		cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), '<div>0%</div>', FALSE);
+		cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids={$_GET['addonids']}&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), '<div>0%</div>', FALSE);
 	} elseif($step == 1) {
 		$packnum = isset($_GET['num']) ? $_GET['num'] : 0;
 		$tmpdir = DISCUZ_ROOT.'./data/download/'.$_GET['rid'];
@@ -57,9 +70,9 @@ if(!$operation) {
 			$md5total = '';
 			$md5s = array();
 		}
-		$data = cloudaddons_open('&mod=app&ac=download&rid='.$_GET['rid'].'&packnum='.$packnum, '', 999);
+		$data = cloudaddons_open('&mod=app&ac=download&rid='.$_GET['rid'].'&packnum='.$packnum.'&downloadts='.$_GET['timestamp'], '', 999);
 		if(empty($data)){
-			cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'].'&num='.$packnum, 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), '<div></div>', FALSE);
+			cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids={$_GET['addonids']}&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'].'&num='.$packnum, 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), '<div></div>', FALSE);
 			exit;
 		}
 		$_GET['importtxt'] = $data;
@@ -77,23 +90,24 @@ if(!$operation) {
 				$filename = $tmpdir.'/'.$file.'._addons_';
 				$dirname = dirname($filename);
 				dmkdir($dirname, 0777, false);
-				$fp = fopen($filename, !$data['Part'] ? 'w' : 'a');
-				if(!$fp) {
+				$flag = $data['Part'] ? FILE_APPEND | LOCK_EX : LOCK_EX;
+				if(file_put_contents($filename, gzuncompress(base64_decode($data['Data'])), $flag) === false) {
 					dir_clear($tmpdir);
 					@unlink($md5tmp);
 					cloudaddons_faillog($_GET['rid'], 101);
 					cpmsg('cloudaddons_download_write_error', '', 'error');
 				}
-				fwrite($fp, gzuncompress(base64_decode($data['Data'])));
-				fclose($fp);
 				if($data['MD5']) {
 					$md5total .= $data['MD5'];
 					$md5s[$filename] = $data['MD5'];
 				}
 			}
-			$fp = fopen($md5tmp, 'w');
-			fwrite($fp, serialize(array($md5total, $md5s)));
-			fclose($fp);
+			if(file_put_contents($md5tmp, serialize(array($md5total, $md5s)), LOCK_EX) === false) {
+				dir_clear($tmpdir);
+				@unlink($md5tmp);
+				cloudaddons_faillog($_GET['rid'], 101);
+				cpmsg('cloudaddons_download_write_md5_error', '', 'error');
+			}
 		} elseif($array['Status'] == 'Error') {
 			dir_clear($tmpdir);
 			@unlink($md5tmp);
@@ -113,15 +127,15 @@ if(!$operation) {
 		}
 		if(!$end) {
 			$packnum++;
-			cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'].'&num='.$packnum, 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), '<div>'.$percent.'%</div>', FALSE);
+			cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids={$_GET['addonids']}&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'].'&num='.$packnum, 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), '<div>'.$percent.'%</div>', FALSE);
 		} else {
-			if($md5total !== '' && md5($md5total) !== cloudaddons_md5($_GET['key'].'_'.$_GET['rid'])) {
+			if($md5total !== '' && md5($md5total) !== cloudaddons_md5($_GET['key'].'_'.$_GET['rid'].(!empty($array['MD5Key']) ? '_'.$array['MD5Key'] : ''))) {
 				dir_clear($tmpdir);
 				@unlink($md5tmp);
 				cloudaddons_faillog($_GET['rid'], 105);
 				cpmsg('cloudaddons_download_error', '', 'error', array('ErrorCode' => 105));
 			}
-			cpmsg('cloudaddons_installing', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&end=$end&step=2&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), FALSE);
+			cpmsg('cloudaddons_installing', "action=cloudaddons&operation=download&addonids={$_GET['addonids']}&i=$addoni&end=$end&step=2&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), FALSE);
 		}
 	} elseif($step == 2) {
 		$tmpdir = DISCUZ_ROOT.'./data/download/'.$_GET['rid'];
@@ -151,7 +165,7 @@ if(!$operation) {
 		if($unwriteabledirs) {
 			if(!submitcheck('settingsubmit')) {
 				showtips(cplang('cloudaddons_unwriteabledirs', array('basedir' => $typedir[$_GET['type']] != '.' ? $typedir[$_GET['type']] : '/', 'unwriteabledirs' => implode(', ', $unwriteabledirs))));
-				siteftp_form("cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&end=".rawurlencode($_GET['end'])."&step=2&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp']);
+				siteftp_form("cloudaddons&operation=download&addonids={$_GET['addonids']}&i=$addoni&end=".rawurlencode($_GET['end'])."&step=2&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp']);
 				exit;
 			} else {
 				siteftp_check($_GET['siteftp'], $typedir[$_GET['type']]);
@@ -167,7 +181,7 @@ if(!$operation) {
 		cloudaddons_deltree($tmpdir);
 		if(count($addonids) - 1 > $addoni) {
 			$addoni++;
-			cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), FALSE);
+			cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids={$_GET['addonids']}&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), FALSE);
 		}
 		list($_GET['key'], $_GET['type'], $_GET['rid']) = explode('.', $addonids[0]);
 		cloudaddons_downloadlog($_GET['key'].'.'.$_GET['type']);

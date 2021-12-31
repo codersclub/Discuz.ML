@@ -25,7 +25,7 @@ if(!($banpids = dimplode($topiclist))) {
 
 $posts = $authors = array();
 $banstatus = 0;
-foreach(C::t('forum_post')->fetch_all('tid:'.$_G['tid'], $topiclist) as $post) {
+foreach(C::t('forum_post')->fetch_all_post('tid:'.$_G['tid'], $topiclist) as $post) {
 	if($post['tid'] != $_G['tid']) {
 		continue;
 	}
@@ -77,7 +77,7 @@ if(!submitcheck('modsubmit')) {
 	}
 
 	$resultarray = array(
-	'redirect'	=> "forum.php?mod=viewthread&tid=$_G[tid]&page=$page",
+	'redirect'	=> "forum.php?mod=viewthread&tid={$_G['tid']}&page=$page",
 	'reasonpm'	=> ($sendreasonpm ? array('data' => $posts, 'var' => 'post', 'item' => 'reason_ban_post', 'notictype' => 'post') : array()),
 	'reasonvar'	=> array('tid' => $thread['tid'], 'subject' => $thread['subject'], 'modaction' => $modaction, 'reason' => $reason),
 	'modtids'	=> 0,

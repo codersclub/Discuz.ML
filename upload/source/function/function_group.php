@@ -95,7 +95,7 @@ function get_groupimg($imgname, $imgtype = '') {
 		return $imgpath;
 	} else {
 		if($imgtype == 'icon') {
-			return 'static/image/common/groupicon.gif';
+			return STATICURL.'image/common/groupicon.gif';
 		} else {
 			return '';
 		}
@@ -274,7 +274,7 @@ function getgroupranking($fid = '', $nowranking = '') {
 function grouponline($fid, $getlist = '') {
 	$fid = intval($fid);
 	if(empty($getlist)) {
-		$onlinemember = C::app()->session->count_by_fid($fid);
+		$onlinemember = (array)C::app()->session->count_by_fid($fid);
 		$onlinemember['count'] = $onlinemember ? intval($onlinemember) : 0;
 	} else {
 		$onlinemember = array('count' => 0, 'list' => array());

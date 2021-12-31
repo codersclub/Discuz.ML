@@ -16,7 +16,7 @@
 	</div>
 	<!--{/if}-->
 	<div class="z">
-		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&raquo;</em><a href="forum.php">{$_G[setting][navs][2][navname]}</a>$navigation
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&raquo;</em><a href="forum.php">{$_G[setting][navs][2][navname]}</a>{$navigation or ''}
 	</div>
 	<div class="z"><!--{hook/index_status_extra}--></div>
 </div>
@@ -57,10 +57,15 @@
 						<td valign="top" class="category_l1">
 							<div class="newimgbox">
 								<h4><span class="tit_newimg"></span>{lang latest_images}</h4>
-								<div class="module cl slidebox_grid" style="width:218px">
+								<!--{if $_G['setting']['forumallowside']}-->
+								    <!--{eval $slide_width = 220;}-->
+								<!--{else}-->
+								    <!--{eval $slide_width = 278;}-->
+								<!--{/if}-->
+								<div class="module cl slidebox_grid" style="width:{$slide_width}px">
 									<script type="text/javascript">
 									var slideSpeed = 5000;
-									var slideImgsize = [218,200];
+									var slideImgsize = [{$slide_width},200];
 									var slideBorderColor = '{$_G['style']['specialborder']}';
 									var slideBgColor = '{$_G['style']['commonbg']}';
 									var slideImgs = new Array();
@@ -88,7 +93,7 @@
 					        <ul class="category_newlist">
 					        	<!--{loop $grids['newthread'] $thread}-->
 					        	<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
-									<!--{eval $thread[tid]=$thread[closed];}-->
+									<!--{eval $thread['tid']=$thread['closed'];}-->
 								<!--{/if}-->
 								<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
 								<!--{/loop}-->
@@ -101,7 +106,7 @@
 					        <ul class="category_newlist">
 					        	<!--{loop $grids['newreply'] $thread}-->
 					        	<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
-									<!--{eval $thread[tid]=$thread[closed];}-->
+									<!--{eval $thread['tid']=$thread['closed'];}-->
 								<!--{/if}-->
 								<li><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']}tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
 								<!--{/loop}-->
@@ -114,7 +119,7 @@
 					        <ul class="category_newlist">
 					        	<!--{loop $grids['hot'] $thread}-->
 					        	<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
-									<!--{eval $thread[tid]=$thread[closed];}-->
+									<!--{eval $thread['tid']=$thread['closed'];}-->
 								<!--{/if}-->
 								<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
 								<!--{/loop}-->
@@ -128,7 +133,7 @@
 								<ul class="category_newlist">
 									<!--{loop $grids['digest'] $thread}-->
 										<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
-											<!--{eval $thread[tid]=$thread[closed];}-->
+											<!--{eval $thread['tid']=$thread['closed'];}-->
 										<!--{/if}-->
 										<li><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"{if $thread['highlight']} $thread['highlight']{/if}{if $_G['setting']['grid']['showtips']} tip="{lang title}: <strong>$thread[oldsubject]</strong><br/>{lang author}: $thread[author] ($thread[dateline])<br/>{lang show}/{lang reply}: $thread[views]/$thread[replies]" onmouseover="showTip(this)"{else} title="$thread[oldsubject]"{/if}{if $_G['setting']['grid']['targetblank']} target="_blank"{/if}>$thread[subject]</a></li>
 									<!--{/loop}-->
@@ -204,15 +209,15 @@
 									<dd>
 									<!--{if $colletion['lastpost']}-->
 										<!--{if $forumcolumns < 3}-->
-											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost" class="xi2"><!--{echo cutstr($colletion[lastsubject], 30)}--></a> <cite><!--{date($colletion[lastposttime])}--> <!--{if $colletion['lastposter']}-->$colletion['lastposter']<!--{else}-->$_G[setting][anonymoustext]<!--{/if}--></cite>
+											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost" class="xi2"><!--{echo cutstr($colletion[lastsubject], 30)}--></a> <cite><!--{date($colletion['lastposttime'])}--> <!--{if $colletion['lastposter']}-->$colletion['lastposter']<!--{else}-->$_G[setting][anonymoustext]<!--{/if}--></cite>
 										<!--{else}-->
-											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost">{lang forum_lastpost}: <!--{date($colletion[lastposttime])}--></a>
+											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost">{lang forum_lastpost}: <!--{date($colletion['lastposttime'])}--></a>
 										<!--{/if}-->
 									<!--{else}-->
 										{lang never}
 									<!--{/if}-->
 									</dd>
-									<!--{hook/index_followcollection_extra $colletion[ctid]}-->
+									<!--{hook/index_followcollection_extra $colletion['ctid']}-->
 								</dl>
 							</td>
 							<!--{eval $ctorderid++;}-->
@@ -245,7 +250,7 @@
 						<!--{eval $favorderid = 0;}-->
 						<!--{loop $forum_favlist $key $favorite}-->
 						<!--{if $favforumlist[$favorite[id]]}-->
-						<!--{eval $forum=$favforumlist[$favorite[id]];}-->
+						<!--{eval $forum=$favforumlist[$favorite['id']];}-->
 						<!--{eval $forumurl = !empty($forum['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? $_G['scheme'].'://'.$forum['domain'].'.'.$_G['setting']['domain']['root']['forum'] : 'forum.php?mod=forumdisplay&fid='.$forum['fid'];}-->
 							<!--{if $forumcolumns>1}-->
 								<!--{if $favorderid && ($favorderid % $forumcolumns == 0)}-->
@@ -282,7 +287,7 @@
 											<!--{/if}-->
 										<!--{/if}-->
 										</dd>
-										<!--{hook/index_favforum_extra $forum[fid]}-->
+										<!--{hook/index_favforum_extra $forum['fid']}-->
 									</dl>
 								</td>
 								<!--{eval $favorderid++;}-->
@@ -297,9 +302,9 @@
 								<td>
 									<h2><a href="$forumurl"{if $forum[redirect]} target="_blank"{/if}{if $forum[extra][namecolor]} style="color: {$forum[extra][namecolor]};"{/if}>$forum[name]</a><!--{if $forum[todayposts] && !$forum['redirect']}--><em class="xw0 xi1" title="{lang forum_todayposts}"> ($forum[todayposts])</em><!--{/if}--></h2>
 									<!--{if $forum[description]}--><p class="xg2">$forum[description]</p><!--{/if}-->
-									<!--{if $forum['subforums']}--><p>{lang forum_subforums}: $forum['subforums']</p><!--{/if}-->
+									<!--{if $forumlist[$forum['fid']]['subforums']}--><p>{lang forum_subforums}: $forumlist[$forum['fid']]['subforums']</p><!--{/if}-->
 									<!--{if $forum['moderators']}--><p>{lang forum_moderators}: <span class="xi2">$forum[moderators]</span></p><!--{/if}-->
-									<!--{hook/index_favforum_extra $forum[fid]}-->
+									<!--{hook/index_favforum_extra $forum['fid']}-->
 								</td>
 								<td class="fl_i">
 									<!--{if empty($forum[redirect])}--><span class="xi2"><!--{echo dnumber($forum[threads])}--></span><span class="xg1"> / <!--{echo dnumber($forum[posts])}--></span><!--{/if}-->
@@ -334,7 +339,7 @@
 			<!--{ad/intercat/bm a_c/-1}-->
 		<!--{/if}-->
 		<!--{loop $catlist $key $cat}-->
-			<!--{hook/index_catlist $cat[fid]}-->
+			<!--{hook/index_catlist $cat['fid']}-->
 			<div class="bm bmw {if $cat['forumcolumns']} flg{/if} cl">
 				<div class="bm_h cl">
 					<span class="o">
@@ -342,9 +347,9 @@
 					</span>
 					<!--{if $cat['moderators']}--><span class="y">{lang forum_category_modedby}: $cat[moderators]</span><!--{/if}-->
 					<!--{eval $caturl = !empty($cat['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? $_G['scheme'].'://'.$cat['domain'].'.'.$_G['setting']['domain']['root']['forum'] : '';}-->
-					<h2><a href="{if !empty($caturl)}$caturl{else}forum.php?gid=$cat[fid]{/if}" style="{if $cat[extra][namecolor]}color: {$cat[extra][namecolor]};{/if}">$cat[name]</a></h2>
+					<h2><a href="{if !empty($caturl)}$caturl{else}forum.php?gid=$cat[fid]{/if}" style="{if !empty($cat[extra][namecolor])}color: {$cat[extra][namecolor]};{/if}">$cat[name]</a></h2>
 				</div>
-				<div id="category_$cat[fid]" class="bm_c" style="{echo $collapse['category_'.$cat[fid]]}">
+				<div id="category_$cat[fid]" class="bm_c" style="{echo $collapse['category_'.$cat[fid]] or ''}">
 					<table cellspacing="0" cellpadding="0" class="fl_tb">
 						<tr>
 						<!--{loop $cat[forums] $forumid}-->
@@ -385,7 +390,7 @@
 										<!--{/if}-->
 									<!--{/if}-->
 									</dd>
-									<!--{hook/index_forum_extra $forum[fid]}-->
+									<!--{hook/index_forum_extra $forum['fid']}-->
 								</dl>
 							</td>
 						<!--{else}-->
@@ -397,11 +402,11 @@
 								<!--{/if}-->
 							</td>
 							<td>
-								<h2><a href="$forumurl"{if $forum[redirect]} target="_blank"{/if}{if $forum[extra][namecolor]} style="color: {$forum[extra][namecolor]};"{/if}>$forum[name]</a><!--{if $forum[todayposts] && !$forum['redirect']}--><em class="xw0 xi1" title="{lang forum_todayposts}"> ($forum[todayposts])</em><!--{/if}--></h2>
+								<h2><a href="$forumurl"{if $forum[redirect]} target="_blank"{/if}{if !empty($forum[extra][namecolor])} style="color: {$forum[extra][namecolor]};"{/if}>$forum[name]</a><!--{if $forum[todayposts] && !$forum['redirect']}--><em class="xw0 xi1" title="{lang forum_todayposts}"> ($forum[todayposts])</em><!--{/if}--></h2>
 								<!--{if $forum[description]}--><p class="xg2">$forum[description]</p><!--{/if}-->
 								<!--{if $forum['subforums']}--><p>{lang forum_subforums}: $forum['subforums']</p><!--{/if}-->
 								<!--{if $forum['moderators']}--><p>{lang forum_moderators}: <span class="xi2">$forum[moderators]</span></p><!--{/if}-->
-								<!--{hook/index_forum_extra $forum[fid]}-->
+								<!--{hook/index_forum_extra $forum['fid']}-->
 							</td>
 							<td class="fl_i">
 								<!--{if empty($forum[redirect])}--><span class="xi2"><!--{echo dnumber($forum[threads])}--></span><span class="xg1"> / <!--{echo dnumber($forum[posts])}--></span><!--{/if}-->
@@ -425,7 +430,7 @@
 						<tr class="fl_row">
 						<!--{/if}-->
 						<!--{/loop}-->
-						$cat['endrows']
+						{$cat['endrows'] or ''}
 						</tr>
 					</table>
 				</div>
@@ -467,15 +472,15 @@
 									<dd>
 									<!--{if $colletion['lastpost']}-->
 										<!--{if $forumcolumns < 3}-->
-											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost" class="xi2"><!--{echo cutstr($colletion[lastsubject], 30)}--></a> <cite><!--{date($colletion[lastposttime])}--> <!--{if $colletion['lastposter']}-->$colletion['lastposter']<!--{else}-->$_G[setting][anonymoustext]<!--{/if}--></cite>
+											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost" class="xi2"><!--{echo cutstr($colletion[lastsubject], 30)}--></a> <cite><!--{date($colletion['lastposttime'])}--> <!--{if $colletion['lastposter']}-->$colletion['lastposter']<!--{else}-->$_G[setting][anonymoustext]<!--{/if}--></cite>
 										<!--{else}-->
-											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost">{lang forum_lastpost}: <!--{date($colletion[lastposttime])}--></a>
+											<a href="forum.php?mod=redirect&tid=$colletion[lastpost]&goto=lastpost#lastpost">{lang forum_lastpost}: <!--{date($colletion['lastposttime'])}--></a>
 										<!--{/if}-->
 									<!--{else}-->
 										{lang never}
 									<!--{/if}-->
 									</dd>
-									<!--{hook/index_datacollection_extra $colletion[ctid]}-->
+									<!--{hook/index_datacollection_extra $colletion['ctid']}-->
 								</dl>
 							</td>
 							<!--{eval $ctorderid++;}-->
@@ -536,7 +541,7 @@
 						<!--{if $whosonline}-->
 							<!--{loop $whosonline $key $online}-->
 								<li title="{lang time}: $online[lastactivity]">
-								<img src="{STATICURL}image/common/$online[icon]" alt="icon" />
+								<img src="$online['icon']" alt="icon" />
 								<!--{if $online['uid']}-->
 									<a href="home.php?mod=space&uid=$online[uid]">$online[username]</a>
 								<!--{else}-->

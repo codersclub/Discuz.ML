@@ -104,8 +104,8 @@ $lang = array(
 	'blockdata' => array('personalinfo' => '个人资料', 'profile' => '头像', 'doing' => '记录', 'feed' => '动态',
 				'blog' => '日志', 'stickblog' => '置顶日志', 'album' => '相册', 'friend' => '好友',
 				'visitor' => '最近访客', 'wall' => '留言板', 'share' => '分享',
-				'thread' => '主题', 'group'=>$_G[setting][navs][3][navname],'music'=>'音乐盒',
-				'statistic' => '统计信息','myapp' => '应用',
+				'thread' => '主题', 'group'=>(isset($_G['setting']['navs'][3]['navname']) ? $_G['setting']['navs'][3]['navname'] : ''),'music'=>'音乐盒',
+				'statistic' => '统计信息',
 				'block1'=>'自由模块1', 'block2'=>'自由模块2', 'block3'=>'自由模块3',
 				'block4'=>'自由模块4','block5'=>'自由模块5'),
 
@@ -119,7 +119,7 @@ $lang = array(
 	'visitor_list' => '<a href="home.php?mod=space&uid={uid}" target="_blank" class="avt"><em class="{class}"></em><em class="{self}" onclick="javascript:removeVisitor(event, {cuid});" title="删除访问足迹"></em>{avatar}</a><p><a href="home.php?mod=space&uid={uid}" title="{username}">{username}</a></p>',
 	'wall_form' => '<div class="space_wall_post">
 						<form action="home.php?mod=spacecp&ac=comment" id="quickcommentform_{uid}" name="quickcommentform_{uid}" method="post" autocomplete="off" onsubmit="ajaxpost(\'quickcommentform_{uid}\', \'return_commentwall_{uid}\');doane(event);">
-							'.($_G['uid'] ? '<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="static/image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
+							'.($_G['uid'] ? '<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="'.STATICURL.'image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
 							<br /><textarea name="message" id="comment_message" class="pt" rows="3" cols="60" onkeydown="ctrlEnter(event, \'commentsubmit_btn\');" style="width: 90%;"></textarea>
 							<input type="hidden" name="refer" value="home.php?mod=space&uid={uid}" />
 							<input type="hidden" name="id" value="{uid}" />
@@ -153,7 +153,7 @@ $lang = array(
 	'wall_del' => '<a href="home.php?mod=spacecp&ac=comment&op=delete&cid={cid}&handlekey=delcommenthk_{cid}" id="c_{cid}_delete" onclick="showWindow(this.id, this.href, \'get\', 0);">删除</a> ',
 	'wall_reply' => '<a href="home.php?mod=spacecp&ac=comment&op=reply&cid={cid}&handlekey=replycommenthk_{cid}" id="c_{cid}_reply" onclick="showWindow(this.id, this.href, \'get\', 0);">回复</a>',
 	'group_li' => '<li><a href="forum.php?mod=group&fid={groupid}" target="_blank"><img src="{icon}" alt="{name}" /></a><p><a href="forum.php?mod=group&fid={groupid}" target="_blank">{name}</a></p></li>',
-	'poll_li' => '<div class="c z"><img alt="poll" src="static/image/feed/poll.gif" alt="poll" class="t" /><h4 class="h"><a target="_blank" href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a></h4><div class="mtn xg1">发布时间：{dateline}</div></div>',
+	'poll_li' => '<div class="c z"><img alt="poll" src="'.STATICURL.'image/feed/poll.gif" alt="poll" class="t" /><h4 class="h"><a target="_blank" href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a></h4><div class="mtn xg1">发布时间：{dateline}</div></div>',
 	'music_no_content' => '还没有设置音乐盒的内容',
 	'block_profile_diy' => '装扮空间',
 	'block_profile_wall' => '查看留言',
@@ -184,8 +184,6 @@ $lang = array(
 	'block_group_no_content' => '现在还没有群组',
 	'block_group_no_content_publish' => '，<a href ="forum.php?mod=group&action=create">创建自己的群组</a> 或 <a href ="group.php?mod=index">加入群组</a>',
 	'block_group_no_content_join' => '，<a href ="group.php?mod=index">加入群组</a>',
-	'block_myapp_no_content' => '现在还没有应用',
-	'block_myapp_no_content_publish' => '，<a href ="userapp.php?mod=manage&my_suffix=/app/list">我要玩应用</a>',
 	'block_view_noperm' => '无权查看',
 	'block_view_profileinfo_noperm' => '暂无资料项或无权查看',
 	'click_play' => '点击播放',

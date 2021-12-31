@@ -35,7 +35,10 @@ if($op == 'ignore') {
 	dsetcookie('closefeedbox', 1);
 
 } elseif($op == 'modifyunitprice') {
-	$showinfo = C::t('home_show')->fetch($_G['uid']); //DB::fetch_first("SELECT credit, unitprice FROM ".DB::table('home_show')." WHERE uid='$_G[uid]'");
+	if(!$_G['setting']['ranklist']['membershow']) {
+		exit('Access Denied');
+	}
+	$showinfo = C::t('home_show')->fetch($_G['uid']); //DB::fetch_first("SELECT credit, unitprice FROM ".DB::table('home_show')." WHERE uid='{$_G['uid']}'");
 	if(submitcheck('modifysubmit')) {
 		$unitprice = intval($_POST['unitprice']);
 		if($unitprice < 1) {

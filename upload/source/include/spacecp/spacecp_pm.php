@@ -46,9 +46,9 @@ if($_GET['op'] == 'checknewpm') {
 		$value['lastauthor'] = daddslashes($value['lastauthor']);
 		$value['avatar'] = avatar($value['lastauthorid'], 'small', true);
 		if($value['isnew']) {
-			$json[$value['lastauthorid']] = "$value[lastauthorid]:{'uid':$value[lastauthorid], 'username':'$value[lastauthor]', 'avatar':'$value[avatar]', 'plid':$value[plid], 'isnew':$value[isnew], 'daterange':$value[daterange]}";
+			$json[$value['lastauthorid']] = "{$value['lastauthorid']}:{'uid':{$value['lastauthorid']}, 'username':'{$value['lastauthor']}', 'avatar':'{$value['avatar']}', 'plid':{$value['plid']}, 'isnew':{$value['isnew']}, 'daterange':{$value['daterange']}";
 		} else {
-			$otherpm[$value['lastauthorid']] = "$value[lastauthorid]:{'uid':$value[lastauthorid], 'username':'$value[lastauthor]', 'avatar':'$value[avatar]', 'plid':$value[plid], 'isnew':$value[isnew], 'daterange':$value[daterange]}";
+			$otherpm[$value['lastauthorid']] = "{$value['lastauthorid']}:{'uid':{$value['lastauthorid']}, 'username':'{$value['lastauthor']}', 'avatar':'{$value['avatar']}', 'plid':{$value['plid']}, 'isnew':{$value['isnew']}, 'daterange':{$value['daterange']}";
 		}
 	}
 	if(!empty($otherpm)) {
@@ -96,7 +96,7 @@ if($_GET['op'] == 'checknewpm') {
 			$messageappend = dhtmlspecialchars('[url='.$_G['siteurl'].'forum.php?mod=redirect&goto=findpost&pid='.$comment['pid'].'&ptid='.$comment['tid'].'][b]'.lang('spacecp', 'pm_comment').'[/b][/url][quote]'.$comment['comment'].'[/quote]');
 		}
 	} elseif(!empty($_GET['tid']) && !empty($_GET['pid'])) {
-		$thread = C::t('forum_thread')->fetch($_GET['tid']);
+		$thread = C::t('forum_thread')->fetch_thread($_GET['tid']);
 		if($thread) {
 			$messageappend = dhtmlspecialchars('[url='.$_G['siteurl'].'forum.php?mod=redirect&goto=findpost&pid='.intval($_GET['pid']).'&ptid='.$thread['tid'].'][b]'.lang('spacecp', 'pm_thread_about', array('subject' => $thread['subject'])).'[/b][/url]');
 		}
@@ -292,6 +292,8 @@ if($_GET['op'] == 'checknewpm') {
 				} else {
 					$returnurl = 'home.php?mod=space&do=pm';
 				}
+				$users = is_array($users) ? : array($users);
+				$newusers = is_array($newusers) ? : array($newusers);
 				showmessage(count($users) ? 'message_send_result' : 'do_success', $returnurl, array('users' => implode(',', $users), 'succeed' => count($newusers)));
 			} else {
 				if(!defined('IN_MOBILE')) {
@@ -501,12 +503,17 @@ if($_GET['op'] == 'checknewpm') {
 	$contents = nl2br($contents);
 
 	$filesize = strlen($contents);
-/*vot*/	$filename = '"'.(strtolower(CHARSET) == 'utf-8' && strexists(@$_SERVER['HTTP_USER_AGENT'], 'MSIE') ? urlencode($filename) : $filename).'"';
+	// Following the RFC 6266 international standard, the file name is encoded according to the rules in RFC 5987
+	$filenameencode = strtolower(CHARSET) == 'utf-8' ? rawurlencode($filename) : rawurlencode(diconv($filename, CHARSET, 'UTF-8'));
+
+	// Browser engines that do not even support the international standards released in 2011
+	// Currently includes: UC, boast
+	$rfc6266blacklist = strexists($_SERVER['HTTP_USER_AGENT'], 'UCBrowser') || strexists($_SERVER['HTTP_USER_AGENT'], 'Quark') || strexists($_SERVER['HTTP_USER_AGENT'], 'SogouM') || strexists($_SERVER['HTTP_USER_AGENT'], 'baidu');
 
 	dheader('Date: '.gmdate('D, d M Y H:i:s', $val['dateline']).' GMT');
 	dheader('Last-Modified: '.gmdate('D, d M Y H:i:s', $val['dateline']).' GMT');
 	dheader('Content-Encoding: none');
-	dheader('Content-Disposition: attachment; filename='.$filename);
+	dheader('Content-Disposition: attachment; filename="'.$filenameencode.'"'.(($filename == $filenameencode || $rfc6266blacklist) ? '' : '; filename*=utf-8\'\''.$filenameencode));
 
 	dheader('Content-Type: application/octet-stream');
 	dheader('Content-Length: '.$filesize);

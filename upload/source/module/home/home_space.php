@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 }
 
 $dos = array('index', 'doing', 'blog', 'album', 'friend', 'wall',
-	'notice', 'share', 'home', 'pm', 'videophoto', 'favorite',
+	'notice', 'share', 'home', 'pm', 'favorite',
 	'thread', 'trade', 'poll', 'activity', 'debate', 'reward', 'profile', 'plugin', 'follow');
 
 $do = (!empty($_GET['do']) && in_array($_GET['do'], $dos)) ? $_GET['do'] : 'index';
@@ -20,13 +20,13 @@ $do = (!empty($_GET['do']) && in_array($_GET['do'], $dos)) ? $_GET['do'] : 'inde
 if(!in_array($do, array('home', 'doing', 'blog', 'album', 'share', 'wall'))) {
 	$_G['mnid'] = 'mn_common';
 }
-if(empty($_G['uid']) && in_array($_GET['do'], array('thread', 'trade', 'poll', 'activity', 'debate', 'reward'))) {
+if(empty($_G['uid']) && in_array(getgpc('do'), array('thread', 'trade', 'poll', 'activity', 'debate', 'reward'))) {
 	showmessage('login_before_enter_home', null, array(), array('showmsg' => true, 'login' => 1));
 }
 $uid = empty($_GET['uid']) ? 0 : intval($_GET['uid']);
 
 $member = array();
-if($_GET['username']) {
+if(getgpc('username')) {
 	$member = C::t('common_member')->fetch_by_username($_GET['username']);
 	if(empty($member) && !($member = C::t('common_member_archive')->fetch_by_username($_GET['username']))) {
 		showmessage('space_does_not_exist');
@@ -35,7 +35,7 @@ if($_GET['username']) {
 	$member['self'] = $uid == $_G['uid'] ? 1 : 0;
 }
 
-if($_GET['view'] == 'admin') {
+if(getgpc('view') == 'admin') {
 	$_GET['do'] = $do;
 }
 if(empty($uid) || in_array($do, array('notice', 'pm'))) $uid = $_G['uid'];
@@ -76,8 +76,13 @@ if($uid && empty($member)) {
 
 if(empty($space)) {
 	if(in_array($do, array('doing', 'blog', 'album', 'share', 'home', 'trade', 'poll', 'activity', 'debate', 'reward', 'group'))) {
-		$_GET['view'] = 'all';
-		$space['uid'] = 0;
+		if(empty($_GET['view']) || $_GET['view'] == 'all') {
+			$_GET['view'] = 'all';
+			$space['uid'] = 0;
+			$space['self'] = 0;
+		} else {
+			showmessage('login_before_enter_home', null, array(), array('showmsg' => true, 'login' => 1));
+		}
 	} else {
 		showmessage('login_before_enter_home', null, array(), array('showmsg' => true, 'login' => 1));
 	}
@@ -102,11 +107,7 @@ if(empty($space)) {
 		exit();
 	}
 
-	if(!$space['self'] && $_GET['view'] != 'eccredit' && $_GET['view'] != 'admin') $_GET['view'] = 'me';
-
-	get_my_userapp();
-
-	get_my_app();
+	if(!$space['self'] && getgpc('view') != 'eccredit' && getgpc('view') != 'admin') $_GET['view'] = 'me';
 }
 
 $diymode = 0;
@@ -115,6 +116,8 @@ list($seccodecheck, $secqaacheck) = seccheck('publish');
 if($do != 'index') {
 	$_G['disabledwidthauto'] = 0;
 }
+require_once libfile('function/friend');
+$isfriend = friend_check($space['uid']);
 require_once libfile('space/'.$do, 'include');
 
 ?>

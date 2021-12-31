@@ -23,7 +23,13 @@ function mobile_discuzcode($param) {
 
 	if($pid && strpos($message, '[/password]') !== FALSE) {
 		if($authorid != $_G['uid'] && !$_G['forum']['ismoderator']) {
-			$message = preg_replace_callback("/\s?\[password\](.+?)\[\/password\]\s?/i", create_function('$matches', 'return parsepassword($matches[1], '.intval($pid).');'), $message);
+			$message = preg_replace_callback(
+				"/\s?\[password\](.+?)\[\/password\]\s?/i",
+				function ($matches) use ($pid) {
+					return parsepassword($matches[1], intval($pid));
+				},
+				$message
+			);
 			if($_G['forum_discuzcode']['passwordlock'][$pid]) {
 				return '';
 			}
@@ -120,7 +126,7 @@ function mobile_discuzcode($param) {
 			}
 		}
 		if(strpos($msglower, '[/media]') !== FALSE) {
-			$message = preg_replace_callback("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", 'mobile_discuzcode_callback_bbcodeurl_media2', $message);
+			$message = preg_replace_callback("/\[media=([\w%,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", 'mobile_discuzcode_callback_bbcodeurl_media2', $message);
 		}
 		if(strpos($msglower, '[/audio]') !== FALSE) {
 			$message = preg_replace_callback("/\[audio(=1)*\]\s*([^\[\<\r\n]+?)\s*\[\/audio\]/is", 'mobile_discuzcode_callback_bbcodeurl_href2', $message);
@@ -138,7 +144,13 @@ function mobile_discuzcode($param) {
 				$msglower = strtolower($message);
 			}
 			if(strpos($msglower, '[hide=d') !== FALSE) {
-				$message = preg_replace_callback("/\[hide=(d\d+)?[,]?(\d+)?\]\s*(.*?)\s*\[\/hide\]/is", create_function('$matches', 'return expirehide($matches[1], $matches[2], $matches[3], '.intval($pdateline).');'), $message);
+				$message = preg_replace_callback(
+					"/\[hide=(d\d+)?[,]?(\d+)?\]\s*(.*?)\s*\[\/hide\]/is",
+					function ($matches) use ($pdateline) {
+						return expirehide($matches[1], $matches[2], $matches[3], intval($pdateline));
+					},
+					$message
+				);
 				$msglower = strtolower($message);
 			}
 			if(strpos($msglower, '[hide]') !== FALSE) {
@@ -158,7 +170,13 @@ function mobile_discuzcode($param) {
 				}
 			}
 			if(strpos($msglower, '[hide=') !== FALSE) {
-				$message = preg_replace_callback("/\[hide=(\d+)\]\s*(.*?)\s*\[\/hide\]/is", create_function('$matches', 'return creditshide($matches[1], $matches[2], '.intval($pid).', '.intval($authorid).');'), $message);
+				$message = preg_replace_callback(
+					"/\[hide=(\d+)\]\s*(.*?)\s*\[\/hide\]/is",
+					function ($matches) use ($pid, $authorid) {
+						return creditshide($matches[1], $matches[2], intval($pid), intval($authorid));
+					},
+					$message
+				);
 			}
 		}
 	}
@@ -176,8 +194,26 @@ function mobile_discuzcode($param) {
 
 		$attrsrc = !IS_ROBOT && $lazyload ? 'file' : 'src';
 		if(strpos($msglower, '[/img]') !== FALSE) {
-			$message = preg_replace_callback("/\[img\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is", create_function('$matches', 'return '.intval($allowimgcode).' ? mobile_parseimg(0, 0, $matches[1], '.intval($lazyload).', '.intval($pid).', \'onmouseover="img_onmouseoverfunc(this)" \'.('.intval($lazyload).' ? \'lazyloadthumb="1"\' : \'onload="thumbImg(this)"\')) : ('.intval($allowbbcode).' ? (!defined(\'IN_MOBILE\') ? bbcodeurl($matches[1], \'<a href="{url}" target="_blank">{url}</a>\') : bbcodeurl($matches[1], \'\')) : bbcodeurl($matches[1], \'{url}\'));'), $message);
-			$message = preg_replace_callback("/\[img=(\d{1,4})[x|\,](\d{1,4})\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is", create_function('$matches', 'return '.intval($allowimgcode).' ? mobile_parseimg($matches[1], $matches[2], $matches[3], '.intval($lazyload).', '.intval($pid).') : ('.intval($allowbbcode).' ? (!defined(\'IN_MOBILE\') ? bbcodeurl($matches[3], \'<a href=\"{url}\" target=\"_blank\">{url}</a>\') : bbcodeurl($matches[3], \'\')) : bbcodeurl($matches[3], \'{url}\'));'), $message);
+			$message = preg_replace_callback(
+				"/\[img\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is",
+				function ($matches) use ($allowimgcode, $lazyload, $pid, $allowbbcode) {
+					if ($allowimgcode) {
+						return mobile_parseimg(0, 0, $matches[1], intval($lazyload), intval($pid), 'onmouseover="img_onmouseoverfunc(this)" '.(intval($lazyload) ? 'lazyloadthumb="1"' : 'onload="thumbImg(this)"'));
+					}
+					return (intval($allowbbcode) ? (!defined('IN_MOBILE') ? bbcodeurl($matches[1], '<a href="{url}" target="_blank">{url}</a>') : bbcodeurl($matches[1], '')) : bbcodeurl($matches[1], '{url}'));
+				},
+				$message
+			);
+			$message = preg_replace_callback(
+				"/\[img=(\d{1,4})[x|\,](\d{1,4})\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is",
+				function($matches) use ($allowimgcode, $lazyload, $pid, $allowbbcode) {
+					if (intval($allowimgcode)) {
+						mobile_parseimg($matches[1], $matches[2], $matches[3], intval($lazyload), intval($pid));
+					}
+					return (intval($allowbbcode) ? (!defined('IN_MOBILE') ? bbcodeurl($matches[3], '<a href="{url}" target="_blank">{url}</a>') : bbcodeurl($matches[3], '')) : bbcodeurl($matches[3], '{url}'));
+				},
+				$message
+			);
 		}
 	}
 

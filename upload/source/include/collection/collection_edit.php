@@ -138,6 +138,7 @@ if(empty($op) || $op == 'add') {
 		$reamincreatenum = $_G['group']['allowcreatecollection']-$createdcollectionnum;
 
 		$collections = getmycollection($_G['uid']);
+		$tidcollections = array();
 
 		if(count($collections) > 0) {
 			$tidrelated = C::t('forum_collectionrelated')->fetch($tid, true);
@@ -159,7 +160,7 @@ if(empty($op) || $op == 'add') {
 			$thread[$tid] = &$_G['thread'];
 		}
 		$collectiondata = C::t('forum_collection')->fetch_all($ctid);
-		if(count($collectiondata) < 0) {
+		if(!is_array($collectiondata) || count($collectiondata) < 0) {
 			showmessage('undefined_action', NULL);
 		} else {
 			foreach ($collectiondata as $curcollectiondata) {
@@ -243,7 +244,7 @@ if(empty($op) || $op == 'add') {
 	if($_GET['formhash'] != FORMHASH) {
 		showmessage('undefined_action', NULL);
 	}
-	if(!$ctid || count($_GET['delthread']) == 0) {
+	if(!$ctid || empty($_GET['delthread']) || !is_array($_GET['delthread']) || count($_GET['delthread']) == 0) {
 		showmessage('collection_no_thread');
 	}
 
@@ -258,7 +259,7 @@ if(empty($op) || $op == 'add') {
 	if(in_array($_G['collection']['lastpost'], $_GET['delthread']) && ($_G['collection']['threadnum'] - $decthread) > 0) {
 		$collection_thread = C::t('forum_collectionthread')->fetch_by_ctid_dateline($ctid);
 		if($collection_thread) {
-			$thread = C::t('forum_thread')->fetch($collection_thread['tid']);
+			$thread = C::t('forum_thread')->fetch_thread($collection_thread['tid']);
 			$lastpost = array(
 				'lastpost' => $thread['tid'],
 				'lastsubject' => $thread['subject'],
@@ -282,7 +283,7 @@ if(empty($op) || $op == 'add') {
 
 	$collectionteamworker = C::t('forum_collectionteamworker')->fetch_all_by_ctid($ctid);
 
-	$submitworkers = count($_GET['users']);
+	$submitworkers = (!empty($_GET['users']) && is_array($_GET['users'])) ? count($_GET['users']) : 0;
 
 	if((count($collectionteamworker) + $submitworkers) >= $maxteamworkers) {
 		showmessage('collection_teamworkers_exceed');

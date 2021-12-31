@@ -73,13 +73,13 @@ if($operation == 'downremotefile') {
 				$attach['attachment'] = $attach['attachdir'] . $upload->get_target_filename('portal').'.'.$attach['extension'];
 				$attach['target'] = getglobal('setting/attachdir').'./portal/'.$attach['attachment'];
 
-				if(!@$fp = fopen($attach['target'], 'wb')) {
-					continue;
-				} else {
-					flock($fp, 2);
-					fwrite($fp, $content);
+				$fp = fopen($attach['target'], 'cb');
+				if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, $content) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
+					flock($fp, LOCK_UN);
 					fclose($fp);
+					continue;
 				}
+
 				if(!$upload->get_image_info($attach['target'])) {
 					@unlink($attach['target']);
 					continue;
@@ -151,6 +151,7 @@ if($attachs) {
 	if($downremotefile && $imagereplace) {
 		$string = preg_replace(array("/\<(script|style|iframe)[^\>]*?\>.*?\<\/(\\1)\>/si", "/\<!*(--|doctype|html|head|meta|link|body)[^\>]*?\>/si"), '', $string);
 		$string = str_replace($imagereplace['oldimageurl'], $imagereplace['newimageurl'], $string);
+		$string = str_replace("\n", '<br>', $string);
 		$string = str_replace(array("\r", "\n", "\r\n"), '', addcslashes($string, '/"\\\''));
 		print <<<EOF
 		<script type="text/javascript">
@@ -182,7 +183,7 @@ function portal_upload_show($attach) {
 		$filehtml = get_uploadcontent($attach, 'portal', 'upload');
 	}
 
-	echo '<script type="text/javascript" src="'.$_G[setting][jspath].'handlers.js?'.$_G['style']['verhash'].'"></script>';
+	echo '<script type="text/javascript" src="'.$_G['setting']['jspath'].'handlers.js?'.$_G['style']['verhash'].'"></script>';
 	echo '<script>';
 	if($imagehtml) echo 'var tdObj = getInsertTdId(parent.$(\'imgattachlist\'), \'attach_list_'.$attach['attachid'].'\');tdObj.innerHTML = \''.addslashes($imagehtml).'\';';
 	if($filehtml) echo 'parent.$(\'attach_file_body\').innerHTML = \''.addslashes($filehtml).'\'+parent.$(\'attach_file_body\').innerHTML;';

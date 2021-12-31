@@ -65,20 +65,19 @@ define('UNDEFINE_FUNC', 32);
 define('MISSING_PARAMETER', 33);
 define('LOCK_FILE_NOT_TOUCH', 34);
 
-$func_items = array('mysqli_connect', 'gethostbyname', 'file_get_contents', 'xml_parser_create');
+$func_items = array('mysqli_connect', 'xml_parser_create', 'json_encode');
 
 $filesock_items = array('fsockopen', 'pfsockopen', 'stream_socket_client', 'curl_init');
 
 $env_items = array
 (
 	'os' => array('c' => 'PHP_OS', 'r' => 'notset', 'b' => 'unix'),
-	'php' => array('c' => 'PHP_VERSION', 'r' => '5.3', 'b' => '7.1'),
+	'php' => array('c' => 'PHP_VERSION', 'r' => '5.6', 'b' => '7.3'),
 	'attachmentupload' => array('r' => 'notset', 'b' => '2M'),
 	'gdversion' => array('r' => '1.0', 'b' => '2.0'),
 	'curl' => array('r' => 'notset', 'b' => 'enable'),
 	'opcache' => array('r' => 'notset', 'b' => 'enable'),
 	'diskspace' => array('r' => 30 * 1048576, 'b' => 'notset'),
-	'filter_var' => array('f' => 'filter_var', 'r' => 'enable', 'b' => 'enable'),
 );
 
 $dirfile_items = array
@@ -269,7 +268,6 @@ $serialize_sql_setting = array (
 /*vot*/    'forum'	=> 'Forum',//'论坛',
 /*vot*/    'group'	=> 'Groups',//'群组',
 /*vot*/    'home'	=> 'Home',//'家园',
-/*vot*/    'userapp'	=> 'Apps',//'应用',
   ),
   'activityfield' =>
   array (
@@ -321,14 +319,6 @@ $serialize_sql_setting = array (
     ),
     5 =>
     array (
-      'icon' => '',
-    ),
-    7 =>
-    array (
-/*vot*/      'title' => 'Video Verification',//'视频认证',
-      'available' => '0',
-      'showicon' => '0',
-      'viewvideophoto' => '0',
       'icon' => '',
     ),
   ),

@@ -39,7 +39,7 @@ if(!empty($_GET['searchsubmit']) || !empty($_GET['searchmode'])) {
 		$wherearr[] = 's.'.DB::field('username', $searchkey);
 		$searchkey = dhtmlspecialchars($searchkey);
 	} else {
-		foreach (array('uid','username','videophotostatus','avatarstatus') as $value) {
+		foreach (array('uid','username','avatarstatus') as $value) {
 			if($_GET[$value]) {
 				if($value == 'username' && empty($_GET['precision'])) {
 					$_GET[$value] = stripsearchkey($_GET[$value]);
@@ -89,7 +89,7 @@ if(!empty($_GET['searchsubmit']) || !empty($_GET['searchmode'])) {
 		$wherearr['profile'] = "sf.uid=s.uid";
 	}
 
-	$list = array();
+	$list = $ols = array();
 	if($wherearr) {
 
 		$space['friends'] = array();
@@ -106,6 +106,13 @@ if(!empty($_GET['searchsubmit']) || !empty($_GET['searchmode'])) {
 		foreach($list as $uid => $value) {
 			$list[$uid]['follow'] = isset($follows[$uid]) ? 1 : 0;
 		}
+		if (!empty($list)) {
+			foreach(C::app()->session->fetch_all_by_uid(array_keys($list)) as $value) {
+				if(!$value['invisible']) {
+					$ols[$value['uid']] = 1;
+				}
+			}
+		}		
 	}
 
 

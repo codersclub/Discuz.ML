@@ -15,7 +15,7 @@ require './source/class/class_core.php';
 
 $discuz = C::app();
 
-$modarray = array('activate', 'emailverify', 'getpasswd',
+$modarray = array('getpasswd',
 	'groupexpiry', 'logging', 'lostpasswd',
 	'register', 'regverify', 'switchstatus');
 

@@ -15,7 +15,7 @@ if(!$_G['group']['allowsplitthread']) {
 	showmessage('no_privilege_splitthread');
 }
 
-$thread = C::t('forum_thread')->fetch($_G['tid']);
+$thread = C::t('forum_thread')->fetch_thread($_G['tid']);
 $posttableid = $thread['posttableid'];
 if(!submitcheck('modsubmit')) {
 
@@ -45,6 +45,7 @@ if(!submitcheck('modsubmit')) {
 	foreach(C::t('forum_post')->fetch_all_by_tid_position($thread['posttableid'], $_G['tid'], $nos) as $post) {
 		$pids[] = $post['pid'];
 	}
+	$pids = is_array($pids) ? $pids : array($pids);
 	if(!($pids = implode(',',$pids))) {
 		showmessage('admin_split_new_invalid');
 	}
@@ -57,7 +58,7 @@ if(!submitcheck('modsubmit')) {
 
 	$newtid = C::t('forum_thread')->insert(array('fid'=>$_G['fid'], 'posttableid'=>$posttableid, 'subject'=>$subject), true);
 
-	C::t('forum_post')->update('tid:'.$_G['tid'], explode(',', $pids), array('tid' => $newtid));
+	C::t('forum_post')->update_post('tid:'.$_G['tid'], explode(',', $pids), array('tid' => $newtid));
 	updateattachtid('pid', (array)explode(',', $pids), $_G['tid'], $newtid);
 
 	$splitauthors = array();
@@ -66,14 +67,14 @@ if(!submitcheck('modsubmit')) {
 		$splitauthors[] = $splitauthor;
 	}
 
-	C::t('forum_post')->update('tid:'.$_G['tid'], $splitauthors[0]['pid'], array('first' => 1, 'subject' => $subject), true);
+	C::t('forum_post')->update_post('tid:'.$_G['tid'], $splitauthors[0]['pid'], array('first' => 1, 'subject' => $subject), true);
 
 	$query = C::t('forum_post')->fetch_all_by_tid('tid:'.$_G['tid'], $_G['tid'], false, 'ASC', 0, 1);
 	foreach($query as $row) {
 		$fpost = $row;
 	}
 	C::t('forum_thread')->update($_G['tid'], array('author'=>$fpost['author'], 'authorid'=>$fpost['authorid'],'dateline'=>$fpost['dateline'], 'moderated'=>1));
-	C::t('forum_post')->update('tid:'.$_G['post'], $fpost['pid'], array('first' => 1, 'subject' => $thread['subject']));
+	C::t('forum_post')->update_post('tid:'.$_G['post'], $fpost['pid'], array('first' => 1, 'subject' => $thread['subject']));
 
 	$query = C::t('forum_post')->fetch_all_by_tid('tid:'.$_G['tid'], $newtid, false, 'ASC', 0, 1);
 	foreach($query as $row) {
@@ -82,7 +83,7 @@ if(!submitcheck('modsubmit')) {
 	$maxposition = 1;
 	foreach(C::t('forum_post')->fetch_all_by_tid('tid:'.$_G['tid'], $_G['tid'], false, 'ASC') as $row) {
 		if($row['position'] != $maxposition) {
-			C::t('forum_post')->update('tid:'.$_G['tid'], $row['pid'], array('position' => $maxposition));
+			C::t('forum_post')->update_post('tid:'.$_G['tid'], $row['pid'], array('position' => $maxposition));
 		}
 		$maxposition ++;
 	}
@@ -90,11 +91,11 @@ if(!submitcheck('modsubmit')) {
 	$maxposition = 1;
 	foreach(C::t('forum_post')->fetch_all_by_tid('tid:'.$_G['tid'], $newtid, false, 'ASC') as $row) {
 		if($row['position'] != $maxposition) {
-			C::t('forum_post')->update('tid:'.$_G['tid'], $row['pid'], array('position' => $maxposition));
+			C::t('forum_post')->update_post('tid:'.$_G['tid'], $row['pid'], array('position' => $maxposition));
 		}
 		$maxposition ++;
 	}
-	C::t('forum_thread')->update($newtid, array('author'=>$fpost['author'], 'authorid'=>$fpost['authorid'], 'dateline'=>$fpost['dateline'], 'rate'=>intval(@($fpost['rate'] / abs($fpost['rate']))), 'maxposition' => $maxposition));
+	C::t('forum_thread')->update($newtid, array('author'=>$fpost['author'], 'authorid'=>$fpost['authorid'], 'dateline'=>$fpost['dateline'], 'rate'=>intval(abs($fpost['rate']) ? ($fpost['rate'] / abs($fpost['rate'])) : 0), 'maxposition' => $maxposition));
 	updatethreadcount($_G['tid']);
 	updatethreadcount($newtid);
 	updateforumcount($_G['fid']);
@@ -103,7 +104,7 @@ if(!submitcheck('modsubmit')) {
 
 	$modpostsnum++;
 	$resultarray = array(
-	'redirect'	=> "forum.php?mod=forumdisplay&fid=$_G[fid]",
+	'redirect'	=> "forum.php?mod=forumdisplay&fid={$_G['fid']}",
 	'reasonpm'	=> ($sendreasonpm ? array('data' => $splitauthors, 'var' => 'thread', 'item' => 'reason_moderate', 'notictype' => 'post') : array()),
 	'reasonvar'	=> array('tid' => $thread['tid'], 'subject' => $thread['subject'], 'modaction' => $modaction, 'reason' => $reason),
 	'modtids'	=> $thread['tid'].','.$newtid,

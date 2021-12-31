@@ -21,6 +21,7 @@ if(!$_G['setting']['taskstatus']) {
 
 require_once libfile('class/task');
 $tasklib = & task::instance();
+$tasklib->update_available();
 
 $_G['mnid'] = 'mn_common';
 $id = intval($_GET['id']);
@@ -116,7 +117,7 @@ include template('home/space_task');
 
 function cleartaskstatus() {
 	global $_G;
-	if(!C::t('common_mytask')->count($_G['uid'], false, 0)) {
+	if(!C::t('common_mytask')->count_mytask($_G['uid'], false, 0)) {
 		dsetcookie('taskdoing_'.$_G['uid']);
 	}
 }

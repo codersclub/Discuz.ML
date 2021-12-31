@@ -1,7 +1,7 @@
 <?php
 
 /*
-	[Discuz!] (C)2001-2007 Comsenz Inc.
+	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: admincp_recyclebinpost.php 28728 2012-03-09 03:15:48Z songlixin $
@@ -64,7 +64,7 @@ if(!$operation) {
 	$checklpp[$lpp] = 'selected="selected"';
 	showtableheader($lang['recyclebinpost_list'].
 				'&nbsp<select onchange="if(this.options[this.selectedIndex].value != \'\') {window.location=\''.ADMINSCRIPT.'?action=recyclebinpost&lpp=\'+this.options[this.selectedIndex].value }">
-				<option value="20" '.$checklpp[20].'> '.$lang[perpage_20].' </option><option value="50" '.$checklpp[50].'>'.$lang[perpage_50].'</option><option value="100" '.$checklpp[100].'>'.$lang[perpage_100].'</option></select>');
+				<option value="20" '.$checklpp[20].'> '.$lang['perpage_20'].' </option><option value="50" '.$checklpp[50].'>'.$lang['perpage_50'].'</option><option value="100" '.$checklpp[100].'>'.$lang['perpage_100'].'</option></select>');
 
 	$postlistcount = C::t('forum_post')->count_by_invisible($posttableid, '-5');
 
@@ -105,8 +105,9 @@ if(!$operation) {
 		array('clean', 'recyclebinpost&operation=clean', 0)
 	));
 	/*search={"nav_recyclebinpost":"action=recyclebinpost","search":"action=recyclebinpost&operation=search"}*/
+	$staticurl = STATICURL;
 	echo <<<EOT
-<script type="text/javascript" src="static/js/calendar.js"></script>
+<script type="text/javascript" src="{$staticurl}js/calendar.js"></script>
 <script type="text/JavaScript">
 function page(number) {
 	$('rbsearchform').page.value=number;
@@ -247,18 +248,18 @@ function recyclebinpostshowpostlist($fid, $authors, $starttime, $endtime, $keywo
 			foreach(C::t('forum_attachment_n')->fetch_all_by_id('tid:'.$post['tid'], 'pid', $post['pid']) as $attach) {
 				$_G['setting']['attachurl'] = $attach['remote'] ? $_G['setting']['ftp']['attachurl'] : $_G['setting']['attachurl'];
 				$attach['url'] = $attach['isimage']
-					? " $attach[filename] (".sizecount($attach['filesize']).")<br /><br /><img src=\"".$_G['setting']['attachurl']."forum/$attach[attachment]\" onload=\"if(this.width > 100) {this.resized=true; this.width=100;}\">"
-					 : "<a href=\"".$_G['setting']['attachurl']."forum/$attach[attachment]\" target=\"_blank\">$attach[filename]</a> (".sizecount($attach['filesize']).")";
-				$post['message'] .= "<br /><br />$lang[attachment]: ".attachtype(fileext($attach['filename'])."\t").$attach['url'];
+					? " {$attach['filename']} (".sizecount($attach['filesize']).")<br /><br /><img src=\"".$_G['setting']['attachurl']."forum/{$attach['attachment']}\" onload=\"if(this.width > 100) {this.resized=true; this.width=100;}\">"
+					 : "<a href=\"".$_G['setting']['attachurl']."forum/{$attach['attachment']}\" target=\"_blank\">{$attach['filename']}</a> (".sizecount($attach['filesize']).")";
+				$post['message'] .= "<br /><br />{$lang['attachment']}: ".attachtype(fileext($attach['filename'])."\t").$attach['url'];
 			}
 		}
 
-		showtablerow("id=\"mod_$post[pid]_row1\"", array('rowspan="3" class="rowform threadopt" style="width:80px;"', 'class="threadtitle"'), array(
-			"<ul class=\"nofloat\"><li><input class=\"radio\" type=\"radio\" name=\"moderate[$post[pid]]\" id=\"mod_$post[pid]_1\" value=\"delete\" checked=\"checked\" /><label for=\"mod_$post[pid]_1\">$lang[delete]</label></li><li><input class=\"radio\" type=\"radio\" name=\"moderate[$post[pid]]\" id=\"mod_$post[pid]_2\" value=\"undelete\" /><label for=\"mod_$post[pid]_2\">$lang[undelete]</label></li><li><input class=\"radio\" type=\"radio\" name=\"moderate[$post[pid]]\" id=\"mod_$post[pid]_3\" value=\"ignore\" /><label for=\"mod_$post[pid]_3\">$lang[ignore]</label></li></ul>",
-			"<h3><a href=\"forum.php?mod=forumdisplay&fid=$post[fid]\" target=\"_blank\">".$forumlist[$post['fid']]['forumname']."</a> &raquo; <a href=\"forum.php?mod=viewthread&tid=$post[tid]\" target=\"_blank\">".$threadlist[$post['tid']]['tsubject']."</a>".($post['subject'] ? ' &raquo; '.$post['subject'] : '')."</h3><p><span class=\"bold\">$lang[author]:</span> <a href=\"home.php?mod=space&uid=$post[authorid]\" target=\"_blank\">$post[author]</a> &nbsp;&nbsp; <span class=\"bold\">$lang[time]:</span> $post[dateline] &nbsp;&nbsp; IP: $post[useip]</p>"
+		showtablerow("id=\"mod_{$post['pid']}_row1\"", array('rowspan="3" class="rowform threadopt" style="width:80px;"', 'class="threadtitle"'), array(
+			"<ul class=\"nofloat\"><li><input class=\"radio\" type=\"radio\" name=\"moderate[{$post['pid']}]\" id=\"mod_{$post['pid']}_1\" value=\"delete\" checked=\"checked\" /><label for=\"mod_{$post['pid']}_1\">{$lang['delete']}</label></li><li><input class=\"radio\" type=\"radio\" name=\"moderate[{$post['pid']}]\" id=\"mod_{$post['pid']}_2\" value=\"undelete\" /><label for=\"mod_{$post['pid']}_2\">{$lang['undelete']}</label></li><li><input class=\"radio\" type=\"radio\" name=\"moderate[{$post['pid']}]\" id=\"mod_{$post['pid']}_3\" value=\"ignore\" /><label for=\"mod_{$post['pid']}_3\">{$lang['ignore']}</label></li></ul>",
+			"<h3><a href=\"forum.php?mod=forumdisplay&fid={$post['fid']}\" target=\"_blank\">".$forumlist[$post['fid']]['forumname']."</a> &raquo; <a href=\"forum.php?mod=viewthread&tid={$post['tid']}\" target=\"_blank\">".$threadlist[$post['tid']]['tsubject']."</a>".($post['subject'] ? ' &raquo; '.$post['subject'] : '')."</h3><p><span class=\"bold\">{$lang['author']}:</span> <a href=\"home.php?mod=space&uid={$post['authorid']}\" target=\"_blank\">{$post['author']}</a> &nbsp;&nbsp; <span class=\"bold\">{$lang['time']}:</span> {$post['dateline']} &nbsp;&nbsp; IP: {$post['useip']}</p>"
 		));
-		showtablerow("id=\"mod_$post[pid]_row2\"", 'colspan="2" style="padding: 10px; line-height: 180%;"', '<div style="overflow: auto; overflow-x: hidden; max-height:120px; height:auto !important; height:120px; word-break: break-all;">'.$post['message'].'</div>');
-		showtablerow("id=\"mod_$post[pid]_row3\"", 'class="threadopt threadtitle" colspan="2"', "$lang[isanonymous]: ".($post['anonymous'] ? $lang['yes'] : $lang['no'])." &nbsp;&nbsp; $lang[ishtmlon]: ".($post['htmlon'] ? $lang['yes'] : $lang['no']));
+		showtablerow("id=\"mod_{$post['pid']}_row2\"", 'colspan="2" style="padding: 10px; line-height: 180%;"', '<div style="overflow: auto; overflow-x: hidden; max-height:120px; height:auto !important; height:120px; word-break: break-all;">'.$post['message'].'</div>');
+		showtablerow("id=\"mod_{$post['pid']}_row3\"", 'class="threadopt threadtitle" colspan="2"', "{$lang['isanonymous']}: ".($post['anonymous'] ? $lang['yes'] : $lang['no'])." &nbsp;&nbsp; {$lang['ishtmlon']}: ".($post['htmlon'] ? $lang['yes'] : $lang['no']));
 	}
 	return true;
 }

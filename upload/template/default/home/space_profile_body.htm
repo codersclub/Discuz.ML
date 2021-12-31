@@ -3,12 +3,12 @@
 	<div class="pbm mbm bbda cl">
 		<h2 class="mbn">
 			{$space[username]}
-			<!--{if $_G['ols'][$space[uid]]}-->
+			<!--{if !empty($_G['ols'][$space[uid]])}-->
 				<span title="{lang online}" class="olicon vm"></span>&nbsp;
 			<!--{/if}-->
 			<span class="xw0">(UID: {$space[uid]}
-			<!--{eval $isfriendinfo = 'home_friend_info_'.$space['uid'].'_'.$_G[uid];}-->
-			<!--{if $_G[$isfriendinfo][note]}-->
+			<!--{eval $isfriendinfo = 'home_friend_info_'.$space['uid'].'_'.$_G['uid'];}-->
+			<!--{if !empty($_G[$isfriendinfo][note])}-->
 				, <span class="xg1">$_G[$isfriendinfo][note]</span>
 			<!--{/if}-->
 			)</span>
@@ -26,7 +26,7 @@
 			<!--{if $_G[setting][homepagestyle]}-->
 <!--vot-->		<li><em>{lang space_visits}: </em><strong class="xi1">$space[views]</strong></li>
 			<!--{/if}-->
-			<!--{if in_array($_G[adminid], array(1, 2))}-->
+			<!--{if in_array($_G['adminid'], array(1, 2))}-->
 <!--vot-->		<li><em>{lang email}: </em>$space[email]</li>
 			<!--{/if}-->
 <!--vot-->		<li><em>{lang email_status}: </em><!--{if $space[emailstatus] > 0}-->{lang profile_verified}<!--{else}-->{lang profile_no_verified}<!--{/if}--></li>
@@ -89,7 +89,7 @@
 		<p class="md_ctrl">
 			<a href="home.php?mod=medal">
 			<!--{loop $space['medals'] $medal}-->
-				<img src="{STATICURL}/image/common/$medal[image]" alt="$medal[name]" id="md_{$medal[medalid]}" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_{$medal[medalid]}_menu', 'pos':'12!'});" />
+				<img src="$medal['image']" alt="$medal['name']" id="md_{$medal['medalid']}" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_{$medal['medalid']}_menu', 'pos':'12!'});" />
 			<!--{/loop}-->
 			</a>
 		</p>
@@ -132,7 +132,7 @@
 		<!--{/loop}-->
 	</div>
 <!--{/if}-->
-<!--{if $groupcount}-->
+<!--{if !empty($groupcount)}-->
 	<div class="pbm mbm bbda cl">
 		<h2 class="mbn">{lang joined_group}</h2>
 		<!--{loop $usergrouplist $key $value}-->
@@ -143,7 +143,7 @@
 <div class="pbm mbm bbda cl">
 	<h2 class="mbn">{lang active_profile}</h2>
 	<ul>
-<!--vot-->	<!--{if $space[adminid]}--><li><em class="xg1">{lang management_team}:&nbsp;&nbsp;</em><span style="color:{$space[admingroup][color]}"><a href="home.php?mod=spacecp&ac=usergroup&gid=$space[adminid]" target="_blank">{$space[admingroup][grouptitle]}</a></span> {$space[admingroup][icon]}</li><!--{/if}-->
+<!--vot-->	<!--{if $space[adminid] > 0}--><li><em class="xg1">{lang management_team}:&nbsp;&nbsp;</em><span style="color:{$space[admingroup][color]}"><a href="home.php?mod=spacecp&ac=usergroup&gid=$space[adminid]" target="_blank">{$space[admingroup][grouptitle]}</a></span> {$space[admingroup][icon]}</li><!--{/if}-->
 <!--vot-->	<li><em class="xg1">{lang usergroup}:&nbsp;&nbsp;</em><span style="color:{$space[group][color]}"{if $upgradecredit !== false} class="xi2" onmouseover="showTip(this)" tip="{lang credits}: $space[credits], {lang thread_groupupgrade}: $upgradecredit {lang credits}"{/if}><a href="home.php?mod=spacecp&ac=usergroup&gid=$space[groupid]" target="_blank">{$space[group][grouptitle]}</a></span> {$space[group][icon]} <!--{if !empty($space['groupexpiry'])}-->&nbsp;{lang group_useful_life}:&nbsp;<!--{date($space[groupexpiry], 'Y-m-d H:i')}--><!--{/if}--></li>
 <!--vot-->	<!--{if $space[extgroupids]}--><li><em class="xg1">{lang group_expiry_type_ext}:&nbsp;&nbsp;</em>$space[extgroupids]</li><!--{/if}-->
 	</ul>
@@ -151,7 +151,7 @@
 <!--vot-->	<!--{if $space[oltime] && !$_G['setting']['sessionclose']}--><li><em>{lang online_time}:</em> $space[oltime] {lang hours}</li><!--{/if}-->
 <!--vot-->	<li><em>{lang regdate}:</em> $space[regdate]</li>
 <!--vot-->	<li><em>{lang last_visit}:</em> $space[lastvisit]</li>
-		<!--{if $_G[uid] == $space[uid] || $_G[group][allowviewip]}-->
+		<!--{if $_G[uid] == $space[uid] || !empty($_G[group][allowviewip])}-->
 <!--vot-->	<li><em>{lang register_ip}:</em>$ space[regip]:$space[regport] - $space[regip_loc]</li>
 <!--vot-->	<li><em>{lang last_visit_ip}:</em> $space[lastip] - $space[lastip_loc]</li>
 		<!--{/if}-->
@@ -215,7 +215,7 @@
 					{lang crime_customstatus}
 				<!--{/if}-->
 			</td>
-			<td><!--{date($crime[dateline])}--></td>
+			<td><!--{date($crime['dateline'])}--></td>
 			<td>$crime[reason]</td>
 			<td><a href="home.php?mod=space&uid=$crime[operatorid]" target="_blank">$crime[operator]</a></td>
 		</tr>

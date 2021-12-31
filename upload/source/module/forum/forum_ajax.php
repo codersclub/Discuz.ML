@@ -64,7 +64,6 @@ if($_GET['action'] == 'checkusername') {
 		if(empty($invite['fuid']) && (empty($invite['endtime']) || $_G['timestamp'] < $invite['endtime'])) {
 			$result['uid'] = $invite['uid'];
 			$result['id'] = $invite['id'];
-			$result['appid'] = $invite['appid'];
 		}
 	}
 	if(empty($result)) {
@@ -114,12 +113,12 @@ if($_GET['action'] == 'checkusername') {
 	$count = 0;
 	if($_GET['aids']) {
 		foreach($_GET['aids'] as $aid) {
-			$attach = C::t('forum_attachment_n')->fetch('aid:'.$aid, $aid);
+			$attach = C::t('forum_attachment_n')->fetch_attachment('aid:'.$aid, $aid);
 			if($attach && ($attach['pid'] && $attach['pid'] == $_GET['pid'] && $_G['uid'] == $attach['uid'])) {
 				updatecreditbyaction('postattach', $attach['uid'], array(), '', -1, 1, $_G['fid']);
 			}
 			if($attach && ($attach['pid'] && $attach['pid'] == $_GET['pid'] && $_G['uid'] == $attach['uid'] || $_G['forum']['ismoderator'] || !$attach['pid'] && $_G['uid'] == $attach['uid'])) {
-				C::t('forum_attachment_n')->delete('aid:'.$aid, $aid);
+				C::t('forum_attachment_n')->delete_attachment('aid:'.$aid, $aid);
 				C::t('forum_attachment')->delete($aid);
 				dunlink($attach);
 				$count++;
@@ -180,7 +179,7 @@ if($_GET['action'] == 'checkusername') {
 	include template('common/footer_ajax');
 } elseif($_GET['action'] == 'getimage') {
 	$_GET['aid'] = intval($_GET['aid']);
-	$image = C::t('forum_attachment_n')->fetch('aid:'.$_GET['aid'], $_GET['aid'], 1);
+	$image = C::t('forum_attachment_n')->fetch_attachment('aid:'.$_GET['aid'], $_GET['aid'], 1);
 	include template('common/header_ajax');
 	if($image['aid']) {
 		echo '<img src="'.getforumimg($image['aid'], 1, 300, 300, 'fixnone').'" id="image_'.$image['aid'].'" onclick="insertAttachimgTag(\''.$image['aid'].'\')" width="'.($image['width'] < 110 ? $image['width'] : 110).'" cwidth="'.($image['width'] < 300 ? $image['width'] : 300).'" />';
@@ -196,7 +195,7 @@ if($_GET['action'] == 'checkusername') {
 			$tid = intval($_GET['tid']);
 			$pid = intval($_GET['pid']);
 		} else {
-			$threadimage = C::t('forum_attachment_n')->fetch('aid:'.$aid, $aid);
+			$threadimage = C::t('forum_attachment_n')->fetch_attachment('aid:'.$aid, $aid);
 			$tid = $threadimage['tid'];
 			$pid = $threadimage['pid'];
 		}
@@ -269,7 +268,7 @@ if($_GET['action'] == 'checkusername') {
 	$fid = intval($_GET['fid']);
 	$time = intval($_GET['time']);
 
-	if(!$_GET['uncheck']) {
+	if(!getgpc('uncheck')) {
 		$foruminfo = C::t('forum_forum')->fetch($fid);
 		$lastpost_str = $foruminfo['lastpost'];
 		if($lastpost_str) {
@@ -334,18 +333,18 @@ if($_GET['action'] == 'checkusername') {
 				$thread['highlight'] = '';
 			}
 			$target = $thread['isgroup'] == 1 || $thread['forumstick'] ? ' target="_blank"' : ' onclick="atarget(this)"';
-			if(in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
+			if(is_array($_G['setting']['rewritestatus']) && in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
 				$thread['threadurl'] = '<a href="'.rewriteoutput('forum_viewthread', 1, '', $thread['tid'], 1, '', '').'"'.$thread['highlight'].$target.'class="s xst">'.$thread['subject'].'</a>';
 			} else {
 				$thread['threadurl'] = '<a href="forum.php?mod=viewthread&amp;tid='.$thread['tid'].'"'.$thread['highlight'].$target.'class="s xst">'.$thread['subject'].'</a>';
 			}
-			if(in_array($thread['displayorder'], array(1, 2, 3, 4))) {
+			if(is_array($_G['setting']['rewritestatus']) && in_array($thread['displayorder'], array(1, 2, 3, 4))) {
 				$thread['id'] = 'stickthread_'.$thread['tid'];
 			} else {
 				$thread['id'] = 'normalthread_'.$thread['tid'];
 			}
 			$thread['threadurl'] = $thread['threadtype'].$thread['threadsort'].$thread['threadurl'];
-			if(in_array('home_space', $_G['setting']['rewritestatus'])) {
+			if(is_array($_G['setting']['rewritestatus']) && in_array('home_space', $_G['setting']['rewritestatus'])) {
 				$thread['authorurl'] = '<a href="'.rewriteoutput('home_space', 1, '', $thread['authorid'], '', '').'">'.$thread['author'].'</a>';
 				$thread['lastposterurl'] = '<a href="'.rewriteoutput('home_space', 1, '', '', rawurlencode($thread['lastposter']), '').'">'.$thread['lastposter'].'</a>';
 			} else {
@@ -417,13 +416,13 @@ if($_GET['action'] == 'checkusername') {
 					$attach['attachment'] = $attach['attachdir'] . $upload->get_target_filename('forum').'.'.$attach['extension'];
 					$attach['target'] = getglobal('setting/attachdir').'./forum/'.$attach['attachment'];
 
-					if(!@$fp = fopen($attach['target'], 'wb')) {
-						continue;
-					} else {
-						flock($fp, 2);
-						fwrite($fp, $content);
+					$fp = fopen($attach['target'], 'cb');
+					if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, $content) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
+						flock($fp, LOCK_UN);
 						fclose($fp);
+						continue;
 					}
+
 					if(!$upload->get_image_info($attach['target'])) {
 						@unlink($attach['target']);
 						continue;
@@ -482,7 +481,7 @@ if($_GET['action'] == 'checkusername') {
 	print <<<EOF
 		<script type="text/javascript">
 			parent.ATTACHORIMAGE = 1;
-			parent.updateDownImageList('$_GET[message]');
+			parent.updateDownImageList('{$_GET['message']}');
 		</script>
 EOF;
 	dexit();
@@ -492,7 +491,7 @@ EOF;
 	if(!$s) {
 		require_once libfile('function/attachment');
 		$s = getattachexif($_GET['aid']);
-		C::t('forum_attachment_exif')->insert($_GET['aid'], $s);
+		C::t('forum_attachment_exif')->insert_exif($_GET['aid'], $s);
 	}
 	include template('common/header_ajax');
 	echo $s;
@@ -540,7 +539,7 @@ EOF;
 	$tid = intval($_GET['tid']);
 	$fid = intval($_GET['fid']);
 	if($tid) {
-		$thread = C::t('forum_thread')->fetch($tid);
+		$thread = C::t('forum_thread')->fetch_thread($tid);
 		if($thread && !getstatus($thread['status'], 2)) {
 			$list = C::t('forum_post')->fetch_all_by_tid('tid:'.$tid, $tid, true, 'DESC', 0, 10, null, 0);
 			loadcache('smilies');
@@ -562,8 +561,8 @@ EOF;
 	$tid = intval($_GET['tid']);
 	$fid = intval($_GET['fid']);
 	$pid = intval($_GET['pid']);
-	$thread = C::t('forum_thread')->fetch($tid);
-	$post = C::t('forum_post')->fetch($thread['posttableid'], $pid);
+	$thread = C::t('forum_thread')->fetch_thread($tid);
+	$post = C::t('forum_post')->fetch_post($thread['posttableid'], $pid);
 	include template('forum/ajax_followpost');
 } elseif($_GET['action'] == 'quickclear') {
 	$uid = intval($_GET['uid']);
@@ -621,9 +620,9 @@ EOF;
 	$flag = intval($_GET['flag']);
 	$feed = $thread = array();
 	if($tid) {
-		$thread = C::t('forum_thread')->fetch($tid);
+		$thread = C::t('forum_thread')->fetch_thread($tid);
 		if($flag) {
-			$post = C::t('forum_post')->fetch($thread['posttableid'], $pid);
+			$post = C::t('forum_post')->fetch_post($thread['posttableid'], $pid);
 			require_once libfile('function/discuzcode');
 			require_once libfile('function/followcode');
 			$post['message'] = followcode($post['message'], $tid, $pid);
@@ -702,10 +701,12 @@ EOF;
 					}
 				}
 			}
-			C::t('common_setting')->update($funkey, $funstatus);
+			C::t('common_setting')->update_setting($funkey, $funstatus);
 
 			$setting[$funkey] = $funstatus;
-			include libfile('function/cache');
+			if(!function_exists('updatecache')) {
+				include libfile('function/cache');
+			}
 			updatecache('setting');
 		}
 		showmessage('do_success', dreferer(), array(), array('showdialog' => true, 'locationtime' => true));

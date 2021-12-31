@@ -25,32 +25,32 @@ if(!$operation) {
 		foreach(C::t('common_usergroup')->range_orderby_creditshigher() as $group) {
 			if($group['type'] == 'member') {
 
-				$membergroupoption .= "<option value=\"g{$group[groupid]}\">".addslashes($group['grouptitle'])."</option>";
+				$membergroupoption .= "<option value=\"g{$group['groupid']}\">".addslashes($group['grouptitle'])."</option>";
 
 				$membergroup .= showtablerow('', array('class="td25"', '', 'class="td23 lightfont"', 'class="td28"', 'class=td28'), array(
-					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[$group[groupid]]\" value=\"$group[groupid]\">",
-					"<input type=\"text\" class=\"txt\" size=\"12\" name=\"groupnew[$group[groupid]][grouptitle]\" value=\"$group[grouptitle]\">",
-					"(groupid:$group[groupid])",
-					"<input type=\"text\" class=\"txt\" size=\"6\" name=\"groupnew[$group[groupid]][creditshigher]\" value=\"$group[creditshigher]\" /> ~ <input type=\"text\" class=\"txt\" size=\"6\" name=\"groupnew[$group[groupid]][creditslower]\" value=\"$group[creditslower]\" disabled />",
-					"<input type=\"text\" class=\"txt\" size=\"2\" name=\"groupnew[$group[groupid]][stars]\" value=\"$group[stars]\">",
-					"<input type=\"text\" id=\"group_color_$group[groupid]_v\" class=\"left txt\" size=\"6\" name=\"groupnew[$group[groupid]][color]\" value=\"$group[color]\" onchange=\"updatecolorpreview('group_color_$group[groupid]')\"><input type=\"button\" id=\"group_color_$group[groupid]\"  class=\"colorwd\" onclick=\"group_color_$group[groupid]_frame.location='static/image/admincp/getcolor.htm?group_color_$group[groupid]|group_color_$group[groupid]_v';showMenu({'ctrlid':'group_color_$group[groupid]'})\" /><span id=\"group_color_$group[groupid]_menu\" style=\"display: none\"><iframe name=\"group_color_$group[groupid]_frame\" src=\"\" frameborder=\"0\" width=\"210\" height=\"148\" scrolling=\"no\"></iframe></span>",
-					"<input class=\"checkbox\" type=\"checkbox\" chkvalue=\"gmember\" value=\"$group[groupid]\" onclick=\"multiupdate(this)\" /><a href=\"".ADMINSCRIPT."?action=usergroups&operation=edit&id=$group[groupid]\" class=\"act\">$lang[edit]</a>".
-						"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=copy&source=$group[groupid]\" title=\"$lang[usergroups_copy_comment]\" class=\"act\">$lang[usergroups_copy]</a>".
-						"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=merge&source=$group[groupid]\" title=\"$lang[usergroups_merge_comment]\" class=\"act\">$lang[usergroups_merge_link]</a>"
+					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[{$group['groupid']}]\" value=\"{$group['groupid']}\">",
+					"<input type=\"text\" class=\"txt\" size=\"12\" name=\"groupnew[{$group['groupid']}][grouptitle]\" value=\"{$group['grouptitle']}\">",
+					"(groupid:{$group['groupid']})",
+					"<input type=\"text\" class=\"txt\" size=\"6\" name=\"groupnew[{$group['groupid']}][creditshigher]\" value=\"{$group['creditshigher']}\" /> ~ <input type=\"text\" class=\"txt\" size=\"6\" name=\"groupnew[{$group['groupid']}][creditslower]\" value=\"{$group['creditslower']}\" disabled />",
+					"<input type=\"text\" class=\"txt\" size=\"2\" name=\"groupnew[{$group['groupid']}][stars]\" value=\"{$group['stars']}\">",
+					"<input type=\"text\" id=\"group_color_{$group['groupid']}_v\" class=\"left txt\" size=\"6\" name=\"groupnew[{$group['groupid']}][color]\" value=\"{$group['color']}\" onchange=\"updatecolorpreview('group_color_{$group['groupid']}')\"><input type=\"button\" id=\"group_color_{$group['groupid']}\"  class=\"colorwd\" onclick=\"group_color_{$group['groupid']}_frame.location='static/image/admincp/getcolor.htm?group_color_{$group['groupid']}|group_color_{$group['groupid']}_v';showMenu({'ctrlid':'group_color_{$group['groupid']}'})\" /><span id=\"group_color_{$group['groupid']}_menu\" style=\"display: none\"><iframe name=\"group_color_{$group['groupid']}_frame\" src=\"\" frameborder=\"0\" width=\"210\" height=\"148\" scrolling=\"no\"></iframe></span>",
+					"<input class=\"checkbox\" type=\"checkbox\" chkvalue=\"gmember\" value=\"{$group['groupid']}\" onclick=\"multiupdate(this)\" /><a href=\"".ADMINSCRIPT."?action=usergroups&operation=edit&id={$group['groupid']}\" class=\"act\">{$lang['edit']}</a>".
+						"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=copy&source={$group['groupid']}\" title=\"{$lang['usergroups_copy_comment']}\" class=\"act\">{$lang['usergroups_copy']}</a>".
+						"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=merge&source={$group['groupid']}\" title=\"{$lang['usergroups_merge_comment']}\" class=\"act\">{$lang['usergroups_merge_link']}</a>"
 				), TRUE);
 			} elseif($group['type'] == 'system') {
 				$sysgroup .= showtablerow('', array('', 'class="td23 lightfont"', '', 'class="td28"'), array(
-					"<input type=\"text\" class=\"txt\" size=\"12\" name=\"group_title[$group[groupid]]\" value=\"$group[grouptitle]\">",
-					"(groupid:$group[groupid])",
+					"<input type=\"text\" class=\"txt\" size=\"12\" name=\"group_title[{$group['groupid']}]\" value=\"{$group['grouptitle']}\">",
+					"(groupid:{$group['groupid']})",
 					$lang['usergroups_system_'.$group['groupid']],
-					"<input type=\"text\" class=\"txt\" size=\"2\"name=\"group_stars[$group[groupid]]\" value=\"$group[stars]\">",
-					"<input type=\"text\" id=\"group_color_$group[groupid]_v\" class=\"left txt\" size=\"6\"name=\"group_color[$group[groupid]]\" value=\"$group[color]\" onchange=\"updatecolorpreview('group_color_$group[groupid]')\"><input type=\"button\" id=\"group_color_$group[groupid]\"  class=\"colorwd\" onclick=\"group_color_$group[groupid]_frame.location='static/image/admincp/getcolor.htm?group_color_$group[groupid]|group_color_$group[groupid]_v';showMenu({'ctrlid':'group_color_$group[groupid]'})\" /><span id=\"group_color_$group[groupid]_menu\" style=\"display: none\"><iframe name=\"group_color_$group[groupid]_frame\" src=\"\" frameborder=\"0\" width=\"210\" height=\"148\" scrolling=\"no\"></iframe></span>",
-					"<input class=\"checkbox\" type=\"checkbox\" chkvalue=\"gsystem\" value=\"$group[groupid]\" onclick=\"multiupdate(this)\" /><a href=\"".ADMINSCRIPT."?action=usergroups&operation=edit&id=$group[groupid]\" class=\"act\">$lang[edit]</a>".
-						"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=copy&source=$group[groupid]\" title=\"$lang[usergroups_copy_comment]\" class=\"act\">$lang[usergroups_copy]</a>"
+					"<input type=\"text\" class=\"txt\" size=\"2\"name=\"group_stars[{$group['groupid']}]\" value=\"{$group['stars']}\">",
+					"<input type=\"text\" id=\"group_color_{$group['groupid']}_v\" class=\"left txt\" size=\"6\"name=\"group_color[{$group['groupid']}]\" value=\"{$group['color']}\" onchange=\"updatecolorpreview('group_color_{$group['groupid']}')\"><input type=\"button\" id=\"group_color_{$group['groupid']}\"  class=\"colorwd\" onclick=\"group_color_{$group['groupid']}_frame.location='static/image/admincp/getcolor.htm?group_color_{$group['groupid']}|group_color_{$group['groupid']}_v';showMenu({'ctrlid':'group_color_{$group['groupid']}'})\" /><span id=\"group_color_{$group['groupid']}_menu\" style=\"display: none\"><iframe name=\"group_color_{$group['groupid']}_frame\" src=\"\" frameborder=\"0\" width=\"210\" height=\"148\" scrolling=\"no\"></iframe></span>",
+					"<input class=\"checkbox\" type=\"checkbox\" chkvalue=\"gsystem\" value=\"{$group['groupid']}\" onclick=\"multiupdate(this)\" /><a href=\"".ADMINSCRIPT."?action=usergroups&operation=edit&id={$group['groupid']}\" class=\"act\">{$lang['edit']}</a>".
+						"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=copy&source={$group['groupid']}\" title=\"{$lang['usergroups_copy_comment']}\" class=\"act\">{$lang['usergroups_copy']}</a>"
 				), TRUE);
 			} elseif($group['type'] == 'special' && $group['radminid'] == '0') {
 
-				$specialgroupoption .= "<option value=\"g{$group[groupid]}\">".addslashes($group['grouptitle'])."</option>";
+				$specialgroupoption .= "<option value=\"g{$group['groupid']}\">".addslashes($group['grouptitle'])."</option>";
 
 				$sgroups[] = $group;
 				$sgroupids .= ','.$group['groupid'];
@@ -69,15 +69,15 @@ if(!$operation) {
 			$specifiedusers = "<style>#specifieduser span{width: 9em; height: 2em; float: left; overflow: hidden; margin: 2px;}</style><div id=\"specifieduser\">$specifiedusers</div>";
 
 			$sg = showtablerow('', array('class="td25"', '', 'class="td23 lightfont"', 'class="td28"'), array(
-				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[$group[groupid]]\" value=\"$group[groupid]\">",
-				"<input type=\"text\" class=\"txt\" size=\"12\" name=\"group_title[$group[groupid]]\" value=\"$group[grouptitle]\">",
-				"(groupid:$group[groupid])",
-				"<input type=\"text\" class=\"txt\" size=\"2\"name=\"group_stars[$group[groupid]]\" value=\"$group[stars]\">",
-				"<input type=\"text\" id=\"group_color_$group[groupid]_v\" class=\"left txt\" size=\"6\"name=\"group_color[$group[groupid]]\" value=\"$group[color]\" onchange=\"updatecolorpreview('group_color_$group[groupid]')\"><input type=\"button\" id=\"group_color_$group[groupid]\"  class=\"colorwd\" onclick=\"group_color_$group[groupid]_frame.location='static/image/admincp/getcolor.htm?group_color_$group[groupid]|group_color_$group[groupid]_v';showMenu({'ctrlid':'group_color_$group[groupid]'})\" /><span id=\"group_color_$group[groupid]_menu\" style=\"display: none\"><iframe name=\"group_color_$group[groupid]_frame\" src=\"\" frameborder=\"0\" width=\"210\" height=\"148\" scrolling=\"no\"></iframe></span>",
-				"<input class=\"checkbox\" type=\"checkbox\" chkvalue=\"gspecial\" value=\"$group[groupid]\" onclick=\"multiupdate(this)\" /><a href=\"".ADMINSCRIPT."?action=usergroups&operation=edit&id=$group[groupid]\" class=\"act\">$lang[edit]</a>".
-					"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=copy&source=$group[groupid]\" title=\"$lang[usergroups_copy_comment]\" class=\"act\">$lang[usergroups_copy]</a>".
-					"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=merge&source=$group[groupid]\" title=\"$lang[usergroups_merge_comment]\" class=\"act\">$lang[usergroups_merge_link]</a>".
-					"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=viewsgroup&sgroupid=$group[groupid]\" onclick=\"ajaxget(this.href, 'sgroup_$group[groupid]', 'sgroup_$group[groupid]');doane(event);\" class=\"act\">$lang[view]</a> &nbsp;"
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[{$group['groupid']}]\" value=\"{$group['groupid']}\">",
+				"<input type=\"text\" class=\"txt\" size=\"12\" name=\"group_title[{$group['groupid']}]\" value=\"{$group['grouptitle']}\">",
+				"(groupid:{$group['groupid']})",
+				"<input type=\"text\" class=\"txt\" size=\"2\"name=\"group_stars[{$group['groupid']}]\" value=\"{$group['stars']}\">",
+				"<input type=\"text\" id=\"group_color_{$group['groupid']}_v\" class=\"left txt\" size=\"6\"name=\"group_color[{$group['groupid']}]\" value=\"{$group['color']}\" onchange=\"updatecolorpreview('group_color_{$group['groupid']}')\"><input type=\"button\" id=\"group_color_{$group['groupid']}\"  class=\"colorwd\" onclick=\"group_color_{$group['groupid']}_frame.location='static/image/admincp/getcolor.htm?group_color_{$group['groupid']}|group_color_{$group['groupid']}_v';showMenu({'ctrlid':'group_color_{$group['groupid']}'})\" /><span id=\"group_color_{$group['groupid']}_menu\" style=\"display: none\"><iframe name=\"group_color_{$group['groupid']}_frame\" src=\"\" frameborder=\"0\" width=\"210\" height=\"148\" scrolling=\"no\"></iframe></span>",
+				"<input class=\"checkbox\" type=\"checkbox\" chkvalue=\"gspecial\" value=\"{$group['groupid']}\" onclick=\"multiupdate(this)\" /><a href=\"".ADMINSCRIPT."?action=usergroups&operation=edit&id={$group['groupid']}\" class=\"act\">{$lang['edit']}</a>".
+					"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=copy&source={$group['groupid']}\" title=\"{$lang['usergroups_copy_comment']}\" class=\"act\">{$lang['usergroups_copy']}</a>".
+					"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=merge&source={$group['groupid']}\" title=\"{$lang['usergroups_merge_comment']}\" class=\"act\">{$lang['usergroups_merge_link']}</a>".
+					"<a href=\"".ADMINSCRIPT."?action=usergroups&operation=viewsgroup&sgroupid={$group['groupid']}\" onclick=\"ajaxget(this.href, 'sgroup_{$group['groupid']}', 'sgroup_{$group['groupid']}');doane(event);\" class=\"act\">{$lang['view']}</a> &nbsp;"
 			), TRUE);
 			$sg .= showtablerow('', array('colspan="5" id="sgroup_'.$group['groupid'].'" style="display: none"'), array(''), TRUE);
 
@@ -96,14 +96,14 @@ if(!$operation) {
 var rowtypedata = [
 	[
 		[1,'', 'td25'],
-		[2,'<input type="text" class="txt" size="12" name="groupnewadd[grouptitle][]"><select name="groupnewadd[projectid][]"><option value="">$lang[usergroups_project]</option><option value="0">------------</option>$membergroupoption</select>'],
+		[2,'<input type="text" class="txt" size="12" name="groupnewadd[grouptitle][]"><select name="groupnewadd[projectid][]"><option value="">{$lang['usergroups_project']}</option><option value="0">------------</option>$membergroupoption</select>'],
 		[1,'<input type="text" class="txt" size="6" name="groupnewadd[creditshigher][]">', 'td28'],
 		[1,'<input type="text" class="txt" size="2" name="groupnewadd[stars][]">', 'td28'],
 		[2,'<input type="text" class="txt" size="6" name="groupnewadd[color][]">']
 	],
 	[
 		[1,'', 'td25'],
-		[2,'<input type="text" class="txt" size="12" name="grouptitlenewadd[]"><select name="groupnewaddproject[]"><option value="">$lang[usergroups_project]</option><option value="0">------------</option>$specialgroupoption</select>'],
+		[2,'<input type="text" class="txt" size="12" name="grouptitlenewadd[]"><select name="groupnewaddproject[]"><option value="">{$lang['usergroups_project']}</option><option value="0">------------</option>$specialgroupoption</select>'],
 		[1,'<input type="text" class="txt" size="2" name="starsnewadd[]">', 'td28'],
 		[2,'<input type="text" class="txt" size="6" name="colornewadd[]">']
 	]
@@ -224,7 +224,7 @@ EOT;
 					cpmsg('usergroups_update_credits_duplicate', '', 'error');
 				}
 				if(in_array($id, $groupnewkeys)) {
-					C::t('common_usergroup')->update($id, array('grouptitle' => $group['grouptitle'], 'creditshigher' => $creditshighernew, 'creditslower' => $creditslowernew, 'stars' => $group['stars'], 'color' => $group['color']), 'member');
+					C::t('common_usergroup')->update_usergroup($id, array('grouptitle' => $group['grouptitle'], 'creditshigher' => $creditshighernew, 'creditslower' => $creditslowernew, 'stars' => $group['stars'], 'color' => $group['color']), 'member');
 					C::t('forum_onlinelist')->update_by_groupid($id, array('title' => $group['grouptitle']));
 
 				} elseif($group['grouptitle'] && $group['creditshigher'] != '') {
@@ -266,22 +266,22 @@ EOT;
 						foreach($query as $row) {
 							$upforumperm = array();
 							if($row['viewperm'] && in_array($projectid, explode("\t", $row['viewperm']))) {
-								$upforumperm['viewperm'] = "$row[viewperm]$newgid\t";
+								$upforumperm['viewperm'] = "{$row['viewperm']}$newgid\t";
 							}
 							if($row['postperm'] && in_array($projectid, explode("\t", $row['postperm']))) {
-								$upforumperm['postperm'] = "$row[postperm]$newgid\t";
+								$upforumperm['postperm'] = "{$row['postperm']}$newgid\t";
 							}
 							if($row['replyperm'] && in_array($projectid, explode("\t", $row['replyperm']))) {
-								$upforumperm['replyperm'] = "$row[replyperm]$newgid\t";
+								$upforumperm['replyperm'] = "{$row['replyperm']}$newgid\t";
 							}
 							if($row['getattachperm'] && in_array($projectid, explode("\t", $row['getattachperm']))) {
-								$upforumperm['getattachperm'] = "$row[getattachperm]$newgid\t";
+								$upforumperm['getattachperm'] = "{$row['getattachperm']}$newgid\t";
 							}
 							if($row['postattachperm'] && in_array($projectid, explode("\t", $row['postattachperm']))) {
-								$upforumperm['postattachperm'] = "$row[postattachperm]$newgid\t";
+								$upforumperm['postattachperm'] = "{$row['postattachperm']}$newgid\t";
 							}
 							if($row['postimageperm'] && in_array($projectid, explode("\t", $row['postimageperm']))) {
-								$upforumperm['postimageperm'] = "$row[postimageperm]$newgid\t";
+								$upforumperm['postimageperm'] = "{$row['postimageperm']}$newgid\t";
 							}
 							if($upforumperm) {
 								C::t('forum_forumfield')->update($row['fid'], $upforumperm);
@@ -292,7 +292,7 @@ EOT;
 			}
 
 			if($_GET['delete']) {
-				C::t('common_usergroup')->delete($_GET['delete'], 'member');
+				C::t('common_usergroup')->delete_usergroup($_GET['delete'], 'member');
 				C::t('common_usergroup_field')->delete($_GET['delete']);
 				C::t('forum_onlinelist')->delete_by_groupid($_GET['delete']);
 				deletegroupcache($_GET['delete']);
@@ -334,22 +334,22 @@ EOT;
 							foreach($query as $row) {
 								$upforumperm = array();
 								if($row['viewperm'] && in_array($projectid, explode("\t", $row['viewperm']))) {
-									$upforumperm['viewperm'] = "$row[viewperm]$newgid\t";
+									$upforumperm['viewperm'] = "{$row['viewperm']}$newgid\t";
 								}
 								if($row['postperm'] && in_array($projectid, explode("\t", $row['postperm']))) {
-									$upforumperm['postperm'] = "$row[postperm]$newgid\t";
+									$upforumperm['postperm'] = "{$row['postperm']}$newgid\t";
 								}
 								if($row['replyperm'] && in_array($projectid, explode("\t", $row['replyperm']))) {
-									$upforumperm['replyperm'] = "$row[replyperm]$newgid\t";
+									$upforumperm['replyperm'] = "{$row['replyperm']}$newgid\t";
 								}
 								if($row['getattachperm'] && in_array($projectid, explode("\t", $row['getattachperm']))) {
-									$upforumperm['getattachperm'] = "$row[getattachperm]$newgid\t";
+									$upforumperm['getattachperm'] = "{$row['getattachperm']}$newgid\t";
 								}
 								if($row['postattachperm'] && in_array($projectid, explode("\t", $row['postattachperm']))) {
-									$upforumperm['postattachperm'] = "$row[postattachperm]$newgid\t";
+									$upforumperm['postattachperm'] = "{$row['postattachperm']}$newgid\t";
 								}
 								if($row['postimageperm'] && in_array($projectid, explode("\t", $row['postimageperm']))) {
-									$upforumperm['postimageperm'] = "$row[postimageperm]$newgid\t";
+									$upforumperm['postimageperm'] = "{$row['postimageperm']}$newgid\t";
 								}
 								if($upforumperm) {
 									C::t('forum_forumfield')->update($row['fid'], $upforumperm);
@@ -363,14 +363,14 @@ EOT;
 			if(is_array($_GET['group_title'])) {
 				foreach($_GET['group_title'] as $id => $title) {
 					if(!$_GET['delete'][$id]) {
-						C::t('common_usergroup')->update($id, array('grouptitle' => $_GET['group_title'][$id], 'stars' => $_GET['group_stars'][$id], 'color' => $_GET['group_color'][$id]));
+						C::t('common_usergroup')->update_usergroup($id, array('grouptitle' => $_GET['group_title'][$id], 'stars' => $_GET['group_stars'][$id], 'color' => $_GET['group_color'][$id]));
 						C::t('forum_onlinelist')->update_by_groupid($id, array('title' => $_GET['group_title'][$id]));
 					}
 				}
 			}
 
 			if(($ids = $_GET['delete'])) {
-				C::t('common_usergroup')->delete($ids, 'special');
+				C::t('common_usergroup')->delete_usergroup($ids, 'special');
 				C::t('forum_onlinelist')->delete_by_groupid($ids);
 				C::t('common_admingroup')->delete($ids);
 				$newgroupid = C::t('common_usergroup')->fetch_new_groupid();
@@ -381,7 +381,7 @@ EOT;
 		} elseif($_GET['type'] == 'system') {
 			if(is_array($_GET['group_title'])) {
 				foreach($_GET['group_title'] as $id => $title) {
-					C::t('common_usergroup')->update($id, array('grouptitle' => $_GET['group_title'][$id], 'stars' => $_GET['group_stars'][$id], 'color' => $_GET['group_color'][$id]));
+					C::t('common_usergroup')->update_usergroup($id, array('grouptitle' => $_GET['group_title'][$id], 'stars' => $_GET['group_stars'][$id], 'color' => $_GET['group_color'][$id]));
 					C::t('forum_onlinelist')->update_by_groupid($id, array('title' => $_GET['group_title'][$id]));
 				}
 			}
@@ -424,7 +424,7 @@ EOT;
 			$gids = &$_GET['multi'];
 		}
 	}
-	if(count($_GET['multi']) == 1) {
+	if(!empty($_GET['multi']) && is_array($_GET['multi']) && count($_GET['multi']) == 1) {
 		if ($_GET['multi'][0]) {
 			$gids[0] = $_GET['multi'][0];
 		}
@@ -436,13 +436,13 @@ EOT;
 		$grouplist = "<select name=\"id\" style=\"width:150px\">\n";
 		$conditions = !empty($_GET['anchor']) && $_GET['anchor'] == 'system' ? 'special' : '';
 		foreach(C::t('common_usergroup')->fetch_all_by_type($conditions) as $group) {
-			$grouplist .= "<option value=\"$group[groupid]\">$group[grouptitle]</option>\n";
+			$grouplist .= "<option value=\"{$group['groupid']}\">{$group['grouptitle']}</option>\n";
 		}
 		$grouplist .= '</select>';
 		cpmsg('usergroups_edit_nonexistence', 'action=usergroups&operation=edit'.(!empty($_GET['highlight']) ? "&highlight={$_GET['highlight']}" : '').(!empty($_GET['highlight']) ? "&anchor={$_GET['anchor']}" : ''), 'form', array(), $grouplist);
 	}
 
-	$group_data = C::t('common_usergroup')->fetch_all($gids);
+	$group_data = C::t('common_usergroup')->fetch_all_usergroup($gids);
 	$groupfield_data = C::t('common_usergroup_field')->fetch_all($gids);
 	if(!$group_data) {
 		cpmsg('usergroups_nonexistence', '', 'error');
@@ -456,12 +456,12 @@ EOT;
 		}
 	}
 
-	$allowthreadplugin = $_G['setting']['threadplugins'] ? C::t('common_setting')->fetch('allowthreadplugin', true) : array();
+	$allowthreadplugin = $_G['setting']['threadplugins'] ? C::t('common_setting')->fetch_setting('allowthreadplugin', true) : array();
 	if(!submitcheck('detailsubmit')) {
 
 		$grouplist = $groupcount = array();
 		foreach(C::t('common_usergroup')->range_orderby_credit() as $ggroup) {
-			$checked = $_GET['id'] == $ggroup['groupid'] || in_array($ggroup['groupid'], $_GET['multi']);
+			$checked = $_GET['id'] == $ggroup['groupid'] || (is_array($_GET['multi']) && in_array($ggroup['groupid'], $_GET['multi']));
 			$ggroup['type'] = $ggroup['type'] == 'special' && $ggroup['radminid'] ? 'specialadmin' : $ggroup['type'];
 			$groupcount[$ggroup['type']]++;
 			$grouplist[$ggroup['type']] .= '<input class="left checkbox ck" chkvalue="'.$ggroup['type'].'" name="multi[]" value="'.$ggroup['groupid'].'" type="checkbox" '.($checked ? 'checked="checked" ' : '').'/>'.
@@ -561,7 +561,7 @@ EOT;
 				} else {
 					$groupicon = $_G['setting']['attachurl'].'common/'.$group['icon'].'?'.random(6);
 				}
-				$groupiconhtml = '<label><input type="checkbox" class="checkbox" name="deleteicon[$group[groupid]]" value="yes" /> '.$lang['delete'].'</label><br /><img src="'.$groupicon.'" />';
+				$groupiconhtml = '<label><input type="checkbox" class="checkbox" name="deleteicon['.$group['groupid'].']" value="yes" /> '.$lang['delete'].'</label><br /><img src="'.$groupicon.'" />';
 			}
 			showsetting('usergroups_icon', 'iconnew', $group['icon'], 'filetext', '', 0, $groupiconhtml);
 		}
@@ -580,6 +580,7 @@ EOT;
 		showsetting('usergroups_edit_basic_domain_length', 'domainlengthnew', $group['domainlength'], 'text');
 		showsetting('usergroups_edit_basic_invisible', 'allowinvisiblenew', $group['allowinvisible'], 'radio');
 		showsetting('usergroups_edit_basic_allowtransfer', 'allowtransfernew', $group['allowtransfer'], 'radio');
+		showsetting('usergroups_edit_basic_allowfollow', 'allowfollownew', $group['allowfollow'], 'radio');
 		showsetting('usergroups_edit_basic_allowsendpm', 'allowsendpmnew', $group['allowsendpm'], 'radio', 0, 1);
 		showsetting('usergroups_edit_pm_sendpmmaxnum', 'allowsendpmmaxnumnew', $group['allowsendpmmaxnum'], 'text');
 		showsetting('usergroups_edit_pm_sendallpm', 'allowsendallpmnew', $group['allowsendallpm'], 'radio');
@@ -592,6 +593,8 @@ EOT;
 			array(3, $lang['usergroups_edit_post_url_enable'])
 		)), $group['allowposturl'], 'mradio');
 		showsetting('usergroups_edit_basic_allow_statdata', 'allowstatdatanew', $group['allowstatdata'], 'radio');
+		showsetting('usergroups_edit_basic_allowavatarupload', 'allowavataruploadnew', $group['allowavatarupload'], 'radio');
+		showsetting('usergroups_edit_basic_allowviewprofile', 'allowviewprofilenew', $group['allowviewprofile'], 'radio');
 		showsetting('usergroups_edit_basic_search_post', 'allowfulltextnew', $group['allowsearch'] & 32, 'radio');
 		$group['allowsearch'] = $group['allowsearch'] > 128 ? $group['allowsearch'] - 128 : $group['allowsearch'];
 		showsetting('usergroups_edit_basic_search', array('allowsearchnew', array(
@@ -689,9 +692,9 @@ EOT;
 		showsetting('usergroups_edit_post_allowcommentpost', array('allowcommentpostnew', array(
 			$lang['usergroups_edit_post_allowcommentpost_firstpost'],
 			$lang['usergroups_edit_post_allowcommentpost_reply'],
-		)), $group['allowcommentpost'], 'binmcheckbox', !in_array(1, $_G['setting']['allowpostcomment']));
-		showsetting('usergroups_edit_post_allowcommentreply', 'allowcommentreplynew', $group['allowcommentreply'], 'radio', !in_array(2, $_G['setting']['allowpostcomment']));
-		showsetting('usergroups_edit_post_allowcommentitem', 'allowcommentitemnew', $group['allowcommentitem'], 'radio', !in_array(1, $_G['setting']['allowpostcomment']));
+		)), $group['allowcommentpost'], 'binmcheckbox', (!is_array($_G['setting']['allowpostcomment']) || !in_array(1, $_G['setting']['allowpostcomment'])));
+		showsetting('usergroups_edit_post_allowcommentreply', 'allowcommentreplynew', $group['allowcommentreply'], 'radio', (!is_array($_G['setting']['allowpostcomment']) || !in_array(2, $_G['setting']['allowpostcomment'])));
+		showsetting('usergroups_edit_post_allowcommentitem', 'allowcommentitemnew', $group['allowcommentitem'], 'radio', (!is_array($_G['setting']['allowpostcomment']) || !in_array(1, $_G['setting']['allowpostcomment'])));
 		showsetting('usergroups_edit_post_allowat', 'allowatnew', $group['allowat'], 'text');
 		showsetting('usergroups_edit_post_allowsave', 'allowsavenew', $group['allowsave'], 'radio');
 		showsetting('usergroups_edit_post_allowsavereply', 'allowsavereplynew', $group['allowsavereply'], 'radio');
@@ -862,13 +865,12 @@ EOT;
 		showsetting('usergroups_edit_home_allow_share', 'allowsharenew', $group['allowshare'], 'radio', '', 1);
 		showsetting('usergroups_edit_home_allow_share_mod', 'allowsharemodnew', $group['allowsharemod'], 'radio');
 		showtagfooter('tbody');
+		showsetting('usergroups_edit_home_allow_comment', 'allowcommentnew', $group['allowcomment'], 'radio', '', 1);
+		showsetting('usergroups_edit_home_allow_comment_mod', 'allowcommentmodnew', $group['allowcommentmod'], 'radio');
+		showtagfooter('tbody');
 		showsetting('usergroups_edit_home_allow_poke', 'allowpokenew', $group['allowpoke'], 'radio');
 		showsetting('usergroups_edit_home_allow_friend', 'allowfriendnew', $group['allowfriend'], 'radio');
 		showsetting('usergroups_edit_home_allow_click', 'allowclicknew', $group['allowclick'], 'radio');
-		showsetting('usergroups_edit_home_allow_comment', 'allowcommentnew', $group['allowcomment'], 'radio');
-		showsetting('usergroups_edit_home_allow_myop', 'allowmyopnew', $group['allowmyop'], 'radio');
-		showsetting('usergroups_edit_home_allow_video_photo_ignore', 'videophotoignorenew', $group['videophotoignore'], 'radio');
-		showsetting('usergroups_edit_home_allow_view_video_photo', 'allowviewvideophotonew', $group['allowviewvideophoto'], 'radio');
 		showsetting('usergroups_edit_home_allow_space_diy_html', 'allowspacediyhtmlnew', $group['allowspacediyhtml'], 'radio');
 		showsetting('usergroups_edit_home_allow_space_diy_bbcode', 'allowspacediybbcodenew', $group['allowspacediybbcode'], 'radio');
 		showsetting('usergroups_edit_home_allow_space_diy_imgcode', 'allowspacediyimgcodenew', $group['allowspacediyimgcode'], 'radio');
@@ -903,6 +905,8 @@ EOT;
 		showtableheader();
 		showtitle('usergroups_edit_portal');
 		showsetting('usergroups_edit_portal_allow_comment_article', 'allowcommentarticlenew', $group['allowcommentarticle'], 'text');
+		showsetting('usergroups_edit_portal_allow_comment_article_mod', 'allowcommentarticlemodnew', $group['allowcommentarticlemod'], 'radio');
+		showtagfooter('tbody');
 		showsetting('usergroups_edit_portal_allow_post_article', 'allowpostarticlenew', $group['allowpostarticle'], 'radio', '', 1);
 		showsetting('usergroups_edit_portal_allow_down_local_img', 'allowdownlocalimgnew', $group['allowdownlocalimg'], 'radio');
 		showsetting('usergroups_edit_portal_allow_post_article_moderate', 'allowpostarticlemodnew', $group['allowpostarticlemod'], 'radio');
@@ -1033,6 +1037,7 @@ EOT;
 			'grouptitle' => $_GET['grouptitlenew'],
 			'radminid' => $radminidnew,
 			'allowvisit' => $_GET['allowvisitnew'],
+			'allowfollow' => $_GET['allowfollownew'],
 			'allowsendpm' => $_GET['allowsendpmnew'],
 			'maxinvitenum' => $_GET['maxinvitenumnew'],
 			'maxinviteday' => $maxinvitedaynew,
@@ -1043,7 +1048,7 @@ EOT;
 		if(!$multiset) {
 			$dataarr['system'] = $systemnew;
 			if($_FILES['iconnew']) {
-				$data = array('extid' => "$_GET[id]");
+				$data = array('extid' => "{$_GET['id']}");
 				$iconnew = upload_icon_banner($data, $_FILES['iconnew'], 'usergroup_icon');
 			} else {
 				$iconnew = $_GET['iconnew'];
@@ -1060,7 +1065,7 @@ EOT;
 				$dataarr['icon'] = '';
 			}
 		}
-		C::t('common_usergroup')->update($_GET['id'], $dataarr);
+		C::t('common_usergroup')->update_usergroup($_GET['id'], $dataarr);
 
 		if($pluginsetting) {
 			foreach($_GET['pluginnew'] as $pluginvarid => $value) {
@@ -1140,15 +1145,16 @@ EOT;
 			'allowfriend' => $_GET['allowfriendnew'],
 			'allowclick' => $_GET['allowclicknew'],
 			'allowcomment' => $_GET['allowcommentnew'],
+			'allowcommentmod' => $_GET['allowcommentmodnew'],
 			'allowcommentarticle' => intval($_GET['allowcommentarticlenew']),
-			'allowmyop' => $_GET['allowmyopnew'],
+			'allowcommentarticlemod' => $_GET['allowcommentarticlemodnew'],
 			'allowcommentpost' => bindec(intval($_GET['allowcommentpostnew'][2]).intval($_GET['allowcommentpostnew'][1])),
-			'videophotoignore' => $_GET['videophotoignorenew'],
-			'allowviewvideophoto' => $_GET['allowviewvideophotonew'],
 			'allowspacediyhtml' => $_GET['allowspacediyhtmlnew'],
 			'allowspacediybbcode' => $_GET['allowspacediybbcodenew'],
 			'allowspacediyimgcode' => $_GET['allowspacediyimgcodenew'],
 			'allowstatdata' => $_GET['allowstatdatanew'],
+			'allowavatarupload' => $_GET['allowavataruploadnew'],
+			'allowviewprofile' => $_GET['allowviewprofilenew'],
 			'allowpostarticle' => $_GET['allowpostarticlenew'],
 			'allowpostarticlemod' => $_GET['allowpostarticlemodnew'],
 			'allowbuildgroup' => $_GET['allowbuildgroupnew'],
@@ -1180,9 +1186,9 @@ EOT;
 		C::t('common_usergroup_field')->update($_GET['id'], $dataarr);
 
 		if($_G['setting']['threadplugins']) {
-			$allowthreadplugin = C::t('common_setting')->fetch('allowthreadplugin', true);
+			$allowthreadplugin = C::t('common_setting')->fetch_setting('allowthreadplugin', true);
 			$allowthreadplugin[$_GET['id']] = $_GET['allowthreadpluginnew'];
-			C::t('common_setting')->update('allowthreadplugin', $allowthreadplugin);
+			C::t('common_setting')->update_setting('allowthreadplugin', $allowthreadplugin);
 		}
 		if(empty($row['single'])) {
 			foreach($row as $key => $value) {
@@ -1224,7 +1230,7 @@ EOT;
 		$groupselect = array();
 		foreach(C::t('common_usergroup')->fetch_all_not(array(6, 7), true) as $group) {
 			$group['type'] = $group['type'] == 'special' && $group['radminid'] ? 'specialadmin' : $group['type'];
-			$groupselect[$group['type']] .= "<option value=\"$group[groupid]\">$group[grouptitle]</option>\n";
+			$groupselect[$group['type']] .= "<option value=\"{$group['groupid']}\">{$group['grouptitle']}</option>\n";
 		}
 		$groupselect = '<optgroup label="'.$lang['usergroups_member'].'">'.$groupselect['member'].'</optgroup>'.
 			($groupselect['special'] ? '<optgroup label="'.$lang['usergroups_special'].'">'.$groupselect['special'].'</optgroup>' : '').
@@ -1258,15 +1264,14 @@ EOT;
 	} else {
 
 		$gids = $comma = '';
-		if(is_array($_GET['target']) && count($_GET['target'])) {
+		if(!empty($_GET['target']) && is_array($_GET['target']) && count($_GET['target'])) {
 			foreach($_GET['target'] as $key => $gid) {
 				$_GET['target'][$key] = intval($gid);
 				if(empty($_GET['target'][$key]) || $_GET['target'][$key] == $source) {
 					unset($_GET['target'][$key]);
 				}
 			}
-		}
-		if(empty($_GET['target'])) {
+		} else {
 			cpmsg('usergroups_copy_target_invalid', '', 'error');
 		}
 
@@ -1322,7 +1327,7 @@ EOT;
 		$groupselect = array();
 		foreach(C::t('common_usergroup')->fetch_all_not(array(6, 7), true) as $group) {
 			$group['type'] = $group['type'] == 'special' && $group['radminid'] ? 'specialadmin' : $group['type'];
-			$groupselect[$group['type']] .= "<option value=\"$group[groupid]\">$group[grouptitle]</option>\n";
+			$groupselect[$group['type']] .= "<option value=\"{$group['groupid']}\">{$group['grouptitle']}</option>\n";
 		}
 		$groupselect = '<optgroup label="'.$lang['usergroups_member'].'">'.$groupselect['member'].'</optgroup>'.
 			($groupselect['special'] ? '<optgroup label="'.$lang['usergroups_special'].'">'.$groupselect['special'].'</optgroup>' : '');
@@ -1358,7 +1363,7 @@ EOT;
 		}
 
 		if($_GET['delete_source']) {
-			C::t('common_usergroup')->delete($source, $sourceusergroup['type']);
+			C::t('common_usergroup')->delete_usergroup($source, $sourceusergroup['type']);
 			C::t('common_usergroup_field')->delete($source);
 			C::t('forum_onlinelist')->delete_by_groupid($source);
 		}
@@ -1373,7 +1378,7 @@ EOT;
 
 function array_flip_keys($arr) {
 	$arr2 = array();
-	$arrkeys = @array_keys($arr);
+	$arrkeys = is_array($arr) ? array_keys($arr) : array();
 	$first = current(array_slice($arr, 0, 1));
 	if($first) {
 		foreach($first as $k=>$v) {
@@ -1395,7 +1400,7 @@ function deletegroupcache($groupidarray) {
 			}
 		}
 		if(!empty($cachenames)) {
-			C::t('common_syscache')->delete($cachenames);
+			C::t('common_syscache')->delete_syscache($cachenames);
 		}
 	}
 }

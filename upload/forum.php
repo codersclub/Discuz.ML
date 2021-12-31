@@ -57,10 +57,6 @@ if(C::app()->var['mod'] == 'group') {
 C::app()->cachelist = $cachelist;
 C::app()->init();
 
-if(!$_G['setting']['forumstatus'] && !in_array($mod, array('ajax', 'misc', 'modcp'))) {
-	showmessage('forum_status_off');
-}
-
 /*vot*/	settings_localize(); // Localize Navigation & Settings
 
 loadforum();
@@ -68,6 +64,10 @@ loadforum();
 set_rssauth();
 
 runhooks();
+
+if(!$_G['setting']['forumstatus'] && !in_array($mod, array('ajax', 'misc', 'modcp'))) {
+	showmessage('forum_status_off');
+}
 
 $navtitle = str_replace('{bbname}', $_G['setting']['bbname'], $_G['setting']['seotitle']['forum']);
 $_G['setting']['threadhidethreshold'] = 1;

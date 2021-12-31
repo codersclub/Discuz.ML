@@ -15,6 +15,12 @@ require_once DISCUZ_ROOT.'./source/plugin/wechat/wsq.class.php';
 require_once DISCUZ_ROOT . './source/plugin/wechat/setting.class.php';
 WeChatSetting::menu();
 
+$setting = C::t('common_setting')->fetch_all(array('mobilewechat'));
+$setting = (array)unserialize($setting['mobilewechat']);
+if(!$setting['wsq_sitetoken']) {
+    cpmsg(lang('plugin/wechat', 'wsq_api_register_close'), '', 'error');
+}
+
 showtips(lang('plugin/wechat', 'discuzqr_tips'));
 
 $data = wsq::stat();
@@ -60,7 +66,7 @@ jq(function () {
         xAxis: {categories: [$xas]},
         yAxis: {min:0, title: {text: ''}, plotLines: [{value: 0, width: 1, color: '#808080'}]},
         plotOptions: {line: {dataLabels: { enabled: false},enableMouseTracking: true}},
-        series: [{name: 'UV', data: [$uvs]}, {name: 'PV', data: [$pvs]}, {name: '$lang[stat_newthread]',data: [$newthreads]}, {name: '$lang[stat_reply]',data: [$replys]}, {name: '$lang[stat_share]',data: [$shares]}, {name: '$lang[stat_reflow]',data: [$reflows]}]
+        series: [{name: 'UV', data: [$uvs]}, {name: 'PV', data: [$pvs]}, {name: '{$lang['stat_newthread']}',data: [$newthreads]}, {name: '{$lang['stat_reply']}',data: [$replys]}, {name: '{$lang['stat_share']}',data: [$shares]}, {name: '{$lang['stat_reflow']}',data: [$reflows]}]
     });
 });
 </script>

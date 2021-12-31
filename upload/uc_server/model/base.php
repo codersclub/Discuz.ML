@@ -1,10 +1,10 @@
 <?php
 
 /*
-[UCenter] (C)2001-2099 Comsenz Inc.
-This is NOT a freeware, use is subject to license terms
+	[UCenter] (C)2001-2099 Comsenz Inc.
+	This is NOT a freeware, use is subject to license terms
 
-$Id: base.php 1167 2014-11-03 03:06:21Z hypowang $
+	$Id: base.php 1167 2014-11-03 03:06:21Z hypowang $
 	Modified by Valery Votintsev, codersclub.org
 */
 
@@ -36,28 +36,33 @@ class base {
 	var $onlineip;
 	var $db;
 	var $view;
-	var $user = array();
-	var $settings = array();
-	var $cache = array();
-	var $app = array();
-	var $lang = array();
-	var $input = array();
+	var $settings;
+	var $cache;
+	var $_CACHE;
+	var $app;
+	var $user;
+	var $lang;
+	var $input;
 
 	function __construct() {
 		$this->base();
 	}
 
 	function base() {
-		$this->init_var();
-		$this->init_db();
-		$this->init_cache();
-		$this->init_app();
-		$this->init_user();
-		$this->init_template();
-		$this->init_note();
-		$this->init_mail();
+		require_once UC_ROOT.'./model/var.php';
+		base_var::bind($this);
+		if(empty($this->time)) {
+			$this->init_var();
+			$this->init_db();
+			$this->init_cache();
+			$this->init_app();
+			$this->init_user();
+			$this->init_template();
+			$this->init_note();
+			$this->init_mail();
 //vot: Force specified charset!!!
 @header('Content-Type: text/html; charset='.UC_CHARSET);
+		}
 	}
 
 	function init_var() {
@@ -69,7 +74,7 @@ class base {
 			if(defined('UC_IPGETTER') && !empty(constant('UC_IPGETTER'))) {
 				$s = defined('UC_IPGETTER_'.constant('UC_IPGETTER')) && is_array(constant('UC_IPGETTER_'.constant('UC_IPGETTER'))) ? constant('UC_IPGETTER_'.constant('UC_IPGETTER')) : array();
 				$c = 'ucip_getter_'.constant('UC_IPGETTER');
-				require_once UC_ROOT.'./lib/ucip/'.$c.'.class.php';
+				require_once UC_ROOT.'./lib/'.$c.'.class.php';
 				$r = $c::get($s);
 				$this->onlineip = ucip::validate_ip($r) ? $r : $this->onlineip;
 			} else if (isset($_SERVER['HTTP_CLIENT_IP']) && ucip::validate_ip($_SERVER['HTTP_CLIENT_IP'])) {
@@ -120,11 +125,7 @@ class base {
 	}
 
 	function init_db() {
-		if(function_exists("mysql_connect")) {
-			require_once UC_ROOT.'lib/db.class.php';
-		} else {
-			require_once UC_ROOT.'lib/dbi.class.php';
-		}
+		require_once UC_ROOT.'lib/dbi.class.php';
 		$this->db = new ucserver_db();
 		$this->db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, UC_DBCHARSET, UC_DBCONNECT, UC_DBTABLEPRE);
 	}
@@ -172,6 +173,7 @@ class base {
 
 	function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
+		// 动态密钥长度, 通过动态密钥可以让相同的 string 和 key 生成不同的密文, 提高安全性
 		$ckey_length = 4;
 /*vot*/		// random key length value 0-32;
 /*vot*/		// Add random key, the ciphertext can make no law, even if exactly the same text and key, encrypt the result will be different each time, increasing the difficulty is.
@@ -179,24 +181,31 @@ class base {
 /*vot*/		// When this value is 0, not generate random keys
 
 		$key = md5($key ? $key : UC_KEY);
+		// a参与加解密, b参与数据验证, c进行密文随机变换
 		$keya = md5(substr($key, 0, 16));
 		$keyb = md5(substr($key, 16, 16));
 		$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
 
+		// 参与运算的密钥组
 		$cryptkey = $keya.md5($keya.$keyc);
 		$key_length = strlen($cryptkey);
 
+		// 前 10 位用于保存时间戳验证数据有效性, 10 - 26位保存 $keyb , 解密时通过其验证数据完整性
+		// 如果是解码的话会从第 $ckey_length 位开始, 因为密文前 $ckey_length 位保存动态密匙以保证解密正确
 		$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
 		$string_length = strlen($string);
 
 		$result = '';
 		$box = range(0, 255);
 
+		// 产生密钥簿
 		$rndkey = array();
 		for($i = 0; $i <= 255; $i++) {
 			$rndkey[$i] = ord($cryptkey[$i % $key_length]);
 		}
 
+		// 打乱密钥簿, 增加随机性
+		// 类似 AES 算法中的 SubBytes 步骤
 		for($j = $i = 0; $i < 256; $i++) {
 			$j = ($j + $box[$i] + $rndkey[$i]) % 256;
 			$tmp = $box[$i];
@@ -204,6 +213,7 @@ class base {
 			$box[$j] = $tmp;
 		}
 
+		// 从密钥簿得出密钥进行异或，再转成字符 
 		for($a = $j = $i = 0; $i < $string_length; $i++) {
 			$a = ($a + 1) % 256;
 			$j = ($j + $box[$a]) % 256;
@@ -214,12 +224,16 @@ class base {
 		}
 
 		if($operation == 'DECODE') {
-			if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
+			// 这里按照算法对数据进行验证, 保证数据有效性和完整性
+			// $result 01 - 10 位是时间, 如果小于当前时间或为 0 则通过
+			// $result 10 - 26 位是加密时的 $keyb , 需要和入参的 $keyb 做比对
+			if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
 				return substr($result, 26);
 			} else {
 				return '';
 			}
 		} else {
+			// 把动态密钥保存在密文里, 并用 base64 编码保证传输时不被破坏
 			return $keyc.str_replace('=', '', base64_encode($result));
 		}
 
@@ -283,7 +297,8 @@ class base {
 			} else {
 				require_once UC_ROOT."model/$model.php";
 			}
-			eval('$_ENV[$model] = new '.$model.'model($base);');
+			$modelname = $model.'model';
+			$_ENV[$model] = new $modelname($base);
 		}
 		return $_ENV[$model];
 	}
@@ -375,17 +390,17 @@ class base {
 	}
 
 	function &cache($cachefile) {
-		static $_CACHE = array();
-		if(!isset($_CACHE[$cachefile])) {
+		if(!isset($this->_CACHE[$cachefile])) {
 			$cachepath = UC_DATADIR.'./cache/'.$cachefile.'.php';
 			if(!file_exists($cachepath)) {
 				$this->load('cache');
 				$_ENV['cache']->updatedata($cachefile);
 			} else {
 				include_once $cachepath;
+				$this->_CACHE[$cachefile] = $_CACHE[$cachefile];
 			}
 		}
-		return $_CACHE[$cachefile];
+		return $this->_CACHE[$cachefile];
 	}
 
 	function input($k) {

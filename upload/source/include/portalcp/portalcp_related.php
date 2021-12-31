@@ -93,12 +93,12 @@ if($op == 'manual') {
 	}
 } else {
 	$count = 0;
-	$query = C::t('portal_article_title')->range(0, 50);
+	$query = C::t('portal_article_title')->range_title(0, 50);
 	foreach($query as $value) {
 		$articlelist[] = $value;
 		$count++;
 	}
 }
-$category = category_showselect('portal', 'searchcate', false, $_GET[searchcate]);
+$category = category_showselect('portal', 'searchcate', false, $_GET['searchcate']);
 include_once template("portal/portalcp_related_article");
 ?>

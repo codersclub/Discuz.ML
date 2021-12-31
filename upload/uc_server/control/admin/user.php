@@ -75,8 +75,12 @@ class control extends adminbase {
 					$this->user['username'] = $username;
 					if($isfounder == 1) {
 						$this->user['username'] = 'UCenterAdministrator';
-						$md5password =  md5(md5($password).UC_FOUNDERSALT);
-						if($md5password == UC_FOUNDERPW) {
+						if($_ENV['user']->verify_password($password, UC_FOUNDERPW, UC_FOUNDERSALT)) {
+							// 密码升级作为附属流程, 失败与否不影响登录操作
+							$chkstatus = $_ENV['user']->upgrade_founderpw($password, UC_FOUNDERPW, UC_FOUNDERSALT);
+							if($chkstatus === 2) {
+								$this->writelog('admin_pw_upgrade');
+							}
 							$username = $this->user['username'];
 							$this->view->sid = $this->sid_encode($this->user['username']);
 						} else {
@@ -85,8 +89,9 @@ class control extends adminbase {
 					} else {
 						$admin = $this->db->fetch_first("SELECT a.uid,m.username,m.salt,m.password FROM ".UC_DBTABLEPRE."admins a LEFT JOIN ".UC_DBTABLEPRE."members m USING(uid) WHERE a.username='$username'");
 						if(!empty($admin)) {
-							$md5password =  md5(md5($password).$admin['salt']);
-							if($admin['password'] == $md5password) {
+							if($_ENV['user']->verify_password($password, $admin['password'], $admin['salt'])) {
+								// 密码升级作为附属流程, 失败与否不影响登录操作
+								$_ENV['user']->upgrade_password($username, $password, $admin['password'], $admin['salt']);
 								$this->view->sid = $this->sid_encode($admin['username']);
 							} else {
 								$errorcode = UC_LOGIN_ERROR_ADMIN_PW;
@@ -204,36 +209,48 @@ class control extends adminbase {
 		if($srchname) {
 			$sqladd .= " AND username LIKE '$srchname%'";
 //vot			$this->view->assign('srchname', $srchname);
+		} else {
+			$this->view->assign('srchname', '');
 		}
 		if($srchuid) {
 /*vot*/			$sqladd .= " AND uid='".intval($srchuid)."'";
 //vot			$this->view->assign('srchuid', $srchuid);
+		} else {
+			$this->view->assign('srchuid', '');
 		}
 		if($srchemail) {
 			$sqladd .= " AND email='$srchemail'";
 //vot			$this->view->assign('srchemail', $srchemail);
+		} else {
+			$this->view->assign('srchemail', '');
 		}
 		if($srchregdatestart) {
 			$urladd .= '&srchregdatestart='.$srchregdatestart;
 			$sqladd .= " AND regdate>'".strtotime($srchregdatestart)."'";
 //vot			$this->view->assign('srchregdatestart', $srchregdatestart);
+		} else {
+			$this->view->assign('srchregdatestart', '');
 		}
 		if($srchregdateend) {
 			$urladd .= '&srchregdateend='.$srchregdateend;
 			$sqladd .= " AND regdate<'".strtotime($srchregdateend)."'";
 //vot			$this->view->assign('srchregdateend', $srchregdateend);
+		} else {
+			$this->view->assign('srchregdateend', '');
 		}
 		if($srchregip) {
 			$urladd .= '&srchregip='.$srchregip;
 			$sqladd .= " AND regip='$srchregip'";
 //vot			$this->view->assign('srchregip', $srchregip);
+		} else {
+			$this->view->assign('srchregip', '');
 		}
 		$sqladd = $sqladd ? " WHERE 1 $sqladd" : '';
 
 		$num = $_ENV['user']->get_total_num($sqladd);
 		$userlist = $_ENV['user']->get_list($_GET['page'], UC_PPP, $num, $sqladd);
 		foreach($userlist as $key => $user) {
-			$user['smallavatar'] = '<img src="avatar.php?uid='.$user['uid'].'&size=small">';
+			$user['smallavatar'] = '<img src="avatar.php?uid='.$user['uid'].'&size=small" class="avt">';
 			$userlist[$key] = $user;
 		}
 		$multipage = $this->page($num, UC_PPP, $_GET['page'], 'admin.php?m=user&a=ls&srchname='.$srchname.$urladd);
@@ -265,9 +282,14 @@ class control extends adminbase {
 			$newusername = getgpc('newusername', 'P');
 			$password = getgpc('password', 'P');
 			$email = getgpc('email', 'P');
+			$secmobicc = intval(getgpc('secmobicc', 'P'));
+			$secmobile = intval(getgpc('secmobile', 'P'));
 			$delavatar = getgpc('delavatar', 'P');
 			$rmrecques = getgpc('rmrecques', 'P');
 			$sqladd = '';
+			if(!empty($secmobile) && ($status = $_ENV['user']->check_secmobileexists($secmobicc, $secmobile, $username)) > 0) {
+				$this->message('admin_mobile_exists');
+			}
 			if($username != $newusername) {
 				if($_ENV['user']->get_user_by_username($newusername)) {
 					$this->message('admin_user_exists');
@@ -278,9 +300,8 @@ class control extends adminbase {
 				$_ENV['note']->add('renameuser', 'uid='.$uid.'&oldusername='.urlencode($username).'&newusername='.urlencode($newusername));
 			}
 			if($password) {
-				$salt = substr(uniqid(rand()), 0, 6);
-				$orgpassword = $password;
-				$password = md5(md5($password).$salt);
+				$salt = '';
+				$password = $_ENV['user']->generate_password($password);
 				$sqladd .= "password='$password', salt='$salt', ";
 				$this->load('note');
 				$_ENV['note']->add('updatepw', 'username='.urlencode($username).'&password=');
@@ -292,8 +313,11 @@ class control extends adminbase {
 				$_ENV['user']->delete_useravatar($uid);
 			}
 
-			$this->db->query("UPDATE ".UC_DBTABLEPRE."members SET $sqladd email='$email' WHERE uid='$uid'");
+			$this->db->query("UPDATE ".UC_DBTABLEPRE."members SET $sqladd email='$email', secmobicc='$secmobicc', secmobile='$secmobile' WHERE uid='$uid'");
 			$status = $this->db->errno() ? -1 : 1;
+			if($status > 0) {
+				$_ENV['user']->user_log($uid, 'edituser', 'uid='.$uid.'&email='.urlencode($email).'&secmobicc='.urlencode($secmobicc).'&secmobile='.urlencode($secmobile));
+			}
 		}
 		$user = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members WHERE uid='$uid'");
 		$user['bigavatar'] = '<img src="avatar.php?uid='.$uid.'&size=big">';
@@ -337,6 +361,10 @@ class control extends adminbase {
 		} else {
 			return 1;
 		}
+	}
+
+	function _check_secmobile($secmobicc, $secmobile, $username = '') {
+		return $_ENV['user']->check_secmobileexists($secmobicc, $secmobile, $username);
 	}
 
 	function _format_userlist(&$userlist) {

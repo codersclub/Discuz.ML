@@ -22,11 +22,11 @@ if($_GET['op'] == 'requote') {
 	$article = C::t('portal_article_title')->fetch($aid);
 
 	if($article['idtype'] == 'tid') {
-		$comment = C::t('forum_post')->fetch('tid:'.$article['id'], $cid);
+		$comment = C::t('forum_post')->fetch_post('tid:'.$article['id'], $cid);
 		$comment['uid'] = $comment['authorid'];
 		$comment['username'] = $comment['author'];
 	} elseif($article['idtype'] == 'blogid') {
-		$comment = C::t('home_comment')->fetch($cid);
+		$comment = C::t('home_comment')->fetch_comment($cid);
 		$comment['uid'] = $comment['authorid'];
 		$comment['username'] = $comment['author'];
 	} else {
@@ -56,8 +56,8 @@ if($_GET['op'] == 'requote') {
 	if(submitcheck('editsubmit')) {
 		$message = getstr($_POST['message'], 0, 0, 0, 2);
 		if(strlen($message) < 2) showmessage('content_is_too_short');
-		$message = censor($message);
-		if(censormod($message)) {
+		$message = censor($message, NULL, FALSE, FALSE);
+		if(censormod($message) || $_G['group']['allowcommentarticlemod']) {
 			$comment_status = 1;
 		} else {
 			$comment_status = 0;
@@ -86,7 +86,7 @@ if($_GET['op'] == 'requote') {
 		C::t('portal_comment')->delete($cid);
 		$idtype = in_array($comment['idtype'], array('aid' ,'topicid')) ? $comment['idtype'] : 'aid';
 		$tablename = $idtype == 'aid' ? 'portal_article_count' : 'portal_topic';
-		C::t($tablename)->increase($comment[id], array('commentnum' => -1));
+		C::t($tablename)->increase($comment['id'], array('commentnum' => -1));
 		showmessage('do_success', dreferer());
 	}
 

@@ -1,4 +1,19 @@
+# [destructive change warning]
+## The code merged on February 27 needs to be followed up with database modification, otherwise the user can log in for the first time, but cannot log in for the second time!
+After updating the code of stock X3.5 website, you need to execute `ALTER TABLE uc_members MODIFY COLUMN password varchar(255) NOT NULL DEFAULT '', MODIFY COLUMN salt varchar(20) NOT NULL DEFAULT ''`; to upgrade the database ( uc_ may be pre_ucenter_ , refer to your site settings for details), otherwise the website will be unable to log in, please be aware!
+
+
 ## It is not recommended for ordinary users to download the code of this branch
+## It is strongly recommended that users without technical skills do not use 3.5 in a non-test environment! ! !
+#### Blindly using and updating Discuz! X3.5 (version in development) in the production environment may cause
+#### - Data loss due to database structure error
+#### - Some functional failures prevent the website from running
+#### - Vulnerabilities leading to compromised servers
+#### Including but not limited to the above series of serious consequences, please be sure to confirm that your technical ability is sufficient to control 3.5 before using it!
+
+## The database structure of 3.5 will be updated at any time. Existing users must synchronize all changes in the sql file in the installation directory every time they update the code!
+
+
 
 ### **3.5 Release Notes**
 
@@ -117,9 +132,11 @@ It is recommended that all sites be configured with Redis caching enabled.
 
 Due to the functional limitations of memcached, the above enhancements are not valid for memcached.
 
+**Tips: Because PHP considers that objects that implement the ArrayAccess interface are not completely equivalent to arrays, the original plug-ins or secondary development sites that rely on array_key_exists should cancel their dependence on it. **
+
 #### 4. Support all function switches including forums
 
-3.5 now supports the switch of almost all functions, the administrator can even close the forum and only use the portal. Please click [PR291](https://gitee.com/ComsenzDiscuz/DiscuzX/pulls/291) for related modifications
+3.5 now supports the switch of almost all functions, the administrator can even close the forum and only use the portal. Please click [PR291](https://gitee.com/Discuz/DiscuzX/pulls/291) for related modifications
 
 
 #### 5. Other changes
@@ -132,46 +149,65 @@ Due to the functional limitations of memcached, the above enhancements are not v
 #### 6. Minimum operating environment requirements
 
 **Security Tips: We strongly recommend that you use software such as operating systems, web servers, PHP, databases, and memory caches that are still within the support period of the development team. Software beyond the support period may bring unknown security risks to your site . **
+**Performance tip: When MySQL< 5.7 or MariaDB < 10.2, InnoDB performance drops more severely, so sites running on production systems should upgrade to MySQL >= 5.7 or MariaDB >= 10.2 to avoid this problem. **
 
-| Software name | Version requirements | Other matters |
-| ------- | ------- | ------------------------------ |
-| PHP | >= 5.6 | Depends on cURL extension, GD extension |
-| MySQL | >= 5.7 | If MariaDB is used, the version number must be >= 10.2 |
+| Software Name | Minimum Requirements | Recommended Version | Other Matters |
+| ------- | ---------- | ----------- | --------------------------------------------------------------------- |
+| PHP | >= 5.6.0 | 7.3 - 8.1 | Depends on XML extension, JSON extension, GD extension >= 1.0, PHP 8.0 - 8.1 is testing support |
+| MySQL | >= 5.5.3 | 5.7 - 8.0 | For MariaDB, the recommended version is >= 10.2 |
 
 ### **Introduction**
 
-Discuz! X official Git (https://gitee.com/ComsenzDiscuz/DiscuzX), Simplified Chinese UTF8 version
+Discuz! X official Git (https://gitee.com/Discuz/DiscuzX), Simplified Chinese UTF8 version
 
 ### **Statement**
-You may fork the code from this site, but **redistribution** in the development of any derivative, modified or third-party versions of the product as a whole or any part thereof is **prohibited** without permission
+You may fork the code of this site, but **redistribution** for **redistribution** in the development of any derivative, modified or third-party version based on the whole or any part of this product is **prohibited** without permission
+
+### **DxGit Forker Exchange Group**
+Friends who participate in the PR of this project can private message [@zoewho](https://gitee.com/zoewho), [@DiscuzX](https://gitee.com/3dming) and provide QQ number for review. After passing, join the DxGit Forker QQ group to communicate with the developer team.
+
+[Click to see how to submit code to this project](https://gitee.com/Discuz/DiscuzX/wikis/%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81% E5%88%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE?sort_id=3466289)
+
+### **Release Version Download**
+[Click to download release version](https://gitee.com/Discuz/DiscuzX/attach_files)
+|
+[Alternate download address](https://www.dismall.com/thread-73-1-1.html)
+
+*Thanks to [DiscuzFans](https://gitee.com/3dming/DiscuzL/attach_files) for providing packaged versions of simplified GBK, simplified UTF8, and traditional UTF8*
+
+### **Free Assisted Installation**
+
+To make it easier for webmasters to build websites based on Discuz! X, [Discuz! Application Center] (https://addon.dismall.com/) provides free installation of Discuz! X for webmasters. For details, please contact QQ 1453650
+
+
+### **Installation and upgrade tutorial**
+Users who use the release version, check the readme.html file in the installation package, users who use the original code cloud version, check: [Installation Tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%AE%89 %E8%A3%85%E6%95%99%E7%A8%8B?sort_id=3466132), [upgrade tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%8D%87% E7%BA%A7%E6%96%B9%E6%B3%95?sort_id=9978)
+
 
 ### **Related Sites**
  
-[Discuz! Official Site](https://discuz.com)
+[Discuz! X Official Forum](https://www.discuz.net/)
 |
-[Discuz! X Official Forum](https://www.discuz.net)
+[Discuz! App Center](https://addon.dismall.com/)
 |
-[Discuz! Q Official Forum](https://discuz.chat)
+[Discuz! Open Platform](https://open.dismall.com/)
+|
+[Discuz! Development Documentation](https://open.dismall.com/?ac=document&page=dev)
+
  
-[DNSPod](https://www.dnspod.cn)
+[Discuz! Q Official Site](https://discuz.com/)
+|
+[Discuz! Q Official Forum](https://discuz.chat/)
+|
+[DNSPod](https://www.dnspod.cn/)
 |
 [Trademark Registration](https://tm.cloud.tencent.com/)
 |
 [Domain name registration](https://dnspod.cloud.tencent.com/)
 
-
-
 ### **Thanks Fans**
 
 [DiscuzFans](https://gitee.com/sinlody/DiscuzFans) [DiscuzLite](https://gitee.com/3dming/DiscuzL)
-
-### **Upgrade method**
-[Click to read](https://gitee.com/ComsenzDiscuz/DiscuzX/wikis/%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95?sort_id=9978)
-
-### **Release Version Download**
-[Click to download](https://gitee.com/3dming/DiscuzL/attach_files)
-
-*Thanks to DiscuzFans for providing the packaged versions of simplified GBK, simplified UTF8, and traditional UTF8*
 
 ### **Daily Build Download**
 
@@ -180,9 +216,9 @@ Discuz! X provides daily builds of 3.4 (stable version) and 3.5 (unstable versio
 [Click to open](https://www.discuz.net/daily/)
 
 ### **friendly reminder**
-- This site will no longer publish other encoded versions, please download and transcode by yourself through [transcoding tool](https://gitee.com/ComsenzDiscuz/DiscuzX/attach_files), or download the packaged version authorized by this site
+- This site will no longer publish other encoded versions, please download and transcode by yourself through [transcoding tool](https://gitee.com/Discuz/DiscuzX/attach_files), or download the [package version] authorized by this site ( https://gitee.com/3dming/DiscuzL/attach_files)
 - The Release version number of the Git version will no longer be updated, but the packaged version of DiscuzFans will be updated
-- Since X3.2 and X3.3 have been stopped, X3.4 vulnerabilities and related fixes are also applicable to X3.2 and X3.3 versions, please keep an eye on [update list](https://gitee.com/ComsenzDiscuz/ DiscuzX/commits/master), you can manually patch and keep your site in the most secure state at all times!
+- Since X3.2 and X3.3 have been stopped, X3.4 vulnerabilities and related fixes are also applicable to X3.2 and X3.3 versions, please keep an eye on [update list](https://gitee.com/Discuz/ DiscuzX/commits/master), you can manually patch to keep your site in the most secure state at all times!
 
 ### screenshot
-![System Information](https://images.gitee.com/uploads/images/2019/0329/093457_81b74b91_1157835.png "System Information Screenshot")
+![System Information](./readme/screenshot.png "System Information Screenshot")

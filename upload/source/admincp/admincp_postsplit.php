@@ -21,7 +21,7 @@ if(empty($operation)) {
 	$operation = 'manage';
 }
 
-$setting = C::t('common_setting')->fetch_all(array('posttable_info', 'posttableids', 'threadtableids'), true);
+$setting = C::t('common_setting')->fetch_all_setting(array('posttable_info', 'posttableids', 'threadtableids'), true);
 if($setting['posttable_info']) {
 	$posttable_info = $setting['posttable_info'];
 } else {
@@ -78,7 +78,7 @@ if($operation == 'manage') {
 			$posttable_info[$key]['memo'] = dhtmlspecialchars($value);
 		}
 
-		C::t('common_setting')->update('posttable_info', $posttable_info);
+		C::t('common_setting')->update_setting('posttable_info', $posttable_info);
 		savecache('posttable_info', $posttable_info);
 		update_posttableids();
 		updatecache('setting');
@@ -146,7 +146,7 @@ if($operation == 'manage') {
 					DB::query($createsql);
 
 					$posttable_info[$targettable]['memo'] = $_GET['memo'];
-					C::t('common_setting')->update('posttable_info', $posttable_info);
+					C::t('common_setting')->update_setting('posttable_info', $posttable_info);
 					savecache('posttable_info', $posttable_info);
 					update_posttableids();
 					$createtable = true;
@@ -161,7 +161,7 @@ if($operation == 'manage') {
 				$movesize = intval($_GET['movesize']);
 				$movesize = $movesize >= 100 && $movesize <= 1024 ? $movesize : 100;
 				$targetstatus = helper_dbtool::gettablestatus(getposttable($targettable, true), false);
-				$hash = urlencode(authcode("$tableid\t$movesize\t$targettable\t$targetstatus[Data_length]", 'ENCODE'));
+				$hash = urlencode(authcode("$tableid\t$movesize\t$targettable\t{$targetstatus['Data_length']}", 'ENCODE'));
 				if($createtable) {
 					cpmsg('postsplit_table_create_succeed', 'action=postsplit&operation=movepost&fromtable='.$tableid.'&movesize='.$movesize.'&targettable='.$targettable.'&hash='.$hash, 'loadingform');
 				} else {
@@ -221,7 +221,11 @@ if($operation == 'manage') {
 			} else {
 				$count = C::t('forum_post')->count_by_first($fromtableid, 1);
 				if($count) {
-					$tids = C::t('forum_post')->fetch_all_tid_by_first($fromtableid, 1, 0, 1000);
+					$threads = C::t('forum_post')->fetch_all_tid_by_first($fromtableid, 1, 0, 1000);
+					$tids = array();
+					foreach($threads as $thread) {
+						$tids[$thread['tid']] = $thread['tid'];
+					}
 					movedate($tids);
 				} else {
 					cpmsg('postsplit_done', 'action=postsplit&operation=optimize&tableid='.$fromtableid, 'form');
@@ -249,7 +253,7 @@ if($operation == 'manage') {
 			C::t('forum_post')->drop_table($fromtableid);
 
 			unset($posttable_info[$fromtableid]);
-			C::t('common_setting')->update('posttable_info', $posttable_info);
+			C::t('common_setting')->update_setting('posttable_info', $posttable_info);
 			savecache('posttable_info', $posttable_info);
 			update_posttableids();
 			$optimize = false;
@@ -303,7 +307,7 @@ function getmaxposttableid() {
 
 function update_posttableids() {
 	$tableids = get_posttableids();
-	C::t('common_setting')->update('posttableids', $tableids);
+	C::t('common_setting')->update_setting('posttableids', $tableids);
 	savecache('posttableids', $tableids);
 }
 

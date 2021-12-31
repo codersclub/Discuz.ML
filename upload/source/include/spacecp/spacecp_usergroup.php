@@ -26,7 +26,7 @@ if($_G['inajax'] && $_GET['showextgroups']) {
 	exit;
 }
 
-$do = in_array($_GET['do'], array('buy', 'exit', 'switch', 'list', 'forum', 'expiry')) ? trim($_GET['do']) : 'usergroup';
+$do = in_array(getgpc('do'), array('buy', 'exit', 'switch', 'list', 'forum', 'expiry')) ? trim($_GET['do']) : 'usergroup'; 
 
 $extgroupids = $_G['member']['extgroupids'] ? explode("\t", $_G['member']['extgroupids']) : array();
 space_merge($space, 'count');
@@ -103,7 +103,7 @@ if(in_array($do, array('buy', 'exit'))) {
 				C::t('common_member')->update($_G['uid'], array('extgroupids' => $extgroupidsnew));
 			}
 
-			showmessage('usergroups_join_succeed', "home.php?mod=spacecp&ac=usergroup".($_GET['gid'] ? "&gid=$_GET[gid]" : '&do=list'), array('group' => $group['grouptitle']), array('showdialog' => 3, 'showmsg' => true, 'locationtime' => true));
+			showmessage('usergroups_join_succeed', "home.php?mod=spacecp&ac=usergroup".($_GET['gid'] ? "&gid={$_GET['gid']}" : '&do=list'), array('group' => $group['grouptitle']), array('showdialog' => 3, 'showmsg' => true, 'locationtime' => true));
 
 		} else {
 
@@ -127,7 +127,7 @@ if(in_array($do, array('buy', 'exit'))) {
 			$extgroupidsnew = implode("\t", array_unique($extgroupidsarray));
 			C::t('common_member')->update($_G['uid'], array('groupexpiry' => $groupexpirynew, 'extgroupids' => $extgroupidsnew));
 
-			showmessage('usergroups_exit_succeed', "home.php?mod=spacecp&ac=usergroup".($_GET['gid'] ? "&gid=$_GET[gid]" : '&do=list'), array('group' => $group['grouptitle']), array('showdialog' => 3, 'showmsg' => true, 'locationtime' => true));
+			showmessage('usergroups_exit_succeed', "home.php?mod=spacecp&ac=usergroup".($_GET['gid'] ? "&gid={$_GET['gid']}" : '&do=list'), array('group' => $group['grouptitle']), array('showdialog' => 3, 'showmsg' => true, 'locationtime' => true));
 
 		}
 
@@ -143,6 +143,9 @@ if(in_array($do, array('buy', 'exit'))) {
 		showmessage('usergroup_switch_not_allow');
 	}
 	$group = C::t('common_usergroup')->fetch($groupid);
+	if(!$group['allowvisit']) {
+		showmessage("usergroup_switch_not_allowvisit");
+	}	
 	if(submitcheck('groupsubmit')) {
 		$memberfieldforum = C::t('common_member_field_forum')->fetch($_G['uid']);
 		$groupterms = dunserialize($memberfieldforum['groupterms']);
@@ -163,7 +166,7 @@ if(in_array($do, array('buy', 'exit'))) {
 		}
 
 		C::t('common_member')->update($_G['uid'], array('groupid' => $groupid, 'adminid' => $newadminid, 'groupexpiry' => $groupexpirynew, 'extgroupids' => $extgroupidsnew));
-		showmessage('usergroups_switch_succeed', "home.php?mod=spacecp&ac=usergroup".($_GET['gid'] ? "&gid=$_GET[gid]" : '&do=list'), array('group' => $group['grouptitle']), array('showdialog' => 3, 'showmsg' => true, 'locationtime' => true));
+		showmessage('usergroups_switch_succeed', "home.php?mod=spacecp&ac=usergroup".($_GET['gid'] ? "&gid={$_GET['gid']}" : '&do=list'), array('group' => $group['grouptitle']), array('showdialog' => 3, 'showmsg' => true, 'locationtime' => true));
 	}
 
 } elseif($do == 'forum') {
@@ -171,7 +174,7 @@ if(in_array($do, array('buy', 'exit'))) {
 	if($_G['setting']['verify']['enabled']) {
 		$myverify= array();
 		getuserprofile('verify1');
-		for($i = 1; $i < 6; $i++) {
+		for($i = 1; $i <= 6; $i++) {
 			if($_G['member']['verify'.$i] == 1) {
 				$myverify[] = $i;
 			}
@@ -188,7 +191,7 @@ if(in_array($do, array('buy', 'exit'))) {
 		array('viewperm' => 1, 'postperm' => 1, 'replyperm' => 1, 'getattachperm' => 1, 'postattachperm' => 1, 'postimageperm' => 1),
 	);
 	if($_G['setting']['verify']['enabled']) {
-		for($i = 1; $i < 6; $i++) {
+		for($i = 1; $i <= 6; $i++) {
 			if($_G['setting']['verify'][$i]['available']) {
 				$verifyicon[$i] = !empty($_G['setting']['verify'][$i]['icon']) ? '<img src="'.$_G['setting']['verify'][$i]['icon'].'" alt="'.$_G['setting']['verify'][$i]['title'].'" class="vm" title="'.$_G['setting']['verify'][$i]['title'].'" />' : $_G['setting']['verify'][$i]['title'];
 			}
@@ -200,9 +203,10 @@ if(in_array($do, array('buy', 'exit'))) {
 		foreach($perms as $perm) {
 			if($forum[$perm]) {
 				if($_G['setting']['verify']['enabled']) {
-					for($i = 1; $i < 6; $i++) {
+					for($i = 1; $i <= 6; $i++) {
 						$verifyperm[$forum['fid']][$perm] .= preg_match("/(^|\t)(v".$i.")(\t|$)/", $forum[$perm]) ? $verifyicon[$i] : '';
-						if(in_array($i, $myverify)) {
+						$includePerm = preg_match("/(^|\t)(v".$i.")(\t|$)/", $forum[$perm]) ? $verifyicon[$i] : '';                        
+						if(in_array($i, $myverify) && $includePerm) {
 							$myverifyperm[$forum['fid']][$perm] = 1;
 						}
 					}
@@ -257,7 +261,7 @@ if(in_array($do, array('buy', 'exit'))) {
 	$groupids = array_merge($extgroupids, $expiryids, $groupids);
 	$usermoney = $space['extcredits'.$_G['setting']['creditstrans']];
 	if($groupids) {
-		foreach(C::t('common_usergroup')->fetch_all($groupids) as $group) {
+		foreach(C::t('common_usergroup')->fetch_all_usergroup($groupids) as $group) {
 			$isexp = in_array($group['groupid'], $expgrouparray);
 			if($_G['cache']['usergroups'][$group['groupid']]['pubtype'] == 'buy') {
 				list($dailyprice) = explode("\t", $group['system']);
@@ -278,7 +282,7 @@ if(in_array($do, array('buy', 'exit'))) {
 	$permlang = $language;
 	unset($language);
 	$maingroup = $_G['group'];
-	$ptype = in_array($_GET['ptype'], array(0, 1, 2)) ? intval($_GET['ptype']) : 0;
+	$ptype = in_array(getgpc('ptype'), array(0, 1, 2)) ? intval(getgpc('ptype')) : 0;
 	foreach($_G['cache']['usergroups'] as $gid => $value) {
 		$cachekey[] = 'usergroup_'.$gid;
 	}
@@ -307,7 +311,7 @@ if(in_array($do, array('buy', 'exit'))) {
 		if(in_array($gid, $extgroupids)) {
 			$usergroups['my'] .= $g;
 		}
-		$usergroups[$type] .= $g;
+		$usergroups[$type] = (isset($usergroups[$type]) ? $usergroups[$type] : '').$g;
 		if(!empty($_GET['gid']) && $_GET['gid'] == $gid) {
 			$switchtype = $type;
 			if(!empty($_GET['gid'])) {
@@ -322,12 +326,12 @@ if(in_array($do, array('buy', 'exit'))) {
 			$nextupgradeid = 1;
 		}
 	}
-	$usergroups['my'] = '<a href="home.php?mod=spacecp&ac=usergroup">'.$maingroup['grouptitle'].'</a>'.$usergroups['my'];
+	$usergroups['my'] = '<a href="home.php?mod=spacecp&ac=usergroup">'.$maingroup['grouptitle'].'</a>'.(isset($usergroups['my']) ? $usergroups['my'] : '');
 	if($activegs == array()) {
 		$activegs['my'] = ' a';
 	}
 
-	$bperms = array('allowvisit','readaccess','allowinvisible','allowsearch','allowcstatus','disablepostctrl', 'allowsendpm', 'allowfriend', 'allowstatdata', 'allowmyop');
+	$bperms = array('allowvisit','readaccess','allowinvisible','allowsearch','allowcstatus','disablepostctrl', 'allowsendpm', 'allowfriend', 'allowstatdata');
 	if($_G['setting']['portalstatus']) {
 		$bperms[] = 'allowpostarticle';
 	}
@@ -361,7 +365,7 @@ if(in_array($do, array('buy', 'exit'))) {
 		$group['allowsetmain'] = in_array($group['groupid'], $extgroupids);
 		$publicgroup[$group['groupid']] = $group;
 	}
-	$group = $group[count($group)];
+	$group = isset($group[count($group)]) ? $group[count($group)] : NULL;
 	$_GET['perms'] = 'member';
 	if($sidegroup) {
 		$group = $sidegroup;

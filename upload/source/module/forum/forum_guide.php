@@ -17,6 +17,7 @@ if(!$_G['setting']['guidestatus']) {
 
 $view = $_GET['view'];
 loadcache('forum_guide');
+require_once libfile('function/forumlist');
 if(!in_array($view, array('hot', 'digest', 'new', 'my', 'newthread', 'sofa'))) {
 	$view = 'hot';
 }
@@ -35,17 +36,17 @@ if($_GET['rss'] == 1) {
 	echo 	"<?xml version=\"1.0\" encoding=\"".$charset."\"?>\n".
 		"<rss version=\"2.0\">\n".
 		"  <channel>\n".
-		"    <title>{$_G[setting][bbname]} - $lang[guide] - ".$lang['guide_'.$view]."</title>\n".
-		"    <link>{$_G[siteurl]}forum.php?mod=guide&amp;view=$view</link>\n".
+		"    <title>{$_G['setting']['bbname']} - {$lang['guide']} - ".$lang['guide_'.$view]."</title>\n".
+		"    <link>{$_G['siteurl']}forum.php?mod=guide&amp;view=$view</link>\n".
 		"    <description>".$lang['guide_'.$view]."</description>\n".
-		"    <copyright>Copyright(C) {$_G[setting][bbname]}</copyright>\n".
+		"    <copyright>Copyright(C) {$_G['setting']['bbname']}</copyright>\n".
 		"    <generator>Discuz! Board by Comsenz Inc.</generator>\n".
 		"    <lastBuildDate>".gmdate('r', TIMESTAMP)."</lastBuildDate>\n".
 		"    <ttl>$ttl</ttl>\n".
 		"    <image>\n".
-		"      <url>{$_G[siteurl]}static/image/common/logo_88_31.gif</url>\n".
-		"      <title>{$_G[setting][bbname]}</title>\n".
-		"      <link>{$_G[siteurl]}</link>\n".
+		"      <url>{$_G['siteurl']}static/image/common/logo_88_31.gif</url>\n".
+		"      <title>{$_G['setting']['bbname']}</title>\n".
+		"      <link>{$_G['siteurl']}</link>\n".
 		"    </image>\n";
 
 	$info = C::t('forum_rsscache')->fetch_all_by_guidetype($view, $perpage);
@@ -63,7 +64,7 @@ if($_GET['rss'] == 1) {
 		}
 		echo 	"    <item>\n".
 			"      <title>".$thread['subject']."</title>\n".
-			"      <link>$_G[siteurl]".($trewriteflag ? rewriteoutput('forum_viewthread', 1, '', $thread['tid']) : "forum.php?mod=viewthread&amp;tid=$thread[tid]")."</link>\n".
+			"      <link>{$_G['siteurl']}".($trewriteflag ? rewriteoutput('forum_viewthread', 1, '', $thread['tid']) : "forum.php?mod=viewthread&amp;tid={$thread['tid']}")."</link>\n".
 			"      <description><![CDATA[".dhtmlspecialchars($thread['description'])."]]></description>\n".
 			"      <category>".dhtmlspecialchars($thread['forum'])."</category>\n".
 			"      <author>".dhtmlspecialchars($thread['author'])."</author>\n".
@@ -139,7 +140,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 	$cachetimelimit = ($view != 'sofa') ? 900 : 60;
 	$cache = $_G['cache']['forum_guide'][$view.($view=='sofa' && $_G['fid'] ? $_G['fid'] : '')];
 	if($cache && (TIMESTAMP - $cache['cachetime']) < $cachetimelimit) {
-		$tids = $cache['data'];
+		$tids = is_array($cache['data']) ? $cache['data'] : array();
 		$threadcount = count($tids);
 		$tids = array_slice($tids, $start, $num, true);
 		$updatecache = false;
@@ -173,7 +174,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 			if($_GET['fid']) {
 				$sofa = C::t('forum_sofa')->fetch_all_by_fid($_GET['fid'], $start, $num);
 			} else {
-				$sofa = C::t('forum_sofa')->range($start, $num);
+				$sofa = C::t('forum_sofa')->range_sofa($start, $num);
 				foreach($sofa as $sofatid => $sofathread) {
 					if(!in_array($sofathread, $fids)) {
 						unset($sofathread[$sofatid]);
@@ -196,8 +197,8 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 		$thread = guide_procthread($thread);
 		$threadids[] = $thread['tid'];
 		if($tids || ($n >= $start && $n < ($start + $num))) {
-			$list[$thread[tid]] = $thread;
-			$fids[$thread[fid]] = $thread['fid'];
+			$list[$thread['tid']] = $thread;
+			$fids[$thread['fid']] = $thread['fid'];
 		}
 		$n ++;
 	}
@@ -222,6 +223,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 	}
 	unset($list);
 	if($updatecache) {
+		$threadids = is_array($threadids) ? $threadids : array();
 		$threadcount = count($threadids);
 		$data = array('cachetime' => TIMESTAMP, 'data' => $threadids);
 		$_G['cache']['forum_guide'][$view.($view=='sofa' && $_G['fid'] ? $_G['fid'] : '')] = $data;
@@ -254,7 +256,7 @@ function get_my_threads($viewtype, $fid = 0, $filter = '', $searchkey = '', $sta
 			$dglue = '>=';
 		}
 
-		$gids = $fids = $forums = array();
+		$gids = $fids = $forums = $list = array();
 		foreach(C::t('forum_thread')->fetch_all_by_authorid_displayorder($authorid, $displayorder, $dglue, $closed, $searchkey, $start, $perpage, null, $fid) as $tid => $value) {
 			if(!isset($_G['cache']['forums'][$value['fid']])) {
 				$gids[$value['fid']] = $value['fid'];
@@ -279,7 +281,7 @@ function get_my_threads($viewtype, $fid = 0, $filter = '', $searchkey = '', $sta
 			$pids[] = $value['pid'];
 			$tids[] = $value['tid'];
 		}
-		$pids = C::t('forum_post')->fetch_all(0, $pids);
+		$pids = C::t('forum_post')->fetch_all_post(0, $pids);
 		$tids = C::t('forum_thread')->fetch_all($tids);
 
 		$list = $fids = array();
@@ -343,7 +345,7 @@ function get_my_threads($viewtype, $fid = 0, $filter = '', $searchkey = '', $sta
 				if(!isset($_G['cache']['forums'][$thread['fid']])) {
 					$gids[$thread['fid']] = $thread['fid'];
 				} else {
-					$forumnames[$thread[fid]] = array('fid' => $thread['fid'], 'name' => $_G['cache']['forums'][$thread[fid]]['name']);
+					$forumnames[$thread['fid']] = array('fid' => $thread['fid'], 'name' => $_G['cache']['forums'][$thread['fid']]['name']);
 				}
 				$threads[$tid] = guide_procthread($thread);
 			}
@@ -374,10 +376,10 @@ function guide_procthread($thread) {
 		$pagelinks = '';
 		$thread['pages'] = ceil($topicposts / $_G['ppp']);
 		for($i = 2; $i <= 6 && $i <= $thread['pages']; $i++) {
-			$pagelinks .= "<a href=\"forum.php?mod=viewthread&tid=$thread[tid]&amp;extra=$extra&amp;page=$i\">$i</a>";
+			$pagelinks .= "<a href=\"forum.php?mod=viewthread&tid={$thread['tid']}&amp;extra=$extra&amp;page=$i\">$i</a>";
 		}
 		if($thread['pages'] > 6) {
-			$pagelinks .= "..<a href=\"forum.php?mod=viewthread&tid=$thread[tid]&amp;extra=$extra&amp;page=$thread[pages]\">$thread[pages]</a>";
+			$pagelinks .= "..<a href=\"forum.php?mod=viewthread&tid={$thread['tid']}&amp;extra=$extra&amp;page={$thread['pages']}\">{$thread['pages']}</a>";
 		}
 		$thread['multipage'] = '&nbsp;...'.$pagelinks;
 	}
@@ -463,7 +465,7 @@ function update_guide_rsscache($type, $perpage) {
 			'fid'=>$thread['fid'],
 			'tid'=>$thread['tid'],
 			'dateline'=>$thread['dbdateline'],
-			'forum'=>strip_tags($data['forumnames'][$thread[fid]]['name']),
+			'forum'=>strip_tags($data['forumnames'][$thread['fid']]['name']),
 			'author'=>$thread['author'],
 			'subject'=>$thread['subject'],
 			'description'=>$thread['description'],

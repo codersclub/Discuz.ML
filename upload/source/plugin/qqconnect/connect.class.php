@@ -35,7 +35,6 @@ class plugin_qqconnect_base {
 
 			$_G['connect']['qzone_public_share_url'] = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey';
 			$_G['connect']['referer'] = !$_G['inajax'] && CURSCRIPT != 'member' ? $_G['basefilename'].($_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : '') : dreferer();
-			$_G['connect']['weibo_public_appkey'] = 'ce7fb946290e4109bdc9175108b6db3a';
 
 			$_G['connect']['login_url'] = $_G['siteurl'].'connect.php?mod=login&op=init&referer='.urlencode($_G['connect']['referer'] ? $_G['connect']['referer'] : 'index.php');
 			$_G['connect']['callback_url'] = $_G['siteurl'].'connect.php?mod=login&op=callback';
@@ -100,7 +99,7 @@ class plugin_qqconnect extends plugin_qqconnect_base {
 
 	function global_login_extra() {
         global $_G;
-		if(!$this->allow || $_G['inshowmessage']) {
+		if(!$this->allow) {
 			return;
 		}
 		return tpl_global_login_extra();
@@ -223,16 +222,6 @@ class plugin_qqconnect_member extends plugin_qqconnect {
 
 class plugin_qqconnect_forum extends plugin_qqconnect {
 
-	function index_status_extra() {
-		global $_G;
-		if(!$this->allow) {
-			return;
-		}
-		if($_G['setting']['connect']['like_allow'] && $_G['setting']['connect']['like_url'] || $_G['setting']['connect']['turl_allow'] && $_G['setting']['connect']['turl_code']) {
-			return tpl_index_status_extra();
-		}
-	}
-
 	function viewthread_share_method_output() {
 		return $this->_viewthread_share_method_output();
 	}
@@ -247,17 +236,6 @@ class plugin_qqconnect_group extends plugin_qqconnect {
 
 }
 
-class plugin_qqconnect_home extends plugin_qqconnect {
-
-	function spacecp_profile_bottom() {
-		global $_G;
-
-		if($_G['uid'] && $_G['setting']['connect']['allow']) {
-			return tpl_spacecp_profile_bottom();
-		}
-
-	}
-}
 
 class mobileplugin_qqconnect extends plugin_qqconnect_base {
 
@@ -275,12 +253,29 @@ class mobileplugin_qqconnect extends plugin_qqconnect_base {
 		$this->common_base();
 	}
 
-	function global_footer_mobile() {
-		global $_G;
+}
 
-		if(!$this->allow || !empty($_G['inshowmessage'])) {
-			return;
+class mobileplugin_qqconnect_member extends mobileplugin_qqconnect {
+
+	function connect_member() {
+		global $_G, $seccodecheck, $secqaacheck, $connect_guest;
+
+		if($this->allow) {
+			if($_G['uid'] && $_G['member']['conisbind']) {
+				dheader('location: '.$_G['siteurl'].'index.php');
+			}
+			$connect_guest = array();
+			if($_G['connectguest'] && (submitcheck('regsubmit', 0, $seccodecheck, $secqaacheck) || submitcheck('loginsubmit', 1, $seccodestatus))) {
+				if(!$_GET['auth_hash']) {
+					$_GET['auth_hash'] = $_G['cookie']['con_auth_hash'];
+				}
+				$conopenid = authcode($_GET['auth_hash']);
+				$connect_guest = C::t('#qqconnect#common_connect_guest')->fetch($conopenid);
+				if(!$connect_guest) {
+					dsetcookie('con_auth_hash');
+					showmessage('qqconnect:connect_login_first');
+				}
+			}
 		}
 	}
-
 }

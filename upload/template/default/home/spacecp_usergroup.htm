@@ -118,7 +118,7 @@
 			<!--{loop $_G['cache']['forums'] $fid $forum}-->
 				<!--{if $forum['status']}-->
 				<tr {if $key++%2==0}class="alt"{/if}>
-					<th{if $forum['type'] == 'forum'} style="padding-left:30px"{elseif $forum['type'] == 'sub'} style="padding-left:60px"{/if}><a href="forum.php?mod=forumdisplay&fid=$forum[fid]">$forum[name]</th>
+					<th{if $forum['type'] == 'forum'} style="padding-left:30px"{elseif $forum['type'] == 'sub'} style="padding-left:60px"{/if}><a href="forum.php?mod=forumdisplay&fid=$forum[fid]">$forum[name]</a></th>
 					<!--{loop $perms $perm}-->
 						<td>
 							<!--{if !empty($verifyperm[$fid][$perm])}-->
@@ -185,7 +185,7 @@
 									<td><!--{if $group[usermaxdays]}-->$group[usermaxdays] {lang days}<!--{/if}--></td>
 									<td>$group[time]</td>
 									<td>
-										<!--{if in_array($groupid, $extgroupids) || $groupid == $_G['groupid']}-->
+										<!--{if (is_array($extgroupids) && in_array($groupid, $extgroupids)) || $groupid == $_G['groupid']}-->
 											<!--{if $groupid != $_G['groupid']}-->
 												<!--{if !$group[noswitch]}-->
 													<a href="home.php?mod=spacecp&ac=usergroup&do=switch&groupid=$groupid&handlekey=switchgrouphk" class="xw1 xi2" onclick="showWindow('group', this.href, 'get', 0);">{lang memcp_usergroups_set_main}</a>
@@ -297,7 +297,7 @@
 							<tr>
 								<th class="alt h">
 									<!--{if $group['grouptype'] == 'member'}-->
-										<!--{eval $v = $group[groupcreditshigher] - $_G['member']['credits'];}-->
+										<!--{eval $v = $group['groupcreditshigher'] - $_G['member']['credits'];}-->
 										<!--{if $_G['group']['grouptype'] == 'member' && $v > 0}-->
 											<span class="notice">{lang spacecp_usergroup_message1} $v</span>
 										<!--{else}-->
@@ -307,7 +307,7 @@
 									<!--{if isset($publicgroup[$group['groupid']]) && $group['groupid'] != $_G['groupid'] && $publicgroup[$group['groupid']]['allowsetmain']}-->
 										<a href="home.php?mod=spacecp&ac=usergroup&do=switch&groupid=$group['groupid']&gid=$_GET[gid]&handlekey=switchgrouphk" class="xw1 xi2" onclick="showWindow('group', this.href, 'get', 0);">{lang memcp_usergroups_set_main}</a>
 									<!--{/if}-->
-									<!--{if in_array($group['groupid'], $extgroupids) && $switchmaingroup && $group['grouptype'] == 'special' && $group['groupid'] != $_G['groupid']}-->
+									<!--{if (is_array($extgroupids) && in_array($group['groupid'], $extgroupids)) && $switchmaingroup && $group['grouptype'] == 'special' && $group['groupid'] != $_G['groupid']}-->
 										<!--{if $_G['cache']['usergroups'][$group['groupid']]['pubtype'] == 'buy'}-->
 											<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$group['groupid']&gid=$_GET[gid]&handlekey=buygrouphk" class="xw1 xi2" onclick="showWindow('group', this.href, 'get', 0);">{lang renew}</a>
 										<!--{/if}-->
@@ -316,8 +316,8 @@
 									<!--{if $group['grouptype']=='special' && $group['groupid'] != $_G['groupid'] && array_key_exists($group['groupid'], $publicgroup) && !$publicgroup[$group['groupid']]['allowsetmain']}-->
 										<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$group['groupid']&gid=$_GET[gid]&handlekey=buygrouphk" class="xw1 xi2" onclick="showWindow('group', this.href, 'get', 0);">{lang memcp_usergroups_buy}</a>
 									<!--{/if}-->
-									<!--{if array_key_exists($group['groupid'], $groupterms['ext'])}-->
-										<span class="notice">{lang memcp_usergroups_timelimit}: <!--{date($groupterms[ext][$group['groupid']])}--></span>
+									<!--{if isset($groupterms['ext']) && is_array($groupterms['ext']) && array_key_exists($group['groupid'], $groupterms['ext'])}-->
+										<span class="notice">{lang memcp_usergroups_timelimit}: <!--{date($groupterms['ext'][$group['groupid']])}--></span>
 									<!--{/if}-->
 								</th>
 							</tr>
@@ -417,7 +417,7 @@ global $_G, $bperms, $pperms, $sperms, $aperms;
 	</tr>
 	<!--{/loop}-->
 </tbody>
-<!--{eval
-}
-}-->
+<!--{eval}-->
+<!--}-->
+<!--{/eval}-->
 <!--{template common/footer}-->

@@ -71,40 +71,6 @@ $lang = array(
 	'mail_my' => '好友与我的互动提醒',
   	'mail_system' => '系统提醒',
 
-	'invite_subject' => '{username}邀请您加入{sitename}，并成为好友',
-	'invite_massage' => '<table border="0">
-		<tr>
-		<td valign="top">{avatar}</td>
-		<td valign="top">
-		<h3>Hi，我是{username}，邀请您也加入{sitename}并成为我的好友</h3><br>
-		请加入到我的好友中，您就可以了解我的近况，与我一起交流，随时与我保持联系。<br>
-		<br>
-		邀请附言：<br>{saymsg}
-		<br><br>
-		<strong>请您点击以下链接，接受好友邀请：</strong><br>
-		<a href="{inviteurl}">{inviteurl}</a><br>
-		<br>
-		<strong>如果您拥有{sitename}上面的账号，请点击以下链接查看我的个人主页：</strong><br>
-		<a href="{siteurl}home.php?mod=space&uid={uid}">{siteurl}home.php?mod=space&uid={uid}</a><br>
-		</td></tr></table>',
-
-	'app_invite_subject' => '{username}邀请您加入{sitename}，一起来玩{appname}',
-	'app_invite_massage' => '<table border="0">
-		<tr>
-		<td valign="top">{avatar}</td>
-		<td valign="top">
-		<h3>Hi，我是{username}，在{sitename}上玩 {appname}，邀请您也加入一起玩</h3><br>
-		<br>
-		邀请附言：<br>
-		{saymsg}
-		<br><br>
-		<strong>请您点击以下链接，接受好友邀请一起玩{appname}：</strong><br>
-		<a href="{inviteurl}">{inviteurl}</a><br>
-		<br>
-		<strong>如果您拥有{sitename}上面的账号，请点击以下链接查看我的个人主页：</strong><br>
-		<a href="{siteurl}home.php?mod=space&uid={uid}">{siteurl}home.php?mod=space&uid={uid}</a><br>
-		</td></tr></table>',
-
 	'person' => '人',
 	'delete' => '删除',
 
@@ -120,8 +86,8 @@ $lang = array(
 	'share_article' => '分享了一篇文章',
 	'album' => '相册',
 	'share_thread' => '分享了一个帖子',
-	'mtag' => '{$_G[setting][navs][3][navname]}',
-	'share_mtag' => '分享了一个{$_G[setting][navs][3][navname]}',
+	'mtag' => '{$_G[\'setting\'][\'navs\'][3][\'navname\']}',
+	'share_mtag' => '分享了一个{$_G[\'setting\'][\'navs\'][3][\'navname\']}',
 	'share_mtag_membernum' => '现有 {membernum} 名成员',
 	'share_tag' => '分享了一个标签',
 	'share_tag_blognum' => '现有 {blognum} 篇日志',
@@ -179,7 +145,6 @@ $lang = array(
 	'do_stat_connectlogin' => 'QQ登录访问',
 	'do_stat_register' => '新注册用户',
 	'do_stat_invite' => '好友邀请',
-	'do_stat_appinvite' => '应用邀请',
 	'do_stat_add' => '信息发布',
 	'do_stat_comment' => '信息互动',
 	'do_stat_space' => '互动',
@@ -189,10 +154,10 @@ $lang = array(
 	'do_stat_reward' => '悬赏',
 	'do_stat_debate' => '辩论',
 	'do_stat_trade' => '商品',
-	'do_stat_group' => "创建{$_G[setting][navs][3][navname]}",
-	'do_stat_tgroup' => "{$_G[setting][navs][3][navname]}",
-	'do_stat_home' => "{$_G[setting][navs][4][navname]}",
-	'do_stat_forum' => "{$_G[setting][navs][2][navname]}",
+	'do_stat_group' => "创建".(isset($_G['setting']['navs'][3]['navname']) ? $_G['setting']['navs'][3]['navname'] : ''),
+	'do_stat_tgroup' => (isset($_G['setting']['navs'][3]['navname']) ? $_G['setting']['navs'][3]['navname'] : ''),
+	'do_stat_home' => (isset($_G['setting']['navs'][4]['navname']) ? $_G['setting']['navs'][4]['navname'] : ''),
+	'do_stat_forum' => (isset($_G['setting']['navs'][2]['navname']) ? $_G['setting']['navs'][2]['navname'] : ''),
 	'do_stat_groupthread' => '群组主题',
 	'do_stat_post' => '主题回复',
 	'do_stat_grouppost' => '群组回复',
@@ -338,9 +303,17 @@ $lang = array(
 	'card_update_doing' => ' <a class="xi2" href="###">[更新记录]</a>',
 	'email_acitve_message' => '<i class="fico-email vm fc-i" title="未验证"></i><span class="xi1 vm">新邮箱({newemail})等待验证中...</span><br />
 								系统已经向该邮箱发送了一封验证激活邮件，请查收邮件，进行验证激活。<br>
-								如果没有收到验证邮件，您可以更换一个邮箱，或者<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1" class="xi2">重新接收验证邮件</a>',
+								如果没有收到验证邮件，您可以更换一个邮箱，或者<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash={formhash}" class="xi2">重新接收验证邮件</a>',
 	'qq_set_status' => '设置我的QQ在线状态',
 	'qq_dialog' => '发起QQ聊天',
+
+	'payment_alipay' => '支付宝',
+	'payment_wechat' => '微信支付',
+	'payment_qpay' => 'QQ 钱包支付',
+	'payment_status_0' => '未支付',
+	'payment_status_1' => '已支付',
+	'payment_status_2' => '已过期',
+	'payment_credit' => '积分充值',
 
 );
 

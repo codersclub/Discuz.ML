@@ -24,11 +24,11 @@ $discuz->init();
 
 /*vot*/	settings_localize(); // Localize Navigation & Settings
 
-if(in_array($discuz->var['mod'], $modarray) || !empty($_G['setting']['search'][$discuz->var['mod']]['status'])) {
+if(in_array($discuz->var['mod'], $modarray) || (!empty($_G['setting']['search'][$discuz->var['mod']]['status']) && $_G['setting'][($discuz->var['mod'] == 'curforum' ? 'forum' : ($discuz->var['mod'] == 'user' ? 'friend' : $discuz->var['mod'])).'status'])) {
 	$mod = $discuz->var['mod'];
 } else {
 	foreach($_G['setting']['search'] as $mod => $value) {
-		if(!empty($value['status'])) {
+		if(!empty($value['status']) && $_G['setting'][($mod == 'curforum' ? 'forum' : ($mod == 'user' ? 'friend' : $mod)).'status']) {
 			break;
 		}
 	}
@@ -55,6 +55,10 @@ if($mod == 'curforum') {
 	$_GET['srchfid'] = array($_GET['srhfid']);
 } elseif($mod == 'forum') {
 	$_GET['srhfid'] = 0;
+}
+
+if(!empty($_GET['srchtxt']) && getglobal('setting/srchcensor')) {
+	$_GET['srchtxt'] = censor($_GET['srchtxt']);
 }
 
 require DISCUZ_ROOT.'./source/module/search/search_'.$mod.'.php';

@@ -70,7 +70,6 @@
 						</td>
 						<td>{lang setting_timeoffset_comment}</td>
 					</tr>
-<!--vot-->
 					<tr>
 						<th colspan="2">{lang setting_user_failedtime}:</th>
 					</tr>
@@ -78,7 +77,6 @@
 						<td><input type="text" class="txt" name="login_failedtime" value="$login_failedtime" /></td>
 						<td>{lang setting_user_failedtime_comment}</td>
 					</tr>
-<!--vot-->
 					<tr>
 						<th colspan="2">{lang setting_pmsendregdays}:</th>
 					</tr>
@@ -156,6 +154,21 @@
 						<input type="radio" id="insecureuserdeleteno" class="radio" name="insecureuserdelete" value="0" $insecureuserdelete[0] /><label for="insecureuserdeleteno">{lang no}</label>
 					</td>
 					<td>{lang setting_insecureuserdelete_comment}</td>
+					</tr>
+					<tr>
+						<th colspan="2">{lang setting_passwordalgo}:</th>
+					</tr>
+					<tr>
+						<td><input type="text" class="txt" name="passwordalgo" value="$passwordalgo" /></td>
+						<td>{lang setting_passwordalgo_comment}</td>
+					</tr>
+
+					<tr>
+						<th colspan="2">{lang setting_passwordoptions}:</th>
+					</tr>
+					<tr>
+						<td><input type="text" class="txt" name="passwordoptions" value="$passwordoptions" /></td>
+						<td>{lang setting_passwordoptions_comment}</td>
 					</tr>
 				</table>
 				<div class="opt"><input type="submit" name="submit" value=" {lang submit} " class="btn" tabindex="3" /></div>

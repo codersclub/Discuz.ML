@@ -30,7 +30,7 @@ if(!empty($_GET['preview'])) {
 <meta name="renderer" content="webkit" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <script type="text/javascript">var IMGDIR = '<?php echo $_G['style']['imgdir']; ?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>';</script>
-<script type="text/javascript" src="static/js/common.js"></script>
+<script type="text/javascript" src="<?php echo STATICURL; ?>js/common.js"></script>
 <!--vot--><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo $_G['setting']['styleid'];?>_common<?php echo RTLSUFFIX;?>.css" />
 </head>
 <body>
@@ -141,16 +141,16 @@ if($operation == 'ad') {
 			}
 
 			showtablerow('', array('class="td25"', 'class="td25"', 'class="td25"'), array(
-				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$adv[advid]\">",
-				"<input type=\"text\" class=\"txt\" size=\"2\" name=\"displayordernew[$adv[advid]]\" value=\"$adv[displayorder]\">",
-				"<input class=\"checkbox\" type=\"checkbox\" name=\"availablenew[$adv[advid]]\" value=\"1\" ".($adv['available'] ? 'checked' : '').">",
-				"<input type=\"text\" class=\"txt\" size=\"15\" name=\"titlenew[$adv[advid]]\" value=\"".dhtmlspecialchars($adv['title'])."\">",
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"{$adv['advid']}\">",
+				"<input type=\"text\" class=\"txt\" size=\"2\" name=\"displayordernew[{$adv['advid']}]\" value=\"{$adv['displayorder']}\">",
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"availablenew[{$adv['advid']}]\" value=\"1\" ".($adv['available'] ? 'checked' : '').">",
+				"<input type=\"text\" class=\"txt\" size=\"15\" name=\"titlenew[{$adv['advid']}]\" value=\"".dhtmlspecialchars($adv['title'])."\">",
 				!$type ? '<a href="'.ADMINSCRIPT.'?action=adv&operation=ad&type='.$adv['type'].($adv['type'] != 'custom' ? '' : '&customid='.$adv['parameters']['extra']['customid']).'">'.$typenames[$adv['type']].($adv['type'] != 'custom' ? '' : ' '.$customadv[$adv['parameters']['extra']['customid']]).'</a>' : '',
 				$lang['adv_style_'.$adv['parameters']['style']],
 				$adv['starttime'] ? dgmdate($adv['starttime'], 'd') : $lang['unlimited'],
 				$adv['endtime'] ? dgmdate($adv['endtime'], 'd') : $lang['unlimited'],
 				$adv['type'] != 'custom' ? implode(', ', $targets) : $lang['custom'],
-				"<a href=\"".ADMINSCRIPT."?action=adv&operation=edit&advid=$adv[advid]".($adv['type'] != 'custom' ? '' : '&customid='.$adv['parameters']['extra']['customid']).(!$type ? '&from=all' : '')."\" class=\"act\">$lang[edit]</a>"
+				"<a href=\"".ADMINSCRIPT."?action=adv&operation=edit&advid={$adv['advid']}".($adv['type'] != 'custom' ? '' : '&customid='.$adv['parameters']['extra']['customid']).(!$type ? '&from=all' : '')."\" class=\"act\">{$lang['edit']}</a>"
 			));
 		}
 
@@ -285,7 +285,7 @@ if($operation == 'ad') {
 /*vot*/		$adv['starttime'] = $adv['starttime'] ? dgmdate($adv['starttime'], 'Y-m-d') : '';
 /*vot*/		$adv['endtime'] = $adv['endtime'] ? dgmdate($adv['endtime'], 'Y-m-d') : '';
 
-		echo '<script type="text/javascript" src="static/js/calendar.js"></script>'.
+		echo '<script type="text/javascript" src="' . STATICURL . 'js/calendar.js"></script>'.
 			'<div class="colorbox"><h4>'.lang('adv/'.$type, $advclass->name).'</h4>'.
 			'<table cellspacing="0" cellpadding="3"><tr><td>'.
 			(count($etype) > 1 && preg_match('/^[\w\_:]+$/', $type) ? (file_exists(DISCUZ_ROOT.'./source/plugin/'.$etype[0].'/adv/adv_'.$etype[1].'.gif') ? '<img src="source/plugin/'.$etype[0].'/adv/adv_'.$etype[1].'.gif" />' : '')
@@ -434,7 +434,7 @@ if($operation == 'ad') {
 		$advnew = $_GET['advnew'];
 
 		$parameters = !empty($_GET['parameters']) ? $_GET['parameters'] : array();
-		if(@in_array('custom', $advnew['targets'])) {
+		if(is_array($advnew['targets']) && in_array('custom', $advnew['targets'])) {
 			$targetcustom = explode(',', $advnew['targetcustom']);
 			$advnew['targets'] = array_merge($advnew['targets'], $targetcustom);
 		}
@@ -498,7 +498,7 @@ if($operation == 'ad') {
 
 	if(submitcheck('advsubmit')) {
 		$_GET['advexpirationnew']['allow'] = $_GET['advexpirationnew']['allow'] && $_GET['advexpirationnew']['day'] > 0 && $_GET['advexpirationnew']['method'] && $_GET['advexpirationnew']['users'];
-		C::t('common_setting')->update('advexpiration', $_GET['advexpirationnew']);
+		C::t('common_setting')->update_setting('advexpiration', $_GET['advexpirationnew']);
 		updatecache('setting');
 		cpmsg('setting_update_succeed', 'action=adv&operation=setting', 'succeed');
 	} else {
@@ -509,7 +509,7 @@ if($operation == 'ad') {
 			array('adv_admin_listall', 'adv&operation=ad', 0),
 		));
 
-		$advexpiration = C::t('common_setting')->fetch('advexpiration', true);
+		$advexpiration = C::t('common_setting')->fetch_setting('advexpiration', true);
 		showformheader('adv&operation=setting');
 		showtableheader();
 		showsetting('adv_setting_advexpiration', 'advexpirationnew[allow]', $advexpiration['allow'], 'radio', 0, 1);
@@ -566,6 +566,7 @@ if($operation == 'ad') {
 			}
 			if($adv['class'] == 'custom') {
 				$customadv = $adv;
+				$img = file_exists(DISCUZ_ROOT.'./static/image/admincp/'.$customadv['class'].'.gif') ? '<img src="static/image/admincp/'.$customadv['class'].'.gif" /><br />' : '';
 				echo '<td width="'.$rowwidth.'%" class="hover" align="center">';
 				echo $img.$lang['adv_custom_add'];
 				showformheader("adv&operation=custom&do=add");
@@ -634,7 +635,7 @@ if($operation == 'ad') {
 		$name = $custom['name'];
 		if(!submitcheck('submit')) {
 			ajaxshowheader();
-			showformheader("adv&operation=custom&do=edit&id=$_GET[id]");
+			showformheader("adv&operation=custom&do=edit&id={$_GET['id']}");
 			echo $lang['adv_custom_edit'].'<br /><input name="customnew" class="txt" value="'.dhtmlspecialchars($name).'" />&nbsp;'.
 				'<input name="submit" class="btn" type="submit" value="'.$lang['submit'].'" />&nbsp;'.
 				'<input class="btn" type="button" onclick="location.href=\''.ADMINSCRIPT.'?action=adv&operation=list\'" value="'.$lang['cancel'].'" />';
@@ -649,7 +650,7 @@ if($operation == 'ad') {
 	} elseif($do == 'delete') {
 		if(!submitcheck('submit')) {
 			ajaxshowheader();
-			showformheader("adv&operation=custom&do=delete&id=$_GET[id]");
+			showformheader("adv&operation=custom&do=delete&id={$_GET['id']}");
 			echo $lang['adv_custom_delete'].'<br /><input name="submit" class="btn" type="submit" value="'.$lang['delete'].'" />&nbsp;'.
 				'<input class="btn" type="button" onclick="location.href=\''.ADMINSCRIPT.'?action=adv&operation=list\'" value="'.$lang['cancel'].'" />';
 			showformfooter();

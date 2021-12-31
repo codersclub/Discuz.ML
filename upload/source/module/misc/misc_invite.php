@@ -75,7 +75,7 @@ if($_GET['action'] == 'group') {
 } elseif($_GET['action'] == 'thread') {
 	$inviteduids = array();
 	$id = intval($_GET['id']);
-	$thread = C::t('forum_thread')->fetch($id);
+	$thread = C::t('forum_thread')->fetch_thread($id);
 	$at = 0;
 	$maxselect = 20;
 	if(empty($_GET['activity'])) {
@@ -85,7 +85,7 @@ if($_GET['action'] == 'group') {
 			$atnum = 0;
 			foreach(C::t('home_notification')->fetch_all_by_authorid_fromid($_G['uid'], $id, 'at') as $row) {
 				$atnum ++;
-				$inviteduids[$row[uid]] = $row['uid'];
+				$inviteduids[$row['uid']] = $row['uid'];
 			}
 			$maxselect = $_G['group']['allowat'] - $atnum;
 		} else {

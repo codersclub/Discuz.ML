@@ -29,7 +29,7 @@ if(!submitcheck('prunesubmit')) {
 			'<option value="">&nbsp;</option>'.forumselect(FALSE, 0, 0, TRUE).'</select>';
 
 		if($_GET['forums']) {
-			$forumselect = preg_replace("/(\<option value=\"$_GET[forums]\")(\>)/", "\\1 selected=\"selected\" \\2", $forumselect);
+			$forumselect = preg_replace("/(\<option value=\"{$_GET['forums']}\")(\>)/", "\\1 selected=\"selected\" \\2", $forumselect);
 		}
 	} else {
 		$forumselect = $comma = '';
@@ -82,7 +82,7 @@ EOT;
 	if($operation != 'group') {
 		showsetting('prune_search_forum', '', '', $forumselect);
 	}
-	showsetting('prune_search_perpage', '', $_GET['perpage'], "<select name='perpage'><option value='20'>$lang[perpage_20]</option><option value='50'>$lang[perpage_50]</option><option value='100'>$lang[perpage_100]</option></select>");
+	showsetting('prune_search_perpage', '', $_GET['perpage'], "<select name='perpage'><option value='20'>{$lang['perpage_20']}</option><option value='50'>{$lang['perpage_50']}</option><option value='100'>{$lang['perpage_100']}</option></select>");
 	if(!$fromumanage) {
 /*vot*/		empty($_GET['starttime']) && $_GET['starttime'] = dgmdate(TIMESTAMP - 86400 * 7, 'Y-m-d');
 	}
@@ -105,7 +105,7 @@ EOT;
 
 	loadcache('posttableids');
 	$posttable = in_array($_GET['posttableid'], $_G['cache']['posttableids']) ? $_GET['posttableid'] : 0;
-	foreach(C::t('forum_post')->fetch_all($posttable, ($pids ? explode(',', $pids) : $_GET['pidarray']), false) as $post) {
+	foreach(C::t('forum_post')->fetch_all_post($posttable, ($pids ? explode(',', $pids) : $_GET['pidarray']), false) as $post) {
 		$prune['forums'][] = $post['fid'];
 		$prune['thread'][$post['tid']]++;
 
@@ -159,7 +159,7 @@ EOT;
 if(submitcheck('searchsubmit', 1)) {
 
 	loadcache('posttableids');
-	$posttable = in_array($_GET['posttableid'], $_G['cache']['posttableids']) ? $_GET['posttableid'] : 0;
+	$posttable = (is_array($_G['cache']['posttableids']) && in_array($_GET['posttableid'], $_G['cache']['posttableids'])) ? $_GET['posttableid'] : 0;
 
 	$pids = array();
 	$postcount = '0';
@@ -225,7 +225,7 @@ if(submitcheck('searchsubmit', 1)) {
 			$groupsname = $groupsfid = $postlist = array();
 			$postlist = C::t('forum_post')->fetch_all_prune_by_search($posttable, $isgroup, $keywords, $len_message, $fid, $authorid, $starttime, $endtime, $useip, true, ($page - 1) * $perpage, $perpage);
 			foreach($postlist as $key => $post) {
-					$postfids[$post[fid]] = $post['fid'];
+					$postfids[$post['fid']] = $post['fid'];
 				$post['dateline'] = dgmdate($post['dateline']);
 				$post['subject'] = cutstr($post['subject'], 30);
 				$post['message'] = dhtmlspecialchars(cutstr($post['message'], 50));
@@ -234,17 +234,17 @@ if(submitcheck('searchsubmit', 1)) {
 			if($postfids) {
 				$query = C::t('forum_forum')->fetch_all_by_fid($postfids);
 				foreach($query as $row) {
-					$forumnames[$row[fid]] = $row['name'];
+					$forumnames[$row['fid']] = $row['name'];
 				}
 			}
 			if($postlist) {
 				foreach($postlist as $post) {
 					$posts .= showtablerow('', '', array(
-						"<input class=\"checkbox\" type=\"checkbox\" name=\"pidarray[]\" value=\"$post[pid]\" checked />",
-						"<a href=\"forum.php?mod=redirect&goto=findpost&pid=$post[pid]&ptid=$post[tid]\" target=\"_blank\">$post[subject]</a>",
+						"<input class=\"checkbox\" type=\"checkbox\" name=\"pidarray[]\" value=\"{$post['pid']}\" checked />",
+						"<a href=\"forum.php?mod=redirect&goto=findpost&pid={$post['pid']}&ptid={$post['tid']}\" target=\"_blank\">{$post['subject']}</a>",
 						$post['message'],
-					"<a href=\"forum.php?mod=forumdisplay&fid=$post[fid]\" target=\"_blank\">".$forumnames[$post[fid]]."</a>",
-						"<a href=\"home.php?mod=space&uid=$post[authorid]\" target=\"_blank\">$post[author]</a>",
+					"<a href=\"forum.php?mod=forumdisplay&fid={$post['fid']}\" target=\"_blank\">".$forumnames[$post['fid']]."</a>",
+						"<a href=\"home.php?mod=space&uid={$post['authorid']}\" target=\"_blank\">{$post['author']}</a>",
 						$post['dateline']
 					), TRUE);
 				}

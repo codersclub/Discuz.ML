@@ -74,7 +74,7 @@ function attachtype($type, $returnval = 'html') {
 }
 
 function parseattach($attachpids, $attachtags, &$postlist, $skipaids = array()) {
-	global $_G;
+	global $_G, $aimgs, $firstimgs;
 	if(!$attachpids) {
 		return;
 	}
@@ -84,7 +84,7 @@ function parseattach($attachpids, $attachtags, &$postlist, $skipaids = array()) 
 	foreach(C::t('forum_attachment_n')->fetch_all_by_id('tid:'.$_G['tid'], 'pid', $attachpids) as $attach) {
 		$attachexists = TRUE;
 		if($skipaids && in_array($attach['aid'], $skipaids)) {
-			$skipattachcode[$attach[pid]][] = "/\[attach\]$attach[aid]\[\/attach\]/i";
+			$skipattachcode[$attach['pid']][] = "/\[attach\]{$attach['aid']}\[\/attach\]/i";
 			continue;
 		}
 		$attached = 0;
@@ -98,11 +98,11 @@ function parseattach($attachpids, $attachtags, &$postlist, $skipaids = array()) 
 		}
 		$attach['attachimg'] = $attach['isimage'] && (!$attach['readperm'] || $_G['group']['readaccess'] >= $attach['readperm']) ? 1 : 0;
 		if($attach['attachimg']) {
-			$GLOBALS['aimgs'][$attach['pid']][] = $attach['aid'];
+			$aimgs[$attach['pid']][] = $attach['aid'];
 		}
 		if($attach['price']) {
 			if($_G['setting']['maxchargespan'] && TIMESTAMP - $attach['dateline'] >= $_G['setting']['maxchargespan'] * 3600) {
-				C::t('forum_attachment_n')->update('tid:'.$_G['tid'], $attach['aid'], array('price' => 0));
+				C::t('forum_attachment_n')->update_attachment('tid:'.$_G['tid'], $attach['aid'], array('price' => 0));
 				$attach['price'] = 0;
 			} elseif(!$_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']) {
 				$payaids[$attach['aid']] = $attach['pid'];
@@ -122,7 +122,7 @@ function parseattach($attachpids, $attachtags, &$postlist, $skipaids = array()) 
 			$postlist[$attach['pid']]['attachments'][$attach['aid']] = $attach;
 		}
 		if(!defined('IN_MOBILE_API') && !empty($attachtags[$attach['pid']]) && is_array($attachtags[$attach['pid']]) && in_array($attach['aid'], $attachtags[$attach['pid']])) {
-			$findattach[$attach['pid']][$attach['aid']] = "/\[attach\]$attach[aid]\[\/attach\]/i";
+			$findattach[$attach['pid']][$attach['aid']] = "/\[attach\]{$attach['aid']}\[\/attach\]/i";
 			$attached = 1;
 		}
 
@@ -133,7 +133,7 @@ function parseattach($attachpids, $attachtags, &$postlist, $skipaids = array()) 
 					$postlist[$attach['pid']]['imagelistcount']++;
 				}
 				if($postlist[$attach['pid']]['first']) {
-					$GLOBALS['firstimgs'][] = $attach['aid'];
+					$firstimgs[] = $attach['aid'];
 				}
 			} else {
 				if(!$hideattachs && (!$_G['forum_skipaidlist'] || !in_array($attach['aid'], $_G['forum_skipaidlist']))) {
@@ -177,7 +177,7 @@ function parseattach($attachpids, $attachtags, &$postlist, $skipaids = array()) 
 		loadcache('posttableids');
 		$posttableids = $_G['cache']['posttableids'] ? $_G['cache']['posttableids'] : array('0');
 		foreach($posttableids as $id) {
-			C::t('forum_post')->update($id, $attachpids, array('attachment' => '0'), true);
+			C::t('forum_post')->update_post($id, $attachpids, array('attachment' => '0'), true);
 		}
 	}
 }
@@ -213,7 +213,7 @@ function getattachexif($aid, $path = '') {
 	global $_G;
 	$return = $filename = '';
 	if(!$path) {
-		if($attach = C::t('forum_attachment_n')->fetch('aid:'.$aid, $aid, array(1, -1))) {
+		if($attach = C::t('forum_attachment_n')->fetch_attachment('aid:'.$aid, $aid, array(1, -1))) {
 			if($attach['remote']) {
 				$filename = $_G['setting']['ftp']['attachurl'].'forum/'.$attach['attachment'];
 			} else {

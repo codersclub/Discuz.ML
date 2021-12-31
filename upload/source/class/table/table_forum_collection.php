@@ -36,7 +36,18 @@ class table_forum_collection extends discuz_table
 		return DB::fetch_all('SELECT * FROM %t WHERE uid=%d %i'.DB::limit($start, $limit), array($this->_table, $uid, $sql), $this->_pk);
 	}
 
-	public function range($start = 0, $limit = 0, $reqthread = 0, $pK = true) {
+	public function range($start = 0, $limit = 0, $sort = '', $null = true) {
+		// $null 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::range($start, $limit, $sort);
+		} else {
+			$sort = $sort === '' ? 0 : $sort;
+			return $this->range_collection($start, $limit, $sort, $null);
+		}
+	}
+
+	public function range_collection($start = 0, $limit = 0, $reqthread = 0, $pK = true) {
 		return DB::fetch_all('SELECT * FROM %t WHERE threadnum>=%d ORDER BY lastupdate DESC '.DB::limit($start, $limit), array($this->_table, $reqthread), $pK ? $this->_pk : '');
 	}
 
@@ -78,7 +89,7 @@ class table_forum_collection extends discuz_table
 		return DB::result_first('SELECT COUNT(*) FROM %t WHERE uid=%d', array($this->_table, $uid));
 	}
 
-	public function update_by_ctid($ctid, $incthreadnum = 0, $incfollownum = 0, $inccommentnum = 0, $lastupdate = 0, $incratenum = 0, $totalratenum = 0, $lastpost = '') {
+	public function update_by_ctid($ctid, $incthreadnum = 0, $incfollownum = 0, $inccommentnum = 0, $lastupdate = 0, $incratenum = 0, $totalratenum = 0, $lastpost = array()) {
 		if(!$ctid) {
 			return false;
 		}
@@ -108,7 +119,7 @@ class table_forum_collection extends discuz_table
 			}
 			$para[] = $incratenum;
 		}
-		if(count($lastpost) == 4) {
+		if(is_array($lastpost) && count($lastpost) == 4) {
 			$sql[] = 'lastpost=%d,lastsubject=%s,lastposttime=%d,lastposter=%s';
 			$para = array_merge($para, array($lastpost['lastpost'], $lastpost['lastsubject'], $lastpost['lastposttime'], $lastpost['lastposter']));
 		}

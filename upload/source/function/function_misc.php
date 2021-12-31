@@ -304,7 +304,7 @@ function procthread($thread, $timeformat = 'd') {
 		$posts = $postsnum;
 		$topicpages = ceil($posts / $_G['ppp']);
 		for($i = 1; $i <= $topicpages; $i++) {
-			if(!in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
+			if(!is_array($_G['setting']['rewritestatus']) || !in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
 				$pagelinks .= '<a href="forum.php?mod=viewthread&tid='.$thread['tid'].'&page='.$i.($_GET['from'] ? '&from='.$_GET['from'] : '').'" target="_blank">'.$i.'</a> ';
 			} else {
 				$pagelinks .= '<a href="'.rewriteoutput('forum_viewthread', 1, $domain, $thread['tid'], $i, '', '').'" target="_blank">'.$i.'</a> ';
@@ -314,7 +314,7 @@ function procthread($thread, $timeformat = 'd') {
 			}
 		}
 		if($topicpages > 6) {
-			if(!in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
+			if(!is_array($_G['setting']['rewritestatus']) || !in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
 				$pagelinks .= ' .. <a href="forum.php?mod=viewthread&tid='.$thread['tid'].'&page='.$topicpages.'" target="_blank">'.$topicpages.'</a> ';
 			} else {
 				$pagelinks .= ' .. <a href="'.rewriteoutput('forum_viewthread', 1, $domain, $thread['tid'], $topicpages, '', '').'" target="_blank">'.$topicpages.'</a> ';
@@ -345,7 +345,7 @@ function procthread($thread, $timeformat = 'd') {
 function modlog($thread, $action) {
 	global $_G;
 	$reason = $_GET['reason'];
-	writelog('modslog', dhtmlspecialchars("$_G[timestamp]\t$_G[username]\t$_G[adminid]\t$_G[clientip]\t".$_G['forum']['fid']."\t".$_G['forum']['name']."\t$thread[tid]\t$thread[subject]\t$action\t$reason\t".$_G['toforum']['fid']."\t".$_G['toforum']['name']));
+	writelog('modslog', dhtmlspecialchars("{$_G['timestamp']}\t{$_G['username']}\t{$_G['adminid']}\t{$_G['clientip']}\t".$_G['forum']['fid']."\t".$_G['forum']['name']."\t{$thread['tid']}\t{$thread['subject']}\t$action\t$reason\t".$_G['toforum']['fid']."\t".$_G['toforum']['name']));
 }
 
 function checkreasonpm() {
@@ -406,7 +406,7 @@ function savebanlog($username, $origgroupid, $newgroupid, $expiration, $reason) 
 		$param = func_get_args();
 		hookscript('savebanlog', 'global', 'funcs', array('param' => $param), 'savebanlog');
 	}
-	writelog('banlog', dhtmlspecialchars("$_G[timestamp]\t{$_G[member][username]}\t$_G[groupid]\t$_G[clientip]\t$username\t$origgroupid\t$newgroupid\t$expiration\t$reason"));
+	writelog('banlog', dhtmlspecialchars("{$_G['timestamp']}\t{$_G['member']['username']}\t{$_G['groupid']}\t{$_G['clientip']}\t$username\t$origgroupid\t$newgroupid\t$expiration\t$reason"));
 }
 
 function clearlogstring($str) {
@@ -518,7 +518,7 @@ function recyclebinpostundelete($undeletepids, $posttableid = false) {
 
 	$postarray = $ruidarray = $fidarray = $tidarray = array();
 	foreach($posttableids as $ptid) {
-		foreach(C::t('forum_post')->fetch_all($ptid, $undeletepids, false) as $post) {
+		foreach(C::t('forum_post')->fetch_all_post($ptid, $undeletepids, false) as $post) {
 			if(!$post['first']) {
 				$ruidarray[$post['fid']][] = $post['authorid'];
 			}
@@ -531,7 +531,7 @@ function recyclebinpostundelete($undeletepids, $posttableid = false) {
 		return $postsundel;
 	}
 
-	C::t('forum_post')->update($posttableid, $undeletepids, array('invisible' => '0'), true);
+	C::t('forum_post')->update_post($posttableid, $undeletepids, array('invisible' => '0'), true);
 
 	include_once libfile('function/post');
 	if($ruidarray) {

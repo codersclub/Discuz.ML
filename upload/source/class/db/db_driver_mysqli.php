@@ -78,6 +78,7 @@ class db_driver_mysqli
 	}
 
 	function _dbconnect($dbhost, $dbuser, $dbpw, $dbcharset, $dbname, $pconnect, $halt = true) {
+		mysqli_report(MYSQLI_REPORT_OFF);
 /*vot*/		if (intval($pconnect) === 1) $dbhost = 'p:' . $dbhost; // p: prefix to indicate persistent connection
 		$link = new mysqli();
 		if(!$link->real_connect($dbhost, $dbuser, $dbpw, $dbname, null, null, MYSQLI_CLIENT_COMPRESS)) {
@@ -162,11 +163,11 @@ class db_driver_mysqli
 	}
 
 	function error() {
-		return (($this->curlink) ? $this->curlink->error : mysqli_error());
+		return $this->curlink->error;
 	}
 
 	function errno() {
-		return intval(($this->curlink) ? $this->curlink->errno : mysqli_errno());
+		return $this->curlink->errno;
 	}
 
 	function result($query, $row = 0) {

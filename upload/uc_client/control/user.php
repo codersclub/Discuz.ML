@@ -17,6 +17,7 @@ define('UC_USER_EMAIL_FORMAT_ILLEGAL', -4);
 define('UC_USER_EMAIL_ACCESS_ILLEGAL', -5);
 define('UC_USER_EMAIL_EXISTS', -6);
 define('UC_USER_USERNAME_CHANGE_FAILED', -7);
+define('UC_USER_SECMOBILE_EXISTS', -8);
 
 class usercontrol extends base {
 
@@ -70,6 +71,8 @@ class usercontrol extends base {
 		$questionid = $this->input('questionid');
 		$answer = $this->input('answer');
 		$regip = $this->input('regip');
+		$secmobicc = $this->input('secmobicc');
+		$secmobile = $this->input('secmobile');
 
 		if(($status = $this->_check_username($username)) < 0) {
 			return $status;
@@ -77,7 +80,11 @@ class usercontrol extends base {
 		if(($status = $this->_check_email($email)) < 0) {
 			return $status;
 		}
-		$uid = $_ENV['user']->add_user($username, $password, $email, 0, $questionid, $answer, $regip);
+		if(($status = $this->_check_secmobile($secmobicc, $secmobile)) > 0) {
+			return -8;
+		}
+
+		$uid = $_ENV['user']->add_user($username, $password, $email, 0, $questionid, $answer, $regip, $secmobicc, $secmobile);
 		return $uid;
 	}
 
@@ -90,16 +97,26 @@ class usercontrol extends base {
 		$ignoreoldpw = $this->input('ignoreoldpw');
 		$questionid = $this->input('questionid');
 		$answer = $this->input('answer');
+		$secmobicc = $this->input('secmobicc');
+		$secmobile = $this->input('secmobile');
 
 		if(!$ignoreoldpw && $email && ($status = $this->_check_email($email, $username)) < 0) {
 			return $status;
 		}
-		$status = $_ENV['user']->edit_user($username, $oldpw, $newpw, $email, $ignoreoldpw, $questionid, $answer);
+		if(($status = $this->_check_secmobile($secmobicc, $secmobile)) > 0) {
+			return -8;
+		}
+
+		$status = $_ENV['user']->edit_user($username, $oldpw, $newpw, $email, $ignoreoldpw, $questionid, $answer, $secmobicc, $secmobile);
 
 		if($newpw && $status > 0) {
 			$this->load('note');
 			$_ENV['note']->add('updatepw', 'username='.urlencode($username).'&password=');
 			$_ENV['note']->send();
+		}
+		if($status > 0) {
+			$tmp = $_ENV['user']->get_user_by_uid($username);
+			$_ENV['user']->user_log($tmp['uid'], 'edituser', 'uid='.$tmp['uid'].'&email='.urlencode($email).'&secmobicc='.urlencode($secmobicc).'&secmobile='.urlencode($secmobile));
 		}
 		return $status;
 	}
@@ -113,10 +130,13 @@ class usercontrol extends base {
 		$questionid = $this->input('questionid');
 		$answer = $this->input('answer');
 		$ip = $this->input('ip');
+		$nolog = $this->input('nolog');
 
-		$this->settings['login_failedtime'] = is_null($this->settings['login_failedtime']) ? 5 : $this->settings['login_failedtime'];
+		// check_times 代表允许用户登录失败次数，该变量的值为 0 为不限制，正数为次数
+		// 由于历史 Bug ，系统配置内原有用于代表无限制的 0 值必须代表正常值 5 ，因此只能在这里进行映射，负数映射为 0 ，正数正常， 0 映射为 5 。
+		$check_times = $this->settings['login_failedtime'] > 0 ? $this->settings['login_failedtime'] : ($this->settings['login_failedtime'] < 0 ? 0 : 5);
 
-		if($ip && $this->settings['login_failedtime'] && !$loginperm = $_ENV['user']->can_do_login($username, $ip)) {
+		if($ip && $check_times && !$loginperm = $_ENV['user']->can_do_login($username, $ip)) {
 			$status = -4;
 			return array($status, '', $password, '', 0);
 		}
@@ -125,21 +145,26 @@ class usercontrol extends base {
 			$user = $_ENV['user']->get_user_by_uid($username);
 		} elseif($isuid == 2) {
 			$user = $_ENV['user']->get_user_by_email($username);
+		} elseif($isuid == 4) {
+			// isuid == 4 则为手机号码登录，isuid == 3 已被应用占用
+			list($secmobicc, $secmobile) = explode('-', $username);
+			$user = $_ENV['user']->get_user_by_secmobile($secmobicc, $secmobile);
 		} else {
 			$user = $_ENV['user']->get_user_by_username($username);
 		}
 
-		$passwordmd5 = preg_match('/^\w{32}$/', $password) ? $password : md5($password);
 		if(empty($user)) {
 			$status = -1;
-		} elseif($user['password'] != md5($passwordmd5.$user['salt'])) {
+		} elseif(!$_ENV['user']->verify_password($password, $user['password'], $user['salt'])) {
 			$status = -2;
 		} elseif($checkques && $user['secques'] != $_ENV['user']->quescrypt($questionid, $answer)) {
 			$status = -3;
 		} else {
+			// 密码升级作为附属流程, 失败与否不影响登录操作
+			$_ENV['user']->upgrade_password($username, $password, $user['password'], $user['salt']);
 			$status = $user['uid'];
 		}
-		if($ip && $this->settings['login_failedtime'] && $status <= 0) {
+		if(!$nolog && $ip && $check_times && $status <= 0) {
 			$_ENV['user']->loginfailed($username, $ip);
 		}
 		$merge = $status != -1 && !$isuid && $_ENV['user']->check_mergeuser($username) ? 1 : 0;
@@ -157,6 +182,13 @@ class usercontrol extends base {
 		$this->init_input();
 		$email = $this->input('email');
 		return $this->_check_email($email);
+	}
+
+	function oncheck_secmobile() {
+		$this->init_input();
+		$secmobicc = $this->input('secmobicc');
+		$secmobile = $this->input('secmobile');
+		return $this->_check_secmobile($secmobicc, $secmobile);
 	}
 
 	function oncheck_username() {
@@ -291,6 +323,10 @@ class usercontrol extends base {
 		} else {
 			return 1;
 		}
+	}
+
+	function _check_secmobile($secmobicc, $secmobile, $username = '') {
+		return $_ENV['user']->check_secmobileexists($secmobicc, $secmobile, $username);
 	}
 
 	function onuploadavatar() {

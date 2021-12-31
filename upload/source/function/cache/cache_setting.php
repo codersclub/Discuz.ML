@@ -88,7 +88,7 @@ function build_cache_setting() {
 					}
 					$setting['svalue'][$key]['field'] = $temp;
 				}
-				C::t('common_setting')->update('profilegroup', $setting['svalue']);
+				C::t('common_setting')->update_setting('profilegroup', $setting['svalue']);
 			}
 		}
 		$_G['setting'][$setting['skey']] = $data[$setting['skey']] = $setting['svalue'];
@@ -316,7 +316,8 @@ function build_cache_setting() {
 	$data['imagemaxwidth'] = intval($data['imagemaxwidth']);
 
 	require_once DISCUZ_ROOT.'./config/config_ucenter.php';
-	$data['ucenterurl'] = UC_API;
+	$data['ucenterurl'] = UC_STANDALONE ? '.' : UC_API;
+	$data['avatarurl'] = UC_AVTURL;
 
 	foreach(C::t('common_magic')->fetch_all_data(1) as $magic) {
 		$magic['identifier'] = str_replace(':', '_', $magic['identifier']);
@@ -451,27 +452,57 @@ function build_cache_setting() {
 		if($output['preg']) {
 			foreach($data['footernavs'] as $id => $nav) {
 				foreach ($output['preg']['search'] as $key => $value) {
-					$data['footernavs'][$id]['code'] = preg_replace_callback($value, create_function('$matches', 'return '.$output['preg']['replace'][$key].';'), $nav['code']);
+					$data['footernavs'][$id]['code'] = preg_replace_callback(
+						$value,
+						function ($matches) use ($output, $key) {
+							return eval('return ' . $output['preg']['replace'][$key] . ';');
+						},
+						$nav['code']
+					);
 				}
 			}
 			foreach($data['spacenavs'] as $id => $nav) {
 				foreach ($output['preg']['search'] as $key => $value) {
-					$data['spacenavs'][$id]['code'] = preg_replace_callback($value, create_function('$matches', 'return '.$output['preg']['replace'][$key].';'), $nav['code']);
+					$data['spacenavs'][$id]['code'] = preg_replace_callback(
+						$value,
+						function ($matches) use ($output, $key) {
+							return eval('return ' . $output['preg']['replace'][$key] . ';');
+						},
+						$nav['code']
+					);
 				}
 			}
 			foreach($data['mynavs'] as $id => $nav) {
 				foreach ($output['preg']['search'] as $key => $value) {
-					$data['mynavs'][$id]['code'] = preg_replace_callback($value, create_function('$matches', 'return '.$output['preg']['replace'][$key].';'), $nav['code']);
+					$data['mynavs'][$id]['code'] = preg_replace_callback(
+						$value,
+						function ($matches) use ($output, $key) {
+							return eval('return ' . $output['preg']['replace'][$key] . ';');
+						},
+						$nav['code']
+					);
 				}
 			}
 			foreach($data['topnavs'] as $id => $nav) {
 				foreach ($output['preg']['search'] as $key => $value) {
-					$data['topnavs'][$id]['code'] = preg_replace_callback($value, create_function('$matches', 'return '.$output['preg']['replace'][$key].';'), $nav['code']);
+					$data['topnavs'][$id]['code'] = preg_replace_callback(
+						$value,
+						function ($matches) use ($output, $key) {
+							return eval('return ' . $output['preg']['replace'][$key] . ';');
+						},
+						$nav['code']
+					);
 				}
 			}
 			foreach($data['plugins']['jsmenu'] as $id => $nav) {
 				foreach ($output['preg']['search'] as $key => $value) {
-					$data['plugins']['jsmenu'][$id]['url'] = preg_replace_callback($value, create_function('$matches', 'return '.$output['preg']['replace'][$key].';'), $nav['url']);
+					$data['plugins']['jsmenu'][$id]['url'] = preg_replace_callback(
+						$value,
+						function ($matches) use ($output, $key) {
+							return eval('return ' . $output['preg']['replace'][$key] . ';');
+						},
+						$nav['url']
+					);
 				}
 			}
 		}
@@ -484,7 +515,17 @@ function build_cache_setting() {
 	$data['mpsid'] = preg_replace('/[^0-9]+/', '', $data['mps']);
 
 	$data['securesiteurl'] = $_G['siteurl'];
-	
+
+	$data['maxsubjectsize'] = empty($data['maxsubjectsize']) ? 80 : $data['maxsubjectsize'];
+
+	$data['minsubjectsize'] = empty($data['minsubjectsize']) ? 1 : $data['minsubjectsize'];
+
+	// 如果站点做过用户分表, 需要在更新缓存时判定一下用户分表是否存在, 不存在的话需要加上.
+	// 修复因站点自身问题导致用户分表丢失导致程序出错的问题.
+	if($data['membersplit']) {
+		C::t('common_member_archive')->check_table();
+	}
+
 	savecache('setting', $data);
 	$_G['setting'] = $data;
 }
@@ -526,7 +567,7 @@ function get_cachedata_setting_plugin($method = '') {
 			unset($plugin['modules']['extra']);
 			foreach($plugin['modules'] as $k => $module) {
 				if($available && isset($module['name'])) {
-					$module['displayorder'] = $plugin['modules']['system'] ? ($module['displayorder'] < 1000 ? $module['displayorder'] : 999) : $module['displayorder'] + 1000;
+					$module['displayorder'] = $plugin['modules']['system'] ? ($module['displayorder'] < 1000 ? (int)$module['displayorder'] : 999) : (int)$module['displayorder'] + 1000;
 					$k = '';
 					switch($module['type']) {
 						case 1:
@@ -621,9 +662,9 @@ function get_cachedata_setting_plugin($method = '') {
 									}
 									// If $funcname include __ , then before __ is $curscript.
 									if(strpos($funcname, '__') !== false) {
-										$curscript = explode('__', $funcname)[0];
+										$curscript = current(explode('__', $funcname));
 									}
-									if(!@in_array($script, $data[$k][$hscript][$curscript]['module'])) {
+									if(!is_array($data[$k][$hscript][$curscript]['module']) || !in_array($script, $data[$k][$hscript][$curscript]['module'])) {
 										$data[$k][$hscript][$curscript]['module'][$plugin['identifier']] = $script;
 										$data[$k][$hscript][$curscript]['adminid'][$plugin['identifier']] = $module['adminid'];
 									}
@@ -657,7 +698,7 @@ function get_cachedata_setting_plugin($method = '') {
 			}
 		}
 		if($addadminmenu) {
-			$adminmenu[$plugin['modules']['system'] ? 0 : 1][] = array('url' => "plugins&operation=config&do=$plugin[pluginid]", 'action' => 'plugins_config_'.$plugin['pluginid'], 'name' => $plugin['name']);
+			$adminmenu[$plugin['modules']['system'] ? 0 : 1][] = array('url' => "plugins&operation=config&do={$plugin['pluginid']}", 'action' => 'plugins_config_'.$plugin['pluginid'], 'name' => $plugin['name']);
 		}
 	}
 	if(!$method) {
@@ -749,9 +790,6 @@ function get_cachedata_mainnav() {
 				continue;
 			}
 		}
-		if($nav['identifier'] == 5 && $nav['type'] == 0 && !$_G['setting']['my_app_status']) {
-			$nav['available'] = 0;
-		}
 		if($nav['identifier'] == 8 && $nav['type'] == 0 && !$_G['setting']['ranklist']['status']) {
 			$nav['available'] = 0;
 		}
@@ -766,10 +804,9 @@ function get_cachedata_mainnav() {
 //vot Get All Sub-navigation links
 /*vot*/		$subindex = 0;
 /*vot*/		$subnavs = array();
-		if(!($nav['identifier'] == 5 && $nav['type'] == 0)) {
-			foreach(C::t('common_nav')->fetch_all_subnav($nav['id']) as $subnav) {
-//vot				$item = "<a href=\"$subnav[url]\" hidefocus=\"true\" ".($subnav['title'] ? "title=\"$subnav[title]\" " : '').($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']).">$subnav[name]</a>";
-				$liparam = !$nav['subtype'] || !$nav['subcols'] ? '' : ' style="width:'.sprintf('%1.1f', (1 / $nav['subcols']) * 100).'%"';
+		foreach(C::t('common_nav')->fetch_all_subnav($nav['id']) as $subnav) {
+			$item = "<a href=\"{$subnav['url']}\" hidefocus=\"true\" ".($subnav['title'] ? "title=\"{$subnav['title']}\" " : '').($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']).">{$subnav['name']}</a>";
+			$liparam = !$nav['subtype'] || !$nav['subcols'] ? '' : ' style="width:'.sprintf('%1.1f', (1 / $nav['subcols']) * 100).'%"';
 //vot				$subnavs .= '<li'.$liparam.'>'.$item.'</li>';
 
 /*vot*/				$subnavs[$subindex] = $subnav;
@@ -781,7 +818,6 @@ function get_cachedata_mainnav() {
 
 /*vot*/				$subindex++;
 /*vot*/			}
-		}
 		list($navid) = explode('.', basename($nav['url']));
 		if($nav['type'] || $navid == 'misc' || $nav['identifier'] == 6) {
 			if($nav['type'] == 4) {
@@ -944,7 +980,7 @@ function get_cachedata_spacenavs() {
 					$nav['extra'] = ' onclick="showWindow(\'nav\', this.href);return false;"';
 				}
 			} elseif($nav['identifier'] == 'credit') {
-				$nav['allowsubnew'] = $_G['setting']['ec_ratio'] && ($_G['setting']['ec_account'] || $_G['setting']['ec_tenpay_opentrans_chnid'] || $_G['setting']['ec_tenpay_bargainor']);
+				$nav['allowsubnew'] = $_G['setting']['ec_ratio'] && payment::enable();
 			}
 		}
 		$nav['subcode'] = $nav['allowsubnew'] ? '<span><a href="'.$nav['suburl'].'"'.($nav['target'] == 1 ? ' target="_blank"' : '').$nav['extra'].'>'.$nav['subname'].'</a></span>' : '';
@@ -1009,8 +1045,8 @@ function get_cachedata_threadprofile() {
 	if(!helper_dbtool::isexisttable('forum_threadprofile')) {
 		return;
 	}
-	$threadprofiles = C::t('forum_threadprofile')->fetch_all();
-	$threadprofile_group = C::t('forum_threadprofile_group')->fetch_all();
+	$threadprofiles = C::t('forum_threadprofile')->fetch_all_threadprofile();
+	$threadprofile_group = C::t('forum_threadprofile_group')->fetch_all_threadprofile();
 	$data = array();
 	foreach($threadprofiles as $id => $threadprofile) {
 		if($threadprofile['global']) {
@@ -1030,7 +1066,13 @@ function get_cachedata_threadprofile() {
 	}
 	foreach($data['template'] as $id => $template) {
 		foreach($template as $type => $row) {
-			$data['template'][$id][$type] = preg_replace_callback('/\{([\w:]+)(=([^}]+?))?\}(([^}]+?)\{\*\}([^}]+?)\{\/\\1\})?/s', create_function('$matches', 'return get_cachedata_threadprofile_nodeparse('.intval($id).', \''.addslashes($type).'\', $matches[1], $matches[5], $matches[6], $matches[3]);'), $template[$type]);
+			$data['template'][$id][$type] = preg_replace_callback(
+				'/\{([\w:]+)(=([^}]+?))?\}(([^}]+?)\{\*\}([^}]+?)\{\/\\1\})?/s',
+				function ($matches) use ($id, $type) {
+					return get_cachedata_threadprofile_nodeparse(intval($id), ''.addslashes($type).'', $matches[1], $matches[5], $matches[6], $matches[3]);
+				},
+				$template[$type]
+			);
 		}
 	}
 	$data['code'] = $_G['cachedata_threadprofile_code'];
@@ -1089,10 +1131,7 @@ function writetojscache() {
 			$jsdata = @fread($fp, filesize($jsfile));
 			fclose($fp);
 			$jsdata = preg_replace($remove[0], $remove[1], $jsdata);
-			if(@$fp = fopen(DISCUZ_ROOT.'./data/cache/'.$entry, 'w')) {
-				fwrite($fp, $jsdata);
-				fclose($fp);
-			} else {
+			if(file_put_contents(DISCUZ_ROOT.'./data/cache/'.$entry, $jsdata, LOCK_EX) === false) {
 				exit('Can not write to cache files, please check directory ./data/ and ./data/cache/ .');
 			}
 		}

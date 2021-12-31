@@ -232,9 +232,9 @@ var rowtypedata = [
 
 		foreach($moderators as $mod) {
 			showtablerow('', array('class="td25"', 'class="td28"'), array(
-				'<input type="checkbox" class="checkbox" name="delete[]" value="'.$mod[uid].'"'.($mod['inherited'] ? ' disabled' : '').' />',
-				'<input type="text" class="txt" name="displayordernew['.$mod[uid].']" value="'.$mod[displayorder].'" size="2" />',
-				"<a href=\"".ADMINSCRIPT."?mod=forum&action=members&operation=group&uid=$mod[uid]\" target=\"_blank\">{$users[$mod['uid']]['username']}</a>",
+				'<input type="checkbox" class="checkbox" name="delete[]" value="'.$mod['uid'].'"'.($mod['inherited'] ? ' disabled' : '').' />',
+				'<input type="text" class="txt" name="displayordernew['.$mod['uid'].']" value="'.$mod['displayorder'].'" size="2" />',
+				"<a href=\"".ADMINSCRIPT."?mod=forum&action=members&operation=group&uid={$mod['uid']}\" target=\"_blank\">{$users[$mod['uid']]['username']}</a>",
 				$modgroups[$users[$mod['uid']]['groupid']],
 				cplang($mod['inherited'] ? 'yes' : 'no'),
 			));
@@ -501,7 +501,7 @@ var rowtypedata = [
 			$fids = &$_GET['multi'];
 		}
 	}
-	if(count($_GET['multi']) == 1) {
+	if(!empty($_GET['multi']) && is_array($_GET['multi']) && count($_GET['multi']) == 1) {
 		$fids = $_GET['multi'][0];
 		$multiset = 0;
 	}
@@ -527,7 +527,7 @@ var rowtypedata = [
 	$allowthreadtypes = !in_array('threadtypes', $dactionarray);
 
 
-	$forumkeys = C::t('common_setting')->fetch('forumkeys', true);
+	$forumkeys = C::t('common_setting')->fetch_setting('forumkeys', true);
 
 	$rules = array();
 	foreach(C::t('common_credit_rule')->fetch_all_by_action(array('reply', 'post', 'digest', 'postattach', 'getattach')) as $value) {
@@ -546,12 +546,12 @@ var rowtypedata = [
 		$forumselect = '';
 		$sgid = 0;
 		foreach($_G['cache']['forums'] as $forums) {
-			$checked = $fid == $forums['fid'] || in_array($forums['fid'], $_GET['multi']);
+			$checked = $fid == $forums['fid'] || (is_array($_GET['multi']) && in_array($ggroup['groupid'], $_GET['multi']));
 			if($forums['type'] == 'group') {
 				$sgid = $forums['fid'];
 				$forumselect .= '</div><em class="cl">'.
 					'<span class="right"><input name="checkall_'.$forums['fid'].'" onclick="checkAll(\'value\', this.form, '.$forums['fid'].', \'checkall_'.$forums['fid'].'\')" type="checkbox" class="vmiddle checkbox" /></span>'.
-					'<span class="pointer" onclick="sdisplay(\'g_'.$forums['fid'].'\', this)"><img src="static/image/admincp/desc.gif" class="vmiddle" /></span> <span class="pointer" onclick="location.href=\''.ADMINSCRIPT.'?action=forums&operation=edit&switch=yes&fid='.$forums['fid'].'\'">'.$forums['name'].'</span></em><div id="g_'.$forums['fid'].'" style="display:">';
+					'<span class="pointer" onclick="sdisplay(\'g_'.$forums['fid'].'\', this)"><img src="' . STATICURL . 'image/admincp/desc.gif" class="vmiddle" /></span> <span class="pointer" onclick="location.href=\''.ADMINSCRIPT.'?action=forums&operation=edit&switch=yes&fid='.$forums['fid'].'\'">'.$forums['name'].'</span></em><div id="g_'.$forums['fid'].'" style="display:">';
 			} elseif($forums['type'] == 'forum') {
 				$forumselect .= '<input class="left checkbox ck" chkvalue="'.$sgid.'" name="multi[]" value="'.$forums['fid'].'" type="checkbox" '.($checked ? 'checked="checked" ' : '').'/><a class="f'.($checked ? ' current"' : '').'" href="###" onclick="location.href=\''.ADMINSCRIPT.'?action=forums&operation=edit&switch=yes&fid='.$forums['fid'].($mforum[0]['type'] != 'group' ? '&anchor=\'+currentAnchor' : '\'').'+\'&scrolltop=\'+scrollTopBody()">'.$forums['name'].'</a>';
 			} elseif($forums['type'] == 'sub') {
@@ -593,11 +593,11 @@ var rowtypedata = [
 			$groups[$group['type']][] = $group;
 		}
 
-		$styleselect = "<select name=\"styleidnew\"><option value=\"0\">$lang[use_default]</option>";
+		$styleselect = "<select name=\"styleidnew\"><option value=\"0\">{$lang['use_default']}</option>";
 		foreach(C::t('common_style')->fetch_all_data(false, false) as $style) {
-			$styleselect .= "<option value=\"$style[styleid]\" ".
+			$styleselect .= "<option value=\"{$style['styleid']}\" ".
 				($style['styleid'] == $mforum[0]['styleid'] ? 'selected="selected"' : NULL).
-				">$style[name]</option>\n";
+				">{$style['name']}</option>\n";
 		}
 		$styleselect .= '</select>';
 
@@ -606,9 +606,9 @@ var rowtypedata = [
 			foreach(C::t('forum_attachtype')->fetch_all_by_fid($fid) as $type) {
 				$type['maxsize'] = round($type['maxsize'] / 1024);
 				$attachtypes .= showtablerow('', array('class="td25"', 'class="td24"'), array(
-					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$type[id]\" />",
-					"<input type=\"text\" class=\"txt\" size=\"10\" name=\"extension[$type[id]]\" value=\"$type[extension]\" />",
-					"<input type=\"text\" class=\"txt\" size=\"15\" name=\"maxsize[$type[id]]\" value=\"$type[maxsize]\" />"
+					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"{$type['id']}\" />",
+					"<input type=\"text\" class=\"txt\" size=\"10\" name=\"extension[{$type['id']}]\" value=\"{$type['extension']}\" />",
+					"<input type=\"text\" class=\"txt\" size=\"15\" name=\"maxsize[{$type['id']}]\" value=\"{$type['maxsize']}\" />"
 				), TRUE);
 			}
 		} else {
@@ -668,11 +668,11 @@ var rowtypedata = [
 						foreach($fups as $forum1) {
 							if($forum1['type'] == 'group') {
 								$selected = $forum1['fid'] == $forum['fup'] ? "selected=\"selected\"" : NULL;
-								$fupselect .= "<option value=\"$forum1[fid]\" $selected>$forum1[name]</option>\n";
+								$fupselect .= "<option value=\"{$forum1['fid']}\" $selected>{$forum1['name']}</option>\n";
 								foreach($fups as $forum2) {
 									if($forum2['type'] == 'forum' && $forum2['fup'] == $forum1['fid']) {
 										$selected = $forum2['fid'] == $forum['fup'] ? "selected=\"selected\"" : NULL;
-										$fupselect .= "<option value=\"$forum2[fid]\" $selected>&nbsp; &gt; $forum2[name]</option>\n";
+										$fupselect .= "<option value=\"{$forum2['fid']}\" $selected>&nbsp; &gt; {$forum2['name']}</option>\n";
 									}
 								}
 							}
@@ -680,7 +680,7 @@ var rowtypedata = [
 						foreach($fups as $forum0) {
 							if($forum0['type'] == 'forum' && $forum0['fup'] == 0) {
 								$selected = $forum0['fid'] == $forum['fup'] ? "selected=\"selected\"" : NULL;
-								$fupselect .= "<option value=\"$forum0[fid]\" $selected>$forum0[name]</option>\n";
+								$fupselect .= "<option value=\"{$forum0['fid']}\" $selected>{$forum0['name']}</option>\n";
 							}
 						}
 					}
@@ -725,8 +725,8 @@ var rowtypedata = [
 								'<input type="checkbox" name="threadsortsnew[options][enable]['.$type['typeid'].']" value="1" class="checkbox"'.$enablechecked.' />',
 								$type['name'],
 								$type['description'],
-								"<input class=\"checkbox\" type=\"checkbox\" name=\"threadsortsnew[options][show][{$type[typeid]}]\" value=\"3\" $typeselected[3] />",
-								"<input class=\"radio\" type=\"radio\" name=\"threadsortsnew[defaultshow]\" value=\"$type[typeid]\" ".($forum['threadsorts']['defaultshow'] == $type['typeid'] ? 'checked' : '')." />"
+								"<input class=\"checkbox\" type=\"checkbox\" name=\"threadsortsnew[options][show][{$type['typeid']}]\" value=\"3\" $typeselected[3] />",
+								"<input class=\"radio\" type=\"radio\" name=\"threadsortsnew[defaultshow]\" value=\"{$type['typeid']}\" ".($forum['threadsorts']['defaultshow'] == $type['typeid'] ? 'checked' : '')." />"
 							), TRUE) : '';
 						}
 					}
@@ -748,13 +748,14 @@ var rowtypedata = [
 				$forum['subforumsindex'] = bindec(substr($simplebin, 3, 2));
 				$forum['subforumsindex'] = $forum['subforumsindex'] == 0 ? -1 : ($forum['subforumsindex'] == 2 ? 0 : 1);
 				$forum['simple'] = $forum['simple'] & 1;
-				$forum['modrecommend'] = $forum['modrecommend'] ? dunserialize($forum['modrecommend']) : '';
+				$forum['modrecommend'] = $forum['modrecommend'] ? dunserialize($forum['modrecommend']) : array();
 				$forum['formulaperm'] = dunserialize($forum['formulaperm']);
 				$forum['medal'] = $forum['formulaperm']['medal'];
 				$forum['formulapermmessage'] = $forum['formulaperm']['message'];
 				$forum['formulapermusers'] = $forum['formulaperm']['users'];
 				$forum['formulaperm'] = $forum['formulaperm'][0];
 				$forum['extra'] = dunserialize($forum['extra']);
+				$forum['threadsorts'] = is_array($forum['threadsorts']) ? $forum['threadsorts'] : array();
 				$forum['threadsorts']['default'] = $forum['threadsorts']['defaultshow'] ? 1 : 0;
 
 				$_G['multisetting'] = $multiset ? 1 : 0;
@@ -800,7 +801,7 @@ var rowtypedata = [
 				showsetting('forums_edit_basic_rules', 'rulesnew', htmlspecialchars_decode(html2bbcode($forum['rules'])), 'textarea');
 				showsetting('forums_edit_basic_keys', 'keysnew', $forumkeys[$fid], 'text');
 				if(!empty($_G['setting']['domain']['root']['forum'])) {
-					$iname = $multiset ? "multinew[{$_G[showsetting_multi]}][domainnew]" : 'domainnew';
+					$iname = $multiset ? "multinew[{$_G['showsetting_multi']}][domainnew]" : 'domainnew';
 					showsetting('forums_edit_extend_domain', '', '', $_G['scheme'].'://<input type="text" name="'.$iname.'" class="txt" value="'.$forum['domain'].'" style="width:100px; margin-right:0px;" >.'.$_G['setting']['domain']['root']['forum']);
 				} elseif(!$multiset) {
 					showsetting('forums_edit_extend_domain', 'domainnew', '', 'text', 'disabled');
@@ -823,7 +824,11 @@ var rowtypedata = [
 					showtips('forums_edit_tips');
 				}
 				showtableheader('forums_edit_extend', 'nobottom');
-				showsetting('forums_edit_extend_style', '', '', $styleselect);
+				$multi_styleselect = $_GET['multi'] ? preg_replace('/\w+new/', 'multinew['.$_G['showsetting_multi'].'][\\0]', $styleselect) : $styleselect;
+				$styleid = $forum['styleid'];
+				$multi_styleselect = str_replace("selected=\"selected\"", "", $multi_styleselect);
+				$multi_styleselect = str_replace("value=\"$styleid\"", "value=\"$styleid\" selected=\"selected\"", $multi_styleselect);
+				showsetting('forums_edit_extend_style', '', '', $multi_styleselect);
 				if($forum['type'] != 'sub') {
 					showsetting('forums_edit_extend_sub_horizontal', 'forumcolumnsnew', $forum['forumcolumns'], 'text');
 					showsetting('forums_edit_extend_subforumsindex', array('subforumsindexnew', array(
@@ -860,10 +865,13 @@ var rowtypedata = [
 				if($_G['setting']['allowreplybg']) {
 					$replybghtml = '';
 					if($forum['replybg']) {
-						$replybghtml = '<label><input type="checkbox" class="checkbox" name="delreplybg" value="yes" /> '.$lang['delete'].'</label><br /><img src="'.$_G['setting']['attachurl'].'common/'.$forum['replybg'].'" width="200px" />';
-					}
-					if($forum['replybg']) {
 						$replybgurl = parse_url($forum['replybg']);
+						if(isset($replybgurl['host'])) {
+							$replybgicon = $forum['replybg'];
+						} else {
+							$replybgicon = $_G['setting']['attachurl'].'common/'.$forum['replybg'].'?'.random(6);
+						}
+						$replybghtml = '<label><input type="checkbox" class="checkbox" name="delreplybg" value="yes" /> '.$lang['delete'].'</label><br /><img src="'.$replybgicon.'" width="200px" />';                        
 					}
 					showsetting('forums_edit_extend_reply_background', 'replybgnew', (!$replybgurl['host'] ? str_replace($_G['setting']['attachurl'].'common/', '', $forum['replybg']) : $forum['replybg']), 'filetext', '', 0, $replybghtml);
 				}
@@ -1154,7 +1162,7 @@ EOT;
 							}
 							$colums = array('<input class="checkbox" title="'.cplang('select_all').'" type="checkbox" name="chkallv'.$group['groupid'].'" onclick="checkAll(\'value\', this.form, '.$group['groupid'].', \'chkallv'.$group['groupid'].'\')" id="chkallv_'.$group['groupid'].'" /><label for="chkallv_'.$group['groupid'].'"> '.$group['grouptitle'].'</label>');
 							foreach($perms as $perm) {
-								$checked = strstr($forum[$perm], "\t$group[groupid]\t") ? 'checked="checked"' : NULL;
+								$checked = strstr($forum[$perm], "\t{$group['groupid']}\t") ? 'checked="checked"' : NULL;
 								$colums[] = '<input class="checkbox" type="checkbox" name="'.$perm.'[]" value="'.$group['groupid'].'" chkvalue="'.$group['groupid'].'" '.$checked.'>';
 							}
 							showtablerow('', array('width="21%"', 'width="13%"', 'width="13%"', 'width="13%"', 'width="16%"', 'width="13%"', 'width="13%"'), $colums);
@@ -1299,6 +1307,7 @@ EOT;
 			}}
 
 		if($_G['showsetting_multicount'] > 1) {
+			$mfids = is_array($mfids) ? $mfids : array($mfids);
 			showhiddenfields(array('multi' => implode(',', $mfids)));
 			showmulti();
 		}
@@ -1329,7 +1338,7 @@ EOT;
 			if(!checkformulaperm($_GET['formulapermnew'])) {
 				cpmsg('forums_formulaperm_error', '', 'error');
 			}
-
+			$_GET['formulapermnew'] = trim($_GET['formulapermnew']);
 			$formulapermary[0] = $_GET['formulapermnew'];
 			$formulapermary[1] = preg_replace(
 				array("/(digestposts|posts|threads|oltime|extcredits[1-8])/", "/(regdate|regday|regip|lastip|buyercredit|sellercredit|field\d+)/"),
@@ -1463,7 +1472,7 @@ EOT;
 
 				$fup = C::t('forum_forum')->fetch($_GET['fupnew']);
 
-				$fupadd = ", type='".($fup['type'] == 'forum' ? 'sub' : 'forum')."', fup='$fup[fid]'";
+				$fupadd = ", type='".($fup['type'] == 'forum' ? 'sub' : 'forum')."', fup='{$fup['fid']}'";
 				$forumdata['type'] = $fup['type'] == 'forum' ? 'sub' : 'forum';
 				$forumdata['fup'] = $fup['fid'];
 				C::t('forum_moderator')->delete_by_fid_inherited($fid, 1);
@@ -1532,7 +1541,7 @@ EOT;
 				'allowglobalstick' => $allowglobalsticknew,
 				'disablethumb' => $_GET['disablethumbnew'],
 				'disablewatermark' => $_GET['disablewatermarknew'],
-				'autoclose' => intval($_GET['autoclosenew'] * $_GET['autoclosetimenew']),
+				'autoclose' => (!empty($_GET['autoclosenew']) && !empty($_GET['autoclosetimenew'])) ? (intval((int)$_GET['autoclosenew'] * (int)$_GET['autoclosetimenew'])) : 0,
 				'allowfeed' => $_GET['allowfeednew'],
 				'domain' => $domain,
 			));
@@ -1594,6 +1603,10 @@ EOT;
 										$threadtypes_newdisplayorder = intval($_GET['newdisplayorder'][$key]);
 										$threadtypes_newicon = trim($_GET['newicon'][$key]);
 										$newtypeid = C::t('forum_threadclass')->insert(array('fid' => $fid, 'name' => $val, 'displayorder' => $threadtypes_newdisplayorder, 'icon' => $threadtypes_newicon, 'moderators' => intval($_GET['newmoderators'][$key])), true);
+									} else {
+										$threadtypes_newicon = $newtypearr['icon'];// 已存在的分类,使用原来属性
+										$threadtypes_newdisplayorder = $newtypearr['displayorder'];
+										$_GET['newmoderators'][$key] = $newtypearr['moderators'];
 									}
 									$threadtypesnew['options']['name'][$newtypeid] = $val;
 									$threadtypesnew['options']['icon'][$newtypeid] = $threadtypes_newicon;
@@ -1792,9 +1805,9 @@ EOT;
 			if(!$multiset) {
 
 				if($_GET['delreplybg']) {
-					$valueparse = parse_url($_GET['replybgnew']);
-					if(!isset($valueparse['host']) && file_exists($_G['setting']['attachurl'].'common/'.$_GET['replybgnew'])) {
-						@unlink($_G['setting']['attachurl'].'common/'.$_GET['replybgnew']);
+					$valueparse = parse_url($forum['replybg']);
+					if(!isset($valueparse['host']) && file_exists($_G['setting']['attachurl'].'common/'.$forum['replybg'])) {
+						@unlink($_G['setting']['attachurl'].'common/'.$forum['replybg']);
 					}
 					$_GET['replybgnew'] = '';
 				}
@@ -1813,7 +1826,7 @@ EOT;
 					'postattachperm' => $_GET['postattachpermnew'],
 					'postimageperm' => $_GET['postimagepermnew'],
 					'relatedgroup' => $_GET['relatedgroupnew'],
-					'spviewperm' => implode("\t", $_GET['spviewpermnew']),
+					'spviewperm' => implode("\t", is_array($_GET['spviewpermnew']) ? $_GET['spviewpermnew'] : array()),
 					'replybg' => $replybgnew
 				));
 			}
@@ -1833,7 +1846,7 @@ EOT;
 
 			if($forumkeys[$fid] != $_GET['keysnew'] && preg_match('/^\w*$/', $_GET['keysnew']) && !preg_match('/^\d+$/', $_GET['keysnew'])) {
 				$forumkeys[$fid] = $_GET['keysnew'];
-				C::t('common_setting')->update('forumkeys', $forumkeys);
+				C::t('common_setting')->update_setting('forumkeys', $forumkeys);
 			}
 
 		}
@@ -2008,7 +2021,7 @@ EOT;
 	} else {
 
 		$fids = array();
-		if(is_array($_GET['target']) && count($_GET['target'])) {
+		if(!empty($_GET['target']) && is_array($_GET['target']) && count($_GET['target'])) {
 			foreach($_GET['target'] as $fid) {
 				if(($fid = intval($fid)) && $fid != $source ) {
 					$fids[] = $fid;

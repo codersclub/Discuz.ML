@@ -70,7 +70,7 @@ if(!submitcheck('editsubmit')) {
 	$thread['hiddenreplies'] = getstatus($thread['status'], 2);
 
 
-	$postinfo = C::t('forum_post')->fetch('tid:'.$_G['tid'], $pid);
+	$postinfo = C::t('forum_post')->fetch_post('tid:'.$_G['tid'], $pid);
 	if($postinfo['fid'] != $_G['fid'] || $postinfo['tid'] != $_G['tid']) {
 		$postinfo = array();
 	}
@@ -178,7 +178,7 @@ if(!submitcheck('editsubmit')) {
 		if ($_G['group']['allowsetpublishdate']) {
 			loadcache('cronpublish');
 			$cron_publish_ids = getglobal('cache/cronpublish');
-			if (in_array($_G['tid'], $cron_publish_ids)) {
+			if (in_array($_G['tid'], (array)$cron_publish_ids)) {
 				$cronpublish = 1;
 				$cronpublishdate = dgmdate($thread['dateline'], "dt");
 			}
@@ -216,8 +216,10 @@ if(!submitcheck('editsubmit')) {
 	$selectgroupid = 0;
 	if($postinfo['first'] == 1) {
 		preg_match("/(\[groupid=(\d+)\].*\[\/groupid\])/i", $postinfo['message'], $matchs);
-		$postinfo['message'] = str_replace($matchs[1], '', $postinfo['message']);
-		$selectgroupid = $matchs[2];
+		if($matchs) {
+			$postinfo['message'] = str_replace($matchs[1], '', $postinfo['message']);
+			$selectgroupid = $matchs[2];
+		}
 
 		if(helper_access::check_module('group')) {
 			$mygroups = $groupids = array();
@@ -245,14 +247,14 @@ if(!submitcheck('editsubmit')) {
 		if(!empty($attachs['used'])) {
 			foreach($attachs['used'] as $attach) {
 				if($attach['isimage']) {
-					$attachfind[] = "/\[attach\]$attach[aid]\[\/attach\]/i";
+					$attachfind[] = "/\[attach\]{$attach['aid']}\[\/attach\]/i";
 					$attachreplace[] = '[attachimg]'.$attach['aid'].'[/attachimg]';
 				}
 			}
 		}
 		if(!empty($imgattachs['used'])) {
 			foreach($imgattachs['used'] as $attach) {
-				$attachfind[] = "/\[attach\]$attach[aid]\[\/attach\]/i";
+				$attachfind[] = "/\[attach\]{$attach['aid']}\[\/attach\]/i";
 				$attachreplace[] = '[attachimg]'.$attach['aid'].'[/attachimg]';
 			}
 		}
@@ -289,7 +291,7 @@ if(!submitcheck('editsubmit')) {
 		}
 	}
 
-	$imgattachs['unused'] = !$sortid ? $imgattachs['unused'] : '';
+	$imgattachs['unused'] = !$sortid ? (isset($imgattachs['unused']) ? $imgattachs['unused'] : '') : '';
 
 	include template('forum/post');
 
@@ -308,7 +310,7 @@ if(!submitcheck('editsubmit')) {
 	}
 	$modpost = C::m('forum_post', $_G['tid'], $pid);
 
-	$modpost->param('redirecturl', "forum.php?mod=viewthread&tid=$_G[tid]&page=$_GET[page]&extra=$extra".($vid && $isfirstpost ? "&vid=$vid" : '')."#pid$pid");
+	$modpost->param('redirecturl', "forum.php?mod=viewthread&tid={$_G['tid']}&page={$_GET['page']}&extra=$extra".($vid && $isfirstpost ? "&vid=$vid" : '')."#pid$pid");
 
 	if(empty($_GET['delete'])) {
 
@@ -507,18 +509,18 @@ if(!submitcheck('editsubmit')) {
 		}
 	} else {
 		if(!empty($_GET['delete']) && $isfirstpost) {
-			showmessage('post_edit_delete_succeed', "forum.php?mod=forumdisplay&fid=$_G[fid]", $param);
+			showmessage('post_edit_delete_succeed', "forum.php?mod=forumdisplay&fid={$_G['fid']}", $param);
 		} elseif(!empty($_GET['delete'])) {
-			showmessage('post_edit_delete_succeed', "forum.php?mod=viewthread&tid=$_G[tid]&page=$_GET[page]&extra=$extra".($vid && $isfirstpost ? "&vid=$vid" : ''), $param);
+			showmessage('post_edit_delete_succeed', "forum.php?mod=viewthread&tid={$_G['tid']}&page={$_GET['page']}&extra=$extra".($vid && $isfirstpost ? "&vid=$vid" : ''), $param);
 		} else {
 			if($isfirstpost && $modpost->param('modnewthreads')) {
-				C::t('forum_post')->update($thread['posttableid'], $pid, array('status' => 4), false, false, null, -2, null, 0);
+				C::t('forum_post')->update_post($thread['posttableid'], $pid, array('status' => 4), false, false, null, -2, null, 0);
 				updatemoderate('tid', $_G['tid']);
 				showmessage('edit_newthread_mod_succeed', $modpost->param('redirecturl'), $param);
 			} elseif(!$isfirstpost && $modpost->param('modnewreplies')) {
-				C::t('forum_post')->update($thread['posttableid'], $pid, array('status' => 4), false, false, null, -2, null, 0);
+				C::t('forum_post')->update_post($thread['posttableid'], $pid, array('status' => 4), false, false, null, -2, null, 0);
 				updatemoderate('pid', $pid);
-				showmessage('edit_reply_mod_succeed', "forum.php?mod=forumdisplay&fid=$_G[fid]", $param);
+				showmessage('edit_reply_mod_succeed', "forum.php?mod=forumdisplay&fid={$_G['fid']}", $param);
 			} else {
 				showmessage('post_edit_succeed', $modpost->param('redirecturl'), $param);
 			}

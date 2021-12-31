@@ -118,14 +118,11 @@ class notemodel {
 		}
 		$this->base->load('misc');
 		$apifilename = isset($app['apifilename']) && $app['apifilename'] ? $app['apifilename'] : 'uc.php';
-		if($app['extra']['apppath'] && $this->detectescape($app['extra']['apppath'].'./api/', $apifilename) && substr(strrchr($apifilename, '.'), 1, 10) == 'php' && @include $app['extra']['apppath'].'./api/'.$apifilename) {
-			$uc_note = new uc_note();
+		if(UC_STANDALONE && @include UC_ROOT.'./extend_client.php') {
+			$uc_note = new uc_note_handler();
 			$method = $note['operation'];
 			if(is_string($method) && !empty($method)) {
 				parse_str($note['getdata'], $note['getdata']);
-				if(get_magic_quotes_gpc()) {
-					$note['getdata'] = $this->base->dstripslashes($note['getdata']);
-				}
 				$note['postdata'] = xml_unserialize($note['postdata']);
 				$response = $uc_note->$method($note['getdata'], $note['postdata']);
 			}
@@ -146,10 +143,10 @@ class notemodel {
 				$func = $this->operations[$note['operation']][3];
 				$_ENV[$this->operations[$note['operation']][2]]->$func($appid, $response);
 			}
-			$this->db->query("UPDATE ".UC_DBTABLEPRE."notelist SET app$appid='1', totalnum=totalnum+1, succeednum=succeednum+1, dateline='{$this->base->time}' $closedsqladd WHERE noteid='$note[noteid]'", 'SILENT');
+			$this->db->query("UPDATE ".UC_DBTABLEPRE."notelist SET app$appid='1', totalnum=totalnum+1, succeednum=succeednum+1, dateline='{$this->base->time}' $closedsqladd WHERE noteid='{$note['noteid']}'", 'SILENT');
 			$return = TRUE;
 		} else {
-			$this->db->query("UPDATE ".UC_DBTABLEPRE."notelist SET app$appid = app$appid-'1', totalnum=totalnum+1, dateline='{$this->base->time}' $closedsqladd WHERE noteid='$note[noteid]'", 'SILENT');
+			$this->db->query("UPDATE ".UC_DBTABLEPRE."notelist SET app$appid = app$appid-'1', totalnum=totalnum+1, dateline='{$this->base->time}' $closedsqladd WHERE noteid='{$note['noteid']}'", 'SILENT');
 			$return = FALSE;
 		}
 		return $return;
