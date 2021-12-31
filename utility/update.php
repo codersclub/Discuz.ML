@@ -117,7 +117,7 @@ if($_GET['step'] == 'start') {
 	include_once('../uc_client/client.php');
 	$version = uc_check_version();
 	$version = $version['db'];
-	if(!$devmode && !C::t('common_setting')->fetch('bbclosed')) {
+	if(!$devmode && !C::t('common_setting')->fetch_setting('bbclosed')) {
 		C::t('common_setting')->update('bbclosed', 1);
 		require_once libfile('function/cache');
 		updatecache('setting');
@@ -420,7 +420,7 @@ if($_GET['step'] == 'start') {
 		$nextop = 'admingroup';
 		$settings = $newsettings = array();
 
-		$settings = C::t('common_setting')->fetch_all();
+		$settings = C::t('common_setting')->fetch_all_setting();
 
 		if(!isset($settings['relatetime'])) {
 			$newsettings['relatetime'] = 60;
@@ -1050,7 +1050,7 @@ if($_GET['step'] == 'start') {
 		foreach($navs as $nav) {
 			if($nav['identifier']) {
 				if($nav['identifier'] == 4) {
-					$homestatus = C::t('common_setting')->fetch('homestatus');
+					$homestatus = C::t('common_setting')->fetch_setting('homestatus');
 					$nav['available'] = $homestatus ? $nav['available'] : -1;
 					if(!$navid) {
 						DB::update('common_nav', array('available' => $homestatus ? 0 : -1),
@@ -1394,7 +1394,7 @@ if($_GET['step'] == 'start') {
 		$nextop = 'threadimage';
 		$settings = $verifys = array();
 
-		$settings = C::t('common_setting')->fetch_all(array('verify', 'realname', 'videophoto', 'video_allowviewspace'));
+		$settings = C::t('common_setting')->fetch_all_setting(array('verify', 'realname', 'videophoto', 'video_allowviewspace'));
 		$verifys = (array)dunserialize($settings['verify']);
 		$updateverify = $_GET['updateverify'] ? true : false;
 		if(!isset($verifys[6])) {
@@ -1522,9 +1522,12 @@ if($_GET['step'] == 'start') {
 				while($row = DB::fetch($query)) {
 					$data[] = $row['tid'];
 				}
-				if($data && @$fp = fopen($cachefile, 'w')) {
-					fwrite($fp, implode('|', $data));
-					fclose($fp);
+				if($data && $fp = fopen($cachefile, 'c')) {
+					if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, implode('|', $data)) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
+						flock($fp, LOCK_UN);
+						fclose($fp);
+						show_msg("主题图片表无法处理，跳过", "$theurl?step=data&op=$nextop");
+					}
 				} else {
 /*vot*/					show_msg(lang('update','topic_image_skip'), "$theurl?step=data&op=$nextop");
 				}
@@ -2177,8 +2180,8 @@ function save_config_file($filename, $config, $default, $deletevar) {
 EOT;
 	$content .= getvars(array('_config' => $config));
 	$content .= "\r\n// ".str_pad('  THE END  ', 50, '-', STR_PAD_BOTH)." //\r\n\r\n?>";
-	if(!is_writable($filename) || !($len = file_put_contents($filename, $content))) {
-		file_put_contents(DISCUZ_ROOT.'./data/config_global.php', $content);
+	if(!is_writable($filename) || !($len = file_put_contents($filename, $content, LOCK_EX))) {
+		file_put_contents(DISCUZ_ROOT.'./data/config_global.php', $content, LOCK_EX);
 		return 0;
 	}
 	return 1;
@@ -2222,6 +2225,10 @@ function buildarray($array, $level = 0, $pre = '$_config') {
 	}
 
 	foreach ($array as $key => $val) {
+		if(!preg_match("/^[a-zA-Z0-9_\x7f-\xff]+$/", $key)) {
+			continue;
+		}
+
 		if($level == 0) {
 			$newline = str_pad('  CONFIG '.strtoupper($key).'  ', 70, '-', STR_PAD_BOTH);
 			$return .= "\r\n// $newline //\r\n";

@@ -23,7 +23,16 @@ class table_forum_thread extends discuz_table
 		parent::__construct();
 	}
 
-	public function fetch($tid, $tableid = 0) {
+	public function fetch($id, $force_from_db = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('UnsupportedOperationException');
+		} else {
+			$force_from_db = $force_from_db === false ? 0 : $force_from_db;
+			return $this->fetch_thread($id, $force_from_db);
+		}
+	}
+
+	public function fetch_thread($tid, $tableid = 0) {
 		$tid = intval($tid);
 		$data = array();
 		if($tid && ($data = $this->fetch_cache($tid)) === false) {
@@ -35,7 +44,7 @@ class table_forum_thread extends discuz_table
 	}
 
 	public function fetch_by_tid_displayorder($tid, $displayorder = null, $glue = '>=',  $authorid = null, $tableid = 0) {
-		$data = $this->fetch($tid, $tableid);
+		$data = $this->fetch_thread($tid, $tableid);
 		if(!empty($data)) {
 			if(($displayorder !== null && !($this->compare_number($data['displayorder'], $displayorder, $glue))) || ($authorid !== null && $data['authorid'] != $authorid)) {
 				$data = array();
@@ -60,7 +69,7 @@ class table_forum_thread extends discuz_table
 	}
 	public function fetch_by_tid_fid_displayorder($tid, $fid, $displayorder = null, $tableid = 0, $glue = '>=') {
 		if($tid) {
-			$data = $this->fetch($tid, $tableid);
+			$data = $this->fetch_thread($tid, $tableid);
 			if(!empty($data)) {
 				if(($data['fid'] != $fid) || ($displayorder !== null && !($this->compare_number($data['displayorder'], $displayorder, $glue)))) {
 					$data = array();
@@ -74,7 +83,7 @@ class table_forum_thread extends discuz_table
 		$threadtableids = array('0' => 0);
 		$db = DB::object();
 		$query = $db->query("SHOW TABLES LIKE '".str_replace('_', '\_', DB::table('forum_thread').'_%')."'");
-		while($table = $db->fetch_array($query, $db->drivertype == 'mysqli' ? MYSQLI_NUM : MYSQL_NUM)) {
+		while($table = $db->fetch_array($query, constant('MYSQLI_NUM'))) {
 			$tablename = $table[0];
 			$tableid = intval(substr($tablename, strrpos($tablename, '_') + 1));
 			if(empty($tableid)) {
@@ -446,6 +455,10 @@ class table_forum_thread extends discuz_table
 				LEFT JOIN '.DB::table('forum_forum').' f ON f.fid=t.fid '.$sql[0].' ORDER BY t.dateline DESC '.DB::limit($start, $limit), $sql[1]);
 	}
 
+	public function fetch_all_recyclebin_by_dateline($dateline, $start = 0, $limit = 0) {
+		return DB::fetch_all("SELECT tid FROM %t WHERE displayorder=-1 AND dateline<%d".DB::limit($start, $limit), array($this->_table, $dateline));
+	}
+
 	public function fetch_all_moderate($fid = 0, $displayorder = null, $isgroup = null, $dateline = null, $author = null, $subject = null) {
 		$parameter = $this->make_query_condition(null, $fid, $isgroup, $author, $subject, $displayorder, $dateline);
 		return DB::fetch_all('SELECT * FROM %t '.$parameter[0], $parameter[1], $this->_pk);
@@ -506,7 +519,7 @@ class table_forum_thread extends discuz_table
 					}
 				}
 			}
-			if($firstpage && !empty($tlkey) && ($ttl = getglobal('setting/memory/forum_thread_forumdisplay')) !== null && ($data = $this->fetch_cache($tlkey, 'forumdisplay_')) !== false) {
+			if(!$tableid && $firstpage && !empty($tlkey) && ($ttl = getglobal('setting/memory/forum_thread_forumdisplay')) !== null && ($data = $this->fetch_cache($tlkey, 'forumdisplay_')) !== false) {
 				$delusers = $this->fetch_cache('deleteuids', '');
 				if(!empty($delusers)) {
 					foreach($data as $tid => $value) {
@@ -521,7 +534,7 @@ class table_forum_thread extends discuz_table
 			}
 		}
 		$data = DB::fetch_all("SELECT * FROM ".DB::table($this->get_table_name($tableid))." $forceindex".$this->search_condition($conditions)." $ordersql ".DB::limit($start, $limit));
-		if(!defined('IN_MOBILE') && $firstpage && !empty($tlkey) && ($ttl = getglobal('setting/memory/forum_thread_forumdisplay')) !== null) {
+		if(!defined('IN_MOBILE') && !$tableid && $firstpage && !empty($tlkey) && ($ttl = getglobal('setting/memory/forum_thread_forumdisplay')) !== null) {
 			$this->store_cache($tlkey, $data, $ttl, 'forumdisplay_');
 		}
 		return $data;
@@ -530,7 +543,7 @@ class table_forum_thread extends discuz_table
 	public function fetch_all_by_special($special, $authorid = 0, $replies = 0, $displayorder = null, $subject = '', $join = 0, $start = 0, $limit = 0, $order = 'dateline', $sort = 'DESC') {
 		$condition = $this->make_special_condition($special, $authorid, $replies, $displayorder, $subject, $join, 0);
 		$ordersql = !empty($order) ? ' ORDER BY t.'.DB::order($order, $sort) : '';
-		return DB::fetch_all("SELECT t.* FROM %t t $condition[jointable] ".$condition['where'].$ordersql.DB::limit($start, $limit), $condition['parameter'], $this->_pk);
+		return DB::fetch_all("SELECT t.* FROM %t t {$condition['jointable']} ".$condition['where'].$ordersql.DB::limit($start, $limit), $condition['parameter'], $this->_pk);
 	}
 	public function fetch_all_heats() {
 		$heatdateline = getglobal('timestamp') - 86400 * getglobal('setting/indexhot/days');
@@ -585,7 +598,7 @@ class table_forum_thread extends discuz_table
 
 	public function count_by_special($special, $authorid = 0, $replies = 0, $displayorder = null, $subject = '', $join = 0) {
 		$condition = $this->make_special_condition($special, $authorid, $replies, $displayorder, $subject, $join, 0);
-		return DB::result_first("SELECT COUNT(*) FROM %t t $condition[jointable] ".$condition['where'], $condition['parameter']);
+		return DB::result_first("SELECT COUNT(*) FROM %t t {$condition['jointable']} ".$condition['where'], $condition['parameter']);
 	}
 	private function make_special_condition($special, $authorid = 0, $replies = 0, $displayorder = null, $subject = '', $join = 0, $tableid = 0) {
 		$wherearr = $condition = array();
@@ -638,23 +651,23 @@ class table_forum_thread extends discuz_table
 		if($prefix) {
 			$prefix = 't.';
 		}
-		if($conditions['sourcetableid'] != '') {
+		if(!empty($conditions['sourcetableid'])) {
 			$this->_urlparam[] = "sourcetableid={$conditions['sourcetableid']}";
 		}
 		if($conditions['inforum'] != '' && $conditions['inforum'] != 'all') {
 			$wherearr[] = $prefix.DB::field('fid', $conditions['inforum']);
 			$this->_urlparam[] = "inforum={$conditions['inforum']}";
 		}
-		if($conditions['intids']) {
+		if(!empty($conditions['intids'])) {
 			$wherearr[] = $prefix.DB::field('tid', $conditions['intids']);
 			$this->_urlparam[] = "intids={$conditions['intids']}";
 		}
-		if($conditions['tidmin'] != '') {
+		if(!empty($conditions['tidmin'])) {
 			$wherearr[] = $prefix.DB::field('tid', $conditions['tidmin'], '>=');
 			$this->_urlparam[] = "tidmin={$conditions['tidmin']}";
 		}
 
-		if($conditions['tidmax'] != '') {
+		if(!empty($conditions['tidmax'])) {
 			$wherearr[] = $prefix.DB::field('tid', $conditions['tidmax'], '<=');
 			$this->_urlparam[] = "tidmax={$conditions['tidmax']}";
 		}
@@ -677,26 +690,26 @@ class table_forum_thread extends discuz_table
 			}
 		}
 
-		if($conditions['noreplydays']) {
+		if(!empty($conditions['noreplydays'])) {
 			$conditions['noreplydays'] = intval($conditions['noreplydays']);
 			$lastpost = getglobal('timestamp') - $conditions['noreplydays'] * 86400;
 			$wherearr[] = $prefix.DB::field('lastpost', $lastpost, '<');
 			$this->_urlparam[] = "noreplydays={$conditions['noreplydays']}";
 		}
-		if($conditions['lastpostless']) {
+		if(!empty($conditions['lastpostless'])) {
 			$wherearr[] = $prefix.DB::field('lastpost', $conditions['lastpostless'], '<=');
 			$this->_urlparam[] = "lastpostless={$conditions['lastpostless']}";
 		}
-		if($conditions['lastpostmore']) {
+		if(!empty($conditions['lastpostmore'])) {
 			$wherearr[] = $prefix.DB::field('lastpost', $conditions['lastpostmore'], '>=');
 			$this->_urlparam[] = "lastpostmore={$conditions['lastpostmore']}";
 		}
 
-		if($conditions['intype'] != '' && $conditions['intype'] != 'all') {
+		if(!empty($conditions['intype']) && $conditions['intype'] != 'all') {
 			$wherearr[] = $prefix.DB::field('typeid', $conditions['intype']);
 			$this->_urlparam[] = "intype={$conditions['intype']}";
 		}
-		if($conditions['insort'] != '' && $conditions['insort'] != 'all') {
+		if(!empty($conditions['insort']) && $conditions['insort'] != 'all') {
 			$wherearr[] = $prefix.DB::field('sortid', $conditions['insort']);
 			$this->_urlparam[] = "insort={$conditions['insort']}";
 		}
@@ -729,29 +742,30 @@ class table_forum_thread extends discuz_table
 			$wherearr[] = $prefix.DB::field('price', $conditions['pricemore'], '>');
 			$this->_urlparam[] = "pricemore={$conditions['pricemore']}";
 		}
-		if($conditions['beforedays'] != '') {
+		if(!empty($conditions['beforedays'])) {
 			$dateline = getglobal('timestamp') - $conditions['beforedays']*86400;
 			$wherearr[] = $prefix.DB::field('dateline', $dateline, '<');
 			$this->_urlparam[] = "beforedays={$conditions['beforedays']}";
 		}
 
-		if($conditions['starttime'] != '') {
+		if(!empty($conditions['starttime'])) {
 			$starttime = strtotime($conditions['starttime']);
 			$wherearr[] = $prefix.DB::field('dateline', $starttime, '>');
 			$this->_urlparam[] = "starttime={$conditions['starttime']}";
 		}
-		if($conditions['endtime'] != '') {
+		if(!empty($conditions['endtime'])) {
 			$endtime = strtotime($conditions['endtime']);
 			$wherearr[] = $prefix.DB::field('dateline', $endtime, '<=');
 			$this->_urlparam[] = "endtime={$conditions['endtime']}";
 		}
-		$conditions['users'] = trim($conditions['users']);
+		$conditions['users'] = trim(isset($conditions['users']) ? $conditions['users'] : '');
 		if(!empty($conditions['users'])) {
 			$wherearr[] = $prefix.DB::field('author', explode(' ', trim($conditions['users'])));
 			$this->_urlparam[] = "users={$conditions['users']}";
 		}
 
-		if($conditions['digest'] == 1) {
+		if(!isset($conditions['digest'])) {
+		} elseif($conditions['digest'] == 1) {
 			$wherearr[] = $prefix.DB::field('digest', 0, '>');
 			$this->_urlparam[] = "digest=1";
 		} elseif($conditions['digest'] == 2) {
@@ -761,36 +775,39 @@ class table_forum_thread extends discuz_table
 			$wherearr[] = $prefix.DB::field('digest', $conditions['digest']);
 			$this->_urlparam[] = "digest=".implode(',', $conditions['digest']);
 		}
-		if($conditions['recommends']) {
+		if(!empty($conditions['recommends'])) {
 			$wherearr[] = $prefix.DB::field('recommends', $conditions['recommends'], '>');
 			$this->_urlparam[] = "recommends=".$conditions['recommends'];
 		}
-		if($conditions['authorid']) {
+		if(!empty($conditions['authorid'])) {
 			$wherearr[] = $prefix.DB::field('authorid', $conditions['authorid']);
 			$this->_urlparam[] = "authorid=".$conditions['authorid'];
 		}
-		if($conditions['attach'] == 1) {
+		if(!isset($conditions['attach'])) {
+		} elseif($conditions['attach'] == 1) {
 			$wherearr[] = $prefix.DB::field('attachment', 0, '>');
 			$this->_urlparam[] = "attach=1";
 		} elseif($conditions['attach'] == 2) {
 			$wherearr[] = $prefix.DB::field('attachment', 0);
 			$this->_urlparam[] = "attach=2";
 		}
-		if($conditions['rate'] == 1) {
+		if(!isset($conditions['rate'])){
+		} elseif($conditions['rate'] == 1) {
 			$wherearr[] = $prefix.DB::field('rate', 0, '>');
 			$this->_urlparam[] = "rate=1";
 		} elseif($conditions['rate'] == 2) {
 			$wherearr[] = $prefix.DB::field('rate', 0);
 			$this->_urlparam[] = "rate=2";
 		}
-		if($conditions['highlight'] == 1) {
+		if(!isset($conditions['highlight'])) {
+		} elseif($conditions['highlight'] == 1) {
 			$wherearr[] = $prefix.DB::field('highlight', 0, '>');
 			$this->_urlparam[] = "highlight=1";
 		} elseif($conditions['highlight'] == 2) {
 			$wherearr[] = $prefix.DB::field('highlight', 0);
 			$this->_urlparam[] = "highlight=2";
 		}
-		if($conditions['hidden'] == 1) {
+		if(isset($conditions['hidden']) && $conditions['hidden'] == 1) {
 			$wherearr[] = $prefix.DB::field('hidden', 0, '>');
 			$this->_urlparam[] = "hidden=1";
 		}
@@ -808,7 +825,7 @@ class table_forum_thread extends discuz_table
 			$wherearr[] = $prefix.DB::field('isgroup', $conditions['isgroup']);
 		}
 
-		if(trim($conditions['keywords'])) {
+		if(!empty($conditions['keywords']) && trim($conditions['keywords'])) {
 			$sqlkeywords = '';
 			$or = '';
 			$keywords = explode(',', str_replace(' ', '', $conditions['keywords']));
@@ -1016,7 +1033,7 @@ class table_forum_thread extends discuz_table
 	}
 	public function count_all_thread() {
 		$count = 0;
-		$settings = C::t('common_setting')->fetch_all('threadtableids', true);
+		$settings = C::t('common_setting')->fetch_all_setting('threadtableids', true);
 		if(empty($settings['threadtableids']) || !is_array($settings['threadtableids'])) {
 			$settings['threadtableids'] = array(0);
 		}

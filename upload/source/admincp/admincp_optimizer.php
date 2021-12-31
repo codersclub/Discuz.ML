@@ -36,18 +36,17 @@ $security_option = array(
 	'optimizer_usergroup4',
 	'optimizer_usergroup5',
 	'optimizer_usergroup6',
-	'optimizer_cloudsecurity',
 	'optimizer_attachexpire',
 	'optimizer_attachrefcheck',
 	'optimizer_filecheck',
 	'optimizer_plugin',
-	'optimizer_upgrade',
-	'optimizer_patch',
 	'optimizer_loginpwcheck',
 	'optimizer_loginoutofdate',
-	'optimizer_eviluser',
-	'optimizer_white_list',
-	'optimizer_security_daily',
+);
+
+$serversec_option = array(
+	'optimizer_dos8p3',
+	'optimizer_httphost'
 );
 
 if($_G['setting']['connect']['allow']) {
@@ -56,7 +55,7 @@ if($_G['setting']['connect']['allow']) {
 }
 
 $check_record_time_key = 'check_record_time';
-if(in_array($operation, array('security', 'performance'))) {
+if(in_array($operation, array('security', 'serversec', 'performance'))) {
 	$_GET['anchor'] = $operation;
 	$operation = '';
 }
@@ -65,6 +64,11 @@ if($_GET['anchor'] == 'security') {
 	$optimizer_option = $security_option;
 	$check_record_time_key = 'security_check_record_time';
 	showsubmenu('menu_security');
+} elseif($_GET['anchor'] == 'serversec') {
+	shownav('safe', 'menu_serversec');
+	$optimizer_option = $serversec_option;
+	$check_record_time_key = 'serversec_check_record_time';
+	showsubmenu('menu_serversec');
 } elseif($_GET['anchor'] == 'performance') {
 	shownav('founder', 'menu_optimizer');
 	showsubmenu('menu_optimizer');
@@ -80,10 +84,11 @@ if($operation) {
 	$optimizer = new optimizer($type);
 }
 
-$_GET['anchor'] = in_array($_GET['anchor'], array('security', 'performance')) ? $_GET['anchor'] : 'security';
+$_GET['anchor'] = in_array($_GET['anchor'], array('security', 'serversec', 'performance')) ? $_GET['anchor'] : 'security';
 $current = array($_GET['anchor'] => 1);
 showmenu('nav_founder_optimizer', array(
 	array('founder_optimizer_security', 'optimizer&anchor=security', $current['security']),
+	array('founder_optimizer_serversec', 'optimizer&anchor=serversec', $current['serversec']),
 	array('founder_optimizer_performance', 'optimizer&anchor=performance', $current['performance']),
 ));
 
@@ -95,8 +100,8 @@ if($operation == 'optimize_unit') {
 
 	$checkstatus = $optimizer->check();
 
-	C::t('common_optimizer')->update($type.'_checkrecord', ($checkstatus['status'] == 1 ? $checkstatus['status'] : 0));
-	C::t('common_optimizer')->update($check_record_time_key, $_G['timestamp']);
+	C::t('common_optimizer')->update_optimizer($type.'_checkrecord', ($checkstatus['status'] == 1 ? $checkstatus['status'] : 0));
+	C::t('common_optimizer')->update_optimizer($check_record_time_key, $_G['timestamp']);
 
 	include template('common/header_ajax');
 	echo '<script type="text/javascript">updatecheckstatus(\''.$type.'\', \''.$checkstatus['lang'].'\', \''.$checkstatus['status'].'\', \''.$checkstatus['type'].'\', \''.$checkstatus['extraurl'].'\');</script>';
@@ -143,10 +148,10 @@ if($operation == 'optimize_unit') {
 
 } else {
 
-	$checkrecordtime = C::t('common_optimizer')->fetch($check_record_time_key);
+	$checkrecordtime = C::t('common_optimizer')->fetch_optimizer($check_record_time_key);
 
-	if(!$_GET['checking'] && $_GET['anchor'] == 'security') {
-		showtips('optimizer_security_tips');
+	if(!$_GET['checking']) {
+		showtips('optimizer_'.$_GET['anchor'].'_tips');
 	}
 
 	showtableheader();
@@ -207,7 +212,7 @@ if($operation == 'optimize_unit') {
 					var tip_tablerows = tip_table.rows.length;
 
 					if(id == 'optimizer_upgrade' || id == 'optimizer_patch') {
-						securitygrade = '{$lang[founder_optimizer_low]}';
+						securitygrade = '{$lang['founder_optimizer_low']}';
 					}
 
 					var optiontype = id;
@@ -241,11 +246,11 @@ if($operation == 'optimize_unit') {
 					var statusstr = '';
 					if(status != 0) {
 						if(type == 'header') {
-							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor=$_GET[anchor]&type='+ optiontype + extraurl + '" target="_blank">{$lang[founder_optimizer_optimizer]}</a>';
+							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '" target="_blank">{$lang['founder_optimizer_optimizer']}</a>';
 						} else if(type == 'view') {
-							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor=$_GET[anchor]&type='+ optiontype + extraurl + '" target="_blank">{$lang[founder_optimizer_view]}</a>';
+							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '" target="_blank">{$lang['founder_optimizer_view']}</a>';
 						} else if(type == 'scan') {
-							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor=$_GET[anchor]&type='+ optiontype + extraurl + '" target="_blank">{$lang[founder_optimizer_scan]}</a>';
+							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '" target="_blank">{$lang['founder_optimizer_scan']}</a>';
 						}
 					}
 					newtr.insertCell(0).innerHTML = $(id + '_unit').innerHTML;
@@ -253,22 +258,22 @@ if($operation == 'optimize_unit') {
 					newtr.insertCell(2).innerHTML = statusstr;
 
 					if(parseInt(checkpercent) >= 100) {
-						$('checking').innerHTML = '{$lang[founder_optimizer_recheck_js]}';
-						$('checking').href = '{$adminscipt}?action=optimizer&checking=1&anchor={$_GET[anchor]}';
+						$('checking').innerHTML = '{$lang['founder_optimizer_recheck_js']}';
+						$('checking').href = '{$adminscipt}?action=optimizer&checking=1&anchor={$_GET['anchor']}';
 						$('processid').style.display = 'none';
-						if('$_GET[anchor]' == 'security') {
+						if('{$_GET['anchor']}' == 'security') {
 							if(securitygrade == '') {
 								if(optimize_num <= 1) {
-									securitygrade = '{$lang[founder_optimizer_high]}';
+									securitygrade = '{$lang['founder_optimizer_high']}';
 								} else if(optimize_num >=2 && optimize_num <=4) {
-									securitygrade = '{$lang[founder_optimizer_middle]}';
+									securitygrade = '{$lang['founder_optimizer_middle']}';
 								} else {
-									securitygrade = '{$lang[founder_optimizer_low]}';
+									securitygrade = '{$lang['founder_optimizer_low']}';
 								}
 							}
-							$('checkstatus').innerHTML = '{$lang[founder_optimizer_check_complete_js]}' + checknum + '{$lang[founder_optimizer_findnum]}' +  optimize_num + '{$lang[founder_optimizer_neednum]}' + ' {$lang[founder_optimizer_level]}: <span style="color:green;font-size:16px;font-weight:700;">' + securitygrade + '</span>';
+							$('checkstatus').innerHTML = '{$lang['founder_optimizer_check_complete_js']}' + checknum + '{$lang['founder_optimizer_findnum']}' +  optimize_num + '{$lang['founder_optimizer_neednum']}' + ' {$lang['founder_optimizer_level']}: <span style="color:green;font-size:16px;font-weight:700;">' + securitygrade + '</span>';
 						} else {
-							$('checkstatus').innerHTML = '{$lang[founder_optimizer_check_complete_js]}' + checknum + '{$lang[founder_optimizer_findnum]}' +  optimize_num + '{$lang[founder_optimizer_neednum]}';
+							$('checkstatus').innerHTML = '{$lang['founder_optimizer_check_complete_js']}' + checknum + '{$lang['founder_optimizer_findnum']}' +  optimize_num + '{$lang['founder_optimizer_neednum']}';
 						}
 					}
 				}

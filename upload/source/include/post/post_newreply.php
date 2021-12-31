@@ -41,7 +41,7 @@ if(!$_G['uid'] && !((!$_G['forum']['replyperm'] && $_G['group']['allowreply']) |
 	showmessage('post_forum_newreply_nopermission', NULL);
 }
 
-if(!$_G['uid'] && ($_G['setting']['need_avatar'] || $_G['setting']['need_email'] || $_G['setting']['need_friendnum'])) {
+if(!$_G['uid'] && ($_G['setting']['need_avatar'] || $_G['setting']['need_secmobile'] || $_G['setting']['need_email'] || $_G['setting']['need_friendnum'])) {
 	showmessage('replyperm_login_nopermission', NULL, array(), array('login' => 1));
 }
 
@@ -57,7 +57,7 @@ if($_G['setting']['commentnumber'] && !empty($_GET['comment'])) {
 	if(!submitcheck('commentsubmit', 0, $seccodecheck, $secqaacheck)) {
 		showmessage('submitcheck_error', NULL);
 	}
-	$post = C::t('forum_post')->fetch('tid:'.$_G['tid'], $_GET['pid']);
+	$post = C::t('forum_post')->fetch_post('tid:'.$_G['tid'], $_GET['pid']);
 	if(!$post || !($_G['setting']['commentpostself'] || $post['authorid'] != $_G['uid']) || !(($post['first'] && $_G['setting']['commentfirstpost'] && in_array($_G['group']['allowcommentpost'], array(1, 3)) || (!$post['first'] && in_array($_G['group']['allowcommentpost'], array(2, 3)))))) {
 		showmessage('postcomment_error');
 	}
@@ -93,7 +93,7 @@ if($_G['setting']['commentnumber'] && !empty($_GET['comment'])) {
 		'useip' => $_G['clientip'],
 		'port'=> $_G['remoteport']
 	), true);
-	C::t('forum_post')->update('tid:'.$_G['tid'], $_GET['pid'], array('comment' => 1));
+	C::t('forum_post')->update_post('tid:'.$_G['tid'], $_GET['pid'], array('comment' => 1));
 
 	$comments = $thread['comments'] ? $thread['comments'] + 1 : C::t('forum_postcomment')->count_by_tid($_G['tid']);
 	C::t('forum_thread')->update($_G['tid'], array('comments' => $comments));
@@ -142,7 +142,7 @@ if($_G['setting']['commentnumber'] && !empty($_GET['comment'])) {
 		}
 	}
 	C::t('forum_postcache')->delete($post['pid']);
-	showmessage('comment_add_succeed', "forum.php?mod=viewthread&tid=$post[tid]&pid=$post[pid]&page=$_GET[page]&extra=$extra#pid$post[pid]", array('tid' => $post['tid'], 'pid' => $post['pid']));
+	showmessage('comment_add_succeed', "forum.php?mod=viewthread&tid={$post['tid']}&pid={$post['pid']}&page={$_GET['page']}&extra=$extra#pid{$post['pid']}", array('tid' => $post['tid'], 'pid' => $post['pid']));
 }
 
 if($special == 127) {
@@ -174,7 +174,7 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 	$language = lang('forum/misc');
 	$noticeauthor = $noticetrimstr = '';
 	if(isset($_GET['repquote']) && $_GET['repquote'] = intval($_GET['repquote'])) {
-		$thaquote = C::t('forum_post')->fetch('tid:'.$_G['tid'], $_GET['repquote']);
+		$thaquote = C::t('forum_post')->fetch_post('tid:'.$_G['tid'], $_GET['repquote']);
 		if(!($thaquote && ($thaquote['invisible'] == 0 || $thaquote['authorid'] == $_G['uid'] && $thaquote['invisible'] == -2))) {
 			$thaquote = array();
 		}
@@ -220,7 +220,7 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 /*vot*/			$post_reply_quote = '[img]static/image/common/user_online.gif[/img] '.$thaquote['author'].' [img]static/image/common/clock.gif[/img] '.$time;
 			$noticeauthormsg = dhtmlspecialchars($message);
 			if(!defined('IN_MOBILE')) {
-				$message = "[quote][size=2][url=forum.php?mod=redirect&goto=findpost&pid=$_GET[repquote]&ptid={$_G['tid']}][color=#999999]{$post_reply_quote}[/color][/url][/size]\n{$message}[/quote]";
+				$message = "[quote][size=2][url=forum.php?mod=redirect&goto=findpost&pid={$_GET['repquote']}&ptid={$_G['tid']}][color=#999999]{$post_reply_quote}[/color][/url][/size]\n{$message}[/quote]";
 			} else {
 				$message = "[quote][color=#999999]{$post_reply_quote}[/color]\n[color=#999999]{$message}[/color][/quote]";
 			}
@@ -232,7 +232,7 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 		$reppid = $_GET['repquote'];
 
 	} elseif(isset($_GET['reppost']) && $_GET['reppost'] = intval($_GET['reppost'])) {
-		$thapost = C::t('forum_post')->fetch('tid:'.$_G['tid'], $_GET['reppost']);
+		$thapost = C::t('forum_post')->fetch_post('tid:'.$_G['tid'], $_GET['reppost']);
 		if(!($thapost && ($thapost['invisible'] == 0 || $thapost['authorid'] == $_G['uid'] && $thapost['invisible'] == -2))) {
 			$thapost = array();
 		}
@@ -283,12 +283,12 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 
 			$post['dateline'] = dgmdate($post['dateline'], 'u');
 
-			if($_G['setting']['bannedmessages'] && ($post['authorid'] && (!$post['groupid'] || $post['groupid'] == 4 || $post['groupid'] == 5))) {
+			if($_G['setting']['bannedmessages'] && ($post['authorid'] && (empty($post['groupid']) || $post['groupid'] == 4 || $post['groupid'] == 5))) {
 				$post['message'] = $language['post_banned'];
 			} elseif($post['status'] & 1) {
 				$post['message'] = $language['post_single_banned'];
 			} else {
-				$post['message'] = preg_replace("/\[hide=?\d*\](.*?)\[\/hide\]/is", "[b]$language[post_hidden][/b]", $post['message']);
+				$post['message'] = preg_replace("/\[hide=?\d*\](.*?)\[\/hide\]/is", "[b]{$language['post_hidden']}[/b]", $post['message']);
 				$post['message'] = discuzcode($post['message'], $post['smileyoff'], $post['bbcodeoff'], $post['htmlon'] & 1, $_G['forum']['allowsmilies'], $_G['forum']['allowbbcode'], $_G['forum']['allowimgcode'], $_G['forum']['allowhtml'], $_G['forum']['jammer']);
 			}
 
@@ -320,18 +320,18 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 		'subject' => $subject,
 		'message' => $message,
 		'special' => $special,
-		'extramessage' => $extramessage,
-		'bbcodeoff' => $_GET['bbcodeoff'],
-		'smileyoff' => $_GET['smileyoff'],
-		'htmlon' => $_GET['htmlon'],
-		'parseurloff' => $_GET['parseurloff'],
-		'usesig' => $_GET['usesig'],
-		'isanonymous' => $_GET['isanonymous'],
-		'noticetrimstr' => $_GET['noticetrimstr'],
-		'noticeauthor' => $_GET['noticeauthor'],
-		'from' => $_GET['from'],
-		'sechash' => $_GET['sechash'],
-		'geoloc' => diconv($_GET['geoloc'], 'UTF-8'),
+		'extramessage' => isset($extramessage) ? $extramessage : '',
+		'bbcodeoff' => getgpc('bbcodeoff'),
+		'smileyoff' => getgpc('smileyoff'),
+		'htmlon' => getgpc('htmlon'),
+		'parseurloff' => getgpc('parseurloff'),
+		'usesig' => getgpc('usesig'),
+		'isanonymous' => getgpc('isanonymous'),
+		'noticetrimstr' => getgpc('noticetrimstr'),
+		'noticeauthor' => getgpc('noticeauthor'),
+		'from' => getgpc('from'),
+		'sechash' => getgpc('sechash'),
+		'geoloc' => diconv(getgpc('geoloc'), 'UTF-8'),
 	);
 
 
@@ -413,7 +413,7 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 	if(!isset($_GET['addfeed'])) {
 		$space = array();
 		space_merge($space, 'field_home');
-		$_GET['addfeed'] = $space['privacy']['feed']['newreply'];
+		$_GET['addfeed'] = isset($space['privacy']['feed']['newreply']) ? $space['privacy']['feed']['newreply'] : null;
 	}
 
 	$modpost->attach_before_methods('newreply', $bfmethods);

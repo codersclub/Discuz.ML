@@ -9,11 +9,13 @@
 	var imgexts = '$imgexts';
 	var postminchars = parseInt('$_G['setting']['minpostsize']');
 	var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+	var postminsubjectchars = parseInt('$_G['setting']['minsubjectsize']');
+	var postmaxsubjectchars = parseInt('$_G['setting']['maxsubjectsize']');
 	var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
 	var seccodecheck = parseInt('<!--{if $seccodecheck}-->1<!--{else}-->0<!--{/if}-->');
 	var secqaacheck = parseInt('<!--{if $secqaacheck}-->1<!--{else}-->0<!--{/if}-->');
-	var typerequired = parseInt('{$_G[forum][threadtypes][required]}');
-	var sortrequired = parseInt('{$_G[forum][threadsorts][required]}');
+	var typerequired = parseInt('{$_G[forum][threadtypes][required] or ''}');
+	var sortrequired = parseInt('{$_G[forum][threadsorts][required] or ''}');
 	var special = parseInt('$special');
 	var isfirstpost = <!--{if $isfirstpost}-->1<!--{else}-->0<!--{/if}-->;
 	var allowposttrade = parseInt('{$_G['group']['allowposttrade']}');
@@ -26,7 +28,7 @@
 	var ispicstyleforum = <!--{if $_G['forum']['picstyle']}-->1<!--{else}-->0<!--{/if}-->;
 </script>
 
-<!--{if $_GET[action] == 'edit'}--><!--{eval $editor[value] = $postinfo[message];}--><!--{else}--><!--{eval $editor[value] = $message;}--><!--{/if}-->
+<!--{if $_GET[action] == 'edit'}--><!--{eval $editor['value'] = $postinfo['message'];}--><!--{else}--><!--{eval $editor['value'] = $message;}--><!--{/if}-->
 <script type="text/javascript" src="{$_G['setting']['jspath']}forum_post.js?{VERHASH}"></script>
 
 <!--{if $isfirstpost && $sortid}-->
@@ -66,7 +68,7 @@
 <!--{/block}-->
 
 <!--{if $_GET['action'] != 'newthread'}-->
-	<!--{eval $subjectcut = cutstr($thread[subject], 30);}-->
+	<!--{eval $subjectcut = cutstr($thread['subject'], 30);}-->
 <!--{/if}-->
 <!--{block actionsubject}-->
 	<!--{if $_GET['action'] == 'reply'}-->
@@ -99,13 +101,13 @@
 	<!--{if $_GET[action] == 'reply'}-->
 		<input type="hidden" name="noticeauthor" value="$noticeauthor" />
 		<input type="hidden" name="noticetrimstr" value="$noticetrimstr" />
-		<input type="hidden" name="noticeauthormsg" value="$noticeauthormsg" />
-		<!--{if $reppid}-->
+		<input type="hidden" name="noticeauthormsg" value="{$noticeauthormsg or ''}" />
+		<!--{if !empty($reppid)}-->
 			<input type="hidden" name="reppid" value="$reppid" />
 		<!--{/if}-->
-		<!--{if $_GET[reppost]}-->
+		<!--{if !empty($_GET['reppost'])}-->
 			<input type="hidden" name="reppost" value="$_GET[reppost]" />
-		<!--{elseif $_GET[repquote]}-->
+		<!--{elseif !empty($_GET['repquote'])}-->
 			<input type="hidden" name="reppost" value="$_GET[repquote]" />
 		<!--{/if}-->
 	<!--{/if}-->
@@ -127,18 +129,18 @@
 				<!--{if $savecount}-->
 					<li class="y"><a id="draftlist" href="javascript:;" class="xi2" onmouseover="showMenu({'ctrlid':'draftlist','ctrlclass':'a','duration':2,'pos':'34'})">{lang draftbox}(<strong>$savecount</strong>)</a></li>
 				<!--{/if}-->
-				<!--{if !$_G['forum']['threadsorts']['required'] && !$_G['forum']['allowspecialonly']}--><li$postspecialcheck[0]><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread')">{lang post_newthread}</a></li><!--{/if}-->
+				<!--{if empty($_G['forum']['threadsorts']['required']) && !$_G['forum']['allowspecialonly']}--><li{$postspecialcheck[0] or ''}><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread')">{lang post_newthread}</a></li><!--{/if}-->
 				<!--{loop $_G['forum']['threadsorts'][types] $tsortid $name}-->
 					<li{if $sortid == $tsortid} class="a"{/if}><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&sortid=$tsortid')"><!--{echo strip_tags($name);}--></a></li>
 				<!--{/loop}-->
-				<!--{if $_G['group']['allowpostpoll']}--><li$postspecialcheck[1]><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&special=1')">{lang post_newthreadpoll}</a></li><!--{/if}-->
+				<!--{if $_G['group']['allowpostpoll']}--><li{$postspecialcheck[1] or ''}><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&special=1')">{lang post_newthreadpoll}</a></li><!--{/if}-->
 				<!--{if $_G['group']['allowpostreward']}--><li$postspecialcheck[3]><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&special=3')">{lang post_newthreadreward}</a></li><!--{/if}-->
 				<!--{if $_G['group']['allowpostdebate']}--><li$postspecialcheck[5]><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&special=5')">{lang post_newthreaddebate}</a></li><!--{/if}-->
 				<!--{if $_G['group']['allowpostactivity']}--><li$postspecialcheck[4]><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&special=4')">{lang post_newthreadactivity}</a></li><!--{/if}-->
 				<!--{if $_G['group']['allowposttrade']}--><li$postspecialcheck[2]><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&special=2')">{lang post_newthreadtrade}</a></li><!--{/if}-->
 				<!--{if $_G['setting']['threadplugins']}-->
 					<!--{loop $_G['forum']['threadplugin'] $tpid}-->
-						<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+						<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && is_array($_G['group']['allowthreadplugin']) && in_array($tpid, $_G['group']['allowthreadplugin'])}-->
 							<li{if $specialextra==$tpid} class="a"{/if}><a href="javascript:;" onclick="switchpost('forum.php?mod=post&action=newthread&specialextra=$tpid')">{$_G[setting][threadplugins][$tpid][name]}</a></li>
 						<!--{/if}-->
 					<!--{/loop}-->
@@ -225,7 +227,7 @@
 				</button>
 				<!--{if $_G['uid'] && $_G['group']['allowsave']}-->
 					<input type="hidden" id="postsave" name="save" value="" />
-					<!--{if $_GET[action] == 'newthread' && !$modnewthreads || $_GET[action] == 'edit' && $isfirstpost && !$modnewreplies && $thread['displayorder'] == -4}-->
+					<!--{if $_GET[action] == 'newthread' && empty($modnewthreads) || $_GET[action] == 'edit' && $isfirstpost && empty($modnewreplies) && $thread['displayorder'] == -4}-->
 						<button type="button" id="postsubmit" class="pn" value="true" onclick="$('postsave').value = 1;$('postsubmit').click();"><em>{lang save_draft}</em></button>
 					<!--{/if}-->
 				<!--{/if}-->
@@ -299,13 +301,13 @@
 					uploadSource: 'forum',
 					uploadType: 'image',
 					imgBoxObj: $('imgattachlist'),
-					<!--{if $swfconfig['maxsizeperday']}-->
+					<!--{if !empty($swfconfig['maxsizeperday'])}-->
 					maxSizePerDay: $swfconfig['maxsizeperday'],
 					<!--{/if}-->
-					<!--{if $swfconfig['maxattachnum']}-->
+					<!--{if !empty($swfconfig['maxattachnum'])}-->
 					maxAttachNum: $swfconfig['maxattachnum'],
 					<!--{/if}-->
-					<!--{if $swfconfig['filtertype']}-->
+					<!--{if !empty($swfconfig['filtertype'])}-->
 					filterType: $swfconfig['filtertype'],
 					<!--{/if}-->
 					singleUpload: $('{$editorid}_btn_local')
@@ -344,13 +346,13 @@
 					progressTarget : "fsUploadProgress",
 					uploadSource: 'forum',
 					uploadType: 'attach',
-					<!--{if $swfconfig['maxsizeperday']}-->
+					<!--{if !empty($swfconfig['maxsizeperday'])}-->
 					maxSizePerDay: $swfconfig['maxsizeperday'],
 					<!--{/if}-->
-					<!--{if $swfconfig['maxattachnum']}-->
+					<!--{if !empty($swfconfig['maxattachnum'])}-->
 					maxAttachNum: $swfconfig['maxattachnum'],
 					<!--{/if}-->
-					<!--{if $swfconfig['filtertype']}-->
+					<!--{if !empty($swfconfig['filtertype'])}-->
 					filterType: $swfconfig['filtertype'],
 					<!--{/if}-->
 					singleUpload: $('{$editorid}_btn_upload')
@@ -415,7 +417,7 @@
 		var creditstax = $_G['setting']['creditstax'];
 		var replycredit_result_lang = "{lang replycredit_revenue}{$_G['setting']['extcredits'][$extcreditstype][title]} ";
 		var userextcredit = $userextcredit;
-		<!--{if $thread['replycredit'] > 0}-->
+		<!--{if isset($thread['replycredit']) && $thread['replycredit'] > 0}-->
 			have_replycredit = {$thread['replycredit']};
 		<!--{/if}-->
 	<!--{/if}-->

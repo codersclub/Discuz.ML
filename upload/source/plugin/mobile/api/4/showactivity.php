@@ -17,7 +17,7 @@ include_once 'forum.php';
 
 class mobile_api {
 
-	function common() {
+	public static function common() {
 		global $_G;
 		if($_GET['do'] == 'recommend') {
 			if(!$_GET['hash'] || FORMHASH != $_GET['hash'] || !$_GET['pid'] || !$_GET['tid'] || !$_G['uid']) {
@@ -27,7 +27,7 @@ class mobile_api {
 			if(!$_G['wechat']['setting']['wsq_allow'] || !in_array($_GET['tid'], (array)$_G['wechat']['setting']['showactivity']['tids'])) {
 				mobile_core::result(mobile_core::variable(array('result' => -2)));
 			}
-			$postinfo = C::t('forum_post')->fetch('tid:'.$_GET['tid'], $_GET['pid']);
+			$postinfo = C::t('forum_post')->fetch_post('tid:'.$_GET['tid'], $_GET['pid']);
 			if(!$postinfo) {
 				mobile_core::result(mobile_core::variable(array('result' => -3)));
 			}
@@ -43,10 +43,10 @@ class mobile_api {
 				    'dateline' => TIMESTAMP,
 				    'stand' => 0,
 				    'voters' => 1,
-				    'voterids' => "$_G[uid]\t",
+				    'voterids' => "{$_G['uid']}\t",
 				));
 				mobile_core::result(mobile_core::variable(array('result' => 1)));
-			} elseif(strpos("\t".$post['voterids'], "\t$_G[uid]\t") === FALSE) {
+			} elseif(strpos("\t".$post['voterids'], "\t{$_G['uid']}\t") === FALSE) {
 				C::t('forum_debatepost')->update_voters($_GET['pid'], $_G['uid']);
 				mobile_core::result(mobile_core::variable(array('result' => 1)));
 			} else {
@@ -56,7 +56,7 @@ class mobile_api {
 
 	}
 
-	function output() {
+	public static function output() {
 		$comments = array();
 		foreach($GLOBALS['comments'] as $comment) {
 			$comments[] = array(

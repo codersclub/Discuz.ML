@@ -259,6 +259,7 @@ SWFUpload.prototype.initSettings = function (userSettings) {
 		server: this.settings.upload_url,
 		pick: '#' + this.settings.button_placeholder_id,
 		compress: false,
+		threads: 1,
 		accept: {
 			title: this.settings.file_types_description,
 			extensions: exts,
@@ -549,9 +550,8 @@ function uploadStart(file) {
 
 function uploadProgress(file, percentage) {
 	try {
-		var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-/*vot*/		progress.setStatus(lng['upload_progress'] +"(" + Math.round(percentage * 100) + "%)...");
+/*vot*/		progress.setStatus(lng['upload_progress'] + " <progress value='" + percentage + "' max='1' style='width: 200px;'></progress> " + Math.ceil(percentage * 100) + "%");
 	} catch (ex) {
 		this.debug(ex);
 	}

@@ -24,7 +24,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public static function get_tablename($tableid, $primary = 0) {
-		list($type, $tid) = explode(':', $tableid);
+		list($type, $tid) = explode(':', $tableid.':');
 		if(!isset(self::$_tableid_tablename[$tableid])) {
 			if($type == 'tid') {
 				self::$_tableid_tablename[$tableid] = self::getposttablebytid($tid, $primary);
@@ -129,7 +129,16 @@ class table_forum_post extends discuz_table
 		return DB::result_first('SELECT COUNT(*) FROM %t WHERE dateline>=%d AND invisible=0', array(self::get_tablename($tableid), $dateline));
 	}
 
-	public function fetch($tableid, $pid, $outmsg = true) {
+	public function fetch($id, $force_from_db = false, $null = true) {
+		// $null 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception("UnsupportedOperationException");
+		} else {
+			return $this->fetch_post($id, $force_from_db, $null);
+		}
+	}
+
+	public function fetch_post($tableid, $pid, $outmsg = true) {
 		$post = DB::fetch_first('SELECT * FROM %t WHERE pid=%d', array(self::get_tablename($tableid), $pid));
 		if(!$outmsg) {
 			unset($post['message']);
@@ -172,8 +181,16 @@ class table_forum_post extends discuz_table
 			array($fields, self::get_tablename($tableid), $pid, $addcondiction));
 	}
 
+	public function fetch_all($ids, $force_from_db = false, $null = true) {
+		// $null 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception("UnsupportedOperationException");
+		} else {
+			return $this->fetch_all_post($ids, $force_from_db, $null);
+		}
+	}
 
-	public function fetch_all($tableid, $pids, $outmsg = true) {
+	public function fetch_all_post($tableid, $pids, $outmsg = true) {
 		$postlist = array();
 		if($pids) {
 			$query = DB::query('SELECT * FROM %t WHERE %i', array(self::get_tablename($tableid), DB::field($this->_pk, $pids)));
@@ -420,6 +437,10 @@ class table_forum_post extends discuz_table
 				array(self::get_tablename($tableid), $tid));
 	}
 
+	public function fetch_all_visiblepost_by_tid($tableid, $tid) {
+		return DB::fetch_all('SELECT * FROM %t WHERE tid=%d AND invisible=0', array(self::get_tablename($tableid), $tid));
+	}
+
 	public function fetch_all_pid_by_invisible_dateline($tableid, $invisible, $dateline, $start, $limit) {
 		return DB::fetch_all('SELECT pid FROM %t WHERE invisible=%d AND dateline<%d %i', array(self::get_tablename($tableid), $invisible, $dateline, DB::limit($start, $limit)));
 	}
@@ -438,7 +459,16 @@ class table_forum_post extends discuz_table
 			WHERE dateline>=%d AND %i AND invisible=0 GROUP BY authorid', array(self::get_tablename($tableid), $dateline, DB::field('authorid', $authorid)));
 	}
 
-	public function update($tableid, $pid, $data, $unbuffered = false, $low_priority = false, $first = null, $invisible = null, $fid = null, $status = null) {
+	public function update($val, $data, $unbuffered = false, $low_priority = false, $null1 = false, $null2 = null, $null3 = null, $null4 = null, $null5 = null) {
+		// $null 1~n 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception("UnsupportedOperationException");
+		} else {
+			return $this->update_post($val, $data, $unbuffered, $low_priority, $null1, $null2, $null3, $null4, $null5);
+		}
+	}
+
+	public function update_post($tableid, $pid, $data, $unbuffered = false, $low_priority = false, $first = null, $invisible = null, $fid = null, $status = null) {
 		$where = array();
 		$where[] = DB::field('pid', $pid);
 		if($first !== null) {
@@ -491,7 +521,16 @@ class table_forum_post extends discuz_table
 		return $return;
 	}
 
-	public function update_cache($tableid, $id, $idtype, $data, $condition = array(), $glue = 'merge') {
+	public function update_cache($val, $data, $unbuffered = false, $low_priority = false, $null1 = array(), $null2 = 'merge') {
+		// $null 1~n 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception("UnsupportedOperationException");
+		} else {
+			return $this->update_cache_post($val, $data, $unbuffered, $low_priority, $null1, $null2);
+		}
+	}
+
+	public function update_cache_post($tableid, $id, $idtype, $data, $condition = array(), $glue = 'merge') {
 		if(!$this->_allowmem) return;
 
 		if($idtype == 'tid') {
@@ -630,12 +669,21 @@ class table_forum_post extends discuz_table
 		return memory('incex', $key, 1, 0, "");
 	}
 
+	public function insert($data, $return_insert_id = false, $replace = false, $silent = false, $null = false) {
+		// $null 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception("UnsupportedOperationException");
+		} else {
+			return $this->insert_post($data, $return_insert_id, $replace, $silent, $null);
+		}
+	}
+
 	/*
 	 * In the case of InnoDB, it is necessary to ensure that under each tid, the position starts from 1 and increases by 1 each time, which has the same semantics as MyISAM
 	 * In non-InnoDB (MyISAM), insert directly
 	 */
-	public function insert($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
-		if (getglobal("config/db/common/engine") !== 'innodb') { // 如果不是innodb，则是原来myisam，position是按tid自增的
+	public function insert_post($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
+		if (strtolower(getglobal("config/db/common/engine")) !== 'innodb') { // 如果不是innodb，则是原来myisam，position是按tid自增的
 			return DB::insert(self::get_tablename($tableid), $data, $return_insert_id, $replace, $silent);
 		}
 		$tablename = self::get_tablename($tableid);
@@ -677,7 +725,16 @@ class table_forum_post extends discuz_table
 		}
 	}
 
-	public function delete($tableid, $pid, $unbuffered = false) {
+	public function delete($val, $unbuffered = false, $null = false) {
+		// $null 需要在取消兼容层后删除
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception("UnsupportedOperationException");
+		} else {
+			return $this->delete_post($val, $unbuffered, $null);
+		}
+	}
+
+	public function delete_post($tableid, $pid, $unbuffered = false) {
 		$return = DB::delete(self::get_tablename($tableid), DB::field($this->_pk, $pid), 0, $unbuffered);
 		if($return && $this->_allowmem) {
 			$delpid = $this->fetch_cache('delpid');
@@ -904,7 +961,7 @@ class table_forum_post extends discuz_table
 			$threadtable = $tableid ? "forum_thread_$tableid" : 'forum_thread';
 			$query = DB::query("SELECT tid, posttableid FROM ".DB::table($threadtable)." WHERE tid IN(".dimplode(array_keys($tids)).")");
 			while ($value = DB::fetch($query)) {
-				$posttable = 'forum_post'.($value['posttableid'] ? "_$value[posttableid]" : '');
+				$posttable = 'forum_post'.($value['posttableid'] ? "_{$value['posttableid']}" : '');
 				$tables[$posttable][$value['tid']] = $value['tid'];
 				unset($tids[$value['tid']]);
 			}

@@ -17,7 +17,7 @@ class control extends adminbase {
 		'mailport', 'mailauth', 'mailfrom', 'mailauth_username', 'mailauth_password', 'maildelimiter',
 		'mailusername', 'mailsilent', 'pmcenter', 'privatepmthreadlimit', 'chatpmthreadlimit',
 		'chatpmmemberlimit', 'pmfloodctrl', 'sendpmseccode', 'pmsendregdays', 'login_failedtime',
-		'addappbyurl', 'insecureuserdelete');
+		'addappbyurl', 'insecureuserdelete', 'passwordalgo', 'passwordoptions');
 
 	function __construct() {
 		$this->control();
@@ -50,9 +50,25 @@ class control extends adminbase {
 			$login_failedtime = getgpc('login_failedtime', 'P');
 			$addappbyurl = getgpc('addappbyurl', 'P');
 			$insecureuserdelete = getgpc('insecureuserdelete', 'P');
+			$passwordalgo = getgpc('passwordalgo', 'P');
+			$passwordoptions = htmlspecialchars_decode(stripslashes(getgpc('passwordoptions', 'P')));
 			$dateformat = str_replace(array('yyyy', 'mm', 'dd'), array('y', 'n', 'j'), strtolower($dateformat));
 			$timeformat = $timeformat == 1 ? 'H:i' : 'h:i A';
 /*vot*/			$timeoffset = in_array($timeoffset, $timearray) ? $timeoffset : 8;
+
+			if(empty($passwordalgo) && !empty($passwordoptions)) {
+				// 当密码选项配置时, 密码算法不能为空
+				$passwordoptions = '';
+			} else if(!empty($passwordalgo)) {
+				// 有可能符合要求算法时做测试, 如果返回 false 或密码无法校验通过说明该配置不合理导致 PHP 无法处理, 则需要清除
+				// 密码散列算法会在部分出错情况下返回 NULL 并报 Warning, 在此特殊处理
+				$options = empty($passwordoptions) ? array() : json_decode($passwordoptions, true);
+				$tresult = password_hash($passwordalgo, constant($passwordalgo), $options);
+				if($tresult === false || $tresult === null || !password_verify($passwordalgo, $tresult)) {
+					$passwordalgo = '';
+					$passwordoptions = '';
+				}
+			}
 
 			$this->set_setting('dateformat', $dateformat);
 			$this->set_setting('timeformat', $timeformat);
@@ -65,9 +81,11 @@ class control extends adminbase {
 			$this->set_setting('pmsendregdays', intval($pmsendregdays));
 			$this->set_setting('pmcenter', $pmcenter);
 			$this->set_setting('sendpmseccode', $sendpmseccode ? 1 : 0);
-			$this->set_setting('login_failedtime', intval($login_failedtime) > 0 ? intval($login_failedtime) : 0);
+			$this->set_setting('login_failedtime', intval($login_failedtime));
 			$this->set_setting('addappbyurl', $addappbyurl);
 			$this->set_setting('insecureuserdelete', $insecureuserdelete);
+			$this->set_setting('passwordalgo', $passwordalgo);
+			$this->set_setting('passwordoptions', $passwordoptions);
 			$updated = true;
 
 			$this->updatecache();
@@ -84,25 +102,29 @@ class control extends adminbase {
 		$this->view->assign('a', $a);
 
 		$this->view->assign('dateformat', $settings['dateformat']);
-/*vot*/		$timeformatchecked = array('','');
-/*vot*/		$timeformatchecked[$settings['timeformat']] = 'checked="checked"';
+		$timeformatchecked = array('','');
+		$timeformatchecked[$settings['timeformat']] = 'checked="checked"';
 		$this->view->assign('timeformat', $timeformatchecked);
 		$this->view->assign('privatepmthreadlimit', $settings['privatepmthreadlimit']);
 		$this->view->assign('chatpmthreadlimit', $settings['chatpmthreadlimit']);
 		$this->view->assign('chatpmmemberlimit', $settings['chatpmmemberlimit']);
 		$this->view->assign('pmsendregdays', $settings['pmsendregdays']);
 		$this->view->assign('pmfloodctrl', $settings['pmfloodctrl']);
-/*vot*/		$pmcenterchecked = array('','');
-/*vot*/		$pmcenterchecked[$settings['pmcenter']] = 'checked="checked"';
+		$pmcenterchecked = array('','');
+		$pmcenterchecked[$settings['pmcenter']] = 'checked="checked"';
 		$pmcenterchecked['display'] = $settings['pmcenter'] ? '' : 'style="display:none"';
-		$addappbyurlchecked = array($settings['addappbyurl'] => 'checked="checked"');
-		$insecureuserdeletechecked = array($settings['insecureuserdelete'] => 'checked="checked"');
+		$addappbyurlchecked = array('','');
+		$addappbyurlchecked[$settings['addappbyurl']] = 'checked="checked"';
+		$insecureuserdeletechecked = array('','');
+		$insecureuserdeletechecked[$settings['insecureuserdelete']] = 'checked="checked"';
 		$this->view->assign('pmcenter', $pmcenterchecked);
-/*vot*/		$sendpmseccodechecked = array('','');
-/*vot*/		$sendpmseccodechecked[$settings['sendpmseccode']] = 'checked="checked"';
+		$sendpmseccodechecked = array('','');
+		$sendpmseccodechecked[$settings['sendpmseccode']] = 'checked="checked"';
 		$this->view->assign('sendpmseccode', $sendpmseccodechecked);
 		$this->view->assign('addappbyurl', $addappbyurlchecked);
 		$this->view->assign('insecureuserdelete', $insecureuserdeletechecked);
+		$this->view->assign('passwordalgo', $settings['passwordalgo']);
+		$this->view->assign('passwordoptions', htmlspecialchars($settings['passwordoptions']));
 		$timeoffset = intval($settings['timeoffset'] / 3600);
 /*vot*/		foreach($timearray as $v) {
 /*vot*/			$checkarray[(intval($v) < 0 ? '0'.substr($v, 1) : $v)] = ($timeoffset == $v ? 'selected="selected"' : '');
@@ -136,8 +158,8 @@ class control extends adminbase {
 		}
 
 		$this->view->assign('a', getgpc('a'));
-/*vot*/		$doubleechecked = array('','');
-/*vot*/		$doubleechecked[$settings['doublee']] = 'checked="checked"';
+		$doubleechecked = array('','');
+		$doubleechecked[$settings['doublee']] = 'checked="checked"';
 		$this->view->assign('doublee', $doubleechecked);
 		$this->view->assign('accessemail', $settings['accessemail']);
 		$this->view->assign('censoremail', $settings['censoremail']);
@@ -148,7 +170,7 @@ class control extends adminbase {
 
 	function onmail() {
 		$items = array('maildefault', 'mailsend', 'mailserver', 'mailport', 'mailauth', 'mailfrom', 'mailauth_username', 'mailauth_password', 'maildelimiter', 'mailusername', 'mailsilent');
-/*vot*/		$updated = false;
+		$updated = false;
 		if($this->submitcheck()) {
 			foreach($items as $item) {
 				$value = getgpc($item, 'P');
@@ -167,7 +189,7 @@ class control extends adminbase {
 			$this->view->assign($item, dhtmlspecialchars($settings[$item]));
 		}
 
-/*vot*/		$this->view->assign('a', getgpc('a'));
+		$this->view->assign('a', getgpc('a'));
 		$this->view->assign('updated', $updated);
 		$this->view->display('admin_setting');
 	}

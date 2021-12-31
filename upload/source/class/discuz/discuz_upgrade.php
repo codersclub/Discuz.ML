@@ -43,11 +43,9 @@ class discuz_upgrade {
 		}
 		if(!$upgradedataflag) {
 			$this->mkdirs(dirname($file));
-			$fp = fopen($file, 'w');
-			if(!$fp) {
+			if(file_put_contents($file, $upgradedata, LOCK_EX) === false) {
 				return array();
 			}
-			fwrite($fp, $upgradedata);
 		}
 
 		return $return;
@@ -84,9 +82,8 @@ class discuz_upgrade {
 			$file = DISCUZ_ROOT.'./data/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
 			$upgradedata = file_get_contents($file);
 			$upgradedata = str_replace($searchlist, '', $upgradedata);
-			$fp = fopen($file, 'w');
-			if($fp) {
-				fwrite($fp, $upgradedata);
+			if(file_put_contents($file, $upgradedata, LOCK_EX) === false) {
+				return array();
 			}
 		}
 
@@ -114,12 +111,13 @@ class discuz_upgrade {
 
 		$return = false;
 		$upgradefile = $this->upgradeurl.$this->versionpath().'/'.DISCUZ_RELEASE.'/upgrade.xml';
-		$response = xml2array(dfsockopen($upgradefile));
+		$response_xml = dfsockopen($upgradefile);
+		$response = xml2array($response_xml);
 		if(isset($response['cross']) || isset($response['patch'])) {
-			C::t('common_setting')->update('upgrade', $response);
+			C::t('common_setting')->update_setting('upgrade', $response);
 			$return = true;
 		} else {
-			C::t('common_setting')->update('upgrade', '');
+			C::t('common_setting')->update_setting('upgrade', '');
 			$return = false;
 		}
 		updatecache('setting');
@@ -162,7 +160,7 @@ class discuz_upgrade {
 		$downloadfileflag = true;
 
 		if(!$position) {
-			$mode = 'wb';
+			$mode = 'cb';
 		} else {
 			$mode = 'ab';
 		}
@@ -175,9 +173,13 @@ class discuz_upgrade {
 			if($offset && strlen($response) == $offset) {
 				$downloadfileflag = false;
 			}
-			fwrite($fp, $response);
+
+			if(!($fp && flock($fp, LOCK_EX) && ($mode == 'cb' ? ftruncate($fp, 0) : true) && fwrite($fp, $response) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
+				flock($fp, LOCK_UN);
+				fclose($fp);
+				return 0;
+			}
 		}
-		fclose($fp);
 
 		if($downloadfileflag) {
 			if(md5_file($dir.$file) == $md5) {

@@ -33,7 +33,7 @@
 			<script type="text/javascript" src="{$_G[setting][jspath]}register.js?{VERHASH}"></script>
 			<p class="bbda pbm mbm">
 				<!--{if !$_G['member']['freeze']}-->
-					<!--{if !$_G['setting']['connect']['allow'] || !$conisregister}-->{lang old_password_comment}<!--{elseif $wechatuser}-->{lang wechat_config_newpassword_comment}<!--{else}-->{lang connect_config_newpassword_comment}<!--{/if}-->
+					<!--{if empty($_G['setting']['connect']['allow']) || !$conisregister}-->{lang old_password_comment}<!--{elseif $wechatuser}-->{lang wechat_config_newpassword_comment}<!--{else}-->{lang connect_config_newpassword_comment}<!--{/if}-->
 				<!--{elseif $_G['member']['freeze'] == 1}-->
 					<strong class="xi1">{lang freeze_pw_tips}</strong>
 				<!--{elseif $_G['member']['freeze'] == 2}-->
@@ -45,7 +45,7 @@
 			<form action="home.php?mod=spacecp&ac=profile" method="post" autocomplete="off">
 				<input type="hidden" value="{FORMHASH}" name="formhash" />
 				<table summary="{lang memcp_profile}" cellspacing="0" cellpadding="0" class="tfm">
-					<!--{if !$_G['setting']['connect']['allow'] || !$conisregister}-->
+					<!--{if empty($_G['setting']['connect']['allow']) || !$conisregister}-->
 						<tr>
 							<th><span class="rq" title="{lang required}">*</span>{lang old_password}</th>
 							<td><input type="password" name="oldpassword" id="oldpassword" class="px" /></td>
@@ -65,7 +65,7 @@
 							<p class="d" id="chk_newpassword2">{lang memcp_profile_passwd_comment}</p>
 						</td>
 					</tr>
-					<tr id="contact"{if $_GET[from] == 'contact'} style="background-color: {$_G['style']['specialbg']};"{/if}>
+					<tr id="contact"{if isset($_GET[from]) && $_GET[from] == 'contact'} style="background-color: {$_G['style']['specialbg']};"{/if}>
 						<th>{lang email}</th>
 						<td>
 							<input type="text" name="emailnew" id="emailnew" value="$space[email]" class="px" />
@@ -78,9 +78,27 @@
 									$acitvemessage
 								<!--{/if}-->
 							</p>
-							<!--{if $_G['setting']['regverify'] == 1 && (($_G['group']['grouptype'] == 'member' && $_G['adminid'] == 0) || $_G['groupid'] == 8) || $_G['member']['freeze']}--><p class="d">{lang memcp_profile_email_comment}</p><!--{/if}-->
+							<!--{if $_G['setting']['regverify'] == 1 && (($_G['group']['grouptype'] == 'member' && in_array($_G['adminid'], array(0, -1))) || $_G['groupid'] == 8) || $_G['member']['freeze']}--><p class="d">{lang memcp_profile_email_comment}</p><!--{/if}-->
 						</td>
 					</tr>
+					<tr>
+						<th>{lang secmobile}</th>
+						<td>
+							<input type="text" name="secmobiccnew" id="secmobiccnew" value="$space[secmobicc]" class="px" style="width: 30px;" />
+							<input type="text" name="secmobilenew" id="secmobilenew" value="$space[secmobile]" class="px" />
+							<p class="d">{lang memcp_profile_secmobile_comment}</p>
+						</td>
+					</tr>
+					<!--{if $_G['setting']['smsstatus']}-->
+					<tr>
+						<th>{lang secmobseccode}</th>
+						<td>
+							<input type="text" name="secmobseccodenew" id="secmobseccodenew" value="" class="px" />
+							<button type="button" name="secmobseccodesendnew" id="secmobseccodesendnew" value="true" class="pn pnc" onclick="memcp_sendsecmobseccode();" /><strong>{lang send}</strong></button>
+							<p class="d">{lang memcp_profile_secmobseccode_comment}</p>
+						</td>
+					</tr>
+					<!--{/if}-->
 
 					<!--{if $_G['member']['freeze'] == 2 || $_G['member']['freeze'] == -1}-->
 					<tr>
@@ -151,6 +169,16 @@
 				var pwlength = <!--{if $_G['setting']['pwlength']}-->$_G['setting']['pwlength']<!--{else}-->0<!--{/if}-->;
 				checkPwdComplexity($('newpassword'), $('newpassword2'), true);
 			</script>
+			<!--{if $_G['setting']['smsstatus']}-->
+			<script type="text/javascript">
+			function memcp_sendsecmobseccode() {
+				memcp_svctype = 1;
+				memcp_secmobicc = document.getElementById("secmobiccnew").value;
+				memcp_secmobile = document.getElementById("secmobilenew").value;
+				return sendsecmobseccode(memcp_svctype, memcp_secmobicc, memcp_secmobile);
+			}
+			</script>
+			<!--{/if}-->
 		<!--{else}-->
 			<!--{hook/spacecp_profile_top}-->
 			<!--{subtemplate home/spacecp_profile_nav}-->
@@ -160,7 +188,7 @@
 			<iframe id="frame_profile" name="frame_profile" style="display: none"></iframe>
 			<form action="{if $operation != 'plugin'}home.php?mod=spacecp&ac=profile&op=$operation{else}home.php?mod=spacecp&ac=plugin&op=profile&id=$_GET[id]{/if}" method="post" enctype="multipart/form-data" autocomplete="off"{if $operation != 'plugin'} target="frame_profile"{/if} onsubmit="clearErrorInfo();">
 				<input type="hidden" value="{FORMHASH}" name="formhash" />
-				<!--{if $_GET[vid]}-->
+				<!--{if !empty($_GET[vid])}-->
 				<input type="hidden" value="$_GET[vid]" name="vid" />
 				<!--{/if}-->
 				<table cellspacing="0" cellpadding="0" class="tfm" id="profilelist">
@@ -181,16 +209,16 @@
 							<input type="hidden" name="privacy[$key]" value="3" />
 							<!--{else}-->
 							<select name="privacy[$key]">
-								<option value="0"{if $privacy[$key] == "0"} selected="selected"{/if}>{lang open_privacy}</option>
-								<option value="1"{if $privacy[$key] == "1"} selected="selected"{/if}>{lang friend_privacy}</option>
-								<option value="3"{if $privacy[$key] == "3"} selected="selected"{/if}>{lang secrecy}</option>
+								<option value="0"{if isset($privacy[$key]) && $privacy[$key] == "0"} selected="selected"{/if}>{lang open_privacy}</option>
+								<option value="1"{if isset($privacy[$key]) && $privacy[$key] == "1"} selected="selected"{/if}>{lang friend_privacy}</option>
+								<option value="3"{if isset($privacy[$key]) && $privacy[$key] == "3"} selected="selected"{/if}>{lang secrecy}</option>
 							</select>
 							<!--{/if}-->
 						</td>
 					</tr>
 				<!--{/if}-->
 				<!--{/loop}-->
-				<!--{if $allowcstatus && in_array('customstatus', $allowitems)}-->
+				<!--{if $allowcstatus && is_array($allowitems) && in_array('customstatus', $allowitems)}-->
 				<tr>
 					<th id="th_customstatus">{lang permission_basic_status}</th>
 					<td id="td_customstatus">
@@ -200,7 +228,7 @@
 					<td>&nbsp;</td>
 				</tr>
 				<!--{/if}-->
-				<!--{if $_G['group']['maxsigsize'] && in_array('sightml', $allowitems)}-->
+				<!--{if $_G['group']['maxsigsize'] && is_array($allowitems) && in_array('sightml', $allowitems)}-->
 				<tr>
 					<th id="th_sightml">{lang personal_signature}</th>
 					<td id="td_sightml">
@@ -228,7 +256,7 @@
 					<td>&nbsp;</td>
 				</tr>
 				<!--{/if}-->
-				<!--{if in_array('timeoffset', $allowitems)}-->
+				<!--{if is_array($allowitems) && in_array('timeoffset', $allowitems)}-->
 				<tr>
 					<th id="th_timeoffset">{lang time_zone}</th>
 					<td id="td_timeoffset">
@@ -238,7 +266,7 @@
 							<option value="$key"{if $key==$space[timeoffset]} selected="selected"{/if}>$desc</option>
 							<!--{/loop}-->
 						</select>
-						<p class="mtn">{lang current_time} : <!--{date($_G[timestamp])}--></p>
+						<p class="mtn">{lang current_time} : <!--{date($_G['timestamp'])}--></p>
 						<p class="d">{lang time_zone_message}</p>
 					</td>
 					<td>&nbsp;</td>

@@ -29,7 +29,9 @@ var STATUSMSG = {
 /*vot*/	'8' :  lng['can_not_save_attach'],
 /*vot*/	'9' :  lng['invalid_file'],
 /*vot*/	'10' : lng['illegal_operation'],
-/*vot*/	'11' : lng['today_upload_large']
+/*vot*/	'11' : lng['today_upload_large'],
+/*vot*/	'12' : lng['bad_words'],
+/*vot*/	'13' : lng['high_resolution']
 };
 
 EXTRAFUNC['validator'] = [];
@@ -76,8 +78,12 @@ function validate(theform) {
 	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "") || !sortid && !special && trim(message) == "") {
 /*vot*/		showError(lng['enter_content']);
 		return false;
-/*vot*/	} else if(theform.subject.value.length > 255) {
+	} else if(dstrlen(theform.subject.value) > 255) {
 /*vot*/		showError(lng['title_long']);
+		return false;
+	}
+	if(!disablepostctrl && theform.subject.value != "" && ((postminsubjectchars != 0 && dstrlen(theform.subject.value) < postminsubjectchars) || (postminsubjectchars != 0 && dstrlen(theform.subject.value) > postmaxsubjectchars))) {
+/*vot*/		showError(lng['content_long'] + dstrlen(theform.subject.value) + lng['characters'] + '\n' + lng['system_limit'] + postminsubjectchars + lng['up_to'] + postmaxsubjectchars + lng['characters']);
 		return false;
 	}
 	if(in_array($('postsubmit').name, ['topicsubmit', 'editsubmit'])) {

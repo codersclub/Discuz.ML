@@ -16,7 +16,7 @@ require_once libfile('function/forumlist');
 $gid = intval(getgpc('gid'));
 $showoldetails = get_index_online_details();
 
-if(!$_G['uid'] && !$gid && $_G['setting']['cacheindexlife'] && !defined('IN_ARCHIVER') && !defined('IN_MOBILE')) {
+if(!$_G['uid'] && !$gid && $_G['setting']['cacheindexlife'] && !defined('IN_ARCHIVER') && !defined('IN_MOBILE') && !IS_ROBOT) {
 	get_index_page_guest_cache();
 }
 
@@ -128,8 +128,9 @@ if(!$gid && $_G['setting']['collectionstatus'] && ($_G['setting']['collectionrec
 
 }
 
-if(empty($gid) && empty($_G['member']['accessmasks']) && empty($showoldetails)) {
-	extract(get_index_memory_by_groupid($_G['member']['groupid']));
+if(empty($gid) && empty($_G['member']['accessmasks']) && empty($showoldetails) && !IS_ROBOT) {
+	$memindex = get_index_memory_by_groupid($_G['member']['groupid']);
+	extract($memindex);
 	if(defined('FORUM_INDEX_PAGE_MEMORY') && FORUM_INDEX_PAGE_MEMORY) {
 		categorycollapse();
 		if(!defined('IN_ARCHIVER')) {
@@ -145,7 +146,7 @@ $grids = array();
 if($_G['setting']['grid']['showgrid']) {
 	loadcache('grids');
 	$cachelife = $_G['setting']['grid']['cachelife'] ? $_G['setting']['grid']['cachelife'] : 600;
-	$now = dgmdate(TIMESTAMP, lang('form/misc', 'y_m_d')).' '.lang('forum/misc', 'week_'.dgmdate(TIMESTAMP, 'w'));
+	$now = dgmdate(TIMESTAMP, lang('forum/misc', 'y_m_d')).' '.lang('forum/misc', 'week_'.dgmdate(TIMESTAMP, 'w'));
 	if(TIMESTAMP - $_G['cache']['grids']['cachetime'] < $cachelife) {
 		$grids = $_G['cache']['grids'];
 	} else {
@@ -236,10 +237,10 @@ if(!$gid && (!defined('FORUM_INDEX_PAGE_MEMORY') || !FORUM_INDEX_PAGE_MEMORY)) {
 
 	foreach($forums as $forum) {
 		if($forum_fields[$forum['fid']]['fid']) {
-			$forum = array_merge($forum, $forum_fields[$forum['fid']]);
+			$forum = (array_key_exists('fid', $forum) && array_key_exists($forum['fid'], $forum_fields)) ? array_merge($forum, $forum_fields[$forum['fid']]) : $forum;
 		}
-		if($forum_access['fid']) {
-			$forum = array_merge($forum, $forum_access[$forum['fid']]);
+		if(!empty($forum_access['fid'])) {
+			$forum = (array_key_exists('fid', $forum) && array_key_exists($forum['fid'], $forum_access)) ? array_merge($forum, $forum_access[$forum['fid']]) : $forum;
 		}
 		$forumname[$forum['fid']] = strip_tags($forum['name']);
 		$forum['extra'] = empty($forum['extra']) ? array() : dunserialize($forum['extra']);
@@ -320,7 +321,7 @@ if(!$gid && (!defined('FORUM_INDEX_PAGE_MEMORY') || !FORUM_INDEX_PAGE_MEMORY)) {
 			$onlinenum = C::app()->session->count();
 			if($onlinenum > $onlineinfo[0]) {
 				$onlinerecord = "$onlinenum\t".TIMESTAMP;
-				C::t('common_setting')->update('onlinerecord', $onlinerecord);
+				C::t('common_setting')->update_setting('onlinerecord', $onlinerecord);
 				savecache('onlinerecord', $onlinerecord);
 				$onlineinfo = array($onlinenum, TIMESTAMP);
 			}
@@ -332,7 +333,7 @@ if(!$gid && (!defined('FORUM_INDEX_PAGE_MEMORY') || !FORUM_INDEX_PAGE_MEMORY)) {
 
 		$detailstatus = $showoldetails == 'yes' || (((!isset($_G['cookie']['onlineindex']) && !$_G['setting']['whosonline_contract']) || $_G['cookie']['onlineindex']) && $onlinenum < 500 && !$showoldetails);
 
-		$guestcount = $membercount = 0;
+		$guestcount = $membercount = $invisiblecount = 0;
 		if(!empty($_G['setting']['sessionclose'])) {
 			$detailstatus = false;
 			$membercount = C::app()->session->count(1);
@@ -457,13 +458,6 @@ function get_index_announcements() {
 	return $announcements;
 }
 
-function replace_formhash($timestamp, $input) {
-	global $_G;
-	$temp_formhash = substr(md5(substr($timestamp, 0, -3).substr($_G['config']['security']['authkey'], 3, -3)), 8, 8);
-	$formhash = constant("FORMHASH");
-	return preg_replace('/(name=[\'|\"]formhash[\'|\"] value=[\'\"]|formhash=)'.$temp_formhash.'/ismU', '${1}'.$formhash, $input);
-}
-
 function get_index_page_guest_cache() {
 	global $_G;
 	$indexcache = getcacheinfo(0);
@@ -478,8 +472,12 @@ function get_index_page_guest_cache() {
 		});
 		readfile($indexcache['filename']);
 		$updatetime = dgmdate($filemtime, 'Y-m-d H:i:s');
-		$gzip = $_G['gzipcompress'] ? ', Gzip On' : '';
-		echo '<script type="text/javascript">$("debuginfo") ? $("debuginfo").innerHTML = ", Updated at '.$updatetime.', Processed in '.sprintf("%0.6f", microtime(TRUE) - $start_time).' second(s)'.$gzip.'." : "";</script></body></html>';
+		$debuginfo = ", Updated at $updatetime";
+		if(getglobal('setting/debug')) {
+			$gzip = $_G['gzipcompress'] ? ', Gzip On' : '';
+			$debuginfo .= ', Processed in '.sprintf("%0.6f", microtime(TRUE) - $start_time).' second(s)'.$gzip;
+		}
+		echo '<script type="text/javascript">$("debuginfo") ? $("debuginfo").innerHTML = "'.$debuginfo.'." : "";</script></body></html>';
 		ob_end_flush();
 		exit();
 	}

@@ -10,20 +10,26 @@
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
+if(!$_G['uid'] && getglobal('setting/privacy/view/profile')) {
+	showmessage('home_no_privilege', '', array(), array('login' => true));
+}
 
 require_once libfile('function/spacecp');
 
-space_merge($space, 'count');
-space_merge($space, 'field_home');
-space_merge($space, 'field_forum');
-space_merge($space, 'profile');
-space_merge($space, 'status');
+$inarchive = isset($space['_inarchive']) && $space['_inarchive'];
+space_merge($space, 'count', $inarchive);
+space_merge($space, 'field_home', $inarchive);
+space_merge($space, 'field_forum', $inarchive);
+space_merge($space, 'profile', $inarchive);
+space_merge($space, 'status', $inarchive);
 getonlinemember(array($space['uid']));
 
-if($space['videophoto'] && ckvideophoto($space, 1)) {
-	$space['videophoto'] = getvideophoto($space['videophoto']);
-} else {
-	$space['videophoto'] = '';
+if($_G['uid'] != $space['uid'] && !$_G['group']['allowviewprofile']) {
+	if(!$_G['uid']) {
+		showmessage('home_no_privilege', '', array(), array('login' => true));
+	} else {
+		showmessage('no_privilege_profile');
+	}
 }
 
 $space['admingroup'] = $_G['cache']['usergroups'][$space['adminid']];
@@ -52,7 +58,7 @@ if($space['lastpost']) $space['lastpost'] = dgmdate($space['lastpost']);
 if($space['lastsendmail']) $space['lastsendmail'] = dgmdate($space['lastsendmail']);
 
 
-if($_G['uid'] == $space['uid'] || $_G['group']['allowviewip']) {
+if($_G['uid'] == $space['uid'] || getglobal('group/allowviewip')) {
 	$space['regip_loc'] = ip::convert($space['regip']);
 	$space['lastip_loc'] = ip::convert($space['lastip']);
 	$space['regip'] = ip::to_display($space['regip']);
@@ -87,7 +93,14 @@ if(strtotime($space['regdate']) + $space['oltime'] * 3600 > TIMESTAMP) {
 }
 require_once libfile('function/friend');
 $isfriend = friend_check($space['uid'], 1);
-
+if(!$_G['adminid']){
+	if(getglobal('setting/privacy/view/profile') == 1 && !$isfriend) {
+		showmessage('specified_user_is_not_your_friend', '', array(), array());
+	}
+	if(getglobal('setting/privacy/view/profile') == 2 && !$space['self']) {
+		showmessage('is_blacklist', '', array(), array());
+	}
+}
 loadcache('profilesetting');
 include_once libfile('function/profile');
 $profiles = array();
@@ -97,6 +110,10 @@ if($_G['setting']['verify']['enabled']) {
 	space_merge($space, 'verify');
 }
 foreach($_G['cache']['profilesetting'] as $fieldid => $field) {
+	// 个人空间内不展现个人信息
+	if($_G['setting']['nsprofiles']) {
+		break;
+	}
 	if(!$field['available'] || in_array($fieldid, array('birthprovince', 'birthdist', 'birthcommunity', 'resideprovince', 'residedist', 'residecommunity'))) {
 			continue;
 	}
@@ -167,11 +184,6 @@ $navtitle = lang('space', 'sb_profile', array('who' => $space['username']));
 $metakeywords = lang('space', 'sb_profile', array('who' => $space['username']));
 $metadescription = lang('space', 'sb_profile', array('who' => $space['username']));
 
-$showvideophoto = true;
-if($space['videophotostatus'] > 0 && $_G['uid'] != $space['uid'] && !ckvideophoto($space, 1)) {
-	$showvideophoto = false;
-}
-
 $clist = array();
 if(in_array($_G['adminid'], array(1, 2, 3))) {
 	include_once libfile('function/member');
@@ -180,7 +192,7 @@ if(in_array($_G['adminid'], array(1, 2, 3))) {
 
 show_view();
 
-if(!$_G['privacy']) {
+if(!getglobal('privacy')) {
 	if(!$_G['inajax']) {
 		include_once template("home/space_profile");
 	} else {

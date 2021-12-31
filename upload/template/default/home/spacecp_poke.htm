@@ -29,7 +29,7 @@
 				<div class="c {if $_G[inajax]}altw{else}mtm{/if}">
 					<div class="mbm xs2">
 					<!--{if $tospace[uid]}-->
-						<a href="home.php?mod=space&uid=$tospace[uid]" class="avt avts"><!--{avatar($tospace[uid],small)}--></a>
+						<a href="home.php?mod=space&uid=$tospace[uid]" class="avt avts"><!--{avatar($tospace['uid'], 'small')}--></a>
 						{lang to} <strong>{$tospace[username]}</strong> {lang say_hi}:
 					<!--{else}-->
 						{lang username}: <input type="text" name="username" value="" class="px" />
@@ -63,7 +63,7 @@
 				<span class="xw0">
 					<!--{if $subvalue[iconid]}-->{$icons[$subvalue[iconid]]}<!--{else}-->{lang say_hi}<!--{/if}-->
 					<!--{if $subvalue[note]}-->, {lang say}: $subvalue[note]<!--{/if}-->
-					&nbsp; <span class="xg1"><!--{date($subvalue[dateline],'n-j H:i')}--></span>
+					&nbsp; <span class="xg1"><!--{date($subvalue['dateline'],'n-j H:i')}--></span>
 				</span>
 			</p>
 			<!--{/loop}-->
@@ -94,14 +94,14 @@
 			<div id="poke_ul" class="xld xlda">
 				<!--{loop $list $key $value}-->
 				<dl id="poke_$value[uid]" class="bbda cl">
-					<dd class="m avt"><a href="home.php?mod=space&uid=$value[uid]"><!--{avatar($value[uid],small)}--></a></dd>
+					<dd class="m avt"><a href="home.php?mod=space&uid=$value[uid]"><!--{avatar($value['uid'], 'small')}--></a></dd>
 					<dt id="poke_td_$value[uid]">
 						<p class="mbm">
 							<a href="home.php?mod=space&uid=$value[fromuid]" class="xi2">{$value[fromusername]}</a>:
 							<span class="xw0">
 								<!--{if $value[iconid]}-->{$icons[$value[iconid]]}<!--{else}-->{lang say_hi}<!--{/if}-->
 								<!--{if $value[note]}-->, {lang say}: $value[note]<!--{/if}-->
-								&nbsp; <span class="xg1"><!--{date($value[dateline], 'n-j H:i')}--></span>
+								&nbsp; <span class="xg1"><!--{date($value['dateline'], 'n-j H:i')}--></span>
 							</span>
 						</p>
 						<div class="pbn ptm xg1 xw0 cl">

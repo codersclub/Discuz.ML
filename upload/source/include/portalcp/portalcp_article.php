@@ -46,14 +46,14 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 		check_articleperm($catid);
 	}
 
-	$_POST['title'] = getstr(trim($_POST['title']), 80);
-	if(strlen($_POST['title']) < 1) {
+	$_POST['title'] = getstr(trim($_POST['title']), $_G['setting']['maxsubjectsize']);
+	if(strlen($_POST['title']) < 1 || dstrlen($_POST['title']) < $_G['setting']['minsubjectsize']) {
 		showmessage('title_not_too_little');
 	}
-	$_POST['title'] = censor($_POST['title']);
+	$_POST['title'] = censor($_POST['title'], NULL, FALSE, FALSE);
 
 	$_POST['pagetitle'] = getstr(trim($_POST['pagetitle']), 60);
-	$_POST['pagetitle'] = censor($_POST['pagetitle']);
+	$_POST['pagetitle'] = censor($_POST['pagetitle'], NULL, FALSE, FALSE);
 	$htmlname = basename(trim($_POST['htmlname']));
 
 	$highlight_style = $_GET['highlight_style'];
@@ -61,7 +61,7 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 	$style = implode('|',$highlight_style);
 	if(empty($_POST['summary'])) $_POST['summary'] = preg_replace("/(\s|\<strong\>##########NextPage(\[title=.*?\])?##########\<\/strong\>)+/", ' ', $_POST['content']);
 	$summary = portalcp_get_summary($_POST['summary']);
-	$summary = censor($summary);
+	$summary = censor($summary, NULL, FALSE, FALSE);
 
 	$_GET['author'] = dhtmlspecialchars($_GET['author']);
 	$_GET['url'] = str_replace('&amp;', '&', dhtmlspecialchars($_GET['url']));
@@ -171,7 +171,7 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 	}
 
 	$content = getstr($_POST['content'], 0, 0, 0, 0, 1);
-	$content = censor($content);
+	$content = censor($content, NULL, FALSE, FALSE);
 	if(censormod($content) || $_G['group']['allowpostarticlemod']) {
 		$article_status = 1;
 	} else {
@@ -186,7 +186,7 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 	$contents = preg_split($regexp, $content);
 	$cpostcount = count($contents);
 
-	$dbcontents = C::t('portal_article_content')->fetch_all($aid);
+	$dbcontents = C::t('portal_article_content')->fetch_all_by_aid($aid);
 
 	$pagecount = $cdbcount = count($dbcontents);
 	if($cdbcount > $cpostcount) {
@@ -243,14 +243,14 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 				$blog = C::t('home_blog')->fetch($id);
 				if(!empty($blog)) {
 					$notify = array(
-						'url' => "home.php?mod=space&uid=$blog[uid]&do=blog&id=$id",
+						'url' => "home.php?mod=space&uid={$blog['uid']}&do=blog&id=$id",
 						'subject' => $blog['subject']
 					);
 					$touid = $blog['uid'];
 				}
 				break;
 			case 'tid':
-				$thread = C::t('forum_thread')->fetch($id);
+				$thread = C::t('forum_thread')->fetch_thread($id);
 				if(!empty($thread)) {
 					$notify = array(
 						'url' => "forum.php?mod=viewthread&tid=$id",
@@ -287,7 +287,7 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 
 
 	$article = C::t('portal_article_title')->fetch($aid);
-	$viewarticleurl = $_POST['url'] ? "portal.php?mod=list&catid=$_POST[catid]" : fetch_article_url($article);
+	$viewarticleurl = $_POST['url'] ? "portal.php?mod=list&catid={$_POST['catid']}" : fetch_article_url($article);
 
 	include_once template("portal/portalcp_article");dexit();
 
@@ -304,7 +304,7 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 	$posts = array();
 	$tid = intval($_GET['tid']);
 	if($tid && $pids) {
-		foreach(C::t('forum_post')->fetch_all('tid:'.$tid, $pids) as $value) {
+		foreach(C::t('forum_post')->fetch_all_post('tid:'.$tid, $pids) as $value) {
 			if($value['tid'] != $tid) {
 				continue;
 			}
@@ -321,7 +321,7 @@ if(submitcheck("articlesubmit", 0, $seccodecheck, $secqaacheck)) {
 	foreach($posts as $post) {
 		$summary = portalcp_get_postmessage($post);
 		$summary .= lang('portalcp', 'article_pushplus_info', array('author'=>$post['author'], 'url'=>'forum.php?mod=redirect&goto=findpost&ptid='.$post['tid'].'&pid='.$post['pid']));
-		$inserts[] = array('aid'=>$aid, 'content'=>$summary, 'pageorder'=>$pageorder, 'dateline'=>$_G['timestamp'], 'id'=>$post[pid], 'idtype' =>'pid');
+		$inserts[] = array('aid'=>$aid, 'content'=>$summary, 'pageorder'=>$pageorder, 'dateline'=>$_G['timestamp'], 'id'=>$post['pid'], 'idtype' =>'pid');
 		$pageorder++;
 	}
 	C::t('portal_article_content')->insert_batch($inserts);
@@ -372,7 +372,7 @@ if($op == 'delete') {
 	if(submitcheck('deletesubmit')) {
 		include_once libfile('function/delete');
 		$article = deletearticle(array(intval($_POST['aid'])), intval($_POST['optype']));
-		showmessage('article_delete_success', "portal.php?mod=list&catid={$article[0][catid]}");
+		showmessage('article_delete_success', "portal.php?mod=list&catid={$article[0]['catid']}");
 	}
 
 } elseif($op == 'related') {
@@ -399,7 +399,7 @@ if($op == 'delete') {
 				require_once libfile('function/delete');
 				$istrash = $optype == 'trash' ? 1 : 0;
 				$article = deletearticle($aids, $istrash);
-				showmessage('article_delete_success', dreferer("portal.php?mod=portalcp&ac=category&catid={$article[0][catid]}"));
+				showmessage('article_delete_success', dreferer("portal.php?mod=portalcp&ac=category&catid={$article[0]['catid']}"));
 		} elseif($optype == 'move') {
 			if($catid) {
 				$categoryUpdate = array();
@@ -440,7 +440,7 @@ if($op == 'delete') {
 	$pushedids = array();
 	$pushcount = $pushedcount = 0;
 	if(!empty($pids)) {
-		foreach(C::t('portal_article_content')->fetch_all($aid) as $value) {
+		foreach(C::t('portal_article_content')->fetch_all_by_aid($aid) as $value) {
 			$pushedids[] = intval($value['id']);
 			$pushedcount++;
 		}
@@ -511,7 +511,7 @@ if($op == 'delete') {
 
 	if($article) {
 
-		foreach(C::t('portal_article_content')->fetch_all($aid) as $key => $value) {
+		foreach(C::t('portal_article_content')->fetch_all_by_aid($aid) as $key => $value) {
 			$nextpage = '';
 			if($key > 0) {
 				$pagetitle = $value['title'] ? '[title='.$value['title'].']' : '';
@@ -521,6 +521,8 @@ if($op == 'delete') {
 			}
 			$article_content['content'] .= $nextpage.$value['content'];
 		}
+
+		$article_content['content'] = dhtmlspecialchars($article_content['content']);
 
 		$article['attach_image'] = $article['attach_file'] = '';
 		foreach(C::t('portal_attachment')->fetch_all_by_aid($aid) as $value) {
@@ -585,14 +587,14 @@ if($op == 'delete') {
 				}
 				$article['title'] = getstr($blog['subject'], 0);
 				$article['summary'] = portalcp_get_summary($blog['message']);
-				$article['fromurl'] = 'home.php?mod=space&uid='.$blog[uid].'&do=blog&id='.$blog[blogid];
+				$article['fromurl'] = 'home.php?mod=space&uid='.$blog['uid'].'&do=blog&id='.$blog['blogid'];
 				$article['author'] = $blog['username'];
 				$article_content['content'] = dhtmlspecialchars($blog['message']);
 			}
 			break;
 		default:
 			$posttable = getposttablebytid($_GET['from_id']);
-			$thread = C::t('forum_thread')->fetch($_GET['from_id']);
+			$thread = C::t('forum_thread')->fetch_thread($_GET['from_id']);
 			$thread = array_merge($thread, C::t('forum_post')->fetch_threadpost_by_tid_invisible($_GET['from_id']));
 			if($thread) {
 				$article['title'] = $thread['subject'];
@@ -673,7 +675,7 @@ function portalcp_get_postmessage($post, $getauthorall = '') {
 
 	$msglower = strtolower($post['message']);
 	if(strpos($msglower, '[/media]') !== FALSE) {
-		$post['message'] = preg_replace_callback("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", 'portalcp_get_postmessage_callback_parsearticlemedia_12', $post['message']);
+		$post['message'] = preg_replace_callback("/\[media=([\w%,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", 'portalcp_get_postmessage_callback_parsearticlemedia_12', $post['message']);
 	}
 	if(strpos($msglower, '[/audio]') !== FALSE) {
 		$post['message'] = preg_replace_callback("/\[audio(=1)*\]\s*([^\[\<\r\n]+?)\s*\[\/audio\]/is", 'portalcp_get_postmessage_callback_parsearticlemedia_2', $post['message']);
@@ -706,6 +708,7 @@ function portalcp_get_postmessage_callback_parsearticlemedia_4($matches) {
 function portalcp_parse_postattch(&$post) {
 	static $allpostattchs = null;
 	if($allpostattchs === null) {
+		$allpostattchs = array();
 		foreach(C::t('forum_attachment_n')->fetch_all_by_id('tid:'.$post['tid'], 'tid', $post['tid']) as $attch) {
 			$allpostattchs[$attch['pid']][$attch['aid']] = $attch['aid'];
 		}
@@ -726,8 +729,7 @@ function parsearticlemedia($params, $url) {
 	global $_G;
 
 	$params = explode(',', $params);
-	$width = intval($params[1]) > 800 ? 800 : intval($params[1]);
-	$height = intval($params[2]) > 600 ? 600 : intval($params[2]);
+
 	$url = addslashes($url);
 	if($flv = parseflv($url, 0, 0)) {
 		$url = $flv['flv'];

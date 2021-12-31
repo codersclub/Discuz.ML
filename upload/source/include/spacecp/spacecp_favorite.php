@@ -23,35 +23,54 @@ if($_GET['op'] == 'delete') {
 			$deletecounter = array();
 			$data = C::t('home_favorite')->fetch_all($_GET['favorite']);
 			foreach($data as $dataone) {
-				switch($dataone['idtype']) {
-					case 'fid':
-						$deletecounter['fids'][] = $dataone['id'];
-						break;
-					default:
-						break;
-				}
+				$deletecounter[$dataone['idtype']]['idtype'] = $dataone['idtype'];
+				$deletecounter[$dataone['idtype']]['id'][] = $dataone['id'];
 			}
-			if($deletecounter['fids']) {
-				C::t('forum_forum')->update_forum_counter($deletecounter['fids'], 0, 0, 0, 0, -1);
+			foreach($deletecounter as $thevalue) {
+				deletefavorite($thevalue);
 			}
 			C::t('home_favorite')->delete($_GET['favorite'], false, $_G['uid']);
 		}
 		showmessage('favorite_delete_succeed', 'home.php?mod=space&uid='.$_G['uid'].'&do=favorite&view=me&type='.$_GET['type'].'&quickforward=1');
-	} else {
-		$favid = intval($_GET['favid']);
-		$thevalue = C::t('home_favorite')->fetch($favid);
+	} else {		
+		$type = empty($_GET['type']) ? '' : $_GET['type'];
+		$id = empty($_GET['id']) ? 0 : intval($_GET['id']);
+		if($type && $id){
+			switch($type) {
+				case 'thread':
+					$idtype = 'tid';
+					break;
+				case 'forum':
+					$idtype = 'fid';
+					break;
+				case 'blog':
+					$idtype = 'blogid';
+					break;
+				case 'group':
+					$idtype = 'gid';
+					break;
+				case 'album':
+					$idtype = 'albumid';
+					break;
+				case 'space':
+					$idtype = 'uid';
+					break;
+				case 'article':
+					$idtype = 'aid';
+					break;
+			}
+			$thevalue = C::t('home_favorite')->fetch_by_id_idtype($id, $idtype, $_G['uid']);
+			$favid = $thevalue['favid'];
+		}else{
+			$favid = intval($_GET['favid']);
+			$thevalue = C::t('home_favorite')->fetch($favid);
+		}		
 		if(empty($thevalue) || $thevalue['uid'] != $_G['uid']) {
 			showmessage('favorite_does_not_exist');
 		}
 
 		if(submitcheck('deletesubmit')) {
-			switch($thevalue['idtype']) {
-				case 'fid':
-					C::t('forum_forum')->update_forum_counter($thevalue['id'], 0, 0, 0, 0, -1);
-					break;
-				default:
-					break;
-			}
+			deletefavorite($thevalue);
 			C::t('home_favorite')->delete($favid);
 			showmessage('do_success', 'home.php?mod=space&uid='.$_G['uid'].'&do=favorite&view=me&type='.$_GET['type'].'&quickforward=1', array('favid' => $favid, 'id' => $thevalue['id']), array('showdialog'=>1, 'showmsg' => true, 'closetime' => true, 'locationtime' => 3));
 		}
@@ -69,50 +88,50 @@ if($_GET['op'] == 'delete') {
 	switch($type) {
 		case 'thread':
 			$idtype = 'tid';
-			$thread = C::t('forum_thread')->fetch($id);
+			$thread = C::t('forum_thread')->fetch_thread($id);
 			$title = $thread['subject'];
-			$icon = '<img src="static/image/feed/thread.gif" alt="thread" class="vm" /> ';
+			$icon = '<img src="'.STATICURL.'image/feed/thread.gif" alt="thread" class="vm" /> ';
 			break;
 		case 'forum':
 			$idtype = 'fid';
 			$foruminfo = C::t('forum_forum')->fetch($id);
 			loadcache('forums');
 			$forum = $_G['cache']['forums'][$id];
-			if(!$forum['viewperm'] || ($forum['viewperm'] && forumperm($forum['viewperm'])) || strstr($forum['users'], "\t$_G[uid]\t")) {
+			if(!$forum['viewperm'] || ($forum['viewperm'] && forumperm($forum['viewperm'])) || strstr($forum['users'], "\t{$_G['uid']}\t")) {
 				$title = $foruminfo['status'] != 3 ? $foruminfo['name'] : '';
-				$icon = '<img src="static/image/feed/discuz.gif" alt="forum" class="vm" /> ';
+				$icon = '<img src="'.STATICURL.'image/feed/discuz.gif" alt="forum" class="vm" /> ';
 			}
 			break;
 		case 'blog':
 			$idtype = 'blogid';
 			$bloginfo = C::t('home_blog')->fetch($id);
 			$title = ($bloginfo['uid'] == $spaceuid) ? $bloginfo['subject'] : '';
-			$icon = '<img src="static/image/feed/blog.gif" alt="blog" class="vm" /> ';
+			$icon = '<img src="'.STATICURL.'image/feed/blog.gif" alt="blog" class="vm" /> ';
 			break;
 		case 'group':
 			$idtype = 'gid';
 			$foruminfo = C::t('forum_forum')->fetch($id);
 			$title = $foruminfo['status'] == 3 ? $foruminfo['name'] : '';
-			$icon = '<img src="static/image/feed/group.gif" alt="group" class="vm" /> ';
+			$icon = '<img src="'.STATICURL.'image/feed/group.gif" alt="group" class="vm" /> ';
 			break;
 		case 'album':
 			$idtype = 'albumid';
-			$result = C::t('home_album')->fetch($id, $spaceuid);
+			$result = C::t('home_album')->fetch_album($id, $spaceuid);
 			$title = $result['albumname'];
-			$icon = '<img src="static/image/feed/album.gif" alt="album" class="vm" /> ';
+			$icon = '<img src="'.STATICURL.'image/feed/album.gif" alt="album" class="vm" /> ';
 			break;
 		case 'space':
 			$idtype = 'uid';
 			$_member = getuserbyuid($id);
 			$title = $_member['username'];
 			$unset($_member);
-			$icon = '<img src="static/image/feed/profile.gif" alt="space" class="vm" /> ';
+			$icon = '<img src="'.STATICURL.'image/feed/profile.gif" alt="space" class="vm" /> ';
 			break;
 		case 'article':
 			$idtype = 'aid';
 			$article = C::t('portal_article_title')->fetch($id);
 			$title = $article['title'];
-			$icon = '<img src="static/image/feed/article.gif" alt="article" class="vm" /> ';
+			$icon = '<img src="'.STATICURL.'image/feed/article.gif" alt="article" class="vm" /> ';
 			break;
 	}
 	if(empty($idtype) || empty($title)) {
@@ -172,5 +191,30 @@ if($_GET['op'] == 'delete') {
 
 include template('home/spacecp_favorite');
 
+function deletefavorite($thevalue = array()){
+	switch($thevalue['idtype']) {
+		case 'tid':
+			C::t('forum_thread')->increase($thevalue['id'], array('favtimes'=>-1));
+			break;
+		case 'fid':
+			C::t('forum_forum')->update_forum_counter($thevalue['id'], 0, 0, 0, 0, -1);
+			break;
+		case 'blogid':
+			C::t('home_blog')->increase($thevalue['id'], 0, array('favtimes' => -1));
+			break;
+		case 'gid':
+			C::t('forum_forum')->update_forum_counter($thevalue['id'], 0, 0, 0, 0, -1);
+			break;
+		case 'albumid':
+			C::t('home_album')->update_num_by_albumid($thevalue['id'], -1, 'favtimes', 0);
+			break;
+		case 'uid':
+			C::t('common_member_status')->increase($thevalue['id'], array('favtimes' => -1));
+			break;
+		case 'aid':
+			C::t('portal_article_count')->increase($thevalue['id'], array('favtimes' => -1));
+			break;
+	}	
+}
 
 ?>

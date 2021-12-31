@@ -96,7 +96,10 @@ if(!$_G['setting']['connect']['allow']) {
 		$ctl_obj->setting['secqaa']['status'] = $_G['setting']['secqaa']['status'];
 	}
 
-	$ctl_obj->setting['ignorepassword'] = 1;
+	//兼容手机端有填写密码的情况
+	if(!defined('IN_MOBILE') || empty($_GET[$_G['setting']['reginput']['password']])) {
+		$ctl_obj->setting['ignorepassword'] = 1;
+	}
 	$ctl_obj->setting['checkuinlimit'] = 1;
 	$ctl_obj->setting['strongpw'] = 0;
 	$ctl_obj->setting['pwlength'] = 0;

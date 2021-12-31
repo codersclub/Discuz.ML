@@ -173,7 +173,7 @@ function block_fetch_content($bid, $isjscall=false, $forceupdate=false) {
 			if($block['title']) $str .= $block['title'];
 			$str .= '<div id="portal_block_'.$bid.'_content" class="dxb_bc">';
 			if($block['summary']) {
-				$str .= "<div class=\"portal_block_summary\">$block[summary]</div>";
+				$str .= "<div class=\"portal_block_summary\">{$block['summary']}</div>";
 			}
 			$str .= block_template($bid);
 			$str .= '</div>';
@@ -188,7 +188,7 @@ function block_fetch_content($bid, $isjscall=false, $forceupdate=false) {
 		$classname = !empty($block['classname']) ? $block['classname'].' ' : '';
 		$div = "<div id=\"portal_block_$bid\" class=\"{$classname}block move-span\">";
 		if(($_GET['diy'] === 'yes' || $_GET['inajax']) && check_diy_perm()) {
-			$div .= "<div class='block-name'>$block[name] (ID:$bid)</div>";
+			$div .= "<div class='block-name'>{$block['name']} (ID:$bid)</div>";
 		}
 		$str = $div.$str."</div>";
 	}
@@ -201,7 +201,7 @@ function block_updatecache($bid, $forceupdate=false) {
 	if((isset($_G['block'][$bid]['cachetime']) && $_G['block'][$bid]['cachetime'] < 0) || !$forceupdate && discuz_process::islocked('block_update_cache', 5)) {
 		return false;
 	}
-	C::t('common_block')->clear_cache($bid);
+	C::t('common_block')->clear_blockcache($bid);
 	$block = empty($_G['block'][$bid])?array():$_G['block'][$bid];
 	if(!$block) {
 		return false;
@@ -294,6 +294,7 @@ function block_template($bid) {
 		$order = 0;
 		$dynamicparts = array();
 		foreach($block['itemlist'] as $position=>$blockitem) {
+			$blockitem = is_array($blockitem) ? $blockitem : array();
 			$itemid = $blockitem['itemid'];
 			$order++;
 
@@ -389,16 +390,24 @@ function block_template($bid) {
 					}
 				} elseif($field['datatype'] == 'pic') {
 					if($blockitem['picflag'] == '1') {
-						$replacevalue = $_G['setting']['attachurl'].$replacevalue;
+						if(!$_G['setting']['ftp']['on'] || file_exists($_G['setting']['attachdir'].$replacevalue)) {
+							$replacevalue = $_G['setting']['attachurl'].$replacevalue;
+						} else {
+							$replacevalue = (preg_match('/^https?:\/\//is', $replacevalue) ? '' : $_G['setting']['ftp']['attachurl']).$replacevalue;
+						}
 					} elseif ($blockitem['picflag'] == '2') {
-						$replacevalue = $_G['setting']['ftp']['attachurl'].$replacevalue;
+						$replacevalue = (preg_match('/^https?:\/\//is', $replacevalue) ? '' : $_G['setting']['ftp']['attachurl']).$replacevalue;
 					}
 					if($blockitem['picflag'] && $block['picwidth'] && $block['picheight'] && $block['picwidth'] != 'auto' && $block['picheight'] != 'auto') {
 						if($blockitem['makethumb'] == 1) {
 							if($blockitem['picflag'] == '1') {
-								$replacevalue = $_G['setting']['attachurl'].$blockitem['thumbpath'];
+								if(!$_G['setting']['ftp']['on'] || file_exists($_G['setting']['attachdir'].$blockitem['thumbpath'])) {
+									$replacevalue = $_G['setting']['attachurl'].$blockitem['thumbpath'];
+								} else {
+									$replacevalue = (preg_match('/^https?:\/\//is', $blockitem['thumbpath']) ? '' : $_G['setting']['ftp']['attachurl']).$blockitem['thumbpath'];
+								}
 							} elseif ($blockitem['picflag'] == '2') {
-								$replacevalue = $_G['setting']['ftp']['attachurl'].$blockitem['thumbpath'];
+								$replacevalue = (preg_match('/^https?:\/\//is', $blockitem['thumbpath']) ? '' : $_G['setting']['ftp']['attachurl']).$blockitem['thumbpath'];
 							}
 						} elseif(!$_G['block_makethumb'] && !$blockitem['makethumb']) {
 							C::t('common_block_item')->update($itemid, array('makethumb'=>2));
@@ -412,6 +421,8 @@ function block_template($bid) {
 /*vot*/									$picflag = 1; //common_block_pic Table picture flag identity (0=local, 1=remote)
 									$_G['block_makethumb'] = true;
 									@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
+									C::t('common_block_item')->update($itemid, array('picflag' => 2));
+									$replacevalue = (preg_match('/^https?:\/\//is', $thumbpath) ? '' : $_G['setting']['ftp']['attachurl']).$thumbpath;
 								}
 							} elseif(file_exists($_G['setting']['attachdir'].$thumbpath) || ($return = $image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2))) {
 /*vot*/								$picflag = 0; //common_block_pic Table picture flag identity (0=local, 1=remote)
@@ -419,7 +430,7 @@ function block_template($bid) {
 							}
 							if($_G['block_makethumb']) {
 								C::t('common_block_item')->update($itemid, array('makethumb'=>1, 'thumbpath' => $thumbpath));
-								C::t('common_block')->clear_cache($block['bid']);
+								C::t('common_block')->clear_blockcache($block['bid']);
 								$thumbdata = array('bid' => $block['bid'], 'itemid' => $itemid, 'pic' => $thumbpath, 'picflag' => $picflag, 'type' => '0');
 								C::t('common_block_pic')->insert($thumbdata);
 							}
@@ -553,7 +564,7 @@ function block_makeform($blocksetting, $values){
 			$s .= '</select>';
 		} elseif($type == 'calendar') {
 			if(! $calendar_loaded) {
-				$s .= "<script type=\"text/javascript\" src=\"{$_G[setting][jspath]}calendar.js?".VERHASH."\"></script>";
+				$s .= "<script type=\"text/javascript\" src=\"{$_G['setting']['jspath']}calendar.js?".VERHASH."\"></script>";
 				$calendar_loaded = true;
 			}
 			$s .= '<input type="text" name="'.$varname.'" class="px" value="'.dhtmlspecialchars($value).'" onclick="showcalendar(event, this, true)" />';
@@ -670,7 +681,7 @@ function block_updateitem($bid, $items=array()) {
 /*vot*/			if($block['picwidth'] && $block['picheight'] && $curitem['picflag']) { //picflag=0 for Url address
 				$thumbpath = empty($curitem['thumbpath']) ? block_thumbpath($block, $curitem) : $curitem['thumbpath'];
 				if($_G['setting']['ftp']['on']) {
-					if(empty($ftp) || empty($ftp->connectid)) {
+					if(empty($ftp)) {
 						$ftp = & discuz_ftp::instance();
 						$ftp->connect();
 					}

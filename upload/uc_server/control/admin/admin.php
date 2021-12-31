@@ -80,23 +80,12 @@ class control extends adminbase {
 			$oldpw = getgpc('oldpw', 'P');
 			$newpw = getgpc('newpw', 'P');
 			$newpw2 = getgpc('newpw2', 'P');
-			if(UC_FOUNDERPW == md5(md5($oldpw).UC_FOUNDERSALT)) {
-				$configfile = UC_ROOT.'./data/config.inc.php';
-				if(!is_writable($configfile)) {
-					$status = -4;
+			if($_ENV['user']->verify_password($oldpw, UC_FOUNDERPW, UC_FOUNDERSALT) || hash_equals(UC_FOUNDERPW, md5(md5($oldpw).UC_FOUNDERSALT))) {
+				if($newpw != $newpw2) {
+					$status = -6;
 				} else {
-					if($newpw != $newpw2) {
-						$status = -6;
-					} else {
-						$config = file_get_contents($configfile);
-						$salt = substr(uniqid(rand()), 0, 6);
-						$md5newpw = md5(md5($newpw).$salt);
-						$config = preg_replace("/define\('UC_FOUNDERSALT',\s*'.*?'\);/i", "define('UC_FOUNDERSALT', '$salt');", $config);
-						$config = preg_replace("/define\('UC_FOUNDERPW',\s*'.*?'\);/i", "define('UC_FOUNDERPW', '$md5newpw');", $config);
-						$fp = @fopen($configfile, 'w');
-						@fwrite($fp, $config);
-						@fclose($fp);
-						$status = 2;
+					$status = $_ENV['user']->reset_founderpw($newpw);
+					if($status === 2) {
 						$this->writelog('admin_pw_edit');
 					}
 				}

@@ -72,6 +72,7 @@ if($op == 'members') {
 					C::t('common_member_validate')->update($uids, array('moddate' => $_G['timestamp'], 'admin' => $_G['username'], 'status' => '1', 'remark' => $reason));
 				}
 
+				$sendemail = isset($_GET['sendemail']) ? $_GET['sendemail'] : 0;
 				if($sendemail) {
 					if(!function_exists('sendmail')) {
 						include libfile('function/mail');
@@ -82,21 +83,24 @@ if($op == 'members') {
 						$member['moddate'] = dgmdate(TIMESTAMP);
 						$member['operation'] = $_GET['modact'];
 						$member['remark'] = $reason ? $reason : 'N/A';
-						$moderate_member_message = lang('email', 'moderate_member_message', array(
-							'username' => $member['username'],
-							'bbname' => $_G['setting']['bbname'],
-							'regdate' => $member['regdate'],
-							'submitdate' => $member['submitdate'],
-							'submittimes' => $member['submittimes'],
-							'message' => $member['message'],
-							'modresult' => lang('email', 'moderate_member_'.$member['operation']),
-							'moddate' => $member['moddate'],
-							'adminusername' => $_G['member']['username'],
-							'remark' => $member['remark'],
-							'siteurl' => $_G['siteurl'],
-						));
-						if(!sendmail("$member[username] <$member[email]>", lang('email', 'moderate_member_subject'), $moderate_member_message)) {
-							runlog('sendmail', "$member[email] sendmail failed.");
+						$moderate_member_message = array(
+							'tpl' => 'moderate_member',
+							'var' => array(
+								'username' => $member['username'],
+								'bbname' => $_G['setting']['bbname'],
+								'regdate' => $member['regdate'],
+								'submitdate' => $member['submitdate'],
+								'submittimes' => $member['submittimes'],
+								'message' => $member['message'],
+								'modresult' => lang('email', 'moderate_member_'.$member['operation']),
+								'moddate' => $member['moddate'],
+								'adminusername' => $_G['member']['username'],
+								'remark' => $member['remark'],
+								'siteurl' => $_G['siteurl'],
+							)
+						);
+						if(!sendmail("{$member['username']} <{$member['email']}>", $moderate_member_message)) {
+							runlog('sendmail', "{$member['email']} sendmail failed.");
 						}
 					}
 				}
@@ -104,7 +108,7 @@ if($op == 'members') {
 				showmessage('modcp_moduser_invalid');
 			}
 
-			showmessage('modcp_mod_succeed', "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&filter=$filter");
+			showmessage('modcp_mod_succeed', "{$cpscript}?mod=modcp&action={$_GET['action']}&op=$op&filter=$filter");
 
 		} else {
 			showmessage('modcp_moduser_invalid');
@@ -117,7 +121,7 @@ if($op == 'members') {
 		$_G['setting']['memberperpage'] = 20;
 		$start_limit = ($page - 1) * $_G['setting']['memberperpage'];
 
-		$multipage = multi(C::t('common_member_validate')->count_by_status(0), $_G['setting']['memberperpage'], $page, "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&fid=$_G[fid]&filter=$filter");
+		$multipage = multi(C::t('common_member_validate')->count_by_status(0), $_G['setting']['memberperpage'], $page, "{$cpscript}?mod=modcp&action={$_GET['action']}&op=$op&fid={$_G['fid']}&filter=$filter");
 
 		$vuids = array();
 		$memberlist = $member_validate = $common_member = $member_status = array();
@@ -136,7 +140,7 @@ if($op == 'members') {
 			$member['submitdate'] = dgmdate($member['submitdate']);
 			$member['moddate'] = $member['moddate'] ? dgmdate($member['moddate']) : $lang['none'];
 			$member['message'] = dhtmlspecialchars($member['message']);
-			$member['admin'] = $member['admin'] ? "<a href=\"home.php?mod=space&username=".rawurlencode($member['admin'])."\" target=\"_blank\">$member[admin]</a>" : $lang['none'];
+			$member['admin'] = $member['admin'] ? "<a href=\"home.php?mod=space&username=".rawurlencode($member['admin'])."\" target=\"_blank\">{$member['admin']}</a>" : $lang['none'];
 			$memberlist[] = $member;
 		}
 		if($vuids) {
@@ -155,12 +159,12 @@ if(empty($modforums['fids'])) {
 	$modfids = "";
 	if($_G['fid']) {
 		$modfids = $_G['fid'];
-		$modfidsadd = "fid='$_G[fid]'";
+		$modfidsadd = "fid='{$_G['fid']}'";
 	} elseif($_G['adminid'] == 1) {
 		$modfidsadd = "";
 	} else {
 		$modfids = $modforums['fids'];
-		$modfidsadd = "fid in ($modforums[fids])";
+		$modfidsadd = "fid in ({$modforums['fids']})";
 	}
 }
 
@@ -225,7 +229,7 @@ if($op == 'replies') {
 
 		$pmlist = array();
 		if($ignorepids = dimplode($moderation['ignore'])) {
-			C::t('forum_post')->update($posttableid, $moderation['ignore'], array('invisible' => -3), true, false, 0, -2, ($modfids ? explode(',', $modfids) : null));
+			C::t('forum_post')->update_post($posttableid, $moderation['ignore'], array('invisible' => -3), true, false, 0, -2, ($modfids ? explode(',', $modfids) : null));
 			updatemoderate('pid', $moderation['ignore'], 1);
 		}
 
@@ -233,7 +237,7 @@ if($op == 'replies') {
 			$deleteauthorids = array();
 			$recyclebinpids = array();
 			$pids = array();
-			foreach(C::t('forum_post')->fetch_all($posttableid, $moderation['delete']) as $post) {
+			foreach(C::t('forum_post')->fetch_all_post($posttableid, $moderation['delete']) as $post) {
 				if($post['invisible'] != $pstat || $post['first'] != 0 || ($modfids ? !in_array($post['fid'], explode(',', $modfids)) : 0)) {
 					continue;
 				}
@@ -257,7 +261,7 @@ if($op == 'replies') {
 			}
 
 			if($recyclebinpids) {
-				C::t('forum_post')->update($posttableid, $recyclebinpids, array('invisible' => '-5'), true);
+				C::t('forum_post')->update_post($posttableid, $recyclebinpids, array('invisible' => '-5'), true);
 			}
 
 			if($pids) {
@@ -297,7 +301,7 @@ if($op == 'replies') {
 
 			$threads = $lastpost = $attachments = $pidarray = array();
 			$postlist = $tids = array();
-			foreach(C::t('forum_post')->fetch_all($posttableid, $moderation['validate']) as $post) {
+			foreach(C::t('forum_post')->fetch_all_post($posttableid, $moderation['validate']) as $post) {
 				if($post['invisible'] != $pstat || $post['first'] != '0' || ($modfids ? !in_array($post['fid'], explode(',', $modfids)) : 0)) {
 					continue;
 				}
@@ -319,7 +323,7 @@ if($op == 'replies') {
 
 				if($post['dateline'] > $post['lastpost'] && $post['dateline'] > $lastpost[$post['tid']]) {
 					$threads[$post['tid']]['lastpost'] = $post['dateline'];
-					$threads[$post['tid']]['lastposter'] = $post['anonymous'] && $post['dateline'] != $post['lastpost'] ? '' : addslashes($post[author]);
+					$threads[$post['tid']]['lastposter'] = $post['anonymous'] && $post['dateline'] != $post['lastpost'] ? '' : addslashes($post['author']);
 				}
 				if($threads[$post['tid']]['attachadd'] || $post['attachment']) {
 					$threads[$post['tid']]['attachment'] = 1;
@@ -357,7 +361,7 @@ if($op == 'replies') {
 
 			if(!empty($pidarray)) {
 				$pidarray[] = 0;
-				$repliesmod = C::t('forum_post')->update($posttableid, $pidarray, array('invisible' => '0'), true);
+				$repliesmod = C::t('forum_post')->update_post($posttableid, $pidarray, array('invisible' => '0'), true);
 				updatemodworks('MOD', $repliesmod);
 				updatemoderate('pid', $pidarray, 2);
 			} else {
@@ -373,7 +377,7 @@ if($op == 'replies') {
 			}
 		}
 
-		showmessage('modcp_mod_succeed', "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&filter=$filter&fid=$_G[fid]");
+		showmessage('modcp_mod_succeed', "{$cpscript}?mod=modcp&action={$_GET['action']}&op=$op&filter=$filter&fid={$_G['fid']}");
 	}
 
 	$attachlist = array();
@@ -386,7 +390,7 @@ if($op == 'replies') {
 	$start_limit = ($page - 1) * $ppp;
 
 	$modcount = C::t('common_moderate')->count_by_search_for_post($posttable, $moderatestatus, 0, ($modfids ? explode(',', $modfids) : null));
-	$multipage = multi($modcount, $ppp, $page, "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&filter=$filter&fid=$_G[fid]&showcensor=$_GET[showcensor]");
+	$multipage = multi($modcount, $ppp, $page, "{$cpscript}?mod=modcp&action={$_GET['action']}&op=$op&filter=$filter&fid={$_G['fid']}&showcensor={$_GET['showcensor']}");
 
 	if($modcount) {
 
@@ -445,8 +449,8 @@ if($op == 'replies') {
 				foreach(C::t('forum_attachment_n')->fetch_all_by_id($attachtable, 'pid', $pids) as $attach) {
 					$_G['setting']['attachurl'] = $attach['remote'] ? $_G['setting']['ftp']['attachurl'] : $_G['setting']['attachurl'];
 					$attach['url'] = $attach['isimage']
-					? " $attach[filename] (".sizecount($attach['filesize']).")<br /><br /><img src=\"{$_G[setting][attachurl]}forum/$attach[attachment]\" onload=\"if(this.width > 100) {this.resized=true; this.width=100;}\">"
-					: "<a href=\"".$_G['setting']['attachurl']."forum/$attach[attachment]\" target=\"_blank\">$attach[filename]</a> (".sizecount($attach['filesize']).")";
+					? " {$attach['filename']} (".sizecount($attach['filesize']).")<br /><br /><img src=\"{$_G['setting']['attachurl']}forum/{$attach['attachment']}\" onload=\"if(this.width > 100) {this.resized=true; this.width=100;}\">"
+					: "<a href=\"".$_G['setting']['attachurl']."forum/{$attach['attachment']}\" target=\"_blank\">{$attach['filename']}</a> (".sizecount($attach['filesize']).")";
 					$postlist[$attach['pid']]['message'] .= "<br /><br />File: ".attachtype(fileext($attach['filename'])."\t").$attach['url'];
 				}
 			}
@@ -581,12 +585,12 @@ if($op == 'replies') {
 			}
 		}
 
-		showmessage('modcp_mod_succeed', "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&filter=$filter&fid=$_G[fid]");
+		showmessage('modcp_mod_succeed', "{$cpscript}?mod=modcp&action={$_GET['action']}&op=$op&filter=$filter&fid={$_G['fid']}");
 
 	}
 
 	$modcount = C::t('common_moderate')->count_by_seach_for_thread($moderatestatus, ($modfids ? explode(',', $modfids) : null));
-	$multipage = multi($modcount, $_G['tpp'], $page, "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&filter=$filter&fid=$_G[fid]&showcensor=$_GET[showcensor]");
+	$multipage = multi($modcount, $_G['tpp'], $page, "{$cpscript}?mod=modcp&action={$_GET['action']}&op=$op&filter=$filter&fid={$_G['fid']}&showcensor={$_GET['showcensor']}");
 
 	if($modcount) {
 		$posttablearr = array();
@@ -596,9 +600,9 @@ if($op == 'replies') {
 			$thread['id'] = $thread['tid'];
 
 			if($thread['authorid'] && $thread['author'] != '') {
-				$thread['author'] = "<a href=\"home.php?mod=space&uid=$thread[authorid]\" target=\"_blank\">$thread[author]</a>";
+				$thread['author'] = "<a href=\"home.php?mod=space&uid={$thread['authorid']}\" target=\"_blank\">{$thread['author']}</a>";
 			} elseif($thread['authorid']) {
-				$thread['author'] = "<a href=\"home.php?mod=space&uid=$thread[authorid]\" target=\"_blank\">UID $thread[uid]</a>";
+				$thread['author'] = "<a href=\"home.php?mod=space&uid={$thread['authorid']}\" target=\"_blank\">UID {$thread['uid']}</a>";
 			} else {
 				$thread['author'] = 'guest';
 			}
@@ -657,9 +661,9 @@ if($op == 'replies') {
 					$tid = $attach['tid'];
 					$_G['setting']['attachurl'] = $attach['remote'] ? $_G['setting']['ftp']['attachurl'] : $_G['setting']['attachurl'];
 					$attach['url'] = $attach['isimage']
-					? " $attach[filename] (".sizecount($attach['filesize']).")<br /><br /><img src=\"".$_G['setting']['attachurl']."forum/$attach[attachment]\" onload=\"if(this.width > 100) {this.resized=true; this.width=100;}\">"
-					: "<a href=\"".$_G['setting']['attachurl']."forum/$attach[attachment]\" target=\"_blank\">$attach[filename]</a> (".sizecount($attach['filesize']).")";
-					$postlist[$tid]['attach'] .= "<br /><br />$lang[attachment]: ".attachtype(fileext($attach['filename'])."\t").$attach['url'];
+					? " {$attach['filename']} (".sizecount($attach['filesize']).")<br /><br /><img src=\"".$_G['setting']['attachurl']."forum/{$attach['attachment']}\" onload=\"if(this.width > 100) {this.resized=true; this.width=100;}\">"
+					: "<a href=\"".$_G['setting']['attachurl']."forum/{$attach['attachment']}\" target=\"_blank\">{$attach['filename']}</a> (".sizecount($attach['filesize']).")";
+					$postlist[$tid]['attach'] .= "<br /><br />{$lang['attachment']}: ".attachtype(fileext($attach['filename'])."\t").$attach['url'];
 				}
 			}
 		}

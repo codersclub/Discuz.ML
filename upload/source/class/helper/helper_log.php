@@ -17,7 +17,7 @@ class helper_log {
 		global $_G;
 
 		$nowurl = $_SERVER['REQUEST_URI']?$_SERVER['REQUEST_URI']:($_SERVER['PHP_SELF']?$_SERVER['PHP_SELF']:$_SERVER['SCRIPT_NAME']);
-		$log = dgmdate($_G['timestamp'], 'Y-m-d H:i:s')."\t".$_G['clientip']."\t$_G[uid]\t{$nowurl}\t".str_replace(array("\r", "\n"), array(' ', ' '), trim($message))."\n";
+		$log = dgmdate($_G['timestamp'], 'Y-m-d H:i:s')."\t".$_G['clientip']."\t{$_G['uid']}\t{$nowurl}\t".str_replace(array("\r", "\n"), array(' ', ' '), trim($message))."\n";
 		helper_log::writelog($file, $log);
 		if($halt) {
 			exit();
@@ -45,14 +45,19 @@ class helper_log {
 			$logfilebak = $logdir.$yearmonth.'_'.$file.'_'.($maxid + 1).'.php';
 			@rename($logfile, $logfilebak);
 		}
-		if($fp = @fopen($logfile, 'a')) {
-			@flock($fp, 2);
+		$fp = fopen($logfile, 'a');
+		if(flock($fp, LOCK_EX)) {
 			if(!is_array($log)) {
 				$log = array($log);
 			}
 			foreach($log as $tmp) {
 				fwrite($fp, "<?PHP exit;?>\t".str_replace(array('<?', '?>'), '', $tmp)."\n");
 			}
+			fflush($fp);
+			flock($fp, LOCK_UN);
+			fclose($fp);
+		} else {
+			flock($fp, LOCK_UN);
 			fclose($fp);
 		}
 	}

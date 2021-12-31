@@ -229,8 +229,8 @@ if($op == 'blockclass') {
 
 			list($tpl,$id) = explode(':', $tpl);
 			$tplname = $id ? $tpl.'_'.$id : $tpl;
-			$diydata = C::t('common_diy_data')->fetch($tplname, $tpldirectory);
-			if(empty($diydata) && $id) $diydata = C::t('common_diy_data')->fetch($tpl, $tpldirectory);
+			$diydata = C::t('common_diy_data')->fetch_diy($tplname, $tpldirectory);
+			if(empty($diydata) && $id) $diydata = C::t('common_diy_data')->fetch_diy($tpl, $tpldirectory);
 			if ($diydata) {
 
 				$filename = $diydata['targettplname'];
@@ -275,7 +275,7 @@ if($op == 'blockclass') {
 					$str = serialize($diycontent);
 					dheader('Content-Length: '.strlen($str));
 					dheader('Content-Disposition: attachment; filename='.$filename.'.txt');
-					dheader('Content-Type: text/plant');
+					dheader('Content-Type: text/plain');
 				} else {
 					require_once libfile('class/xml');
 					$str = array2xml($diycontent, true);
@@ -297,12 +297,22 @@ if($op == 'blockclass') {
 
 	$tpl = $_POST['tpl'] ? $_POST['tpl'] : $_GET['tpl'];
 	tpl_checkperm($tpl);
+	$tpldir = './template/default/portal/diyxml/';
+	if ($_G['style']['tpldir'] && preg_match("#^\./template/\w+$#i", $_G['style']['tpldir']) && is_dir(DISCUZ_ROOT.$_G['style']['tpldir'].'/portal/diyxml/')) {
+		$tpldir = $_G['style']['tpldir'].'/portal/diyxml/';
+	}
 
 	if (submitcheck('importsubmit')) {
 		$isinner = false;
 		$filename = '';
 		if($_POST['importfilename']) {
-			$filename = DISCUZ_ROOT.'./template/default/portal/diyxml/'.$_POST['importfilename'].'.xml';
+			if (!preg_match("/^\w+$/i", $_POST['importfilename'])) {
+				showmessage('do_success','portal.php',array('status'=>0));
+			}
+			$filename = DISCUZ_ROOT.$tpldir.$_POST['importfilename'].'.xml';
+			if(!file_exists($filename)) {
+				$filename = DISCUZ_ROOT.$tpldir.$_POST['importfilename'].'.php';
+			}
 			$isinner = true;
 		} else {
 			$upload = new discuz_upload();
@@ -319,7 +329,7 @@ if($op == 'blockclass') {
 				$filename = $attach['target'];
 			}
 		}
-		if($filename) {
+		if($filename && file_exists($filename)) {
 			$arr = import_diy($filename);
 			if(!$isinner) {
 				@unlink($filename);
@@ -329,6 +339,7 @@ if($op == 'blockclass') {
 				$replace = array('[script', '[/script]', '', '', '$1[src=]$3');
 				$arr['css'] = str_replace(array("\r","\n"),array(''),$arr['css']);
 
+				$arr['mapping'] = is_array($arr['mapping']) ? $arr['mapping'] : array($arr['mapping']);
 				$jsarr = array('status'=>1,'css'=>$arr['css'],'bids'=>implode(',',$arr['mapping']));
 
 				foreach ($arr['html'] as $key => $value) {
@@ -340,14 +351,16 @@ if($op == 'blockclass') {
 			} else {
 				showmessage('do_success','portal.php',array('status'=>0));
 			}
+		} else {
+			showmessage('do_success','portal.php',array('status'=>0));
 		}
 	}
 	$xmlarr = array();
 	if ($_GET['type'] == 1) {
-		$xmlfilepath = DISCUZ_ROOT.'./template/default/portal/diyxml/';
+		$xmlfilepath = DISCUZ_ROOT.$tpldir;
 		if(($dh = @opendir($xmlfilepath))) {
 			while(($file = @readdir($dh)) !== false) {
-				if(fileext($file) == 'xml') {
+				if(in_array(fileext($file), array('xml', 'php'))) {
 					$xmlarr[substr($file, 0, -4)] = getdiyxmlname($file, $xmlfilepath);
 				}
 			}

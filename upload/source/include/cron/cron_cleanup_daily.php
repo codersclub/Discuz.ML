@@ -13,8 +13,6 @@ if(!defined('IN_DISCUZ')) {
 require_once libfile('function/cache');
 updatecache('forumrecommend');
 
-C::t('common_task')->update_available();
-
 if(C::t('common_advertisement')->close_endtime()) {
 	updatecache(array('setting', 'advs'));
 }
@@ -29,7 +27,7 @@ C::t('common_seccheck')->truncate();
 
 if($_G['setting']['heatthread']['type'] == 2 && $_G['setting']['heatthread']['period']) {
 	$partakeperoid = 86400 * $_G['setting']['heatthread']['period'];
-	C::t('forum_threadpartake')->delete($_G[timestamp]-$partakeperoid);
+	C::t('forum_threadpartake')->delete_threadpartake($_G['timestamp'] - $partakeperoid);
 }
 
 C::t('common_member_count')->clear_today_data();
@@ -41,6 +39,7 @@ C::t('forum_tradelog')->expiration_finished(7);
 
 if($_G['setting']['cachethreadon']) {
 	removedir($_G['setting']['cachethreaddir'], TRUE);
+	touch($_G['setting']['cachethreaddir'].'/index.htm');
 }
 removedir($_G['setting']['attachdir'].'image', TRUE);
 @touch($_G['setting']['attachdir'].'image/index.htm');
@@ -92,8 +91,13 @@ if(!empty($_G['setting']['advexpiration']['allow'])) {
 					notification_add($member['uid'], 'system', 'system_adv_expiration', $noticelang, 1);
 				}
 				if(in_array('mail', $_G['setting']['advexpiration']['method'])) {
-					if(!sendmail("$member[username] <$member[email]>", lang('email', 'adv_expiration_subject', $noticelang), lang('email', 'adv_expiration_message', $noticelang))) {
-						runlog('sendmail', "$member[email] sendmail failed.");
+					$advexpvar = array(
+						'tpl' => 'adv_expiration',
+						'var' => $noticelang,
+						'svar' => $noticelang,
+					);
+					if(!sendmail("{$member['username']} <{$member['email']}>", $advexpvar)) {
+						runlog('sendmail', "{$member['email']} sendmail failed.");
 					}
 				}
 			}

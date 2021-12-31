@@ -64,7 +64,7 @@ if ($op == 'start') {
 
 		$count = $albumlist[$albumid]['picnum'];
 	} else {
-		$wheresql = "albumid='0' AND uid='$space[uid]'";
+		$wheresql = "albumid='0' AND uid='{$space['uid']}'";
 	}
 
 	$list = array();
@@ -109,8 +109,8 @@ if ($op == 'start') {
 	space_merge($space,'field_home');
 	if (submitcheck('savespaceinfosubmit')) {
 
-		$spacename = getstr($_POST['spacename'], 30);
-		$spacedescription = getstr($_POST['spacedescription'], 135);
+		$spacename = censor(getstr($_POST['spacename'], 30));
+		$spacedescription = censor(getstr($_POST['spacedescription'], 135));
 
 		$setarr = array();
 		$setarr['spacename'] = $spacename;
@@ -137,7 +137,7 @@ if (submitcheck('blocksubmit')) {
 		space_merge($space,'field_home');
 		$blockdata = dunserialize($space['blockposition']);
 
-		$title = getstr($_POST['blocktitle'],50);
+		$title = censor(getstr($_POST['blocktitle'],50));
 		$blockdata['parameters'][$blockname]['title'] = $title;
 
 		if (in_array($blockname, array('block1', 'block2', 'block3', 'block4', 'block5'))) {
@@ -164,8 +164,6 @@ if (submitcheck('blocksubmit')) {
 
 		if($blockname == 'blog') {
 			$blockdata['parameters'][$blockname]['showmessage'] = min(100000, abs(intval($_GET['showmessage'])));
-		} elseif($blockname == 'myapp') {
-			$blockdata['parameters'][$blockname]['logotype'] = in_array($_GET['logotype'], array('logo', 'icon')) ? $_GET['logotype'] : 'logo';
 		}
 
 		$setarr = array();
@@ -216,7 +214,7 @@ if (submitcheck('musicsubmit')) {
 			  );
 		$blockdata['parameters']['music']['config'] = $config;
 
-		$blockdata['parameters']['music']['title']= getstr($_POST['blocktitle'],50);
+		$blockdata['parameters']['music']['title']= censor(getstr($_POST['blocktitle'],50));
 
 	} elseif ($_POST['act'] == 'addmusic') {
 		$mp3url = $_POST['mp3url'];
@@ -226,7 +224,7 @@ if (submitcheck('musicsubmit')) {
 		foreach ($mp3url as $key => $value) {
 			if (!empty($value)) {
 				if(empty($mp3name[$key])) $mp3name[$key] = substr($value,strrpos($value,'/')+1,strlen($value));
-				$mp3list[] = array('mp3url'=>$value, 'mp3name'=>$mp3name[$key], 'cdbj'=>$cdbj[$key]);
+				$mp3list[] = array('mp3url'=>$value, 'mp3name'=>censor($mp3name[$key]), 'cdbj'=>$cdbj[$key]);
 			}
 		}
 		$blockdata['parameters']['music']['mp3list'] = $mp3list;
@@ -239,7 +237,7 @@ if (submitcheck('musicsubmit')) {
 		foreach ($mp3url as $key => $value) {
 			if (!empty($value)) {
 				if(empty($mp3name[$key])) $mp3name[$key] = substr($value,strrpos($value,'/')+1,strlen($value));
-				$mp3list[] = array('mp3url'=>$value, 'mp3name'=>$mp3name[$key], 'cdbj'=>$cdbj[$key]);
+				$mp3list[] = array('mp3url'=>$value, 'mp3name'=>censor($mp3name[$key]), 'cdbj'=>$cdbj[$key]);
 			}
 		}
 
@@ -295,7 +293,7 @@ if (submitcheck('diysubmit')) {
 	$setarr['blockposition'] = serialize($blockdata);
 	$setarr['theme'] = $style;
 	C::t('common_member_field_home')->update($space['uid'], $setarr);
-	showmessage('do_success','home.php?mod=space'.($_G['adminid'] == 1 && $_G['setting']['allowquickviewprofile'] ? '&view=admin' : ''));
+	showmessage('do_success','home.php?mod=space&uid='.$space['uid'].($_G['adminid'] == 1 && $_G['setting']['allowquickviewprofile'] ? '&view=admin' : ''));
 }
 
 if (submitcheck('uploadsubmit')) {

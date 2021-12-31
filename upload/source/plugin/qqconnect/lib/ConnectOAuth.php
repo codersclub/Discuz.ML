@@ -28,8 +28,6 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 
 	private $_addShareURL = 'http://openapi.qzone.qq.com/share/add_share';
 
-	private $_addWeiBoURL = 'http://openapi.qzone.qq.com/wb/add_weibo';
-
 	private $_addTURL = 'http://openapi.qzone.qq.com/t/add_t';
 
 	private $_addPicTURL = 'http://openapi.qzone.qq.com/t/add_pic_t';
@@ -174,7 +172,7 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 		}
 	}
 
-	private function _request($requestURL, $extra = array(), $oauthMethod = 'GET', $multi) {
+	private function _request($requestURL, $extra = array(), $oauthMethod = 'GET', $multi = array()) {
 
 		if(!$this->_appKey || !$this->_appSecret) {
 			throw new Exception('appKey or appSecret not init');
@@ -211,7 +209,7 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 	private function _iconv($data, $inputCharset, $outputCharset) {
 		if (is_array($data)) {
 			foreach($data as $key => $val) {
-				$value = array_map(array(__CLASS__, '_iconv'), array($val), array($inputCharset), array($outputCharset));
+				$value = array_map(array($this, '_iconv'), array($val), array($inputCharset), array($outputCharset));
 				$result[$key] = $value[0];
 			}
 		} else {
@@ -398,13 +396,13 @@ class Cloud_Service_Client_ConnectOAuth extends Cloud_Service_Client_OAuth {
 				);
 				return $result;
 			} else {
-				$result->error = $result->error ? $result->error : self::RESPONSE_ERROR;
-				throw new Exception($result->error, __LINE__);
+				$result['error'] = $result['error'] ? $result['error'] : self::RESPONSE_ERROR;
+				throw new Exception($result['error'], __LINE__);
 			}
 		} else {
 			$result = $this->callback($response);
-			$result->error = $result->error ? $result->error : self::RESPONSE_ERROR;
-			throw new Exception($result->error, __LINE__);
+			$result['error'] = $result['error'] ? $result['error'] : self::RESPONSE_ERROR;
+			throw new Exception($result['error'], __LINE__);
 		}
 	}
 

@@ -37,7 +37,7 @@ class seccode {
         return $input === $code;
     }
 
-	function seccodeconvert(&$seccode) {
+	static function seccodeconvert(&$seccode) {
 		$s = sprintf('%04s', base_convert($seccode, 10, 20));
 		$seccodeunits = 'CEFHKLMNOPQRSTUVWXYZ';
 		$seccode = '';
@@ -51,7 +51,7 @@ class seccode {
 		$this->type == 2 && !extension_loaded('ming') && $this->type = 0;
 		$this->width = $this->width >= 0 && $this->width <= 200 ? $this->width : 150;
 		$this->height = $this->height >= 0 && $this->height <= 80 ? $this->height : 60;
-		$this->seccodeconvert($this->code);
+		self::seccodeconvert($this->code);
 		if($this->type < 2 && function_exists('imagecreate') && function_exists('imagecolorset') && function_exists('imagecopyresized') &&
 			function_exists('imagecolorallocate') && function_exists('imagechar') && function_exists('imagecolorsforindex') &&
 			function_exists('imageline') && function_exists('imagecreatefromstring') && (function_exists('imagegif') || function_exists('imagepng') || function_exists('imagejpeg'))) {
@@ -229,7 +229,7 @@ class seccode {
 			$font[$i]['width'] = $font[$i]['width'] > $this->width / $seccodelength ? $this->width / $seccodelength : $font[$i]['width'];
 			$widthtotal += $font[$i]['width'];
 		}
-		$x = mt_rand($font[0]['angle'] > 0 ? cos(deg2rad(90 - $font[0]['angle'])) * $font[0]['zheight'] : 1, $this->width - $widthtotal);
+		$x = mt_rand($font[0]['angle'] > 0 ? cos(deg2rad(90 - $font[0]['angle'])) * $font[0]['zheight'] : 1, $this->width - $widthtotal > 2 ? $this->width - $widthtotal : 2);
 		!$this->color && $text_color = imagecolorallocate($this->im, $this->fontcolor[0], $this->fontcolor[1], $this->fontcolor[2]);
 		for($i = 0; $i < $seccodelength; $i++) {
 			if($this->color) {

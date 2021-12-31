@@ -21,36 +21,45 @@ class control extends pluginbase {
 		$applist = $_ENV['app']->get_apps();
 		$this->view->assign('applist', $applist);
 
-		$this->checkfiles('./', '\.php', 0, '\.php|\.xml');
-		$this->checkfiles('control/', '\.php');
-		$this->checkfiles('model/', '\.php');
-		$this->checkfiles('lib/', '\.php');
+		$this->checkfiles('./', '', 0);
+		$this->checkfiles('data/', '\.htm');
+		$this->checkfiles('api/', '\.php|\.htm');
+		$this->checkfiles('control/', '\.php|\.htm|\.md5', 1, 'ucfiles.md5');
+		$this->checkfiles('model/', '\.php|\.htm');
+		$this->checkfiles('lib/', '\.php|\.htm');
+		$this->checkfiles('plugin/', '\.php|\.htm|\.xml');
+		$this->checkfiles('upgrade/', '\.php');
+		$this->checkfiles('images/', '\..+?');
+		$this->checkfiles('js/', '\.js|\.htm');
+		$this->checkfiles('release/', '\.php');
 		$this->checkfiles('view/', '\.php|\.htm');
-		$this->checkfiles('js/', '\.js');
 
 		foreach($ucfiles as $line) {
 			$file = trim(substr($line, 34));
 			$md5datanew[$file] = substr($line, 0, 32);
-			if($md5datanew[$file] != $this->md5data[$file]) {
-				$modifylist[$file] = $this->md5data[$file];
+			if(isset($this->md5data[$file])) {
+				if($md5datanew[$file] != $this->md5data[$file]) {
+					$modifylist[$file] = $this->md5data[$file];
+				}
+				$md5datanew[$file] = $this->md5data[$file];
 			}
-			$md5datanew[$file] = $this->md5data[$file];
 		}
 
-		$weekbefore = $timestamp - 604800;
-		$addlist = @array_diff_assoc($this->md5data, $md5datanew);
-		$dellist = @array_diff_assoc($md5datanew, $this->md5data);
-		$modifylist = @array_diff_assoc($modifylist, $dellist);
-		$showlist = @array_merge($this->md5data, $md5datanew);
+		$weekbefore = time() - 604800;
+		$md5datanew = is_array($md5datanew) ? $md5datanew : array();
+		$addlist = array_diff_assoc($this->md5data, $md5datanew);
+		$dellist = array_diff_assoc($md5datanew, $this->md5data);
+		$modifylist = array_diff_assoc($modifylist, $dellist);
+		$showlist = array_merge($this->md5data, $md5datanew);
 		$doubt = 0;
-		$dirlist = $dirlog = array();
+		$dirlist = array('modify' => array(), 'del' => array(), 'add' => array(), 'doubt' => array());
 		foreach($showlist as $file => $md5) {
 			$dir = dirname($file);
-			if(@array_key_exists($file, $modifylist)) {
+			if(is_array($modifylist) && array_key_exists($file, $modifylist)) {
 				$fileststus = 'modify';
-			} elseif(@array_key_exists($file, $dellist)) {
+			} elseif(is_array($dellist) && array_key_exists($file, $dellist)) {
 				$fileststus = 'del';
-			} elseif(@array_key_exists($file, $addlist)) {
+			} elseif(is_array($addlist) && array_key_exists($file, $addlist)) {
 				$fileststus = 'add';
 			} else {
 				$filemtime = @filemtime($file);
@@ -103,11 +112,15 @@ class control extends pluginbase {
 
 		while($entry = @readdir($dir)) {
 			$file = $currentdir.$entry;
-			if($entry != '.' && $entry != '..' && (preg_match($exts, $entry) || $sub && is_dir($file)) && !in_array($entry, $skips)) {
+			if($entry != '.' && $entry != '..' && (($ext && preg_match($exts, $entry) || !$ext) || $sub && is_dir($file)) && !in_array($entry, $skips)) {
 				if($sub && is_dir($file)) {
 					$this->checkfiles($file.'/', $ext, $sub, $skip);
 				} else {
-					$this->md5data[$file] = md5_file($file);
+					if(is_dir($file)) {
+						$this->md5data[$file] = md5($file);
+					} else {
+						$this->md5data[$file] = md5_file($file);
+					}
 				}
 			}
 		}

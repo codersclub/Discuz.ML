@@ -304,7 +304,8 @@ class WeChat {
 		$groupid = !$groupid ? ($_G['wechat']['setting']['wechat_newusergroupid'] ? $_G['wechat']['setting']['wechat_newusergroupid'] : $_G['setting']['newusergroupid']) : $groupid;
 
 		$password = md5(random(10));
-		$email = 'wechat_'.strtolower(random(10)).'@null.null';
+		// 使用 m.invalid 作为保留域名
+		$email = 'wechat_'.strtolower(random(10)).'@m.invalid';
 
 		$usernamelen = dstrlen($username);
 		if($usernamelen < 3) {
@@ -405,7 +406,7 @@ class WeChat {
 		}
 
 		$init_arr = array('credits' => explode(',', $_G['setting']['initcredits']));
-		C::t('common_member')->insert($uid, $username, $password, $email, $_G['clientip'], $groupid, $init_arr);
+		C::t('common_member')->insert_user($uid, $username, $password, $email, $_G['clientip'], $groupid, $init_arr);
 
 		if($_G['setting']['regctrl'] || $_G['setting']['regfloodctrl']) {
 			C::t('common_regip')->delete_by_dateline($_G['timestamp']-($_G['setting']['regctrl'] > 72 ? $_G['setting']['regctrl'] : 72)*3600);
@@ -452,7 +453,7 @@ class WeChat {
 		}
 
 		$tmpFile = DISCUZ_ROOT.'./data/avatar/'.TIMESTAMP.random(6);
-		file_put_contents($tmpFile, $content);
+		file_put_contents($tmpFile, $content, LOCK_EX);
 
 		if(!is_file($tmpFile)) {
 			return false;
@@ -461,7 +462,7 @@ class WeChat {
 		$result = uploadUcAvatar::upload($uid, $tmpFile);
 		unlink($tmpFile);
 
-		C::t('common_member')->update($uid, array('avatarstatus'=>'1'));
+		if($result) C::t('common_member')->update($uid, array('avatarstatus'=>'1'));
 
 		return $result;
 	}
@@ -516,7 +517,7 @@ class uploadUcAvatar {
 		$avatarPath = $_G['setting']['attachdir'];
 		$tmpAvatar = $avatarPath.'./temp/upload'.$uid.$fileType;
 		file_exists($tmpAvatar) && @unlink($tmpAvatar);
-		file_put_contents($tmpAvatar, file_get_contents($localFile));
+		file_put_contents($tmpAvatar, file_get_contents($localFile), LOCK_EX);
 
 		if(!is_file($tmpAvatar)) {
 			return false;
@@ -576,12 +577,12 @@ class uploadUcAvatar {
 				$s2 = $sep2 = '';
 				foreach($v as $k2 => $v2) {
 					$k2 = urlencode($k2);
-					$s2 .= "$sep2{$k}[$k2]=".urlencode(uc_stripslashes($v2));
+					$s2 .= "$sep2{$k}[$k2]=".urlencode($v2);
 					$sep2 = '&';
 				}
 				$s .= $sep.$s2;
 			} else {
-				$s .= "$sep$k=".urlencode(uc_stripslashes($v));
+				$s .= "$sep$k=".urlencode($v);
 			}
 			$sep = '&';
 		}
@@ -622,7 +623,7 @@ class showActivity {
 		return true;
 	}
 
-	function misc() {
+	public static function misc() {
 		global $_G;
 		if(!$_POST || $_GET['action'] != 'activityapplies' && $_GET['action'] != 'activityapplylist') {
 			return;
@@ -636,7 +637,7 @@ class showActivity {
 		}
 	}
 
-	function post() {
+	public static function post() {
 		global $_G;
 		if($_GET['action'] != 'reply') {
 			return;
@@ -659,7 +660,7 @@ class showActivity {
 		}
 	}
 
-	function returnvoters($type) {
+	public static function returnvoters($type) {
 		global $_G;
 		$return = array();
 		if($type == 1) {

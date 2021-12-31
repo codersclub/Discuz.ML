@@ -40,7 +40,7 @@ if(!submitcheck('modsubmit')) {
 	C::t('forum_postcomment')->delete($commentid);
 	$result = C::t('forum_postcomment')->count_by_pid($postcomment['pid']);
 	if(!$result) {
-		C::t('forum_post')->update($_G['thread']['posttableid'], $postcomment['pid'], array('comment' => 0));
+		C::t('forum_post')->update_post($_G['thread']['posttableid'], $postcomment['pid'], array('comment' => 0));
 	}
 	if($thread['comments']) {
 		C::t('forum_thread')->update($_G['tid'], array('comments' => $thread['comments'] - 1));
@@ -72,7 +72,7 @@ if(!submitcheck('modsubmit')) {
 	C::t('forum_postcache')->delete($postcomment['pid']);
 
 	$resultarray = array(
-	'redirect'	=> "forum.php?mod=viewthread&tid=$_G[tid]&page=$page",
+	'redirect'	=> "forum.php?mod=viewthread&tid={$_G['tid']}&page=$page",
 	'reasonpm'	=> ($sendreasonpm ? array('data' => array($postcomment), 'var' => 'post', 'item' => 'reason_delete_comment', 'notictype' => 'pcomment') : array()),
 	'reasonvar'	=> array('tid' => $thread['tid'], 'pid' => $postcomment['pid'], 'subject' => $thread['subject'], 'modaction' => $modaction, 'reason' => $reason),
 	'modtids'	=> 0,

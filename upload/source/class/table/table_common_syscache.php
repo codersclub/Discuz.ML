@@ -26,12 +26,57 @@ class table_common_syscache extends discuz_table
 		parent::__construct();
 	}
 
-	public function fetch($cachename) {
-		$data = $this->fetch_all(array($cachename));
+	public function fetch($id, $force_from_db = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::fetch($id, $force_from_db);
+		} else {
+			return $this->fetch_syscache($id);
+		}
+	}
+
+	public function fetch_all($ids, $force_from_db = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::fetch_all($ids, $force_from_db);
+		} else {
+			return $this->fetch_all_syscache($ids);
+		}
+	}
+
+	public function insert($data, $return_insert_id = false, $replace = false, $silent = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::insert($data, $return_insert_id, $replace, $silent);
+		} else {
+			return $this->insert_syscache($data, $return_insert_id);
+		}
+	}
+
+	public function update($val, $data, $unbuffered = false, $low_priority = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::update($val, $data, $unbuffered, $low_priority);
+		} else {
+			return $this->update_syscache($val, $data);
+		}
+	}
+
+	public function delete($val, $unbuffered = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::delete($val, $unbuffered);
+		} else {
+			return $this->delete_syscache($val);
+		}
+	}
+
+	public function fetch_syscache($cachename) {
+		$data = $this->fetch_all_syscache(array($cachename));
 		return isset($data[$cachename]) ? $data[$cachename] : false;
 	}
 
-	public function fetch_all($cachenames) {
+	public function fetch_all_syscache($cachenames) {
 		$data = array();
 		$cachenames = is_array($cachenames) ? $cachenames : array($cachenames);
 		if ($this->_allowmem) {
@@ -82,15 +127,18 @@ class table_common_syscache extends discuz_table
 			}
 			if($this->_isfilecache) {
 				$cachedata = '$data[\''.$syscache['cname'].'\'] = '.var_export($data[$syscache['cname']], true).";\n\n";
-				if(($fp = @fopen(DISCUZ_ROOT.'./data/cache/cache_'.$syscache['cname'].'.php', 'wb'))) {
-					fwrite($fp, "<?php\n//Discuz! cache file, DO NOT modify me!\n//Identify: ".md5($syscache['cname'].$cachedata.getglobal('config/security/authkey'))."\n\n$cachedata?>");
+				$cachedata_save = "<?php\n//Discuz! cache file, DO NOT modify me!\n//Identify: ".md5($syscache['cname'].$cachedata.getglobal('config/security/authkey'))."\n\n$cachedata?>";
+				$fp = fopen(DISCUZ_ROOT.'./data/cache/cache_'.$syscache['cname'].'.php', 'cb');
+				if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, $cachedata_save) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
+					flock($fp, LOCK_UN);
 					fclose($fp);
+					unlink(DISCUZ_ROOT.'./data/cache/cache_'.$syscache['cname'].'.php');
 				}
 			}
 		}
 
 		foreach($cachenames as $name) {
-			if($data[$name] === null) {
+			if(!isset($data[$name]) || $data[$name] === null) {
 				$data[$name] = null;
 				$this->_allowmem && (memory('set', $name, array()));
 			}
@@ -99,7 +147,7 @@ class table_common_syscache extends discuz_table
 		return $data;
 	}
 
-	public function insert($cachename, $data) {
+	public function insert_syscache($cachename, $data) {
 
 		parent::insert(array(
 			'cname' => $cachename,
@@ -118,11 +166,11 @@ class table_common_syscache extends discuz_table
 		$this->_isfilecache && @unlink(DISCUZ_ROOT.'./data/cache/cache_'.$cachename.'.php');
 	}
 
-	public function update($cachename, $data) {
-		$this->insert($cachename, $data);
+	public function update_syscache($cachename, $data) {
+		$this->insert_cache($cachename, $data);
 	}
 
-	public function delete($cachenames) {
+	public function delete_syscache($cachenames) {
 		parent::delete($cachenames);
 		if($this->_allowmem || $this->_isfilecache) {
 			foreach((array)$cachenames as $cachename) {

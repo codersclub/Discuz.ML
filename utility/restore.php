@@ -11,10 +11,6 @@
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
 
-if(function_exists('set_magic_quotes_runtime')) {
-	@set_magic_quotes_runtime(0);
-}
-
 define('IN_DISCUZ', TRUE);
 define('ROOT_PATH', dirname(__FILE__).'/../');
 
@@ -35,7 +31,7 @@ $operation = $operation ? $operation : 'import';
 $phpself = htmlspecialchars($_SERVER['SCRIPT_NAME'] ? $_SERVER['SCRIPT_NAME'] : $_SERVER['PHP_SELF']);
 $siteurl = htmlspecialchars((is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].preg_replace("/\/+(api)?\/*$/i", '', substr($phpself, 0, strrpos($phpself, '/'))).'/');
 
-$db = function_exists("mysql_connect") ? new dbstuff : new dbstuffi;
+$db = new dbstuffi;
 if(!@$db->connect($_config['db']['1']['dbhost'], $_config['db']['1']['dbuser'], $_config['db']['1']['dbpw'], $_config['db']['1']['dbname'], $_config['db']['1']['dbcharset'])) {
 	show_msg('connect_error');
 }
@@ -43,13 +39,13 @@ if(!@$db->connect($_config['db']['1']['dbhost'], $_config['db']['1']['dbuser'], 
 if($operation == 'import') {
 
 	if(!submitcheck('importsubmit', 1)) {
-		$exportlog = $exportsize = $exportziplog = array();
-		check_exportfile($exportlog, $exportziplog, $exportsize);
+		$exportlog = $exportsize = $exportziplog = $exportzipsize = array();
+		check_exportfile($exportlog, $exportziplog, $exportsize, $exportzipsize);
 		if(empty($exportlog) && empty($exportziplog)) {
 			show_msg('backup_file_unexist');
 		}
 
-		show_importfile_list($exportlog, $exportziplog, $exportsize);
+		show_importfile_list($exportlog, $exportziplog, $exportsize, $exportzipsize);
 
 	} else {
 
@@ -60,23 +56,34 @@ if($operation == 'import') {
 		} else {
 			$datafile = getgpc('datafile_server', 'G');
 		}
-		$datafile = urldecode($datafile);
-		if(@$fp = fopen($datafile, 'rb')) {
+		if(!preg_match("#^\.\./data/backup_\w+/[\w\-]+\.sql$#i", $datafile)) {
+			touch($lock_file);
+			show_msg('database_import_format_illegal');
+		}
+		if(file_exists($datafile) && @$fp = fopen($datafile, 'rb')) {
 			$confirm = trim(getgpc('confirm', 'G'));
+			$delunzip = getgpc('delunzip', 'G');
+			$start = trim(getgpc('start', 'G'));
+			$start = $start ? 1 : 0;
+			if(!$start) {
+				show_msg(lang('database_import_multivol_start', TRUE, array()),
+					$siteurl."restore.php?operation=import&datafile_server=$datafile&autoimport=yes&importsubmit=yes&start=yes".(!empty($confirm) ? '&confirm=yes' : '').(!empty($delunzip) ? '&delunzip=yes' : ''),
+					'redirect');
+			}
 			$confirm = $confirm ? 1 : 0;
 			$sqldump = fgets($fp, 256);
 			$identify = explode(',', base64_decode(preg_replace("/^# Identify:\s*(\w+).*/s", "\\1", $sqldump)));
-			$dumpinfo = array('method' => $identify[3], 'volume' => intval($identify[4]), 'tablepre' => $identify[5], 'dbcharset' => $identify[6]);
+			$dumpinfo = array('method' => $identify[3], 'volume' => intval($identify[4]), 'tablepre' => $identify[5], 'dbcharset' => strtolower($identify[6]));
 			if(!$confirm) {
 				$showmsg = '';
 				if($dumpinfo['tablepre'] != $_config['db']['1']['tablepre'] && !getgpc('ignore_tablepre', 'G')) {
 					$showmsg .= lang('tableprediff');
 				}
-				if($dumpinfo['dbcharset'] != $_config['db']['1']['dbcharset']) {
+				if($dumpinfo['dbcharset'] != strtolower($_config['db']['1']['dbcharset'])) {
 					$showmsg .= lang('dbcharsetdiff');
 				}
 				if($showmsg) {
-					show_msg(lang('different_dbcharset_tablepre', TRUE, array('diff' => $showmsg)), $siteurl.'restore.php?operation=import&datafile_server='.$datafile.'&autoimport=yes&importsubmit=yes&confirm=yes', 'confirm');
+					show_msg(lang('different_dbcharset_tablepre', TRUE, array('diff' => $showmsg)), $siteurl.'restore.php?operation=import&datafile_server='.$datafile.'&autoimport=yes&importsubmit=yes&start=yes&confirm=yes', 'confirm');
 				}
 			}
 
@@ -109,32 +116,36 @@ if($operation == 'import') {
 				}
 			}
 
-			$delunzip = getgpc('delunzip', 'G');
 			if($delunzip) {
 				@unlink($datafile);
 			}
 
-			$datafile_next = preg_replace("/-($dumpinfo[volume])(\..+)$/", "-".($dumpinfo['volume'] + 1)."\\2", $datafile);
+			$datafile_next = preg_replace("/-({$dumpinfo['volume']})(\..+)$/", "-".($dumpinfo['volume'] + 1)."\\2", $datafile);
 			$datafile_next = urlencode($datafile_next);
 			if($dumpinfo['volume'] == 1) {
 				show_msg(lang('database_import_multivol_redirect', TRUE, array('volume' => $dumpinfo['volume'])),
-					$siteurl."restore.php?operation=import&datafile_server=$datafile_next&autoimport=yes&importsubmit=yes&confirm=yes".(!empty($delunzip) ? '&delunzip=yes' : ''),
+					$siteurl."restore.php?operation=import&datafile_server=$datafile_next&autoimport=yes&importsubmit=yes&start=yes&confirm=yes".(!empty($delunzip) ? '&delunzip=yes' : ''),
 					'redirect');
 			} elseif(getgpc('autoimport', 'G')) {
-				show_msg(lang('database_import_multivol_redirect', TRUE, array('volume' => $dumpinfo['volume'])), $siteurl."restore.php?operation=import&datafile_server=$datafile_next&autoimport=yes&importsubmit=yes&confirm=yes".(!empty($delunzip) ? '&delunzip=yes' : ''), 'redirect');
+				show_msg(lang('database_import_multivol_redirect', TRUE, array('volume' => $dumpinfo['volume'])), $siteurl."restore.php?operation=import&datafile_server=$datafile_next&autoimport=yes&importsubmit=yes&start=yes&confirm=yes".(!empty($delunzip) ? '&delunzip=yes' : ''), 'redirect');
 			} else {
 				show_msg('database_import_succeed', '', 'message', 1);
 			}
 		} elseif($dumpinfo['method'] == 'shell') {
-
+			touch($lock_file);
+ 			$dbhost = $_config['db'][1]['dbhost'];
+			$dbname = $_config['db'][1]['dbname'];
+			$dbpw = $_config['db'][1]['dbpw'];
+			$dbuser = $_config['db'][1]['dbuser'];
 			list($dbhost, $dbport) = explode(':', $dbhost);
 			$query = $db->query("SHOW VARIABLES LIKE 'basedir'");
-			list(, $mysql_base) = $db->fetch($query, $db->drivertype == 'mysqli' ? MYSQLI_NUM : MYSQL_NUM);
-
-			$mysqlbin = $mysql_base == '/' ? '' : addslashes($mysql_base).'bin/';
-			shell_exec($mysqlbin.'mysql -h"'.$dbhost.($dbport ? (is_numeric($dbport) ? ' -P'.$dbport : ' -S"'.$dbport.'"') : '').
-				'" -u"'.$dbuser.'" -p"'.$dbpw.'" "'.$dbname.'" < '.getgpc('datafile'));
-
+			list(, $mysql_base) = $db->fetch_array($query, $db->drivertype == 'mysqli' ? MYSQLI_NUM : MYSQL_NUM);
+			$datafile = addslashes(dirname(dirname(__FILE__))).str_replace('..', '', $datafile);
+			$mysqlbin = $mysql_base == '/' ? '' : addslashes(rtrim($mysql_base, '/\\')).'/bin/';
+			@shell_exec(escapeshellarg($mysqlbin.'mysql').' --host='.escapeshellarg($dbhost).($dbport ? (is_numeric($dbport) ? ' --port='.escapeshellarg($dbport) : ' --socket='.escapeshellarg($dbport).'') : '').' --user='.escapeshellarg($dbuser).' --password='.escapeshellarg($dbpw).' '.escapeshellarg($dbname).' < '.escapeshellarg($datafile));
+			if($delunzip) {
+				@unlink($datafile);
+			}
 			show_msg('database_import_succeed', '', 'message', 1);
 		} else {
 			show_msg('database_import_format_illegal');
@@ -154,6 +165,14 @@ if($operation == 'import') {
 	$datafile_vol1 = trim(getgpc('datafile_vol1', 'G'));
 	$multivol = intval(getgpc('multivol', 'G'));
 
+	$confirm = trim(getgpc('confirm', 'G'));
+	$delunzip = getgpc('delunzip', 'G');
+	$start = trim(getgpc('start', 'G'));
+	$start = $start ? 1 : 0;
+	if(!$start) {
+		show_msg(lang('database_import_multivol_unzip_start', TRUE, array()), $siteurl.'restore.php?operation=importzip&multivol='.$multivol.'&datafile_vol1='.$datafile_vol1.'&datafile_server='.$datafile_server.'&importsubmit=yes&start=yes'.(!empty($confirm) ? '&confirm=yes' : ''), 'redirect');
+	}
+
 	require_once ROOT_PATH.'./source/class/class_zip.php';
 	$unzip = new SimpleUnzip();
 	$backupdir = substr($datafile_server, 8, 13);
@@ -167,16 +186,20 @@ if($operation == 'import') {
 	$confirm = getgpc('confirm', 'G');
 	$confirm = !empty($confirm) ? 1 : 0;
 	if(!$confirm && $identify[1] != DISCUZ_VERSION) {
-		show_msg('database_import_confirm', $siteurl.'restore.php?operation=importzip&datafile_server='.$datafile_server.'&importsubmit=yes&confirm=yes', 'confirm');
+		show_msg('database_import_confirm', $siteurl.'restore.php?operation=importzip&datafile_server='.$datafile_server.'&importsubmit=yes&start=yes&confirm=yes', 'confirm');
 	}
 
 	$sqlfilecount = 0;
 	foreach($unzip->Entries as $entry) {
 		if(preg_match("/\.sql$/i", $entry->Name)) {
-			$fp = fopen('../data/'.$backupdir.'/'.$entry->Name, 'w');
-			fwrite($fp, $entry->Data);
-			fclose($fp);
-			$sqlfilecount++;
+			$fp = fopen('../data/'.$backupdir.'/'.$entry->Name, 'c');
+			if($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, $entry->Data) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp)) {
+				$sqlfilecount++;
+			} else {
+				flock($fp, LOCK_UN);
+				fclose($fp);
+				show_msg('database_import_file_write_error');
+			}
 		}
 	}
 
@@ -190,7 +213,7 @@ if($operation == 'import') {
 		$multivol++;
 		$datafile_server = preg_replace("/-(\d+)(\..+)$/", "-$multivol\\2", $datafile_server);
 		if(file_exists($datafile_server)) {
-			show_msg(lang('database_import_multivol_unzip_redirect', TRUE, array('multivol' => $multivol)), $siteurl.'restore.php?operation=importzip&multivol='.$multivol.'&datafile_vol1='.$datafile_vol1.'&datafile_server='.$datafile_server.'&importsubmit=yes&confirm=yes', 'redirect');
+			show_msg(lang('database_import_multivol_unzip_redirect', TRUE, array('multivol' => $multivol)), $siteurl.'restore.php?operation=importzip&multivol='.$multivol.'&datafile_vol1='.$datafile_vol1.'&datafile_server='.$datafile_server.'&importsubmit=yes&start=yes&confirm=yes', 'redirect');
 		} else {
 			show_msg('database_import_multivol_confirm', $siteurl.'restore.php?operation=import&datafile_server='.$datafile_vol1.'&importsubmit=yes&delunzip=yes', 'confirm');
 		}
@@ -201,7 +224,7 @@ if($operation == 'import') {
 		$datafile_server = preg_replace("/-1(\..+)$/", "-2\\1", $datafile_server);
 
 		if(file_exists($datafile_server)) {
-			show_msg(lang('database_import_multivol_unzip_redirect', TRUE, array('multivol' => 1)), $siteurl.'restore.php?operation=importzip&multivol=1&datafile_vol1=../data/'.$backupdir.'/'.$importfile.'&datafile_server='.$datafile_server.'&importsubmit=yes&confirm=yes', 'redirect');
+			show_msg(lang('database_import_multivol_unzip_redirect', TRUE, array('multivol' => 1)), $siteurl.'restore.php?operation=importzip&multivol=1&datafile_vol1=../data/'.$backupdir.'/'.$importfile.'&datafile_server='.$datafile_server.'&importsubmit=yes&start=yes&confirm=yes', 'redirect');
 		}
 	}
 
@@ -221,13 +244,13 @@ function get_backup_dir() {
 	return $backupdirs;
 }
 
-function check_exportfile(&$exportlog, &$exportziplog, &$exportsize) {
+function check_exportfile(&$exportlog, &$exportziplog, &$exportsize, &$exportzipsize) {
 
 	$backupdirs = get_backup_dir();
 	if(empty($backupdirs)) {
 		return;
 	}
-
+	$exportfiletime = $exportzipfiletime = array();
 	foreach($backupdirs as $backupdir) {
 		$dir = dir(ROOT_PATH.'./data/'.$backupdir);
 		while($entry = $dir->read()) {
@@ -235,6 +258,7 @@ function check_exportfile(&$exportlog, &$exportziplog, &$exportsize) {
 			if(is_file($entry)) {
 				if(preg_match("/\.sql$/i", $entry)) {
 					$filesize = filesize($entry);
+					$filemtime = filemtime($entry);
 					$fp = fopen($entry, 'rb');
 					$identify = explode(',', base64_decode(preg_replace("/^# Identify:\s*(\w+).*/s", "\\1", fgets($fp, 256))));
 					fclose($fp);
@@ -247,27 +271,37 @@ function check_exportfile(&$exportlog, &$exportziplog, &$exportsize) {
 						'tablepre' => $identify[5],
 						'dbcharset' => $identify[6],
 						'filename' => $entry,
-						'dateline' => filemtime($entry),
+						'dateline' => $filemtime,
 						'size' => $filesize
 					);
 					$exportsize[$key] += $filesize;
+					$exportfiletime[$key] = $filemtime;
 				} elseif(preg_match("/\.zip$/i", $entry)) {
 					$key = preg_replace('/^(.+?)(\-\d+)\.zip$/i', '\\1', basename($entry));
 					$filesize = filesize($entry);
+					$filemtime = filemtime($entry);
 					$exportziplog[$key][] = array(
 						'type' => 'zip',
 						'filename' => $entry,
-						'size' => filesize($entry),
-						'dateline' => filemtime($entry)
+						'size' => $filesize,
+						'dateline' => $filemtime
 					);
+					$exportzipsize[$key] += $filesize;
+					$exportzipfiletime[$key] = $filemtime;
 				}
 			}
 		}
 		$dir->close();
+		if (!empty($exportlog)) {
+			array_multisort($exportfiletime, SORT_DESC, SORT_STRING, $exportlog);
+		}
+		if (!empty($exportziplog)) {
+			array_multisort($exportzipfiletime, SORT_DESC, SORT_STRING, $exportziplog);
+		}
 	}
 }
 
-function show_importfile_list($exportlog = array(), $exportziplog = array(), $exportsize = array()) {
+function show_importfile_list($exportlog = array(), $exportziplog = array(), $exportsize = array(), $exportzipsize = array()) {
 
 	show_header();
 	show_tips('db_import_tips');
@@ -295,7 +329,7 @@ function show_importfile_list($exportlog = array(), $exportziplog = array(), $ex
 			'<td width="80">'.$info['size'].'</td>',
 			'<td width="30">'.$info['method'].'</td>',
 			'<td width="30">'.$info['volume'].'</td>',
-			'<td width="40">'.($info['type'] == 'zip' ? "<a href=\"{$siteurl}restore.php?operation=importzip&datafile_server=$info[filename]&importsubmit=yes\" onclick=\"return confirm('".lang('database_import_confirm_zip')."');\">".lang('db_import_unzip')."</a>" : "<a href=\"{$siteurl}restore.php?operation=import&datafile_server=$info[filename]&importsubmit=yes\" ".(($info['version'] != DISCUZ_VERSION) ? "onclick=\"return confirm('".lang('database_import_confirm')."');\"" : "onclick=\"return confirm('".lang('database_import_confirm_sql')."');\"").">".lang('import')."</a>")."</td>"
+			'<td width="40">'.($info['type'] == 'zip' ? "<a href=\"{$siteurl}restore.php?operation=importzip&datafile_server={$info['filename']}&importsubmit=yes\" onclick=\"return confirm('".lang('database_import_confirm_zip')."');\">".lang('db_import_unzip')."</a>" : "<a href=\"{$siteurl}restore.php?operation=import&datafile_server={$info['filename']}&importsubmit=yes\" ".(($info['version'] != DISCUZ_VERSION) ? "onclick=\"return confirm('".lang('database_import_confirm')."');\"" : "onclick=\"return confirm('".lang('database_import_confirm_sql')."');\"").">".lang('import')."</a>")."</td>"
 		;
 		echo "</tr>\n";
 		echo '<tbody id="exportlog_'.$key.'" style="display:none">';
@@ -304,13 +338,13 @@ function show_importfile_list($exportlog = array(), $exportziplog = array(), $ex
 			$info['size'] = sizecount($info['size']);
 			echo "<tr>";
 			echo
-				"<td colspan='2' class='subtb'><a href=\"$info[filename]\">".$info['filename']."</a></td>",
+				"<td colspan='2' class='subtb'><a href=\"{$info['filename']}\">".$info['filename']."</a></td>",
 				"<td>".$info['version']."</td>",
 				"<td>".$info['dateline']."</td>",
 				'<td></td>',
 				"<td>".$info['size']."</td>",
 				'<td></td>',
-				"<td>".$info['volume']."</td>",
+				"<td></td>",
 				'<td></td>'
 			;
 			echo "</tr>\n";
@@ -319,34 +353,35 @@ function show_importfile_list($exportlog = array(), $exportziplog = array(), $ex
 	}
 
 	foreach($exportziplog as $key => $val) {
-
+		sort($val);//确保-1.zip排前面,才会自动解压-2.zip
 		$info = $val[0];
 		$info['dateline'] = is_int($info['dateline']) ? gmdate('Y-m-d H:i:s', $info['dateline'] + 3600 * 8) : lang('unknown');
-		$info['size'] = sizecount($info['size']);
+		$info['size'] = sizecount($exportzipsize[$key]);
+		$info['volume'] = count($val);
 		$info['method'] = $info['method'] == 'multivol' ? lang('db_multivol') : lang('db_zip');
 		echo "<tr>";
 		echo
-			"<td><a href=\"javascript:;\" onclick=\"display('exportlog_$key')\">".basename($info['filename'])."</a></td>",
+			"<td><a href=\"javascript:;\" onclick=\"display('exportlog_zip_$key')\">".basename($info['filename'])."</a></td>",
 			"<td colspan='2'>".dirname($info['filename'])."</td>",
 			"<td width='140'>".$info['dateline']."</td>",
-			"<td width='170'>".lang('db_export_'.$info['type'])."</td>",
+			"<td width='170'>".($info['volume'] > 1 ? lang('db_multivol') : '').lang('db_export_'.$info['type'])."</td>",
 			"<td width='80'>".$info['size']."</td>",
 			"<td colspan='2'>".$info['method']."</td>",
-			"<td width='40'><a href=\"{$siteurl}restore.php?operation=importzip&datafile_server=$info[filename]&importsubmit=yes\" onclick=\"return confirm('".lang('database_import_confirm_zip')."');\">".lang('db_import_unzip')."</a></td>"
+			"<td width='40'><a href=\"{$siteurl}restore.php?operation=importzip&datafile_server={$info['filename']}&importsubmit=yes\" onclick=\"return confirm('".lang('database_import_confirm_zip')."');\">".lang('db_import_unzip')."</a></td>"
 		;
 		echo "</tr>\n";
-		echo '<tbody id="exportlog_'.$key.'" style="display:none">';
+		echo '<tbody id="exportlog_zip_'.$key.'" style="display:none">';
 		foreach($val as $info) {
 			$info['dateline'] = is_int($info['dateline']) ? gmdate('Y-m-d H:i:s', $info['dateline'] + 3600 * 8) : lang('unknown');
 			$info['size'] = sizecount($info['size']);
 			$info['method'] = $info['method'] == 'multivol' ? lang('db_multivol') : lang('db_zip');
 			echo "<tr>";
 			echo
-				"<td colspan='3' class='subtb'><a href=\"$info[filename]\">".$info['filename']."</a></td>",
+				"<td colspan='3' class='subtb'><a href=\"{$info['filename']}\">".$info['filename']."</a></td>",
 				"<td>".$info['dateline']."</td>",
 				"<td>".lang('db_export_'.$info['type'])."</td>",
 				"<td>".$info['size']."</td>",
-				"<td colspan='3'>".$info['method']."</td>"
+				"<td colspan='3'></td>"
 			;
 			echo "</tr>\n";
 		}
@@ -495,11 +530,11 @@ function show_msg($message, $url_forward = '', $type = 'message', $success = 0) 
 		echo '<span'.($success ? '' : ' class="red"').'>'.$message.'</span>';
 	} elseif($type == 'redirect') {
 		echo "$message ...";
-/*vot*/		echo "<br /><br /><br /><a href=\"$url_forward\">"+lang('browser_jump')+"</a>";
+/*vot*/		echo "<br /><br /><br /><a href=\"{$url_forward}\">{lang('browser_jump')}</a>";
 		echo "<script>setTimeout(\"redirect('$url_forward');\", 1250);</script>";
 	} elseif($type == 'confirm') {
 		echo "$message";
-/*vot*/		echo "<br /><br /><br /><button id=\"confirmbtn\" onclick=\"redirect('$url_forward')\">"+lang('ok')+"</button><button id=\"cancelbtn\" onclick=\"redirect('{$siteurl}restore.php')\">"+lang('cancel')+"</button>";
+/*vot*/		echo "<br /><br /><br /><button id=\"confirmbtn\" onclick=\"redirect('$url_forward')\">{lang('ok')}</button>&nbsp;<button id=\"cancelbtn\" onclick=\"redirect('{$siteurl}restore.php')\">{lang('cancel')}</button>";
 	}
 
 	show_footer();
@@ -604,150 +639,29 @@ function syntablestruct($sql, $version, $dbcharset) {
 }
 
 function is_https() {
-	if (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) != "off") {
+	// PHP 标准服务器变量
+	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 		return true;
 	}
-	if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && strtolower($_SERVER["HTTP_X_FORWARDED_PROTO"]) == "https") {
+	// X-Forwarded-Proto 事实标准头部, 用于反代透传 HTTPS 状态
+	if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
 		return true;
 	}
-	if (isset($_SERVER["HTTP_SCHEME"]) && strtolower($_SERVER["HTTP_SCHEME"]) == "https") {
+	// 阿里云全站加速私有 HTTPS 状态头部
+	// Git 意见反馈 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
 		return true;
 	}
-	if (isset($_SERVER["HTTP_FROM_HTTPS"]) && strtolower($_SERVER["HTTP_FROM_HTTPS"]) != "off") {
+	// 西部数码建站助手私有 HTTPS 状态头部
+	// 官网意见反馈 https://www.discuz.net/thread-3849819-1-1.html
+	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	if (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] == 443) {
+	// 服务器端口号兜底判断
+	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}
 	return false;
-}
-
-class dbstuff {
-	var $querynum = 0;
-	var $drivertype = 'mysql';
-	var $link;
-	var $histories;
-	var $time;
-	var $tablepre;
-
-	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset, $pconnect = 0, $tablepre='', $time = 0) {
-		$this->time = $time;
-		$this->tablepre = $tablepre;
-		if($pconnect) {
-			if(!$this->link = mysql_pconnect($dbhost, $dbuser, $dbpw)) {
-				return FALSE;
-			}
-		} else {
-			if(!$this->link = mysql_connect($dbhost, $dbuser, $dbpw, 1)) {
-				return FALSE;
-			}
-		}
-
-		if($this->version() > '4.1') {
-			if($dbcharset) {
-				mysql_query("SET character_set_connection=".$dbcharset.", character_set_results=".$dbcharset.", character_set_client=binary", $this->link);
-			}
-
-			if($this->version() > '5.0.1') {
-				mysql_query("SET sql_mode=''", $this->link);
-			}
-		}
-
-		if($dbname) {
-			mysql_select_db($dbname, $this->link);
-		}
-		return TRUE;
-	}
-
-	function fetch_array($query, $result_type = MYSQL_ASSOC) {
-		return mysql_fetch_array($query, $result_type);
-	}
-
-	function result_first($sql, &$data) {
-		$query = $this->query($sql);
-		$data = $this->result($query, 0);
-	}
-
-	function fetch_first($sql, &$arr) {
-		$query = $this->query($sql);
-		$arr = $this->fetch_array($query);
-	}
-
-	function fetch_all($sql, &$arr) {
-		$query = $this->query($sql);
-		while($data = $this->fetch_array($query)) {
-			$arr[] = $data;
-		}
-	}
-
-	function cache_gc() {
-		$this->query("DELETE FROM {$this->tablepre}sqlcaches WHERE expiry<$this->time");
-	}
-
-	function query($sql, $type = '', $cachetime = FALSE) {
-		$func = $type == 'UNBUFFERED' && @function_exists('mysql_unbuffered_query') ? 'mysql_unbuffered_query' : 'mysql_query';
-		if(!($query = $func($sql, $this->link)) && $type != 'SILENT') {
-			$this->halt('SQL:', $sql);
-		}
-		$this->querynum++;
-		$this->histories[] = $sql;
-		return $query;
-	}
-
-	function affected_rows() {
-		return mysql_affected_rows($this->link);
-	}
-
-	function error() {
-		return (($this->link) ? mysql_error($this->link) : mysql_error());
-	}
-
-	function errno() {
-		return intval(($this->link) ? mysql_errno($this->link) : mysql_errno());
-	}
-
-	function result($query, $row) {
-		$query = @mysql_result($query, $row);
-		return $query;
-	}
-
-	function num_rows($query) {
-		$query = mysql_num_rows($query);
-		return $query;
-	}
-
-	function num_fields($query) {
-		return mysql_num_fields($query);
-	}
-
-	function free_result($query) {
-		return mysql_free_result($query);
-	}
-
-	function insert_id() {
-		return ($id = mysql_insert_id($this->link)) >= 0 ? $id : $this->result($this->query("SELECT last_insert_id()"), 0);
-	}
-
-	function fetch_row($query) {
-		$query = mysql_fetch_row($query);
-		return $query;
-	}
-
-	function fetch_fields($query) {
-		return mysql_fetch_field($query);
-	}
-
-	function version() {
-		return mysql_get_server_info($this->link);
-	}
-
-	function close() {
-		return mysql_close($this->link);
-	}
-
-	function halt($message = '', $sql = '') {
-		show_error('run_sql_error', $message.$sql.'<br /> Error:'.$this->error().'<br />Errno:'.$this->errno(), 0);
-	}
 }
 
 class dbstuffi {
@@ -758,23 +672,24 @@ class dbstuffi {
 	var $time;
 	var $tablepre;
 
-	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset, $pconnect = 0, $tablepre='', $time = 0) {
+	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset = '', $pconnect = 0, $tablepre='', $time = 0) {
 		$this->time = $time;
 		$this->tablepre = $tablepre;
+
+		mysqli_report(MYSQLI_REPORT_OFF);
+
 		$this->link = new mysqli();
 		if(!$this->link->real_connect($dbhost, $dbuser, $dbpw, $dbname)) {
 			return FALSE;
 		}
 
-		if($this->version() > '4.1') {
-			if($dbcharset) {
-				$this->link->set_charset($dbcharset);
-			}
-
-			if($this->version() > '5.0.1') {
-				$this->query("SET sql_mode=''");
-			}
+		if($dbcharset) {
+			$this->link->set_charset($dbcharset);
 		}
+
+		$this->link->query("SET sql_mode=''");
+
+		$this->link->query("SET character_set_client=binary");
 
 		return TRUE;
 	}
@@ -819,11 +734,11 @@ class dbstuffi {
 	}
 
 	function error() {
-		return (($this->link) ? $this->link->error : mysqli_error());
+		return $this->link->error;
 	}
 
 	function errno() {
-		return intval(($this->link) ? $this->link->errno : mysqli_errno());
+		return $this->link->errno;
 	}
 
 	function result($query, $row) {

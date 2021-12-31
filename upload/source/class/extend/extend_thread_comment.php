@@ -22,14 +22,14 @@ class extend_thread_comment extends extend_thread_base {
 			$this->param['modnewreplies'] = 0;
 		}
 		$pinvisible = $parameters['modnewreplies'] ? -2 : ($this->thread['displayorder'] == -4 ? -3 : 0);
-		$this->postcomment = in_array(2, $this->setting['allowpostcomment']) && $this->group['allowcommentreply'] && !$pinvisible && !empty($_GET['reppid']) && ($nauthorid != $this->member['uid'] || $this->setting['commentpostself']) ? messagecutstr($parameters['message'], 200, ' ') : '';
+		$this->postcomment = is_array($this->setting['allowpostcomment']) && in_array(2, $this->setting['allowpostcomment']) && $this->group['allowcommentreply'] && !$pinvisible && !empty($_GET['reppid']) && ($nauthorid != $this->member['uid'] || $this->setting['commentpostself']) ? messagecutstr($parameters['message'], 200, ' ') : '';
 	}
 
 	public function after_newreply() {
 		if(!empty($_GET['noticeauthor']) && !$this->param['isanonymous'] && !$this->param['modnewreplies']) {
 			if($this->postcomment) {
 				$rpid = intval($_GET['reppid']);
-				if($rpost = C::t('forum_post')->fetch('tid:'.$this->thread['tid'], $rpid)) {
+				if($rpost = C::t('forum_post')->fetch_post('tid:'.$this->thread['tid'], $rpid)) {
 					if(!$rpost['first']) {
 						$cid = C::t('forum_postcomment')->insert(array(
 							'tid' => $this->thread['tid'],
@@ -44,7 +44,7 @@ class extend_thread_comment extends extend_thread_base {
 							'port'=>getglobal('remoteport')
 						), true);
 
-						C::t('forum_post')->update('tid:'.$this->thread['tid'], $rpid, array('comment' => 1));
+						C::t('forum_post')->update_post('tid:'.$this->thread['tid'], $rpid, array('comment' => 1));
 						C::t('forum_postcache')->delete($rpid);
 					}
 				}

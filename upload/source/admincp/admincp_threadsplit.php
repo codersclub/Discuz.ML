@@ -21,7 +21,7 @@ $topicperpage = 50;
 if(empty($operation)) {
 	$operation = 'manage';
 }
-$settings = C::t('common_setting')->fetch_all(array('threadtableids', 'threadtable_info'), true);
+$settings = C::t('common_setting')->fetch_all_setting(array('threadtableids', 'threadtable_info'), true);
 $threadtableids = $settings['threadtableids'] ? $settings['threadtableids'] : array();
 $threadtable_info = $settings['threadtable_info'] ? $settings['threadtable_info'] : array();
 if($operation == 'manage') {
@@ -64,7 +64,7 @@ if($operation == 'manage') {
 		foreach(array_keys($_GET['displayname']) as $tableid) {
 			$threadtable_info[$tableid]['displayname'] = $_GET['displayname'][$tableid];
 		}
-		C::t('common_setting')->update('threadtable_info', $threadtable_info);
+		C::t('common_setting')->update_setting('threadtable_info', $threadtable_info);
 		savecache('threadtable_info', $threadtable_info);
 		update_threadtableids();
 		updatecache('setting');
@@ -98,7 +98,7 @@ if($operation == 'manage') {
 
 	update_threadtableids();
 
-	C::t('common_setting')->update('threadtable_info', $threadtable_info);
+	C::t('common_setting')->update_setting('threadtable_info', $threadtable_info);
 	savecache('threadtable_info', $threadtable_info);
 	updatecache('setting');
 	cpmsg('threadsplit_drop_table_succeed', 'action=threadsplit&operation=manage', 'succeed');
@@ -138,8 +138,10 @@ if($operation == 'manage') {
 	if(isset($_GET['intype'])) {
 		$typeselect = preg_replace("/(\<option value=\"{$_GET['intype']}\")(\>)/", "\\1 selected=\"selected\" \\2", $typeselect);
 	}
-echo <<<EOT
-<script src="static/js/calendar.js"></script>
+
+	$staticurl = STATICURL;
+	echo <<<EOT
+<script type="text/javascript" src="{$staticurl}js/calendar.js"></script>
 <script type="text/JavaScript">
 	function page(number) {
 		$('threadform').page.value=number;
@@ -262,10 +264,10 @@ EOT;
 					$fids[] = $thread['fid'];
 					$thread['lastpost'] = dgmdate($thread['lastpost']);
 					$threads .= showtablerow('', array('class="td25"', '', '', '', '', ''), array(
-						"<input class=\"checkbox\" type=\"checkbox\" name=\"tidarray[]\" value=\"$thread[tid]\" checked=\"checked\" />",
-						"<a href=\"forum.php?mod=viewthread&tid=$thread[tid]\" target=\"_blank\">$thread[subject]</a>",
-						"<a href=\"forum.php?mod=forumdisplay&fid=$thread[fid]\" target=\"_blank\">{$_G['cache'][forums][$thread[fid]][name]}</a>",
-						"<a href=\"home.php?mod=space&uid=$thread[authorid]\" target=\"_blank\">$thread[author]</a>",
+						"<input class=\"checkbox\" type=\"checkbox\" name=\"tidarray[]\" value=\"{$thread['tid']}\" checked=\"checked\" />",
+						"<a href=\"forum.php?mod=viewthread&tid={$thread['tid']}\" target=\"_blank\">{$thread['subject']}</a>",
+						"<a href=\"forum.php?mod=forumdisplay&fid={$thread['fid']}\" target=\"_blank\">{$_G['cache']['forums'][$thread['fid']]['name']}</a>",
+						"<a href=\"home.php?mod=space&uid={$thread['authorid']}\" target=\"_blank\">{$thread['author']}</a>",
 						$thread['replies'],
 						$thread['views']
 					), TRUE);
@@ -449,7 +451,7 @@ function threadsplit_search_threads($conditions, $offset = null, $length = null,
 
 function update_threadtableids() {
 	$threadtableids = C::t('forum_thread')->fetch_thread_table_ids();
-	C::t('common_setting')->update('threadtableids', $threadtableids);
+	C::t('common_setting')->update_setting('threadtableids', $threadtableids);
 	savecache('threadtableids', $threadtableids);
 }
 ?>

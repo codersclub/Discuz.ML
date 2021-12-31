@@ -1,7 +1,7 @@
 <?php
 
 /*
-	[Discuz!] (C)2001-2009 Comsenz Inc.
+	[Discuz!] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: db.class.php 976 2009-12-03 03:02:44Z zhaoxiongfei $
@@ -19,23 +19,23 @@ class dbstuff {
 	var $time;
 	var $tablepre;
 
-	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset, $pconnect = 0, $tablepre='', $time = 0) {
+	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset = '', $pconnect = 0, $tablepre='', $time = 0) {
 		$this->time = $time;
 		$this->tablepre = $tablepre;
+
+		mysqli_report(MYSQLI_REPORT_OFF);
 
 		if(!$this->link = new mysqli($dbhost, $dbuser, $dbpw, $dbname)) {
 			$this->halt('Can not connect to MySQL server');
 		}
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
-			if($dbcharset) {
-				$this->link->set_charset($dbcharset);
-			}
-
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
-				$this->link->query("SET sql_mode=''");
-			}
+		if($dbcharset) {
+			$this->link->set_charset($dbcharset);
 		}
+
+		$this->link->query("SET sql_mode=''");
+
+		$this->link->query("SET character_set_client=binary");
 
 	}
 
@@ -79,11 +79,11 @@ class dbstuff {
 	}
 
 	function error() {
-		return (($this->link) ? $this->link->error : mysqli_error());
+		return $this->link->error;
 	}
 
 	function errno() {
-		return intval(($this->link) ? $this->link->errno : mysqli_errno());
+		return $this->link->errno;
 	}
 
 	function result($query, $row) {

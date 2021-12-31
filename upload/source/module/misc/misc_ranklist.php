@@ -117,7 +117,7 @@ function getranklist_activity($num = 20, $view = 'heats', $orderby = 'all') {
 		$attachtables[getattachtableid($thread['tid'])][] = $thread['aid'];
 	}
 	foreach($attachtables as $attachtable => $aids) {
-		$attachs = C::t('forum_attachment_n')->fetch_all($attachtable, $aids);
+		$attachs = C::t('forum_attachment_n')->fetch_all_attachment($attachtable, $aids);
 		foreach($attachs as $attach) {
 			$attach['attachurl'] = ($attach['remote'] ? $_G['setting']['ftp']['attachurl'] : $_G['setting']['attachurl']).'forum/'.$attach['attachment'];
 			$data[$attach['tid']] = array_merge($data[$attach['tid']], $attach);
@@ -194,7 +194,7 @@ function getranklist_blog($num = 20, $view = 'hot', $orderby = 'all') {
 	}
 
 	$data = array();
-	$data_blog = C::t('home_blog')->range(0, $num, 'DESC', $view, 0, 0, null, $timestamp);
+	$data_blog = C::t('home_blog')->range_blog(0, $num, 'DESC', $view, 0, 0, null, $timestamp);
 	$blogids = array_keys($data_blog);
 	$data_blogfield = C::t('home_blogfield')->fetch_all($blogids);
 
@@ -310,7 +310,6 @@ function getranklist_member_invite($num, $orderby) {
 		foreach($invitearray as $key => $var) {
 			$invite[] = $var;
 			$invite[$key]['username'] = $invitememberfield[$var['uid']]['username'];
-			$invite[$key]['videophotostatus'] = $invitememberfield[$var['uid']]['videophotostatus'];
 			$invite[$key]['groupid'] = $invitememberfield[$var['uid']]['groupid'];
 		}
 	}
@@ -338,7 +337,6 @@ function getranklist_member_onlinetime($num, $orderby) {
 		foreach($onlinetimearray as $key => $var) {
 			$var['onlinetime'] = $var[$orderby];
 			$var['username'] = $onlinetimefieldarray[$var['uid']]['username'];
-			$var['videophotostatus'] = $onlinetimefieldarray[$var['uid']]['videophotostatus'];
 			$var['groupid'] = $onlinetimefieldarray[$var['uid']]['groupid'];
 			$onlinetime[$key] = $var;
 		}
@@ -351,7 +349,7 @@ function getranklist_member_blog($num) {
 	global $_G;
 
 	$blogs = array();
-	$sql = "SELECT m.uid,m.username,m.videophotostatus,m.groupid,c.blogs FROM ".DB::table('common_member').
+	$sql = "SELECT m.uid,m.username,m.groupid,c.blogs FROM ".DB::table('common_member').
 			" m LEFT JOIN ".DB::table('common_member_count')." c ON m.uid=c.uid WHERE c.blogs>0 ORDER BY blogs DESC LIMIT 0, $num";
 
 	$query = DB::query($sql);

@@ -21,8 +21,8 @@ if (!checkperm('allowstatdata') && $_GET['hash'] != $stat_hash) {
 }
 
 $cols = array();
-$cols['login'] = array('login', 'mobilelogin', 'connectlogin', 'register', 'invite', 'appinvite');
-if (!$_G['setting']['connect']['allow']) {
+$cols['login'] = array('login', 'mobilelogin', 'connectlogin', 'register', 'invite');
+if (empty($_G['setting']['connect']['allow'])) {
 	unset($cols['login'][2]);
 }
 $cols['forum'] = array('thread', 'poll', 'activity', 'reward', 'debate', 'trade', 'post');
@@ -59,13 +59,13 @@ if (!empty($_GET['xml'])) {
 		}
 		$type = 'statistic';
 	}
-	foreach (C::t('common_stat')->fetch_all($begin, $end, $field) as $value) {
+	foreach (C::t('common_stat')->fetch_all_stat($begin, $end, $field) as $value) {
 		$xaxis .= "<value xid='$count'>" . substr($value['daytime'], 4, 4) . "</value>";
 		if ($type == 'all') {
 			foreach ($cols as $ck => $cvs) {
 				if ($ck == 'login') {
-					$graph['login'] .= "<value xid='$count'>$value[login]</value>";
-					$graph['register'] .= "<value xid='$count'>$value[register]</value>";
+					$graph['login'] .= "<value xid='$count'>{$value['login']}</value>";
+					$graph['register'] .= "<value xid='$count'>{$value['register']}</value>";
 				} else {
 					$num = 0;
 					foreach ($cvs as $cvk) {
@@ -92,7 +92,11 @@ if (!empty($_GET['xml'])) {
 	$xml .= "</xaxis><graphs>";
 	$count = 0;
 	foreach ($graph as $key => $value) {
-		$xml .= "<graph gid='$count' title='" . diconv(lang('spacecp', "do_stat_$key"), CHARSET, 'utf8') . "'>";
+		$title = diconv(lang('spacecp', "do_stat_$key"), CHARSET, 'utf-8');
+		if ($title == '') {
+			continue;
+		}
+		$xml .= "<graph gid='$count' title='" . $title . "'>";
 		$xml .= $value;
 		$xml .= '</graph>';
 		$count++;
@@ -107,16 +111,24 @@ if (!empty($_GET['xml'])) {
 	exit();
 }
 
-$actives = array($type => ' class="a"');
+$actives = array();
+
+if(is_array($type)) {
+	foreach ($type as $tmp) {
+        $actives[$tmp] = ' class="a"';
+	}
+}
 
 require_once libfile('function/home');
 $siteurl = getsiteurl();
 $types = '';
 $merge = !empty($_GET['merge']) ? '&merge=1' : '';
-foreach ($_GET['types'] as $value) {
-	$types .= '&types[]=' . $value;
-	$actives[$value] = ' class="a"';
+if (is_array(getgpc('types'))) {
+    foreach (getgpc('types') as $value) {
+        $types .= '&types[]=' . $value;
+        $actives[$value] = ' class="a"';
+    }
 }
-$statuspara = "path=&settings_file=data/stat_setting.xml&data_file=" . urlencode("misc.php?mod=stat&op=trend&xml=1&type=$type&primarybegin=$primarybegin&primaryend=$primaryend{$types}{$merge}&hash=$stat_hash");
+$statuspara = "misc.php?mod=stat&op=trend&xml=1&type=$type&primarybegin=$primarybegin&primaryend=$primaryend{$types}{$merge}&hash=$stat_hash";
 
 include template('home/misc_stat');

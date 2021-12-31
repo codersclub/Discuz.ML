@@ -75,7 +75,7 @@ function formulaperm($formula) {
 		}
 	}
 	$formulatext = $formula[0];
-	$formula = $formula[1];
+	$formula = trim($formula[1]);
 	if($_G['adminid'] == 1 || $_G['forum']['ismoderator'] || in_array($_G['groupid'], explode("\t", $_G['forum']['spviewperm']))) {
 		return FALSE;
 	}
@@ -433,12 +433,12 @@ function loadforum($fid = null, $tid = null) {
 	if(defined('IN_ARCHIVER') && $_G['setting']['archiverredirect'] && !IS_ROBOT) {
 		dheader('location: ../forum.php'.($_G['mod'] ? '?mod='.$_G['mod'].(!empty($_GET['fid']) ? '&fid='.$_GET['fid'] : (!empty($_GET['tid']) ? '&tid='.$_GET['tid'] : '')) : ''));
 	}
-	if($_G['setting']['forumpicstyle']) {
+	if(isset($_G['setting']['forumpicstyle'])) {
 		$_G['setting']['forumpicstyle'] = dunserialize($_G['setting']['forumpicstyle']);
 		empty($_G['setting']['forumpicstyle']['thumbwidth']) && $_G['setting']['forumpicstyle']['thumbwidth'] = 203;
-		empty($_G['setting']['forumpicstyle']['thumbheight']) && $_G['setting']['forumpicstyle']['thumbheight'] = 999;
+		empty($_G['setting']['forumpicstyle']['thumbheight']) && $_G['setting']['forumpicstyle']['thumbheight'] = 0;
 	} else {
-		$_G['setting']['forumpicstyle'] = array('thumbwidth' => 203, 'thumbheight' => 999);
+		$_G['setting']['forumpicstyle'] = array('thumbwidth' => 203, 'thumbheight' => 0);
 	}
 	if($fid) {
 		$fid = is_numeric($fid) ? intval($fid) : (!empty($_G['setting']['forumfids'][$fid]) ? $_G['setting']['forumfids'][$fid] : 0);
@@ -527,13 +527,13 @@ function loadforum($fid = null, $tid = null) {
 				}
 			}
 
-			if($forum['threadtypes']['types']) {
+			if(!empty($forum['threadtypes']['types'])) {
 				safefilter($forum['threadtypes']['types']);
 			}
-			if($forum['threadtypes']['options']['name']) {
+			if(!empty($forum['threadtypes']['options']['name'])) {
 				safefilter($forum['threadtypes']['options']['name']);
 			}
-			if($forum['threadsorts']['types']) {
+			if(!empty($forum['threadsorts']['types'])) {
 				safefilter($forum['threadsorts']['types']);
 			}
 
@@ -617,7 +617,7 @@ function get_thread_by_tid($tid, $forcetableid = null) {
 	$threadtableids = array_unique($threadtableids);
 	foreach($threadtableids as $tableid) {
 		$tableid = $tableid > 0 ? $tableid : 0;
-		$ret = C::t('forum_thread')->fetch($tid, $tableid);
+		$ret = C::t('forum_thread')->fetch_thread($tid, $tableid);
 		if($ret) {
 			$ret['threadtable'] = C::t('forum_thread')->get_table_name($tableid);
 			$ret['threadtableid'] = $tableid;
@@ -628,7 +628,7 @@ function get_thread_by_tid($tid, $forcetableid = null) {
 
 	if(!is_array($ret)) {
 		$ret = array();
-	} elseif($_G['setting']['optimizeviews']) {
+	} elseif(getglobal('setting/optimizeviews')) {
 		if(($row = C::t('forum_threadaddviews')->fetch($tid))) {
 			$ret['addviews'] = intval($row['addviews']);
 			$ret['views'] += $ret['addviews'];
@@ -680,7 +680,7 @@ function get_post_by_pid($pid, $fields = '*', $addcondiction = '', $forcetable =
 function get_post_by_tid_pid($tid, $pid) {
 	static $postlist = array();
 	if(empty($postlist[$pid])) {
-		$postlist[$pid] = C::t('forum_post')->fetch('tid:'.$tid, $pid, false);
+		$postlist[$pid] = C::t('forum_post')->fetch_post('tid:'.$tid, $pid, false);
 		if($postlist[$pid] && $postlist[$pid]['tid'] == $tid) {
 			$user = getuserbyuid($postlist[$pid]['authorid']);
 			$postlist[$pid]['adminid'] = $user['adminid'];
@@ -768,7 +768,7 @@ function update_threadpartake($tid, $getsetarr = false) {
 	$setarr = array();
 	if($_G['uid'] && $tid) {
 		if($_G['setting']['heatthread']['period']) {
-			$partaked = C::t('forum_threadpartake')->fetch($tid, $_G['uid']);
+			$partaked = C::t('forum_threadpartake')->fetch_threadpartake($tid, $_G['uid']);
 			$partaked = $partaked['uid'];
 			if(!$partaked) {
 				C::t('forum_threadpartake')->insert(array('tid' => $tid, 'uid' => $_G['uid'], 'dateline' => TIMESTAMP));
@@ -812,7 +812,7 @@ function convertunusedattach($aid, $tid, $pid) {
 	$attach = daddslashes($attach);
 	$attach['tid'] = $tid;
 	$attach['pid'] = $pid;
-	C::t('forum_attachment_n')->insert('tid:'.$tid, $attach);
+	C::t('forum_attachment_n')->insert_attachment('tid:'.$tid, $attach);
 	C::t('forum_attachment')->update($attach['aid'], array('tid' => $tid, 'pid' => $pid, 'tableid' => getattachtableid($tid)));
 	C::t('forum_attachment_unused')->delete($attach['aid']);
 }
@@ -820,7 +820,7 @@ function convertunusedattach($aid, $tid, $pid) {
 function updateattachtid($idtype, $ids, $oldtid, $newtid) {
 		foreach(C::t('forum_attachment_n')->fetch_all_by_id('tid:'.$oldtid, $idtype, $ids) as $attach) {
 			$attach['tid'] = $newtid;
-			C::t('forum_attachment_n')->insert('tid:'.$newtid, $attach);
+			C::t('forum_attachment_n')->insert_attachment('tid:'.$newtid, $attach);
 		}
 		C::t('forum_attachment_n')->delete_by_id('tid:'.$oldtid, $idtype, $ids);
 	C::t('forum_attachment')->update_by_id($idtype, $ids, $newtid);
@@ -832,7 +832,7 @@ function updatepost($data, $condition, $unbuffered = false, $posttableid = false
 
 function insertpost($data) {
 	if(isset($data['tid'])) {
-		$thread = C::t('forum_thread')->fetch($data['tid']);
+		$thread = C::t('forum_thread')->fetch_thread($data['tid']);
 		$tableid = $thread['posttableid'];
 	} else {
 		$tableid = $data['tid'] = 0;
@@ -842,7 +842,7 @@ function insertpost($data) {
 
 	$data = array_merge($data, array('pid' => $pid));
 
-	C::t('forum_post')->insert($tableid, $data);
+	C::t('forum_post')->insert_post($tableid, $data);
 	if($pid % 1024 == 0) {
 		C::t('forum_post_tableid')->delete_by_lesspid($pid);
 	}
@@ -923,7 +923,7 @@ function threadpubsave($tid, $passapproval = false) {
 				$modworksql = 1;
 				$return = -2;
 			}
-			C::t('forum_post')->update('tid:'.$tid, $post['pid'], array('dateline' => $dateline, 'invisible' => $invisible));
+			C::t('forum_post')->update_post('tid:'.$tid, $post['pid'], array('dateline' => $dateline, 'invisible' => $invisible));
 			updatepostcredits('+', $thread['authorid'], 'reply', $thread['fid']);
 		}
 	}
@@ -951,7 +951,7 @@ function threadpubsave($tid, $passapproval = false) {
 	return $return;
 }
 
-function getrelatecollection($tid, $all = false, &$num, &$more) {
+function getrelatecollection($tid, $all = false, &$num = null, &$more = null) {
 	global $_G;
 
 	$maxdisplay = $_G['setting']['collectionnum'];
@@ -1107,7 +1107,7 @@ function stringtopic($value, $key = '', $force = false, $rlength = 0) {
 function getreplybg($replybg = '') {
 	global $_G;
 	$style = '';
-	if($_G['setting']['allowreplybg']) {
+	if(getglobal('setting/allowreplybg')) {
 		if($replybg) {
 			$bgurl = $replybg;
 			if(file_exists($_G['setting']['attachurl'].'common/'.$replybg)) {

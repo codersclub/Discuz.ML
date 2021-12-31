@@ -69,7 +69,7 @@ function upgradeinformation($status = 0) {
 	}
 
 	$update = array();
-	$siteuniqueid = C::t('common_setting')->fetch('siteuniqueid');
+	$siteuniqueid = C::t('common_setting')->fetch_setting('siteuniqueid');
 
 	$update['uniqueid'] = $siteuniqueid;
 	$update['curversion'] = $upgrade_step['curversion'];
@@ -152,7 +152,7 @@ function cpurl($type = 'parameter', $filters = array('sid', 'frames')) {
 	$extra = $and = '';
 	foreach($getarray as $key => $value) {
 		if(!in_array($key, $filters)) {
-			@$extra .= $and.$key.($type == 'parameter' ? '%3D' : '=').rawurlencode($value);
+			$extra .= $and.$key.($type == 'parameter' ? '%3D' : '=').rawurlencode((string)$value);
 			$and = $type == 'parameter' ? '%26' : '&';
 		}
 	}
@@ -164,7 +164,7 @@ function showheader($key, $url) {
 	list($action, $operation, $do) = explode('_', $url.'___');
 	$url = $action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '');
 	$menuname = cplang('header_'.$key) != 'header_'.$key ? cplang('header_'.$key) : $key;
-	echo '<li><em><a href="'.ADMINSCRIPT.'?action='.$url.'" id="header_'.$key.'" hidefocus="true" onmouseover="previewheader(\''.$key.'\')" onmouseout="previewheader()" onclick="toggleMenu(\''.$key.'\', \''.$url.'\');doane(event);">'.$menuname.'</a></em></li>';
+	echo '<li><em><a href="'.ADMINSCRIPT.'?action='.$url.'" id="header_'.$key.'" hidefocus="true" onmouseover="previewheader(\''.$key.'\')" onmouseout="previewheader()" '.(isfounder() && $key == 'cloudaddons' ? 'target="_blank"' : 'onclick="toggleMenu(\''.$key.'\', \''.$url.'\');doane(event);"').'>'.$menuname.'</a></em></li>';
 }
 
 function shownav($header = '', $menu = '', $nav = '') {
@@ -220,7 +220,7 @@ function showmenu($key, $menus, $return = 0) {
 		}
 	}
 	if(!$return) {
-		echo '<ul id="menu_'.$key.'" style="display: none">'.$body.'</ul>';
+		echo '<ul id="menu_'.$key.'" onclick="switchheader(\''.$key.'\');" style="display: none">'.$body.'</ul>';
 	} else {
 		return $body;
 	}
@@ -239,6 +239,7 @@ function cpmsg_error($message, $url = '', $extra = '', $halt = TRUE) {
 function cpmsg($message, $url = '', $type = '', $values = array(), $extra = '', $halt = TRUE, $cancelurl = '') {
 	global $_G;
 	$vars = explode(':', $message);
+	$values = is_array($values) ? $values : (array)$values;
 	$values['ADMINSCRIPT'] = ADMINSCRIPT;
 	if(count($vars) == 2) {
 		$message = lang('plugin/'.$vars[0], $vars[1], $values);
@@ -268,10 +269,10 @@ function cpmsg($message, $url = '', $type = '', $values = array(), $extra = '', 
 			"</script>").
 			"</p></form><br />";
 	} elseif($type == 'loadingform') {
-		$message = "<form method=\"post\" action=\"$url\" id=\"loadingform\"><input type=\"hidden\" name=\"formhash\" value=\"".FORMHASH."\"><br />$message$extra<img src=\"static/image/admincp/ajax_loader.gif\" class=\"marginbot\" /><br />".
+		$message = "<form method=\"post\" action=\"$url\" id=\"loadingform\"><input type=\"hidden\" name=\"formhash\" value=\"".FORMHASH."\"><br />$message$extra<img src=\"".STATICURL."image/admincp/ajax_loader.gif\" class=\"marginbot\" /><br />".
 			'<p class="marginbot"><a href="###" onclick="$(\'loadingform\').submit();" class="lightlink">'.cplang('message_redirect').'</a></p></form><br /><script type="text/JavaScript">setTimeout("$(\'loadingform\').submit();", 2000);</script>';
 	} else {
-		$message .= $extra.($type == 'loading' ? '<img src="static/image/admincp/ajax_loader.gif" class="marginbot" />' : '');
+		$message .= $extra.($type == 'loading' ? '<img src="'.STATICURL.'image/admincp/ajax_loader.gif" class="marginbot" />' : '');
 		if($url) {
 			if($type == 'button') {
 				$message = "<br />$message<br /><p class=\"margintop\"><input type=\"submit\" class=\"btn\" name=\"submit\" value=\"".cplang('start')."\" onclick=\"location.href='$url'\" />";
@@ -310,6 +311,7 @@ function cpheader() {
 	$VERHASH = $_G['style']['verhash'];
 	$frame = getgpc('frame') != 'no' ? 1 : 0;
 	$charset = CHARSET;
+	$staticurl = STATICURL;
 	$basescript = ADMINSCRIPT;
 /*vot*/	$rtl_suffix = RTLSUFFIX;
 /*vot*/	$DISCUZ_LANG = DISCUZ_LANG;
@@ -321,17 +323,17 @@ function cpheader() {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset">
 <meta http-equiv="x-ua-compatible" content="ie=7" />
-<link href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" rel="stylesheet" type="text/css" />
+<!--vot--><link href="{$staticurl}image/admincp/admincp{$rtl_suffix}.css?{$_G['style']['verhash']}" rel="stylesheet" type="text/css" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
 <script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$VERHASH}"></script>
 </head>
 <body>
 <script type="text/JavaScript">
-var admincpfilename = '$basescript', IMGDIR = '$IMGDIR', STYLEID = '$STYLEID', VERHASH = '$VERHASH', IN_ADMINCP = true, ISFRAME = $frame, STATICURL='static/', SITEURL = '$_G[siteurl]', JSPATH = '{$_G[setting][jspath]}';
+var admincpfilename = '$basescript', IMGDIR = '$IMGDIR', STYLEID = '$STYLEID', VERHASH = '$VERHASH', IN_ADMINCP = true, ISFRAME = $frame, STATICURL='static/', SITEURL = '{$_G['siteurl']}', JSPATH = '{$_G['setting']['jspath']}';
 /*vot*/ var LANG = '{$DISCUZ_LANG}', LANGURL = '{$_G[langurl]}', LANGDIR = '{$_G[langdir]}', RTLSUFFIX = '$rtl_suffix';
 </script>
-<script src="{$_G[setting][jspath]}common.js?{$_G[style][verhash]}" type="text/javascript"></script>
-<script src="{$_G[setting][jspath]}admincp.js?{$_G[style][verhash]}" type="text/javascript"></script>
+<script src="{$_G['setting']['jspath']}common.js?{$_G['style']['verhash']}" type="text/javascript"></script>
+<script src="{$_G['setting']['jspath']}admincp.js?{$_G['style']['verhash']}" type="text/javascript"></script>
 <script type="text/javascript">
 if(ISFRAME && !parent.document.getElementById('leftmenu') && !parent.parent.document.getElementById('leftmenu')) {
 	redirect(admincpfilename + '?frames=yes&' + document.URL.substr(document.URL.indexOf(admincpfilename) + admincpfilename.length + 1));
@@ -353,15 +355,15 @@ function showsubmenu($title, $menus = array(), $right = '', $replace = array()) 
 /*vot*/		$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title, $replace).'</h3><div class="clear"></div><ul class="tab1">';
 		foreach($menus as $k => $menu) {
 			if(is_array($menu[0])) {
-				$s .= '<li id="addjs'.$k.'" class="'.($menu[1] ? 'current' : 'hasdropmenu').'" onmouseover="dropmenu(this);"><a href="#"><span>'.cplang($menu[0]['menu']).'<em>&nbsp;&nbsp;</em></span></a><div id="addjs'.$k.'child" class="dropmenu" style="display:none;">';
+				$s .= '<li id="addjs'.$k.'" class="'.($menu[1] ? 'current' : 'hasdropmenu').'" onmouseover="dropmenu(this);"><a href="#"><span>'.cplang($menu[0]['menu'], $replace).'<em>&nbsp;&nbsp;</em></span></a><div id="addjs'.$k.'child" class="dropmenu" style="display:none;">';
 				if(is_array($menu[0]['submenu'])) {
 					foreach($menu[0]['submenu'] as $submenu) {
-						$s .= $submenu[1] ? '<a href="'.ADMINSCRIPT.'?action='.$submenu[1].'" class="'.($submenu[2] ? 'current' : '').'" onclick="'.$submenu[3].'">'.cplang($submenu[0]).'</a>' : '<a><b>'.cplang($submenu[0]).'</b></a>';
+						$s .= $submenu[1] ? '<a href="'.ADMINSCRIPT.'?action='.$submenu[1].'" class="'.($submenu[2] ? 'current' : '').'" onclick="'.$submenu[3].'">'.cplang($submenu[0], $replace).'</a>' : '<a><b>'.cplang($submenu[0], $replace).'</b></a>';
 					}
 				}
 				$s .= '</div></li>';
 			} else {
-				$s .= '<li'.($menu[2] ? ' class="current"' : '').'><a href="'.(!$menu[4] ? ADMINSCRIPT.'?action='.$menu[1] : $menu[1]).'"'.(!empty($menu[3]) ? ' target="_blank"' : '').'><span>'.cplang($menu[0]).'</span></a></li>';
+				$s .= '<li'.($menu[2] ? ' class="current"' : '').'><a href="'.(!$menu[4] ? ADMINSCRIPT.'?action='.$menu[1] : $menu[1]).'"'.(!empty($menu[3]) ? ' target="_blank"' : '').'><span>'.cplang($menu[0], $replace).'</span></a></li>';
 			}
 		}
 		$s .= '</ul></div>';
@@ -403,7 +405,7 @@ function showsubmenuanchors($title, $menus = array(), $right = '') {
 		return;
 	}
 	echo <<<EOT
-<script type="text/JavaScript">var currentAnchor = '$GLOBALS[anchor]';</script>
+<script type="text/JavaScript">var currentAnchor = '{$GLOBALS['anchor']}';</script>
 EOT;
 	$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title).'</h3>';
 /*vot*/	$s .= '<div class="clear"></div>';
@@ -749,9 +751,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 		echo '<td class="vtop rowform"><p class="td27m">'.$name.'</p>'.$s.'</td>';
 		$_G['showsetting_multirow_n']++;
 		if($_G['showsetting_multirow_n'] == 2) {
-			if(empty($_G['showsetting_multirow_n'])) {
-				echo '</tr>';
-			}
+			echo '</tr>';
 			$_G['showsetting_multirow_n'] = 0;
 		}
 		return;
@@ -1094,8 +1094,8 @@ function getorders($alloworders, $default, $pre='') {
 		if(empty($_GET['ordersc'])) $_GET['ordersc'] = 'desc';
 	}
 
-	$orders['sql'] = " ORDER BY {$pre}$_GET[orderby] ";
-	$orders['urls'][] = "orderby=$_GET[orderby]";
+	$orders['sql'] = " ORDER BY {$pre}{$_GET['orderby']} ";
+	$orders['urls'][] = "orderby={$_GET['orderby']}";
 
 	if(!empty($_GET['ordersc']) && $_GET['ordersc'] == 'desc') {
 		$orders['urls'][] = 'ordersc=desc';
@@ -1112,7 +1112,7 @@ function blog_replynum_stat($start, $perpage) {
 
 	$next = false;
 	$updates = array();
-	$query = C::t('home_blog')->range($start, $perpage);
+	$query = C::t('home_blog')->range_blog($start, $perpage);
 	foreach($query as $value) {
 		$next = true;
 		$count = C::t('home_comment')->count_by_id_idtype($value['blogid'], 'blogid');
@@ -1247,47 +1247,47 @@ function rewritedata($alldata = 1) {
 	global $_G;
 	$data = array();
 	if(!$alldata) {
-		if(in_array('portal_topic', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('portal_topic', $_G['setting']['rewritestatus'])) {
 			$data['search']['portal_topic'] = "/".$_G['domain']['pregxprw']['portal']."\?mod\=topic&(amp;)?topic\=([^#]+?)?\"([^\>]*)\>/";
 			$data['replace']['portal_topic'] = 'rewriteoutput(\'portal_topic\', 0, $matches[1], $matches[3], $matches[4])';
 		}
 
-		if(in_array('portal_article', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('portal_article', $_G['setting']['rewritestatus'])) {
 			$data['search']['portal_article'] = "/".$_G['domain']['pregxprw']['portal']."\?mod\=view&(amp;)?aid\=(\d+)(&amp;page\=(\d+))?\"([^\>]*)\>/";
 			$data['replace']['portal_article'] = 'rewriteoutput(\'portal_article\', 0, $matches[1], $matches[3], $matches[5], $matches[6])';
 		}
 
-		if(in_array('forum_forumdisplay', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('forum_forumdisplay', $_G['setting']['rewritestatus'])) {
 			$data['search']['forum_forumdisplay'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=forumdisplay&(amp;)?fid\=(\w+)(&amp;page\=(\d+))?\"([^\>]*)\>/";
 			$data['replace']['forum_forumdisplay'] = 'rewriteoutput(\'forum_forumdisplay\', 0, $matches[1], $matches[3], $matches[5], $matches[6])';
 		}
 
-		if(in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
 			$data['search']['forum_viewthread'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=viewthread&(amp;)?tid\=(\d+)(&amp;extra\=(page\%3D(\d+))?)?(&amp;page\=(\d+))?\"([^\>]*)\>/";
 			$data['replace']['forum_viewthread'] = 'rewriteoutput(\'forum_viewthread\', 0, $matches[1], $matches[3], $matches[8], $matches[6], $matches[9])';
 		}
 
-		if(in_array('group_group', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('group_group', $_G['setting']['rewritestatus'])) {
 			$data['search']['group_group'] = "/".$_G['domain']['pregxprw']['forum']."\?mod\=group&(amp;)?fid\=(\d+)(&amp;page\=(\d+))?\"([^\>]*)\>/";
 			$data['replace']['group_group'] = 'rewriteoutput(\'group_group\', 0, $matches[1], $matches[3], $matches[5], $matches[6])';
 		}
 
-		if(in_array('home_space', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('home_space', $_G['setting']['rewritestatus'])) {
 			$data['search']['home_space'] = "/".$_G['domain']['pregxprw']['home']."\?mod=space&(amp;)?(uid\=(\d+)|username\=([^&]+?))\"([^\>]*)\>/";
 			$data['replace']['home_space'] = 'rewriteoutput(\'home_space\', 0, $matches[1], $matches[4], $matches[5], $matches[6])';
 		}
 
-		if(in_array('home_blog', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('home_blog', $_G['setting']['rewritestatus'])) {
 			$data['search']['home_blog'] = "/".$_G['domain']['pregxprw']['home']."\?mod=space&(amp;)?uid\=(\d+)&(amp;)?do=blog&(amp;)?id=(\d+)\"([^\>]*)\>/";
 			$data['replace']['home_blog'] = 'rewriteoutput(\'home_blog\', 0, $matches[1], $matches[3], $matches[6], $matches[7])';
 		}
 
-		if(in_array('forum_archiver', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('forum_archiver', $_G['setting']['rewritestatus'])) {
 			$data['search']['forum_archiver'] = "/<a href\=\"\?(fid|tid)\-(\d+)\.html(&page\=(\d+))?\"([^\>]*)\>/";
 			$data['replace']['forum_archiver'] = 'rewriteoutput(\'forum_archiver\', 0, $matches[1], $matches[2], $matches[4], $matches[5])';
 		}
 
-		if(in_array('plugin', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('plugin', $_G['setting']['rewritestatus'])) {
 			$data['search']['plugin'] = "/<a href\=\"plugin\.php\?id=([a-z]+[a-z0-9_]*):([a-z0-9_\-]+)(&amp;|&)?(.*?)?\"([^\>]*)\>/";
 			$data['replace']['plugin'] = 'rewriteoutput(\'plugin\', 0, $matches[1], $matches[2], $matches[3], $matches[4], $matches[5])';
 		}

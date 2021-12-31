@@ -1,5 +1,5 @@
 
-<!--{eval $focusid = getfocus_rand($_G[basescript]);}-->
+<!--{eval $focusid = getfocus_rand($_G['basescript']);}-->
 <!--{if $focusid !== null}-->
 	<!--{eval $focus = $_G['cache']['focus']['data'][$focusid];}-->
 	<div class="focus" id="focus">
@@ -32,15 +32,15 @@
 	<em>Powered by <strong><a href="http://www.discuz.net" target="_blank">Discuz!</a></strong> <em>$_G['setting']['version']</em><!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.comsenz.com/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}--></em> &nbsp;
 	<em>{lang copyright}</em>
 	<span class="pipe">|</span>
-<!-- vot -->	<!--{loop $_G['setting']['footernavs'] $nav}--><!--{if $nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
-			!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver'))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}--><!--{/loop}-->
+<!--vot-->	<!--{loop $_G['setting']['footernavs'] $nav}--><!--{if is_array($nav) && $nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
+			!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver'))}-->{$nav['code']}{$nav['navname']}</a><span class="pipe">|</span><!--{/if}--><!--{/loop}-->
 	<strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename']</a></strong>
 	<!--{if $_G['setting']['icp'] || $_G['setting']['mps']}-->( <!--{if $_G['setting']['icp']}--><a href="https://beian.miit.gov.cn/" target="_blank">$_G['setting']['icp']</a><!--{/if}--><!--{if $_G['setting']['mps']}--><!--{if $_G['setting']['icp']}--><span class="pipe">|</span><!--{/if}--><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=$_G['setting']['mpsid']" target="_blank"><img width="14" height="14" src="{IMGDIR}/ico_mps.png" />$_G['setting']['mps']</a><!--{/if}--> )<!--{/if}-->
 	<!--{hook/global_footerlink}-->
 	<!--{if $_G['setting']['statcode']}--><span class="pipe">| $_G['setting']['statcode']</span><!--{/if}-->
 	<!--{eval updatesession();}-->
 <!--vot--><div class="cl">
-	<strong>MultiLingual version</strong>, Rev. <strong>$_G['setting']['ml_revision']</strong>, &copy; 2009-<?php echo date(Y);?> <a href="http://codersclub.org/discuzx/" target="_blank">Valery Votintsev</a></p>
+	<strong>MultiLingual version</strong>, Rev. <strong>{$_G['setting']['ml_revision']}</strong>, &copy; 2008-<!--{date('Y')}--> <a href="https://codersclub.org/discuzx/" target="_blank">Valery Votintsev</a></p>
 	</div>
 </div>
 <!--{if $_G[uid] && !isset($_G['cookie']['checkpm'])}-->

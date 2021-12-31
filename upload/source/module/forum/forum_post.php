@@ -24,7 +24,7 @@ $sortid = intval(getgpc('sortid'));
 $typeid = intval(getgpc('typeid'));
 $special = intval(getgpc('special'));
 
-parse_str($_GET['extra'], $_GET['extra']);
+parse_str(getgpc('extra'), $_GET['extra']);
 $_GET['extra'] = http_build_query($_GET['extra']);
 
 $postinfo = array('subject' => '');
@@ -48,7 +48,7 @@ if($_G['forum']['status'] == 3) {
 	} elseif($status == 1) {
 		showmessage('forum_group_status_off');
 	} elseif($status == 2) {
-		showmessage('forum_group_noallowed', "forum.php?mod=group&fid=$_G[fid]");
+		showmessage('forum_group_noallowed', "forum.php?mod=group&fid={$_G['fid']}");
 	} elseif($status == 3) {
 		showmessage('forum_group_moderated');
 	} elseif($status == 4) {
@@ -90,7 +90,7 @@ if(!empty($_GET['cedit'])) {
 
 if($_GET['action'] == 'edit' || $_GET['action'] == 'reply') {
 
-	$thread = C::t('forum_thread')->fetch($_G['tid']);
+	$thread = C::t('forum_thread')->fetch_thread($_G['tid']);
 	if(!$_G['forum_auditstatuson'] && !($thread['displayorder']>=0 || (in_array($thread['displayorder'], array(-4, -2)) && $thread['authorid']==$_G['uid']))) {
 		$thread = array();
 	}
@@ -145,7 +145,7 @@ if($_G['forum']['status'] == 3) {
 periodscheck('postbanperiods');
 
 if($_G['forum']['password'] && $_G['forum']['password'] != $_G['cookie']['fidpw'.$_G['fid']]) {
-	showmessage('forum_passwd', "forum.php?mod=forumdisplay&fid=$_G[fid]");
+	showmessage('forum_passwd', "forum.php?mod=forumdisplay&fid={$_G['fid']}");
 }
 
 if(empty($_G['forum']['allowview'])) {
@@ -160,7 +160,7 @@ if(empty($_G['forum']['allowview'])) {
 
 formulaperm($_G['forum']['formulaperm']);
 
-if(!$_G['adminid'] && $_G['setting']['newbiespan'] && (!getuserprofile('lastpost') || TIMESTAMP - getuserprofile('lastpost') < $_G['setting']['newbiespan'] * 60) && TIMESTAMP - $_G['member']['regdate'] < $_G['setting']['newbiespan'] * 60) {
+if(in_array($_G['adminid'], array(0, -1)) && $_G['setting']['newbiespan'] && (!getuserprofile('lastpost') || TIMESTAMP - getuserprofile('lastpost') < $_G['setting']['newbiespan'] * 60) && TIMESTAMP - getglobal('member/regdate') < $_G['setting']['newbiespan'] * 60) {
 	showmessage('post_newbie_span', '', array('newbiespan' => $_G['setting']['newbiespan']));
 }
 
@@ -203,9 +203,9 @@ $notifycheck = empty($emailnotify) ? '' : 'checked="checked"';
 $stickcheck = empty($sticktopic) ? '' : 'checked="checked"';
 $digestcheck = empty($addtodigest) ? '' : 'checked="checked"';
 
-$subject = isset($_GET['subject']) ? dhtmlspecialchars(censor(trim($_GET['subject']))) : '';
+$subject = isset($_GET['subject']) ? dhtmlspecialchars(censor(trim($_GET['subject']), NULL, FALSE, FALSE)) : '';
 $subject = !empty($subject) ? str_replace("\t", ' ', $subject) : $subject;
-$message = isset($_GET['message']) ? censor($_GET['message']) : '';
+$message = isset($_GET['message']) ? censor($_GET['message'], NULL, FALSE, FALSE) : '';
 $polloptions = isset($polloptions) ? censor(trim($polloptions)) : '';
 $readperm = isset($_GET['readperm']) ? intval($_GET['readperm']) : 0;
 $price = isset($_GET['price']) ? intval($_GET['price']) : 0;
@@ -232,8 +232,8 @@ $_G['forum']['threadplugin'] = dunserialize($_G['forum']['threadplugin']);
 
 if($specialextra && $_G['group']['allowpost'] && $_G['setting']['threadplugins'] &&
 	(!array_key_exists($specialextra, $_G['setting']['threadplugins']) ||
-	!@in_array($specialextra, is_array($_G['forum']['threadplugin']) ? $_G['forum']['threadplugin'] : dunserialize($_G['forum']['threadplugin'])) ||
-	!@in_array($specialextra, $_G['group']['allowthreadplugin']))) {
+	!in_array($specialextra, is_array($_G['forum']['threadplugin']) ? $_G['forum']['threadplugin'] : (is_array(dunserialize($_G['forum']['threadplugin'])) ? dunserialize($_G['forum']['threadplugin']) : array())) ||
+	(is_array($_G['group']['allowthreadplugin']) && !in_array($specialextra, $_G['group']['allowthreadplugin'])))) {
 	$specialextra = '';
 }
 if($special == 3 && !isset($_G['setting']['extcredits'][$_G['setting']['creditstrans']])) {
@@ -255,7 +255,7 @@ if($_GET['action'] == 'newthread' && $_G['forum']['allowspecialonly'] && !$speci
 	} elseif($_G['group']['allowpost'] && $_G['setting']['threadplugins'] && $_G['group']['allowthreadplugin']) {
 		if(empty($_GET['specialextra'])) {
 			foreach($_G['forum']['threadplugin'] as $tpid) {
-				if(array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])){
+				if(array_key_exists($tpid, $_G['setting']['threadplugins']) && is_array($_G['group']['allowthreadplugin']) && in_array($tpid, $_G['group']['allowthreadplugin'])){
 					$specialextra=$tpid;
 					break;
 				}
@@ -303,7 +303,7 @@ if($_GET['action'] == 'newthread') {
 	$policykey = '';
 }
 if($policykey) {
-	$postcredits = $_G['forum'][$policykey.'credits'] ? $_G['forum'][$policykey.'credits'] : $_G['setting']['creditspolicy'][$policykey];
+	$postcredits = getglobal('forum/'.$policykey.'credits') ? getglobal('forum/'.$policykey.'credits') : $_G['setting']['creditspolicy'][$policykey];
 }
 
 $albumlist = array();
@@ -316,8 +316,8 @@ if(helper_access::check_module('album') && $_G['group']['allowupload'] && $_G['u
 	}
 }
 
-$posturl = "action=$_GET[action]&fid=$_G[fid]".
-	(!empty($_G['tid']) ? "&tid=$_G[tid]" : '').
+$posturl = "action={$_GET['action']}&fid={$_G['fid']}".
+	(!empty($_G['tid']) ? "&tid={$_G['tid']}" : '').
 	(!empty($pid) ? "&pid=$pid" : '').
 	(!empty($special) ? "&special=$special" : '').
 	(!empty($sortid) ? "&sortid=$sortid" : '').
@@ -375,7 +375,7 @@ function recent_use_tag() {
 	if($tagarray) {
 		$query = C::t('common_tag')->fetch_all(array_keys($tagarray));
 		foreach($query as $result) {
-			$tagarray[$result[tagid]] = $result['tagname'];
+			$tagarray[$result['tagid']] = $result['tagname'];
 		}
 	}
 	return $tagarray;

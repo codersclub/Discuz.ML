@@ -221,7 +221,7 @@ if($op == 'block') {
 	$blockclass = $block['blockclass'] ? $block['blockclass'] : $_GET['classname'];
 	$arr = explode('_', $blockclass);
 	if(count($arr) == 2) {
-		$blockclassname = $_G['cache']['blockclass'][$arr[0]]['subs'][$blockclass]['name'];
+		$blockclassname = is_array($_G['cache']['blockclass'][$arr[0]]['subs'][$blockclass]) ? $_G['cache']['blockclass'][$arr[0]]['subs'][$blockclass]['name'] : '';
 	}
 	$blockclassname = empty($blockclassname) ? $blockclass : $blockclassname;
 
@@ -335,8 +335,8 @@ if($op == 'block') {
 	$samplecode = '';
 	if($block['hidedisplay']) {
 		$samplecode = '<ul>\n'
-			.'<!--{loop $_G[block_1] $key $value}-->\n'
-			.'<li><a href="$value[url]">$value[title]</a></li>\n'
+			.'<!--{loop $_G[\'block_1\'] $key $value}-->\n'
+			.'<li><a href="{$value[\'url\']}">$value[\'title\']</a></li>\n'
 			.'<!--{/loop}-->\n'
 			.'</ul>';
 		$samplecode = dhtmlspecialchars($samplecode);
@@ -679,7 +679,7 @@ if($op == 'block') {
 			if($sendreasonpm) {
 				require_once libfile('function/misc');
 				if((in_array($_GET['idtype'], array('tids', 'tid', 'gtid')))) {
-					$sendreasonpmcontent = C::t('forum_thread')->fetch($item['id']);
+					$sendreasonpmcontent = C::t('forum_thread')->fetch_thread($item['id']);
 					sendreasonpm($sendreasonpmcontent, 'recommend_note_post', array(
 						'tid' => $item['id'],
 						'subject' => $sendreasonpmcontent['subject'],
@@ -696,7 +696,7 @@ if($op == 'block') {
 			if($showrecommendrate) {
 				showmessage('do_success', dreferer('portal.php'), array(), array('showdialog' => true, 'closetime' => 0.01, 'extrajs' =>
 					'<script type="text/javascript" reload="1">
-					showWindow("rate", "forum.php?mod=misc&action=rate&tid='.$item[id].'&pid='.$_GET[recommend_thread_pid].'&showratetip=1", "get", -1);
+					showWindow("rate", "forum.php?mod=misc&action=rate&tid='.$item['id'].'&pid='.$_GET['recommend_thread_pid'].'&showratetip=1", "get", -1);
 					</script>'));
 			} elseif($_GET['showrecommendtip']) {
 				showmessage('do_success', dreferer('portal.php'), array(), array('showdialog' => true, 'closetime' => true, 'extrajs' =>
@@ -806,7 +806,7 @@ if($op == 'block') {
 		$setarr = array('classname'=>getstr($_POST['classname'], 100, 0, 0, 0, -1));
 		C::t('common_block')->update($bid, $setarr);
 	}
-	C::t('common_block')->clear_cache($bid);
+	C::t('common_block')->clear_blockcache($bid);
 
 	showmessage('do_success');
 } elseif ($op == 'saveblocktitle') {
@@ -827,7 +827,7 @@ if($op == 'block') {
 		C::t('common_block')->update($bid, $setarr);
 	}
 
-	C::t('common_block')->clear_cache($bid);
+	C::t('common_block')->clear_blockcache($bid);
 
 	showmessage('do_success');
 } elseif ($op == 'convert') {
@@ -993,7 +993,9 @@ function block_convert($bid, $toblockclass) {
 					$blockstyle['fields'][$key] = str_replace($convertrule['searchkeys'], $convertrule['replacekeys'], $value);
 				}
 
-				$fun = create_function('&$v','$v = "{".$v."}";');
+				$fun = function(&$v) {
+					$v = "{".$v."}";
+				};
 				array_walk($convertrule['searchkeys'], $fun);
 				array_walk($convertrule['replacekeys'], $fun);
 

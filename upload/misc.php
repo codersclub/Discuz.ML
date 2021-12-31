@@ -52,11 +52,13 @@ require './source/class/class_core.php';
 
 $discuz = C::app();
 
-$discuz->reject_robot();
+if(isset($_GET['mod']) && $_GET['mod'] != 'tag'){
+	$discuz->reject_robot();
+}
 $modarray = array('seccode', 'secqaa', 'initsys', 'invite', 'faq', 'report',
 				'swfupload', 'stat', 'ranklist', 'buyinvitecode',
 				'tag', 'diyhelp', 'mobile', 'patch', 'getatuser', 'imgcropper',
-/*vot*/				'userstatus', 'signin', 'googlemap');
+/*vot*/				'userstatus', 'secmobseccode', 'googlemap');
 
 $modcachelist = array(
 	'ranklist' => array('forums', 'diytemplatename'),
@@ -83,9 +85,6 @@ switch ($mod) {
 		$discuz->init_cron = false;
 		$discuz->init_session = false;
 		break;
-	case 'updatecache':
-		$discuz->init_cron = false;
-		$discuz->init_session = false;
 	default:
 		break;
 }

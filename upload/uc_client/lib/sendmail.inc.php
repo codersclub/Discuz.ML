@@ -19,17 +19,20 @@ $appname = $this->base->cache['apps'][$mail['appid']]['name'];
 $mail['subject'] = '=?'.$mail['charset'].'?B?'.base64_encode(str_replace("\r", '', str_replace("\n", '', '['.$appname.'] '.$mail['subject']))).'?=';
 $mail['message'] = chunk_split(base64_encode(str_replace("\r\n.", " \r\n..", str_replace("\n", "\r\n", str_replace("\r", "\n", str_replace("\r\n", "\n", str_replace("\n\r", "\r", $mail['message'])))))));
 
-$email_from = $mail['frommail'] == '' ? '=?'.$mail['charset'].'?B?'.base64_encode($appname)."?= <$mail_setting[maildefault]>" : (preg_match('/^(.+?) \<(.+?)\>$/',$email_from, $from) ? '=?'.$mail['charset'].'?B?'.base64_encode($from[1])."?= <$from[2]>" : $mail['frommail']);
+$email_from = $mail['frommail'] == '' ? '=?'.$mail['charset'].'?B?'.base64_encode($appname)."?= <{$mail_setting['maildefault']}>" : (preg_match('/^(.+?) \<(.+?)\>$/',$email_from, $from) ? '=?'.$mail['charset'].'?B?'.base64_encode($from[1])."?= <$from[2]>" : $mail['frommail']);
 
 foreach(explode(',', $mail['email_to']) as $touser) {
 	$tousers[] = preg_match('/^(.+?) \<(.+?)\>$/',$touser, $to) ? ($mailusername ? '=?'.$mail['charset'].'?B?'.base64_encode($to[1])."?= <$to[2]>" : $to[2]) : $touser;
 }
 
+$tousers = is_array($tousers) ? $tousers : array($tousers);
+
 $mail['email_to'] = implode(',', $tousers);
 
-$headers = "From: $email_from{$maildelimiter}X-Priority: 3{$maildelimiter}X-Mailer: Discuz! $version{$maildelimiter}MIME-Version: 1.0{$maildelimiter}Content-type: text/".($mail['htmlon'] ? 'html' : 'plain')."; charset=$mail[charset]{$maildelimiter}Content-Transfer-Encoding: base64{$maildelimiter}";
+$headers = "From: $email_from{$maildelimiter}X-Priority: 3{$maildelimiter}X-Mailer: Discuz! $version{$maildelimiter}MIME-Version: 1.0{$maildelimiter}Content-type: text/".($mail['htmlon'] ? 'html' : 'plain')."; charset={$mail['charset']}{$maildelimiter}Content-Transfer-Encoding: base64{$maildelimiter}";
 
 $mail_setting['mailport'] = $mail_setting['mailport'] ? $mail_setting['mailport'] : 25;
+$mail_setting['mailtimeout'] = isset($mail_setting['mailtimeout']) ? intval($mail_setting['mailtimeout']) : 30;
 
 if($mail_setting['mailsend'] == 1 && function_exists('mail')) {
 
@@ -37,11 +40,13 @@ if($mail_setting['mailsend'] == 1 && function_exists('mail')) {
 
 } elseif($mail_setting['mailsend'] == 2) {
 
-	if(!$fp = fsocketopen($mail_setting['mailserver'], $mail_setting['mailport'], $errno, $errstr, 30)) {
+	if(!$fp = fsocketopen($mail_setting['mailserver'], $mail_setting['mailport'], $errno, $errstr, $mail_setting['mailtimeout'])) {
 		return false;
 	}
 
  	stream_set_blocking($fp, true);
+	// 新增发送超时设置, 避免连接后无响应导致吊死
+	stream_set_timeout($fp, $mail_setting['mailtimeout']);
 
 	$lastmessage = fgets($fp, 512);
 	if(substr($lastmessage, 0, 3) != '220') {
@@ -120,7 +125,7 @@ if($mail_setting['mailsend'] == 1 && function_exists('mail')) {
 	fputs($fp, "Subject: ".$mail['subject']."\r\n");
 	fputs($fp, $headers."\r\n");
 	fputs($fp, "\r\n\r\n");
-	fputs($fp, "$mail[message]\r\n.\r\n");
+	fputs($fp, "{$mail['message']}\r\n.\r\n");
 	$lastmessage = fgets($fp, 512);
 	if(substr($lastmessage, 0, 3) != 250) {
 		return false;

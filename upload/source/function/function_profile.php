@@ -18,7 +18,7 @@ function profile_setting($fieldid, $space=array(), $showstatus=false, $ignoreunc
 	if(empty($_G['cache']['profilesetting'])) {
 		loadcache('profilesetting');
 	}
-	$field = $_G['cache']['profilesetting'][$fieldid];
+	$field = getglobal('cache/profilesetting/'.$fieldid);
 	if(empty($field) || !$field['available'] || in_array($fieldid, array('uid', 'constellation', 'zodiac', 'birthmonth', 'birthyear', 'birthprovince', 'birthdist', 'birthcommunity', 'resideprovince', 'residedist', 'residecommunity'))) {
 		return '';
 	}
@@ -81,7 +81,7 @@ if(trim($field['choices'])) {
 			$days = 31;
 		} elseif(in_array($space['birthmonth'], array(4, 6, 9, 11))) {
 			$days = 30;
-		} elseif($space['birthyear'] && (($space['birthyear'] % 400 == 0) || ($space['birthyear'] % 4 == 0 && $space['birthyear'] % 400 != 0))) {
+		} elseif($space['birthyear'] && (($space['birthyear'] % 400 == 0) || ($space['birthyear'] % 4 == 0 && $space['birthyear'] % 100 != 0))) {
 			$days = 29;
 		} else {
 			$days = 28;
@@ -229,21 +229,21 @@ if(trim($field['choices'])) {
 	}
 	$html .= !$ignoreshowerror ? "<div class=\"rq mtn\" id=\"showerror_$fieldid\"></div>" : '';
 	if($showstatus) {
-		$html .= "<p class=\"d\">$value[description]";
-		if($space[$fieldid]=='' && $value['unchangeable']) {
-			$html .= lang('spacecp', 'profile_unchangeable');
+		$tips = isset($field['description']) ? $field['description'] : '';
+		if($space[$fieldid] == '' && !empty($field['unchangeable'])) {
+			$tips .= (empty($tips) ? '' : ' ').lang('spacecp', 'profile_unchangeable');
 		}
 		if($verifyvalue !== null) {
 			if($field['formtype'] == 'file') {
 				$imgurl = getglobal('setting/attachurl').'./profile/'.$verifyvalue;
 				$verifyvalue = "<img src='$imgurl' alt='$imgurl' style='max-width: 500px;'/>";
 			}
-			$html .= "<strong>".lang('spacecp', 'profile_is_verifying')." (<a href=\"#\" onclick=\"display('newvalue_$fieldid');return false;\">".lang('spacecp', 'profile_mypost')."</a>)</strong>"
+			$tips .= (empty($tips) ? '' : ' ')."<strong>".lang('spacecp', 'profile_is_verifying')." (<a href=\"#\" onclick=\"display('newvalue_$fieldid');return false;\">".lang('spacecp', 'profile_mypost')."</a>)</strong>"
 				."<p id=\"newvalue_$fieldid\" style=\"display:none\">".$verifyvalue."</p>";
 		} elseif($field['needverify']) {
-			$html .= lang('spacecp', 'profile_need_verifying');
+			$tips .= (empty($tips) ? '' : ' ').lang('spacecp', 'profile_need_verifying');
 		}
-		$html .= '</p>';
+		$html .= '<p class="d">' . $tips . '</p>';
 	}
 
 	return $html;
@@ -430,7 +430,7 @@ function countprofileprogress($uid = 0) {
 	global $_G;
 
 	$uid = intval(!$uid ? $_G['uid'] : $uid);
-	if(($profilegroup = C::t('common_setting')->fetch('profilegroup', true))) {
+	if(($profilegroup = C::t('common_setting')->fetch_setting('profilegroup', true))) {
 		$fields = array();
 		foreach($profilegroup as $type => $value) {
 			foreach($value['field'] as $key => $field) {

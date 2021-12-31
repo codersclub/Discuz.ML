@@ -32,6 +32,7 @@ if(empty($_GET['action'])) {
 	$medalcredits = array();
 	foreach(C::t('forum_medal')->fetch_all_data(1) as $medal) {
 		$medal['permission'] = medalformulaperm(serialize(array('medal' => dunserialize($medal['permission']))), 1);
+		$medal['image'] = preg_match('/^https?:\/\//is', $medal['image']) ? $medal['image'] : STATICURL.'image/common/'.$medal['image'];
 		if($medal['price']) {
 			$medal['credit'] = $medal['credit'] ? $medal['credit'] : $_G['setting']['creditstransextra'][3];
 			$medalcredits[$medal['credit']] = $medal['credit'];
@@ -77,7 +78,7 @@ if(empty($_GET['action'])) {
 	}
 
 	$applysucceed = FALSE;
-	$medalpermission = $medal['permission'] ? dunserialize($medal['permission']) : '';
+	$medalpermission = $medal['permission'] ? dunserialize($medal['permission']) : array();
 	if($medalpermission[0] || $medalpermission['usergroupallow']) {
 		include libfile('function/forum');
 		medalformulaperm(serialize(array('medal' => $medalpermission)), 1);
@@ -97,7 +98,7 @@ if(empty($_GET['action'])) {
 			if($medal['price']) {
 				$medal['credit'] = $medal['credit'] ? $medal['credit'] : $_G['setting']['creditstransextra'][3];
 				if($medal['price'] > getuserprofile('extcredits'.$medal['credit'])) {
-					showmessage('medal_not_get_credit', '', array('credit' => $_G['setting']['extcredits'][$medal[credit]][title]));
+					showmessage('medal_not_get_credit', '', array('credit' => $_G['setting']['extcredits'][$medal['credit']]['title']));
 				}
 				updatemembercount($_G['uid'], array($medal['credit'] => -$medal['price']), true, 'BME', $medal['medalid']);
 			}
@@ -133,6 +134,7 @@ if(empty($_GET['action'])) {
 
 	include libfile('function/forum');
 	foreach(C::t('forum_medal')->fetch_all_data(1) as $medal) {
+		$medal['image'] = preg_match('/^https?:\/\//is', $medal['image']) ? $medal['image'] : STATICURL.'image/common/'.$medal['image'];
 		$medallist[$medal['medalid']] = $medal;
 	}
 

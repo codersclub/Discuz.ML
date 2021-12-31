@@ -41,6 +41,8 @@ define('QR_PNG_MAXIMUM_SIZE', 1024);
 
 class QRtools {
 
+	public static $frames = array();
+
 	public static function binarize($frame) {
 		$len = count($frame);
 		foreach ($frame as &$frameLine) {
@@ -110,9 +112,9 @@ class QRtools {
 		if (QR_LOG_DIR !== false) {
 			if ($err != '') {
 				if ($outfile !== false) {
-					file_put_contents(QR_LOG_DIR . basename($outfile) . '-errors.txt', date('Y-m-d H:i:s') . ': ' . $err, FILE_APPEND);
+					file_put_contents(QR_LOG_DIR . basename($outfile) . '-errors.txt', date('Y-m-d H:i:s') . ': ' . $err, FILE_APPEND | LOCK_EX);
 				} else {
-					file_put_contents(QR_LOG_DIR . 'errors.txt', date('Y-m-d H:i:s') . ': ' . $err, FILE_APPEND);
+					file_put_contents(QR_LOG_DIR . 'errors.txt', date('Y-m-d H:i:s') . ': ' . $err, FILE_APPEND | LOCK_EX);
 				}
 			}
 		}
@@ -128,13 +130,15 @@ class QRtools {
 	}
 
 	public static function markTime($markerId) {
+		global $qr_time_bench;
 		list($usec, $sec) = explode(" ", microtime());
 		$time = ((float) $usec + (float) $sec);
 
-		if (!isset($GLOBALS['qr_time_bench']))
-			$GLOBALS['qr_time_bench'] = array();
+		if (!isset($qr_time_bench)) {
+			$qr_time_bench = array();
+		}
 
-		$GLOBALS['qr_time_bench'][$markerId] = $time;
+		$qr_time_bench[$markerId] = $time;
 	}
 
 	public static function timeBenchmark() {
@@ -617,7 +621,7 @@ class QRspec {
 					self::$frames[$version] = self::unserial(file_get_contents($fileName));
 				} else {
 					self::$frames[$version] = self::createFrame($version);
-					file_put_contents($fileName, self::serial(self::$frames[$version]));
+					file_put_contents($fileName, self::serial(self::$frames[$version]), LOCK_EX);
 				}
 			} else {
 				self::$frames[$version] = self::createFrame($version);
@@ -1041,7 +1045,7 @@ class QRinput {
 		$buf = array($size, $index, $parity);
 
 		try {
-			$entry = new QRinputItem(QR_MODE_STRUCTURE, 3, buf);
+			$entry = new QRinputItem(QR_MODE_STRUCTURE, 3, $buf);
 			array_unshift($this->items, $entry);
 			return 0;
 		} catch (Exception $e) {
@@ -1131,7 +1135,7 @@ class QRinput {
 		return $size * 8;
 	}
 
-	public function estimateBitsModeKanji($size) {
+	public static function estimateBitsModeKanji($size) {
 		return (int) (($size / 2) * 13);
 	}
 
@@ -2073,7 +2077,7 @@ class QRmask {
 				$bitMask = $this->generateMaskNo($maskNo, $width, $s, $d);
 				if (!file_exists(QR_CACHE_DIR . 'mask_' . $maskNo))
 					mkdir(QR_CACHE_DIR . 'mask_' . $maskNo);
-				file_put_contents($fileName, self::serial($bitMask));
+				file_put_contents($fileName, self::serial($bitMask), LOCK_EX);
 			}
 		} else {
 			$bitMask = $this->generateMaskNo($maskNo, $width, $s, $d);
@@ -2442,7 +2446,7 @@ class QRcode {
 	}
 
 	public function encodeString8bit($string, $version, $level) {
-		if (string == NULL) {
+		if ($string == NULL) {
 			throw new Exception('empty string!');
 			return NULL;
 		}
@@ -2645,7 +2649,7 @@ class QRencode {
 		QRtools::markTime('after_encode');
 
 		if ($outfile !== false) {
-			file_put_contents($outfile, join("\n", QRtools::binarize($code->data)));
+			file_put_contents($outfile, join("\n", QRtools::binarize($code->data)), LOCK_EX);
 		} else {
 			return QRtools::binarize($code->data);
 		}

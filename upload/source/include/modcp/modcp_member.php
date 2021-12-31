@@ -48,8 +48,12 @@ if($op == 'edit') {
 
 			C::t('common_member_profile')->update($member['uid'], array('bio' => $biohtmlnew));
 			C::t('common_member_field_forum')->update($member['uid'], array('sightml' => $sightmlnew));
+			// 用户信息变更记录
+			if($_G['setting']['profilehistory']) {
+				C::t('common_member_profile_history')->insert(array('uid' => intval($member['uid']), 'dateline' => time(), 'bio' => $biohtmlnew));
+			}
 		}
-		acpmsg('members_edit_succeed', "$cpscript?mod=modcp&action=$_GET[action]&op=$op");
+		acpmsg('members_edit_succeed', "$cpscript?mod=modcp&action={$_GET['action']}&op=$op");
 
 	} elseif($member) {
 
@@ -98,7 +102,7 @@ if($op == 'edit') {
 			} else {
 				$setarr['groupexpiry'] = 0;
 			}
-			if(!$member['adminid']) {
+			if(in_array($member['adminid'], array(0, -1))) {
 				$member_status = C::t('common_member_status')->fetch($member['uid']);
 			}
 			$adminidnew = -1;
@@ -131,7 +135,7 @@ if($op == 'edit') {
 		C::t('common_member_field_forum')->update($member['uid'], array('groupterms' => serialize($member['groupterms'])));
 		if($_GET['bannew'] == 4) {
 			$notearr = array(
-				'user' => "<a href=\"home.php?mod=space&uid=$_G[uid]\">$_G[username]</a>",
+				'user' => "<a href=\"home.php?mod=space&uid={$_G['uid']}\">{$_G['username']}</a>",
 				'day' => $_GET['banexpirynew'],
 				'reason' => $reason,
 				'from_id' => 0,
@@ -141,7 +145,7 @@ if($op == 'edit') {
 		}
 		if($_GET['bannew'] == 5) {
 			$notearr = array(
-				'user' => "<a href=\"home.php?mod=space&uid=$_G[uid]\">$_G[username]</a>",
+				'user' => "<a href=\"home.php?mod=space&uid={$_G['uid']}\">{$_G['username']}</a>",
 				'day' => $_GET['banexpirynew'],
 				'reason' => $reason,
 				'from_id' => 0,
@@ -154,7 +158,7 @@ if($op == 'edit') {
 			crime('recordaction', $member['uid'], ($_GET['bannew'] == 4 ? 'crime_banspeak' : 'crime_banvisit'), $reason);
 		}
 
-		acpmsg('modcp_member_ban_succeed', "$cpscript?mod=modcp&action=$_GET[action]&op=$op");
+		acpmsg('modcp_member_ban_succeed', "$cpscript?mod=modcp&action={$_GET['action']}&op=$op");
 
 	}
 

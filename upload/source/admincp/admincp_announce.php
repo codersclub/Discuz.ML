@@ -35,15 +35,15 @@ if(empty($operation)) {
 /*vot*/			$announce['starttime'] = $announce['starttime'] ? dgmdate($announce['starttime'], 'Y-m-d H:i') : $lang['unlimited'];
 /*vot*/			$announce['endtime'] = $announce['endtime'] ? dgmdate($announce['endtime'], 'Y-m-d H:i') : $lang['unlimited'];
 			showtablerow('', array('class="td25"', 'class="td28"'), array(
-				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$announce[id]\" $disabled>",
-				"<input type=\"text\" class=\"txt\" name=\"displayordernew[{$announce[id]}]\" value=\"$announce[displayorder]\" size=\"2\" $disabled>",
-				"<a href=\"./home.php?mod=space&username=".rawurlencode($announce['author'])."\" target=\"_blank\">$announce[author]</a>",
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"{$announce['id']}\" $disabled>",
+				"<input type=\"text\" class=\"txt\" name=\"displayordernew[{$announce['id']}]\" value=\"{$announce['displayorder']}\" size=\"2\" $disabled>",
+				"<a href=\"./home.php?mod=space&username=".rawurlencode($announce['author'])."\" target=\"_blank\">{$announce['author']}</a>",
 				$announce['subject'],
 				cutstr(strip_tags($announce['message']), 20),
 				$announce_type[$announce['type']],
 				$announce['starttime'],
 				$announce['endtime'],
-				"<a href=\"".ADMINSCRIPT."?action=announce&operation=edit&announceid=$announce[id]\" $disabled>$lang[edit]</a>"
+				"<a href=\"".ADMINSCRIPT."?action=announce&operation=edit&announceid={$announce['id']}\" $disabled>{$lang['edit']}</a>"
 			));
 		}
 		showsubmit('announcesubmit', 'submit', 'select_all');
@@ -81,7 +81,7 @@ if(empty($operation)) {
 		));
 		showformheader('announce&operation=add');
 		showtableheader('announce_add');
-		showsetting($lang[subject], 'newsubject', '', 'htmltext');
+		showsetting($lang['subject'], 'newsubject', '', 'htmltext');
 		showsetting($lang['start_time'], 'newstarttime', $newstarttime, 'calendar', '', 0, '', 1);
 		showsetting($lang['end_time'], 'newendtime', $newendtime, 'calendar', '', 0, '', 1);
 		showsetting('announce_type', array('newtype', array(
@@ -159,7 +159,7 @@ if(empty($operation)) {
 		showtableheader();
 		/*search={"announce":"action=announce"}*/
 		showtitle('announce_edit');
-		showsetting($lang['subject'], 'newsubject', $announce[subject], 'htmltext');
+		showsetting($lang['subject'], 'newsubject', $announce['subject'], 'htmltext');
 		showsetting('start_time', 'starttimenew', $announce['starttime'], 'calendar', '', 0, '', 1);
 		showsetting('end_time', 'endtimenew', $announce['endtime'], 'calendar', '', 0, '', 1);
 		showsetting('announce_type', array('typenew', array(
@@ -206,6 +206,6 @@ if(empty($operation)) {
 	}
 
 }
-echo '<script type="text/javascript" src="static/js/calendar.js"></script>';
+echo '<script type="text/javascript" src="' . STATICURL . 'js/calendar.js"></script>';
 
 ?>

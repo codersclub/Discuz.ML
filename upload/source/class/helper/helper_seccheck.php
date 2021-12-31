@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 
 class helper_seccheck {
 
-	private function _check($type) {
+	private static function _check($type) {
 		global $_G;
 		$secappend = '';
 		if(!defined('IN_MOBILE')) {
@@ -47,7 +47,7 @@ class helper_seccheck {
 		return $seccheck;
 	}
 
-	function _create($type, $code = '') {
+	private static function _create($type, $code = '') {
 		global $_G;
 		$secappend = '';
 		if(!defined('IN_MOBILE')) {
@@ -324,7 +324,7 @@ class helper_seccheck {
 		$seccheckrule = & $_G['setting']['seccodedata']['rule']['password'];
 		return array(
 			$seccheckrule['allow'] && (!$_G['setting']['seccodedata']['minposts'] || getuserprofile('posts') < $_G['setting']['seccodedata']['minposts']),
-			$_G['setting']['secqaa']['status'] & 4 && (!$_G['setting']['seccodedata']['minposts'] || getuserprofile('posts') < $_G['setting']['seccodedata']['minposts'])
+			$_G['setting']['secqaa']['status'] & 4 && (!$_G['setting']['secqaa']['minposts'] || getuserprofile('posts') < $_G['setting']['secqaa']['minposts'])
 		);
 	}
 

@@ -21,7 +21,16 @@ class table_portal_category_permission extends discuz_table
 		parent::__construct();
 	}
 
-	public function fetch($catid, $uid){
+	public function fetch($id, $force_from_db = false) {
+		if (defined('DISCUZ_DEPRECATED')) {
+			throw new Exception('NotImplementedException');
+			return parent::fetch($id, $force_from_db);
+		} else {
+			return $this->fetch_permission($id, $force_from_db);
+		}
+	}
+
+	public function fetch_permission($catid, $uid){
 		return ($catid = dintval($catid)) && ($uid = dintval($uid)) ? DB::fetch_first('SELECT * FROM %t WHERE catid=%d AND uid=%d', array($this->_table, $catid, $uid)) : array();
 	}
 
@@ -81,7 +90,7 @@ class table_portal_category_permission extends discuz_table
 				$inheritedcatid = !empty($user['inheritedcatid']) ? $user['inheritedcatid'] : ($upid ? $upid : 0);
 				foreach ($catids as $catid) {
 					if($catid) {
-						$perms[] = "('$catid','$user[uid]','$user[allowpublish]','$user[allowmanage]','$inheritedcatid')";
+						$perms[] = "('$catid','{$user['uid']}','{$user['allowpublish']}','{$user['allowmanage']}','$inheritedcatid')";
 						$inheritedcatid = empty($inheritedcatid) ? $catid : $inheritedcatid;
 					}
 				}

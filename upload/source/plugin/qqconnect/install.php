@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-$connect = C::t('common_setting')->fetch('connect', true);
+$connect = C::t('common_setting')->fetch_setting('connect', true);
 
 $sql = <<<EOF
 
@@ -21,12 +21,12 @@ CREATE TABLE IF NOT EXISTS pre_common_member_connect (
   `conuin` varchar(255) NOT NULL default '',
   `conuinsecret` varchar(255) NOT NULL default '',
   `conopenid` varchar(255) NOT NULL default '',
-  `conisfeed` tinyint(1) unsigned NOT NULL default '0',
-  `conispublishfeed` tinyint(1) unsigned NOT NULL default '0',
-  `conispublisht` tinyint(1) unsigned NOT NULL default '0',
-  `conisregister` tinyint(1) unsigned NOT NULL default '0',
-  `conisqzoneavatar` tinyint(1) unsigned NOT NULL default '0',
-  `conisqqshow` tinyint(1) unsigned NOT NULL default '0',
+  `conisfeed` tinyint(1) NOT NULL default '0',
+  `conispublishfeed` tinyint(1) NOT NULL default '0',
+  `conispublisht` tinyint(1) NOT NULL default '0',
+  `conisregister` tinyint(1) NOT NULL default '0',
+  `conisqzoneavatar` tinyint(1) NOT NULL default '0',
+  `conisqqshow` tinyint(1) NOT NULL default '0',
   `conuintoken` char(32) NOT NULL DEFAULT '',
   PRIMARY KEY  (`uid`),
   KEY `conuin` (`conuin`),
@@ -101,21 +101,20 @@ CREATE TABLE IF NOT EXISTS pre_common_connect_guest (
 ) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS `pre_connect_disktask` (
-  `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Task ID',
-  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Attachment ID',
-  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'User ID',
-  `openid` varchar(255) NOT NULL DEFAULT '' COMMENT 'openId',
-  `filename` varchar(255) NOT NULL DEFAULT '' COMMENT 'Attachment Name',
-  `verifycode` varchar(255) NOT NULL DEFAULT '' COMMENT 'Download verification code',
-  `status` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Download Status',
-  `dateline` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Add the time of the task',
-  `downloadtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Download time',
-  `extra` text COMMENT 'Reserved field',
+  `taskid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `aid` int(11) unsigned NOT NULL DEFAULT '0',
+  `uid` int(11) unsigned NOT NULL DEFAULT '0',
+  `openid` varchar(255) NOT NULL DEFAULT '',
+  `filename` varchar(255) NOT NULL DEFAULT '',
+  `verifycode` varchar(255) NOT NULL DEFAULT '',
+  `status` int(11) unsigned NOT NULL DEFAULT '0',
+  `dateline` int(11) unsigned NOT NULL DEFAULT '0',
+  `downloadtime` int(11) unsigned NOT NULL DEFAULT '0',
+  `extra` text,
   PRIMARY KEY (`taskid`),
   KEY `openid` (`openid`),
   KEY `status` (`status`)
-) ENGINE=INNODB COMMENT='Network Disk Download Task';
-
+) ENGINE=INNODB;
 
 REPLACE INTO pre_common_setting VALUES ('regconnect', '1');
 
@@ -164,8 +163,7 @@ if ($connect['feed']) {
 }
 
 if ($needCreateGroup) {
-/*vot*/	include DISCUZ_ROOT . 'source/language/'. DISCUZ_LANG. '/lang_admincp_cloud.php';
-	$name = $extend_lang['connect_guest_group_name'];
+	$name = $installlang['connect_guest_group_name'];
 	$userGroupData = array(
 		'type' => 'special',
 		'grouptitle' => $name,
@@ -191,6 +189,6 @@ if ($needCreateGroup) {
 $https = json_decode(dfsockopen('https://graph.qq.com/user/get_user_info'));
 $connect['oauth2'] = $https->ret == -1 ? 1 : 0;
 
-C::t('common_setting')->update('connect', serialize($connect));
+C::t('common_setting')->update_setting('connect', serialize($connect));
 updatecache('setting');
 $finish = true;

@@ -26,9 +26,9 @@ if(!submitcheck('modsubmit')) {
 
 	$threadcount = C::t('forum_thread')->count_by_fid($_G['fid'], $archiveid);
 	if($threadcount) {
-		C::t('forum_forum_threadtable')->update($_G['fid'], $archiveid, array('threads' => $threadcount));
+		C::t('forum_forum_threadtable')->update_threadtable($_G['fid'], $archiveid, array('threads' => $threadcount));
 	} else {
-		C::t('forum_forum_threadtable')->delete($_G['fid'], $archiveid);
+		C::t('forum_forum_threadtable')->delete_threadtable($_G['fid'], $archiveid);
 	}
 	if(!C::t('forum_forum_threadtable')->count_by_fid($_G['fid'])) {
 		C::t('forum_forum')->update($_G['fid'], array('archive' => 0));
@@ -36,7 +36,7 @@ if(!submitcheck('modsubmit')) {
 	$modaction = 'RST';
 	$reason = checkreasonpm();
 	$resultarray = array(
-		'redirect'	=> "forum.php?mod=viewthread&tid=$_G[tid]&page=$page",
+		'redirect'	=> "forum.php?mod=viewthread&tid={$_G['tid']}&page=$page",
 		'reasonpm'	=> ($sendreasonpm ? array('data' => array($thread), 'var' => 'thread') : array()),
 		'reasonvar'	=> array('tid' => $thread['tid'], 'subject' => $thread['subject'], 'modaction' => $modaction, 'reason' => $reason),
 		'modaction'	=> $modaction,

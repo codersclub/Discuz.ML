@@ -138,7 +138,7 @@ function ftpupload($aids, $uid = 0) {
 	}
 	foreach($attachtables as $attachtable => $aids) {
 		$remoteaids = array();
-		foreach(C::t('forum_attachment_n')->fetch_all($attachtable, $aids, 0) as $attach) {
+		foreach(C::t('forum_attachment_n')->fetch_all_attachment($attachtable, $aids, 0) as $attach) {
 			$attach['ext'] = fileext($attach['filename']);
 			if(((!$_G['setting']['ftp']['allowedexts'] && !$_G['setting']['ftp']['disallowedexts']) || ($_G['setting']['ftp']['allowedexts'] && in_array($attach['ext'], $_G['setting']['ftp']['allowedexts'])) || ($_G['setting']['ftp']['disallowedexts'] && !in_array($attach['ext'], $_G['setting']['ftp']['disallowedexts']) && (!$_G['setting']['ftp']['allowedexts'] || $_G['setting']['ftp']['allowedexts'] && in_array($attach['ext'], $_G['setting']['ftp']['allowedexts'])) )) && (!$_G['setting']['ftp']['minsize'] || $attach['filesize'] >= $_G['setting']['ftp']['minsize'] * 1024)) {
 				if(ftpcmd('upload', 'forum/'.$attach['attachment']) && (!$attach['thumb'] || ftpcmd('upload', 'forum/'.getimgthumbname($attach['attachment'])))) {
@@ -152,7 +152,7 @@ function ftpupload($aids, $uid = 0) {
 		}
 
 		if($remoteaids) {
-			C::t('forum_attachment_n')->update($attachtable, $remoteaids, array('remote' => 1));
+			C::t('forum_attachment_n')->update_attachment($attachtable, $remoteaids, array('remote' => 1));
 		}
 	}
 	if($pics) {
@@ -162,7 +162,7 @@ function ftpupload($aids, $uid = 0) {
 
 function updateattach($modnewthreads, $tid, $pid, $attachnew, $attachupdate = array(), $uid = 0) {
 	global $_G;
-	$thread = C::t('forum_thread')->fetch($tid);
+	$thread = C::t('forum_thread')->fetch_thread($tid);
 	$uid = $uid ? $uid : $_G['uid'];
 	if($attachnew) {
 		$newaids = array_keys($attachnew);
@@ -199,7 +199,7 @@ function updateattach($modnewthreads, $tid, $pid, $attachnew, $attachupdate = ar
 			$update['pid'] = $pid;
 			$update['uid'] = $uid;
 			$update['description'] = censor(cutstr(dhtmlspecialchars($attach['description']), 100));
-			C::t('forum_attachment_n')->update('tid:'.$tid, $aid, $update);
+			C::t('forum_attachment_n')->update_attachment('tid:'.$tid, $aid, $update);
 			if(!$newattach[$aid]) {
 				continue;
 			}
@@ -330,7 +330,7 @@ function updateattach($modnewthreads, $tid, $pid, $attachnew, $attachupdate = ar
 		$attachment = 0;
 	}
 	C::t('forum_thread')->update($tid, array('attachment'=>$attachment));
-	C::t('forum_post')->update('tid:'.$tid, $pid, array('attachment' => $attachment), true);
+	C::t('forum_post')->update_post('tid:'.$tid, $pid, array('attachment' => $attachment), true);
 
 	if(!$attachment) {
 		C::t('forum_threadimage')->delete_by_tid($tid);
@@ -369,17 +369,22 @@ function checkmaxperhour($type) {
 
 function checkpost($subject, $message, $special = 0) {
 	global $_G;
-/*vot*/	if(dstrlen($subject) > 255) {
+	if(dstrlen($subject) > 255) {
 		return 'post_subject_toolong';
 	}
 	if(!$_G['group']['disablepostctrl'] && !$special) {
 		if($_G['setting']['maxpostsize'] && strlen($message) > $_G['setting']['maxpostsize']) {
 			return 'post_message_toolong';
 		} elseif($_G['setting']['minpostsize']) {
-			$minpostsize = !IN_MOBILE || !$_G['setting']['minpostsize_mobile'] ? $_G['setting']['minpostsize'] : $_G['setting']['minpostsize_mobile'];
+			$minpostsize = !defined('IN_MOBILE') || !constant('IN_MOBILE') || !$_G['setting']['minpostsize_mobile'] ? $_G['setting']['minpostsize'] : $_G['setting']['minpostsize_mobile'];
 			if(strlen(preg_replace("/\[quote\].+?\[\/quote\]/is", '', $message)) < $minpostsize || strlen(preg_replace("/\[postbg\].+?\[\/postbg\]/is", '', $message)) < $minpostsize) {
 				return 'post_message_tooshort';
 			}
+		}
+		if($_G['setting']['maxsubjectsize'] && dstrlen($subject) > $_G['setting']['maxsubjectsize']) {
+			return 'post_subject_toolong';
+		} elseif(dstrlen($subject) && $_G['setting']['minsubjectsize'] && dstrlen($subject) < $_G['setting']['minsubjectsize']) {
+			return 'post_subject_tooshort';
 		}
 	}
 	return FALSE;
@@ -447,14 +452,15 @@ function updateattachcredits($operator, $uidarray) {
 
 function updateforumcount($fid) {
 
-	extract(C::t('forum_thread')->count_posts_by_fid($fid));
+	$fidposts = C::t('forum_thread')->count_posts_by_fid($fid);
+	extract($fidposts);
 
 	$thread = C::t('forum_thread')->fetch_by_fid_displayorder($fid, 0, '=');
 
 	$thread['subject'] = addslashes($thread['subject']);
 	$thread['lastposter'] = $thread['author'] ? addslashes($thread['lastposter']) : lang('forum/misc', 'anonymous');
 	$tid = $thread['closed'] > 1 ? $thread['closed'] : $thread['tid'];
-	$setarr = array('posts' => $posts, 'threads' => $threads, 'lastpost' => "$tid\t$thread[subject]\t$thread[lastpost]\t$thread[lastposter]");
+	$setarr = array('posts' => $posts, 'threads' => $threads, 'lastpost' => "$tid\t{$thread['subject']}\t{$thread['lastpost']}\t${thread['lastposter']}");
 	C::t('forum_forum')->update($fid, $setarr);
 }
 
@@ -583,7 +589,7 @@ function messagecutstr($str, $length = 0, $dot = ' ...') {
 	$language = lang('forum/misc');
 	loadcache(array('bbcodes_display', 'bbcodes', 'smileycodes', 'smilies', 'smileytypes', 'domainwhitelist'));
 	$bbcodes = 'b|i|u|p|color|backcolor|size|font|align|list|indent|float';
-	$bbcodesclear = 'email|code|free|table|tr|td|img|swf|flash|attach|media|audio|groupid|payto'.($_G['cache']['bbcodes_display'][$_G['groupid']] ? '|'.implode('|', array_keys($_G['cache']['bbcodes_display'][$_G['groupid']])) : '');
+	$bbcodesclear = 'email|code|free|table|tr|td|img|swf|flash|attach|media|audio|groupid|payto'.(!empty($_G['cache']['bbcodes_display'][$_G['groupid']]) ? '|'.implode('|', array_keys($_G['cache']['bbcodes_display'][$_G['groupid']])) : '');
 	$str = strip_tags(preg_replace(array(
 			"/\[hide=?\d*\](.*?)\[\/hide\]/is",
 			"/\[quote](.*?)\[\/quote]/si",
@@ -594,7 +600,7 @@ function messagecutstr($str, $length = 0, $dot = ' ...') {
 			"/\[\/($bbcodes)\]/i",
 			"/\\\\u/i"
 		), array(
-			"[b]$language[post_hidden][/b]",
+			"[b]{$language['post_hidden']}[/b]",
 			'',
 			'',
 			'\\1',
@@ -619,7 +625,7 @@ function messagecutstr($str, $length = 0, $dot = ' ...') {
 function setthreadcover($pid, $tid = 0, $aid = 0, $countimg = 0, $imgurl = '') {
 	global $_G;
 	$cover = 0;
-	if(empty($_G['uid']) || !intval($_G['setting']['forumpicstyle']['thumbheight']) || !intval($_G['setting']['forumpicstyle']['thumbwidth'])) {
+	if(empty($_G['uid']) || !intval($_G['setting']['forumpicstyle']['thumbwidth'])) {
 		return false;
 	}
 
@@ -627,7 +633,7 @@ function setthreadcover($pid, $tid = 0, $aid = 0, $countimg = 0, $imgurl = '') {
 		if(empty($imgurl)) {
 			if($aid) {
 				$attachtable = 'aid:'.$aid;
-				$attach = C::t('forum_attachment_n')->fetch('aid:'.$aid, $aid, array(1, -1));
+				$attach = C::t('forum_attachment_n')->fetch_attachment('aid:'.$aid, $aid, array(1, -1));
 			} else {
 				$attachtable = 'pid:'.$pid;
 				$attach = C::t('forum_attachment_n')->fetch_max_image('pid:'.$pid, 'pid', $pid);
@@ -669,7 +675,7 @@ function setthreadcover($pid, $tid = 0, $aid = 0, $countimg = 0, $imgurl = '') {
 	}
 	if($countimg) {
 		if(empty($cover)) {
-			$thread = C::t('forum_thread')->fetch($tid);
+			$thread = C::t('forum_thread')->fetch_thread($tid);
 			$oldcover = $thread['cover'];
 
 			$cover = C::t('forum_attachment_n')->count_image_by_id('tid:'.$tid, 'pid', $pid);

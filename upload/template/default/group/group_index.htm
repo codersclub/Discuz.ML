@@ -46,6 +46,8 @@
 		<script type="text/javascript">
 			var postminchars = parseInt('$_G['setting']['minpostsize']');
 			var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+			var postminsubjectchars = parseInt('$_G['setting']['minsubjectsize']');
+			var postmaxsubjectchars = parseInt('$_G['setting']['maxsubjectsize']');
 			var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
 			var replycontentlist = new Array();
 			var addreplylist = new Array();
@@ -338,7 +340,7 @@
 			<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
 			<!--{if $_G['setting']['threadplugins']}-->
 				<!--{loop $_G['forum']['threadplugin'] $tpid}-->
-					<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+					<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && is_array($_G['group']['allowthreadplugin']) && in_array($tpid, $_G['group']['allowthreadplugin'])}-->
 						<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G[setting][threadplugins][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G[setting][threadplugins][$tpid][name]}</a></li>
 					<!--{/if}-->
 				<!--{/loop}-->

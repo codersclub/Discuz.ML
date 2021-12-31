@@ -37,7 +37,7 @@ if(helper_access::check_module('doing')) {
 			showmessage('should_write_that');
 		}
 
-		$message = censor($message, NULL, TRUE);
+		$message = censor($message, NULL, TRUE, TRUE);
 		if(is_array($message) && $message['message']) {
 			showmessage('do_success', dreferer(), array('message'=>$message['message']));
 		}
@@ -80,7 +80,6 @@ if(helper_access::check_module('doing')) {
 
 		if(helper_access::check_module('feed') && ckprivacy('doing', 'feed') && $doing_status == '0') {
 			$feedarr = array(
-				'appid' => '',
 				'icon' => 'doing',
 				'uid' => $_G['uid'],
 				'username' => $_G['username'],
@@ -168,7 +167,7 @@ if(helper_access::check_module('doing')) {
 
 		if($updo['uid'] != $_G['uid']) {
 			notification_add($updo['uid'], 'comment', 'doing_reply', array(
-				'url'=>"home.php?mod=space&uid=$updo[uid]&do=doing&view=me&doid=$updo[doid]&highlight=$newid",
+				'url'=>"home.php?mod=space&uid={$updo['uid']}&do=doing&view=me&doid={$updo['doid']}&highlight=$newid",
 				'from_id'=>$updo['doid'],
 				'from_idtype'=>'doid'));
 			updatecreditbyaction('comment', 0, array(), 'doing'.$updo['doid']);
@@ -221,7 +220,7 @@ if($_GET['op'] == 'delete') {
 			}
 			$tree->setNode($value['id'], $value['upid'], $value);
 			$count++;
-			if($value['authorid'] == $space['uid']) $highlight = $value['id'];
+			if($value['uid'] == $space['uid']) $highlight = $value['id'];
 		}
 	}
 

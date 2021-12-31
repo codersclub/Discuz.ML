@@ -61,9 +61,9 @@ if($operation == 'list') {
 		echo <<<SCRIPT
 <script type="text/Javascript">
 var rowtypedata = [
-	[[1,'', ''], [4, '<div class="parentboard"><input type="text" class="txt" value="$lang[portalcategory_addcategory]" name="newname[{1}][]"/></div>']],
-	[[1,'<input type="text" class="txt" name="neworder[{1}][]" value="0" />', 'td25'], [4, '<div class="board"><input type="text" class="txt" value="$lang[portalcategory_addsubcategory]" name="newname[{1}][]"/>  <input type="checkbox" name="newinheritance[{1}][]" value="1" checked>$lang[portalcategory_inheritance]</div>']],
-	[[1,'<input type="text" class="txt" name="neworder[{1}][]" value="0" />', 'td25'], [4, '<div class="childboard"><input type="text" class="txt" value="$lang[portalcategory_addthirdcategory]" name="newname[{1}][]"/> <input type="checkbox" name="newinheritance[{1}][]" value="1" checked>$lang[portalcategory_inheritance]</div>']],
+	[[1,'', ''], [4, '<div class="parentboard"><input type="text" class="txt" value="{$lang['portalcategory_addcategory']}" name="newname[{1}][]"/></div>']],
+	[[1,'<input type="text" class="txt" name="neworder[{1}][]" value="0" />', 'td25'], [4, '<div class="board"><input type="text" class="txt" value="{$lang['portalcategory_addsubcategory']}" name="newname[{1}][]"/>  <input type="checkbox" name="newinheritance[{1}][]" value="1" checked>{$lang['portalcategory_inheritance']}</div>']],
+	[[1,'<input type="text" class="txt" name="neworder[{1}][]" value="0" />', 'td25'], [4, '<div class="childboard"><input type="text" class="txt" value="{$lang['portalcategory_addthirdcategory']}" name="newname[{1}][]"/> <input type="checkbox" name="newinheritance[{1}][]" value="1" checked>{$lang['portalcategory_inheritance']}</div>']],
 ];
 </script>
 SCRIPT;
@@ -83,15 +83,15 @@ SCRIPT;
 				}
 				if($sets) {
 					C::t('portal_category')->update($key, $sets);
-					C::t('common_diy_data')->update('portal/list_'.$key, getdiydirectory($portalcategory[$key]['primaltplname']), array('name'=>$value));
-					C::t('common_diy_data')->update('portal/view_'.$key, getdiydirectory($portalcategory[$key]['articleprimaltplname']), array('name'=>$value));
+					C::t('common_diy_data')->update_diy('portal/list_'.$key, getdiydirectory($portalcategory[$key]['primaltplname']), array('name'=>$value));
+					C::t('common_diy_data')->update_diy('portal/view_'.$key, getdiydirectory($portalcategory[$key]['articleprimaltplname']), array('name'=>$value));
 					$cachearr[] = 'diytemplatename';
 				}
 			}
 		}
 
 		if($_GET['newsetindex']) {
-			C::t('common_setting')->update('defaultindex', $portalcategory[$_GET['newsetindex']]['caturl']);
+			C::t('common_setting')->update_setting('defaultindex', $portalcategory[$_GET['newsetindex']]['caturl']);
 			$cachearr[] = 'setting';
 		}
 		include_once libfile('function/cache');
@@ -129,19 +129,19 @@ SCRIPT;
 			if(!empty($value['inheritedcatid'])) {
 				showtablerow('', array('class="td25"'), array(
 					"",
-					"$value[username]",
+					"{$value['username']}",
 					$value['allowpublish'] ? '&radic;' : $line,
 					$value['allowmanage'] ? '&radic;' : $line,
 					'<a href="'.ADMINSCRIPT.'?action=portalcategory&operation=perm&catid='.$value['inheritedcatid'].'">'.$portalcategory[$value['inheritedcatid']]['catname'].'</a>',
 				));
 			} else {
 				showtablerow('', array('class="td25"'), array(
-					"<input type=\"checkbox\" class=\"checkbox\" name=\"delete[$value[uid]]\" value=\"$value[uid]\" /><input type=\"hidden\" name=\"perm[$value[uid]]\" value=\"$value[catid]\" />
-					<input type=\"hidden\" name=\"perm[$value[uid]][allowpublish]\" value=\"$value[allowpublish]\" />
-					<input type=\"hidden\" name=\"perm[$value[uid]][allowmanage]\" value=\"$value[allowmanage]\" />",
-					"$value[username]",
-					"<input type=\"checkbox\" class=\"checkbox\" name=\"allowpublish[$value[uid]]\" value=\"1\" ".($value['allowpublish'] ? 'checked' : '').' />',
-					"<input type=\"checkbox\" class=\"checkbox\" name=\"allowmanage[$value[uid]]\" value=\"1\" ".($value['allowmanage'] ? 'checked' : '').' />',
+					"<input type=\"checkbox\" class=\"checkbox\" name=\"delete[{$value['uid']}]\" value=\"{$value['uid']}\" /><input type=\"hidden\" name=\"perm[{$value['uid']}]\" value=\"{$value['catid']}\" />
+					<input type=\"hidden\" name=\"perm[{$value['uid']}][allowpublish]\" value=\"{$value['allowpublish']}\" />
+					<input type=\"hidden\" name=\"perm[{$value['uid']}][allowmanage]\" value=\"{$value['allowmanage']}\" />",
+					"{$value['username']}",
+					"<input type=\"checkbox\" class=\"checkbox\" name=\"allowpublish[{$value['uid']}]\" value=\"1\" ".($value['allowpublish'] ? 'checked' : '').' />',
+					"<input type=\"checkbox\" class=\"checkbox\" name=\"allowmanage[{$value['uid']}]\" value=\"1\" ".($value['allowmanage'] ? 'checked' : '').' />',
 					$line,
 				));
 			}
@@ -238,7 +238,7 @@ SCRIPT;
 
 		showformheader('portalcategory&operation=delete&catid='.$_GET['catid']);
 		showtableheader();
-		if($portalcategory[$_GET[catid]]['children']) {
+		if($portalcategory[$_GET['catid']]['children']) {
 			showsetting('portalcategory_subcategory_moveto', '', '',
 				'<input type="radio" name="subcat_op" value="trash" id="subcat_op_trash" checked="checked" />'.
 				'<label for="subcat_op_trash" />'.cplang('portalcategory_subcategory_moveto_trash').'</label>'.
@@ -265,9 +265,9 @@ SCRIPT;
 
 		if($_POST['article_op'] == 'delete') {
 			if(!$_GET['confirmed']) {
-				cpmsg('portal_delete_confirm', "action=portalcategory&operation=delete&catid=$_GET[catid]", 'form', array(),
-				'<input type="hidden" class="btn" id="deletesubmit" name="deletesubmit" value="1" /><input type="hidden" class="btn" id="subcat_op" name="subcat_op" value="'.$_POST[subcat_op].'" />
-					<input type="hidden" class="btn" id="article_op" name="article_op" value="delete" /><input type="hidden" class="btn" id="tocatid" name="tocatid" value="'.$_POST[tocatid].'" />');
+				cpmsg('portal_delete_confirm', "action=portalcategory&operation=delete&catid={$_GET['catid']}", 'form', array(),
+				'<input type="hidden" class="btn" id="deletesubmit" name="deletesubmit" value="1" /><input type="hidden" class="btn" id="subcat_op" name="subcat_op" value="'.$_POST['subcat_op'].'" />
+					<input type="hidden" class="btn" id="article_op" name="article_op" value="delete" /><input type="hidden" class="btn" id="tocatid" name="tocatid" value="'.$_POST['tocatid'].'" />');
 			}
 		}
 
@@ -578,8 +578,8 @@ SCRIPT;
 		if($_GET['catid']) {
 			C::t('portal_category')->update($cate['catid'], $editcat);
 			if($cate['catname'] != $_GET['catname']) {
-				C::t('common_diy_data')->update('portal/list_'.$cate['catid'], getdiydirectory($cate['primaltplname']), array('name'=>$_GET['catname']));
-				C::t('common_diy_data')->update('portal/view_'.$cate['catid'], getdiydirectory($cate['articleprimaltplname']), array('name'=>$_GET['catname']));
+				C::t('common_diy_data')->update_diy('portal/list_'.$cate['catid'], getdiydirectory($cate['primaltplname']), array('name'=>$_GET['catname']));
+				C::t('common_diy_data')->update_diy('portal/view_'.$cate['catid'], getdiydirectory($cate['articleprimaltplname']), array('name'=>$_GET['catname']));
 				$cachearr[] = 'diytemplatename';
 			}
 		} else {
@@ -722,10 +722,10 @@ SCRIPT;
 		}
 
 		if($_GET['setindex']) {
-			C::t('common_setting')->update('defaultindex', $portalcategory[$_GET['catid']]['caturl']);
+			C::t('common_setting')->update_setting('defaultindex', $portalcategory[$_GET['catid']]['caturl']);
 			$cachearr[] = 'setting';
 		} elseif($oldsetindex) {
-			C::t('common_setting')->update('defaultindex', '');
+			C::t('common_setting')->update_setting('defaultindex', '');
 			$cachearr[] = 'setting';
 		}
 
@@ -782,11 +782,11 @@ function showcategoryrow($key, $level = 0, $last = '') {
 		<a href="'.ADMINSCRIPT.'?action=diytemplate&operation=perm&targettplname=portal/list_'.$value['catid'].'&tpldirectory='.getdiydirectory($value['primaltplname']).'">'.cplang('portalcategory_blockperm').'</a></td>
 		<td><a href="'.ADMINSCRIPT.'?action=article&operation=list&&catid='.$value['catid'].'">'.cplang('portalcategory_articlemanagement').'</a>&nbsp;
 		<a href="'.ADMINSCRIPT.'?action=portalcategory&operation=perm&catid='.$value['catid'].'">'.cplang('portalcategory_articleperm').'</a>'.$publish.'</td></tr>';
-		for($i=0,$L=count($value['children']); $i<$L; $i++) {
+		for($i=0,$L=(is_array($value['children']) ? count($value['children']) : 0); $i<$L; $i++) {
 			$return .= showcategoryrow($value['children'][$i], 2, $i==$L-1);
 		}
 	} else {
-		$childrennum = count($_G['cache']['portalcategory'][$key]['children']);
+		$childrennum = is_array($_G['cache']['portalcategory'][$key]['children']) ? count($_G['cache']['portalcategory'][$key]['children']) : 0;
 		$toggle = $childrennum > 25 ? ' style="display:none"' : '';
 		$return = '<tbody><tr class="hover" id="cat'.$value['catid'].'"><td onclick="toggle_group(\'group_'.$value['catid'].'\')"><a id="a_group_'.$value['catid'].'" href="javascript:;">'.($toggle ? '[+]' : '[-]').'</a></td>'
 		.'<td class="td25"><input type="text" class="txt" name="neworder['.$value['catid'].']" value="'.$value['displayorder'].'" /></td><td><div class="parentboard">'.
@@ -805,7 +805,7 @@ function showcategoryrow($key, $level = 0, $last = '') {
 		<td><a href="'.ADMINSCRIPT.'?action=article&operation=list&&catid='.$value['catid'].'">'.cplang('portalcategory_articlemanagement').'</a>&nbsp;
 		<a href="'.ADMINSCRIPT.'?action=portalcategory&operation=perm&catid='.$value['catid'].'">'.cplang('portalcategory_articleperm').'</a>'.$publish.'</td></tr></tbody>
 		<tbody id="group_'.$value['catid'].'"'.$toggle.'>';
-		for($i=0,$L=count($value['children']); $i<$L; $i++) {
+		for($i=0,$L=(is_array($value['children']) ? count($value['children']) : 0); $i<$L; $i++) {
 			$return .= showcategoryrow($value['children'][$i], 1, '');
 		}
 		$return .= '</tdoby><tr><td>&nbsp;</td><td colspan="9"><div class="lastboard"><a class="addtr" href="'.ADMINSCRIPT.'?action=portalcategory&operation=add&upid='.$value['catid'].'">'.cplang('portalcategory_addsubcategory').'</a></td></div>';
@@ -845,7 +845,7 @@ function deleteportalcategory($ids) {
 		$tpls[] = 'portal/view_'.$id;
 	}
 	if(in_array($_G['setting']['defaultindex'], $defaultindex)) {
-		C::t('common_setting')->update('defaultindex', '');
+		C::t('common_setting')->update_setting('defaultindex', '');
 	}
 	C::t('common_diy_data')->delete($tpls, NULL);
 	C::t('common_template_block')->delete_by_targettplname($tpls);
@@ -876,7 +876,7 @@ define('SUB_DIR', '$sub_dir');
 \$_GET['catid'] = '$catid';
 require_once './portal.php';
 ?>";
-	$r = file_put_contents($dir.'/index.php', $code);
+	$r = file_put_contents($dir.'/index.php', $code, LOCK_EX);
 	return $r;
 }
 function getportalcategoryfulldir($catid) {
@@ -1021,18 +1021,18 @@ function remakediytemplate($primaltplname, $targettplname, $diytplname, $olddire
 		list($tpldirectory, $primaltplname) = explode(':', $primaltplname);
 	}
 	$tpldirectory = ($tpldirectory ? $tpldirectory : $_G['cache']['style_default']['tpldir']);
-	$newdiydata = C::t('common_diy_data')->fetch($targettplname, $tpldirectory);
+	$newdiydata = C::t('common_diy_data')->fetch_diy($targettplname, $tpldirectory);
 	if($newdiydata) {
 		return false;
 	}
-	$diydata = C::t('common_diy_data')->fetch($targettplname, $olddirectory);
+	$diydata = C::t('common_diy_data')->fetch_diy($targettplname, $olddirectory);
 	$diycontent = empty($diydata['diycontent']) ? '' : $diydata['diycontent'];
 	if($diydata) {
-		C::t('common_diy_data')->update($targettplname, $olddirectory, array('primaltplname'=>$primaltplname, 'tpldirectory'=>$tpldirectory));
+		C::t('common_diy_data')->update_diy($targettplname, $olddirectory, array('primaltplname'=>$primaltplname, 'tpldirectory'=>$tpldirectory));
 	} else {
 		$diycontent = '';
 		if(in_array($primaltplname, array('portal/list', 'portal/view'))) {
-			$diydata = C::t('common_diy_data')->fetch($targettplname, $olddirectory);
+			$diydata = C::t('common_diy_data')->fetch_diy($targettplname, $olddirectory);
 			$diycontent = empty($diydata['diycontent']) ? '' : $diydata['diycontent'];
 		}
 		$diyarr = array(
@@ -1055,7 +1055,7 @@ function remakediytemplate($primaltplname, $targettplname, $diytplname, $olddire
 		$content = @file_get_contents(DISCUZ_ROOT.$file);
 		if(!$content) $content = '';
 		$content = preg_replace("/\<\!\-\-\[name\](.+?)\[\/name\]\-\-\>/i", '', $content);
-		file_put_contents(DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/'.$targettplname.'.htm', $content);
+		file_put_contents(DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/'.$targettplname.'.htm', $content, LOCK_EX);
 	} else {
 		updatediytemplate($targettplname, $tpldirectory);
 	}

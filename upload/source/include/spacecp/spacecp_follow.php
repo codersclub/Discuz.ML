@@ -26,8 +26,19 @@ if($op == 'add') {
 	if($_G['uid'] == $followuid) {
 		showmessage('follow_not_follow_self');
 	}
+	if(!$_G['group']['allowfollow']) {
+		showmessage('follow_not_follow_others'); 
+	}
 	$special = intval($_GET['special']) ? intval($_GET['special']) : 0;
 	$followuser = getuserbyuid($followuid);
+	if(empty($followuser)) {
+		showmessage('space_does_not_exist');
+	}
+	// 允许单个用户屏蔽所有人收听 Ta
+	$fields = C::t('common_member_field_home')->fetch($followuid);
+	if(!$fields['allowasfollow']) {
+		showmessage('follow_other_unfollow');
+	}
 	$mutual = 0;
 	$followed = C::t('home_follow')->fetch_by_uid_followuid($followuid, $_G['uid']);
 	if(!empty($followed)) {
@@ -51,7 +62,9 @@ if($op == 'add') {
 		C::t('home_follow')->insert($followdata, false, true);
 		C::t('common_member_count')->increase($_G['uid'], array('following' => 1));
 		C::t('common_member_count')->increase($followuid, array('follower' => 1, 'newfollower' => 1));
-		notification_add($followuid, 'follower', 'member_follow_add', array('count' => $count, 'from_id'=>$_G['uid'], 'from_idtype' => 'following'), 1);
+		if($_G['setting']['followaddnotice']) {
+			notification_add($followuid, 'follower', 'member_follow_add', array('count' => $count, 'from_id'=>$_G['uid'], 'from_idtype' => 'following'), 1);
+		}
 	} elseif($special) {
 		$status = $special == 1 ? 1 : 0;
 		C::t('home_follow')->update_by_uid_followuid($_G['uid'], $followuid, array('status'=>$status));
@@ -115,7 +128,7 @@ if($op == 'add') {
 				);
 				$fid = C::t('forum_forum')->insert($forumarr, true);
 				C::t('forum_forumfield')->insert(array('fid' => $fid));
-				C::t('common_setting')->update('followforumid', $fid);
+				C::t('common_setting')->update_setting('followforumid', $fid);
 				include libfile('function/cache');
 				updatecache('setting');
 			}

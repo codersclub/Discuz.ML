@@ -43,9 +43,11 @@ if($this->cpaccess == -3) {
 html_login_footer();
 
 function html_login_header($form = true) {
+	global $_G;
 	$charset = CHARSET;
 	$title = lang('admincp_login', 'login_title');
 	$tips = lang('admincp_login', 'login_tips');
+	$staticurl = STATICURL;
 /*vot*/	$rtl_suffix = RTLSUFFIX;
 
 	echo <<<EOT
@@ -56,7 +58,7 @@ function html_login_header($form = true) {
 <meta name="renderer" content="webkit" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>$title</title>
-<!--vot--><link rel="stylesheet" href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" type="text/css" media="all" />
+<!--vot--><link rel="stylesheet" href="{$staticurl}image/admincp/admincp{$rtl_suffix}.css?{$_G['style']['verhash']}" type="text/css" media="all" />
 <meta content="Comsenz Inc." name="Copyright" />
 </head>
 <body>
@@ -115,6 +117,7 @@ function html_login_form() {
 	$lang = lang('admincp_login');
 	$loginuser = $isguest ? '<input name="admin_username" tabindex="1" type="text" class="txt" autocomplete="off" />' : getglobal('member/username');
 	$sid = getglobal('sid');
+	$formhash = getglobal('formhash');
 	$_SERVER['QUERY_STRING'] = str_replace('&amp;', '&', dhtmlspecialchars($_SERVER['QUERY_STRING']));
 	$extra = ADMINSCRIPT.'?'.(getgpc('action') && getgpc('frames') ? 'frames=yes&' : '').$_SERVER['QUERY_STRING'];
 	$forcesecques = '<option value="0">'.($_G['config']['admincp']['forcesecques'] || $_G['group']['forcesecques'] ? $lang['forcesecques'] : $lang['security_question_0']).'</option>';
@@ -122,26 +125,27 @@ function html_login_form() {
 		<form method="post" autocomplete="off" name="login" id="loginform" action="$extra">
 		<input type="hidden" name="sid" value="$sid">
 		<input type="hidden" name="frames" value="yes">
-		<p class="logintitle">$lang[login_username]: </p>
+		<input type="hidden" name="formhash" value="$formhash">
+		<p class="logintitle">{$lang['login_username']}: </p>
 		<p class="loginform">$loginuser</p>
-		<p class="logintitle">$lang[login_password]:</p>
+		<p class="logintitle">{$lang['login_password']}:</p>
 		<p class="loginform"><input name="admin_password" tabindex="1" type="password" class="txt" autocomplete="off" /></p>
-		<p class="logintitle">$lang[security_question]:</p>
+		<p class="logintitle">{$lang['security_question']}:</p>
 		<p class="loginform">
 			<select id="questionid" name="admin_questionid" tabindex="2">
 				$forcesecques
-				<option value="1">$lang[security_question_1]</option>
-				<option value="2">$lang[security_question_2]</option>
-				<option value="3">$lang[security_question_3]</option>
-				<option value="4">$lang[security_question_4]</option>
-				<option value="5">$lang[security_question_5]</option>
-				<option value="6">$lang[security_question_6]</option>
-				<option value="7">$lang[security_question_7]</option>
+				<option value="1">{$lang['security_question_1']}</option>
+				<option value="2">{$lang['security_question_2']}</option>
+				<option value="3">{$lang['security_question_3']}</option>
+				<option value="4">{$lang['security_question_4']}</option>
+				<option value="5">{$lang['security_question_5']}</option>
+				<option value="6">{$lang['security_question_6']}</option>
+				<option value="7">{$lang['security_question_7']}</option>
 			</select>
 		</p>
-		<p class="logintitle">$lang[security_answer]:</p>
+		<p class="logintitle">{$lang['security_answer']}:</p>
 		<p class="loginform"><input name="admin_answer" tabindex="3" type="text" class="txt" autocomplete="off" /></p>
-		<p class="loginnofloat"><input name="submit" value="$lang[submit]"  tabindex="3" type="submit" class="btn" /></p>
+		<p class="loginnofloat"><input name="submit" value="{$lang['submit']}"  tabindex="3" type="submit" class="btn" /></p>
 		</form>
 EOT;
 		echo '<script type="text/JavaScript">document.getElementById(\'loginform\').admin_'.($isguest ? 'username' : 'password').'.focus();</script>';

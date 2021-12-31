@@ -32,8 +32,8 @@ function debugmessage($ajax = 0) {
 	$sqldebug = '';
 	$ismysqli = DB::$driver == 'db_driver_mysqli' ? 1 : 0;
 	$n = $discuz_table = 0;
-	$sqlw = array();
-	$db = & DB::object();
+	$sqlw = array('Using filesort' => 0, 'Using temporary' => 0);
+	$db = DB::object();
 	$queries = count($db->sqldebug);
 	$links = array();
 	foreach($db->link as $k => $link) {
@@ -47,11 +47,7 @@ function debugmessage($ajax = 0) {
 		$sql = preg_replace('/'.preg_quote($_G['config']['db']['1']['tablepre']).'[\w_]+/', '<font color=blue>\\0</font>', nl2br(dhtmlspecialchars($string[0])));
 		$sqldebugrow = '<div id="sql_'.$n.'" style="display:none;padding:0">';
 		if(preg_match('/^SELECT /', $string[0])) {
-			if($ismysqli) {
-				$query = $string[3]->query("EXPLAIN ".$string[0]);
-			} else {
-				$query = @mysql_query("EXPLAIN ".$string[0], $string[3]);
-			}
+			$query = $string[3]->query("EXPLAIN ".$string[0]);
 			$i = 0;
 			$sqldebugrow .= '<table style="border-bottom:none">';
 			while($row = DB::fetch($query)) {
@@ -77,7 +73,7 @@ function debugmessage($ajax = 0) {
 			$error['class'] = isset($error['class']) ? $error['class'] : '';
 			$error['type'] = isset($error['type']) ? $error['type'] : '';
 			$error['function'] = isset($error['function']) ? $error['function'] : '';
-			$sqldebugrow .= "<tr><td>$error[file]</td><td>$error[line]</td><td>$error[class]$error[type]$error[function]()</td></tr>";
+			$sqldebugrow .= "<tr><td>{$error['file']}</td><td>{$error['line']}</td><td>{$error['class']}{$error['type']}{$error['function']}()</td></tr>";
 			if(strexists($error['file'], 'discuz/discuz_table') || strexists($error['file'], 'table/table')) {
 				$dt = ' &bull; '.$error['file'];
 				$discuz_table++;
@@ -91,10 +87,10 @@ function debugmessage($ajax = 0) {
 	if($ajax) {
 		$idk = substr(md5($_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING']), 0, 4);
 		$sqldebug = '<b style="cursor:pointer" onclick="document.getElementById(\''.$idk.'\').style.display=document.getElementById(\''.$idk.'\').style.display == \'\' ? \'none\' : \'\'">Queries: </b> '.$queries.' ('.$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].')<ol id="'.$idk.'" style="display:none">'.$sqldebug.'</ol><br>';
-		file_put_contents(DISCUZ_ROOT.'./'.$ajaxhtml, $sqldebug, FILE_APPEND);
+		file_put_contents(DISCUZ_ROOT.'./'.$ajaxhtml, $sqldebug, FILE_APPEND | LOCK_EX);
 		return;
 	}
-	file_put_contents(DISCUZ_ROOT.'./'.$ajaxhtml, '<?php ' . _get_addslashes() . ' if(empty($_GET[\'k\']) || $_GET[\'k\'] != \''.$akey.'\') { exit; } ?><style>body,table { font-size:12px; }table { width:90%;border:1px solid gray; }</style><a href="javascript:;" onclick="location.href=location.href">Refresh</a><br />');
+	file_put_contents(DISCUZ_ROOT.'./'.$ajaxhtml, '<?php ' . _get_addslashes() . ' if(empty($_GET[\'k\']) || $_GET[\'k\'] != \''.$akey.'\') { exit; } ?><style>body,table { font-size:12px; }table { width:90%;border:1px solid gray; }</style><a href="javascript:;" onclick="location.href=location.href">Refresh</a><br />', LOCK_EX);
 	foreach($sqlw as $k => $v) {
 		$sqlw[$k] = $k.': '.$v;
 	}
@@ -116,7 +112,7 @@ elseif(isset($_GET[\''.$viewcachek.'\'])) {
 			echo \'<a href="'.$debugfile.'?k='.$akey.'&'.$viewcachek.'&c=\'.$names[\'cname\'].\'" target="_blank" style="float:left;width:200px">\'.$names[\'cname\'].\'</a>\';
 		}
 	} else {
-		$cache = DB::fetch_first("SELECT * FROM ".DB::table("common_syscache")." WHERE cname=\'$_GET[c]\'");
+		$cache = DB::fetch_first("SELECT * FROM ".DB::table("common_syscache")." WHERE cname=\'".$_GET[\'c\']."\'");
 		echo \'$_G[\\\'cache\\\'][\'.$_GET[\'c\'].\']<br>\';
 		debug($cache[\'ctype\'] ? dunserialize($cache[\'data\']) : $cache[\'data\']);
 	}
@@ -242,7 +238,7 @@ EOF;
 						' <s>'.(count($_ENV['analysis']['function']) - 1).(' in '.number_format(($_ENV['analysis']['function']['sum'] / 1000), 6).'s').'</s>' : '').
 			'<td valign=top>'.
 				'<b style="float:left;width:1em;height:5em">服务器</b>'.
-					'<em>环境:</em> '.PHP_OS.', '.$_SERVER['SERVER_SOFTWARE'].' MySQL/'.DB::result_first("SELECT VERSION()").'('.(DB::$driver).')<br />'.
+					'<em>环境:</em> '.PHP_OS.', '.$_SERVER['SERVER_SOFTWARE'].' MySQL/'.DB::object()->version().'('.(DB::$driver).')<br />'.
 					$m.
 					'<em>SQL:</em> '.
 						'<a id="__debug_1" href="#debugbar" onclick="switchTab(\'__debug\', 1, '.$max.')">[SQL列表]</a>'.
@@ -290,8 +286,11 @@ EOF;
 		} else {
 			$debug .= $fn;
 		}
-
-		memory_info($debug, $fn, $_ENV['analysis']['file'][$fn]);
+		if(isset($_ENV['analysis']['file'][$fn])) {
+			memory_info($debug, $fn, $_ENV['analysis']['file'][$fn]);
+		} else {
+			memory_info($debug, $fn, array('start_memory_get_usage' => 0, 'stop_memory_get_usage' => 0, 'start_memory_get_real_usage' => 0, 'stop_memory_get_real_usage' => 0,'start_memory_get_peak_usage' => 0, 'stop_memory_get_peak_usage' => 0, 'start_memory_get_peak_real_usage' => 0, 'stop_memory_get_peak_real_usage' => 0));
+		}
 		$debug .= '</li>';
 	}
 	if(isset($_ENV['analysis']['file']['sum'])) {
@@ -327,7 +326,7 @@ EOF;
 			</div>'.
 		'<ol><a name="top"></a>'.$_GS.$_GA.'</ol></div>'.$mco.'</body></html>';
 	$fn = 'data/'.$debugfile;
-	file_put_contents(DISCUZ_ROOT.'./'.$fn, $debug);
+	file_put_contents(DISCUZ_ROOT.'./'.$fn, $debug, LOCK_EX);
 	echo '<iframe src="'.$fn.'?k='.$akey.'" name="_debug_iframe" id="_debug_iframe" style="border-top:1px solid gray;overflow-x:hidden;overflow-y:auto" width="100%" height="200" frameborder="0"></iframe><div id="_debug_div"></div><iframe name="_debug_initframe" id="_debug_initframe" style="display:none"></iframe>';
 }
 

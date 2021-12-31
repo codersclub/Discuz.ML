@@ -81,7 +81,7 @@ function showcategoryrow($key, $level = 0, $last = '') {
 		'</td><td>'.$value['articles'].'</td><td>'.$op.'</td></tr>';
 		$children = checkperm('allowmanagearticle') ? $category[$key]['children'] : $permissioncategory[$key]['permissionchildren'];
 		$i = 1;
-		$l = count($children);
+		$l = is_array($children) ? count($children) : 0;
 		foreach($children as $v){
 			$return .= showcategoryrow($v, 2 ,$i++ == $l);
 		}
@@ -105,7 +105,7 @@ function showcategoryrowpush($key, $level = 0, $last = '') {
 	$op = '';
 	if (checkperm('allowmanagearticle') || checkperm('allowpostarticle') || $permission[$key]['allowpublish'] || $permission[$key]['allowmanage']) {
 		if(empty($value['disallowpublish'])){
-			$value['pushurl'] = '<a href="portal.php?mod=portalcp&ac=article&catid='.$key.'&from_idtype='.$_GET['idtype'].'&from_id='.$_GET['id'].'" target="_blank" onclick="hideWindow(\''.$_GET[handlekey].'\')">'.$value['catname'].'</a>';
+			$value['pushurl'] = '<a href="portal.php?mod=portalcp&ac=article&catid='.$key.'&from_idtype='.$_GET['idtype'].'&from_id='.$_GET['id'].'" target="_blank" onclick="hideWindow(\''.$_GET['handlekey'].'\')">'.$value['catname'].'</a>';
 		} else {
 			$value['pushurl'] = $value['catname'];
 		}
@@ -118,13 +118,13 @@ function showcategoryrowpush($key, $level = 0, $last = '') {
 		$return = '<tr class="hover"><td>&nbsp;</td><td><div class="cat">'.$value['pushurl'].'</div></td></tr>';
 		$children = checkperm('allowmanagearticle') ? $category[$key]['children'] : $permissioncategory[$key]['permissionchildren'];
 		$i = 1;
-		$l = count($children);
+		$l = is_array($children) ? count($children) : 0;
 		foreach($children as $v) {
 			$return .= showcategoryrowpush($v, 2, $i++ == $l);
 		}
 	} else {
 		$children = checkperm('allowmanagearticle') ? $category[$key]['children'] : $permissioncategory[$key]['permissionchildren'];
-		$childrennum = count($children);
+		$childrennum = is_array($children) ? count($children) : 0;
 		$toggle = $childrennum > 25 ? ' style="display:none"' : '';
 		$return = '<tbody><tr class="hover"><td onclick="toggle_group(\'group_'.$value['catid'].'\')"><a id="a_group_'.$value['catid'].'" href="javascript:;">'.($toggle ? '[+]' : '[-]').'</a></td>'
 		.'<td><div class="parentcat">'.$value['pushurl'].'</div></td></tr></tbody>

@@ -105,7 +105,7 @@ if($operation == 'perm') {
 						if(!$item) {
 							continue;
 						}
-						$checked = @in_array($item[1], $perms);
+						$checked = is_array($perms) ? in_array($item[1], $perms) : false;
 						if(!$checked) {
 							$checkedall = false;
 						}
@@ -213,7 +213,7 @@ if($operation == 'perm') {
 					$isfounder = array_key_exists($id, $founders);
 					showtablerow('style="height:20px"', array('class="td25"', 'class="td24"', 'class="td24"'), array(
 						!$isfounder || isset($adminmembers[$member['uid']]['cpgroupid']) ? "<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$id]\">" : '',
-						"<a href=\"home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a>",
+						"<a href=\"home.php?mod=space&uid={$member['uid']}\" target=\"_blank\">{$member['username']}</a>",
 						$member['cpgroupname'],
 						!$isfounder && $adminmembers[$member['uid']]['cpgroupid'] ? '<a href="'.ADMINSCRIPT.'?action=founder&operation=perm&do=member&id='.$id.'">'.cplang('edit').'</a>' : ''
 						));
@@ -279,8 +279,8 @@ if($operation == 'perm') {
 						if(!$item) {
 							continue;
 						}
-						$checked = @in_array($item[1], $perms);
-						$customchecked = @in_array($item[1], $member['customperm']);
+						$checked = is_array($perms) ? in_array($item[1], $perms) : false;
+						$customchecked = is_array($member['customperm']) ? in_array($item[1], $member['customperm']) : false;
 						$extra = $checked ? ($customchecked ? '' : 'checked="checked" ').' onclick="checkclk(this)"' : 'disabled="disabled" ';
 						if(!$checked || $customchecked) {
 							$checkedall = false;
@@ -381,7 +381,7 @@ if($operation == 'perm') {
 				}
 				showtablerow('style="height:20px"', array('class="td25"', 'class="td24"', 'class="td25"', 'class="vtop"'), array(
 					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$uid\">",
-					"<input type=\"hidden\" class=\"txtnobd\" name=\"name[$uid]\" value=\"$user[username]\">$user[username]",
+					"<input type=\"hidden\" class=\"txtnobd\" name=\"name[$uid]\" value=\"{$user['username']}\">{$user['username']}",
 					'<input name="chkall_'.$uid.'" id="chkall_'.$uid.'" type="checkbox" class="checkbox" onclick="checkAll(\'prefix\', this.form, \'notifytypes_'.$uid.'\', \'chkall_'.$uid.'\', 1)" />'.cplang('select_all'),
 					$types
 					));
@@ -411,7 +411,7 @@ if($operation == 'perm') {
 					$newnotifyusers[$newuid] = array('username' => $newusername, 'types' => '');
 				}
 			}
-			C::t('common_setting')->update('notifyusers', $newnotifyusers);
+			C::t('common_setting')->update_setting('notifyusers', $newnotifyusers);
 			updatecache('setting');
 			cpmsg('founder_perm_notifyusers_succeed', 'action=founder&operation=perm&do=notifyusers', 'succeed');
 		}
@@ -437,10 +437,11 @@ function getactionarray() {
 }
 
 function showpermstyle() {
+	$staticurl = STATICURL;
 	echo <<<EOF
 	<style>
 .item{ float: left; width: 180px; line-height: 25px; margin-left: 5px; border-right: 1px #deeffb dotted; }
-.vtop .right, .item .right{ padding: 0 10px; line-height: 22px; background: url('static/image/admincp/bg_repno.gif') no-repeat -286px -145px; font-weight: normal;margin-right:10px; }
+.vtop .right, .item .right{ padding: 0 10px; line-height: 22px; background: url('{$staticurl}/image/admincp/bg_repno.gif') no-repeat -286px -145px; font-weight: normal;margin-right:10px; }
 .vtop a:hover.right, .item a:hover.right { text-decoration:none; }
 </style>
 <script type="text/JavaScript">

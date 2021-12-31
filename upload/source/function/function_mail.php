@@ -12,10 +12,22 @@ if(!defined('IN_DISCUZ')) {
 }
 
 set_time_limit(0);
-function sendmail($toemail, $subject, $message, $from = '') {
+function sendmail($toemail, $subject, $message = '', $from = '') {
 	global $_G;
+	// 使用 \@m.invalid 作为保留域名
+	if(preg_match("/@m\.invalid$/i", $toemail)){
+		return false;
+	}
 	if(!is_array($_G['setting']['mail'])) {
 		$_G['setting']['mail'] = dunserialize($_G['setting']['mail']);
+	}
+	if($_G['setting']['mail']['mailsend'] == 4) {
+		$etype = explode(':', $_G['setting']['mail']['plugin']);
+		$codefile = DISCUZ_ROOT.'./source/plugin/'.$etype[0].'/mailsend/mailsend_'.$etype[1].'.php';
+		include_once $codefile;
+		$class = 'mailsend_'.$etype[1];
+		$code = new $class();
+		return $code->sendmail($toemail, $subject, $message, $from);
 	}
 	$_G['setting']['mail']['server'] = $_G['setting']['mail']['port'] = $_G['setting']['mail']['auth'] = $_G['setting']['mail']['from'] = $_G['setting']['mail']['auth_username'] = $_G['setting']['mail']['auth_password'] = '';
 	if($_G['setting']['mail']['mailsend'] != 1) {
@@ -25,29 +37,27 @@ function sendmail($toemail, $subject, $message, $from = '') {
 			$smtp = $_G['setting']['mail']['smtp'][$rid];
 			$_G['setting']['mail']['server'] = $smtp['server'];
 			$_G['setting']['mail']['port'] = $smtp['port'];
+			$_G['setting']['mail']['timeout'] = isset($smtp['timeout']) ? intval($smtp['timeout']) : 30;
 			$_G['setting']['mail']['auth'] = $smtp['auth'] ? 1 : 0;
 			$_G['setting']['mail']['from'] = $smtp['from'];
 			$_G['setting']['mail']['auth_username'] = $smtp['auth_username'];
 			$_G['setting']['mail']['auth_password'] = $smtp['auth_password'];
 		}
 	}
-	$message = preg_replace("/href\=\"(?!(http|https)\:\/\/)(.+?)\"/i", 'href="'.$_G['setting']['securesiteurl'].'\\2"', $message);
 
-$message = <<<EOT
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="$_G[charset]" />
-<meta name="renderer" content="webkit" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>$subject</title>
-</head>
-<body>
-$subject<br />
-$message
-</body>
-</html>
-EOT;
+	ob_start();
+	if(is_array($subject) && $subject['tpl']) {
+		$tpl = $subject['tpl'];
+		$var = $subject['var'];
+		$subject = lang('email/template', $tpl.'_subject', (!empty($subject['svar']) ? $subject['svar'] : array()));
+		include template('email/'.$tpl);
+	} else {
+		include template('email/default');
+	}
+	$message = ob_get_contents();
+	ob_end_clean();
+
+	$message = preg_replace("/href\=\"(?!(http|https)\:\/\/)(.+?)\"/i", 'href="'.$_G['setting']['securesiteurl'].'\\2"', $message);
 
 	$mailusername = isset($_G['setting']['mail']['mailusername']) ? $_G['setting']['mail']['mailusername'] : 1;
 	$_G['setting']['mail']['port'] = $_G['setting']['mail']['port'] ? $_G['setting']['mail']['port'] : 25;
@@ -75,16 +85,18 @@ EOT;
 
 	} elseif($_G['setting']['mail']['mailsend'] == 2) {
 
-		if(!$fp = fsocketopen($_G['setting']['mail']['server'], $_G['setting']['mail']['port'], $errno, $errstr, 30)) {
-			runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) CONNECT - Unable to connect to the SMTP server", 0);
+		if(!$fp = fsocketopen($_G['setting']['mail']['server'], $_G['setting']['mail']['port'], $errno, $errstr, $_G['setting']['mail']['timeout'])) {
+			runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) CONNECT - Unable to connect to the SMTP server", 0);
 			return false;
 		}
 		stream_set_blocking($fp, true);
+		// 新增发送超时设置, 避免连接后无响应导致吊死
+		stream_set_timeout($fp, $_G['setting']['mail']['timeout']);
 
 		$lastmessage = fgets($fp, 512);
 		if(substr($lastmessage, 0, 3) != '220') {
 			fputs($fp, "QUIT\r\n");
-			runlog('SMTP', "{$_G[setting][mail][server]}:{$_G[setting][mail][port]} CONNECT - $lastmessage", 0);
+			runlog('SMTP', "{$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']} CONNECT - $lastmessage", 0);
 			return false;
 		}
 
@@ -99,7 +111,7 @@ EOT;
 		$lastmessage = fgets($fp, 512);
 		if(substr($lastmessage, 0, 3) != 220 && substr($lastmessage, 0, 3) != 250) {
 			fputs($fp, "QUIT\r\n");
-			runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) HELO/EHLO - $lastmessage", 0);
+			runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) HELO/EHLO - $lastmessage", 0);
 			return false;
 		}
 
@@ -115,7 +127,7 @@ EOT;
 			$lastmessage = fgets($fp, 512);
 			if(substr($lastmessage, 0, 3) != 334) {
 				fputs($fp, "QUIT\r\n");
-				runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) AUTH LOGIN - $lastmessage", 0);
+				runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) AUTH LOGIN - $lastmessage", 0);
 				return false;
 			}
 
@@ -123,7 +135,7 @@ EOT;
 			$lastmessage = fgets($fp, 512);
 			if(substr($lastmessage, 0, 3) != 334) {
 				fputs($fp, "QUIT\r\n");
-				runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) USERNAME - $lastmessage", 0);
+				runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) USERNAME - $lastmessage", 0);
 				return false;
 			}
 
@@ -131,7 +143,7 @@ EOT;
 			$lastmessage = fgets($fp, 512);
 			if(substr($lastmessage, 0, 3) != 235) {
 				fputs($fp, "QUIT\r\n");
-				runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) PASSWORD - $lastmessage", 0);
+				runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) PASSWORD - $lastmessage", 0);
 				return false;
 			}
 
@@ -145,7 +157,7 @@ EOT;
 			$lastmessage = fgets($fp, 512);
 			if(substr($lastmessage, 0, 3) != 250) {
 				fputs($fp, "QUIT\r\n");
-				runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) MAIL FROM - $lastmessage", 0);
+				runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) MAIL FROM - $lastmessage", 0);
 				return false;
 			}
 		}
@@ -156,7 +168,7 @@ EOT;
 			fputs($fp, "RCPT TO: <".preg_replace("/.*\<(.+?)\>.*/", "\\1", $toemail).">\r\n");
 			$lastmessage = fgets($fp, 512);
 			fputs($fp, "QUIT\r\n");
-			runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) RCPT TO - $lastmessage", 0);
+			runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) RCPT TO - $lastmessage", 0);
 			return false;
 		}
 
@@ -164,7 +176,7 @@ EOT;
 		$lastmessage = fgets($fp, 512);
 		if(substr($lastmessage, 0, 3) != 354) {
 			fputs($fp, "QUIT\r\n");
-			runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) DATA - $lastmessage", 0);
+			runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) DATA - $lastmessage", 0);
 			return false;
 		}
 
@@ -187,7 +199,7 @@ EOT;
 		$lastmessage = fgets($fp, 512);
 		if(substr($lastmessage, 0, 3) != 250) {
 			fputs($fp, "QUIT\r\n");
-			runlog('SMTP', "({$_G[setting][mail][server]}:{$_G[setting][mail][port]}) END - $lastmessage", 0);
+			runlog('SMTP', "({$_G['setting']['mail']['server']}:{$_G['setting']['mail']['port']}) END - $lastmessage", 0);
 			return false;
 		}
 		fputs($fp, "QUIT\r\n");
@@ -212,7 +224,10 @@ EOT;
 
 function sendmail_cron($toemail, $subject, $message) {
 	global $_G;
-
+	// 使用 \@m.invalid 作为保留域名
+	if(preg_match("/@m\.invalid$/i", $toemail)){
+		return false;
+	}
 	$toemail = addslashes($toemail);
 
 	$value = C::t('common_mailcron')->fetch_all_by_email($toemail, 0, 1);

@@ -34,13 +34,14 @@ class control extends adminbase {
 		$addexchange = getgpc('addexchange', 'G');
 		$delexchange = getgpc('delexchange', 'G');
 		$settings = $this->get_setting(array('creditexchange'), TRUE);
-		$creditexchange = is_array($settings['creditexchange']) ? $settings['creditexchange'] : array();
+		$creditexchange = (isset($settings['creditexchange']) && is_array($settings['creditexchange'])) ? $settings['creditexchange'] : array();
 		$appsrc = @intval($appsrc);
 		$creditsrc = @intval($creditsrc);
 		$appdesc = @intval($appdesc);
 		$creditdesc = @intval($creditdesc);
 		$ratiosrc = ($ratiosrc = @intval($ratiosrc)) > 0 ? $ratiosrc : 1;
 		$ratiodesc = ($ratiodesc = @intval($ratiodesc)) > 0 ? $ratiodesc : 1;
+		$status = 0;
 		if(!empty($addexchange) && $this->submitcheck()) {
 			if($appsrc != $appdesc) {
 				$key = $appsrc.'_'.$creditsrc.'_'.$appdesc.'_'.$creditdesc;
@@ -70,7 +71,7 @@ class control extends adminbase {
 			$creditexchange = is_array($settings['creditexchange']) ? $settings['creditexchange'] : array();
 		}
 
-		$apps = unserialize($this->settings['credits']);
+		$apps = isset($this->settings['credits']) ? unserialize($this->settings['credits']) : '';
 		if(is_array($creditexchange)) {
 			foreach($creditexchange as $set => $ratio) {
 				$tmp = array();
@@ -85,6 +86,7 @@ class control extends adminbase {
 		}
 
 		$appselect = '';
+		$creditselect = array();
 		if(is_array($apps)) {
 			foreach($apps as $appid => $credits) {
 				$appselect .= '<option value="'.$appid.'">'.$this->cache['apps'][$appid]['name'].'</option>';
@@ -129,14 +131,8 @@ class control extends adminbase {
 				include UC_DATADIR.'cache/credits.php';
 			}
 			if($app = $this->cache['apps'][$appid]) {
-				$apifilename = isset($app['apifilename']) && $app['apifilename'] ? $app['apifilename'] : 'uc.php';
-				if($app['extra']['apppath'] && $this->detectescape($app['extra']['apppath'].'./api/', $apifilename) && substr(strrchr($apifilename, '.'), 1, 10) == 'php' && @include $app['extra']['apppath'].'./api/'.$apifilename) {
-					$uc_note = new uc_note();
-					$data = trim($uc_note->getcreditsettings('', ''));
-				} else {
-					$url = $_ENV['note']->get_url_code('getcreditsettings', '', $appid);
-					$data = trim($_ENV['misc']->dfopen($url, 0, '', '', 1));
-				}
+				$url = $_ENV['note']->get_url_code('getcreditsettings', '', $appid);
+				$data = trim($_ENV['misc']->dfopen($url, 0, '', '', 1));
 				if(!$testrelease) {
 					if(!($data = $this->sync_unserialize($data, ''))) {
 						header('location: '.UC_API.'/admin.php?m=credit&a=sync&step=0&stepapp='.$stepapp.'&testrelease=1&sid='.$this->view->sid);
@@ -154,9 +150,7 @@ class control extends adminbase {
 					$s = "<?php\r\n";
 					$s .= '$_CACHE[\'credits\'] = '.var_export($_CACHE['credits'], TRUE).";\r\n";
 					$s .= "\r\n?>";
-					$fp = @fopen(UC_DATADIR.'cache/credits.php', 'w');
-					@fwrite($fp, $s);
-					@fclose($fp);
+					file_put_contents(UC_DATADIR.'cache/credits.php', $s, LOCK_EX);
 				}
 				header('location: '.UC_API.'/admin.php?m=credit&a=sync&step=0&stepapp='.$stepapp.'&sid='.$this->view->sid);
 			} else {

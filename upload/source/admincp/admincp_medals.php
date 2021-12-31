@@ -45,7 +45,11 @@ if(!$operation) {
 	];
 </script>
 <?php
-		foreach(C::t('forum_medal')->fetch_all_data() as $medal) {
+		$perpage = 50;
+		$start = ($_G['page'] - 1) * $perpage;
+		$count = C::t('forum_medal')->count_by_available(false);
+		$multi = multi($count, $perpage, $page, ADMINSCRIPT."?action=medals");
+		foreach(C::t('forum_medal')->fetch_all_data(false, $start, $perpage) as $medal) {
 			$checkavailable = $medal['available'] ? 'checked' : '';
 			switch($medal['type']) {
 				case 0:
@@ -58,20 +62,21 @@ if(!$operation) {
 					$medal['type'] = cplang('modals_moderate');
 					break;
 			}
+			$image = preg_match('/^https?:\/\//is', $medal['image']) ? $medal['image'] : STATICURL . 'image/common/' . $medal['image'];
 			showtablerow('', array('class="td25"', 'class="td25"', 'class="td25"', '', '', '', 'class="td23"', 'class="td25"'), array(
-				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$medal[medalid]\">",
-				"<input type=\"text\" class=\"txt\" size=\"3\" name=\"displayorder[$medal[medalid]]\" value=\"$medal[displayorder]\">",
-				"<input class=\"checkbox\" type=\"checkbox\" name=\"available[$medal[medalid]]\" value=\"1\" $checkavailable>",
-				"<input type=\"text\" class=\"txt\" size=\"10\" name=\"name[$medal[medalid]]\" value=\"$medal[name]\">",
-				"<input type=\"text\" class=\"txt\" size=\"30\" name=\"description[$medal[medalid]]\" value=\"$medal[description]\">",
-				"<input type=\"text\" class=\"txt\" size=\"20\" name=\"image[$medal[medalid]]\" value=\"$medal[image]\"><img style=\"vertical-align:middle\" src=\"static/image/common/$medal[image]\">",
-				$medal[type],
-				"<a href=\"".ADMINSCRIPT."?action=medals&operation=edit&medalid=$medal[medalid]\" class=\"act\">$lang[detail]</a>"
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"{$medal['medalid']}\">",
+				"<input type=\"text\" class=\"txt\" size=\"3\" name=\"displayorder[{$medal['medalid']}]\" value=\"{$medal['displayorder']}\">",
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"available[{$medal['medalid']}]\" value=\"1\" $checkavailable>",
+				"<input type=\"text\" class=\"txt\" size=\"10\" name=\"name[{$medal['medalid']}]\" value=\"{$medal['name']}\">",
+				"<input type=\"text\" class=\"txt\" size=\"30\" name=\"description[{$medal['medalid']}]\" value=\"{$medal['description']}\">",
+				"<input type=\"text\" class=\"txt\" size=\"20\" name=\"image[{$medal['medalid']}]\" value=\"{$medal['image']}\"><img style=\"vertical-align:middle\" src=\"$image\">",
+				$medal['type'],
+				"<a href=\"".ADMINSCRIPT."?action=medals&operation=edit&medalid={$medal['medalid']}\" class=\"act\">{$lang['detail']}</a>"
 			));
 		}
 
 		echo '<tr><td></td><td colspan="8"><div><a href="###" onclick="addrow(this, 0)" class="addtr">'.$lang['medals_addnew'].'</a></div></td></tr>';
-		showsubmit('medalsubmit', 'submit', 'del');
+		showsubmit('medalsubmit', 'submit', 'del', '', $multi);
 		showtablefooter();
 		showformfooter();
 
@@ -194,7 +199,7 @@ if(!$operation) {
 		foreach($medallogs as $id => $medal) {
 			$medals .= showtablerow('', '', array(
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$id\">",
-				"<a href=\"home.php?mod=space&username=".rawurlencode($medalusers[$medal['uid']]['username'])."\" target=\"_blank\">{$medalusers[$medal[uid]][username]}</a>",
+				"<a href=\"home.php?mod=space&username=".rawurlencode($medalusers[$medal['uid']]['username'])."\" target=\"_blank\">{$medalusers[$medal['uid']]['username']}</a>",
 				$medalnames[$medal['medalid']]['name'],
 				$medal['dateline'],
 				$medal['expiration']
@@ -243,7 +248,7 @@ if(!$operation) {
 
 		$groupselect = array();
 		foreach(C::t('common_usergroup')->range_orderby_credit() as $group) {
-			$groupselect[$group['type']] .= '<option value="'.$group['groupid'].'"'.(@in_array($group['groupid'], $medal['usergroups']) ? ' selected' : '').'>'.$group['grouptitle'].'</option>';
+			$groupselect[$group['type']] .= '<option value="'.$group['groupid'].'"'.(is_array($medal['usergroups']) && in_array($group['groupid'], $medal['usergroups']) ? ' selected' : '').'>'.$group['grouptitle'].'</option>';
 		}
 		$usergroups = '<select name="usergroupsnew[]" size="10" multiple="multiple">'.
 			'<optgroup label="'.$lang['usergroups_member'].'">'.$groupselect['member'].'</optgroup>'.

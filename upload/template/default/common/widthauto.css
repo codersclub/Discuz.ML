@@ -6,7 +6,7 @@ Created & Modified by Pony.
 ---------------------------------- */
 
 .wp { width: 98%; }
-	#hd .wp, #wp { min-width: 960px; }
+	#hd .wp, #wp { min-width: 1200px; }
 
 .ct2 { margin-right: 235px; }
 	.ct2 .sd { margin-right: -235px; }
@@ -16,8 +16,7 @@ Created & Modified by Pony.
 
 .ct2_a { padding-left: 150px; }
 	.ct2_a .appl { margin-left: -150px; }
-	.ct2_a .mn { width: 99%; }
-	#nv_userapp .ct2_a .mn, .ct2_a_r .mn { width: 99%; }
+	.ct2_a .mn { width: 97%; }
 
 .ct3_a { padding: 0 240px 0 160px; }
 	.ct3_a .appl { margin-left: -160px; }

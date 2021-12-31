@@ -32,7 +32,7 @@ if($id) {
 	ckstart($start, $perpage);
 
 	if($id > 0) {
-		$album = C::t('home_album')->fetch($id, $space['uid']);
+		$album = C::t('home_album')->fetch_album($id, $space['uid']);
 		if(empty($album)) {
 			showmessage('to_view_the_photo_does_not_exist');
 		}
@@ -44,7 +44,7 @@ if($id) {
 
 		if(empty($count) && !$space['self']) {
 			C::t('home_album')->delete($id);
-			showmessage('to_view_the_photo_does_not_exist', "home.php?mod=space&uid=$album[uid]&do=album&view=me");
+			showmessage('to_view_the_photo_does_not_exist', "home.php?mod=space&uid={$album['uid']}&do=album&view=me");
 		}
 
 		if($album['catid']) {
@@ -92,7 +92,7 @@ if($id) {
 			}
 		}
 	}
-	$multi = multi($count, $perpage, $page, "home.php?mod=space&uid=$album[uid]&do=$do&id=$id#comment");
+	$multi = multi($count, $perpage, $page, "home.php?mod=space&uid={$album['uid']}&do=$do&id=$id#comment");
 
 	$actives = array('me' =>' class="a"');
 
@@ -125,11 +125,11 @@ if($id) {
 	}
 
 	$picid = $pic['picid'];
-	$theurl = "home.php?mod=space&uid=$pic[uid]&do=$do&picid=$picid";
+	$theurl = "home.php?mod=space&uid={$pic['uid']}&do=$do&picid=$picid";
 
 	$album = array();
 	if($pic['albumid']) {
-		$album = C::t('home_album')->fetch($pic['albumid']);
+		$album = C::t('home_album')->fetch_album($pic['albumid']);
 		if(!$album) {
 			C::t('home_pic')->update_for_albumid($pic['albumid'], array('albumid' => 0));
 		}
@@ -445,7 +445,7 @@ function ckfriend_album($album) {
 			include template('home/space_privacy');
 			exit();
 		} elseif(!$space['self'] && $album['friend'] == 4) {
-			$cookiename = "view_pwd_album_$album[albumid]";
+			$cookiename = "view_pwd_album_{$album['albumid']}";
 			$cookievalue = empty($_G['cookie'][$cookiename])?'':$_G['cookie'][$cookiename];
 			if($cookievalue != md5(md5($album['password']))) {
 				$invalue = $album;

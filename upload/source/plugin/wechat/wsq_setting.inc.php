@@ -20,7 +20,7 @@ if(empty($_GET['updated'])) {
 	}
 }
 
-$setting = C::t('common_setting')->fetch_all(array('mobilewechat', 'mobile'));
+$setting = C::t('common_setting')->fetch_all_setting(array('mobilewechat', 'mobile'));
 $mobilesetting = (array)unserialize($setting['mobile']);
 $setting = (array)unserialize($setting['mobilewechat']);
 
@@ -28,6 +28,10 @@ require_once DISCUZ_ROOT.'./source/plugin/wechat/wechat.lib.class.php';
 require_once DISCUZ_ROOT.'./source/plugin/wechat/wsq.class.php';
 require_once DISCUZ_ROOT.'./source/plugin/wechat/setting.class.php';
 WeChatSetting::menu();
+
+if(!$setting['wsq_sitetoken']) {
+	cpmsg(lang('plugin/wechat', 'wsq_api_register_close'), '', 'error');
+}
 
 if(!empty($_GET['recheck'])) {
 	wsq::recheck();
@@ -41,7 +45,7 @@ if(!empty($_GET['recheck'])) {
 if(!submitcheck('settingsubmit')) {
 
 	if($setting['wsq_siteid']) {
-		if(in_array('plugin', $_G['setting']['rewritestatus'])) {
+		if(is_array($_G['setting']['rewritestatus']) && in_array('plugin', $_G['setting']['rewritestatus'])) {
 			$url = $_G['siteurl'].rewriteoutput('plugin', 1, 'wechat', 'access');
 		} else {
 			$url = $_G['siteurl'].'plugin.php?id=wechat:access';
@@ -168,7 +172,10 @@ if(!submitcheck('settingsubmit')) {
 	}
 
 	if(function_exists('domain_create')) {
-		if(preg_match('/^((http|https|ftp):\/\/|\.)|(\/|\.)$/i', $_GET['setting']['wsq_domain'])) {
+		if(isset($_GET['setting']['wsq_domain'])) {
+			$_GET['setting']['wsq_domain'] = strtolower($_GET['setting']['wsq_domain']);
+		}
+		if(!empty($_GET['setting']['wsq_domain']) && !preg_match('/^((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}$/', $_GET['setting']['wsq_domain'])) {
 			cpmsg('setting_domain_http_error', '', 'error');
 		}
 	}

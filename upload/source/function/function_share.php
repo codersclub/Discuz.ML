@@ -12,6 +12,7 @@ if(!defined('IN_DISCUZ')) {
 }
 
 function mkshare($share) {
+	require_once libfile('function/discuzcode');
 	$share['body_data'] = unserialize($share['body_data']);
 
 	$searchs = $replaces = array();
@@ -24,6 +25,15 @@ function mkshare($share) {
 		foreach (array_keys($share['body_data']) as $key) {
 			$searchs[] = '{'.$key.'}';
 			$replaces[] = $share['body_data'][$key];
+		}
+		if($share['body_data']['flashvar']){
+			$share['body_data']['player'] = parseflv($share['body_data']['data'], '500', '373');
+		}
+		if($share['body_data']['musicvar']){
+			$share['body_data']['player'] = parseaudio($share['body_data']['data']);
+		}
+		if($share['body_data']['videovar']){
+			$share['body_data']['player'] = parsemedia('x,500,373',$share['body_data']['data']);
 		}
 	}
 	$share['body_template'] = str_replace($searchs, $replaces, $share['body_template']);

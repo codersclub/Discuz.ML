@@ -10,7 +10,7 @@ function saveData(ignoreempty) {
 	var ignoreempty = isUndefined(ignoreempty) ? 0 : ignoreempty;
 	var obj = $('postform') && (($('fwin_newthread') && $('fwin_newthread').style.display == '') || ($('fwin_reply') && $('fwin_reply').style.display == '')) ? $('postform') : ($('fastpostform') ? $('fastpostform') : $('postform'));
 	if(!obj) return;
-		var bbcode = (typeof wysiwyg != 'undefined' && wysiwyg == 1) ? html2bbcode(editdoc.body.innerHTML) : $('postform').message.value;
+	var bbcode = (typeof wysiwyg != 'undefined' && wysiwyg == 1) ? html2bbcode(editdoc.body.innerHTML) : obj.message.value;
 	if(typeof isfirstpost != 'undefined') {
 		if(typeof wysiwyg != 'undefined' && wysiwyg == 1) {
 			var messageisnull = trim(bbcode) === '';
@@ -240,10 +240,13 @@ function fastpostvalidate(theform, noajaxpost) {
 	if(theform.message.value == '' || theform.subject.value == '') {
 /*vot*/		s = lng['enter_content']+'.';
 		theform.message.focus();
-//vot	} else if(mb_strlen(theform.subject.value) > 80) {
-/*vot*/	} else if(theform.subject.value.length > 80 ) {
+	} else if(dstrlen(theform.subject.value) > 255) {
 /*vot*/		s = lng['title_long']+'.';
 		theform.subject.focus();
+	}
+	if(!disablepostctrl && dstrlen(trim(theform.subject.value)) && ((postminsubjectchars != 0 && dstrlen(theform.subject.value) < postminsubjectchars) || (postminsubjectchars != 0 && dstrlen(theform.subject.value) > postmaxsubjectchars))) {
+		showError('您的标题长度不符合要求。\n\n当前长度: ' + dstrlen(theform.subject.value) + ' 字\n系统限制: ' + postminsubjectchars + ' 到 ' + postmaxsubjectchars + ' 字');
+		return false;
 	}
 	if(!disablepostctrl && ((postminchars != 0 && mb_strlen(theform.message.value) < postminchars) || (postmaxchars != 0 && mb_strlen(theform.message.value) > postmaxchars))) {
 /*vot*/		s = lng['content_long'] + lng['current_length']+': ' + mb_strlen(theform.message.value) + ' ' + lng['bytes']+'\n'+lng['system_limit']+': ' + postminchars + ' '+lng['up_to']+' ' + postmaxchars + ' '+lng['bytes'];

@@ -32,8 +32,8 @@ function blog_post($POST, $olds=array()) {
 		$_G['username'] = addslashes($olds['username']);
 	}
 
-/*vot*/	$POST['subject'] = getstr(trim($POST['subject']), 255);
-	$POST['subject'] = censor($POST['subject']);
+	$POST['subject'] = empty($_GET['subject']) ? '' : (dstrlen($_GET['subject']) > $_G['setting']['maxsubjectsize'] ? getstr($_GET['subject'], $_G['setting']['maxsubjectsize']) : $_GET['subject']);
+	$POST['subject'] = censor($POST['subject'], NULL, FALSE, FALSE);
 	if(strlen($POST['subject'])<1) $POST['subject'] = dgmdate($_G['timestamp'], 'Y-m-d');
 	$POST['friend'] = intval($POST['friend']);
 
@@ -65,15 +65,11 @@ function blog_post($POST, $olds=array()) {
 	$POST['tag'] = censor($POST['tag']);
 
 	$POST['message'] = checkhtml($POST['message']);
-	if($_G['mobile']) {
-		$POST['message'] = getstr($POST['message'], 0, 0, 0, 1);
-		$POST['message'] = censor($POST['message']);
-	} else {
 		$POST['message'] = getstr($POST['message'], 0, 0, 0, 0, 1);
-		$POST['message'] = censor($POST['message']);
+		$POST['message'] = censor($POST['message'], NULL, FALSE, FALSE);
 		$POST['message'] = preg_replace("/\<div\>\<\/div\>/i", '', $POST['message']);
 		$POST['message'] = preg_replace_callback("/<a .*?href=\"(.*?)\".*?>/is", 'blog_post_callback_blog_check_url_1', $POST['message']);
-	}
+
 	$message = $POST['message'];
 	if(censormod($message) || censormod($POST['subject']) || $_G['group']['allowblogmod']) {
 		$blog_status = 1;
@@ -167,7 +163,7 @@ function blog_post($POST, $olds=array()) {
 		}
 		foreach ($uploads as $value) {
 			$picurl = pic_get($value['filepath'], 'album', $value['thumb'], $value['remote'], 0);
-			$message .= "<div class=\"uchome-message-pic\"><img src=\"$picurl\"><p>$value[title]</p></div>";
+			$message .= "<div class=\"uchome-message-pic\"><img src=\"$picurl\"><p>{$value['title']}</p></div>";
 		}
 	}
 
@@ -325,8 +321,12 @@ function blog_flash($url, $type='') {
 	$height = '390';
 	preg_match("/((https?|ftp|gopher|news|telnet|rtsp|mms|callto|bctp|thunder|qqdl|synacast){1}:\/\/|www\.)[^\[\"']+/i", $url, $matches);
 	$url = $matches[0];
+	require_once libfile('function/discuzcode');
+	if($flv = parseflv($url, $width, $height)) {
+		return $flv;
+	}
 	$type = fileext($url);
 	$randomid = random(3);
-	return '<div id="'.$type.'_'.$randomid.'" class="media"><div id="'.$type.'_'.$randomid.'_container" class="media_container"></div><div id="'.$type.'_'.$randomid.'_tips" class="media_tips"><a href="'.$url.'" target="_blank">'.lang('template', 'parse_av_tips').'</a></div></div><script type="text/javascript">detectPlayer("'.$type.'_'.$randomid.'", "'.$type.'", "'.$url.'", "'.$width.'", "'.$height.'");</script>';
+	return '<ignore_js_op><div id="'.$type.'_'.$randomid.'" class="media"><div id="'.$type.'_'.$randomid.'_container" class="media_container"></div><div id="'.$type.'_'.$randomid.'_tips" class="media_tips"><a href="'.$url.'" target="_blank">'.lang('template', 'parse_av_tips').'</a></div></div><script type="text/javascript">detectPlayer("'.$type.'_'.$randomid.'", "'.$type.'", "'.$url.'", "'.$width.'", "'.$height.'");</script></ignore_js_op>';
 }
 ?>

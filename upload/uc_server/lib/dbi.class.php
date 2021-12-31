@@ -1,7 +1,7 @@
 <?php
 
 /*
-	[UCenter] (C)2001-2009 Comsenz Inc.
+	[UCenter] (C)2001-2099 Comsenz Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: db.class.php 980 2009-12-22 03:12:49Z zhaoxiongfei $
@@ -35,21 +35,22 @@ class ucserver_db {
 		$this->tablepre = $tablepre;
 		$this->time = $time;
 
+		mysqli_report(MYSQLI_REPORT_OFF);
+
 		if(!$this->link = new mysqli($dbhost, $dbuser, $dbpw, $dbname)) {
 			$this->halt('Can not connect to MySQL server');
 		}
 
 		$this->link->options(MYSQLI_OPT_LOCAL_INFILE, false);
 
-/*vot*/		if(v_compare($this->version(), '4.1') > 0) {
-			if($dbcharset) {
-				$this->link->set_charset($dbcharset);
-			}
-
-/*vot*/			if(v_compare($this->version(), '5.0.1') > 0) {
-				$this->link->query("SET sql_mode=''");
-			}
+		if($dbcharset) {
+			$this->link->set_charset($dbcharset);
 		}
+
+		$this->link->query("SET sql_mode=''");
+
+		$this->link->query("SET character_set_client=binary");
+
 	}
 
 	function fetch_array($query, $result_type = MYSQLI_ASSOC) {
@@ -110,19 +111,22 @@ class ucserver_db {
 
 	function query_stmt($sql, $key = array(), $value = array(), $type = '', $saveprep = FALSE, $cachetime = FALSE) {
 		$parse = $this->parse_query($sql, $key, $value);
-		if ($saveprep && array_key_exists(hash("sha256", $parse[0]), $this->stmtcache)) {
+		if($saveprep && array_key_exists(hash("sha256", $parse[0]), $this->stmtcache)) {
 			$stmt = & $this->stmtcache[hash("sha256", $parse[0])];
 		} else {
 			$stmt = $this->link->prepare($parse[0]);
 			$saveprep && $this->stmtcache[hash("sha256", $parse[0])] = & $stmt;
 		}
-		$stmt->bind_param(...$parse[1]);
+		if(!empty($key)) {
+			$stmt->bind_param(...$parse[1]);
+		}
 		if(!($query = $stmt->execute()) && $type != 'SILENT') {
 			$this->halt('MySQL Query Error', $parse[0]);
 		}
 		$this->querynum++;
 		$this->histories[] = $parse[0];
-		return $query;
+		// SELECT 指令返回数组供其他方法使用, 其他情况返回 SQL 执行结果
+		return strncasecmp("SELECT", $sql, 6) ? $query : $stmt->get_result();
 	}
 
 	function affected_rows() {
@@ -130,11 +134,11 @@ class ucserver_db {
 	}
 
 	function error() {
-		return (($this->link) ? $this->link->error : mysqli_error());
+		return $this->link->error;
 	}
 
 	function errno() {
-		return intval(($this->link) ? $this->link->errno : mysqli_errno());
+		return $this->link->errno;
 	}
 
 	function result($query, $row) {

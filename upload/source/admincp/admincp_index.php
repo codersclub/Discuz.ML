@@ -28,11 +28,11 @@ require_once libfile('function/attachment');
 require_once libfile('function/discuzcode');
 $isfounder = isfounder();
 
-$siteuniqueid = C::t('common_setting')->fetch('siteuniqueid');
+$siteuniqueid = C::t('common_setting')->fetch_setting('siteuniqueid');
 if(empty($siteuniqueid) || strlen($siteuniqueid) < 16) {
 	$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
 	$siteuniqueid = 'DX'.$chars[date('y')%60].$chars[date('n')].$chars[date('j')].$chars[date('G')].$chars[date('i')].$chars[date('s')].substr(md5($_G['clientip'].$_G['username'].TIMESTAMP), 0, 4).random(4);
-	C::t('common_setting')->update('siteuniqueid', $siteuniqueid);
+	C::t('common_setting')->update_setting('siteuniqueid', $siteuniqueid);
 	require_once libfile('function/cache');
 	updatecache('setting');
 }
@@ -40,7 +40,7 @@ if(empty($siteuniqueid) || strlen($siteuniqueid) < 16) {
 
 if(submitcheck('notesubmit', 1)) {
 	if(!empty($_GET['noteid']) && is_numeric($_GET['noteid'])) {
-		C::t('common_adminnote')->delete($_GET['noteid'], ($isfounder ? '' : $_G['username']));
+		C::t('common_adminnote')->delete_note($_GET['noteid'], ($isfounder ? '' : $_G['username']));
 	}
 	if(!empty($_GET['newmessage'])) {
 		$newaccess = 0;
@@ -59,12 +59,11 @@ if(submitcheck('notesubmit', 1)) {
 }
 
 $serverinfo = PHP_OS.' / PHP v'.PHP_VERSION;
-$serverinfo .= @ini_get('safe_mode') ? ' Safe Mode' : NULL;
 $serversoft = $_SERVER['SERVER_SOFTWARE'];
 $dbversion = helper_dbtool::dbversion();
 
 if(@ini_get('file_uploads')) {
-	$fileupload = ini_get('upload_max_filesize');
+	$fileupload = min(min(ini_get('upload_max_filesize'), ini_get('post_max_size')), ini_get('memory_limit'));
 } else {
 	$fileupload = '<font color="red">'.$lang['no'].'</font>';
 }
@@ -123,7 +122,7 @@ if(empty($newversion['newversion']) || !is_array($newversion['newversion']) || a
 	$newversion = json_decode(cloudaddons_open('&mod=app&ac=upgrade'), true);
 	if(!empty($newversion['newversion'])){
 		$newversion['updatetime'] = $_G['timestamp'];
-		C::t('common_setting')->update('cloudaddons_newversion', ((CHARSET == 'utf-8') ? $newversion : json_encode($newversion)));
+		C::t('common_setting')->update_setting('cloudaddons_newversion', ((CHARSET == 'utf-8') ? $newversion : json_encode($newversion)));
 		updatecache('setting');
 	}else{
 		$newversion = array();
@@ -132,7 +131,7 @@ if(empty($newversion['newversion']) || !is_array($newversion['newversion']) || a
 
 showsubmenu('home_welcome', array(), '', array('bbname' => $_G['setting']['bbname']));
 
-$save_master = C::t('common_setting')->fetch_all(array('mastermobile', 'masterqq', 'masteremail'));
+$save_master = C::t('common_setting')->fetch_all_setting(array('mastermobile', 'masterqq', 'masteremail'));
 $save_mastermobile = $save_master['mastermobile'];
 $save_mastermobile = !empty($save_mastermobile) ? authcode($save_mastermobile, 'DECODE', $_G['config']['security']['authkey']) : '';
 $save_masterqq = $save_master['masterqq'] ? $save_master['masterqq'] : '';
@@ -214,10 +213,10 @@ if(isfounder()) {
 	$filecheck = C::t('common_cache')->fetch('checktools_filecheck_result');
 	if($filecheck) {
 		list($modifiedfiles, $deletedfiles, $unknownfiles, $doubt) = unserialize($filecheck['cachevalue']);
-		$filecheckresult = "<em class=\"edited\">$lang[filecheck_modify]: $modifiedfiles</em> &nbsp; ".
-			"<em class=\"del\">$lang[filecheck_delete]: $deletedfiles</em> &nbsp; ".
-			"<em class=\"unknown\">$lang[filecheck_unknown]: $unknownfiles</em> &nbsp; ".
-			"<em class=\"unknown\">$lang[filecheck_doubt]: $doubt</em> &nbsp; ".
+		$filecheckresult = "<em class=\"edited\">{$lang['filecheck_modify']}: $modifiedfiles</em> &nbsp; ".
+			"<em class=\"del\">{$lang['filecheck_delete']}: $deletedfiles</em> &nbsp; ".
+			"<em class=\"unknown\">{$lang['filecheck_unknown']}: $unknownfiles</em> &nbsp; ".
+			"<em class=\"unknown\">{$lang['filecheck_doubt']}: $doubt</em> &nbsp; ".
 			$lang['filecheck_last_homecheck'].': '.dgmdate($filecheck['dateline'], 'u').' <a href="'.ADMINSCRIPT.'?action=checktools&operation=filecheck&step=3">['.$lang['filecheck_view_list'].']</a>';
 	} else {
 		$filecheckresult = '';
@@ -231,13 +230,13 @@ if(isfounder()) {
 	}
 }
 
-/*vot*/ showtableheader(cplang('detect_environment');
+showtableheader('detect_environment', 'fixpadding');
+$reldisp = is_numeric(DISCUZ_RELEASE) ? ('Release ' . DISCUZ_RELEASE) : DISCUZ_RELEASE;
 $env_ok = true;
 $now_ver_gd = function_exists('gd_info')? gd_info() : false;
-$now_ver = array('PHP' => constant('PHP_VERSION'), 'MySQL' => helper_dbtool::dbversion(), 'gethostbyname' => function_exists('gethostbyname'), 'file_get_contents' => function_exists('file_get_contents'), 'xml_parser_create' => function_exists('xml_parser_create'),
-'FileSock Function' => (function_exists('fsockopen') || function_exists('pfsockopen') || function_exists('stream_socket_client') || function_exists('curl_init')), 'GD' => ($now_ver_gd ? preg_replace('/[^0-9.]+/', '', $now_ver_gd['GD Version']) : false));
-$req_ver = array('PHP' => '5.3', 'MySQL' => '5.0', 'filter_var' => true, 'gethostbyname' => true, 'file_get_contents' => true, 'xml_parser_create' => true, 'FileSock Function' => true, 'GD' => '1.0');
-$sug_ver = array('PHP' => '7.1', 'MySQL' => '5.7', 'filter_var' => true, 'gethostbyname' => true, 'file_get_contents' => true, 'xml_parser_create' => true, 'FileSock Function' => true, 'GD' => '2.0');
+$now_ver = array('PHP' => constant('PHP_VERSION'), 'MySQL' => helper_dbtool::dbversion(), 'XML' => function_exists('xml_parser_create'), 'JSON' => function_exists('json_encode'), 'FileSock Function' => (function_exists('fsockopen') || function_exists('pfsockopen') || function_exists('stream_socket_client') || function_exists('curl_init')), 'GD' => ($now_ver_gd ? preg_replace('/[^0-9.]+/', '', $now_ver_gd['GD Version']) : false));
+$req_ver = array('PHP' => '5.6.0', 'MySQL' => '5.5.3', 'XML' => true, 'JSON' => true, 'FileSock Function' => true, 'GD' => '1.0');
+$sug_ver = array('PHP' => '7.3.0', 'MySQL' => '5.7.0', 'XML' => true, 'JSON' => true, 'FileSock Function' => true, 'GD' => '2.0');
 foreach ($now_ver as $key => $value) {
 	if($req_ver[$key] === true) {
 		if (!$value) {
@@ -255,7 +254,7 @@ foreach ($now_ver as $key => $value) {
 }
 if ($env_ok) {
 	showtablerow('', array('', 'class="td21" style="text-align:right;"'),
-		'<em class="fixed">'.lang("admincp", "req_ok", array('version' => constant("DISCUZ_VERSION").' R'.constant("DISCUZ_RELEASE").' '.strtoupper(constant("CHARSET")))).'</em>'
+		'<em class="fixed">'.lang("admincp", "req_ok", array('version' => constant("DISCUZ_VERSION").' '.$reldisp.' '.strtoupper(constant("CHARSET")))).'</em>'
 	);
 }
 showtablefooter();
@@ -269,14 +268,14 @@ showtableheader('home_notes', 'fixpadding"', '', '3');
 
 foreach(C::t('common_adminnote')->fetch_all_by_access(0) as $note) {
 	if($note['expiration'] < TIMESTAMP) {
-		C::t('common_adminnote')->delete($note['id']);
+		C::t('common_adminnote')->delete_note($note['id']);
 	} else {
 		$note['adminenc'] = rawurlencode($note['admin']);
 		$note['expiration'] = ceil(($note['expiration'] - $note['dateline']) / 86400);
 		$note['dateline'] = dgmdate($note['dateline'], 'dt');
 		showtablerow('', array('', '', ''), array(
-			$isfounder || $_G['member']['username'] == $note['admin'] ? '<a href="'.ADMINSCRIPT.'?action=index&notesubmit=yes&noteid='.$note['id'].'"><img src="static/image/admincp/close.gif" width="7" height="8" title="'.cplang('delete').'" /></a>' : '',
-			"<span class=\"bold\"><a href=\"home.php?mod=space&username=$note[adminenc]\" target=\"_blank\">$note[admin]</a></span> $note[dateline] (".cplang('validity').": $note[expiration] ".cplang('days').")<br />$note[message]",
+			$isfounder || $_G['member']['username'] == $note['admin'] ? '<a href="'.ADMINSCRIPT.'?action=index&notesubmit=yes&noteid='.$note['id'].'"><img src="' . STATICURL . 'image/admincp/close.gif" width="7" height="8" title="'.cplang('delete').'" /></a>' : '',
+			"<span class=\"bold\"><a href=\"home.php?mod=space&username={$note['adminenc']}\" target=\"_blank\">{$note['admin']}</a></span> {$note['dateline']} (".cplang('validity').": {$note['expiration']} ".cplang('days').")<br />{$note['message']}",
 		));
 	}
 }
@@ -288,9 +287,9 @@ showtablerow('', array(), array(
 showtablefooter();
 showformfooter();
 
-/*vot*/ showtableheader(cplang('contributors'), 'fixpadding');
+showtableheader('contributors', 'fixpadding');
 showtablerow('', array('', 'class="td21" style="text-align:right;"'),
-/*vot*/	'<a href="https://gitee.com/ComsenzDiscuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_link') . '</a>'
+	'<a href="https://gitee.com/Discuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">' . cplang('contributors_see') . '</a>'
 );
 showtablefooter();
 
@@ -304,10 +303,11 @@ if(empty($newversion['newversion']['qqqun'])){
 showtableheader('home_sys_info', 'fixpadding left" style="width : 48%;');
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_discuz_version'),
-	'Discuz! '.DISCUZ_VERSION.' R'.DISCUZ_RELEASE.' '.strtoupper(CHARSET).''
+	'Discuz! '.DISCUZ_VERSION.' '.$reldisp.' '.strtoupper(CHARSET).((strlen(DISCUZ_RELEASE) == 8 && DISCUZ_RELEASE != '20180101') ? '' : cplang('home_git_version'))
 ));
 
 $newversion['newversion'] = !empty($newversion['newversion']) ? $newversion['newversion'] : array();
+$reldisp_addon = is_numeric($newversion['newversion']['release']) ? ('Release ' . $newversion['newversion']['release']) : $newversion['newversion']['release'];
 
 $downlist = array();
 foreach ($newversion['newversion']['downlist'] as $key => $value){
@@ -316,9 +316,9 @@ foreach ($newversion['newversion']['downlist'] as $key => $value){
 
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
 	cplang('home_check_newversion'),
-/*vot*/    ($newversion['newversion']['release'] ? ($newversion['newversion']['release'] != DISCUZ_RELEASE ? '<b style="color:red;">' : '').'Discuz! '.$newversion['newversion']['version'].' R'.$newversion['newversion']['release'].' '.strtoupper(CHARSET).' '.($newversion['newversion']['release'] != DISCUZ_RELEASE ? '</b>' : '') : '<a href="https://www.dismall.com/thread-73-1-1.html" target="_blank">Your server can not detect the new version, please click to view the new version.</a>').
-/*vot*/	  ' <a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ Refresh ]</a>&nbsp;&nbsp;<br><br>'.
-/*vot*/    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;QQ Group: '.$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" class="lightlink2" target="_blank">Download the latest version of the package</a> | QQ group: 732103690</span>')
+    ($newversion['newversion']['release'] ? ($newversion['newversion']['release'] != DISCUZ_RELEASE ? '<b style="color:red;">' : '').'Discuz! '.$newversion['newversion']['version'].' '.$reldisp_addon.' '.strtoupper(CHARSET).' '.($newversion['newversion']['release'] != DISCUZ_RELEASE ? '</b>' : '') : '<a href="https://www.dismall.com/thread-73-1-1.html" target="_blank">'.cplang('detect_environment_error').'</a>').
+	  ' <a href="'.ADMINSCRIPT.'?action=index&checknewversion&formhash='.$_G['formhash'].'">[ '.cplang('refresh').' ]</a>&nbsp;&nbsp;<br><br>'.
+    (!empty($downlist) ? implode('&#x3001;', $downlist).($newversion['newversion']['qqqun'] ? '<span class="bold">&nbsp;&nbsp;|&nbsp;&nbsp;'.cplang('qq_group').$newversion['newversion']['qqqun'].'</span>' : '') : '<span class="bold"><a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">'.cplang('download_latest').'</a> | '.cplang('qq_group').'73'.'21'.'03'.'690</span>')
 ));
 
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont"'), array(
@@ -351,7 +351,7 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallf
 ));
 showtablefooter();
 
-/*vot*/ showtableheader('Discuz! Feed', 'fixpadding left" style="width : 48%; margin-left: 2%; clear: none;', '', '3');
+showtableheader('discuz_news', 'fixpadding left" style="width : 48%; margin-left: 2%; clear: none;', '', '3');
 if(!empty($newversion['news'])){
     $newversion['news'] = dhtmlspecialchars($newversion['news']);
     foreach ($newversion['news'] as $v){
@@ -362,15 +362,13 @@ if(!empty($newversion['news'])){
     }
 } else {
     showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
-/*vot*/        '<a href="https://www.dismall.com/" target="_blank">If you not get the news yet, please log in to Discuz! Community to view.</a>',
+        '<a href="https://www.dismall.com/" target="_blank">'.cplang('log_in_to_update').'</a>',
         '',
     ));
-/*vot
     showtablerow('', array('', 'class="td21" style="text-align:right;"'), array(
-        '<a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">Discuz! X3.4 latest version download</a>',
+        '<a href="https://gitee.com/3dming/DiscuzL/attach_files" target="_blank">'.cplang('download_latest').'</a>',
         '',
     ));
-*/
 }
 showtablefooter();
 
@@ -379,11 +377,11 @@ echo '<div class="clear"></div>';
 showtableheader('home_dev', 'fixpadding');
 showtablerow('', array('class="vtop td24 lineheight"'), array(
 	cplang('home_dev_copyright'),
-/*vot*/	'<span class="bold">Tencent Cloud Computing (Beijing) Co., Ltd.</span>'
+	'<span class="bold">'.cplang('org_name').'</span>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont team"'), array(
 	cplang('home_dev_manager'),
-/*vot*/	'<a href="http://www.discuz.net/home.php?mod=space&uid=1" class="lightlink2 smallfont" target="_blank">Kevin \'Crossday\'</a>'
+	'<a href="http://www.discuz.net/home.php?mod=space&uid=1" class="lightlink2 smallfont" target="_blank">'.cplang('dev_manager').'</a>'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight smallfont team"'), array(
 	cplang('home_dev_team'),
@@ -410,8 +408,9 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 ));
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'), array(
 	cplang('home_dev_thanks'),
-	'<a href="http://www.discuzfans.com" class="lightlink2 smallfont" target="_blank">Discuz! Fans</a>
-  <a href="http://www.discuz.net/home.php?mod=space&uid=122246" class="lightlink2 smallfont" target="_blank">Heyond</a>
+	'<a href="https://gitee.com/Discuz/DiscuzX/contributors?ref=master" class="lightlink2 smallfont" target="_blank">Discuz! X Git Contributors</a>
+	<a href="http://www.discuzfans.com" class="lightlink2 smallfont" target="_blank">Discuz! Fans</a>
+	<a href="http://www.discuz.net/home.php?mod=space&uid=122246" class="lightlink2 smallfont" target="_blank">Heyond</a>
 	<a href="http://www.discuz.net/home.php?mod=space&uid=632268" class="lightlink2 smallfont" target="_blank">JinboWang</a>
 	<a href="http://www.discuz.net/home.php?mod=space&uid=15104" class="lightlink2 smallfont" target="_blank">Redstone</a>
 	<a href="http://www.discuz.net/home.php?mod=space&uid=10407" class="lightlink2 smallfont" target="_blank">Qiang Liu</a>
@@ -438,11 +437,11 @@ showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight team"'
 showtablerow('', array('class="vtop td24 lineheight"', 'class="lineheight"'), array(
 	cplang('home_dev_links'),
 /*vot*/
-	'<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML Forum</a>,
-	<a href="https://bitbucket.org/vot/discuz.ml" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
-	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">Discuz! Application Chinese Forum</a>,
-	<a href="http://www.comsenz.com" class="lightlink2" target="_blank">Comsenz Website</a>,
-	<a href="https://gitee.com/discuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>
+	'<a href="https://github.com/codersclub/Discuz.ML" class="lightlink2" target="_blank">Discuz!ML Repository</a>,
+	<a href="https://gitee.com/Discuz/DiscuzX" class="lightlink2" target="_blank">Discuz! X Git</a>,
+	<a href="https://www.dismall.com/" class="lightlink2" target="_blank">'.cplang('app_discussion').'</a>,
+	<a href="https://www.discuz.net/" class="lightlink2" target="_blank">'.cplang('discussion_area').'</a>,
+	<a href="'.ADMINSCRIPT.'?action=cloudaddons" class="lightlink2" target="_blank">'.cplang('app_center').'</a>
 '));
 showtablefooter();
 

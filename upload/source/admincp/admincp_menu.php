@@ -29,6 +29,7 @@ $topmenu = array (
 	'safe' => '',
 	'extended' => '',
 	'plugin' => $isfounder ? 'plugins' : '',
+	'template' => '',
 	'tools' => '',
 );
 
@@ -67,8 +68,6 @@ $menu['global'] = array(
 $menu['style'] = array(
 	array('menu_setting_customnav', 'nav'),
 	array('menu_setting_styles', 'setting_styles'),
-	array('menu_styles', 'styles'),
-	$isfounder ? array('menu_styles_templates', 'templates') : null,
 	array('menu_posting_smilies', 'smilies'),
 	array('menu_click', 'click'),
 	array('menu_thread_stamp', 'misc_stamp'),
@@ -78,6 +77,7 @@ $menu['style'] = array(
 
 $menu['topic'] = array(
 	array('menu_moderate_posts', 'moderate'),
+	array('menu_remoderate', 'remoderate'),
 	array('menu_posting_censors', 'misc_censor'),
 	array('menu_maint_report', 'report'),
 	array('menu_setting_tag', 'tag'),
@@ -117,6 +117,7 @@ $menu['user'] = array(
 	array('menu_members_stat', 'members_stat'),
 	array('menu_members_newsletter', 'members_newsletter'),
 	array('menu_members_mobile', 'members_newsletter_mobile'),
+	array('menu_members_sms', 'members_newsletter_sms'),
 	array('menu_usertag', 'usertag'),
 	array('menu_members_edit_ban_user', 'members_ban'),
 	array('menu_members_ipban', 'members_ipban'),
@@ -169,9 +170,10 @@ $menu['group'] = array(
 );
 
 $menu['safe'] = array(
-	array('menu_safe_setting', 'setting_sec'),	
+	array('menu_safe_setting', 'setting_sec'),
 	array('menu_safe_seccheck', 'setting_seccheck'),
 	array('menu_security', 'optimizer_security'),
+	array('menu_serversec', 'optimizer_serversec'),
 	array('menu_safe_accountguard', 'setting_accountguard'),
 );
 
@@ -181,6 +183,7 @@ $menu['extended'] = array(
 	array('menu_tasks', 'tasks'),
 	array('menu_magics', 'magics'),
 	array('menu_medals', 'medals'),
+	$isfounder ? array('menu_smsgw', 'smsgw') : null,
 	array('menu_misc_help', 'faq'),
 	array('menu_ec', 'setting_ec'),
 	array('menu_misc_link', 'misc_link'),
@@ -213,10 +216,17 @@ if(file_exists($menudir = DISCUZ_ROOT.'./source/admincp/menu')) {
 
 if($isfounder) {
 	$menu['plugin'] = array(
-		array('menu_addons', 'cloudaddons'),
 		array('menu_plugins', 'plugins'),
 	);
 }
+
+$menu['template'] = array(
+	array('menu_styles', 'styles'),
+);
+if($isfounder && isset($_G['config']['plugindeveloper']) && $_G['config']['plugindeveloper'] > 0) {
+	$menu['template'][] = array('menu_templates_add', 'templates_add');
+}
+
 loadcache('adminmenu');
 if(is_array($_G['cache']['adminmenu'])) {
 	foreach($_G['cache']['adminmenu'] as $row) {
@@ -239,12 +249,13 @@ $menu['tools'] = array(
 	$isfounder ? array('menu_tools_filecheck', 'checktools_filecheck') : null,
 	$isfounder ? array('menu_tools_hookcheck', 'checktools_hookcheck') : null,
 );
+
 if($isfounder) {
 	$topmenu['founder'] = '';
 
 	$menu['founder'] = array(
 		array('menu_founder_perm', 'founder_perm'),
-		array('menu_setting_mail', 'setting_mail'),		
+		array('menu_setting_mail', 'setting_mail'),
 		array('menu_setting_uc', 'setting_uc'),
 		array('menu_db', 'db_export'),
 		array('menu_membersplit', 'membersplit_check'),
@@ -254,6 +265,13 @@ if($isfounder) {
 	);
 
 	$menu['uc'] = array();
+}
+
+if($isfounder || $_G['adminid'] == 1) {
+	$topmenu['cloudaddons'] = '';
+	$menu['cloudaddons'] = array(
+		array('menu_addons', 'cloudaddons&frame=no', '_blank'),
+	);
 }
 
 if(!isfounder() && !isset($GLOBALS['admincp']->perms['all'])) {

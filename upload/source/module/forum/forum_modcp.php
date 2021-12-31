@@ -26,14 +26,14 @@ if(!empty($_G['forum']) && $_G['forum']['status'] == 3) {
 
 $modsession = new discuz_panel(MODCP_PANEL);
 if(getgpc('login_panel') && getgpc('cppwd') && submitcheck('submit')) {
-	$modsession->dologin($_G[uid], getgpc('cppwd'), true);
+	$modsession->dologin($_G['uid'], getgpc('cppwd'), true);
 }
 
 if(!$modsession->islogin) {
 	$_GET['action'] = 'login';
 }
 
-if($_GET['action'] == 'logout') {
+if(getgpc('action') == 'logout') {
 	$modsession->dologout();
 	showmessage('modcp_logout_succeed', 'forum.php');
 }
@@ -81,9 +81,9 @@ if($_G['fid'] && in_array($_G['fid'], explode(',', $modforums['fids']))) {
 
 if($_G['fid'] && $_G['forum']['ismoderator']) {
 	dsetcookie('modcpfid', $_G['fid']);
-	$forcefid = "&amp;fid=$_G[fid]";
+	$forcefid = "&amp;fid={$_G['fid']}";
 } elseif(!empty($modforums) && count($modforums['list']) == 1) {
-	$forcefid = "&amp;fid=$modforums[fids]";
+	$forcefid = "&amp;fid={$modforums['fids']}";
 } else {
 	$forcefid = '';
 }
@@ -154,7 +154,7 @@ $modtpl = 'forum/' . $modtpl;
 $op = isset($op) ? trim($op) : '';
 
 if($script != 'log') {
-	include libfile('function/misc');
+	require_once libfile('function/misc');
 	$extra = implodearray(array('GET' => $_GET, 'POST' => $_POST), array('cppwd', 'formhash', 'submit', 'addsubmit'));
 	$modcplog = array(TIMESTAMP, $_G['username'], $_G['adminid'], $_G['clientip'], $_GET['action'], $op, $_G['fid'], $extra);
 	writelog('modcp', implode("\t", clearlogstring($modcplog)));

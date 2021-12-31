@@ -14,12 +14,12 @@ if(!defined('IN_DISCUZ')) {
 require_once libfile('function/forumlist');
 
 if($_G['forum']['redirect']) {
-	dheader("Location: {$_G[forum][redirect]}");
+	dheader("Location: {$_G['forum']['redirect']}");
 } elseif($_G['forum']['type'] == 'group') {
-	dheader("Location: forum.php?gid=$_G[fid]");
+	dheader("Location: forum.php?gid={$_G['fid']}");
 } elseif(empty($_G['forum']['fid'])) {
 	showmessage('forum_nonexistence', NULL);
-} elseif($_G['fid'] == $_G['setting']['followforumid'] && $_G['adminid'] != 1) {
+} elseif($_G['fid'] == getglobal('setting/followforumid') && $_G['adminid'] != 1) {
 	dheader("Location: home.php?mod=follow");
 }
 
@@ -76,16 +76,16 @@ if($_G['forum']['type'] == 'forum') {
 	} else {
 		$navigation = ' <em>&rsaquo;</em> '.'<a href="forum.php?mod=forumdisplay&fid='.$_G['fid'].'">'.$_G['forum']['name'].'</a> <em>&rsaquo;</em> '.$forumarchive[$_GET['archiveid']]['displayname'];
 	}
-	$seodata = array('forum' => $_G['forum']['name'], 'fgroup' => $forum_up['name'], 'page' => intval($_GET['page']));
+	$seodata = array('forum' => $_G['forum']['name'], 'fgroup' => $forum_up['name'], 'page' => intval(getgpc('page')));
 } else {
 	$fgroupid = $forum_up['fup'];
 	if(empty($_GET['archiveid'])) {
-		$forum_top =  $_G['cache']['forums'][$forum_up[fup]];
+		$forum_top =  $_G['cache']['forums'][$forum_up['fup']];
 		$navigation = ' <em>&rsaquo;</em> <a href="forum.php?gid='.$forum_top['fid'].'">'.$forum_top['name'].'</a><em>&rsaquo;</em> <a href="forum.php?mod=forumdisplay&fid='.$forum_up['fid'].'">'.$forum_up['name'].'</a><em>&rsaquo;</em> '.$_G['forum']['name'];
 	} else {
 		$navigation = ' <em>&rsaquo;</em> <a href="forum.php?mod=forumdisplay&fid='.$_G['forum']['fup'].'">'.$forum_up['name'].'</a> <em>&rsaquo;</em> '.'<a href="forum.php?mod=forumdisplay&fid='.$_G['fid'].'">'.$_G['forum']['name'].'</a> <em>&rsaquo;</em> '.$forumarchive[$_GET['archiveid']]['displayname'];
 	}
-	$seodata = array('forum' => $_G['forum']['name'], 'fup' => $forum_up['name'], 'fgroup' => $forum_top['name'], 'page' => intval($_GET['page']));
+	$seodata = array('forum' => $_G['forum']['name'], 'fup' => $forum_up['name'], 'fgroup' => $forum_top['name'], 'page' => intval(getgpc('page')));
 }
 
 $rssauth = $_G['rssauth'];
@@ -143,7 +143,7 @@ if(!$navtitle) {
 } else {
 	$nobbname = true;
 }
-$_GET['typeid'] = intval($_GET['typeid']);
+$_GET['typeid'] = intval(getgpc('typeid'));
 if(!empty($_GET['typeid']) && !empty($_G['forum']['threadtypes']['types'][$_GET['typeid']])) {
 	$navtitle = strip_tags($_G['forum']['threadtypes']['types'][$_GET['typeid']]).' - '.$navtitle;
 }
@@ -168,7 +168,7 @@ if($_G['forum']['password']) {
 			showmessage('forum_passwd_incorrect', NULL);
 		} else {
 			dsetcookie('fidpw'.$_G['fid'], $_GET['pw']);
-			showmessage('forum_passwd_correct', "forum.php?mod=forumdisplay&fid=$_G[fid]");
+			showmessage('forum_passwd_correct', "forum.php?mod=forumdisplay&fid={$_G['fid']}");
 		}
 	} elseif($_G['forum']['password'] != $_G['cookie']['fidpw'.$_G['fid']]) {
 		include template('forum/forumdisplay_passwd');
@@ -183,7 +183,7 @@ if($_G['forum']['price'] && !$_G['forum']['ismoderator']) {
 		if($_GET['action'] == 'paysubmit') {
 			updatemembercount($_G['uid'], array($_G['setting']['creditstransextra'][1] => -$paycredits), 1, 'FCP', $_G['fid']);
 			C::t('common_member_forum_buylog')->update_credits($_G['uid'], $_G['fid'], $_G['forum']['price']);
-			showmessage('forum_pay_correct', "forum.php?mod=forumdisplay&fid=$_G[fid]");
+			showmessage('forum_pay_correct', "forum.php?mod=forumdisplay&fid={$_G['fid']}");
 		} else {
 			if(getuserprofile('extcredits'.$_G['setting']['creditstransextra'][1]) < $paycredits) {
 				showmessage('forum_pay_incorrect', NULL, array('paycredits' => $paycredits, 'credits' => $_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]]['unit'].$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]]['title'], 'title' => $_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]]['title']));
@@ -209,7 +209,7 @@ if(empty($_G['forum']['picstyle']) && isset($_G['cookie']['forum_lastvisit']) &&
 	$forumlastvisit = $a[1];
 	unset($a);
 }
-dsetcookie('forum_lastvisit', preg_replace("/D\_".$_G['fid']."\_\d+/", '', $_G['cookie']['forum_lastvisit']).'D_'.$_G['fid'].'_'.TIMESTAMP, 604800);
+dsetcookie('forum_lastvisit', preg_replace("/D\_".$_G['fid']."\_\d+/", '', getcookie('forum_lastvisit')).'D_'.$_G['fid'].'_'.TIMESTAMP, 604800);
 
 $threadtableids = !empty($_G['cache']['threadtableids']) ? $_G['cache']['threadtableids'] : array();
 
@@ -249,7 +249,7 @@ if(!empty($_G['forum']['threadsorts']['types'])) {
 		$forum_optionlist = getsortedoptionlist();
 	}
 }
-$_GET['sortid'] = intval($_GET['sortid']);
+$_GET['sortid'] = intval(getgpc('sortid'));
 $moderatedby = $_G['forum']['status'] != 3 ? moddisplay($_G['forum']['moderators'], 'forumdisplay') : '';
 $_GET['highlight'] = empty($_GET['highlight']) ? '' : dhtmlspecialchars($_GET['highlight']);
 if($_G['forum']['autoclose']) {
@@ -259,7 +259,7 @@ if($_G['forum']['autoclose']) {
 
 $subexists = 0;
 foreach($_G['cache']['forums'] as $sub) {
-	if($sub['type'] == 'sub' && $sub['fup'] == $_G['fid'] && (!$_G['setting']['hideprivate'] || !$sub['viewperm'] || forumperm($sub['viewperm']) || strstr($sub['users'], "\t$_G[uid]\t"))) {
+	if($sub['type'] == 'sub' && $sub['fup'] == $_G['fid'] && (!$_G['setting']['hideprivate'] || !$sub['viewperm'] || forumperm($sub['viewperm']) || strstr($sub['users'], "\t{$_G['uid']}\t"))) {
 		if(!$sub['status']) {
 			continue;
 		}
@@ -331,7 +331,7 @@ if($subforumonly) {
 	}
 	exit();
 }
-if($_GET['filter'] != 'hot') {
+if(getgpc('filter') != 'hot') {
 	$page = $_G['setting']['threadmaxpages'] && $page > $_G['setting']['threadmaxpages'] ? 1 : $page;
 }
 
@@ -456,7 +456,7 @@ if($filter && $filter != 'hot') {
 	$simplestyle = true;
 }
 
-if(!empty($_GET['orderby']) && !$_G['setting']['closeforumorderby'] && in_array($_GET['orderby'], array('lastpost', 'dateline', 'replies', 'views', 'recommends', 'heats'))) {
+if(!empty($_GET['orderby']) && empty($_G['setting']['closeforumorderby']) && in_array($_GET['orderby'], array('lastpost', 'dateline', 'replies', 'views', 'recommends', 'heats'))) {
 	$forumdisplayadd['orderby'] .= '&orderby='.$_GET['orderby'];
 } else {
 	$_GET['orderby'] = isset($_G['cache']['forums'][$_G['fid']]['orderby']) ? $_G['cache']['forums'][$_G['fid']]['orderby'] : 'lastpost';
@@ -487,7 +487,7 @@ if(($_G['forum']['status'] != 3 && $_G['forum']['allowside'])) {
 	}
 }
 
-if($_G['forum']['threadsorts']['types'] && $sortoptionarray && ($_GET['searchoption'] || $_GET['searchsort'])) {
+if(!empty($_G['forum']['threadsorts']['types']) && $sortoptionarray && ($_GET['searchoption'] || $_GET['searchsort'])) {
 	$sortid = intval($_GET['sortid']);
 
 	if($_GET['searchoption']){
@@ -614,12 +614,12 @@ $start_limit = ($page - 1) * $_G['tpp'];
 
 $forumdisplayadd['page'] = !empty($forumdisplayadd['page']) ? $forumdisplayadd['page'] : '';
 $multipage_archive = $_GET['archiveid'] && in_array($_GET['archiveid'], $threadtableids) ? "&archiveid={$_GET['archiveid']}" : '';
-$multipage = multi($_G['forum_threadcount'], $_G['tpp'], $page, "forum.php?mod=forumdisplay&fid=$_G[fid]".$forumdisplayadd['page'].($multiadd ? '&'.implode('&', $multiadd) : '')."$multipage_archive", $_G['setting']['threadmaxpages']);
+$multipage = multi($_G['forum_threadcount'], $_G['tpp'], $page, "forum.php?mod=forumdisplay&fid={$_G['fid']}".$forumdisplayadd['page'].($multiadd ? '&'.implode('&', $multiadd) : '')."$multipage_archive", $_G['setting']['threadmaxpages']);
 
 $realpages = @ceil($_G['forum_threadcount']/$_G['tpp']);
 $maxpage = ($_G['setting']['threadmaxpages'] && $_G['setting']['threadmaxpages'] < $realpages) ? $_G['setting']['threadmaxpages'] : $realpages;
 $nextpage = ($page + 1) > $maxpage ? 1 : ($page + 1);
-$multipage_more = "forum.php?mod=forumdisplay&fid=$_G[fid]".$forumdisplayadd['page'].($multiadd ? '&'.implode('&', $multiadd) : '')."$multipage_archive".'&page='.$nextpage;
+$multipage_more = "forum.php?mod=forumdisplay&fid={$_G['fid']}".$forumdisplayadd['page'].($multiadd ? '&'.implode('&', $multiadd) : '')."$multipage_archive".'&page='.$nextpage;
 
 $extra = rawurlencode(!IS_ROBOT ? 'page='.$page.($forumdisplayadd['page'] ? '&filter='.$filter.$forumdisplayadd['page'] : '') : 'page=1');
 
@@ -632,12 +632,12 @@ $filterarr['displayorder'] = !$filterbool && $stickycount ? array(0, 1) : array(
 if($filter !== 'hot') {
 	$threadlist = array();
 	$indexadd = '';
-	$_order = "displayorder DESC, $_GET[orderby] $_GET[ascdesc]";
+	$_order = "displayorder DESC, {$_GET['orderby']} {$_GET['ascdesc']}";
 	if($filterbool) {
-		if($filterarr['digest']) {
+		if(!empty($filterarr['digest'])) {
 			$indexadd = " FORCE INDEX (digest) ";
 		}
-	} elseif($showsticky && is_array($stickytids) && $stickytids[0]) {
+	} elseif($showsticky && is_array($stickytids) && !empty($stickytids[0])) {
 		$filterarr1 = $filterarr;
 		$filterarr1['inforum'] = '';
 		$filterarr1['intids'] = $stickytids;
@@ -653,7 +653,7 @@ if($filter !== 'hot') {
 		updateforumcount($_G['fid']);
 	}
 } else {
-	$hottime = dintval(str_replace('-', '', $_GET['time']));
+	$hottime = dintval(str_replace('-', '', getgpc('time')));
 	$multipage = '';
 	if($hottime && checkdate(substr($hottime, 4, 2), substr($hottime, 6, 2), substr($hottime, 0, 4))) {
 		$calendartime = abs($hottime);
@@ -682,6 +682,7 @@ $thide = !empty($_G['cookie']['thide']) ? explode('|', $_G['cookie']['thide']) :
 $_G['showrows'] = $_G['hiddenexists'] = 0;
 
 $threadindex = 0;
+if(empty($threadlist)) $threadlist = array();
 foreach($threadlist as $thread) {
 	$thread['allreplies'] = $thread['replies'] + $thread['comments'];
 	$thread['ordertype'] = getstatus($thread['status'], 4);
@@ -721,10 +722,10 @@ foreach($threadlist as $thread) {
 		$thread['pages'] = ceil($topicposts / $_G['ppp']);
 		$realtid = $_G['forum']['status'] != 3 && $thread['isgroup'] == 1 ? $thread['closed'] : $thread['tid'];
 		for($i = 2; $i <= 6 && $i <= $thread['pages']; $i++) {
-			$pagelinks .= "<a href=\"forum.php?mod=viewthread&tid=$realtid&amp;".(!empty($multipate_archive) ? "$multipate_archive&amp;" : '')."extra=$extra&amp;page=$i\">$i</a>";
+			$pagelinks .= "<a href=\"forum.php?mod=viewthread&tid=$realtid&amp;".(!empty($multipate_archive) ? "$multipate_archive&amp;" : '')."extra=$extra&amp;page=$i\" onclick=\"atarget(this)\">$i</a>";
 		}
 		if($thread['pages'] > 6) {
-			$pagelinks .= "..<a href=\"forum.php?mod=viewthread&tid=$realtid&amp;".(!empty($multipate_archive) ? "$multipate_archive&amp;" : '')."extra=$extra&amp;page=$thread[pages]\">$thread[pages]</a>";
+			$pagelinks .= "..<a href=\"forum.php?mod=viewthread&tid=$realtid&amp;".(!empty($multipate_archive) ? "$multipate_archive&amp;" : '')."extra=$extra&amp;page=$thread[pages]\" onclick=\"atarget(this)\">$thread[pages]</a>";
 		}
 		$thread['multipage'] = '&nbsp;...'.$pagelinks;
 	}
@@ -739,7 +740,7 @@ foreach($threadlist as $thread) {
 		$thread['highlight'] .= $stylestr[2] ? 'text-decoration: underline;' : '';
 		$thread['highlight'] .= $string[1] ? 'color: '.$_G['forum_colorarray'][$string[1]].';' : '';
 		if($thread['bgcolor']) {
-			$thread['highlight'] .= "background-color: $thread[bgcolor];";
+			$thread['highlight'] .= "background-color: {$thread['bgcolor']};";
 		}
 		$thread['highlight'] .= '"';
 	} else {
@@ -773,7 +774,7 @@ foreach($threadlist as $thread) {
 		$thread['folder'] = 'lock';
 	} else {
 		$thread['folder'] = 'common';
-		$thread['weeknew'] = TIMESTAMP - 604800 <= $thread['dbdateline'];
+		$thread['weeknew'] = TIMESTAMP - 604800 <= $thread['dateline'];
 		if($thread['allreplies'] > $thread['views']) {
 			$thread['views'] = $thread['allreplies'];
 		}
@@ -832,7 +833,7 @@ $_G['hiddenexists'] = !$_G['forum']['ismoderator'] && $_G['hiddenexists'] && $_G
 $livethread = array();
 if($_G['forum']['livetid'] && $page == 1 && (!$filter || ($filter == 'sortid' && $_G['forum']['threadsorts']['defaultshow'] == $_GET['sortid']))) {
 	include_once libfile('function/post');
-	$livethread = C::t('forum_thread')->fetch($_G['forum']['livetid']);
+	$livethread = C::t('forum_thread')->fetch_thread($_G['forum']['livetid']);
 	$livepost = C::t('forum_post')->fetch_threadpost_by_tid_invisible($_G['forum']['livetid']);
 	$livemessage = messagecutstr($livepost['message'], 200);
 	$liveallowpostreply = ($_G['forum']['allowreply'] != -1) && (($livethread['isgroup'] || (!$livethread['closed'] && !checkautoclose($livethread))) || $_G['forum']['ismoderator']) && ((!$_G['forum']['replyperm'] && $_G['group']['allowreply']) || ($_G['forum']['replyperm'] && forumperm($_G['forum']['replyperm'])) || $_G['forum']['allowreply']);
@@ -893,7 +894,7 @@ if(!empty($grouptids)) {
 }
 
 $stemplate = null;
-if($_G['forum']['threadsorts']['types'] && $sortoptionarray && $templatearray && $threadids) {
+if(!empty($_G['forum']['threadsorts']['types']) && $sortoptionarray && $templatearray && $threadids) {
 	$sortid = intval($_GET['sortid']);
 	if(!strexists($templatearray[$sortid], '{subject_url}') && !strexists($templatearray[$sortid], '{tid}')) {
 		$sortlistarray = showsorttemplate($sortid, $_G['fid'], $sortoptionarray, $templatearray, $_G['forum_threadlist'], $threadids);
@@ -914,7 +915,7 @@ $_G['setting']['visitedforums'] = $_G['setting']['visitedforums'] && $_G['forum'
 
 
 $_G['group']['allowpost'] = (!$_G['forum']['postperm'] && $_G['group']['allowpost']) || ($_G['forum']['postperm'] && forumperm($_G['forum']['postperm'])) || (isset($_G['forum']['allowpost']) && $_G['forum']['allowpost'] == 1 && $_G['group']['allowpost']);
-$fastpost = $_G['setting']['fastpost'] && !$_G['forum']['allowspecialonly'] && !$_G['forum']['threadsorts']['required'] && !$_G['forum']['picstyle'];
+$fastpost = $_G['setting']['fastpost'] && !$_G['forum']['allowspecialonly'] && empty($_G['forum']['threadsorts']['required']) && !$_G['forum']['picstyle'];
 $allowfastpost = $fastpost && $_G['group']['allowpost'];
 $_G['group']['allowpost'] = isset($_G['forum']['allowpost']) && $_G['forum']['allowpost'] == -1 ?  false : $_G['group']['allowpost'];
 
@@ -922,7 +923,7 @@ $_G['forum']['allowpostattach'] = isset($_G['forum']['allowpostattach']) ? $_G['
 $allowpostattach = $fastpost && ($_G['forum']['allowpostattach'] != -1 && ($_G['forum']['allowpostattach'] == 1 || (!$_G['forum']['postattachperm'] && $_G['group']['allowpostattach']) || ($_G['forum']['postattachperm'] && forumperm($_G['forum']['postattachperm']))));
 
 if($fastpost || $livethread) {
-	if(!$_G['adminid'] && (!cknewuser(1) || $_G['setting']['newbiespan'] && (!getuserprofile('lastpost') || TIMESTAMP - getuserprofile('lastpost') < $_G['setting']['newbiespan'] * 60) && TIMESTAMP - $_G['member']['regdate'] < $_G['setting']['newbiespan'] * 60)) {
+	if(in_array($_G['adminid'], array(0, -1)) && (!cknewuser(1) || $_G['setting']['newbiespan'] && (!getuserprofile('lastpost') || TIMESTAMP - getuserprofile('lastpost') < $_G['setting']['newbiespan'] * 60) && TIMESTAMP - getglobal('member/regdate') < $_G['setting']['newbiespan'] * 60)) {
 		$allowfastpost = false;
 	}
 	$usesigcheck = $_G['uid'] && $_G['group']['maxsigsize'];
@@ -949,7 +950,7 @@ if($_G['group']['allowpost']) {
 }
 
 $showthreadclasscount = array();
-if(($_G['forum']['threadtypes'] && $_G['forum']['threadtypes']['listable']) || count($_G['forum']['threadsorts']['types']) > 0) {
+if(($_G['forum']['threadtypes'] && $_G['forum']['threadtypes']['listable']) || (isset($_G['forum']['threadsorts']['types']) && is_array($_G['forum']['threadsorts']['types']) && count($_G['forum']['threadsorts']['types']) > 0)) {
 	$showthreadclasscount = threadclasscount($_G['fid']);
 }
 
@@ -961,7 +962,7 @@ if(isset($_GET['leftsidestatus'])) {
 	$_G['cookie']['disableleftside'] = $_GET['leftsidestatus'];
 }
 $leftside = empty($_G['cookie']['disableleftside']) && $allowleftside ? forumleftside() : array();
-$leftsideswitch = $allowleftside ? "forum.php?mod=forumdisplay&fid=$_G[fid]&page=$page".($multiadd ? '&'.implode('&', $multiadd) : '') : '';
+$leftsideswitch = $allowleftside ? "forum.php?mod=forumdisplay&fid={$_G['fid']}&page=$page".($multiadd ? '&'.implode('&', $multiadd) : '') : '';
 
 require_once libfile('function/upload');
 $swfconfig = getuploadconfig($_G['uid'], $_G['fid']);

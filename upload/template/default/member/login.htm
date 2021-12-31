@@ -37,7 +37,7 @@
 			<span><!--{if !empty($_GET['infloat']) && !isset($_GET['frommessage'])}--><a href="javascript:;" class="flbc" onclick="hideWindow('$_GET[handlekey]', 0, 1);" title="{lang close}">{lang close}</a><!--{/if}--></span>
 		</h3>
 		<!--{hook/logging_top}-->
-		<form method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" onsubmit="{if $this->setting['pwdsafety']}pwmd5('password3_$loginhash');{/if}pwdclear = 1;ajaxpost('loginform_$loginhash', 'returnmessage_$loginhash', 'returnmessage_$loginhash', 'onerror');return false;" action="member.php?mod=logging&action=login&loginsubmit=yes{if !empty($_GET['handlekey'])}&handlekey=$_GET[handlekey]{/if}{if isset($_GET['frommessage'])}&frommessage{/if}&loginhash=$loginhash">
+		<form method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" onsubmit="pwdclear = 1;ajaxpost('loginform_$loginhash', 'returnmessage_$loginhash', 'returnmessage_$loginhash', 'onerror');return false;" action="member.php?mod=logging&action=login&loginsubmit=yes{if !empty($_GET['handlekey'])}&handlekey=$_GET[handlekey]{/if}{if isset($_GET['frommessage'])}&frommessage{/if}&loginhash=$loginhash">
 			<div class="c cl">
 				<input type="hidden" name="formhash" value="{FORMHASH}" />
 				<input type="hidden" name="referer" value="{echo dreferer()}" />
@@ -69,6 +69,9 @@
 											<option value="uid">{lang uid}</option>
 											<!--{/if}-->
 											<option value="email">{lang email}</option>
+											<!--{if getglobal('setting/secmobilelogin')}-->
+											<option value="secmobile">{lang secmobile}</option>
+											<!--{/if}-->
 										</select>
 									</span>
 								<!--{/if}-->
@@ -89,13 +92,13 @@
 				</div>
 				<!--{/if}-->
 
-				<!--{if empty($_GET['auth']) || $questionexist}-->
+				<!--{if empty($_GET['auth']) || $questionexist || $seccodecheck}-->
 				<div class="rfm">
 					<table>
 						<tr>
 							<th>{lang security_q}:</th>
-							<td><select id="loginquestionid_$loginhash" width="213" name="questionid"{if !$questionexist} onchange="if($('loginquestionid_$loginhash').value > 0) {$('loginanswer_row_$loginhash').style.display='';} else {$('loginanswer_row_$loginhash').style.display='none';}"<!--{/if}-->>
-								<option value="0"><!--{if $questionexist}-->{lang security_question_0}<!--{else}-->{lang security_question}<!--{/if}--></option>
+							<td><select id="loginquestionid_$loginhash" width="213" name="questionid"{if !$questionexist || $seccodecheck} onchange="if($('loginquestionid_$loginhash').value > 0) {$('loginanswer_row_$loginhash').style.display='';} else {$('loginanswer_row_$loginhash').style.display='none';}"<!--{/if}-->>
+								<option value="0"><!--{if $questionexist && !$seccodecheck}-->{lang security_question_0}<!--{else}-->{lang security_question}<!--{/if}--></option>
 								<option value="1">{lang security_question_1}</option>
 								<option value="2">{lang security_question_2}</option>
 								<option value="3">{lang security_question_3}</option>
@@ -107,7 +110,7 @@
 						</tr>
 					</table>
 				</div>
-				<div class="rfm" id="loginanswer_row_$loginhash" {if !$questionexist} style="display:none"{/if}>
+				<div class="rfm" id="loginanswer_row_$loginhash" {if !$questionexist || $seccodecheck} style="display:none"{/if}>
 					<table>
 						<tr>
 							<th>{lang security_a}:</th>
@@ -161,9 +164,6 @@
 			</div>
 		</form>
 	</div>
-	<!--{if $_G['setting']['pwdsafety']}-->
-		<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
-	<!--{/if}-->
 	<div id="layer_lostpw_$loginhash" style="display: none;">
 		<h3 class="flb">
 			<em id="returnmessage3_$loginhash">{lang getpassword}</em>

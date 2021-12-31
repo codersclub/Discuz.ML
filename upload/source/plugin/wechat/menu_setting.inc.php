@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-$setting = C::t('common_setting')->fetch_all(array('wechatmenu'));
+$setting = C::t('common_setting')->fetch_all_setting(array('wechatmenu'));
 $setting = (array)unserialize($setting['wechatmenu']);
 
 require_once DISCUZ_ROOT . './source/plugin/wechat/wechat.lib.class.php';
@@ -26,7 +26,7 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 
 	$wechat_client = new WeChatClient($_G['wechat']['setting']['wechat_appId'], $_G['wechat']['setting']['wechat_appsecret']);
 
-	if(in_array('plugin', $_G['setting']['rewritestatus'])) {
+	if(is_array($_G['setting']['rewritestatus']) && in_array('plugin', $_G['setting']['rewritestatus'])) {
 		$url = $_G['siteurl'].rewriteoutput('plugin', 1, 'wechat', 'access', '', 'op=access');
 	} else {
 		$url = $_G['siteurl'].'plugin.php?id=wechat:access';
@@ -42,7 +42,7 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 		$disabled = !empty($button['sub_button']) ? 'disabled' : '';
 		showtablerow('', array('', 'class="td23 td28"', '', 'class="td29"'), array(
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"button[$k][delete]\" value=\"yes\" $disabled>",
-			"<input type=\"text\" class=\"txt\" size=\"3\" name=\"button[$k][displayorder]\" value=\"$button[displayorder]\">",
+			"<input type=\"text\" class=\"txt\" size=\"3\" name=\"button[$k][displayorder]\" value=\"{$button['displayorder']}\">",
 			"<div class=\"parentnode\"><input type=\"text\" class=\"txt\" size=\"30\" name=\"button[$k][name]\" value=\"".dhtmlspecialchars($button['name'])."\"></div>",
 			"<input type=\"text\" class=\"txt\" size=\"30\" name=\"button[$k][keyurl]\" value=\"".dhtmlspecialchars($button['keyurl'])."\">",
 		));
@@ -50,7 +50,7 @@ if(!submitcheck('menusubmit') && !submitcheck('pubsubmit')) {
 			foreach($button['sub_button'] as $sk => $sub_button) {
 				showtablerow('', array('', 'class="td23 td28"', '', 'class="td29"'), array(
 					"<input class=\"checkbox\" type=\"checkbox\" name=\"button[$k][sub_button][$sk][delete]\" value=\"yes\">",
-					"<input type=\"text\" class=\"txt\" size=\"3\" name=\"button[$k][sub_button][$sk][displayorder]\" value=\"$sub_button[displayorder]\">",
+					"<input type=\"text\" class=\"txt\" size=\"3\" name=\"button[$k][sub_button][$sk][displayorder]\" value=\"{$sub_button['displayorder']}\">",
 					"<div class=\"node\"><input type=\"text\" class=\"txt\" size=\"30\" name=\"button[$k][sub_button][$sk][name]\" value=\"".dhtmlspecialchars($sub_button['name'])."\"></div>",
 					"<input type=\"text\" class=\"txt\" size=\"30\" name=\"button[$k][sub_button][$sk][keyurl]\" value=\"".dhtmlspecialchars($sub_button['keyurl'])."\">",
 				));

@@ -3196,14 +3196,7 @@
 				<item id="name"><![CDATA[]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
-				<item id="summary"><![CDATA[<div class="bn lk"><ul class="x cl">
-<li><a target="_blank" href="http://www.discuz.net">Official forum</a></li>
-<li><a target="_blank" href="http://www.comsenz.com">Comsenz</a></li>
-<li><a target="_blank" href="http://www.manyou.com/">Application Platform</a></li>
-<li><a target="_blank" href="http://www.yeswan.com">Yeswan</a></li>
-<li><a target="_blank" href="http://www.5d6d.com/">My territory</a></li>
-<li><a target="_blank" href="http://www.phpchina.com">PHPchina</a></li>
-</ul></div>]]></item>
+				<item id="summary"><![CDATA[<div class="bn lk"><ul class="x cl"><li><a target="_blank" href="http://www.discuz.net">Official forum</a></li></ul></div>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
 				<item id="styleid"><![CDATA[0]]></item>

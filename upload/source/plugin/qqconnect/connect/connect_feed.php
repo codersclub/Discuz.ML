@@ -53,7 +53,7 @@ if ($op == 'new') {
 			$post['message'] = preg_replace('/\[quote\].*\[\/quote\](\r\n|\n|\r){0,}/is', '', $post['message']);
 		}
 		if(strpos($msglower, '[/media]') !== FALSE) {
-			$post['message'] = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", '', $post['message']);
+			$post['message'] = preg_replace("/\[media=([\w%,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", '', $post['message']);
 		}
 		if(strpos($msglower, '[/flash]') !== FALSE) {
 			$post['message'] = preg_replace("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/is", '', $post['message']);
@@ -64,7 +64,7 @@ if ($op == 'new') {
 		$html_content = $connectService->connectParseBbcode($post['message'], $thread['fid'], $post['pid'], $post['htmlon'], $attach_images);
 		$html_content = strip_tags(preg_replace('/(&nbsp;)+/', ' ', $html_content));
 
-		if($_G['setting']['rewritestatus'] && in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
+		if($_G['setting']['rewritestatus'] && is_array($_G['setting']['rewritestatus']) && in_array('forum_viewthread', $_G['setting']['rewritestatus'])) {
 			$url = rewriteoutput('forum_viewthread', 1, $_G['siteurl'], $tid);
 		} else {
 			$url = $_G['siteurl'].'forum.php?mod=viewthread&tid='.$tid;
@@ -195,7 +195,7 @@ if ($op == 'new') {
 		}
 
 		$thread = C::t('forum_thread')->fetch_by_tid_displayorder($tid, 0);
-		$post = C::t('forum_post')->fetch('tid:'.$tid, $pid);
+		$post = C::t('forum_post')->fetch_post('tid:'.$tid, $pid);
 
 		if (empty($thread) || empty($post)) {
 			$connectService->connectJsOutputMessage('', 'connect_thread_id_miss', 1);
@@ -217,7 +217,7 @@ if ($op == 'new') {
 			$post['message'] = preg_replace('/\[quote\].*\[\/quote\](\r\n|\n|\r){0,}/is', '', $post['message']);
 		}
 		if(strpos($msglower, '[/media]') !== FALSE) {
-			$post['message'] = preg_replace("/\[media=([\w,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", '', $post['message']);
+			$post['message'] = preg_replace("/\[media=([\w%,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/is", '', $post['message']);
 		}
 		if(strpos($msglower, '[/flash]') !== FALSE) {
 			$post['message'] = preg_replace("/\[flash(=(\d+),(\d+))?\]\s*([^\[\<\r\n]+?)\s*\[\/flash\]/is", '', $post['message']);
