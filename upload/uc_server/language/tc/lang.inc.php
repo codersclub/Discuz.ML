@@ -13,11 +13,8 @@ define('UC_VERNAME', '國際版');//International Version
 
 $lang = array(
 
-	'SC_GBK'	=> '簡體中文版',
-	'TC_BIG5'	=> '繁體中文版',
 	'SC_UTF8'	=> '簡體中文 UTF8 版',
 	'TC_UTF8'	=> '繁體中文 UTF8 版',
-	'EN_ISO'	=> 'ENGLISH ISO8859',
 	'EN_UTF8'	=> 'ENGLISH UTF-8',
 
 	'title_install'		=> SOFT_NAME.' 安裝嚮導',
@@ -85,11 +82,16 @@ $lang = array(
 	'tips_ucenter'		=> '請填寫 UCenter 相關信息',
 	'tips_ucenter_comment'	=> 'UCenter 是 Comsenz 公司產品的核心服務程序，Discuz! Board 的安裝和運行依賴此程序。如果您已經安裝了 UCenter，請填寫以下信息。否則，請到 <a href="http://www.discuz.com/" target="blank">Comsenz 產品中心</a> 下載並且安裝，然後再繼續。',
 
-	'advice_mysql_connect'	=> '請檢查 mysql 模塊是否正確加載',
-	'advice_fsockopen'	=> '該函數需要 php.ini 中 allow_url_fopen 選項開啟。請聯繫空間商，確定開啟了此項功能',
-	'advice_gethostbyname'	=> '是否php配置中禁止了gethostbyname函數。請聯繫空間商，確定開啟了此項功能',
-	'advice_file_get_contents'	=> '該函數需要 php.ini 中 allow_url_fopen 選項開啟。請聯繫空間商，確定開啟了此項功能',
-	'advice_xml_parser_create'	=> '該函數需要 PHP 支持 XML。請聯繫空間商，確定開啟了此項功能',
+	'advice_mysqli_connect'		=> '請檢查 mysqli 模塊是否正確加載',
+	'advice_xml_parser_create'	=> '該函數需要 PHP 支持 XML 。請聯繫服務商，確定開啟了此項功能',
+	'advice_json_encode'		=> '該函數需要 PHP 支持 JSON 。請聯繫服務商，確定開啟了此項功能',
+	'advice_fsockopen'		=> '該函數需要 php.ini 中 allow_url_fopen 選項開啟。請聯繫空間商，確定開啟了此項功能',
+	'advice_pfsockopen'		=> '該函數需要 php.ini 中 allow_url_fopen 選項開啟。請聯繫服務商，確定開啟了此項功能',
+	'advice_stream_socket_client'	=> '該函數需要 php.ini 中 stream_socket_client 函數開啟。請聯繫服務商，確定開啟了此項功能',
+	'advice_curl_init'		=> '該函數需要 php.ini 中 curl_init 函數開啟。請聯繫服務商，確定開啟了此項功能',
+
+	'undefine_func'		=> '不存在的函數',
+	'mysqli_unsupport'	=> '請檢查 mysqli 模塊是否正確加載',
 
 	'ucurl'		=> 'UCenter 的 URL',
 	'ucpw'		=> 'UCenter 創始人密碼',
@@ -154,9 +156,10 @@ $lang = array(
 
 	'install_in_processed'	=> '正在安裝...',
 	'install_succeed'	=> '安裝用戶中心成功，點擊進入下一步',
+	'copyright' => 'Copyright &copy; 2001-'.date('Y').' Tencent Cloud.',
 	'license'		=> '<div class="license"><h1>中文版授權協議 適用於中文用戶</h1>
 
-<p>版權所有 (c) 2001-2020，騰訊雲計算（北京）有限責任公司(原北京康盛新創科技有限責任公司)保留所有權利。</p>
+<p>版權所有 (c) 2001-'.date('Y').'，騰訊雲計算（北京）有限責任公司(原北京康盛新創科技有限責任公司)保留所有權利。</p>
 
 <p>感謝您選擇 UCenter 產品。希望我們的努力能為您提供一個高效快速和強大的站點解決方案。</p>
 

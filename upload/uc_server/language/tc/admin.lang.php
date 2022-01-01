@@ -8,6 +8,7 @@
 // Traditional Chinese Language Pack
 // by Valery Votintsev, codersclub.org
 //------------------------------------------------------
+
 $lang = array(
 	'user_search'		=> '搜索用戶',
 	'user_name'		=> '用戶名',
