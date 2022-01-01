@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_admincp.php 36362 2017-02-04 02:02:03Z nemohou $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -7226,7 +7227,8 @@ $lang = array
 <pre class="colorbox">
 &lt;IfModule mod_rewrite.c&gt;
 	RewriteEngine On
-{apache1}&lt;/IfModule&gt;
+{apache1}
+&lt;/IfModule&gt;
 </pre>
 
 <h1>Apache Web Server(虚拟主机用户)</h1>
@@ -7264,7 +7266,8 @@ RepeatLimit 32
 <pre class="colorbox">
 &lt;rewrite&gt;
 	&lt;rules&gt;
-{iis7}	&lt;/rules&gt;
+{iis7}
+	&lt;/rules&gt;
 &lt;/rewrite&gt;
 </pre>
 
@@ -7295,16 +7298,58 @@ url.rewrite-once = (
 	'purchase_service' => '购买授权',
 	'discussion_area' => '讨论区',
 	'app_center' => 'Discuz! 应用中心',
+
+//---------------------------
+// Added by Valery Votintsev
+
+//source/function/function_admincp.php
+	'upload_selectfile'		=> '浏览',//'Browse',
+	'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
+
+//source/admincp/admincp_index.php - javascript function shownews()
+	'subscribe'		=> '订阅',//'Subscribe',
+
+//source/admincp/admincp_plugins.php
+	'disable'		=> '禁用',//'Disable',
+
+//---------------------------
+//Change Language
+	'change_language'	=> '更改语言',//'Change language',
+	'change_style'		=> '更改风格',//'Change style',
+
+	'language'			=> 'Languages',
+	'setting_language'		=> 'Language Settings',
+	'setting_language_tips'		=> '<li>Add/Modify your language packs</li>',
+	'setting_language_available'	=> 'Enable',
+	'setting_language_id'		=> 'Id',
+	'setting_language_order'	=> 'Order',
+	'setting_language_flag'		=> 'Flag',
+	'setting_language_name'		=> 'Name (National!)',
+	'setting_language_title'	=> 'Title (English!)',
+	'setting_language_dir'		=> 'Direction',
+	'setting_language_actions'	=> 'Actions',
+
+	'nav_language'			=> 'Languages',
+
+	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
+
+	'contributors'			=> 'Discuz! &#x5F00;&#x6E90;&#x8D21;&#x732E;&#x8005;',//'Discuz! Open Source Contributors',
+
+	'contributors_link'		=> 'Click Here To See Them',
+
+	'detect_environment'		=> '运行环境检测',//'Detect operating environment',
 );
+
+//------------------------------------------------------
+// Extend the language variables from other language files
 
 $adminextend = array();
 if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.php')) {
 	@include $adminextendfile;
 	foreach($adminextend as $extend) {
 		$extend_lang = array();
-		@include DISCUZ_ROOT.'./source/language/lang_admincp_'.$extend;
+/*vot*/		@include DISCUZ_ROOT.'./source/language/sc/lang_admincp_'.$extend;
 		$lang = array_merge($lang, $extend_lang);
 	}
 }
 
-?>

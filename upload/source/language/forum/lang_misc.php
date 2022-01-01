@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_misc.php 33974 2013-09-10 09:30:47Z nemohou $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -55,7 +56,7 @@ $lang = array
 	'post_trade_transport_express' => '快递',
 	'post_trade_transport_virtual' => '虚拟物品或无需邮递',
 	'post_trade_transport_physical' => '买家收到货物后直接支付给物流公司',
-	'post_trade_locus' => '所在地点',
+//vot	'post_trade_locus' => '所在地点',
 	'post_trade_description' => '商品描述',
 	'post_trade_pm_subject' => '[议价]',
 	'post_trade_pm_buynum' => '购买数量',
@@ -74,7 +75,7 @@ $lang = array
 	'attach_downloads' => '下载次数',
 
 	'post_trade_transport' => '邮费',
-	'post_trade_transport_mail' => '平邮',
+//vot	'post_trade_transport_mail' => '平邮',
 	'post_trade_quality' => '商品成色',
 	'post_trade_quality_new' => '全新',
 	'post_trade_quality_secondhand' => '二手',
@@ -212,7 +213,7 @@ $lang = array
 	'perms_maxattachsize' => '单个最大附件尺寸',
 	'perms_maxsizeperday' => '每天最大附件总尺寸',
 	'perms_maxattachnum' => '每天最大附件数量',
-	'perms_allowbioimgcode' => '自我介绍中使用 [img] 代码',
+//vot	'perms_allowbioimgcode' => '自我介绍中使用 [img] 代码',
 	'perms_attachextensions' => '附件类型',
 	'perms_allowstickthread' => '主题置顶',
 	'perms_allowdigestthread' => '主题精华',
@@ -327,6 +328,9 @@ $lang = array
 
 	'mobileoem_creditrule' => '掌上论坛签到',
 
+// Added by Valery Votintsev, codersclub.org
+	'poll_reply_no_perms'	=> '您不能对自己的回帖进行投票',//'You can not reply the poll',
+	'poll_replyed_already'	=> '您已经对此回帖投过票了',//'You have already replied this poll',
+	'poll_voted_ok'		=> '投票成功',//'You have voted successfully',
 );
 
-?>

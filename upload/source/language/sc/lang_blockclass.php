@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_blockclass.php 31069 2012-07-12 09:13:58Z zhangguosheng $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -35,14 +36,6 @@ $lang = array(
 	'blockclass_announcement_field_starttime' => '开始时间',
 	'blockclass_announcement_field_endtime' => '结束时间',
 	'blockclass_announcement_script_announcement' => '站点公告',
-
-	'blockclass_html_myapp' => '漫游模块',
-	'blockclass_myapp_field_url' => '应用链接',
-	'blockclass_myapp_field_title' => '应用名称',
-	'blockclass_myapp_field_icon' => '应用图标',
-	'blockclass_myapp_field_icon_small' => '应用图标(小)',
-	'blockclass_myapp_field_icon_abouts' => '应用图标(大图)',
-	'blockclass_myapp_script_myapp' => '漫游应用',
 
 	'blockclass_forum' => '论坛类',
 

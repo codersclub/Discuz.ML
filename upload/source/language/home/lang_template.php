@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33861 2013-08-22 09:16:38Z nemohou $
  *
- *      This file is automatically generate
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -1559,5 +1559,21 @@ $lang = array (
   'payment_pay_btn' => '立即支付',
   'payment_wxjsapi_succeed' => '支付成功',
   'payment_wx_qrcode_title' => '微信扫码支付',
+
+//---------------------------------------------------------------
+// Added by Valery Votintsev
+	'login_immediately'	=> '马上登录',//'Login Now',
+	'nofollow'		=> '不收听',//'Stop follow',
+	'views'			=> '空间查看数',//'Views',
+	'in'			=> '在',//' &nbsp;In',
+	'poston'		=> '发表于',//'Post time',
+	'views'			=> '查看',//'Views',
+	'reply_num'		=> '回复',//'Replies',
+	'follow_intro1'		=> '广播怎么玩？',//'How to broadcast?',
+	'follow_intro2'		=> '在这里可以快速发广播',//'Write your message here',
+	'follow_intro3'		=> '查看收听的人<br/>和听众',//'Check your followings and listeners',
+	'follow_intro4'		=> '您收听的人发的广播<br/>会在这里出现',//'Your content will be shown here',
+	'say_to'		=> '说',
+	'visibility'		=> '能见度',//'Visibility',
+	'reset'			=> '重启',//'Reset',
 );
-?>

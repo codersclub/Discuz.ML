@@ -9,6 +9,10 @@
  *      This file is automatically generate
  */
 
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
 $lang = array (
   'no_tag' => '还没有任何标签',
   'tag' => '标签',
@@ -24,6 +28,9 @@ $lang = array (
   'related_thread' => '相关帖子',
   'replies' => '回复/查看',
   'price' => '售价',
+  'attach_img' => '图片附件',
+  'attachment' => '附件',
+  'thread_digest' => '精华',
 );
 
 ?>

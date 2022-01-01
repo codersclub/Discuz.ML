@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_admincp_menu.php 34034 2013-09-24 01:23:05Z nemohou $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -21,7 +22,8 @@ $lang = array
 	'header_user' => '用户',
 	'header_topic' => '内容',
 	'header_extended' => '运营',
-	'header_plugin' => '应用',
+	'header_plugin' => '插件',
+	'header_template' => '模板',
 	'header_style' => '界面',
 	'header_adv' => '广告',
 	'header_tools' => '工具',
@@ -31,7 +33,7 @@ $lang = array
 	'header_bbs' => '站点首页',
 	'header_portal' => '门户',
 	'header_group' => '群组',
-	'header_safe' => '防灌水',
+	'header_safe' => '安全',
 	'header_founder' => '站长',
 	'header_cloudaddons' => '应用中心',
 
@@ -61,7 +63,7 @@ $lang = array
 	'menu_setting_search' => '搜索设置',
 	'menu_setting_district' => '地区设置',
 	'menu_setting_ranklist' => '排行榜设置',
-	'menu_setting_mobile' => '手机版访问设置',
+	'menu_setting_mobile' => '手机版设置',
 	'menu_setting_tag' => '标签管理',
 	'menu_setting_antitheft' => '防采集设置',
 	'menu_setting_runtests' => '测试用例',
@@ -77,6 +79,7 @@ $lang = array
 	'menu_members_edit' => '用户管理',
 	'menu_members_newsletter' => '发送通知',
 	'menu_members_mobile' => '发送手机通知',
+	'menu_members_sms' => '发送手机短信',
 	'menu_usertag' => '用户标签',
 	'menu_members_edit_ban_user' => '禁止用户',
 	'menu_members_ipban' => '禁止 IP',
@@ -91,6 +94,7 @@ $lang = array
 	'menu_usergroups' => '用户组',
 	'menu_follow' => '推荐关注',
 	'menu_defaultuser' => '推荐好友',
+	'menu_members_verify_profile' => '资料审核',
 
 	'menu_moderate_posts' => '内容审核',
 	'menu_moderate_blogs' => '审核日志',
@@ -109,6 +113,7 @@ $lang = array
 	'menu_setting_collection' => '淘帖管理',
 	'menu_posting_tags' => '标签管理',
 	'menu_posting_censors' => '词语过滤',
+	'menu_remoderate' => '内容重新审核',
 	'menu_maint_report' => '用户举报',
 	'menu_threads_forumstick' => '版块/群组置顶',
 	'menu_post_position_index' => '帖子优化',
@@ -136,19 +141,21 @@ $lang = array
 	'menu_upgrade' => '在线升级',
 	'menu_optimizer' => '优化大师',
 	'menu_security' => '安全大师',
+	'menu_serversec' => '底层安全',
 
 	'menu_addons' => '应用中心',
-	'menu_plugins' => '插件',
+	'menu_plugins' => '插件管理',
 	'menu_tasks' => '站点任务',
 	'menu_magics' => '道具中心',
 	'menu_medals' => '勋章中心',
+	'menu_smsgw' => '短信服务',
 	'menu_misc_help' => '站点帮助',
-	'menu_google' => 'Google 搜索',
 	'menu_ec' => '电子商务',
 	'menu_card' => '充值卡密',
 
-	'menu_styles' => '风格管理',
-	'menu_styles_templates' => '模板管理',
+	'menu_styles' => '模板管理',
+	'menu_styles_templates' => '模板套系管理',
+	'menu_templates_add' => '设计新模板',
 	'menu_posting_smilies' => '表情管理',
 	'menu_click' => '表态动作',
 	'menu_thread_icon' => '主题图标',
@@ -175,7 +182,7 @@ $lang = array
 	'menu_db' => '数据库',
 	'menu_postsplit' => '帖子分表',
 	'menu_threadsplit' => '主题分表',
-	'menu_membersplit' => '用户表优化',
+	'menu_membersplit' => '用户分表',
 	'menu_logs' => '运行记录',
 	'menu_custommenu_manage' => '常用操作管理',
 	'menu_misc_cron' => '计划任务',
@@ -204,10 +211,7 @@ $lang = array
 	'menu_safe_seccheck' => '验证设置',
 	'menu_safe_accountguard' => '帐号保镖',
 
-	'menu_setting_manyou' => 'Manyou 设置',
 	'menu_setting_qqconnect' => 'QQ 绑定设置',
-
-	'menu_cloud_doctor' => '诊断工具',
 
 	'admincp_title' => $_G['setting']['bbname'].' 管理中心',
 
