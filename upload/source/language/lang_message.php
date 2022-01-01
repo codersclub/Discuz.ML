@@ -7,6 +7,7 @@
  *      $Id: lang_message.php 34503 2014-05-12 09:53:16Z nemohou $
  *
  *      This file is automatically generate
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 $lang = array (
@@ -1117,6 +1118,8 @@ $lang = array (
   'payment_retry_callback_no_exist' => '订单号不存在',
   'payment_retry_callback_no_pay' => '订单未支付',
 
+// Added by Valery Votintsev
+	'timeout_or_data_error'	=> '操作超时或者数据来源错误',//'Operation timeout or data source error',
 );
 
 ?>

@@ -4,16 +4,16 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_myapp.php 27449 2012-02-01 05:32:35Z zhangguosheng $
+ *      $Id: lang_type.php 36342 2021-05-17 15:38:43Z dplugin $
  */
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-$lang = array
-(
-	'myapp_titlelength' => '名称长度',
-	'myapp_startrow' => '起始位置',
+$lang = array(
+	'payment_credit' => '积分充值',
+	'payment_invite' => '购买邀请码',
 );
+
 ?>
