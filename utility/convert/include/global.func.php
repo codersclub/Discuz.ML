@@ -160,8 +160,8 @@ function timetounix($time) {
 		return $time;
 	}
 /*vot*/	$time = str_replace(array(lang('jan'),lang('feb'),lang('mar'),lang('apr'),lang('may'),lang('jun'),lang('jul'),lang('sep'),lang('oct'),lang('nov'),lang('dec'),lang('am')), array('-1-','-2-','-3-','-4-','-5-','-6-','-7-','-8-','-9-','-10-','-11-','-12-', ' '), $time);
-/*vot*/	if(strrchr($time, 'PM') !== false) {
-/*vot*/		return strtotime(str_replace(' PM ', ' ', $time)) + 43200;
+/*vot*/	if(strrchr($time, lang('pm')) !== false) {
+/*vot*/		return strtotime(str_replace(' '.lang('pm').' ', ' ', $time)) + 43200;
 	} else {
 		return strtotime($time);
 	}
@@ -461,9 +461,9 @@ function output(&$s, $show) {
 function showfooter($halt = false) {
 	static $isshow;
 	if(!$isshow) {
-/*vot*/		echo <<<EOT
+		echo <<<EOT
 	</div>
-	<div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.net
+<!--vot--> <div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.net
 <!--vot--> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multilingual Version by Valery Votintsev, codersclub.org</div>
 	</div>
 </body>
@@ -517,7 +517,7 @@ EOT;
 function lang($name, $vars = array()) {
 	static $language;
 	if($language === null) {
-/*vot*/		@include DISCUZ_ROOT.'./language/en/lang_update.php';
+/*vot*/		@include DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/lang_convert.php';
 		if(empty($language)) {
 			$language = array();
 		}

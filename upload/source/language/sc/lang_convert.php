@@ -3,10 +3,10 @@
 /**
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
- *      Convert Language File
- *      $Id: utility/convert/language/lang.php by Valery Votintsev, codersclub.org
+ *      Convert Language File by Valery Votintsev, codersclub.org
+ *      $Id: source/language/en/lang_convert.php
  */
-$lang = array(
+$language = array(
 
 	'config_dbhost'		=> 'Database server',//'数据库服务器',
 	'config_dbuser'		=> 'Database username',//'数据库用户名',
@@ -27,7 +27,7 @@ $lang = array(
 	'config_usergroup'	=> 'User group configuration',//'用户组配置',
 	'config_from_usergroup'	=> 'Source user group',//'来源用户组',
 	'config_target_usergroup'	=> 'Target user group',//'目标用户组',
-	'config_extcredits'	=> 'Extended points configuration',//'积分配置',
+	'config_extcredits'	=> 'Extended credits configuration',//'积分配置',
 	'config_credit'		=> 'points',//'积分',
 	'config_from_credit'	=> 'Source points',//'来源积分',
 	'config_target_credit'	=> 'Target points',//'目标积分',
@@ -62,6 +62,8 @@ $lang = array(
 	'mysql_connect_error_1'	=> 'Database connection error, check whether the database account and password are correct.',//'数据库连接错误,请检查数据库密码和帐号是否正确',
 	'mysql_connect_error_2'	=> 'Data tables check failed. May be, you have not correctly filled out the "table prefix", or you have not installed the version of the program',//'数据表检查错误,您可能没有正确填写 “数据表前缀”或者您尚未安装该版本的程序',
 
+//---------------------------
+// Added by Valery Votintsev
 //---------------------------
 	'invalid_request'	=> 'Illegal request',//'非法请求',
 
