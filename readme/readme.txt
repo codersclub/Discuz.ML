@@ -31,7 +31,7 @@ Download as archive:
 
 +-----------------------------------------------------------+
 This product includes GeoLite data created by MaxMind,
-available from
+available from 
 <a href="http://www.maxmind.com">http://www.maxmind.com</a>.
 
 
@@ -39,8 +39,8 @@ available from
  Original Discuz!X (Chinese)
 +-----------------------------------------------------------+
 
-Official Discuz!X downloads:
-	https://gitee.com/ComsenzDiscuz/DiscuzX.git
-
-Official Discuz! Forum:
-    http://www.dismall.com
+Discuz!X Official Git:		https://gitee.com/ComsenzDiscuz/DiscuzX.git
+Discuz! Discussion area:	http://www.discuz.net
+Discuz! User Manual:		https://www.discuz.net/portal.php?mod=list&catid=8
+Discuz! App Center:		http://addon.discuz.com
+Discuz! Commercial service:	http://www.discuz.net/redirect.php?service
