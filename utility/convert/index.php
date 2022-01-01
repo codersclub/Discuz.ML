@@ -7,6 +7,8 @@
  * Modified by Valery Votintsev, codersclub.org
  */
 
+/*vot*/ define('DISCUZ_LANG', 'sc'); // Language: sc, tc, en.
+
 require './include/common.inc.php';
 
 $action = getgpc('a');
