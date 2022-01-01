@@ -3,8 +3,8 @@
 /**
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
- *      Convert Language File
- *      $Id: utility/convert/language/lang.php by Valery Votintsev at sources.ru
+ *      Convert Language File by Valery Votintsev, codersclub.org
+ *      $Id: source/language/en/lang_convert.php
  */
 $language = array(
 
@@ -27,7 +27,7 @@ $language = array(
 	'config_usergroup'	=> 'User group configuration',//'用户组配置',
 	'config_from_usergroup'	=> 'Source user group',//'来源用户组',
 	'config_target_usergroup'	=> 'Target user group',//'目标用户组',
-	'config_extcredits'	=> 'Extended points configuration',//'积分配置',
+	'config_extcredits'	=> 'Extended credits configuration',//'积分配置',
 	'config_credit'		=> 'points',//'积分',
 	'config_from_credit'	=> 'Source points',//'来源积分',
 	'config_target_credit'	=> 'Target points',//'目标积分',
