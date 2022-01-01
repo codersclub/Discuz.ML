@@ -16,6 +16,8 @@ $languages = array(
 	'delete'	=> '刪除',
 	'checkall'	=> '全選',
 	'submit'	=> '提 交',
+	'confirms'	=> '確定',
+	'finished' => '完成',
 	'yes'		=> '是',
 	'no'		=> '否',
 	'tips'		=> '提示',
@@ -26,6 +28,8 @@ $languages = array(
 	'plugin'	=> '校驗文件',
 	'to'		=> '到',
 	'menu'		=> '菜單',
+
+	'copyright' => 'Copyright &copy; 2001-'.date('Y').' Tencent Cloud.',
 
 	'founder'		=> 'UCenter創始人',
 	'login_username'	=> '用戶名',
@@ -196,7 +200,7 @@ $languages = array(
 	'app_api_filename_comment'	=> '應用接口文件名稱，不含路徑，默認為uc.php',
 	'app_code'			=> '應用的 UCenter 配置信息',
 	'app_code_comment'		=> '當應用的 UCenter 配置信息丟失時可複製左側的代碼到應用的配置文件中',
-
+	'app_not_add_tips'		=> '不能通過 URL 添加應用的可能原因：1. 通過 URL 添加應用開關被關閉；2. 連續多次錯誤輸入 UCenter 創始人密碼',
 
 	'tag_tips'		=> '設置當前應用獲取其他應用標籤數據的比例以及擴展數據模板。模板中「&#123;xxx&#125;」表示標籤數據的索引，代表相應的數據。',
 	'tag_global_template'	=> '全局模板',
@@ -309,6 +313,14 @@ $languages = array(
 	'setting_chatpmmemberlimit_comment'	=> '同一會話最多能有多少用戶參與設置，建議在 30 - 100 範圍內取值，0為不限制',
 	'setting_pmfloodctrl'			=> '發短消息灌水預防',
 	'setting_pmfloodctrl_comment'		=> '兩次發短消息間隔小於此時間，單位秒，0 為不限制，此舉為了限制通過機器批量發廣告',
+	'setting_addappbyurl'			=> '啟用通過 URL 添加應用功能',
+	'setting_addappbyurl_comment'		=> '是否啟用通過 URL 添加應用功能，建議只在需要通過 URL 添加應用時開啟',
+	'setting_insecureuserdelete'		=> '啟用不安全的刪除用戶接口',
+	'setting_insecureuserdelete_comment'	=> '是否啟用不安全的刪除用戶接口，建議只有必須使用此接口且無法改造應用時開啟',
+	'setting_passwordalgo'			=> 'UCenter 密碼算法',
+	'setting_passwordalgo_comment'		=> '取值為您當前 PHP 版本支持密碼散列算法的常量名。請注意使用高版本 PHP 獨有的算法後不能降級到更低的 PHP 版本，否則用戶無法驗證密碼。默認值為空。',
+	'setting_passwordoptions'		=> 'UCenter 密碼算法配置',
+	'setting_passwordoptions_comment'	=> '取值為密碼散列算法的配置信息，以一行 JSON 數組的形式存儲，請自行確認相關配置是否正確。當配置本項時, UCenter 密碼算法不能為空。默認值為空。',
 
 	'setting_user_failedtime'		=> '允許用戶登錄失敗次數',
 	'setting_user_failedtime_comment'	=> '用戶登錄失敗超過設置的數據，將在15分鐘內無法登錄，0為不限制次數',
@@ -369,7 +381,9 @@ $languages = array(
 	'delete_avatar'		=> '刪除頭像',
 
 	'delete'		=> '刪除',
-	'email'			=> 'Email',
+	'email' => 'Email',
+	'secmobicc'		=> '安全手機國際電話區號',
+	'secmobile'		=> '安全手機號碼',
 	'user_list'		=> '用戶列表',
 	'user_add_succeed'	=> '成功添加用戶。',
 	'user_delete_confirm'	=> '該操作不可恢復，您確認要刪除這些用戶嗎？',
@@ -455,6 +469,7 @@ $languages = array(
 	'home_member_count'		=> '用戶總數',
 	'home_app_count'		=> '應用總數',
 	'home_env'			=> '系統信息',
+	'home_envstatus'		=> '運行環境檢測',
 	'home_team'			=> 'UCenter 開發團隊',
 
 	'admin_add_succeed'		=> '添加 $addname 為管理員成功',
@@ -505,7 +520,12 @@ $languages = array(
 	'app_allowips'			=> '允許的IP',
 	'app_allowips_comment'		=> '限定終端訪問的IP, 設置哪些IP可以訪問Ucenter  的數據接口',
 
+	'envstatus_result'	=> '檢測結果',
+	'envstatus_ver_too_low'	=> '您當前系統環境內的 {$envstatus[\'req\']} 版本 ({$envstatus[\'now_ver\']}) 過低，程序無法按預期正常運行。我們強烈建議您升級到 {$envstatus[\'sug_ver\']} 版本，程序正常運行最低要求為 {$envstatus[\'req_ver\']} 版本。',
+	'envstatus_not_found'	=> '您當前系統環境內未安裝或開啟 {$envstatus[\'req\']} 模塊，程序無法按預期正常運行。我們強烈建議您安裝或開啟此模塊，以滿足程序正常運行的最低要求。',
+	'envstatus_ok'		=> '您當前系統環境適合當前版本的 UCenter {$envstatus[\'version\']} 。',
+
 //Added by Valery Votintsev, codersclub.org
 	'view_ml_new_version'		=> '查看最新的多語言版本',//'View Latest International Version',
-	'home_dev_international'	=> '多語種版本',//'International Version',
+	'home_dev_international'	=> '多語種版本',//'Multilingual Version',
 );

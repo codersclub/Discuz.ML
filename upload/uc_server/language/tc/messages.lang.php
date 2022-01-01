@@ -63,6 +63,7 @@ $lang = array(
 	'note_false'			=> '通知失敗',
 	'no_permission_for_this_module'	=> '沒有權限管理改模塊',
 	'admin_user_exists'		=> '該用戶名已經存在，請返回嘗試使用其他用戶名。',
+	'admin_mobile_exists'		=> '該手機號已經存在，請返回嘗試使用其他手機號。',
 
 	'mail_succeed'			=> '郵件發送成功 ',
 	'mail_false'			=> '郵件發送失敗',
