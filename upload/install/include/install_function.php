@@ -156,8 +156,8 @@ function env_check(&$env_items) {
 		} elseif($key == 'curl') {
 			if(function_exists('curl_init') && function_exists('curl_version')){
 				$v = curl_version();
-/*vot*/			$env_items[$key]['version'] = $v['version'];
-/*vot*/			$env_items[$key]['current'] = 'enable';
+/*vot*/				$env_items[$key]['version'] = $v['version'];
+/*vot*/				$env_items[$key]['current'] = 'enable';
 			}else{
 				$env_items[$key]['current'] = 'disable';
 			}
@@ -833,35 +833,35 @@ function setdefault($var, $default) {
 
 function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
-	// 动态密钥长度, 通过动态密钥可以让相同的 string 和 key 生成不同的密文, 提高安全性
+	// Dynamic key length, through which the same string and key can generate different ciphertexts, improving security
 	$ckey_length = 4;
 
 	$key = md5($key ? $key : UC_KEY);
-	// a参与加解密, b参与数据验证, c进行密文随机变换
+	// a participates in encryption and decryption, b participates in data verification, and c performs random transformation of ciphertext
 	$keya = md5(substr($key, 0, 16));
 	$keyb = md5(substr($key, 16, 16));
 	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
 
-	// 参与运算的密钥组
+	// The key group involved in the operation
 	$cryptkey = $keya.md5($keya.$keyc);
 	$key_length = strlen($cryptkey);
 
-	// 前 10 位用于保存时间戳验证数据有效性, 10 - 26位保存 $keyb , 解密时通过其验证数据完整性
-	// 如果是解码的话会从第 $ckey_length 位开始, 因为密文前 $ckey_length 位保存动态密匙以保证解密正确
+	// The first 10 bits are used to save the timestamp to verify the validity of the data, and the 10-26 bits are used to save $keyb, which is used to verify the integrity of the data when decrypting
+	// If it is decoding, it will start from the $ckey_length bit, because the first $ckey_length bit of the ciphertext saves the dynamic key to ensure the correct decryption
 	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
 	$string_length = strlen($string);
 
 	$result = '';
 	$box = range(0, 255);
 
-	// 产生密钥簿
+	// Generate keybook
 	$rndkey = array();
 	for($i = 0; $i <= 255; $i++) {
 		$rndkey[$i] = ord($cryptkey[$i % $key_length]);
 	}
 
-	// 打乱密钥簿, 增加随机性
-	// 类似 AES 算法中的 SubBytes 步骤
+	// Shuffling the keybook to increase randomness
+	// Similar to the SubBytes step in the AES algorithm
 	for($j = $i = 0; $i < 256; $i++) {
 		$j = ($j + $box[$i] + $rndkey[$i]) % 256;
 		$tmp = $box[$i];
@@ -869,7 +869,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		$box[$j] = $tmp;
 	}
 
-	// 从密钥簿得出密钥进行异或，再转成字符 
+	// Get the key from the key book for XOR, and then convert it into a character
 	for($a = $j = $i = 0; $i < $string_length; $i++) {
 		$a = ($a + 1) % 256;
 		$j = ($j + $box[$a]) % 256;
@@ -880,16 +880,16 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 	}
 
 	if($operation == 'DECODE') {
-		// 这里按照算法对数据进行验证, 保证数据有效性和完整性
-		// $result 01 - 10 位是时间, 如果小于当前时间或为 0 则通过
-		// $result 10 - 26 位是加密时的 $keyb , 需要和入参的 $keyb 做比对
+		// Here, the data is verified according to the algorithm to ensure the validity and integrity of the data
+		// $result 01 - 10 digits are time, if less than current time or 0 then pass
+		// $result 10 - 26 digits are the $keyb when encrypted, and need to be compared with the $keyb of the input parameter
 		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 			return '';
 		}
 	} else {
-		// 把动态密钥保存在密文里, 并用 base64 编码保证传输时不被破坏
+		// Save the dynamic key in the ciphertext, and use base64 encoding to ensure that it will not be destroyed during transmission
 		return $keyc.str_replace('=', '', base64_encode($result));
 	}
 
@@ -969,9 +969,9 @@ function show_db_install() {
 			var old_log_data = '';
 
 			function request_do_db_init() {
-				// 发起数据库初始化请求
+				// Initiate a database initialization request
 				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_init', 'allinfo' => $allinfo)) ?>', function() {
-					// 数据库初始化请求完成拉起初始化
+					// Database initialization request complete pull up initialization
 					request_do_initsys();
 				});
 			}
@@ -1004,13 +1004,13 @@ function show_db_install() {
 
 			function request_do_initsys() {
 				var resultDiv = document.getElementById('notice');
-				// 数据库初始化失败不进行系统初始化
+				// Database initialization failed without system initialization
 				if(resultDiv.innerHTML.indexOf('<?= lang('failed') ?>') !== -1) {
 					document.getElementById('laststep').value = '<?= lang('error_quit_msg') ?>';
 					return;
 				}
 				if(resultDiv.innerHTML.indexOf('<?= lang('initdbresult_succ') ?>') !== -1) {
-					// 数据库初始化成功就进行系统初始化
+					// If the database initialization is successful, the system will be initialized
 					append_notice("<?= lang('initsys') ?> ... ");
 					ajax.get('../misc.php?mod=initsys', function(callback) {
 						if(callback.indexOf('Access Denied') !== -1 || callback.indexOf('Discuz! Database Error') !== -1 || callback.indexOf('Discuz! System Error') !== -1) {
@@ -1027,7 +1027,7 @@ function show_db_install() {
 						}, 1000);
 					});
 				} else {
-					// 数据库初始化状态未知时不做初始化, 一秒钟后重新判断数据库初始化状态
+					// Do not initialize when the database initialization status is unknown, and re-judge the database initialization status after one second
 					setTimeout(request_do_initsys, 1000);
 				}
 			}
@@ -1190,8 +1190,8 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 		$ch = curl_init();
 		$ip && curl_setopt($ch, CURLOPT_HTTPHEADER, array("Host: ".$host));
 		curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-		// 在提供 IP 地址的同时, 当请求主机名并非一个合法 IP 地址, 且 PHP 版本 >= 5.5.0 时, 使用 CURLOPT_RESOLVE 设置固定的 IP 地址与域名关系
-		// 在不支持的 PHP 版本下, 继续采用原有不支持 SNI 的流程
+		// While providing the IP address, when the requested host name is not a legal IP address, and the PHP version >= 5.5.0, use CURLOPT_RESOLVE to set a fixed relationship between the IP address and the domain name
+		// Under the unsupported PHP version, continue to use the original process that does not support SNI
 		if(!empty($ip) && filter_var($ip, FILTER_VALIDATE_IP) && !filter_var($host, FILTER_VALIDATE_IP) && version_compare(PHP_VERSION, '5.5.0', 'ge')) {
 			curl_setopt($ch, CURLOPT_RESOLVE, array("$host:$port:$ip"));
 			curl_setopt($ch, CURLOPT_URL, $scheme.'://'.$host.':'.$port.$path);
