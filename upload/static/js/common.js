@@ -1768,43 +1768,43 @@ function sendsecmobseccode(svctype, secmobicc, secmobile) {
 	var x = new Ajax('JSON');
 	x.getJSON(url, function(s) {
 		if(s.result > 0) {
-			showDialog("发送成功", 'notice');
+/*vot*/			showDialog(lng['sms_sent_ok'], 'notice');
 		} else {
-			// 发送时间短于设置返回 -1, 单号码发送次数风控规则不通过返回 -2, 万号段风控规则不通过返回 -3, 全局风控规则不通过返回 -4, 无可用网关返回 -5, 网关接口文件不存在返回 -6,
-			// 网关接口类不存在返回 -7, 短信功能已被关闭返回 -8, 短信网关私有异常返回 -9
+			// If the sending time is shorter than the setting, return -1, if the number of sending times for a single number fails, return -2, if the risk control rule for thousands of numbers fails, return -3, if the global risk control rule fails, return -4, if no gateway is available, return -5, the gateway interface file does not exist return -6,
+			// If the gateway interface class does not exist, return -7, if the SMS function has been disabled, return -8, if the SMS gateway private exception returns -9
 			switch(s.result) {
 				case -1:
-					message = "发送短信间隔过短，请稍候再试。";
+/*vot*/					message = lng['sms_often'];
 					break;
 				case -2:
-					message = "您一段时间内发送的短信过多，请稍候再试。";
+/*vot*/					message = lng['sms_many_total'];
 					break;
 				case -3:
-					message = "号码组一段时间内发送的短信过多，请稍候再试。";
+/*vot*/					message = lng['sms_many_in_period'];
 					break;
 				case -4:
-					message = "本站点一段时间内发送的短信过多，请稍候再试。";
+/*vot*/					message = lng['sms_many_in_site'];
 					break;
 				case -5:
-					message = "当前没有可用的短信网关接口，请稍候再试。";
+/*vot*/					message = lng['sms_gate_not_available'];
 					break;
 				case -6:
-					message = "网关接口文件不存在，请稍候再试。";
+/*vot*/					message = lng['sms_gate_not_found'];
 					break;
 				case -7:
-					message = "网关接口类不存在，请稍候再试。";
+/*vot*/					message = lng['sms_class_not_found'];
 					break;
 				case -8:
-					message = "短信功能已被关闭，请稍候再试。";
+/*vot*/					message = lng['sms_disabled'];
 					break;
 				case -9:
-					message = "短信网关异常，请稍候再试。";
+/*vot*/					message = lng['sms_gate_invalid'];
 					break;
 				default:
-					message = "未知异常，请稍候再试。";
+/*vot*/					message = lng['sms_exception'];
 					break;
 			}
-			showDialog("发送失败，错误代码 " + s.result + " ，" + message, 'notice');
+/*vot*/			showDialog(lng['sms_failed'] + s.result + ', ' + message, 'notice');
 		}
 	});
 }
@@ -2360,39 +2360,6 @@ if(typeof IN_ADMINCP == 'undefined') {
 
 if(BROWSER.ie) {
 	document.documentElement.addBehavior("#default#userdata");
-}
-
-//------------------------------------------------------------
-// Added by Valery Votintsev
-//------------------------------------------------------------
-// Count UTF-8 Multibyte string length in bytes
-// Written by Valery Votintsev, http://codersclub.org/discuzx/
-// Thanx to O'Reilly !
-//------------------------------------------------------------
-function utf8length(data) {
-
-  if (data == '' || data == null) return 0; // Empty string
-
-  data = data.toString();
-  var len = 0;
-  
-  for(var i=0; i<data.length; i++) {
-
-    var c = data.charCodeAt(i);
-
-    if (c < 0) return -1;		// Illegal codePoint
-    if (c < 0x80) len += 1;		// 1 byte
-    else if (c < 0x800) len += 2;	// 2 bytes
-    else if(c >= 0xD800 && c <= 0xDFFF) return -1; // Illegal codePoint
-    else if (c < 0x10000) len += 3;	// 3 bytes
-    else if (c < 0x20000) len += 4;	// 4 bytes
-    else if (c < 0x4000000) len += 5;	// 5 bytes
-    else if (c < 0x80000000) len += 6;	// 6 bytes
-    else return -1;			// Illegal codePoint > 0x7FFFFFFF
-
-  }
-
-  return len;	// Return calculated byte counter
 }
 
 //vot: MultiLingual support

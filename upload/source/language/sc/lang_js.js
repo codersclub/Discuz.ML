@@ -191,6 +191,20 @@ var lng = {
 	'page_prev'		: '上页',
 	'page_next'		: '下页',
 	'copy2clipboard'	: '点此复制到剪贴板',
+
+	'sms_sent_ok'		: '发送成功',//'Sent successfully',
+	'sms_often'		: '发送短信间隔过短，请稍候再试。',//'The interval between sending SMS is too short, please try again later.',
+	'sms_many_total'	: '您一段时间内发送的短信过多，请稍候再试。',//'You have sent too many text messages in a while, please try again later.',
+	'sms_many_in_period'	: '号码组一段时间内发送的短信过多，请稍候再试。',//'The number group has sent too many text messages in a period of time, please try again later.',
+	'sms_many_in_site'	: '本站点一段时间内发送的短信过多，请稍候再试。',//'This site has sent too many text messages in a period of time, please try again later.',
+	'sms_gate_not_available'	: '当前没有可用的短信网关接口，请稍候再试。',//'There is currently no SMS gateway interface available, please try again later.',
+	'sms_gate_not_found'	: '网关接口文件不存在，请稍候再试。',//'Gateway interface file does not exist, please try again later.',
+	'sms_class_not_found'	: '网关接口类不存在，请稍候再试。',//'Gateway interface class does not exist, please try again later.',
+	'sms_disabled'		: '短信功能已被关闭，请稍候再试。',//'Text messaging has been disabled, please try again later.',
+	'sms_gate_invalid'	: '短信网关异常，请稍候再试。',//'The SMS gateway is abnormal, please try again later.',
+	'sms_exception'		: '未知异常，请稍候再试。',//'Unknown exception, please try again later.',
+	'sms_failed'		: '发送失败，错误代码 ',//'Failed to send, error code ',
+
 // ATTENTION!
 // The next line must have the same value as in /template.php - 'enter_content' !!!
 	'enter_search_string'	: '请输入搜索内容',
