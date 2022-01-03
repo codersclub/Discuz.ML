@@ -136,7 +136,6 @@
 				<item id="connect_error_code_100003"><![CDATA[Authorization missing in http header.]]></item>
 				<item id="connect_error_code_100004"><![CDATA[The parameter grant_type is missing or the grant_type is illegal.]]></item>
 				<item id="connect_error_code_100005"><![CDATA[The parameter code is missing.]]></item>
-				<item id="connect_error_code_100006"><![CDATA[ç¼ºå°refresh tokenã]]></item>
 				<item id="connect_error_code_100006"><![CDATA[Missing refresh token. ]]></item>
 				<item id="connect_error_code_100007"><![CDATA[Missing access token. ]]></item>
 				<item id="connect_error_code_100008"><![CDATA[The appid does not exist. ]]></item>

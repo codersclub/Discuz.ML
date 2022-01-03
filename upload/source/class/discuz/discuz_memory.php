@@ -280,7 +280,7 @@ class discuz_memory extends discuz_base
 				if (!$script) return false;
 				$should_load = true;
 			} else {
-				if (!$this->memory->scriptexists($sha)) { // 重启redis后，有可能sha-key存在，但script已经不存在了
+/*vot*/				if (!$this->memory->scriptexists($sha)) { // After restarting redis, it is possible that the sha-key exists, but the script no longer exists
 					$should_load = true;
 				}
 			}

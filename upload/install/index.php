@@ -339,7 +339,8 @@ if($method == 'show_license') {
 		}
 
 		if($username && $email && $password) {
-			if(strlen($username) > 15 || preg_match("/^$|^c:\\con\\con$|　|[,\"\s\t\<\>&]|^Guest/is", $username)) {
+/*vot*/			$pattern = "/^$|^c:\\con\\con$|".hex2bin('E38080')."|[,\"\s\t\<\>&]|^Guest/is"; // Long space
+/*vot*/			if($username) > 255 || preg_match($pattern, $username)) {
 				show_msg('admin_username_invalid', $username, 0);
 			} elseif(!strstr($email, '@') || $email != stripslashes($email) || $email != dhtmlspecialchars($email)) {
 				show_msg('admin_email_invalid', $email, 0);
@@ -468,7 +469,7 @@ if($method == 'show_license') {
 
 	$db->query("REPLACE INTO {$tablepre}common_member (uid, username, password, adminid, groupid, email, regdate, timeoffset) VALUES ('$uid', '$username', '$password', '1', '1', '$email', '".time()."', '9999');");
 
-	// UID 是变量, 不做适配会导致积分操作等异常
+	// UID is a variable, and failure to adapt it will lead to abnormalities such as integral operations
 	if($uid) {
 		$db->query("REPLACE INTO {$tablepre}common_member_count SET uid='$uid';");
 		$db->query("REPLACE INTO {$tablepre}common_member_status SET uid='$uid';");

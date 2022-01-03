@@ -362,7 +362,7 @@ class register_ctl {
 				}
 			} elseif(!$this->setting['regstatus']) {
 				if($this->setting['regconnect']) {
-					//不是QQ互联登录则跳转到QQ互联，避免越权完成普通注册
+					//If you are not logged in with QQ Internet, you will jump to QQ Internet to avoid unauthorized completion of ordinary registration
 					if(CURMODULE != 'connect'){
 						dheader('location:connect.php?mod=login&op=init&referer=forum.php&statfrom=login_simple');
 					}

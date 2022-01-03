@@ -92,7 +92,7 @@ class forum_upload {
 			return $this->uploadmsg(9);
 		}
 
-		// 修复敏感词拦截无明确提示的问题
+		// Fix the problem that there is no clear prompt for sensitive word blocking
 		$filename = censor($upload->attach['name'], NULL, TRUE);
 		if(is_array($filename)) {
 			return $this->uploadmsg(12);
@@ -105,7 +105,7 @@ class forum_upload {
 			return $this->uploadmsg(7);
 		}
 		if($upload->attach['isimage']) {
-			// 新增 GD 图片像素点上限服务器侧拦截
+			// Added GD image pixel limit server-side interception
 			$imginfo = @getimagesize($upload->attach['target']);
 			list($imgw, $imgh) = !empty($imginfo) ? $imginfo : array(0, 0);
 			$imgs = $imgw * $imgh;
