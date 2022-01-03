@@ -238,18 +238,18 @@ function fastpostvalidate(theform, noajaxpost) {
 		}
 	}
 	if(theform.message.value == '' || theform.subject.value == '') {
-/*vot*/		s = lng['enter_content']+'.';
+/*vot*/		s = lng['enter_content'];
 		theform.message.focus();
 	} else if(dstrlen(theform.subject.value) > 255) {
-/*vot*/		s = lng['title_long']+'.';
+/*vot*/		s = lng['title_long'];
 		theform.subject.focus();
 	}
 	if(!disablepostctrl && dstrlen(trim(theform.subject.value)) && ((postminsubjectchars != 0 && dstrlen(theform.subject.value) < postminsubjectchars) || (postminsubjectchars != 0 && dstrlen(theform.subject.value) > postmaxsubjectchars))) {
-		showError('您的标题长度不符合要求。\n\n当前长度: ' + dstrlen(theform.subject.value) + ' 字\n系统限制: ' + postminsubjectchars + ' 到 ' + postmaxsubjectchars + ' 字');
+/*vot*/		showError(lng['thread_title_length_invalid'] + '\n\n' + lng['current_length'] + ': ' + dstrlen(theform.subject.value) + lng['characters'] + '\n' + lng['system_limit'] + ': ' + postminsubjectchars + lng['up_to'] + postmaxsubjectchars + lng['characters']);
 		return false;
 	}
 	if(!disablepostctrl && ((postminchars != 0 && mb_strlen(theform.message.value) < postminchars) || (postmaxchars != 0 && mb_strlen(theform.message.value) > postmaxchars))) {
-/*vot*/		s = lng['content_long'] + lng['current_length']+': ' + mb_strlen(theform.message.value) + ' ' + lng['bytes']+'\n'+lng['system_limit']+': ' + postminchars + ' '+lng['up_to']+' ' + postmaxchars + ' '+lng['bytes'];
+/*vot*/		s = lng['content_long'] + lng['current_length'] + ': ' + mb_strlen(theform.message.value) + ' ' + lng['bytes']+'\n'+lng['system_limit']+': ' + postminchars + lng['up_to'] + postmaxchars + ' ' + lng['bytes'];
 	}
 	if(s) {
 		showError(s);

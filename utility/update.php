@@ -1526,7 +1526,7 @@ if($_GET['step'] == 'start') {
 					if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, implode('|', $data)) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
 						flock($fp, LOCK_UN);
 						fclose($fp);
-						show_msg("主题图片表无法处理，跳过", "$theurl?step=data&op=$nextop");
+/*vot*/						show_msg(lang('topic_image_skip'), "$theurl?step=data&op=$nextop");
 					}
 				} else {
 /*vot*/					show_msg(lang('update','topic_image_skip'), "$theurl?step=data&op=$nextop");

@@ -301,10 +301,10 @@ function refreshAvatarCanvasForDisplay() {
 
     ctx.fillStyle = "black";
     ctx.font = "bold 16px Arial";
-    ctx.fillText('上传成功!', dwidth - 160, 155);
+/*vot*/    ctx.fillText(lng['upload_ok'], dwidth - 160, 155);
     ctx.fillStyle = "grey";
     ctx.font = "bold 12px Arial";
-    ctx.fillText('以上是您头像的三种尺寸', dwidth - 200, 180);
+/*vot*/    ctx.fillText(lng['avatar_sizes'], dwidth - 200, 180);
 }
 
 function rectAvatarDone(res) {
@@ -315,6 +315,6 @@ function rectAvatarDone(res) {
         jQuery('#avataradjuster').hide();
         jQuery('#avatarfileselector').hide();
     } else if (res == 'failure') {
-        alert('上传失败');
+/*vot*/ alert(lng['upload_failed']);
     }
 }

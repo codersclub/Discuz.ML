@@ -260,7 +260,7 @@ var formdialog = {
 				evalscript(s.lastChild.firstChild.nodeValue);
 			})
 			.error(function() {
-				popup.open('表单提交异常，无法完成您的请求', 'alert');
+/*vot*/				popup.open(lng['form_submit_error'], 'alert');
 			});
 			return false;
 		});
