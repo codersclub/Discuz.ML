@@ -14,8 +14,8 @@ if(!defined('IN_DISCUZ')) {
 class table_common_banned extends discuz_table
 {
 	/*
-	 * 在memory启用的时候，存储于common_banned_index的SortedSet中
-	 * member = ip的16进制表达, score = 1 表示封禁，score = 0 表示不封禁
+	 * When memory is enabled, it is stored in the SortedSet of common_banned_index
+	 * member = hexadecimal expression of ip, score = 1 means ban, score = 0 means no ban
 	 */
 	public function __construct() {
 
@@ -39,7 +39,7 @@ class table_common_banned extends discuz_table
 	}
 
 	public function fetch_all($ids = array(), $force_from_db = false) {
-		// Todo: $ids = array() 需要在取消兼容层后删除
+		// Todo: $ids = array() Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::fetch_all($ids, $force_from_db);
@@ -82,7 +82,7 @@ class table_common_banned extends discuz_table
 		$iphex = ip::ip_to_hex_str($ip);
 		$banned = true;
 		if ($this->_allowmem) $banned = memory('zscore', 'index', $iphex, 0, $this->_pre_cache_key);
-		if ($banned === false || !$this->_allowmem) { // 如果memory中没有值，或不使用memory，都走数据库
+/*vot*/		if ($banned === false || !$this->_allowmem) { // If there is no value in memory, or if memory is not used, go to the database
 			$iphex_val = '0x' . $iphex;
 			$ret = DB::result_first(
 				"SELECT id from %t WHERE expiration > %d AND lowerip <= %i AND upperip >= %i",
@@ -96,7 +96,7 @@ class table_common_banned extends discuz_table
 			return false;
 		}
 
-		// _allowmem = true，并且 $banned 有值
+		// _allowmem = true, and $banned has the value
 		return $banned === 1;
 	} 
 

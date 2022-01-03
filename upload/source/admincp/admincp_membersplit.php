@@ -63,7 +63,7 @@ if($operation == 'check') {
 		} else {
 			$zombiecount = C::t('common_member')->count_zombie();
 			if($zombiecount >= 1) {
-				$zombiecount--;// 考虑到用户分表操作的最后一个用户可能也是数据库中最后一个用户，因此在此固定扣除一个用户，保证最后一个用户不会被移动到归档表，从而避免最后一个用户被移动到归档表导致用户主表自增值异常的问题
+/*vot*/				$zombiecount--;// Considering that the last user of the user table operation may also be the last user in the database, a fixed user is deducted here to ensure that the last user will not be moved to the archive table, thereby preventing the last user from being moved to the archive table and causing the user The main table self-increment exception problem
 			}
 			savecache('membersplitdata', array('zombiecount' => $zombiecount, 'dateline' => TIMESTAMP));
 		}

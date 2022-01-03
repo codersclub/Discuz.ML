@@ -40,8 +40,8 @@ class helper_form {
 		global $_G;
 		$censor = discuz_censor::instance();
 		$censor->check($message, $modword);
-		// 新增对仅支持禁止关键词的模块在遇到审核关键词时禁止发布相关内容
-		// $modasban 用于指示是否支持审核, 支持审核的模块需要设置为 FALSE
+		// For modules that only support prohibited keywords, it is forbidden to publish relevant content when encountering audit keywords
+		// $modasban is used to indicate whether auditing is supported, and modules that support auditing need to be set to FALSE
 		if(($censor->modbanned() && empty($_G['group']['ignorecensor'])) || (($modasban && !empty($_G['setting']['modasban'])) && $censor->modmoderated() && empty($_G['group']['ignorecensor']))) {
 			$wordbanned = implode(', ', $censor->words_found);
 			if($return) {

@@ -68,7 +68,7 @@ if(!$operation) {
 			$plugin['modules'] = dunserialize($plugin['modules']);
 			$submenuitem = array();
 			if(isset($_G['cache']['plugin'][$plugin['identifier']])) {
-				//为配合插件完全接管变量设置功能，当插件第一个后台设置模块为config时，插件列表不显示默认的设置
+/*vot*/				//In order to cooperate with the plug-in to completely take over the variable setting function, when the first background setting module of the plug-in is config, the plug-in list does not display the default settings
 				$configexists = FALSE;
 				if(is_array($plugin['modules'])) {
 					foreach($plugin['modules'] as $k => $module) {

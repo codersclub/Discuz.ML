@@ -45,7 +45,7 @@ class memory_driver_memcache {
 	}
 
 	public function set($key, $value, $ttl = 0) {
-		return $this->obj->set($key, $value, 0, $ttl); // 不再使用MEMCACHE_COMPRESSED，因为不能increment
+/*vot*/		return $this->obj->set($key, $value, 0, $ttl); // MEMCACHE_COMPRESSED is no longer used because it cannot be incremented
 	}
 
 	public function add($key, $value, $ttl = 0) {

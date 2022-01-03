@@ -33,7 +33,7 @@ class ip {
 	 */
 	public static function to_ip($ip) {
 		if (strlen($ip) == 0) return $ip;
-		if (preg_match('/(.*?)\[((.*?:)+.*)\](.*)/', $ip, $m)) { // Format: [xx:xx:xx]
+/*vot*/		if (preg_match('/(.*?)\[((.*?:)+.*)\](.*)/', $ip, $m)) { // Format: [xx:xx:xx]
 			if (filter_var($m[2], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
 				$ip = $m[1].$m[2].$m[4];
 			}
@@ -77,9 +77,9 @@ class ip {
 	 * Given a cidr of ipv4 or v6, calculate the minimum IP and maximum IP
 	 * If the input is an IP, the maximum and minimum IP are equal to itself
 	 * $as_hex = true
-	 * 	返回值为 二进制表达的字符串格式
+	 * 	The return value is the string format of the binary representation
 	 * $as_hex = false
-	 * 	返回值可用inet_ntop轮换为IP字符串表达式 
+	 * 	The return value can be rotated to an IP string expression with inet_ntop
 	 */
 	public static function calc_cidr_range($str, $as_hex = false) {
 		if(self::validate_cidr($str, $str)) {

@@ -501,7 +501,7 @@ if($operation == 'export') {
 		}
 
 		foreach($exportziplog as $key => $val) {
-			sort($val);//修改 确保-1.zip排前面,才会自动解压-2.zip
+			sort($val);//Modify to ensure that -1.zip is in the front, and then -2.zip will be automatically decompressed
 			$info = $val[0];
 			$info['volume'] = count($val);
 			$info['dateline'] = is_int($info['dateline']) ? dgmdate($info['dateline']) : $lang['unknown'];
@@ -930,7 +930,7 @@ if($operation == 'export') {
 					} elseif(!isset($discuzdbnew[$dbtable][$key])) {
 						$dellist[] = $value;
 					} elseif($tempvalue != $discuzdbnew[$dbtable][$key]) {
-						// MySQL 8.0.17 开始不再支持除tinyint(1)以外的任何int类数据类型的显示宽度，检测到此行为则移除数值。
+						// MySQL 8.0.17 no longer supports the display width of any int data type except tinyint(1), and the value is removed when this behavior is detected.
 						if((strpos($tempvalue['Type'], 'int(') !== false) && (strpos($discuzdbnew[$dbtable][$key]['Type'], '(') === false)) {
 							$tempvalue['Type'] = preg_replace('/\(\d+\)/', '', $tempvalue['Type']);
 							if($tempvalue != $discuzdbnew[$dbtable][$key]) {

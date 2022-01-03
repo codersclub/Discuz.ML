@@ -157,7 +157,7 @@ class discuz_error
 						} elseif(is_float($arg)) {
 							$fun .= (defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) ? $arg : '%f';
 						} else {
-							// 异常可能是 Resource 类型的
+							// The exception may be of type Resource
 							$arg = (string)$arg;
 							$fun .= (defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) ? '\''.dhtmlspecialchars(substr(self::clear($arg), 0, 10)).(strlen($arg) > 10 ? ' ...' : '').'\'' : '%s';
 						}

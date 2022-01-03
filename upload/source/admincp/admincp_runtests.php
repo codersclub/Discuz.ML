@@ -29,7 +29,7 @@ if ($operation === "prepare") {
 
 if ($operation === "start") {
         $sl3 = new SQLite3(__DIR__ . "/progress.db");
-        // id 会自增
+        // id will be auto-incremented
         $sl3->exec('create table tests (id INTEGER PRIMARY KEY, message TEXT NOT NULL)');
 
         define("IN_UNITTESTING", 1);
@@ -64,7 +64,7 @@ if ($operation === "fetch") {
         exit();
 }
 
-// 以下为没有任何operation时显示的默认页面
+// The following is the default page displayed when there is no operation
 
 cpheader();
 
