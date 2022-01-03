@@ -13,6 +13,12 @@
 var lng = {
 
 //--------------------------------
+//js/avatar/avatar.js
+	'upload_ok'	: '上传成功!',//'Uploaded successfully!',
+	'avatar_sizes'	: '以上是您头像的三种尺寸',//'The above are the three sizes of your avatar',
+	'upload_failed'	: '上传失败',//'Upload failed',
+
+//--------------------------------
 //js/calendar.js
 	'prev_month'	: '上一月',//'Prev Month',
 	'next_month'	: '下一月',//'Next Month',

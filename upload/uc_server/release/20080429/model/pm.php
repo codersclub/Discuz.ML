@@ -172,7 +172,7 @@ class pmmodel {
 	}
 
 	function sendpm($subject, $message, $msgfrom, $msgto, $pmid = 0, $related = 0) {
-		//note 过滤关键词
+		//note filter keywords
 		$_CACHE['badwords'] = $this->base->cache('badwords');
 		if($_CACHE['badwords']['findpattern']) {
 			$subject = @preg_replace($_CACHE['badwords']['findpattern'], $_CACHE['badwords']['replace'], $subject);

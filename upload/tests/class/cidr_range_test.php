@@ -3,7 +3,7 @@
 class TestCidrRange
 {
 	/*
-	 * 使用 https://www.ipaddressguide.com/cidr 生成结果对比
+	 * Use https://www.ipaddressguide.com/cidr to generate a comparison of results
 	 */
 	function testV4() {
 		list($start, $end) = ip::calc_cidr_range("10.0.0.0/24");
@@ -24,7 +24,7 @@ class TestCidrRange
 	}
 
 	/*
-	 * 使用 https://www.ultratools.com/tools/ipv6CIDRToRangeResult 生成结果对比
+	 * Comparison of results generated using https://www.ultratools.com/tools/ipv6CIDRToRangeResult
 	 */
 	function testV6() {
 		list($start, $end) = ip::calc_cidr_range("::1/64");

@@ -342,6 +342,7 @@ var lng = {
 	'hours_num'		: '小时',//' hours',
 	'minutes_num'		: '分',//' minutes',
 	'seconds'		: ' 秒',//' sec.',
+	'thread_title_length_invalid'	: '您的标题长度不符合要求。',
 
 //--------------------------------
 //static/js/forum_google.js
@@ -548,6 +549,7 @@ var lng = {
 	'unknown_error'		: '发生未知错误',//'Unknown error occurred',
 	'touch_down_refresh'	: '下拉可以刷新',//'Touch down to refresh',
 	'touch_up_refresh'	: '松开可以刷新',//'Touch UP to refresh',
+	'form_submit_error'	: '表单提交异常，无法完成您的请求',//'Form submission exception, unable to complete your request',
 
 //--------------------------------
 //static/js/portal.js

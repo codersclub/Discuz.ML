@@ -45,7 +45,7 @@ if($mail_setting['mailsend'] == 1 && function_exists('mail')) {
 	}
 
  	stream_set_blocking($fp, true);
-	// 新增发送超时设置, 避免连接后无响应导致吊死
+	// Added sending timeout setting to avoid hanging due to no response after connection
 	stream_set_timeout($fp, $mail_setting['mailtimeout']);
 
 	$lastmessage = fgets($fp, 512);
