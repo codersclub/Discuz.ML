@@ -14,6 +14,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
 /*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(dirname(__FILE__))).'/');
+define('INST_LOG_PATH', realpath(ROOT_PATH.'data/log/').'/install.log');
 
 require ROOT_PATH.'./source/discuz_version.php';
 require ROOT_PATH.'./install/include/install_var.php';
@@ -56,7 +57,7 @@ $uchidden = getgpc('uchidden');
 if(in_array($method, array('app_reg', 'ext_info'))) {
 	$isHTTPS = is_https();
 	$PHP_SELF = $_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
-	// The port used by $bbserver can't come from SERVER_PORT, because the server port of dz is not necessarily the port that the user accesses (i.e. because of the load balancing)
+	// The port used by $bbserver cannot come from SERVER_PORT, because the server port of dz is not necessarily the port accessed by users (such as behind load balancing)
 	$bbserver = 'http'.($isHTTPS ? 's' : '').'://'.$_SERVER['HTTP_HOST'];
 	$default_ucapi = $bbserver.'/ucenter';
 	$default_appurl = $bbserver.substr($PHP_SELF, 0, strrpos($PHP_SELF, '/') - 8);
@@ -394,10 +395,10 @@ if($method == 'show_license') {
 		show_msg('ext_info_succ');
 	} else {
 		show_header();
-		echo '</div><div class="main" style="margin-top: -123px;padding-left:30px"><span id="platformIntro"></span>';
-		echo '<iframe frameborder="0" width="700" height="550" allowTransparency="true" src="https://addon.dismall.com/api/outer.php?id=installed&siteurl='.urlencode($default_appurl).'&version='.DISCUZ_VERSION.'&release='.DISCUZ_RELEASE.'"></iframe>';
-		echo '<p align="center"><a href="'.$default_appurl.'" style="padding: 10px 20px;color: #fff;background: #09C;border-radius: 4px;height: 40px;line-height: 40px;font-size: 16px;">'.$lang['install_finish'].'</a></p><br />';
-		echo '</div>';
+		echo '</div><div class="main inst_success"><div class="success_icon"></div><h2>'.$lang['install_finish'].'</h2><p>'.$lang['install_finish_next'].'</p>';
+		echo '<a href="'.$default_appurl.'/admin.php" class="btn">'.$lang['finish_btn_admin'].'</a>';
+		echo '<a href="'.$default_appurl.'/admin.php?action=cloudaddons&frame=no&from=newinstall" class="btn">'.$lang['finish_btn_cloudaddon'].'</a>';
+		echo '<a href="'.$default_appurl.'" class="btn finish">'.$lang['finish_btn_direct'].'</a>';
 		show_footer();
 	}
 
@@ -421,6 +422,11 @@ if($method == 'show_license') {
 	$allinfo = getgpc('allinfo');
 	$allinfo_arr = unserialize(base64_decode($allinfo));
 	extract($allinfo_arr);
+
+	@set_time_limit(0);
+	@ignore_user_abort(TRUE);
+	ini_set('max_execution_time', 0);
+	ini_set('mysql.connect_timeout', 0);
 
 	$db = new dbstuff;
 	$db->connect($dbhost, $dbuser, $dbpw, $dbname, DBCHARSET);
@@ -503,13 +509,6 @@ if($method == 'show_license') {
 	if(!$homestatus) {
 		$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('homestatus', '0')");
 	}
-	$yearmonth = date('Ym_', time());
-	loginit($yearmonth.'ratelog');
-	loginit($yearmonth.'illegallog');
-	loginit($yearmonth.'modslog');
-	loginit($yearmonth.'cplog');
-	loginit($yearmonth.'errorlog');
-	loginit($yearmonth.'banlog');
 
 	dir_clear(ROOT_PATH.'./data/template');
 	dir_clear(ROOT_PATH.'./data/cache');
