@@ -96,7 +96,7 @@ if(!$_G['setting']['connect']['allow']) {
 		$ctl_obj->setting['secqaa']['status'] = $_G['setting']['secqaa']['status'];
 	}
 
-	//兼容手机端有填写密码的情况
+	//Compatible mobile phones have the ability to fill in passwords
 	if(!defined('IN_MOBILE') || empty($_GET[$_G['setting']['reginput']['password']])) {
 		$ctl_obj->setting['ignorepassword'] = 1;
 	}

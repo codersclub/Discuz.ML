@@ -36,7 +36,7 @@ class table_forum_forum_threadtable extends discuz_table
 	}
 
 	public function update($val, $data, $unbuffered = false, $low_priority = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::update($val, $data, $unbuffered, $low_priority);
@@ -60,7 +60,7 @@ class table_forum_forum_threadtable extends discuz_table
 	}
 
 	public function delete($val, $unbuffered = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::delete($val, $unbuffered);

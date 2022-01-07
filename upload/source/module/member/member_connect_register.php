@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 }
 
 $from_connect = $_G['setting']['connect']['allow'] ? 1 : 0;
-//PC用的 $regname，手机用的 $_G['setting']['regname']
+// $regname for PC, $_G['setting']['regname'] for mobile
 $_G['setting']['regname'] = $regname = 'connect';
 
 if(empty($_POST)) {

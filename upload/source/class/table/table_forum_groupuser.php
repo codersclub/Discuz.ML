@@ -65,7 +65,7 @@ class table_forum_groupuser extends discuz_table
 		return DB::result_first("SELECT COUNT(*) FROM %t WHERE fid=%d".$levelsql, array($this->_table, $fid));
 	}
 	public function insert($data, $return_insert_id = false, $replace = false, $silent = false, $null1 = 0, $null2 = 0) {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::insert($data, $return_insert_id, $replace, $silent);

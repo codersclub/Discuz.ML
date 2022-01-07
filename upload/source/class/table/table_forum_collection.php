@@ -37,7 +37,7 @@ class table_forum_collection extends discuz_table
 	}
 
 	public function range($start = 0, $limit = 0, $sort = '', $null = true) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::range($start, $limit, $sort);

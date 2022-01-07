@@ -144,7 +144,7 @@ class table_forum_optionvalue extends discuz_table
 	}
 
 	public function insert($sortid, $fields = null, $replace = false, $null = null) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {

@@ -22,7 +22,7 @@ class table_common_member_magic extends discuz_table
 	}
 
 	public function delete($val = null, $unbuffered = false) {
-		// $val = null 需要在取消兼容层后删除
+		// $val = null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::delete($val, $unbuffered);
@@ -33,7 +33,7 @@ class table_common_member_magic extends discuz_table
 	}
 
 	public function delete_magic($uid = null, $magicid = null) {
-		// $uid = null, $magicid = null 需要在取消兼容层后删除
+		// $uid = null, $magicid = null Need to be removed after uncompatibility layer
 		$para = array();
 		if($uid) {
 			$para[] = DB::field('uid', $uid);
@@ -48,7 +48,7 @@ class table_common_member_magic extends discuz_table
 	}
 
 	public function fetch_all($ids, $force_from_db = false, $null1 = 0, $null2 = 0) {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::fetch_all($ids, $force_from_db);

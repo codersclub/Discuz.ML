@@ -22,7 +22,7 @@ class table_common_session extends discuz_table
 	}
 
 	public function fetch($id, $force_from_db = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::fetch($id, $force_from_db);
