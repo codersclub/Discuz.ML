@@ -22,7 +22,7 @@ class table_forum_collectionfollow extends discuz_table
 	}
 
 	public function fetch_all($ids, $force_from_db = false, $null1 = 0, $null2 = 0) {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::fetch_all($ids, $force_from_db);
@@ -83,7 +83,7 @@ class table_forum_collectionfollow extends discuz_table
 	}
 
 	public function update($val, $data, $unbuffered = false, $low_priority = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::update($val, $data, $unbuffered, $low_priority);

@@ -34,7 +34,7 @@ if($op == 'add') {
 	if(empty($followuser)) {
 		showmessage('space_does_not_exist');
 	}
-	// 允许单个用户屏蔽所有人收听 Ta
+	// Allow a single user to block everyone from listening to TA
 	$fields = C::t('common_member_field_home')->fetch($followuid);
 	if(!$fields['allowasfollow']) {
 		showmessage('follow_other_unfollow');

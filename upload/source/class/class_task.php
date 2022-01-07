@@ -546,21 +546,21 @@ class task {
 			$processname = 'update_task_available';
 			if($update || !discuz_process::islocked($processname, 600)) {
 				if(TIMESTAMP >= $tasknext['starttime'] || $update) {
-					//上线开始的活动
+					//Event started online
 					C::t('common_task')->update_available(2);
-					//下个活动开始时间
+					//Next event start time
 					$starttime = C::t('common_task')->fetch_next_starttime();
-					//下次触发时间不超过24小时
+					//The next start time is no more than 24 hours
 					$tasknext['starttime'] = $starttime ? min($starttime, TIMESTAMP + 86400) : TIMESTAMP + 86400;
 					$updatetasknext = 1;
 				}
 
 				if(TIMESTAMP >= $tasknext['endtime'] || $update) {
-					//隐藏未开始或者结束的活动
+					//Hide unstarted or ended events
 					C::t('common_task')->update_available(1);
-					//下个活动结束时间
+					//Next event end time
 					$endtime = C::t('common_task')->fetch_next_endtime();
-					//下次触发时间不超过24小时
+					//The next start time is no more than 24 hours
 					$tasknext['endtime'] = $endtime ? min($endtime, TIMESTAMP + 86400) : TIMESTAMP + 86400;
 					$updatetasknext = 1;
 				}

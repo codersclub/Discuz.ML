@@ -130,7 +130,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function fetch($id, $force_from_db = false, $null = true) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -182,7 +182,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function fetch_all($ids, $force_from_db = false, $null = true) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -460,7 +460,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function update($val, $data, $unbuffered = false, $low_priority = false, $null1 = false, $null2 = null, $null3 = null, $null4 = null, $null5 = null) {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -522,7 +522,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function update_cache($val, $data, $unbuffered = false, $low_priority = false, $null1 = array(), $null2 = 'merge') {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -670,7 +670,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function insert($data, $return_insert_id = false, $replace = false, $silent = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -726,7 +726,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function delete($val, $unbuffered = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null Need to be removed after uncompatibility layer
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {

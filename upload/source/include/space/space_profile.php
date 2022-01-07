@@ -110,7 +110,7 @@ if($_G['setting']['verify']['enabled']) {
 	space_merge($space, 'verify');
 }
 foreach($_G['cache']['profilesetting'] as $fieldid => $field) {
-	// 个人空间内不展现个人信息
+	// Do not display personal information in the personal space
 	if($_G['setting']['nsprofiles']) {
 		break;
 	}

@@ -982,7 +982,7 @@ function show_db_install() {
 			}
 
 			function refresh_progress() {
-				// 进度条的总数，需要跟进实际安装情况修改
+				// The total number of progress bars needs to be modified according to the actual installation situation
 				var total = 333;
 				var percent = document.querySelectorAll('#notice>p').length * 95 / total;
 				percent = (percent > 95) ? 95 : percent;
