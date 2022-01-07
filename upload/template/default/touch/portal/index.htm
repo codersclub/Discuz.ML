@@ -1,0 +1,97 @@
+<!--{template common/header}-->
+{eval}
+$cates = C::t('portal_category')->range_category(0, 999);
+foreach($cates as $cate){
+	if(!$cate['closed'] && !$cate['upid']){
+		$catelist[] = $cate;
+	}
+}
+{/eval}
+<!--{eval $list = array();}-->
+<!--{eval $page = isset($_GET['page']) ? intval($_GET['page']) : 1;}-->
+<!--{eval $list = portal_get_list($page);}-->
+<div class="header cl">
+	<div class="mzlogo"><a title="$_G['setting']['bbname']" href="javascript:;"><img src="{IMGDIR}/logo_m.svg" /></a></div>
+	<div class="myss"><a href="search.php?mod=portal"><i class="dm-search"></i>{lang mobsearchtxt}</a></div>
+</div>
+<!--{if $catelist && $_G['setting']['mobile']['portal']['catnav']}-->
+<div class="dhnavs_box">
+	<div id="dhnavs">
+		<div id="dhnavs_li">
+			<ul class="swiper-wrapper">
+				<!--{eval $i = 1;}-->
+				<!--{loop $catelist $value}-->
+				<li class="swiper-slide"><!--{if $i != 1}--><span>|</span><!--{/if}--><a href="{$_G['cache']['portalcategory'][$value['catid']]['caturl']}">$value['catname']</a></li>
+				<!--{eval $i--;}-->
+				<!--{/loop}-->
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+	new Swiper('#dhnavs_li', {
+		freeMode : true,
+		slidesPerView : 'auto',
+		onTouchMove: function(swiper){
+			Discuz_Touch_on = 0;
+		},
+		onTouchEnd: function(swiper){
+			Discuz_Touch_on = 1;
+		},
+	});
+</script>
+<!--{/if}-->
+<!--{if $page == 1}-->
+<!--{eval $imglist = portal_get_list(1, 5, "at.pic != ''");}-->
+<!--{if count($imglist['list'])}-->
+<div class="dz-swiper_box dz-swiper">
+	<ul class="swiper-wrapper">
+		<!--{loop $imglist['list'] $value}-->
+			<!--{eval $article_url = fetch_article_url($value);}-->
+			<li class="swiper-slide"><a href="$article_url"><img src="$value['pic']" width="100%" class="vm"><span>$value['title']</span></a></li>
+		<!--{/loop}-->
+	</ul>
+	<div class="swiper-forum"></div>
+</div>
+<script>
+var swiper = new Swiper('.dz-swiper', {
+	pagination: {
+		el: '.swiper-forum',
+		type: 'fraction',
+	},
+});
+</script>
+<!--{/if}-->
+<!--{/if}-->
+<!--{if count($list['list'])}-->
+<div class="wzlist mt10 cl">
+<!--{loop $list['list'] $value}-->
+	<!--{eval $highlight = article_title_style($value);}-->
+	<!--{eval $article_url = fetch_article_url($value);}-->
+	<li>
+		<a href="$article_url" $highlight>
+		<!--{if $value['pic']}--><div class="mimg"><img src="$value['pic']" alt="$value['title']" /></div><!--{/if}-->
+		<div class="minfo">
+			<p class="mtit">$value['title']</p>
+			<p class="mtime">$value['catname'] $value['dateline']<!--{if $value['status'] == 1}--> <span>{lang moderate_need}</span><!--{/if}--></p>
+		</div>
+		</a>
+	</li>
+<!--{/loop}-->
+</div>
+<!--{else}-->
+<div class="threadlist_box mt10 cl">
+	<div class="threadlist cl">
+		<ul>
+			<h4>{lang mobnodata}</h4>
+		</ul>
+	</div>
+</div>
+<!--{/if}-->
+<!--{if $list['multi']}-->{$list['multi']}<!--{/if}-->
+<script>
+var flowpage = $page;
+var mobnodata = '{lang mobnodata}';
+portal_flowlazyload();
+</script>
+<!--{template common/footer}-->
