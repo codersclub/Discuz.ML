@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_optimizer.php 33906 2013-08-29 09:40:37Z jeffjzhang $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -18,6 +17,8 @@ $lang = array
 	'optimizer_dbbackup_lastback' => '上次数据备份于',
 	'optimizer_dbbackup_clean_safe' => '没有检测到数据库备份文件，无安全问题',
 	'optimizer_dbbackup_clean_delete' => '检测到 {filecount} 个数据备份文件(目录: ./data/backup_xxx)，<br>请尽快手工复制到安全位置备份，然后删除这些文件',
+	'optimizer_dbbackup_visit_safe' => '没有检测到可访问的数据库备份文件，无安全问题',
+	'optimizer_dbbackup_visit_delete' => '检测到 {filecount} 个数据备份文件(目录: ./data/backup_xxx)可以通过 Web 方式访问，<br>请在数据库恢复页面删除数据库数据库备份文件或设置数据库备份文件不可通过 URL 访问',
 	'optimizer_filecheck_advice' => '三个月没有进行文件校验了,建议立即进行校验',
 	'optimizer_filecheck_lastcheck' => '上次文件校验于',
 	'optimizer_log_clean' => '有 {count} 个日志表可以清理优化',
@@ -72,6 +73,10 @@ $lang = array
 	'optimizer_emailregister_tip' => '此设置可以提升用户质量',
 	'optimizer_pwlength_need' => '密码最小长度过低，不安全',
 	'optimizer_pwlength_no_need' => '经检测密码长度设置正常',
+	'optimizer_filesafe_need' => 'old 目录、utility 目录、安装程序、数据恢复程序或重复的管理员入口其中之一未删除',
+	'optimizer_filesafe_no_need' => '文件安全检测正常',
+	'optimizer_remote_need' => '您开启了正常站点无需开启的远程调用功能,请检查是否是主动开启',
+	'optimizer_remote_no_need' => '远程调用功能关闭',
 	'optimizer_regmaildomain_need' => '需要优化黑名单列表',
 	'optimizer_regmaildomain_tip' => '可以设置邮箱域名限制阻止垃圾注册',
 	'optimizer_ipregctrl_no_need' => '已经设置了限时注册IP列表',
@@ -119,7 +124,6 @@ $lang = array
 	'optimizer_white_list_need' => '您设置了防水墙白名单，白名单用户发垃圾贴不被处理，请慎重',
 	'optimizer_white_list_no_need' => '未设置白名单',
 	'optimizer_security_daily_need' => '开启防水墙每日优化，可清除删帖后首页痕迹',
-	'optimizer_white_list_no_need' => '该计划任务已开启',
 	'optimizer_security_daily_no_need' => '该计划任务已开启',
 	'optimizer_dos8p3_need' => 'DOS 8.3 文件名支持错误开启',
 	'optimizer_dos8p3_no_need' => 'DOS 8.3 文件名支持未开启或底层不支持',

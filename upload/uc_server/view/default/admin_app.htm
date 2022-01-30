@@ -12,6 +12,12 @@ function testlink() {
 	}
 	run++;
 }
+function generatekey() {
+	var scriptNode = document.createElement('script');
+	scriptNode.type = 'text/javascript';
+	scriptNode.src = 'admin.php?m=app&a=generatekey&inajax=1&sid=$sid';
+	document.getElementsByTagName('head')[0].appendChild(scriptNode);
+}
 window.onload = testlink;
 </script>
 <div class="container">
@@ -136,7 +142,7 @@ window.onload = testlink;
 						</tr>
 						<tr>
 							<td><input type="text" class="txt" name="authkey" value="" /></td>
-							<td>{lang app_key_comment}</td>
+							<td>{lang app_key_comment} <a href="#" onclick="generatekey();return false;" class="green">{lang app_key_generate}</a></td>
 						</tr>
 
 
@@ -268,7 +274,7 @@ window.onload = testlink;
 					</tr>
 					<tr>
 						<td><input type="text" class="txt" name="authkey" value="$authkey" /></td>
-						<td>{lang app_key_comment}</td>
+						<td>{lang app_key_comment} <a href="#" onclick="generatekey();return false;" class="green">{lang app_key_generate}</a></td>
 					</tr>
 
 					<tr>
