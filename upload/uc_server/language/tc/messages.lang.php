@@ -79,4 +79,7 @@ $lang = array(
 	'pm_send_floodctrl_error'	=> '對不起，您兩次發送短消息間隔太短，請返回。',
 	
 	'file_check_failed'		=> '校驗文件不存在，無法校驗',
+	'replacemykey_succeed'		=> '密鑰更新成功，請更新緩存並檢查下掛應用狀態',
+	'replacemykey_false'		=> '密鑰更新失敗，請檢查文件是否可寫或數據庫是否正常，如有必要請重新配置每個應用的 UC_KEY 以保證正常工作',
+	'replacemykey_no_confirm'	=> '請您確認風險提示後再繼續操作',
 );

@@ -506,6 +506,11 @@ $lang = array
 	'nav_hookcheck_verify' => '開始校驗',
 	'nav_hookcheck_completed' => '校驗結果',
 
+	'nav_replacekey' => '密鑰更新',
+	'nav_replacekey_confirm' => '確認開始',
+	'nav_replacekey_verify' => '開始更新',
+	'nav_replacekey_completed' => '更新結果',
+
 	'nav_updatecache' => '更新緩存',
 	'nav_updatecache_confirm' => '確認開始',
 	'nav_updatecache_verify' => '開始更新',
@@ -5993,6 +5998,10 @@ $lang = array
 	'hookcheck_discuzhook' => '源文件嵌入點',
 	'hookcheck_delhook' => '丟失的嵌入點',
 
+	'replacekey_tips' => '<li>當站點淪陷時您應該考慮在此處密鑰更新，以避免黑客通過已知的 AUTHKEY 獲取站點控制權限。 </li><li><font color="blue">少數插件會使用站點密鑰保存數據，當重置密鑰時相關數據會丟失且無法恢復，敬請注意並在更新前做好數據庫與站點文件的備份工作。 </font></li>',
+	'replacekey_tips_step1' => '在操作之前建議您選擇低峰期操作或臨時關閉下掛網站，並做好數據、文件備份工作，點擊下面按鈕開始更換',
+	'replacekey_tips_step2' => '正在進行密鑰更新，請稍候......', 
+
 	'imagepreview_imagesize_source' => '原圖片大小',
 	'imagepreview_imagesize_target' => '處理後圖片大小',
 
@@ -6070,7 +6079,7 @@ $lang = array
 	'db_volume' => '卷數',
 	'db_export_tips_nouc' => '<li><font color="blue"><b>您當前的數據備份不包含 UCenter，會影響到您的會員數據，請點擊<a href="{uc_backup_url}">這裡</a>單獨備份 UCenter 數據</b></font></li><li>數據備份功能根據您的選擇備份全部Discuz!數據，導出的數據文件可用「數據恢復」功能或 phpMyAdmin 導入。</li>',
 	'db_export_tips_uc' => '<li>數據備份功能根據您的選擇備份全部Discuz! 和 UCenter數據，導出的數據文件可用「數據恢復」功能或 phpMyAdmin 導入。</li>',
-	'db_export_tips' => '<li>全部備份均不包含模板文件和附件文件。模板、附件的備份只需通過 FTP 等下載 template/、data/attachment/ 目錄即可，Discuz! 不提供單獨備份。</li><li>MySQL Dump 的速度比 Discuz! 分卷備份快很多，但需要服務器支持相關的 Shell 權限，同時由於 MySQL 本身的兼容性問題，通常進行備份和恢復的服務器應當具有相同或相近的版本號才能順利進行。因此 MySQL Dump 是有風險的：一旦進行備份或恢復操作的服務器其中之一禁止了 Shell，或由於版本兼容性問題導致導入失敗，您將無法使用 MySQL Dump 備份或由備份數據恢復；Discuz! 分卷備份沒有此限制。</li><li>數據備份選項中的設置，僅供高級用戶的特殊用途使用，當您尚未對數據庫做全面細緻的瞭解之前，請使用默認參數備份，否則將導致備份數據錯誤等嚴重問題。</li><li>十六進制方式可以保證備份數據的完整性，但是備份文件會佔用更多的空間。</li><li>壓縮備份文件可以讓您的備份文件佔用更小的空間。</li>',
+	'db_export_tips' => '<li><font color="blue"><b>出於安全考慮，我們強烈建議您下載數據庫備份文件後在恢復頁面刪除數據庫數據庫備份文件或設置數據庫備份文件不可通過 URL 訪問，以保證網站安全。 </b></font></li><li>全部備份均不包含模板文件和附件文件。模板、附件的備份只需通過 FTP 等下載 template/、data/attachment/ 目錄即可，Discuz! 不提供單獨備份。 </li><li>MySQL Dump 的速度比 Discuz! 分卷備份快很多，但需要服務器支持相關的 Shell 權限，同時由於 MySQL 本身的兼容性問題，通常進行備份和恢復的服務器應當具有相同或相近的版本號才能順利進行。因此 MySQL Dump 是有風險的：一旦進行備份或恢復操作的服務器其中之一禁止了 Shell，或由於版本兼容性問題導致導入失敗，您將無法使用 MySQL Dump 備份或由備份數據恢復；Discuz! 分卷備份沒有此限制。 </li><li>數據備份選項中的設置，僅供高級用戶的特殊用途使用，當您尚未對數據庫做全面細緻的了解之前，請使用默認參數備份，否則將導致備份數據錯誤等嚴重問題。 </li><li>十六進制方式可以保證備份數據的完整性，但是備份文件會佔用更多的空間。 </li><li>壓縮備份文件可以讓您的備份文件佔用更小的空間。 </li>',
 	'db_export_type' => '數據備份類型',
 	'db_export_discuz' => 'Discuz! 數據(不含UCenter)',
 	'db_export_discuz_uc' => 'Discuz! 和 UCenter 數據',
@@ -6099,7 +6108,7 @@ $lang = array
 	'db_import_confirm' => '導入和當前 Discuz! 版本不一致的數據極有可能產生無法解決的故障，您確定繼續嗎？',
 	'db_import_confirm_sql' => '您確定導入該備份嗎？',
 	'db_import_confirm_zip' => '您確定解壓該備份嗎？',
-	'db_import_tips' => '<li>本功能在恢復備份數據的同時，將全部覆蓋原有數據，請確定恢復前已將論壇關閉，恢復全部完成後可以將論壇重新開放。</li><li>恢復數據前請在 Discuz! 安裝文件目錄下 utility 文件夾內找到 restore.php 文件，然後將 restore.php 文件上傳到程序文件夾data目錄下。 <b>為了您站點的安全，成功恢復數據後請務必及時刪除 restore.php 文件。</b></li><li>您可以在數據備份記錄處查看站點的備份文件的詳細信息，刪除過期的備份,並導入需要的備份。</li>',
+	'db_import_tips' => '<li>本功能在恢復備份數據的同時，將全部覆蓋原有數據，請確定恢復前已將論壇關閉，恢復全部完成後可以將論壇重新開放。 </li><li><font color="blue"><b>出於安全考慮，我們強烈建議您下載數據庫備份文件後在恢復頁面刪除數據庫數據庫備份文件或設置數據庫備份文件不可通過 URL 訪問，以保證網站安全。 </b></font></li><li>恢復數據前請在 Discuz! 安裝文件目錄下 utility 文件夾內找到 restore.php 文件，然後將 restore.php 文件上傳到程序文件夾data目錄下。 <b>為了您站點的安全，成功恢復數據後請務必及時刪除 restore.php 文件。 </b></li><li>您可以在數據備份記錄處查看站點的備份文件的詳細信息，刪除過期的備份,並導入需要的備份。 </li>',
 	'do_import_option' => '<ul><li>您可以在本頁面數據備份記錄處導入備份恢複數據，也可以通過在瀏覽器中執行 <a href="{restore_url}" target="_blank">{restore_url}</a> 恢複數據',
 	'db_import_from_server' => '從服務器(填寫文件名或 URL)',
 	'db_import_from_local' => '從本地文件',
@@ -6944,6 +6953,7 @@ $lang = array
 	'optimizer_check_unit_optimizer_log' => '查看是否有需要優化清理的日誌表',
 	'optimizer_check_unit_optimizer_seo' => '檢測SEO優化設置',
 	'optimizer_check_unit_optimizer_dbbackup_clean' => '檢測是否存在未刪除的備份文件',
+	'optimizer_check_unit_optimizer_dbbackup_visit' => '檢測是否存在可訪問的備份文件',
 	'optimizer_check_unit_optimizer_inviteregister' => '檢測允許新用戶註冊項',
 	'optimizer_check_unit_optimizer_emailregister' => '檢測通過郵件發送註冊連接項',
 	'optimizer_check_unit_optimizer_pwlength' => '檢測密碼最小長度項',
@@ -6967,6 +6977,8 @@ $lang = array
 	'optimizer_check_unit_optimizer_security_daily' => '檢測是否開啟防水牆每日優化計劃任務',
 	'optimizer_check_unit_optimizer_postqqonly' => '檢測發帖需要綁定QQ號檢測是否開啟',
 	'optimizer_check_unit_optimizer_aggid' => '檢測「管理員，超級版主，版主」QQ登錄檢測是否開啟',
+	'optimizer_check_unit_optimizer_filesafe' => '檢測是否有升級或安裝殘留的文件',
+	'optimizer_check_unit_optimizer_remote' => '檢測是否有開啟了遠程調用',
 	'optimizer_check_unit_optimizer_dos8p3' => '檢測 DOS 8.3 文件名支持是否開啟',
 	'optimizer_check_unit_optimizer_httphost' => '檢測空 HOST 訪問是否開啟',
 

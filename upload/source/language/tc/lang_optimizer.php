@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_optimizer.php 33906 2013-08-29 09:40:37Z jeffjzhang $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -18,6 +17,8 @@ $lang = array
 	'optimizer_dbbackup_lastback' => '上次數據備份於',
 	'optimizer_dbbackup_clean_safe' => '沒有檢測到數據庫備份文件，無安全問題',
 	'optimizer_dbbackup_clean_delete' => '檢測到 {filecount} 個數據備份文件(目錄: ./data/backup_xxx)，<br>請盡快手工複製到安全位置備份，然後刪除這些文件',
+	'optimizer_dbbackup_visit_safe' => '沒有檢測到可訪問的數據庫備份文件，無安全問題',
+	'optimizer_dbbackup_visit_delete' => '檢測到 {filecount} 個數據備份文件(目錄: ./data/backup_xxx)可以通過 Web 方式訪問，<br>請在數據庫恢復頁面刪除數據庫數據庫備份文件或設置數據庫備份文件不可通過 URL 訪問',
 	'optimizer_filecheck_advice' => '三個月沒有進行文件校驗了,建議立即進行校驗',
 	'optimizer_filecheck_lastcheck' => '上次文件校驗於',
 	'optimizer_log_clean' => '有 {count} 個日誌表可以清理優化',
@@ -72,6 +73,10 @@ $lang = array
 	'optimizer_emailregister_tip' => '此設置可以提升用戶質量',
 	'optimizer_pwlength_need' => '密碼最小長度過低，不安全',
 	'optimizer_pwlength_no_need' => '經檢測密碼長度設置正常',
+	'optimizer_filesafe_need' => 'old 目錄、utility 目錄、安裝程序、數據恢復程序或重複的管理員入口其中之一未刪除',
+	'optimizer_filesafe_no_need' => '文件安全檢測正常',
+	'optimizer_remote_need' => '您開啟了正常站點無需開啟的遠程調用功能,請檢查是否是主動開啟',
+	'optimizer_remote_no_need' => '遠程調用功能關閉',
 	'optimizer_regmaildomain_need' => '需要優化黑名單列表',
 	'optimizer_regmaildomain_tip' => '可以設置郵箱域名限制阻止垃圾註冊',
 	'optimizer_ipregctrl_no_need' => '已經設置了限時註冊IP列表',
@@ -117,7 +122,7 @@ $lang = array
 	'optimizer_eviluser_need' => '防水牆識別到違規用戶，請及時處理',
 	'optimizer_eviluser_no_need' => '未發現違規用戶',
 	'optimizer_white_list_need' => '您設置了防水牆白名單，白名單用戶發垃圾貼不被處理，請慎重',
-	'optimizer_white_list_no_need' => '未設置白名單',
+	'optimizer_white_list_no_need' => '該計劃任務已開啟',
 	'optimizer_security_daily_need' => '開啟防水牆每日優化，可清除刪帖後首頁痕跡',
 	'optimizer_security_daily_no_need' => '該計劃任務已開啟',
 	'optimizer_dos8p3_need' => 'DOS 8.3 文件名支持錯誤開啟',
