@@ -61,9 +61,9 @@ if($apptype == 'discuz') {
 
 parse_str(_authcode($code, 'DECODE', UC_KEY), $get);
 
-!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', magic_quotes(););
+/*vot*/ !defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', magic_quotes(););
 
-if(MAGIC_QUOTES_GPC) {
+/*vot*/ if(MAGIC_QUOTES_GPC) {
 	$get = _stripslashes($get);
 }
 
@@ -568,7 +568,7 @@ if($get['method'] == 'export') {
 	$directory = dir(BACKUP_DIR);
 	while($entry = $directory->read()) {
 		$filename = BACKUP_DIR.$entry;
-		if(is_dir($filename) && preg_match('/^backup_(\d+)_\w+$/', $filename, $match)) {
+		if(is_dir($filename) && preg_match('/^backup_(\d+)_\w+$/', $entry, $match)) {
 			$str .= "\t<dir>\n";
 			$str .= "\t\t<dirname>$filename</dirname>\n";
 			$str .= "\t\t<dirdate>$match[1]</dirdate>\n";
