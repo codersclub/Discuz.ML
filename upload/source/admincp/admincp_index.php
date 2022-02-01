@@ -37,6 +37,25 @@ if(empty($siteuniqueid) || strlen($siteuniqueid) < 16) {
 	updatecache('setting');
 }
 
+if(!empty($_GET['closesitereleasetips'])) {
+	C::t('common_setting')->update('sitereleasetips', 0);
+	$sitereleasetips = 0;
+	require_once libfile('function/cache');
+	updatecache('setting');
+} else {
+	$sitereleasetips = C::t('common_setting')->fetch('sitereleasetips');
+}
+
+$siterelease = C::t('common_setting')->fetch('siterelease');
+$releasehash = substr(hash('sha512', $_G['config']['security']['authkey'].DISCUZ_VERSION.DISCUZ_RELEASE.$siteuniqueid), 0, 32);
+if(empty($siterelease) || strcmp($siterelease, $releasehash) !== 0) {
+	C::t('common_setting')->update('siteversion', DISCUZ_VERSION);
+	C::t('common_setting')->update('siterelease', $releasehash);
+	C::t('common_setting')->update('sitereleasetips', 1);
+	$sitereleasetips = 1;
+	require_once libfile('function/cache');
+	updatecache('setting');
+}
 
 if(submitcheck('notesubmit', 1)) {
 	if(!empty($_GET['noteid']) && is_numeric($_GET['noteid'])) {
@@ -82,6 +101,7 @@ if(isset($_GET['attachsize'])) {
 $membersmod = C::t('common_member_validate')->count_by_status(0);
 $threadsdel = C::t('forum_thread')->count_by_displayorder(-1);
 $groupmod = C::t('forum_forum')->validate_level_num();
+$reportcount = C::t('common_report')->fetch_count();
 
 $modcount = array();
 foreach(C::t('common_moderate')->count_group_idtype_by_status(0) as $value) {
@@ -187,7 +207,7 @@ foreach($admincp_session as $uid => $online) {
 
 
 showtableheader('', 'nobottom fixpadding');
-if($membersmod || $threadsmod || $postsmod || $medalsmod || $blogsmod || $picturesmod || $doingsmod || $sharesmod || $commentsmod || $articlesmod || $articlecommentsmod || $topiccommentsmod || $threadsdel || !empty($verify)) {
+if($membersmod || $threadsmod || $postsmod || $medalsmod || $blogsmod || $picturesmod || $doingsmod || $sharesmod || $commentsmod || $articlesmod || $articlecommentsmod || $topiccommentsmod || $reportcount || $threadsdel || !empty($verify)) {
 	showtablerow('', '', '<h3 class="left margintop">'.cplang('home_mods').': </h3><p class="left difflink">'.
 		($membersmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=members">'.cplang('home_mod_members').'</a>(<em class="lightnum">'.$membersmod.'</em>)' : '').
 		($threadsmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=threads&dateline=all">'.cplang('home_mod_threads').'</a>(<em class="lightnum">'.$threadsmod.'</em>)' : '').
@@ -202,6 +222,7 @@ if($membersmod || $threadsmod || $postsmod || $medalsmod || $blogsmod || $pictur
 		($articlesmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=articles&dateline=all">'.cplang('home_mod_articles').'</a>(<em class="lightnum">'.$articlesmod.'</em>)' : '').
 		($articlecommentsmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=articlecomments&dateline=all">'.cplang('home_mod_articlecomments').'</a>(<em class="lightnum">'.$articlecommentsmod.'</em>)' : '').
 		($topiccommentsmod ? '<a href="'.ADMINSCRIPT.'?action=moderate&operation=topiccomments&dateline=all">'.cplang('home_mod_topiccomments').'</a>(<em class="lightnum">'.$topiccommentsmod.'</em>)' : '').
+		($reportcount ? '<a href="'.ADMINSCRIPT.'?action=report">'.cplang('home_mod_reports').'</a>(<em class="lightnum">'.$reportcount.'</em>)' : '').
 		($threadsdel ? '<a href="'.ADMINSCRIPT.'?action=recyclebin">'.cplang('home_del_threads').'</a>(<em class="lightnum">'.$threadsdel.'</em>)' : '').
 		$verify.
 		'</p><div class="clear"></div>'
@@ -258,6 +279,14 @@ if ($env_ok) {
 	);
 }
 showtablefooter();
+
+if($sitereleasetips) {
+	showtableheader('version_tips', 'fixpadding');
+	showtablerow('', array('', 'class="td21" style="text-align:right;"'),
+		'<em class="unknown">'.lang("admincp", "version_tips_msg", array('ADMINSCRIPT' => ADMINSCRIPT, 'version' => constant("DISCUZ_VERSION").' '.$reldisp)).'</em>'
+	);
+	showtablefooter();
+}
 
 showtableheader('home_onlines', 'nobottom fixpadding');
 echo '<tr><td>'.$onlines.'</td></tr>';
