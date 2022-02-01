@@ -36,7 +36,7 @@ $topmenu = array (
 $menu['index'] = array(
 	array('menu_home', 'index'),
 	array('menu_custommenu_manage', 'misc_custommenu'),
-	$isfounder ? array('menu_setting_runtests', 'runtests') : null,
+	(defined('DISCUZ_DEBUG') && DISCUZ_DEBUG && $isfounder) ? array('menu_setting_runtests', 'runtests') : null,
 );
 
 $custommenu = get_custommenu();
@@ -248,6 +248,7 @@ $menu['tools'] = array(
 	$isfounder ? array('menu_tools_fileperms', 'tools_fileperms') : null,
 	$isfounder ? array('menu_tools_filecheck', 'checktools_filecheck') : null,
 	$isfounder ? array('menu_tools_hookcheck', 'checktools_hookcheck') : null,
+	$isfounder ? array('menu_tools_replacekey', 'checktools_replacekey') : null,
 );
 
 if($isfounder) {
