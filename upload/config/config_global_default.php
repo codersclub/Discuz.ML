@@ -10,7 +10,7 @@
 
 $_config = array();
 
-// 提示：自当前版本起，本文件不支持调用系统内任何变量或函数，请依赖此行为的站点修正实现 //
+// Tip: Since the current version, this file does not support calling any variables or functions in the system, please rely on the site correction implementation of this behavior //
 
 // ----------------------------  CONFIG DB  ----------------------------- //
 // Database server settings
@@ -85,8 +85,8 @@ $_config['db']['common'] = array();
 $_config['db']['common']['slave_except_table'] = '';
 
 /*
- * 数据库引擎，根据自己的数据库引擎进行设置，3.5之后默认为innodb，之前为myisam
- * 对于从3.4升级到3.5，并且没有转换数据库引擎的用户，在此设置为myisam
+ * Database engine, set according to your own database engine, the default is innodb after 3.5, and it was myisam before
+ * For users who upgrade from 3.4 to 3.5 and have not converted the database engine, set it to myisam
  */
 $_config['db']['common']['engine'] = 'innodb';
 
@@ -137,7 +137,7 @@ $_config['server']['id']		= 1;	// Server ID, when  more webservers used this ID 
 // 1=fread 2=readfile 3=fpassthru 4=fpassthru+multiple
 $_config['download']['readmod'] = 2;
 
-// Enable X-Sendfile feature(required server support) 0=disable, 1=nginx, 2=lighttpd, 3=apache
+// Enable X-Sendfile (required server support) 0=close 1=nginx 2=lighttpd 3=apache
 $_config['download']['xsendfile']['type'] = 0;
 
 // Enable nginx X-sendfile, the forum attachment directory path to the virtual map, use the "/" at the end
@@ -148,11 +148,11 @@ $_config['output']['charset'] 		= 'utf-8';	// Page character set
 $_config['output']['forceheader']	= 1;		// Force the output in defined character set, used to avoid page content garbled
 $_config['output']['gzip'] 		= 0;		// Use Gzip compression for output
 $_config['output']['tplrefresh'] 	= 1;		// Automatically refresh templates: 0 = off, 1 = On
-$_config['output']['language'] 		= 'sc';		// Page language sc/tc/en/fr/etc...
+$_config['output']['language'] 		= 'zh_cn';	// Page language zh_cn/zh_tw/en/fr/etc...
 $_config['output']['staticurl'] 	= 'static/';	// Path to the site static files, use "/" at the end
 $_config['output']['ajaxvalidate']	= 0;		// Strictly verify the authenticity for Ajax pages: 0 = off, 1 = On
-$_config['output']['upgradeinsecure']		= 0;		// 在HTTPS环境下请求浏览器升级HTTP内链到HTTPS，此选项影响外域资源链接且与自定义CSP冲突 0=关闭(默认)，1=打开
-$_config['output']['css4legacyie']		= 1;		// 是否加载兼容低版本IE的css文件 0=关闭，1=打开（默认），关闭可避免现代浏览器加载不必要的数据，但IE6-8的显示效果会受较大影响，IE9受较小影响。
+$_config['output']['upgradeinsecure']	= 0;		// Request the browser to upgrade the HTTP internal link to HTTPS in the HTTPS environment. This option affects external domain resource links and conflicts with custom CSP. 0=off (default), 1=on
+$_config['output']['css4legacyie']	= 1;		// Whether to load css files compatible with lower versions of IE 0 = off, 1 = on (default), off can prevent modern browsers from loading unnecessary data, but the display effect of IE6-8 will be greatly affected, and IE9 will be less affected .
 
 // COOKIE settings
 $_config['cookie']['cookiepre'] 	= 'discuz_'; 	// COOKIE prefix
@@ -163,10 +163,9 @@ $_config['cookie']['cookiepath'] 	= '/'; 		// COOKIE path
 $_config['security']['authkey']		= 'asdfasfas';	// Site encryption key
 $_config['security']['urlxssdefend']	= true;		// Use own URL XSS defense
 $_config['security']['attackevasive']	= 0;		// CC Attack Defense 1 | 2 | 4
-$_config['security']['onlyremoteaddr']	= 1;		// Get User IP address method: 0 = Trust HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR; 1 = Tust only REMOTE_ADDR
-							// Considering the risk of preventing IP credential stuffing attacks and invalidating IP restriction policies,
-							// it is recommended that you set it to 1. Users using CDN can configure ipgetter options
-							// Security Tip: Due to the independence of UCenter and UC_Client, you need to define constants in the two applications separately to enable the function
+$_config['security']['onlyremoteaddr']	= 1;		// User IP address acquisition method 0=trust HTTP_CLIENT_IP, HTTP_X_FORWARDED_FOR (default) 1=only trust REMOTE_ADDR (recommended)
+							// Considering the risk of preventing IP credential stuffing attacks and IP restriction policy failure, it is recommended that you set it to 1. Users using CDN can configure ipgetter options
+							// Security reminder: due to the independence of UCenter and UC_Client, you need to define constants in the two applications separately to enable the function
 
 $_config['security']['useipban']		= 1;	// Whether to enable the function of banning IP, high-load sites can release this function to HTTP Server/CDN/SLB/WAF to reduce server loading
 $_config['security']['querysafe']['status']	= 1;	// Enable the SQL security detection, prevent the SQL injection attacks automatically
@@ -192,7 +191,7 @@ $_config['admincp']['forcesecques']	= 0;	// Force managers to set the security q
 $_config['admincp']['checkip']		= 1;	// Back office operations are verified administrator IP, 1 = yes [secure], 0 = no. Only the administrator can not log in from time to set 0.
 $_config['admincp']['runquery']		= 0;	// Allow to run SQL statements in the background: 1 = yes, 0 = no [secure]
 $_config['admincp']['dbimport']		= 1;	// Allow the data recovery in the background: 1 = yes, 0 = no [secure]
-$_config['admincp']['mustlogin']		= 1;		// 是否必须前台登录后才允许后台登录  1=是[安全] 0=否
+$_config['admincp']['mustlogin']	= 1;	// Whether to allow background login after foreground login 1=Yes[Security] 0=No
 
 /**
  * Remote call function module system
@@ -212,7 +211,7 @@ $_config['remote']['appkey'] = md5($_config['security']['authkey']);
 $_config['remote']['cron'] = 0;
 
 // $_GET|$_POST compatibility processing. 0 is off, 1 is on, Turned to $_G['gp_xx'](xx is a Variable name, $_GET and $_POST Collection of all variable names), Value has been addslashes() treated
-// 考虑到安全风险，自X3.5版本起本开关恢复默认值为0的设定，后续版本可能取消此功能，请各位开发人员注意
+// Considering security risks, this switch has been restored to the default value of 0 since version X3.5, and this function may be canceled in subsequent versions, please pay attention to developers
 $_config['input']['compatible'] = 0;
 
 /**
@@ -229,17 +228,17 @@ $_config['ipdb']['setting']['ipv4'] = 'tiny';	// IPv4 library used by the system
 $_config['ipdb']['setting']['ipv6'] = 'v6wry';	// IPv6 library used by the system. Leave blank to use the default library.
 
 /**
- * IP获取扩展
- * 考虑到不同的CDN服务供应商提供的判断CDN源IP的策略不同，您可以定义自己服务供应商的IP获取扩展。
- * 为空为使用默认体系，非空情况下会自动调用source/class/ip/getter_值.php内的get方法获取IP地址。
- * 系统提供dnslist(IP反解析域名白名单)、serverlist(IP地址白名单，支持CIDR)、header扩展，具体请参考扩展文件。
- * 性能提示：自带的两款工具由于依赖RDNS、CIDR判定等操作，对系统效率有较大影响，建议大流量站点使用HTTP Server
- * 或CDN/SLB/WAF上的IP黑白名单等逻辑实现CDN IP地址白名单，随后使用header扩展指定服务商提供的IP头的方式实现。
- * 安全提示：由于UCenter、UC_Client独立性及扩展性原因，您需要单独修改相关文件的相关业务逻辑，从而实现此类功能。
- * $_config['ipgetter']下除setting外均可用作自定义IP获取模型设置选项，也欢迎大家PR自己的扩展IP获取模型。
- * 扩展IP获取模型的设置，请使用格式：
- * 		$_config['ipgetter']['IP获取扩展名称']['设置项名称'] = '值';
- * 比如：
+ * Get IP extension
+ * Considering that different CDN service providers provide different strategies for judging CDN source IP, you can define your own service provider's IP acquisition extension.
+ * If it is empty, the default system will be used. If it is not empty, the get method in source/class/ip/getter_value.php will be called automatically to obtain the IP address.
+ * The system provides dnslist (IP anti-analysis domain name whitelist), serverlist (IP address whitelist, supports CIDR), header extension, please refer to the extension file for details.
+ * Performance tip: The two built-in tools rely on RDNS, CIDR judgment and other operations, which have a great impact on system efficiency. It is recommended to use HTTP Server for large traffic sites
+ * Or logic such as IP black and white list on CDN/SLB/WAF to implement CDN IP address white list, and then use header extension to specify the IP header provided by the service provider.
+ * Security tip: Due to the independence and scalability of UCenter and UC_Client, you need to modify the relevant business logic of related files separately to realize this function.
+ * $_config['ipgetter'] can be used as a custom IP acquisition model setting option except setting, and you are welcome to PR your own extended IP acquisition model.
+ * Extended IP acquisition model settings, please use the format:
+ * 		$_config['ipgetter']['Get IP extension name']['setting item name'] = 'value';
+ * For example:
  * 		$_config['ipgetter']['onlinechk']['server'] = '100.64.10.24';
  */
 $_config['ipgetter']['setting'] = '';

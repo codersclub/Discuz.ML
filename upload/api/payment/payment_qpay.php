@@ -143,7 +143,7 @@ class payment_qpay extends payment_base {
 		if(strtoupper($_G['charset'] != 'UTF-8')) {
 			$refund_desc = diconv($refund_desc, $_G['charset'], 'UTF-8');
 		}
-		// 此处与微信支付不同, op_user_id, op_user_passwd 为 操作员 ID 以及 操作员密码的 MD5
+		// Different from WeChat payment here, op_user_id, op_user_passwd are the MD5 of operator ID and operator password
 		$data = array('appid' => $this->settings['appid'], 'mch_id' => $this->settings['mch_id'], 'nonce_str' => $this->qpay_nonce(), 'transaction_id' => $trade_no, 'out_refund_no' => $refund_no, 'refund_fee' => $refund_amount, 'op_user_id' => $this->settings['op_user_id'], 'op_user_passwd' => $this->settings['op_user_passwd']);
 		$data['sign'] = $this->qpay_sign($this->settings['v1_key'], $data);
 		$data = $this->qpay_o2x($data);

@@ -373,7 +373,7 @@ class table_common_member extends discuz_table_archive
 				$this->switch_keys('disable');
 			}
 			$uidlist = DB::fetch_all('SELECT uid FROM '.$temptablename.' ORDER BY uid DESC', null, 'uid');
-			unset($uidlist[key($uidlist)]);// 考虑到用户分表操作的最后一个用户可能也是数据库中最后一个用户，因此在此固定扣除一个用户，保证最后一个用户不会被移动到归档表，从而避免最后一个用户被移动到归档表导致用户主表自增值异常的问题
+			unset($uidlist[key($uidlist)]);// Considering that the last user of the user table operation may also be the last user in the database, a fixed user is deducted here to ensure that the last user will not be moved to the archive table, so as to avoid the last user being moved to the archive table and cause the user The main table self-increment exception problem
 			$uids = dimplode(array_keys($uidlist));
 			$movesql = 'REPLACE INTO %t SELECT * FROM %t WHERE uid IN ('.$uids.')';
 			$deletesql = 'DELETE FROM %t WHERE uid IN ('.$uids.')';
