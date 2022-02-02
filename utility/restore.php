@@ -17,7 +17,15 @@ define('ROOT_PATH', dirname(__FILE__).'/../');
 @include_once ROOT_PATH.'./config/config_global.php';
 define('CHARSET', $_config['output']['charset']);
 define('DBCHARSET', $_config['db']['1']['dbcharset']);
-/*vot*/ define('DISCUZ_LANG', $_config['output']['language']);
+
+// zh-cn/zh-tw/zh-hk patch by vot
+/*vot*/ $value = $_config['output']['language'];
+/*vot*/ if (preg_match('/^zh[-_](tw|hk)$/i', $lng)) {
+/*vot*/ 	$lng = 'tc';
+/*vot*/ } elseif(preg_match('/^zh[-_]cn$/i', $lng)) {
+/*vot*/		$lng = 'sc';
+/*vot*/ }
+/*vot*/ define('DISCUZ_LANG', $lng);
 
 $lock_file = ROOT_PATH.'./data/restore.lock';
 if(file_exists($lock_file)) {
