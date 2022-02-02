@@ -2206,21 +2206,19 @@ function detect_language() {
 		$langs = explode(',',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
 		//start going through each one
-		foreach ($langs as $value){
-			// zh-tw/zh-hk patch by ken
-			$value = strtolower($value);
-			if(($value=='zh-tw')||($value=='zh-hk')){
-				$choice = 'tc';
-			} else {
-				$choice = substr($value,0,2);
-				if($choice=='zh') $choice = 'sc';
-			}
+		foreach ($langs as $value) {
+/*vot*/			// zh-cn/zh-tw/zh-hk patch by vot
+/*vot*/			if (preg_match('/^zh[-_](tw|hk)$/i', $value)) {
+/*vot*/				$choice = 'tc';
+/*vot*/			} elseif (preg_match('/^zh[-_]cn$/i', $value)) {
+/*vot*/				$choice = 'sc';
+/*vot*/			}
 
-			if(isset($_G['config']['languages'][$choice])){
+			if (isset($_G['config']['languages'][$choice])) {
 				return $choice;
 			}
 		}
-	} 
+	}
 	return $default;
 }
 

@@ -303,8 +303,6 @@ class discuz_application extends discuz_base{
 				if(!isset($this->var['config']['languages'][$lng])) {
 					$lng = '';
 				}
-//DEBUG
-//echo "Cookie lang=",$lng,"<br>";
 			}
 
 			// check if the language from GET is valid
@@ -314,8 +312,6 @@ class discuz_application extends discuz_base{
 					// set from GET
 					$lng = $tmp;
 				}
-//DEBUG
-//echo "_GET lang=",$lng,"<br>";
 			}
 
 			// Check for language auto-detection
@@ -323,18 +319,21 @@ class discuz_application extends discuz_base{
 				$detect = (boolean) $this->var['config']['detect_language'];
 				if($detect) {
 					$lng = detect_language($this->var['config']['languages'],$default_lang);
-//DEBUG
-//echo "Detect lang=",$lng,"<br>";
 				}
 			}
 		}
+
+		// zh-cn/zh-tw/zh-hk patch by vot
+/*vot*/		if (preg_match('/^zh[-_](tw|hk)$/i', $lng)) {
+/*vot*/			$lng = 'tc';
+/*vot*/		} elseif(preg_match('/^zh[-_]cn$/i', $lng)) {
+/*vot*/			$lng = 'sc';
+/*vot*/		}
 		// Set language to default if no language detected
 		if(!$lng) {
 			$lng = $default_lang;
 		}
 
-//DEBUG
-//echo "Result lang=",$lng,"<br>";
 		$this->var['oldlanguage'] = $lng; // Store Old Language Value for compare
 
 		// define DISCUZ_LANG
