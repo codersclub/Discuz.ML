@@ -200,7 +200,7 @@ if(!$_G['privacy']) {
 		include_once template("home/space_profile");
 	} else {
 		$_GET['do'] = 'card';
-		if ( helper_access::check_module('follow') ) {
+		if(helper_access::check_module('follow')) {
 			$follow = C::t('home_follow')->fetch_by_uid_followuid($_G['uid'], $space['uid']);//Whether to listen to the other party
 		}        
 		include_once template("home/space_card");
