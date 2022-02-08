@@ -39,6 +39,7 @@ $lang = array(
 	'db_import_file_illegal'	=> '數據文件不存在: 可能服務器不允許上傳文件或尺寸超過限制。',
 	'db_import_multivol_redirect'	=> '分卷數據 #$volume 成功導入數據庫，程序將自動導入本次備份的其他分卷。',
 	'db_back_api_url_invalid'	=> '無法訪問到該應用的備份接口，請拷貝 UCenter 根目錄下api/dbbak.php 到該應用的api目錄下',
+	'db_back_dos8p3_failed'		=> '服務器開啟了 DOS 8.3 文件名支持，為避免可能發生的數據庫爆破風險，不允許在線備份數據庫',
 	'delete_dumpfile_success'	=> '刪除數據備份文件成功 ',
 	'delete_dumpfile_redirect'	=> '#$appname 下同名備份文件刪除成功，程序將自動刪除其他應用下的。',
 	'dbback_error_code_1'		=> '無法創建目錄',
@@ -79,7 +80,7 @@ $lang = array(
 	'pm_send_floodctrl_error'	=> '對不起，您兩次發送短消息間隔太短，請返回。',
 	
 	'file_check_failed'		=> '校驗文件不存在，無法校驗',
-	'replacemykey_succeed'		=> '密鑰更新成功，請更新緩存並檢查下掛應用狀態',
-	'replacemykey_false'		=> '密鑰更新失敗，請檢查文件是否可寫或數據庫是否正常，如有必要請重新配置每個應用的 UC_KEY 以保證正常工作',
+	'replacemykey_succeed'		=> '密鑰更新成功，請更新緩存並檢查每個下級應用的狀態',
+	'replacemykey_false'		=> '密鑰更新失敗，請檢查文件是否可寫或數據庫是否正常，如有必要請重新配置每個下級應用的 UC_KEY 以保證正常工作',
 	'replacemykey_no_confirm'	=> '請您確認風險提示後再繼續操作',
 );
