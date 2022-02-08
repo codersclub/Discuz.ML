@@ -190,7 +190,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 		if($thread['displayorder'] < 0) {
 			continue;
 		}
-		// 可能由于插件直接插入 post 等原因导致缓存表不符合实际情况, 这里对于不符合实际情况的数据做清理
+		// The cache table may not conform to the actual situation due to the plug-in directly inserting the post and other reasons. Here, the data that does not conform to the actual situation will be cleaned up.
 		if($view == 'sofa' && $thread['replies'] > 0) {
 			$notsofatids[] = $thread['tid'];
 			continue;
