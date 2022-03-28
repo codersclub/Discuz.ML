@@ -1,3 +1,4 @@
+// Modified by Valery Votintsev, codersclub.org
 var TOOLS = {
 	charset: 'utf-8',
 	getcookie: function (name) {
