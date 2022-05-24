@@ -412,6 +412,9 @@ if($method == 'show_license') {
 /*vot*/		runquery($extrasql, ORIG_TABLEPRE, $tablepre);
 
 		$sql = file_get_contents(ROOT_PATH.'./install/data/install_data.sql');
+		if (file_exists(ROOT_PATH.'./install/data/install_data_appendage.sql')) {
+			$sql .= "\n".file_get_contents(ROOT_PATH.'./install/data/install_data_appendage.sql');
+		}
 		$sql = str_replace("\r\n", "\n", $sql);
 /*vot*/		runquery($sql, ORIG_TABLEPRE, $tablepre);
 
@@ -502,6 +505,10 @@ if($method == 'show_license') {
 		$ctype = 1;
 		$data = addslashes(serialize($userstats));
 		$db->query("REPLACE INTO {$tablepre}common_syscache (cname, ctype, dateline, data) VALUES ('userstats', '$ctype', '".time()."', '$data')");
+
+		if (file_exists(ROOT_PATH.'./install/data/install_data_appendage.sql')) {
+			@unlink(ROOT_PATH.'./install/data/install_data_appendage.sql');
+		}
 
 /*vot*/		touch($lockfile);
 		VIEW_OFF && show_msg('initdbresult_succ');
