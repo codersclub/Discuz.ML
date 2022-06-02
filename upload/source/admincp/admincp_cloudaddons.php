@@ -182,24 +182,50 @@ if(!$operation || in_array($operation, array('plugins', 'templates'))) {
 			$addoni++;
 			cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), FALSE);
 		}
-		list($_GET['key'], $_GET['type'], $_GET['rid']) = explode('.', $addonids[0]);
-		cloudaddons_downloadlog($_GET['key'].'.'.$_GET['type']);
-		if($_GET['type'] == 'plugin') {
-			$plugin = C::t('common_plugin')->fetch_by_identifier($_GET['key']);
-			if(!$plugin['pluginid']) {
-				dheader('location: '.ADMINSCRIPT.'?action=plugins&operation=import&dir='.$_GET['key']);
+
+		$batch = array();
+		foreach ($addonids as $addonid) {
+			list($key, $type, $rid) = explode('.', $addonid);
+			cloudaddons_downloadlog($key . '.' . $type);
+			if ($type == 'plugin') {
+				$plugin = C::t('common_plugin')->fetch_by_identifier($key);
+				if (!$plugin['pluginid']) {
+					$batch[] = array(
+						ADMINSCRIPT . '?action=plugins&operation=import&dir=' . $key,
+						$key . '.' . $type
+					);
+				} else {
+					$batch[] = array(
+						ADMINSCRIPT . '?action=plugins&operation=upgrade&pluginid=' . $plugin['pluginid'],
+						$key . '.' . $type
+					);
+				}
+			} elseif ($type == 'template') {
+				$batch[] = array(
+					ADMINSCRIPT . '?action=styles&operation=import&dir=' . $key,
+					$key . '.' . $type
+				);
 			} else {
-				dheader('location: '.ADMINSCRIPT.'?action=plugins&operation=upgrade&pluginid='.$plugin['pluginid']);
+				cloudaddons_validator(key . '.pack');
+				cloudaddons_installlog($key . '.pack');
+				if (file_exists(DISCUZ_ROOT . './data/addonpack/' . $key . '.php')) {
+					$batch[] = array(
+						$_G['siteurl'] . 'data/addonpack/' . $key . '.php',
+						$key . '.' . $type
+					);
+				} else {
+					cpmsg('cloudaddons_pack_installed', '', 'succeed');
+				}
 			}
-		} elseif($_GET['type'] == 'template') {
-			dheader('location: '.ADMINSCRIPT.'?action=styles&operation=import&dir='.$_GET['key']);
+		}
+		if (count($batch) > 1) {
+			$message = "";
+			foreach ($batch as $v) {
+				$message .= '<a href="' . $v[0] . '&frames=yes" target="_blank">' . $v[1] . '</a><br />';
+			}
+			echo '<div class="infobox"><h4 class="infotitle2">' . cplang('cloudaddons_batch_succeed') . '<br /><br />' . $message . '</h4></div>';
 		} else {
-			cloudaddons_validator($_GET['key'].'.pack');
-			cloudaddons_installlog($_GET['key'].'.pack');
-			if(file_exists(DISCUZ_ROOT.'./data/addonpack/'.$_GET['key'].'.php')) {
-				dheader('location: '.$_G['siteurl'].'data/addonpack/'.$_GET['key'].'.php');
-			}
-			cpmsg('cloudaddons_pack_installed', '', 'succeed');
+			dheader('location: ' . $batch[0][0]);
 		}
 	}
 }
