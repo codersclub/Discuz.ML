@@ -826,7 +826,7 @@ function save_config_file($filename, $config, $default) {
 EOT;
 	$content .= getvars(array('_config' => $config));
 	$content .= "\r\n// ".str_pad('  THE END  ', 50, '-', STR_PAD_BOTH)." //\r\n\r\n?>";
-	file_put_contents($filename, $content, LOCK_EX);
+	file_put_contents($filename, $content);
 /*vot*/	@chmod($filename, 0666);
 }
 
@@ -893,7 +893,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		// Here, the data is verified according to the algorithm to ensure the validity and integrity of the data
 		// $result 01 - 10 digits are time, if less than current time or 0 then pass
 		// $result 10 - 26 digits are the $keyb when encrypted, and need to be compared with the $keyb of the input parameter
-		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
+		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 			return '';
@@ -938,7 +938,7 @@ function show_db_install() {
 				x.open(method, url, async);
 				x.onreadystatechange = function () {
 					if((x.readyState == 4) && (typeof callback == 'function')) {
-						callback(x.responseText);
+						callback(x.responseText, x.status);
 					}
 				};
 				if(method == 'POST') {
@@ -991,6 +991,7 @@ function show_db_install() {
 
 			var old_log_data = '';
 			var log_offset = 0;
+			var stuck_times = 0;
 
 			function request_do_db_init() {
 				// Initiate a database initialization request
@@ -1002,13 +1003,29 @@ function show_db_install() {
 
 			function request_log() {
 				var timest = new Date().getTime().toString().substring(5);
-				ajax.get('index.php?method=check_db_init_progress&timestamp=' + timest + '&offset=' + log_offset, function (data) {
+				ajax.get('index.php?method=check_db_init_progress&timestamp=' + timest + '&offset=' + log_offset, function (data, status) {
+					// 新增对于 >= 400 状态的判断, 避免被服务器自带安全软件或者 CDN 拉黑地址之后不报错
+					if(status >= 400) {
+						append_notice('<p class="red">HTTP '+status+' <?= lang('failed') ?></p>');
+						append_notice('<p class="red"><?= lang('error_quit_msg') ?></p>');
+						add_instfail();
+						return;
+					}
 					log_offset = parseInt(data.substring(0,5));
 					data = data.substring(5);
-					if(data === old_log_data) {
+					if(stuck_times >= 120) {
+						// 如果安装程序两分钟没有响应, 则提示安装可能卡死
+						stuck_times = 0;
+						append_notice('<p class="red"><?= lang('error_stuck_msg') ?></p>');
 						setTimeout(request_log, 1000);
 						return;
 					}
+					if(data === old_log_data && stuck_times < 120) {
+						stuck_times++;
+						setTimeout(request_log, 1000);
+						return;
+					}
+					stuck_times = 0;
 					old_log_data = data;
 					append_notice(
 						data.trim().split("\n").map(function(l) {
@@ -1045,9 +1062,13 @@ function show_db_install() {
 					// If the database initialization is successful, the system will be initialized
 					append_notice("<p><?= lang('initsys') ?> ... </p>");
 					refresh_lastmsg();
-					ajax.get('../misc.php?mod=initsys', function(callback) {
-						if(callback.indexOf('Access Denied') !== -1 || callback.indexOf('Discuz! Database Error') !== -1 || callback.indexOf('Discuz! System Error') !== -1) {
-							append_notice('<p class="red"><?= lang('failed') ?></p>');
+					ajax.get('../misc.php?mod=initsys', function(callback, status) {
+						if(status >= 400 || callback.indexOf('Access Denied') !== -1 || callback.indexOf('Discuz! Database Error') !== -1 || callback.indexOf('Discuz! System Error') !== -1) {
+							if(status >= 400) {
+								append_notice('<p class="red">HTTP '+status+' <?= lang('failed') ?></p>');
+							} else {
+								append_notice('<p class="red"><?= lang('failed') ?></p>');
+							}
 							append_notice('<p class="red"><?= lang('error_quit_msg') ?></p>');
 							document.getElementById('laststep').value = '<?= lang('error_quit_msg') ?>';
 							add_instfail();
@@ -1606,7 +1627,7 @@ define('UC_PPP', 20);
 ?>
 EOT;
 
-	if(file_put_contents($file, $config, LOCK_EX) !== false) {
+	if(file_put_contents($file, $config) !== false) {
 		return true;
 /*vot*/		@chmod($file, 0666);
 	}
@@ -1653,7 +1674,7 @@ function uc_write_config($config, $file, $password) {
 /*vot*/	$config .= "define('UC_DEFAULT_DIR', '$uclangdir'); // Default Language Direction (ltr,rtl)\r\n";
 
 
-	file_put_contents($file, $config, LOCK_EX);
+	file_put_contents($file, $config);
 }
 
 function install_uc_server() {
@@ -1831,7 +1852,7 @@ function save_diy_data($primaltplname, $targettplname, $data, $database = false)
 
 	$tplpath = dirname($tplfile);
 	if (!is_dir($tplpath)) dmkdir($tplpath);
-	$r = file_put_contents($tplfile, $content, LOCK_EX);
+	$r = file_put_contents($tplfile, $content);
 
 	if ($r && $database) {
 		$_G['db']->query('DELETE FROM '.$_G['tablepre'].'common_template_block WHERE targettplname="'.$targettplname.'"');
@@ -2179,13 +2200,11 @@ function append_to_install_log_file($message, $close = false) {
 	static $fh = false;
 	if (!$fh) {
 		$fh = fopen(INST_LOG_PATH, "a+");
-		flock($fh, LOCK_EX);
 	} 
 	if ($fh) {
 		fwrite($fh, $message);
 		fflush($fh);
 		if ($close) {
-			flock($fh, LOCK_UN);
 			fclose($fh);
 		}
 	}

@@ -54,12 +54,11 @@ if(!submitcheck('submit')) {
 				}
 			}
 		}
-		$fp = fopen($sfile, 'c');
-		if($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, implode("\n", $lines)) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp)) {
+		if($fp = @fopen($sfile, 'w')) {
+			fwrite($fp, implode("\n", $lines));
+			fclose($fp);
 /*vot*/			showmessage(lang('settings_saved_ok'), 'index.php', '', 1000);
 		} else {
-			flock($fp, LOCK_UN);
-			fclose($fp);
 /*vot*/			showmessage(lang('file_is_ro'));
 		}
 	}

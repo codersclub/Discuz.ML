@@ -100,7 +100,7 @@ Class discuz_upload{
 	}
 
 	public static function is_image_ext($ext) {
-		static $imgext  = array('jpg', 'jpeg', 'gif', 'png', 'bmp');
+		static $imgext  = array('jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp');
 		return in_array($ext, $imgext) ? 1 : 0;
 	}
 
@@ -119,7 +119,7 @@ Class discuz_upload{
 				return false;
 			} elseif($ext == 'swf' && $type != 4 && $type != 13) {
 				return false;
-			} elseif($isimage && !in_array($type, array(1,2,3,6,13))) {
+			} elseif($isimage && !in_array($type, array(1,2,3,6,13,18))) {
 				return false;
 			} elseif(!$allowswf && ($ext == 'swf' || $type == 4 || $type == 13)) {
 				return false;
@@ -144,7 +144,7 @@ Class discuz_upload{
 	}
 
 	public static function get_target_extension($ext) {
-		static $safeext  = array('attach', 'jpg', 'jpeg', 'gif', 'png', 'swf', 'bmp', 'txt', 'zip', 'rar', 'mp3');
+		static $safeext  = array('attach', 'jpg', 'jpeg', 'gif', 'png', 'webp', 'swf', 'bmp', 'txt', 'zip', 'rar', 'mp3');
 		return strtolower(!in_array(strtolower($ext), $safeext) ? 'attach' : $ext);
 	}
 
@@ -195,18 +195,13 @@ Class discuz_upload{
 			$succeed = true;
 		}elseif(function_exists('move_uploaded_file') && @move_uploaded_file($source, $target)) {
 			$succeed = true;
-		}elseif (@is_readable($source) && (@$fp_s = fopen($source, 'rb')) && (@$fp_t = fopen($target, 'cb'))) {
-			if($fp_t && flock($fp_t, LOCK_EX) && ftruncate($fp_t, 0)) {
-				while (!feof($fp_s)) {
-					$s = @fread($fp_s, 1024 * 512);
-					@fwrite($fp_t, $s);
-				}
-				fflush($fp_t);
-				$succeed = true;
+		}elseif (@is_readable($source) && (@$fp_s = fopen($source, 'rb')) && (@$fp_t = fopen($target, 'wb'))) {
+			while (!feof($fp_s)) {
+				$s = @fread($fp_s, 1024 * 512);
+				@fwrite($fp_t, $s);
 			}
-			flock($fp_t, LOCK_UN);
-			fclose($fp_s);
-			fclose($fp_t);
+			fclose($fp_s); fclose($fp_t);
+			$succeed = true;
 		}
 		if($succeed)  {
 			$this->errorcode = 0;

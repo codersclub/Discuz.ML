@@ -354,6 +354,8 @@ INSERT INTO pre_common_setting VALUES ('guestviewthumb','a:3:{s:4:\"flag\";i:0;s
 INSERT INTO pre_common_setting VALUES ('guide','a:2:{s:5:\"hotdt\";i:604800;s:8:\"digestdt\";i:604800;}');
 INSERT INTO pre_common_setting VALUES ('guidestatus','0');
 INSERT INTO pre_common_setting VALUES ('heatthread','a:5:{s:4:\"type\";s:1:\"2\";s:5:\"reply\";i:5;s:9:\"recommend\";i:3;s:6:\"period\";s:2:\"15\";s:10:\"iconlevels\";s:10:\"50,100,200\";}');
+INSERT INTO pre_common_setting VALUES ('hideattachdown','0');
+INSERT INTO pre_common_setting VALUES ('hideattachtips','0');
 INSERT INTO pre_common_setting VALUES ('hidefilteredpost','0');
 INSERT INTO pre_common_setting VALUES ('hideprivate','1');
 INSERT INTO pre_common_setting VALUES ('historyposts','0	7');
@@ -415,7 +417,7 @@ INSERT INTO pre_common_setting VALUES ('memory', 'a:16:{s:13:"common_member";i:0
 INSERT INTO pre_common_setting VALUES ('minpostsize','3');
 INSERT INTO pre_common_setting VALUES ('minpostsize_mobile','0');
 INSERT INTO pre_common_setting VALUES ('minsubjectsize','1');
-INSERT INTO pre_common_setting VALUES ('mobile','a:17:{s:11:\"allowmobile\";i:1;s:9:\"allowmnew\";i:0;s:13:\"mobileforward\";i:1;s:10:\"otherindex\";i:1;s:14:\"mobileregister\";i:1;s:13:\"mobileseccode\";i:0;s:15:\"mobilehotthread\";i:1;s:19:\"mobiledisplayorder3\";i:1;s:16:\"mobilesimpletype\";i:0;s:18:\"mobiletopicperpage\";i:10;s:17:\"mobilepostperpage\";i:5;s:15:\"mobilecachetime\";i:0;s:15:\"mobileforumview\";i:0;s:14:\"mobilecomefrom\";s:0:\"\";s:13:\"mobilepreview\";i:0;s:6:\"legacy\";i:1;s:3:\"wml\";i:0;}');
+INSERT INTO pre_common_setting VALUES ('mobile','a:13:{s:11:\"allowmobile\";i:1;s:9:\"allowmnew\";i:0;s:13:\"mobileforward\";i:1;s:14:\"mobileregister\";i:1;s:13:\"mobileseccode\";i:0;s:16:\"mobilesimpletype\";i:0;s:15:\"mobilecachetime\";i:0;s:14:\"mobilecomefrom\";s:0:\"\";s:13:\"mobilepreview\";i:0;s:6:\"legacy\";i:1;s:3:\"wml\";i:0;s:6:\"portal\";a:1:{s:6:\"catnav\";i:0;}s:5:\"forum\";a:6:{s:5:\"index\";i:0;s:8:\"statshow\";i:0;s:13:\"displayorder3\";i:1;s:12:\"topicperpage\";i:20;s:11:\"postperpage\";i:10;s:9:\"forumview\";i:0;}}');
 INSERT INTO pre_common_setting VALUES ('modasban','1');
 INSERT INTO pre_common_setting VALUES ('moddetail','0');
 INSERT INTO pre_common_setting VALUES ('moddisplay','flat');

@@ -34,14 +34,14 @@ class adminbase extends base {
 	function check_priv() {
 		$username = $this->sid_decode($this->view->sid);
 		if(empty($username)) {
-			header('Location: '.UC_API.'/admin.php?m=user&a=login&iframe='.getgpc('iframe', 'G').($this->cookie_status ? '' : '&sid='.$this->view->sid));
+			header('Location: '.UC_API.'/'.UC_ADMINSCRIPT.'?m=user&a=login&iframe='.getgpc('iframe', 'G').($this->cookie_status ? '' : '&sid='.$this->view->sid));
 			exit;
 		} else {
 			$this->user['isfounder'] = $username == 'UCenterAdministrator' ? 1 : 0;
 			if(!$this->user['isfounder']) {
 				$admin = $this->db->fetch_first("SELECT a.*, m.* FROM ".UC_DBTABLEPRE."admins a LEFT JOIN ".UC_DBTABLEPRE."members m USING(uid) WHERE a.username='$username'");
 				if(empty($admin)) {
-					header('Location: '.UC_API.'/admin.php?m=user&a=login&iframe='.getgpc('iframe', 'G').($this->cookie_status ? '' : '&sid='.$this->view->sid));
+					header('Location: '.UC_API.'/'.UC_ADMINSCRIPT.'?m=user&a=login&iframe='.getgpc('iframe', 'G').($this->cookie_status ? '' : '&sid='.$this->view->sid));
 					exit;
 				} else {
 					$this->user = $admin;
@@ -86,7 +86,7 @@ class adminbase extends base {
 			}
 			@rename($logfile, UC_ROOT.'./data/logs/'.gmdate('Ym', $this->time).'_'.$hash.'.php');
 		}
-		file_put_contents($logfile, "<?PHP exit;?>\t".str_replace(array('<?', '?>', '<?php'), '', $log)."\n", FILE_APPEND | LOCK_EX);
+		file_put_contents($logfile, "<?PHP exit;?>\t".str_replace(array('<?', '?>', '<?php'), '', $log)."\n", FILE_APPEND);
 	}
 
 	function fetch_plugins() {

@@ -286,10 +286,10 @@ function updatetable($sql) {
 
 			$maths[3] = strtoupper($maths[3]);
 			if($maths[3] == 'MEMORY' || $maths[3] == 'HEAP') {
-/*vot*/				$type = v_compare(helper_dbtool::dbversion(), '4.1') > 0 ? " ENGINE=MEMORY".(empty($config['dbcharset'])?'':" DEFAULT CHARSET={$config['dbcharset']}" ): " TYPE=HEAP";
+				$type = " ENGINE=MEMORY".(empty($config['dbcharset'])?'':" DEFAULT CHARSET={$config['dbcharset']}" );
 			} else {
 				$engine = $config['engine'] !== 'innodb' ? 'MyISAM' : 'InnoDB';
-/*vot*/				$type = v_compare(helper_dbtool::dbversion(), '4.1') > 0 ? " ENGINE=". $engine . (empty($config['dbcharset']) ? '' :" DEFAULT CHARSET={$config['dbcharset']}") : " TYPE=" . $engine;
+				$type = " ENGINE=". $engine . (empty($config['dbcharset']) ? '' :" DEFAULT CHARSET={$config['dbcharset']}");
 			}
 			$usql = $maths[1].$type;
 
@@ -437,7 +437,7 @@ function cron_create($pluginid, $filename = null, $name = null, $weekday = null,
 			$filename = $pluginid.':'.$filename;
 			$cronid = C::t('common_cron')->get_cronid_by_filename($filename);
 			if(!$cronid) {
-				return C::t('common_cron')->insert(array(
+				C::t('common_cron')->insert(array(
 					'available' => 1,
 					'type' => 'plugin',
 					'name' => $name,
@@ -455,10 +455,10 @@ function cron_create($pluginid, $filename = null, $name = null, $weekday = null,
 					'hour' => $hour,
 					'minute' => $minutenew,
 				));
-				return $cronid;
 			}
 		}
 	}
+	return true;
 }
 
 function cron_delete($pluginid) {

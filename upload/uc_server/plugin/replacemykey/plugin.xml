@@ -9,7 +9,7 @@
 	<item id="tabindex">2</item>
 	<item id="tips">You should consider doing a key update when your site is compromised to avoid hackers cracking the UC_KEY key with a known UC_MYKEY key.</item>
 	<item id="lang">
-		<item id="plugin_replacemykey_tips">Before operation, it is recommended that you choose to operate during off-peak hours or temporarily close down-linked websites, and do a good job of backing up the data and files of UCenter and each application.</item>
+		<item id="plugin_replacemykey_tips">Before operation, it is recommended that you choose low-peak operation or close the lower-level applications, and do a good job of backing up the data and files of UCenter and each application.</item>
 		<item id="plugin_replacemykey_confirm">Confirm</item>
 		<item id="plugin_replacemykey_confirm_tips">I have understood the above risks and have done a good job of backing up the website.</item>
 	</item>

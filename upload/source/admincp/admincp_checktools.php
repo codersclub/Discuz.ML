@@ -315,7 +315,7 @@ if($operation == 'filecheck') {
 		$configfile = substr($configfile, -2) == '?>' ? substr($configfile, 0, -2) : $configfile;
 		$configfile = str_replace($oldauthkey, $newauthkey, $configfile);
 
-		if(file_put_contents(DISCUZ_ROOT.'./config/config_global.php', trim($configfile), LOCK_EX) === false) {
+		if(file_put_contents(DISCUZ_ROOT.'./config/config_global.php', trim($configfile)) === false) {
 			cpmsg('replacekey_must_write_config', '', 'error');
 		}
 
@@ -336,11 +336,11 @@ if($operation == 'filecheck') {
 } elseif($operation == 'ftpcheck') {
 
 	$alertmsg = '';
-	$testcontent = md5('Discuz!' + $_G['config']['security']['authkey']);
+	$testcontent = md5('Discuz!' . random(64));
 	$testfile = 'test/discuztest.txt';
 	$attach_dir = $_G['setting']['attachdir'];
 	@mkdir($attach_dir.'test', 0777);
-	if(file_put_contents($attach_dir.'/'.$testfile, $testcontent, LOCK_EX) === false) {
+	if(file_put_contents($attach_dir.'/'.$testfile, $testcontent) === false) {
 		$alertmsg = cplang('setting_attach_remote_wtferr');
 	}
 
@@ -637,8 +637,9 @@ function getremotefile($file) {
 	global $_G;
 	@set_time_limit(0);
 	$file = $file.'?'.TIMESTAMP.rand(1000, 9999);
-	$str = @implode('', @file($file));
-	if(!$str) {
+	if(strpos($file, 'ftp://') === 0) {
+		$str = file_get_contents($file);
+	} else {
 		$str = dfsockopen($file);
 	}
 	return $str;
