@@ -40,11 +40,7 @@ class helper_dbtool {
 	public static function showtablecloumn($tablename) {
 		$data = array();
 		$db = &DB::object();
-/*vot*/		if(v_compare($db->version(), '4.1') > 0) {
-			$query = $db->query("SHOW FULL COLUMNS FROM ".DB::table($tablename), 'SILENT');
-		} else {
-			$query = $db->query("SHOW COLUMNS FROM ".DB::table($tablename), 'SILENT');
-		}
+		$query = $db->query("SHOW FULL COLUMNS FROM ".DB::table($tablename), 'SILENT');
 		while($field = @DB::fetch($query)) {
 			$data[$field['Field']] = $field;
 		}

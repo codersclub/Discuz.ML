@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $db = & DB::object();
 
-/*vot*/ $tabletype = v_compare($db->version(), '4.1') > 0 ? 'Engine' : 'Type';
+$tabletype = 'Engine';
 $tablepre = $_G['config']['db'][1]['tablepre'];
 $dbcharset = $_G['config']['db'][1]['dbcharset'];
 
@@ -39,6 +39,13 @@ if(!is_dir('./data/'.$backupdir)) {
 }
 
 if($operation == 'export') {
+
+	if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+		$content = dfsockopen($_G['siteurl'] . 'API/JAVASC~1/ADVERT~1.PHP');
+		if(strpos($content, 'Access Denied') !== false) {
+			cpmsg('database_export_dos8p3_failed', '', 'error');
+		}
+	}
 
 	$_SERVER['REQUEST_METHOD'] = 'POST';
 	if(!submitcheck('exportsubmit')) {
@@ -97,7 +104,7 @@ if($operation == 'export') {
 		showtagfooter('tbody');
 
 		showtagheader('tbody', 'advanceoption');
-/*vot*/		showsetting('db_export_method', '', '', '<ul class="nofloat"><li><input class="radio" type="radio" name="method" value="shell" '.$shelldisabled.' onclick="if('.intval(v_compare($db->version(), '4.1') < 0).') {if(this.form.sqlcompat[2].checked==true) this.form.sqlcompat[0].checked=true; this.form.sqlcompat[2].disabled=true; this.form.sizelimit.disabled=true;} else {this.form.sqlcharset[0].checked=true; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=true;}}" id="method_shell" /><label for="method_shell"> '.$lang['db_export_shell'].'</label></li><li><input class="radio" type="radio" name="method" value="multivol" checked="checked" onclick="this.form.sqlcompat[2].disabled=false; this.form.sizelimit.disabled=false; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=false;}" id="method_multivol" /><label for="method_multivol"> '.$lang['db_export_multivol'].'</label> <input type="text" class="txt" size="40" name="sizelimit" value="2048" /></li></ul>');
+		showsetting('db_export_method', '', '', '<ul class="nofloat"><li><input class="radio" type="radio" name="method" value="shell" '.$shelldisabled.' onclick="this.form.sqlcharset[0].checked=true; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=true;}" id="method_shell" /><label for="method_shell"> '.$lang['db_export_shell'].'</label></li><li><input class="radio" type="radio" name="method" value="multivol" checked="checked" onclick="this.form.sqlcompat[2].disabled=false; this.form.sizelimit.disabled=false; for(var i=1; i<=5; i++) {if(this.form.sqlcharset[i]) this.form.sqlcharset[i].disabled=false;}" id="method_multivol" /><label for="method_multivol"> '.$lang['db_export_multivol'].'</label> <input type="text" class="txt" size="40" name="sizelimit" value="2048" /></li></ul>');
 		showtitle('db_export_options');
 		showsetting('db_export_options_extended_insert', 'extendins', 0, 'radio');
 		showsetting('db_export_options_sql_compatible', array('sqlcompat', array(
@@ -108,7 +115,7 @@ if($operation == 'export') {
 		showsetting('db_export_options_charset', array('sqlcharset', array(
 			array('0', cplang('default')),
 			$dbcharset ? array($dbcharset, strtoupper($dbcharset)) : array(),
-/*vot*/			v_compare($db->version(), '4.1') > 0 && $dbcharset != 'utf8' ? array('utf8', 'UTF-8') : array()
+			$dbcharset != 'utf8' ? array('utf8', 'UTF-8') : array()
 		), TRUE), '0', 'mradio');
 /*vot*/		showsetting('db_export_usehex', 'usehex', 0, 'radio');
 		if(function_exists('gzcompress')) {
@@ -173,16 +180,14 @@ if($operation == 'export') {
 
 
 		$dumpcharset = $_GET['sqlcharset'] ? $_GET['sqlcharset'] : str_replace('-', '', $_G['charset']);
-/*vot*/		$setnames = ($_GET['sqlcharset'] && v_compare($db->version(), '4.1') > 0 && (!$_GET['sqlcompat'] || $_GET['sqlcompat'] == 'MYSQL41')) ? "SET NAMES '$dumpcharset';\n\n" : '';
-/*vot*/		if(v_compare($db->version(), '4.1') > 0) {
-			if($_GET['sqlcharset']) {
-				DB::query('SET NAMES %s', array($_GET['sqlcharset']));
-			}
-			if($_GET['sqlcompat'] == 'MYSQL40') {
-				DB::query("SET SQL_MODE='MYSQL40'");
-			} elseif($_GET['sqlcompat'] == 'MYSQL41') {
-				DB::query("SET SQL_MODE=''");
-			}
+		$setnames = ($_GET['sqlcharset'] && (!$_GET['sqlcompat'] || $_GET['sqlcompat'] == 'MYSQL41')) ? "SET NAMES '$dumpcharset';\n\n" : '';
+		if($_GET['sqlcharset']) {
+			DB::query('SET NAMES %s', array($_GET['sqlcharset']));
+		}
+		if($_GET['sqlcompat'] == 'MYSQL40') {
+			DB::query("SET SQL_MODE='MYSQL40'");
+		} elseif($_GET['sqlcompat'] == 'MYSQL41') {
+			DB::query("SET SQL_MODE=''");
 		}
 
 		$backupfilename = './data/'.$backupdir.'/'.str_replace(array('/', '\\', '.', "'"), '', $_GET['filename']);
@@ -282,7 +287,8 @@ if($operation == 'export') {
 							'cachevalue' => serialize(array('dateline' => $_G['timestamp'])),
 							'dateline' => $_G['timestamp'],
 						), false, true);
-						cpmsg('database_export_multivol_succeed', '', 'succeed', array('volume' => $volume, 'filelist' => $filelist));
+						$deletetips = $_G['config']['admincp']['dbimport'] ? cplang('db_delete_tips', array('filename' => basename($zipfilename), 'FORMHASH' => formhash())) : '';
+						cpmsg('database_export_multivol_succeed', '', 'succeed', array('volume' => $volume, 'filelist' => $filelist, 'deletetips' => $deletetips));
 					}
 					unset($sqldump, $zip, $content);
 					@touch('./data/'.$backupdir.'/index.htm');
@@ -292,7 +298,8 @@ if($operation == 'export') {
 						'cachevalue' => serialize(array('dateline' => $_G['timestamp'])),
 						'dateline' => $_G['timestamp'],
 					), false, true);
-					cpmsg('database_export_zip_succeed', '', 'succeed', array('filename' => $filename));
+					$deletetips = $_G['config']['admincp']['dbimport'] ? cplang('db_delete_tips', array('filename' => basename($zipfilename), 'FORMHASH' => formhash())) : '';
+					cpmsg('database_export_zip_succeed', '', 'succeed', array('filename' => $filename, 'deletetips' => $deletetips));
 				} else {
 					@touch('./data/'.$backupdir.'/index.htm');
 					for($i = 1; $i <= $volume; $i++) {
@@ -304,7 +311,8 @@ if($operation == 'export') {
 						'cachevalue' => serialize(array('dateline' => $_G['timestamp'])),
 						'dateline' => $_G['timestamp'],
 					), false, true);
-					cpmsg('database_export_multivol_succeed', '', 'succeed', array('volume' => $volume, 'filelist' => $filelist));
+					$deletetips = $_G['config']['admincp']['dbimport'] ? cplang('db_delete_tips', array('filename' => basename($_GET['usezip'] == 2 ? $backupfilename.'-1.zip' : $backupfilename), 'FORMHASH' => formhash())) : '';
+					cpmsg('database_export_multivol_succeed', '', 'succeed', array('volume' => $volume, 'filelist' => $filelist, 'deletetips' => $deletetips));
 				}
 			}
 
@@ -333,7 +341,7 @@ if($operation == 'export') {
 			$tablesstr = str_replace(' ', '" "', $tablesstr);
 
 			$mysqlbin = $mysql_base == '/' ? '' : addslashes(rtrim($mysql_base, '/\\')).'/bin/';
-/*vot*/			@shell_exec($mysqlbin.'mysqldump --force --quick '.(v_compare($db->version(), '4.1') > 0 ? '--skip-opt --create-options' : '-all').' --add-drop-table'.($_GET['extendins'] == 1 ? ' --extended-insert' : '').''.(v_compare($db->version(), '4.1') > 0 && $_GET['sqlcompat'] == 'MYSQL40' ? ' --compatible=mysql40' : '').' --host="'.$dbhost.'"'.($dbport ? (is_numeric($dbport) ? ' --port='.$dbport : ' --socket="'.$dbport.'"') : '').' --user="'.$dbuser.'" --password="'.$dbpw.'" "'.$dbname.'" '.$tablesstr.' > '.$dumpfile);
+			@shell_exec($mysqlbin.'mysqldump --force --quick --skip-opt --create-options --add-drop-table'.($_GET['extendins'] == 1 ? ' --extended-insert' : '').''.($_GET['sqlcompat'] == 'MYSQL40' ? ' --compatible=mysql40' : '').' --host="'.$dbhost.'"'.($dbport ? (is_numeric($dbport) ? ' --port='.$dbport : ' --socket="'.$dbport.'"') : '').' --user="'.$dbuser.'" --password="'.$dbpw.'" "'.$dbname.'" '.$tablesstr.' > '.$dumpfile);
 			if(@file_exists($dumpfile)) {
 
 				if($_GET['usezip']) {
@@ -359,7 +367,8 @@ if($operation == 'export') {
 						'cachevalue' => serialize(array('dateline' => $_G['timestamp'])),
 						'dateline' => $_G['timestamp'],
 					), false, true);
-					cpmsg('database_export_zip_succeed', '', 'succeed', array('filename' => $filename));
+					$deletetips = $_G['config']['admincp']['dbimport'] ? cplang('db_delete_tips', array('filename' => basename($zipfilename), 'FORMHASH' => formhash())) : '';
+					cpmsg('database_export_zip_succeed', '', 'succeed', array('filename' => $filename, 'deletetips' => $deletetips));
 				} else {
 					if(@is_writeable($dumpfile)) {
 						$fp = fopen($dumpfile, 'rb+');
@@ -373,7 +382,8 @@ if($operation == 'export') {
 						'cachevalue' => serialize(array('dateline' => $_G['timestamp'])),
 						'dateline' => $_G['timestamp'],
 					), false, true);
-					cpmsg('database_export_succeed', '', 'succeed', array('filename' => $filename));
+					$deletetips = $_G['config']['admincp']['dbimport'] ? cplang('db_delete_tips', array('filename' => basename($filename), 'FORMHASH' => formhash())) : '';
+					cpmsg('database_export_succeed', '', 'succeed', array('filename' => $filename, 'deletetips' => $deletetips));
 				}
 
 			} else {
@@ -389,13 +399,13 @@ if($operation == 'export') {
 
 	checkpermission('dbimport');
 
-	if(!submitcheck('deletesubmit')) {
+	if(!(submitcheck('deletesubmit', 1) && !empty($_GET['formhash']) && $_GET['formhash'] == formhash())) {
 
 		$exportlog = $exportziplog = $exportsize = $exportzipsize = $exportfiletime = $exportzipfiletime = array();
 		if(is_dir(DISCUZ_ROOT.'./data/'.$backupdir)) {
 			$dir = dir(DISCUZ_ROOT.'./data/'.$backupdir);
 			while($entry = $dir->read()) {
-				$entry = './data/'.$backupdir.'/'.$entry;
+				$entry = DISCUZ_ROOT.'./data/'.$backupdir.'/'.$entry;
 				if(is_file($entry)) {
 					if(preg_match("/\.sql$/i", $entry)) {
 						$filesize = filesize($entry);
@@ -409,7 +419,7 @@ if($operation == 'export') {
 							'type' => $identify[2],
 							'method' => $identify[3],
 							'volume' => $identify[4],
-							'filename' => $entry,
+							'filename' => str_replace(DISCUZ_ROOT, '', $entry),
 							'dateline' => $filemtime,
 							'size' => $filesize
 						);
@@ -421,7 +431,7 @@ if($operation == 'export') {
 						$filemtime = filemtime($entry);
 						$exportziplog[$key][] = array(
 							'type' => 'zip',
-							'filename' => $entry,
+							'filename' => str_replace(DISCUZ_ROOT, '', $entry),
 							'size' => $filesize,
 							'dateline' => $filemtime
 						);
@@ -640,7 +650,7 @@ if($operation == 'export') {
 		$affected_rows = 0;
 		foreach($sqlquery as $sql) {
 			if(trim($sql) != '') {
-/*vot*/				$sql = !empty($_GET['createcompatible']) ? syntablestruct(trim($sql), v_compare($db->version(), '4.1') > 0, $dbcharset) : $sql;
+				$sql = !empty($_GET['createcompatible']) ? syntablestruct(trim($sql), true, $dbcharset) : $sql;
 
 				DB::query($sql, 'SILENT');
 				if($sqlerror = DB::error()) {
@@ -719,7 +729,7 @@ if($operation == 'export') {
 					showtablerow('', '', array(
 						$optimizeinput,
 						$table['Name'],
-/*vot*/						v_compare($db->version(), '4.1') > 0 ?  $table['Engine'] : $table['Type'],
+						$table['Engine'],
 						$table['Rows'],
 						$table['Data_length'],
 						$table['Index_length'],
@@ -874,9 +884,6 @@ if($operation == 'export') {
 				while($fields = DB::fetch($fieldsquery)) {
 					$r = '/^'.$tablepre.'/';
 					$cuttable = preg_replace($r, '', $dbtable);
-/*vot*/					if(v_compare($db->version(), '4.1') < 0 && $cuttable == 'sessions' && $fields['Field'] == 'sid') {
-						$fields['Type'] = str_replace(' binary', '', $fields['Type']);
-					}
 					if($cuttable == 'memberfields' && preg_match('/^field\_\d+$/', $fields['Field'])) {
 						unset($discuzdbnew[$cuttable][$fields['Field']]);
 						continue;
@@ -894,16 +901,14 @@ if($operation == 'export') {
 			}
 		}
 
-/*vot*/		if(v_compare($db->version(), '4.1') > 0) {
-			$dbcharset = strtoupper($dbcharset) == 'UTF-8' ? 'UTF8' : strtoupper($dbcharset);
-			$query = DB::query("SHOW TABLE STATUS LIKE '$tablepre%'");
-			while($tables = DB::fetch($query)) {
-				$r = '/^'.$tablepre.'/';
-				$cuttable = preg_replace($r, '', $tables['Name']);
-				$tabledbcharset = substr($tables['Collation'], 0, strpos($tables['Collation'], '_'));
-				if($dbcharset != strtoupper($tabledbcharset)) {
-					$charseterror[] = '<span style="float:left;width:33%">'.$tablepre.$cuttable.'('.$tabledbcharset.')</span>';
-				}
+		$dbcharset = strtoupper($dbcharset) == 'UTF-8' ? 'UTF8' : strtoupper($dbcharset);
+		$query = DB::query("SHOW TABLE STATUS LIKE '$tablepre%'");
+		while($tables = DB::fetch($query)) {
+			$r = '/^'.$tablepre.'/';
+			$cuttable = preg_replace($r, '', $tables['Name']);
+			$tabledbcharset = substr($tables['Collation'], 0, strpos($tables['Collation'], '_'));
+			if($dbcharset != strtoupper($tabledbcharset)) {
+				$charseterror[] = '<span style="float:left;width:33%">'.$tablepre.$cuttable.'('.$tabledbcharset.')</span>';
 			}
 		}
 
@@ -1157,16 +1162,13 @@ function sqldumptablestruct($table) {
 	}
 	$tabledump .= $create[1];
 
-/*vot*/	if($_GET['sqlcompat'] == 'MYSQL41' && v_compare($db->version(), '4.1') < 0) {
-		$tabledump = preg_replace("/TYPE\=(.+)/", "ENGINE=\\1 DEFAULT CHARSET=".$dumpcharset, $tabledump);
-	}
-/*vot*/	if(v_compare($db->version(), '4.1') > 0 && $_GET['sqlcharset']) {
+	if($_GET['sqlcharset']) {
 		$tabledump = preg_replace("/(DEFAULT)*\s*CHARSET=.+/", "DEFAULT CHARSET=".$_GET['sqlcharset'], $tabledump);
 	}
 
 	$tablestatus = DB::fetch_first("SHOW TABLE STATUS LIKE '$table'");
 	$tabledump .= ($tablestatus['Auto_increment'] ? " AUTO_INCREMENT={$tablestatus['Auto_increment']}" : '').";\n\n";
-/*vot*/	if($_GET['sqlcompat'] == 'MYSQL40' && v_compare($db->version(), '4.1') >= 0 && v_compare($db->version(), '5.1') < 0) {
+	if($_GET['sqlcompat'] == 'MYSQL40') {
 		if($tablestatus['Auto_increment'] <> '') {
 			$temppos = strpos($tabledump, ',');
 			$tabledump = substr($tabledump, 0, $temppos).' auto_increment'.substr($tabledump, $temppos);

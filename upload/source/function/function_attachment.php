@@ -40,7 +40,7 @@ function attachtype($type, $returnval = 'html') {
 			$typeid = 13;
 		} elseif(preg_match("/pdf|^pdf\t/", $type)) {
 			$typeid = 12;
-		} elseif(preg_match("/image|^(jpg|gif|png|bmp)\t/", $type)) {
+		} elseif(preg_match("/image|^(jpg|gif|png|bmp|webp)\t/", $type)) {
 			$typeid = 11;
 		} elseif(preg_match("/flash|^(swf|fla|flv|swi)\t/", $type)) {
 			$typeid = 10;
@@ -56,7 +56,7 @@ function attachtype($type, $returnval = 'html') {
 			$typeid = 5;
 		} elseif(preg_match("/^rar\t/", $type)) {
 			$typeid = 4;
-/*vot*/		} elseif(preg_match("/compressed|^(zip|arj|arc|cab|lzh|lha|tar|gz|7z)\t/", $type)) {
+		} elseif(preg_match("/compressed|^(zip|arj|arc|cab|lzh|lha|tar|gz|7z|xz|bz2)\t/", $type)) {
 			$typeid = 3;
 		} elseif(preg_match("/octet-stream|^(exe|com|bat|dll)\t/", $type)) {
 			$typeid = 2;

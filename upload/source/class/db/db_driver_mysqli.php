@@ -86,12 +86,10 @@ class db_driver_mysqli
 		} else {
 			$this->curlink = $link;
 			$link->options(MYSQLI_OPT_LOCAL_INFILE, false);
-/*vot*/			if(v_compare($this->version(), '4.1') > 0) {
-				$link->set_charset($dbcharset ? $dbcharset : $this->config[1]['dbcharset']);
-/*vot*/				$serverset = v_compare($this->version(), '5.0.1') > 0 ? 'sql_mode=\'\',' : '';
-				$serverset .= 'character_set_client=binary';
-				$serverset && $link->query("SET $serverset");
-			}
+			$link->set_charset($dbcharset ? $dbcharset : $this->config[1]['dbcharset']);
+			$serverset = 'sql_mode=\'\',';
+			$serverset .= 'character_set_client=binary';
+			$serverset && $link->query("SET $serverset");
 		}
 		return $link;
 	}

@@ -9,7 +9,6 @@
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
-/*vot*/ ini_set('magic_quotes_runtime', 0); //DEPRECATED in php5.3: set_magic_quotes_runtime(0);
 
 define('IN_COMSENZ', TRUE);
 define('ROOT_PATH', dirname(__FILE__).'/../');
@@ -17,7 +16,7 @@ define('ROOT_PATH', dirname(__FILE__).'/../');
 require ROOT_PATH.'./release/release.php';
 require ROOT_PATH.'./install/var.inc.php';
 require ROOT_PATH.'./install/lang.inc.php';
-require ROOT_PATH.'./install/db.class.php';
+require ROOT_PATH.'./install/dbi.class.php';// MySQLi Only, Git新增
 require ROOT_PATH.'./install/func.inc.php';
 
 file_exists(ROOT_PATH.'./install/extvar.inc.php') && require ROOT_PATH.'./install/extvar.inc.php';
@@ -112,9 +111,9 @@ if($method == 'show_license') {
 		if(empty($dbname)) {
 			show_msg('dbname_invalid', $dbname, 0);
 		} else {
-			if(!$link = @mysql_connect($dbhost, $dbuser, $dbpw)) {
-				$errno = mysql_errno($link);
-				$error = mysql_error($link);
+			if(!$link = @mysqli_connect($dbhost, $dbuser, $dbpw)) {// MySQL全部改为MySQLi, 下同, Git新增
+				$errno = mysqli_errno($link);
+				$error = mysqli_error($link);
 				if($errno == 1045) {
 					show_msg('database_errno_1045', $error, 0);
 				} elseif($errno == 2003) {
@@ -123,16 +122,12 @@ if($method == 'show_license') {
 					show_msg('database_connect_error', $error, 0);
 				}
 			}
-			if(mysql_get_server_info() > '4.1') {
-				mysql_query("CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET ".DBCHARSET, $link);
-			} else {
-				mysql_query("CREATE DATABASE IF NOT EXISTS `$dbname`", $link);
-			}
+			mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `$dbname` DEFAULT CHARACTER SET ".DBCHARSET);
 
-			if(mysql_errno()) {
-				show_msg('database_errno_1044', mysql_error(), 0);
+			if(mysqli_errno($link)) {
+				show_msg('database_errno_1044', mysqli_error($link), 0);
 			}
-			mysql_close($link);
+			mysqli_close($link);
 		}
 
 		if(strpos($tablepre, '.') !== false || intval($tablepre[0])) {

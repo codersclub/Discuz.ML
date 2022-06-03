@@ -658,6 +658,8 @@ if(!submitcheck('settingsubmit')) {
 		showsetting('setting_styles_viewthread_collection_number', 'settingnew[collectionnum]', $setting['collectionnum'], 'text');
 		showsetting('setting_styles_viewthread_relate_number', 'settingnew[relatenum]', $setting['relatenum'], 'text');
 		showsetting('setting_styles_viewthread_relate_time', 'settingnew[relatetime]', $setting['relatetime'], 'text');
+		showsetting('setting_styles_viewthread_hideattachdown', 'settingnew[hideattachdown]', $setting['hideattachdown'], 'radio');
+		showsetting('setting_styles_viewthread_hideattachtips', 'settingnew[hideattachtips]', $setting['hideattachtips'], 'radio');
 		showsetting('setting_styles_viewthread_show_signature', 'settingnew[showsignatures]', $setting['showsignatures'], 'radio');
 		showsetting('setting_styles_viewthread_show_face', 'settingnew[showavatars]', $setting['showavatars'], 'radio');
 		showsetting('setting_styles_viewthread_show_images', 'settingnew[showimages]', $setting['showimages'], 'radio');
@@ -2771,7 +2773,7 @@ EOT;
 		$configfile = str_replace("define('UC_IP', '".addslashes(UC_IP)."')", "define('UC_IP', '".$settingnew['uc']['ip']."')", $configfile);
 		$configfile = str_replace("define('UC_APPID', '".addslashes(UC_APPID)."')", "define('UC_APPID', '".$settingnew['uc']['appid']."')", $configfile);
 
-		if(file_put_contents('./config/config_ucenter.php', trim($configfile), LOCK_EX) === false) {
+		if(file_put_contents('./config/config_ucenter.php', trim($configfile)) === false) {
 			cpmsg('uc_config_write_error', '', 'error');
 		}
 	}

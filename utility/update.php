@@ -267,7 +267,8 @@ if($_GET['step'] == 'start') {
 		if($maths[3] == 'MEMORY' || $maths[3] == 'HEAP') {
 			$type = helper_dbtool::dbversion() > '4.1' ? " ENGINE=MEMORY".(empty($config['dbcharset'])?'':" DEFAULT CHARSET=$config[dbcharset]" ): " TYPE=HEAP";
 		} else {
-			$type = helper_dbtool::dbversion() > '4.1' ? " ENGINE=INNODB".(empty($config['dbcharset'])?'':" DEFAULT CHARSET=$config[dbcharset]" ): " TYPE=MYISAM";
+			$nowtype = $maths[3] == 'INNODB' && strtoupper($_G['config']['db']['common']['engine']) == 'MYISAM' ? 'MYISAM' : 'INNODB';
+			$type = helper_dbtool::dbversion() > '4.1' ? " ENGINE=".$nowtype.(empty($config['dbcharset'])?'':" DEFAULT CHARSET=$config[dbcharset]" ): " TYPE=MYISAM";
 		}
 		$usql = $maths[1].$type;
 
@@ -2180,8 +2181,8 @@ function save_config_file($filename, $config, $default, $deletevar) {
 EOT;
 	$content .= getvars(array('_config' => $config));
 	$content .= "\r\n// ".str_pad('  THE END  ', 50, '-', STR_PAD_BOTH)." //\r\n\r\n?>";
-	if(!is_writable($filename) || !($len = file_put_contents($filename, $content, LOCK_EX))) {
-		file_put_contents(DISCUZ_ROOT.'./data/config_global.php', $content, LOCK_EX);
+	if(!is_writable($filename) || !($len = file_put_contents($filename, $content))) {
+		file_put_contents(DISCUZ_ROOT.'./data/config_global.php', $content);
 		return 0;
 	}
 	return 1;
