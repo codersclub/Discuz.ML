@@ -1233,6 +1233,7 @@ function showEditorMenu(tag, params) {
 				break;
 			case 'code':
 				if(wysiwyg) {
+					var isCodeTag = 1 ;
 					opentag = '<div class="blockcode"><blockquote>';
 					closetag = '</blockquote></div><br />';
 					if(!BROWSER.ie) {
@@ -1269,6 +1270,9 @@ function showEditorMenu(tag, params) {
 				if(wysiwyg) {
 					str = preg_replace(['<', '>'], ['&lt;', '&gt;'], str);
 					str = str.replace(/\r?\n/g, '<br />');
+					if(typeof isCodeTag != 'undefined') {
+						str = str.replace(/&/g, '&amp;');
+					}
 				}
 				str = opentag + str + closetag;
 				insertText(str, strlen(opentag), strlen(closetag), false, sel);
