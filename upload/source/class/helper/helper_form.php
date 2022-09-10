@@ -19,7 +19,7 @@ class helper_form {
 			return FALSE;
 		} else {
 			global $_G;
-			// 新增 $allowget = 2 时，验证formhash参数
+			// When adding $allowget = 2, verify the formhash parameter
 			if(($allowget && ($allowget !== 2 || (!empty($_GET['formhash']) && $_GET['formhash'] == formhash()))) || ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_GET['formhash']) && $_GET['formhash'] == formhash() && empty($_SERVER['HTTP_X_FLASH_VERSION']) && (empty($_SERVER['HTTP_REFERER']) ||
 				strncmp($_SERVER['HTTP_REFERER'], 'http://wsq.discuz.com/', 22) === 0 || preg_replace("/https?:\/\/([^\:\/]+).*/i", "\\1", $_SERVER['HTTP_REFERER']) == preg_replace("/([^\:]+).*/", "\\1", $_SERVER['HTTP_HOST'])))) {
 				if(checkperm('seccode')) {

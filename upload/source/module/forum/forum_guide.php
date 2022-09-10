@@ -173,7 +173,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 			return array();
 		}
 		if($view == 'sofa') {
-			// 只从没有设置权限的板块获取数据，不在接收前端发来的板块 fid
+			// Only get data from the boards without setting permissions, and do not receive the board fid sent by the front end
  			$sofa = C::t('forum_sofa')->fetch_all_by_fid($fids, $start, $num);
 			$tids = array_keys($sofa);
 		}
@@ -188,7 +188,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 		if($thread['displayorder'] < 0) {
 			continue;
 		}
-		// 可能由于插件直接插入 post 等原因导致缓存表不符合实际情况, 这里对于不符合实际情况的数据做清理
+		// It may be that the cache table does not conform to the actual situation due to the direct insertion of the plug-in into the post, etc. Here, the data that does not conform to the actual situation will be cleaned up
 		if($view == 'sofa' && $thread['replies'] > 0) {
 			$notsofatids[] = $thread['tid'];
 			continue;

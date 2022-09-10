@@ -749,7 +749,7 @@ function hostconvert(url) {
 
 function Ajax(recvType, waitId) {
 	var aj = new Object();
-	aj.loading = '请稍候...';
+/*vot*/	aj.loading = lng['wait_please'];
 	aj.recvType = recvType ? recvType : 'XML';
 	aj.waitId = waitId ? $(waitId) : null;
 	aj.resultHandle = null;
@@ -884,8 +884,8 @@ function portal_flowlazyload() {
 	this.showNextPage = function() {
 		var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
 		var offsetTop = this.getOffset(document.getElementsByClassName('page')[0]);
-		// 没有在进行的 Ajax 翻页或者 Ajax 翻页少于 10 次才翻页, 为了避免重复请求以及无限下拉导致的 DOM 问题
-		// Todo: 大数据量站点测试下拉刷新合理范围, 适度放宽限制
+		// There is no ongoing Ajax page turning or the Ajax page turning is less than 10 times before turning the page, in order to avoid repeated requests and DOM problems caused by infinite pull-down
+		// Todo: Large data volume site test pull-down refresh reasonable range, moderate relaxation of restrictions
 		if (!processing && times <= 9 && offsetTop > document.documentElement.clientHeight && (offsetTop - scrollTop < document.documentElement.clientHeight)) {
 			processing = true;
 			times++;
@@ -946,9 +946,9 @@ function setCopy(text, msg) {
 				popup.open(msg, 'alert');
 			}
 		} else {
-			popup.open('复制失败', 'alerts');
+/*vot*/			popup.open(lng['copy_failed'], 'alerts');
 		}
 	} else {
-		popup.open('复制失败', 'alerts');
+/*vot*/		popup.open(lng['copy_failed'], 'alerts');
 	}
 }

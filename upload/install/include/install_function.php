@@ -1004,7 +1004,7 @@ function show_db_install() {
 			function request_log() {
 				var timest = new Date().getTime().toString().substring(5);
 				ajax.get('index.php?method=check_db_init_progress&timestamp=' + timest + '&offset=' + log_offset, function (data, status) {
-					// 新增对于 >= 400 状态的判断, 避免被服务器自带安全软件或者 CDN 拉黑地址之后不报错
+					// Added a setting for status >= 400, avoiding not reporting an error after being blacklisted by the server's own security software or CDN
 					if(status >= 400) {
 						append_notice('<p class="red">HTTP '+status+' <?= lang('failed') ?></p>');
 						append_notice('<p class="red"><?= lang('error_quit_msg') ?></p>');
@@ -1014,7 +1014,7 @@ function show_db_install() {
 					log_offset = parseInt(data.substring(0,5));
 					data = data.substring(5);
 					if(stuck_times >= 120) {
-						// 如果安装程序两分钟没有响应, 则提示安装可能卡死
+						// If the installer does not respond for two minutes, it prompts that the installation may be stuck
 						stuck_times = 0;
 						append_notice('<p class="red"><?= lang('error_stuck_msg') ?></p>');
 						setTimeout(request_log, 1000);

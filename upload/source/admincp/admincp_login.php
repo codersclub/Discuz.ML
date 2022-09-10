@@ -50,6 +50,10 @@ function html_login_header($form = true) {
 	$tips = lang('admincp_login', 'login_tips');
 	$staticurl = STATICURL;
 /*vot*/	$rtl_suffix = RTLSUFFIX;
+/*vot*/	$light_mode = lang('admincp_login', 'light_mode');
+/*vot*/	$default_mode = lang('admincp_login', 'default_mode');
+/*vot*/	$normal_mode = lang('admincp_login', 'normal_mode');
+/*vot*/	$night_mode = lang('admincp_login', 'night_mode');
 
 	echo <<<EOT
 <!DOCTYPE html>
@@ -61,15 +65,14 @@ function html_login_header($form = true) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="color-scheme" content="light dark">
 <title>$title</title>
-<!--vot--><link rel="stylesheet" href="{$staticurl}image/admincp/admincp{$rtl_suffix}.css?{$_G['style']['verhash']}" type="text/css" media="all" />
 <link rel="stylesheet" href="{$staticurl}image/admincp/minireset.css?{$_G['style']['verhash']}">
-<link rel="stylesheet" href="{$staticurl}image/admincp/admincplogin{$rtl_suffix}.css?{$_G['style']['verhash']}">
+<!--vot--><link rel="stylesheet" href="{$staticurl}image/admincp/admincplogin{$rtl_suffix}.css?{$_G['style']['verhash']}">
 <meta content="Comsenz Inc." name="Copyright">
 <script src="{$staticurl}js/common.js"></script>
 <script src="{$staticurl}js/admincp_base.js"></script>
 </head>
 <body>
-<div class="darkmode" title="亮色模式">
+<!--vot--><div class="darkmode" title="{$light_mode}">
 <div>
 <div class="dk-light">
 <svg width="24" height="24">
@@ -82,7 +85,7 @@ function html_login_header($form = true) {
 </svg>
 </div>
 </div>
-<ul id="dkm_menu" style="display: none;"><li class="current">跟随系统</li><li>正常模式</li><li>夜间模式</li></ul>
+<!--vot--><ul id="dkm_menu" style="display: none;"><li class="current">{$default_mode}</li><li>{$normal_mode}</li><li>{$night_mode}</li></ul>
 </div>
 EOT;
 

@@ -76,7 +76,7 @@ class control extends adminbase {
 					if($isfounder == 1) {
 						$this->user['username'] = 'UCenterAdministrator';
 						if($_ENV['user']->verify_password($password, UC_FOUNDERPW, UC_FOUNDERSALT)) {
-							// 密码升级作为附属流程, 失败与否不影响登录操作
+							// Password upgrade is a subsidiary process, and the failure does not affect the login operation
 							$chkstatus = $_ENV['user']->upgrade_founderpw($password, UC_FOUNDERPW, UC_FOUNDERSALT);
 							if($chkstatus === 2) {
 								$this->writelog('admin_pw_upgrade');
@@ -90,7 +90,7 @@ class control extends adminbase {
 						$admin = $this->db->fetch_first("SELECT a.uid,m.username,m.salt,m.password FROM ".UC_DBTABLEPRE."admins a LEFT JOIN ".UC_DBTABLEPRE."members m USING(uid) WHERE a.username='$username'");
 						if(!empty($admin)) {
 							if($_ENV['user']->verify_password($password, $admin['password'], $admin['salt'])) {
-								// 密码升级作为附属流程, 失败与否不影响登录操作
+								// Password upgrade is a subsidiary process, and the failure does not affect the login operation
 								$_ENV['user']->upgrade_password($username, $password, $admin['password'], $admin['salt']);
 								$this->view->sid = $this->sid_encode($admin['username']);
 							} else {
@@ -101,7 +101,6 @@ class control extends adminbase {
 						}
 					}
 
-/*vot*/					$pwlen = strlen($password);
 					if($errorcode == 0) {
 						$this->setcookie('sid', $this->view->sid, 86400);
 						$this->user['admin'] = 1;
@@ -114,6 +113,7 @@ class control extends adminbase {
 							exit;
 						}
 					} else {
+						$pwlen = strlen($password);
 						$this->writelog('login', 'error: user='.$this->user['username'].'; password='.($pwlen > 2 ? preg_replace("/^(.{".round($pwlen / 4)."})(.+?)(.{".round($pwlen / 6)."})$/s", "\\1***\\3", $password) : $password));
 						$_ENV['user']->loginfailed($username, $this->onlineip);
 					}

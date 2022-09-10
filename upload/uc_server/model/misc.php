@@ -71,8 +71,8 @@ class miscmodel {
 			$ch = curl_init();
 			$ip && curl_setopt($ch, CURLOPT_HTTPHEADER, array("Host: ".$host));
 			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-			// 在提供 IP 地址的同时, 当请求主机名并非一个合法 IP 地址, 且 PHP 版本 >= 5.5.0 时, 使用 CURLOPT_RESOLVE 设置固定的 IP 地址与域名关系
-			// 在不支持的 PHP 版本下, 继续采用原有不支持 SNI 的流程
+			// While providing the IP address, when the requested host name is not a legal IP address, and the PHP version >= 5.5.0, use CURLOPT_RESOLVE to set a fixed relationship between the IP address and the domain name
+			// Under the unsupported PHP version, continue to use the original process that does not support SNI
 			if(!empty($ip) && filter_var($ip, FILTER_VALIDATE_IP) && !filter_var($host, FILTER_VALIDATE_IP) && version_compare(PHP_VERSION, '5.5.0', 'ge')) {
 				curl_setopt($ch, CURLOPT_RESOLVE, array("$host:$port:$ip"));
 				curl_setopt($ch, CURLOPT_URL, $scheme.'://'.$host.':'.$port.$path);

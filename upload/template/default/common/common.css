@@ -103,7 +103,7 @@ Note on the CSS Hack:
 		a img { border: none; }
 	:focus { outline-color: {MENUBGCOLOR}; }
 	label { cursor: pointer; }
-	/* 消除修改DOCTYPE为HTML5以后造成的img基线问题 */
+	/* Eliminate the img baseline problem caused by modifying DOCTYPE to HTML5 */
 	img, svg { vertical-align: bottom; }
 /*
 	Name:			mod_float
@@ -117,7 +117,7 @@ Note on the CSS Hack:
 /*
 	Name:			mod_iconfont
 	Level:			Global
-	Explain:		提前引入iconfont，便于后续css调用
+	Explain:		Introduce iconfont in advance to facilitate subsequent css calls
 */
 	@font-face { font-family: "dzicon"; src: url('{IMGDIR}/dzicon.eot'); src: url('{IMGDIR}/dzicon.eot?#iefix') format('eot'), url('{IMGDIR}/dzicon.woff2') format('woff2'), url('{IMGDIR}/dzicon.woff') format('woff'); font-weight: normal; font-style: normal; }
 	[class^="fico-"]:before, [class*=" fico-"]:before { font-family: "dzicon"; font-style: normal; font-weight: normal; speak: none; display: inline-block; text-decoration: inherit; width: 1em; margin-right: .2em; text-align: center; font-variant: normal; text-transform: none; line-height: 1em; font-size: 120%; }
