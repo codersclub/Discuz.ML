@@ -13,14 +13,14 @@ class ucip {
 	}
 
 	/*
-	 * 验证IP是否合法，支持v4和v6
+	 * Verify whether the IP is legal, support v4 and v6
 	 */
 	public static function validate_ip($ip) {
 		return filter_var($ip, FILTER_VALIDATE_IP) !== false;
 	}
 
 	/*
-	 * 以下三个函数，检查$requestIp是否在$ip给出的cidr范围内
+	 * The following three functions check whether $requestIp is within the range of cidr given by $ip
 	 */
 
 	public static function check_ip($requestIp, $ips)

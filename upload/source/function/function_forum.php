@@ -835,7 +835,7 @@ function insertpost($data) {
 	if(isset($data['tid'])) {
 		$thread = C::t('forum_thread')->fetch_thread($data['tid']);
 		$tableid = $thread['posttableid'];
-		// 第三方插件和系统内普遍直接用 insertpost 插入回复, 因此改为在这里处理
+		// Third-party plug-ins and systems generally use insertpost to insert replies directly, so it is handled here instead
 		if($thread['replies'] <= 0 && C::t('forum_sofa')->fetch($thread['tid'])) {
 			C::t('forum_sofa')->delete($thread['tid']);
 		}

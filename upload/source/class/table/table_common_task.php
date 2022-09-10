@@ -54,21 +54,21 @@ class table_common_task extends discuz_table
 
 	public function update_available($available = 2) {
 		if($available == 2) {
-			//上线开始的活动
+			//Event started online
 			DB::query("UPDATE %t SET available='2' WHERE available='1' AND starttime<=%d AND (endtime='0' OR endtime>%d)", array($this->_table, TIMESTAMP, TIMESTAMP), false, true);
 		} else {
-			//隐藏未开始或者结束的活动
+			//Hide unstarted or ended events
 			DB::query("UPDATE %t SET available='1' WHERE available='2' AND (starttime>%d || (endtime<=%d && endtime>'0'))", array($this->_table, TIMESTAMP, TIMESTAMP), false, true);
 		}
 	}
 
 	public function fetch_next_starttime() {
-		//下个活动开始时间
+		//Next event start time
 		return DB::result_first("SELECT starttime FROM %t WHERE available='1' AND starttime>'0' AND (endtime='0' OR endtime>%d) ORDER BY starttime ASC", array($this->_table, TIMESTAMP, TIMESTAMP));
 	}
 
 	public function fetch_next_endtime() {
-		//下个活动结束时间
+		//Next event end time
 		return DB::result_first("SELECT endtime FROM %t WHERE available='2' AND endtime>'0' ORDER BY endtime ASC", array($this->_table));
 	}
 

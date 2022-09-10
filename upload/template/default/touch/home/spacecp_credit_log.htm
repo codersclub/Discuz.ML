@@ -6,9 +6,9 @@
     <div class="my"><a href="<!--{if $_G['setting']['mobile']['mobilehotthread']}--><!--{if !empty($_G['setting']['grid']['showgrid'])}-->forum.php<!--{else}-->forum.php?mod=guide&view=newthread<!--{/if}--><!--{else}-->forum.php?forumlist=1<!--{/if}-->"><i class="dm-house"></i></a></div>
 </div>
 <div class="dhnv flex-box cl">
-    <a href="home.php?mod=spacecp&op=log&ac=credit" class="flex<!--{if !$_GET['income']}--> mon<!--{/if}-->">全部</a>
-    <a href="home.php?mod=spacecp&op=log&ac=credit&income=1" class="flex<!--{if $_GET['income'] == 1}--> mon<!--{/if}-->">收入</a>
-    <a href="home.php?mod=spacecp&op=log&ac=credit&income=-1" class="flex<!--{if $_GET['income'] == -1}--> mon<!--{/if}-->">支出</a>
+<!--vot-->    <a href="home.php?mod=spacecp&op=log&ac=credit" class="flex<!--{if !$_GET['income']}--> mon<!--{/if}-->">{lang all}</a>
+<!--vot-->    <a href="home.php?mod=spacecp&op=log&ac=credit&income=1" class="flex<!--{if $_GET['income'] == 1}--> mon<!--{/if}-->">{lang credit_income_1}</a>
+<!--vot-->    <a href="home.php?mod=spacecp&op=log&ac=credit&income=-1" class="flex<!--{if $_GET['income'] == -1}--> mon<!--{/if}-->">{lang credit_income_2}</a>
 </div>
 
 <!--{if $loglist}-->

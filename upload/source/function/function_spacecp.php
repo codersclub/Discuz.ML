@@ -564,7 +564,7 @@ function emailcheck_send($uid, $email) {
 	global $_G;
 
 	if($uid && $email) {
-		// 读取用户论坛表内的时间，限制重发间隔
+		// Read the time in the user forum table and limit the resend interval
 		$memberauthstr = C::t('common_member_field_forum')->fetch($uid);
 		if(!empty($memberauthstr['authstr'])) {
 			list($dateline) = explode("\t", $memberauthstr['authstr']);
@@ -573,7 +573,7 @@ function emailcheck_send($uid, $email) {
 				return false;
 			}
 		}
-		// 用户论坛字段表内authstr字段保存token和时间戳，实现邮件链接不可重复使用
+		// The authstr field in the user forum field table saves the token and timestamp, so that the email link cannot be reused
 		$timestamp = $_G['timestamp'];
 		$idstring = substr(md5($email), 0, 6);
 		C::t('common_member_field_forum')->update($uid, array('authstr' => "$timestamp\t3\t$idstring"));

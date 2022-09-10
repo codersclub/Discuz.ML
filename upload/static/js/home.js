@@ -1031,7 +1031,7 @@ function spaceMusicPlayer(url, height) {
 	if (JSLOADED[STATICURL + 'js/player/aplayer.min.js']) {
 		var x = new Ajax('JSON');
 		x.getJSON(url, function(s) {
-			// 后端直接返回, 由前端负责将原始数据调整为所需格式
+			// The backend returns directly, and the frontend is responsible for adjusting the original data to the required format
 			var audio = new Array();
 			s.mp3list.forEach(function (s) {
 				var obj = new Object();
@@ -1041,11 +1041,11 @@ function spaceMusicPlayer(url, height) {
 				obj.cover = s.cdbj;
 				audio.push(obj);
 			});
-			// 设置样式, 保证播放器展示空间
+			// Set the style to ensure the display space of the player
 			$('music_content').style.height = height + 'px';
 			$('music_content').style.padding = '0px';
 			$('music_content').style.margin = '0px';
-			// 初始化APlayer
+			// Initialize APlayer
 			window['music_content'] = new APlayer({
 				container: $('music_content'),
 				autoplay: s.config.autorun == 'true',

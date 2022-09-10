@@ -16,7 +16,7 @@ define('ROOT_PATH', dirname(__FILE__).'/../');
 require ROOT_PATH.'./release/release.php';
 require ROOT_PATH.'./install/var.inc.php';
 require ROOT_PATH.'./install/lang.inc.php';
-require ROOT_PATH.'./install/dbi.class.php';// MySQLi Only, Git新增
+require ROOT_PATH.'./install/dbi.class.php';// MySQLi Only, Git new
 require ROOT_PATH.'./install/func.inc.php';
 
 file_exists(ROOT_PATH.'./install/extvar.inc.php') && require ROOT_PATH.'./install/extvar.inc.php';
@@ -111,7 +111,7 @@ if($method == 'show_license') {
 		if(empty($dbname)) {
 			show_msg('dbname_invalid', $dbname, 0);
 		} else {
-			if(!$link = @mysqli_connect($dbhost, $dbuser, $dbpw)) {// MySQL全部改为MySQLi, 下同, Git新增
+/*vot*/			if(!$link = @mysqli_connect($dbhost, $dbuser, $dbpw)) {// All MySQL changed to MySQLi, the same below, Git added
 				$errno = mysqli_errno($link);
 				$error = mysqli_error($link);
 				if($errno == 1045) {

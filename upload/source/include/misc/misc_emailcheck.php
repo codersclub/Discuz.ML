@@ -21,7 +21,7 @@ if($_GET['hash']) {
 
 if($uid && isemail($email) && $time > TIMESTAMP - 86400) {
 	$member = getuserbyuid($uid);
-	// 校验用户论坛字段表内authstr字段保存的token和时间戳，实现邮件链接不可重复使用
+	// Verify the token and timestamp saved in the authstr field in the user forum field table, so that the email link cannot be reused
 	$member = array_merge(C::t('common_member_field_forum')->fetch($uid), $member);
 	list($dateline, $operation, $idstring) = explode("\t", $member['authstr']);
 	if($dateline != $time || $operation != 3 || $idstring != substr(md5($email), 0, 6)) {
@@ -49,7 +49,7 @@ if($uid && isemail($email) && $time > TIMESTAMP - 86400) {
 	}
 	updatecreditbyaction('realemail', $uid);
 	C::t('common_member')->update($uid, $setarr);
-	// 清除用户论坛字段表内保存的authstr字段
+	// Clear the authstr field saved in the user forum field table
 	C::t('common_member_field_forum')->update($uid, array('authstr' => ''));
 	C::t('common_member_validate')->delete($uid);
 	dsetcookie('newemail', "", -1);

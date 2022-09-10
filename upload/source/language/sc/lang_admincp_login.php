@@ -39,7 +39,12 @@ $lang = array
 	'login_cp_noaccess' => '<b>管理中心(或此项操作)尚未对您开放</b><br><br>您的此次操作已经记录, 请勿非法尝试',
 	'noaccess' => '后台管理权限(或此项操作)尚未对您开放, 请联系站点管理员',
 
-
+//--------------------------------------------
+// Added by Valery Votintsev, codersclub.org
+	'light_mode'	=> '亮色模式',//'Light mode',
+	'default_mode'	=> '跟随系统',//'Default System mode',
+	'normal_mode'	=> '正常模式',//'Normal mode',
+	'night_mode'	=> '夜间模式',//'Night mode',
 );
 
 ?>

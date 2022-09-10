@@ -5,7 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: setting.php 1174 2014-11-03 04:38:12Z hypowang $
-        Modified by Valery Votintsev, http://discuz.ml
+        Modified by Valery Votintsev, codersclub.org
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -57,11 +57,11 @@ class control extends adminbase {
 /*vot*/			$timeoffset = in_array($timeoffset, $timearray) ? $timeoffset : 8;
 
 			if(empty($passwordalgo) && !empty($passwordoptions)) {
-				// 当密码选项配置时, 密码算法不能为空
+				// When the password option is configured, the password algorithm cannot be empty
 				$passwordoptions = '';
 			} else if(!empty($passwordalgo)) {
-				// 有可能符合要求算法时做测试, 如果返回 false 或密码无法校验通过说明该配置不合理导致 PHP 无法处理, 则需要清除
-				// 密码散列算法会在部分出错情况下返回 NULL 并报 Warning, 在此特殊处理
+				// Do a test when it is possible to meet the required algorithm. If it returns false or the password cannot be verified, it means that the configuration is unreasonable and PHP cannot handle it. You need to clear it
+				// The password hash algorithm will return NULL and report Warning in some error cases, and it is specially treated here
 				$options = empty($passwordoptions) ? array() : json_decode($passwordoptions, true);
 				$tresult = password_hash($passwordalgo, constant($passwordalgo), $options);
 				if($tresult === false || $tresult === null || !password_verify($passwordalgo, $tresult)) {

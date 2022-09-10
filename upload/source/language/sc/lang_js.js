@@ -550,6 +550,7 @@ var lng = {
 	'touch_down_refresh'	: '下拉可以刷新',//'Touch down to refresh',
 	'touch_up_refresh'	: '松开可以刷新',//'Touch UP to refresh',
 	'form_submit_error'	: '表单提交异常，无法完成您的请求',//'Form submission exception, unable to complete your request',
+	'copy_failed'		: '复制失败',//'Copy failed',
 
 //--------------------------------
 //static/js/portal.js
