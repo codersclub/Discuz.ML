@@ -22,9 +22,9 @@
 						<!--{if $value['new']}--><span class="mnum">$value['pmnum']</span><!--{/if}-->
 						<!--{if $value['touid']}-->
 							<!--{if $value['msgfromid'] == $_G['uid']}-->
-<!--vot-->							{lang me} {lang you_to} {$value[tousername]} {lang say_to}:
+<!--vot-->							{lang me} {lang you_to} {$value['tousername']} {lang say_to}:
 							<!--{else}-->
-<!--vot-->							{$value['tousername']} {lang you_to} {lang me} {lang say_to}:</span>
+<!--vot-->							{$value['tousername']} {lang you_to} {lang me} {lang say_to}:
 							<!--{/if}-->
 						<!--{elseif $value['pmtype'] == 2}-->
 							{lang chatpm_author}:$value['firstauthor']
