@@ -184,7 +184,7 @@ class discuz_application extends discuz_base{
 				'manage' => array('mod_member','report','pmreport'),
 				'app' => array(),
 			),
-			'mobiletpl' => array('1' => 'mobile', '2' => 'touch', '3' => 'wml', 'yes' => 'mobile'),
+			'mobiletpl' => array('1' => 'touch', '2' => 'touch', '3' => 'touch', 'yes' => 'touch'),
 		);
 		$_G['PHP_SELF'] = dhtmlspecialchars($this->_get_script_url());
 		$_G['basescript'] = CURSCRIPT;
@@ -904,6 +904,9 @@ class discuz_application extends discuz_base{
 
 	private function _init_mobile() {
 		if(!$this->init_mobile) {
+			if(!defined('HOOKTYPE')) {
+				define('HOOKTYPE', 'hookscript');
+			}
 			return false;
 		}
 
@@ -949,6 +952,9 @@ class discuz_application extends discuz_base{
 		}
 
 		if($nomobile || (!$this->var['setting']['mobile']['mobileforward'] && !$mobileflag)) {
+			if(!defined('HOOKTYPE')) {
+				define('HOOKTYPE', 'hookscript');
+			}
 			if(!empty($this->var['setting']['domain']['app']['mobile']) && $_SERVER['HTTP_HOST'] == $this->var['setting']['domain']['app']['mobile'] && !empty($this->var['setting']['domain']['app']['default'])) {
 				dheader('Location:'.$this->var['scheme'].'://'.$this->var['setting']['domain']['app']['default'].$_SERVER['REQUEST_URI']);
 				return false;
@@ -957,23 +963,13 @@ class discuz_application extends discuz_base{
 			}
 		}
 
-		if($this->var['setting']['mobile']['allowmnew'] && !defined('IN_MOBILE_API') && !defined('NOT_IN_MOBILE_API') && !defined("IS_ROBOT")) {
-			$modid = $this->var['basescript'].'::'.CURMODULE;
-			if(($modid == 'forum::viewthread' || $modid == 'group::viewthread') && !empty($_GET['tid'])) {
-				dheader('location: '.$this->var['siteurl'].'m/?a=viewthread&tid='.$_GET['tid']);
-			} elseif(($modid == 'forum::forumdisplay' || $modid == 'group::forumdisplay') && !empty($_GET['fid'])) {
-				dheader('location: '.$this->var['siteurl'].'m/?a=index&fid='.$_GET['fid']);
-			} elseif($modid != 'forum::attachment') {
-				dheader("location:".$this->var['siteurl'].'m/');
-			}
-		}
 		if($mobile !== '2' && $mobile !== '3' && empty($this->var['setting']['mobile']['legacy'])) {
 			$mobile = '2';
 		}
-		if($mobile === '3' && empty($this->var['setting']['mobile']['wml'])) {
-			return false;
-		}
 		define('IN_MOBILE', isset($this->var['mobiletpl'][$mobile]) ? $mobile : '2');
+		if(!defined('HOOKTYPE')) {
+			define('HOOKTYPE', 'hookscriptmobile');
+		}
 		setglobal('gzipcompress', 0);
 
 		$arr = array();
@@ -1009,18 +1005,7 @@ class discuz_application extends discuz_base{
 		}
 
 		$this->var['setting']['regstatus'] = $this->var['setting']['mobile']['mobileregister'] ? $this->var['setting']['regstatus'] : 0 ;
-
-		if(in_array(constant('IN_MOBILE'), array('1', '3'))) {
-			$this->var['setting']['thumbquality'] = 50;
-		}
-
 		$this->var['setting']['avatarmethod'] = 0;
-
-		$this->var['setting']['mobile']['simpletypeurl'] = array();
-		$this->var['setting']['mobile']['simpletypeurl'][0] = $this->var['siteurl'].$this->var['basefilename'].($query_sting_tmp ? '?'.$query_sting_tmp.'&' : '?').'mobile=1&simpletype=no';
-		$this->var['setting']['mobile']['simpletypeurl'][1] =  $this->var['siteurl'].$this->var['basefilename'].($query_sting_tmp ? '?'.$query_sting_tmp.'&' : '?').'mobile=1&simpletype=yes';
-		$this->var['setting']['mobile']['simpletypeurl'][2] =  $this->var['siteurl'].$this->var['basefilename'].($query_sting_tmp ? '?'.$query_sting_tmp.'&' : '?').'mobile=2';
-		unset($query_sting_tmp);
 		ob_start();
 	}
 

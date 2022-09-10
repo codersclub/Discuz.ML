@@ -199,7 +199,7 @@ function uc_authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		// Here, the data is verified according to the algorithm to ensure the validity and integrity of the data
 		// $result 01 - 10 digits are time, if less than current time or 0 then pass
 		// $result 10 - 26 digits are the $keyb when encrypted, and need to be compared with the $keyb of the input parameter
-		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
+		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 			return '';

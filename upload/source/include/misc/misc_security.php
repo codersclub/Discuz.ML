@@ -88,7 +88,8 @@ function securitymessage($subject, $message, $reload = TRUE, $form = FALSE) {
 		echo '<div id="attackevasive_1" class="popupmenu_option"><b style="font-size: 16px">'.$subject.'</b><br /><br />'.$message.'</div>';
 		security_ajaxshowfooter();
 	} else {
-		echo '<!DOCTYPE html>';
+		$charset = getglobal('config/output/charset');
+		@header('Content-Type: text/html; charset='.$charset);
 		echo '<html>';
 		echo '<head>';
 		echo '<meta charset="'.$_G['charset'].'" />';
@@ -139,7 +140,7 @@ function security_ajaxshowheader() {
 	@header("Expires: -1");
 	@header("Cache-Control: no-store, private, post-check=0, pre-check=0, max-age=0", FALSE);
 	@header("Pragma: no-cache");
-	header("Content-type: application/xml");
+	@header("Content-type: application/xml; charset=".$charset);
 	echo "<?xml version=\"1.0\" encoding=\"".$charset."\"?>\n<root><![CDATA[";
 }
 
