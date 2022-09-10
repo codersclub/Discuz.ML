@@ -137,7 +137,7 @@ function env_check(&$env_items) {
 		if($key == 'php') {
 			$env_items[$key]['current'] = PHP_VERSION;
 		} elseif($key == 'attachmentupload') {
-			$env_items[$key]['current'] = @ini_get('file_uploads') ? (min(min(ini_get('upload_max_filesize'), ini_get('post_max_size')), ini_get('memory_limit'))) : 'unknow';
+			$env_items[$key]['current'] = @ini_get('file_uploads') ? getmaxupload() : 'unknow';
 		} elseif($key == 'gdversion') {
 			$tmp = function_exists('gd_info') ? gd_info() : array();
 			$env_items[$key]['current'] = empty($tmp['GD Version']) ? 'noext' : $tmp['GD Version'];
@@ -893,7 +893,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		// Here, the data is verified according to the algorithm to ensure the validity and integrity of the data
 		// $result 01 - 10 digits are time, if less than current time or 0 then pass
 		// $result 10 - 26 digits are the $keyb when encrypted, and need to be compared with the $keyb of the input parameter
-		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
+		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 			return '';
@@ -2254,6 +2254,34 @@ function is_https() {
 		return true;
 	}
 	return false;
+}
+
+function getmaxupload() {
+	$sizeconv = array('B' => 1, 'KB' => 1024, 'MB' => 1048576, 'GB' => 1073741824);
+	$sizes = array();
+	$sizes[] = ini_get('upload_max_filesize');
+	$sizes[] = ini_get('post_max_size');
+	$sizes[] = ini_get('memory_limit');
+	if(intval($sizes[1]) === 0) {
+		unset($sizes[1]);
+	}
+	if(intval($sizes[2]) === -1) {
+		unset($sizes[2]);
+	}
+	$sizes = preg_replace_callback(
+		'/^(\-?\d+)([KMG]?)$/i',
+		function($arg) use ($sizeconv) {
+			return (intval($arg[1]) * $sizeconv[strtoupper($arg[2]).'B']).'|'.strtoupper($arg[0]);
+		},
+		$sizes
+	);
+	natsort($sizes);
+	$output = explode('|', current($sizes));
+	if(!empty($output[1])) {
+		return $output[1];
+	} else {
+		return ini_get('upload_max_filesize');
+	}
 }
 
 //-------------------------------------------------

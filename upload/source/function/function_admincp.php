@@ -164,7 +164,13 @@ function showheader($key, $url) {
 	list($action, $operation, $do) = explode('_', $url.'___');
 	$url = $action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '');
 	$menuname = cplang('header_'.$key) != 'header_'.$key ? cplang('header_'.$key) : $key;
-	echo '<li><em><a href="'.ADMINSCRIPT.'?action='.$url.'" id="header_'.$key.'" hidefocus="true" onmouseover="previewheader(\''.$key.'\')" onmouseout="previewheader()" '.(isfounder() && $key == 'cloudaddons' ? 'target="_blank"' : 'onclick="toggleMenu(\''.$key.'\', \''.$url.'\');doane(event);"').'>'.$menuname.'</a></em></li>';
+	echo '<li><button id="header_'.$key.'" class=" ">'.$menuname.'</button></li>';
+}
+
+
+function showleftheader($key) {
+	$menuname = cplang('header_'.$key) != 'header_'.$key ? cplang('header_'.$key) : $key;
+	echo '<a id="leftmn_'.$key.'"><span>'.$menuname.'</span></a>';
 }
 
 function shownav($header = '', $menu = '', $nav = '') {
@@ -196,14 +202,24 @@ function shownav($header = '', $menu = '', $nav = '') {
 function showmenu($key, $menus, $return = 0) {
 	global $_G;
 	$body = '';
+	$topMenu_now = false;
+	$action_now = isset($_GET['action']) ? $_GET['action'] : '';
+	$operation_now = isset($_GET['operation']) ? $_GET['operation'] : '';
+	$do_now = isset($_GET['do']) ? $_GET['do'] : '';
+	$menu_now = $action_now.($operation_now ? '_'.$operation_now : '').($do_now ? '_'.$do_now : '');
 	if(is_array($menus)) {
 		foreach($menus as $menu) {
 			if($menu[0] && $menu[1]) {
-				if(strpos($menu[1], 'plugins&operation=config') === false){
+				if(strpos($menu[1], 'plugins&operation=config') === false && substr($menu[1], 0, 4) != 'http'){
 					list($action, $operation, $do) = explode('_', $menu[1]);
+					$active = '';
+					if($menu[1] == $menu_now) {
+						$topMenu_now = true;
+						$active = 'class="active" ';
+					}
 					$menu[1] = $action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '');
 				}
-/*vot*/				$body .= '<li><a href="'.(preg_match('/^(https?:)?\/\//i', $menu[1]) ? $menu[1] : ADMINSCRIPT.'?action='.$menu[1]).'" hidefocus="true" target="'.($menu[2] ? $menu[2] : 'main').'"'.($menu[3] ? $menu[3] : '').'><em onclick="menuNewwin(this)" title="'.cplang('nav_newwin').'"></em>'.cplang($menu[0]).'</a></li>';
+				$body .= '<li><a '.$active.'href="'.(substr($menu[1], 0, 4) == 'http' ? $menu[1] : ADMINSCRIPT.'?action='.$menu[1]).'" target="'.($menu[2] ? $menu[2] : 'main').'"'.($menu[3] ? $menu[3] : '').'><em title="'.cplang('nav_newwin').'"></em>'.cplang($menu[0]).'</a></li>';
 			} elseif($menu[0] && $menu[2]) {
 				if($menu[2] == 1) {
 					$id = 'M'.substr(md5($menu[0]), 0, 8);
@@ -211,16 +227,20 @@ function showmenu($key, $menus, $return = 0) {
 					if(!empty($_G['cookie']['cpmenu_'.$id])) {
 						$hide = true;
 					}
-					$body .= '<li class="s"><div class="lsub'.($hide ? '' : ' desc').'" subid="'.$id.'"><div onclick="lsub(\''.$id.'\', this.parentNode)">'.$menu[0].'</div><ol style="display:'.($hide ? 'none' : '').'" id="'.$id.'">';
+					$body .= '<li class="s"><a>'.$menu[0].'</a><ol style="display:'.($hide ? 'none' : '').'" id="'.$id.'">';
 				}
 				if($menu[2] == 2) {
-					$body .= '<li class="sp"></li></ol></div></li>';
+					$body .= '<li class="sp"></li></ol></li>';
 				}
 			}
 		}
 	}
 	if(!$return) {
-		echo '<ul id="menu_'.$key.'" onclick="switchheader(\''.$key.'\');" style="display: none">'.$body.'</ul>';
+		echo '<ul id="menu_'.$key.'">'.$body;
+		if($topMenu_now) {
+			echo '<script>defaultNav = \''.$key.'\';</script>';
+		}
+		echo '</ul>';
 	} else {
 		return $body;
 	}
@@ -291,7 +311,7 @@ function cpmsg($message, $url = '', $type = '', $values = array(), $extra = '', 
 	}
 
 	if($halt) {
-		echo '<h3>'.cplang('discuz_message').'</h3><div class="infobox">'.$message.'</div>';
+		echo '<div class="infobox"><h3>'.cplang('discuz_message').'</h3>'.$message.'</div>';
 		exit();
 	} else {
 		echo '<div class="infobox">'.$message.'</div>';
@@ -318,14 +338,18 @@ function cpheader() {
 
 /*vot*/	echo <<<EOT
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=$charset">
-<meta http-equiv="x-ua-compatible" content="ie=7" />
-<!--vot--><link href="{$staticurl}image/admincp/admincp{$rtl_suffix}.css?{$_G['style']['verhash']}" rel="stylesheet" type="text/css" />
+<meta charset="$charset">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light dark">
+<link href="{$staticurl}image/admincp/minireset.css?{$_G['style']['verhash']}" rel="stylesheet" />
+<link href="{$staticurl}image/admincp/admincppage{$rtl_suffix}.css?{$_G['style']['verhash']}" rel="stylesheet" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-<script type="text/javascript" src="{$_G[langurl]}lang_js.js?{$VERHASH}"></script>
+<script type="text/javascript" src="{$_G['langurl']}lang_js.js?{$VERHASH}"></script>
 </head>
 <body>
 <script type="text/JavaScript">
@@ -349,10 +373,11 @@ EOT;
 }
 
 function showsubmenu($title, $menus = array(), $right = '', $replace = array()) {
+	$s = '<div class="itemtitle"><div class="titlerow"><h3>'.cplang($title, $replace).'</h3>'.$right.'</div>';
 	if(empty($menus)) {
-		$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title, $replace).'</h3></div>';
+		$s .= '</div>';
 	} elseif(is_array($menus)) {
-/*vot*/		$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title, $replace).'</h3><div class="clear"></div><ul class="tab1">';
+		$s .= '<ul class="tab1">';
 		foreach($menus as $k => $menu) {
 			if(is_array($menu[0])) {
 				$s .= '<li id="addjs'.$k.'" class="'.($menu[1] ? 'current' : 'hasdropmenu').'" onmouseover="dropmenu(this);"><a href="#"><span>'.cplang($menu[0]['menu'], $replace).'<em>&nbsp;&nbsp;</em></span></a><div id="addjs'.$k.'child" class="dropmenu" style="display:none;">';
@@ -362,13 +387,14 @@ function showsubmenu($title, $menus = array(), $right = '', $replace = array()) 
 					}
 				}
 				$s .= '</div></li>';
-			} else {
+			} elseif(!empty($menu)) {
 				$s .= '<li'.($menu[2] ? ' class="current"' : '').'><a href="'.(!$menu[4] ? ADMINSCRIPT.'?action='.$menu[1] : $menu[1]).'"'.(!empty($menu[3]) ? ' target="_blank"' : '').'><span>'.cplang($menu[0], $replace).'</span></a></li>';
 			}
 		}
 		$s .= '</ul></div>';
 	}
 	echo !empty($menus) ? '<div class="floattop">'.$s.'</div><div class="floattopempty"></div>' : $s;
+	echo '</div><div class="cpcontainer">';
 }
 
 function showsubmenusteps($title, $menus = array(), $mleft = array(), $mright = array()) {
@@ -383,9 +409,11 @@ function showsubmenusteps($title, $menus = array(), $mleft = array(), $mright = 
 	if(is_array($menus)) {
 		$s .= '<ul class="stepstat">';
 			$i = 0;
+			$ic = 1;
 		foreach($menus as $menu) {
 			$i++;
-			$s .= '<li'.($menu[1] ? ' class="current"' : '').' id="step'.$i.'">'.$i.'.'.cplang($menu[0]).'</li>';
+			$s .= '<li'.($ic ? ' class="current"' : '').' id="step'.$i.'"><span>'.$i.'</span>'.cplang($menu[0]).'</li>';
+			if($menu[1]) $ic = 0;
 		}
 		$s .= '</ul>';
 	}
@@ -398,6 +426,7 @@ function showsubmenusteps($title, $menus = array(), $mleft = array(), $mright = 
 	}
 	$s .= '</div>';
 	echo $s;
+	echo '</div><div class="cpcontainer">';
 }
 
 function showsubmenuanchors($title, $menus = array(), $right = '') {
@@ -407,7 +436,7 @@ function showsubmenuanchors($title, $menus = array(), $right = '') {
 	echo <<<EOT
 <script type="text/JavaScript">var currentAnchor = '{$GLOBALS['anchor']}';</script>
 EOT;
-	$s = '<div class="itemtitle">'.$right.'<h3>'.cplang($title).'</h3>';
+	$s = '<div class="itemtitle"><div class="titlerow"><h3>'.cplang($title).'</h3>'.$right.'</div>';
 /*vot*/	$s .= '<div class="clear"></div>';
 	$s .= '<ul class="tab1" id="submenu">';
 	foreach($menus as $k => $menu) {
@@ -428,6 +457,7 @@ EOT;
 	$s .= '</ul>';
 	$s .= '</div>';
 	echo !empty($menus) ? '<div class="floattop">'.$s.'</div><div class="floattopempty"></div>' : $s;
+	echo '</div><div class="cpcontainer">';
 }
 
 function showtips($tips, $id = 'tips', $display = TRUE, $title = '') {
@@ -472,7 +502,7 @@ function showtableheader($title = '', $classname = '', $extra = '', $titlespan =
 	$classname = str_replace(array('nobottom', 'notop'), array('nobdb', 'nobdt'), $classname);
 	if(isset($_G['showsetting_multi'])) {
 		if($_G['showsetting_multi'] == 0) {
-			$extra .= ' style="width:'.($_G['showsetting_multicount'] * 270 + 20).'px"';
+			$extra .= ' style="width:'.($_G['showsetting_multicount'] * 270 + 60).'px"';
 		} else {
 			return;
 		}
@@ -482,6 +512,19 @@ function showtableheader($title = '', $classname = '', $extra = '', $titlespan =
 		$span = $titlespan ? 'colspan="'.$titlespan.'"' : '';
 		echo "\n".'<tr><th '.$span.' class="partition">'.cplang($title).'</th></tr>';
 		showmultititle(1);
+	}
+}
+
+function showboxheader($title = '', $classname = '', $extra = '', $nobody = 0) {
+	global $_G;
+	$classname = str_replace(array('nobottom', 'notop'), array('nobdb', 'nobdt'), $classname);
+	echo "\n".'<div class="dbox'.($classname ? ' '.$classname : '').'"'.($extra ? " $extra" : '').'>';
+	if($title) {
+		echo "\n".'<div class="boxheader">'.cplang($title).'</div>';
+		showmultititle(1);
+	}
+	if(!$nobody) {
+		echo "\n".'<div class="boxbody">';
 	}
 }
 
@@ -497,7 +540,7 @@ function showmultititle($nofloat = 0) {
 		if($nofloat) {
 			echo '<tr><td class="tbm"><div>'.$rows.'</div></td></tr>';
 		} else {
-			echo '<div id="multititle" class="tbm" style="width:'.($i * 270).'px;display:none">'.$rows.'</div>';
+			echo '<div id="multititle" class="tbm" style="width:'.($i * 270 + 30).'px;display:none">'.$rows.'</div>';
 			echo '<script type="text/javascript">floatbottom(\'multititle\');</script>';
 		}
 	}
@@ -520,6 +563,14 @@ function showtitle($title, $extra = '', $multi = 1) {
 	if($multi) {
 		showmultititle(1);
 	}
+}
+
+function showboxtitle($title, $extra = '', $multi = 1) {
+	global $_G;
+	if(!empty($_G['showsetting_multi'])) {
+		return;
+	}
+	echo "\n".'<div class="boxheader"'.($extra ? " $extra" : '').'>'.cplang($title).'</div>';
 }
 
 function showsubtitle($title = array(), $rowclass='header', $tdstyle=array()) {
@@ -562,12 +613,51 @@ function showtablerow($trstyle = '', $tdstyle = array(), $tdtext = array(), $ret
 	echo $cells;
 }
 
-function showsetting($setname, $varname, $value, $type = 'radio', $disabled = '', $hidden = 0, $comment = '', $extra = '', $setid = '', $nofaq = false) {
+function showboxrow($trstyle = '', $tdstyle = array(), $tdtext = array(), $return = FALSE) {
+	$rowswapclass = '';
+	if(preg_match('/class\s*=\s*[\'"]([^\'"<>]+)[\'"]/i', $trstyle, $matches)) {
+		$rowswapclass = $matches[1];
+		$trstyle = preg_replace('/class\s*=\s*[\'"]([^\'"<>]+)[\'"]/i', '', $trstyle);
+	}
+	if(is_array($tdtext) && count($tdtext) > 2) {
+		$rowswapclass .= ' hover';
+	}
+	$rowswapclass = ' class="drow'.($rowswapclass?(' '.$rowswapclass):'').'"';
+	$cells = "\n".'<div'.($trstyle ? ' '.$trstyle : '').$rowswapclass.'>';
+	if(isset($tdtext)) {
+		if(is_array($tdtext)) {
+			foreach($tdtext as $key => $td) {
+					$cells .= '<div'.(is_array($tdstyle) && !empty($tdstyle[$key]) ? ' '.$tdstyle[$key] : '').'>'.$td.'</div>';
+			}
+		} else {
+			$cells .= '<div'.(!empty($tdstyle) && is_string($tdstyle) ? ' '.$tdstyle : '').'>'.$tdtext.'</div>';
+		}
+	}
+	$cells .= '</div>';
+	if($return) {
+		return $cells;
+	}
+	echo $cells;
+}
+function showboxbody($class = '', $text = '', $extra = '') {
+	echo '<div class="boxbody'.($style ? (' '.$style) : '').'" '.$extra.'>'.$text.'</div>';
+}
+
+function showsetting($setname, $varname, $value, $type = 'radio', $disabled = '', $hidden = 0, $comment = '', $extra = '', $setid = '', $nofaq = false, $inbox = 0) {
 
 	global $_G;
 	$s = "\n";
 	$check = array();
 	$noborder = false;
+	if(is_array($disabled)) {
+		$hidden = $disabled['hidden'];
+		$comment = $disabled['comment'];
+		$extra = $disabled['extra'];
+		$setid = $disabled['setid'];
+		$nofaq = $disabled['nofaq'];
+		$inbox = $disabled['inbox'];
+		$disabled = $disabled['disabled'];
+	}
 	if(substr($disabled, 0, 8) == 'noborder') {
 		$disabled = trim(substr($disabled, 8));
 		$noborder = 'class="noborder" ';
@@ -766,7 +856,11 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 		return;
 	}
 	if(!isset($_G['showsetting_multi'])) {
-		showtablerow('', 'colspan="2" class="td27" s="1"', $name);
+		if($inbox) {
+			echo '<div>'.$name.'</div>';
+		} else {
+			showtablerow('', 'colspan="2" class="td27" s="1"', $name);
+		}
 	} else {
 		if(empty($_G['showsetting_multijs'])) {
 			$_G['setting_JS'] .= 'var ss = new Array();';
@@ -781,11 +875,16 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 	}
 	if(!$nocomment && ($type != 'omcheckbox' || $varname[2] != 'isfloat')) {
 		if(!isset($_G['showsetting_multi'])) {
-			showtablerow('class="noborder" onmouseover="setfaq(this, \'faq'.$setid.'\')"', array('class="vtop rowform"', 'class="vtop tips2" s="1"'), array(
-				$s,
-				($comment ? $comment : cplang($setname.'_comment', false)).($type == 'textarea' ? '<br />'.cplang('tips_textarea') : '').
-				($disabled ? '<br /><span class="smalltxt" style="color:#F00">'.cplang($setname.'_disabled', false).'</span>' : NULL)
-			));
+			if($inbox) {
+				echo '<div>'.$s.'</div><div>'.($comment ? $comment : cplang($setname.'_comment', false)).($type == 'textarea' ? '<br />'.cplang('tips_textarea') : '').
+				($disabled ? '<br /><span class="smalltxt" style="color:#F00">'.cplang($setname.'_disabled', false).'</span>' : NULL).'</div>';
+			} else {
+				showtablerow('class="noborder" onmouseover="setfaq(this, \'faq'.$setid.'\')"', array('class="vtop rowform"', 'class="vtop tips2" s="1"'), array(
+					$s,
+					($comment ? $comment : cplang($setname.'_comment', false)).($type == 'textarea' ? '<br />'.cplang('tips_textarea') : '').
+					($disabled ? '<br /><span class="smalltxt" style="color:#F00">'.cplang($setname.'_disabled', false).'</span>' : NULL)
+				));
+			}
 		} else {
 			if($_G['showsetting_multi'] == 0) {
 				showtablerow('class="noborder"', array('class="vtop rowform" style="width:auto"'), array(
@@ -843,7 +942,7 @@ function showsubmit($name = '', $value = 'submit', $before = '', $after = '', $f
 		return;
 	}
 	$str = '<tr>';
-	$str .= $name && in_array($before, array('del', 'select_all', 'td')) ? '<td class="td25">'.($before != 'td' ? '<input type="checkbox" name="chkall" id="chkall'.($chkkallid = random(4)).'" class="checkbox" onclick="checkAll(\'prefix\', this.form, \'delete\')" /><label for="chkall'.$chkkallid.'">'.cplang($before) : '').'</label></td>' : '';
+	$str .= $name && in_array($before, array('del', 'select_all', 'td')) ? '<td class="td25">'.($before != 'td' ? '<input type="checkbox" name="chkall" id="chkall'.($chkkallid = random(4)).'" class="checkbox" onclick="checkAll(\'prefix\', this.form, \'delete\')" /><label for="chkall'.$chkkallid.'">'.cplang($before).'</label>' : '').'</td>' : '';
 	$str .= '<td colspan="15">';
 	$str .= $floatright ? '<div class="cuspages right">'.$floatright.'</div>' : '';
 	$str .= '<div class="fixsel">';
@@ -870,6 +969,14 @@ function showtablefooter() {
 		return;
 	}
 	echo '</table>'."\n";
+}
+
+function showboxfooter($nobody = 0) {
+	global $_G;
+	if(!empty($_G['showsetting_multi'])) {
+		return;
+	}
+	echo $nobody ? '</div>'."\n" : '</div></div>'."\n";
 }
 
 function showformfooter() {

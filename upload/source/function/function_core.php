@@ -192,7 +192,10 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 	}
 
 	if($operation == 'DECODE') {
-		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
+		// 这里按照算法对数据进行验证, 保证数据有效性和完整性
+		// $result 01 - 10 位是时间, 如果小于当前时间或为 0 则通过
+		// $result 10 - 26 位是加密时的 $keyb , 需要和入参的 $keyb 做比对
+		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 			return '';
@@ -523,7 +526,7 @@ function lang($file, $langvar = null, $vars = array(), $default = null) {
 			$_G['lang'][$key] = (array)$lang;
 		}
 		if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
-/*vot*/			include DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/mobile/lang_template.php';
+/*vot*/			include DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/touch/lang_template.php';
 			$_G['lang'][$key] = array_merge((array)$_G['lang'][$key], (array)$lang);
 		}
 		if($file != 'error' && !isset($_G['cache']['pluginlanguage_system'])) {
@@ -1412,9 +1415,7 @@ function adshow($parameter) {
 	if(getgpc('inajax') || $_G['group']['closead']) {
 		return;
 	}
-	if(isset($_G['config']['plugindeveloper']) && $_G['config']['plugindeveloper'] == 2) {
-		return '<hook>[ad '.$parameter.']</hook>';
-	}
+	$return = (isset($_G['config']['plugindeveloper']) && $_G['config']['plugindeveloper'] == 2) ? '<hook>[ad '.$parameter.']</hook>' : '';
 	$params = explode('/', $parameter);
 	$customid = 0;
 	$customc = explode('_', $params[0]);
@@ -1458,7 +1459,7 @@ function adshow($parameter) {
 	if(empty($_G['setting']['hookscript']['global']['ad']['funcs'][$adfunc])) {
 		hookscript('ad', $_G['basescript'], 'funcs', array('params' => $params, 'content' => $adcontent, 'customid' => $customid), $adfunc);
 	}
-	return $_G['setting']['pluginhooks'][$adfunc] === null ? $adcontent : $_G['setting']['pluginhooks'][$adfunc];
+	return $return.($_G['setting']['pluginhooks'][$adfunc] === null ? $adcontent : $_G['setting']['pluginhooks'][$adfunc]);
 }
 
 function showmessage($message, $url_forward = '', $values = array(), $extraparam = array(), $custom = 0) {

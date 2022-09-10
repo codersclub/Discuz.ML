@@ -34,11 +34,15 @@
 			<!--{/loop}-->
 		</ul>
 	</div>
+	<!--{hook/space_profile_top_mobile}-->
 	<div class="myinfo_list_ico cl">
 		<ul>
 		<!--{if !$_GET['mycenter']}-->
 			<!--{if helper_access::check_module('forum')}-->
 			<li><a href="home.php?mod=space&uid={$space['uid']}&do=thread"><i class="dm-chat-s-fill"></i><!--{if $_G['uid'] == $space['uid']}-->{lang mythread}<!--{else}-->{lang mobta}{lang mobthread}<!--{/if}--></a></li>
+			<!--{/if}-->
+			<!--{if helper_access::check_module('blog')}-->
+			<li><a href="home.php?mod=space&uid={$space['uid']}&do=blog"><i class="dm-chat-s-fill"></i><!--{if $_G['uid'] == $space['uid']}-->{lang my}{lang blog}<!--{else}-->{lang mobta}{lang blog}<!--{/if}--></a></li>
 			<!--{/if}-->
 			<li><a href="home.php?mod=space&do=pm&subop=view&touid={$space['uid']}"><i class="dm-chat-t-fill"></i>{lang mobfa}{lang pm}</a></li>
 			<!--{if helper_access::check_module('friend')}-->
@@ -53,43 +57,50 @@
 			<!--{if helper_access::check_module('forum')}-->
 			<li><a href="home.php?mod=space&uid={$_G['uid']}&do=thread&view=me"><i class="dm-chat-s-fill"></i>{lang mythread}</a></li>
 			<!--{/if}-->
+			<!--{if helper_access::check_module('blog')}-->
+			<li><a href="home.php?mod=space&uid={$_G['uid']}&do=blog&view=me"><i class="dm-chat-s-fill"></i>{lang my}{lang blog}</a></li>
+			<!--{/if}-->
 			<!--{if helper_access::check_module('favorite')}-->
 			<li><a href="home.php?mod=space&uid={$_G['uid']}&do=favorite&view=me&type=thread"><i class="dm-star-fill"></i>{lang myfavorite}</a></li>
-			<!--{/if}-->			
+			<!--{/if}-->
 			<li><a href="home.php?mod=space&do=pm"><i class="dm-chat-t-fill"></i>{lang pm_center}{lang remind}<!--{if $_G['member']['newpm'] || $_G['member']['newprompt']}--><em>NEW</em><!--{/if}--></a></li>
 			<!--{if helper_access::check_module('friend')}-->
 			<li><a href="home.php?mod=space&do=friend"><i class="dm-person-fill"></i>{lang my_friends}</a></li>
 			<!--{/if}-->
 			<li><a href="home.php?mod=spacecp&ac=credit&op=buy"><i class="dm-person-fill"></i>{lang credit_recharge}</a></li>
 		<!--{/if}-->
+		<!--{hook/space_profile_nav_extra_mobile}-->
 		</ul>
 	</div>
 	<!--{if $space['group']['maxsigsize'] && $space['sightml']}-->
 	<div class="myinfo_list cl">
 		<ul>
 			<li><b>{lang personal_signature}</b></li>
-			<li class="sig">$space['sightml']</li>			
+			<li class="sig">$space['sightml']</li>
 		</ul>
 	</div>
 	<!--{/if}-->
 	<div class="myinfo_list cl">
 		<ul>
-			<li><b>{lang memcp_profile}</b><!--{if $_G['ols'][$space['uid']]}--><span class="mtxt">{lang users}{lang online}</span><!--{/if}--></li>
+			<!--{hook/space_profile_baseinfo_top_mobile}-->
+			<li><b>{lang memcp_profile}</b><!--{if $_G['uid'] == $space['uid']}--><span class="mtxt"><a href="home.php?mod=spacecp" style="color: #fff;">{lang setup}</a></span><!--{else}--><!--{if $_G['ols'][$space['uid']]}--><span class="mtxt">{lang online}</span><!--{/if}--><!--{/if}--></li>
 			<li>UID<span>{$space['uid']}</span></li>
 			<li>{lang usergroup}<!--{if !empty($space['groupexpiry'])}--><em>{lang group_useful_life}<!--{date($space['groupexpiry'], 'Y-m-d H:i')}--></em><!--{/if}--><span style="color:{$space['group']['color']}">{$space['group']['grouptitle']}</span></li>
 			<!--{if $space['adminid']}--><li>{lang management_team}<span style="color:{$space['admingroup']['color']}">{$space['admingroup']['grouptitle']}</span></li><!--{/if}-->
-			<!--{if $space['extgroupids']}--><li>{lang group_expiry_type_ext}<span>$space['extgroupids']</span></li><!--{/if}-->	
+			<!--{if $space['extgroupids']}--><li>{lang group_expiry_type_ext}<span>$space['extgroupids']</span></li><!--{/if}-->
 			<!--{loop $profiles $value}-->
 			<li>$value['title']<span>$value['value']</span></li>
-			<!--{/loop}-->				
+			<!--{/loop}-->
 			<!--{if in_array($_G['adminid'], array(1, 2))}--><li>Email<span>$space['email']</span></li><!--{/if}-->
-			<!--{if $space['spacenote']}--><li>{lang spacenote}<span>$space['spacenote']</span></li><!--{/if}-->			
+			<!--{if $space['spacenote']}--><li>{lang spacenote}<span>$space['spacenote']</span></li><!--{/if}-->
 			<!--{if $space['customstatus']}--><li>{lang permission_basic_status}<span>$space['customstatus']</span></li><!--{/if}-->
 			<!--{if $space['oltime'] && !$_G['setting']['sessionclose']}--><li>{lang online_time}<span>$space['oltime'] {lang hours}</span></li><!--{/if}-->
 			<li>{lang regdate}<span>$space['regdate']</span></li>
 			<li>{lang last_visit}<span>$space['lastvisit']</span></li>
+			<!--{hook/space_profile_baseinfo_bottom_mobile}-->
 		</ul>
 	</div>
+	<!--{hook/space_profile_extrainfo_mobile}-->
 	<!--{if $space['uid'] == $_G['uid']}-->
 	<div class="btn_exit"><a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="pn">{lang logout_mobile}</a></div>
 	<!--{/if}-->

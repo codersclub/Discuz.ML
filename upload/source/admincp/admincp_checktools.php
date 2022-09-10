@@ -47,7 +47,7 @@ if($operation == 'filecheck') {
 			}
 		}
 
-		$md5data = array();
+		$md5data = $md5datanew = $addlist = $dellist = $modifylist = $showlist = array();
 		$cachelist = checkcachefiles('data/sysdata/');
 /*vot*/		checkfiles('./', '', 0, 'install');
 		checkfiles('config/', '', 1, 'config_global.php,config_ucenter.php');
@@ -64,7 +64,6 @@ if($operation == 'filecheck') {
 //vot		checkfiles('data/threadcache/', '\.htm', 0);
 		checkfiles('template/', '');
 		checkfiles('api/', '');
-		checkfiles('m/', '\.php');
 		checkfiles('source/', '', 1, 'discuzfiles.md5,plugin');
 		checkfiles('static/', '');
 		checkfiles('archiver/', '');
@@ -150,11 +149,11 @@ if($operation == 'filecheck') {
 
 		if($homecheck) {
 			ajaxshowheader();
-			echo "<em class=\"edited\">{$lang['filecheck_modify']}: $modifiedfiles</em> &nbsp; ".
-				"<em class=\"del\">{$lang['filecheck_delete']}: $deletedfiles</em> &nbsp; ".
-				"<em class=\"unknown\">{$lang['filecheck_unknown']}: $unknownfiles</em> &nbsp; ".
-				"<em class=\"unknown\">{$lang['filecheck_doubt']}: $doubt</em>  &nbsp; ".
-				$lang['filecheck_last_homecheck'].': '.dgmdate(TIMESTAMP, 'u').' <a href="'.ADMINSCRIPT.'?action=checktools&operation=filecheck&step=3">['.$lang['filecheck_view_list'].']</a>';
+			echo "<div><em class=\"edited\">{$lang['filecheck_modify']}<span class=\"bignum\">$modifiedfiles</span></em>".
+				"<em class=\"del\">{$lang['filecheck_delete']}<span class=\"bignum\">$deletedfiles</span></em>".
+				"<em class=\"unknown\">{$lang['filecheck_unknown']}<span class=\"bignum\">$unknownfiles</span></em>".
+				"<em class=\"unknown\">{$lang['filecheck_doubt']}<span class=\"bignum\">$doubt</span></em></div><p>".
+				$lang['filecheck_last_homecheck'].': '.dgmdate(TIMESTAMP, 'u').' <a href="'.ADMINSCRIPT.'?action=checktools&operation=filecheck&step=3">['.$lang['filecheck_view_list'].']</a></p>';
 			ajaxshowfooter();
 		}
 
@@ -176,16 +175,18 @@ if($operation == 'filecheck') {
 
 		$result .= '<script>function showresult(o) {'.$resultjs.'$(\'status_\' + o).style.display=\'\';}</script>';
 		showtips('filecheck_tips');
-		showtableheader('filecheck_completed');
-		showtablerow('', 'colspan="4"', "<div class=\"margintop marginbot\">".
+		showboxheader('filecheck_completed');
+		echo "<div>".
 			"<em class=\"edited\">{$lang['filecheck_modify']}: $modifiedfiles</em> ".($modifiedfiles > 0 ? "<a href=\"###\" onclick=\"showresult('modify')\">[{$lang['view']}]</a> " : '').
 			" &nbsp; <em class=\"del\">{$lang['filecheck_delete']}: $deletedfiles</em> ".($deletedfiles > 0 ? "<a href=\"###\" onclick=\"showresult('del')\">[{$lang['view']}]</a> " : '').
 			" &nbsp; <em class=\"unknown\">{$lang['filecheck_unknown']}: $unknownfiles</em> ".($unknownfiles > 0 ? "<a href=\"###\" onclick=\"showresult('add')\">[{$lang['view']}]</a> " : '').
 			($doubt > 0 ? "&nbsp;&nbsp;&nbsp;&nbsp;<em class=\"unknown\">{$lang['filecheck_doubt']}: $doubt</em> <a href=\"###\" onclick=\"showresult('doubt')\">[{$lang['view']}]</a> " : '').
-			"</div>");
+			"</div></div><div class=\"boxbody\">";
+		showtableheader();
 		showsubtitle(array('filename', '', 'lastmodified', ''));
 		echo $result;
 		showtablefooter();
+		showboxfooter();
 
 	}
 
@@ -293,12 +294,12 @@ if($operation == 'filecheck') {
 
 	$step = max(1, intval($_GET['step']));
 	shownav('tools', 'nav_replacekey');
-	showtips('replacekey_tips');
 	showsubmenusteps('nav_replacekey', array(
 		array('nav_replacekey_confirm', $step == 1),
 		array('nav_replacekey_verify', $step == 2),
 		array('nav_replacekey_completed', $step == 3)
 	));
+	showtips('replacekey_tips');
 	if($step == 1) {
 		cpmsg(cplang('replacekey_tips_step1'), 'action=checktools&operation=replacekey&step=2', 'form', '', FALSE);
 	} elseif($step == 2) {
@@ -408,7 +409,8 @@ if($operation == 'filecheck') {
 						'auth' => $_GET['newsmtp']['auth'][$id] ? 1 : 0,
 						'from' => $_GET['newsmtp']['from'][$id],
 						'auth_username' => $_GET['newsmtp']['auth_username'][$id],
-						'auth_password' => $_GET['newsmtp']['auth_password'][$id]
+						'auth_password' => $_GET['newsmtp']['auth_password'][$id],
+						'precedence' => $_GET['newsmtp']['precedence'][$id]
 					);
 			}
 		}

@@ -1,6 +1,4 @@
 /* Modified by Valery Votintsev */
-jQuery.noConflict();
-	
 var getBasePath = function() {
 	var els = document.getElementsByTagName('script'),
 	src;

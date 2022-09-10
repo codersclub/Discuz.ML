@@ -45,6 +45,7 @@ if(!$operation) {
 		showtips('smilies_tips_smileytypes');
 		/*search*/
 		showformheader('smilies');
+		showboxheader();
 		showtableheader();
 		showsubtitle(array('', 'display_order', 'enable', 'smilies_type', 'dir', 'smilies_nums', ''));
 
@@ -106,6 +107,7 @@ if(!$operation) {
 
 		showsubmit('smiliessubmit', 'submit', 'del');
 		showtablefooter();
+		showboxfooter();
 		showformfooter();
 
 	} else {
@@ -187,7 +189,7 @@ if(!$operation) {
 				$smilies .= showtablerow('', array('class="td25"', 'class="td28 td24"', 'class="td25"', 'class="td23"', 'class="td23"', 'class="td24"'), array(
 					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"{$smiley['id']}\">",
 					"<input type=\"text\" class=\"txt\" size=\"2\" name=\"displayorder[{$smiley['id']}]\" value=\"{$smiley['displayorder']}\">",
-					"<input class=\"checkbox\" type=\"checkbox\" name=\"fast[]\" ".(in_array($smiley['id'], $fastsmiley[$id]) ? 'checked="checked"' : '')." value=\"{$smiley['id']}\">",
+					"<input class=\"checkbox\" type=\"checkbox\" name=\"fast[]\" ".(is_array($fastsmiley[$id]) && in_array($smiley['id'], $fastsmiley[$id]) ? 'checked="checked"' : '')." value=\"{$smiley['id']}\">",
 					"<img src=\"$smurl/{$smiley['url']}\" border=\"0\" onload=\"if(this.height>30) {this.resized=true; this.height=30;}\" onmouseover=\"if(this.resized) this.style.cursor='pointer';\" onclick=\"if(!this.resized) {return false;} else {window.open(this.src);}\">",
 					$smiley['id'],
 					"<input type=\"text\" class=\"txt\" size=\"25\" name=\"code[{$smiley['id']}]\" value=\"".dhtmlspecialchars($smiley['code'])."\" id=\"code_$smileynum\" smileyid=\"{$smiley['id']}\" />",
@@ -261,7 +263,7 @@ EOT;
 			$unsfast = array();
 			if(is_array($_GET['displayorder'])) {
 				foreach($_GET['displayorder'] as $key => $val) {
-					if(!in_array($key, $_GET['fast'])) {
+					if(!empty($_GET['fast']) && is_array($_GET['fast']) && !in_array($key, $_GET['fast'])) {
 						$unsfast[] = $key;
 					}
 					$_GET['displayorder'][$key] = intval($_GET['displayorder'][$key]);

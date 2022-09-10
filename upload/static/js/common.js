@@ -1764,49 +1764,7 @@ function searchFocus(obj) {
 }
 
 function sendsecmobseccode(svctype, secmobicc, secmobile) {
-	url = "misc.php?mod=secmobseccode&action=send&svctype=" + svctype + "&secmobicc=" + secmobicc + "&secmobile=" + secmobile;
-	var x = new Ajax('JSON');
-	x.getJSON(url, function(s) {
-		if(s.result > 0) {
-/*vot*/			showDialog(lng['sms_sent_ok'], 'notice');
-		} else {
-			// If the sending time is shorter than the setting, return -1, if the number of sending times for a single number fails, return -2, if the risk control rule for thousands of numbers fails, return -3, if the global risk control rule fails, return -4, if no gateway is available, return -5, the gateway interface file does not exist return -6,
-			// If the gateway interface class does not exist, return -7, if the SMS function has been disabled, return -8, if the SMS gateway private exception returns -9
-			switch(s.result) {
-				case -1:
-/*vot*/					message = lng['sms_often'];
-					break;
-				case -2:
-/*vot*/					message = lng['sms_many_total'];
-					break;
-				case -3:
-/*vot*/					message = lng['sms_many_in_period'];
-					break;
-				case -4:
-/*vot*/					message = lng['sms_many_in_site'];
-					break;
-				case -5:
-/*vot*/					message = lng['sms_gate_not_available'];
-					break;
-				case -6:
-/*vot*/					message = lng['sms_gate_not_found'];
-					break;
-				case -7:
-/*vot*/					message = lng['sms_class_not_found'];
-					break;
-				case -8:
-/*vot*/					message = lng['sms_disabled'];
-					break;
-				case -9:
-/*vot*/					message = lng['sms_gate_invalid'];
-					break;
-				default:
-/*vot*/					message = lng['sms_exception'];
-					break;
-			}
-/*vot*/			showDialog(lng['sms_failed'] + s.result + ', ' + message, 'notice');
-		}
-	});
+	showWindow('sendsecmobseccode', 'misc.php?mod=secmobseccode&action=send&svctype=' + svctype + '&secmobicc=' + secmobicc + '&secmobile=' + secmobile);
 }
 
 function extstyle(css) {
@@ -1882,15 +1840,15 @@ function navShow(id) {
 
 function strLenCalc(obj, checklen, maxlen) {
 	var v = obj.value, charlen = 0, maxlen = !maxlen ? 200 : maxlen, curlen = maxlen, len = strlen(v);
-//vot	for(var i = 0; i < v.length; i++) {
-//vot		if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
-//vot			curlen -= charset == 'utf-8' ? 2 : 1;
-//vot		}
-//vot	}
+	for(var i = 0; i < v.length; i++) {
+		if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
+			curlen -= charset == 'utf-8' ? 2 : 1;
+		}
+	}
 	if(curlen >= len) {
 		$(checklen).innerHTML = curlen - len;
 	} else {
-/*vot*/		obj.value = obj.value.substr(v, maxlen);
+		obj.value = mb_cutstr(v, maxlen, 0);
 	}
 }
 

@@ -267,8 +267,7 @@ if($_GET['step'] == 'start') {
 		if($maths[3] == 'MEMORY' || $maths[3] == 'HEAP') {
 			$type = helper_dbtool::dbversion() > '4.1' ? " ENGINE=MEMORY".(empty($config['dbcharset'])?'':" DEFAULT CHARSET=$config[dbcharset]" ): " TYPE=HEAP";
 		} else {
-			$nowtype = $maths[3] == 'INNODB' && strtoupper($_G['config']['db']['common']['engine']) == 'MYISAM' ? 'MYISAM' : 'INNODB';
-			$type = helper_dbtool::dbversion() > '4.1' ? " ENGINE=".$nowtype.(empty($config['dbcharset'])?'':" DEFAULT CHARSET=$config[dbcharset]" ): " TYPE=MYISAM";
+			$type = helper_dbtool::dbversion() > '4.1' ? " ENGINE=INNODB".(empty($config['dbcharset'])?'':" DEFAULT CHARSET=$config[dbcharset]" ): " TYPE=MYISAM";
 		}
 		$usql = $maths[1].$type;
 

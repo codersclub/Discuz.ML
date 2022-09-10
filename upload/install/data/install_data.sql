@@ -6,6 +6,8 @@ INSERT INTO pre_common_admingroup SET `admingid`='17',`alloweditpost`='1',`allow
 INSERT INTO pre_common_admingroup SET `admingid`='18',`alloweditpost`='0',`alloweditpoll`='0',`allowstickthread`='0',`allowmodpost`='0',`allowdelpost`='0',`allowmassprune`='0',`allowrefund`='0',`allowcensorword`='0',`allowviewip`='1',`allowbanip`='0',`allowedituser`='0',`allowmoduser`='0',`allowbanuser`='0',`allowbanvisituser`='0',`allowpostannounce`='0',`allowviewlog`='0',`allowbanpost`='0',`supe_allowpushthread`='1',`allowhighlightthread`='0',`allowlivethread`='0',`allowdigestthread`='0',`allowrecommendthread`='0',`allowbumpthread`='0',`allowclosethread`='0',`allowmovethread`='0',`allowedittypethread`='0',`allowstampthread`='0',`allowcopythread`='0',`allowmergethread`='0',`allowsplitthread`='0',`allowrepairthread`='0',`allowwarnpost`='0',`allowviewreport`='0',`alloweditforum`='0',`allowremovereward`='0',`allowedittrade`='0',`alloweditactivity`='0',`allowstickreply`='0',`allowmanagearticle`='0',`allowaddtopic`='0',`allowmanagetopic`='0',`allowdiy`='0',`allowclearrecycle`='0',`allowmanagetag`='0',`managefeed`='0',`managedoing`='0',`manageshare`='0',`manageblog`='0',`managealbum`='0',`managecomment`='0',`managemagiclog`='0',`managereport`='0',`managehotuser`='0',`managedefaultuser`='0',`managemagic`='0',`manageclick`='0',`allowstamplist`='0',`allowmanagecollection`='0',`allowmakehtml`='0';
 INSERT INTO pre_common_admingroup SET `admingid`='19',`alloweditpost`='0',`alloweditpoll`='0',`allowstickthread`='0',`allowmodpost`='1',`allowdelpost`='0',`allowmassprune`='0',`allowrefund`='0',`allowcensorword`='0',`allowviewip`='1',`allowbanip`='1',`allowedituser`='0',`allowmoduser`='1',`allowbanuser`='1',`allowbanvisituser`='0',`allowpostannounce`='0',`allowviewlog`='0',`allowbanpost`='0',`supe_allowpushthread`='0',`allowhighlightthread`='0',`allowlivethread`='0',`allowdigestthread`='0',`allowrecommendthread`='0',`allowbumpthread`='0',`allowclosethread`='0',`allowmovethread`='0',`allowedittypethread`='0',`allowstampthread`='0',`allowcopythread`='0',`allowmergethread`='0',`allowsplitthread`='0',`allowrepairthread`='0',`allowwarnpost`='0',`allowviewreport`='0',`alloweditforum`='0',`allowremovereward`='0',`allowedittrade`='0',`alloweditactivity`='0',`allowstickreply`='0',`allowmanagearticle`='0',`allowaddtopic`='0',`allowmanagetopic`='0',`allowdiy`='0',`allowclearrecycle`='0',`allowmanagetag`='0',`managefeed`='0',`managedoing`='0',`manageshare`='0',`manageblog`='0',`managealbum`='0',`managecomment`='0',`managemagiclog`='0',`managereport`='0',`managehotuser`='0',`managedefaultuser`='0',`managemagic`='0',`manageclick`='0',`allowstamplist`='0',`allowmanagecollection`='0',`allowmakehtml`='0';
 
+INSERT INTO pre_common_adminnote VALUES ('1','Discuz','0','0','0','0','Thank you for installing and using Discuz! X, this is the management center of Discuz!, where you can adjust various settings of the website.');
+
 INSERT INTO pre_common_credit_rule VALUES ('1','Publish post','post','4','0','0','0','0','2','0','0','0','0','0','0','');
 INSERT INTO pre_common_credit_rule VALUES ('2','Reply post','reply','4','0','0','0','0','1','0','0','0','0','0','0','');
 INSERT INTO pre_common_credit_rule VALUES ('3','Add Digest','digest','4','0','0','0','0','5','0','0','0','0','0','0','');
@@ -174,6 +176,14 @@ INSERT INTO pre_common_nav VALUES ('', '0', 'Top-List', '', 'misc.php?mod=rankli
 
 INSERT INTO pre_common_nav VALUES ('', '0', 'Set as Homepage', '', '#', 'sethomepage', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 4, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Add to Favorites', '', '#', 'setfavorite', 0, 0, 1, 2, 0, 0, 0, 0, '', '', '', 4, '');
+
+INSERT INTO pre_common_nav VALUES ('', '0', '搜索', '', 'search.php?mod=forum', 'search', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', '公告', '', 'forum.php?mod=announcement', 'announcement', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', '导读', '', 'forum.php?mod=guide&view=newthread', 'guide', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', '资讯', '', 'portal.php?mod=list&catid=1', 'portal', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', '日志', '', 'home.php?mod=space&do=blog', 'blog', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', '分享', '', 'home.php?mod=space&do=share', 'share', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', '排行榜', '', 'misc.php?mod=ranklist', 'ranklist', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
 
 -- [/update_nav]
 
