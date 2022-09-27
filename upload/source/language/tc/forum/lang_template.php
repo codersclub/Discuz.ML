@@ -162,6 +162,7 @@ $lang = array (
   'collection_cloud_search' => '淘專輯還沒有內容，您可以點擊 <a href="forum.php?mod=collection&action=view&ctid={$ctid}&op=related" class="xi2">搜索相關主題</a> 找到相關內容。',
   'collection_creator' => '專輯創建人：',
   'collection_delete_confirm' => '確定要 <strong>刪除這個淘專輯</strong> 嗎?',
+  'collection_delete_worker' => '確定要 <strong>刪除這名共同維護者</strong> 嗎?',
   'collection_exit_team' => '退出維護',
   'collection_exit_team_confirm' => '真的要退出維護淘專輯?',
   'collection_invite_team' => '邀請維護',
