@@ -132,7 +132,12 @@ function validate(theform) {
 					setTimeout(function () { validate(theform); }, 100);
 					chk = 0;
 				} else if(chkv.indexOf('check_right') == -1) {
-/*vot*/					showError(lng['q&a_invalid']);
+					if($('secqaaverify_' + theform.secqaahash.value) == document.activeElement) {
+						$('postsubmit').focus();
+						setTimeout(function () { validate(theform); }, 100);
+					} else {
+/*vot*/						showError(lng['q&a_invalid']);
+					}
 					chk = 0;
 				}
 			}
@@ -142,7 +147,12 @@ function validate(theform) {
 					setTimeout(function () { validate(theform); }, 100);
 					chk = 0;
 				} else if(chkv.indexOf('check_right') === -1) {
-/*vot*/					showError(lng['code_invalid']);
+					if($('seccodeverify_' + theform.seccodehash.value) == document.activeElement) {
+						$('postsubmit').focus();
+						setTimeout(function () { validate(theform); }, 100);
+					} else {
+/*vot*/						showError(lng['code_invalid']);
+					}
 					chk = 0;
 				}
 			}
