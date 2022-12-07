@@ -413,17 +413,31 @@ function block_template($bid) {
 							require_once libfile('class/image');
 							$image = new image();
 							$thumbpath = block_thumbpath($block, $blockitem);
-							if($_G['setting']['ftp']['on']) {
+							if($_G['setting']['ftp']['on'] && !empty($_G['setting']['ftp']['host'])) {
 								$ftp = & discuz_ftp::instance();
 								$ftp->connect();
-								if($ftp->connectid && $ftp->ftp_size($thumbpath) > 0 || ($return = $image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2) && $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath))) {
-/*vot*/									$picflag = 1; //common_block_pic Table picture flag identity (0=local, 1=remote)
+								if($ftp->connectid && $ftp->ftp_size($thumbpath) > 0) {
+									$picflag = 1; //common_block_pic表中的picflag标识（0本地，1远程）
 									$_G['block_makethumb'] = true;
 									@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
 									C::t('common_block_item')->update($itemid, array('picflag' => 2));
 									$replacevalue = (preg_match('/^https?:\/\//is', $thumbpath) ? '' : $_G['setting']['ftp']['attachurl']).$thumbpath;
+								} else {
+									$image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2);
+									if(file_exists($_G['setting']['attachdir'].'./'.$thumbpath)) {
+										if(ftpperm(fileext($thumbpath), filesize($_G['setting']['attachdir'].'./'.$thumbpath)) && $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath)) {
+											$picflag = 1; //common_block_pic表中的picflag标识（0本地，1远程）
+											$_G['block_makethumb'] = true;
+											@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
+											C::t('common_block_item')->update($itemid, array('picflag' => 2));
+											$replacevalue = (preg_match('/^https?:\/\//is', $thumbpath) ? '' : $_G['setting']['ftp']['attachurl']).$thumbpath;
+										} else {
+											$picflag = 0; //common_block_pic表中的picflag标识（0本地，1远程）
+											$_G['block_makethumb'] = true;
+										}
+									}
 								}
-							} elseif(file_exists($_G['setting']['attachdir'].$thumbpath) || ($return = $image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2))) {
+							} elseif(file_exists($_G['setting']['attachdir'].'./'.$thumbpath) || ($return = $image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2))) {
 /*vot*/								$picflag = 0; //common_block_pic Table picture flag identity (0=local, 1=remote)
 								$_G['block_makethumb'] = true;
 							}
@@ -679,7 +693,7 @@ function block_updateitem($bid, $items=array()) {
 			$curitem['makethumb'] = 0;
 /*vot*/			if($block['picwidth'] && $block['picheight'] && $curitem['picflag']) { //picflag=0 for Url address
 				$thumbpath = empty($curitem['thumbpath']) ? block_thumbpath($block, $curitem) : $curitem['thumbpath'];
-				if($_G['setting']['ftp']['on']) {
+				if($_G['setting']['ftp']['on'] && !empty($_G['setting']['ftp']['host'])) {
 					if(empty($ftp) || empty($ftp->connectid)) {
 						$ftp = & discuz_ftp::instance();
 						$ftp->connect();
