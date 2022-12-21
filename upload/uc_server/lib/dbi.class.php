@@ -25,7 +25,7 @@ class ucserver_db {
 	var $goneaway = 5;
 
 	function connect($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset = '', $pconnect = 0, $tablepre='', $time = 0) {
-		if (intval($pconnect) === 1) $dbhost = 'p:' . $dbhost; // 前面加p:，表示persistent connection
+/*vot*/		if (intval($pconnect) === 1) $dbhost = 'p:' . $dbhost; // Add p: in front to indicate persistent connection
 		$this->dbhost = $dbhost;
 		$this->dbuser = $dbuser;
 		$this->dbpw = $dbpw;
@@ -125,7 +125,7 @@ class ucserver_db {
 		}
 		$this->querynum++;
 		$this->histories[] = $parse[0];
-		// SELECT 指令返回数组供其他方法使用, 其他情况返回 SQL 执行结果
+		// The SELECT command returns an array for use by other methods, and in other cases returns the SQL execution result
 		return strncasecmp("SELECT", $sql, 6) ? $query : $stmt->get_result();
 	}
 
@@ -191,14 +191,14 @@ class ucserver_db {
 	function parse_query($sql, $key = array(), $value = array()) {
 		$list = '';
 		$array = array();
-		if(strpos($sql, '?')) {// 如果SQL存在问号则使用传统匹配方式，KEY顺序与?的顺序保持一致
+/*vot*/		if(strpos($sql, '?')) {// If there is a question mark in the SQL, the traditional matching method is used, and the order of KEY is consistent with the order of ?
 			foreach ($key as $k => $v) {
 				if(in_array($v, array('i', 'd', 's', 'b'))) {
 					$list .= $v;
 					$array = array_merge($array, (array)$value[$k]);
 				}
 			}
-		} else {// 不存在问号则使用模拟PDO模式，允许在SQL内指定变量名
+/*vot*/		} else {// If there is no question mark, the simulated PDO mode is used, allowing variable names to be specified in SQL
 			preg_match_all("/:([A-Za-z0-9]*?)( |$)/", $sql, $matches);
 			foreach ($matches[1] as $match) {
 				if(in_array($key[$match], array('i', 'd', 's', 'b'))) {

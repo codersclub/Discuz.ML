@@ -437,7 +437,7 @@ function appendAttachDel(ids) {
 			$('delattachop').value = 1;
 		}
 	} else {
-		showError('抱歉，删除操作失败，请刷新页面后重试。');
+/*vot*/		showError(lng['delete_post_failed']);
 	}
 }
 

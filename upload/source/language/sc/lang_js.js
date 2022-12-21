@@ -410,6 +410,8 @@ var lng = {
 	'no_remote_attach'	: '抱歉，暂无远程附件',
 	'delete_post_sure'	: '确定要删除该帖子吗？',
 	'feed_add_confirm'	: '由于您设置了阅读权限或出售帖，您确认还转播给您的听众看吗？',//'Because of you have set read permission or sell the post, do you confirm also the broadcast to your listeners to see?',
+	'delete_post_failed'	: '抱歉，删除操作失败，请刷新页面后重试。',//'Sorry, the delete operation failed, please refresh the page and try again.',
+
 //--------------------------------
 //static/js/forum_viewthread.js
 

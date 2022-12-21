@@ -226,7 +226,7 @@ $lang = array(
 	'magic_space_gift' => '在自已空间首页埋下红包',
 	'magic_space_re_gift' => '回收还没有用完的红包',
 	'magic_space_get_gift' => '访问空间领取的红包',
-	'credit_transfer' => '进行积分转帐',
+	'credit_transfer' => '进行积分转账',
 	'credit_transfer_tips' => '的转账收入',
 	'credit_exchange_tips_1' => '执行积分对兑换操作,将 ',
 	'credit_exchange_to' => '兑换成',
@@ -266,6 +266,7 @@ $lang = array(
 	'profile_verify_modify_error' => '{verify}已经认证通过不允许修改',
 	'profile_verify_verifying' => '您的{verify}信息已提交，请耐心等待核查。',
 
+	'district_level_0' => '-国家或地区-',
 	'district_level_1' => '-省份-',
 	'district_level_2' => '-城市-',
 	'district_level_3' => '-州县-',

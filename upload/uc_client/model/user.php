@@ -190,7 +190,7 @@ class usermodel {
 
 		$sqladd = $newpw ? "password='".$this->generate_password($newpw)."', salt=''" : '';
 		$sqladd .= $email ? ($sqladd ? ',' : '')." email='$email'" : '';
-		//空字符串代表没传递这个参数，传递0时，代表清空这个数据
+		//An empty string means that the parameter is not passed, and when 0 is passed, it means that the data is cleared
 		$sqladd .= $secmobicc !== '' ? ($sqladd ? ',' : '').(!empty($secmobicc) ? " secmobicc='$secmobicc'" : " secmobicc=''") : '';
 		$sqladd .= $secmobile !== '' ? ($sqladd ? ',' : '').(!empty($secmobile) ? " secmobile='$secmobile'" : " secmobile=''") : '';
 		if($questionid !== '') {
