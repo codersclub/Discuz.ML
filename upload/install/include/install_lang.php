@@ -19,8 +19,8 @@ $lang = array(
 /*vot*/	'EN_UTF8' => 'ENGLISH UTF-8',
 
 	'title_install' => SOFT_NAME.' 安装向导',
-	'agreement_yes' => '我同意',
-	'agreement_no' => '我不同意',
+	'agreement_yes' => '同意',
+	'agreement_no' => '取消',
 	'notset' => '不限制',
 	'enable' => '开启',
 	'disable' => '关闭',
@@ -145,8 +145,9 @@ $lang = array(
 	'admininfo_password_invalid' => '管理员密码为空，请填写',
 	'admininfo_password2_invalid' => '两次密码不一致，请检查',
 
-	'install_dzfull' => '<div class="selradio"><input type="radio" id="install_ucenter_yes"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_yes">全新安装 Discuz! X (含 UCenter Server)</label></div>',
-	'install_dzonly' => '<div class="selradio"><input type="radio" id="install_ucenter_no"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /><label for="install_ucenter_no">仅安装 Discuz! X (手工指定已经安装的 UCenter Server)</label></div>',
+	'install_dzstandalone' => '<div class="selradio"><input type="radio" id="install_ucenter_standalone" name="install_ucenter" value="standalone" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_standalone">全新安装 Discuz! X (独立模式安装)</label></div>',
+	'install_dzfull' => '<div class="selradio"><input type="radio" id="install_ucenter_yes"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_yes">全新安装 Discuz! X 与 UCenter Server</label></div>',
+	'install_dzonly' => '<div class="selradio"><input type="radio" id="install_ucenter_no"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /><label for="install_ucenter_no">仅安装 Discuz! X (连接到已经安装的 UCenter Server)</label></div>',
 
 	'username' => '管理员账号',
 	'email' => '管理员 Email',
@@ -268,7 +269,7 @@ $lang = array(
    <li>您可以在完全遵守本许可协议的基础上，将本软件应用于非商业用途或商业用途使用（局限于本协议所适配许可的情况下），而不必支付软件版权许可费用。</li>
    <li>您可以在协议规定的约束和限制范围内修改腾讯云产品源代码（如果被提供的话）或界面风格以适应您的网站要求。</li>
    <li>您拥有使用本软件构建的网站中全部会员资料、文章及相关信息的所有权，并独立承担与使用本软件构建的网站内容的审核、注意义务，确保其不侵犯任何人的合法权益，独立承担因使用腾讯云软件和服务带来的全部责任，若造成腾讯云公司或用户损失的，您应予以全部赔偿。</li>
-   <li>若您需将腾讯云软件或服务用户商业用途，必须遵守中国人民共和国相关法律。若需提供技术支持方式或技术支持内容，请向官方应用中心（https://addon.dismall.com/service.html）提供技术支持服务。</li>
+   <li>若您需将腾讯云软件或服务用户商业用途，必须遵守中国人民共和国相关法律。若需提供技术支持方式或技术支持内容，请向官方（https://www.discuz.net/）提供技术支持服务。</li>
    <li>您可以从腾讯云提供的应用中心服务中下载适合您网站的应用程序，但应向应用程序开发者/所有者支付相应的费用。</li>
 </ol>
 

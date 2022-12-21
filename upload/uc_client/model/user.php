@@ -142,6 +142,8 @@ class usermodel {
 
 	function check_secmobileexists($secmobicc, $secmobile, $username = '') {
 		$sqladd = $username !== '' ? "AND username<>'$username'" : '';
+		$secmobicc == 0 && $secmobicc = '';
+		$secmobile == 0 && $secmobile = '';
 		$secmobile = $this->db->result_first("SELECT secmobile FROM  ".UC_DBTABLEPRE."members WHERE secmobicc='$secmobicc' AND secmobile='$secmobile' $sqladd");
 		return $secmobile;
 	}
@@ -188,8 +190,9 @@ class usermodel {
 
 		$sqladd = $newpw ? "password='".$this->generate_password($newpw)."', salt=''" : '';
 		$sqladd .= $email ? ($sqladd ? ',' : '')." email='$email'" : '';
-		$sqladd .= !empty($secmobicc) ? ($sqladd ? ',' : '')." secmobicc='$secmobicc'" : '';
-		$sqladd .= !empty($secmobile) ? ($sqladd ? ',' : '')." secmobile='$secmobile'" : '';
+		//空字符串代表没传递这个参数，传递0时，代表清空这个数据
+		$sqladd .= $secmobicc !== '' ? ($sqladd ? ',' : '').(!empty($secmobicc) ? " secmobicc='$secmobicc'" : " secmobicc=''") : '';
+		$sqladd .= $secmobile !== '' ? ($sqladd ? ',' : '').(!empty($secmobile) ? " secmobile='$secmobile'" : " secmobile=''") : '';
 		if($questionid !== '') {
 			if($questionid > 0) {
 				$sqladd .= ($sqladd ? ',' : '')." secques='".$this->quescrypt($questionid, $answer)."'";
@@ -226,6 +229,21 @@ class usermodel {
 			return $this->db->affected_rows();
 		} else {
 			return 0;
+		}
+	}
+
+	function delete_useravatar($uidsarr) {
+		if(!defined('UC_DELAVTDIR')) {
+			define('UC_DELAVTDIR', UC_DATADIR.'./avatar/');
+		}
+		$uidsarr = (array)$uidsarr;
+		foreach((array)$uidsarr as $uid) {
+			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'big', 'real')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'middle', 'real')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'small', 'real')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'big')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'middle')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'small')) && unlink($avatar_file);
 		}
 	}
 

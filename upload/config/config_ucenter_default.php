@@ -10,7 +10,7 @@
 
 // ============================================================================
 define('UC_CONNECT', 'mysql');			// UCenter connection method:
-define('UC_STANDALONE', 1);
+define('UC_STANDALONE', 1);				// 独立模式开关，0=关闭, 1=打开，开启后将不再依赖UCenter Server。注意：开启时必须将 UC_CONNECT 改为 mysql ！
 // Database Related (mysql connection)
 define('UC_DBHOST', 'localhost');		// UCenter Database Host
 define('UC_DBUSER', 'root');			// UCenter Database user name
@@ -20,8 +20,8 @@ define('UC_DBCHARSET', 'utf8');			// UCenter Database character set, 'utf8mb4' f
 define('UC_DBTABLEPRE', '`ucenter`.uc_');	// UCenter Database table prefix
 define('UC_DBCONNECT', '0');			// UCenter Database persistent connection 0 = off, 1 = On
 // Avatar related
-define('UC_AVTURL', '');
-define('UC_AVTPATH', '');
+define('UC_AVTURL', '');		// 头像服务的基础路径，为空则为默认值，可以设置为独立域名/路径（结尾不能有/），配合CDN使用更佳。如涉及 avatar.php 需在其中再配置一次。
+define('UC_AVTPATH', '');		// 头像存储路径，为空则为默认值，仅限独立模式使用，建议保持默认。
 
 // Communication related
 define('UC_KEY', 'yeN3g9EbNfiaYfodV63dI1j8Fbk5HaL7W4yaW4y7u2j4Mf45mfg2v899g451k576');	// UCenter communication key, consistent with the UCenter

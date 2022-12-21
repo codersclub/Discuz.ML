@@ -133,7 +133,7 @@ include template('forum/guide');
 
 function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 	global $_G;
-	$setting_guide = unserialize($_G['setting']['guide']);
+	$setting_guide = dunserialize($_G['setting']['guide']);
 	if(!in_array($view, array('hot', 'digest', 'new', 'newthread', 'sofa'))) {
 		return array();
 	}
@@ -339,7 +339,7 @@ function get_my_threads($viewtype, $fid = 0, $filter = '', $searchkey = '', $sta
 		$listcount = count($posts);
 		foreach($posts as $pid => $post) {
 			$tids[$post['tid']][] = $pid;
-			$post['message'] = !getstatus($post['status'], 2) || $post['authorid'] == $_G['uid'] ? messagecutstr($post['message'], 100) : '';
+			$post['message'] = $post['status'] & 1 && $_G['adminid'] != 1 ? '' : (!getstatus($post['status'], 2) || $post['authorid'] == $_G['uid'] ? messagecutstr($post['message'], 100) : '');
 			$posts[$pid] = $post;
 		}
 		if(!empty($tids)) {

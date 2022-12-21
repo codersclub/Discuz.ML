@@ -387,6 +387,9 @@ function show_next_step($step, $error_code) {
 		echo $GLOBALS['hidden'];
 	}
 	echo "<input type=\"hidden\" name=\"uchidden\" value=\"$uchidden\" />";
+	if($uchidden) {
+		echo "<input type=\"hidden\" name=\"install_ucenter\" value=\"no\" />";
+	}
 	if($error_code == 0) {
 		$nextstep = "<input type=\"button\" class=\"btn oldbtn\" onclick=\"history.back();\" value=\"".lang('old_step')."\"><input type=\"submit\" class=\"btn\" value=\"".lang('new_step')."\">\n";
 	} else {
@@ -409,12 +412,14 @@ function show_form(&$form_items, $error_msg) {
 	show_setting('start');
 	show_setting('hidden', 'step', $step);
 /*vot*/	show_setting('hidden', 'language', $language);
-	show_setting('hidden', 'install_ucenter', getgpc('install_ucenter'));
 	if($step == 2) {
 		echo '<div class="box">';
+		show_tips('install_dzstandalone');
 		show_tips('install_dzfull');
 		show_tips('install_dzonly');
 		echo '</div>';
+	} else {
+		show_setting('hidden', 'install_ucenter', getgpc('install_ucenter'));
 	}
 	$is_first = 1;
 	if(!empty($uchidden)) {
@@ -546,12 +551,12 @@ function show_license() {
 <div class="main">
 	<div class="licenseblock">$license</div>
 	<div class="btnbox">
-		<form method="get" autocomplete="off" action="index.php">
+		<form method="get" autocomplete="off" action="index.php" class="inputbox">
 <!--vot-->	<input type='hidden' name='language' value='$language' />
 		<input type="hidden" name="step" value="$next">
 		<input type="hidden" name="uchidden" value="$uchidden">
-		<input type="submit" class="btn oldbtn" name="submit" value="{$lang_agreement_yes}" onclick="return checker();">
-		<input type="button" class="btn oldbtn" name="exit" value="{$lang_agreement_no}"  onclick="javascript: window.close(); return false;">
+		<input type="button" class="btn oldbtn" name="exit" value="{$lang_agreement_no}"  onclick="window.close(); return false;">
+		<input type="submit" class="btn" name="submit" value="{$lang_agreement_yes}" onclick="return checker();">
 		</form>
 	</div>
 	<script type="text/javascript">
@@ -909,7 +914,8 @@ function show_db_install() {
 	if(VIEW_OFF) return;
 	global $dbhost, $dbuser, $dbpw, $dbname, $tablepre, $username, $password, $email, $uid;
 	$dzucfull = DZUCFULL;
-	$allinfo = base64_encode(serialize(compact('dbhost', 'dbuser', 'dbpw', 'dbname', 'tablepre', 'username', 'password', 'email', 'dzucfull', 'uid')));
+	$dzucstl = DZUCSTL ? 1 : 0;
+	$allinfo = base64_encode(serialize(compact('dbhost', 'dbuser', 'dbpw', 'dbname', 'tablepre', 'username', 'password', 'email', 'dzucfull', 'dzucstl', 'uid')));
 	init_install_log_file();
 ?>
 		<script type="text/javascript">
@@ -995,7 +1001,16 @@ function show_db_install() {
 
 			function request_do_db_init() {
 				// Initiate a database initialization request
-				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_init', 'allinfo' => $allinfo)) ?>', function() {
+				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_init', 'allinfo' => $allinfo)) ?>', function(data) {
+					if(data.indexOf('Discuz! Database Error') !== -1 || data.indexOf('Discuz! System Error') !== -1 || data.indexOf('Fatal error') !== -1) {
+						var p = document.createElement('p');
+						p.innerText = '<?= lang('failed') ?> ' + data;
+						p.className = 'red';
+						append_notice(p.outerHTML);
+						append_notice('<p class="red"><?= lang('error_quit_msg') ?></p>');
+						add_instfail();
+						return;
+					}
 					// Database initialization request complete pull up initialization
 					request_do_initsys();
 				});
@@ -1063,12 +1078,15 @@ function show_db_install() {
 					append_notice("<p><?= lang('initsys') ?> ... </p>");
 					refresh_lastmsg();
 					ajax.get('../misc.php?mod=initsys', function(callback, status) {
-						if(status >= 400 || callback.indexOf('Access Denied') !== -1 || callback.indexOf('Discuz! Database Error') !== -1 || callback.indexOf('Discuz! System Error') !== -1) {
+						if(status >= 400 || callback.indexOf('Access Denied') !== -1 || callback.indexOf('Discuz! Database Error') !== -1 || callback.indexOf('Discuz! System Error') !== -1 || callback.indexOf('Fatal error') !== -1) {
+							var p = document.createElement('p');
+							p.className = 'red';
 							if(status >= 400) {
-								append_notice('<p class="red">HTTP '+status+' <?= lang('failed') ?></p>');
+								p.innerText = 'HTTP '+status+' <?= lang('failed') ?> ' + callback;
 							} else {
-								append_notice('<p class="red"><?= lang('failed') ?></p>');
+								p.innerText = '<?= lang('failed') ?> ' + callback;
 							}
+							append_notice(p.outerHTML);
 							append_notice('<p class="red"><?= lang('error_quit_msg') ?></p>');
 							document.getElementById('laststep').value = '<?= lang('error_quit_msg') ?>';
 							add_instfail();
@@ -1181,8 +1199,12 @@ function runucquery($sql, $tablepre) {
 
 			if(substr($query, 0, 12) == 'CREATE TABLE') {
 				$name = preg_replace("/CREATE TABLE ([a-z0-9_]+) .*/is", "\\1", $query);
-				$db->query(createtable($query, $db->version()));
-				showjsmessage(lang('create_table').' '.$name.' ... '.lang('succeed') . "\n");
+				if($db->query(createtable($query, $db->version()))) {
+					showjsmessage(lang('create_table').' '.$name.' ... '.lang('succeed') . "\n");
+				} else {
+					showjsmessage(lang('create_table').' '.$name.' ... '.lang('failed') . "\n");
+					return false;
+				}
 			} else {
 				$db->query($query);
 			}
@@ -1589,8 +1611,7 @@ function check_adminuser($username, $password, $email) {
 
 function save_uc_config($config, $file) {
 
-/*vot*/	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip, $uclang, $uclangdir) = $config;
-
+/*vot*/	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip, $dzucstl, $uclang, $uclangdir) = $config;
 	mysqli_report(MYSQLI_REPORT_OFF);
 
 	$link = new mysqli($ucdbhost, $ucdbuser, $ucdbpw, $ucdbname);
@@ -1603,7 +1624,7 @@ function save_uc_config($config, $file) {
 
 
 define('UC_CONNECT', '$uc_connnect');
-define('UC_STANDALONE', 0);
+define('UC_STANDALONE', $dzucstl);
 
 define('UC_DBHOST', '$ucdbhost');
 define('UC_DBUSER', '$ucdbuser');
@@ -1646,7 +1667,7 @@ function _generate_key($length = 32) {
 }
 
 function uc_write_config($config, $file, $password) {
-/*vot*/	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip, $uclang, $uclangdir) = $config;
+/*vot*/	list($appauthkey, $appid, $ucdbhost, $ucdbname, $ucdbuser, $ucdbpw, $ucdbcharset, $uctablepre, $uccharset, $ucapi, $ucip, $dzucstl, $uclang, $uclangdir) = $config;
 	$ucauthkey = _generate_key();
 	$ucsiteid = _generate_key();
 	$ucmykey = _generate_key();
@@ -1664,6 +1685,7 @@ function uc_write_config($config, $file, $password) {
 	$config .= "define('UC_CHARSET', '".$uccharset."');\r\n";
 	$config .= "define('UC_FOUNDERPW', '$pw');\r\n";
 	$config .= "define('UC_FOUNDERSALT', '$salt');\r\n";
+	$config .= $dzucstl ? '// ' : '';
 	$config .= "define('UC_KEY', '$ucauthkey');\r\n";
 	$config .= "define('UC_SITEID', '$ucsiteid');\r\n";
 	$config .= "define('UC_MYKEY', '$ucmykey');\r\n";
@@ -1678,7 +1700,7 @@ function uc_write_config($config, $file, $password) {
 }
 
 function install_uc_server() {
-	global $db, $dbhost, $dbuser, $dbpw, $dbname, $tablepre, $username, $password, $email;
+	global $db, $dbhost, $dbuser, $dbpw, $dbname, $tablepre, $username, $password, $email, $dzucstl;
 
 	$ucsql = file_get_contents(ROOT_PATH.'./uc_server/install/uc.sql');
 	$uctablepre = $tablepre.'ucenter_';
@@ -1706,7 +1728,7 @@ function install_uc_server() {
 
 /*vot*/	$uclang = 'sc';
 /*vot*/	$uclangdir = 'ltr';
-/*vot*/	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip,$uclang,$uclangdir);
+/*vot*/	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip,$dzucstl,$uclang,$uclangdir);
 
 	save_uc_config($config, ROOT_PATH.'./config/config_ucenter.php');
 

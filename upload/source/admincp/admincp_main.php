@@ -34,7 +34,7 @@ if(isfounder()) {
 require './source/admincp/admincp_menu.php';
 $basescript = ADMINSCRIPT;
 $staticurl = STATICURL;
-$oldlayout = !empty($_G['cookie']['admincp_oldlayout']) ? ' class="oldlayout"' : '';
+$oldlayout = empty($_G['cookie']['admincp_leftlayout']) ? ' class="oldlayout"' : '';
 
 //vot Multi-Lingual
 $change_language = cplang('change_language');
@@ -131,12 +131,12 @@ foreach($topmenu as $k => $v) {
 unset($menu);
 
 $headers = "'".implode("','", array_keys($topmenu))."'";
-$useravt = avatar(getglobal('uid'), 'middle', true);
+$useravt = avatar(getglobal('uid'), 'middle', array('class' => 'avt'));
 
 echo <<<EOT
 			</ul>
 				<div id="frameuinfo">
-					<img src="{$useravt}" class="avt">
+					{$useravt}
 					<p class="greet">$header_welcome, $cpadmingroup <em>{$_G['member']['username']}</em> <a href="$basescript?action=logout" target="_top">$header_logout</a></p>
 					<p class="btnlink"><a href="index.php" target="_blank" title="$header_bbs"><svg width="24" height="24">
 						<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>

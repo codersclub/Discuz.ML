@@ -1,5 +1,5 @@
 (function () {
-	var prevnav = prevtab = menunav = null;
+	var prevnav = prevtab = menunav = navt = null;
 	function switchnav(key, nolocation) {
 		if (!key || !$('header_' + key)) {
 			return;
@@ -10,10 +10,12 @@
 		}
 		href = $('lm_' + key).childNodes[1].childNodes[0].childNodes[0].href;
 		if (key == 'cloudaddons' || key == 'uc') {
-			window.open(href);
-			doane();
+			if (!nolocation) {
+				window.open(href);
+				doane();
+			}
 		} else {
-			if (prevnav == key && !getcookie('admincp_oldlayout')) {
+			if (prevnav == key && getcookie('admincp_leftlayout')) {
 				$('header_' + prevnav).className = '';
 				$('lm_' + prevnav).className = '';
 				prevnav = null;
@@ -46,7 +48,17 @@
 		window.open(href);
 		doane();
 	}
-	document.querySelectorAll('nav > ul > li > a').forEach(function (nav) {
+	document.querySelectorAll('#leftmenu > li > a').forEach(function (nav) {
+		nav.addEventListener('click', function () {
+			nolocation = true;
+			id = this.id.substring(7);
+			if (id == 'cloudaddons' || id == 'uc') {
+				nolocation = false;
+			}
+			switchnav(id, nolocation);
+		});
+	});
+	document.querySelectorAll('#topmenu > li > a').forEach(function (nav) {
 		nav.addEventListener('click', function () {
 			switchnav(this.id.substring(7));
 		});
@@ -54,6 +66,12 @@
 	document.querySelectorAll('#topmenu button').forEach(function (nav) {
 		nav.addEventListener('click', function () {
 			switchnav(this.id.substring(7));
+		});
+		nav.addEventListener('mouseover', function () {
+			id = this.id.substring(7);
+			setTimeout(function () {
+				switchnav(id, true);
+			}, 500);
 		});
 	});
 	document.querySelectorAll('nav ul ul a').forEach(function (tab) {
@@ -70,7 +88,7 @@
 	switchtab(document.querySelector('nav ul ul a'));
 	$('cpsetting').addEventListener('click', function(){
 		$('bdcontainer').classList.toggle('oldlayout');
-		setcookie('admincp_oldlayout', 1, getcookie('admincp_oldlayout') ? -2592000 : 2592000);
+		setcookie('admincp_leftlayout', 1, getcookie('admincp_leftlayout') ? -2592000 : 2592000);
 	});
 	document.querySelector('#frameuinfo > img').addEventListener('click', function(){
 		document.querySelector('.mainhd').classList.toggle('toggle');

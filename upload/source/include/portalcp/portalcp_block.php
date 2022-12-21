@@ -655,10 +655,10 @@ if($op == 'block') {
 			}
 			if($_POST['icflag'] && !(C::t('common_block_pic')->count_by_bid_pic($block['bid'], $thumbpath))) {
 /*vot*/				$picflag = 0; //common_block_pic picture flag identity (0=local, 1=remote)
-				if($_G['setting']['ftp']['on']) {
+				if($_G['setting']['ftp']['on'] && !empty($_G['setting']['ftp']['host'])) {
 					$ftp = & discuz_ftp::instance();
 					$ftp->connect();
-					if($ftp->connectid && $ftp->ftp_size($thumbpath) > 0 || $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath)) {
+					if(($ftp->connectid && $ftp->ftp_size($thumbpath) > 0) || (ftpperm(fileext($thumbpath), filesize($_G['setting']['attachdir'].'./'.$thumbpath)) && $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath))) {
 /*vot*/						$picflag = 1; //common_block_pic picture flag identity (0=local, 1=remote)
 						@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
 					}

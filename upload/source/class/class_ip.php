@@ -63,8 +63,12 @@ class ip {
 			if($mask <= 0) {
 				return FALSE;
 			}
+			$newmask = intval($mask);
 			$newip = self::to_ip($newip);
 			if (!self::validate_ip($newip)) {
+				return FALSE;
+			}
+			if($newmask > 128 || ($newmask > 32 && strpos($newip, ':') === FALSE)) {
 				return FALSE;
 			}
 			$new_str = $newip . "/" . $mask;
@@ -249,7 +253,8 @@ class ip {
 		} else {
 			$c = 'ip_tiny';
 		}
-		return $c::getInstance()->convert($ip);
+		$ipobject = $c::getInstance();
+		return $ipobject === NULL ? '- Error' : $ipobject->convert($ip);
 	}
 
 	public static function checkaccess($ip, $accesslist) {
