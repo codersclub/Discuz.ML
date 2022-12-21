@@ -1340,7 +1340,7 @@ EOF;
 		/*search*/
 
 		/*search={"setting_functions":"action=setting&operation=functions","setting_functions_guide":"action=setting&operation=functions&anchor=guide"}*/
-		$setting['guide'] = unserialize($setting['guide']);
+		$setting['guide'] = dunserialize($setting['guide']);
 		showtableheader('', 'nobottom', 'id="guide"'.($_GET['anchor'] != 'guide' ? ' style="display: none"' : ''));
 		showsetting('setting_functions_heatthread_guidelimit', 'settingnew[heatthread][guidelimit]', $setting['heatthread']['guidelimit'], 'text');
 		$dtarray = array(
@@ -1562,7 +1562,7 @@ EOF;
 		showsetting('setting_credits_trans6', '', '' ,'<select name="settingnew[creditstrans][6]">'.$_G['setting']['creditstrans'][6].'</select>');
 		$setting['report_reward'] = dunserialize($setting['report_reward']);
 		showsetting('setting_credits_trans10', '', '' ,'<select name="settingnew[creditstrans][10]">'.$_G['setting']['creditstrans'][10].'</select>');
-		showsetting('setting_credits_trans8', '', '' ,'<select name="settingnew[creditstrans][8]">'.$_G['setting']['creditstrans'][8].'</select><br \><br \>'.cplang('report_reward_min').': <input type="text" size="3" name="settingnew[report_reward][min]" value="'.$setting['report_reward']['min'].'">&nbsp;&nbsp;'.cplang('report_reward_max').': <input type="text" size="3" name="settingnew[report_reward][max]" value="'.$setting['report_reward']['max'].'">&nbsp;&nbsp;<br \>'.cplang('report_reward_comment'));
+		showsetting('setting_credits_trans8', '', '' ,'<select name="settingnew[creditstrans][8]">'.$_G['setting']['creditstrans'][8].'</select><br \><br \>'.cplang('report_reward_min').': <input type="text" size="3" name="settingnew[report_reward][min]" value="'.$setting['report_reward']['min'].'"><br />'.cplang('report_reward_max').': <input type="text" size="3" name="settingnew[report_reward][max]" value="'.$setting['report_reward']['max'].'">&nbsp;&nbsp;<br \>'.cplang('report_reward_comment'));
 		showsetting('setting_credits_trans11', '', '' ,'<select name="settingnew[creditstrans][11]">'.$_G['setting']['creditstrans'][11].'</select>');
 		showsetting('setting_credits_trans12', '', '' ,'<select name="settingnew[creditstrans][12]">'.$_G['setting']['creditstrans'][12].'</select>');
 
@@ -2329,6 +2329,11 @@ EOT;
 			array(0, $lang['setting_uc_avatarmethod_0']),
 			array(1, $lang['setting_uc_avatarmethod_1']),
 			)), $setting['avatarmethod'], 'mradio');
+		showsetting('setting_uc_dynavt', array('settingnew[dynavt]', array(
+			array(0, $lang['setting_uc_dynavt_0']),
+			array(1, $lang['setting_uc_dynavt_1']),
+			array(2, $lang['setting_uc_dynavt_2']),
+			)), $setting['dynavt'], 'mradio');
 		/*search*/
 
 	} elseif($operation == 'ec') {

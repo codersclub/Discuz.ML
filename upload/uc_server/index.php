@@ -32,10 +32,9 @@ require UC_ROOT.'./release/release.php';
 if(!@include UC_DATADIR.'config.inc.php') {
 	exit('The file <b>data/config.inc.php</b> does not exist, perhaps because of UCenter has not been installed, <a href="install/index.php"><b>Please click here to install it.</b></a>.');
 }
-
-/*vot*/ if(strtolower(UC_CHARSET)=='utf-8') {
-/*vot*/   ini_set('mbstring.internal_encoding','UTF-8');
-/*vot*/ }
+if(!defined('UC_KEY') || !UC_KEY) {
+	exit('This UCenter Server has been disabled.');
+}
 
 $m = getgpc('m');
 $a = getgpc('a');

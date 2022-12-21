@@ -171,6 +171,7 @@ var popup = {
 				pop.css({'display':'none'});
 				obj.on('click', function(e) {
 					$this.open(pop);
+					return false;
 				});
 			}
 		});
@@ -191,7 +192,7 @@ var popup = {
 			if(type == 'alert') {
 /*vot*/				pop = '<div class="tip"><dt>'+ pop +'</dt><dd><input class="button2" type="button" value="'+lng['submit']+'" onclick="popup.close();"></dd></div>'
 			} else if(type == 'confirm') {
-/*vot*/				pop = '<div class="tip"><dt>'+ pop +'</dt><dd><input class="redirect button2" type="button" value="'+lng['submit']+'" href="'+ url +'"><a href="javascript:;" onclick="popup.close();">'+lng['cancel']+'</a></dd></div>'
+/*vot*/				pop = '<div class="tip"><dt>'+ pop +'</dt><dd><a class="button" href="'+ url +'">'+lng['submit']+'</a> <button onclick="popup.close();" class="button">'+lng['cancel']+'</a></dd></div>'
 			}
 			$('body').append('<div id="ntcmsg" style="display:none;">'+ pop +'</div>');
 			pop = $('#ntcmsg');
@@ -263,17 +264,6 @@ var formdialog = {
 /*vot*/				popup.open(lng['form_submit_error'], 'alert');
 			});
 			return false;
-		});
-	}
-};
-
-var redirect = {
-	init : function() {
-		qSelA('.redirect').forEach(function (rd) {
-			rd.addEventListener('click', function () {
-				popup.close();
-				window.location.href = this.getAttribute('href');
-			});
 		});
 	}
 };
@@ -704,7 +694,6 @@ $(document).ready(function() {
 	}
 	dialog.init();
 	formdialog.init();
-	redirect.init();
 });
 
 function ajaxget(url, showid, waitid, loading, display, recall) {

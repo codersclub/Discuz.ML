@@ -469,8 +469,17 @@ function strexists($string, $find) {
 	return !(strpos($string, $find) === FALSE);
 }
 
-function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $static = FALSE, $ucenterurl = '') {
+function avatar($uid, $size = 'middle', $returnsrc = 0, $real = FALSE, $static = FALSE, $ucenterurl = '', $class = '', $extra = '', $random = 0) {
 	global $_G;
+	if(is_array($returnsrc)) {
+		isset($returnsrc['random']) && $random = $returnsrc['random'];
+		isset($returnsrc['extra']) && $extra = $returnsrc['extra'];
+		isset($returnsrc['class']) && $class = $returnsrc['class'];
+		isset($returnsrc['ucenterurl']) && $ucenterurl = $returnsrc['ucenterurl'];
+		isset($returnsrc['static']) && $static = $returnsrc['static'];
+		isset($returnsrc['real']) && $real = $returnsrc['real'];
+		$returnsrc = isset($returnsrc['returnsrc']) ? $returnsrc['returnsrc'] : 0;
+	}
 	if(!empty($_G['setting']['plugins']['func'][HOOKTYPE]['avatar'])) {
 		$_G['hookavatar'] = '';
 		$param = func_get_args();
@@ -483,21 +492,64 @@ function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $stat
 	if($staticavatar === null) {
 		$staticavatar = $_G['setting']['avatarmethod'];
 	}
+	static $avtstatus;
+	if($avtstatus === null) {
+		$avtstatus = array();
+	}
+	$dynavt = intval($_G['setting']['dynavt']);
 
 	$ucenterurl = empty($ucenterurl) ? $_G['setting']['ucenterurl'] : $ucenterurl;
 	$avatarurl = empty($_G['setting']['avatarurl']) ? $ucenterurl.'/data/avatar' : $_G['setting']['avatarurl'];
 	$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
 	$uid = abs(intval($uid));
+	$rawuid = $uid;
 	if(!$staticavatar && !$static && $ucenterurl != '.') {
-		$timestamp = $uid == $_G['uid'] ? "&ts=1" : "";
-		return $returnsrc ? $ucenterurl.'/avatar.php?uid='.$uid.'&size='.$size.($real ? '&type=real' : '').$timestamp : '<img src="'.$ucenterurl.'/avatar.php?uid='.$uid.'&size='.$size.($real ? '&type=real' : '').$timestamp.'" />';
+		if($avatarurl != $ucenterurl.'/data/avatar') {
+			$ucenterurl = $avatarurl;
+		}
+		$trandom = '';
+		if($random == 1) {
+			$trandom = '&random=1';
+		} elseif($dynavt == 2 || ($dynavt == 1 && $uid == $_G['uid']) || $random == 2) {
+			$trandom = '&ts=1';
+		}
+		return $returnsrc ? $ucenterurl.'/avatar.php?uid='.$uid.'&size='.$size.($real ? '&type=real' : '').$trandom : '<img src="'.$ucenterurl.'/avatar.php?uid='.$uid.'&size='.$size.($real ? '&type=real' : '').$trandom.'"'.($class ? ' class="'.$class.'"' : '').($extra ? ' '.$extra : '').'>';
 	} else {
 		$uid = sprintf("%09d", $uid);
 		$dir1 = substr($uid, 0, 3);
 		$dir2 = substr($uid, 3, 2);
 		$dir3 = substr($uid, 5, 2);
-		$file = $avatarurl.'/'.$dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).($real ? '_real' : '').'_avatar_'.$size.'.jpg';
-		return $returnsrc ? $file : '<img src="'.$file.'" onerror="this.onerror=null;this.src=\''.$avatarurl.'/noavatar.svg\'" />';
+		$filepath = $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).($real ? '_real' : '').'_avatar_'.$size.'.jpg';
+		$file = $avatarurl.'/'.$filepath;
+		$noavt = $avatarurl.'/noavatar.svg';
+		$trandom = '';
+		$avtexist = -1;
+		if(!$staticavatar && !$static) {
+			$avatar_file = DISCUZ_ROOT.$_G['setting']['avatarpath'].$filepath;
+			if(isset($avtstatus[$rawuid])) {
+				$avtexist = $avtstatus[$rawuid][0];
+			} else {
+				$avtexist = file_exists($avatar_file) ? 1 : 0;
+				$avtstatus[$rawuid][0] = $avtexist;
+			}
+			if($avtexist) {
+				if($dynavt == 2 || ($dynavt == 1 && $rawuid && $rawuid == $_G['uid']) || $random == 2) {
+					if(empty($avtstatus[$rawuid][1])) {
+						$avtstatus[$rawuid][1] = filemtime($avatar_file);
+					}
+					$trandom = '?ts='.$avtstatus[$rawuid][1];
+				}
+			} else {
+				$file = $noavt;
+			}
+		}
+		if($random == 1 && $avtexist != 0) {
+			$trandom = '?random='.rand(1000, 9999);
+		}
+		if($trandom) {
+			$file = $file.$trandom;
+		}
+		return $returnsrc ? $file : '<img src="'.$file.'"'.(($avtexist == -1) ? ' onerror="this.onerror=null;this.src=\''.$noavt.'\'"' : '').($class ? ' class="'.$class.'"' : '').($extra ? ' '.$extra : '').'>';
 	}
 }
 
@@ -1322,28 +1374,96 @@ function checkusergroup($uid = 0) {
 	$credit->checkusergroup($uid);
 }
 
-function checkformulasyntax($formula, $operators, $tokens) {
+function checkformulasyntax($formula, $operators, $tokens, $values = '', $funcs = array()) {
 	$var = implode('|', $tokens);
-	$operator = implode('', $operators);
-
-	$operator = str_replace(
-		array('+', '-', '*', '/', '(', ')', '{', '}', '\''),
-		array('\+', '\-', '\*', '\/', '\(', '\)', '\{', '\}', '\\\''),
-		$operator
-	);
 
 	if(!empty($formula)) {
-		if(!preg_match("/^([$operator\.\d\(\)]|(($var)([$operator\(\)]|$)+))+$/", $formula) || !is_null(eval(preg_replace("/($var)/", "\$\\1", $formula).';'))){
-			return false;
-		}
+		$formula = preg_replace("/($var)/", "\$\\1", $formula);
+		return formula_tokenize($formula, $operators, $tokens, $values, $funcs);
 	}
 	return true;
+}
+
+function formula_tokenize($formula, $operators, $tokens, $values, $funcs) {
+	$fexp = token_get_all('<?php '.$formula);
+	$prevseg = 1; // 1左括号2右括号3变量4运算符5函数
+	$isclose = 0;
+	$tks = implode('|', $tokens);
+	$op1 = $op2 = array();
+	foreach($operators as $orts) {
+		if(strlen($orts) === 1) {
+			$op1[] = $orts;
+		} else {
+			$op2[] = $orts;
+		}
+	}
+	foreach($fexp as $k => $val) {
+		if(is_array($val)) {
+			if(in_array($val[0], array(T_VARIABLE, T_CONSTANT_ENCAPSED_STRING, T_LNUMBER, T_DNUMBER))) {
+				// 是变量
+				if(!in_array($prevseg, array(1, 4))) {
+					return false;
+				}
+				$prevseg = 3;
+				if($val[0] == T_VARIABLE && !preg_match('/^\$('.$tks.')$/', $val[1])) {
+					return false;
+				}
+				if($val[0] == T_CONSTANT_ENCAPSED_STRING && !($values && preg_match('/^'.$values.'$/', $val[1]))) {
+					return false;
+				}
+			} elseif($val[0] == T_STRING && in_array($val[1], $funcs)) {
+				// 是函数
+				if(!in_array($prevseg, array(1, 4))) {
+					return false;
+				}
+				$prevseg = 5;
+			} elseif($val[0] == T_WHITESPACE || ($k == 0 && $val[0] == T_OPEN_TAG)) {
+				// 空格或文件头，忽略
+			} elseif(in_array($val[1], $op2)) {
+				// 是运算符
+				if(!in_array($prevseg, array(2, 3))) {
+					return false;
+				}
+				$prevseg = 4;
+			} else {
+				return false;
+			}
+		} else {
+			if($val === '(') {
+				// 是左括号
+				if(!in_array($prevseg, array(1, 4, 5))) {
+					return false;
+				}
+				$prevseg = 1;
+				$isclose++;
+			} elseif($val === ')') {
+				// 是右括号
+				if(!in_array($prevseg, array(2, 3))) {
+					return false;
+				}
+				$prevseg = 2;
+				$isclose--;
+				if($isclose < 0) {
+					return false;
+				}
+			} elseif(in_array($val, $op1)) {
+				// 是运算符
+				if(!in_array($prevseg, array(2, 3)) && $val !== '-') {
+					return false;
+				}
+				$prevseg = 4;
+			} else {
+				return false;
+			}
+		}
+	}
+	return (in_array($prevseg, array(2, 3)) && $isclose === 0);
 }
 
 function checkformulacredits($formula) {
 	return checkformulasyntax(
 		$formula,
-		array('+', '-', '*', '/', ' '),
+		array('+', '-', '*', '/'),
 		array('extcredits[1-8]', 'digestposts', 'posts', 'threads', 'oltime', 'friends', 'doings', 'polls', 'blogs', 'albums', 'sharings')
 	);
 }
@@ -1598,6 +1718,17 @@ function ftpcmd($cmd, $arg1 = '') {
 		default       : return false;
 	}
 
+}
+
+function ftpperm($fileext, $filesize) {
+	global $_G;
+	$return = false;
+	if($_G['setting']['ftp']['on']) {
+		if(((!$_G['setting']['ftp']['allowedexts'] && !$_G['setting']['ftp']['disallowedexts']) || ($_G['setting']['ftp']['allowedexts'] && in_array($fileext, $_G['setting']['ftp']['allowedexts'])) || ($_G['setting']['ftp']['disallowedexts'] && !in_array($fileext, $_G['setting']['ftp']['disallowedexts']) && (!$_G['setting']['ftp']['allowedexts'] || $_G['setting']['ftp']['allowedexts'] && in_array($fileext, $_G['setting']['ftp']['allowedexts'])))) && (!$_G['setting']['ftp']['minsize'] || $filesize >= $_G['setting']['ftp']['minsize'] * 1024)) {
+			$return = true;
+		}
+	}
+	return $return;
 }
 
 function diconv($str, $in_charset, $out_charset = CHARSET, $ForceTable = FALSE) {
@@ -2132,9 +2263,11 @@ function strhash($string, $operation = 'DECODE', $key = '') {
 }
 
 function dunserialize($data) {
-	// 由于 Redis 驱动侧以序列化保存 array, 因此存在参数入参为 array 的情况.
+	// 由于 Redis 驱动侧以序列化保存 array, 取出数据时会自动反序列化（导致反序列化了非Redis驱动序列化的数据），因此存在参数入参为 array 的情况.
 	// 考虑到 PHP 8 增强了类型体系, 此类数据直接送 unserialize 会导致 Fatal Error, 需要通过代码层面对此情况进行规避.
-	if(!is_array($data) && ($ret = unserialize($data)) === false) {
+	if(is_array($data)) {
+		$ret = $data;
+	} elseif(($ret = unserialize($data)) === false) {
 		$ret = unserialize(stripslashes($data));
 	}
 	return $ret;

@@ -136,7 +136,12 @@ function validate(theform) {
 					setTimeout(function () { validate(theform); }, 100);
 					chk = 0;
 				} else if(chkv.indexOf('check_right') == -1) {
-/*vot*/					showError(lng['q&a_invalid']);
+					if($('secqaaverify_' + theform.secqaahash.value) == document.activeElement) {
+						$('postsubmit').focus();
+						setTimeout(function () { validate(theform); }, 100);
+					} else {
+/*vot*/						showError(lng['q&a_invalid']);
+					}
 					chk = 0;
 				}
 			}
@@ -146,7 +151,12 @@ function validate(theform) {
 					setTimeout(function () { validate(theform); }, 100);
 					chk = 0;
 				} else if(chkv.indexOf('check_right') === -1) {
-/*vot*/					showError(lng['code_invalid']);
+					if($('seccodeverify_' + theform.seccodehash.value) == document.activeElement) {
+						$('postsubmit').focus();
+						setTimeout(function () { validate(theform); }, 100);
+					} else {
+/*vot*/						showError(lng['code_invalid']);
+					}
 					chk = 0;
 				}
 			}
@@ -412,10 +422,22 @@ function appendAttachDel(ids) {
 	for(id in ids) {
 		aids += '&aids[]=' + id;
 	}
-	var x = new Ajax();
-	x.get('forum.php?mod=ajax&action=deleteattach&inajax=yes&tid=' + (typeof tid == 'undefined' ? 0 : tid) + '&pid=' + (typeof pid == 'undefined' ? 0 : pid) + aids + ($('modthreadkey') ? '&modthreadkey=' + $('modthreadkey').value : ''), function() {});
-	if($('delattachop')) {
-		$('delattachop').value = 1;
+	list = document.getElementsByTagName("input");
+	formhash = null;
+	for(i=0; i<list.length; i++) {
+		if(list[i].name == "formhash") {
+			formhash = list[i].value;
+			break;
+		}
+	}
+	if(formhash) {
+		var x = new Ajax();
+		x.get('forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=' + formhash + '&tid=' + (typeof tid == 'undefined' ? 0 : tid) + '&pid=' + (typeof pid == 'undefined' ? 0 : pid) + aids + ($('modthreadkey') ? '&modthreadkey=' + $('modthreadkey').value : ''), function() {});
+		if($('delattachop')) {
+			$('delattachop').value = 1;
+		}
+	} else {
+		showError('抱歉，删除操作失败，请刷新页面后重试。');
 	}
 }
 
