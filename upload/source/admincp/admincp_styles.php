@@ -517,7 +517,7 @@ function imgpre_switch(id) {
 </script>
 <?php
 
-		//是否有自定义配置文件
+		//Is there a custom configuration file
 		$configflag = false;
 		if(preg_match('/^.?\/template\/([a-z]+[a-z0-9_]*)$/', $style['directory'], $a)) {
 			$configfile = DISCUZ_ROOT . './template/' . $a[1] . '/config.inc.php';
@@ -591,7 +591,7 @@ function imgpre_switch(id) {
 			cpmsg('style_not_found', '', 'error');
 		}
 
-		//是否有自定义配置文件
+		//Is there a custom configuration file
 		$configflag = false;
 		if(preg_match('/^.?\/template\/([a-z]+[a-z0-9_]*)$/', $style['directory'], $a)) {
 			$configfile = DISCUZ_ROOT . './template/' . $a[1] . '/config.inc.php';

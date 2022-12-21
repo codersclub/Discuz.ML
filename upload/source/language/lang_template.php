@@ -520,23 +520,16 @@ $lang = array (
 	'change_language'	=> '',//'更改语言:',//'Change language',
 	'change_language_title'	=> '更改语言',//'Change language:',
 	'changestyle_title'	=> '切换风格',//'Change Style',
-
-//vot:
-	'new'		=> '全新',//'New',
-
-	'register'	=> '注册',//'Register',
-
-	'or'		=> '或者',//'or',
-
-	'upload_selectfile' => '浏览',//'Browse',
+	'new'			=> '全新',//'New',
+	'register'		=> '注册',//'Register',
+	'or'			=> '或者',//'or',
+	'upload_selectfile'	=> '浏览',//'Browse',
+	'processed_in'		=> 'Processed in',
+	'seconds'		=> 'sec.',//'second(s)',
+	'queries'		=> 'queries',
 
 // Google Maps
-	'e_map'		=> '地图',//'Map',
-	'e_map_insert'	=> '插入google地图',//'Insert Google Map',
-	'e_map_address'	=> '地址： ',//'Enter address for search: ',
-
-	'processed_in'			=> 'Processed in',
-	'seconds'			=> 'sec.',//'second(s)',
-	'queries'			=> 'queries',
-
+	'e_map'			=> '地图',//'Map',
+	'e_map_insert'		=> '插入google地图',//'Insert Google Map',
+	'e_map_address'		=> '地址： ',//'Enter address for search: ',
 );

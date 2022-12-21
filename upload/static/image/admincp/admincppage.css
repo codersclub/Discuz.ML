@@ -403,7 +403,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .header, .header td, .header th{ border-top: 1px dotted #DEEFFB; font-weight: 700; }
 .smallefont{font-size: 14px}
 
-/* 弹窗 */
+/* Pop-ups */
 .fwin { text-align: left; background: #FFF; }
 .t_l, .t_c, .t_r, .m_l, .m_r, .b_l, .b_c, .b_r { overflow: hidden; background: #000; opacity: 0.2; filter: alpha(opacity=20); }
 .t_l, .t_r, .b_l, .b_r { width: 10px; height: 10px; line-height: 10px; font-size: 0; }
@@ -438,14 +438,14 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .fwin .ss em { background: #eee; width: 16px; line-height: 18px; display: block; float: left; margin: 2px; cursor: pointer; padding-left: 7px;}
 .fwin .ss em.a { background: #09f; color: #FFF;}
 
-/* .cl --> Clear 自动闭合 */
+/* .cl --> Clear closes automatically */
 .cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .cl { zoom: 1; }
 
 .preview { margin-bottom: 8px; width: 570px; height: 340px; border: 1px solid #09C; box-shadow: 3px 3px 3px #EEE; -moz-box-shadow: 3px 3px 3px #EEE; -webkit-box-shadow: 3px 3px 3px #EEE; -o-box-shadow: 3px 3px 3px #EEE; }
 
 
-/*气泡信息 by dfox */
+/* Bubble message by dfox */
 .prmm { margin-left: -27px; padding-top: 10px; width: 250px; background: transparent url(pm_ntc.gif) no-repeat 0 0; text-align: left; opacity: 0.98; }
 	.prmc { padding-bottom: 10px; background: transparent url(pm_ntc.gif) no-repeat -250px 100%; }
 		.prmm ul { padding: 0 10px; border: solid #91C8E2; border-width: 0 2px; background: #FFF; }
@@ -455,7 +455,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.up .prmc { padding-top: 5px; padding-bottom: 0; background-position: -650px 0; }
 		.up li { border-bottom: none; line-height: 160%; }
 
-/* 通用的表单样式 */
+/* Common form styles */
 	.tfm { width: 100%; }
 		.tfm caption, .tfm th, .tfm td { padding: 10px 2px; }
 			.tfm caption h2 { font-size: 18px; }
@@ -474,7 +474,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.bn .tfm caption, .bn .tfm th, .bn .tfm td { padding-top: 5px; padding-bottom: 5px; }
 		.bn .tfm th { font-weight: 400; }
 
-/* 普通数据列表 datatable by michael */
+/* Common data list datatable by michael */
 
 .dt { border-top: 1px solid #CDCDCD; width: 100%; }
 	.dt th { background: #F2F2F2; }
@@ -483,7 +483,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.dt .px { height: 16px !important; }
 
 
-/* 外边距 Margin，三组从窄到宽，级别分别为：n, m, w */
+/* Margin, three groups from narrow to wide, the levels are: n, m, w */
 	.mtn { margin-top: 5px !important; }
 	.mbn { margin-bottom: 5px !important; }
 	.mtm { margin-top: 10px !important; }
@@ -496,7 +496,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.psetting a.memo { color: #999; margin-left: 20px; }
 	.psetting div.memo { margin:5px;padding: 5px; border: 1px dotted #DEEFFB; background: #FFF; }
 
-/* 进度条 */
+/* Progress bar */
 .pbg { position: relative; margin: 10px 0; width: 200px; height: 16px; background: url(bg_progressbar.png) 0 0 repeat-x; border-radius: 5px; }
 	.pbr { height: 16px; width: 200px; background-image: url(bg_progressbar.png); background-color: #5AAF4A; background-position: 0 -16px; background-repeat: repeat-x; border-radius: 5px; }
 	.pbg .xs0 { position: absolute; top: 0; right: 8px; }

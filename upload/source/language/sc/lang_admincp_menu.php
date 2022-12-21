@@ -178,7 +178,7 @@ $lang = array
 	'menu_tools_fileperms' => '文件权限检查',
 	'menu_tools_hookcheck' => '嵌入点校验',
 	'menu_tools_filecheck' => '文件校验',
-	'menu_forum_scheme' => '站点方案管理',
+	'menu_tools_replacekey' => '密钥更新',
 	'menu_db' => '数据库',
 	'menu_postsplit' => '帖子分表',
 	'menu_threadsplit' => '主题分表',
@@ -209,7 +209,7 @@ $lang = array
 	'menu_safe_setting' => '基本设置',
 	'menu_safe_security' => '防水墙',
 	'menu_safe_seccheck' => '验证设置',
-	'menu_safe_accountguard' => '帐号保镖',
+	'menu_safe_accountguard' => '账号保镖',
 
 	'menu_setting_qqconnect' => 'QQ 绑定设置',
 

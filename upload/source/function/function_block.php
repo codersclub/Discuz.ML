@@ -433,7 +433,7 @@ function block_template($bid) {
 											C::t('common_block_item')->update($itemid, array('picflag' => 2));
 											$replacevalue = (preg_match('/^https?:\/\//is', $thumbpath) ? '' : $_G['setting']['ftp']['attachurl']).$thumbpath;
 										} else {
-											$picflag = 0; //common_block_pic表中的picflag标识（0本地，1远程）
+/*vot*/											$picflag = 0; //The picflag identifier in the common_block_pic table (0 local, 1 remote)
 											$_G['block_makethumb'] = true;
 										}
 									}

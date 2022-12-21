@@ -415,7 +415,7 @@ function parseattachurl($aid, $ext, $ignoretid = 0) {
 	$_G['forum_skipaidlist'][] = $aid;
 	if(!empty($ext)) {
 		$attach = C::t('forum_attachment_n')->fetch('aid:'.$aid, $aid);
-		// 如果不是音视频类附件则不允许生成无条件限制的地址, 此处不支持附件收费以及阅读权限判定
+		// If it is not an audio and video attachment, it is not allowed to generate an unconditional address. Attachment charging and reading permission judgment are not supported here.
 		if(!in_array(attachtype(fileext($attach['filename'])), array(9, 10))) {
 			$ext = 0;
 		}

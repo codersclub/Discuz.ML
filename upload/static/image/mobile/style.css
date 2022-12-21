@@ -89,7 +89,7 @@ select {-moz-appearance:none;}
 /* no margin right */
 .fnmr:before { margin-right: 0; }
 
-/* font icon图标列表，供用户调用 */
+/* font icon - A list of icons for users to call */
 .fico-person:before{content:"\f100";}
 .fico-search:before{content:"\f101";}
 .fico-account_box:before{content:"\f102";}
@@ -1119,7 +1119,7 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 		.xlda dd a { color: {HIGHLIGHTLINK}; }
 		.xlda dd .hot { color: {NOTICETEXT}; }
 
-/* 用来展示复杂统计数据的表格，目前仅用户组页面用到 */
+/* A table used to display complex statistical data, currently only used by user group pages */
 .tdats { overflow: hidden; zoom: 1; margin: 10px 0; }
 .tdats i { font-size: 14px; }
 .tdats i:before { height: 18px; line-height: 18px; margin-right: 2px; }
@@ -1155,7 +1155,7 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 .el li { padding: 10px 20px; min-height: 20px; border-bottom: 1px dashed var(--dz-BOR-ed); }
 .el .t { position: absolute; margin: 1px 0 0 -20px; }
 .el .o { overflow: hidden; float: right; margin: 4px -20px -4px 0; width: 16px; height: 16px; font-size: 16px; line-height: 16px; font-family: dzicon; text-align: center; color: #FF9A9A; }
-/* 外宽改变时 .ie6 .el .o, .ie6 .xlda .el .o 的 margin 值需要更改 */
+/* The margin value of .ie6 .el .o, .ie6 .xlda .el .o needs to be changed when the outer width changes */
 .el .o:before { content: "\f149"; }
 .el .o:hover { text-decoration: none; }
 .el .del:before { content: "\f116"; }
@@ -1171,12 +1171,12 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 .sl .h { padding: 6px 10px; background: var(--dz-BG-5); border-bottom: 1px solid var(--dz-BOR-ed); }
 
 
-/* 排行榜 */
+/* Rank List */
 .rankicn { width: 20px; }
 .ranks { display: block; width: 16px; height: 16px; line-height: 16px; text-align: center; color: #FFF; background: #A0C8EA; border-radius: 8px; }
 .ranks_1 { background: #ED741C; } .ranks_2 { background: #F3AC27; } .ranks_3 { background: #F8CB5E; }
 
-/* 图片列表 */
+/* Image list */
 .ml {}
 	.ml li { float: left; padding: 0 5px 5px; text-align: center; overflow: hidden; }
 		.ml img { display: block; margin: 0 auto; }
@@ -1202,17 +1202,17 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 
 	.xl em { float: right; padding-left: 5px; }
 		.xl em, .xl em a { color: var(--dz-FC-999); }
-/* .rnk1 每行一个区块 */
+/* .rnk1 One block per line */
 .rnk1 {}
 	.rnk1 .mlp .d { width: 120px; height: 120px; }
 	.rnk1 .mlp img { max-width: 100px; max-height: 75px; }
 	.rnk1 .mlp .bigpic { width: 100%; height: auto; }
 		.rnk1 .bigpic img { max-width: 286px; max-height: 200px; }
 
-/* 图片排名上的序号 */
+/* Ordinal number on image ranking */
 .picrank { position: absolute; margin: -10px 0 0 -10px !important; }
 
-/* 竞价排名 by Pony */
+/* Ranking of bidding by Pony */
 .bid { margin: 2px -4px -2px 2px; zoom: 1; }
 .biduser { width: 988px; background: url(./touch/avatar_blank.gif); }
 	.biduser li { float: left; margin: 0 4px 4px 0; }

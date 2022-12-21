@@ -10,7 +10,7 @@
 
 // ============================================================================
 define('UC_CONNECT', 'mysql');			// UCenter connection method:
-define('UC_STANDALONE', 1);				// 独立模式开关，0=关闭, 1=打开，开启后将不再依赖UCenter Server。注意：开启时必须将 UC_CONNECT 改为 mysql ！
+define('UC_STANDALONE', 1);			// Independent mode switch, 0=off, 1=on, it will no longer depend on UCenter Server after it is turned on. Note: UC_CONNECT must be changed to mysql when it is turned on!
 // Database Related (mysql connection)
 define('UC_DBHOST', 'localhost');		// UCenter Database Host
 define('UC_DBUSER', 'root');			// UCenter Database user name
@@ -20,8 +20,8 @@ define('UC_DBCHARSET', 'utf8');			// UCenter Database character set, 'utf8mb4' f
 define('UC_DBTABLEPRE', '`ucenter`.uc_');	// UCenter Database table prefix
 define('UC_DBCONNECT', '0');			// UCenter Database persistent connection 0 = off, 1 = On
 // Avatar related
-define('UC_AVTURL', '');		// 头像服务的基础路径，为空则为默认值，可以设置为独立域名/路径（结尾不能有/），配合CDN使用更佳。如涉及 avatar.php 需在其中再配置一次。
-define('UC_AVTPATH', '');		// 头像存储路径，为空则为默认值，仅限独立模式使用，建议保持默认。
+define('UC_AVTURL', '');		// The basic path of the avatar service. If it is empty, it is the default value. It can be set to an independent domain name/path (no / at the end), and it is better to use with CDN. If avatar.php is involved, it needs to be configured again.
+define('UC_AVTPATH', '');		// Avatar storage path, if it is empty, it is the default value, it can only be used in standalone mode, it is recommended to keep the default value.
 
 // Communication related
 define('UC_KEY', 'yeN3g9EbNfiaYfodV63dI1j8Fbk5HaL7W4yaW4y7u2j4Mf45mfg2v899g451k576');	// UCenter communication key, consistent with the UCenter
