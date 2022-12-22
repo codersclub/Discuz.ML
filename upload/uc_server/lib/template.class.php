@@ -43,7 +43,7 @@ class template {
 		$this->defaulttpldir = UC_ROOT.'./view/default';
 		$this->tpldir = UC_ROOT.'./view/default';
 		$this->objdir = UC_DATADIR.'./view';
-		$this->langfile = UC_ROOT.'./view/default/templates.lang.php';
+/*vot*/		$this->langfile = UC_ROOT . 'language/' . UC_LANG . '/templates.lang.php';
 		if (version_compare(PHP_VERSION, '5') == -1) {
 			register_shutdown_function(array(&$this, '__destruct'));
 		}

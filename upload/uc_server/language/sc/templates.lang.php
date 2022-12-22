@@ -540,3 +540,4 @@ $languages = array(
 	'notify_credit_app'	=> '是否接受更新应用积分设置通知',//'Whether to accept the notification of updating application credit settings',
 	'notify_event'		=> '是否接受添加事件通知',//'Whether to accept adding event notification',
 
+);
