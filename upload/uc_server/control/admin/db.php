@@ -186,7 +186,8 @@ class control extends adminbase {
 	}
 
 	function _parent_js($extid, $message, $vars = array()) {
-		include UC_ROOT.'view/default/messages.lang.php';
+/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/messages.lang.php';
+
  		if(isset($lang[$message])) {
  			$message = $lang[$message] ? str_replace(array_keys($vars), array_values($vars), $lang[$message]) : $message;
  		}

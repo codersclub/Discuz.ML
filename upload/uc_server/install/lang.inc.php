@@ -1,11 +1,12 @@
 <?php
 
-define('UC_VERNAME', '中文版');
+define('UC_VERNAME', '国际版');//'International Version'
 
 $lang = array(
 
 	'SC_UTF8' => '简体中文 UTF8 版',
 	'TC_UTF8' => '繁体中文 UTF8 版',
+	'EN_UTF8'		=> 'ENGLISH UTF-8',
 
 	'title_install' => SOFT_NAME.' 安装向导',
 	'agreement_yes' => '我同意',

@@ -10,25 +10,6 @@
 
 !defined('IN_UC') && exit('Access Denied');
 
-//------------------------------------------------------------------
-//vot Define UC Language !!!
-//vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
-/*vot*/	define('UC_LANG',UC_DEFAULT_LANG);
-/*vot*/	define('RTLSUFFIX',UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
-
-/*vot*//* Compare 2 string versions */
-/* Usage:
-   if(v_compare($mysql_version, "4.1") > 0) {
-     echo '$mysql_version(' . $mysql_version . ') > 4.1', "\n";
-   }
-*/
-function v_compare($version1='', $version2='') {
-    $version1 = preg_replace('/[^\d\.].*$/', '', $version1);
-    $version2 = preg_replace('/[^\d\.].*$/', '', $version2);
-    return version_compare($version1, $version2);
-}
-//------------------------------------------------------------------
-
 class base {
 
 	var $sid;
@@ -92,7 +73,7 @@ class base {
 		define('FORMHASH', $this->formhash());
 		$_GET['page'] =  max(1, intval(getgpc('page')));
 
-		include_once UC_ROOT.'./view/default/main.lang.php';
+/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/main.lang.php';
 		$this->lang = &$lang;
 	}
 
@@ -321,7 +302,7 @@ class base {
 	}
 
 	function message($message, $redirect = '', $type = 0, $vars = array()) {
-		include_once UC_ROOT.'view/default/messages.lang.php';
+/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/messages.lang.php';
 		if(isset($lang[$message])) {
 			$message = $lang[$message] ? str_replace(array_keys($vars), array_values($vars), $lang[$message]) : $message;
 		}

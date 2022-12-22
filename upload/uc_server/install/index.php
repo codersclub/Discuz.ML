@@ -15,7 +15,14 @@ define('ROOT_PATH', dirname(__FILE__).'/../');
 
 require ROOT_PATH.'./release/release.php';
 require ROOT_PATH.'./install/var.inc.php';
-require ROOT_PATH.'./install/lang.inc.php';
+
+//------------------------------------------------------------------
+//vot Define UC Language !!!
+//vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
+/*vot*/	define('UC_LANG', UC_DEFAULT_LANG);
+/*vot*/	define('RTLSUFFIX', UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
+/*vot*/ require ROOT_PATH . './language/' . UC_LANG . '/lang.inc.php';
+
 require ROOT_PATH.'./install/dbi.class.php';// MySQLi Only, Git new
 require ROOT_PATH.'./install/func.inc.php';
 
