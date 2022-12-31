@@ -412,11 +412,12 @@ function parseed2k($url) {
 
 function parseattachurl($aid, $ext, $ignoretid = 0) {
 	global $_G;
+	require_once libfile('function/attachment');
 	$_G['forum_skipaidlist'][] = $aid;
 	if(!empty($ext)) {
 		$attach = C::t('forum_attachment_n')->fetch('aid:'.$aid, $aid);
 		// If it is not an audio and video attachment, it is not allowed to generate an unconditional address. Attachment charging and reading permission judgment are not supported here.
-		if(!in_array(attachtype(fileext($attach['filename'])), array(9, 10))) {
+		if(!in_array(attachtype(fileext($attach['filename'])."\t", 'id'), array(9, 10))) {
 			$ext = 0;
 		}
 	}
