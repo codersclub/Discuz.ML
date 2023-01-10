@@ -1,6 +1,5 @@
 # Discuz! ML (MultiLingual Discuz)
 
-
 ### **Introduction**
 
 Discuz!ML is a multilingual version of Discuz!X, social network engine from Tencent Cloud 
@@ -10,7 +9,6 @@ Discuz!ML is a multilingual version of Discuz!X, social network engine from Tenc
 - Discuz! ML official site: https://codersclub.org/discuz.ml/
 - Discuz! ML official forum: https://codersclub.org/discuzx/
 - Discuz! ML repository at Github: https://github.com/codersclub/Discuz.ML
-- Discuz! ML repository at SourceForge: https://hg.code.sf.net/p/discuz-ml/
 
 ### **Chinese Related Sites**
 
