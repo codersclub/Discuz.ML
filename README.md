@@ -1,4 +1,4 @@
-# Discuz! ML (MultiLingual Discuz)
+# Discuz! ML (MultiLingual Discuz) v.3.4
 
 ### **Introduction**
 
