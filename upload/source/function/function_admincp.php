@@ -161,10 +161,12 @@ function cpurl($type = 'parameter', $filters = array('sid', 'frames')) {
 
 
 function showheader($key, $url) {
-	list($action, $operation, $do) = explode('_', $url.'___');
-	$url = $action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '');
+	if(!preg_match('/^https?:\/\//is', $url)) {
+		list($action, $operation, $do) = explode('_', $url.'___');
+		$url = ADMINSCRIPT.'?action='.$action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '');
+	}
 	$menuname = cplang('header_'.$key) != 'header_'.$key ? cplang('header_'.$key) : $key;
-	echo '<li><button id="header_'.$key.'" class=" ">'.$menuname.'</button></li>';
+	echo '<li><button id="header_'.$key.'" draggable="true" ondragend="window.open(\''.$url.'\');" class=" ">'.$menuname.'</button></li>';
 }
 
 
@@ -398,16 +400,16 @@ function showsubmenu($title, $menus = array(), $right = '', $replace = array()) 
 }
 
 function showsubmenusteps($title, $menus = array(), $mleft = array(), $mright = array()) {
-/*vot*/	$s = '<div class="itemtitle">'.($title ? '<h3>'.cplang($title).'</h3><div class="clear"></div>' : '');
-	if(is_array($mleft)) {
+	$s = '<div class="itemtitle"'.(empty($title) ? ' style="margin-bottom: 12px;"' : '').'>'.($title ? '<h3>'.cplang($title).'</h3>' : '');
+	if(is_array($mleft) && !empty($mleft)) {
 		$s .= '<ul class="tab1" style="margin-right:10px">';
 		foreach($mleft as $k => $menu) {
 			$s .= '<li'.($menu[2] ? ' class="current"' : '').'><a href="'.(!$menu[4] ? ADMINSCRIPT.'?action='.$menu[1] : $menu[1]).'"'.(!empty($menu[3]) ? ' target="_blank"' : '').'><span>'.cplang($menu[0]).'</span></a></li>';
 		}
 		$s .= '</ul>';
 	}
-	if(is_array($menus)) {
-		$s .= '<ul class="stepstat">';
+	if(is_array($menus) && !empty($menus)) {
+		$s .= '<ul class="stepstat" '.(empty($title) ? ' style="padding-top:16px"' : '').'>';
 			$i = 0;
 			$ic = 1;
 		foreach($menus as $menu) {
@@ -417,7 +419,7 @@ function showsubmenusteps($title, $menus = array(), $mleft = array(), $mright = 
 		}
 		$s .= '</ul>';
 	}
-	if(is_array($mright)) {
+	if(is_array($mright) && !empty($mright)) {
 		$s .= '<ul class="tab1">';
 		foreach($mright as $k => $menu) {
 			$s .= '<li'.($menu[2] ? ' class="current"' : '').'><a href="'.(!$menu[4] ? ADMINSCRIPT.'?action='.$menu[1] : $menu[1]).'"'.(!empty($menu[3]) ? ' target="_blank"' : '').'><span>'.cplang($menu[0]).'</span></a></li>';
@@ -426,7 +428,9 @@ function showsubmenusteps($title, $menus = array(), $mleft = array(), $mright = 
 	}
 	$s .= '</div>';
 	echo $s;
-	echo '</div><div class="cpcontainer">';
+	if (!empty($title)) {
+		echo '</div><div class="cpcontainer">';
+	}
 }
 
 function showsubmenuanchors($title, $menus = array(), $right = '') {
@@ -502,7 +506,7 @@ function showhiddenfields($hiddenfields = array()) {
 
 function showtableheader($title = '', $classname = '', $extra = '', $titlespan = 15) {
 	global $_G;
-	$classname = str_replace(array('nobottom', 'notop'), array('nobdb', 'nobdt'), $classname);
+	$classname = str_replace(array('nobottom', 'notop'), array('nobottom nobdb', 'nobdt'), $classname);
 	if(isset($_G['showsetting_multi'])) {
 		if($_G['showsetting_multi'] == 0) {
 			$extra .= ' style="width:'.($_G['showsetting_multicount'] * 270 + 60).'px"';
@@ -520,7 +524,7 @@ function showtableheader($title = '', $classname = '', $extra = '', $titlespan =
 
 function showboxheader($title = '', $classname = '', $extra = '', $nobody = 0) {
 	global $_G;
-	$classname = str_replace(array('nobottom', 'notop'), array('nobdb', 'nobdt'), $classname);
+	$classname = str_replace(array('nobottom', 'notop'), array('nobottom nobdb', 'nobdt'), $classname);
 	echo "\n".'<div class="dbox'.($classname ? ' '.$classname : '').'"'.($extra ? " $extra" : '').'>';
 	if($title) {
 		echo "\n".'<div class="boxheader">'.cplang($title).'</div>';
@@ -727,7 +731,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 	} elseif($type == 'mradio' || $type == 'mradio2') {
 		$nocomment = $type == 'mradio2' && !isset($_G['showsetting_multi']) ? true : false;
 		$addstyle = $nocomment ? ' style="float: left; width: 18%"' : '';
-/*vot*/		$ulstyle = $nocomment ? ' style="width: 100%"' : '';
+		$ulstyle = $nocomment ? ' style="width: 900px"' : '';
 		if(is_array($varname)) {
 			$radiocheck = array($value => ' checked');
 			$s .= '<ul'.(empty($varname[2]) ?  ' class="nofloat"' : '').' onmouseover="altStyle(this'.$check['disabledaltstyle'].');"'.$ulstyle.'>';
@@ -751,7 +755,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 	} elseif($type == 'mcheckbox' || $type == 'mcheckbox2') {
 		$nocomment = $type != 'mcheckbox2' && count($varname[1]) > 3 && !isset($_G['showsetting_multi']) ? true : false;
 		$addstyle = $nocomment ? ' style="float: left;'.(empty($_G['showsetting_multirow']) ? ' width: 18%;overflow: hidden;' : '').'"' : '';
-/*vot*/		$ulstyle = $nocomment && empty($_G['showsetting_multirow']) ? ' style="width: 100%"' : '';
+		$ulstyle = $nocomment && empty($_G['showsetting_multirow']) ? ' style="width: 900px"' : '';
 		$s .= '<ul class="nofloat" onmouseover="altStyle(this'.$check['disabledaltstyle'].');"'.$ulstyle.'>';
 		foreach($varname[1] as $varary) {
 			if(is_array($varary) && !empty($varary)) {
@@ -778,7 +782,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 	} elseif($type == 'omcheckbox') {
 		$nocomment = count($varname[1]) > 3 ? true : false;
 		$addstyle = $nocomment ? 'style="float: left; width: 18%"' : '';
-/*vot*/		$ulstyle = $nocomment ? 'style="width: 100%"' : '';
+		$ulstyle = $nocomment ? 'style="width: 900px"' : '';
 		$s .= '<ul onmouseover="altStyle(this'.$check['disabledaltstyle'].');"'.(empty($varname[2]) ? ' class="nofloat"' : 'class="ckbox"').' '.$ulstyle.'>';
 		foreach($varname[1] as $varary) {
 			if(is_array($varary) && !empty($varary)) {

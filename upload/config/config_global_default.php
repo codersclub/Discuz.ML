@@ -241,7 +241,7 @@ $_config['ipdb']['setting']['ipv6'] = 'v6wry';	// IPv6 library used by the syste
  * For example:
  * 		$_config['ipgetter']['onlinechk']['server'] = '100.64.10.24';
  */
-$_config['ipgetter']['setting'] = '';
+$_config['ipgetter']['setting'] = 'header';
 $_config['ipgetter']['header']['header'] = 'HTTP_X_FORWARDED_FOR';
 $_config['ipgetter']['iplist']['header'] = 'HTTP_X_FORWARDED_FOR';
 $_config['ipgetter']['iplist']['list']['0'] = '127.0.0.1';

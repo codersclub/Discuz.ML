@@ -50,11 +50,10 @@ function html_login_header($form = true) {
 	$tips = lang('admincp_login', 'login_tips');
 	$staticurl = STATICURL;
 /*vot*/	$rtl_suffix = RTLSUFFIX;
-/*vot*/	$light_mode = lang('admincp_login', 'light_mode');
-/*vot*/	$default_mode = lang('admincp_login', 'default_mode');
-/*vot*/	$normal_mode = lang('admincp_login', 'normal_mode');
-/*vot*/	$night_mode = lang('admincp_login', 'night_mode');
-
+	$light_mode = lang('admincp_login', 'login_dk_light_mode');
+	$by_system = lang('admincp_login', 'login_dk_by_system');
+	$normal_mode = lang('admincp_login', 'login_dk_normal_mode');
+	$dark_mode = lang('admincp_login', 'login_dk_dark_mode');
 	echo <<<EOT
 <!DOCTYPE html>
 <html>
@@ -72,7 +71,7 @@ function html_login_header($form = true) {
 <script src="{$staticurl}js/admincp_base.js"></script>
 </head>
 <body>
-<!--vot--><div class="darkmode" title="{$light_mode}">
+<div class="darkmode" title="$light_mode">
 <div>
 <div class="dk-light">
 <svg width="24" height="24">
@@ -85,7 +84,7 @@ function html_login_header($form = true) {
 </svg>
 </div>
 </div>
-<!--vot--><ul id="dkm_menu" style="display: none;"><li class="current">{$default_mode}</li><li>{$normal_mode}</li><li>{$night_mode}</li></ul>
+<ul id="dkm_menu" style="display: none;"><li class="current">$by_system</li><li>$normal_mode</li><li>$dark_mode</li></ul>
 </div>
 EOT;
 

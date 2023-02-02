@@ -92,7 +92,6 @@ var rowtypedata = [
 </script>
 <?php
 		showformheader('group&operation=type');
-		showboxheader();
 		showtableheader();
 		showsubtitle(array('display_order', 'groups_type_name', 'groups_type_count', 'groups_type_operation'));
 
@@ -138,7 +137,6 @@ var rowtypedata = [
 
 		showsubmit('editsubmit');
 		showtablefooter();
-		showboxheader('', 'tb1');
 		showformfooter();
 
 	} else {
@@ -660,8 +658,7 @@ var rowtypedata = [
 		 	array('alloweditactivity', cplang('admingroup_edit_edit_activity'), '1'),
 		 	array('allowedittrade', cplang('admingroup_edit_edit_trade'), '1'),
 		 );
-		showtitle('admingroup_edit_threadperm');
-		showsetting('', $varname, $group_userperm, 'omcheckbox');
+		showsetting('admingroup_edit_threadperm', $varname, $group_userperm, 'omcheckbox');
 
 		showsetting('admingroup_edit_digest_thread', array('newgroup_userperm[allowdigestthread]', array(
 			array(0, cplang('admingroup_edit_digest_thread_none')),
@@ -676,31 +673,28 @@ var rowtypedata = [
 		 	array('allowbanpost', cplang('admingroup_edit_ban_post'), '1'),
 		 	array('allowdelpost', cplang('admingroup_edit_del_post'), '1'),
 		 );
-		showtitle('admingroup_edit_postperm');
-		showsetting('', $varname, $group_userperm, 'omcheckbox');
+		showsetting('admingroup_edit_postperm', $varname, $group_userperm, 'omcheckbox');
 
 		$varname[1] = array(
 		 	array('allowupbanner', cplang('group_userperm_upload_banner'), '1'),
 		 );
-		showtitle('admingroup_edit_modcpperm');
-		showsetting('', $varname, $group_userperm, 'omcheckbox');
+		showsetting('admingroup_edit_modcpperm', $varname, $group_userperm, 'omcheckbox');
 
 		$varname[1] = array(
 		 	array('disablepostctrl', cplang('admingroup_edit_disable_postctrl'), '1'),
 		 	array('allowviewip', cplang('admingroup_edit_view_ip'), '1')
 		 );
-		showtitle('group_userperm_others');
-		showsetting('', $varname, $group_userperm, 'omcheckbox');
+		showsetting('group_userperm_others', $varname, $group_userperm, 'omcheckbox');
 
-		showtablefooter();
-		echo '</td></tr>';
-		showtagfooter('tbody');
 		showsubmit('permsubmit', 'submit');
 		showtablefooter();
 		showformfooter();
 		/*search*/
 	} else {
 		$default_perm = array('allowstickthread' => 0, 'allowbumpthread' => 0, 'allowhighlightthread' => 0, 'allowlivethread' => 0, 'allowstampthread' => 0, 'allowclosethread' => 0, 'allowmergethread' => 0, 'allowsplitthread' => 0, 'allowrepairthread' => 0, 'allowrefund' => 0, 'alloweditpoll' => 0, 'allowremovereward' => 0, 'alloweditactivity' => 0, 'allowedittrade' => 0, 'allowdigestthread' => 0, 'alloweditpost' => 0, 'allowwarnpost' => 0, 'allowbanpost' => 0, 'allowdelpost' => 0, 'allowupbanner' => 0, 'disablepostctrl' => 0, 'allowviewip' => 0);
+		if(empty($_GET['newgroup_userperm']) || !is_array($_GET['newgroup_userperm'])) {
+			$_GET['newgroup_userperm'] = array();
+		}
 		$_GET['newgroup_userperm'] = array_merge($default_perm, $_GET['newgroup_userperm']);
 		if(serialize($_GET['newgroup_userperm']) != serialize($group_userperm)) {
 			C::t('common_setting')->update_setting('group_userperm', $_GET['newgroup_userperm']);
@@ -717,8 +711,8 @@ var rowtypedata = [
 			foreach($query as $level) {
 				$grouplevels .= showtablerow('', array('class="td25"', '', 'class="td28"', 'class=td28'), array(
 					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[{$level['levelid']}]\" value=\"{$level['levelid']}\">",
-					"<input type=\"text\" class=\"txt\" size=\"12\" name=\"levelnew[{$level['levelid']}]['leveltitle']}\" value=\"{$level['leveltitle']}\">",
-					"<input type=\"text\" class=\"txt\" size=\"6\" name=\"levelnew[{$level['levelid']}]['creditshigher']}\" value=\"{$level['creditshigher']}\" /> ~ <input type=\"text\" class=\"txt\" size=\"6\" name=\"levelnew[{$level['levelid']}]['creditslower']}\" value=\"{$level['creditslower']}\" disabled />",
+					"<input type=\"text\" class=\"txt\" size=\"12\" name=\"levelnew[{$level['levelid']}][leveltitle]}\" value=\"{$level['leveltitle']}\">",
+					"<input type=\"text\" class=\"txt\" size=\"6\" name=\"levelnew[{$level['levelid']}][creditshigher]}\" value=\"{$level['creditshigher']}\" /> ~ <input type=\"text\" class=\"txt\" size=\"6\" name=\"levelnew[{$level['levelid']}][creditslower]}\" value=\"{$level['creditslower']}\" disabled />",
 					"<a href=\"".ADMINSCRIPT."?action=group&operation=level&levelid={$level['levelid']}\" class=\"act\">{$lang['detail']}</a>"
 				), TRUE);
 			}
@@ -775,7 +769,7 @@ EOT;
 			}
 			if(is_array($_GET['levelnew'])) {
 				foreach($_GET['levelnew'] as $id => $level) {
-					if((is_array($_GET['delete']) && in_array($id, $_GET['delete'])) || ($id == 0 && (!$level['grouptitle'] || $level['creditshigher'] == ''))) {
+					if((is_array($_GET['delete']) && in_array($id, $_GET['delete'])) || ($id == 0 && (!$level['leveltitle'] || $level['creditshigher'] == ''))) {
 						unset($_GET['levelnew'][$id]);
 					} else {
 						$orderarray[$level['creditshigher']] = $id;
