@@ -140,8 +140,8 @@ class usercontrol extends base {
 		$ip = $this->input('ip');
 		$nolog = $this->input('nolog');
 
-		// check_times 代表允许用户登录失败次数，该变量的值为 0 为不限制，正数为次数
-		// 由于历史 Bug ，系统配置内原有用于代表无限制的 0 值必须代表正常值 5 ，因此只能在这里进行映射，负数映射为 0 ，正数正常， 0 映射为 5 。
+		// check_times represents the number of times the user is allowed to fail to log in. The value of this variable is 0 for no limit, and a positive number is the number of times
+		// Due to historical bugs, the original 0 value used to represent unlimited in the system configuration must represent the normal value 5, so it can only be mapped here. Negative numbers are mapped to 0, positive numbers are normal, and 0 is mapped to 5.
 		$check_times = $this->settings['login_failedtime'] > 0 ? $this->settings['login_failedtime'] : ($this->settings['login_failedtime'] < 0 ? 0 : 5);
 
 		if($ip && $check_times && !$loginperm = $_ENV['user']->can_do_login($username, $ip)) {
@@ -154,7 +154,7 @@ class usercontrol extends base {
 		} elseif($isuid == 2) {
 			$user = $_ENV['user']->get_user_by_email($username);
 		} elseif($isuid == 4) {
-			// isuid == 4 则为手机号码登录，isuid == 3 已被应用占用
+			// isuid == 4 is mobile phone number login, isuid == 3 is already occupied by the application
 			list($secmobicc, $secmobile) = explode('-', $username);
 			$user = $_ENV['user']->get_user_by_secmobile($secmobicc, $secmobile);
 		} else {
@@ -168,7 +168,7 @@ class usercontrol extends base {
 		} elseif($checkques && $user['secques'] != $_ENV['user']->quescrypt($questionid, $answer)) {
 			$status = -3;
 		} else {
-			// 密码升级作为附属流程, 失败与否不影响登录操作
+			// Password upgrade is a subsidiary process, failure or failure does not affect the login operation
 			$_ENV['user']->upgrade_password($username, $password, $user['password'], $user['salt']);
 			$status = $user['uid'];
 		}
