@@ -55,7 +55,7 @@ if($uid && isemail($email) && $time > TIMESTAMP - 86400) {
 	C::t('common_member_validate')->delete($uid);
 	dsetcookie('newemail', "", -1);
 
-	// 给原有邮箱发送修改邮箱的邮件
+	// Send an email to the original mailbox to modify the mailbox
 	if(!function_exists('sendmail')) {
 		include libfile('function/mail');
 	}

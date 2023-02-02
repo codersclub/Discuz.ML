@@ -12,7 +12,7 @@ error_reporting(0);
 
 _get_script_url();
 define('UC_API', strtolower((is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
-// 非独立模式下若想为头像服务设置独立域名（如CDN等服务），可以在此处进行配置UC_AVTURL（结尾不可有/）
+// In the non-independent mode, if you want to set an independent domain name for the avatar service (such as CDN and other services), you can configure UC_AVTURL here (no / at the end)
 define('UC_AVTURL', '');
 
 $uid = isset($_GET['uid']) ? $_GET['uid'] : 0;
@@ -88,25 +88,25 @@ function _get_script_url() {
 }
 
 function is_https() {
-	// PHP 标准服务器变量
+	// PHP standard server variables
 	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 		return true;
 	}
-	// X-Forwarded-Proto 事实标准头部, 用于反代透传 HTTPS 状态
+	// X-Forwarded-Proto de facto standard header, used for reverse generation transparent transmission of HTTPS status
 	if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
 		return true;
 	}
-	// 阿里云全站加速私有 HTTPS 状态头部
-	// Git 意见反馈 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	// Alibaba Cloud Accelerates Private HTTPS Status Header
+	// Git Feedback https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
 	if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
 		return true;
 	}
-	// 西部数码建站助手私有 HTTPS 状态头部
-	// 官网意见反馈 https://www.discuz.net/thread-3849819-1-1.html
+	// Western Digital Website Builder private HTTPS status header
+	// Official website feedback https://www.discuz.net/thread-3849819-1-1.html
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	// 服务器端口号兜底判断
+	// The server port number is a bottom-up judgment
 	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}
