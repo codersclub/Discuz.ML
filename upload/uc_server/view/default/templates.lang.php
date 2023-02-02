@@ -231,7 +231,7 @@ $languages = array(
 					<li>badword=good</li>',
 	'badword_skip' => '当冲突时，跳过原来的词表',
 	'badword_overwrite' => '当冲突时，覆盖原来的词表',
-	'badword_truncate' => '清空当前词表，后导入新词语（此操作不可恢复，建议首先 <a href="{$adminscript}?m=badword&a=export" target="_blank">导出词表</a>，做好备份）',//'Clear the current vocabulary, and then import new words (this operation cannot be restored, it is recommended to <a href="{$adminscript}?m=badword&a=export" target="_blank">export the vocabulary</a> first, and do a good job Backup)',
+	'badword_truncate' => '清空当前词表，后导入新词语（此操作不可恢复，建议首先 <a href="{$adminscript}?m=badword&a=export" target="_blank">导出词表</a>，做好备份）',
 
 	'announcepm' => '公共消息管理',
 	'announcepm_deleted' => '成功删除公共消息',
@@ -433,7 +433,7 @@ $languages = array(
 	'db_start_export_dumpfile' => '开始备份数据，请等待，请勿关闭浏览器',
 	'db_list_tips' => '根据备份日期选择要恢复的备份，点击“详情”进入之后选择要恢复的应用备份',
 	'db_import_tips' => '在需要恢复的应用前面勾选，之后点击“提交”按钮即可恢复备份数据',
-	'db_security_tips' => '出于安全考虑，我们强烈建议您下载或恢复数据库备份文件后删除文件或设置文件不可通过 URL 访问。',//'For security reasons, we strongly recommend that you delete files after downloading or restoring a database backup file or that the settings file is not accessible via URL.',
+	'db_security_tips' => '出于安全考虑，我们强烈建议您下载或恢复数据库备份文件后删除文件或设置文件不可通过 URL 访问。',
 	'dumpfile_exists' => '备份存在',
 
 	'message_title'=>'提示信息',
