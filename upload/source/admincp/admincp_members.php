@@ -145,7 +145,7 @@ EOF;
 			}
 		}
 		showformheader("members&operation=clean".$condition_str);
-		showboxheader(cplang('members_search_result', array('membernum' => $membernum)).'<a href="'.ADMINSCRIPT.'?action=members&operation=search" class="act lightlink normal">'.cplang('research').'</a>&nbsp;&nbsp;&nbsp;<a href='.ADMINSCRIPT.'?action=members&operation=export'.$condition_str.'>'.$lang['members_search_export'].'</a>');
+		showtableheader(cplang('members_search_result', array('membernum' => $membernum)).'<a href="'.ADMINSCRIPT.'?action=members&operation=search" class="act lightlink normal">'.cplang('research').'</a>&nbsp;&nbsp;&nbsp;<a href='.ADMINSCRIPT.'?action=members&operation=export'.$condition_str.'>'.$lang['members_search_export'].'</a>');
 		showtableheader();
 
 		if($membernum) {
@@ -794,7 +794,7 @@ EOF;
 			showsubmenusteps('nav_members_newsletter', array(
 				array('nav_members_select', !$_GET['submit']),
 				array('nav_members_notify', $_GET['submit']),
-			), array(), array(array('members_grouppmlist', 'members&operation=grouppmlist', 0)));
+			), array(), array(array('members_grouppmlist_newsletter', 'members&operation=newsletter', 1), array('members_grouppmlist', 'members&operation=grouppmlist', 0)));
 		}
 		showsearchform('newsletter');
 
@@ -827,8 +827,9 @@ EOF;
 				shownewsletter();
 
 				$search_condition = serialize($search_condition);
-				showsubmit('newslettersubmit', 'submit', 'td', '<input type="hidden" name="conditions" value=\''.$search_condition.'\' />');
-
+				showtableheader();
+				showsubmit('newslettersubmit', 'submit', '', '<input type="hidden" name="conditions" value=\''.$search_condition.'\' />');
+				showtablefooter();
 			}
 
 			showformfooter();
@@ -886,6 +887,7 @@ EOF;
 	}
 	showtablefooter();
 	if($do) {
+		showboxheader();
 		$_GET['filter'] = in_array($_GET['filter'], array('read', 'unread')) ? $_GET['filter'] : '';
 		$filteradd = $_GET['filter'] ? '&filter='.$_GET['filter'] : '';
 		$ppp = 100;
@@ -911,6 +913,7 @@ EOF;
 			echo '</div>';
 		}
 		echo $multipage;
+		showboxfooter();
 	}
 
 } elseif($operation == 'reward') {
@@ -955,7 +958,7 @@ EOF;
 				));
 				showboxfooter();
 
-				showboxheader('nav_members_reward');
+				showboxheader('nav_members_reward', 'nobottom');
 				showtableheader('', 'noborder');
 				showsubtitle($creditscols);
 				showtablerow('', array('class="td23"', 'class="td28"', 'class="td28"', 'class="td28"', 'class="td28"', 'class="td28"', 'class="td28"', 'class="td28"', 'class="td28"'), $creditsvalue);
@@ -966,7 +969,9 @@ EOF;
 				showtagheader('div', 'messagebody');
 				shownewsletter();
 				showtagfooter('div');
-				showsubmit('rewardsubmit', 'submit', 'td', '<input class="checkbox" type="checkbox" name="notifymember" value="1" onclick="$(\'messagebody\').style.display = this.checked ? \'\' : \'none\'" id="credits_notify" /><label for="credits_notify">'.cplang('members_reward_notify').'</label>');
+				showtableheader();
+				showsubmit('rewardsubmit', 'submit', '', '<input class="checkbox" type="checkbox" name="notifymember" value="1" onclick="$(\'messagebody\').style.display = this.checked ? \'\' : \'none\'" id="credits_notify" /><label for="credits_notify">'.cplang('members_reward_notify').'</label>');
+				showtablefooter();
 
 			}
 
@@ -2577,7 +2582,7 @@ EOF;
 			showtablefooter();
 			showformfooter();
 		} else {
-			$iplist = explode("\n", $_GET['inputipbanlist']);
+			$iplist = explode("\n", str_replace("\r",'',$_GET['inputipbanlist']));
 			foreach($iplist as $banip) {
 				if(strpos($banip, ',') !== false) {
 					list($banipaddr, $expiration) = explode(',', $banip);
@@ -2905,13 +2910,11 @@ EOF;
 			showsubmenu($lang['members_profile'], $profilenav);
 			showtips('members_profile_tips');
 			showformheader('members&operation=profile');
-			showboxheader('members_profile', 'nobottom', 'id="porfiletable"');
 			showtableheader('', '', 'id="profiletable_header"');
 			$tdstyle = array('class="td22"', 'class="td28" width="100"', 'class="td28" width="100"', 'class="td28" width="100"', 'class="td28" width="100"', 'class="td28"', 'class="td28"');
 			showsubtitle(array('members_profile_edit_name', 'members_profile_edit_display_order', 'members_profile_edit_available', 'members_profile_edit_profile_view', 'members_profile_edit_card_view', 'members_profile_edit_reg_view', ''), 'header tbm', $tdstyle);
 			showtablefooter();
-			echo '<script type="text/javascript">floatbottom(\'profiletable_header\');</script>';
-			showtableheader();
+			showtableheader('members_profile', 'nobottom', 'id="porfiletable"');
 			showsubtitle(array('members_profile_edit_name', 'members_profile_edit_display_order', 'members_profile_edit_available', 'members_profile_edit_profile_view', 'members_profile_edit_card_view', 'members_profile_edit_reg_view', ''), 'header', $tdstyle);
 			foreach($list as $fieldid => $value) {
 				$value['available'] = '<input type="checkbox" class="checkbox" name="available['.$fieldid.']" '.($value['available'] ? 'checked="checked" ' : '').'value="1">';
@@ -2924,8 +2927,8 @@ EOF;
 			}
 			showsubmit('ordersubmit');
 			showtablefooter();
-			showboxfooter();
 			showformfooter();
+			echo '<script type="text/javascript">floatbottom(\'profiletable_header\');$(\'profiletable_header\').style.width = $(\'porfiletable\').offsetWidth + \'px\';</script>';
 		} else {
 			foreach($_GET['displayorder'] as $fieldid => $value) {
 				$setarr = array(
@@ -3016,8 +3019,7 @@ EOF;
 		showtips('members_stat_tips');
 
 		showformheader('members&operation=stat&fieldid='.$_GET['fieldid']);
-		showboxheader('members_stat_options');
-		showtableheader();
+		showtableheader('members_stat_options');
 		$option_html = '<ul>';
 		foreach($options as $key=>$value) {
 			$extra_style = $_GET['fieldid'] == $key ? ' font-weight: 900;' : '';
@@ -3068,17 +3070,12 @@ EOF;
 				));
 			}
 
-			showtablefooter();
-			showboxfooter();
 			$optype_html = '<input type="radio" class="radio" name="optype" id="optype_option" value="option" /><label for="optype_option">'.cplang('members_stat_update_option').'</label>&nbsp;&nbsp;'
 					.'<input type="radio" class="radio" name="optype" id="optype_data" value="data" /><label for="optype_data">'.cplang('members_stat_update_data').'</label>';
 			showsubmit('statsubmit', 'submit', $optype_html);
-			showformfooter();
-
-		} else {
-			showtablefooter();
-			showformfooter();
 		}
+		showtablefooter();
+		showformfooter();
 
 	} else {
 
@@ -3160,7 +3157,7 @@ function showsearchform($operation = '') {
 	echo '<style type="text/css">#residedistrictbox select, #birthdistrictbox select{width: auto;}</style>';
 	$formurl = "members&operation=$operation".(($_GET['do'] == 'mobile' || $_GET['do'] == 'sms') ? '&do=' . $_GET['do'] : '');
 	showformheader($formurl, "onSubmit=\"if($('updatecredittype1') && $('updatecredittype1').checked && !window.confirm('{$lang['members_reward_clean_alarm']}')){return false;} else {return true;}\"");
-	showtableheader();
+	showtableheader('', 'nobottom');
 	if(isset($_G['setting']['membersplit'])) {
 		showsetting('members_search_table', '', '', '<select name="tablename" ><option value="master">'.$lang['members_search_table_master'].'</option><option value="archive">'.$lang['members_search_table_archive'].'</option></select>');
 	}
@@ -3353,7 +3350,7 @@ function countmembers($condition, &$urladd) {
 function shownewsletter() {
 	global $lang;
 
-	showtableheader();
+	showtableheader('', 'nobottom');
 	showsetting('members_newsletter_subject', 'subject', '', 'text');
 	showsetting('members_newsletter_message', 'message', '', 'textarea');
 	if($_GET['do'] == 'mobile' || $_GET['do'] == 'sms') {
@@ -3625,8 +3622,11 @@ function notifymembers($operation, $variable) {
 				}
 			} elseif($_GET['notifymembers'] == 'sms') {
 				// 用户 UID : $member['uid'], 短信类型: 通知类短信, 服务类型: 系统级短消息通知业务
-				// 国家代码: $member['secmobicc'], 手机号: $member['secmobile'], 内容: "[$subject]$message$addmsg", 强制发送: true
-				sms::send($member['uid'], 1, 2, $member['secmobicc'], $member['secmobile'], "[$subject]$message$addmsg", 1);
+				// 国际电话区号: $member['secmobicc'], 手机号: $member['secmobile'], 内容: "[$subject]$message$addmsg", 强制发送: true
+				// 短信发送前先校验安全手机号是否正确, 避免错误安全手机号送往短信网关
+				if(!empty($member['secmobicc']) && !empty($member['secmobile']) && preg_match('#^(\d){1,3}$#', $member['secmobicc']) && preg_match('#^(\d){1,12}$#', $member['secmobile'])) {
+					sms::send($member['uid'], 1, 2, $member['secmobicc'], $member['secmobile'], "[$subject]$message$addmsg", 1);
+				}
 			}
 
 			$log = array();

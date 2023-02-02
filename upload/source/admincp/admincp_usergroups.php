@@ -549,7 +549,7 @@ EOT;
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_basic":"action=usergroups&operation=edit&anchor=basic"}*/
 		showmultititle();
 		showtagheader('div', 'basic', $anchor == 'basic');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_basic');
 		showsetting('usergroups_edit_basic_title', 'grouptitlenew', $group['grouptitle'], 'text');
 		$group['exempt'] = strrev(sprintf('%0'.strlen($group['exempt']).'b', $group['exempt']));
@@ -636,7 +636,7 @@ EOT;
 
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_special":"action=usergroups&operation=edit&anchor=special"}*/
 		showtagheader('div', 'special', $anchor == 'special');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_special');
 		showsetting('usergroups_edit_special_activity', 'allowpostactivitynew', $group['allowpostactivity'], 'radio');
 		showsetting('usergroups_edit_special_poll', 'allowpostpollnew', $group['allowpostpoll'], 'radio');
@@ -663,7 +663,7 @@ EOT;
 
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_post":"action=usergroups&operation=edit&anchor=post"}*/
 		showtagheader('div', 'post', $anchor == 'post');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_post');
 		showsetting('usergroups_edit_post_new', 'allowpostnew', $group['allowpost'], 'radio');
 		showsetting('usergroups_edit_post_reply', 'allowreplynew', $group['allowreply'], 'radio');
@@ -710,7 +710,7 @@ EOT;
 		$group['maximagesize'] = intval($group['maximagesize'] / 1024);
 
 		showtagheader('div', 'attach', $anchor == 'attach');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_attach');
 		showsetting('usergroups_edit_attach_get', 'allowgetattachnew', $group['allowgetattach'], 'radio');
 		showsetting('usergroups_edit_attach_getimage', 'allowgetimagenew', $group['allowgetimage'], 'radio');
@@ -727,7 +727,7 @@ EOT;
 
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_magic":"action=usergroups&operation=edit&anchor=magic"}*/
 		showtagheader('div', 'magic', $anchor == 'magic');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_magic');
 		showsetting('usergroups_edit_magic_permission', array('allowmagicsnew', array(
 			array(0, $lang['usergroups_edit_magic_unallowed']),
@@ -742,7 +742,7 @@ EOT;
 
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_invite":"action=usergroups&operation=edit&anchor=invite"}*/
 		showtagheader('div', 'invite', $anchor == 'invite');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_invite');
 		showsetting('usergroups_edit_invite_permission', 'allowinvitenew', $group['allowinvite'], 'radio');
 		showsetting('usergroups_edit_invite_send_permission', 'allowmailinvitenew', $group['allowmailinvite'], 'radio');
@@ -761,7 +761,7 @@ EOT;
 
 		if($multiset) {
 			showtagheader('div', 'credit', $anchor == 'credit');
-			showtableheader();
+			showtableheader('', 'nobottom');
 			showtitle('usergroups_edit_credit');
 			showsetting('usergroups_edit_credit_exempt_sendpm', 'exemptnew[0]', $group['exempt'][0], 'radio');
 			showsetting('usergroups_edit_credit_exempt_search', 'exemptnew[1]', $group['exempt'][1], 'radio');
@@ -788,7 +788,7 @@ EOT;
 		} else {
 			/*search={"nav_usergroups":"action=usergroups","usergroups_edit_credit":"action=usergroups&operation=edit&anchor=credit"}*/
 			showtagheader('div', 'credit', $anchor == 'credit');
-			showtableheader();
+			showtableheader('', 'nobottom');
 			showtitle('usergroups_edit_credit');
 			showsetting('usergroups_edit_credit_exempt_sendpm', 'exemptnew[0]', $group['exempt'][0], 'radio');
 			showsetting('usergroups_edit_credit_exempt_search', 'exemptnew[1]', $group['exempt'][1], 'radio');
@@ -813,7 +813,7 @@ EOT;
 			echo '<tr><td colspan="2">'.$lang['usergroups_edit_credit_exempt_comment'].'</td></tr>';
 
 			showtablefooter();
-			showtableheader('usergroups_edit_credit_allowrate', '');
+			showtableheader('usergroups_edit_credit_allowrate', 'nobottom');
 
 			$titlecolumn[0] = $lang['name'];
 			for($i = 1; $i <= 8; $i++) {
@@ -849,7 +849,7 @@ EOT;
 
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_home":"action=usergroups&operation=edit&anchor=home"}*/
 		showtagheader('div', 'home', $anchor == 'home');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_home');
 		showsetting('usergroups_edit_attach_max_space_size', 'maxspacesizenew', $group['maxspacesize'], 'text');
 		showsetting('usergroups_edit_home_allow_blog', 'allowblognew', $group['allowblog'], 'radio', '', 1);
@@ -880,7 +880,7 @@ EOT;
 
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_group":"action=usergroups&operation=edit&anchor=group"}*/
 		showtagheader('div', 'group', $anchor == 'group');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_group');
 		showsetting('usergroups_edit_group_build', 'allowbuildgroupnew', $group['allowbuildgroup'], 'text');
 		showsetting('usergroups_edit_group_buildcredits', 'buildgroupcreditsnew', $group['buildgroupcredits'], 'text');
@@ -902,7 +902,7 @@ EOT;
 
 		/*search={"nav_usergroups":"action=usergroups","usergroups_edit_portal":"action=usergroups&operation=edit&anchor=portal"}*/
 		showtagheader('div', 'portal', $anchor == 'portal');
-		showtableheader();
+		showtableheader('', 'nobottom');
 		showtitle('usergroups_edit_portal');
 		showsetting('usergroups_edit_portal_allow_comment_article', 'allowcommentarticlenew', $group['allowcommentarticle'], 'text');
 		showsetting('usergroups_edit_portal_allow_comment_article_mod', 'allowcommentarticlemodnew', $group['allowcommentarticlemod'], 'radio');
@@ -916,7 +916,7 @@ EOT;
 
 		if($pluginsetting) {
 			showtagheader('div', 'plugin', $anchor == 'plugin');
-			showtableheader();
+			showtableheader('', 'nobottom');
 			foreach($pluginsetting as $setting) {
 				showtitle($setting['name']);
 				foreach($setting['setting'] as $varid => $var) {

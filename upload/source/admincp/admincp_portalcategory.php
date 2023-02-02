@@ -34,15 +34,13 @@ if($operation == 'list') {
 			array('list', 'portalcategory', 1)
 		));
 
-		$tdstyle = array('width="25"', 'width="60"', '', 'width="50"', 'width="65"', 'width="35"', 'width="35"', 'width="35"', 'width="185"', 'width="100"');
+		$tdstyle = array('width="25"', 'width="80"', '', 'width="50"', 'width="65"', 'width="35"', 'width="35"', 'width="35"', 'width="215"', 'width="110"');
 		showformheader('portalcategory');
-		showboxheader();
-		echo '<div style="height:60px;line-height:60px;"><a href="javascript:;" onclick="show_all()">'.cplang('show_all').'</a> | <a href="javascript:;" onclick="hide_all()">'.cplang('hide_all').'</a> <input type="text" id="srchforumipt" class="txt" /> <input type="submit" class="btn" value="'.cplang('search').'" onclick="return srchforum()" /></div>';
+		echo '<div style="padding: 0px 20px;background: #fff;height:60px;line-height:60px;"><a href="javascript:;" onclick="show_all()">'.cplang('show_all').'</a> | <a href="javascript:;" onclick="hide_all()">'.cplang('hide_all').'</a>&nbsp;&nbsp;&nbsp;<input type="text" id="srchforumipt" class="txt" /> <input type="submit" class="btn" value="'.cplang('search').'" onclick="return srchforum()" /></div>';
 		showtableheader('', '', 'id="portalcategory_header" style="min-width:900px;*width:900px;"');
 		showsubtitle(array('', '', 'portalcategory_name', 'portalcategory_articles', 'portalcategory_allowpublish', 'portalcategory_allowcomment', 'portalcategory_is_closed', 'setindex', 'operation', 'portalcategory_article_op'), 'header tbm', $tdstyle);
 		showtablefooter();
-		echo '<script type="text/javascript">floatbottom(\'portalcategory_header\');</script>';
-		showtableheader('', '', 'style="min-width:900px;*width:900px;"');
+		showtableheader('', '', 'id="portalcategorytable" style="min-width:900px;*width:900px;"');
 		showsubtitle(array('', '', 'portalcategory_name', 'portalcategory_articles', 'portalcategory_allowpublish', 'portalcategory_allowcomment', 'portalcategory_is_closed', 'setindex', 'operation', 'portalcategory_article_op'), 'header', $tdstyle);
 		foreach ($portalcategory as $key=>$value) {
 			if($value['level'] == 0) {
@@ -52,8 +50,8 @@ if($operation == 'list') {
 		echo '<tbody><tr><td>&nbsp;</td><td colspan="6"><div><a class="addtr" href="'.ADMINSCRIPT.'?action=portalcategory&operation=add&upid=0">'.cplang('portalcategory_addcategory').'</a></div></td><td colspan="3">&nbsp;</td></tr></tbody>';
 		showsubmit('editsubmit');
 		showtablefooter();
-		showboxfooter();
 		showformfooter();
+		echo '<script type="text/javascript">floatbottom(\'portalcategory_header\');$(\'portalcategory_header\').style.width = $(\'portalcategorytable\').offsetWidth + \'px\';</script>';
 
 		$langs = array();
 		$keys = array('portalcategory_addcategory', 'portalcategory_addsubcategory', 'portalcategory_addthirdcategory');
@@ -242,10 +240,10 @@ SCRIPT;
 		showtableheader();
 		if($portalcategory[$_GET['catid']]['children']) {
 			showsetting('portalcategory_subcategory_moveto', '', '',
-				'<input type="radio" name="subcat_op" value="trash" id="subcat_op_trash" checked="checked" />'.
-				'<label for="subcat_op_trash" />'.cplang('portalcategory_subcategory_moveto_trash').'</label>'.
-				'<input type="radio" name="subcat_op" value="parent" id="subcat_op_parent" checked="checked" />'.
-				'<label for="subcat_op_parent" />'.cplang('portalcategory_subcategory_moveto_parent').'</label>'
+				'<div class="nofloat"><input class="radio" type="radio" name="subcat_op" value="trash" id="subcat_op_trash" checked="checked" />'.
+				'&nbsp;<label for="subcat_op_trash" />'.cplang('portalcategory_subcategory_moveto_trash').'</label>'.
+				'&nbsp;&nbsp;&nbsp;<input class="radio" type="radio" name="subcat_op" value="parent" id="subcat_op_parent" checked="checked" />'.
+				'&nbsp;<label for="subcat_op_parent" />'.cplang('portalcategory_subcategory_moveto_parent').'</label></div>'
 			);
 		}
 		include_once libfile('function/portalcp');
@@ -459,6 +457,7 @@ SCRIPT;
 		showsetting('portalcategory_summary', 'description', $cate['description'], 'textarea');
 		showtablefooter();
 
+		showtableheader();
 		showsubmit('detailsubmit');
 		if($operation == 'add') showsetting('', '', '', '<input type="hidden" name="level" value="'.$cate['level'].'" />');
 		showtablefooter();

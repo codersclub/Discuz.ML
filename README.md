@@ -1,31 +1,22 @@
-# [destructive change warning]
-## The code merged on February 27 needs to be followed up with database modification, otherwise the user can log in for the first time, but cannot log in for the second time!
-After updating the code of stock X3.5 website, you need to execute `ALTER TABLE uc_members MODIFY COLUMN password varchar(255) NOT NULL DEFAULT '', MODIFY COLUMN salt varchar(20) NOT NULL DEFAULT ''`; to upgrade the database ( uc_ may be pre_ucenter_ , refer to your site settings for details), otherwise the website will be unable to log in, please be aware!
+# Discuz! ML v3.5 (Discuz! ML MultiLingual)
 
+## Introduction
 
-## It is not recommended for ordinary users to download the code of this branch
-## It is strongly recommended that users without technical skills do not use 3.5 in a non-test environment! ! !
-#### Blindly using and updating Discuz! X3.5 (version in development) in the production environment may cause
-#### - Data loss due to database structure error
-#### - Some functional failures prevent the website from running
-#### - Vulnerabilities leading to compromised servers
-#### Including but not limited to the above series of serious consequences, please be sure to confirm that your technical ability is sufficient to control 3.5 before using it!
+Discuz!ML is a multilingual version of Discuz!X, social network engine from Tencent Cloud 
 
-## The database structure of 3.5 will be updated at any time. Existing users must synchronize all changes in the sql file in the installation directory every time they update the code!
-
-
-
-### **3.5 Release Notes**
+## v3.5 Fetures
 
 Compared with version 3.4, the following modifications have been made:
 
 #### 1. Database related changes
 
-Version 3.5 supports InnoDB and MyISAM database engines. Under both engines, the database no longer supports utf8 encoding, but instead supports utf8mb4 encoding.
+Version 3.5 supports InnoDB and MyISAM database engines.
+Under both engines, the database no longer supports utf8 encoding, but instead supports utf8mb4 encoding.
 
 ##### 1.1 Changes to the database table structure:
 
 Reference [scheme-change-without-data-loss.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-without-data-loss.sql)
+
   * Modified all IP addresses to varchar(45) type;
   * Added port number records where IP addresses are recorded;
   * In the pre_common_banned table, two VARBINARY(16) fields, upperip and lowerip, are added to record the maximum and minimum banned ranges of IP addresses
@@ -156,36 +147,36 @@ Due to the functional limitations of memcached, the above enhancements are not v
 | PHP | >= 5.6.0 | 7.3 - 8.1 | Depends on XML extension, JSON extension, GD extension >= 1.0, PHP 8.0 - 8.1 is testing support |
 | MySQL | >= 5.5.3 | 5.7 - 8.0 | For MariaDB, the recommended version is >= 10.2 |
 
-### **Introduction**
 
-Discuz! X official Git (https://gitee.com/Discuz/DiscuzX), Simplified Chinese UTF8 version
+### screenshot
+![System Information](./readme/screenshot.png "System Information Screenshot")
 
-### **Statement**
-You may fork the code of this site, but **redistribution** for **redistribution** in the development of any derivative, modified or third-party version based on the whole or any part of this product is **prohibited** without permission
+### **Assisted Installation**
 
-### **DxGit Forker Exchange Group**
-Friends who participate in the PR of this project can private message [@zoewho](https://gitee.com/zoewho), [@DiscuzX](https://gitee.com/3dming) and provide QQ number for review. After passing, join the DxGit Forker QQ group to communicate with the developer team.
-
-[Click to see how to submit code to this project](https://gitee.com/Discuz/DiscuzX/wikis/%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81% E5%88%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE?sort_id=3466289)
-
-### **Release Version Download**
-[Click to download release version](https://gitee.com/Discuz/DiscuzX/attach_files)
-|
-[Alternate download address](https://www.dismall.com/thread-73-1-1.html)
-
-*Thanks to [DiscuzFans](https://gitee.com/3dming/DiscuzL/attach_files) for providing packaged versions of simplified GBK, simplified UTF8, and traditional UTF8*
-
-### **Free Assisted Installation**
-
-To make it easier for webmasters to build websites based on Discuz! X, [Discuz! Application Center] (https://addon.dismall.com/) provides free installation of Discuz! X for webmasters. For details, please contact QQ 1453650
+To make it easier for webmasters to build websites based on Discuz! ML, [Codersclub Team](https://codersclub.org/discuzx/) provides an installation of Discuz! ML for webmasters.
+Just write your request at our forum.
 
 
-### **Installation and upgrade tutorial**
-Users who use the release version, check the readme.html file in the installation package, users who use the original code cloud version, check: [Installation Tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%AE%89 %E8%A3%85%E6%95%99%E7%A8%8B?sort_id=3466132), [upgrade tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%8D%87% E7%BA%A7%E6%96%B9%E6%B3%95?sort_id=9978)
+### Installation and upgrade tutorial
+Users who use the release version, check the readme.html file in the installation package.
+
+[Upgrade tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%8D%87% E7%BA%A7%E6%96%B9%E6%B3%95?sort_id=9978)
 
 
-### **Related Sites**
+### Related Sites
  
+- Discuz! ML official site: https://codersclub.org/discuz.ml/
+- Discuz! ML official forum: https://codersclub.org/discuzx/
+- Discuz! ML repository at Github: https://github.com/codersclub/Discuz.ML
+
+### Chinese Related Sites
+ 
+[Discuz! X official Git](https://gitee.com/Discuz/DiscuzX), Simplified Chinese UTF8 version
+|
+[Click to see how to submit code to Chinese project](https://gitee.com/Discuz/DiscuzX/wikis/%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81% E5%88%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE?sort_id=3466289)
+|
+[Download Discuz! X Chinese versions](https://gitee.com/Discuz/DiscuzX/attach_files)
+|
 [Discuz! X Official Forum](https://www.discuz.net/)
 |
 [Discuz! App Center](https://addon.dismall.com/)
@@ -193,8 +184,7 @@ Users who use the release version, check the readme.html file in the installatio
 [Discuz! Open Platform](https://open.dismall.com/)
 |
 [Discuz! Development Documentation](https://open.dismall.com/?ac=document&page=dev)
-
- 
+|
 [Discuz! Q Official Site](https://discuz.com/)
 |
 [Discuz! Q Official Forum](https://discuz.chat/)
@@ -203,22 +193,6 @@ Users who use the release version, check the readme.html file in the installatio
 |
 [Trademark Registration](https://tm.cloud.tencent.com/)
 |
-[Domain name registration](https://dnspod.cloud.tencent.com/)
+[Domain Registration](https://dnspod.cloud.tencent.com/)
 
-### **Thanks Fans**
 
-[DiscuzFans](https://gitee.com/sinlody/DiscuzFans) [DiscuzLite](https://gitee.com/3dming/DiscuzL)
-
-### **Daily Build Download**
-
-Discuz! X provides daily builds of 3.4 (stable version) and 3.5 (unstable version) under development. On the next morning when there is a submission, you can download the packages of simplified GBK, simplified UTF8, traditional BIG5, and traditional UTF8 Version.
-
-[Click to open](https://www.discuz.net/daily/)
-
-### **friendly reminder**
-- This site will no longer publish other encoded versions, please download and transcode by yourself through [transcoding tool](https://gitee.com/Discuz/DiscuzX/attach_files), or download the [package version] authorized by this site ( https://gitee.com/3dming/DiscuzL/attach_files)
-- The Release version number of the Git version will no longer be updated, but the packaged version of DiscuzFans will be updated
-- Since X3.2 and X3.3 have been stopped, X3.4 vulnerabilities and related fixes are also applicable to X3.2 and X3.3 versions, please keep an eye on [update list](https://gitee.com/Discuz/ DiscuzX/commits/master), you can manually patch to keep your site in the most secure state at all times!
-
-### screenshot
-![System Information](./readme/screenshot.png "System Information Screenshot")

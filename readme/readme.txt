@@ -8,8 +8,7 @@ ATTENTION!
 
 This package is NOT ORIGINAL Discuz!X !!!
 
-This is a modified MULTILINGUAL VERSION
-based on original Discuz!X v3.5
+This is a modified MULTILINGUAL VERSION based on original Discuz!X v3.5
 
 
 +----------------------------------+

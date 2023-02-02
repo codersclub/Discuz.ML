@@ -38,9 +38,8 @@ var rowtypedata = [
 </script>
 <?php
 		showformheader('forums');
-		showboxheader();
-		echo '<div style="height:60px;line-height:60px;"><a href="javascript:;" onclick="show_all()">'.cplang('show_all').'</a> | <a href="javascript:;" onclick="hide_all()">'.cplang('hide_all').'</a> <input type="text" id="srchforumipt" class="txt" /> <input type="submit" class="btn" value="'.cplang('search').'" onclick="return srchforum()" /></div>';
-		showtableheader('');
+		echo '<div style="padding: 0px 20px;background: #fff;height:60px;line-height:60px;"><a href="javascript:;" onclick="show_all()">'.cplang('show_all').'</a> | <a href="javascript:;" onclick="hide_all()">'.cplang('hide_all').'</a>&nbsp;&nbsp;&nbsp;<input type="text" id="srchforumipt" class="txt" /> <input type="submit" class="btn" value="'.cplang('search').'" onclick="return srchforum()" /></div>';
+		showtableheader();
 		showsubtitle(array('', 'display_order', 'forums_admin_name', '', 'forums_moderators', '<a href="javascript:;" onclick="if(getmultiids()) location.href=\''.ADMINSCRIPT.'?action=forums&operation=edit&multi=\' + getmultiids();return false;">'.$lang['multiedit'].'</a>'));
 
 		$forumcount = C::t('forum_forum')->fetch_forum_num();
@@ -89,7 +88,6 @@ var rowtypedata = [
 
 		showsubmit('editsubmit');
 		showtablefooter();
-		showboxfooter();
 		showformfooter();
 
 	} else {
@@ -767,7 +765,7 @@ var rowtypedata = [
 				if(!$multiset) {
 					showtips('forums_edit_tips');
 				}
-				showtableheader('forums_edit_basic', 'nobottom');
+				showtableheader('forums_edit_basic');
 				showsetting('forums_edit_basic_name', 'namenew', $forum['name'], 'text');
 				showsetting('forums_edit_base_name_color', 'extranew[namecolor]', $forum['extra']['namecolor'], 'color');
 				if(!$multiset) {
@@ -966,7 +964,7 @@ var rowtypedata = [
 					/*search={"forums_admin":"action=forums","forums_edit_attachtype":"action=forums&operation=edit&anchor=attachtype"}*/
 					showtagheader('div', 'attachtype', $anchor == 'attachtype');
 					showtips('forums_edit_attachtype_tips');
-					showtableheader();
+					showtableheader('', 'nobottom');
 					showtablerow('class="partition"', array('class="td25"', 'class="td24"'), array(cplang('del'), cplang('misc_attachtype_ext'), cplang('misc_attachtype_maxsize')));
 					echo $attachtypes;
 					echo '<tr><td></td><td colspan="2"><div><a href="###" onclick="addrow(this, 1)" class="addtr">'.$lang['misc_attachtype_add'].'</a></div></tr>';
@@ -979,7 +977,7 @@ var rowtypedata = [
 					if(!$multiset) {
 						showtips('forums_edit_tips');
 					}
-					showtableheader('forums_edit_credits_policy', 'fixpadding');
+					showtableheader('forums_edit_credits_policy', 'fixpadding nobottom');
 					echo '<tr class="header"><th>'.cplang('credits_id').'</th><th>'.cplang('setting_credits_policy_cycletype').'</th><th>'.cplang('setting_credits_policy_rewardnum').'</th><th class="td25">'.cplang('custom').'</th>';
 					foreach($_G['setting']['extcredits'] as $i => $extcredit) {
 						echo '<th>'.$extcredit['title'].'</th>';

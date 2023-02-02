@@ -34,7 +34,6 @@ if($operation == 'headernav') {
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader('nav&operation=headernav');
-			showboxheader();
 			showtableheader();
 /*vot*/			showsubtitle(array('', 'display_order', 'name', 'ID', 'misc_customnav_subtype', 'url', 'type', 'setindex', 'available', ''));
 			showtagheader('tbody', '', true);
@@ -133,7 +132,6 @@ if($operation == 'headernav') {
 /*vot*/			echo '<tr><td colspan="2"></td><td colspan="8"><div><a href="###" onclick="addrow(this, 0, 0)" class="addtr">'.$lang['misc_customnav_add_menu'].'</a></div></td></tr>';
 			showsubmit('submit', 'submit', 'del');
 			showtablefooter();
-			showboxfooter();
 			showformfooter();
 
 			loaducenter();
@@ -396,7 +394,6 @@ EOT;
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader('nav&operation=footernav');
-			showboxheader();
 			showtableheader();
 /*vot*/			showsubtitle(array('', 'display_order', 'name', 'ID', 'url', 'type', 'available', ''));
 
@@ -420,7 +417,6 @@ EOT;
 /*vot*/			echo '<tr><td colspan="2"></td><td colspan="6"><div><a href="###" onclick="addrow(this, 0, 0)" class="addtr">'.$lang['nav_footernav_add'].'</a></div></td></tr>';
 			showsubmit('submit', 'submit', 'del');
 			showtablefooter();
-			showboxfooter();
 			showformfooter();
 
 			echo <<<EOT
@@ -578,7 +574,6 @@ EOT;
 			showsubmenu('nav_setting_customnav', $navdata);
 			showtips('nav_spacenav_tips');
 			showformheader('nav&operation=spacenav');
-			showboxheader();
 			showtableheader();
 /*vot*/			showsubtitle(array('', 'display_order', '', 'name', 'ID', 'url', 'type', 'available', ''));
 
@@ -612,7 +607,6 @@ EOT;
 /*vot*/			echo '<tr><td colspan="2"></td><td colspan="7"><div><a href="###" onclick="addrow(this, 0, 0)" class="addtr">'.$lang['nav_spacenav_add'].'</a> &nbsp; <a href="###" onclick="addrow(this, 1, 0)" class="addtr">'.$lang['nav_spacenav_add_hr'].'</a></div></td></tr>';
 			showsubmit('submit', 'submit', 'del');
 			showtablefooter();
-			showboxfooter();
 			showformfooter();
 
 			echo <<<EOT
@@ -794,7 +788,6 @@ EOT;
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader('nav&operation=mynav');
-			showboxheader();
 			showtableheader();
 /*vot*/			showsubtitle(array('', 'display_order', 'Icon', 'name', 'ID', 'url', 'type', 'available', ''));
 
@@ -826,7 +819,6 @@ EOT;
 /*vot*/			echo '<tr><td colspan="2"></td><td colspan="8"><div><a href="###" onclick="addrow(this, 0, 0)" class="addtr">'.$lang['nav_mynav_add'].'</a></div></td></tr>';
 			showsubmit('submit', 'submit', 'del');
 			showtablefooter();
-			showboxfooter();
 			showformfooter();
 
 			echo <<<EOT
@@ -992,7 +984,6 @@ EOT;
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader('nav&operation=topnav');
-			showboxheader();
 			showtableheader();
 /*vot*/			showsubtitle(array('', 'display_order', 'name', 'ID', 'setting_styles_global_topnavtype', 'url', 'type', 'available', ''));
 
@@ -1019,7 +1010,6 @@ EOT;
 /*vot*/			echo '<tr><td colspan="2"></td><td colspan="7"><div><a href="###" onclick="addrow(this, 0, 0)" class="addtr">'.$lang['nav_topnav_add'].'</a></div></td></tr>';
 			showsubmit('submit', 'submit', 'del');
 			showtablefooter();
-			showboxfooter();
 			showformfooter();
 
 			echo <<<EOT
@@ -1188,7 +1178,6 @@ EOT;
 			showsubmenu('nav_setting_customnav', $navdata);
 
 			showformheader('nav&operation=mfindnav');
-			showboxheader();
 			showtableheader();
 			showsubtitle(array('', 'display_order', 'name', 'url', 'type', 'available', ''));
 
@@ -1211,7 +1200,6 @@ EOT;
 			echo '<tr><td colspan="1"></td><td colspan="7"><div><a href="###" onclick="addrow(this, 0, 0)" class="addtr">' . $lang['nav_mfindnav_add'] . '</a></div></td></tr>';
 			showsubmit('submit', 'submit', 'del');
 			showtablefooter();
-			showboxfooter();
 			showformfooter();
 
 			echo <<<EOT

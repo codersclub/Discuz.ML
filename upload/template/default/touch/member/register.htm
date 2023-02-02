@@ -2,7 +2,7 @@
 <div class="header cl">
 	<div class="mz"><a href="javascript:history.back();"><i class="dm-c-left"></i></a></div><h2></h2><div class="my"></div>
 </div>
-<div class="header_toplogo"><img src="{IMGDIR}/logo_m.svg" /><p>$_G['setting']['reglinkname']</p></div>
+<div class="header_toplogo">{$_G['style']['touchlogo']}<p>$_G['setting']['reglinkname']</p></div>
 <!--{hook/register_top_mobile}-->
 <div class="loginbox registerbox">
 	<div class="login_from post_box">
@@ -65,6 +65,12 @@
 <div id="mask" style="display:none;"></div>
 <!--{hook/register_bottom_mobile}-->
 <script type="text/javascript">
+<!--{if $sendurl}-->
+	function succeedhandle_registerform(url, message, extra)
+	{
+		popup.open(message,'confirm',url)
+	}
+<!--{/if}-->
 <!--{if $bbrules && $bbrulesforce}-->
 	showBBRule();
 <!--{/if}-->

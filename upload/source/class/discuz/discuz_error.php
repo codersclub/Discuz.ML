@@ -29,7 +29,7 @@ class discuz_error
 		}
 
 		if($show) {
-			discuz_error::show_error('system', "<li>$message</li>", $showtrace, 0);
+			discuz_error::show_error('system', "<li>$message</li>", $showtrace, '', md5(discuz_error::clear($messagesave)));
 		}
 
 		if($halt) {
@@ -95,9 +95,6 @@ class discuz_error
 		$msg .= $dberrno ? '<li>['.$dberrno.'] '.$dberror.'</li>' : '';
 		$msg .= $sql ? '<li>[Query] '.$sql.'</li>' : '';
 
-		discuz_error::show_error('db', $msg, $showtrace, false);
-		unset($msg, $phperror);
-
 		$errormsg = '<b>'.$title.'</b>';
 		$errormsg .= "[$dberrno]<br /><b>ERR:</b> $dberror<br />";
 		if($sql) {
@@ -107,6 +104,7 @@ class discuz_error
 		$errormsg .= '<b>PHP:</b> '.$logtrace;
 
 		discuz_error::write_error_log($errormsg);
+		discuz_error::show_error('db', $msg, $showtrace, '', md5(discuz_error::clear($errormsg)));
 		exit();
 
 	}
@@ -185,12 +183,12 @@ class discuz_error
 		$messagesave = '<b>'.$errormsg.'</b><br><b>PHP:</b>'.$logmsg;
 		self::write_error_log($messagesave);
 
-		self::show_error($type, $errormsg, $phpmsg);
+		self::show_error($type, $errormsg, $phpmsg, '', md5(discuz_error::clear($messagesave)));
 		exit();
 
 	}
 
-	public static function show_error($type, $errormsg, $phpmsg = '', $typemsg = '') {
+	public static function show_error($type, $errormsg, $phpmsg = '', $typemsg = '', $backtraceid = '') {
 		global $_G;
 
 		ob_end_clean();
@@ -239,6 +237,8 @@ class discuz_error
 	    margin-bottom: 1em;
 	    padding: 1em;
 	}
+	.info svg { width: 40%; min-width: 200px; display: block; margin: auto; margin-bottom: 30px; fill: #999; }
+	.info svg .xicon { fill: #d31f0d; }
 
 	.help {
 	    background: #F3F3F3;
@@ -267,8 +267,14 @@ class discuz_error
 <div id="container">
 <h1>Discuz! $title Error</h1>
 EOT;
+
+		echo '<p>Time: ' . dgmdate(time(), 'Y-m-d H:i:s') .' IP: ' . getglobal('clientip') . ' BackTraceID: ' . $backtraceid . '</p>';
+
 		if(!empty($errormsg) && (!isset($_G['config']['security']['error']['showerror']) || !empty($_G['config']['security']['error']['showerror']))) {
 			echo '<div class="info">'.$errormsg.'</div>';
+		}
+		if(isset($_G['config']['security']['error']['showerror']) && empty($_G['config']['security']['error']['showerror'])) {
+			echo '<div class="info"><svg viewBox="0 0 16 16"><path d="M2.5 5a.5.5 0 100-1 .5.5 0 000 1zM4 5a.5.5 0 100-1 .5.5 0 000 1zm2-.5a.5.5 0 11-1 0 .5.5 0 011 0zM0 4a2 2 0 012-2h11a2 2 0 012 2v4a.5.5 0 01-1 0V7H1v5a1 1 0 001 1h5.5a.5.5 0 010 1H2a2 2 0 01-2-2V4zm1 2h13V4a1 1 0 00-1-1H2a1 1 0 00-1 1v2z"/><path d="M16 12.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zm-4.854-1.354a.5.5 0 000 .708l.647.646-.647.646a.5.5 0 00.708.708l.646-.647.646.647a.5.5 0 00.708-.708l-.647-.646.647-.646a.5.5 0 00-.708-.708l-.646.647-.646-.647a.5.5 0 00-.708 0z" class="xicon"/></svg></div>';
 		}
 
 		if(!empty($phpmsg) && (!isset($_G['config']['security']['error']['showerror']) || $_G['config']['security']['error']['showerror'] == '1')) {
@@ -298,6 +304,8 @@ EOT;
 			}
 			echo '</table></div>';
 		}
+
+		echo '<div class="help">'.lang('error', 'suggestion_user').'</div>';
 
 		if (!isset($_G['config']['security']['error']['guessplugin']) || !empty($_G['config']['security']['error']['guessplugin'])) {
 			if (!empty($guess)) {

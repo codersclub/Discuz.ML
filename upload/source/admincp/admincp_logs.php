@@ -19,9 +19,9 @@ $checklpp = array();
 $checklpp[$lpp] = 'selected="selected"';
 $extrainput = '';
 
-$operation = in_array($operation, array('illegal', 'rate', 'credit', 'mods', 'medal', 'ban', 'cp', 'magic', 'error', 'invite', 'payment', 'pmt', 'warn', 'crime', 'sendmail')) ? $operation : 'illegal';
+$operation = in_array($operation, array('illegal', 'rate', 'credit', 'mods', 'medal', 'ban', 'cp', 'magic', 'error', 'invite', 'payment', 'pmt', 'warn', 'crime', 'sendmail', 'SMTP')) ? $operation : 'illegal';
 $logdir = DISCUZ_ROOT.'./data/log/';
-$logfiles = get_log_files($logdir, $operation.($operation == 'sendmail' ? '' : 'log'));
+$logfiles = get_log_files($logdir, $operation.(in_array($operation, array('sendmail', 'SMTP')) ? '' : 'log'));
 $logs = array();
 $lastkey = count($logfiles) - 1;
 $lastlog = $logfiles[$lastkey];
@@ -29,9 +29,9 @@ krsort($logfiles);
 if($logfiles) {
 	if(!isset($_GET['day']) || strexists($_GET['day'], '_')) {
 		list($_GET['day'], $_GET['num']) = explode('_', $_GET['day']);
-		$logs = file(($_GET['day'] ? $logdir.$_GET['day'].'_'.$operation.($operation == 'sendmail' ? '' : 'log').($_GET['num'] ? '_'.$_GET['num'] : '').'.php' : $logdir.$lastlog));
+		$logs = file(($_GET['day'] ? $logdir.$_GET['day'].'_'.$operation.(in_array($operation, array('sendmail', 'SMTP')) ? '' : 'log').($_GET['num'] ? '_'.$_GET['num'] : '').'.php' : $logdir.$lastlog));
 	} else {
-		$logs = file($logdir.$_GET['day'].'_'.$operation.($operation == 'sendmail' ? '' : 'log').'.php');
+		$logs = file($logdir.$_GET['day'].'_'.$operation.(in_array($operation, array('sendmail', 'SMTP')) ? '' : 'log').'.php');
 	}
 }
 
@@ -95,6 +95,7 @@ showsubmenu('nav_logs', array(
 		array('nav_logs_cp', 'logs&operation=cp'),
 		array('nav_logs_error', 'logs&operation=error'),
 		array('nav_logs_sendmail', 'logs&operation=sendmail'),
+		array('nav_logs_SMTP', 'logs&operation=SMTP'),
 	)), '', in_array($operation, array('cp', 'error'))),
 	array(array('menu' => 'nav_logs_extended', 'submenu' => array(
 		array('nav_logs_rate', 'logs&operation=rate'),
@@ -107,6 +108,7 @@ showsubmenu('nav_logs', array(
 		array('nav_logs_pmt', 'logs&operation=pmt'),
 	)), '', in_array($operation, array('rate', 'credit', 'magic', 'medal', 'invite', 'payment', 'pmt'))),
 	array(array('menu' => 'nav_logs_crime', 'submenu' => array(
+		array('all', 'logs&operation=crime'),
 		array('nav_logs_crime_delpost', 'logs&operation=crime&crimeactions=crime_delpost'),
 		array('nav_logs_crime_warnpost', 'logs&operation=crime&crimeactions=crime_warnpost'),
 		array('nav_logs_crime_banpost', 'logs&operation=crime&crimeactions=crime_banpost'),
@@ -189,6 +191,39 @@ if($operation == 'illegal') {
 		if(strtolower($log[6]) == strtolower($_G['member']['username'])) {
 			$log[6] = "<b>$log[6]</b>";
 		}
+		showtablerow('', array('class="smallefont"', 'class="bold"', 'class="smallefont"'), array(
+			$log[1],
+			'<a href="home.php?mod=space&username='.$log[6].'" target="_blank">'.$log[6].'</a>',
+			$log[5]
+		));
+	}
+
+} elseif($operation == 'SMTP') {
+
+	showtablerow('class="header"', array('class="td23"','class="td23"','class="td23"'), array(
+		cplang('time'),
+		cplang('username'),
+		cplang('reason'),
+	));
+
+	$logarr = $loguids = array();
+	foreach($logs as $logrow) {
+		$log = explode("\t", $logrow);
+		if(empty($log[1])) {
+			continue;
+		}
+		if(!$log[5]) {
+			continue;
+		}
+		$log[3] = intval($log[3]);
+		$loguids[] = $log[3];
+		$logarr[] = $log;
+	}
+
+	$members = C::t('common_member')->fetch_all_username_by_uid($loguids);
+
+	foreach($logarr as $log) {
+		$log[6] = $members[$log[3]];
 		showtablerow('', array('class="smallefont"', 'class="bold"', 'class="smallefont"'), array(
 			$log[1],
 			'<a href="home.php?mod=space&username='.$log[6].'" target="_blank">'.$log[6].'</a>',
@@ -280,20 +315,18 @@ if($operation == 'illegal') {
 		<script src="{$staticurl}js/calendar.js"></script>
 		<input type="hidden" name="operation" value="$operation">
 		<input type="hidden" name="action" value="$action">
-		<table cellspacing="3" cellpadding="3">
-			<tr>
-				<th>{$lang['crime_operator']}: </th><td width="160"><input type="text" class="txt" name="operator" value="$operator" /></td>
-				<th>{$lang['crime_action']}: </th><td><select name="crimeaction">$crimeactionselect</select></td>
-			</tr>
-			<tr>
-				<th>{$lang['crime_user']}: </th><td><input type="text" class="txt" name="username" value="$username" /></td>
-				<th>{$lang['startendtime']}: </th><td><input type="text" onclick="showcalendar(event, this)" style="width: 80px; margin-right: 5px;" value="$starttime" name="starttime" class="txt" /> -- <input type="text" onclick="showcalendar(event, this)" style="width: 80px; margin-left: 5px;" value="$endtime" name="endtime" class="txt" /></td>
-			</tr>
-			<tr>
-				<th>{$lang['keywords']}: </th><td><input type="text" class="txt" name="keyword" value="$keyword" /></td>
-				<th><input type="submit" name="crimesearch" value="{$lang['search']}" class="btn" /></th><td></td>
-			</tr>
-		</table>
+		<tr>
+			<th>{$lang['crime_operator']}: </th><td width="160"><input type="text" class="txt" name="operator" value="$operator" /></td>
+			<th>{$lang['crime_action']}: </th><td><select name="crimeaction">$crimeactionselect</select></td>
+		</tr>
+		<tr>
+			<th>{$lang['crime_user']}: </th><td><input type="text" class="txt" name="username" value="$username" /></td>
+			<th>{$lang['startendtime']}: </th><td><input type="text" onclick="showcalendar(event, this)" style="width: 80px; margin-right: 5px;" value="$starttime" name="starttime" class="txt" /> -- <input type="text" onclick="showcalendar(event, this)" style="width: 80px; margin-left: 5px;" value="$endtime" name="endtime" class="txt" /></td>
+		</tr>
+		<tr>
+			<th>{$lang['keywords']}: </th><td><input type="text" class="txt" name="keyword" value="$keyword" /></td>
+			<th><input type="submit" name="crimesearch" value="{$lang['search']}" class="btn" /></th><td></td>
+		</tr>
 SEARCH;
 
 	if(submitcheck('crimesearch', 1)) {
@@ -301,7 +334,7 @@ SEARCH;
 		list($count, $clist) = crime('search', $crimeaction, $username, $operator, $starttime, $endtime, $keyword, $start, $lpp);
 
 		showtablefooter();
-		showtableheader($lang['members_ban_crime_record'], 'fixpadding', '', 5);
+		showtableheader($lang['members_ban_crime_record'].(!empty($lang[$_GET['crimeactions']]) ? ' - '.$lang[$_GET['crimeactions']] : ''), 'fixpadding', '', 5);
 
 		if($clist) {
 			showtablerow('class="header"', array('class="td24"','class="td24"','class="td31"','','class="td24"'), array($lang['crime_user'], $lang['crime_action'], $lang['crime_dateline'], $lang['crime_reason'], $lang['crime_operator']));
@@ -697,7 +730,7 @@ EOD;
 
 } elseif($operation == 'error') {
 
-	showtablerow('class="header"', array('class="td23"', 'class=""'), array(
+	showtablerow('class="header"', array('class="td23" style="box-sizing: unset;"', 'style="box-sizing: unset;"'), array(
 		cplang('time'),
 		cplang('message'),
 	));
@@ -707,9 +740,9 @@ EOD;
 			continue;
 		}
 
-		showtablerow('', array('class="bold"'), array(
+		showtablerow('', array('class="bold" style="box-sizing: unset;"', 'style="box-sizing: unset;"'), array(
 			dgmdate($log[1], 'Y-m-d H:i:s'),
-			$log[2].'<br>'.$log[4].'<br>'.$log[5]
+			str_replace(' -> ', '<br>', $log[2]).'<br>'.$log[4].'<br>'.$log[5]
 		));
 
 	}
@@ -1184,7 +1217,7 @@ if($operation != 'credit') {
 	} else {
 		$selectOperation = '';
 	}
-	showsubmit($operation == 'invite' ? 'invitesubmit' : '', 'submit', 'del', $filters, $multipage.(empty($_GET['keyword']) && empty($_GET['filteract']) ? cplang('logs_lpp').':<select onchange="if(this.options[this.selectedIndex].value != \'\') {this.form.lpp.value = this.options[this.selectedIndex].value;this.form.submit(); }"><option value="20" '.$checklpp[20].'> 20 </option><option value="40" '.$checklpp[40].'> 40 </option><option value="80" '.$checklpp[80].'> 80 </option></select>' : '').$extrainput.'&nbsp;'.($operation == 'warn' ? cplang('warn_user').': ' : '').$selectOperation.($logfiles || $operation == 'warn' ? '<input type="text" class="txt" name="keyword" value="'.$_GET['keyword'].'" />'.($_GET['day'] ? '<input type="hidden" class="btn" value="'.$_GET['day'].'" />' : '').'<input type="hidden" name="filteract" value="'.$_GET['filteract'].'" /><input type="submit" class="btn" value="'.$lang['search'].'" />' : ''));
+	showsubmit($operation == 'invite' ? 'invitesubmit' : '', 'submit', 'del', $filters, $multipage.(empty($_GET['keyword']) && empty($_GET['filteract']) ? cplang('logs_lpp').'<select class="marginleft10" onchange="if(this.options[this.selectedIndex].value != \'\') {this.form.lpp.value = this.options[this.selectedIndex].value;this.form.submit(); }"><option value="20" '.$checklpp[20].'> 20 </option><option value="40" '.$checklpp[40].'> 40 </option><option value="80" '.$checklpp[80].'> 80 </option></select>' : '').$extrainput.'&nbsp;'.($operation == 'warn' ? cplang('warn_user').': ' : '').$selectOperation.($logfiles || $operation == 'warn' ? '<input type="text" class="txt marginleft10" name="keyword" value="'.$_GET['keyword'].'" />'.($_GET['day'] ? '<input type="hidden" class="btn" value="'.$_GET['day'].'" />' : '').'<input type="hidden" name="filteract" value="'.$_GET['filteract'].'" /><input type="submit" class="btn" value="'.$lang['search'].'" />' : ''));
 }
 showtablefooter();
 showformfooter();
