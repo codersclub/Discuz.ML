@@ -40,6 +40,10 @@ $lang = array (
   'online' => '在线',
   'sourceimagesize' => '原图尺寸',
   'forum_posts' => '回',
+  'forum_post_insert'=> '插入',
+  'forum_post_perm'=>'阅读权限',
+  'e_audio' => '音乐',
+  'e_video' => '视频',
   'group' => '群',
   'post_newthreaddebate' => '发辩论',
   'post_newthreadpoll' => '发投票',
@@ -200,7 +204,7 @@ $lang = array (
   'mobnoreply' => '暂无回复，快来抢沙发',
   'mobdebate_tip' => '请使用电脑版对辩论帖子进行高级管理',
   'mobdaodu' => '导读',
-  
+
   'guide_forumlist' => '看版块',
 
   'home_credit_buy' => '充值',

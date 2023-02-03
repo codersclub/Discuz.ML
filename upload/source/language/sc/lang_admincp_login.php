@@ -17,6 +17,10 @@ $lang = array
 	'login_title' => '登录管理中心',
 	'login_username' => '用户名',
 	'login_password' => '密码',
+	'login_dk_light_mode' => '亮色模式',
+	'login_dk_by_system' => '跟随系统',
+	'login_dk_normal_mode' => '正常模式',
+	'login_dk_dark_mode' => '夜间模式',
 
 	'submit' => '提交',
 	'forcesecques' => '必填项',
@@ -42,12 +46,6 @@ $lang = array
 	'noaccess' => '后台管理权限(或此项操作)尚未对您开放，请联系站点管理员',
 
 
-//--------------------------------------------
-// Added by Valery Votintsev, codersclub.org
-	'light_mode'	=> '亮色模式',//'Light mode',
-	'default_mode'	=> '跟随系统',//'Default System mode',
-	'normal_mode'	=> '正常模式',//'Normal mode',
-	'night_mode'	=> '夜间模式',//'Night mode',
 );
 
 ?>
