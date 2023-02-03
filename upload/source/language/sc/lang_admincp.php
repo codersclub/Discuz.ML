@@ -486,6 +486,7 @@ $lang = array
 	'nav_logs_invite' => '邀请注册',
 	'nav_logs_error' => '系统错误',
 	'nav_logs_sendmail' => '邮件发送失败',
+	'nav_logs_SMTP' => 'SMTP 邮件异常',
 	'nav_logs_member' => '用户记录',
 	'nav_logs_system' => '系统记录',
 	'nav_logs_extended' => '扩展记录',
@@ -1836,8 +1837,8 @@ $lang = array
 	'setting_functions_other' => '其他',
 	'setting_functions_other_uidlogin' => '启用UID登录',
 	'setting_functions_other_uidlogin_comment' => '选择“是”，站点登录时允许通过 UID的方式登录验证',
-	'setting_functions_other_secmobilelogin' => '启用手机号码登录',
-	'setting_functions_other_secmobilelogin_comment' => '选择“是”，站点登录时允许通过手机号码或手机国际冠码-手机号码的方式登录验证',
+	'setting_functions_other_secmobilelogin' => '启用安全手机号登录',
+	'setting_functions_other_secmobilelogin_comment' => '选择“是”，站点登录时允许通过安全手机号或国际电话区号-安全手机号的方式登录验证',
 	'setting_functions_other_autoidselect' => '启用登录自动选择账号',
 	'setting_functions_other_autoidselect_comment' => '选择“是”，站点登录时的将自动按 UID、E-mail、用户名的顺序逐一去匹配，其中UID验证只有UID登录方式被启用后才有效',
 	'setting_functions_other_submitlock' => '<span class="spectitle">启用表单防并发功能</span>',
@@ -1948,7 +1949,7 @@ $lang = array
 	'setting_permissions_post_append' => '启用帖子补充功能',
 	'setting_permissions_post_append_comment' => '启用后，当用户无法编辑自己的帖子时，可以补充内容',
 	'setting_permissions_profilehistory' => '启用个人信息历史记录功能',
-	'setting_permissions_profilehistory_comment' => '启用后，个人信息历史记录将被保存，可以在后台下载。历史邮箱、手机号数据不受此功能限制',
+	'setting_permissions_profilehistory_comment' => '启用后，个人信息历史记录将被保存，可以在后台下载。历史邮箱、安全手机号数据不受此功能限制',
 	'setting_permissions_nsprofiles' => '个人空间内不展现个人信息',
 	'setting_permissions_nsprofiles_comment' => '启用后个人空间内将不展现个人信息',
 	'setting_permissions_modasban' => '不忽略审核关键词',
@@ -2361,8 +2362,8 @@ $lang = array
 	'setting_attach_forumattach' => '论坛附件',
 	'setting_attach_image_preview' => '预览',
 	'setting_attach_image_preview_comment' => '无需保存设置即可预览',
-	'setting_attach_image_thumb_preview_btn' => '<input type="button" class="btn" onclick="var oldaction = $(\'cpform\').action;var oldoperation = $(\'cpform\').operation.value;$(\'cpform\').operation.value = \'imagepreview\';$(\'cpform\').action=\''.ADMINSCRIPT.'?action=checktools&operation=imagepreview&previewthumb=yes&frame=no\';$(\'cpform\').target=\'_blank\';$(\'cpform\').submit();$(\'cpform\').action=oldaction;$(\'cpform\').operation.value=oldoperation;$(\'cpform\').target=\'\';return false;" value="预览缩略图效果" style="vertical-align: middle">',
-	'setting_attach_remote_preview_btn' => '<input type="button" class="btn" onclick="var oldaction = $(\'cpform\').action;var oldoperation = $(\'cpform\').operation.value;$(\'cpform\').operation.value = \'ftpcheck\';$(\'cpform\').action=\''.ADMINSCRIPT.'?action=checktools&operation=ftpcheck&frame=no\';this.form.target=\'ftpcheckiframe\';this.form.submit();$(\'cpform\').action=oldaction;$(\'cpform\').operation.value=oldoperation;$(\'cpform\').target=\'\';return false;" value="测试远程附件" style="vertical-align: middle"><iframe name="ftpcheckiframe" style="display: none"></iframe>',
+	'setting_attach_image_thumb_preview_btn' => '<input type="button" class="btn" onclick="var oldaction = $(\'cpform\').action;var oldoperation = $(\'cpform\').operation.value;$(\'cpform\').operation.value = \'imagepreview\';$(\'cpform\').action=\''.ADMINSCRIPT.'?action=checktools&operation=imagepreview&previewthumb=yes&frame=no\';$(\'cpform\').target=\'_blank\';$(\'cpform\').submit();$(\'cpform\').action=oldaction;$(\'cpform\').operation.value=oldoperation;$(\'cpform\').target=\'\';return false;" value="预览缩略图效果" style="margin: 0px;vertical-align: middle">',
+	'setting_attach_remote_preview_btn' => '<input type="button" class="btn" onclick="var oldaction = $(\'cpform\').action;var oldoperation = $(\'cpform\').operation.value;$(\'cpform\').operation.value = \'ftpcheck\';$(\'cpform\').action=\''.ADMINSCRIPT.'?action=checktools&operation=ftpcheck&frame=no\';this.form.target=\'ftpcheckiframe\';this.form.submit();$(\'cpform\').action=oldaction;$(\'cpform\').operation.value=oldoperation;$(\'cpform\').target=\'\';return false;" value="测试远程附件" style="margin: 0px;vertical-align: middle"><iframe name="ftpcheckiframe" style="display: none"></iframe>',
 	'setting_attach_image_lib' => '图片处理库类型',
 	'setting_attach_image_lib_comment' => '请选择 Discuz! 用来处理缩略图和水印的图像处理库。GD 是最广泛的处理库但是使用的系统资源较多。ImageMagick 速度快系统资源占用少，但安全性相对较差，且需要服务器安装 ImageMagick 扩展。如果您的服务器有条件安装此程序，请到 <a href="http://www.imagemagick.org" target="_blank">http://www.imagemagick.org</a> 下载',
 	'setting_attach_image_watermarktype_GD' => 'GD',
@@ -2506,9 +2507,9 @@ $lang = array
 	'setting_imgwater_album' => '空间相册',
 	'setting_imgwater_preview' => '预览',
 	'setting_imgwater_preview_comment' => '请先提交后再预览',
-	'setting_imgwater_preview_portal' => '<a href="?action=checktools&operation=imagepreview&type=portal&frame=no" target="_blank" class="btn" style="border-style: solid; border-width: 1px;">预览水印效果</a>',
-	'setting_imgwater_preview_forum' => '<a href="?action=checktools&operation=imagepreview&type=forum&frame=no" target="_blank" class="btn" style="border-style: solid; border-width: 1px;">预览水印效果</a>',
-	'setting_imgwater_preview_album' => '<a href="?action=checktools&operation=imagepreview&type=album&frame=no" target="_blank" class="btn" style="border-style: solid; border-width: 1px;">预览水印效果</a>',
+	'setting_imgwater_preview_portal' => '<a href="?action=checktools&operation=imagepreview&type=portal&frame=no" target="_blank" class="btn" style="margin: 0px;border-style: solid; border-width: 1px;">预览水印效果</a>',
+	'setting_imgwater_preview_forum' => '<a href="?action=checktools&operation=imagepreview&type=forum&frame=no" target="_blank" class="btn" style="margin: 0px;border-style: solid; border-width: 1px;">预览水印效果</a>',
+	'setting_imgwater_preview_album' => '<a href="?action=checktools&operation=imagepreview&type=album&frame=no" target="_blank" class="btn" style="margin: 0px;border-style: solid; border-width: 1px;">预览水印效果</a>',
 
 	'setting_search' => '搜索设置',
 	'setting_search_status' => '开启搜索',
@@ -3292,7 +3293,7 @@ $lang = array
 	'nav_spacenav_userpanelarea1' => "{navname}区域1",
 	'nav_spacenav_userpanelarea2' => "{navname}区域2",
 	'nav_mynav_add' => '添加快捷导航',
-	'nav_spacenav_tips' => '以下导航链接在“家园展示风格”中启用“以SNS模块风格展示”时有效',
+	'nav_spacenav_tips' => '<li>以下导航链接在“家园展示风格”中启用“以SNS模块风格展示”时有效</li>',
 
 	'styles' => '模板',
 	'styles_admin' => '模板管理',
@@ -3372,6 +3373,7 @@ $lang = array
 	'styles_edit_logo' => '站点 Logo {BOARDIMG},{BOARDLOGO}',
 	'styles_edit_logo_comment' => '如使用 Flash 动画，请用逗号隔开 URL、宽度和高度，如“logo.swf,80,40”',
 	'styles_edit_searchlogo' => '搜索 Logo {SEARCHIMG},{SEARCHLOGO}',
+	'styles_edit_touchlogo' => '手机触屏版 Logo {TOUCHIMG},{TOUCHLOGO}',
 	'styles_edit_imgdir' => '界面基础图片目录 {IMGDIR}',
 	'styles_edit_imgdir_comment' => '风格基础图片存放的目录，留空表示使用 static/image/common/ 目录为基础图片目录',
 	'styles_edit_styleimgdir' => '扩展图片目录 {STYLEIMGDIR}',
@@ -3541,7 +3543,7 @@ $lang = array
 	'members_edit_email' => 'Email',
 	'members_edit_email_emailstatus' => '邮箱激活状态',
 	'members_edit_secmobile_secmobicc' => '安全手机国际电话区号',
-	'members_edit_secmobile_secmobile' => '安全手机号码',
+	'members_edit_secmobile_secmobile' => '安全手机号',
 	'members_edit_secmobile_secmobilestatus' => '安全手机激活状态',
 	'members_edit_posts' => '发帖数',
 	'members_edit_digestposts' => '精华帖数',
@@ -3777,7 +3779,7 @@ $lang = array
 	'members_newsletter_posttype_text' => '文本方式',
 	'members_newsletter_posttype_html' => 'html方式',
 	'members_newsletter_mobile_tips' => '<li>您可以通过该功能给手机客户端用户发送通知，为了您更好的触达用户建议大力推广我们的手机客户端。</li><li>要使用本功能需要开启手机客户端插件</li><li><strong>请关注应用中心中"<a href="https://addon.dismall.com/?@mobile.plugin">手机客户端</a>"的更新，功能启用时将会在插件中做详细说明</strong></li>',
-	'members_newsletter_sms_tips' => '<li>您可以通过该功能用户发送短信通知到用户的安全手机号码，为了您更好的触达用户建议用户绑定安全手机号码。</li><li>要使用本功能需要绑定消息类短信网关。</li>',
+	'members_newsletter_sms_tips' => '<li>您可以通过该功能用户发送短信通知到用户的安全手机号，为了您更好的触达用户建议用户绑定安全手机号。</li><li>要使用本功能需要绑定消息类短信网关。</li><li><strong>请务必注意此处发送的短信发送数量以及长度，此处不受 Discuz! X 短信风控系统控制，过多的数量或者过长的内容会带来高昂的短信费用。</strong></li>',
 
 	'members_grouppmlist' => '群发短消息记录',
 	'members_grouppmlist_newsletter' => '发送通知',
@@ -5527,7 +5529,7 @@ $lang = array
 	'smsgw_type_template' => '模板类网关',
 
 	'smsgw_setting_smsstatus' => '短信功能开关',
-	'smsgw_setting_smsdefaultcc' => '默认国际区号',
+	'smsgw_setting_smsdefaultcc' => '默认国际电话区号',
 	'smsgw_setting_smsdefaultlength' => '默认短信验证码长度',
 	'smsgw_setting_smstimelimit' => '风控限制时间区间',
 	'smsgw_setting_smsnumlimit' => '单用户/单号码短信限制时间区间内总量',
@@ -6146,6 +6148,7 @@ $lang = array
 				<li>数据缓存：更新站点的全部数据缓存</li>
 				<li>模板缓存：更新论坛模板、风格等缓存文件，当您修改了模板或者风格，但是没有立即生效的时候使用</li>
 				<li>DIY 模块分类缓存：更新 DIY 模块分类，当您安装或修改了 DIY 模块分类，但是没有立即生效的时候使用</li>
+				<li>CSS缓存：更新论坛模板、风格等CSS文件，当您修改了模版或者风格CSS，但是没有立即生效的时候使用</li>
 				',
 
 	'tools_updatecache_data'=>'数据缓存',
