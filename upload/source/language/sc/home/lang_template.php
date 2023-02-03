@@ -1564,7 +1564,7 @@ $lang = array (
 // Added by Valery Votintsev
 	'login_immediately'	=> '马上登录',//'Login Now',
 	'nofollow'		=> '不收听',//'Stop follow',
-	'views'			=> '空间查看数',//'Views',
+//vot	'views'			=> '空间查看数',//'Views',
 	'in'			=> '在',//' &nbsp;In',
 	'poston'		=> '发表于',//'Post time',
 	'views'			=> '查看',//'Views',
@@ -1576,4 +1576,5 @@ $lang = array (
 	'say_to'		=> '说',
 	'visibility'		=> '能见度',//'Visibility',
 	'reset'			=> '重启',//'Reset',
+	'lastupdate'		=> '更新',//'最后更新',//'Updated',
 );
