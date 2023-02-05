@@ -1448,14 +1448,17 @@ $lang = array
 	'setting_seo_article' => '文章内容',
 	'setting_seo_forum' => '论坛首页',
 	'setting_seo_forum_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>当前版块名称&nbsp;<font class="highlight">{forum}</font>（应用范围：除首页以外）</li><li>一级版块名称&nbsp;<font class="highlight">{fup}</font>（应用范围：子版块主题列表页和帖子内容页）</li><li>分区名称&nbsp;<font class="highlight">{fgroup}</font>（应用范围：除首页以外）</li><li>帖子标题&nbsp;<font class="highlight">{subject}</font>（应用范围：帖子内容页）</li><li>主题摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：帖子内容页）</li><li>主题标签&nbsp;<font class="highlight">{tags}</font>（应用范围：帖子内容页）</li><li>分页数&nbsp;<font class="highlight">{page}</font>（应用范围：主题列表页、帖子内容页）</li>',
+/*1*/
 	'setting_seo_threadlist' => '主题列表',
 	'setting_seo_viewthread' => '帖子内容',
 	'setting_seo_home' => '家园首页',
 	'setting_seo_home_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>日志标题&nbsp;<font class="highlight">{subject}</font>（应用范围：日志内容页）</li><li>日志/相册作者&nbsp;<font class="highlight">{user}</font>（应用范围：日志和相册内容页）</li><li>日志摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：日志内容页）</li><li>日志标签&nbsp;<font class="highlight">{tags}</font>（应用范围：日志内容页）</li><li>相册名称&nbsp;<font class="highlight">{album}</font>（应用范围：相册内容页）</li><li>相册描述&nbsp;<font class="highlight">{depict}</font>（应用范围：相册内容页）</li>',
+/*2*/
 	'setting_seo_blog' => '日志内容',
 	'setting_seo_album' => '相册内容',
 	'setting_seo_group' => '群组首页/分类',
 	'setting_seo_group_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>当前群组名称&nbsp;<font class="highlight">{forum}</font>（应用范围：除群组首页、分类页）</li><li>一级分类名称&nbsp;<font class="highlight">{first}</font>（应用范围：所有位置）</li><li>二级分类名称&nbsp;<font class="highlight">{second}</font>（应用范围：所有位置）</li><li>当前群组简介&nbsp;<font class="highlight">{gdes}</font>（应用范围：群组和群组帖子页）</li><li>帖子标题&nbsp;<font class="highlight">{subject}</font>（应用范围：群组帖子页）</li><li>主题摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：群组帖子页）</li><li>主题标签&nbsp;<font class="highlight">{tags}</font>（应用范围：群组帖子内容页）</li><li>分页数&nbsp;<font class="highlight">{page}</font>（应用范围：主题列表页、帖子内容页）</li>',
+/*3*/
 	'setting_seo_grouppage' => '单一群组页面',
 	'setting_seo_viewthread_group' => '群组帖子内容',
 	'setting_seo_seotitle' => 'title',

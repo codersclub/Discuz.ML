@@ -1,7 +1,8 @@
-SIMPLIFIED CHINESE Language Pack
-for Discuz! X2.5 (c) 2001-2099 Comsenz Inc.
+Discuz! ML (c) 2008-2099 Codersclub.org
 
 MultiLingual version by Valery Votintsev, codersclub.org
+
+Simplified Chinese language pack by Valery Votintsev, codersclub.org
 
 Code		= 'sc';
 English title	= 'Simplified Chinese';
