@@ -374,7 +374,7 @@ var lng = {
 	'select_category'	: '请选择主题对应的分类',
 	'select_category_info'	: '请选择主题对应的分类信息',
 	'title_long'		: '您的标题超过 255 个字符的限制',
-	'content_long'		: '您的帖子长度不符合要求。\n\n',//'Your title does not meet the required length.\n\n',
+	'content_long'		: '您的帖子长度不符合要求。\n\n',//'The length of your post does not meet the requirements.\n\n',
 	'ignore_pending_attach'	: '您有等待上传的附件，确认不上传这些附件吗？',
 	'still_uploading'	: '您有正在上传的附件，请稍候，上传完成后帖子将会自动发表...',
 	'no_data_recover'	: '没有可以恢复的数据！',
