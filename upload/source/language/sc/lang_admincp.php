@@ -7346,11 +7346,11 @@ url.rewrite-once = (
 // Added by Valery Votintsev
 
 //source/function/function_admincp.php
-	'upload_selectfile'		=> '浏览',//'Browse',
-	'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
+	//'upload_selectfile'		=> '浏览',//'Browse',
+	//'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
 
 //source/admincp/admincp_index.php - javascript function shownews()
-	'subscribe'		=> '订阅',//'Subscribe',
+	//'subscribe'		=> '订阅',//'Subscribe',
 
 //source/admincp/admincp_plugins.php
 	'disable'		=> '禁用',//'Disable',
@@ -7375,10 +7375,6 @@ url.rewrite-once = (
 	'nav_language'			=> 'Languages',
 
 	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
-
-	'contributors'			=> 'Discuz! &#x5F00;&#x6E90;&#x8D21;&#x732E;&#x8005;',//'Discuz! Open Source Contributors',
-
-	'contributors_link'		=> 'Click Here To See Them',
 
 	'detect_environment'		=> '运行环境检测',//'Detect operating environment',
 );
