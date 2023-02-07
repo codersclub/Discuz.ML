@@ -7360,21 +7360,21 @@ url.rewrite-once = (
 	'change_language'	=> '更改语言',//'Change language',
 	'change_style'		=> '更改风格',//'Change style',
 
-	'language'			=> 'Languages',
-	'setting_language'		=> 'Language Settings',
-	'setting_language_tips'		=> '<li>Add/Modify your language packs</li>',
-	'setting_language_available'	=> 'Enable',
+	'language'			=> '语言',//'Languages',
+	'setting_language'		=> '语言设置',//'Language Settings',
+	'setting_language_tips'		=> '<li>添加/修改您的语言包</li>',//'<li>Add/Modify your language packs</li>',
+	'setting_language_available'	=> '启用',//'Enable',
 	'setting_language_id'		=> 'Id',
-	'setting_language_order'	=> 'Order',
-	'setting_language_flag'		=> 'Flag',
-	'setting_language_name'		=> 'Name (National!)',
-	'setting_language_title'	=> 'Title (English!)',
-	'setting_language_dir'		=> 'Direction',
-	'setting_language_actions'	=> 'Actions',
+	'setting_language_order'	=> '订单',//'Order',
+	'setting_language_flag'		=> '标志',//'Flag',
+	'setting_language_name'		=> '名称（国家！）',//'Name (National!)',
+	'setting_language_title'	=> '标题（英文！）',//'Title (English!)',
+	'setting_language_dir'		=> '方向',//'Direction',
+	'setting_language_actions'	=> '动作',//'Actions',
 
-	'nav_language'			=> 'Languages',
+	'nav_language'			=> '语言',//'Languages',
 
-	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
+	'delete_install_index'		=> '请通过 FTP 删除 install/index.php！',//'Please delete install/index.php via FTP!',
 
 	'detect_environment'		=> '运行环境检测',//'Detect operating environment',
 );
