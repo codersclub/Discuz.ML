@@ -135,11 +135,11 @@ INSERT INTO pre_common_nav VALUES ('','0','Help','Help','misc.php?mod=faq','7','
 INSERT INTO pre_common_nav VALUES ('','0','RankList','Ranklist','misc.php?mod=ranklist','8','0','0','-1','16','0','0','0',  0, '', '', '', 0, '');
 INSERT INTO pre_common_nav VALUES ('','0','Follow','Follow','home.php?mod=follow','9','0','0','-1','5','0','0','0',  0, '', '', '', 0, '');
 INSERT INTO pre_common_nav VALUES ('','0','Guide','Guide','forum.php?mod=guide','10','0','0','-1','3','0','0','0',  0, '', '', '', 0, '');
-INSERT INTO pre_common_nav VALUES ('','0','Collections','Collection','forum.php?mod=collection','11','0','0','-1','11','0','0','0',  0, '', '', '', 0, '');
-INSERT INTO pre_common_nav VALUES ('','0','Blogs','Blog','home.php?mod=space&do=blog','12','0','0','-1','12','0','0','0',  0, '', '', '', 0, '');
-INSERT INTO pre_common_nav VALUES ('','0','Albums','Album','home.php?mod=space&do=album','13','0','0','-1','13','0','0','0',  0, '', '', '', 0, '');
-INSERT INTO pre_common_nav VALUES ('','0','Shares','Share','home.php?mod=space&do=share','14','0','0','-1','14','0','0','0',  0, '', '', '', 0, '');
-INSERT INTO pre_common_nav VALUES ('','0','Doings','Doing','home.php?mod=space&do=doing','15','0','0','-1','15','0','0','0',  0, '', '', '', 0, '');
+INSERT INTO pre_common_nav VALUES ('','0','Collection','Collection','forum.php?mod=collection','11','0','0','-1','11','0','0','0',  0, '', '', '', 0, '');
+INSERT INTO pre_common_nav VALUES ('','0','Blog','Blog','home.php?mod=space&do=blog','12','0','0','-1','12','0','0','0',  0, '', '', '', 0, '');
+INSERT INTO pre_common_nav VALUES ('','0','Album','Album','home.php?mod=space&do=album','13','0','0','-1','13','0','0','0',  0, '', '', '', 0, '');
+INSERT INTO pre_common_nav VALUES ('','0','Share','Share','home.php?mod=space&do=share','14','0','0','-1','14','0','0','0',  0, '', '', '', 0, '');
+INSERT INTO pre_common_nav VALUES ('','0','Doing','Doing','home.php?mod=space&do=doing','15','0','0','-1','15','0','0','0',  0, '', '', '', 0, '');
 
 INSERT INTO pre_common_nav VALUES ('', '0', 'Statistics', '', 'misc.php?mod=stat', 'stat', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 1, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Report', '', '#', 'report', 0, 0, 1, 2, 0, 0, 0, 0, '', '', '', 1, '');
@@ -148,24 +148,24 @@ INSERT INTO pre_common_nav VALUES ('', '0', 'Mobile', '', 'forum.php?showmobile=
 INSERT INTO pre_common_nav VALUES ('', '0', 'Dark room', '', 'forum.php?mod=misc&action=showdarkroom', 'darkroom', 0, 0, 1, 3, 0, 0, 0, 0, '', '', '', 1, '');
 
 INSERT INTO pre_common_nav VALUES ('', '0', 'Blogs', '', 'home.php?mod=space&do=blog', 'blog', 0, 0, -1, 2, 0, 0, 0, 0, '{STATICURL}image/feed/blog.gif', '[+]', 'home.php?mod=spacecp&ac=blog', 2, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Albums', '', 'home.php?mod=space&do=album', 'album', 0, 0, -1, 3, 0, 0, 0, 0, '{STATICURL}image/feed/album.gif', '[+]', 'home.php?mod=spacecp&ac=upload', 2, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Shares', '', 'home.php?mod=space&do=share', 'share', 0, 0, -1, 4, 0, 0, 0, 0, '{STATICURL}image/feed/share.gif', '[+]', 'home.php?mod=spacecp&ac=share', 2, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Doings', '', 'home.php?mod=space&do=doing', 'doing', 0, 0, -1, 5, 0, 0, 0, 0, '{STATICURL}image/feed/doing.gif', '', '', 2, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Album', '', 'home.php?mod=space&do=album', 'album', 0, 0, -1, 3, 0, 0, 0, 0, '{STATICURL}image/feed/album.gif', '[+]', 'home.php?mod=spacecp&ac=upload', 2, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Share', '', 'home.php?mod=space&do=share', 'share', 0, 0, -1, 4, 0, 0, 0, 0, '{STATICURL}image/feed/share.gif', '[+]', 'home.php?mod=spacecp&ac=share', 2, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Doing', '', 'home.php?mod=space&do=doing', 'doing', 0, 0, -1, 5, 0, 0, 0, 0, '{STATICURL}image/feed/doing.gif', '', '', 2, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Follow', '', 'home.php?mod=follow', 'follow', 0, 0, -1, 6, 0, 0, 0, 0, '{STATICURL}image/feed/follow.gif', '', '', 2, '');
 INSERT INTO pre_common_nav VALUES ('', '0', '{hr}', '', '', '', 0, 1, 1, 8, 0, 0, 0, 0, '', '', '', 2, '');
 
 INSERT INTO pre_common_nav VALUES ('', '0', 'Friends', '', 'home.php?mod=space&do=friend', 'friend', 0, 0, -1, 1, 0, 0, 0, 0, '{STATICURL}image/feed/friend_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Threads', '', 'home.php?mod=space&do=thread&view=me', 'thread', 0, 0, 0, 2, 0, 0, 0, 0, '{STATICURL}image/feed/thread_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Favorites', '', 'home.php?mod=space&do=favorite&view=me', 'favorite', 0, 0, -1, 3, 0, 0, 0, 0, '{STATICURL}image/feed/favorite_b.png', '', '', 3, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Magics', '', 'home.php?mod=magic', 'magic', 0, 0, -1, 4, 0, 0, 0, 0, '{STATICURL}image/feed/magic_b.png', '', '', 3, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Magic', '', 'home.php?mod=magic', 'magic', 0, 0, -1, 4, 0, 0, 0, 0, '{STATICURL}image/feed/magic_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Medals', '', 'home.php?mod=medal', 'medal', 0, 0, -1, 5, 0, 0, 0, 0, '{STATICURL}image/feed/medal_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Tasks', '', 'home.php?mod=task', 'task', 0, 0, -1, 6, 0, 0, 0, 0, '{STATICURL}image/feed/task_b.png', '', '', 3, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Collections', '', 'forum.php?mod=collection&op=my', 'collection', 0, 0, -1, 7, 0, 0, 0, 0, '{STATICURL}image/feed/collection_b.png', '', '', 3, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Collection', '', 'forum.php?mod=collection&op=my', 'collection', 0, 0, -1, 7, 0, 0, 0, 0, '{STATICURL}image/feed/collection_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Feed', '', 'home.php', 'feed', 0, 0, -1, 8, 0, 0, 0, 0, '{STATICURL}image/feed/feed_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Blog', '', 'home.php?mod=space&do=blog', 'blog', 0, 0, -1, 9, 0, 0, 0, 0, '{STATICURL}image/feed/blog_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Albums', '', 'home.php?mod=space&do=album', 'album', 0, 0, -1, 10, 0, 0, 0, 0, '{STATICURL}image/feed/album_b.png', '', '', 3, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Shares', '', 'home.php?mod=space&do=share', 'share', 0, 0, -1, 11, 0, 0, 0, 0, '{STATICURL}image/feed/share_b.png', '', '', 3, '');
-INSERT INTO pre_common_nav VALUES ('', '0', 'Doings', '', 'home.php?mod=space&do=doing', 'doing', 0, 0, -1, 12, 0, 0, 0, 0, '{STATICURL}image/feed/doing_b.png', '', '', 3, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Share', '', 'home.php?mod=space&do=share', 'share', 0, 0, -1, 11, 0, 0, 0, 0, '{STATICURL}image/feed/share_b.png', '', '', 3, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Doing', '', 'home.php?mod=space&do=doing', 'doing', 0, 0, -1, 12, 0, 0, 0, 0, '{STATICURL}image/feed/doing_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Wall', '', 'home.php?mod=space&do=wall', 'wall', 0, 0, -1, 13, 0, 0, 0, 0, '{STATICURL}image/feed/wall_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Follow', '', 'home.php?mod=follow', 'follow', 0, 0, -1, 14, 0, 0, 0, 0, '{STATICURL}image/feed/follow_b.png', '', '', 3, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Groups', '', 'group.php', 'group', 0, 0, -1, 15, 0, 0, 0, 0, '{STATICURL}image/feed/group_b.png', '', '', 3, '');
@@ -177,13 +177,13 @@ INSERT INTO pre_common_nav VALUES ('', '0', 'Top-List', '', 'misc.php?mod=rankli
 INSERT INTO pre_common_nav VALUES ('', '0', 'Set as Homepage', '', '#', 'sethomepage', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 4, '');
 INSERT INTO pre_common_nav VALUES ('', '0', 'Add to Favorites', '', '#', 'setfavorite', 0, 0, 1, 2, 0, 0, 0, 0, '', '', '', 4, '');
 
-INSERT INTO pre_common_nav VALUES ('', '0', '搜索', '', 'search.php?mod=forum', 'search', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 5, '');
-INSERT INTO pre_common_nav VALUES ('', '0', '公告', '', 'forum.php?mod=announcement', 'announcement', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 5, '');
-INSERT INTO pre_common_nav VALUES ('', '0', '导读', '', 'forum.php?mod=guide&view=newthread', 'guide', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
-INSERT INTO pre_common_nav VALUES ('', '0', '资讯', '', 'portal.php?mod=list&catid=1', 'portal', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
-INSERT INTO pre_common_nav VALUES ('', '0', '日志', '', 'home.php?mod=space&do=blog', 'blog', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
-INSERT INTO pre_common_nav VALUES ('', '0', '分享', '', 'home.php?mod=space&do=share', 'share', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
-INSERT INTO pre_common_nav VALUES ('', '0', '排行榜', '', 'misc.php?mod=ranklist', 'ranklist', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Search', '', 'search.php?mod=forum', 'search', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Announcements', '', 'forum.php?mod=announcement', 'announcement', 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Guide', '', 'forum.php?mod=guide&view=newthread', 'guide', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Portal', '', 'portal.php?mod=list&catid=1', 'portal', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Blog', '', 'home.php?mod=space&do=blog', 'blog', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Share', '', 'home.php?mod=space&do=share', 'share', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
+INSERT INTO pre_common_nav VALUES ('', '0', 'Top-list', '', 'misc.php?mod=ranklist', 'ranklist', 0, 0, 0, 1, 0, 0, 0, 0, '', '', '', 5, '');
 
 -- [/update_nav]
 
