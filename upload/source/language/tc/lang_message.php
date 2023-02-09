@@ -10,7 +10,6 @@
  */
 
 $lang = array (
-
   'undefined_action' => '未定義操作',
   'plugin_nonexistence' => '插件不存在或已關閉',
   'profile_username_protect' => '用戶名包含被系統屏蔽的字符',
@@ -161,6 +160,7 @@ $lang = array (
   'credits_addfunds_toomuch' => '抱歉，您超出本月允許購買 {ec_maxcreditspermonth} 的限額',
   'credits_transaction_amount_invalid' => '抱歉，您要轉賬或兌換的積分數量輸入有誤',
   'credits_password_invalid' => '抱歉，您輸入的密碼錯誤',
+  'credits_transfer_msg_locked' => '抱歉，正在進行其他的積分轉賬操作，轉賬失敗，請稍後再試',
   'extcredits_dataerror' => '抱歉，兌換失敗，請與管理員聯繫',
   'start_time_is_greater_than_end_time' => '開始日期不能大於結束日期',
   'should_write_that' => '至少應該寫點東西',
@@ -169,7 +169,7 @@ $lang = array (
   'failed_to_delete_operation' => '抱歉，刪除失敗，請檢查操作',
   'you_have_friends' => '你們已成為好友',
   'no_privilege_addfriend' => '抱歉，您目前沒有權限添加好友，<a href="home.php?mod=spacecp&ac=usergroup" target="_blank">點擊這裡查看權限</a>',
-  'enough_of_the_number_of_friends_with_magic' => '抱歉，您當前的好友數目達到系統限制，<a id="a_magic_friendnum2" href="magic.php?mid=friendnum" onclick="ajaxmenu(event, this.id, 1)">請使用好友增容卡增容</a>',
+  'enough_of_the_number_of_friends_with_magic' => '抱歉，您當前的好友數目達到系統限制，<a id="a_magic_friendnum2" href="home.php?mod=magic&mid=friendnum" onclick="ajaxmenu(event, this.id, 1)">請使用好友增容卡增容</a>',
   'enough_of_the_number_of_friends' => '抱歉，您當前的好友數目達到系統限制，請先刪除部分好友',
   'specified_user_is_not_your_friend' => '抱歉，指定的用戶還不是您的好友',
   'change_friend_groupname_error' => '抱歉，指定的好友用戶組不能被操作',
@@ -236,9 +236,10 @@ $lang = array (
   'task_not_found' => '任務文件丟失，{taskclassname}',
   'task_not_underway' => '不是進行中的任務',
   'user_banned' => '抱歉，您的 IP 地址不在允許範圍內，或您的賬號被禁用，無法訪問本站點',
-  'user_banned_has_expiry' => '抱歉，您的賬號被禁用，暫無法訪問本站點。 <br />預計解禁時間：'.dgmdate($_G['member']['groupexpiry'], 'Y-m-d H:i:s'),
+  'user_banned_has_expiry' => '抱歉，您的賬號被禁用，暫無法訪問本站點。 <br />預計解禁時間：{expiry}',
   'submit_seccode_invalid' => '抱歉，驗證碼填寫錯誤',
   'submit_invalid' => '抱歉，您的請求來路不正確或表單驗證串不符，無法提交',
+  'submit_islocked' => '抱歉，您當前的請求正在進行中，請勿重複提交',
   'word_banned' => '抱歉，您填寫的內容包含不良信息而無法提交',
   'magics_use_success' => '道具 {magicname} 使用成功 ',
   'magicuse_object_once_limit' => '抱歉，已對該對像使用過此道具，不能重複使用',
@@ -309,6 +310,8 @@ $lang = array (
   'attachment_yetpay' => '您已購買過此附件，無需重複購買，現在將開始附件下載',
   'attachment_buyall' => '本帖所有附件購買成功 ',
   'attachment_buy' => '附件購買成功，開始下載「{filename}」',
+  'attachment_mobile_buy' => '附件購買成功',
+  'attachment_locked' => '抱歉，由於您所發起的其他附件購買操作正在進行，因此您無法購買當前附件，請稍後再試',
   'no_privilege_postimage' => '抱歉，您目前沒有權限上傳圖片，<a href="home.php?mod=spacecp&ac=usergroup" target="_blank">點擊這裡查看權限</a>',
   'no_privilege_postattach' => '抱歉，您目前沒有權限上傳附件，<a href="home.php?mod=spacecp&ac=usergroup" target="_blank">點擊這裡查看權限</a>',
   'thread_closed' => '該帖子已被關閉，不能評論！',
@@ -336,6 +339,7 @@ $lang = array (
   'thread_rate_duplicate' => '抱歉，您不能對同一個帖子重複評分',
   'thread_rate_range_self_invalid' => '抱歉，您的{extcreditstitle}不足，無法評分',
   'thread_rate_ctrl' => '抱歉，24 小時評分數超過限制',
+  'thread_rate_locked' => '抱歉，當前評分正在進行中，請稍後再試',
   'thread_rate_succeed' => '感謝您的參與，現在將轉入評分前頁面',
   'no_privilege_removerate' => '抱歉，您沒有權限撤銷評分',
   'thread_rate_removesucceed' => '評分撤銷成功 ',
@@ -466,6 +470,7 @@ $lang = array (
   'lostpasswd_many_users_use_email' => '抱歉，存在多個使用此 Email 的用戶，請填寫您需要找回密碼的用戶名',
   'getpasswd_account_invalid' => '抱歉，創始人、受保護用戶、擁有站點設置權限的用戶不能使用取回密碼功能',
   'getpasswd_send_succeed' => '取回密碼的方法已通過 Email 發送到您的信箱中，<br />請在 3 天之內修改您的密碼',
+  'getpasswd_has_send' => '您已經發送過取回密碼郵件了，如果您沒有收到，請稍等 {interval} 秒後重試發送取回密碼郵件',
 
   'submit_verify_succeed' => '審核請求提交成功，現在將返回個人中心',
 
@@ -718,6 +723,7 @@ $lang = array (
   'memcp_credits_card_msg_succeed' => '<span class="xi1">{extcreditsval}{extcreditstitle}</span>，充值成功 ',
   'memcp_credits_addfunds_msg_incorrect' => '抱歉，您尚未輸入需要充值的數量',
   'memcp_credits_addfunds_msg_notype' => '抱歉，您尚未選擇支付方式',
+  'memcp_credits_exchange_msg_locked' => '抱歉，正在進行其他的積分兌換操作，兌換失敗，請稍後再試',
   'credits_addfunds_amount_invalid' => '您單次購買的積分數量超出最大值 {ec_maxcredits} 或最小值 {ec_mincredits} 的限制',
   'memcp_credits_transfer_msg_self_incorrect' => '您無需給自己轉賬',
   'credits_transfer_balance_insufficient' => '抱歉，轉賬後 {title}不足 {minbalance}',
@@ -835,7 +841,7 @@ $lang = array (
   'profile_email_verify' => '確認 Email 已發送，請用郵件中提供的方法激活您的帳號。如果您尚未收到我們發送的系統郵件，請點擊密碼安全中的「重新接收驗證郵件」，或嘗試更換另外一個地址',
   'profile_succeed' => '個人資料保存成功 ',
   'send_activate_mail_succeed' => '郵件已發送，可能需要幾分鐘後才能收到郵件',
-  'send_activate_mail_error' => '抱歉，郵件發送失敗，請過5分鐘後重試發送驗證激活郵件',
+  'send_activate_mail_error' => '抱歉，郵件發送失敗，請稍等 {interval} 秒後重試發送驗證激活郵件',
 
   'no_privilege_sendmailday' => '抱歉，本站尚未開啟郵件提醒功能',
   'email_input' => '抱歉，您尚未設置郵箱，請在<a href="home.php?mod=spacecp&ac=profile&op=password">聯繫方式</a>中準確填寫您的郵箱',
@@ -868,6 +874,7 @@ $lang = array (
   'usergroups_join_succeed' => '您已加入用戶組 {group}',
   'usergroups_exit_succeed' => '您已退出用戶組 {group}',
   'usergroup_switch_not_allow' => '您當前的用戶組未到期，無法切換到其他用戶組',
+  'usergroup_switch_not_allowvisit' => '抱歉，您無法切換到不能訪問論壇的用戶組',
   'usergroups_switch_succeed' => '您已切換到用戶組 {group}',
 
   'no_privilege_banpost' => '抱歉，您沒有權限屏蔽主題',
@@ -979,6 +986,7 @@ $lang = array (
   'magic_is_closed' => '此道具已被禁用',
   'magic_not_for_sale' => '此道具不能通過購買獲得',
   'magic_groupid_limit' => '抱歉，您當前所在的用戶組沒有權限購買本道具',
+  'magics_locked' => '當前道具正在使用/賣出/贈送中，請稍後再試。',
   'bad_buynum' => '抱歉，您輸入的購買數目有誤',
   'not_enough_coupon' => '抱歉，您的代金券數目不足',
   'credit_is_not_enough' => '抱歉，您的積分不足購買此道具',
@@ -1015,7 +1023,7 @@ $lang = array (
   'location_login_succeed_mobile' => '歡迎您回來，{username}。點擊進入登錄前頁面',
   'location_login_succeed' => '',
   'location_activation' => '您的帳號處於未激活狀態，點擊進行激活',
-  'login_succeed_inactive_member' => '歡迎您回來，{usergroup} {username}。您的帳號處於非激活狀態，現在將轉入控制面板',
+  'login_succeed_inactive_member' => '歡迎您回來，{usergroup} {username}。您的帳號處於非激活狀態，部分功能可能無法正常使用，現在將轉​​入密碼安全頁面',
   'login_succeed_password_change' => '您的賬戶存在安全隱患，建議立即修改密碼',
   'login_question_empty' => '請選擇安全提問以及填寫正確的答案',
   'login_question_invalid' => '抱歉，安全提問答案填寫錯誤',
@@ -1075,9 +1083,6 @@ $lang = array (
   'author_not_uploadpic' => '樓主暫時沒有上傳圖片',
   'noreply_yourself_error' => '您不能對自己的回帖進行投票',
   'noreply_voted_error' => '您已經對此回帖投過票了',
-
-// Added by Valery Votintsev
-	'timeout_or_data_error'	=> '操作超時或者數據來源錯誤',//'Operation timeout or data source error',
 );
 
 ?>

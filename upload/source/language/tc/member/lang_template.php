@@ -9,6 +9,10 @@
  *      Modified by Valery Votintsev, codersclub.org
  */
 
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
 $lang = array (
   'getpassword' => '找回密碼',
 /*vot*/  'login_guest' => '沒有帳號？<a href="member.php?mod={$_G[setting][regname]}">註冊帳號</a>',

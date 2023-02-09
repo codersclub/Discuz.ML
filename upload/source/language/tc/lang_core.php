@@ -94,7 +94,6 @@ $lang = array
 	'title_article_favorite' => '文章收藏',
 	'title_all_favorite' => '全部收藏',
 	'title_friend_list' => '好友列表',
-	'title_of' => '的',
 	'title_all_poll' => '隨便看看投票',
 	'title_we_poll' => '好友發起的投票',
 	'title_me_poll' => '我的投票',
@@ -160,7 +159,6 @@ $lang = array
 	'title_memcp_privacy' => '隱私篩選',
 	'title_memcp_avatar' => '修改頭像',
 	'title_memcp_profile' => '個人資料',
-	'title_memcp_sendmail' => '郵件提醒',
 	'title_memcp_credit' => '積分',
 	'title_memcp_friend' => '好友',
 	'title_memcp_usergroup' => '用戶組',
@@ -172,6 +170,7 @@ $lang = array
 	'title_memcp_promotion' => '訪問推廣',
 	'title_task' => '任務',
 	'title_login' => '登錄',
+	'title_getpasswd' => '找回密碼',
 	'title_ranklist_picture' => '圖片排行',
 	'title_ranklist_member' => '用戶排行',
 	'title_ranklist_thread' => '帖子排行',
@@ -223,14 +222,6 @@ $lang = array
 
 //--------------------------------------------------------------------------
 // Added by Valery Votintsev
-
-//source/include/misc/misc_security.php
-	'attackevasive_1_subject'	=> '刷新頻率限制',//'Refresh frequency limit',
-	'attackevasive_1_message'	=> '您訪問網站的速度太快，不到兩秒鐘！請等一下...',//'You visit the site too fast, less than two seconds! Please wait a little...',
-	'attackevasive_2_subject'	=> '通過代理服務器的訪問是受到限制',//'Access throug proxy servers is restricted',
-	'attackevasive_2_message'	=> '通過代理服務器訪問網站限制畝。請刪除您的代理設置配置，並直接訪問該網站。',//'Access to the site through a proxy servers is restricted for mow. Please remove your proxy setting configuration, and access to the site directly.',
-	'attackevasive_4_subject'	=> '打開頁面重載',//'Open the page reload',
-	'attackevasive_4_message'	=> '歡迎的網站，頁面重新載入，請稍候...',//'Welcome to the site, the page is re-loading, please wait ...',
 
 // Months Names
 	'month_name'	=> array('月','一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'),//array('Month','January','February','March','April','May','June','July','August','September','October','November','December'),

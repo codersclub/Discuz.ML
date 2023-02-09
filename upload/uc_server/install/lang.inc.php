@@ -1,4 +1,13 @@
 <?php
+//------------------------------------------------------
+// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
+// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
+//------------------------------------------------------
+// Simlified Chinese Language Pack
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
 
 define('UC_VERNAME', '国际版');//'International Version'
 

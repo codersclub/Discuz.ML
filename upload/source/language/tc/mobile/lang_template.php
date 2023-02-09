@@ -9,11 +9,15 @@
  *      Modified by Valery Votintsev, codersclub.org
  */
 
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
 $lang = array (
-  'no_simplemobiletype' => '標準版',
+  'no_simplemobiletype' => '簡易版',
   'nomobiletype' => '電腦版',
   'simplemobiletype' => '精簡版',
-  'extremelysimplemobiletype' => '極簡版',
+  'extremelysimplemobiletype' => 'WML版',
   'favorite' => '收藏',
   'my_posts' => '我的帖子',
   'new_pm' => '新短消息',
@@ -152,6 +156,8 @@ $lang = array (
   'uploadstatusmsg9' => '沒有合法的文件被上傳',
   'uploadstatusmsg10' => '非法操作',
   'uploadstatusmsg11' => '今日您已無法上傳那麼大的附件',
+  'uploadstatusmsg12' => '因文件名包含敏感詞而無法提交',
+  'uploadstatusmsg13' => '服務器限制無法上傳分辨率過高的附件',
   'postreplyneedmod' => '本版回帖需要審核，您的帖子將在通過審核後顯示',
   'replylist' => '回復列表',
   'last_thread' => '上一個主題',

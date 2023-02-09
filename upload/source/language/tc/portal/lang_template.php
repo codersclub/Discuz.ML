@@ -9,6 +9,10 @@
  *      Modified by by Valery Votintsev
  */
 
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
 $lang = array (
   'forum' => '版塊',
   'homepage' => '首頁',

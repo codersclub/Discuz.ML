@@ -1,4 +1,13 @@
 <?php
+//------------------------------------------------------
+// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
+// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
+//------------------------------------------------------
+// Simlified Chinese Language Pack
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
 
 $lang = array(
 	'please_login' => '请重新登录',
@@ -30,6 +39,7 @@ $lang = array(
 	'db_import_file_illegal' => '数据文件不存在: 可能服务器不允许上传文件或尺寸超过限制。',
 	'db_import_multivol_redirect' => '分卷数据 #$volume 成功导入数据库，程序将自动导入本次备份的其他分卷。',
 	'db_back_api_url_invalid' => '无法访问到该应用的备份接口，请拷贝 UCenter 根目录下api/dbbak.php 到该应用的api目录下',
+	'db_back_dos8p3_failed' => '服务器开启了 DOS 8.3 文件名支持，为避免可能发生的数据库爆破风险，不允许在线备份数据库',
 	'delete_dumpfile_success' => '删除数据备份文件成功 ',
 	'delete_dumpfile_redirect' => '#$appname 下同名备份文件删除成功，程序将自动删除其他应用下的。',
 	'dbback_error_code_1' => '无法创建目录',
@@ -54,7 +64,7 @@ $lang = array(
 	'note_false' => '通知失败',
 	'no_permission_for_this_module' => '没有权限管理改模块',
 	'admin_user_exists' => '该用户名已经存在，请返回尝试使用其他用户名。',
-	'admin_mobile_exists' => '该手机号已经存在，请返回尝试使用其他手机号。',
+	'admin_mobile_exists' => '该安全手机号已经存在，请返回尝试使用其他安全手机号。',
 
 	'mail_succeed' => '邮件发送成功 ',
 	'mail_false' => '邮件发送失败',
@@ -71,4 +81,7 @@ $lang = array(
 	'pm_send_floodctrl_error' => '对不起，您两次发送短消息间隔太短，请返回。',
 
 	'file_check_failed' => '校验文件不存在，无法校验',
+	'replacemykey_succeed' => '密钥更新成功，请更新缓存并检查每个下级应用的状态',
+	'replacemykey_false' => '密钥更新失败，请检查文件是否可写或数据库是否正常，如有必要请重新配置每个下级应用的 UC_KEY 以保证正常工作',
+	'replacemykey_no_confirm' => '请您确认风险提示后再继续操作',
 );

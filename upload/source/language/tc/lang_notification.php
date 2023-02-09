@@ -109,6 +109,8 @@ $lang = array
 
 	'modreplies_delete' => '您發表回復未通過審核，現已被刪除！ <p class="summary">回復內容：<span>{post}</span></p>',
 
+	'modreplies_delete_reason' => '您發表回复未通過審核，現已被刪除！ <p class="summary">回复內容：<span>{post}</span></p><div class="quote"><blockquote>{reason}</blockquote></div>',
+
 	'modreplies_validate' => '您發表的回復已審核通過！ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <p class="summary">回復內容：<span>{post}</span></p>',
 
 	'transfer' => '您收到一筆來自 {actor} 的積分轉賬 {credit} &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=log&suboperation=creditslog" target="_blank" class="lit">查看 &rsaquo;</a>

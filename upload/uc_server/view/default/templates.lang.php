@@ -1,4 +1,13 @@
 <?php
+//------------------------------------------------------
+// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
+// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
+//------------------------------------------------------
+// Simlified Chinese Language Pack
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
 
 $languages = array(
 	'title'=>'标题',
@@ -277,7 +286,7 @@ $languages = array(
 	'note_view' => '查看',
 	'setting_forbidden_username' => '禁止的用户名',
 	'setting_ceonsor_comment' => '可以设置通配符，每个关键字一行，可使用通配符 "*" 如 "*版主*"(不含引号)。',
-	'note_view' => '查看',
+//vot	'note_view' => '查看',
 	'note_status' => '通知状态',
 	'note_fail_apps' => '通知失败的应用',
 
@@ -294,7 +303,7 @@ $languages = array(
 	'anonymity' => '匿名',
 	'mail_send' => '发送邮件',
 	'mail_list_updated' => '邮件列表成功更新。',
-	'mail_send' => '邮件发送',
+//vot	'mail_send' => '邮件发送',
 
 	'setting' => '设置',
 	'setting_tips' => '',
@@ -534,24 +543,8 @@ $languages = array(
 	'envstatus_ok' => '您当前系统环境适合当前版本的 UCenter {$envstatus[\'version\']} 。',
 
 //Added by Valery Votintsev, codersclub.org
-	'view_ml_new_version'		=> '查看最新的多语言版本',//'View Latest ML Version',
-	'home_dev_international'	=> '多语种版本',//'Multilingual Version',
-
 //-------------------------------------
-//view/default/admin_app.htm
-	'notify_custom_class'	=> '是否需要自定义通知类别',//'Do you need a custom notification class',
-	'notify_user_del'	=> '是否接受用户删除通知',//'Whether to accept user deletion notifications',
-	'notify_user_name'	=> '是否接受用户改名通知',//'Whether to accept user name change notification',
-	'notify_tag'		=> '是否接受获取标签通知',//'Whether to accept get tags notification',
-	'notify_user_pass'	=> '是否接受更改用户密码通知',//'Whether to accept change user password notification',
-	'notify_tag_list'	=> '是否接受更新关键字列表通知',//'Whether to accept update tag list notifications',
-	'notify_domain'		=> '是否接受更新域名解析缓存通知',//'Whether to accept the update domain name resolution cache notification',
-	'notify_app_list'	=> '是否接受更新应用列表通知',//'Whether to accept the update application list notification',
-	'notify_client_cache'	=> '是否接受更新客户端缓存通知',//'Whether to accept update client cache notifications',
-	'notify_user_credit'	=> '是否接受更新用户积分通知',//'Whether to accept the notification of updating user credits',
-	'notify_credit_get'	=> '是否接受获取用户的某项积分通知',//'Whether to accept the notification of obtaining a certain point of the user',
-	'notify_credit_setting'	=> '是否接受向 UCenter 提供积分设置通知',//'Whether to accept the notification of change UCenter credit settings',
-	'notify_credit_app'	=> '是否接受更新应用积分设置通知',//'Whether to accept the notification of updating application credit settings',
-	'notify_event'		=> '是否接受添加事件通知',//'Whether to accept adding event notification',
+//view/default/admin_frame_main.htm
+	'home_dev_international'	=> '多语种版本',//'Multilingual Version',
 
 );
