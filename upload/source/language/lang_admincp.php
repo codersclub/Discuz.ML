@@ -1448,14 +1448,17 @@ $lang = array
 	'setting_seo_article' => '文章内容',
 	'setting_seo_forum' => '论坛首页',
 	'setting_seo_forum_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>当前版块名称&nbsp;<font class="highlight">{forum}</font>（应用范围：除首页以外）</li><li>一级版块名称&nbsp;<font class="highlight">{fup}</font>（应用范围：子版块主题列表页和帖子内容页）</li><li>分区名称&nbsp;<font class="highlight">{fgroup}</font>（应用范围：除首页以外）</li><li>帖子标题&nbsp;<font class="highlight">{subject}</font>（应用范围：帖子内容页）</li><li>主题摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：帖子内容页）</li><li>主题标签&nbsp;<font class="highlight">{tags}</font>（应用范围：帖子内容页）</li><li>分页数&nbsp;<font class="highlight">{page}</font>（应用范围：主题列表页、帖子内容页）</li>',
+/*1*/
 	'setting_seo_threadlist' => '主题列表',
 	'setting_seo_viewthread' => '帖子内容',
 	'setting_seo_home' => '家园首页',
 	'setting_seo_home_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>日志标题&nbsp;<font class="highlight">{subject}</font>（应用范围：日志内容页）</li><li>日志/相册作者&nbsp;<font class="highlight">{user}</font>（应用范围：日志和相册内容页）</li><li>日志摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：日志内容页）</li><li>日志标签&nbsp;<font class="highlight">{tags}</font>（应用范围：日志内容页）</li><li>相册名称&nbsp;<font class="highlight">{album}</font>（应用范围：相册内容页）</li><li>相册描述&nbsp;<font class="highlight">{depict}</font>（应用范围：相册内容页）</li>',
+/*2*/
 	'setting_seo_blog' => '日志内容',
 	'setting_seo_album' => '相册内容',
 	'setting_seo_group' => '群组首页/分类',
 	'setting_seo_group_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>当前群组名称&nbsp;<font class="highlight">{forum}</font>（应用范围：除群组首页、分类页）</li><li>一级分类名称&nbsp;<font class="highlight">{first}</font>（应用范围：所有位置）</li><li>二级分类名称&nbsp;<font class="highlight">{second}</font>（应用范围：所有位置）</li><li>当前群组简介&nbsp;<font class="highlight">{gdes}</font>（应用范围：群组和群组帖子页）</li><li>帖子标题&nbsp;<font class="highlight">{subject}</font>（应用范围：群组帖子页）</li><li>主题摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：群组帖子页）</li><li>主题标签&nbsp;<font class="highlight">{tags}</font>（应用范围：群组帖子内容页）</li><li>分页数&nbsp;<font class="highlight">{page}</font>（应用范围：主题列表页、帖子内容页）</li>',
+/*3*/
 	'setting_seo_grouppage' => '单一群组页面',
 	'setting_seo_viewthread_group' => '群组帖子内容',
 	'setting_seo_seotitle' => 'title',
@@ -7343,11 +7346,11 @@ url.rewrite-once = (
 // Added by Valery Votintsev
 
 //source/function/function_admincp.php
-	'upload_selectfile'		=> '浏览',//'Browse',
-	'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
+	//'upload_selectfile'		=> '浏览',//'Browse',
+	//'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
 
 //source/admincp/admincp_index.php - javascript function shownews()
-	'subscribe'		=> '订阅',//'Subscribe',
+	//'subscribe'		=> '订阅',//'Subscribe',
 
 //source/admincp/admincp_plugins.php
 	'disable'		=> '禁用',//'Disable',
@@ -7357,25 +7360,21 @@ url.rewrite-once = (
 	'change_language'	=> '更改语言',//'Change language',
 	'change_style'		=> '更改风格',//'Change style',
 
-	'language'			=> 'Languages',
-	'setting_language'		=> 'Language Settings',
-	'setting_language_tips'		=> '<li>Add/Modify your language packs</li>',
-	'setting_language_available'	=> 'Enable',
+	'language'			=> '语言',//'Languages',
+	'setting_language'		=> '语言设置',//'Language Settings',
+	'setting_language_tips'		=> '<li>添加/修改您的语言包</li>',//'<li>Add/Modify your language packs</li>',
+	'setting_language_available'	=> '启用',//'Enable',
 	'setting_language_id'		=> 'Id',
-	'setting_language_order'	=> 'Order',
-	'setting_language_flag'		=> 'Flag',
-	'setting_language_name'		=> 'Name (National!)',
-	'setting_language_title'	=> 'Title (English!)',
-	'setting_language_dir'		=> 'Direction',
-	'setting_language_actions'	=> 'Actions',
+	'setting_language_order'	=> '订单',//'Order',
+	'setting_language_flag'		=> '标志',//'Flag',
+	'setting_language_name'		=> '名称（国家！）',//'Name (National!)',
+	'setting_language_title'	=> '标题（英文！）',//'Title (English!)',
+	'setting_language_dir'		=> '方向',//'Direction',
+	'setting_language_actions'	=> '动作',//'Actions',
 
-	'nav_language'			=> 'Languages',
+	'nav_language'			=> '语言',//'Languages',
 
-	'delete_install_index'		=> 'Please delete install/index.php via FTP!',
-
-	'contributors'			=> 'Discuz! &#x5F00;&#x6E90;&#x8D21;&#x732E;&#x8005;',//'Discuz! Open Source Contributors',
-
-	'contributors_link'		=> 'Click Here To See Them',
+	'delete_install_index'		=> '请通过 FTP 删除 install/index.php！',//'Please delete install/index.php via FTP!',
 
 	'detect_environment'		=> '运行环境检测',//'Detect operating environment',
 );
