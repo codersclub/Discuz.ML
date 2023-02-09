@@ -1,4 +1,13 @@
 <?php
+//------------------------------------------------------
+// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
+// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
+//------------------------------------------------------
+// Simlified Chinese Language Pack
+// by Valery Votintsev, codersclub.org
+//------------------------------------------------------
 
 $languages = array(
 	'title'=>'标题',
@@ -193,6 +202,20 @@ $languages = array(
 	'app_code' => '应用的 UCenter 配置信息',
 	'app_code_comment' => '当应用的 UCenter 配置信息丢失时可复制左侧的代码到应用的配置文件中',
 	'app_not_add_tips' => '不能通过 URL 添加应用的可能原因：1. 通过 URL 添加应用开关被关闭；2. 连续多次错误输入 UCenter 创始人密码',
+	'app_recvnotediy' => '是否需要自定义通知类别',
+	'app_disablenote_deleteuser' => '是否接受用户删除通知',
+	'app_disablenote_renameuser' => '是否接受用户改名通知',
+	'app_disablenote_gettag' => '是否接受获取标签通知',
+	'app_disablenote_updatepw' => '是否接受更改用户密码通知',
+	'app_disablenote_updatebadwords' => '是否接受更新关键字列表通知',
+	'app_disablenote_updatehosts' => '是否接受更新域名解析缓存通知',
+	'app_disablenote_updateapps' => '是否接受更新应用列表通知',
+	'app_disablenote_updateclient' => '是否接受更新客户端缓存通知',
+	'app_disablenote_updatecredit' => '是否接受更新用户积分通知',
+	'app_disablenote_getcredit' => '是否接受获取用户的某项积分通知',
+	'app_disablenote_getcreditsettings' => '是否接受向 UCenter 提供积分设置通知',
+	'app_disablenote_updatecreditsettings' => '是否接受更新应用积分设置通知',
+	'app_disablenote_addfeed' => '是否接受添加事件通知',
 
 	'tag_tips' => '设置当前应用获取其他应用标签数据的比例以及扩展数据模板。模板中“&#123;xxx&#125;”表示标签数据的索引，代表相应的数据。',
 	'tag_global_template' => '全局模板',
@@ -217,7 +240,7 @@ $languages = array(
 					<li>badword=good</li>',
 	'badword_skip' => '当冲突时，跳过原来的词表',
 	'badword_overwrite' => '当冲突时，覆盖原来的词表',
-	'badword_truncate' => '清空当前词表，后导入新词语（此操作不可恢复，建议首先 <a href="{$adminscript}?m=badword&a=export" target="_blank">导出词表</a>，做好备份）',//'Clear the current vocabulary, and then import new words (this operation cannot be restored, it is recommended to <a href="{$adminscript}?m=badword&a=export" target="_blank">export the vocabulary</a> first, and do a good job Backup)',
+	'badword_truncate' => '清空当前词表，后导入新词语（此操作不可恢复，建议首先 <a href="{$adminscript}?m=badword&a=export" target="_blank">导出词表</a>，做好备份）',
 
 	'announcepm' => '公共消息管理',
 	'announcepm_deleted' => '成功删除公共消息',
@@ -419,7 +442,7 @@ $languages = array(
 	'db_start_export_dumpfile' => '开始备份数据，请等待，请勿关闭浏览器',
 	'db_list_tips' => '根据备份日期选择要恢复的备份，点击“详情”进入之后选择要恢复的应用备份',
 	'db_import_tips' => '在需要恢复的应用前面勾选，之后点击“提交”按钮即可恢复备份数据',
-	'db_security_tips' => '出于安全考虑，我们强烈建议您下载或恢复数据库备份文件后删除文件或设置文件不可通过 URL 访问。',//'For security reasons, we strongly recommend that you delete files after downloading or restoring a database backup file or that the settings file is not accessible via URL.',
+	'db_security_tips' => '出于安全考虑，我们强烈建议您下载或恢复数据库备份文件后删除文件或设置文件不可通过 URL 访问。',
 	'dumpfile_exists' => '备份存在',
 
 	'message_title'=>'提示信息',
@@ -520,24 +543,8 @@ $languages = array(
 	'envstatus_ok' => '您当前系统环境适合当前版本的 UCenter {$envstatus[\'version\']} 。',
 
 //Added by Valery Votintsev, codersclub.org
-	'view_ml_new_version'		=> '查看最新的多语言版本',//'View Latest ML Version',
-	'home_dev_international'	=> '多语种版本',//'Multilingual Version',
-
 //-------------------------------------
-//view/default/admin_app.htm
-	'notify_custom_class'	=> '是否需要自定义通知类别',//'Do you need a custom notification class',
-	'notify_user_del'	=> '是否接受用户删除通知',//'Whether to accept user deletion notifications',
-	'notify_user_name'	=> '是否接受用户改名通知',//'Whether to accept user name change notification',
-	'notify_tag'		=> '是否接受获取标签通知',//'Whether to accept get tags notification',
-	'notify_user_pass'	=> '是否接受更改用户密码通知',//'Whether to accept change user password notification',
-	'notify_tag_list'	=> '是否接受更新关键字列表通知',//'Whether to accept update tag list notifications',
-	'notify_domain'		=> '是否接受更新域名解析缓存通知',//'Whether to accept the update domain name resolution cache notification',
-	'notify_app_list'	=> '是否接受更新应用列表通知',//'Whether to accept the update application list notification',
-	'notify_client_cache'	=> '是否接受更新客户端缓存通知',//'Whether to accept update client cache notifications',
-	'notify_user_credit'	=> '是否接受更新用户积分通知',//'Whether to accept the notification of updating user credits',
-	'notify_credit_get'	=> '是否接受获取用户的某项积分通知',//'Whether to accept the notification of obtaining a certain point of the user',
-	'notify_credit_setting'	=> '是否接受向 UCenter 提供积分设置通知',//'Whether to accept the notification of change UCenter credit settings',
-	'notify_credit_app'	=> '是否接受更新应用积分设置通知',//'Whether to accept the notification of updating application credit settings',
-	'notify_event'		=> '是否接受添加事件通知',//'Whether to accept adding event notification',
+//view/default/admin_frame_main.htm
+	'home_dev_international'	=> '多语种版本',//'Multilingual Version',
 
 );

@@ -9,6 +9,10 @@
  *      Modified by Valery Votintsev, codersclub.org
  */
 
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
 $lang = array (
   'cancel' => '取消',
   'close' => '關閉',
@@ -801,9 +805,9 @@ $lang = array (
   'unresolved' => '未解決',
   'description' => '描述',
   'help' => '幫助',
-  'how_to_share_tips' => '<strong>如何分享視頻？</strong><br/>填寫視頻所在網頁的網址。(不需要填寫視頻的真實地址)<br/>我們支持的視頻網站有：<br/>Youtube、優酷、酷6、Mofile、偶偶視頻、56、新浪視頻、搜狐視頻。<br/><br/><strong>如何分享音樂？</strong><br/>填寫音樂文件的地址。(後綴需要是 mp3 或者 wma)<br/><br/><strong>如何分享 Flash？</strong><br/>填寫 Flash 文件的地址。(後綴需要是 swf)',
+  'how_to_share_tips' => '<strong>如何分享視頻？</strong><br/>填寫視頻所在網頁的網址。 (不需要填寫視頻的真實地址)<br/>我們支持的視頻網站有：<br/>Youtube、優酷、酷6、Mofile、偶偶視頻、56、新浪視頻、搜狐視頻等常見視頻網站。<br/><br/><strong>如何分享音樂？</strong><br/>填寫音樂文件的地址。 (後綴支持aac、flac、mp3、m4a、wav、ogg)',
   'share_description' => '分享說明',
-  'share_web_music_flash' => '分享網址、視頻、音樂、Flash',
+  'share_web_music_flash' => '分享網址、視頻、音樂',
   'sharemetoo' => '我也分享',
   'friend_share' => '好友的分享',
   'hide_share' => '本頁有 $pricount 條分享因未通過審核而隱藏',
@@ -1059,7 +1063,7 @@ $lang = array (
   'spacecp_doing_message1' => '還可輸入',
   'spacecp_doing_message2' => '個字符',
   'edit_domain' => '修改域名',
-  'edit_domain_message' => '修改域名將需要支付積分 $consume，您現在有擁有 $credits',
+  'edit_domain_message' => '修改域名將需要支付積分 $consume， 您現在有擁有 $credits',
   'space_domain_message' => '域名可使用最少 $domainlength 個 ，最多 30 個的字母或數字組合，且必須字母開頭 ',
   'eccredit_needexplanation' => '我要解釋',
   'eccredit_content' => '評價內容',
@@ -1541,8 +1545,8 @@ $lang = array (
   'connect_fill_profile_to_comment' => '您需要<a href="member.php?mod=connect" class="xi2">完善帳號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有帳號</a> 後才可以留言',
   'save_to_album' => '保存到相冊',
   'usergroup_expired' => '您當前的用戶組已經到期，請選擇繼續續費還是要切換到其他用戶組',
-  'freeze_pw_tips' =>  '您當前的帳號已經被凍結，請修改密碼解除凍結狀態',
-  'freeze_email_tips' =>  '您當前的帳號已經被凍結，必須驗證郵箱後才能解除凍結狀態<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1" class="xi2">重新接收驗證郵件</a>',
+  'freeze_pw_tips' => '您當前的帳號已經被凍結，請修改密碼解除凍結狀態',
+  'freeze_email_tips' => '您當前的帳號已經被凍結，必須驗證郵箱後才能解除凍結狀態 <a href="home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash={FORMHASH}" class="xi2">重新接收驗證郵件</a>',
   'freeze_admincp_tips' => '您當前的帳號已經被凍結，必須在本頁面填寫申訴理由，並經管理中心審核通過後才能解除凍結狀態',
   'freeze_reason' => '申訴理由',
   'freeze_reason_comment' => '如果您無法通過郵箱驗證，請填寫申訴理由',
@@ -1566,4 +1570,5 @@ $lang = array (
 	'say_to'		=> '說',
 	'visibility'		=> '能見度',//'Visibility',
 	'reset'			=> '重啟',//'Reset',
+	'lastupdate'		=> '更新',//'最後更新',//'Updated',
 );

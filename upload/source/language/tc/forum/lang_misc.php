@@ -147,10 +147,6 @@ $lang = array
 
 	'eccredit_explain' => '解釋',
 
-	'google_site_0' => '網頁搜索',
-	'google_site_1' => '站內搜索',
-	'google_sa' => '搜索',
-
 	'modcp_logs_action_home' => '內部留言',
 	'modcp_logs_action_moderate' => '審核',
 	'modcp_logs_action_member' => '用戶管理',
@@ -328,14 +324,14 @@ $lang = array
 
 	'seccode' => '驗證碼',
 	'seccode_update' => '換一個',
-	'seccode_player' => '<span style="padding:2px"><img border="0" style="vertical-align:middle" src="static/image/common/seccodeplayer.gif" /> <a href="javascript:;" onclick="window.document.seccodeplayer_{idhash}.SetVariable(\'isPlay\', 1)">播放驗證碼</a></span>',
+	'seccode_player' => '<span style="padding:2px"><img border="0" style="vertical-align:middle" src="static/image/common/seccodeplayer.gif" /> <a href="javascript:;" id="seccodeplay_{idhash}">播放驗證碼</a></span>',
 	'secqaa' => '驗證問答',
 
 	'mobileoem_creditrule' => '掌上論壇簽到',
 
 // Added by Valery Votintsev, codersclub.org
-	'poll_reply_no_perms'	=> '您不能对自己的回帖进行投票',//'You can not reply the poll',
-	'poll_replyed_already'	=> '您已经对此回帖投过票了',//'You have already replied this poll',
+	'poll_reply_no_perms'	=> '您不能對自己的回帖進行投票',//'You can not reply the poll',
+	'poll_replyed_already'	=> '您已經對此回帖投過票了',//'You have already replied this poll',
 	'poll_voted_ok'		=> '投票成功',//'You have voted successfully',
 );
 
