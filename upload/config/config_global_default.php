@@ -179,8 +179,8 @@ $_config['security']['creditsafe']['second'] 	= 0;	// Open the user credit info 
 $_config['security']['creditsafe']['times'] 	= 10;
 
 $_config['security']['fsockopensafe']['port']	= array(80, 443); // Enabled ports for REMOTE downloads by fsockopen
-$_config['security']['fsockopensafe']['ipversion']	= array('ipv6', 'ipv4');	//fsockopen 有效的IP协议
-$_config['security']['fsockopensafe']['verifypeer']	= false;	// fsockopen是否验证证书有效性，开启可提升安全性，但需自行解决证书配置问题
+$_config['security']['fsockopensafe']['ipversion']	= array('ipv6', 'ipv4');	//fsockopen valid IP protocol
+$_config['security']['fsockopensafe']['verifypeer']	= false;	// Whether fsockopen verifies the validity of the certificate, enabling it can improve security, but you need to solve the certificate configuration problem by yourself
 
 $_config['security']['error']['showerror'] = '1';	//Whether to display error details when the database or system is seriously abnormal, 0=do not display (safer), 1=display detailed information (default), 2=only display the error itself
 $_config['security']['error']['guessplugin'] = '1';	//Whether to guess the plug-in that may report an error when the database or system is seriously abnormal, 0=no guess, 1=guess (default)

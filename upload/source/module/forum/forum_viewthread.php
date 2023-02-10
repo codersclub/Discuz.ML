@@ -1019,7 +1019,7 @@ if(empty($_GET['viewpid'])) {
 		$_G['widthauto'] = 0;
 		$sufix = '_album';
 		$post = &$postlist[$_G['forum_firstpid']];
-		// 暂不确认对于 JS 类内容是否都需要添加 ignore_js_op 标签供 _relatedlinks 和只看大图模式正文摘要过滤用
+		// It is not yet confirmed whether the ignore_js_op tag needs to be added to the JS content for _relatedlinks and only view the large image mode text summary filtering
 		$post['message'] = cutstr(strip_tags(preg_replace('/(<ignore_js_op>.*<\/ignore_js_op>)/is', '', $post['message'])), 200);
 		require_once libfile('thread/album', 'include');
 	}
@@ -1312,10 +1312,10 @@ function viewthread_loadcache() {
 /*vot*/	$_G['thread']['lastpostdays'] = ceil((TIMESTAMP - $_G['thread']['lastpost']) / 86400);	// Last post days, at least 1 day
 
 	$threadcachemark = 100 - (
-		$_G['thread']['digest'] * 20 +							// 精华，占20分
-		min($_G['thread']['views'] / max($_G['thread']['livedays'], 10) * 2, 50) +	// 阅读数与天数关系，占50分。阅读越多分越高，天数越久分越低
-		max(-10, (15 - $_G['thread']['lastpostdays'])) +				// 最后回复时间，占15分，超过15天开始倒扣分，最多扣10分
-		min($_G['thread']['replies'] / $_G['setting']['postperpage'] * 1.5, 15));	// 帖子页数，占15分，10页以上就是满分
+/*vot*/		$_G['thread']['digest'] * 20 +							// Digest, 20 points
+/*vot*/		min($_G['thread']['views'] / max($_G['thread']['livedays'], 10) * 2, 50) +	// The number of readings is related to the number of days, accounting for 50 points. The more you read, the higher the score, and the longer the days, the lower the score
+/*vot*/		max(-10, (15 - $_G['thread']['lastpostdays'])) +				// The last reply time, accounted for 15 points, more than 15 days will start to deduct points, up to 10 points
+/*vot*/		min($_G['thread']['replies'] / $_G['setting']['postperpage'] * 1.5, 15));	// The number of pages of posts is 15 points, and more than 10 pages are full marks
 	if($threadcachemark < $_G['forum']['threadcaches']) {
 
 		$threadcache = getcacheinfo($_G['tid']);
