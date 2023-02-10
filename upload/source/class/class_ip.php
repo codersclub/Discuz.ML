@@ -54,7 +54,7 @@ class ip {
 	 * 	- / back is greater than 0
 	 * 	- / The front is a legal IP
 	 * Return value:
-	 * 	- TRUE, eans it is a legal CIDR, $new_str is the processed CIDR (the IP part calls to_ip)
+	 * 	- TRUE, means it is a legal CIDR, $new_str is the processed CIDR (the IP part calls to_ip)
 	 * 	- FALSE, means not a valid CIDR
 	 */
 	public static function validate_cidr($str, &$new_str) {
