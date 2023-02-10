@@ -1,21 +1,11 @@
 <?php
-//------------------------------------------------------
-// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
-// by Valery Votintsev, codersclub.org
-//------------------------------------------------------
-// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
-//------------------------------------------------------
-// Simlified Chinese Language Pack
-// by Valery Votintsev, codersclub.org
-//------------------------------------------------------
 
-define('UC_VERNAME', '国际版');//'International Version'
+define('UC_VERNAME', '中文版');
 
 $lang = array(
 
 	'SC_UTF8' => '简体中文 UTF8 版',
 	'TC_UTF8' => '繁体中文 UTF8 版',
-	'EN_UTF8'		=> 'ENGLISH UTF-8',
 
 	'title_install' => SOFT_NAME.' 安装向导',
 	'agreement_yes' => '我同意',

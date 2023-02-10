@@ -1,13 +1,4 @@
 <?php
-//------------------------------------------------------
-// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
-// by Valery Votintsev, codersclub.org
-//------------------------------------------------------
-// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
-//------------------------------------------------------
-// Simlified Chinese Language Pack
-// by Valery Votintsev, codersclub.org
-//------------------------------------------------------
 
 $languages = array(
 	'title'=>'标题',
@@ -286,7 +277,7 @@ $languages = array(
 	'note_view' => '查看',
 	'setting_forbidden_username' => '禁止的用户名',
 	'setting_ceonsor_comment' => '可以设置通配符，每个关键字一行，可使用通配符 "*" 如 "*版主*"(不含引号)。',
-//vot	'note_view' => '查看',
+	'note_view' => '查看',
 	'note_status' => '通知状态',
 	'note_fail_apps' => '通知失败的应用',
 
@@ -303,7 +294,7 @@ $languages = array(
 	'anonymity' => '匿名',
 	'mail_send' => '发送邮件',
 	'mail_list_updated' => '邮件列表成功更新。',
-//vot	'mail_send' => '邮件发送',
+	'mail_send' => '邮件发送',
 
 	'setting' => '设置',
 	'setting_tips' => '',
@@ -541,10 +532,5 @@ $languages = array(
 	'envstatus_ver_too_low' => '您当前系统环境内的 {$envstatus[\'req\']} 版本 ({$envstatus[\'now_ver\']}) 过低，程序无法按预期正常运行。我们强烈建议您升级到 {$envstatus[\'sug_ver\']} 版本，程序正常运行最低要求为 {$envstatus[\'req_ver\']} 版本。',
 	'envstatus_not_found' => '您当前系统环境内未安装或开启 {$envstatus[\'req\']} 模块，程序无法按预期正常运行。我们强烈建议您安装或开启此模块，以满足程序正常运行的最低要求。',
 	'envstatus_ok' => '您当前系统环境适合当前版本的 UCenter {$envstatus[\'version\']} 。',
-
-//Added by Valery Votintsev, codersclub.org
-//-------------------------------------
-//view/default/admin_frame_main.htm
-	'home_dev_international'	=> '多语种版本',//'Multilingual Version',
 
 );
