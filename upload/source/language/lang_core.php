@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_core.php 28082 2012-02-22 06:58:29Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -218,6 +219,12 @@ $lang = array
 	'page' => '第{page}页',
 
 	'close' => '关闭',
+
+//--------------------------------------------------------------------------
+// Added by Valery Votintsev
+
+// Months Names
+	'month_name'	=> array('月','一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'),//array('Month','January','February','March','April','May','June','July','August','September','October','November','December'),
+
 );
 
-?>

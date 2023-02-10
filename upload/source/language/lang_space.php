@@ -5,6 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_space.php 31607 2012-09-13 08:38:40Z monkey $
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -101,13 +102,29 @@ $lang = array(
 	'block3' => '自定义模块3',
 	'block4' => '自定义模块4',
 	'block5' => '自定义模块5',
-	'blockdata' => array('personalinfo' => '个人资料', 'profile' => '头像', 'doing' => '记录', 'feed' => '动态',
-				'blog' => '日志', 'stickblog' => '置顶日志', 'album' => '相册', 'friend' => '好友',
-				'visitor' => '最近访客', 'wall' => '留言板', 'share' => '分享',
-				'thread' => '主题', 'group'=>$_G[setting][navs][3][navname],'music'=>'音乐盒',
-				'statistic' => '统计信息','myapp' => '应用',
-				'block1'=>'自由模块1', 'block2'=>'自由模块2', 'block3'=>'自由模块3',
-				'block4'=>'自由模块4','block5'=>'自由模块5'),
+/*vot*/	'blockdata' => array(
+		'personalinfo' => '个人资料',
+		'profile' => '头像',
+		'doing' => '记录',
+		'feed' => '动态',
+		'blog' => '日志',
+		'stickblog' => '置顶日志',
+		'album' => '相册',
+		'friend' => '好友',
+		'visitor' => '最近访客',
+		'wall' => '留言板',
+		'share' => '分享',
+		'thread' => '主题',
+		'group' => $_G[setting][navs][3][navname],
+		'music' => '音乐盒',
+		'statistic' => '统计信息',
+		'myapp' => '应用',
+		'block1' => '自由模块1',
+		'block2' => '自由模块2',
+		'block3' => '自由模块3',
+		'block4' => '自由模块4',
+		'block5' => '自由模块5'
+	),
 
 	'block_title' => '<div class="blocktitle title"><span>{bname}</span>{more}</div>',
 	'blog_li' => '<dl class="bbda cl"><dt><a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank">{subject}</a><span class="xg2 xw0"> {date}</span></dt>',
