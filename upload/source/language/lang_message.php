@@ -7,7 +7,6 @@
  *      $Id: lang_message.php 34503 2014-05-12 09:53:16Z nemohou $
  *
  *      This file is automatically generate
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 $lang = array (
@@ -1134,8 +1133,6 @@ $lang = array (
   'secmobseccode_send_err_8' => '短信功能已被关闭，请稍候再试。',
   'secmobseccode_send_err_9' => '短信网关异常，请稍候再试。',
 
-// Added by Valery Votintsev
-  'timeout_or_data_error'	=> '操作超时或者数据来源错误',//'Operation timeout or data source error',
 );
 
 ?>
