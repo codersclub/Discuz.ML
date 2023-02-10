@@ -622,24 +622,27 @@ EOF;
 		showmessage('quickclear_success', $_POST['redirect'], array(), array('showdialog'=>1, 'closetime' => true, 'msgtype' => 2, 'locationtime' => 1));
 	}
 } elseif($_GET['action'] == 'getpostfeed') {
+	if(!$_G['setting']['followstatus']) {
+		showmessage('follow_status_off');
+	}
 	$tid = intval($_GET['tid']);
 	$pid = intval($_GET['pid']);
 	$flag = intval($_GET['flag']);
 	$feed = $thread = array();
 	if($tid) {
 		$thread = C::t('forum_thread')->fetch_thread($tid);
+		if(empty($_G['setting']['followforumid']) || $thread['fid'] != $_G['setting']['followforumid']) {
+			$flag = 0;
+		}
 		if($flag) {
 			$post = C::t('forum_post')->fetch_post($thread['posttableid'], $pid);
-			if($_G['uid'] != $post['authorid']) {
+			if($thread['tid'] != $post['tid']) {
 				showmessage('quickclear_noperm');
 			}
 			require_once libfile('function/discuzcode');
 			require_once libfile('function/followcode');
 			$post['message'] = followcode($post['message'], $tid, $pid);
 		} else {
-			if($_G['uid'] != $thread['authorid']) {
-				showmessage('quickclear_noperm');
-			}
 			if(!isset($_G['cache']['forums'])) {
 				loadcache('forums');
 			}
