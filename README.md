@@ -162,6 +162,7 @@ Users who use the release version, check the readme.html file in the installatio
 
 [Upgrade tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%8D%87% E7%BA%A7%E6%96%B9%E6%B3%95?sort_id=9978)
 
+!!!ToDo: Translate the Upgrade tutorial!!!
 
 ### Related Sites
  
@@ -184,15 +185,4 @@ Users who use the release version, check the readme.html file in the installatio
 [Discuz! Open Platform](https://open.dismall.com/)
 |
 [Discuz! Development Documentation](https://open.dismall.com/?ac=document&page=dev)
-|
-[Discuz! Q Official Site](https://discuz.com/)
-|
-[Discuz! Q Official Forum](https://discuz.chat/)
-|
-[DNSPod](https://www.dnspod.cn/)
-|
-[Trademark Registration](https://tm.cloud.tencent.com/)
-|
-[Domain Registration](https://dnspod.cloud.tencent.com/)
-
 
