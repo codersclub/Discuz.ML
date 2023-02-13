@@ -157,7 +157,7 @@ class usermodel {
 		} elseif(!$this->verify_password($password, $user['password'], $user['salt'])) {
 			return -2;
 		}
-		// 密码升级作为附属流程, 失败与否不影响登录操作
+		// Password upgrade is a subsidiary process, failure or failure does not affect the login operation
 		$this->upgrade_password($username, $password, $user['password'], $user['salt']);
 		return $user['uid'];
 	}
@@ -192,7 +192,7 @@ class usermodel {
 
 		$sqladd = $newpw ? "password='".$this->generate_password($newpw)."', salt=''" : '';
 		$sqladd .= $email ? ($sqladd ? ',' : '')." email='$email'" : '';
-		//空字符串代表没传递这个参数，传递0时，代表清空这个数据
+		// An empty string means that the parameter is not passed, and when 0 is passed, it means that the data is cleared
 		$sqladd .= $secmobicc !== '' ? ($sqladd ? ',' : '').(!empty($secmobicc) ? " secmobicc='$secmobicc'" : " secmobicc=''") : '';
 		$sqladd .= $secmobile !== '' ? ($sqladd ? ',' : '').(!empty($secmobile) ? " secmobile='$secmobile'" : " secmobile=''") : '';
 		if($questionid !== '') {
@@ -290,8 +290,8 @@ class usermodel {
 
 	function can_do_login($username, $ip = '') {
 
-		// check_times 代表允许用户登录失败次数，该变量的值为 0 为不限制，正数为次数
-		// 由于历史 Bug ，系统配置内原有用于代表无限制的 0 值必须代表正常值 5 ，因此只能在这里进行映射，负数映射为 0 ，正数正常， 0 映射为 5 。
+		// check_times represents the number of times the user is allowed to fail to log in. The value of this variable is 0 for no limit, and a positive number is the number of times
+		// Due to historical bugs, the original 0 value used to represent unlimited in the system configuration must represent the normal value 5, so it can only be mapped here. Negative numbers are mapped to 0, positive numbers are normal, and 0 is mapped to 5.
 		$check_times = $this->base->settings['login_failedtime'] > 0 ? $this->base->settings['login_failedtime'] : ($this->base->settings['login_failedtime'] < 0 ? 0 : 5);
 
 		if($check_times == 0) {
@@ -381,16 +381,16 @@ class usermodel {
 	function generate_password($password) {
 		$algo = $this->get_passwordalgo();
 		$options = $this->get_passwordoptions();
-		// 当用户配置有问题时, password_hash 可能返回 false 或无法校验通过的密码, 此时使用 BCRYPT 备份方案生成密码, 保证上游应用正常
-		// 密码散列算法会在部分出错情况下返回 NULL 并报 Warning, 在此特殊处理
+		// When there is a problem with the user configuration, password_hash may return false or fail to verify the password. At this time, use the BCRYPT backup scheme to generate the password to ensure that the upstream application is normal
+		// The password hash algorithm will return NULL and report Warning in some error cases, which is specially handled here
 		$hash = password_hash($password, $algo, $options);
 		return ($hash === false || $hash === null || !password_verify($password, $hash)) ? password_hash($password, PASSWORD_BCRYPT) : $hash;
 	}
 
 	function verify_password($password, $hash, $salt = '') {
-		// salt 为空说明是新算法, 直接根据 password_verify 出结果
-		// 否则如 strlen(salt) == 6 说明是老算法, 适用老算法匹配
-		// 均不符合则为第三方转换算法, 如符合命名规则则根据 salt 匹配第三方文件
+		// If the salt is empty, it means that it is a new algorithm, and the result is obtained directly according to password_verify
+		// Otherwise, if strlen(salt) == 6, it means that it is an old algorithm, and the old algorithm is used for matching
+		// If none of them match, it is a third-party conversion algorithm. If it meets the naming rules, it will match the third-party file according to the salt
 		if(empty($salt)) {
 			return password_verify($password, $hash);
 		} else if(strlen($salt) == 6) {
