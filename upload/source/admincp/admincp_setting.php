@@ -2290,13 +2290,13 @@ EOT;
 
 		/*search={"setting_uc":"action=setting&operation=uc"}*/
 		showtips('setting_uc_tips');
-		// 新增 Discuz! 到 UCenter 的通信检测
+		// Added communication detection from Discuz! to UCenter
 		if(!UC_STANDALONE) {
 			loaducenter();
 			showboxheader('setting_uc_linkstatus', '', 'id="linkstatus"');
 			$query = uc_app_ls();
 			$status = is_array($query) && count($query) >= 1 && !empty($query[UC_APPID]['type']) && $query[UC_APPID]['type'] == 'DISCUZX';
-			// 如果是数据库模式, 那么同时要测试接口是否可以正常通信
+			// If it is a database mode, then at the same time test whether the interface can communicate normally
 			if($status && defined('UC_CONNECT') && UC_CONNECT == 'mysql') {
 				$query = call_user_func('uc_api_post', 'app', 'ls', array());
 				$query = uc_unserialize($query);

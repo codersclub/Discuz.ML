@@ -29,19 +29,19 @@ if($_GET['action'] == 'send') {
 		$length = $_G['setting']['smsdefaultlength'] ? $_G['setting']['smsdefaultlength'] : 4;
 		$secmobseccode = random($length, 1);
 
-		// 短信发送前先校验安全手机号是否正确, 避免错误安全手机号送往短信网关
+		// Check whether the security phone number is correct before sending the SMS to avoid sending the wrong security phone number to the SMS gateway
 		if(empty($secmobicc) || !preg_match('#^(\d){1,3}$#', $secmobicc)) {
 			showmessage('profile_secmobicc_illegal');
 		} else if(empty($secmobile) || !preg_match('#^(\d){1,12}$#', $secmobile)) {
 			showmessage('profile_secmobile_illegal');
 		}
 
-		// 用户 UID : $_G['uid'], 短信类型: 验证类短信, 服务类型: $svctype
-		// 国际电话区号: $secmobicc, 手机号: $secmobile, 内容: $secmobseccode, 强制发送: false
+		// User UID: $_G['uid'], SMS type: verification SMS, service type: $svctype
+		// International telephone area code: $secmobicc, mobile phone number: $secmobile, content: $secmobiseccode, mandatory sending: false
 		$result = sms::send($_G['uid'], 0, $svctype, $secmobicc, $secmobile, $secmobseccode, 0);
 
-		// 发送时间短于设置返回 -1, 单号码发送次数风控规则不通过返回 -2, 万号段风控规则不通过返回 -3, 全局风控规则不通过返回 -4, 无可用网关返回 -5, 网关接口文件不存在返回 -6,
-		// 网关接口类不存在返回 -7, 短信功能已被关闭返回 -8, 短信网关私有异常返回 -9
+		// If the sending time is shorter than the setting, return -1, if the number of sending times for a single number fails, return -2, if the risk control rule for thousands of numbers fails, return -3, if the global risk control rule fails, return -4, if no gateway is available, return -5, the gateway interface file does not exist return -6,
+		// If the gateway interface class does not exist, return -7, if the SMS function has been disabled, return -8, if the SMS gateway private exception returns -9
 		if($result >= 0) {
 			showmessage('secmobseccode_send_success', '', array(), array('alert' => 'right'));
 		} else {

@@ -82,7 +82,7 @@ if($('$showid')) {
 EOF;
 
 } elseif(getgpc('action') == 'update' && defined("IN_MOBILE") && constant("IN_MOBILE") == 2) {
-	//移动端和PC端验证码功能拉齐
+	//The verification code function of the mobile terminal and the PC terminal is aligned
 	$message = '';
 	$showid = 'seccode_'.$idhash;
 	$rand = random(5, 1);
@@ -151,10 +151,10 @@ EOF;
 	$refererhost['host'] = (isset($refererhost['host']) ? $refererhost['host'] : '').(!empty($refererhost['port']) ? (':'.$refererhost['port']) : '');
 
 	if(($_G['setting']['seccodedata']['type'] < 2 && ($refererhost['host'] != $_SERVER['HTTP_HOST'])) || ((defined("IN_MOBILE") && in_array($_G['setting']['seccodedata']['type'], array(2, 3)) && ($refererhost['host'] != $_SERVER['HTTP_HOST'])) && ($_G['setting']['seccodedata']['type'] == 2 && !extension_loaded('ming') && $_POST['fromFlash'] != 1 || $_G['setting']['seccodedata']['type'] == 3 && $_GET['fromFlash'] != 1))) {
-		//当模式为英文=0、中文=1两种验证码时，校验Referer和Host是否为同一站点，不是就退出
-		//当模式为Flash=2、语音=3两种验证码时，要么是手机版且Referer和Host为同一站点（不是就退出，X3.5新增验证码降级功能），
-		//要么是Flash+Ming+FromFlash，要么是语音验证码+FromFlash（不是就退出）
-		//这个逻辑浪费了我二三十分钟，写上注释以免后人入坑
+		//When the mode is English = 0, Chinese = 1 two verification codes, check whether the Referer and Host are the same site, if not, exit
+		//When the verification code mode is Flash=2 and Voice=3, either it is a mobile version and the Referer and Host are the same site (if not, exit, X3.5 has a new verification code downgrade function),
+		//Either Flash+Ming+FromFlash, or voice verification code+FromFlash (if not, exit)
+		//This logic wasted 20 or 30 minutes for me, write a comment to avoid future generations from falling into the pit
 		exit('Access Denied');
 	}
 
