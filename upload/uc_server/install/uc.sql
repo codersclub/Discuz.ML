@@ -120,6 +120,7 @@ REPLACE INTO uc_settings(k, v) VALUES ('maildefault', 'username@21cn.com');
 REPLACE INTO uc_settings(k, v) VALUES ('mailsend', '1');
 REPLACE INTO uc_settings(k, v) VALUES ('mailserver', 'smtp.localhost.com');
 REPLACE INTO uc_settings(k, v) VALUES ('mailport', '25');
+REPLACE INTO uc_settings(k, v) VALUES ('mailtimeout', '30');
 REPLACE INTO uc_settings(k, v) VALUES ('mailauth', '1');
 REPLACE INTO uc_settings(k, v) VALUES ('mailfrom', 'UCenter <noreply@localhost.com>');
 REPLACE INTO uc_settings(k, v) VALUES ('mailauth_username', 'username@localhost.com');

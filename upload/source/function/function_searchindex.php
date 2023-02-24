@@ -12,18 +12,22 @@ if(!defined('IN_DISCUZ')) {
 }
 
 function searchindex_cache() {
+	global $_G;
 	include_once DISCUZ_ROOT.'./source/discuz_version.php';
-	if(is_numeric(DISCUZ_RELEASE)) {
+	if(preg_match("#\d{8}#i", DISCUZ_RELEASE)) {
 		$cachedata = "lang('admincp_searchindex');\n\$searchindex = & \$_G['lang']['admincp_searchindex'];";
 		require_once libfile('function/cache');
 		writetocache('searchindex', $cachedata);
 		return null;
 	}
 
+	$siteurl = $_G['siteurl'];
+	$_G['siteurl'] = '';
 	require DISCUZ_ROOT.'./source/language/lang_admincp_menu.php';
 	$menulang = $lang;
 	require DISCUZ_ROOT.'./source/language/lang_admincp.php';
 	$genlang = $lang + $menulang;
+	$_G['siteurl'] = $siteurl;
 	$indexdata = array();
 
 	require DISCUZ_ROOT.'./source/admincp/admincp_menu.php';
@@ -40,6 +44,7 @@ function searchindex_cache() {
 
 	$genlangi = '|'.implode('|', array_keys($genlang)).'|';
 
+	$flag = false;
 	$dir = opendir(DISCUZ_ROOT.'./source/admincp/');
 	while($entry = readdir($dir)) {
 		if($entry != '.' && $entry != '..' && preg_match('/^admincp\_/', $entry)) {
@@ -72,13 +77,12 @@ function searchindex_cache() {
 						}
 					}
 					$data = $search[2][$k];
+					$l = $tm = array();
 					preg_match_all("/(showsetting|showtitle|showtableheader|showtips)\('(\w+)'/", $data, $r);
 					if($r[2]) {
-						$l = array();
 						if($titletext) {
 							$l[] = implode(' &raquo; ', $titletext);
 						}
-						$tm = array();
 						foreach($r[2] as $i) {
 							if(in_array($i,$tm)) {
 								continue;
@@ -94,7 +98,32 @@ function searchindex_cache() {
 								}
 							}
 						}
+					}
+
+					preg_match_all("/\\\$lang\['(\w+)'\]/", $data, $r);
+					if($r[1]) {
+						if(empty($l) && $titletext) {
+							$l[] = implode(' &raquo; ', $titletext);
+						}
+						foreach($r[1] as $i) {
+							if(in_array($i,$tm)) {
+								continue;
+							}
+							$tm[] = $i;
+							$l[] = strip_tags($i);
+							$l[] = strip_tags($genlang[$i]);
+							$preg = '/\|('.preg_quote($i).'_comment)\|/';
+							preg_match_all($preg, $genlangi, $lr);
+							if($lr[1]) {
+								foreach($lr[1] as $li) {
+									$l[] = strip_tags($genlang[$li]);
+								}
+							}
+						}
+					}
+					if (!empty($l)) {
 						$indexdata[] = array('index' => $titlesnew, 'text' => $l);
+						$flag = true;
 					}
 				}
 			}
@@ -102,7 +131,7 @@ function searchindex_cache() {
 		}
 	}
 
-	if(!empty($indexdata)) {
+	if($flag) {
 		$cachedata = '$searchindex = '.var_export($indexdata, 1).';';
 	} else {
 		$cachedata = "lang('admincp_searchindex');\n\$searchindex = & \$_G['lang']['admincp_searchindex'];";
