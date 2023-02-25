@@ -14,22 +14,22 @@ if(!defined('IN_DISCUZ')) {
 
 class sms {
 
-	// DISCUZ_CLASS_SMS_TYPE 表示宽泛业务类型, 以便区分是否需要验证
-	// 验证类短信为 0 , 通知类短信为 1
+	// DISCUZ_CLASS_SMS_TYPE indicates a broad business type, in order to distinguish whether verification is required
+	// Verification SMS is 0, notification SMS is 1
 	const DISCUZ_CLASS_SMS_TYPE_SECCODE = 0;
 	const DISCUZ_CLASS_SMS_TYPE_MESSAGE = 1;
 
-	// DISCUZ_CLASS_SMS_SRVTYPE 表示特定业务类型, 以便快速查询对应业务
-	// 系统级手机号码验证业务为 1, 系统级短消息通知业务为 2
-	// 第三方业务可设置为 0 或不低于 10000 的整数
+	// DISCUZ_CLASS_SMS_SRVTYPE indicates a specific service type, so as to quickly query the corresponding service
+	// The system-level mobile phone number verification service is 1, and the system-level short message notification service is 2
+	// Third-party business can be set to 0 or an integer not less than 10000
 	const DISCUZ_CLASS_SMS_SRVTYPE_OTHERSRV = 0;
 	const DISCUZ_CLASS_SMS_SRVTYPE_SECCHECK = 1;
 	const DISCUZ_CLASS_SMS_SRVTYPE_NEWSLETT = 2;
 
-	// DISCUZ_CLASS_SMS_ERROR 表示短信发送中的错误信息
-	// 当前步骤正常返回 0
-	// 发送时间短于设置返回 -1, 单号码发送次数风控规则不通过返回 -2, 万号段风控规则不通过返回 -3, 全局风控规则不通过返回 -4, 无可用网关返回 -5, 网关接口文件不存在返回 -6,
-	// 网关接口类不存在返回 -7, 短信功能已被关闭返回 -8, 短信网关私有异常返回 -9
+	// DISCUZ_CLASS_SMS_ERROR indicates error message in SMS sending
+	// The current step returns 0 normally
+	// If the sending time is shorter than the setting, return -1, if the number of sending times of a single number is not passed, the risk control rule will return -2, if the risk control rule of 10,000 numbers is not passed, it will return -3, if the global risk control rule is not passed, it will return -4, if there is no available gateway, it will return -5 , if the gateway interface file does not exist, return -6,
+	// If the gateway interface class does not exist, return -7, if the SMS function has been disabled, return -8, if the SMS gateway private exception returns -9
 	const DISCUZ_CLASS_SMS_ERROR_NOWNOERR = 0;
 	const DISCUZ_CLASS_SMS_ERROR_TIMELESS = -1;
 	const DISCUZ_CLASS_SMS_ERROR_NUMLIMIT = -2;
@@ -41,19 +41,19 @@ class sms {
 	const DISCUZ_CLASS_SMS_ERROR_SMSDISAB = -8;
 	const DISCUZ_CLASS_SMS_ERROR_SMSGWERR = -9;
 
-	// DISCUZ_CLASS_SMS_VERIFY 代表短信验证结果
-	// 未通过校验为 0, 通过校验为 1
+	// DISCUZ_CLASS_SMS_VERIFY represents SMS verification result
+	// 0 for failed check, 1 for passed check
 	const DISCUZ_CLASS_SMS_VERIFY_FAIL = 0;
 	const DISCUZ_CLASS_SMS_VERIFY_PASS = 1;
 
-	// DISCUZ_CLASS_SMSGW_GWTYPE 代表网关类型
-	// 消息短信为 1 , 模板短信为 0
+	// DISCUZ_CLASS_SMSGW_GWTYPE represents the gateway type
+	// Message SMS is 1, template SMS is 0
 	const DISCUZ_CLASS_SMSGW_GWTYPE_MSG = 0;
 	const DISCUZ_CLASS_SMSGW_GWTYPE_TPL = 1;
 
-	// 校验用户获取到的验证码是否正确
+	// Verify that the verification code obtained by the user is correct
 	public static function verify($uid, $svctype, $secmobicc, $secmobile, $seccode, $updateverify = 1) {
-		// 限制时间区间, 默认 86400 秒
+		// Limit time interval, default 86400 seconds
 		$smstimelimit = getglobal('setting/smstimelimit');
 		$smstimelimit = $smstimelimit > 0 ? $smstimelimit : 86400;
 		$lastsend = C::t('common_smslog')->get_lastsms_by_uumm($uid, $svctype, $secmobicc, $secmobile);
@@ -68,56 +68,56 @@ class sms {
 	}
 
 	public static function send($uid, $smstype, $svctype, $secmobicc, $secmobile, $content, $force) {
-		// 获取用户基础信息
+		// Get basic user information
 		$time = time();
 		$ip = getglobal('clientip');
 		$port = getglobal('remoteport');
 
-		// 判断短信功能是否开启、用户是否允许发送短信
+		// Determine whether the SMS function is enabled and whether the user is allowed to send SMS
 		$check = self::check($uid, $secmobicc, $secmobile, $time, $ip, $port, $force);
 		if($check < 0) {
 			self::log($smstype, $svctype, 0, $check, $uid, $secmobicc, $secmobile, $time, $ip, $port, $content);
 			return $check;
 		}
 
-		// 获取对应的短信网关
+		// Get the corresponding SMS gateway
 		$smsgw = self::smsgw($smstype, $secmobicc);
 		if($smsgw < 0) {
 			self::log($smstype, $svctype, 0, $smsgw, $uid, $secmobicc, $secmobile, $time, $ip, $port, $content);
 			return $smsgw;
 		}
 
-		// 加载网关文件进行发送
+		// Load gateway file for sending
 		$output = self::output($smsgw, $uid, $smstype, $svctype, $secmobicc, $secmobile, $content);
 		self::log($smstype, $svctype, 0, $output, $uid, $secmobicc, $secmobile, $time, $ip, $port, $content);
 		return $output;
 	}
 
 	protected static function check($uid, $secmobicc, $secmobile, $time, $ip, $port, $force) {
-		// $ip 和 $port 是为后续可能新增的基于 IP 地址的风控所做的预留
-		// 具体是否实现需要看上线之后的具体情况
+		// $ip and $port are reserved for subsequent risk control based on IP addresses that may be added later
+		// Whether it is realized or not depends on the specific situation after the launch
 		if(!getglobal('setting/smsstatus')) {
 			return self::DISCUZ_CLASS_SMS_ERROR_SMSDISAB;
 		}
 
 		if(!$force) {
-			// 限制时间区间, 默认 86400 秒
+			// Limit time interval, default 86400 seconds
 			$smstimelimit = getglobal('setting/smstimelimit');
 			$smstimelimit = $smstimelimit > 0 ? $smstimelimit : 86400;
-			// 单用户/单号码短信限制时间区间内总量, 默认 5 条
+			// The total amount of single-user/single-number SMS within the limited time interval, the default is 5
 			$smsnumlimit = getglobal('setting/smsnumlimit');
 			$smsnumlimit = $smsnumlimit > 0 ? $smsnumlimit : 5;
-			// 单用户/单号码短信时间间隔, 默认 300 秒
+			// Single user/single number SMS interval, default 300 seconds
 			$smsinterval = getglobal('setting/smsinterval');
 			$smsinterval = $smsinterval > 0 ? $smsinterval : 300;
-			// 万号段短信限制时间区间内总量, 默认 20 条
+			// The total number of text messages in the ten thousand number range is limited within the time interval, and the default is 20
 			$smsmillimit = getglobal('setting/smsmillimit');
 			$smsmillimit = $smsmillimit > 0 ? $smsmillimit : 20;
-			// 全局短信限制时间区间内总量, 默认 1000 条
+			// Global SMS limits the total amount in the time interval, the default is 1000
 			$smsglblimit = getglobal('setting/smsglblimit');
 			$smsglblimit = $smsglblimit > 0 ? $smsglblimit : 1000;
 
-			// 单号码/单用户风控规则
+			// Single number/single user risk control rules
 			$ut = C::t('common_smslog')->get_sms_by_ut($uid, $smstimelimit);
 			$mmt = C::t('common_smslog')->get_sms_by_mmt($secmobicc, $secmobile, $smstimelimit);
 			if($time - $ut[0]['dateline'] < $smsinterval || $time - $mmt[0]['dateline'] < $smsinterval) {
@@ -127,13 +127,13 @@ class sms {
 				return self::DISCUZ_CLASS_SMS_ERROR_NUMLIMIT;
 			}
 
-			// 万号段风控规则
+			// Ten-thousand segment risk control rules
 			$lastmilion = C::t('common_smslog')->count_sms_by_milions_mmt($secmobicc, $secmobile, $smstimelimit);
 			if($lastmilion > $smsmillimit) {
 				return self::DISCUZ_CLASS_SMS_ERROR_MILLIMIT;
 			}
 
-			// 全局风控规则
+			// Global Risk Control Rules
 			$globalsend = C::t('common_smslog')->count_sms_by_time($smstimelimit);
 			if($globalsend > $smsglblimit) {
 				return self::DISCUZ_CLASS_SMS_ERROR_GLBLIMIT;

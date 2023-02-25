@@ -19,7 +19,7 @@ $next = $current + $pertask;
 
 if(submitcheck('threadsubmit', 1)) {
 
-	// 主题/帖子标题及内容重新审核
+	// Thread/Post title and content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&threadsubmit=yes";
 	$processed = 0;
@@ -72,7 +72,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('blogsubmit', 1)) {
 
-	// 日志标题及内容重新审核
+	// Blog title and content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&blogsubmit=yes";
 	$processed = 0;
@@ -116,7 +116,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('picsubmit', 1)) {
 
-	// 图片标题重新审核
+	// Image caption re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&picsubmit=yes";
 	$processed = 0;
@@ -147,7 +147,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('doingsubmit', 1)) {
 
-	// 记录内容重新审核
+	// Doing content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&doingsubmit=yes";
 	$processed = 0;
@@ -178,7 +178,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('sharesubmit', 1)) {
 
-	// 分享内容重新审核
+	// Share content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&sharesubmit=yes";
 	$processed = 0;
@@ -209,7 +209,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('commentsubmit', 1)) {
 
-	// 家园评论内容重新审核
+	// Homepage Guestbook Content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&commentsubmit=yes";
 	$processed = 0;
@@ -240,7 +240,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('articlesubmit', 1)) {
 
-	// 文章标题及内容重新审核
+	// Article title and content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&articlesubmit=yes";
 	$processed = 0;
@@ -288,7 +288,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('articlecommentsubmit', 1)) {
 
-	// 文章评论内容重新审核
+	// Article comment content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&articlecommentsubmit=yes";
 	$processed = 0;
@@ -319,7 +319,7 @@ if(submitcheck('threadsubmit', 1)) {
 
 } elseif(submitcheck('topiccommentsubmit', 1)) {
 
-	// 专题评论内容重新审核
+	// Topic comment content re-moderation
 
 	$nextlink = "action=remoderate&current=$next&pertask=$pertask&topiccommentsubmit=yes";
 	$processed = 0;
@@ -360,47 +360,47 @@ if(submitcheck('threadsubmit', 1)) {
 	showsubtitle(array('', 'remoderate_amount'));
 	showhiddenfields(array('pertask' => ''));
 
-	// 主题/帖子标题及内容重新审核
+	// Topic/post title and content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_thread']}:",
 		'<input name="pertask1" type="text" class="txt" value="100" /><input type="submit" class="btn" name="threadsubmit" onclick="this.form.pertask.value=this.form.pertask1.value" value="'.$lang['submit'].'" />'
 	));
-	// 日志标题及内容重新审核
+	// Blog title and content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_blog']}:",
 		'<input name="pertask2" type="text" class="txt" value="100" /><input type="submit" class="btn" name="blogsubmit" onclick="this.form.pertask.value=this.form.pertask2.value" value="'.$lang['submit'].'" />'
 	));
-	// 图片标题重新审核
+	// Image caption re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_pic']}:",
 		'<input name="pertask3" type="text" class="txt" value="100" /><input type="submit" class="btn" name="picsubmit" onclick="this.form.pertask.value=this.form.pertask3.value" value="'.$lang['submit'].'" />'
 	));
-	// 记录内容重新审核
+	// Doing content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_doing']}:",
 		'<input name="pertask4" type="text" class="txt" value="100" /><input type="submit" class="btn" name="doingsubmit" onclick="this.form.pertask.value=this.form.pertask4.value" value="'.$lang['submit'].'" />'
 	));
-	// 分享内容重新审核
+	// Share content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_share']}:",
 		'<input name="pertask5" type="text" class="txt" value="100" /><input type="submit" class="btn" name="sharesubmit" onclick="this.form.pertask.value=this.form.pertask5.value" value="'.$lang['submit'].'" />'
 	));
-	// 家园评论内容重新审核
+	// Homepage guestbook content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_comment']}:",
 		'<input name="pertask6" type="text" class="txt" value="100" /><input type="submit" class="btn" name="commentsubmit" onclick="this.form.pertask.value=this.form.pertask6.value" value="'.$lang['submit'].'" />'
 	));
-	// 文章标题及内容重新审核
+	// Article title and content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_article']}:",
 		'<input name="pertask7" type="text" class="txt" value="100" /><input type="submit" class="btn" name="articlesubmit" onclick="this.form.pertask.value=this.form.pertask7.value" value="'.$lang['submit'].'" />'
 	));
-	// 文章评论内容重新审核
+	// Article comment content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_articlecomment']}:",
 		'<input name="pertask8" type="text" class="txt" value="100" /><input type="submit" class="btn" name="articlecommentsubmit" onclick="this.form.pertask.value=this.form.pertask8.value" value="'.$lang['submit'].'" />'
 	));
-	// 专题评论内容重新审核
+	// Topic comment content re-moderation
 	showtablerow('', array('class="td31 bold"'), array(
 		"{$lang['remoderate_topiccomment']}:",
 		'<input name="pertask9" type="text" class="txt" value="100" /><input type="submit" class="btn" name="topiccommentsubmit" onclick="this.form.pertask.value=this.form.pertask9.value" value="'.$lang['submit'].'" />'
