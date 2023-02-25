@@ -313,7 +313,7 @@ EOF;
 		'birthcity' => '',
 		'birthdist' => '',
 		'birthcommunity' => '',
-		residecountry' => '',
+		'residecountry' => '',
 		'resideprovince' => '',
 		'residecity' => '',
 		'residedist' => '',
@@ -372,7 +372,7 @@ EOF;
 	exit();
 
 } elseif($operation == 'exphistory') {
-	// 用户历史资料下载
+	// User historical data download
 	if(!isset($_GET['uid'])) {
 		cpmsg('members_no_find_user', '', 'error');
 	}
@@ -2038,23 +2038,23 @@ EOF;
 			}
 
 			if(in_array('others', $_GET['clear'])) {
-				// 家园访客记录清理
+				// Homepage Visitor Log Records Cleanup
 				C::t('home_clickuser')->delete_by_uid($member['uid']);
 				C::t('home_visitor')->delete_by_uid_or_vuid($member['uid']);
-				// 家园关注关系清理
+				// Homepage followings Cleanup
 				C::t('home_follow')->delete_by_uid($member['uid']);
 				C::t('home_follow')->delete_by_followuid($member['uid']);
-				// 好友关系以及好友请求清理
+				// Friendship and friend request cleanup
 				C::t('home_friend')->delete_by_uid_fuid($member['uid']);
 				C::t('home_friend_request')->delete_by_uid_or_fuid($member['uid']);
-				// 动态清理
+				// News Feed cleanup
 				C::t('home_feed')->delete_by_uid($member['uid']);
-				// 通知清理
+				// Notification Cleanup
 				C::t('home_notification')->delete_by_uid($member['uid']);
-				// 打招呼清理
+				// Greeting cleanup
 				C::t('home_poke')->delete_by_uid_or_fromuid($member['uid']);
 				C::t('home_pokearchive')->delete_by_uid_or_fromuid($member['uid']);
-				// 论坛推广清理
+				// Forum Promotion Cleanup
 				C::t('forum_promotion')->delete_by_uid($member['uid']);
 			}
 
@@ -2318,9 +2318,9 @@ EOF;
 			}
 		}
 
-		// 用户历史资料下载 开始
+		// User historical data download start
 		showsetting('members_edit_exphistory', '', '', "<a href=\"".ADMINSCRIPT."?action=members&operation=exphistory&uid={$member['uid']}\" class=\"act\">{$lang['members_edit_exphistory']}</a>");
-		// 用户历史资料下载 结束
+		// User historical data download end
 
 		showsubmit('editsubmit');
 		showtablefooter();
@@ -2335,7 +2335,7 @@ EOF;
 		$questionid = $_GET['clearquestion'] ? 0 : '';
 		$secmobicc = $_GET['secmobiccnew'];
 		$secmobile = $_GET['secmobilenew'];
-		//空字符串代表没传递这个参数，传递0时，代表清空这个数据
+		//An empty string means that the parameter is not passed, and when 0 is passed, it means that the data is cleared
 		if($secmobicc === '') {
 			$secmobicc == 0;
 		}elseif(!preg_match('#^(\d){1,3}$#', $secmobicc)) {
@@ -3623,9 +3623,9 @@ function notifymembers($operation, $variable) {
 					runlog('sendmail', "{$member['email']} sendmail failed.");
 				}
 			} elseif($_GET['notifymembers'] == 'sms') {
-				// 用户 UID : $member['uid'], 短信类型: 通知类短信, 服务类型: 系统级短消息通知业务
-				// 国际电话区号: $member['secmobicc'], 手机号: $member['secmobile'], 内容: "[$subject]$message$addmsg", 强制发送: true
-				// 短信发送前先校验安全手机号是否正确, 避免错误安全手机号送往短信网关
+				// User UID: $member['uid'], SMS type: notification SMS, Service type: system-level SMS notification service
+				// International phone area code: $member['secmobicc'], Mobile phone number: $member['secmobile'], Content: "[$subject]$message$addmsg", Mandatory sending: true
+				// Check whether the security phone number is correct before sending the SMS to avoid sending the wrong security phone number to the SMS gateway
 				if(!empty($member['secmobicc']) && !empty($member['secmobile']) && preg_match('#^(\d){1,3}$#', $member['secmobicc']) && preg_match('#^(\d){1,12}$#', $member['secmobile'])) {
 					sms::send($member['uid'], 1, 2, $member['secmobicc'], $member['secmobile'], "[$subject]$message$addmsg", 1);
 				}
