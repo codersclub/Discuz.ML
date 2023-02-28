@@ -272,7 +272,7 @@ if(submitcheck('profilesubmit')) {
 		$setarr['zodiac'] = get_zodiac($_POST['birthyear']);
 	}
 	if($setarr) {
-		// 用户信息变更记录
+		// User information change log
 		if($_G['setting']['profilehistory']) {
 			C::t('common_member_profile_history')->insert(array_merge(C::t('common_member_profile')->fetch($_G['uid']), array('dateline' => time())));
 		}
@@ -380,12 +380,12 @@ if(submitcheck('profilesubmit')) {
 		showmessage('profile_secmobile_not_change', '', array(), array('return' => true));
 	}
 
-	// 如果输入了安全手机号但国际电话区号留空, 则默认为站点默认国际电话区号
+	// If a secure phone number is entered but the international area code is left blank, it will default to the site default international area code
 	if($secmobiccnew === '' && $secmobilenew !== '' && preg_match('#^(\d){1,12}$#', $secmobilenew)) {
 		$secmobiccnew = $_G['setting']['smsdefaultcc'];
 	}
 
-	//空字符串代表没传递这个参数，传递0时，代表清空这个数据
+	// An empty string means that this parameter is not passed, and when 0 is passed, it means that the data is cleared
 	if($secmobiccnew === '') {
 		$secmobiccnew == 0;
 	}elseif(!preg_match('#^(\d){1,3}$#', $secmobiccnew)) {
@@ -434,17 +434,17 @@ if(submitcheck('profilesubmit')) {
 			dsetcookie('newemail', "{$space['uid']}\t$emailnew\t{$_G['timestamp']}", 31536000);
 		}
 	}
-	// 如果开启了短信验证, 输入了安全手机号却没有输入验证码, 就尝试发送验证码
+	// If SMS verification is turned on, and the security phone number is entered but the verification code is not entered, try to send the verification code
 	if($_G['setting']['smsstatus'] && (strcmp($secmobiccnew, $_G['member']['secmobicc']) != 0 || strcmp($secmobilenew, $_G['member']['secmobile']) != 0) && empty($secmobseccode)) {
 		$length = $_G['setting']['smsdefaultlength'] ? $_G['setting']['smsdefaultlength'] : 4;
-		// 用户 UID : $_G['uid'], 短信类型: 验证类短信, 服务类型: 系统级手机号码验证业务
-		// 国际电话区号: $secmobiccnew, 手机号: $secmobilenew, 内容: $secmobseccode, 强制发送: false
+		// User UID: $_G['uid'], SMS type: verification SMS, service type: system-level mobile phone number verification service
+		// International Area Code: $secmobiccnew, Mobile Number: $secmobilenew, Content: $secmobiccnew, Force Send: false
 		sms::send($_G['uid'], 0, 1, $secmobiccnew, $secmobilenew, random($length, 1), 0);
 	}
-	// 如果保存时未输入验证码就把用户切换至未验证状态, 下次提交验证通过后才能切回正常状态
+	// If the user does not enter the verification code when saving, the user will switch to the unverified state, and the next time the verification is submitted, the user will be able to switch back to the normal state
 	$setarr['secmobicc'] = $secmobiccnew == 0 ? '' : $secmobiccnew;
 	$setarr['secmobile'] = $secmobilenew == 0 ? '' : $secmobilenew;
-	// 修改了手机号才涉及到手机号认证状态变更
+	// Modification of the mobile phone number only involves the change of the mobile phone number authentication status
 	if(strcmp($secmobiccnew, $_G['member']['secmobicc']) != 0 || strcmp($secmobilenew, $_G['member']['secmobile']) != 0) {
 		$setarr['secmobilestatus'] = sms::verify($_G['uid'], 1, $secmobiccnew, $secmobilenew, $secmobseccode);
 	}
@@ -478,7 +478,7 @@ if(submitcheck('profilesubmit')) {
 		manage_addnotify('verifyuser');
 	}
 
-	// 给邮箱发送重置或修改密码的邮件
+	// Send an email to reset or change your password
 	if(!empty($_GET['newpassword'])) {
 		if(!function_exists('sendmail')) {
 			include libfile('function/mail');
@@ -499,7 +499,7 @@ if(submitcheck('profilesubmit')) {
 		}
 	}
 
-	// 给邮箱发送修改安全手机号的邮件
+	// Send an email to the email address to modify the secure mobile number
 	if((strcmp($secmobiccnew, $_G['member']['secmobicc']) != 0 || strcmp($secmobilenew, $_G['member']['secmobile']) != 0) && (!$_G['setting']['smsstatus'] || $setarr['secmobilestatus'])) {
 		if(!function_exists('sendmail')) {
 			include libfile('function/mail');

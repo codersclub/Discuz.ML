@@ -643,7 +643,7 @@ class table_forum_post extends discuz_table
 	}
 
 
-	// 不使用事务，如果position冲突，则插入失败，重试五次
+	// Do not use transactions, if the position conflicts, the insertion will fail and retry five times
 	private function _insert_use_db($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
 		$tablename = self::get_tablename($tableid);
 		foreach (range(1, 5) as $try_count) {
@@ -652,19 +652,19 @@ class table_forum_post extends discuz_table
 				$ret = DB::insert($tablename, $data, $return_insert_id, $replace, $silent);
 				return $ret;
 			} catch (Exception $e) {
-				if ($try_count >= 2) usleep(mt_rand(2, 6) * 10000); // 如果第二次还不行，停几十毫秒再试
-				if ($try_count >= 3 && $try_count <= 4) usleep(mt_rand(4, 6) * 10000); // 第三次以后再加延时
+				if ($try_count >= 2) usleep(mt_rand(2, 6) * 10000); // If it doesn't work the second time, stop for tens of milliseconds and try again
+				if ($try_count >= 3 && $try_count <= 4) usleep(mt_rand(4, 6) * 10000); // Add delay after the third time
 				if ($try_count === 5) throw $e; // 如果第五次不行，抛异常
 			}
 		}
 	}
 
-	// 从数据库中读取最大position + 1
+	// Read the maximum position + 1 from the database
 	private function _next_pos_from_db($tablename, $tid) {
 		return DB::result_first("SELECT IFNULL(MAX(position), 0) + 1 FROM " . DB::table($tablename) . " WHERE tid = " . $tid);
 	}
 
-	// 用缓存获取下一个position
+	// Use the cache to get the next position
 	private function _next_pos_from_memory($key) {
 		return memory('incex', $key, 1, 0, "");
 	}
@@ -683,25 +683,25 @@ class table_forum_post extends discuz_table
 	 * In non-InnoDB (MyISAM), insert directly
 	 */
 	public function insert_post($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
-		if (strtolower(getglobal("config/db/common/engine")) !== 'innodb') { // 如果不是innodb，则是原来myisam，position是按tid自增的
+		if (strtolower(getglobal("config/db/common/engine")) !== 'innodb') { // If it is not innodb, it is the original myisam, and the position is auto-incremented by tid
 			return DB::insert(self::get_tablename($tableid), $data, $return_insert_id, $replace, $silent);
 		}
 		$tablename = self::get_tablename($tableid);
 
-		// 是否使用内存处理position, redis和memcache都可以
+		// Whether to use memory to handle position, redis and memcache are both available
 		$mc = strtolower(memory('check'));
-		if ($mc !== 'memcache' && $mc !== 'redis' && $mc !== 'memcached') { // 如果不是memcache或redis，则使用数据库插入
+		if ($mc !== 'memcache' && $mc !== 'redis' && $mc !== 'memcached') { // Use database insert if not memcache or redis
 			return $this->_insert_use_db($tableid, $data, $return_insert_id, $replace, $silent);
 		}
 
-		$memory_position_key = "forum_post_position_" . $data['tid']; // 为每一个tid维护一个key
+		$memory_position_key = "forum_post_position_" . $data['tid']; // Maintain a key for each tid
 		$next_pos = $this->_next_pos_from_memory($memory_position_key);
 
-		if (!$next_pos) { // 如果这个key不存在，则从数据库中加载，并设置到缓存中
+		if (!$next_pos) { // If the key does not exist, load it from the database and set it to the cache
 			$next_pos = $this->_next_pos_from_db($tablename, $data['tid']);
-			if (!memory('add', $memory_position_key, $next_pos, 259200 /* 3天 */)) { // 用add添加到缓存中
-				$next_pos = $this->_next_pos_from_memory($memory_position_key); // 如果add不成功(key已存在，在上面SQL的过程中，被其它进程设置)，则直接incr
-				// 如果还是拿不到next_pos，删除key，fallback到数据库
+			if (!memory('add', $memory_position_key, $next_pos, 259200 /* 3 days */)) { // Add to the cache with add
+				$next_pos = $this->_next_pos_from_memory($memory_position_key); // If the add is unsuccessful (key already exists, set by other processes in the above SQL process), incr directly
+				// If you still can't get next_pos, delete the key and fallback to the database
 				if (!$next_pos) {
 					memory('rm', $memory_position_key);
 					return $this->_insert_use_db($tableid, $data, $return_insert_id, $replace, $silent);
@@ -709,15 +709,15 @@ class table_forum_post extends discuz_table
 			}
 		}
 		foreach (range(1, 3) as $try_count) {
-			// 更新数据的position字段
+			// Update the position field of the data
 			$data['position'] = $next_pos;
 			try {
 				$ret = DB::insert($tablename, $data, $return_insert_id, $replace, $silent);
 				return $ret;
 			} catch (Exception $e) {
-				// 插入失败，可能是position冲突，再生成一个position试一下
+				// The insertion failed, it may be a position conflict, try generating another position
 				$next_pos = $this->_next_pos_from_memory($memory_position_key);
-				if (!$next_pos || $try_count === 3) { // 如果还是拿不到next_pos，或者已经重试过三次, 删除key，fallback到数据库
+				if (!$next_pos || $try_count === 3) { // If you still can't get next_pos, or have retried three times, delete the key and fallback to the database
 					memory('rm', $memory_position_key);
 					return $this->_insert_use_db($tableid, $data, $return_insert_id, $replace, $silent);
 				}
