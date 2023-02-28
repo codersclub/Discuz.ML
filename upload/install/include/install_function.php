@@ -693,7 +693,7 @@ function show_footer($quit = true) {
 
 	echo <<<EOT
 <!--vot-->	<div class="footer">$copy
-<!--vot-->			,&nbs<b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
+<!--vot-->			, <b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
 <!--vot-->	</div>
 	</div>
 </div>
@@ -2335,7 +2335,7 @@ function show_language($lang_list=array(), $lng='sc') {
 	echo <<<EOT
 </div>
 
-<div class="main" style="margin-top:-123px;">
+<!--vot--><div class="main">
 
 	<h2>Choose your language:</h2>
 <br/>
@@ -2344,12 +2344,12 @@ function show_language($lang_list=array(), $lng='sc') {
 <br/>
 <br/>
 If a desired language is disabled or you want more language packs,
-<br/>please visit the <a href="http://codersclub.org/discuzx/">CodersClub Forum</a>
+please visit the <a href="https://codersclub.org/discuzx/">CodersClub Forum</a>.
 <br/>
 All the language packs must be placed inside the "source/language" folder at your site.
 <br/>
 <br/>
-	For more info and for get help please visit the <a href="http://codersclub.org/discuzx/">CodersClub Support Forum</a>
+For more info and for get help please visit the <a href="https://codersclub.org/discuzx/">CodersClub Support Forum</a>
 <br/>
 <br/>
 <br/>
@@ -2388,4 +2388,25 @@ function v_compare($version1='', $version2='') {
     $version1 = preg_replace('/[^\d\.].*$/', '', $version1);
     $version2 = preg_replace('/[^\d\.].*$/', '', $version2);
     return version_compare($version1, $version2);
+}
+
+/**
+ * Show debug info
+ * @param $data
+ * @param string $name
+ */
+function dump($data, $name = '') {
+    $buf = var_export($data, true);
+
+    $buf = str_replace('\\r', '', $buf);
+    $buf = preg_replace('/\=\>\s*\n\s*array/s', '=> array', $buf);
+
+    echo '<pre>';
+
+    if ($name) {
+        echo $name, '=';
+    }
+
+    echo $buf;
+    echo "</pre>\n";
 }
