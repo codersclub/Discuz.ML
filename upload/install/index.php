@@ -341,8 +341,9 @@ if($method == 'show_license') {
 		}
 
 		if($username && $email && $password) {
-/*vot*/			$pattern = "/^$|^c:\\con\\con$|".hex2bin('E38080')."|[,\"\s\t\<\>&]|^Guest/is"; // Long space
-/*vot*/			if($username) > 255 || preg_match($pattern, $username)) {
+/*vot*/			$longspace = hex2bin('E38080'); // Long space
+/*vot*/			$pattern = "/^$|^c:\\con\\con$|".$longspace."|[,\"\s\t\<\>&]|^Guest/is";
+/*vot*/			if(mb_strlen($username) > 64 || preg_match($pattern, $username)) {
 				show_msg('admin_username_invalid', $username, 0);
 			} elseif(!strstr($email, '@') || $email != stripslashes($email) || $email != dhtmlspecialchars($email)) {
 				show_msg('admin_email_invalid', $email, 0);
