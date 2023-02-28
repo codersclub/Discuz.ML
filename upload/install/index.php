@@ -21,9 +21,10 @@ require ROOT_PATH.'./install/include/install_var.php';
 require ROOT_PATH.'./install/include/install_mysqli.php';
 require ROOT_PATH.'./install/include/install_function.php';
 //vot: Load the install language
+/*vot*/ global $lang;
 /*vot*/ $language = getgpc('language');
 /*vot*/ $lng = $language ? $language : 'sc';
-/*vot*/ require ROOT_PATH.'./source/language/' . $lng . '/lang_install.php';
+/*vot*/ require ROOT_PATH.'source/language/' . $lng . '/lang_install.php';
 
 $view_off = getgpc('view_off');
 

@@ -554,7 +554,7 @@ function show_license() {
 <!--vot-->	<input type='hidden' name='language' value='$language' />
 		<input type="hidden" name="step" value="$next">
 		<input type="hidden" name="uchidden" value="$uchidden">
-		<input type="button" class="btn oldbtn" name="exit" value="{$lang_agreement_no}"  onclick="window.close(); return false;">
+<!--vot-->	<input type="button" class="btn oldbtn" name="exit" value="{$lang_agreement_no}"  onclick="window.location.href='./'"; return false;">
 		<input type="submit" class="btn" name="submit" value="{$lang_agreement_yes}" onclick="return checker();">
 		</form>
 	</div>
@@ -626,8 +626,7 @@ function dir_writeable($dir) {
 }
 
 function dir_clear($dir) {
-	global $lang;
-	showjsmessage($lang['clear_dir'] . ' ' . str_replace(ROOT_PATH, '', $dir) . "\n");
+	showjsmessage(lang('clear_dir') . ' ' . str_replace(ROOT_PATH, '', $dir) . "\n");
 	if($directory = @dir($dir)) {
 		while($entry = $directory->read()) {
 			$filename = $dir.'/'.$entry;
@@ -693,7 +692,7 @@ function show_footer($quit = true) {
 
 	echo <<<EOT
 <!--vot-->	<div class="footer">$copy
-<!--vot-->			, <b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
+<!--vot-->		, <b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
 <!--vot-->	</div>
 	</div>
 </div>
@@ -912,6 +911,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 function show_db_install() {
 	if(VIEW_OFF) return;
 	global $dbhost, $dbuser, $dbpw, $dbname, $tablepre, $username, $password, $email, $uid;
+/*vot*/	global $language;
 	$dzucfull = DZUCFULL;
 	$dzucstl = DZUCSTL ? 1 : 0;
 	$allinfo = base64_encode(serialize(compact('dbhost', 'dbuser', 'dbpw', 'dbname', 'tablepre', 'username', 'password', 'email', 'dzucfull', 'dzucstl', 'uid')));
@@ -1000,7 +1000,7 @@ function show_db_install() {
 
 			function request_do_db_init() {
 				// Initiate a database initialization request
-				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_init', 'allinfo' => $allinfo)) ?>', function(data) {
+/*vot*/				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_init', 'allinfo' => $allinfo, 'language' => $language)) ?>', function(data) {
 					if(data.indexOf('Discuz! Database Error') !== -1 || data.indexOf('Discuz! System Error') !== -1 || data.indexOf('Fatal error') !== -1) {
 						var p = document.createElement('p');
 						p.innerText = '<?= lang('failed') ?> ' + data;
@@ -1017,7 +1017,7 @@ function show_db_install() {
 
 			function request_log() {
 				var timest = new Date().getTime().toString().substring(5);
-				ajax.get('index.php?method=check_db_init_progress&timestamp=' + timest + '&offset=' + log_offset, function (data, status) {
+/*vot*/				ajax.get('index.php?method=check_db_init_progress&timestamp=' + timest + '&offset=' + log_offset + '&language=<?= $language ?>', function (data, status) {
 					// Added a setting for status >= 400, avoiding not reporting an error after being blacklisted by the server's own security software or CDN
 					if(status >= 400) {
 						append_notice('<p class="red">HTTP '+status+' <?= lang('failed') ?></p>');
@@ -1076,7 +1076,7 @@ function show_db_install() {
 					// If the database initialization is successful, the system will be initialized
 					append_notice("<p><?= lang('initsys') ?> ... </p>");
 					refresh_lastmsg();
-					ajax.get('../misc.php?mod=initsys', function(callback, status) {
+/*vot*/					ajax.get('../misc.php?mod=initsys&language=<?= $language ?>', function(callback, status) {
 						if(status >= 400 || callback.indexOf('Access Denied') !== -1 || callback.indexOf('Discuz! Database Error') !== -1 || callback.indexOf('Discuz! System Error') !== -1 || callback.indexOf('Fatal error') !== -1) {
 							var p = document.createElement('p');
 							p.className = 'red';
@@ -1121,7 +1121,7 @@ function show_db_install() {
 }
 
 function runquery($sql) {
-	global $lang, $tablepre, $db;
+	global $tablepre, $db;
 
 	if(!isset($sql) || empty($sql)) return;
 
@@ -1175,7 +1175,7 @@ function runquery($sql) {
 }
 
 function runucquery($sql, $tablepre) {
-	global $lang, $db;
+	global $db;
 
 	if(!isset($sql) || empty($sql)) return;
 
@@ -1703,6 +1703,7 @@ function uc_write_config($config, $file, $password) {
 
 function install_uc_server() {
 	global $db, $dbhost, $dbuser, $dbpw, $dbname, $tablepre, $username, $password, $email, $dzucstl;
+/*vot*/	global $lang_list, $language;
 
 	$ucsql = file_get_contents(ROOT_PATH.'./uc_server/install/uc.sql');
 	$uctablepre = $tablepre.'ucenter_';
@@ -1728,11 +1729,14 @@ function install_uc_server() {
 	$appid = $db->insert_id();
 	$db->query("ALTER TABLE {$uctablepre}notelist ADD COLUMN app$appid tinyint NOT NULL");
 
-/*vot*/	$uclang = 'sc';
-/*vot*/	$uclangdir = 'ltr';
+/*vot*/	$uclang = $language;
+/*vot*/	$uclangdir = $lang_list[$language]['dir'];
 /*vot*/	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip,$dzucstl,$uclang,$uclangdir);
 
 	save_uc_config($config, ROOT_PATH.'./config/config_ucenter.php');
+dump($uclang, 'uclang');
+dump($uclangdir, '$uclangdir');
+exit;
 
 	$salt = '';
 	$passwordhash = password_hash($password, PASSWORD_BCRYPT);
