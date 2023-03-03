@@ -10,6 +10,10 @@ function $(id) {
 	return !id ? null : document.getElementById(id);
 }
 
+function getID(id) {
+	return !id ? null : document.getElementById(id);
+}
+
 function $C(classname, ele, tag) {
 	var returns = [];
 	ele = ele || document;
@@ -1366,7 +1370,6 @@ function simulateSelect(selectId, widthvalue) {
 /*vot*/		if(e.keyCode == 40 || e.keyCode == 38) doane(e); // Up/Down
 	};
 	var selectwidth = (selectObj.getAttribute('width', i) ? selectObj.getAttribute('width', i) : widthvalue) + 'px';
-	var tabindex = selectObj.getAttribute('tabindex', i) ? selectObj.getAttribute('tabindex', i) : 1;
 
 	for(var i = 0; i < selectObj.options.length; i++) {
 		var li = document.createElement('li');
@@ -1399,7 +1402,7 @@ function simulateSelect(selectId, widthvalue) {
 	selectObj.options.length = 0;
 	selectObj.options[0]= new Option('', defaultv);
 	selectObj.style.display = 'none';
-	selectObj.outerHTML += '<a href="javascript:;" id="' + selectId + '_ctrl" style="width:' + selectwidth + '" tabindex="' + tabindex + '">' + defaultopt + '</a>';
+	selectObj.outerHTML += '<a href="javascript:;" id="' + selectId + '_ctrl" style="width:' + selectwidth + '">' + defaultopt + '</a>';
 
 	menuObj.id = selectId + '_ctrl_menu';
 	menuObj.className = 'sltm';
