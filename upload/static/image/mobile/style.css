@@ -57,6 +57,9 @@ a.button {color:var(--dz-FC-fff)}
 .pt {width:100%;border:none;padding:0;min-height:168px;line-height:24px;font-size:16px;background:none}
 .pr, .pc {vertical-align:middle;margin:0 5px 3px;padding:0}
 .btn_pn_grey {background-color:var(--dz-BG-0);color:var(--dz-FC-color)}
+.btn_pn_red {background-color:var(--dz-BG-2);color:var(--dz-FC-fff)}
+.btn_pn_orange {background-color:var(--dz-BG-3);color:var(--dz-FC-fff)}
+.btn_pn_green {background-color:var(--dz-BG-4);color:var(--dz-FC-fff)}
 input[type="reset"]::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
 input[type="submit"]::-moz-focus-inner,
@@ -941,7 +944,7 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 .plc .pi .img_list li a {display:block}
 .plc .pi .img_list li img {margin:7px 0;max-width:100%;border-radius:4px}
 .plc .psth {margin: 2em 0 2em -15px;padding: 5px 45px 5px 15px;width: 70%;background: var(--dz-BOR-ed);color: var(--dz-FC-666);font-size: 14px;border-radius: 0 14px 14px 0;}
-.mtime .manage, .mtime .dialogbox {width:90%;padding:10px;background-color:var(--dz-BG-0);overflow:hidden;border-radius:8px}
+.mtime .manage, .mtime .dialogbox {width:90%;padding:10px;background-color:var(--dz-BG-0);overflow:hidden;border-radius:8px;max-height:305px;overflow-y:auto;}
 .mtime .manage .button, .mtime .dialogbox .button {float:left;width:46%;margin:2%}
 .replybtn {display:none;position:absolute;right:0;top:12px}
 .replybtn .button {height:34px;line-height:34px;font-size:12px;padding:0 12px;border-radius:4px}
