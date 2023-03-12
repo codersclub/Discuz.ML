@@ -461,9 +461,9 @@ function output(&$s, $show) {
 function showfooter($halt = false) {
 	static $isshow;
 	if(!$isshow) {
-/*vot*/		echo <<<EOT
+		echo <<<EOT
 	</div>
-	<div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.net
+	<div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.vip
 <!--vot--> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multilingual Version by Valery Votintsev, codersclub.org</div>
 	</div>
 </body>

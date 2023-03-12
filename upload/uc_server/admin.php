@@ -47,7 +47,7 @@ $a = empty($a) ? 'index' : $a;
 
 define('RELEASE_ROOT', '');
 
-header('Content-Type: text/html; charset='.UC_CHARSET);
+header('Content-Type: text/html; charset='.CHARSET);
 
 if(in_array($m, array('admin', 'app', 'badword', 'cache', 'db', 'domain', 'frame', 'log', 'note', 'feed', 'mail', 'setting', 'user', 'credit', 'seccode', 'tool', 'plugin', 'pm'))) {
 	include UC_ROOT."control/admin/$m.php";
@@ -117,7 +117,7 @@ function dhtmlspecialchars($string, $flags = null) {
 			if(PHP_VERSION < '5.4.0') {
 				$string = htmlspecialchars($string, $flags);
 			} else {
-				if(strtolower(UC_CHARSET) == 'utf-8') {
+				if(strtolower(CHARSET) == 'utf-8') {
 					$charset = 'UTF-8';
 				} else {
 					$charset = 'ISO-8859-1';
@@ -128,4 +128,31 @@ function dhtmlspecialchars($string, $flags = null) {
 	}
 	return $string;
 }
+
+function is_https() {
+	// PHP standard server variables
+	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
+		return true;
+	}
+	// X-Forwarded-Proto de facto standard header, used for reverse generation transparent transmission of HTTPS status
+	if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
+		return true;
+	}
+	// Alibaba Cloud Accelerates Private HTTPS Status Header
+	// Git Feedback https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
+		return true;
+	}
+	// Western Digital Website Builder Private HTTPS Status Header
+	// Official website feedback https://discuz.dismall.com/thread-3849819-1-1.html
+	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
+		return true;
+	}
+	// The server port number is the last place to check
+	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
+		return true;
+	}
+	return false;
+}
+
 ?>

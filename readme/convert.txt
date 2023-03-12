@@ -78,13 +78,13 @@ If you encounter any problems during the conversion process
 you can get a help from the following channels:
 
 1. Official Discuz!ML site
-   http://www.discuz.net
+   http://codersclub.org/discuz.ml/
 
 2. Official Discuz!ML Forum
    http://codersclub.org/discuzx/
 
-3. Official Discuz!X Forum (Chinese)
-   http://www.discuz.net
+3. Official Discuz!X Site (Chinese)
+   http://www.discuz.vip
 
 +--------------------------------------+
  FAQ

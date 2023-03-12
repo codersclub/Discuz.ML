@@ -499,7 +499,7 @@ table { border-collapse:collapse; margin-bottom:20px; }
 <div class="bodydiv">
 	<h1>
 <!--vot-->	$title
-<!--vot-->	<span> &nbsp; $intro <a href="http://www.discuz.net" target="_blank">http://www.discuz.net</a></span>
+<!--vot-->	<span> &nbsp; $intro <a href="http://www.discuz.vip" target="_blank">http://www.discuz.vip</a></span>
 	</h1>
 	<div class="main">
 EOT;
@@ -637,9 +637,31 @@ function syntablestruct($sql, $version, $dbcharset) {
 	}
 }
 
-/*
-function is_https() MOVED to source/function/function.inc.php
-*/
+function is_https() {
+	// PHP standard server variables
+	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
+		return true;
+	}
+	// X-Forwarded-Proto de facto standard header, used for reverse generation transparent transmission of HTTPS status
+	if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
+		return true;
+	}
+	// Alibaba Cloud Accelerates Private HTTPS Status Header
+	// Git Feedback https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
+		return true;
+	}
+	// Western Digital Website Builder Private HTTPS Status Header
+	// Official website feedback https://discuz.dismall.com/thread-3849819-1-1.html
+	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
+		return true;
+	}
+	// The server port number is the last place to check
+	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
+		return true;
+	}
+	return false;
+}
 
 class dbstuff {
 	var $querynum = 0;

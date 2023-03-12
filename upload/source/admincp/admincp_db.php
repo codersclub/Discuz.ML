@@ -229,7 +229,7 @@ if($operation == 'export') {
 					"# Type: {$_GET['type']}\n".
 					"# Table Prefix: $tablepre\n".
 					"#\n".
-					"# Discuz! Home: http://www.discuz.net\n".
+					"# Discuz! Home: https://www.discuz.vip\n".
 					"# Please visit our website for newest infomation about Discuz!\n".
 					"# --------------------------------------------------------\n\n\n".
 					"$setnames".

@@ -7,9 +7,6 @@
 This document is designed to help you to upgrade your
 current version of Comsenz Discuz!X to the latest Discuz! ML version.
 
-The latest original Discuz!X version can be found at:
-http://download.comsenz.com/DiscuzX/
-
 The latest Discuz!ML version can be found at:
 http://discuz.ml/
 
@@ -116,13 +113,13 @@ $_config['cache']['type'] 		= 'file';	// Cache type: file = file cache, sql = da
  you can use the next channels to resolved problems:
 
 1. Discuz!ML (Multi-lingual) version discussion forum
-   http://codersclub.org/discuzx/
+   https://codersclub.org/discuzx/
 
-2. Official Chinese help and support forum
-   http://www.discuz.net
+2. Official Chinese site
+   https://www.discuz.vip
 
 3. View detailed update guidance documents
-   http://faq.comsenz.com/category-202
+   https://www.dismall.com
 
 4. Commercial users can purchase a technical support service
    by phone calls, MSN, QQ, Forum message and any other ways.

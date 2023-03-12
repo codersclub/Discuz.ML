@@ -168,9 +168,9 @@ echo <<<EOT
 	<span onclick="menuScroll(1)"><img src="static/image/admincp/scrollu.gif" /></span><span onclick="menuScroll(2)"><img src="static/image/admincp/scrolld.gif" /></span>
 </div>
 <div class="copyright">
-<!--vot-->	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
+	<p>Powered by <a href="https://www.discuz.vip/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
 <!--vot-->	<p>Release {$_G['setting']['release']}</p>
-<!--vot-->	<p>&copy; 2001-{$year}, Tencent Cloud.</p>
+<!--vot-->	<p>&copy; 2001-{$year} <a href="https://code.dismall.com" target="_blank">Discuz Team</a>.</p>
 <!--vot-->	<p><strong>MultiLingual version</strong><br>by <a href="http://codersclub.org/discuzx/" target="_blank">Valery Votintsev</a></p>
 </div>
 
@@ -248,8 +248,7 @@ echo <<<EOT
 	}
 	function resizeHeadermenu() {
 		var lis = $('topmenu').getElementsByTagName('li');
-/*vot*/		var maxsize = document.body.clientWidth - 180;
-/*vot*/		var widths = 0, moi = -1, mof = '';
+/*vot*/		var maxsize = document.body.clientWidth - 180, widths = 0, moi = -1, mof = '';
 		if($('menu_mof')) {
 			$('topmenu').removeChild($('menu_mof'));
 		}
