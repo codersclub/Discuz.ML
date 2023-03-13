@@ -169,8 +169,8 @@ echo <<<EOT
 </div>
 <div class="copyright">
 	<p>Powered by <a href="https://www.discuz.vip/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
+<!--vot-->	<p>&copy; 2001-{$year} <a href="https://code.dismall.com" target="_blank">Discuz! Team</a>.</p>
 <!--vot-->	<p>Release {$_G['setting']['release']}</p>
-<!--vot-->	<p>&copy; 2001-{$year} <a href="https://code.dismall.com" target="_blank">Discuz Team</a>.</p>
 <!--vot-->	<p><strong>MultiLingual version</strong><br>by <a href="http://codersclub.org/discuzx/" target="_blank">Valery Votintsev</a></p>
 </div>
 
@@ -180,7 +180,7 @@ echo <<<EOT
 </div>
 
 <script type="text/JavaScript">
-/*vot*/	var cookiepre = '{$_G['config']['cookie']['cookiepre']}', cookiedomain = '{$_G['config']['cookie']['cookiedomain']}', cookiepath = '{$_G['config']['cookie']['cookiepath']}';
+	var cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}';
 	var headers = new Array($headers), admincpfilename = '$basescript', menukey = '';
 	function switchheader(key) {
 		if(!key || !$('header_' + key)) {
