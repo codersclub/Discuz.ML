@@ -78,7 +78,6 @@ $env_items = array
 	'curl' => array('r' => 'notset', 'b' => 'enable'),
 	'opcache' => array('r' => 'notset', 'b' => 'enable'),
 	'diskspace' => array('r' => 30 * 1048576, 'b' => 'notset'),
-/*vot*/	'mbstring' => array('r' => 'support', 'b' => 'support'),
 );
 
 $dirfile_items = array

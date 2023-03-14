@@ -408,15 +408,15 @@ if($method == 'show_license') {
 		$sql = file_get_contents($sqlfile);
 		$sql = str_replace("\r\n", "\n", $sql);
 
-/*vot*/		runquery($sql, ORIG_TABLEPRE, $tablepre);
-/*vot*/		runquery($extrasql, ORIG_TABLEPRE, $tablepre);
+		runquery($sql);
+		runquery($extrasql);
 
 		$sql = file_get_contents(ROOT_PATH.'./install/data/install_data.sql');
 		if (file_exists(ROOT_PATH.'./install/data/install_data_appendage.sql')) {
 			$sql .= "\n".file_get_contents(ROOT_PATH.'./install/data/install_data_appendage.sql');
 		}
 		$sql = str_replace("\r\n", "\n", $sql);
-/*vot*/		runquery($sql, ORIG_TABLEPRE, $tablepre);
+		runquery($sql);
 
 		$onlineip = $_SERVER['REMOTE_ADDR'];
 		$timestamp = time();

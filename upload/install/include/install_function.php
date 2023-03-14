@@ -142,8 +142,6 @@ function env_check(&$env_items) {
 			$tmp = function_exists('gd_info') ? gd_info() : array();
 			$env_items[$key]['current'] = empty($tmp['GD Version']) ? 'noext' : $tmp['GD Version'];
 			unset($tmp);
-/*vot*/		} elseif($key == 'mbstring') {
-/*vot*/			$env_items[$key]['current'] = extension_loaded('mbstring') ? 'support' : 'noext';
 		} elseif($key == 'diskspace') {
 			if(function_exists('disk_free_space')) {
 				$env_items[$key]['current'] = disk_free_space(ROOT_PATH);
@@ -397,10 +395,8 @@ function show_form(&$form_items, $error_msg) {
 /*vot*/	show_setting('hidden', 'language', $language);
 	show_setting('hidden', 'install_ucenter', getgpc('install_ucenter'));
 	if($step == 2) {
-/*vot*/		$install_dzfull = '<br><label><input type="radio"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /> ' . lang('install_dzfull') . '</label>';
-/*vot*/		$install_dzonly = '<br><label><input type="radio"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /> ' . lang('install_dzonly') . '</label>';
-/*vot*/		show_tips($install_dzfull);
-/*vot*/		show_tips($install_dzonly);
+		show_tips('install_dzfull');
+		show_tips('install_dzonly');
 	}
 	$is_first = 1;
 	if(!empty($uchidden)) {
@@ -669,7 +665,6 @@ EOT;
 function show_footer($quit = true) {
 
 /*vot*/	$y = date('Y'); echo <<<EOT
-	</div>
 	<div class="footer">&copy;2001-{$y}, Tencent Cloud.
 		,&nbsp;&nbsp;&nbsp;
 		<b>MultiLingual</b> version by <a href="https://codersclub.org/discuzx/">CodersClub.org</a>
@@ -826,7 +821,7 @@ function showmessage(message) {
 	document.getElementById('notice').scrollTop = 100000000;
 }
 function initinput() {
-/*vot*/	window.location='index.php?method=ext_info&language=<? echo $language; ?>';
+/*vot*/	window.location='index.php?method=ext_info&language=<?= $language; ?>';
 }
 </script>
 		<div id="notice"></div>
@@ -838,13 +833,13 @@ function initinput() {
 <?php
 }
 
-/*vot*/ function runquery($sql, $orig_tablepre, $tablepre) {
-/*vot*/	global $lang, $db;
+function runquery($sql) {
+	global $lang, $tablepre, $db;
 
 	if(!isset($sql) || empty($sql)) return;
 
-/*vot*/	$sql = str_replace("\r", "\n", str_replace(' '.$orig_tablepre, ' '.$tablepre, $sql));
-/*vot*/	$sql = str_replace("\r", "\n", str_replace(' `'.$orig_tablepre, ' `'.$tablepre, $sql));
+	$sql = str_replace("\r", "\n", str_replace(' '.ORIG_TABLEPRE, ' '.$tablepre, $sql));
+	$sql = str_replace("\r", "\n", str_replace(' `'.ORIG_TABLEPRE, ' `'.$tablepre, $sql));
 	$ret = array();
 	$num = 0;
 	foreach(explode(";\n", trim($sql)) as $query) {
@@ -874,9 +869,40 @@ function initinput() {
 
 }
 
-/*vot REMOVED: (Use runquery instead!)
 function runucquery($sql, $tablepre) {
-*/
+	global $lang, $db;
+
+	if(!isset($sql) || empty($sql)) return;
+
+	$sql = str_replace("\r", "\n", str_replace(' uc_', ' '.$tablepre, $sql));
+	$ret = array();
+	$num = 0;
+	foreach(explode(";\n", trim($sql)) as $query) {
+		$ret[$num] = '';
+		$queries = explode("\n", trim($query));
+		foreach($queries as $query) {
+			$ret[$num] .= (isset($query[0]) && $query[0] == '#') || (isset($query[1]) && isset($query[1]) && $query[0].$query[1] == '--') ? '' : $query;
+		}
+		$num++;
+	}
+	unset($sql);
+
+	foreach($ret as $query) {
+		$query = trim($query);
+		if($query) {
+
+			if(substr($query, 0, 12) == 'CREATE TABLE') {
+				$name = preg_replace("/CREATE TABLE ([a-z0-9_]+) .*/is", "\\1", $query);
+				showjsmessage(lang('create_table').' '.$name.' ... '.lang('succeed'));
+				$db->query(createtable($query, $db->version()));
+			} else {
+				$db->query($query);
+			}
+
+		}
+	}
+
+}
 
 
 function charcovert($string) {
@@ -1368,7 +1394,7 @@ function install_uc_server() {
 	$ucsql = file_get_contents(ROOT_PATH.'./uc_server/install/uc.sql');
 	$uctablepre = $tablepre.'ucenter_';
 	$ucsql = str_replace(' uc_', ' '.$uctablepre, $ucsql);
-/*vot*/	$ucsql && runquery($ucsql, 'uc_', $uctablepre);
+	$ucsql && runucquery($ucsql, $uctablepre);
 	$appauthkey = _generate_key();
 	$ucdbhost = $dbhost;
 	$ucdbname = $dbname;
@@ -1456,7 +1482,7 @@ function install_testdata($username, $uid) {
 		if(file_exists($sqlfileid)) {
 			$sql = file_get_contents($sqlfileid);
 			$sql = str_replace("\r\n", "\n", $sql);
-/*vot*/		runquery($sql, ORIG_TABLEPRE, $tablepre);
+			runquery($sql);
 		}
 	}
 }
@@ -1630,34 +1656,6 @@ function checkhastitle($title) {
 		if (!empty($v['text'])) return true;
 	}
 	return false;
-}
-
-function getmaxupload() {
-	$sizeconv = array('B' => 1, 'KB' => 1024, 'MB' => 1048576, 'GB' => 1073741824);
-	$sizes = array();
-	$sizes[] = ini_get('upload_max_filesize');
-	$sizes[] = ini_get('post_max_size');
-	$sizes[] = ini_get('memory_limit');
-	if(intval($sizes[1]) === 0) {
-		unset($sizes[1]);
-	}
-	if(intval($sizes[2]) === -1) {
-		unset($sizes[2]);
-	}
-	$sizes = preg_replace_callback(
-		'/^(\-?\d+)([KMG]?)$/i',
-		function($arg) use ($sizeconv) {
-			return (intval($arg[1]) * $sizeconv[strtoupper($arg[2]).'B']).'|'.strtoupper($arg[0]);
-		},
-		$sizes
-	);
-	natsort($sizes);
-	$output = explode('|', current($sizes));
-	if(!empty($output[1])) {
-		return $output[1];
-	} else {
-		return ini_get('upload_max_filesize');
-	}
 }
 
 function gettitlehtml($title, $type) {
@@ -1930,14 +1928,36 @@ function is_https() {
 	return false;
 }
 
+function getmaxupload() {
+	$sizeconv = array('B' => 1, 'KB' => 1024, 'MB' => 1048576, 'GB' => 1073741824);
+	$sizes = array();
+	$sizes[] = ini_get('upload_max_filesize');
+	$sizes[] = ini_get('post_max_size');
+	$sizes[] = ini_get('memory_limit');
+	if(intval($sizes[1]) === 0) {
+		unset($sizes[1]);
+	}
+	if(intval($sizes[2]) === -1) {
+		unset($sizes[2]);
+	}
+	$sizes = preg_replace_callback(
+		'/^(\-?\d+)([KMG]?)$/i',
+		function($arg) use ($sizeconv) {
+			return (intval($arg[1]) * $sizeconv[strtoupper($arg[2]).'B']).'|'.strtoupper($arg[0]);
+		},
+		$sizes
+	);
+	natsort($sizes);
+	$output = explode('|', current($sizes));
+	if(!empty($output[1])) {
+		return $output[1];
+	} else {
+		return ini_get('upload_max_filesize');
+	}
+}
+
 //-------------------------------------------------
 // Added by Valery Votintsev, codersclub.org
-
-/*
-//vot: function is_https() moved to source/function/function.inc.php
-function is_https() {
-}
-*/
 
 function lang_exists($lang_id='') {
 
@@ -1954,8 +1974,7 @@ function lang_exists($lang_id='') {
 
 
 function show_language($lang_list=array(), $lng='sc') {
-	global $self, $uchidden, $step;
-/*vot*/	global $language;
+	global $self, $uchidden, $step, $language;
 
 	$next = 0;
 
