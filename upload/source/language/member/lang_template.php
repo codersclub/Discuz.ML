@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33692 2013-08-02 10:26:20Z nemohou $
  *
- *	Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -56,6 +56,6 @@ $lang = array (
   'register_username_tips' => '用户名由 3 到 15 个字符组成',
   'register_validate_email_tips' => '注册需要验证邮箱，请务必填写正确的邮箱，提交后请及时查收邮件。<br />您可能需要等待几分钟才能收到邮件，如果收件箱没有，请检查一下垃圾邮件箱。',
   'rulemessage' => '网站服务条款',
-// Added by Valery Votintsev, discuz.ml
-  'agree_with'			=> '同意',//'I agree with the ',
 );
+
+?>
