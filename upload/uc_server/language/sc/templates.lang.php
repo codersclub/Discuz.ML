@@ -268,7 +268,7 @@ $languages = array(
 	'note_view' => '查看',
 	'setting_forbidden_username' => '禁止的用户名',
 	'setting_ceonsor_comment' => '可以设置通配符，每个关键字一行，可使用通配符 "*" 如 "*版主*"(不含引号)。',
-	'note_view' => '查看',
+//vot	'note_view' => '查看',
 	'note_status' => '通知状态',
 	'note_fail_apps' => '通知失败的应用',
 
@@ -285,7 +285,7 @@ $languages = array(
 	'anonymity' => '匿名',
 	'mail_send' => '发送邮件',
 	'mail_list_updated' => '邮件列表成功更新。',
-	'mail_send' => '邮件发送',
+//vot	'mail_send' => '邮件发送',
 
 	'setting' => '设置',
 	'setting_tips' => '',
