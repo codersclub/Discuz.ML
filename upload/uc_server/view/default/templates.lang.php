@@ -1,13 +1,4 @@
 <?php
-//------------------------------------------------------
-// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
-// by Valery Votintsev, codersclub.org
-//------------------------------------------------------
-// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
-//------------------------------------------------------
-// Simlified Chinese Language Pack
-// by Valery Votintsev, codersclub.org
-//------------------------------------------------------
 
 $languages = array(
 	'title'=>'标题',
@@ -516,7 +507,4 @@ $languages = array(
 	'envstatus_not_found' => '您当前系统环境内未安装或开启 $envstatus[req] 模块，程序无法按预期正常运行。我们强烈建议您安装或开启此模块，以满足程序正常运行的最低要求。',
 	'envstatus_ok' => '您当前系统环境适合当前版本的 UCenter $envstatus[version] 。',
 
-//Added by Valery Votintsev, codersclub.org
-	'view_ml_new_version'		=> '查看最新的多语言版本',//'View Latest ML Version',
-	'home_dev_international'	=> '多语种版本',//'Multilingual Version',
 );

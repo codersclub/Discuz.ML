@@ -5,14 +5,13 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_lang.php 36287 2016-12-12 03:59:05Z nemohou $
- *      Modified by Valery Votintsev at sources.ru
  */
 
 if(!defined('IN_COMSENZ')) {
 	exit('Access Denied');
 }
 
-/*vot*/ define('UC_VERNAME', 'MultiLingual Version');
+define('UC_VERNAME', '中文版');
 $lang = array(
 	'SC_GBK' => '简体中文版',
 	'TC_BIG5' => '繁体中文版',
@@ -372,11 +371,6 @@ $lang = array(
 	'skip_current' => '跳过本步',
 	'topic' => '专题',
 	'install_finish' => '您的论坛已完成安装，点此访问',
-//---------------------------------------------------------------
-// Added by Valery Votintsev
-// 2 vars for language select:
-	'welcome'			=> 'Welcome to Discuz! X Installation!',
-	'select_language'		=> '<b>Select the installation language</b>:',
 
 );
 

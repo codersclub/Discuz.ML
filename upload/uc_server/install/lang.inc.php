@@ -1,14 +1,6 @@
 <?php
-//------------------------------------------------------
-// INTERNATIONAL UCenter v.1.6.0 (Multilingual)
-// by Valery Votintsev, codersclub.org
-//------------------------------------------------------
-// Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
-//------------------------------------------------------
-// Simlified Chinese Language Pack by Valery Votintsev, codersclub.org
-//------------------------------------------------------
 
-define('UC_VERNAME', '国际版');//'International Version'
+define('UC_VERNAME', '中文版');
 
 $lang = array(
 
@@ -17,7 +9,7 @@ $lang = array(
 	'SC_UTF8' => '简体中文 UTF8 版',
 	'TC_UTF8' => '繁体中文 UTF8 版',
 	'EN_ISO' => 'ENGLISH ISO8859',
-	'EN_UTF8' => 'ENGLISH UTF-8',
+	'EN_UTF8' => 'ENGLIST UTF-8',
 
 	'title_install' => SOFT_NAME.' 安装向导',
 	'agreement_yes' => '我同意',
@@ -155,7 +147,7 @@ $lang = array(
 	'install_succeed' => '安装用户中心成功，点击进入下一步',
 	'license' => '<div class="license"><h1>中文版授权协议 适用于中文用户</h1>
 
-<p>版权所有 (c) 2001-'.date('Y').'，腾讯云计算（北京）有限责任公司(原北京康盛新创科技有限责任公司)保留所有权利。</p>
+<p>版权所有 (c) 2001-2023，腾讯云计算（北京）有限责任公司(原北京康盛新创科技有限责任公司)保留所有权利。</p>
 
 <p>感谢您选择 UCenter 产品。希望我们的努力能为您提供一个高效快速和强大的站点解决方案。</p>
 
