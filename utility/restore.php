@@ -23,6 +23,7 @@ define('CHARSET', $_config['output']['charset']);
 define('DBCHARSET', $_config['db']['1']['dbcharset']);
 /*vot*/ define('DISCUZ_LANG', $_config['output']['language']);
 /*vot*/	require_once(ROOT_PATH . 'source/function/function.inc.php');
+header('Content-Type: text/html; charset='.CHARSET);
 
 $lock_file = ROOT_PATH.'./data/restore.lock';
 if(file_exists($lock_file)) {
