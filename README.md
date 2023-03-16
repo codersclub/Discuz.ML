@@ -166,9 +166,9 @@ Users who use the release version, check the readme.html file in the installatio
 
 ### Related Sites
  
-- Discuz! ML official site: https://codersclub.org/discuz.ml/
-- Discuz! ML official forum: https://codersclub.org/discuzx/
-- Discuz! ML repository at Github: https://github.com/codersclub/Discuz.ML
+- [Discuz! ML official site](https://codersclub.org/discuz.ml/)
+- [Discuz! ML official forum](https://codersclub.org/discuzx/)
+- [Discuz! ML repository at Github](https://github.com/codersclub/Discuz.ML)
 
 ### Chinese Related Sites
  
@@ -178,7 +178,7 @@ Users who use the release version, check the readme.html file in the installatio
 |
 [Download Discuz! X Chinese versions](https://gitee.com/Discuz/DiscuzX/attach_files)
 |
-[Discuz! X Official Forum](https://www.discuz.net/)
+[Discuz! X Official Site](https://www.discuz.vip/)
 |
 [Discuz! App Center](https://addon.dismall.com/)
 |
