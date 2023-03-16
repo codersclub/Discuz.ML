@@ -33,7 +33,7 @@ You may not rent, sublicense, assign, lease, loan, resell, distribute, publish o
 
 You may not use the Software to engage in or allow others to engage in any illegal activity. You may not use the Software to engage in any activity that will violate the rights of third parties, including, without limitation, copyrights, trademarks, publicity rights, privacy rights, other proprietary rights, or rights against defamation of third parties.
 
-You cannot remove or modify the copyright information and relevant links under any circumstances, such as http://www.comsenz.com, and http://www.discuz.net, in the foot of web pages without the prior written consent of Tencent Cloud.
+You cannot remove or modify the copyright information and relevant links under any circumstances, such as https://www.discuz.vip, in the foot of web pages without the prior written consent of Tencent Cloud.
 
 You cannot reverse engineer, decompile or disassemble, copy, modify, link, reproduce, publish or develop derivative products of the applications that you download from Tencent Cloud Application Center without the prior written permission from the application developer/owner.
 
@@ -48,7 +48,7 @@ Tencent Cloud does not guarantee the legality, safety, integrity, authenticity a
 4. Termination
 The License is effective until terminated. You may terminate the License at any time by uninstalling the Software and destroying all copies of the Software in any media. This Agreement may be terminated by Tencent Cloud immediately and without notice if you fail to comply with any term or condition of the License or this Agreement. Upon such termination, you must immediately cease using the Software, and assume relevant liabilities.
 
-Tencent Cloud reserves the right to change or add to the terms of this Agreement at any time (including but are not limited to Internet-based Solutions, pricing, technical support options, and other product-related policies), and to change, discontinue or impose conditions on any feature or aspect of the Software, or any Internet-based Solutions provided to you or made available to you in the official websites. Such changes will be effective upon notification by any means reasonable to give you actual or constructive notice including by posting such terms on the discuz.net website, or another website designated by Tencent Cloud. Your continued use of the Software will indicate your agreement to any such change.
+Tencent Cloud reserves the right to change or add to the terms of this Agreement at any time (including but are not limited to Internet-based Solutions, pricing, technical support options, and other product-related policies), and to change, discontinue or impose conditions on any feature or aspect of the Software, or any Internet-based Solutions provided to you or made available to you in the official websites. Such changes will be effective upon notification by any means reasonable to give you actual or constructive notice including by posting such terms on the discuz.vip website, or another website designated by Tencent Cloud. Your continued use of the Software will indicate your agreement to any such change.
 
 5. Controlling Law
 The Agreement is governed by and construed in accordance with the laws of P.R China. You hereby consent to the exclusive jurisdiction and venue in the Haidian District court of the City of Beijing.
