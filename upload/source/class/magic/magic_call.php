@@ -20,7 +20,7 @@ class magic_call {
 	var $weight = '20';
 	var $useevent = 0;
 	var $targetgroupperm = false;
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="https://www.discuz.vip/" target="_blank">Discuz!</a>';
 	var $magic = array();
 	var $parameters = array();
 
@@ -52,7 +52,7 @@ class magic_call {
 					'authorid' => $_G['uid'],
 					'author' => $_G['username'],
 					'note' => $note,
-					'category' => 3,					
+					'category' => 3,
 					'dateline' => $_G['timestamp']
 				);
 			}

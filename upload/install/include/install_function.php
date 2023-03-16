@@ -602,8 +602,7 @@ function transfer_ucinfo(&$post) {
 function createtable($sql, $dbver) {
 	$type = strtoupper(preg_replace("/^\s*CREATE TABLE\s+.+\s+\(.+?\).*(ENGINE|TYPE)\s*=\s*([a-z]+?).*$/isU", "\\2", $sql));
 	$type = in_array($type, array('INNODB', 'MYISAM', 'HEAP', 'MEMORY')) ? $type : 'INNODB';
-	return 
-		preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $sql) .
+	return preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $sql) .
 		" ENGINE=$type DEFAULT CHARSET=" . DBCHARSET .
 		(DBCHARSET === 'utf8mb4' ? " COLLATE=utf8mb4_unicode_ci" : "");
 }
@@ -1010,7 +1009,23 @@ function show_db_install() {
 						add_instfail();
 						return;
 					}
-					// Database initialization request complete pull up initialization
+					// Database table creation request complete pull up database data initialization
+					request_do_db_data_init();
+				});
+			}
+
+			function request_do_db_data_init() {
+				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_data_init', 'allinfo' => $allinfo)) ?>', function(data) {
+					if(data.indexOf('Discuz! Database Error') !== -1 || data.indexOf('Discuz! System Error') !== -1 || data.indexOf('Fatal error') !== -1) {
+						var p = document.createElement('p');
+						p.innerText = '<?= lang('failed') ?> ' + data;
+						p.className = 'red';
+						append_notice(p.outerHTML);
+						append_notice('<p class="red"><?= lang('error_quit_msg') ?></p>');
+						add_instfail();
+						return;
+					}
+					// The database data initialization request is completed and the system is initialized
 					request_do_initsys();
 				});
 			}
@@ -1059,7 +1074,7 @@ function show_db_install() {
 						add_instfail();
 						return;
 					}
-					if(data.indexOf('<?= lang('initdbresult_succ') ?>') === -1) {
+					if(data.indexOf('<?= lang('initdbdataresult_succ') ?>') === -1) {
 						setTimeout(request_log, 200);
 					}
 				});
@@ -1072,7 +1087,7 @@ function show_db_install() {
 					document.getElementById('laststep').value = '<?= lang('error_quit_msg') ?>';
 					return;
 				}
-				if(resultDiv.innerHTML.indexOf('<?= lang('initdbresult_succ') ?>') !== -1) {
+				if(resultDiv.innerHTML.indexOf('<?= lang('initdbdataresult_succ') ?>') !== -1) {
 					// If the database initialization is successful, the system will be initialized
 					append_notice("<p><?= lang('initsys') ?> ... </p>");
 					refresh_lastmsg();
@@ -2228,7 +2243,7 @@ function append_to_install_log_file($message, $close = false) {
 	static $fh = false;
 	if (!$fh) {
 		$fh = fopen(INST_LOG_PATH, "a+");
-	} 
+	}
 	if ($fh) {
 		fwrite($fh, $message);
 		fflush($fh);
@@ -2273,7 +2288,7 @@ function is_https() {
 		return true;
 	}
 	// Western Digital Website Builder private HTTPS status header
-	// Official website feedback https://www.discuz.net/thread-3849819-1-1.html
+	// Official website feedback https://discuz.dismall.com/thread-3849819-1-1.html
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}

@@ -1889,7 +1889,7 @@ function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 		'incex', /* 存在时才inc */
 		'sadd', 'srem', 'scard', 'smembers', 'sismember',
 		'hmset', 'hgetall', 'hexists', 'hget',
-		'eval', 
+		'eval',
 /*vot*/		'zadd', 'zcard', 'zrem', 'zscore', 'zrevrange', 'zincrby', 'zrevrangewithscore' /* Return with score */,
 		'pipeline', 'commit', 'discard'
 	);

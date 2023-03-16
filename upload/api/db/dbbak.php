@@ -359,7 +359,7 @@ if($get['method'] == 'export') {
 			"# Type: $apptype\n".
 			"# Table Prefix: $tablepre\n".
 			"# $dbcharset\n".
-			"# $apptype Home: http://www.comsenz.com\n".
+			"# $apptype Home: https://www.discuz.vip\n".
 			"# Please visit our website for newest infomation about $apptype\n".
 			"# --------------------------------------------------------\n\n\n".
 			$sqldump;
@@ -802,7 +802,7 @@ function is_https() {
 		return true;
 	}
 	// Western Digital Website Builder Private HTTPS Status Header
-	// Official website feedback https://www.discuz.net/thread-3849819-1-1.html
+	// Official website feedback https://discuz.dismall.com/thread-3849819-1-1.html
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}

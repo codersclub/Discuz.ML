@@ -463,7 +463,7 @@ function showfooter($halt = false) {
 	if(!$isshow) {
 		echo <<<EOT
 	</div>
-<!--vot--> <div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.net
+<!--vot--> <div id="footer">&copy; Comsenz Inc. 2001-2010 www.discuz.vip
 <!--vot--> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multilingual Version by Valery Votintsev, codersclub.org</div>
 	</div>
 </body>

@@ -836,7 +836,7 @@ function insertpost($data) {
 		$thread = C::t('forum_thread')->fetch_thread($data['tid']);
 		$tableid = $thread['posttableid'];
 		// Third-party plug-ins and systems generally use insertpost to insert replies directly, so it is handled here instead
-		if($thread['replies'] <= 0 && C::t('forum_sofa')->fetch($thread['tid'])) {
+		if(!$data['first'] && $thread['replies'] <= 0 && C::t('forum_sofa')->fetch($thread['tid'])) {
 			C::t('forum_sofa')->delete($thread['tid']);
 		}
 	} else {
