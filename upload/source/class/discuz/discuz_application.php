@@ -521,7 +521,7 @@ class discuz_application extends discuz_base{
 			return true;
 		}
 		// Western Digital Website Builder Private HTTPS Status Header
-		// Official website feedback https://www.discuz.net/thread-3849819-1-1.html
+		// Official website feedback https://discuz.dismall.com/thread-3849819-1-1.html
 		if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 			return true;
 		}

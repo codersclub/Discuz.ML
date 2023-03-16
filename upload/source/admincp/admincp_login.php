@@ -106,7 +106,7 @@ function html_login_footer($halt = true) {
 	$copy = lang('admincp_login', 'copyright');
 	echo <<<EOT
 </div>
-<footer><span>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> $version, Release $release </span><span>$copy</span>
+<footer><span>Powered by <a href="https://www.discuz.vip/" target="_blank">Discuz!</a> $version, Release $release </span><span>$copy</span>
 <!--vot-->	<div><strong>MultiLingual version</strong> by <a href="https://codersclub.org/discuzx/" target="_blank">codersclub.org</a></div>
 </footer>
 <script>

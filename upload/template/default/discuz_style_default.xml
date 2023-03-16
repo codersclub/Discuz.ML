@@ -6,7 +6,7 @@
 		<item id="templateid"><![CDATA[1]]></item>
 		<item id="tplname"><![CDATA[Part of the default template set]]></item>
 		<item id="directory"><![CDATA[./template/default]]></item>
-		<item id="copyright"><![CDATA[Comsenz (Beijing) Technology Co., Ltd.]]></item>
+		<item id="copyright"><![CDATA[Discuz!]]></item>
 		<item id="style">
 			<item id="smfont"><![CDATA[Tahoma,Helvetica,sans-serif]]></item>
 			<item id="threadtitlefontsize"><![CDATA[14px]]></item>

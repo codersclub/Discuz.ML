@@ -59,7 +59,7 @@ INSERT INTO pre_common_cron VALUES ('19','1','system','Count today hot posts','c
 INSERT INTO pre_common_cron VALUES ('20','1','system','Update Forum Last Post (related to Waterproof wall)','cron_security_cleanup_lastpost.php','1269746623','1269792000','-1','-1','7','0');
 INSERT INTO pre_common_cron VALUES ('21','1','system','每周短信日志归档','cron_smslog_daily.php','1269746639','1269792000','-1','-1','03','0');
 
-INSERT INTO pre_common_friendlink VALUES ('1','0','Official Discuz!X Forum','http://www.discuz.net','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
+INSERT INTO pre_common_friendlink VALUES ('1','0','Official Discuz! Forum','http://www.discuz.vip/','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
 INSERT INTO pre_common_friendlink VALUES ('2','4','Discuz!X Application Center','https://addon.dismall.com/','','','2');
 
 INSERT INTO pre_common_member_profile_setting VALUES('realname', 1, 0, 0, 'Real Name', '', 0, 0, 0, 0, 0, 0, 1, 'text', 0, '', '');
@@ -552,7 +552,7 @@ INSERT INTO pre_common_setting VALUES ('simplemode','0');
 INSERT INTO pre_common_setting VALUES ('sitemessage','a:5:{s:4:\"time\";s:1:\"3\";s:8:\"register\";s:0:\"\";s:5:\"login\";s:0:\"\";s:9:\"newthread\";s:0:\"\";s:5:\"reply\";s:0:\"\";}');
 INSERT INTO pre_common_setting VALUES ('sitename','Discuz!ML');
 INSERT INTO pre_common_setting VALUES ('siteuniqueid','KD1Q6Vbd03ALJ34u');
-INSERT INTO pre_common_setting VALUES ('siteurl','https://www.discuz.net/');
+INSERT INTO pre_common_setting VALUES ('siteurl','https://www.discuz.vip/');
 INSERT INTO pre_common_setting VALUES ('site_qq','');
 INSERT INTO pre_common_setting VALUES ('smcols','8');
 INSERT INTO pre_common_setting VALUES ('smrows','5');
@@ -805,7 +805,7 @@ INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (
 
 
 
-INSERT INTO pre_common_template VALUES ('1','Default template set','./template/default','Tencent Cloud Computing (Beijing) Co., Ltd.');
+INSERT INTO pre_common_template VALUES ('1','Default template set','./template/default','Discuz!');
 
 
 

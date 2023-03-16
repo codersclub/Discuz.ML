@@ -16,7 +16,7 @@ class task_member {
 	var $version = '1.0';
 	var $name = 'member_name';
 	var $description = 'member_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="https://www.discuz.vip/" target="_blank">Discuz!</a>';
 	var $icon = '';
 	var $period = '';
 	var $periodtype = 0;
@@ -26,7 +26,7 @@ class task_member {
 			'type' => 'mradio',
 			'value' => array(
 				array('favorite', 'member_complete_var_act_favorite'),
-				array('magic', 'member_complete_var_act_magic'),				
+				array('magic', 'member_complete_var_act_magic'),
 			),
 			'default' => 'favorite',
 			'sort' => 'complete',

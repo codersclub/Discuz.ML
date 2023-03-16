@@ -42,9 +42,9 @@
 		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2,X3.3,X3.4,X3.5]]></item>
 		<item id="language">
 			<item id="scriptlang">
-				<item id="mobile_tip_ios"><![CDATA[Recommended to use the client to access the site, <a href="http://www.discuz.net/mobile.php?platform=ios">Download the client</a>]]></item>
-				<item id="mobile_tip_android"><![CDATA[Recommended to use the client to access the site, <a href="http://www.discuz.net/mobile.php?platform=android">Download the client</a>]]></item>
-				<item id="mobile_tip_wp7"><![CDATA[Recommended to use the client to access the site, <a href="http://www.discuz.net/mobile.php?platform=windowsphone">Download the client</a>]]></item>
+				<item id="mobile_tip_ios"><![CDATA[Recommended to use the client to access the site, <a href="https://discuz.dismall.com/mobile.php?platform=ios">Download the client</a>]]></item>
+				<item id="mobile_tip_android"><![CDATA[Recommended to use the client to access the site, <a href="https://discuz.dismall.com/mobile.php?platform=android">Download the client</a>]]></item>
+				<item id="mobile_tip_wp7"><![CDATA[Recommended to use the client to access the site, <a href="https://discuz.dismall.com/mobile.php?platform=windowsphone">Download the client</a>]]></item>
 				<item id="mobile_extend_newthread"><![CDATA[Latest threads]]></item>
 				<item id="mobile_extend_newreply"><![CDATA[Latest Replies]]></item>
 				<item id="mobile_extend_digest"><![CDATA[Latest Digest]]></item>

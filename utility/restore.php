@@ -18,6 +18,8 @@ define('ROOT_PATH', dirname(__FILE__).'/../');
 define('CHARSET', $_config['output']['charset']);
 define('DBCHARSET', $_config['db']['1']['dbcharset']);
 
+header('Content-Type: text/html; charset='.CHARSET);
+
 // zh-cn/zh-tw/zh-hk patch by vot
 /*vot*/ $value = $_config['output']['language'];
 /*vot*/ if (preg_match('/^zh[-_](tw|hk)$/i', $lng)) {
@@ -506,7 +508,7 @@ table { border-collapse:collapse; margin-bottom:20px; }
 <div class="bodydiv">
 	<h1>
 <!--vot-->	$title
-<!--vot-->	<span> &nbsp; $intro <a href="http://www.discuz.net" target="_blank">http://www.discuz.net</a></span>
+<!--vot-->	<span> &nbsp; $intro <a href="https://www.discuz.vip" target="_blank">https://www.discuz.vip</a></span>
 	</h1>
 	<div class="main">
 EOT;
@@ -661,7 +663,7 @@ function is_https() {
 		return true;
 	}
 	// Western Digital Website Builder Private HTTPS Status Header
-	// Official website feedback https://www.discuz.net/thread-3849819-1-1.html
+	// Official website feedback https://discuz.dismall.com/thread-3849819-1-1.html
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
