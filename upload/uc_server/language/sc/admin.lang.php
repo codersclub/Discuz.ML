@@ -5,7 +5,7 @@
 //------------------------------------------------------
 // Based on UCenter 1.6.0, (c) Comsenz.inc, discuz.net
 //------------------------------------------------------
-// Simlified Chinese Language Pack
+// Simplified Chinese Language Pack
 // by Valery Votintsev, codersclub.org
 //------------------------------------------------------
 
