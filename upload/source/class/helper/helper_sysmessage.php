@@ -25,7 +25,7 @@ class helper_sysmessage {
 		echo <<<EOT
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=$charset" />
+<meta charset="$charset">
 <title>$title</title>
 <meta name="keywords" content="" />
 <meta name="description" content="System Message - Discuz! Board" />

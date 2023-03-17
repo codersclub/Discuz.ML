@@ -36,7 +36,7 @@ function sendmail($toemail, $subject, $message, $from = '') {
 $message = <<<EOT
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=$_G[charset]">
+<meta charset="$_G[charset]">
 <title>$subject</title>
 </head>
 <body>
