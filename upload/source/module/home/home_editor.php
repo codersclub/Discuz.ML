@@ -303,7 +303,7 @@ if (empty($_GET['op'])) {
 	<?php
 } else {
 	?>
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+	<!DOCTYPE html>
 	<HTML>
 		<HEAD>
 			<meta http-equiv="Content-Type" content="text/html;charset=<?php echo $_GET['charset']; ?>" />

@@ -204,7 +204,7 @@ class discuz_error
 		$host = $_SERVER['HTTP_HOST'];
 		$title = $type == 'db' ? 'Database' : 'System';
 		echo <<<EOT
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<title>$host - $title Error</title>
@@ -311,7 +311,7 @@ EOT;
 		$inajax_right = !empty($_G['inajax']) ? ']]></root>' : '';
 		echo <<<EOT
 <?xml version="1.0" encoding="utf-8"?>
-$inajax_left<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+$inajax_left<!DOCTYPE html>
 <html>
 <head>
 	<title>$host - $title Error</title>
