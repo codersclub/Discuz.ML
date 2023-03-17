@@ -549,7 +549,7 @@ function writeEditorContents(text) {
 		} else {
 /*vot*/			var rtl = (LANGDIR == 'rtl') ? ' dir="rtl"' : '';
 /*vot*/			text = '<!DOCTYPE html>' +
-/*vot*/				'<html'+rtl+'><head id="editorheader"><meta http-equiv="Content-Type" content="text/html; charset=' + charset + '" />' +
+/*vot*/				'<html'+rtl+'><head id="editorheader"><meta charset="' + charset + '">' +
 				(BROWSER.ie && BROWSER.ie > 7 ? '<meta http-equiv="X-UA-Compatible" content="IE=7" />' : '' ) +
 				'<link rel="stylesheet" type="text/css" href="misc.php?css=' + STYLEID + '_wysiwyg&' + VERHASH + '" />' +
 				(BROWSER.ie ? '<script>window.onerror = function() { return true; }</script>' : '') +

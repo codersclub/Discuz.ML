@@ -208,7 +208,7 @@ class discuz_error
 <html>
 <head>
 	<title>$host - $title Error</title>
-	<meta http-equiv="Content-Type" content="text/html; charset={$_G['config']['output']['charset']}" />
+	<meta charset="{$_G['config']['output']['charset']}">
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE" />
 	<style type="text/css">
 	<!--
@@ -315,7 +315,7 @@ $inajax_left<!DOCTYPE html>
 <html>
 <head>
 	<title>$host - $title Error</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8">
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE" />
 	<style type="text/css">
 	<!--

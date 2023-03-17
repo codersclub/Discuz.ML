@@ -47,7 +47,7 @@ foreach($_G['config']['languages'] AS $lng => $lngarray) {
 echo <<<EOT
 <!DOCTYPE html>
 <html dir="{$_G[langdir]}"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=$charset">
+<meta charset="$charset">
 <title>$title</title>
 <meta content="Comsenz Inc." name="Copyright" />
 <link rel="stylesheet" href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" type="text/css" media="all" />

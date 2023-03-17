@@ -638,7 +638,7 @@ function show_header() {
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=$charset" />
+<meta charset="$charset">
 <title>$title</title>
 <link rel="stylesheet" href="images/style.css" type="text/css" media="all" />
 <script type="text/javascript">

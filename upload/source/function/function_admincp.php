@@ -319,7 +319,7 @@ function cpheader() {
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=$charset">
+<meta charset="$charset">
 <meta http-equiv="x-ua-compatible" content="ie=7" />
 <link href="static/image/admincp/admincp{$rtl_suffix}.css?{$_G[style][verhash]}" rel="stylesheet" type="text/css" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->

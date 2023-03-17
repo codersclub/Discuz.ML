@@ -323,7 +323,7 @@ function showheader() {
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=$charset" />
+<meta charset="$charset">
 <title>UCenter 升级程序( $version_old &gt;&gt; $version_new)</title>
 <meta name="MSSmartTagsPreventParsing" content="TRUE">
 <meta http-equiv="MSThemeCompatible" content="Yes">

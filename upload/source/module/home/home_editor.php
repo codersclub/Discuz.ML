@@ -306,7 +306,7 @@ if (empty($_GET['op'])) {
 	<!DOCTYPE html>
 	<HTML>
 		<HEAD>
-			<meta http-equiv="Content-Type" content="text/html;charset=<?php echo $_GET['charset']; ?>" />
+			<meta charset="<?php echo $_GET['charset']; ?>">
 			<title>New Document</title>
 			<style>
 				body { margin: 0; padding: 0; word-wrap: break-word; font-size:14px; line-height:1.8em; font-family: Tahoma, Arial, Helvetica, snas-serif; }

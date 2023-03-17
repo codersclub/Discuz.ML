@@ -25,7 +25,7 @@ if(!empty($_GET['preview'])) {
 ?>
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
+<meta charset="<?php echo CHARSET;?>">
 <head>
 <script type="text/javascript">var IMGDIR = '<?php echo $_G['style']['imgdir']; ?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>';</script>
 <script type="text/javascript" src="static/js/common.js"></script>

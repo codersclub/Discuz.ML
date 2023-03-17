@@ -481,7 +481,7 @@ if($_GET['op'] == 'checknewpm') {
 	}
 	$contents = '<!DOCTYPE html';
 	$contents .= '<html>';
-	$contents .= '<head><meta http-equiv="Content-Type" content="text/html; charset='.CHARSET.'" /><title>'.lang('space', 'pm_export_header').'</title></head>';
+	$contents .= '<head><meta charset="'.CHARSET.'"><title>'.lang('space', 'pm_export_header').'</title></head>';
 	$contents .= '<body>';
 	$contents .= lang('space', 'pm_export_header');
 	$contents .= "\r\n\r\n================================================================\r\n";
