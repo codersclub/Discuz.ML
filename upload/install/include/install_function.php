@@ -625,7 +625,8 @@ function dir_writeable($dir) {
 }
 
 function dir_clear($dir) {
-	showjsmessage(lang('clear_dir') . ' ' . str_replace(ROOT_PATH, '', $dir) . "\n");
+	global $lang;
+	showjsmessage($lang['clear_dir'] . ' ' . str_replace(ROOT_PATH, '', $dir) . "\n");
 	if($directory = @dir($dir)) {
 		while($entry = $directory->read()) {
 			$filename = $dir.'/'.$entry;
@@ -1136,7 +1137,7 @@ function show_db_install() {
 }
 
 function runquery($sql) {
-	global $tablepre, $db;
+	global $lang, $tablepre, $db;
 
 	if(!isset($sql) || empty($sql)) return;
 
@@ -1190,7 +1191,7 @@ function runquery($sql) {
 }
 
 function runucquery($sql, $tablepre) {
-	global $db;
+	global $lang, $db;
 
 	if(!isset($sql) || empty($sql)) return;
 
@@ -1749,9 +1750,6 @@ function install_uc_server() {
 /*vot*/	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip,$dzucstl,$uclang,$uclangdir);
 
 	save_uc_config($config, ROOT_PATH.'./config/config_ucenter.php');
-dump($uclang, 'uclang');
-dump($uclangdir, '$uclangdir');
-exit;
 
 	$salt = '';
 	$passwordhash = password_hash($password, PASSWORD_BCRYPT);
@@ -1806,7 +1804,7 @@ function install_testdata($username, $uid) {
 
 	showjsmessage(lang('install_test_data')." :  \n");
 	$sqlfile = ROOT_PATH.'./install/data/common_district_{#id}.sql';
-/*vot*/	for($i = 1; $i < 6; $i++) {
+/*vot*/	for($i = 1; $i < 6; $i++) { // There are 6 sql district files!
 		$sqlfileid = str_replace('{#id}', $i, $sqlfile);
 		if(file_exists($sqlfileid)) {
 			$sql = file_get_contents($sqlfileid);
@@ -2397,12 +2395,13 @@ EOT;
 
 }
 
-/*vot*//* Compare 2 string versions */
-/* Usage:
-   if(v_compare($mysql_version, "4.1") > 0) {
-     echo '$mysql_version(' . $mysql_version . ') > 4.1', "\n";
-   }
-*/
+/**
+ * vot: Compare 2 string versions
+ * Usage:
+ *  if(v_compare($mysql_version, "4.1") > 0) {
+ *    echo '$mysql_version(' . $mysql_version . ') > 4.1', "\n";
+ *  }
+ */
 function v_compare($version1='', $version2='') {
     $version1 = preg_replace('/[^\d\.].*$/', '', $version1);
     $version2 = preg_replace('/[^\d\.].*$/', '', $version2);
