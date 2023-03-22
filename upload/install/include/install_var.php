@@ -273,7 +273,7 @@ $serialize_sql_setting = array (
   array (
 /*vot*/    'realname'	=> 'Real Name',//'真实姓名',
 /*vot*/    'mobile'	=> 'Mobile Phone',//'手机',
-/*vot*/    'qq'	=> 'QQ number',//'QQ号',
+/*vot*/    'qq'		=> 'QQ number',//'QQ号',
   ),
   'article_tags' =>
   array (
