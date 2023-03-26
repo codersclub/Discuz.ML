@@ -213,6 +213,42 @@ $lang = array
 	'page' => '第{page}页',
 
 	'close' => '关闭',
-);
 
-?>
+//--------------------------------------------------------------------------
+// Added by Valery Votintsev
+
+// Months Names
+	'month_name'	=> array('月','一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'),//array('Month','January','February','March','April','May','June','July','August','September','October','November','December'),
+
+//source/function/function_debug.php
+	'memory'	=> '内存',//'Memory',
+	'peak'		=> '峰值',//'Peak',
+	'grid'		=> '网格',//'Grid',
+	'closure'	=> '关闭',//'Closure',
+	'last_submit'	=> ' (最后由 ',//' (Last submit by ',
+	'at'		=> ' 于 ',//' at ',
+	'submitted'	=> ' 提交)',//')',//'Must be empty for English',
+	'file'		=> '文件',//'File',
+	'version'	=> '版本',//'Version',
+	'includes'	=> '包含',//'Includes',
+	'file_list'	=> '[文件列表]',//'[File List]',
+	'execute'	=> '执行',//'Execute',
+	'function_list'	=> '[函数列表]',//'[Function list]',
+	'server'	=> '服务器',//'Server',
+	'environment'	=> '环境',//'Environment',
+	'sql_list'	=> '[SQL列表]',//'[SQL list]',
+	'ajax_sql'	=> '[AjaxSQL列表]',//'[AjaxSQL list]',
+	'memory_cache'	=> '内存缓存',//'Memory cache',
+	'client'	=> '客户端',//'Client',
+	'details'	=> '[详情]',//'[Details]',
+	'mysql_proc'	=> 'MySQL 进程列表',//'MySQL process list',
+	'view_cache'	=> '查看缓存',//'View cache',
+	'refresh_cache'	=> '更新缓存',//'Refresh cache',
+	'run_update'	=> '执行 update.php',//'Run update.php',
+	'plugin'	=> '[插件]',//'[Plugin]',
+	'script'	=> '[脚本]',//'[Script]',
+	'template'	=> '[模板]',//'[Template]',
+	'cache'		=> '[缓存]',//'[Cache]',
+	'config'	=> '[配置]',//'[Config]',
+
+);

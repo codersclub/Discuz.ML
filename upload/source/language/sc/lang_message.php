@@ -7,7 +7,6 @@
  *      $Id: lang_message.php 34503 2014-05-12 09:53:16Z nemohou $
  *
  *      This file is automatically generate
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 $lang = array (

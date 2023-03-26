@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_core.php 28082 2012-02-22 06:58:29Z monkey $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -253,4 +252,3 @@ $lang = array
 	'config'	=> '[配置]',//'[Config]',
 
 );
-

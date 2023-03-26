@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_admincp.php 36362 2017-02-04 02:02:03Z nemohou $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -7277,8 +7276,7 @@ $lang = array
 <pre class="colorbox">
 &lt;IfModule mod_rewrite.c&gt;
 	RewriteEngine On
-{apache1}
-&lt;/IfModule&gt;
+{apache1}&lt;/IfModule&gt;
 </pre>
 
 <h1>Apache Web Server(虚拟主机用户)</h1>
@@ -7316,8 +7314,7 @@ RepeatLimit 32
 <pre class="colorbox">
 &lt;rewrite&gt;
 	&lt;rules&gt;
-{iis7}
-	&lt;/rules&gt;
+{iis7}	&lt;/rules&gt;
 &lt;/rewrite&gt;
 </pre>
 
@@ -7394,7 +7391,7 @@ if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.
 	@include $adminextendfile;
 	foreach($adminextend as $extend) {
 		$extend_lang = array();
-/*vot*/		@include DISCUZ_ROOT.'./source/language/sc/lang_admincp_'.$extend;
+		@include DISCUZ_ROOT.'./source/language/lang_admincp_'.$extend;
 		$lang = array_merge($lang, $extend_lang);
 	}
 }
