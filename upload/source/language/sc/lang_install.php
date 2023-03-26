@@ -377,7 +377,7 @@ $lang = array(
 
 //---------------------------------------------------------------
 // Added by Valery Votintsev
-// 2 vars for language select:
+	// 2 vars for language select:
 	'welcome'			=> '欢迎来到 Discuz！ X 安装！',//'Welcome to Discuz! X Installation!',
 	'select_language'		=> '<b>选择安装语言</b>：',//'<b>Select the installation language</b>:',
 //vot !!!Translate to Chinese!!!

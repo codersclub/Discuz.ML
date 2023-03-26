@@ -5,16 +5,18 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_lang.php 36287 2016-12-12 03:59:05Z nemohou $
+ *      $Id: lang_install.php by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_COMSENZ')) {
 	exit('Access Denied');
 }
 
-define('UC_VERNAME', '中文版');
+/*vot*/ define('UC_VERNAME', '多语种版本');//'MultiLingual Version',
 $lang = array(
 	'SC_UTF8' => '简体中文 UTF8 版',
 	'TC_UTF8' => '繁体中文 UTF8 版',
+/*vot*/	'EN_UTF8' => 'ENGLISH UTF-8',
 
 	'title_install' => SOFT_NAME.' 安装向导',
 	'agreement_yes' => '同意',
@@ -373,10 +375,24 @@ $lang = array(
 	'finish_btn_cloudaddon' => '安装插件模板',
 	'finish_btn_direct' => '直接访问站点',
 
+//---------------------------------------------------------------
+// Added by Valery Votintsev
+	// 2 vars for language select:
+	'welcome'			=> '欢迎来到 Discuz！ X 安装！',//'Welcome to Discuz! X Installation!',
+	'select_language'		=> '<b>选择安装语言</b>：',//'<b>Select the installation language</b>:',
+//vot !!!Translate to Chinese!!!
+//vot	'regiondata'			=> 'Add regions data',//'Add location data',
+//vot	'regiondata_check_label'	=> 'Install additional regional data (countries/regions/cities)',//'Install additional regional data (countries/regions/cities)',
+//vot	'install_region_data'		=> 'Install regional data',//'Install regional data',
+	'php_version_too_low'		=> 'PHP version is too low',
+	'php_version_too_low_comment'	=> 'For normal functioning Discuz! requires for more new version of PHP',
+	'mbstring'			=> 'MBstring 库',//'MBstring Library',
+	'ext_info'			=> '另外，你可以从云计算应用中心的许多有趣的和有用的插件和模板安装：',//'另外，你可以從雲計算應用中心的許多有趣的和有用的插件和模板安裝：',//'Additionally you can install many interesting and usefull plugins and templates from the Cloud Application Center:',
+//---------------------------------------------------------------
+
 );
 
 $msglang = array(
 	'config_nonexistence' => '您的 config.inc.php 不存在, 无法继续安装, 请用 FTP 将该文件上传后再试。',
 );
 
-?>

@@ -1133,6 +1133,8 @@ $lang = array (
   'secmobseccode_send_err_8' => '短信功能已被关闭，请稍候再试。',
   'secmobseccode_send_err_9' => '短信网关异常，请稍候再试。',
 
+// Added by Valery Votintsev
+  'timeout_or_data_error'	=> '操作超时或者数据来源错误',//'Operation timeout or data source error',
 );
 
 ?>
