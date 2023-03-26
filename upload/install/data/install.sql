@@ -564,7 +564,7 @@ CREATE TABLE pre_common_diy_data (
 
 DROP TABLE IF EXISTS pre_common_domain;
 CREATE TABLE pre_common_domain (
-  domain` varchar(64) NOT NULL DEFAULT '',
+  domain varchar(64) NOT NULL DEFAULT '',
   domainroot varchar(64) NOT NULL DEFAULT '',
   id int(11) unsigned NOT NULL DEFAULT '0',
   idtype varchar(64) NOT NULL DEFAULT '',
@@ -1217,8 +1217,8 @@ CREATE TABLE pre_common_pluginvar (
   displayorder int(11) NOT NULL DEFAULT '0',
   title varchar(255) NOT NULL DEFAULT '',
   description varchar(255) NOT NULL DEFAULT '',
-  variable varchar(255) NOT NULL DEFAULT '',
-  `type` varchar(255) NOT NULL DEFAULT 'text',
+  variable varchar(40) NOT NULL DEFAULT '',
+  `type` varchar(20) NOT NULL DEFAULT 'text',
   `value` text NOT NULL,
   extra text NOT NULL,
   PRIMARY KEY (pluginvarid),
@@ -1254,7 +1254,7 @@ CREATE TABLE pre_common_relatedlink (
 DROP TABLE IF EXISTS pre_common_report;
 CREATE TABLE pre_common_report (
   id int(11) unsigned NOT NULL AUTO_INCREMENT,
-  urlkey varchar(255) NOT NULL DEFAULT '',
+  urlkey varchar(32) NOT NULL DEFAULT '',
   url varchar(255) NOT NULL DEFAULT '',
   message text NOT NULL,
   uid int(11) unsigned NOT NULL DEFAULT '0',
@@ -1274,7 +1274,7 @@ CREATE TABLE pre_common_report (
 DROP TABLE IF EXISTS pre_common_searchindex;
 CREATE TABLE pre_common_searchindex (
   searchid int(11) unsigned NOT NULL AUTO_INCREMENT,
-  srchmod int(11) unsigned NOT NULL,
+  srchmod tinyint(11) unsigned NOT NULL,
   keywords varchar(255) NOT NULL DEFAULT '',
   searchstring text NOT NULL,
   useip varchar(45) NOT NULL DEFAULT '',
@@ -1340,7 +1340,7 @@ CREATE TABLE pre_common_smiley (
   typeid int(11) unsigned NOT NULL,
   displayorder tinyint(1) NOT NULL DEFAULT '0',
   `type` enum('smiley','stamp','stamplist') NOT NULL DEFAULT 'smiley',
-  `code` varchar(255) NOT NULL DEFAULT '',
+  `code` varchar(30) NOT NULL DEFAULT '',
   url varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (id),
   KEY `type` (`type`,displayorder)
@@ -1393,7 +1393,7 @@ DROP TABLE IF EXISTS pre_common_statuser;
 CREATE TABLE pre_common_statuser (
   uid int(11) unsigned NOT NULL DEFAULT '0',
   daytime int(11) unsigned NOT NULL DEFAULT '0',
-  `type` varchar(255) NOT NULL DEFAULT '',
+  `type` varchar(32) NOT NULL DEFAULT '',
   KEY uid (uid)
 ) ENGINE=InnoDB;
 
@@ -1467,7 +1467,7 @@ CREATE TABLE pre_common_task (
   prize varchar(255) NOT NULL DEFAULT '',
   bonus int(11) NOT NULL DEFAULT '0',
   displayorder int(11) unsigned NOT NULL DEFAULT '0',
-  version varchar(255) NOT NULL DEFAULT '',
+  version varchar(32) NOT NULL DEFAULT '',
   PRIMARY KEY (taskid)
 ) ENGINE=InnoDB;
 
@@ -1478,8 +1478,8 @@ CREATE TABLE pre_common_taskvar (
   sort enum('apply','complete') NOT NULL DEFAULT 'complete',
   `name` varchar(255) NOT NULL DEFAULT '',
   description varchar(255) NOT NULL DEFAULT '',
-  variable varchar(255) NOT NULL DEFAULT '',
-  `type` varchar(255) NOT NULL DEFAULT 'text',
+  variable varchar(40) NOT NULL DEFAULT '',
+  `type` varchar(20) NOT NULL DEFAULT 'text',
   `value` text NOT NULL,
   PRIMARY KEY (taskvarid),
   KEY taskid (taskid)
@@ -1496,7 +1496,7 @@ CREATE TABLE pre_common_template (
 
 DROP TABLE IF EXISTS pre_common_template_block;
 CREATE TABLE pre_common_template_block (
-  targettplname varchar(128) NOT NULL DEFAULT '',
+  targettplname varchar(100) NOT NULL DEFAULT '',
   tpldirectory varchar(128) NOT NULL DEFAULT '',
   bid int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (targettplname,tpldirectory,bid),
@@ -1505,7 +1505,7 @@ CREATE TABLE pre_common_template_block (
 
 DROP TABLE IF EXISTS pre_common_template_permission;
 CREATE TABLE pre_common_template_permission (
-  targettplname varchar(128) NOT NULL DEFAULT '',
+  targettplname varchar(100) NOT NULL DEFAULT '',
   uid int(11) unsigned NOT NULL DEFAULT '0',
   allowmanage tinyint(1) NOT NULL DEFAULT '0',
   allowrecommend tinyint(1) NOT NULL DEFAULT '0',
@@ -1696,8 +1696,8 @@ CREATE TABLE pre_common_word_type (
 DROP TABLE IF EXISTS pre_common_payment_order;
 CREATE TABLE pre_common_payment_order  (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `out_biz_no` varchar(255) NOT NULL,
-  `type` varchar(255)  NOT NULL,
+  `out_biz_no` varchar(64) NOT NULL,
+  `type` varchar(190)  NOT NULL,
   `type_name` varchar(255) DEFAULT NULL,
   `uid` int(11) unsigned NOT NULL DEFAULT 0,
   `amount` int(11) unsigned NOT NULL,
@@ -1726,7 +1726,7 @@ DROP TABLE IF EXISTS pre_common_payment_refund;
 CREATE TABLE pre_common_payment_refund  (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `order_id` int(11) unsigned NOT NULL,
-  `out_biz_no` varchar(255)  NOT NULL,
+  `out_biz_no` varchar(64)  NOT NULL,
   `amount` int(11) unsigned NOT NULL,
   `description` varchar(255)  NOT NULL,
   `status` tinyint(1) NOT NULL,
@@ -1744,7 +1744,7 @@ DROP TABLE IF EXISTS pre_common_payment_transfer;
 CREATE TABLE pre_common_payment_transfer  (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(11) unsigned NOT NULL,
-  `out_biz_no` varchar(255) NOT NULL,
+  `out_biz_no` varchar(64) NOT NULL,
   `amount` int(11) unsigned NOT NULL,
   `subject` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -1756,7 +1756,7 @@ CREATE TABLE pre_common_payment_transfer  (
   `trade_no` varchar(255) DEFAULT NULL,
   `trade_time` int(11) unsigned DEFAULT NULL,
   `clientip` varchar(255) NOT NULL DEFAULT '',
-  `remoteport` lint(11) unsigned NOT NULL DEFAULT 0,
+  `remoteport` int(11) unsigned NOT NULL DEFAULT 0,
   `dateline` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `out_biz_no` (`out_biz_no`),
@@ -1822,11 +1822,11 @@ CREATE TABLE pre_connect_postfeedlog (
 
 DROP TABLE IF EXISTS pre_connect_tthreadlog;
 CREATE TABLE pre_connect_tthreadlog (
-  twid varchar(32) NOT NULL,
+  twid varchar(16) NOT NULL,
   tid int(11) unsigned NOT NULL DEFAULT '0',
   conopenid varchar(32) NOT NULL,
   pagetime int(11) unsigned DEFAULT '0',
-  lasttwid varchar(32) DEFAULT NULL,
+  lasttwid varchar(16) DEFAULT NULL,
   nexttime int(11) unsigned DEFAULT '0',
   updatetime int(11) unsigned DEFAULT '0',
   dateline int(11) unsigned DEFAULT '0',
@@ -2368,7 +2368,7 @@ CREATE TABLE pre_forum_faq (
   id int(11) NOT NULL AUTO_INCREMENT,
   fpid int(11) unsigned NOT NULL DEFAULT '0',
   displayorder int(11) NOT NULL DEFAULT '0',
-  identifier varchar(255) NOT NULL,
+  identifier varchar(20) NOT NULL,
   keyword varchar(255) NOT NULL,
   title varchar(255) NOT NULL,
   message text NOT NULL,
@@ -2672,7 +2672,7 @@ CREATE TABLE pre_forum_moderator (
 DROP TABLE IF EXISTS pre_forum_modwork;
 CREATE TABLE pre_forum_modwork (
   uid int(11) unsigned NOT NULL DEFAULT '0',
-  modaction varchar(255) NOT NULL DEFAULT '',
+  modaction char(3) NOT NULL DEFAULT '',
   dateline date NOT NULL DEFAULT '2006-01-01',
   count int(11) unsigned NOT NULL DEFAULT '0',
   posts int(11) unsigned NOT NULL DEFAULT '0',
@@ -2699,8 +2699,8 @@ CREATE TABLE pre_forum_onlinelist (
 
 DROP TABLE IF EXISTS pre_forum_order;
 CREATE TABLE pre_forum_order (
-  orderid varchar(255) NOT NULL DEFAULT '',
-  `status` varchar(255) NOT NULL DEFAULT '',
+  orderid varchar(32) NOT NULL DEFAULT '',
+  `status` varchar(3) NOT NULL DEFAULT '',
   buyer varchar(255) NOT NULL DEFAULT '',
   `admin` varchar(255) NOT NULL DEFAULT '',
   uid int(11) unsigned NOT NULL DEFAULT '0',
@@ -2847,8 +2847,8 @@ CREATE TABLE pre_forum_post_tableid (
 DROP TABLE IF EXISTS pre_forum_postcache;
 CREATE TABLE pre_forum_postcache (
   pid int(11) unsigned NOT NULL,
-  `comment` text NOT NULL,
-  rate text NOT NULL,
+  `comment` mediumtext NOT NULL,
+  rate mediumtext NOT NULL,
   dateline int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (pid),
   KEY dateline (dateline)
@@ -2966,7 +2966,7 @@ CREATE TABLE pre_forum_sofa (
 DROP TABLE IF EXISTS pre_forum_spacecache;
 CREATE TABLE pre_forum_spacecache (
   uid int(11) unsigned NOT NULL DEFAULT '0',
-  variable varchar(255) NOT NULL,
+  variable varchar(20) NOT NULL,
   `value` text NOT NULL,
   expiration int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (uid,variable)
@@ -3040,7 +3040,7 @@ CREATE TABLE pre_forum_thread (
 DROP TABLE IF EXISTS pre_forum_thread_moderate;
 CREATE TABLE pre_forum_thread_moderate (
   id int(11) unsigned NOT NULL DEFAULT '0',
-  `status` int(11) NOT NULL DEFAULT '0',
+  `status` tinyint(3) NOT NULL DEFAULT '0',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (id),
   KEY `status` (`status`,dateline)
@@ -3259,8 +3259,8 @@ DROP TABLE IF EXISTS pre_forum_tradelog;
 CREATE TABLE pre_forum_tradelog (
   tid int(11) unsigned NOT NULL,
   pid int(11) unsigned NOT NULL,
-  orderid varchar(255) NOT NULL,
-  tradeno varchar(255) NOT NULL,
+  orderid varchar(32) NOT NULL,
+  tradeno varchar(32) NOT NULL,
   paytype tinyint(3) unsigned NOT NULL DEFAULT '0',
   `subject` varchar(255) NOT NULL,
   price decimal(12,2) NOT NULL DEFAULT '0.00',
@@ -3492,7 +3492,7 @@ CREATE TABLE pre_home_click (
   clickid int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   icon varchar(255) NOT NULL DEFAULT '',
-  idtype varchar(64) NOT NULL DEFAULT '',
+  idtype varchar(20) NOT NULL DEFAULT '',
   available tinyint(1) NOT NULL DEFAULT '0',
   displayorder int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (clickid),
@@ -3504,7 +3504,7 @@ CREATE TABLE pre_home_clickuser (
   uid int(11) unsigned NOT NULL DEFAULT '0',
   username varchar(255) NOT NULL DEFAULT '',
   id int(11) unsigned NOT NULL DEFAULT '0',
-  idtype varchar(64) NOT NULL DEFAULT '',
+  idtype varchar(20) NOT NULL DEFAULT '',
   clickid int(11) unsigned NOT NULL DEFAULT '0',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
   KEY id (id,idtype,dateline),
@@ -3516,7 +3516,7 @@ CREATE TABLE pre_home_comment (
   cid int(11) unsigned NOT NULL AUTO_INCREMENT,
   uid int(11) unsigned NOT NULL DEFAULT '0',
   id int(11) unsigned NOT NULL DEFAULT '0',
-  idtype varchar(64) NOT NULL DEFAULT '',
+  idtype varchar(20) NOT NULL DEFAULT '',
   authorid int(11) unsigned NOT NULL DEFAULT '0',
   author varchar(255) NOT NULL DEFAULT '',
   ip varchar(45) NOT NULL DEFAULT '',
@@ -3533,7 +3533,7 @@ CREATE TABLE pre_home_comment (
 DROP TABLE IF EXISTS pre_home_comment_moderate;
 CREATE TABLE pre_home_comment_moderate (
   id int(11) unsigned NOT NULL DEFAULT '0',
-  idtype varchar(64) NOT NULL DEFAULT '',
+  idtype varchar(20) NOT NULL DEFAULT '',
   `status` int(11) NOT NULL DEFAULT '0',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (id),
@@ -3588,7 +3588,7 @@ CREATE TABLE pre_home_favorite (
   favid int(11) unsigned NOT NULL AUTO_INCREMENT,
   uid int(11) unsigned NOT NULL DEFAULT '0',
   id int(11) unsigned NOT NULL DEFAULT '0',
-  idtype varchar(64) NOT NULL DEFAULT '',
+  idtype varchar(255) NOT NULL DEFAULT '',
   spaceuid int(11) unsigned NOT NULL DEFAULT '0',
   title varchar(255) NOT NULL DEFAULT '',
   description text NOT NULL,
@@ -3601,13 +3601,13 @@ CREATE TABLE pre_home_favorite (
 DROP TABLE IF EXISTS pre_home_feed;
 CREATE TABLE pre_home_feed (
   feedid int(11) unsigned NOT NULL AUTO_INCREMENT,
-  icon varchar(255) NOT NULL DEFAULT '',
+  icon varchar(32) NOT NULL DEFAULT '',
   uid int(11) unsigned NOT NULL DEFAULT '0',
   username varchar(255) NOT NULL DEFAULT '',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
   friend tinyint(1) NOT NULL DEFAULT '0',
-  hash_template varchar(255) NOT NULL DEFAULT '',
-  hash_data varchar(255) NOT NULL DEFAULT '',
+  hash_template varchar(32) NOT NULL DEFAULT '',
+  hash_data varchar(32) NOT NULL DEFAULT '',
   title_template text NOT NULL,
   title_data text NOT NULL,
   body_template text NOT NULL,
@@ -3700,7 +3700,7 @@ DROP TABLE IF EXISTS pre_home_friendlog;
 CREATE TABLE pre_home_friendlog (
   uid int(11) unsigned NOT NULL DEFAULT '0',
   fuid int(11) unsigned NOT NULL DEFAULT '0',
-  `action` varchar(255) NOT NULL DEFAULT '',
+  `action` varchar(10) NOT NULL DEFAULT '',
   dateline int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (uid,fuid)
 ) ENGINE=InnoDB;
@@ -3709,7 +3709,7 @@ DROP TABLE IF EXISTS pre_home_notification;
 CREATE TABLE pre_home_notification (
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   uid int(11) unsigned NOT NULL DEFAULT '0',
-  `type` varchar(255) NOT NULL DEFAULT '',
+  `type` varchar(32) NOT NULL DEFAULT '',
   `new` tinyint(1) NOT NULL DEFAULT '0',
   authorid int(11) unsigned NOT NULL DEFAULT '0',
   author varchar(255) NOT NULL DEFAULT '',
@@ -3804,7 +3804,7 @@ DROP TABLE IF EXISTS pre_home_share;
 CREATE TABLE pre_home_share (
   sid int(11) unsigned NOT NULL AUTO_INCREMENT,
   itemid int(11) unsigned NOT NULL,
-  `type` varchar(255) NOT NULL DEFAULT '',
+  `type` varchar(32) NOT NULL DEFAULT '',
   uid int(11) unsigned NOT NULL DEFAULT '0',
   username varchar(255) NOT NULL DEFAULT '',
   fromuid int(11) unsigned NOT NULL DEFAULT '0',
