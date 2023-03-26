@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33048 2013-04-12 08:50:27Z zhangjie $
  *
- *      Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -326,3 +326,4 @@ $lang = array (
 	'select_page'	=> '选择页面',//'Select page',
 );
 
+?>

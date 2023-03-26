@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_misc.php 33974 2013-09-10 09:30:47Z nemohou $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -335,3 +334,4 @@ $lang = array
 	'poll_voted_ok'		=> '投票成功',//'You have voted successfully',
 );
 
+?>

@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33861 2013-08-22 09:16:38Z nemohou $
  *
- *      Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -1578,3 +1578,4 @@ $lang = array (
   'reset'		=> '重启',//'Reset',
   'lastupdate'		=> '更新',//'最后更新',//'Updated',
 );
+?>
