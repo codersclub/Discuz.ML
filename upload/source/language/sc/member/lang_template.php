@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33692 2013-08-02 10:26:20Z nemohou $
  *
- *	Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 if(!defined('IN_DISCUZ')) {

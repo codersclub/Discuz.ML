@@ -319,6 +319,11 @@ $lang = array (
   'next_article' => '下一篇：',
   'display_order' => '显示位置',
   'filename' => '文件名',
+
+// Added by Valery Votintsev
+	'select_all'	=> '全选',//'Select All',
+	'select_mod'	=> '选择模块',//'Choose module',
+	'select_page'	=> '选择页面',//'Select page',
 );
 
 ?>

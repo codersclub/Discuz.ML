@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 36334 2017-01-03 01:32:35Z nemohou $
  *
- *	Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 $lang = array (
@@ -1343,3 +1343,4 @@ $lang = array (
   'upload_time'			=> '上传日期',//'Upload Time',
 );
 
+?>
