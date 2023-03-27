@@ -19,12 +19,10 @@ $starttime = $mtime[1] + $mtime[0];
 
 define('IN_UC', TRUE);
 /*vot*/ define('UC_ROOT', str_replace('\\','/',__DIR__).'/');
-/*vot*/ require UC_ROOT . 'lib/function.inc.php';
-
-define('UC_API', strtolower((is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
+define('UC_API', (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/')));
 define('UC_DATADIR', UC_ROOT.'data/');
 define('UC_DATAURL', UC_API.'/data');
-/*vot*/ define('MAGIC_QUOTES_GPC', magic_quotes());
+define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 
 unset($GLOBALS, $_ENV, $HTTP_GET_VARS, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, $HTTP_SERVER_VARS, $HTTP_ENV_VARS);
 
