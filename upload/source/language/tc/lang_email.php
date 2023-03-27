@@ -68,13 +68,13 @@ $lang = array
 略這封郵件。您不需要退訂或進行其他進一步的操作。</p>
 <br />
 ----------------------------------------------------------------------<br />
-<strong>帳號激活說明</strong><br />
+<strong>賬號激活說明</strong><br />
 ----------------------------------------------------------------------<br />
 <br />
 <p>如果您是 {bbname} 的新用戶，或在修改您的註冊 Email 時使用了本地址，我們需
 要對您的地址有效性進行驗證以避免垃圾郵件或地址被濫用。</p>
 
-<p>您只需點擊下面的鏈接即可激活您的帳號：<br />
+<p>您只需點擊下面的鏈接即可激活您的賬號：<br />
 
 <a href="{url}" target="_blank">{url}</a>
 <br />
@@ -135,7 +135,7 @@ $lang = array
 如果您對 {bbname} 不感興趣或無意成為會員，請忽略這封郵件。<br />
 <br />
 ----------------------------------------------------------------------<br />
-帳號信息<br />
+賬號信息<br />
 ----------------------------------------------------------------------<br />
 <br />
 網站名稱：{bbname}<br />
@@ -144,7 +144,7 @@ $lang = array
 用戶名：{newusername}<br />
 密碼：{newpassword}<br />
 <br />
-從現在起您可以使用您的帳號登錄 {bbname}，祝您使用愉快！<br />
+從現在起您可以使用您的賬號登錄 {bbname}，祝您使用愉快！<br />
 <br />
 <br />
 <br />
@@ -172,11 +172,11 @@ $lang = array
 {bbname} 管理團隊.<br />
 {siteurl}',
 
-	'email_to_friend_subject' =>	'{$_G[member][username]} 推薦給您: $thread[subject]',
+	'email_to_friend_subject' =>	'{$_G[\'member\'][\'username\']} 推薦給您: {$thread[\'subject\']}',
 	'email_to_friend_message' =>	'<br />
-這封信是由 {$_G[setting][bbname]} 的 {$_G[member][username]} 發送的。<br />
+這封信是由 {$_G[\'setting\'][\'bbname\']} 的 {$_G[\'member\'][\'username\']} 發送的。<br />
 <br />
-您收到這封郵件，是由於在 {$_G[member][username]} 通過 {$_G[setting][bbname]} 的「推薦給朋友」<br />
+您收到這封郵件，是由於在 {$_G[\'member\'][\'username\']} 通過 {$_G[\'setting\'][\'bbname\']} 的「推薦給朋友」<br />
 功能推薦了如下的內容給您。如果您對此不感興趣，請忽略這封郵件。您不需要退訂或進行其他進一步的操作。<br />
 <br />
 ----------------------------------------------------------------------<br />
@@ -192,15 +192,15 @@ $message<br />
 請注意這封信僅僅是由用戶使用 「推薦給朋友」發送的，不是網站官方郵件，<br />
 網站管理團隊不會對這類郵件負責。<br />
 <br />
-歡迎您訪問 {$_G[setting][bbname]}<br />
-$_G[siteurl]',
+歡迎您訪問 {$_G[\'setting\'][\'bbname\']}<br />
+{$_G[\'siteurl\']}',
 
-	'email_to_invite_subject' =>	'您的朋友 {$_G[member][username]} 發送 {$_G[setting][bbname]} 網站註冊邀請碼給您',
+	'email_to_invite_subject' =>	'您的朋友 {$_G[\'member\'][\'username\']} 發送 {$_G[\'setting\'][\'bbname\']} 網站註冊邀請碼給您',
 	'email_to_invite_message' =>	'<br />
 $sendtoname,<br />
-這封信是由 {$_G[setting][bbname]} 的 {$_G[member][username]} 發送的。<br />
+這封信是由 {$_G[\'setting\'][\'bbname\']} 的 {$_G[\'member\'][\'username\']} 發送的。<br />
 <br />
-您收到這封郵件，是由於 {$_G[member][username]} 通過 {bbname} 的「發送邀請碼給朋友」<br />
+您收到這封郵件，是由於 {$_G[\'member\'][\'username\']} 通過 {bbname} 的「發送邀請碼給朋友」<br />
 功能推薦了如下的內容給您。如果您對此不感興趣，請忽略這封郵件。您不需要退訂或進行其他進<br />
 一步的操作。<br />
 <br />
@@ -217,8 +217,8 @@ $message<br />
 請注意這封信僅僅是由用戶使用 「發送邀請碼給朋友」發送的，不是網站官方郵件，<br />
 網站管理團隊不會對這類郵件負責。<br />
 <br />
-歡迎您訪問 {$_G[setting][bbname]}<br />
-$_G[siteurl]',
+歡迎您訪問 {$_G[\'setting\'][\'bbname\']}<br />
+{$_G[\'siteurl\']}',
 
 
 	'moderate_member_subject' =>	'用戶審核結果通知',
@@ -255,7 +255,7 @@ $_G[siteurl]',
 	  根據管理員留言，<a href="home.php?mod=spacecp&ac=profile" target="_blank">完善您的註冊信息</a>，然後再次提交。</p>
 
 <p>刪除：您的註冊由於與我們的要求偏差較大，或本站的新註冊人數已
-	  超過預期，申請已被否決。您的帳號已從數據庫中刪除，將無法
+	  超過預期，申請已被否決。您的賬號已從數據庫中刪除，將無法
 	  再使用其登錄或提交再次審核，請您諒解。</p>
 
 <br />

@@ -160,11 +160,11 @@ $lang = array
 	'title_memcp_avatar' => '修改頭像',
 	'title_memcp_profile' => '個人資料',
 	'title_memcp_credit' => '積分',
+	'title_memcp_payment' => '訂單',
 	'title_memcp_friend' => '好友',
 	'title_memcp_usergroup' => '用戶組',
 	'title_memcp_album' => '編輯相冊',
 	'title_memcp_poke' => '打招呼',
-	'title_memcp_videophoto' => '視頻認證',
 	'title_memcp_comment' => '評論',
 	'title_memcp_eccredit' => '信用評價',
 	'title_memcp_promotion' => '訪問推廣',
@@ -202,11 +202,6 @@ $lang = array
 
 	'title_memcp_pm' => '發送短消息',
 	'title_memcp_domain' => '我的空間域名',
-	'title_userapp' => '應用',
-	'title_userapp_index_all' => '大家在玩什麼',
-	'title_userapp_index_we' => '好友在玩什麼',
-	'title_userapp_index_me' => '我在玩的',
-	'title_userapp_manage' => '{userapp}管理',
 
 	'title_collection' => '淘帖',
 	'title_collection_create' => '創建淘專輯',
@@ -228,3 +223,4 @@ $lang = array
 
 );
 
+?>

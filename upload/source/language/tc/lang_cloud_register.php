@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'bindqq' => '您需要綁定QQ帳號後才能開啟此應用',
+	'bindqq' => '您需要綁定QQ賬號後才能開啟此應用',
 	'bindqq_link' => '<a href="javascript:;" class="lightlink" onclick="BindQQ()"><b>開始綁定QQ</b></a>',
 	'back' => '點擊這裡返回上一頁',
 );

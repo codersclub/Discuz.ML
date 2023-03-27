@@ -56,10 +56,7 @@ $lang = array
 	'show_out' => '{actor} 訪問了您的主頁後，您在競價排名榜中的最後一個積分也被消費掉了',
 	'puse_article' => '恭喜您，您的<a href="{url}" target="_blank">{subject}</a>已被添加到文章列表， <a href="{newurl}" target="_blank">點擊查看</a>',
 
-	'myinvite_request' => '有新的應用消息<a href="home.php?mod=space&do=notice&view=userapp">點此進入應用消息頁面進行相關操作</a>',
-
-
-	'group_member_join' => '{actor} 加入您的 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 群組需要審核，請到群組<a href="{url}" target="_blank">管理後台</a> 進行審核',
+	'group_member_join' => '{actor} 加入您的 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 群組需要審核，請到群組<a href="{url}" target="_blank">管理中心</a> 進行審核',
 	'group_member_invite' => '{actor} 邀請您加入 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 群組，<a href="{url}" target="_blank">點此馬上加入</a>',
 	'group_member_check' => '您已通過了 <a href="{url}" target="_blank">{groupname}</a> 群組的審核，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
 	'group_member_check_failed' => '您沒有通過 <a href="{url}" target="_blank">{groupname}</a> 群組的審核。',
@@ -102,16 +99,16 @@ $lang = array
 	'reason_live_update' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設置為直播貼 <div class="quote"><blockquote>{reason}</blockquote></div>',
 	'reason_live_cancle' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 取消直播 <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'modthreads_delete' => '您發表的主題 {threadsubject} 未通過審核，現已被刪除！',
+	'modthreads_delete' => '您發表的主題 {threadsubject} 已由管理團隊 {modusername} 審核拒絕，現已被刪除！',
 
-	'modthreads_delete_reason' => '您發表的主題 {threadsubject} 未通過審核，現已被刪除！<div class="quote"><blockquote>{reason}</blockquote></div>',
-	'modthreads_validate' => '您發表的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> 已審核通過！ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
+	'modthreads_delete_reason' => '您發表的主題 {threadsubject} 已由管理團隊 {modusername} 審核拒絕，現已被刪除！<div class="quote"><blockquote>{reason}</blockquote></div>',
+	'modthreads_validate' => '您發表的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> 已由管理團隊 {modusername} 審核通過！ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
-	'modreplies_delete' => '您發表回復未通過審核，現已被刪除！ <p class="summary">回復內容：<span>{post}</span></p>',
+	'modreplies_delete' => '您發表的回復已由管理團隊 {modusername} 審核拒絕，現已被刪除！ <p class="summary">回復內容：<span>{post}</span></p>',
 
-	'modreplies_delete_reason' => '您發表回复未通過審核，現已被刪除！ <p class="summary">回复內容：<span>{post}</span></p><div class="quote"><blockquote>{reason}</blockquote></div>',
+	'modreplies_delete_reason' => '您發表的回復已由管理團隊 {modusername} 審核拒絕，現已被刪除！ <p class="summary">回復內容：<span>{post}</span></p><div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'modreplies_validate' => '您發表的回復已審核通過！ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <p class="summary">回復內容：<span>{post}</span></p>',
+	'modreplies_validate' => '您發表的回復已由管理團隊 {modusername} 審核通過！ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <p class="summary">回復內容：<span>{post}</span></p>',
 
 	'transfer' => '您收到一筆來自 {actor} 的積分轉賬 {credit} &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=log&suboperation=creditslog" target="_blank" class="lit">查看 &rsaquo;</a>
 <p class="summary">{actor} 說：<span>{transfermessage}</span></p>',
@@ -189,7 +186,10 @@ $lang = array
 	'profile_verify_pass_refusal' => '很遺憾，您填寫的{verify}資料審核已被拒絕',
 	'member_ban_speak' => '您已被 {user} 禁止發言，期限：{day}天(0：代表永久禁言)，禁言理由：{reason}',
 	'member_ban_visit' => '您已被 {user} 禁止訪問，期限：{day}天(0：代表永久禁止訪問)，禁止訪問理由：{reason}',
-	'member_ban_status' => '您已被 {user} 鎖定，禁止訪問理由：{reason}',
+	'member_ban_status' => '您已被 {user} 鎖定，鎖定理由：{reason}',
+	'member_change_usergroup' => '您已被 {user} 修改為 {groupname} 用戶組，期限：{day} (0：代表永久生效)，擴展組信息為 {extgroupinfo}，並應操作者要求告知您相關變動，操作理由：{reason}',
+	'member_change_credits' => '您已被 {user} 調整積分，積分類型與調整值為 {extcredits} ，並應操作者要求告知您相關變動，操作理由：{reason}',
+
 	'member_follow' => '您關注的人已有{count}條新動態。<a href="home.php?mod=follow">點擊查看</a>',
 	'member_follow_add' => '{actor} 收聽了您。<a href="home.php?mod=follow&do=follower">點擊查看</a>',
 
@@ -216,8 +216,8 @@ $lang = array
 	'system_adv_expiration' => '您站點的以下廣告將於 {day} 天後到期，請及時處理：<br />{advs}',
 	'report_change_credits' => '{actor} 處理了您的舉報 {creditchange} {msg}',
 	'at_message' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> 在主題 <a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">{subject}</a> 中提到了您<div class="quote"><blockquote>{message}</blockquote></div><a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">現在去看看</a>。',
-	'new_report' => '有新的舉報等待處理，<a href="admin.php?action=report" target="_blank">點此進入後台處理</a>。',
-	'new_post_report' => '有新的舉報等待處理，<a href="forum.php?mod=modcp&action=report&fid={fid}" target="_blank">點此進入管理面版</a>。',
+	'new_report' => '有新的來自 {username} 的舉報等待處理，<a href="admin.php?action=report" target="_blank">點此進入管理中心處理</a>。',
+	'new_post_report' => '有新的來自 {username} 的舉報等待處理，<a href="forum.php?mod=modcp&action=report&fid={fid}" target="_blank">點此進入管理面板</a>。',
 	'magics_receive' => '您收到 {actor} 送給您的道具 {magicname}
 <p class="summary">{actor} 說：<span>{msg}</span></p>
 <p class="mbn"><a href="home.php?mod=magic" target="_blank">回贈道具</a><span class="pipe">|</span><a href="home.php?mod=magic&action=mybox" target="_blank">查看我的道具箱</a></p>',

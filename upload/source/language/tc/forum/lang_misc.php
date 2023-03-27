@@ -24,8 +24,9 @@ $lang = array
 	'never_expired' => '永不過期',
 	'sort_update' => '更新',
 	'sort_upload' => '上傳',
-  	'view_noperm' => '隱藏內容',
+	'view_noperm' => '隱藏內容',
 	'post_hidden' => '**** 本內容被作者隱藏 ****',
+	'post_sold' => '**** 本內容購買後可見 ****',
 	'post_banned' => '**** 作者被禁止或刪除 內容自動屏蔽 ****',
 	'post_single_banned' => '**** 該帖被屏蔽 ****',
 	'message_ishidden_hiddenreplies' => '此帖僅作者可見',
@@ -168,7 +169,7 @@ $lang = array
 	'pm_to' => '收件人',
 	'pm_date' => '日期',
 
-	'share_message' => '您好！我在 {$_G[setting][bbname]} 看到了這篇帖子，認為很有價值，特推薦給您。\\n\\n$thread[subject]\\n地址 [url={$threadurl}]{$threadurl}[/url]\\n\\n希望您能喜歡',
+	'share_message' => '您好！我在 {$_G[\'setting\'][\'bbname\']} 看到了這篇帖子，認為很有價值，特推薦給您。\\n\\n$thread[\'subject\']\\n地址 [url={$threadurl}]{$threadurl}[/url]\\n\\n希望您能喜歡',
 
 	'week_0' => '星期日',
 	'week_1' => '星期一',
@@ -262,7 +263,6 @@ $lang = array
 	'perms_allowpoke' => '允許打招呼',
 	'perms_allowfriend' => '允許加好友',
 	'perms_allowclick' => '允許表態',
-	'perms_allowmyop' => '允許使用應用',
 	'perms_allowcomment' => '發表留言/評論',
 	'perms_allowstatdata' => '查看統計數據報表',
 	'perms_allowstat' => '允許查看趨勢統計',
@@ -295,9 +295,9 @@ $lang = array
 	'crime_reason' => '{reason}',
 
 	'connectguest_message_search' => array('尚未登錄', '先登錄'),
-	'connectguest_message_replace' => array('尚未 <a href="member.php?mod=connect" class="xi2">完善帳號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有帳號</a> ', '先 <a href="member.php?mod=connect" class="xi2">完善帳號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有帳號</a> '),
+	'connectguest_message_replace' => array('尚未 <a href="member.php?mod=connect" class="xi2">完善賬號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有賬號</a> ', '先 <a href="member.php?mod=connect" class="xi2">完善賬號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有賬號</a> '),
 	'connectguest_message_mobile_search' => array('尚未登錄', '先登錄'),
-	'connectguest_message_mobile_replace' => '在電腦版完善資料或綁定已有帳號，',
+	'connectguest_message_mobile_replace' => '在電腦版完善資料或綁定已有賬號，',
 
 	'avatar' => '頭像',
 	'signature' => '簽名',
@@ -324,7 +324,7 @@ $lang = array
 
 	'seccode' => '驗證碼',
 	'seccode_update' => '換一個',
-	'seccode_player' => '<span style="padding:2px"><img border="0" style="vertical-align:middle" src="static/image/common/seccodeplayer.gif" /> <a href="javascript:;" id="seccodeplay_{idhash}">播放驗證碼</a></span>',
+	'seccode_player' => '<span style="padding:2px"><img border="0" style="vertical-align:middle" src="'.STATICURL.'image/common/seccodeplayer.gif" /> <a href="javascript:;" id="seccodeplay_{idhash}">播放驗證碼</a></span>',
 	'secqaa' => '驗證問答',
 
 	'mobileoem_creditrule' => '掌上論壇簽到',
@@ -335,3 +335,4 @@ $lang = array
 	'poll_voted_ok'		=> '投票成功',//'You have voted successfully',
 );
 
+?>

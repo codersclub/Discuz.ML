@@ -66,6 +66,7 @@ $lang = array
 	'menu_setting_mobile' => '手機版設置',
 	'menu_setting_tag' => '標籤管理',
 	'menu_setting_antitheft' => '防採集設置',
+	'menu_setting_runtests' => '測試用例',
 
 	'menu_forums' => '版塊管理',
 	'menu_forums_merge' => '版塊合併',
@@ -78,6 +79,7 @@ $lang = array
 	'menu_members_edit' => '用戶管理',
 	'menu_members_newsletter' => '發送通知',
 	'menu_members_mobile' => '發送手機通知',
+	'menu_members_sms' => '發送手機短信',
 	'menu_usertag' => '用戶標籤',
 	'menu_members_edit_ban_user' => '禁止用戶',
 	'menu_members_ipban' => '禁止 IP',
@@ -92,6 +94,7 @@ $lang = array
 	'menu_usergroups' => '用戶組',
 	'menu_follow' => '推薦關注',
 	'menu_defaultuser' => '推薦好友',
+	'menu_members_verify_profile' => '資料審核',
 
 	'menu_moderate_posts' => '內容審核',
 	'menu_moderate_blogs' => '審核日誌',
@@ -145,12 +148,13 @@ $lang = array
 	'menu_tasks' => '站點任務',
 	'menu_magics' => '道具中心',
 	'menu_medals' => '勳章中心',
+	'menu_smsgw' => '短信服務',
 	'menu_misc_help' => '站點幫助',
 	'menu_ec' => '電子商務',
 	'menu_card' => '充值卡密',
 
 	'menu_styles' => '模板管理',
-	'menu_styles_templates' => '模板套繫管理',
+	'menu_styles_templates' => '模板套系管理',
 	'menu_templates_add' => '設計新模板',
 	'menu_posting_smilies' => '表情管理',
 	'menu_click' => '表態動作',
@@ -178,7 +182,7 @@ $lang = array
 	'menu_db' => '數據庫',
 	'menu_postsplit' => '帖子分表',
 	'menu_threadsplit' => '主題分表',
-	'menu_membersplit' => '用戶表優化',
+	'menu_membersplit' => '用戶分表',
 	'menu_logs' => '運行記錄',
 	'menu_custommenu_manage' => '常用操作管理',
 	'menu_misc_cron' => '計劃任務',
@@ -205,12 +209,9 @@ $lang = array
 	'menu_safe_setting' => '基本設置',
 	'menu_safe_security' => '防水牆',
 	'menu_safe_seccheck' => '驗證設置',
-	'menu_safe_accountguard' => '帳號保鏢',
+	'menu_safe_accountguard' => '賬號保鏢',
 
-	'menu_setting_manyou' => 'Manyou 設置',
 	'menu_setting_qqconnect' => 'QQ 綁定設置',
-
-	'menu_cloud_doctor' => '診斷工具',
 
 	'admincp_title' => $_G['setting']['bbname'].' 管理中心',
 
@@ -218,3 +219,4 @@ $lang = array
 	'menu_setting_language'		=> '語言',//'Languages',
 );
 
+?>

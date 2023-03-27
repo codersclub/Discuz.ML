@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'attackevasive_1_subject' => '频繁刷新限制',
-	'attackevasive_1_message' => '您访问本站速度过快或者刷新间隔时间小于两秒！请等待页面自动跳转 ...',
-	'attackevasive_2_subject' => '代理服务器访问限制',
-	'attackevasive_2_message' => '本站现在限制使用代理服务器访问，请去除您的代理设置，直接访问本站。',
-	'attackevasive_4_subject' => '页面重载开启',
-	'attackevasive_4_message' => '欢迎光临本站，页面正在重新载入，请稍候 ...',
+	'attackevasive_1_subject' => '頻繁刷新限制',
+	'attackevasive_1_message' => '您訪問本站速度過快或者刷新間隔時間小於兩秒！請等待頁面自動跳轉 ...',
+	'attackevasive_2_subject' => '代理服務器訪問限制',
+	'attackevasive_2_message' => '本站現在限制使用代理服務器訪問，請去除您的代理設置，直接訪問本站。',
+	'attackevasive_4_subject' => '頁面重載開啟',
+	'attackevasive_4_message' => '歡迎光臨本站，頁面正在重新載入，請稍候 ...',
 );

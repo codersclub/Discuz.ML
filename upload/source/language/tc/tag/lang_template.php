@@ -28,6 +28,9 @@ $lang = array (
   'related_thread' => '相關帖子',
   'replies' => '回復/查看',
   'price' => '售價',
+  'attach_img' => '圖片附件',
+  'attachment' => '附件',
+  'thread_digest' => '精華',
 );
 
 ?>
