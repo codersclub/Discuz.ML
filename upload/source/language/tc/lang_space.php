@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_space.php 31607 2012-09-13 08:38:40Z monkey $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -105,8 +104,8 @@ $lang = array(
 	'blockdata' => array('personalinfo' => '個人資料', 'profile' => '頭像', 'doing' => '記錄', 'feed' => '動態',
 				'blog' => '日誌', 'stickblog' => '置頂日誌', 'album' => '相冊', 'friend' => '好友',
 				'visitor' => '最近訪客', 'wall' => '留言板', 'share' => '分享',
-				'thread' => '主題', 'group'=>$_G[setting][navs][3][navname],'music'=>'音樂盒',
-				'statistic' => '統計信息','myapp' => '應用',
+				'thread' => '主題', 'group'=>(isset($_G['setting']['navs'][3]['navname']) ? $_G['setting']['navs'][3]['navname'] : ''),'music'=>'音樂盒',
+				'statistic' => '統計信息',
 				'block1'=>'自由模塊1', 'block2'=>'自由模塊2', 'block3'=>'自由模塊3',
 				'block4'=>'自由模塊4','block5'=>'自由模塊5'),
 
@@ -120,12 +119,12 @@ $lang = array(
 	'visitor_list' => '<a href="home.php?mod=space&uid={uid}" target="_blank" class="avt"><em class="{class}"></em><em class="{self}" onclick="javascript:removeVisitor(event, {cuid});" title="刪除訪問足跡"></em>{avatar}</a><p><a href="home.php?mod=space&uid={uid}" title="{username}">{username}</a></p>',
 	'wall_form' => '<div class="space_wall_post">
 						<form action="home.php?mod=spacecp&ac=comment" id="quickcommentform_{uid}" name="quickcommentform_{uid}" method="post" autocomplete="off" onsubmit="ajaxpost(\'quickcommentform_{uid}\', \'return_commentwall_{uid}\');doane(event);">
-							'.($_G['uid'] ? '<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="static/image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
+							'.($_G['uid'] ? '<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="'.STATICURL.'image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
 							<br /><textarea name="message" id="comment_message" class="pt" rows="3" cols="60" onkeydown="ctrlEnter(event, \'commentsubmit_btn\');" style="width: 90%;"></textarea>
 							<input type="hidden" name="refer" value="home.php?mod=space&uid={uid}" />
 							<input type="hidden" name="id" value="{uid}" />
 							<input type="hidden" name="idtype" value="uid" />
-							<input type="hidden" name="commentsubmit" value="true" />' : ($_G['connectguest'] ? '<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善帳號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有帳號</a> 後才可以回帖</div>' : '<div class="pt hm">你需要登錄後才可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登錄</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
+							<input type="hidden" name="commentsubmit" value="true" />' : ($_G['connectguest'] ? '<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善賬號信息</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有賬號</a> 後才可以回帖</div>' : '<div class="pt hm">你需要登錄後才可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登錄</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
 							<p class="ptn"><button '.($_G['uid'] ? 'type="submit"' : 'type="button" onclick="showWindow(\'login\', \'member.php?mod=logging&action=login&guestmessage=yes\')"').' name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"><strong>留言</strong></button></p>
 							<input type="hidden" name="handlekey" value="commentwall_{uid}" />
 							<span id="return_commentwall_{uid}"></span>
@@ -154,7 +153,7 @@ $lang = array(
 	'wall_del' => '<a href="home.php?mod=spacecp&ac=comment&op=delete&cid={cid}&handlekey=delcommenthk_{cid}" id="c_{cid}_delete" onclick="showWindow(this.id, this.href, \'get\', 0);">刪除</a> ',
 	'wall_reply' => '<a href="home.php?mod=spacecp&ac=comment&op=reply&cid={cid}&handlekey=replycommenthk_{cid}" id="c_{cid}_reply" onclick="showWindow(this.id, this.href, \'get\', 0);">回復</a>',
 	'group_li' => '<li><a href="forum.php?mod=group&fid={groupid}" target="_blank"><img src="{icon}" alt="{name}" /></a><p><a href="forum.php?mod=group&fid={groupid}" target="_blank">{name}</a></p></li>',
-	'poll_li' => '<div class="c z"><img alt="poll" src="static/image/feed/poll.gif" alt="poll" class="t" /><h4 class="h"><a target="_blank" href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a></h4><div class="mtn xg1">發佈時間：{dateline}</div></div>',
+	'poll_li' => '<div class="c z"><img alt="poll" src="'.STATICURL.'image/feed/poll.gif" alt="poll" class="t" /><h4 class="h"><a target="_blank" href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a></h4><div class="mtn xg1">發佈時間：{dateline}</div></div>',
 	'music_no_content' => '還沒有設置音樂盒的內容',
 	'block_profile_diy' => '裝扮空間',
 	'block_profile_wall' => '查看留言',
@@ -185,8 +184,6 @@ $lang = array(
 	'block_group_no_content' => '現在還沒有群組',
 	'block_group_no_content_publish' => '，<a href ="forum.php?mod=group&action=create">創建自己的群組</a> 或 <a href ="group.php?mod=index">加入群組</a>',
 	'block_group_no_content_join' => '，<a href ="group.php?mod=index">加入群組</a>',
-	'block_myapp_no_content' => '現在還沒有應用',
-	'block_myapp_no_content_publish' => '，<a href ="userapp.php?mod=manage&my_suffix=/app/list">我要玩應用</a>',
 	'block_view_noperm' => '無權查看',
 	'block_view_profileinfo_noperm' => '暫無資料項或無權查看',
 	'click_play' => '點擊播放',

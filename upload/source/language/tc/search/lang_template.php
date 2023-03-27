@@ -15,8 +15,8 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array (
   'search_nomatch' => '對不起，沒有找到匹配結果。',
-  'search_result' => '結果: <em>找到相關主題 $index[num] 個</em>',
-  'search_result_keyword' => '結果: <em>找到 「<span class="emfont">$keyword</span>」 相關內容 $index[num] 個</em>',
+  'search_result' => '結果: <em>找到相關主題 {$index[\'num\']} 個</em>',
+  'search_result_keyword' => '結果: <em>找到 「<span class="emfont">$keyword</span>」 相關內容 {$index[\'num\']} 個</em>',
   'a_comment' => '個評論',
   'a_visit' => '次查看',
   'heat' => '熱度',
@@ -64,9 +64,9 @@ $lang = array (
   'credits' => '積分',
   'member' => '成員',
   'public' => '公開',
-  'search_group_result' => '結果: <em>找到相關{$_G[setting][navs][3][navname]} $groupnum 個</em>',
-  'search_group_result_keyword' => '結果: <em>找到相關{$_G[setting][navs][3][navname]} $groupnum 個,&nbsp;&nbsp;相關主題 $index[num] 個</em>',
-  'search_group_viewgroup' => '查看{$_G[setting][navs][3][navname]}',
+  'search_group_result' => '結果: <em>找到相關{$_G[\'setting\'][\'navs\'][3][\'navname\']} $groupnum 個</em>',
+  'search_group_result_keyword' => '結果: <em>找到相關{$_G[\'setting\'][\'navs\'][3][\'navname\']} $groupnum 個,&nbsp;&nbsp;相關主題 $index[\'num\'] 個</em>',
+  'search_group_viewgroup' => '查看{$_G[\'setting\'][\'navs\'][3][\'navname\']}',
   'threads' => '主題',
   'subscribe' => '訂閱',
   'comment' => '評論',

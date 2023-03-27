@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 	'member_name' => '會員類任務',
-	'member_desc' => '收藏主題、使用道具、添加漫遊應用，此類任務用來鼓勵和引導會員使用論壇的某個功能，活躍論壇的氛圍',
+	'member_desc' => '此類任務用來鼓勵和引導會員使用論壇的某個功能，活躍論壇的氛圍，例如收藏主題、使用道具等',
 	'member_complete_var_act' => '動作',
 	'member_complete_var_act_favorite' => '收藏主題',
 	'member_complete_var_act_magic' => '使用道具',
@@ -28,7 +28,6 @@ $lang = array
 	'task_complete_time_limit' => '{value} 小時內，',
 	'task_complete_act_favorite' => '收藏 {value} 個主題',
 	'task_complete_act_magic' => '使用 {value} 次道具。<br />您可以在帖子頁面、日誌頁面、圖片頁面等使用道具',
-	'task_complete_act_userapp' => '添加 {value} 個漫遊應用',
 );
 
 ?>

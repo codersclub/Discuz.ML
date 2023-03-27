@@ -6,7 +6,7 @@
  *
  *      $Id: lang_message.php 34503 2014-05-12 09:53:16Z nemohou $
  *
- *	Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 $lang = array (
@@ -18,6 +18,20 @@ $lang = array (
   'quickclear_noperm' => '您沒有權限進行此操作',
   'attachment_nonexistence' => '抱歉，該附件無法讀取',
   'attachment_forum_nopermission' => '抱歉，只有特定用戶可以下載本站附件',
+  'album_status_off'  => '抱歉，相冊功能尚未開啟',
+  'blog_status_off'  => '抱歉，日誌功能尚未開啟',
+  'collection_status_off'  => '抱歉，淘帖功能尚未開啟',
+  'doing_status_off'  => '抱歉，記錄功能尚未開啟',
+  'feed_status_off'  => '抱歉，動態功能尚未開啟',
+  'friend_status_off'  => '抱歉，好友功能尚未開啟',
+  'forum_status_off'  => '抱歉，論壇功能尚未開啟',
+  'follow_status_off'  => '抱歉，廣播功能尚未開啟',
+  'group_module_status_off'  => '抱歉，群組功能尚未開啟',
+  'guide_status_off'  => '抱歉，導讀功能尚未開啟',
+  'medal_status_off'  => '抱歉，勳章功能尚未開啟',
+  'share_status_off'  => '抱歉，分享功能尚未開啟',
+  'wall_status_off'  => '抱歉，留言板功能尚未開啟',
+  'favorite_status_off'  => '抱歉，收藏功能尚未開啟',
   'forum_not_group' => '該版塊不是{_G/setting/navs/3/navname}',
   'forum_group_status_off' => '該{_G/setting/navs/3/navname}已關閉',
   'forum_group_noallowed' => '抱歉，您沒有權限訪問該{_G/setting/navs/3/navname}',
@@ -25,13 +39,15 @@ $lang = array (
   'group_name_empty' => '請填寫{_G/setting/navs/3/navname}名稱',
   'group_name_exist' => '{_G/setting/navs/3/navname}名稱已存在',
   'group_admin_noallowed' => '抱歉，您沒有權限限管理此{_G/setting/navs/3/navname}',
-  'group_name_failed' => '{_G/setting/navs/3/navname}名稱含有敏感詞語',
+  'group_name_failed' => '{_G/setting/navs/3/navname}名稱含有敏感詞',
   'group_category_empty' => '請選擇{_G/setting/navs/3/navname}分類',
-  'group_description_failed' => '{_G/setting/navs/3/navname}簡介含有敏感詞語',
+  'group_description_failed' => '{_G/setting/navs/3/navname}簡介含有敏感詞',
   'group_setup_succeed' => '{_G/setting/navs/3/navname}設置成功 ',
   'to_login' => '您需要先登錄才能繼續本操作',
   'postcomment_closed' => '點評功能已關閉',
   'group_nopermission' => '抱歉，您所在的用戶組({grouptitle})無法進行此操作',
+  'nopermission_email' => '<p>您需要驗證激活自己的郵箱後再次嘗試進行本操作，<a href="home.php?mod=spacecp&ac=profile&op=password">點擊這裡激活郵箱</a></p>',
+  'nopermission_verify' => '<p>您需要等待註冊申請審核通過後再次嘗試進行本操作，請您耐心等待管理團隊審核</p>',
   'thread_nonexistence' => '抱歉，指定的主題不存在或已被刪除或正在被審核',
   'parameters_error' => '參數錯誤',
   'thread_poll_succeed' => '投票成功 ',
@@ -91,7 +107,6 @@ $lang = array (
   'search_ctrl' => '抱歉，您在 {searchctrl} 秒內只能進行一次搜索',
   'search_toomany' => '抱歉，站點設置每分鐘系統最多響應搜索請求 {maxspm} 次，請稍候再試',
   'search_closed' => '搜索功能已關閉',
-  'no_privilege_myop' => '抱歉，您目前沒有權限使用此應用，<a href="home.php?mod=spacecp&ac=usergroup" target="_blank">點擊這裡查看權限</a>',
   'collection_permission_deny' => '抱歉，該淘專輯不存在或沒有相應的權限',
   'collection_edit_checkentire' => '請將內容填寫完整',
   'collection_teamworkers_exceed' => '共同維護人數已達上限，不能再邀請或接受其他人參與維護',
@@ -108,6 +123,9 @@ $lang = array (
   'operating_too_fast' => '抱歉，兩次發佈操作太快，請等待 {waittime} 秒再試',
   'topic_not_exist' => '抱歉，指定的專題不存在',
   'post_sm_isnull' => '抱歉，您尚未輸入標題或內容',
+  'post_not_allow_save' => '抱歉，您無權保存草稿貼',
+  'post_max_save' => '抱歉，您保存草稿貼的數量超限',
+  'post_not_allow_reply_save' => '抱歉，您無權回復草稿貼',
   'activity_fromtime_error' => '抱歉，活動開始時間格式不正確',
   'post_edit_delete_succeed' => '主題刪除成功 ',
   'debate_end' => '抱歉，辯論已結束',
@@ -144,7 +162,7 @@ $lang = array (
   'post_newthread_succeed' => '非常感謝，您的主題已發佈，現在將轉入主題頁，請稍候……<br /><a id="forward_a" href="forum.php?mod=forumdisplay&fid={fid}">[ 點擊這裡轉入主題列表 ]</a>{coverimg}',
   'submitcheck_error' => '抱歉，您的提交有誤',
   'post_forum_newthread_nopermission' => '抱歉，本版塊只有特定用戶組可以發新主題',
-  'postperm_qqonly_nopermission' => '為避免您的帳號被盜用，請您綁定QQ帳號後發帖，綁定後請使用QQ帳號登錄<br /><a href="connect.php?mod=config"><img src="'.STATICURL.'image/common/qq_bind_small.gif" /></a>',
+  'postperm_qqonly_nopermission' => '為避免您的賬號被盜用，請您綁定QQ賬號後發帖，綁定後請使用QQ賬號登錄<br /><a href="connect.php?mod=config"><img src="'.STATICURL.'image/common/qq_bind_small.gif" /></a>',
   'thread_flood_ctrl_threads_per_hour' => '抱歉，您所在的用戶組每小時限制發主題 {threads_per_hour} 個，請稍候再發表',
   'search_forum_invalid' => '抱歉，您尚未指定搜索論壇的範圍',
   'search_invalid' => '抱歉，您尚未指定要搜索的關鍵字或用戶名',
@@ -192,7 +210,6 @@ $lang = array (
   'image_does_not_exist' => '抱歉，指定的圖片不存在',
   'showcredit_error' => '抱歉，填寫的數字需要大於0，並且小於您的積分數，請確認',
   'usergroup_not_found' => '用戶組未找到',
-  'no_open_videophoto' => '站點已關閉視頻認證功能',
   'admin_nopermission' => '抱歉，您沒有權限使用管理功能',
   'postcomment_not_found' => '帖子點評未找到',
   'special_noaction' => '無法操作特殊主題',
@@ -213,11 +230,13 @@ $lang = array (
   'profile_email_illegal' => 'Email 地址無效',
   'profile_email_domain_illegal' => '抱歉，Email 包含不可使用的郵箱域名',
   'profile_email_duplicate' => '該 Email 地址已被註冊',
+  'profile_secmobile_duplicate' => '該安全手機已被註冊',
   'article_category_empty' => '抱歉，欄目不能為空',
   'article_edit_nopermission' => '抱歉，您沒有權限進行當前文章操作',
   'post_message_toolong' => '抱歉，您的帖子超過 {maxpostsize} 個字符的限制',
   'no_privilege_newbiespan' => '抱歉，您目前處於見習期間，需要等待 {newbiespan} 分鐘後才能進行本操作',
   'no_privilege_avatar' => '抱歉，您需要設置自己的頭像後才能進行本操作，<a href="home.php?mod=spacecp&ac=avatar">點擊這裡設置</a>',
+  'no_privilege_secmobile' => '抱歉，您需要驗證激活自己的安全手機後才能進行本操作，<a href="home.php?mod=spacecp&ac=profile&op=password">點擊這裡驗證安全手機</a>',
   'no_privilege_email' => '抱歉，您需要驗證激活自己的郵箱後才能進行本操作，<a href="home.php?mod=spacecp&ac=profile&op=password">點擊這裡激活郵箱</a>',
   'no_privilege_friendnum' => '抱歉，您需要添加 {friendnum} 個好友之後才能進行本操作，<a href="home.php?mod=spacecp&ac=friend&op=find">點擊這裡添加好友</a>',
   'login_seccheck2' => '請輸入驗證碼後繼續登錄',
@@ -229,6 +248,10 @@ $lang = array (
   'profile_username_tooshort' => '抱歉，您輸入的用戶名小於 3 個字符，請輸入一個較長的用戶名',
   'profile_username_toolong' => '抱歉，您的用戶名超過 15 個字符，請輸入一個較短的用戶名',
   'profile_passwd_notmatch' => '抱歉，兩次輸入的密碼不一致',
+  'profile_email_not_change' => '抱歉，本站不允許通過前台自行修改賬號綁定的郵箱',
+  'profile_secmobile_not_change' => '抱歉，本站不允許通過前台自行修改賬號綁定的安全手機',
+  'profile_secmobicc_illegal' => '安全手機號國際電話區號格式不正確',
+  'profile_secmobile_illegal' => '安全手機號格式不正確',
   'profile_username_illegal' => '用戶名包含敏感字符',
   'profile_username_duplicate' => '該用戶名已被註冊',
   'profile_illegal' => '格式不正確或為空',
@@ -236,20 +259,20 @@ $lang = array (
   'task_not_found' => '任務文件丟失，{taskclassname}',
   'task_not_underway' => '不是進行中的任務',
   'user_banned' => '抱歉，您的 IP 地址不在允許範圍內，或您的賬號被禁用，無法訪問本站點',
-  'user_banned_has_expiry' => '抱歉，您的賬號被禁用，暫無法訪問本站點。 <br />預計解禁時間：{expiry}',
+  'user_banned_has_expiry' => '抱歉，您的賬號被禁用，暫無法訪問本站點。<br />預計解禁時間：{expiry}',
   'submit_seccode_invalid' => '抱歉，驗證碼填寫錯誤',
   'submit_invalid' => '抱歉，您的請求來路不正確或表單驗證串不符，無法提交',
   'submit_islocked' => '抱歉，您當前的請求正在進行中，請勿重複提交',
-  'word_banned' => '抱歉，您填寫的內容包含不良信息而無法提交',
+  'word_banned' => '抱歉，您填寫的內容包含敏感詞而無法提交',
   'magics_use_success' => '道具 {magicname} 使用成功 ',
   'magicuse_object_once_limit' => '抱歉，已對該對像使用過此道具，不能重複使用',
   'magicuse_bad_object' => '尚未正確選擇道具要作用的對象',
   'magicuse_has_no_valid_friend' => '抱歉，此道具僅對您的好友有效',
   'mobile_template_no_found' => '您訪問的頁面無手機頁面，是否進一步訪問電腦版？<br /><br /><a href="{url}">繼續訪問</a><br /><br />',
-
+  'medals_existence' => '目前系統內有可用的勳章，請到「勳章中心」取消所有可用勳章後再進行此操作',
+  'close_ggcf_before_close_forum' => '請先關閉群組、導讀、淘帖、廣播功能後再關閉論壇功能',
+  'open_forum_before_open_ggcf' => '請先開啟論壇功能後再開啟群組、導讀、淘帖、廣播功能',
   'portal_status_off' => '抱歉，門戶功能尚未開啟',
-
-  'no_privilege_my_app_status' => '對不起，當前站點已經關閉了用戶多應用服務。',
 
   'register_check_found' => '該用戶名已註冊，請更換用戶名或<a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href);return false;" class="xi2">登錄</a>',
   'register_activation' => '用戶名已存在',
@@ -264,6 +287,7 @@ $lang = array (
   'announcement_nonexistence' => '抱歉，目前沒有公告供查看',
 
   'attachment_expired' => '抱歉，原附件鏈接已失效 <br /><a href="forum.php?mod=attachment&aid={aid}">[ 點擊這裡重新下載 ]</a><br /><a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}">[ 點擊這裡查看原帖 ]</a>',
+  'attachment_expired_nosession' => '抱歉，原附件鏈接已失效<br /><a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}">[ 點擊這裡查看原帖 ]</a>',
   'attachment_referer_invalid' => '請不要從外部鏈接下載本站附件',
   'attachment_payto' => '附件所在主題需要付費，請您付費後下載',
   'attachement_payto_attach' => '附件需要付費，請您付費後下載',
@@ -445,6 +469,7 @@ $lang = array (
 
   'task_close' => '抱歉，站點任務關閉',
   'task_relatedtask' => '申請此任務需要先完成另一個任務，任務頁面跳轉中請稍候……',
+  'task_exclusivetask' => '抱歉，您已領取且未放棄另一個任務，不能再申請或完成此任務',
   'task_grouplimit' => '抱歉，您所在的用戶組不允許申請此任務',
   'task_duplicate' => '抱歉，您已申請過此任務，請不要重複申請',
   'task_nextperiod' => '抱歉，本期您已申請過此任務，請下期再來',
@@ -455,13 +480,13 @@ $lang = array (
   'task_completed' => '恭喜您，任務已成功完成，您將收到獎勵通知，請注意查收',
   'task_giveup' => '您已放棄此任務',
 
-  'activate_succeed' => '您好，{username}，您的帳號已被成功激活，現在將轉入站點首頁',
+  'activate_succeed' => '您好，{username}，您的賬號已被成功激活，現在將轉入站點首頁',
 
   'login_clearcookie' => '登錄痕跡已清除',
 
   'register_verify_invalid' => '站點設置了人工驗證註冊用戶，請等待驗證通過',
   'email_verify_invalid' => '抱歉，您在 24 小時內只能提交一次驗證 Email 請求',
-  'email_verify_succeed' => '確認 Email 已發送，請用郵件中提供的方法激活您的帳號',
+  'email_verify_succeed' => '確認 Email 已發送，請用郵件中提供的方法激活您的賬號',
 
   'getpasswd_illegal' => '抱歉，您所用的 ID 不存在或已過期，無法取回密碼',
   'getpasswd_succeed' => '您的密碼已重新設置，請使用新密碼登錄',
@@ -533,8 +558,6 @@ $lang = array (
 
   'search_portal_closed' => '抱歉，文章搜索已關閉',
 
-  'no_privilege_myapp' => '抱歉，該應用不存在或已關閉，您可以<a href="userapp.php?mod=manage&my_suffix=%2Fapp%2Flist">選擇其他應用</a>',
-
   'collection_comment_closed' => '抱歉，管理員沒有開放淘專輯的評論功能',
   'collection_comment_succ' => '發表評論成功',
   'collection_comment_remove_succ' => '評論成功刪除',
@@ -568,8 +591,6 @@ $lang = array (
   'collection_follow_succ' => '成功訂閱淘專輯',
   'collection_unfollow_succ' => '成功取消訂閱淘專輯',
 
-  'no_privilege_deluserapp' => '抱歉，您沒有權限操作此應用',
-
   'email_check_sucess' => '您的郵箱({email})驗證激活成功 ',
   'email_check_account_invalid' => '抱歉，受保護用戶或創始人不能使用郵箱驗證，直接修改用戶信息。',
   'email_check_error' => '抱歉，您輸入的郵箱驗證鏈接不正確。您可以在個人資料頁面，重新接收新的郵箱驗證鏈接',
@@ -599,7 +620,7 @@ $lang = array (
 
   'portal_category_not_find' => '抱歉，您指定的分類尚未找到',
   'portal_category_disallowpublish' => '抱歉，此分類不允許發佈文章',
-  'title_not_too_little' => '標題不能少於 2 個字符',
+  'title_not_too_little' => '標題不能少於最少字符限制',
   'article_choose_system_category' => '請選擇一個合適的系統分類',
   'no_posts_for_pushplus' => '抱歉，您尚未指定要添加的帖子',
   'pushplus_do_success' => '已成功添加指定帖子到文章',
@@ -682,6 +703,7 @@ $lang = array (
   'search_threadtype_invalid' => '抱歉，您尚未輸入要搜索的分類信息項目',
 
   'home_no_privilege' => '抱歉，您需要登錄後才能查看',
+  'no_privilege_profile' => '抱歉，您沒有權限查看個人資料',
 
   'member_nonexistence' => '抱歉，指定的用戶不存在或被凍結',
 
@@ -689,6 +711,7 @@ $lang = array (
   'no_privilege_album_edit' => '抱歉，您沒有權限編輯此相冊',
   'album_name_errors' => '抱歉，您尚未正確設置相冊名',
   'spacecp_edit_ok' => '設置保存成功 ',
+  'no_privilege_upload_avatar' => '抱歉，您目前沒有權限上傳頭像',
   'no_privilege_album_del' => '抱歉，您沒有權限刪除此相冊',
   'no_privilege_album_delother' => '抱歉，您沒有權限刪除其他人的相冊',
   'no_privilege_pic_edit' => '抱歉，您沒有權限編輯此相冊中的圖片',
@@ -729,7 +752,7 @@ $lang = array (
   'credits_transfer_balance_insufficient' => '抱歉，轉賬後 {title}不足 {minbalance}',
   'credits_net_amount_iszero' => '本交易扣除積分交易稅後的淨值為 0',
   'memcp_credits_transfer_msg_user_incorrect' => '抱歉，您尚未輸入轉賬接收人或者接收人不存在或被凍結',
-  'credits_transfer_succeed' => '積分轉帳成功 ',
+  'credits_transfer_succeed' => '積分轉賬成功 ',
   'memcp_credits_exchange_msg_num_invalid' => '您要兌換的積分相同，無法兌換',
   'credits_exchange_invalid' => '兌換的積分方案有錯，不能進行兌換',
   'extcredits_disallowexchangeout' => '{credittitle} 不允許兌出',
@@ -762,6 +785,7 @@ $lang = array (
   'no_privilege_feed_del' => '抱歉，您沒有權限刪除此動態',
 
   'follow_not_follow_self' => '不能關注自己',
+  'follow_not_follow_others' => '您當前用戶組不允許收聽他人',
   'follow_other_unfollow' => '對方不允許您關注TA',
   'follow_followed_ta' => '您已經收聽了TA',
   'follow_add_succeed' => '成功收聽',
@@ -838,7 +862,7 @@ $lang = array (
 
   'profile_passwd_empty' => '請設置新密碼',
   'profile_passwd_wrong' => '原密碼不正確，您不能修改密碼或 Email 或安全提問',
-  'profile_email_verify' => '確認 Email 已發送，請用郵件中提供的方法激活您的帳號。如果您尚未收到我們發送的系統郵件，請點擊密碼安全中的「重新接收驗證郵件」，或嘗試更換另外一個地址',
+  'profile_email_verify' => '確認 Email 已發送，請用郵件中提供的方法激活您的賬號。如果您尚未收到我們發送的系統郵件，請點擊密碼安全中的「重新接收驗證郵件」，或嘗試更換另外一個地址',
   'profile_succeed' => '個人資料保存成功 ',
   'send_activate_mail_succeed' => '郵件已發送，可能需要幾分鐘後才能收到郵件',
   'send_activate_mail_error' => '抱歉，郵件發送失敗，請稍等 {interval} 秒後重試發送驗證激活郵件',
@@ -1004,11 +1028,11 @@ $lang = array (
   'comment_comment_noexist' => '抱歉，要評論的文章不存在',
   'comment_comment_notallowed' => '該文章不允許評論',
 
-  'post_subject_toolong' => '抱歉，您的標題超過 80 個字符修改標題長度',
+  'post_subject_toolong' => '抱歉，您的標題超過最大字符限制，請縮短標題後再試',
+  'post_subject_tooshort' => '抱歉，您的標題小於最小字符限制，請加長標題後再試',
   'post_message_tooshort' => '抱歉，您的帖子小於 {minpostsize} 個字符的限制',
 
   'no_privilege_realname' => '抱歉，您需要填寫真實姓名後才能進行當前操作，<a href="home.php?mod=spacecp&ac=profile">點擊這裡設置真實姓名</a>',
-  'no_privilege_videophoto' => '抱歉，您需要視頻認證通過後才能進行當前操作，<a href="home.php?mod=spacecp&ac=videophoto">點擊這裡進行視頻認證</a>',
 
   'threadtype_required_invalid' => '抱歉，資料填寫不全，請檢查 {typetitle} 選項',
   'threadtype_format_invalid' => '抱歉，資料格式不正確，請檢查 {typetitle} 選項',
@@ -1017,13 +1041,13 @@ $lang = array (
   'threadtype_unchangeable_invalid' => '抱歉，資料不得修改，請檢查{typetitle}選項',
 
   'location_login' => '',
-  'location_login_force_qq' => '您所在的用戶組必須使用QQ帳號登錄',
+  'location_login_force_qq' => '您所在的用戶組必須使用QQ賬號登錄',
   'location_login_force_mail' => '您所在的用戶組必須使用郵箱登錄',
-  'location_login_outofdate' => '您當前的帳號已經太長時間未登錄網站已經被凍結，必須驗證郵箱後才能解除凍結狀態',
+  'location_login_outofdate' => '您當前的賬號已經太長時間未登錄網站已經被凍結，必須驗證郵箱後才能解除凍結狀態',
   'location_login_succeed_mobile' => '歡迎您回來，{username}。點擊進入登錄前頁面',
   'location_login_succeed' => '',
-  'location_activation' => '您的帳號處於未激活狀態，點擊進行激活',
-  'login_succeed_inactive_member' => '歡迎您回來，{usergroup} {username}。您的帳號處於非激活狀態，部分功能可能無法正常使用，現在將轉​​入密碼安全頁面',
+  'location_activation' => '您的賬號處於未激活狀態，點擊進行激活',
+  'login_succeed_inactive_member' => '歡迎您回來，{usergroup} {username}。您的賬號處於非激活狀態，部分功能可能無法正常使用，現在將轉入密碼安全頁面',
   'login_succeed_password_change' => '您的賬戶存在安全隱患，建議立即修改密碼',
   'login_question_empty' => '請選擇安全提問以及填寫正確的答案',
   'login_question_invalid' => '抱歉，安全提問答案填寫錯誤',
@@ -1034,7 +1058,7 @@ $lang = array (
   'register_email_send_succeed' => '感謝您註冊 {bbname}，<br />系統給您發送了一封帶有註冊地址的郵件，快去登錄郵箱獲取註冊鏈接進行下一步註冊吧',
   'not_open_registration_invite' => '抱歉，本站目前暫時不允許用戶直接註冊，需要有效的邀請碼才能註冊',
   'register_rules_agree' => '您必須同意服務條款後才能註冊',
-  'register_activation_message' => '抱歉，您輸入的用戶名 "{username}" 已存在，請登錄站點激活此帳號',
+  'register_activation_message' => '抱歉，您輸入的用戶名 "{username}" 已存在，請登錄站點激活此賬號',
   'profile_password_tooshort' => '密碼太短了，至少要{pwlength}個字符',
   'profile_required_info_invalid' => '抱歉，您尚未填寫必填項目或必填項目格式不正確',
   'register_ctrl' => '抱歉，您的 IP 地址在 {regctrl} 小時內無法註冊',
@@ -1063,6 +1087,7 @@ $lang = array (
   'post_url_nopermission' => '抱歉，您沒有權限發表 URL 連接',
 
   'not_in_mobile' => '您訪問的頁面無手機頁面，是否進一步訪問電腦版？',
+  'template_developer_not_in_mobile' => '您訪問的頁面 {file} 無手機模板，是否進一步訪問電腦版？',
 
   'magics_operation_nopermission' => '抱歉，此道具只能操作自己發帖子或評論',
 
@@ -1083,6 +1108,31 @@ $lang = array (
   'author_not_uploadpic' => '樓主暫時沒有上傳圖片',
   'noreply_yourself_error' => '您不能對自己的回帖進行投票',
   'noreply_voted_error' => '您已經對此回帖投過票了',
+
+  'payment_order_no_exist' => '訂單不存在或已過期',
+  'payment_type_no_exist' => '請選擇支付渠道',
+  'payment_succeed' => '支付成功',
+  'payment_transfer_succeed' => '轉賬成功',
+  'payment_refund_id_exist' => '退款訂單號已存在，必須保證全局唯一',
+  'payment_refund_exist' => '當前退款訂單正在退款中，請通過狀態接口查詢退款狀態',
+  'payment_transfer_id_exist' => '轉賬訂單號已存在，必須保證全局唯一',
+  'payment_transfer_exist' => '當前轉賬訂單正在處理中，請通過狀態接口查詢狀態',
+  'payment_transfer_id_no_exist' => '轉賬訂單號不存在',
+  'payment_retry_callback_no_exist' => '訂單號不存在',
+  'payment_retry_callback_no_pay' => '訂單未支付',
+
+  'secmobseccode_send_success' => '短信發送成功，請在頁面上輸入短信驗證碼。',
+  'secmobseccode_send_failure' => '未知異常，請稍候再試。',
+  'secmobseccode_send_err_1' => '發送短信間隔過短，請稍候再試。',
+  'secmobseccode_send_err_2' => '您一段時間內發送的短信過多，請稍候再試。',
+  'secmobseccode_send_err_3' => '號碼組一段時間內發送的短信過多，請稍候再試。',
+  'secmobseccode_send_err_4' => '本站點一段時間內發送的短信過多，請稍候再試。',
+  'secmobseccode_send_err_5' => '本站點不支持向您安全手機號所在區域發送短信，請更換號碼或稍候再試。',
+  'secmobseccode_send_err_6' => '網關接口文件不存在，請稍候再試。',
+  'secmobseccode_send_err_7' => '網關接口類不存在，請稍候再試。',
+  'secmobseccode_send_err_8' => '短信功能已被關閉，請稍候再試。',
+  'secmobseccode_send_err_9' => '短信網關異常，請稍候再試。',
+
 );
 
 ?>

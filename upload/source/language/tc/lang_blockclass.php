@@ -36,14 +36,6 @@ $lang = array(
 	'blockclass_announcement_field_endtime' => '結束時間',
 	'blockclass_announcement_script_announcement' => '站點公告',
 
-	'blockclass_html_myapp' => '漫遊模塊',
-	'blockclass_myapp_field_url' => '應用鏈接',
-	'blockclass_myapp_field_title' => '應用名稱',
-	'blockclass_myapp_field_icon' => '應用圖標',
-	'blockclass_myapp_field_icon_small' => '應用圖標(小)',
-	'blockclass_myapp_field_icon_abouts' => '應用圖標(大圖)',
-	'blockclass_myapp_script_myapp' => '漫遊應用',
-
 	'blockclass_forum' => '論壇類',
 
 	'blockclass_forum_thread' => '帖子模塊',
@@ -225,12 +217,12 @@ $lang = array(
 	'blockclass_member_field_bloodtype' => '血型',
 	'blockclass_member_field_height' => '身高',
 	'blockclass_member_field_weight' => '體重',
-	'blockclass_member_field_alipay' => '支付寶帳號',
+	'blockclass_member_field_alipay' => '支付寶賬號',
 	'blockclass_member_field_icq' => 'ICQ號',
 	'blockclass_member_field_qq' => 'QQ號',
-	'blockclass_member_field_yahoo' => 'YAHOO帳號',
-	'blockclass_member_field_msn' => 'MSN帳號',
-	'blockclass_member_field_taobao' => '阿里旺旺帳號',
+	'blockclass_member_field_yahoo' => 'YAHOO賬號',
+	'blockclass_member_field_msn' => 'MSN賬號',
+	'blockclass_member_field_taobao' => '阿里旺旺賬號',
 	'blockclass_member_field_site' => '個人主頁',
 	'blockclass_member_field_bio' => '自我介紹',
 	'blockclass_member_field_interest' => '興趣愛好',
@@ -467,5 +459,6 @@ $lang = array(
 	'blockclass_profile_group_edu'		=> '教育情況',//'Education',
 	'blockclass_profile_group_work'		=> '工作情況',//'Work Info',
 	'blockclass_profile_group_info'		=> '個人信息',//'Personal Info',
-
 );
+
+?>

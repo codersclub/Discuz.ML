@@ -71,40 +71,6 @@ $lang = array(
 	'mail_my' => '好友與我的互動提醒',
   	'mail_system' => '系統提醒',
 
-	'invite_subject' => '{username}邀請您加入{sitename}，並成為好友',
-	'invite_massage' => '<table border="0">
-		<tr>
-		<td valign="top">{avatar}</td>
-		<td valign="top">
-		<h3>Hi，我是{username}，邀請您也加入{sitename}並成為我的好友</h3><br>
-		請加入到我的好友中，您就可以瞭解我的近況，與我一起交流，隨時與我保持聯繫。<br>
-		<br>
-		邀請附言：<br>{saymsg}
-		<br><br>
-		<strong>請您點擊以下鏈接，接受好友邀請：</strong><br>
-		<a href="{inviteurl}">{inviteurl}</a><br>
-		<br>
-		<strong>如果您擁有{sitename}上面的賬號，請點擊以下鏈接查看我的個人主頁：</strong><br>
-		<a href="{siteurl}home.php?mod=space&uid={uid}">{siteurl}home.php?mod=space&uid={uid}</a><br>
-		</td></tr></table>',
-
-	'app_invite_subject' => '{username}邀請您加入{sitename}，一起來玩{appname}',
-	'app_invite_massage' => '<table border="0">
-		<tr>
-		<td valign="top">{avatar}</td>
-		<td valign="top">
-		<h3>Hi，我是{username}，在{sitename}上玩 {appname}，邀請您也加入一起玩</h3><br>
-		<br>
-		邀請附言：<br>
-		{saymsg}
-		<br><br>
-		<strong>請您點擊以下鏈接，接受好友邀請一起玩{appname}：</strong><br>
-		<a href="{inviteurl}">{inviteurl}</a><br>
-		<br>
-		<strong>如果您擁有{sitename}上面的賬號，請點擊以下鏈接查看我的個人主頁：</strong><br>
-		<a href="{siteurl}home.php?mod=space&uid={uid}">{siteurl}home.php?mod=space&uid={uid}</a><br>
-		</td></tr></table>',
-
 	'person' => '人',
 	'delete' => '刪除',
 
@@ -120,8 +86,8 @@ $lang = array(
 	'share_article' => '分享了一篇文章',
 	'album' => '相冊',
 	'share_thread' => '分享了一個帖子',
-	'mtag' => '{$_G[setting][navs][3][navname]}',
-	'share_mtag' => '分享了一個{$_G[setting][navs][3][navname]}',
+	'mtag' => '{$_G[\'setting\'][\'navs\'][3][\'navname\']}',
+	'share_mtag' => '分享了一個{$_G[\'setting\'][\'navs\'][3][\'navname\']}',
 	'share_mtag_membernum' => '現有 {membernum} 名成員',
 	'share_tag' => '分享了一個標籤',
 	'share_tag_blognum' => '現有 {blognum} 篇日誌',
@@ -179,7 +145,6 @@ $lang = array(
 	'do_stat_connectlogin' => 'QQ登錄訪問',
 	'do_stat_register' => '新註冊用戶',
 	'do_stat_invite' => '好友邀請',
-	'do_stat_appinvite' => '應用邀請',
 	'do_stat_add' => '信息發佈',
 	'do_stat_comment' => '信息互動',
 	'do_stat_space' => '互動',
@@ -189,10 +154,10 @@ $lang = array(
 	'do_stat_reward' => '懸賞',
 	'do_stat_debate' => '辯論',
 	'do_stat_trade' => '商品',
-	'do_stat_group' => "創建{$_G[setting][navs][3][navname]}",
-	'do_stat_tgroup' => "{$_G[setting][navs][3][navname]}",
-	'do_stat_home' => "{$_G[setting][navs][4][navname]}",
-	'do_stat_forum' => "{$_G[setting][navs][2][navname]}",
+	'do_stat_group' => "創建".(isset($_G['setting']['navs'][3]['navname']) ? $_G['setting']['navs'][3]['navname'] : ''),
+	'do_stat_tgroup' => (isset($_G['setting']['navs'][3]['navname']) ? $_G['setting']['navs'][3]['navname'] : ''),
+	'do_stat_home' => (isset($_G['setting']['navs'][4]['navname']) ? $_G['setting']['navs'][4]['navname'] : ''),
+	'do_stat_forum' => (isset($_G['setting']['navs'][2]['navname']) ? $_G['setting']['navs'][2]['navname'] : ''),
 	'do_stat_groupthread' => '群組主題',
 	'do_stat_post' => '主題回復',
 	'do_stat_grouppost' => '群組回復',
@@ -261,7 +226,7 @@ $lang = array(
 	'magic_space_gift' => '在自已空間首頁埋下紅包',
 	'magic_space_re_gift' => '回收還沒有用完的紅包',
 	'magic_space_get_gift' => '訪問空間領取的紅包',
-	'credit_transfer' => '進行積分轉帳',
+	'credit_transfer' => '進行積分轉賬',
 	'credit_transfer_tips' => '的轉賬收入',
 	'credit_exchange_tips_1' => '執行積分對兌換操作,將 ',
 	'credit_exchange_to' => '兌換成',
@@ -301,6 +266,7 @@ $lang = array(
 	'profile_verify_modify_error' => '{verify}已經認證通過不允許修改',
 	'profile_verify_verifying' => '您的{verify}信息已提交，請耐心等待核查。',
 
+	'district_level_0' => '-國家或地區-',
 	'district_level_1' => '-省份-',
 	'district_level_2' => '-城市-',
 	'district_level_3' => '-州縣-',
@@ -308,6 +274,8 @@ $lang = array(
 	'invite_you_to_visit' => '{user}邀請您訪問{bbname}',
 
 	'portal' => '門戶',
+	'forum' => '論壇',
+	'friend' => '好友',
 	'group' => '群組',
 	'follow' => '廣播',
 	'collection' => '淘帖',
@@ -318,6 +286,10 @@ $lang = array(
 	'wall' => '留言板',
 	'homepage' => '個人主頁',
 	'ranklist' => '排行榜',
+	'medal' => '勳章',
+	'task' => '任務',
+	'magic' => '道具',
+	'favorite' => '收藏',
 	'select_the_navigation_position' => '選擇{type}導航位置',
 	'close_module' => '關閉{type}功能',
 
@@ -330,11 +302,19 @@ $lang = array(
 
 	'spacecp_message_prompt' => '(支持 {msg} 代碼,最大 1000 字)',
 	'card_update_doing' => ' <a class="xi2" href="###">[更新記錄]</a>',
-	'email_acitve_message' => '<img src="{imgdir}/mail_inactive.png" alt="未驗證" class="vm" /> <span class="xi1">新郵箱({newemail})等待驗證中...</span><br />
+	'email_acitve_message' => '<i class="fico-email vm fc-i" title="未驗證"></i><span class="xi1 vm">新郵箱({newemail})等待驗證中...</span><br />
 								系統已經向該郵箱發送了一封驗證激活郵件，請查收郵件，進行驗證激活。<br>
 								如果沒有收到驗證郵件，您可以更換一個郵箱，或者<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash={formhash}" class="xi2">重新接收驗證郵件</a>',
 	'qq_set_status' => '設置我的QQ在線狀態',
 	'qq_dialog' => '發起QQ聊天',
+
+	'payment_alipay' => '支付寶',
+	'payment_wechat' => '微信支付',
+	'payment_qpay' => 'QQ 錢包支付',
+	'payment_status_0' => '未支付',
+	'payment_status_1' => '已支付',
+	'payment_status_2' => '已過期',
+	'payment_credit' => '積分充值',
 
 );
 

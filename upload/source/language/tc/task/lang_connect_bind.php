@@ -13,12 +13,12 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'connect_bind_name' => 'QQ 帳號綁定任務',
-	'connect_bind_desc' => '綁定 QQ 帳號即可獲得相應的獎勵',
+	'connect_bind_name' => 'QQ 賬號綁定任務',
+	'connect_bind_desc' => '綁定 QQ 賬號即可獲得相應的獎勵',
 	'connect_bind_view' => '<strong>請按照以下的說明來參與本任務：</strong>
 		<ul>
-		<li>1. <a href="connect.php?mod=config" target="_blank">新窗口打開 QQ 帳號綁定的頁面</a></li>
-		<li>2. 在新打開的頁面中，點擊「QQ帳號綁定」按鈕，填寫您的 QQ 賬號和密碼即可完成綁定</li>
+		<li>1. <a href="connect.php?mod=config" target="_blank">新窗口打開 QQ 賬號綁定的頁面</a></li>
+		<li>2. 在新打開的頁面中，點擊「QQ賬號綁定」按鈕，填寫您的 QQ 賬號和密碼即可完成綁定</li>
 		</ul>',
 );
 

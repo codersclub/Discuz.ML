@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <strings>
 	
-	<language type="tc" using="true">
+	<language type="zh_HK" using="true">
 		<item key="inefficacy_save" value="\u8ACB\u5148\u4E0A\u50B3\u5716\u7247\u6216\u7528\u651D\u50CF\u982D\u62CD\u7167\21" />
 		<item key="camera_muted" value="\u7121\u6CD5\u9023\u63A5\u5230\u6D3B\u52D5\u651D\u50CF\u982D\21" />
 		<item key="camera_not_exist" value="\u651D\u50CF\u982D\u8A2D\u5099\u4E0D\u53EF\u7528\21" />
@@ -53,5 +53,4 @@
 			</value>
 		</item>
 	</language>
-
 </strings>
