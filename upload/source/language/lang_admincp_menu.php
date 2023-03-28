@@ -218,3 +218,4 @@ $lang = array
 	'menu_setting_language'		=> '语言',//'Languages',
 );
 
+?>
