@@ -459,5 +459,7 @@ $lang = array(
 	'blockclass_profile_group_edu'		=> '教育情况',//'Education',
 	'blockclass_profile_group_work'		=> '工作情况',//'Work Info',
 	'blockclass_profile_group_info'		=> '个人信息',//'Personal Info',
-
 );
+
+
+?>
