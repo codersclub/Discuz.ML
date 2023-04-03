@@ -671,7 +671,7 @@ function show_header() {
 </script>
 <meta content="Comsenz Inc." name="Copyright" />
 </head>
-<body><!--vot-->
+<body>
 <div class="container{$nostep}">
 	<div class="header">
 		<h1>$titlehtml</h1>
@@ -1519,7 +1519,7 @@ function show_setting($setname, $varname = '', $value = '', $type = 'text|passwo
 		if(strpos($type, 'oldbtn') !== FALSE) {
 			echo "<input type=\"button\" name=\"oldbtn\" value=\"".lang('old_step')."\" class=\"btn oldbtn\" onclick=\"history.back();\">\n";
 		}
-/*vot*/		$value = empty($value) ? 'new_step' : $value;
+		$value = empty($value) ? 'new_step' : $value;
 		echo "<input type=\"submit\" name=\"$varname\" value=\"".lang($value)."\" class=\"btn\">\n";
 	} elseif($type == 'checkbox') {
 		if(!is_array($varname) && !is_array($value)) {

@@ -13,7 +13,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 define('IN_DISCUZ', TRUE);
 define('IN_COMSENZ', TRUE);
-/*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(dirname(__FILE__))).'/');
+/*vot*/ define('ROOT_PATH', str_replace('\\','/',dirname(__DIR__)).'/');
 define('INST_LOG_PATH', realpath(ROOT_PATH.'data/log/').'/install.log');
 
 require ROOT_PATH.'./source/discuz_version.php';
