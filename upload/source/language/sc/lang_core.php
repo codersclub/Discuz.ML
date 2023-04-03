@@ -252,3 +252,5 @@ $lang = array
 	'config'	=> '[配置]',//'[Config]',
 
 );
+
+?>
