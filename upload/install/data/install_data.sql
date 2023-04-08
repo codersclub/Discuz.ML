@@ -901,7 +901,12 @@ INSERT INTO pre_forum_onlinelist VALUES ('2','2','Super Moderator','online_super
 INSERT INTO pre_forum_onlinelist VALUES ('3','3','Moderator','online_moderator.gif');
 INSERT INTO pre_forum_onlinelist VALUES ('0','4','Member','online_member.gif');
 
-INSERT INTO pre_forum_typeoption SET `optionid`=1, `title`='Default category';
+INSERT INTO pre_forum_typeoption SET `optionid`=1, `title`='Type A';
+INSERT INTO pre_forum_typeoption SET `optionid`=2, `title`='Type B';
+INSERT INTO pre_forum_typeoption SET `optionid`=3, `title`='Type C';
+INSERT INTO pre_forum_typeoption SET `optionid`=4, `title`='Type D';
+INSERT INTO pre_forum_typeoption SET `optionid`=5, `title`='Type E';
+INSERT INTO pre_forum_typeoption SET `optionid`=6, `title`='Type F';
 
 INSERT INTO pre_home_click VALUES ('1','Passing','luguo.gif','blogid','1','0');
 INSERT INTO pre_home_click VALUES ('2','Ridiculous','leiren.gif','blogid','1','0');
