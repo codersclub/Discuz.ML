@@ -1446,14 +1446,17 @@ $lang = array
 	'setting_seo_article' => '文章内容',
 	'setting_seo_forum' => '论坛首页',
 	'setting_seo_forum_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>当前版块名称&nbsp;<font class="highlight">{forum}</font>（应用范围：除首页以外）</li><li>一级版块名称&nbsp;<font class="highlight">{fup}</font>（应用范围：子版块主题列表页和帖子内容页）</li><li>分区名称&nbsp;<font class="highlight">{fgroup}</font>（应用范围：除首页以外）</li><li>帖子标题&nbsp;<font class="highlight">{subject}</font>（应用范围：帖子内容页）</li><li>主题摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：帖子内容页）</li><li>主题标签&nbsp;<font class="highlight">{tags}</font>（应用范围：帖子内容页）</li><li>分页数&nbsp;<font class="highlight">{page}</font>（应用范围：主题列表页、帖子内容页）</li>',
+/*1*/
 	'setting_seo_threadlist' => '主题列表',
 	'setting_seo_viewthread' => '帖子内容',
 	'setting_seo_home' => '家园首页',
 	'setting_seo_home_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>日志标题&nbsp;<font class="highlight">{subject}</font>（应用范围：日志内容页）</li><li>日志/相册作者&nbsp;<font class="highlight">{user}</font>（应用范围：日志和相册内容页）</li><li>日志摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：日志内容页）</li><li>日志标签&nbsp;<font class="highlight">{tags}</font>（应用范围：日志内容页）</li><li>相册名称&nbsp;<font class="highlight">{album}</font>（应用范围：相册内容页）</li><li>相册描述&nbsp;<font class="highlight">{depict}</font>（应用范围：相册内容页）</li>',
+/*2*/
 	'setting_seo_blog' => '日志内容',
 	'setting_seo_album' => '相册内容',
 	'setting_seo_group' => '群组首页/分类',
 	'setting_seo_group_tips' => '<li>站点名称&nbsp;<font class="highlight">{bbname}</font>（应用范围：所有位置）</li><li>当前群组名称&nbsp;<font class="highlight">{forum}</font>（应用范围：除群组首页、分类页）</li><li>一级分类名称&nbsp;<font class="highlight">{first}</font>（应用范围：所有位置）</li><li>二级分类名称&nbsp;<font class="highlight">{second}</font>（应用范围：所有位置）</li><li>当前群组简介&nbsp;<font class="highlight">{gdes}</font>（应用范围：群组和群组帖子页）</li><li>帖子标题&nbsp;<font class="highlight">{subject}</font>（应用范围：群组帖子页）</li><li>主题摘要&nbsp;<font class="highlight">{summary}</font>（应用范围：群组帖子页）</li><li>主题标签&nbsp;<font class="highlight">{tags}</font>（应用范围：群组帖子内容页）</li><li>分页数&nbsp;<font class="highlight">{page}</font>（应用范围：主题列表页、帖子内容页）</li>',
+/*3*/
 	'setting_seo_grouppage' => '单一群组页面',
 	'setting_seo_viewthread_group' => '群组帖子内容',
 	'setting_seo_seotitle' => 'title',
@@ -5694,6 +5697,7 @@ $lang = array
 	'ec_tenpay_tips' => '<li>“财付通”(<a href="http://www.tenpay.com" target="_blank">http://www.tenpay.com</a>)是腾讯公司创办的中国领先的在线支付平台，为 Discuz! 用户提供积分购买交易平台。</li><li>如需启用积分充值即时到账，请使用财付通<b>企业版</b>并开通<b>即时到账交易</b>；否则，只需要开通“<b>中介担保交易</b>”即可。</li>
 <li><b>由于涉及现金交易，为避免因操作不当而造成的资金损失，请在开始使用财付通积分交易功能(不包含财付通按钮功能)前，务必仔细阅读《用户使用说明书》中有关电子商务的部分，当确认完全理解和接受相关流程及使用方法后再进行相关设置。</b></li><li>您可以设置允许用户通过现金在线支付的方式，为其交易积分账户充值，用于购买帖子内容、购买用户组权限、积分转账或用户组升级等功能。财付通积分交易功能，需在“积分设置”中启用交易积分，并同时设置相应的积分策略以满足不同场合的需要。请务必正确设置您的收款财付通账号，否则将造成用户付款后积分无法实时到账，造成大量需要人工处理的订单信息。</li><li>除 Discuz! 官方网站或官方论坛另行通知以外，Discuz! 提供的财付通支付服务每笔交易收取 1% 的手续费。请及时关注相关业务的最新通知，各项政策或流程的变更、调整，以 Discuz! 官方网站或官方论坛提供的信息为准。</li><li>您使用财付通服务是建立在完全自愿的基础上，除 Discuz! 因主观恶意的因素造成的资金损失以外，腾讯云不对因使用此功能造成的任何损失承担责任。</li><li>财付通服务热线：0755-83762288-2(全天24小时服务热线)</li>',
 
+/*4*/
 	'ec_orders' => '积分充值订单',
 	'ec_orders_tips' => '<li>请在开始使用支付宝积分交易订单管理功能(不包含支付宝按钮功能)前，务必仔细阅读《用户使用说明书》中有关电子商务的部分，当确认完全理解和接受相关流程及使用方法后再进行相关操作。</li><li>如果您的用户反映在线支付后无法自动为其积分账户充值，可能是由于您的支付宝账户的通知接口设置有误，或您的网站无法被支付宝通知系统正常访问所致。您可以登录支付宝交易管理界面，通过比对交易详情人工确认相关订单。</li><li>订单信息保留 60 天，因此您只能查询和管理 60 天之内的订单信息，超过 60 天的信息将被自动删除。</li>',
 	'ec_orders_search' => '积分充值订单搜索',
@@ -5961,7 +5965,7 @@ $lang = array
 				<li>模板缓存：更新论坛模板、风格等缓存文件，当您修改了模板或者风格，但是没有立即生效的时候使用</li>
 				<li>DIY 模块分类缓存：更新 DIY 模块分类，当您安装或修改了 DIY 模块分类，但是没有立即生效的时候使用</li>
 				',
-
+/*5*/
 	'tools_updatecache_data'=>'数据缓存',
 	'tools_updatecache_tpl'=>'模板缓存',
 	'tools_updatecache_blockclass'=>'DIY 模块分类缓存',
@@ -7168,6 +7172,39 @@ url.rewrite-once = (
 	'discussion_area' => 'Discuz! 官方网站',
 	'app_center' => 'Discuz! 应用中心',
 	'discuz_git' => 'Discuz! 项目地址',
+
+//---------------------------
+// Added by Valery Votintsev
+
+//source/function/function_admincp.php
+	//'upload_selectfile'		=> '浏览',//'Browse',
+	//'version_uptodate'		=> '&#x60A8;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684; Discuz! &#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x6709;&#x91CD;&#x8981;&#x66F4;&#x65B0;&#xFF0C;&#x8BF7;&#x53C2;&#x7167;&#x4EE5;&#x4E0B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x53CA;&#x65F6;&#x5347;&#x7EA7;',//'You are currently using up-to-date Discuz! program. To update, please refer to the prompts of following line',
+
+//source/admincp/admincp_index.php - javascript function shownews()
+	//'subscribe'		=> '订阅',//'Subscribe',
+
+//source/admincp/admincp_plugins.php
+	'disable'		=> '禁用',//'Disable',
+
+//---------------------------
+//Change Language
+	'change_language'	=> '更改语言',//'Change language',
+	'change_style'		=> '更改风格',//'Change style',
+
+	'language'			=> 'Languages',
+	'setting_language'		=> 'Language Settings',
+	'setting_language_tips'		=> '<li>Add/Modify your language packs</li>',
+	'setting_language_available'	=> 'Enable',
+	'setting_language_id'		=> 'Id',
+	'setting_language_order'	=> 'Order',
+	'setting_language_flag'		=> 'Flag',
+	'setting_language_name'		=> 'Name (National!)',
+	'setting_language_title'	=> 'Title (English!)',
+	'setting_language_dir'		=> 'Direction',
+	'setting_language_actions'	=> 'Actions',
+
+	'nav_language'			=> 'Languages',
+
 );
 
 $adminextend = array();
@@ -7175,7 +7212,7 @@ if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.
 	@include $adminextendfile;
 	foreach($adminextend as $extend) {
 		$extend_lang = array();
-		@include DISCUZ_ROOT.'./source/language/lang_admincp_'.$extend;
+/*vot*/		@include DISCUZ_ROOT.'./source/language/sc/lang_admincp_'.$extend;
 		$lang = array_merge($lang, $extend_lang);
 	}
 }

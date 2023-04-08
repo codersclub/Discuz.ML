@@ -42,7 +42,7 @@ $lang = array (
   'disagree' => '不同意',
   'index_activation' => '您的账号需要激活',
   'invite_code' => '邀请码',
-  'login_inactive' => '放弃激活，现在<a href="member.php?mod={$_G[setting][regname]}">{$_G[setting][reglinkname]}</a>',
+/*vot*/  'login_inactive' => '放弃激活，现在<a href="member.php?mod={$_G[setting][regname]}">注册帐号</a>',
   'login_now' => '已有账号？现在登录',
   'password_confirm' => '确认密码',
   'register_buyinvitecode' => '还没有邀请码？点击此处获取',
@@ -56,6 +56,8 @@ $lang = array (
   'register_username_tips' => '用户名由 3 到 15 个字符组成',
   'register_validate_email_tips' => '注册需要验证邮箱，请务必填写正确的邮箱，提交后请及时查收邮件。<br />您可能需要等待几分钟才能收到邮件，如果收件箱没有，请检查一下垃圾邮件箱。',
   'rulemessage' => '网站服务条款',
+// Added by Valery Votintsev, discuz.ml
+	'agree_with'			=> '同意',//'I agree with the ',
 );
 
 ?>

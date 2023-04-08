@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 34422 2014-04-23 09:56:17Z nemohou $
  *
- *	Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 $lang = array (
@@ -519,13 +519,9 @@ $lang = array (
 	'change_language_title'	=> '更改语言',//'Change language:',
 	'changestyle_title'	=> '切换风格',//'Change Style',
 
-//vot:
 	'new'		=> '全新',//'New',
-
 	'register'	=> '注册',//'Register',
-
 	'or'		=> '或者',//'or',
-
 	'upload_selectfile' => '浏览',//'Browse',
 
 // Google Maps
@@ -539,3 +535,4 @@ $lang = array (
 
 );
 
+?>

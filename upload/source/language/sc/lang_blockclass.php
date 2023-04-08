@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_blockclass.php 31069 2012-07-12 09:13:58Z zhangguosheng $
- *      Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -468,5 +467,6 @@ $lang = array(
 	'blockclass_profile_group_edu'		=> '教育情况',//'Education',
 	'blockclass_profile_group_work'		=> '工作情况',//'Work Info',
 	'blockclass_profile_group_info'		=> '个人信息',//'Personal Info',
-
 );
+
+?>

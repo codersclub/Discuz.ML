@@ -1317,6 +1317,21 @@ $lang = array (
   'hiderecover_tips' => '点击恢复主题隐藏状态',
   'hiderecover' => '恢复隐藏',
   'content_actions' => '更多操作',
+
+// Added by Valery Votintsev
+	'view_thread_textmode'		=> '文字模式',//'Text mode',
+	'like'				=> '喜欢',//'Like',
+	'in'				=> '在',//' &nbsp;In',
+	'reply_num'			=> '回复',//'Replies',
+	'loading'			=> '加载中...',//'Loading...',
+	'follow_add'			=> '收听',//'Listen',//'Subscribe',
+	'modmenu'			=> '本主题菜单',//'Thread Menu',
+//	'e_paste'			=> '粘贴',//'Paste',
+	'disable_post_parseurl'		=> '禁用 链接识别',//'Disable Parse URL',
+	'disable_smilies'		=> '禁用 表情',//'Disable Smiles',
+	'disable_discuzcode'		=> '禁用 编辑器代码',//'Disable BB-Code',
+	'modmenu'			=> '审核中',//'Thread menu:',
+	'upload_time'			=> '上传日期',//'Upload Time',
 );
 
 ?>

@@ -6,7 +6,7 @@
  *
  *      $Id: lang_template.php 33861 2013-08-22 09:16:38Z nemohou $
  *
- *      Modified by Valery Votintsev, codersclub.org
+ *      This file is automatically generate
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -1558,7 +1558,7 @@ $lang = array (
 // Added by Valery Votintsev
 	'login_immediately'	=> '马上登录',//'Login Now',
 	'nofollow'		=> '不收听',//'Stop follow',
-	'views'			=> '空间查看数',//'Views',
+//vot	'views'			=> '空间查看数',//'Views',
 	'in'			=> '在',//' &nbsp;In',
 	'poston'		=> '发表于',//'Post time',
 	'views'			=> '查看',//'Views',
@@ -1572,3 +1572,4 @@ $lang = array (
 	'reset'			=> '重启',//'Reset',
 	'lastupdate'		=> '更新',//'最后更新',//'Updated',
 );
+?>

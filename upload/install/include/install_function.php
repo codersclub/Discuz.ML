@@ -1965,7 +1965,7 @@ function lang_exists($lang_id='') {
 		exit('Invalid language id selected! Check the file config/config_global_default.php for Enabled Language List is correct!');
 	}
 
-	if(is_file(ROOT_PATH . 'source/language/'.$lang_id .'/lang_install.php')) {
+	if(is_file(ROOT_PATH . 'source/language/'.$lang_id .'/install_lang.php')) {
 		return true;
 	}
 

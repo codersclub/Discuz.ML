@@ -326,3 +326,4 @@ $lang = array (
 	'select_page'	=> '选择页面',//'Select page',
 );
 
+?>

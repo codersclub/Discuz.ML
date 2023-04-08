@@ -30,7 +30,7 @@ require ROOT_PATH.'./install/include/install_function.php';
 //vot: Load the install language
 /*vot*/ $language = getgpc('language');
 /*vot*/ $lng = $language ? $language : 'sc';
-/*vot*/ require ROOT_PATH.'./source/language/' . $lng . '/lang_install.php';
+/*vot*/ require ROOT_PATH.'./source/language/' . $lng . '/install_lang.php';
 
 $view_off = getgpc('view_off');
 
