@@ -85,7 +85,7 @@ class forum_upload {
 			}
 		}
 
-		// 修复敏感词拦截无明确提示的问题
+		// Fix the problem that there is no clear prompt for sensitive word blocking
 		$filename = censor($upload->attach['name'], NULL, TRUE);
 		if(is_array($filename)) {
 			return $this->uploadmsg(12);
@@ -99,7 +99,7 @@ class forum_upload {
 			$imageinfo = @getimagesize($upload->attach['tmp_name']);
 			list($width, $height, $type) = !empty($imageinfo) ? $imageinfo : array(0, 0, 0);
 			$size = $width * $height;
-			// 新增 GD 图片像素点上限服务器侧拦截
+			// Add the server-side image pixel limit for GD
 			if((!getglobal('setting/imagelib') && $size > (getglobal('setting/gdlimit') ? getglobal('setting/gdlimit') : 16777216)) || $size < 16 ) {
 				return $this->uploadmsg(13);
 			}

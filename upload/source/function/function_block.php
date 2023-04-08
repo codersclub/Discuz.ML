@@ -417,7 +417,7 @@ function block_template($bid) {
 								$ftp = & discuz_ftp::instance();
 								$ftp->connect();
 								if($ftp->connectid && $ftp->ftp_size($thumbpath) > 0) {
-									$picflag = 1; //common_block_pic表中的picflag标识（0本地，1远程）
+									$picflag = 1; //The picflag identifier in the common_block_pic table (0 local, 1 remote)
 									$_G['block_makethumb'] = true;
 									@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
 									C::t('common_block_item')->update($itemid, array('picflag' => 2));
@@ -426,13 +426,13 @@ function block_template($bid) {
 									$image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2);
 									if(file_exists($_G['setting']['attachdir'].'./'.$thumbpath)) {
 										if(ftpperm(fileext($thumbpath), filesize($_G['setting']['attachdir'].'./'.$thumbpath)) && $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath)) {
-											$picflag = 1; //common_block_pic表中的picflag标识（0本地，1远程）
+											$picflag = 1; //The picflag identifier in the common_block_pic table (0 local, 1 remote)
 											$_G['block_makethumb'] = true;
 											@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
 											C::t('common_block_item')->update($itemid, array('picflag' => 2));
 											$replacevalue = (preg_match('/^https?:\/\//is', $thumbpath) ? '' : $_G['setting']['ftp']['attachurl']).$thumbpath;
 										} else {
-											$picflag = 0; //common_block_pic表中的picflag标识（0本地，1远程）
+											$picflag = 0; //The picflag identifier in the common_block_pic table (0 local, 1 remote)
 											$_G['block_makethumb'] = true;
 										}
 									}
