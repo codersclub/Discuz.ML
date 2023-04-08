@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[wechat/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.1.6]]></item>
+			<item id="version"><![CDATA[1.1.8]]></item>
 			<item id="__modules">
 				<item id="1">
 					<item id="name"><![CDATA[wechat]]></item>
@@ -184,7 +184,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2,X3.3,X3.4]]></item>
+		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2,X3.3,X3.4,X3.5]]></item>
 		<item id="language">
 			<item id="scriptlang">
 				<item id="wechat_undefined"><![CDATA[This link has expired, please re-generate this link on WeChat]]></item>
@@ -293,6 +293,7 @@ This post contains personal information, please don't share it]]></item>
 				<item id="wsq_domain_comment"><![CDATA[You can set up a sub-domain name to directly access the micro-community of this site (only public number with "Advanced Interface" service). After the root domain is set, the domain name binding can take effect here.</a>]]></item>
 				<item id="wechat_forumdisplay_reply"><![CDATA[Whether to show the latest replies at the post list page]]></item>
 				<item id="wsq_api_register_error"><![CDATA[Micro-community registration failed, please try again later]]></item>
+				<item id="wsq_api_register_close"><![CDATA[The micro-community no longer provides services to new users, please use the official account mode to provide services to the webmaster]]></item>
 				<item id="wsq_api_servertime_error"><![CDATA[Server time error, please try again after modification]]></item>
 				<item id="wsq_api_edit_error"><![CDATA[Micro-community data modification failed, please try again later]]></item>
 				<item id="wsq_menu_at_error"><![CDATA[You need to fill in the WeChat Developer ID to use this feature.]]></item>

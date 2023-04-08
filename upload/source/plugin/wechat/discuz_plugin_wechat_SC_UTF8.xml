@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[wechat/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.1.6]]></item>
+			<item id="version"><![CDATA[1.1.8]]></item>
 			<item id="__modules">
 				<item id="1">
 					<item id="name"><![CDATA[wechat]]></item>
@@ -184,22 +184,22 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2,X3.3,X3.4]]></item>
+		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2,X3.3,X3.4,X3.5]]></item>
 		<item id="language">
 			<item id="scriptlang">
 				<item id="wechat_undefined"><![CDATA[此链接已过期，请重新在微信中生成此链接]]></item>
-				<item id="wechat_openid_exists"><![CDATA[此微信帐号已绑定其他用户，请更换]]></item>
+				<item id="wechat_openid_exists"><![CDATA[此微信账号已绑定其他用户，请更换]]></item>
 				<item id="wechat_tips"><![CDATA[
 					<li>选择“认证服务号”服务的站长请在“开发者中心”的 OAuth2.0 网页授权设置处设置授权回调页面域名为本网站域名</li>
 					]]></item>
 				<item id="wechatapi_tips"><![CDATA[
-					<li>插件开发人员在设计新的微信及 Discuz! 微社区类插件前请务必仔细阅读《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技术文库</a>》中的内容</li>
-					<li>开发技术交流，欢迎访问“<a href="http://open.discuz.net/?!bbs" target="_blank">Discuz! 开发者交流</a>”论坛</li>
+					<li>插件开发人员在设计新的微信及 Discuz! 微社区类插件前请务必仔细阅读《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技术文库</a>》中的内容</li>
+					<li>开发技术交流，欢迎访问“<a href="https://open.dismall.com/?!bbs" target="_blank">Discuz! 开发者交流</a>”论坛</li>
 					]]></item>
 				<item id="wsq_tips"><![CDATA[
 					<li>完善以下资料后，您的微社区将自动开通，开通后用户可以在微信内阅读您的论坛内容，发帖也将同步到您的论坛</li>
 					<li>开通完成后，请将系统提供的微社区 URL 添加到微信自定义菜单或者设为关键词触发内容以便用户快速访问</li>
-					<li>如果您的微社区始终无法开通，请确认您的网站处于公网环境下，并将“<a href="http://addon.discuz.com/?@mobile.plugin" target="_blank">掌上论坛</a>”插件升级到最新版本</li>
+					<li>如果您的微社区始终无法开通，请确认您的网站处于公网环境下，并将“<a href="https://addon.dismall.com/?@mobile.plugin" target="_blank">掌上论坛</a>”插件升级到最新版本</li>
 					<li>如果您的微社区无法正常发帖，请确认您的论坛当前版本已升级到最新 <a href="{ADMINSCRIPT}upgrade">检查版本</a></li>
 					]]></item>
 				<item id="menu_tips"><![CDATA[
@@ -211,7 +211,7 @@
 				<item id="response_tips"><![CDATA[
 					<li>此处可以设置微信公众号收到消息后的响应内容，默认由本插件自身控制，您可以自定义其中的内容</li>
 					<li>如果您的公众号没有“自定义菜单”服务，并且希望在收到信息后响应微社区的访问功能，请在“响应内容”中填写“LOGIN_WSQ”</li>
-					<li>我们允许其他插件接管此消息的控制权，请仔细阅读《<a href="http://open.discuz.net/?!devdoc" target="_blank">Discuz! 技术文库</a>》中的内容</li>
+					<li>我们允许其他插件接管此消息的控制权，请仔细阅读《<a href="https://open.dismall.com/?!devdoc" target="_blank">Discuz! 技术文库</a>》中的内容</li>
 					]]></item>
 				<item id="discuzqr_tips"><![CDATA[
 					<img src="source/plugin/wechat/image/discuz_qr.jpg" align="left" width="80" /><br />扫描关注Discuz!官方微信<br /><br />获取官方最新动态
@@ -247,7 +247,7 @@
 				<item id="wechat_responseexts"><![CDATA[扩展嵌入点]]></item>
 				<item id="wechat_devids"><![CDATA[扩展开发者 ID]]></item>
 				<item id="wechat_qrcode"><![CDATA[二维码]]></item>
-				<item id="wechat_qrcode_comment"><![CDATA[请把微信公众平台“帐号信息”中的二维码下载后上传到这里，服务号可忽略此设置<br />{qrcode}]]></item>
+				<item id="wechat_qrcode_comment"><![CDATA[请把微信公众平台“账号信息”中的二维码下载后上传到这里，服务号可忽略此设置<br />{qrcode}]]></item>
 				<item id="wechat_at_need"><![CDATA[服务号必须填写开发者 ID]]></item>
 				<item id="wechat_at_geterror"><![CDATA[开发者 ID 填写错误或者您的服务器不支持 cURL 的 SSL 模式访问]]></item>
 				<item id="wechat_at_qrgeterror"><![CDATA[获取二维码失败，请确认您的公众号是否拥有“高级接口”服务及其“生成带参数二维码”的内容]]></item>
@@ -258,7 +258,7 @@
 				<item id="wechat_newusergroupid"><![CDATA[微信注册用户默认用户组]]></item>
 				<item id="wechat_newusergroupid_comment"><![CDATA[微信注册用户的默认用户组，留空表示使用默认注册用户组]]></item>
 				<item id="wechat_followurl"><![CDATA[关注页面网址]]></item>
-				<item id="wechat_followurl_comment"><![CDATA[方便用户通过此文章关注您的公众号。<a href="http://addon.discuz.com/?!wechat_followurl_faq" target="_blank">如何使用？</a>]]></item>
+				<item id="wechat_followurl_comment"><![CDATA[方便用户通过此文章关注您的公众号。<a href="https://addon.dismall.com/?!wechat_followurl_faq" target="_blank">如何使用？</a>]]></item>
 				<item id="wsq_followurl_error"><![CDATA[关注页面网址错误，必须是“mp.wexin.qq.com”域名下的网站]]></item>
 				<item id="wechat_response_text_codeerror"><![CDATA[您输入的数字码无效，请重新输入]]></item>
 				<item id="wechat_response_text_title"><![CDATA[“{bbname}”微社区]]></item>
@@ -272,8 +272,8 @@
 
 此信息包含个人资料，请不要随意分享]]></item>
 				<item id="wechat_message_codefull"><![CDATA[目前无法通过微信登录，请稍后再试]]></item>
-				<item id="wechat_message_unbinded"><![CDATA[您的论坛帐号和微信帐号解除绑定成功。]]></item>
-				<item id="wechat_message_unbind_fail"><![CDATA[帐号解绑失败，请稍后再试]]></item>
+				<item id="wechat_message_unbinded"><![CDATA[您的论坛账号和微信账号解除绑定成功。]]></item>
+				<item id="wechat_message_unbind_fail"><![CDATA[账号解绑失败，请稍后再试]]></item>
 				<item id="wechat_login_closed"><![CDATA[微信登录功能还未启用，请联系管理员]]></item>
 				<item id="wsq_password_reset"><![CDATA[您论坛的独立密码已设置成功。]]></item>
 				<item id="wsq_sitename"><![CDATA[微社区名称]]></item>
@@ -293,6 +293,7 @@
 				<item id="wsq_domain_comment"><![CDATA[您可以设置一个二级域名直接访问本站的微社区(仅限拥有“高级接口”服务的公众号)。根域名设置完后，此处域名绑定才能生效</a>]]></item>
 				<item id="wechat_forumdisplay_reply"><![CDATA[帖子列表页是否显示最新回复]]></item>
 				<item id="wsq_api_register_error"><![CDATA[微社区注册失败，请稍后再试]]></item>
+				<item id="wsq_api_register_close"><![CDATA[微社区已不再对新用户提供服务，请使用公众号模式向站长提供服务]]></item>
 				<item id="wsq_api_servertime_error"><![CDATA[服务器时间错误，请修改后再试]]></item>
 				<item id="wsq_api_edit_error"><![CDATA[微社区资料修改失败，请稍后再试]]></item>
 				<item id="wsq_menu_at_error"><![CDATA[您需要填写微信开发者 ID 后才能使用此功能]]></item>
@@ -319,7 +320,7 @@
 				<item id="wsq_global_banner"><![CDATA[是否展示全局活动 Banner]]></item>
 				<item id="wsq_global_banner_comment"><![CDATA[选择“是”，微社区顶部将展示当前的微社区全局活动]]></item>
 				<item id="wsq_viewapp_local"><![CDATA[本地应用]]></item>
-				<item id="wsq_viewapp_local_comment"><![CDATA[通过 Discuz! 应用中心安装在站长本地的插件应用，查看应用列表请<a href="http://addon.discuz.com/?!wsqapp" class="bold">点击这里</a>]]></item>
+				<item id="wsq_viewapp_local_comment"><![CDATA[通过 Discuz! 应用中心安装在站长本地的插件应用，查看应用列表请<a href="https://addon.dismall.com/?!wsqapp" class="bold">点击这里</a>]]></item>
 				<item id="wsq_viewapp_online"><![CDATA[线上应用]]></item>
 				<item id="wsq_viewapp_online_comment"><![CDATA[线上应用主要是通过接口调用的方式为站长提供运营组件、全局活动等功能（如刮刮卡，红包等）<br />使用线上应用前需要先在微社区应用平台（<a href="http://mp.wsq.qq.com/bindSite" target="_blank" class="bold">http://mp.wsq.qq.com/bindSite</a>）绑定站点，已绑定的站点请直接管理应用（<a href="http://mp.wsq.qq.com" target="_blank" class="bold">http://mp.wsq.qq.com</a>）]]></item>
 				<item id="wsq_viewapp_pubevent"><![CDATA[活动中心]]></item>
@@ -365,9 +366,9 @@
 				<item id="response_subscribe_plugin"><![CDATA[公众号关注的消息已恢复为插件模式]]></item>
 				<item id="response_message_custom"><![CDATA[普通消息已切换为自定义模式]]></item>
 				<item id="response_message_plugin"><![CDATA[普通消息已恢复为插件模式]]></item>
-				<item id="wechat_member_bind_succeed"><![CDATA[帐号已成功绑定]]></item>
-				<item id="wechat_member_bind_qrauth_lost"><![CDATA[请求超时，请重新点击“微信帐号绑定”按钮]]></item>
-				<item id="wechat_member_register_succeed"><![CDATA[帐号已成功注册]]></item>
+				<item id="wechat_member_bind_succeed"><![CDATA[账号已成功绑定]]></item>
+				<item id="wechat_member_bind_qrauth_lost"><![CDATA[请求超时，请重新点击“微信账号绑定”按钮]]></item>
+				<item id="wechat_member_register_succeed"><![CDATA[账号已成功注册]]></item>
 				<item id="wechat_member_register_faild"><![CDATA[用户注册失败，请稍后再试，当前用户暂时无法访问]]></item>
 				<item id="wechat_member_auth_fail"><![CDATA[安全校验失败，请重新扫描登录]]></item>
 				<item id="wechatapi_redirect"><![CDATA[微信跳转 URL]]></item>
@@ -390,7 +391,7 @@
 				<item id="api_method"><![CDATA[方法]]></item>
 				<item id="lang_wechat_logintip"><![CDATA[扫一扫，访问微社区]]></item>
 				<item id="lang_wechat_login"><![CDATA[关注本站微信公众号登录]]></item>
-				<item id="lang_wechat_bind"><![CDATA[微信扫一扫以绑定帐号]]></item>
+				<item id="lang_wechat_bind"><![CDATA[微信扫一扫以绑定账号]]></item>
 				<item id="lang_wechat_threadmessage"><![CDATA[<br /><a onclick="return false" href="plugin.php?id=wechat:qrcode&threadqr={tid}&access=yes&inajax=yes#post_{pid}" onmouseover="ajaxmenu(this, 500, 1, 2, '43', null, 'p_pop', '');return false;" style="font-size:12px;color:#708090;">来自: 微社区</a>]]></item>
 			    <item id="mass_not_exist"><![CDATA[群发消息不存在]]></item>
 				<item id="mass_sent_succ"><![CDATA[群发消息提交成功]]></item>
@@ -484,16 +485,16 @@
 				<item id="wechat_qrcode_input_cancel"><![CDATA[您已取消本次登录请求，数字码已失效<br />请点击左上角返回微信聊天]]></item>
 				<item id="wechat_qrcode_input_confirm"><![CDATA[即将在 PC 浏览器上登录用户 $member[username]<br />请确认是否本人操作]]></item>
 				<item id="wechat_qrcode_input_confirm_yes"><![CDATA[我确认登录此用户]]></item>
-				<item id="wechat_spacecp_bind_title"><![CDATA[您已将本站帐号 <strong>{$_G[member][username]}</strong> 与微信绑定]]></item>
+				<item id="wechat_spacecp_bind_title"><![CDATA[您已将本站账号 <strong>{$_G[member][username]}</strong> 与微信绑定]]></item>
 				<item id="wechat_spacecp_setpw"><![CDATA[设置独立密码]]></item>
 				<item id="wechat_spacecp_pw"><![CDATA[新密码]]></item>
 				<item id="wechat_spacecp_repw"><![CDATA[确认密码]]></item>
-				<item id="wechat_spacecp_unbind"><![CDATA[解除已绑定帐号？]]></item>
+				<item id="wechat_spacecp_unbind"><![CDATA[解除已绑定账号？]]></item>
 				<item id="wechat_spacecp_setpw_first"><![CDATA[请设置独立密码后再解除绑定关系]]></item>
-				<item id="wechat_spacecp_unbind_confirm"><![CDATA[您确认要解除与本站帐号的绑定关系？]]></item>
+				<item id="wechat_spacecp_unbind_confirm"><![CDATA[您确认要解除与本站账号的绑定关系？]]></item>
 				<item id="wechat_spacecp_unbind_button"><![CDATA[确认解除]]></item>
-				<item id="wechat_bind"><![CDATA[绑定微信帐号]]></item>
-				<item id="wechat_login"><![CDATA[微信帐号登录]]></item>
+				<item id="wechat_bind"><![CDATA[绑定微信账号]]></item>
+				<item id="wechat_login"><![CDATA[微信账号登录]]></item>
 				<item id="wechat_bind_comfirm_prompt"><![CDATA[请输入您的论坛登录密码以确认身份]]></item>
 				<item id="quickregister"><![CDATA[立即注册]]></item>
 				<item id="inputyourname"><![CDATA[请输入用户名]]></item>
@@ -501,7 +502,7 @@
 				<item id="wsq_threadqr"><![CDATA[用微信扫一扫，互动赢积分]]></item>
 				<item id="wechat_share"><![CDATA[微信]]></item>
 				<item id="wechat_sharetitle"><![CDATA[分享到微信]]></item>
-				<item id="wechat_register"><![CDATA[填写以下信息完成微信帐号注册]]></item>
+				<item id="wechat_register"><![CDATA[填写以下信息完成微信账号注册]]></item>
 				<item id="show_recommend_number"><![CDATA[已有 <strong class="xi1">{$post[voters]}</strong> 人点赞]]></item>
 				<item id="show_scanqr"><![CDATA[通过微信扫描二维码为我拉票]]></item>
 				<item id="resource_push"><![CDATA[推送到微信素材]]></item>
