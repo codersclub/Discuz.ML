@@ -144,7 +144,7 @@ button::-moz-focus-inner { border: none; padding: 0; }
 	.mainhd.toggle #frameuinfo:before { content: ""; display: block; color: #2b7acd; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 5px solid; border-right: 0; transform: translate(-5px, 0); }
 }
 
-/* 日夜模式 */
+/* Day and night mode */
 .darkmode {
 	align-self: flex-end;
 	width: 45px;

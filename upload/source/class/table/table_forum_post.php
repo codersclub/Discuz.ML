@@ -654,7 +654,7 @@ class table_forum_post extends discuz_table
 			} catch (Exception $e) {
 				if ($try_count >= 2) usleep(mt_rand(2, 6) * 10000); // If it doesn't work the second time, stop for tens of milliseconds and try again
 				if ($try_count >= 3 && $try_count <= 4) usleep(mt_rand(4, 6) * 10000); // Add delay after the third time
-				if ($try_count === 5) throw $e; // 如果第五次不行，抛异常
+				if ($try_count === 5) throw $e; // If failed 5 timess, throw an exception
 			}
 		}
 	}

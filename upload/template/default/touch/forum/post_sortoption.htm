@@ -196,7 +196,7 @@ $(document).on('change', '.sortattach_button', function() {
 				popup.open(STATUSMSG[dataarr[2]] + sizelimit, 'alert');
 			}
 		};
-		if(typeof FileReader != 'undefined' && this.files[0]) {//note 支持html5上传新特性
+		if(typeof FileReader != 'undefined' && this.files[0]) {//note: Support html5 upload new feature
 			
 			$.buildfileupload({
 				uploadurl:'misc.php?mod=swfupload&operation=upload&type=image&inajax=yes&infloat=yes&simple=2',
