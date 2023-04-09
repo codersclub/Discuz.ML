@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: install_lang.php 36287 2016-12-12 03:59:05Z nemohou $
- *      $Id: lang_install.php by Valery Votintsev, codersclub.org
+ *      Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_COMSENZ')) {
@@ -396,3 +396,4 @@ $msglang = array(
 	'config_nonexistence' => '您的 config.inc.php 不存在, 无法继续安装, 请用 FTP 将该文件上传后再试。',
 );
 
+?>
