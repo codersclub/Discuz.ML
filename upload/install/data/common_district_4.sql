@@ -49,6 +49,35 @@ UPDATE `pre_common_district` SET `code`='EG', `name`='Egypt', `level`=0, `upid`=
 
 
 -- 3) ADD NEW COUNTRIES
+-- `code`='AR', `name`='Argentina', `displayorder`=1130 WHERE `id`=563;
+-- `code`='AT', `name`='Austria', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1150 WHERE `id`=551;
+-- `code`='AU', `name`='Australia', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1160 WHERE `id`=537;
+-- `code`='BR', `name`='Brazil', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1330 WHERE `id`=562;
+-- `code`='CA', `name`='Canada', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1400 WHERE `id`=536;
+-- `code`='CN', `name`='China', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1405 WHERE `id`=35;
+-- `code`='CH', `name`='Switzerland', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1450 WHERE `id`=544;
+-- `code`='CZ', `name`='Czech Republic', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1570 WHERE `id`=542;
+-- `code`='DE', `name`='Germany', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1580 WHERE `id`=541;
+-- `code`='DK', `name`='Denmark', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1600 WHERE `id`=548;
+-- `code`='EG', `name`='Egypt', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1660 WHERE `id`=565;
+-- `code`='ES', `name`='Spain', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1690 WHERE `id`=555;
+-- `code`='FI', `name`='Finland', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1720 WHERE `id`=549;
+-- `code`='GB', `name`='Great Britain', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1800 WHERE `id`=539;
+-- `code`='IE', `name`='Ireland', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2050 WHERE `id`=550;
+-- `code`='IN', `name`='India', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2080 WHERE `id`=559;
+-- `code`='IT', `name`='Italy', `level`=0,`upid`=0, `usetype`=3, `displayorder`=2130 WHERE `id`=552;
+-- `code`='JP', `name`='Japan', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2170 WHERE `id`=561;
+-- `code`='KR', `name`='Korea, Republic of', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2250 WHERE `id`=556;
+-- `code`='MY', `name`='Malaysia', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2605 WHERE `id`=558;
+-- `code`='NL', `name`='Netherlands', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2690 WHERE `id`=543;
+-- `code`='NO', `name`='Norway', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2700 WHERE `id`=546;
+-- `code`='NZ', `name`='New Zealand', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2740 WHERE `id`=538;
+-- `code`='RU', `name`='Russia', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2950 WHERE `id`=554;
+-- `code`='SE', `name`='Sweden', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3010 WHERE `id`=547;
+-- `code`='SG', `name`='Singapore', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3020 WHERE `id`=557;
+-- `code`='TH', `name`='Thailand', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3220 WHERE `id`=560;
+-- `code`='UA', `name`='Ukraine', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3350 WHERE `id`=553;
+-- `code`='ZA', `name`='South Africa', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3540 WHERE `id`=564;
 
 INSERT INTO `pre_common_district`
 (`id`, `code`, `name`, `level`, `upid`, `usetype`, `displayorder`) VALUES
@@ -67,10 +96,7 @@ INSERT INTO `pre_common_district`
 (45210, 'AO', 'Angola', 0, 0, 3, 1100),
 (45220, 'AP', 'Asia/Pacific Region', 0, 0, 0, 1110),
 (45230, 'AQ', 'Antarctica', 0, 0, 0, 1120),
--- `code`='AR', `name`='Argentina', `displayorder`=1130 WHERE `id`=563;
 (45240, 'AS', 'American Samoa', 0, 0, 3, 1140),
--- `code`='AT', `name`='Austria', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1150 WHERE `id`=551;
--- `code`='AU', `name`='Australia', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1160 WHERE `id`=537;
 (45250, 'AW', 'Aruba', 0, 0, 3, 1170),
 (45260, 'AX', 'Aland Islands', 0, 0, 3, 1180),
 (45270, 'AZ', 'Azerbaijan', 0, 0, 3, 1190),
@@ -87,20 +113,16 @@ INSERT INTO `pre_common_district`
 (45380, 'BM', 'Bermuda', 0, 0, 3, 1300),
 (45390, 'BN', 'Brunei Darussalam', 0, 0, 3, 1310),
 (45400, 'BO', 'Bolivia', 0, 0, 3, 1320),
--- `code`='BR', `name`='Brazil', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1330 WHERE `id`=562;
 (45410, 'BS', 'Bahamas', 0, 0, 3, 1340),
 (45420, 'BT', 'Bhutan', 0, 0, 3, 1350),
 (45430, 'BV', 'Bouvet Island', 0, 0, 3, 1360),
 (45440, 'BW', 'Botswana', 0, 0, 3, 1370),
 (45450, 'BY', 'Belarus', 0, 0, 3, 1380),
 (45460, 'BZ', 'Belize', 0, 0, 3, 1390),
--- `code`='CA', `name`='Canada', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1400 WHERE `id`=536;
--- `code`='CN', `name`='China', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1405 WHERE `id`=35;
 (45470, 'CC', 'Cocos (Keeling) Islands', 0, 0, 3, 1410),
 (45480, 'CD', 'Congo, The Democratic Republic of the', 0, 0, 3, 1420),
 (45490, 'CF', 'Central African Republic', 0, 0, 3, 1430),
 (45500, 'CG', 'Congo', 0, 0, 3, 1440),
--- `code`='CH', `name`='Switzerland', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1450 WHERE `id`=544;
 (45510, 'CI', 'Cote D\'Ivoire', 0, 0, 3, 1460),
 (45520, 'CK', 'Cook Islands', 0, 0, 3, 1470),
 (45530, 'CL', 'Chile', 0, 0, 3, 1480),
@@ -112,29 +134,22 @@ INSERT INTO `pre_common_district`
 (45590, 'CV', 'Cape Verde', 0, 0, 3, 1540),
 (45600, 'CX', 'Christmas Island', 0, 0, 3, 1550),
 (45610, 'CY', 'Cyprus', 0, 0, 3, 1560),
--- `code`='CZ', `name`='Czech Republic', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1570 WHERE `id`=542;
--- `code`='DE', `name`='Germany', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1580 WHERE `id`=541;
 (45620, 'DJ', 'Djibouti', 0, 0, 3, 1590),
--- `code`='DK', `name`='Denmark', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1600 WHERE `id`=548;
 (45630, 'DM', 'Dominica', 0, 0, 3, 1610),
 (45640, 'DO', 'Dominican Republic', 0, 0, 3, 1620),
 (45650, 'DZ', 'Algeria', 0, 0, 3, 1630),
 (45660, 'EC', 'Ecuador', 0, 0, 3, 1640),
 (45670, 'EE', 'Estonia', 0, 0, 3, 1650),
--- `code`='EG', `name`='Egypt', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1660 WHERE `id`=565;
 (45690, 'EH', 'Western Sahara', 0, 0, 3, 1670),
 (45700, 'ER', 'Eritrea', 0, 0, 3, 1680),
--- `code`='ES', `name`='Spain', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1690 WHERE `id`=555;
 (45710, 'ET', 'Ethiopia', 0, 0, 3, 1700),
 (45720, 'EU', 'Europe', 0, 0, 3, 1710),
--- `code`='FI', `name`='Finland', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1720 WHERE `id`=549;
 (45730, 'FJ', 'Fiji', 0, 0, 3, 1730),
 (45740, 'FK', 'Falkland Islands (Malvinas)', 0, 0, 3, 1740),
 (45750, 'FM', 'Micronesia, Federated States of', 0, 0, 3, 1750),
 (45760, 'FO', 'Faroe Islands', 0, 0, 3, 1760),
 (45770, 'FX', 'France, Metropolitan', 0, 0, 3, 1780),
 (45780, 'GA', 'Gabon', 0, 0, 3, 1790),
--- `code`='GB', `name`='Great Britain', `level`=0, `upid`=0, `usetype`=3, `displayorder`=1800 WHERE `id`=539;
 (45790, 'GD', 'Grenada', 0, 0, 3, 1810),
 (45800, 'GE', 'Georgia', 0, 0, 3, 1820),
 (45810, 'GF', 'French Guiana', 0, 0, 3, 1830),
@@ -158,19 +173,15 @@ INSERT INTO `pre_common_district`
 (45990, 'HT', 'Haiti', 0, 0, 3, 2020),
 (46000, 'HU', 'Hungary', 0, 0, 3, 2030),
 (46010, 'ID', 'Indonesia', 0, 0, 3, 2040),
--- `code`='IE', `name`='Ireland', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2050 WHERE `id`=550;
 (46020, 'IL', 'Israel', 0, 0, 3, 2060),
 (46030, 'IM', 'Isle of Man', 0, 0, 3, 2070),
--- `code`='IN', `name`='India', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2080 WHERE `id`=559;
 (46040, 'IO', 'British Indian Ocean Territory', 0, 0, 3, 2090),
 (46050, 'IQ', 'Iraq', 0, 0, 3, 2100),
 (46060, 'IR', 'Iran, Islamic Republic of', 0, 0, 3, 2110),
 (46070, 'IS', 'Iceland', 0, 0, 3, 2120),
--- `code`='IT', `name`='Italy', `level`=0,`upid`=0, `usetype`=3, `displayorder`=2130 WHERE `id`=552;
 (46080, 'JE', 'Jersey', 0, 0, 3, 2140),
 (46090, 'JM', 'Jamaica', 0, 0, 3, 2150),
 (46100, 'JO', 'Jordan', 0, 0, 3, 2160),
--- `code`='JP', `name`='Japan', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2170 WHERE `id`=561;
 (46110, 'KE', 'Kenya', 0, 0, 3, 2180),
 (46120, 'KG', 'Kyrgyzstan', 0, 0, 3, 2190),
 (46130, 'KH', 'Cambodia', 0, 0, 3, 2200),
@@ -178,7 +189,6 @@ INSERT INTO `pre_common_district`
 (46150, 'KM', 'Comoros', 0, 0, 3, 2220),
 (46160, 'KN', 'Saint Kitts and Nevis', 0, 0, 3, 2230),
 (46170, 'KP', 'Korea, Democratic People\'s Republic of', 0, 0, 3, 2240),
--- `code`='KR', `name`='Korea, Republic of', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2250 WHERE `id`=556;
 (46180, 'KW', 'Kuwait', 0, 0, 3, 2260),
 (46190, 'KY', 'Cayman Islands', 0, 0, 3, 2270),
 (46200, 'KZ', 'Kazakhstan', 0, 0, 3, 2280),
@@ -214,7 +224,6 @@ INSERT INTO `pre_common_district`
 (46500, 'MV', 'Maldives', 0, 0, 3, 2580),
 (46510, 'MW', 'Malawi', 0, 0, 3, 2590),
 (46520, 'MX', 'Mexico', 0, 0, 3, 2600),
--- `code`='MY', `name`='Malaysia', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2605 WHERE `id`=558;
 (46530, 'MZ', 'Mozambique', 0, 0, 3, 2610),
 (46540, 'NA', 'Namibia', 0, 0, 3, 2630),
 (46550, 'NC', 'New Caledonia', 0, 0, 3, 2640),
@@ -222,12 +231,9 @@ INSERT INTO `pre_common_district`
 (46570, 'NF', 'Norfolk Island', 0, 0, 3, 2660),
 (46580, 'NG', 'Nigeria', 0, 0, 3, 2670),
 (46590, 'NI', 'Nicaragua', 0, 0, 3, 2680),
--- `code`='NL', `name`='Netherlands', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2690 WHERE `id`=543;
--- `code`='NO', `name`='Norway', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2700 WHERE `id`=546;
 (46600, 'NP', 'Nepal', 0, 0, 3, 2710),
 (46610, 'NR', 'Nauru', 0, 0, 3, 2720),
 (46620, 'NU', 'Niue', 0, 0, 3, 2730),
--- `code`='NZ', `name`='New Zealand', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2740 WHERE `id`=538;
 (46630, 'OM', 'Oman', 0, 0, 3, 2750),
 (46640, 'OS', 'South Ossetia', 0, 0, 3, 2760),
 (46650, 'PA', 'Panama', 0, 0, 3, 2770),
@@ -248,14 +254,11 @@ INSERT INTO `pre_common_district`
 (46800, 'RE', 'Reunion', 0, 0, 3, 2920),
 (46810, 'RO', 'Romania', 0, 0, 3, 2930),
 (46820, 'RS', 'Serbia', 0, 0, 3, 2940),
--- `code`='RU', `name`='Russia', `level`=0, `upid`=0, `usetype`=3, `displayorder`=2950 WHERE `id`=554;
 (46830, 'RW', 'Rwanda', 0, 0, 3, 2960),
 (46840, 'SA', 'Saudi Arabia', 0, 0, 3, 2970),
 (46850, 'SB', 'Solomon Islands', 0, 0, 3, 2980),
 (46860, 'SC', 'Seychelles', 0, 0, 3, 2990),
 (46870, 'SD', 'Sudan', 0, 0, 3, 3000),
--- `code`='SE', `name`='Sweden', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3010 WHERE `id`=547;
--- `code`='SG', `name`='Singapore', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3020 WHERE `id`=557;
 (46880, 'SH', 'Saint Helena', 0, 0, 3, 3030),
 (46890, 'SI', 'Slovenia', 0, 0, 3, 3040),
 (46900, 'SJ', 'Svalbard and Jan Mayen', 0, 0, 3, 3050),
@@ -275,7 +278,6 @@ INSERT INTO `pre_common_district`
 (47040, 'TD', 'Chad', 0, 0, 3, 3190),
 (47050, 'TF', 'French Southern Territories', 0, 0, 3, 3200),
 (47060, 'TG', 'Togo', 0, 0, 3, 3210),
--- `code`='TH', `name`='Thailand', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3220 WHERE `id`=560;
 (47070, 'TJ', 'Tajikistan', 0, 0, 3, 3230),
 (47080, 'TK', 'Tokelau', 0, 0, 3, 3240),
 (47090, 'TL', 'Timor-Leste', 0, 0, 3, 3250),
@@ -288,7 +290,6 @@ INSERT INTO `pre_common_district`
 (47160, 'TV', 'Tuvalu', 0, 0, 3, 3320),
 (47170, 'TW', 'Taiwan', 0, 0, 3, 3330),
 (47180, 'TZ', 'Tanzania, United Republic of', 0, 0, 3, 3340),
--- `code`='UA', `name`='Ukraine', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3350 WHERE `id`=553;
 (47190, 'UG', 'Uganda', 0, 0, 3, 3360),
 (47200, 'UK', 'United Kingdom', 0, 0, 3, 3370),
 (47210, 'UM', 'United States Minor Outlying Islands', 0, 0, 3, 3380),
@@ -307,7 +308,6 @@ INSERT INTO `pre_common_district`
 (47330, 'YE', 'Yemen', 0, 0, 3, 3510),
 (47340, 'YT', 'Mayotte', 0, 0, 3, 3520),
 (47350, 'YU', 'Yugoslavia', 0, 0, 3, 3530),
--- `code`='ZA', `name`='South Africa', `level`=0, `upid`=0, `usetype`=3, `displayorder`=3540 WHERE `id`=564;
 (47360, 'ZM', 'Zambia', 0, 0, 3, 3550),
 (47370, 'ZR', 'Zaire', 0, 0, 3, 3560),
 (47380, 'ZW', 'Zimbabwe', 0, 0, 3, 3570),
