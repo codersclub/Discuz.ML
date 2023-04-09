@@ -507,40 +507,7 @@ function get_zodiac($birthyear) {
 	return $idx > 0 && $idx <= 12 ? lang('space', 'zodiac_'. $idx) : '';
 }
 
-//vot
-/*
-function showcountry($values, $elems=array(), $container='countrybox', $showlevel=null, $containertype = 'birth') {
-	$html = '';
-	if(!preg_match("/^[A-Z0-9]+$/", $container)) {
-		return $html;
-	}
-	if($upids && is_array($upids)) {
-		$query = DB::query('SELECT * FROM '.DB::table('common_district')." WHERE upid IN (".dimplode($upids).') ORDER BY displayorder');
-		while($value = DB::fetch($query)) {
-			if($value['level'] == 1 && ($value['id'] != $values[0] && ($value['usetype'] == 0 || !(($containertype == 'birth' && in_array($value['usetype'], array(1, 3))) || ($containertype != 'birth' && in_array($value['usetype'], array(2, 3))))))) {
-				continue;
-			}
-			$options[$value['level']][] = array($value['id'], $value['name']);
-		}
-	}
-	$names = array('province', 'city', 'district', 'community');
-	for($i=0; $i<4;$i++) {
-		$elems[$i] = !empty($elems[$i]) ? dhtmlspecialchars($elems[$i]) : ($containertype == 'birth' ? 'birth' : 'reside').$names[$i];
-	}
-	for($i=0;$i<$showlevel;$i++) {
-		$level = $i+1;
-		if(!empty($options[$level])) {
-			$jscall = "showdistrict('$container', ['$elems[0]', '$elems[1]', '$elems[2]', '$elems[3]'], $showlevel, $level, '$containertype')";
-			$html .= '<select name="'.$elems[$i].'" id="'.$elems[$i].'" class="ps" onchange="'.$jscall.'" tabindex="1">';
-			$html .= '<option value="">'.lang('spacecp', 'district_level_'.$level).'</option>';
-			foreach($options[$level] as $option) {
-				$selected = $option[0] == $values[$i] ? ' selected="selected"' : '';
-				$html .= '<option did="'.$option[0].'" value="'.$option[1].'"'.$selected.'>'.$option[1].'</option>';
-			}
-			$html .= '</select>';
-			$html .= '&nbsp;&nbsp;';
-		}
-	}
-	return $html;
+function isprofileimage($file) {
+	return is_file(getglobal('setting/attachdir').'./profile/'.$file) && strpos(realpath(getglobal('setting/attachdir').'./profile/'.$file), realpath(getglobal('setting/attachdir').'./profile/').DIRECTORY_SEPARATOR) === 0 && in_array(fileext($file), array('jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp'));
 }
-*/
+?>
