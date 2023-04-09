@@ -80,7 +80,7 @@ if($operation == 'headernav') {
 					"<input type=\"text\" class=\"txt\" size=\"2\" name=\"displayordernew[{$nav['id']}]\" value=\"{$nav['displayorder']}\">",
 					"<div><input type=\"text\" class=\"txt\" size=\"15\" name=\"namenew[{$nav['id']}]\" value=\"".dhtmlspecialchars($nav['name'])."\"$readonly>".
 /*vot*/						($nav['identifier'] == 6 && $nav['type'] == 0 ? '' : "<a href=\"###\" onclick=\"addrowdirect=1;addrow(this, 1, {$nav['id']})\" class=\"addchildboard\">{$lang['misc_customnav_add_submenu']}</a>")."</div>",
-/*vot*/					"<input type=\"text\" class=\"txtid\" size=\"16\" name=\"identifiernew[{$nav['id']}]\" value=\"{$nav['identifier']}">",
+/*vot*/					"<input type=\"text\" class=\"txtid\" size=\"16\" name=\"identifiernew[{$nav['id']}]\" value=\"{$nav['identifier']}\">",
 					$nav['identifier'] == 6 && $nav['nav'] == 0 ? $lang['misc_customnav_subtype_menu'] : "<select name=\"subtypenew[{$nav['id']}]\"><option value=\"0\" {$navsubtype[0]}>{$lang['misc_customnav_subtype_menu']}</option><option value=\"1\" {$navsubtype[1]}>{$lang['misc_customnav_subtype_sub']}</option></select>",
 					$nav['type'] == '0' || $nav['type'] == '4' || $nav['type'] == '5' ? "<span title='{$nav['url']}'>".$nav['url'].'<span>' : "<input type=\"text\" class=\"txt\" size=\"15\" name=\"urlnew[{$nav['id']}]\" value=\"".dhtmlspecialchars($nav['url'])."\">",
 					cplang($nav['type'] == '0' ? 'inbuilt' : ($nav['type'] == '3' ? 'nav_plugin' : ($nav['type'] == '4' ? 'channel' : ($nav['type'] == '5' ? 'forum' : 'custom')))),
