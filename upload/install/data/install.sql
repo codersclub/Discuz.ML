@@ -545,6 +545,7 @@ CREATE TABLE pre_common_district (
   usetype tinyint(3) unsigned NOT NULL DEFAULT '0',
   upid int(11) unsigned NOT NULL DEFAULT '0',
   displayorder int(11) NOT NULL DEFAULT '0',
+  `code` varchar(64) NOT NULL DEFAULT '',
   PRIMARY KEY (id),
   KEY upid (upid,displayorder)
 ) ENGINE=InnoDB;
