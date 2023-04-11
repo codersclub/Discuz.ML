@@ -858,11 +858,10 @@ class discuz_application extends discuz_base{
 			$this->var['setting'] = array();
 		}
 
-/*vot*/		if(empty($this->var['setting'])) {
-/*vot*/			include_once libfile('function/cache');
-/*vot*/			updatecache();
-/*vot*/		}
-
+/*vot*/		//if(empty($this->var['setting'])) {
+/*vot*/		//	include_once libfile('function/cache');
+/*vot*/		//	updatecache();
+/*vot*/		//}
 	}
 
 	public function _init_style() {
