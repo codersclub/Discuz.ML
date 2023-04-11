@@ -1016,7 +1016,7 @@ function show_db_install() {
 			}
 
 			function request_do_db_data_init() {
-				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_data_init', 'allinfo' => $allinfo)) ?>', function(data) {
+/*vot*/				ajax.get('index.php?<?= http_build_query(array('method' => 'do_db_data_init', 'allinfo' => $allinfo, 'language' => $language)) ?>', function(data) {
 					if(data.indexOf('Discuz! Database Error') !== -1 || data.indexOf('Discuz! System Error') !== -1 || data.indexOf('Fatal error') !== -1) {
 						var p = document.createElement('p');
 						p.innerText = '<?= lang('failed') ?> ' + data;
@@ -1114,7 +1114,7 @@ function show_db_install() {
 						document.getElementById('laststep').value = '<?= lang('succeed') ?>';
 						document.getElementById('laststep').disabled = false;
 						window.setTimeout(function() {
-							window.location='index.php?method=ext_info';
+/*vot*/							window.location='index.php?method=ext_info&language=<?= $language ?>';
 						}, 1000);
 					});
 				} else {
