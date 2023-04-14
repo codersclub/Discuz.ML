@@ -76,7 +76,7 @@ $shownotice
 	<div id="navcontainer" class="navcontainer">
 		<nav>
 			<a href="$basescript?frames=yes&action=index" class="logo">
-				<img src="{$staticurl}image/admincp/logo.svg" alt="Discuz! Administrator's Control Panel">
+				<img src="{$staticurl}image/admincp/logo.svg" alt="{$title}">
 			</a>
 			<ul id="leftmenu">
 EOT;
