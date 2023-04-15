@@ -7384,6 +7384,8 @@ url.rewrite-once = (
 	'delete_install_index'		=> '请通过 FTP 删除 install/index.php！',//'Please delete install/index.php via FTP!',
 
 	'detect_environment'		=> '运行环境检测',//'Detect operating environment',
+	'org_support'			=> '承接运营',//'Operating support',
+	'org_support_name'		=> '合肥贰道网络科技有限公司',//'Hefei Erdao Network Technology Co., Ltd',
 );
 
 $adminextend = array();
