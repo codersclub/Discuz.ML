@@ -76,7 +76,7 @@ $lang = array
 	'attach_downloads' => '下載次數',
 
 	'post_trade_transport' => '郵費',
-	'post_trade_transport_mail' => '平郵',
+//vot	'post_trade_transport_mail' => '平郵',
 	'post_trade_quality' => '商品成色',
 	'post_trade_quality_new' => '全新',
 	'post_trade_quality_secondhand' => '二手',
@@ -214,7 +214,7 @@ $lang = array
 	'perms_maxattachsize' => '單個最大附件尺寸',
 	'perms_maxsizeperday' => '每天最大附件總尺寸',
 	'perms_maxattachnum' => '每天最大附件數量',
-	'perms_allowbioimgcode' => '自我介紹中使用 [img] 代碼',
+//vot	'perms_allowbioimgcode' => '自我介紹中使用 [img] 代碼',
 	'perms_attachextensions' => '附件類型',
 	'perms_allowstickthread' => '主題置頂',
 	'perms_allowdigestthread' => '主題精華',

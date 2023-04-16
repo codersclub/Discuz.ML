@@ -1448,14 +1448,17 @@ $lang = array
 	'setting_seo_article' => '文章內容',
 	'setting_seo_forum' => '論壇首頁',
 	'setting_seo_forum_tips' => '<li>站點名稱&nbsp;<font class="highlight">{bbname}</font>（應用範圍：所有位置）</li><li>當前版塊名稱&nbsp;<font class="highlight">{forum}</font>（應用範圍：除首頁以外）</li><li>一級版塊名稱&nbsp;<font class="highlight">{fup}</font>（應用範圍：子版塊主題列表頁和帖子內容頁）</li><li>分區名稱&nbsp;<font class="highlight">{fgroup}</font>（應用範圍：除首頁以外）</li><li>帖子標題&nbsp;<font class="highlight">{subject}</font>（應用範圍：帖子內容頁）</li><li>主題摘要&nbsp;<font class="highlight">{summary}</font>（應用範圍：帖子內容頁）</li><li>主題標籤&nbsp;<font class="highlight">{tags}</font>（應用範圍：帖子內容頁）</li><li>分頁數&nbsp;<font class="highlight">{page}</font>（應用範圍：主題列表頁、帖子內容頁）</li>',
+/*1*/
 	'setting_seo_threadlist' => '主題列表',
 	'setting_seo_viewthread' => '帖子內容',
 	'setting_seo_home' => '家園首頁',
 	'setting_seo_home_tips' => '<li>站點名稱&nbsp;<font class="highlight">{bbname}</font>（應用範圍：所有位置）</li><li>日誌標題&nbsp;<font class="highlight">{subject}</font>（應用範圍：日誌內容頁）</li><li>日誌/相冊作者&nbsp;<font class="highlight">{user}</font>（應用範圍：日誌和相冊內容頁）</li><li>日誌摘要&nbsp;<font class="highlight">{summary}</font>（應用範圍：日誌內容頁）</li><li>日誌標籤&nbsp;<font class="highlight">{tags}</font>（應用範圍：日誌內容頁）</li><li>相冊名稱&nbsp;<font class="highlight">{album}</font>（應用範圍：相冊內容頁）</li><li>相冊描述&nbsp;<font class="highlight">{depict}</font>（應用範圍：相冊內容頁）</li>',
+/*2*/
 	'setting_seo_blog' => '日誌內容',
 	'setting_seo_album' => '相冊內容',
 	'setting_seo_group' => '群組首頁/分類',
 	'setting_seo_group_tips' => '<li>站點名稱&nbsp;<font class="highlight">{bbname}</font>（應用範圍：所有位置）</li><li>當前群組名稱&nbsp;<font class="highlight">{forum}</font>（應用範圍：除群組首頁、分類頁）</li><li>一級分類名稱&nbsp;<font class="highlight">{first}</font>（應用範圍：所有位置）</li><li>二級分類名稱&nbsp;<font class="highlight">{second}</font>（應用範圍：所有位置）</li><li>當前群組簡介&nbsp;<font class="highlight">{gdes}</font>（應用範圍：群組和群組帖子頁）</li><li>帖子標題&nbsp;<font class="highlight">{subject}</font>（應用範圍：群組帖子頁）</li><li>主題摘要&nbsp;<font class="highlight">{summary}</font>（應用範圍：群組帖子頁）</li><li>主題標籤&nbsp;<font class="highlight">{tags}</font>（應用範圍：群組帖子內容頁）</li><li>分頁數&nbsp;<font class="highlight">{page}</font>（應用範圍：主題列表頁、帖子內容頁）</li>',
+/*3*/
 	'setting_seo_grouppage' => '單一群組頁面',
 	'setting_seo_viewthread_group' => '群組帖子內容',
 	'setting_seo_seotitle' => 'title',
@@ -2668,6 +2671,10 @@ $lang = array
 	'setting_mobile_wml_comment' => 'WML版為一些僅支持WML語言的較早期的設備瀏覽網站的內容',
 	'setting_mobile_portal_catnav' => '開啟首頁頻道導航',
 	'setting_mobile_portal_catnav_comment' => '開啟後門戶首頁將顯示一級頻道作為導航',
+	'setting_mobile_portal_wzpicture' => '首頁顯示文章幻燈片',
+	'setting_mobile_portal_wzpicture_comment' => '選“是”將顯示門戶頻道文章的圖片聚合幻燈片',
+	'setting_mobile_portal_wzlist' => '首頁顯示文章列表',
+	'setting_mobile_portal_wzlist_comment' => '選“是”將顯示門戶頻道文章的聚合列表',
 	'setting_mobile_forum_forumindex' => '論壇首頁樣式',
 	'setting_mobile_forum_forumindex_guide' => '導讀',
 	'setting_mobile_forum_forumindex_grid' => '首頁四格',
@@ -2684,6 +2691,8 @@ $lang = array
 	'setting_mobile_forum_postperpage_comment' => '主題內每頁顯示的帖子數目，為空時和界面設置保持一致<br />當此處和界面設置數值不同時會導致手機端和電腦端分頁不一致，請謹慎配置',
 	'setting_mobile_forum_forumview' => '首頁分區展示方式',
 	'setting_mobile_forum_forumview_comment' => '如「收起」，論壇首頁將默認只展示分區標題<br />用戶需點擊分區展開該分區下的版塊列表',
+	'setting_mobile_forum_iconautowidth' => '版塊圖標寬度自適應',
+	'setting_mobile_forum_iconautowidth_comment' => '選“是”將不限製手機版版塊圖標的寬度',
 	'pack' => '收起',
 	'unwind' => '展開',
 
@@ -7373,6 +7382,11 @@ url.rewrite-once = (
 
 	'nav_language'			=> '語言能力',
 
+	'delete_install_index'		=> '請通過 FTP 刪除 install/index.php！',
+
+	'detect_environment'		=> '運行環境檢測',
+	'org_support'			=> '承接運營',
+	'org_support_name'		=> '合肥貳道網絡科技有限公司',
 );
 
 $adminextend = array();
@@ -7380,7 +7394,7 @@ if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.
 	@include $adminextendfile;
 	foreach($adminextend as $extend) {
 		$extend_lang = array();
-/*vot*/	@include DISCUZ_ROOT.'./source/language/tc/lang_admincp_'.$extend;
+/*vot*/		@include DISCUZ_ROOT.'./source/language/tc/lang_admincp_'.$extend;
 		$lang = array_merge($lang, $extend_lang);
 	}
 }

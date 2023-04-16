@@ -468,78 +468,71 @@ $lang = array (
 //---------------------------
 // Added by Valery Votintsev
 
-	'follow_view_follow'	=> '我關注的',//'I follow',
-	'follow_stop'		=> '不收聽',//'Stop follow',
-	'follow_start'		=> '收聽TA',//'Follow',
+  'follow_view_follow'	=> '我關注的',//'I follow',
+  'follow_stop'		=> '不收聽',//'Stop follow',
+  'follow_start'	=> '收聽TA',//'Follow',
 
-	'e_full_screen'		=> '全螢幕',//'Full Screen',
-	'e_restore_size'	=> '恢復',//'Restore size',
-	'e_simple'			=> '常用',//'General Mode',
-	'e_advanced'		=> '高級',//'Advanced Mode',
+  'e_full_screen'	=> '全螢幕',//'Full Screen',
+  'e_restore_size'	=> '恢復',//'Restore size',
+  'e_simple'		=> '常用',//'General Mode',
+  'e_advanced'		=> '高級',//'Advanced Mode',
 
 //static/space/t1/style.css
-	'default_style'	=> '默認風格',//'[name]默認風格[/name]',
+  'default_style'	=> '默認風格',//'[name]默認風格[/name]',
 
 //---------------------------
 //static/space/t2/style.css
-	'nature'	=> '自然',//'[name]自然[/name]',
+  'nature'	=> '自然',//'[name]自然[/name]',
 
 //---------------------------
 //static/space/t3/style.css
-	'sky'		=> '天空',//'[name]天空[/name]',
+  'sky'		=> '天空',//'[name]天空[/name]',
 
 //---------------------------
 //static/space/t4/style.css
-	'cat'		=> '貓貓',//'[name]貓貓[/name]',
+  'cat'		=> '貓貓',//'[name]貓貓[/name]',
 
 //---------------------------
 //static/space/t5/style.css
-	'courtyard'	=> '庭院',//'[name]庭院[/name]',
+  'courtyard'	=> '庭院',//'[name]庭院[/name]',
 
 //---------------------------
 //static/space/t6/style.css
-	'green_wall'	=> '綠牆',//'[name]綠牆[/name]',
+  'green_wall'	=> '綠牆',//'[name]綠牆[/name]',
 
 //---------------------------
 //static/space/t7/style.css
-	'cowboy'	=> '牛仔',//'[name]牛仔[/name]',
+  'cowboy'	=> '牛仔',//'[name]牛仔[/name]',
 
 //---------------------------
 //static/space/t8/style.css
-	'christmas'	=> '聖誕',//'[name]聖誕[/name]',
+  'christmas'	=> '聖誕',//'[name]聖誕[/name]',
 
 //---------------------------
 //static/topic/t1/style.css
-	'default_skin'	=> '默認皮膚',//'[name]默認皮膚[/name]',
+  'default_skin'	=> '默認皮膚',//'[name]默認皮膚[/name]',
 
 //---------------------------
 //static/topic/t2/style.css
-	'skin_2'	=> '皮膚2',//'[name]皮膚2[/name]',
+  'skin_2'	=> '皮膚2',//'[name]皮膚2[/name]',
 
 //---------------------------
 //Change Language
-	'change_language'	=> '',//'更改語言:',//'Change language:',
-	'change_language_title'	=> '更改語言',//'Change language',
-	'changestyle_title'	=> '切換風格',
-
-//vot:
-	'new'		=> '全新',//'New',
-
-	'register'	=> '註冊',//'Register',
-
-	'or'		=> '或者',//'or',
-
-	'upload_selectfile' => '瀏覽',//'Browse',
+  'change_language'		=> '',//'更改語言:',//'Change language:',
+  'change_language_title'	=> '更改語言',//'Change language',
+  'changestyle_title'		=> '切換風格',
+  'new'				=> '全新',//'New',
+  'register'			=> '註冊',//'Register',
+  'or'				=> '或者',//'or',
+  'upload_selectfile'		=> '瀏覽',//'Browse',
+  'processed_in'		=> 'Processed in',
+  'seconds'			=> 'sec.',//'second(s)',
+  'queries'			=> 'queries',
 
 // Google Maps
-	'e_map'		=> '地圖',//'Map',
-	'e_map_insert'	=> '插入google地圖',//'Insert Google Map',
-	'e_map_address'	=> '地址： ',//'Enter address for search: ',
-
-	'processed_in'			=> 'Processed in',
-	'seconds'			=> 'sec.',//'second(s)',
-	'queries'			=> 'queries',
-
+  'e_map'			=> '地圖',//'Map',
+  'e_map_insert'		=> '插入google地圖',//'Insert Google Map',
+  'e_map_address'		=> '地址： ',//'Enter address for search: ',
 );
 
 ?>
