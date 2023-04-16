@@ -221,6 +221,37 @@ $lang = array
 // Months Names
 	'month_name'	=> array('月','一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'),//array('Month','January','February','March','April','May','June','July','August','September','October','November','December'),
 
+//source/function/function_debug.php
+	'memory'	=> '內存',//'Memory',
+	'peak'		=> '峰值',//'Peak',
+	'grid'		=> '網格',//'Grid',
+	'closure'	=> '關閉',//'Closure',
+	'last_submit'	=> ' (最後由 ',//' (Last submit by ',
+	'at'		=> ' 於 ',//' at ',
+	'submitted'	=> ' 提交)',//')',//'Must be empty for English',
+	'file'		=> '文件',//'File',
+	'version'	=> '版本',//'Version',
+	'includes'	=> '包含',//'Includes',
+	'file_list'	=> '[文件列表]',//'[File List]',
+	'execute'	=> '執行',//'Execute',
+	'function_list'	=> '[函數列表]',//'[Function list]',
+	'server'	=> '服務器',//'Server',
+	'environment'	=> '環境',//'Environment',
+	'sql_list'	=> '[SQL列表]',//'[SQL list]',
+	'ajax_sql'	=> '[AjaxSQL列表]',//'[AjaxSQL list]',
+	'memory_cache'	=> '內存緩存',//'Memory cache',
+	'client'	=> '客戶端',//'Client',
+	'details'	=> '[詳情]',//'[Details]',
+	'mysql_proc'	=> 'MySQL 進程列表',//'MySQL process list',
+	'view_cache'	=> '查看緩存',//'View cache',
+	'refresh_cache'	=> '更新緩存',//'Refresh cache',
+	'run_update'	=> '執行 update.php',//'Run update.php',
+	'plugin'	=> '[插件]',//'[Plugin]',
+	'script'	=> '[腳本]',//'[Script]',
+	'template'	=> '[模板]',//'[Template]',
+	'cache'		=> '[緩存]',//'[Cache]',
+	'config'	=> '[配置]',//'[Config]',
+
 );
 
 ?>

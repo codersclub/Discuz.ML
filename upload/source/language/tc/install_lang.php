@@ -16,7 +16,7 @@ define('UC_VERNAME', 'International Version');
 $lang = array(
 	'SC_UTF8' => '簡體中文 UTF8 版',
 	'TC_UTF8' => '繁體中文 UTF8 版',
-	'EN_UTF8' => 'ENGLIST UTF-8',
+/*vot*/	'EN_UTF8' => 'ENGLISH UTF-8',
 
 	'title_install' => SOFT_NAME.' 安裝嚮導',
 	'agreement_yes' => '同意',
@@ -384,7 +384,6 @@ $lang = array(
 //vot	'regiondata'			=> 'Add regions data',//'Add location data',
 //vot	'regiondata_check_label'	=> 'Install additional regional data (countries/regions/cities)',//'Install additional regional data (countries/regions/cities)',
 //vot	'install_region_data'		=> 'Install regional data',//'Install regional data',
-
 	'php_version_too_low'		=> 'PHP version is too low',
 	'php_version_too_low_comment'	=> 'For normal functioning Discuz! requires for more new version of PHP',
 	'mbstring'			=> 'MBstring 库',//'MBstring Library',
@@ -396,5 +395,3 @@ $lang = array(
 $msglang = array(
 	'config_nonexistence' => '您的 config.inc.php 不存在, 無法繼續安裝, 請用 FTP 將該文件上傳後再試。',
 );
-
-?>

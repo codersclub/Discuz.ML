@@ -3,10 +3,11 @@
 /**
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
- *      Convert Language File
- *      $Id: utility/convert/language/lang.php by Valery Votintsev, codersclub.org
+ *      Convert Language File by Valery Votintsev, codersclub.org
+ *	Based on: /utility/convert/language/lang.php
+ *      $Id: source/language/sc/lang_convert.php
  */
-$lang = array(
+$language = array(
 
 	'config_dbhost' => '數據庫服務器',//'Database server',
 	'config_dbuser' => '數據庫用戶名',//'Database username',
@@ -63,6 +64,8 @@ $lang = array(
 	'mysql_connect_error_2' => '數據表檢查錯誤，您可能沒有正確填寫 「數據表前綴」或者您尚未安裝該版本的程序',//'Data tables check failed. May be, you have not correctly filled out the "table prefix", or you have not installed the version of the program',
 
 //---------------------------
+// Added by Valery Votintsev
+//---------------------------
 	'invalid_request'	=> '非法請求',//'Illegal request',
 
 //---------------------------
@@ -79,7 +82,7 @@ $lang = array(
 	'days'			=> '天',//'Days',
 	'hours'			=> '小時',//'Hours',
 	'minutes'		=> '分',//'Minutes',
-	'seconds'		=> '秒',//'Seconds',//
+	'seconds'		=> '秒',//'Seconds',
 	'progress'		=> '目前正在執行轉換程序',//'Conversion progress',
 	'progress_intro1'	=> '轉換過程中需要多次跳轉,請勿關閉瀏覽器.',//'The conversion process needs to redirect several times, do not close your browser!',
 	'progress_intro2'	=> '如果程序中斷或者需要重新開始當前程序,請點擊',//'If the program is interrupted or need to re-start the current program, please click',

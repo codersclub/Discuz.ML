@@ -1,9 +1,9 @@
 TRADITIONAL CHINESE Language Pack
-for Discuz! X2.5 (c) 2001-2099 Comsenz Inc.
-
+for Discuz! ML v3.5
 MultiLingual version by Valery Votintsev, codersclub.org
 
 Code		= 'tc';
+ISO code	= 'zh-TW';
 English title	= 'Traditional Chinese';
 UTF8 title	= '繁體中文'
 18x12 Icon	= 'tw.gif';
