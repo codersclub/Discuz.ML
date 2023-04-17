@@ -276,7 +276,7 @@ function show_note() {
 			$note['expiration'] = ceil(($note['expiration'] - $note['dateline']) / 86400);
 			$note['dateline'] = dgmdate($note['dateline'], 'dt');
 			$notemsghtml .= '<div class="dcol"><div class="adminnote">'.'<a'.(isfounder() || $_G['member']['username'] == $note['admin'] ? ' href="'.ADMINSCRIPT.'?action=index&notesubmit=yes&noteid='.$note['id'].'" title="'.cplang('delete').'" class="ndel"' : '').'></a>'.
-				("<div><p><span class=\"bold\"><a href=\"home.php?mod=space&username={$note['adminenc']}\" target=\"_blank\">{$note['admin']}</a></span></p><p>{$note['dateline']}</p><p class=\"marginbot\">(".cplang('home_notes_add').cplang('validity').": {$note['expiration']} ".cplang('days').")</p><p>{$note['message']}</p>").'</div></div></div>';
+				("<div><p><span class=\"bold\"><a href=\"home.php?mod=space&username={$note['adminenc']}\" target=\"_blank\">{$note['admin']}</a></span></p><p>{$note['dateline']}</p><p class=\"marginbot\">(".cplang('home_notes_add').', '.cplang('validity').": {$note['expiration']} ".cplang('days').")</p><p>{$note['message']}</p>").'</div></div></div>';
 		}
 	}
 
@@ -474,21 +474,21 @@ function show_widgets() {
 
 function show_forever_thanks() {
 	$copyRightMessage = array(
-		'&#x7248;&#x6743;&#x6240;&#x6709;',
-		'&#x817E;&#x8BAF;&#x4E91;&#x8BA1;&#x7B97;&#xFF08;&#x5317;&#x4EAC;&#xFF09;&#x6709;&#x9650;&#x8D23;&#x4EFB;&#x516C;&#x53F8;',
-		'&#x627F;&#x63A5;&#x8FD0;&#x8425;',
-		'&#x5408;&#x80A5;&#x8D30;&#x9053;&#x7F51;&#x7EDC;&#x79D1;&#x6280;&#x6709;&#x9650;&#x516C;&#x53F8;',
+/*vot*/		cplang('home_dev_copyright'),
+/*vot*/		cplang('org_name'),
+/*vot*/		cplang('org_support'),
+/*vot*/		cplang('org_support_name'),
 	);
 	$gitTeamStr = '';
 	$gitTeam = array(
-		'laozhoubuluo' => '&#x8001;&#x5468;&#x90E8;&#x843D;',
+		'laozhoubuluo' => 'laozhoubuluo',
 		'popcorner' => 'popcorner',
 		'oldhuhu' => 'oldhuhu',
-		'zoewho' => '&#x6E56;&#x4E2D;&#x6C89;',
-		'3dming' => '&#x8BF8;&#x845B;&#x6653;&#x660E;',
+		'zoewho' => 'ZoeWho',
+		'3dming' => '3dming',
 		'brotherand2' => 'brotherand2',
 		'contributions' => 'git',
-		'nftstudio' => '&#x9006;&#x98CE;&#x5929;',
+		'nftstudio' => 'nftstudio',
 		'ONEXIN' => 'ONEXIN',
 	);
 	foreach ($gitTeam as $id => $name) {
