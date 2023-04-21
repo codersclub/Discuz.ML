@@ -2562,7 +2562,6 @@ EOF;
 				}
 			}
 
-			updatecache('ipbanned');
 			cpmsg('members_ipban_succeed', 'action=members&operation=ipban', 'succeed');
 
 		}
@@ -2667,7 +2666,6 @@ EOF;
 				C::t('common_banned')->insert($data, false, true);
 			}
 
-			updatecache('ipbanned');
 			cpmsg('members_ipban_succeed', 'action=members&operation=ipban&ipact=input', 'succeed');
 		}
 	} elseif($_GET['ipact'] == 'output') {
