@@ -197,7 +197,7 @@ class discuz_application extends discuz_base{
 		if(defined('IN_NEWMOBILE')) {
 			$sitepath = preg_replace("/\/m/i", '', $sitepath);
 		}
-/*vot*/		$_G['isHTTPS'] = is_https();
+		$_G['isHTTPS'] = $this->_is_https();
 		$_G['scheme'] = 'http'.($_G['isHTTPS'] ? 's' : '');
 		$_G['siteurl'] = dhtmlspecialchars($_G['scheme'].'://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
 
@@ -512,7 +512,7 @@ class discuz_application extends discuz_base{
 		return true;
 	}
 
-	private function is_https() {
+	private function _is_https() {
 		// PHP standard server variables
 		if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 			return true;
