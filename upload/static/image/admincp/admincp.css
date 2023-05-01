@@ -1,8 +1,9 @@
 /*(C) 2001-2099 Comsenz Inc.*/
 /* Modified by Valery Votintsev, codersclub.org */
 *{ word-wrap:break-word; outline:none; }
+html,body{height:100%;}
 body{ background:#FFF; text-align:center; }
-/*vot*/ body, td, input, textarea, select, button{ color:#555; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif; }
+body, td, input, textarea, select, button{ color:#555; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, 'Simsun', sans-serif; }
 body, ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin:0; padding:0; }
 ul{ list-style:none; }
 h1, h2, h3, h4, h5, h6{ font-size:12px; }

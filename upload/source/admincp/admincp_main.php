@@ -159,8 +159,8 @@ echo <<<EOT
 
 </div>
 </td>
-<td valign="top" width="100%" class="mask">
-	<iframe src="$basescript?$extra" id="main" name="main" width="100%" height="100%" frameborder="0" scrolling="yes" style="overflow: visible;display:"></iframe>
+<td valign="top" width="100%" height="100%" class="mask">
+	<iframe src="$basescript?$extra" id="main" name="main" width="100%" height="100%" frameborder="0" scrolling="yes" style="overflow: visible;"></iframe>
 </td>
 </tr>
 </table>
