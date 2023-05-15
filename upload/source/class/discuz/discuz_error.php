@@ -154,8 +154,11 @@ class discuz_error
 							$fun .= (defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) ? $arg : '%d';
 						} elseif(is_float($arg)) {
 							$fun .= (defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) ? $arg : '%f';
+						} elseif(is_resource($arg)) {
+							$fun .= (defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) ? 'Resource' : '%f';
+						} elseif(is_object($arg)) {
+							$fun .= (defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) ? 'Object' : '%f';
 						} else {
-							// The exception may be of type Resource
 							$arg = (string)$arg;
 							$fun .= (defined('DISCUZ_DEBUG') && DISCUZ_DEBUG) ? '\''.dhtmlspecialchars(substr(self::clear($arg), 0, 10)).(strlen($arg) > 10 ? ' ...' : '').'\'' : '%s';
 						}
