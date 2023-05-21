@@ -1,6 +1,6 @@
-817131a839b2a026573603e1e0cd7858 *./admin.php
-707f23942b7d7d30dea21fe851212ef9 *./avatar.php
-c2323dbd79f22f9dedd2c2d69abd020f *./index.php
+b005d7be45b8a4bd7cf993e9940ad21f *./admin.php
+aca66c59ab8ae47ed2c7c3b8c7d4895d *./avatar.php
+7f7dc6215c836d0bb0ce1b51b6b066ba *./index.php
 762d6f00e887ce6700780ef03e01d824 *api/dbbak.php
 d41d8cd98f00b204e9800998ecf8427e *api/index.htm
 09bc093a87ad22670b181836788d2349 *control/admin/admin.php
@@ -20,7 +20,7 @@ dea62a81dcb69b255a4deaac38602e0d *control/admin/plugin.php
 9b0a32b21c13acbccdf36087e5dad5bc *control/admin/pm.php
 0e9c93d9204b5f232eea6617ca594979 *control/admin/seccode.php
 760dcb88f56c584a27d3142b5bf8af00 *control/admin/setting.php
-b50ae4c5301bcc22dd903a3963c5afc1 *control/admin/ucfiles.md5
+1e7831040c8754b4c3ecbeddb0dfefa3 *control/admin/ucfiles.md5
 8b51ca1028e3525a3869b6db7bfd4099 *control/admin/user.php
 0f7b1bbf2418eb1814b63e8752359ed8 *control/app.php
 45f65148d59e61a608d57af8544ff5e5 *control/credit.php
@@ -139,7 +139,7 @@ f1c5e779fdbf024d19fb578b7e06ea2c *images/gif/Small_Fonts/x.gif
 cca7e1ae3e066aec5f6d8bc1096d08fd *js/pm_editor.js
 30bef9f4245ea71e3c73583f8fb82e8e *lib/db.class.php
 10427c5821be21ffea3129035acab8d5 *lib/dbi.class.php
-8f5348d4d65356947879574159c49333 *lib/function.inc.php
+d93a7814dd3945437f70962960192ebd *lib/function.inc.php
 7215ee9c7d9dc229d2921a40e899ec5f *lib/index.htm
 4a83e84bdb2ff80ecb180f330255e825 *lib/seccode.class.php
 d4fbe5acd2ebfd7d4fd42ecaaccdcdf0 *lib/sendmail.inc.php
