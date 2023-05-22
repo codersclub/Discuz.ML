@@ -11,7 +11,7 @@
 error_reporting(0);
 
 _get_script_url();
-define('UC_API', strtolower((is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'))));
+define('UC_API', (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/')));
 // In the non-independent mode, if you want to set an independent domain name for the avatar service (such as CDN and other services), you can configure UC_AVTURL here (no / at the end)
 define('UC_AVTURL', '');
 
