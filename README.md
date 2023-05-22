@@ -186,3 +186,8 @@ Users who use the release version, check the readme.html file in the installatio
 |
 [Discuz! Development Documentation](https://open.dismall.com/?ac=document&page=dev)
 
+
+### Pay attention:
+- Chinese repository has been switched to the X3.5 branch as default on May 21, 2023.
+  The master branch (x3.4) no longer accepts PRs, please submit new PRs to X3.5.
+
