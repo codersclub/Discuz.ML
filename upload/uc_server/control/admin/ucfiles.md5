@@ -1,6 +1,6 @@
-9373879cee574ff051d9dc2c8698872e *./admin.php
-4febc240a22f03fe430661a2a2b98cbe *./avatar.php
-fcb479461f6817a5a90ccfa84d3b3256 *./index.php
+10bc95c8ef9570ddd48c4f2bbd4dfd2d *./admin.php
+72a49994b434a5ad31af36a26ee3f8bd *./avatar.php
+6e585521d243524b7c9e75c37ca59647 *./index.php
 911c5a7ae779951fd20b880edb3f1209 *api/dbbak.php
 d41d8cd98f00b204e9800998ecf8427e *api/index.htm
 0ee893fc567b995a7c8e13e86d7e8992 *control/admin/admin.php
@@ -20,7 +20,6 @@ dea62a81dcb69b255a4deaac38602e0d *control/admin/plugin.php
 8b649848712e62e46b0258ce64068eaf *control/admin/pm.php
 0e9c93d9204b5f232eea6617ca594979 *control/admin/seccode.php
 5a8cb85af97637e833eb3c6a9bdc3122 *control/admin/setting.php
-c14998ac1482f97563293b4a6c5277fe *control/admin/ucfiles.md5
 e413692bf662805e98dd9e0079bbff04 *control/admin/user.php
 cff8d2970aac4f9d1fd19109e20af6e5 *control/app.php
 5055e3cf8e772dccec030af9c8394732 *control/credit.php
@@ -195,7 +194,7 @@ b23f0e5290103a3ea89fe1e3275f7826 *model/plugin.php
 5479ac7219712c5aacd45514619aafba *model/pm.php
 ba787d675b6b8db7549ae1a1eb97dc20 *model/setting.php
 d7b379d38fbc0e8a120454a334a54499 *model/tag.php
-8f5da1dba4dc3ff1e9beb7d4d8789a39 *model/user.php
+e314d562d7d50483608cf82c9b652201 *model/user.php
 cf43247858d5382d58bcc1dca88c219e *model/var.php
 cdc453e23980b4f7f894a3b15042a76c *model/version.php
 d41d8cd98f00b204e9800998ecf8427e *plugin/filecheck/index.htm
@@ -240,7 +239,7 @@ cb9dab25bc7d9482efe4dafdea127849 *view/default/footer_ajax.htm
 b5a4f84b23fdefbc19ec2b02169ad626 *view/default/header_ajax.htm
 ca56e94572c998edbca29d67661b95fa *view/default/header_client.htm
 7215ee9c7d9dc229d2921a40e899ec5f *view/default/index.htm
-483339c2212b01406eaf9d72c5ea3063 *view/default/lang.inc.php
+274805cda6095fcd056fcec96203e662 *view/default/lang.inc.php
 4de688514cd4908403ac6dac1cccef23 *view/default/main.lang.php
 998b620c83be4e7caff9311f767327ae *view/default/message.htm
 ef6b499f7eada56ecf60d2607272727e *view/default/messages.lang.php
@@ -254,6 +253,6 @@ cfcf3bb6aeff9a878f5bf8061f19a707 *view/default/pm_blackls.htm
 78cfbfb3fadc76e11e449f2a0ffbf8c0 *view/default/pm_nav.htm
 acfeb7cbe2250a37032937ab78a62706 *view/default/pm_send.htm
 c40c95219ebaafcfac4ff55b83774997 *view/default/pm_view.htm
-0243f1691566ce77cc0670b48946500c *view/default/templates.lang.php
+5bcc71969ea7bf125c6c108343d7fde8 *view/default/templates.lang.php
 42fa0f40e601b24e3dbdd91ac05ce696 *view/default/user_avatar.htm
 7215ee9c7d9dc229d2921a40e899ec5f *view/index.htm
