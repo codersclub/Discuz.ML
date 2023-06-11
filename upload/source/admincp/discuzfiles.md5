@@ -37,7 +37,7 @@ f6ff047850e8f46685e3753f446fdffc *config/config_ucenter_default.php
 6e4fbf3939402cf67a6c00367382988b *./crossdomain.xml
 cba7beb32835268b64190bc95a4ba48c *./data
 d41d8cd98f00b204e9800998ecf8427e *data/index.htm
-a1ca3ea53d10b5868f48d00d488b6d1f *data/ipdata/GeoLite2-Country.mmdb
+908502b19cacb8646179b1c7ba4b0f0e *data/ipdata/GeoLite2-Country.mmdb
 7215ee9c7d9dc229d2921a40e899ec5f *data/ipdata/index.htm
 b21eeb904d9bcb604ed682343661bcc2 *data/ipdata/tinyipdata.dat
 c028c4822428e83a358c60a93ef65381 *./favicon.ico
@@ -3684,7 +3684,7 @@ ca0d7b7a24b07d370bc0d170c4782a82 *template/default/common/editor.css
 a2bf05cd77efe510386055d97ef42671 *template/default/common/extcredits.htm
 e02d3c5047212b304d019f9321cb468e *template/default/common/extgroups.htm
 9e7a73ca13dc81f0a5979a652b8bcd43 *template/default/common/faq.htm
-62cdd8f172fa384254f1b5dc2640c052 *template/default/common/footer.htm
+b503df5ec4aff050f7e2ac8de9fabf12 *template/default/common/footer.htm
 dcecf9502c1ceadebea0ae4c229d3364 *template/default/common/footer_ajax.htm
 96e2cc51bbce67b8d2d782776ceb9b8b *template/default/common/forum_calendar.css
 8c1f35bc0bc064e75a9371366963a7c6 *template/default/common/forum_calendar_rtl.css
