@@ -5,25 +5,25 @@ if (!defined('IN_DISCUZ')) {
 }
 
 /*
-// 调用范例
+// Call example
 
-// 引用库
+// Reference library
 require_once DISCUZ_ROOT.'./source/plugin/witframe_api/core.php';
 
 $siteuniqueid = $_G['setting']['siteuniqueid'];
 
-// 自动注册站点信息，获取站点配置信息
+// Automatically register site information and obtain site configuration information
 $conf = Lib\Site::Discuz_GetConf($siteuniqueid);
 print_r($conf);
 
-// 添加应用的授权，自动添加 Sample 应用的授权
+// Add the authorization of the application, automatically add the authorization of the Sample application
 Lib\Site::AddAuthInfo(10005, 1003, 'abcdE');
 
-// 调用apis
+// Call apis
 $r = Lib\Apis::Sample_v1_apis(['now' => time()]);
 print_r($r);
 
-// 返回登录Wit的链接
+// Link to log in back into Wit
 $r = Lib\Site::Discuz_LoginWit($siteuniqueid);
 echo $r['url'];
 
