@@ -145,34 +145,34 @@ function daddslashes($string, $force = 1) {
 }
 
 function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
-	// 动态密钥长度, 通过动态密钥可以让相同的 string 和 key 生成不同的密文, 提高安全性
+	// Dynamic key length, through which the same string and key can generate different ciphertexts, improving security
 	$ckey_length = 4;
 	$key = md5($key != '' ? $key : getglobal('authkey'));
-	// a参与加解密, b参与数据验证, c进行密文随机变换
+	// 'a' participates in encryption and decryption, 'b' participates in data verification, and 'c' performs random transformation of ciphertext
 	$keya = md5(substr($key, 0, 16));
 	$keyb = md5(substr($key, 16, 16));
 	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
 
-	// 参与运算的密钥组
+	// The key group involved in the operation
 	$cryptkey = $keya.md5($keya.$keyc);
 	$key_length = strlen($cryptkey);
 
-	// 前 10 位用于保存时间戳验证数据有效性, 10 - 26位保存 $keyb , 解密时通过其验证数据完整性
-	// 如果是解码的话会从第 $ckey_length 位开始, 因为密文前 $ckey_length 位保存动态密匙以保证解密正确 
+	// The first 10 bits are used to save the timestamp to verify the validity of the data, and the 10-26 bits are used to save $keyb, which is used to verify the integrity of the data when decrypting
+	// If it is decoding, it will start from the $ckey_length bit, Because the first $ckey_length bits of the ciphertext save the dynamic key to ensure correct decryption
 	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
 	$string_length = strlen($string);
 
 	$result = '';
 	$box = range(0, 255);
 
-	// 产生密钥簿
+	// Generate keybook
 	$rndkey = array();
 	for($i = 0; $i <= 255; $i++) {
 		$rndkey[$i] = ord($cryptkey[$i % $key_length]);
 	}
 
-	// 打乱密钥簿, 增加随机性
-	// 类似 AES 算法中的 SubBytes 步骤
+	// Shuffling the keybook to increase randomness
+	// Similar to the SubBytes step in the AES algorithm
 	for($j = $i = 0; $i < 256; $i++) {
 		$j = ($j + $box[$i] + $rndkey[$i]) % 256;
 		$tmp = $box[$i];
@@ -180,7 +180,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		$box[$j] = $tmp;
 	}
 
-	// 从密钥簿得出密钥进行异或，再转成字符 
+	// Get the key from the key book for XOR, and then convert it into characters
 	for($a = $j = $i = 0; $i < $string_length; $i++) {
 		$a = ($a + 1) % 256;
 		$j = ($j + $box[$a]) % 256;
@@ -191,16 +191,16 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 	}
 
 	if($operation == 'DECODE') {
-		// 这里按照算法对数据进行验证, 保证数据有效性和完整性
-		// $result 01 - 10 位是时间, 如果小于当前时间或为 0 则通过
-		// $result 10 - 26 位是加密时的 $keyb , 需要和入参的 $keyb 做比对
+		// Here, the data is verified according to the algorithm to ensure the validity and integrity of the data
+		// $result 01 - 10 bits are the time, if less than the current time or 0 then pass
+		// $result 10 - The 26 bits are the $keyb when encrypting, and need to be compared with the $keyb of the input parameter
 		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 			return '';
 		}
 	} else {
-		// 把动态密钥保存在密文里, 并用 base64 编码保证传输时不被破坏
+		// Save the dynamic key in the ciphertext, and use base64 encoding to ensure that it will not be destroyed during transmission
 		return $keyc.str_replace('=', '', base64_encode($result));
 	}
 
@@ -1148,7 +1148,7 @@ function output() {
 			$temp_md5 = md5(substr($_G['timestamp'], 0, -3).substr($_G['config']['security']['authkey'], 3, -3));
 			$temp_formhash = substr($temp_md5, 8, 8);
 			$content = preg_replace('/(name=[\'|\"]formhash[\'|\"] value=[\'\"]|formhash=)('.constant("FORMHASH").')/ismU', '${1}'.$temp_formhash, $content);
-			//避免siteurl伪造被缓存
+			//Avoid siteurl forgery being cached
 			$temp_siteurl = 'siteurl_'.substr($temp_md5, 16, 8);
 			$content = preg_replace('/("|\')('.preg_quote($_G['siteurl'], '/').')/ismU', '${1}'.$temp_siteurl, $content);
 			$content = empty($content) ? ob_get_contents() : $content;
@@ -1385,7 +1385,7 @@ function checkformulasyntax($formula, $operators, $tokens, $values = '', $funcs 
 
 function formula_tokenize($formula, $operators, $tokens, $values, $funcs) {
 	$fexp = token_get_all('<?php '.$formula);
-	$prevseg = 1; // 1左括号2右括号3变量4运算符5函数
+	$prevseg = 1; // 1 - opening parenthes, 2 - closing parenthes, 3 - variables, 4 - operators, 5 - functions
 	$isclose = 0;
 	$tks = implode('|', $tokens);
 	$op1 = $op2 = array();
@@ -1399,7 +1399,7 @@ function formula_tokenize($formula, $operators, $tokens, $values, $funcs) {
 	foreach($fexp as $k => $val) {
 		if(is_array($val)) {
 			if(in_array($val[0], array(T_VARIABLE, T_CONSTANT_ENCAPSED_STRING, T_LNUMBER, T_DNUMBER))) {
-				// 是变量
+				// is a variable
 				if(!in_array($prevseg, array(1, 4))) {
 					return false;
 				}
@@ -1411,15 +1411,15 @@ function formula_tokenize($formula, $operators, $tokens, $values, $funcs) {
 					return false;
 				}
 			} elseif($val[0] == T_STRING && in_array($val[1], $funcs)) {
-				// 是函数
+				// is a function
 				if(!in_array($prevseg, array(1, 4))) {
 					return false;
 				}
 				$prevseg = 5;
 			} elseif($val[0] == T_WHITESPACE || ($k == 0 && $val[0] == T_OPEN_TAG)) {
-				// 空格或文件头，忽略
+				// spaces or file headers, ignored
 			} elseif(in_array($val[1], $op2)) {
-				// 是运算符
+				// is the operator
 				if(!in_array($prevseg, array(2, 3))) {
 					return false;
 				}
@@ -1429,14 +1429,14 @@ function formula_tokenize($formula, $operators, $tokens, $values, $funcs) {
 			}
 		} else {
 			if($val === '(') {
-				// 是左括号
+				// is the left parenthesis
 				if(!in_array($prevseg, array(1, 4, 5))) {
 					return false;
 				}
 				$prevseg = 1;
 				$isclose++;
 			} elseif($val === ')') {
-				// 是右括号
+				// is a closing parenthesis
 				if(!in_array($prevseg, array(2, 3))) {
 					return false;
 				}
@@ -1446,7 +1446,7 @@ function formula_tokenize($formula, $operators, $tokens, $values, $funcs) {
 					return false;
 				}
 			} elseif(in_array($val, $op1)) {
-				// 是运算符
+				// is the operator
 				if(!in_array($prevseg, array(2, 3)) && $val !== '-') {
 					return false;
 				}
@@ -1880,12 +1880,12 @@ function getposttable($tableid = 0, $prefix = false) {
  * 		$cmd = 'zincrby', $key = key, $value = member, $ttl = value to increase
  * When zrevrange and zrevrangewithscore parameters are as follows:
  * 		$cmd = 'zrevrange', $key = key, $value = start, $ttl = end
- * inc, dec, incex 的 $ttl 无效
+ * inc, dec, incex $ttl is invalid
  */
 function memory($cmd, $key='', $value='', $ttl = 0, $prefix = '') {
 	static $supported_command = array(
 		'set', 'add', 'get', 'rm', 'inc', 'dec', 'exists',
-		'incex', /* 存在时才inc */
+		'incex', /* inc only when it exists */
 		'sadd', 'srem', 'scard', 'smembers', 'sismember',
 		'hmset', 'hgetall', 'hexists', 'hget',
 		'eval',
@@ -2256,8 +2256,8 @@ function strhash($string, $operation = 'DECODE', $key = '') {
 }
 
 function dunserialize($data) {
-	// 由于 Redis 驱动侧以序列化保存 array, 取出数据时会自动反序列化（导致反序列化了非Redis驱动序列化的数据），因此存在参数入参为 array 的情况.
-	// 考虑到 PHP 8 增强了类型体系, 此类数据直接送 unserialize 会导致 Fatal Error, 需要通过代码层面对此情况进行规避.
+	// Since the Redis driver side saves the array with serialization, it will automatically deserialize when fetching the data (resulting in deserialization of data that is not serialized by the Redis driver), so there are cases where the parameter input is an array.
+	// Considering that PHP 8 has enhanced the type system, sending such data directly to unserialize will cause Fatal Error, which needs to be avoided at the code level.
 	if(is_array($data)) {
 		$ret = $data;
 	} elseif(($ret = unserialize($data)) === false) {
