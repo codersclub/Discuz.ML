@@ -289,7 +289,7 @@ if($method == 'show_license') {
 	} else {
 		$submit = false;
 	}
-	// 以MyISAM方式安装，再转换为InnoDB
+	// Install with MyISAM and convert to InnoDB
 	$myisam2innodb = isset($_POST['dbinfo']['myisam2innodb']) ? $_POST['dbinfo']['myisam2innodb'] : '';
 	if($submit && !VIEW_OFF && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($password != $password2) {
@@ -559,7 +559,7 @@ if($method == 'show_license') {
 		@unlink(ROOT_PATH.'./install/data/install_data_appendage.sql');
 	}
 
-	//自动登录前台和后台
+	//Automatic login to foreground and background
 	$saltkey = random(8);
 	$authkey = md5($_config['security']['authkey'].$saltkey);
 	$cookiepre = $_config['cookie']['cookiepre'].substr(md5($_config['cookie']['cookiepath'].'|'.$_config['cookie']['cookiedomain']), 0, 4).'_';

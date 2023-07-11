@@ -96,7 +96,7 @@ if(!submitcheck('modsubmit') && !$_GET['fast']) {
 	loadcache('forums');
 	require_once libfile('function/misc');
 	foreach($threadlist as $thread) {
-		//修正数据：帖子已经通过，却仍然显示在待审核列表
+		//Corrected data: the post has been approved, but it is still displayed in the pending review list
 		if($thread['displayorder'] >= 0) {
 			updatemoderate('tid', $thread['tid'], 2);
 			continue;
