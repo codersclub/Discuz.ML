@@ -22,7 +22,7 @@ if($operation == 'list') {
 		showsubmenu('faq');
 		showformheader('faq&operation=list');
 		showtableheader();
-		echo '<tr><th class="td25"></th><th><strong>'.$lang['display_order'].'</stong></th><th style="width:350px"><strong>'.$lang['faq_thread'].'</strong></th><th></th></tr>';
+		echo '<tr><th class="td25"></th><th class="td25"><strong>'.$lang['display_order'].'</stong></th><th class="td25"><strong>'.$lang['faq_thread'].'</strong></th><th></th></tr>';
 
 		$faqparent = $faqsub = array();
 		$faqlists = $faqselect = '';

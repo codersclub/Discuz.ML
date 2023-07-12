@@ -103,8 +103,8 @@ if($operation == 'set') {
 		$card_type_option .= "<option value=\"{$result['id']}\" ".($_GET['srch_card_type'] == $result['id'] ? 'selected' : '').">{$result['typename']}</option>";
 	}
 	showformheader('card', '', 'cdform', 'get');
-	showtableheader();
-	showtablerow('', array('width="80"', 'width="100"', 'width=100', 'width="260"'),
+	showtableheader('', 'fixpadding');
+	showtablerow('', array('width="80"', 'width="160"', 'width=100'),
 		array(
 			cplang('card_number'), '<input type="text" name="srch_id" class="txt" value="'.$_GET['srch_id'].'" />',
 			cplang('card_log_price').cplang('between'), '<input type="text" name="srch_price_min" class="txt" value="'.($_GET['srch_price_min'] ? $_GET['srch_price_min'] : '').'" />- &nbsp;<input type="text" name="srch_price_max" class="txt" value="'.($_GET['srch_price_max'] ? $_GET['srch_price_max'] :'' ).'" />',
@@ -125,7 +125,7 @@ if($operation == 'set') {
 			cplang('card_status'), "<select name='srch_card_status'><option value=''>".cplang('nolimit')."</option>".$status_option."</select>",
 		)
 	);
-	showtablerow('', array(),
+	showtablerow('', array('class="td23"', 'class="td23"'),
 		array(
 			cplang('card_log_used_user'), '<input type="text" name="srch_username" class="txt" value="'.$_GET['srch_username'].'" />',
 			cplang('card_used_dateline'), '<input type="text" name="srch_useddateline_start" class="txt" value="'.$_GET['srch_useddateline_start'].'" onclick="showcalendar(event, this);" />- &nbsp;<input type="text" name="srch_useddateline_end" class="txt" value="'.$_GET['srch_useddateline_end'].'" onclick="showcalendar(event, this)" />',
