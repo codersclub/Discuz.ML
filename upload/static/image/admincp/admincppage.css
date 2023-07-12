@@ -358,7 +358,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .devteam{ width:350px; }
 
 /* widget */
-.checked, .checked .txt{ color:#080; }
+.checked, .checked .txt{ color:#0B0; }
 .lightfont{ color:#CCC; }
 .light, .light a{ color:#AAA; }
 .lightnum{ color:#F60; }
@@ -462,7 +462,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .m_c { background: #FFF; }
 .m_c .tb { margin: 0 0 6px; padding: 0 6px; }
 .m_c .c { padding: 0 6px 6px; }
-.m_c .o { padding: 8px 6px; height: 50px; text-align: right; border-top: 1px solid #CCC; background: #F5F5F5; }
+.m_c .o { padding: 8px 6px; text-align: right; border-top: 1px solid #CCC; background: #F5F5F5; }
 .m_c .o .btn { margin: 0; }
 
 .flb { padding: 10px 10px 8px; height: 20px; line-height: 20px; box-sizing: unset;}

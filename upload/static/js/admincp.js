@@ -170,21 +170,18 @@ function textareakey(obj, event) {
 
 function textareasize(obj, op) {
 	if(!op) {
-		if(obj.scrollHeight > 70) {
-			obj.style.height = (obj.scrollHeight < 300 ? obj.scrollHeight - heightag: 300) + 'px';
-			if(obj.style.position == 'absolute') {
-				obj.parentNode.style.height = (parseInt(obj.style.height) + 20) + 'px';
-			}
-		}
+
 	} else {
 		if(obj.style.position == 'absolute') {
 			obj.style.position = '';
 			obj.style.width = '';
 			obj.parentNode.style.height = '';
+			obj.style.resize = 'none';
 		} else {
 			obj.parentNode.style.height = obj.parentNode.offsetHeight + 'px';
 			obj.style.width = BROWSER.ie > 6 || !BROWSER.ie ? '90%' : '600px';
 			obj.style.position = 'absolute';
+			obj.style.resize = 'vertical';
 		}
 	}
 }
