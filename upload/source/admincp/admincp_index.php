@@ -70,6 +70,15 @@ show_security_advise();
 show_releasetips();
 show_envcheck();
 
+echo '
+<style>
+*, *::before, *::after {
+    box-sizing: inherit
+}
+</style>
+';
+
+
 echo '<div class="drow">';
 
 echo '<div class="dcol d-23">';
