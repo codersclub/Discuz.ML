@@ -98,6 +98,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .itemtitle { padding: 0 20px; background: #fff; display: flex; align-items: flex-start; flex-direction: column; border-bottom: 1px solid #ddd; }
 .st-d .itemtitle { background: #000; border-bottom: 1px solid #999; }
 .itemtitle .titlerow { display: flex; width: 100%; flex-direction: row; justify-content: space-between; }
+.st-d .itemtitle .titlerow { color: #fff; }
 .itemtitle .titlerow>span, .itemtitle .titlerow>a { margin: 16px 0; }
 .itemtitle h3 { font-weight: bold; font-size: 20px; margin: 16px 20px 16px 0; }
 .st-l .itemtitle h3 { color:#000;}
@@ -145,7 +146,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .dbox { display: flex; flex-direction: column; background: #fff; margin-bottom: 20px; }
 .st-d .dbox {background: #000;}
 .dbox .boxheader { padding: 16px 20px; font-size: 16px; border-bottom: 1px solid #ddd; background: #F9F9F9; }
-.st-d .dbox .boxheader { border-bottom: 1px solid #383838; }
+.st-d .dbox .boxheader { border-bottom: 1px solid #383838; background: #222; }
 .dbox .boxbody { padding: 20px; border-bottom: 1px solid #ddd; }
 .st-d .dbox .boxbody { border-bottom: 1px solid #383838; }
 .dbox .boxbody:last-child { border-bottom: 0px; }
@@ -241,8 +242,9 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 		.ckbox {width:900px; }
 		.ckbox li { float: left; margin: 5px 10px 5px 0; white-space: nowrap; width: 162px; height: 20px; }
 	.partition, .partition2{ color: #000; }
-	.st-d .partition, .partition2{ color:#fff;}
+	.st-d .partition, .partition2{ color:#fff; }
 	.tb2 .partition { padding: 16px 20px; font-size: 16px; border-bottom: 1px solid #ddd;background: #F9F9F9; }
+	.st-d .tb2 .partition { background: #222; }
 	.dblist{}
 		.dblist li{ float:left; margin-bottom:5px; width:33%; height:20px; white-space:nowrap; cursor:pointer; }
 
@@ -437,6 +439,10 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .team span { flex-basis: 40%; min-width: 240px; }
 .team.tm a { flex-basis: auto; min-width: auto; }
 
+/* forumlist */
+.forumheader { padding: 0px 20px;background: #fff;height:60px;line-height:60px; }
+.st-d .forumheader { background: #000; }
+
 /* calendar */
 #calendar_week .dropmenu{ filter: none; opacity: 1; background: none; margin-left: 0;position:relative; margin-top:0; border:none; text-align:left; text-decoration:underline; display: inline; box-shadow: none; }
 .calendar_checked, .calendar_checked a:link, .calendar_checked a:visited{ color:#333; }
@@ -542,6 +548,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.psetting .light, .psetting .light a { color: #777; }
 	.psetting a.memo { color: #999; margin-left: 20px; }
 	.psetting div.memo { margin:5px;padding: 5px; border: 1px dotted #DEEFFB; background: #FFF; }
+	.st-d .psetting div:hover { background: #333; }
 
 /* 进度条 */
 .pbg { position: relative; margin: 10px 0; width: 200px; height: 16px; background: url(bg_progressbar.png) 0 0 repeat-x; border-radius: 5px; }
