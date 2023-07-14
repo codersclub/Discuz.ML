@@ -413,6 +413,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .dbox.hometop .hinfo { flex-grow: 1; }
 .dbox.hometop .hinfo h4 { font-size: 18px; margin-top: 14px; margin-bottom: 10px; }
 .st-l .dbox.hometop .hinfo h4{color:#000;}
+.st-d .dbox.hometop .hinfo h4{color:#666;}
 .dbox.hometop .hinfo p { font-size: 14px; color: #666; }
 .dbox .tb2 td{ padding:10px 5px 10px 0px;}
 .dbox .tb2 th{ padding:10px 5px 10px 0px;}
