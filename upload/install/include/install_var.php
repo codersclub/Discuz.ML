@@ -63,7 +63,7 @@ define('UNDEFINE_FUNC', 32);
 define('MISSING_PARAMETER', 33);
 define('LOCK_FILE_NOT_TOUCH', 34);
 
-$func_items = array('mysqli_connect', 'xml_parser_create', 'json_encode');
+$func_items = array('mysqli_connect', 'xml_parser_create', 'json_encode', 'dns_get_record');
 
 $filesock_items = array('fsockopen', 'pfsockopen', 'stream_socket_client', 'curl_init');
 
