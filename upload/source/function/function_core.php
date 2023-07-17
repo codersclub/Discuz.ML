@@ -768,6 +768,10 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 		if(strpos($tpldir, 'plugin') && (file_exists(DISCUZ_ROOT.$mobiletplfile) || file_exists(substr(DISCUZ_ROOT.$mobiletplfile, 0, -4).'.php'))) {
 			$tplfile = $mobiletplfile;
 		} elseif(!file_exists(DISCUZ_ROOT.TPLDIR.'/'.$mobiletplfile) && !file_exists(substr(DISCUZ_ROOT.TPLDIR.'/'.$mobiletplfile, 0, -4).'.php')) {
+			if(strpos($file, $_G['mobiletpl'][IN_MOBILE].'/email/') === 0) {
+				$tplfile = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $tplfile);
+				$file = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $file);
+			}
 			$mobiletplfile = './template/default/'.$file.'.htm';
 			if(!file_exists(DISCUZ_ROOT.$mobiletplfile) && !$_G['forcemobilemessage']) {
 				$tplfile = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $tplfile);
