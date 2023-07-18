@@ -151,12 +151,12 @@ Class discuz_upload{
 	public static function get_target_dir($type, $extid = '', $check_exists = true) {
 
 		$subdir = $subdir1 = $subdir2 = '';
-		if($type == 'album' || $type == 'forum' || $type == 'portal' || $type == 'category' || $type == 'profile') {
+		if($type == 'group' || $type == 'common') {
+			$subdir = $subdir1 = substr(md5($extid), 0, 2).'/';
+		} elseif($type != 'temp') {
 			$subdir1 = date('Ym');
 			$subdir2 = date('d');
 			$subdir = $subdir1.'/'.$subdir2.'/';
-		} elseif($type == 'group' || $type == 'common') {
-			$subdir = $subdir1 = substr(md5($extid), 0, 2).'/';
 		}
 
 		$check_exists && discuz_upload::check_dir_exists($type, $subdir1, $subdir2);
@@ -165,7 +165,7 @@ Class discuz_upload{
 	}
 
 	public static function check_dir_type($type) {
-		return !in_array($type, array('forum', 'group', 'album', 'portal', 'common', 'temp', 'category', 'profile')) ? 'temp' : $type;
+		return !preg_match("/^[a-z]+[a-z0-9_]*$/i", $type) ? 'temp' : $type;
 	}
 
 	public static function check_dir_exists($type = '', $sub1 = '', $sub2 = '') {
