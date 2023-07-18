@@ -42,7 +42,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .spectitle{ border-bottom:1px dashed #F66; }
 .extcredits, .threadprofilenode { margin:-5px 0 10px; }
 .extcredits a, .threadprofilenode a { margin-right:5px; padding:2px 5px; line-height:220%; border:1px solid #B6CFD9; background:#FFF; white-space:nowrap; }
-.st-d .extcredits a, .threadprofilenode a { border:1px solid #181818; background:#000;}
+.st-d .extcredits a, .st-d .threadprofilenode a { border:1px solid #181818; background:#000;}
 .popupmenu_popup { width:400px; overflow:hidden; padding:10px; border:1px solid #A6C9D7; background:#FFF; font-size:12px; font-weight:400; text-align:left; }
 	li.popupmenu_popup { list-style: none; }
 	#fselect_menu { width:300px; }
