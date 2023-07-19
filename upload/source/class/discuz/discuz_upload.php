@@ -24,7 +24,7 @@ Class discuz_upload{
 
 	}
 
-	function init($attach, $type = 'temp', $extid = 0, $forcename = '') {
+	function init($attach, $type = 'temp', $extid = 0, $forcename = '', $subdir = '', $dirtype = 1, $filename = '') {
 
 		if(!is_array($attach) || empty($attach) || !$this->is_upload_file($attach['tmp_name']) || trim($attach['name']) == '' || $attach['size'] == 0) {
 			$this->attach = array();
@@ -33,7 +33,9 @@ Class discuz_upload{
 		} else {
 			$this->type = $this->check_dir_type($type);
 			$this->extid = intval($extid);
-			$this->forcename = $forcename;
+			$this->forcename = preg_match("/^[a-z0-9_]+$/i", $forcename) ? $forcename : '';
+			$subdir = preg_match("/^[a-z0-9_]+$/i", $subdir) ? $subdir : '';
+			$filename = preg_match("/^[a-z0-9_]+$/i", $filename) ? $filename : '';
 
 			$attach['size'] = intval($attach['size']);
 			$attach['name'] =  trim($attach['name']);
@@ -47,8 +49,8 @@ Class discuz_upload{
 
 			$attach['isimage'] = $this->is_image_ext($attach['ext']);
 			$attach['extension'] = $this->get_target_extension($attach['ext']);
-			$attach['attachdir'] = $this->get_target_dir($this->type, $extid);
-			$attach['attachment'] = $attach['attachdir'].$this->get_target_filename($this->type, $this->extid, $this->forcename).'.'.$attach['extension'];
+			$attach['attachdir'] = $this->get_target_dir($this->type, $extid, true, $subdir, $dirtype);
+			$attach['attachment'] = $attach['attachdir'].$this->get_target_filename($this->type, $this->extid, $this->forcename, $filename).'.'.$attach['extension'];
 			$attach['target'] = getglobal('setting/attachdir').'./'.$this->type.'/'.$attach['attachment'];
 			$this->attach = & $attach;
 			$this->errorcode = 0;
@@ -72,7 +74,7 @@ Class discuz_upload{
 			$this->errorcode = -101;
 		} elseif(in_array($this->type, array('group', 'album', 'category')) && !$this->attach['isimage']) {
 			$this->errorcode = -102;
-		} elseif(in_array($this->type, array('common')) && (!$this->attach['isimage'] && $this->attach['ext'] != 'ext')) {
+		} elseif(in_array($this->type, array('common')) && (!$this->attach['isimage'] && !in_array($this->attach['ext'], array('ext', 'svg')))) {
 			$this->errorcode = -102;
 		} elseif(!$this->save_to_local($this->attach['tmp_name'], $this->attach['target'])) {
 			$this->errorcode = -103;
@@ -134,38 +136,63 @@ Class discuz_upload{
 		return $source && ($source != 'none') && (is_uploaded_file($source) || is_uploaded_file(str_replace('\\\\', '\\', $source)));
 	}
 
-	public static function get_target_filename($type, $extid = 0, $forcename = '') {
-		if($type == 'group' || ($type == 'common' && $forcename != '')) {
-			$filename = $type.'_'.intval($extid).($forcename != '' ? "_$forcename" : '');
-		} else {
-			$filename = date('His').strtolower(random(16));
+	public static function get_target_filename($type, $extid = 0, $forcename = '', $filename = '') {
+		if (empty($filename)) {
+			if($type == 'group' || ($type == 'common' && $forcename != '')) {
+				$filename = $type.'_'.intval($extid).($forcename != '' ? "_$forcename" : '');
+			} else {
+				$filename = date('His').strtolower(random(16));
+			}
 		}
 		return $filename;
 	}
 
 	public static function get_target_extension($ext) {
 		static $safeext  = array('attach', 'jpg', 'jpeg', 'gif', 'png', 'webp', 'swf', 'bmp', 'txt', 'zip', 'rar', 'mp3');
+		if(defined('IN_ADMINCP')) {
+			$safeext[] = 'svg';
+		}
 		return strtolower(!in_array(strtolower($ext), $safeext) ? 'attach' : $ext);
 	}
 
-	public static function get_target_dir($type, $extid = '', $check_exists = true) {
+	public static function get_target_dir($type, $extid = '', $check_exists = true, $subdir = '', $dirtype = 1) {
 
-		$subdir = $subdir1 = $subdir2 = '';
-		if($type == 'group' || $type == 'common') {
-			$subdir = $subdir1 = substr(md5($extid), 0, 2).'/';
-		} elseif($type != 'temp') {
+		$dir = $subdir1 = $subdir2 = '';
+		// $dirtype == 0 表示不需要子目录
+		if($dirtype == 1) {
+			if($type == 'group' || $type == 'common') {
+				$dir = $subdir1 = substr(md5($extid), 0, 2).'/';
+			} elseif($type != 'temp') {
+				$subdir1 = date('Ym');
+				$subdir2 = date('d');
+				$dir = $subdir1.'/'.$subdir2.'/';
+			}
+		} elseif($dirtype == 2) {
 			$subdir1 = date('Ym');
 			$subdir2 = date('d');
-			$subdir = $subdir1.'/'.$subdir2.'/';
+			$dir = $subdir1.'/'.$subdir2.'/';
+		} elseif($dirtype == 3) {
+			$dir = $subdir1 = substr(md5($extid), 0, 2).'/';
 		}
 
-		$check_exists && discuz_upload::check_dir_exists($type, $subdir1, $subdir2);
+		if($subdir) {
+			$dir = $subdir.'/'.$dir;
+		}
 
-		return $subdir;
+		if($check_exists) {
+			if($subdir) {
+				discuz_upload::check_dir_exists($type, $subdir, $subdir1);
+				discuz_upload::check_dir_exists($type, $subdir.'/'.$subdir1.'/'.$subdir2);
+			} else {
+				discuz_upload::check_dir_exists($type, $subdir1, $subdir2);
+			}
+		}
+
+		return $dir;
 	}
 
 	public static function check_dir_type($type) {
-		return !preg_match("/^[a-z]+[a-z0-9_]*$/i", $type) ? 'temp' : $type;
+		return preg_match("/^[a-z]+[a-z0-9_]*$/i", $type) ? $type : 'temp';
 	}
 
 	public static function check_dir_exists($type = '', $sub1 = '', $sub2 = '') {
