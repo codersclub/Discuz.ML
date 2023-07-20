@@ -38,12 +38,12 @@ function build_cache_styles() {
 			$flash[0] = preg_match('/^(https?:)?\/\//i', $flash[0]) ? $flash[0] : $data['styleimgdir'].'/'.$flash[0];
 			$data['boardlogo'] = "<embed src=\"".$flash[0]."\" width=\"".trim($flash[1])."\" height=\"".trim($flash[2])."\" type=\"application/x-shockwave-flash\" wmode=\"transparent\"></embed>";
 		} else {
-			$data['boardimg'] = preg_match('/^(https?:)?\/\//i', $data['boardimg']) ? $data['boardimg'] : $data['styleimgdir'].'/'.$data['boardimg'];
+			$data['boardimg'] = empty($data['boardimg']) ? $data['imgdir'].'/logo.svg' : (preg_match('/^(https?:)?\/\//i', $data['boardimg']) || file_exists($data['boardimg']) ? '' : (file_exists($data['styleimgdir'].'/'.$data['boardimg']) ? $data['styleimgdir'].'/' : $data['imgdir'].'/')).$data['boardimg'];
 			$data['boardlogo'] = "<img src=\"{$data['boardimg']}\" alt=\"".$_G['setting']['bbname']."\" class=\"boardlogo\" id=\"boardlogo\" border=\"0\" />";
 		}
-		$data['searchimg'] = empty($data['searchimg']) ? $data['imgdir'].'/logo_sc.svg' : (preg_match('/^(https?:)?\/\//i', $data['searchimg']) ? $data['searchimg'] : $data['styleimgdir'].'/'.$data['searchimg']);
+		$data['searchimg'] = empty($data['searchimg']) ? $data['imgdir'].'/logo.svg' : (preg_match('/^(https?:)?\/\//i', $data['searchimg']) || file_exists($data['searchimg']) ? '' : (file_exists($data['styleimgdir'].'/'.$data['searchimg']) ? $data['styleimgdir'].'/' : $data['imgdir'].'/')).$data['searchimg'];
 		$data['searchlogo'] = "<img src=\"{$data['searchimg']}\" alt=\"".$_G['setting']['bbname']."\" class=\"searchlogo\" id=\"searchlogo\" border=\"0\" />";
-		$data['touchimg'] = empty($data['touchimg']) ? $data['imgdir'].'/logo_m.svg' : (preg_match('/^(https?:)?\/\//i', $data['touchimg']) ? $data['touchimg'] : $data['styleimgdir'].'/'.$data['touchimg']);
+		$data['touchimg'] = empty($data['touchimg']) ? $data['imgdir'].'/logo.svg' : (preg_match('/^(https?:)?\/\//i', $data['touchimg']) || file_exists($data['touchimg']) ? '' : (file_exists($data['styleimgdir'].'/'.$data['touchimg']) ? $data['styleimgdir'].'/' : $data['imgdir'].'/')).$data['touchimg'];
 		$data['touchlogo'] = "<img src=\"{$data['touchimg']}\" alt=\"".$_G['setting']['bbname']."\" class=\"touchlogo\" id=\"touchlogo\" border=\"0\" />";
 		$data['bold'] = $data['nobold'] ? 'normal' : 'bold';
 		$contentwidthint = intval($data['contentwidth']);
