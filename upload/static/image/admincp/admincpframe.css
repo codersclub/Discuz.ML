@@ -78,7 +78,7 @@ button::-moz-focus-inner { border: none; padding: 0; }
 /* .mainhd form input.txt:focus:valid {background: transparent;} */
 .mainhd form button { position: absolute; width: 24px; height: 28px; background: none; border: 0; cursor: pointer; }
 .mainhd form button:focus { outline: 0; }
-#cpsetting {cursor: pointer;}
+#cpsetting {cursor: pointer; }
 /* start oldlayout */
 @media (min-width: 1200px) {
 	.oldlayout nav>ul, .widelayout nav>ul { background-color: #163e69; }
@@ -89,7 +89,7 @@ button::-moz-focus-inner { border: none; padding: 0; }
 	.oldlayout .mainhd { flex-wrap: wrap; background-color: #f7f7f7; }
 	.st-d .oldlayout .mainhd { background-color: #181818; }
 	.oldlayout .mainhd .currentloca { order: 1; flex-grow: 1; height: 35px; }
-	.oldlayout .mainhd .uinfo { flex-shrink: 0; width: 100%; border-bottom: 1px solid #ccc; background-color: #fff; }
+	.oldlayout .mainhd .uinfo { width: 100%; border-bottom: 1px solid #ccc; background-color: #fff; }
 	.st-d .oldlayout .mainhd .uinfo { border-bottom: 1px solid #999; background-color: #0a0a0a; }
 	.widelayout .mainhd .uinfo { flex-grow: 1; padding: 0; }
 	.oldlayout #frameuinfo>p.greet { max-width: 200px; }
