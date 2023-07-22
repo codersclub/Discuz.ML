@@ -706,6 +706,7 @@ if(!submitcheck('settingsubmit')) {
 		$threadprofile_group = C::t('forum_threadprofile_group')->fetch_all_threadprofile();
 		showtagheader('div', 'threadprofile', $_GET['anchor'] == 'threadprofile');
 
+	    echo '<style>*, *::before, *::after {box-sizing: inherit}</style>';
 		echo '<div class="drow"><div class="dcol d-12">';
 
 		showboxheader('setting_styles_threadprofile_group');

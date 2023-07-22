@@ -35,7 +35,7 @@ if($operation == 'list') {
 
 		$tdstyle = array('width="25"', 'width="80"', '', 'width="50"', 'width="65"', 'width="35"', 'width="35"', 'width="35"', 'width="215"', 'width="110"');
 		showformheader('portalcategory');
-		echo '<div style="padding: 0px 20px;background: #fff;height:60px;line-height:60px;"><a href="javascript:;" onclick="show_all()">'.cplang('show_all').'</a> | <a href="javascript:;" onclick="hide_all()">'.cplang('hide_all').'</a>&nbsp;&nbsp;&nbsp;<input type="text" id="srchforumipt" class="txt" /> <input type="submit" class="btn" value="'.cplang('search').'" onclick="return srchforum()" /></div>';
+		echo '<div class="forumheader"><a href="javascript:;" onclick="show_all()">'.cplang('show_all').'</a> | <a href="javascript:;" onclick="hide_all()">'.cplang('hide_all').'</a>&nbsp;&nbsp;&nbsp;<input type="text" id="srchforumipt" class="txt" /> <input type="submit" class="btn" value="'.cplang('search').'" onclick="return srchforum()" /></div>';
 		showtableheader('', '', 'id="portalcategory_header" style="min-width:900px;*width:900px;"');
 		showsubtitle(array('', '', 'portalcategory_name', 'portalcategory_articles', 'portalcategory_allowpublish', 'portalcategory_allowcomment', 'portalcategory_is_closed', 'setindex', 'operation', 'portalcategory_article_op'), 'header tbm', $tdstyle);
 		showtablefooter();
