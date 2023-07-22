@@ -407,7 +407,7 @@ class discuz_application extends discuz_base{
 		define('STATICURL', !empty($this->var['config']['output']['staticurl']) ? $this->var['config']['output']['staticurl'] : 'static/');
 		$this->var['staticurl'] = STATICURL;
 
-/*vot*/ $server_id = $_config['server'][id];
+/*vot*/ $server_id = $_config['server']['id'];
 /*vot*/ $dbcharset = $_config['db'][$server_id]['dbcharset'];
 /*vot*/ if(empty($dbcharset)) $dbcharset = 'utf8';
 /*vot*/ $_config['dbcharset'] = $dbcharset;
