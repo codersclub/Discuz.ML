@@ -27,11 +27,11 @@ class discuz_extend extends discuz_container
 		if(method_exists($this->_obj, $name)) {
 			switch (count($p)) {
 				case 0:	return $this->_obj->{$name}();break;
-				case 1:	return $this->_obj->{$name}($p[0], $p[1]);break;
-				case 2:	return $this->_obj->{$name}($p[0], $p[1], $p[2]);break;
-				case 3:	return $this->_obj->{$name}($p[0], $p[1], $p[2], $p[3]);break;
-				case 4:	return $this->_obj->{$name}($p[0], $p[1], $p[2], $p[3], $p[4]);break;
-				case 5:	return $this->_obj->{$name}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5]);break;
+				case 1:	return $this->_obj->{$name}($p[0]);break;
+				case 2:	return $this->_obj->{$name}($p[0], $p[1]);break;
+				case 3:	return $this->_obj->{$name}($p[0], $p[1], $p[2]);break;
+				case 4:	return $this->_obj->{$name}($p[0], $p[1], $p[2], $p[3]);break;
+				case 5:	return $this->_obj->{$name}($p[0], $p[1], $p[2], $p[3], $p[4]);break;
 				default: return call_user_func_array(array($this->_obj, $name), $p);break;
 			}
 		} else {

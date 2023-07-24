@@ -17,8 +17,9 @@ $message<br /><br />
 }
 
 function tpl_codedisp($code) {
+	$randomid = 'code_'.random(3);
 }
-<!--{block return}--><div class="blockcode"><div><ol><li>$code</ol></div></div><!--{/block}-->
+<!--{block return}--><div class="blockcode"><div id="$randomid"><ol><li>$code</ol></div><em onclick="copycode(getID('$randomid'));">{lang discuzcode_copyclipboard}</em></div><!--{/block}-->
 <!--{eval return $return;}-->
 {eval
 }
@@ -96,16 +97,16 @@ $mobilethumburl = $attach['attachimg'] && $_G['setting']['showimages'] && (!$att
 $aidencode = packaids($attach);
 $is_archive = $_G['forum_thread']['is_archived'] ? "&fid=".$_G['fid']."&archiveid=".$_G['forum_thread']['archiveid'] : '';
 $pluginhook = !empty($_G['setting']['pluginhooks']['viewthread_attach_extra'][$attach['aid']]) ? $_G['setting']['pluginhooks']['viewthread_attach_extra'][$attach['aid']] : '';
+$guestviewthumb = !empty($_G['setting']['guestviewthumb']['flag']) && !$_G['uid'];
+$mobileguestviewthumburl = $guestviewthumb ? ($attach['attachimg'] && $_G['setting']['showimages'] && (((!$attach['price'] || $attach['payed']) && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid'])) || ($guestviewthumb)) ? getforumimg($attach['aid'], 0, $_G['setting']['guestviewthumb']['width'], $_G['setting']['guestviewthumb']['height'], 1) : '') : '';
 }
 <!--{block return}-->
-	<!--{if $attach['attachimg'] && $_G['setting']['showimages'] && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid']) && (!$attach['price'] || $attach['payed'])}-->
-			<!--{if !$attach['price'] || $attach['payed']}-->
-				<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
-				<li><a href="forum.php?mod=viewthread&tid=$attach['tid']&aid=$attach['aid']&from=album&page=$_G['page']" class="orange"><img id="aimg_$attach['aid']" src="{if $attach['refcheck']}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach['url']}{$attach['attachment']}{/if}" alt="$attach['imgalt']" title="$attach['imgalt']" /></a>
-				$pluginhook
-				</li>
-				<!--{/if}-->
-			<!--{/if}-->
+	<!--{if $attach['attachimg'] && $_G['setting']['showimages'] && (((!$attach['price'] || $attach['payed']) && ($_G['group']['allowgetimage'] || $_G['uid'] == $attach['uid'])) || ($guestviewthumb))}-->
+		<!--{if $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
+			<li><a href="forum.php?mod=viewthread&tid=$attach['tid']&aid=$attach['aid']&from=album&page=$_G['page']" class="orange"><img id="aimg_$attach['aid']" src="{if $guestviewthumb}$mobileguestviewthumburl{elseif $attach['refcheck']}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach['url']}{$attach['attachment']}{/if}" alt="$attach['imgalt']" title="$attach['imgalt']" /></a>
+			$pluginhook
+			</li>
+		<!--{/if}-->
 	<!--{/if}-->
 <!--{/block}-->
 <!--{eval return $return;}-->

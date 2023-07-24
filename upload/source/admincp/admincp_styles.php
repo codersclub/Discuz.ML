@@ -218,7 +218,7 @@ if($operation == 'admin') {
 				}
 			}
 			$stylelist .=
-				'<table cellspacing="0" cellpadding="0" style="margin-left: 10px; width: 250px;height: 200px;" class="left"><tr><th class="partition" colspan="2">'.($addonids[$id] ? "<a href=\"".ADMINSCRIPT."?action=cloudaddons&frame=no&id=".basename($style['directory']).".template\" target=\"_blank\" title=\"$lang[cloudaddons_linkto]\">$style[tplname]</a>" : $style['tplname']).'</th></tr><tr><td style="width: 130px;height:150px" valign="top">'.
+				'<table cellspacing="0" cellpadding="0" style="margin-left: 10px; width: 250px;height: 200px;" class="left"><tr><th class="partition" colspan="2">'.($addonids[$id] ? "<a href=\"".ADMINSCRIPT."?action=cloudaddons&frame=no&id=".$identifier.".template\" target=\"_blank\" title=\"$lang[cloudaddons_linkto]\">$style[tplname]</a>" : $style['tplname']).'</th></tr><tr><td style="width: 130px;height:150px" valign="top">'.
 				($id > 0 ? "<p style=\"margin-bottom: 12px;\"><img width=\"110\" height=\"120\" ".($previewlarge ? 'style="cursor:pointer" title="'.$lang['preview_large'].'" onclick="zoom(this, \''.$previewlarge.'\', 1)" ' : '')."src=\"$preview\" alt=\"{$lang['preview']}\" onerror=\"this.onerror=null;this.src='./static/image/admincp/stylepreview.gif'\"/></p>
 				<p style=\"margin: 2px 0\"><input type=\"text\" class=\"txt\" name=\"namenew[$id]\" value=\"{$style['name']}\" style=\"margin:0; width: 104px;\"></p></td><td valign=\"top\">
 				<p> {$lang['styles_default']}</p>
@@ -227,8 +227,8 @@ if($operation == 'admin') {
 				<p style=\"margin: 8px 0 0 0\"><label>".($isdefault || $isdefault1 || $isdefault2 || $isdefault3 ? '<input class="checkbox" type="checkbox" disabled="disabled" />' : '<input class="checkbox" type="checkbox" name="delete[]" value="'.$id.'" />')." {$lang['styles_uninstall']}</label></p>
 				<p style=\"margin: 8px 0 2px 0\"><a href=\"".ADMINSCRIPT."?action=styles&operation=edit&id=$id\">{$lang['edit']}</a> &nbsp;".
 					(($isplugindeveloper && $isfounder) || !$addonids[$style['styleid']] || !cloudaddons_getmd5($addonids[$style['styleid']]) ? " <a href=\"".ADMINSCRIPT."?action=styles&operation=export&id=$id\">{$lang['export']}</a><br />" : '<br />').
-					"<a href=\"".ADMINSCRIPT."?action=styles&operation=copy&id=$id\">{$lang['copy']}</a> &nbsp; <a href=\"".ADMINSCRIPT."?action=styles&operation=import&dir=yes&restore=$id\">{$lang['restore']}</a>
-					".($isfounder && $addonids[$id] ? " &nbsp; <a href=\"".ADMINSCRIPT."?action=cloudaddons&frame=no&id=".basename($style['directory']).".template&from=comment\" target=\"_blank\" title=\"{$lang['cloudaddons_linkto']}\">{$lang['plugins_visit']}</a>" : '')."
+					"<a href=\"".ADMINSCRIPT."?action=styles&operation=copy&id=$id\">{$lang['copy']}</a> &nbsp; <a href=\"".ADMINSCRIPT."?action=styles&operation=import&dir=".$identifier."&restore=$id\">{$lang['restore']}</a>
+					".($isfounder && $addonids[$id] ? " &nbsp; <a href=\"".ADMINSCRIPT."?action=cloudaddons&frame=no&id=".$identifier.".template&from=comment\" target=\"_blank\" title=\"{$lang['cloudaddons_linkto']}\">{$lang['plugins_visit']}</a>" : '')."
 				</p>"
 				:
 				"<img width=\"110\" height=\"120\" src=\"$preview\" ".($previewlarge ? 'style="cursor:pointer" title="'.$lang['preview_large'].'" onclick="zoom(this, \''.$previewlarge.'\', 1)" ' : '')." onerror=\"this.onerror=null;this.src='./static/image/admincp/stylepreview.gif'\" /></td><td valign=\"top\">
@@ -570,7 +570,7 @@ function imgpre_switch(id) {
 			/*search={"styles_admin":"action=styles&operation=edit"}*/
 			showtips('styles_tips');
 
-			showformheader("styles&operation=edit&id=$id");
+			showformheader("styles&operation=edit&id=$id", 'enctype');
 			showtableheader($lang['styles_edit'], 'nobottom');
 			showsetting('styles_edit_name', 'namenew', $style['name'], 'text');
 			showsetting('styles_edit_tpl', array('templateidnew', $tplselect), $style['templateid'], 'select');
@@ -581,9 +581,14 @@ function imgpre_switch(id) {
 			showsetting('styles_edit_smileytype', array("stylevar[{$stylestuff['stypeid']['id']}]", $smileytypes), $stylestuff['stypeid']['subst'], 'select');
 			showsetting('styles_edit_imgdir', '', '', '<input type="text" class="txt" name="stylevar['.$stylestuff['imgdir']['id'].']" id="imgdir" value="'.$stylestuff['imgdir']['subst'].'" />');
 			showsetting('styles_edit_styleimgdir', '', '', '<input type="text" class="txt" name="stylevar['.$stylestuff['styleimgdir']['id'].']" id="styleimgdir" value="'.$stylestuff['styleimgdir']['subst'].'" />');
-			showsetting('styles_edit_logo', "stylevar[{$stylestuff['boardimg']['id']}]", $stylestuff['boardimg']['subst'], 'text');
-			showsetting('styles_edit_searchlogo', "stylevar[{$stylestuff['searchimg']['id']}]", $stylestuff['searchimg']['subst'], 'text');
-			showsetting('styles_edit_touchlogo', "stylevar[{$stylestuff['touchimg']['id']}]", empty($stylestuff['touchimg']['subst']) ? 'logo_m.svg' : $stylestuff['touchimg']['subst'], 'text');
+			empty($stylestuff['imgdir']['subst']) && $stylestuff['imgdir']['subst'] = 'static/image/common';
+			empty($stylestuff['styleimgdir']['subst']) && $stylestuff['styleimgdir']['subst'] = $stylestuff['imgdir']['subst'];
+			$boardimghtml = '<br /><img src="'.(empty($stylestuff['boardimg']['subst']) ? $stylestuff['imgdir']['subst'].'/logo_m.svg' : (preg_match('/^(https?:)?\/\//i', $stylestuff['boardimg']['subst']) || file_exists($stylestuff['boardimg']['subst']) ? '' : (file_exists($stylestuff['styleimgdir']['subst'].'/'.$stylestuff['boardimg']['subst']) ? $stylestuff['styleimgdir']['subst'].'/' : $stylestuff['imgdir']['subst'].'/')).$stylestuff['boardimg']['subst']).'" style="max-height: 70px;" />';
+			$searchimghtml = '<img src="'.(empty($stylestuff['searchimg']['subst']) ? $stylestuff['imgdir']['subst'].'/logo_m.svg' : (preg_match('/^(https?:)?\/\//i', $stylestuff['searchimg']['subst']) || file_exists($stylestuff['searchimg']['subst']) ? '' : (file_exists($stylestuff['styleimgdir']['subst'].'/'.$stylestuff['searchimg']['subst']) ? $stylestuff['styleimgdir']['subst'].'/' : $stylestuff['imgdir']['subst'].'/')).$stylestuff['searchimg']['subst']).'" style="max-height: 70px;" />';
+			$touchimghtml = '<img src="'.(empty($stylestuff['touchimg']['subst']) ? $stylestuff['imgdir']['subst'].'/logo_m.svg' : (preg_match('/^(https?:)?\/\//i', $stylestuff['touchimg']['subst']) || file_exists($stylestuff['touchimg']['subst']) ? '' : (file_exists($stylestuff['styleimgdir']['subst'].'/'.$stylestuff['touchimg']['subst']) ? $stylestuff['styleimgdir']['subst'].'/' : $stylestuff['imgdir']['subst'].'/')).$stylestuff['touchimg']['subst']).'" style="max-height: 70px;" />';
+			showsetting('styles_edit_logo', "stylevar[{$stylestuff['boardimg']['id']}]", $stylestuff['boardimg']['subst'], 'filetext', '', 0, cplang('styles_edit_logo_comment').$boardimghtml);
+			showsetting('styles_edit_searchlogo', "stylevar[{$stylestuff['searchimg']['id']}]", $stylestuff['searchimg']['subst'], 'filetext', '', 0, $searchimghtml);
+			showsetting('styles_edit_touchlogo', "stylevar[{$stylestuff['touchimg']['id']}]", empty($stylestuff['touchimg']['subst']) ? 'logo_m.svg' : $stylestuff['touchimg']['subst'], 'filetext', '', 0, $touchimghtml);
 
 			foreach($predefinedvars as $predefinedvar => $v) {
 				if($v !== array()) {
@@ -687,6 +692,29 @@ function imgpre_switch(id) {
 					$substitute = @dhtmlspecialchars($substitute);
 					$stylevarids = array($varid);
 					C::t('common_stylevar')->update_substitute_by_styleid($substitute, $id, $stylevarids);
+				}
+
+				if(isset($_FILES['stylevar']['name'])) {
+					foreach(C::t('common_stylevar')->fetch_all_by_styleid($id) as $stylevar) {
+						$stylesvar[$stylevar['stylevarid']] = $stylevar['variable'];
+					}
+					$upload = new discuz_upload();
+					foreach ($_FILES['stylevar']['name'] as $varid => $value) {
+						if($stylesvar[$varid]) {
+							$file = array(
+								'name' => $_FILES['stylevar']['name'][$varid],
+								'type' => $_FILES['stylevar']['type'][$varid],
+								'tmp_name' => $_FILES['stylevar']['tmp_name'][$varid],
+								'error' => $_FILES['stylevar']['error'][$varid],
+								'size' => $_FILES['stylevar']['size'][$varid],
+							);
+							if($upload->init($file, 'common', 0, '', 'template', 0, $stylesvar[$varid].'_'.date('Ymd').strtolower(random(8))) && $upload->save()) {
+								$logonew = $_G['setting']['attachurl'].'common/'.$upload->attach['attachment'];
+								$stylevarids = array($varid);
+								C::t('common_stylevar')->update_substitute_by_styleid($logonew, $id, $stylevarids);
+							}
+						}
+					}
 				}
 			}
 		}
