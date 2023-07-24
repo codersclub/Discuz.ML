@@ -16,6 +16,9 @@ body {
 body.st-d {
 	background: #0a0a0a;
 }
+*, *::before, *::after {
+    box-sizing: inherit
+}
 .darkmode {
 	align-self: flex-end;
 	width: 45px;
