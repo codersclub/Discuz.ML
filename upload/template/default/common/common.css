@@ -103,7 +103,7 @@ CSS 写作注意事项：
 	:focus { outline-color: {MENUBGCOLOR}; }
 	label { cursor: pointer; }
 	/* 消除修改DOCTYPE为HTML5以后造成的img基线问题 */
-	img, svg { vertical-align: bottom; }
+	img, svg { vertical-align: middle; }
 /*
 	Name:			mod_float
 	Level:			Global
