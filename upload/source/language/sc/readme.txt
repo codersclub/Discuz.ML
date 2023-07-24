@@ -1,3 +1,4 @@
+Discuz! ML (c) 2008-2099 Codersclub.org
 Simplified Chinese language pack
 for Discuz! ML v3.5
 MultiLingual version by Valery Votintsev, codersclub.org
