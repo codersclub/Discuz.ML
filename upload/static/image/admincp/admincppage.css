@@ -42,7 +42,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .spectitle{ border-bottom:1px dashed #F66; }
 .extcredits, .threadprofilenode { margin:-5px 0 10px; }
 .extcredits a, .threadprofilenode a { margin-right:5px; padding:2px 5px; line-height:220%; border:1px solid #B6CFD9; background:#FFF; white-space:nowrap; }
-.st-d .extcredits a, .threadprofilenode a { border:1px solid #181818; background:#000;}
+.st-d .extcredits a, .st-d .threadprofilenode a { border:1px solid #181818; background:#000;}
 .popupmenu_popup { width:400px; overflow:hidden; padding:10px; border:1px solid #A6C9D7; background:#FFF; font-size:12px; font-weight:400; text-align:left; }
 	li.popupmenu_popup { list-style: none; }
 	#fselect_menu { width:300px; }
@@ -65,7 +65,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .infotitle2 { margin-bottom: 10px; color: #090; font-size: 14px; font-weight: 700; }
 .infotitle3 { margin-bottom: 10px; color: #C00; font-size: 14px; font-weight: 700; }
 .infobox h3 { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-.colorbox { background: #fff; padding: 20px; }
+.colorbox { background: #fff; padding: 20px; margin-top: 3px; margin-bottom: 3px; border-top: 4px solid #CCC; border-bottom: 4px solid #CCC; }
 .st-d .colorbox { background: #000;}
 .colorbox h4 { font-size: 18px; margin-bottom: 10px; }
 .drow { display: flex; margin-left: -10px; margin-right: -10px; flex-wrap: wrap; }
@@ -91,13 +91,14 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 @media (max-width: 1300px) {
 	.pluginlist .w1300hide { display: none; }
 }
-.cpcontainer { background: #f0f0f0; padding: 20px; color: #333; font-size: 14px; }
+.cpcontainer { background: #f0f0f0; padding: 20px; color: #333; font-size: 12px; }
 .st-d .cpcontainer { background: #282828;color: #666;}
 .copyright { width: 100%; background: #fff; color: #999; padding: 16px; font-size: 12px; text-align: center; }
 .st-d .copyright { background: #000;}
 .itemtitle { padding: 0 20px; background: #fff; display: flex; align-items: flex-start; flex-direction: column; border-bottom: 1px solid #ddd; }
 .st-d .itemtitle { background: #000; border-bottom: 1px solid #999; }
 .itemtitle .titlerow { display: flex; width: 100%; flex-direction: row; justify-content: space-between; }
+.st-d .itemtitle .titlerow { color: #fff; }
 .itemtitle .titlerow>span, .itemtitle .titlerow>a { margin: 16px 0; }
 .itemtitle h3 { font-weight: bold; font-size: 20px; margin: 16px 20px 16px 0; }
 .st-l .itemtitle h3 { color:#000;}
@@ -144,8 +145,8 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .tipbox { /* todo */ }
 .dbox { display: flex; flex-direction: column; background: #fff; margin-bottom: 20px; }
 .st-d .dbox {background: #000;}
-.dbox .boxheader { padding: 16px 20px; font-size: 16px; border-bottom: 1px solid #ddd; }
-.st-d .dbox .boxheader { border-bottom: 1px solid #383838; }
+.dbox .boxheader { padding: 16px 20px; font-size: 16px; border-bottom: 1px solid #ddd; background: #F9F9F9; }
+.st-d .dbox .boxheader { border-bottom: 1px solid #383838; background: #222; }
 .dbox .boxbody { padding: 20px; border-bottom: 1px solid #ddd; }
 .st-d .dbox .boxbody { border-bottom: 1px solid #383838; }
 .dbox .boxbody:last-child { border-bottom: 0px; }
@@ -241,8 +242,9 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 		.ckbox {width:900px; }
 		.ckbox li { float: left; margin: 5px 10px 5px 0; white-space: nowrap; width: 162px; height: 20px; }
 	.partition, .partition2{ color: #000; }
-	.st-d .partition, .partition2{ color:#fff;}
-	.tb2 .partition { padding: 16px 20px; font-size: 16px; border-bottom: 1px solid #ddd; }
+	.st-d .partition, .partition2{ color:#fff; }
+	.tb2 .partition { padding: 16px 20px; font-size: 16px; border-bottom: 1px solid #ddd;background: #F9F9F9; }
+	.st-d .tb2 .partition { background: #222; }
 	.dblist{}
 		.dblist li{ float:left; margin-bottom:5px; width:33%; height:20px; white-space:nowrap; cursor:pointer; }
 
@@ -285,7 +287,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .mod_delete td { background: #F99 !important; }
 
 /* custom menu */
-.custom{ overflow:hidden; position:relative; border:6px solid #A6C9D7; background:#FFF; }
+.custom{ overflow:hidden; position:relative; border:6px solid #ccc; background:#FFF; }
 	.cmain{ padding:0; text-align: left; padding: 10px; }
 		.cnote{ line-height:20px; }
 			.cnote li{ float:left; margin-right:15px; }
@@ -358,7 +360,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .devteam{ width:350px; }
 
 /* widget */
-.checked, .checked .txt{ color:#080; }
+.checked, .checked .txt{ color:#0B0; }
 .lightfont{ color:#CCC; }
 .light, .light a{ color:#AAA; }
 .lightnum{ color:#F60; }
@@ -411,6 +413,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .dbox.hometop .hinfo { flex-grow: 1; }
 .dbox.hometop .hinfo h4 { font-size: 18px; margin-top: 14px; margin-bottom: 10px; }
 .st-l .dbox.hometop .hinfo h4{color:#000;}
+.st-d .dbox.hometop .hinfo h4{color:#666;}
 .dbox.hometop .hinfo p { font-size: 14px; color: #666; }
 .dbox .tb2 td{ padding:10px 5px 10px 0px;}
 .dbox .tb2 th{ padding:10px 5px 10px 0px;}
@@ -437,6 +440,10 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .team span { flex-basis: 40%; min-width: 240px; }
 .team.tm a { flex-basis: auto; min-width: auto; }
 
+/* forumlist */
+.forumheader { padding: 0px 20px;background: #fff;height:60px;line-height:60px; }
+.st-d .forumheader { background: #000; }
+
 /* calendar */
 #calendar_week .dropmenu{ filter: none; opacity: 1; background: none; margin-left: 0;position:relative; margin-top:0; border:none; text-align:left; text-decoration:underline; display: inline; box-shadow: none; }
 .calendar_checked, .calendar_checked a:link, .calendar_checked a:visited{ color:#333; }
@@ -454,19 +461,15 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 .smallefont{font-size: 14px}
 
 /* Pop-ups */
-.fwin { text-align: left; background: #FFF; }
-.t_l, .t_c, .t_r, .m_l, .m_r, .b_l, .b_c, .b_r { overflow: hidden; background: #000; opacity: 0.2; filter: alpha(opacity=20); }
-.t_l, .t_r, .b_l, .b_r { width: 10px; height: 10px; line-height: 10px; font-size: 0; }
-.t_c, .b_c { height: 10px; }
-.m_l, .m_r { width: 10px; }
-.t_l { border-radius: 10px 0 0 0; -moz-border-radius: 10px 0 0 0; -webkit-border-radius: 10px 0 0 0; -o-border-radius: 10px 0 0 0; }
-.t_r { border-radius: 0 10px 0 0; -moz-border-radius: 0 10px 0 0; -webkit-border-radius: 0 10px 0 0; -o-border-radius: 0 10px 0 0; }
-.b_l { border-radius: 0 0 0 10px; -moz-border-radius: 0 0 0 10px; -webkit-border-radius: 0 0 0 10px; -o-border-radius: 0 0 0 10px; }
-.b_r { border-radius: 0 0 10px 0; -moz-border-radius: 0 0 10px 0; -webkit-border-radius: 0 0 10px 0; -o-border-radius: 0 0 10px 0; }
+.fwin { text-align: left; background: #FFF; font-size: 12px; }
+.t_l, .t_c, .t_r, .m_l, .m_r, .b_l, .b_c, .b_r { overflow: hidden; background: #ccc; }
+.t_l, .t_r, .b_l, .b_r { width: 6px; height: 6px; line-height: 6px; font-size: 0; }
+.t_c, .b_c { height: 6px; }
+.m_l, .m_r { width: 6px; font-size: 1px; }
 .m_c { background: #FFF; }
-.m_c .tb { margin: 0 0 10px; padding: 0 10px; }
-.m_c .c { padding: 0 10px 10px; }
-.m_c .o { padding: 8px 10px; height: 50px; text-align: right; border-top: 1px solid #CCC; background: #F5F5F5; }
+.m_c .tb { margin: 0 0 6px; padding: 0 6px; }
+.m_c .c { padding: 0 6px 6px; }
+.m_c .o { padding: 8px 6px; text-align: right; border-top: 1px solid #CCC; background: #F5F5F5; }
 .m_c .o .btn { margin: 0; }
 
 .flb { padding: 10px 10px 8px; height: 20px; line-height: 20px; box-sizing: unset;}
@@ -546,6 +549,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.psetting .light, .psetting .light a { color: #777; }
 	.psetting a.memo { color: #999; margin-left: 20px; }
 	.psetting div.memo { margin:5px;padding: 5px; border: 1px dotted #DEEFFB; background: #FFF; }
+	.st-d .psetting div:hover { background: #333; }
 
 /* Progress bar */
 .pbg { position: relative; margin: 10px 0; width: 200px; height: 16px; background: url(bg_progressbar.png) 0 0 repeat-x; border-radius: 5px; }

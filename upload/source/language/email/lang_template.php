@@ -55,9 +55,9 @@ $lang = array
 
 	'email_verify_subject' => 'Email 地址验证',
 	'email_verify_reason' => '在 {$var[\'bbname\']} 进行了新用户注册，或用户修改 Email 使用了这个邮箱地址。',
-	'email_verify_explain' => '帐号激活说明',
+	'email_verify_explain' => '账号激活说明',
 	'email_verify_explain2' => '如果您是 {$var[\'bbname\']} 的新用户，或在修改您的注册 Email 时使用了本地址，我们需要对您的地址有效性进行验证以避免垃圾邮件或地址被滥用。',
-	'email_verify_click_link' => '您只需点击下面的链接即可激活您的帐号：',
+	'email_verify_click_link' => '您只需点击下面的链接即可激活您的账号：',
 
 	'email_reset_subject' => 'Email 地址变更提示',
 	'email_reset_reason' => '在 {$var[\'bbname\']} 被登记为用户邮箱，且该用户操作 Email 地址变更所致。',
@@ -84,12 +84,12 @@ $lang = array
 	'add_member_intro' => '我是 {$var[\'adminusername\']} ，{$var[\'bbname\']} 的管理者之一。',
 	'add_member_reason' => '您刚刚被添加成为 {$var[\'bbname\']} 的会员，当前 Email 即是我们为您注册的邮箱地址。',
 	'add_member_no_interest' => '如果您对 {$var[\'bbname\']} 不感兴趣或无意成为会员，',
-	'add_member_info' => '帐号信息',
+	'add_member_info' => '账号信息',
 	'add_member_bbname' => '网站名称：',
 	'add_member_siteurl' => '网站地址：',
 	'add_member_newusername' => '用户名：',
 	'add_member_newpassword' => '密码：',
-	'add_member_can_login' => '从现在起您可以使用您的帐号登录 {$var[\'bbname\']}，祝您使用愉快！',
+	'add_member_can_login' => '从现在起您可以使用您的账号登录 {$var[\'bbname\']}，祝您使用愉快！',
 
 	'birthday_subject' => '祝您生日快乐',
 	'birthday_reason' => '这个邮箱地址在 {$var[\'bbname\']} 被登记为用户邮箱，<br />
@@ -129,7 +129,7 @@ $lang = array
 	'moderate_member_explain' => '审核结果说明',
 	'moderate_member_explain1' => '通过: 您的注册已通过审核，您已成为 {$var[\'bbname\']} 的正式用户。',
 	'moderate_member_explain2' => '否决: 您的注册信息不完整，或未满足我们对新用户的某些要求，您可以根据管理员留言，<a href="home.php?mod=spacecp&ac=profile" target="_blank">完善您的注册信息</a>，然后再次提交。',
-	'moderate_member_explain3' => '删除：您的注册由于与我们的要求偏差较大，或本站的新注册人数已超过预期，申请已被否决。您的帐号已从数据库中删除，将无法再使用其登录或提交再次审核，请您谅解。',
+	'moderate_member_explain3' => '删除：您的注册由于与我们的要求偏差较大，或本站的新注册人数已超过预期，申请已被否决。您的账号已从数据库中删除，将无法再使用其登录或提交再次审核，请您谅解。',
 
 	'adv_expiration_subject' =>	'您站点的广告将于 {day} 天后到期，请及时处理',
 	'adv_expiration_msg' =>	'您站点的以下广告将于 {$var[\'day\']} 天后到期，请及时处理：',

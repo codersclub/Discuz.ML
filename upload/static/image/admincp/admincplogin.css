@@ -16,6 +16,9 @@ body {
 body.st-d {
 	background: #0a0a0a;
 }
+*, *::before, *::after {
+    box-sizing: inherit
+}
 .darkmode {
 	align-self: flex-end;
 	width: 45px;
@@ -138,6 +141,9 @@ body.st-d {
 	align-self: center;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 	margin-bottom: 10px;
+}
+.loginbox .btn {
+	font-size: 24px !important;
 }
 .st-d .loginbox img {
 	filter: grayscale(1);

@@ -92,6 +92,7 @@ $lang = array(
 	'advice_mysqli_connect' => '请检查 mysqli 模块是否正确加载',
 	'advice_xml_parser_create' => '该函数需要 PHP 支持 XML 。请联系服务商，确定开启了此项功能',
 	'advice_json_encode' => '该函数需要 PHP 支持 JSON 。请联系服务商，确定开启了此项功能',
+	'advice_dns_get_record' => '该函数需要 PHP 支持 DNS 查询，PHP 默认自带。错误的编译安装或缺少组件等原因容易引起此问题。请联系服务商，确定开启了此项功能',
 	'advice_fsockopen' => '该函数需要 php.ini 中 allow_url_fopen 选项开启。请联系服务商，确定开启了此项功能',
 	'advice_pfsockopen' => '该函数需要 php.ini 中 allow_url_fopen 选项开启。请联系服务商，确定开启了此项功能',
 	'advice_stream_socket_client' => '该函数需要 php.ini 中 stream_socket_client 函数开启。请联系服务商，确定开启了此项功能',
