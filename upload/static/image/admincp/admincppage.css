@@ -232,7 +232,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.statoff{ text-indent:-9999px; background:url(bg_repno.gif) no-repeat -250px -347px; }
 	.rowform{ width:306px; overflow:auto; }
 		.tb2 .rowform{ padding-left:20px; }
-		.rowform .txt, .rowform textarea{ margin-right:10px; width:250px; }
+		.rowform .txt, .rowform textarea{ margin-right:10px; width:234px; }
 		.rowform select{ margin-right:10px; width:256px; }
 		.rowform .radio{ margin-top:-2px !important; *margin-top:0 !important; *margin-top:-2px; }
 		.rowform li{ overflow:hidden; float:left; margin-right:10px; white-space:nowrap; cursor:pointer; }
