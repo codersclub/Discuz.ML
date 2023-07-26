@@ -425,7 +425,7 @@ function block_template($bid) {
 								} else {
 									$image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2);
 									if(file_exists($_G['setting']['attachdir'].'./'.$thumbpath)) {
-										if(ftpperm(fileext($thumbpath), filesize($_G['setting']['attachdir'].'./'.$thumbpath)) && $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath)) {
+										if(ftpperm(fileext($thumbpath), filesize($_G['setting']['attachdir'].'./'.$thumbpath)) && $ftp->upload($_G['setting']['attachdir'].'/'.$thumbpath, $thumbpath)) {
 											$picflag = 1; //common_block_pic表中的picflag标识（0本地，1远程）
 											$_G['block_makethumb'] = true;
 											@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
