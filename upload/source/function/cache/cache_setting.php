@@ -75,14 +75,16 @@ function build_cache_setting() {
 				$profile_settings = C::t('common_member_profile_setting')->fetch_all_by_available(1);
 				foreach($setting['svalue'] as $key => $val) {
 					$temp = array();
-					foreach($profile_settings as $pval) {
-						if(in_array($pval['fieldid'], $val['field'])) {
-							$temp[$pval['fieldid']] = $pval['fieldid'];
+					if (!empty($val['field']) && is_array($val['field'])) {
+						foreach($profile_settings as $pval) {
+							if(in_array($pval['fieldid'], $val['field'])) {
+								$temp[$pval['fieldid']] = $pval['fieldid'];
+							}
 						}
-					}
-					foreach($val['field'] as $fieldid) {
-						if(!in_array($fieldid, $temp)) {
-							$temp[$fieldid] = $fieldid;
+						foreach($val['field'] as $fieldid) {
+							if(!in_array($fieldid, $temp)) {
+								$temp[$fieldid] = $fieldid;
+							}
 						}
 					}
 					$setting['svalue'][$key]['field'] = $temp;
