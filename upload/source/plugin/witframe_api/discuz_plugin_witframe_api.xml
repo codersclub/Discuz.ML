@@ -13,8 +13,8 @@
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[witframe_api/]]></item>
-			<item id="copyright"><![CDATA[WITFRAME™]]></item>
-			<item id="version"><![CDATA[1.5]]></item>
+			<item id="copyright"><![CDATA[WITFRAME]]></item>
+			<item id="version"><![CDATA[1.5.1]]></item>
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[location]]></item>
@@ -57,7 +57,7 @@
 				</item>
 			</item>
 		</item>
-		<item id="version"><![CDATA[X3.2,X3.3,X3.4,X3.5]]></item>
+		<item id="version"><![CDATA[X3.2,X3.3,X3.4,X3.5,W1.0]]></item>
 		<item id="installfile"><![CDATA[install.php]]></item>
 	</item>
 </root>
