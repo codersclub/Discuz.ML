@@ -115,7 +115,7 @@
 						<caption><h3 class="mb10 xw1">{lang i_ranking}</h3></caption>
 						<tr><td>{lang my_ranking_declaration}<p class="xg1">{lang max_char_ranking}</p></td></tr>
 						<tr><td><input type="text" name="note" class="px b_a" value="" size="25" /></td></tr>
-						<tr><td>{lang show_unitprice}<p class="xg1"><!--{if $_G[uid]}--><a href="home.php?mod=spacecp&ac=common&op=modifyunitprice" id="a_modify_unitprice" onclick="showWindow(this.id, this.href, 'get', 0);">({lang edit_price})</a><!--{/if}--></p></td></tr>
+						<tr><td>{lang show_unitprice}<p class="xg1"><!--{if $_G[uid]}--><a href="home.php?mod=spacecp&ac=common&op=modifyunitprice" id="a_modify_unitprice" class="dialog">({lang edit_price})</a><!--{/if}--></p></td></tr>
 						<tr><td><input type="text" id="unitprice" name="unitprice" class="px vm" value="1" size="7" onblur="checkCredit('showcredit');" /></td></tr>
 						<tr><td>{lang increase_bid}{$extcredits[$creditid][title]}<p class="xg1">{lang not_exceed}{$extcredits[$creditid][title]} $space[credit] {$extcredits[$creditid][unit]}</p></td></tr>
 						<tr><td><input type="text" id="showcredit" name="showcredit" class="px vm" value="100" size="7" onblur="checkCredit('showcredit');" /></td></tr>

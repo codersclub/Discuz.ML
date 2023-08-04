@@ -180,7 +180,7 @@ $(document).on('change', '.sortattach_button', function() {
 			var dataarr = data.split('|');
 			if(dataarr[0] == 'DISCUZUPLOAD' && dataarr[2] == 0) {
 				popup.close();
-				$('#'+id+'_img').html('<a href="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" target="_blank"><img id="aimg_'+dataarr[3]+'" title="'+dataarr[6]+'" src="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" /></a>');
+				$('#'+id+'_img').html('<a href="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" target="_blank"><img id="aimg_'+dataarr[3]+'" src="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" /></a>');
 				getID(id + '_aid').value = dataarr[3];
 				getID(id + '_url').value = '{$_G['setting']['attachurl']}forum/'+dataarr[5];
 				getID(id + '_oldurl').value = '{$_G['setting']['attachurl']}forum/'+dataarr[5];
