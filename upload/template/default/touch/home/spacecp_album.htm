@@ -72,7 +72,7 @@
 			</tr>
 			<tr>
 				<th>&nbsp;</th>
-				<td><a href="home.php?mod=spacecp&ac=album&op=delete&albumid=$album['albumid']&handlekey=delalbumhk_{$album['albumid']}" id="album_delete_$album['albumid']" onclick="showWindow(this.id, this.href, 'get', 0);">{lang delete_album}</a></td>
+				<td><a href="home.php?mod=spacecp&ac=album&op=delete&albumid=$album['albumid']&handlekey=delalbumhk_{$album['albumid']}" id="album_delete_$album['albumid']" class="dialog">{lang delete_album}</a></td>
 			</tr>
 		</table>
 		<input type="hidden" name="formhash" value="{FORMHASH}" />
@@ -87,14 +87,14 @@
 				<!--{eval $common = '';}-->
 				<!--{loop $list $value}-->
 					<tr>
-						<td width="20"><input type="checkbox" name="ids[{$value['picid']}]" value="{$value['picid']}" {$value[checked]} class="pc"></td>
+						<td width="20"><input type="checkbox" name="ids[{$value['picid']}]" value="{$value['picid']}" {$value['checked']} class="pc"></td>
 						<td width="150" align="center" class="gt">
 							<a href="$value[bigpic]" target="_blank"><img src="$value[pic]" alt="" width="140" /></a>
 							<!--{eval $ids .= $common.$value['picid'].':'.$value['picid'];}-->
 							<!--{eval $common = ',';}-->
-							<!--{if $album['albumname']}--><p><a href="home.php?mod=spacecp&ac=album&op=setpic&albumid=$value['albumid']&picid=$value['picid']&handlekey=setpichk" id="a_picid_$value['picid']" onclick="showWindow('setpichk', this.href, 'get', 0)">{lang set_to_conver}</a></p><!--{/if}-->
+							<!--{if $album['albumname']}--><p><a href="home.php?mod=spacecp&ac=album&op=setpic&albumid=$value['albumid']&picid=$value['picid']&handlekey=setpichk" id="a_picid_$value['picid']" class="dialog">{lang set_to_conver}</a></p><!--{/if}-->
 						</td>
-						<td><textarea name="title[{$value['picid']}]" rows="4" cols="70" class="pt">$value[title]</textarea><input type="hidden" name="oldtitle[{$value['picid']}]" value="$value[title]"></td>
+						<td><textarea name="title[{$value['picid']}]" rows="4" cols="70" class="pt">$value['title']</textarea><input type="hidden" name="oldtitle[{$value['picid']}]" value="$value[title]"></td>
 					</tr>
 				<!--{/loop}-->
 				<tr>

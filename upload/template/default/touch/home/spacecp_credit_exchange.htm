@@ -1,8 +1,8 @@
 <!--{template home/spacecp_header}-->
 <!--{template home/spacecp_credit_header}-->
 <!--{hook/spacecp_credit_top}-->
-<!--{if $_G[setting][exchangestatus] && ($_G[setting][extcredits] || $_CACHE['creditsettings'])}-->
-<form id="exchangeform" name="exchangeform" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=credit&op=exchange&handlekey=credit" onsubmit="showWindow('credit', 'exchangeform', 'post');">
+<!--{if $_G['setting']['exchangestatus'] && ($_G['setting']['extcredits'] || $_CACHE['creditsettings'])}-->
+<form id="exchangeform" name="exchangeform" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=credit&op=exchange&handlekey=credit">
 	<input type="hidden" name="formhash" value="{FORMHASH}" />
 	<input type="hidden" name="operation" value="exchange" />
 	<input type="hidden" name="exchangesubmit" value="true" />

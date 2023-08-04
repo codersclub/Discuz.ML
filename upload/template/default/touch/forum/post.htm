@@ -122,7 +122,7 @@
 			<div class="cl">
 				<ul id="imglist" class="post_imglist cl">
 				<!--{loop $imgattachs['used'] $temp}-->
-					<li><span aid="$temp['aid']" class="del" up="1"><a href="javascript:;"><i class="dm-error"></i></a></span><span class="p_img"><a href="javascript:;"><img style="height:54px;width:54px;" id="aimg_$temp['aid']" title="$temp['filename']" src="{$temp['url']}/$temp['attachment']" /></a></span><input type="hidden" name="attachnew[{$temp['aid']}]['description']" /></li>	
+					<li><span aid="$temp['aid']" class="del" up="1"><a href="javascript:;"><i class="dm-error"></i></a></span><span class="p_img"><a href="javascript:;"><img style="height:54px;width:54px;" id="aimg_$temp['aid']" src="{$temp['url']}/$temp['attachment']" /></a></span><input type="hidden" name="attachnew[{$temp['aid']}]['description']" /></li>
 				<!--{/loop}-->
 				</ul>
 			</div>
@@ -145,7 +145,7 @@
 							<select name="attachnew[{$temp['aid']}][readperm]" id="readperm{$temp['aid']}" class="sort_sel">
 								<option value="" selected="selected">{lang unlimited}</option>
 								<!--{loop $_G['cache']['groupreadaccess'] $val}-->
-								<option value="$val['readaccess']" title="{lang readperm}: $val['readaccess']"{if $temp['readperm'] == $val['readaccess']} selected="selected"{/if}>$val['grouptitle']</option>
+								<option value="$val['readaccess']"{if $temp['readperm'] == $val['readaccess']} selected="selected"{/if}>$val['grouptitle']</option>
 								<!--{/loop}-->
 								<option value="255"{if $temp['readperm'] == 255} selected{/if}>{lang highest_right}</option>
 							</select>
@@ -162,7 +162,7 @@
 		<label>
 		<li class="flex-box mli">
 			<div class="flex-3 xg1"><span class="z">{lang post_delpost}</span></div>
-			<div class="flex"><span class="y"><input type="checkbox" name="delete" id="delete" class="pc" value="1" title="{lang post_delpost}{if $thread['special'] == 3}{lang reward_price_back}{/if}"></span></div>
+			<div class="flex"><span class="y"><input type="checkbox" name="delete" id="delete" class="pc" value="1"></span></div>
 		</li>
 		</label>
 		<!--{/if}-->
@@ -306,7 +306,7 @@
 				var dataarr = data.split('|');
 				if(dataarr[0] == 'DISCUZUPLOAD' && dataarr[2] == 0) {
 					popup.close();
-					$('#imglist').append('<li><div><span aid="'+dataarr[3]+'" class="del"><a href="javascript:;"><i class="dm-error"></i></a></span><span class="p_img"><a href="javascript:;" onclick="addsmilies(\'[attachimg]'+dataarr[3]+'[/attachimg]\')"><img style="height:54px;width:54px;" id="aimg_'+dataarr[3]+'" title="'+dataarr[6]+'" src="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" /></a></span><input type="hidden" name="attachnew['+dataarr[3]+'][description]" /><div></li>');
+					$('#imglist').append('<li><div><span aid="'+dataarr[3]+'" class="del"><a href="javascript:;"><i class="dm-error"></i></a></span><span class="p_img"><a href="javascript:;" onclick="addsmilies(\'[attachimg]'+dataarr[3]+'[/attachimg]\')"><img style="height:54px;width:54px;" id="aimg_'+dataarr[3]+'" src="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" /></a></span><input type="hidden" name="attachnew['+dataarr[3]+'][description]" /><div></li>');
 				} else {
 					var sizelimit = '';
 					if(dataarr[7] == 'ban') {

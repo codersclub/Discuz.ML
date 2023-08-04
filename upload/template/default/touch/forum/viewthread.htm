@@ -30,7 +30,7 @@
 				<li class="mtit">
 					<span class="y">
 						<!--{if isset($post['isstick'])}-->
-							<img src ="{IMGDIR}/settop.png" title="{lang replystick}" class="vm" /> {lang from} {$post['number']}{$postnostick}
+							<img src ="{IMGDIR}/settop.png" class="vm" /> {lang from} {$post['number']}{$postnostick}
 						<!--{elseif $post['number'] == -1}-->
 							{lang recommend_post}
 						<!--{else}-->
@@ -461,6 +461,6 @@ $multipage
 		return false;
 	});
 </script>
-<a href="javascript:;" title="{lang scrolltop}" class="scrolltop bottom"></a>
+<a href="javascript:;" class="scrolltop bottom"></a>
 <!--{eval $nofooter = true;}-->
 <!--{template common/footer}-->

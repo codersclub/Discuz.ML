@@ -8,7 +8,7 @@
 				<li class="grey">
 					<em>
 						<!--{if isset($post['isstick'])}-->
-							<img src ="{IMGDIR}/settop.png" title="{lang replystick}" class="vm" /> {lang from} {$post['number']}{$postnostick}
+							<img src ="{IMGDIR}/settop.png" class="vm" /> {lang from} {$post['number']}{$postnostick}
 						<!--{elseif $post['number'] == -1}-->
 							{lang recommend_post}
 						<!--{else}-->
@@ -18,7 +18,7 @@
 					<!--{if $post['authorid'] && $post['username'] && !$post['anonymous']}-->
 						<a href="home.php?mod=space&uid=$post['authorid']" class="blue">$post['author']</a></b>
 						<!--{if $post['authorid'] != $_G['uid'] && $_G['uid']}-->
-						<a href="forum.php?mod=post&action=reply&fid=$_G['fid']&tid=$_G['tid']&repquote=$post['pid']&extra=$_GET['extra']&page=$page" class="xg1" title="{lang reply}">{lang reply}</a>
+						<a href="forum.php?mod=post&action=reply&fid=$_G['fid']&tid=$_G['tid']&repquote=$post['pid']&extra=$_GET['extra']&page=$page" class="xg1">{lang reply}</a>
 						<!--{/if}-->
 					<!--{else}-->
 						<!--{if !$post['authorid']}-->
@@ -124,22 +124,22 @@
 					<!--{else}-->
 						<dt>
 							<!--{if !empty($postlist[$post[pid]]['totalrate'])}-->
-								<strong><a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)" title="{lang have}{echo count($postlist[$post[pid]][totalrate]);}{lang people_score}, {lang rate_view}"><!--{echo count($postlist[$post[pid]][totalrate]);}--></a></strong>
-								<p><a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)">{lang rate_view}</a></p>
+								<strong><a href="forum.php?mod=misc&action=viewratings&tid=$_G['tid']&pid=$post['pid']" class="dialog"><!--{echo count($postlist[$post['pid']]['totalrate']);}--></a></strong>
+								<p><a href="forum.php?mod=misc&action=viewratings&tid=$_G['tid']&pid=$post['pid']" class="dialog">{lang rate_view}</a></p>
 							<!--{/if}-->
 						</dt>
 						<dd>
 					<!--{/if}-->
-						<div id="post_rate_$post[pid]"></div>
+						<div id="post_rate_$post['pid']"></div>
 						<!--{if $_G['setting']['ratelogon']}-->
 							<table class="ratl">
 								<tr>
-									<th class="xw1" width="120"><a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)" title="{lang rate_view}"> {lang number_of_participants} <span class="xi1"><!--{echo count($postlist[$post[pid]][totalrate]);}--></span></a></th>
+									<th class="xw1" width="120"><a href="forum.php?mod=misc&action=viewratings&tid=$_G['tid']&pid=$post['pid']" class="dialog"> {lang number_of_participants} <span class="xi1"><!--{echo count($postlist[$post['pid']]['totalrate']);}--></span></a></th>
 									<!--{loop $post['ratelogextcredits'] $id $score}-->
 										<!--{if $score > 0}-->
-											<th class="xw1" width="80">{$_G['setting']['extcredits'][$id][title]} <i><span class="xi1">+$score</span></i></th>
+											<th class="xw1" width="80">{$_G['setting']['extcredits'][$id]['title']} <i><span class="xi1">+$score</span></i></th>
 										<!--{else}-->
-											<th class="xw1" width="80">{$_G['setting']['extcredits'][$id][title]} <i><span class="xi1">$score</span></i></th>
+											<th class="xw1" width="80">{$_G['setting']['extcredits'][$id]['title']} <i><span class="xi1">$score</span></i></th>
 										<!--{/if}-->
 									<!--{/loop}-->
 									<th>
@@ -166,21 +166,21 @@
 								</tbody>
 							</table>
 							<p class="ratc">
-								<a href="forum.php?mod=misc&action=viewratings&tid=$_G[tid]&pid=$post[pid]" onclick="showWindow('viewratings', this.href)" title="{lang rate_view}" class="xi2">{lang rate_view}</a>
+								<a href="forum.php?mod=misc&action=viewratings&tid=$_G['tid']&pid=$post['pid']" class="xi2 dialog">{lang rate_view}</a>
 							</p>
 						<!--{else}-->
 							<ul class="cl">
 								<!--{loop $post['ratelog'] $uid $ratelog}-->
 									<li>
-										<p id="rate_{$post[pid]}_{$uid}" onmouseover="showTip(this)" tip="<strong>$ratelog[reason]</strong>&nbsp;
+										<p id="rate_{$post[pid]}_{$uid}" onmouseover="showTip(this)" tip="<strong>$ratelog['reason']</strong>&nbsp;
 												<!--{loop $ratelog['score'] $id $score}-->
 													<!--{if $score > 0}-->
-														<em class='xi1'>{$_G['setting']['extcredits'][$id][title]} + $score $_G['setting']['extcredits'][$id][unit]</em>
+														<em class='xi1'>{$_G['setting']['extcredits'][$id]['title']} + $score $_G['setting']['extcredits'][$id]['unit']</em>
 													<!--{else}-->
-														<span>{$_G['setting']['extcredits'][$id][title]} $score $_G['setting']['extcredits'][$id][unit]</span>
+														<span>{$_G['setting']['extcredits'][$id]['title']} $score $_G['setting']['extcredits'][$id]['unit']</span>
 													<!--{/if}-->
 												<!--{/loop}-->" class="mtn mbn"><a href="home.php?mod=space&uid=$uid" target="_blank" class="avt"><!--{echo avatar($uid, 'small');}--></a></p>
-										<p><a href="home.php?mod=space&uid=$uid" target="_blank">$ratelog[username]</a></p>
+										<p><a href="home.php?mod=space&uid=$uid" target="_blank">$ratelog['username']</a></p>
 									</li>
 								<!--{/loop}-->
 							</ul>

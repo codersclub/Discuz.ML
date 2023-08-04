@@ -145,7 +145,7 @@ $(document).on('change', '#activityimg', function() {
 			var dataarr = data.split('|');
 			if(dataarr[0] == 'DISCUZUPLOAD' && dataarr[2] == 0) {
 				popup.close();
-				$('#activityattach_image').html('<img id="aimg_'+dataarr[3]+'" title="'+dataarr[6]+'" src="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" />');
+				$('#activityattach_image').html('<img id="aimg_'+dataarr[3]+'" src="{$_G['setting']['attachurl']}forum/'+dataarr[5]+'" />');
 				getID('activityaid').value = dataarr[3];
 				getID('activityaid_url').value = dataarr[5];
 			} else {
