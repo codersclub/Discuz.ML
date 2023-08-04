@@ -489,7 +489,9 @@ function updatethreadcount($tid, $updateattach = 0) {
 
 function updatemodlog($tids, $action, $expiration = 0, $iscron = 0, $reason = '', $stamp = 0) {
 	global $_G;
-
+	if(is_array($tids)){
+		$tids = implode(',',$tids);
+	}
 	$uid = empty($iscron) ? $_G['uid'] : 0;
 	$username = empty($iscron) ? $_G['member']['username'] : 0;
 	$expiration = empty($expiration) ? 0 : intval($expiration);
