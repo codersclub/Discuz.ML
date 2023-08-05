@@ -117,7 +117,7 @@
 		<!--{if !$location}-->
 			showDialog(msg, 'notice', null, function () { location.href=url; }, 0);
 		<!--{else}-->
-			showWindow('$_GET['handlekey']', 'home.php?$querystring');
+			popup.open('msg', 'confirm', 'home.php?$querystring');
 		<!--{/if}-->
 		showCreditPrompt();
 	}

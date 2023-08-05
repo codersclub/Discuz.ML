@@ -502,6 +502,7 @@ function avatar($uid, $size = 'middle', $returnsrc = 0, $real = FALSE, $static =
 	$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
 	$uid = abs(intval($uid));
 	$rawuid = $uid;
+	$class = trim($class.' user_avatar');
 	if(!$staticavatar && !$static && $ucenterurl != '.') {
 		if($avatarurl != $ucenterurl.'/data/avatar') {
 			$ucenterurl = $avatarurl;

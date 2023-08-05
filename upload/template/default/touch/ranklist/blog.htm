@@ -48,23 +48,23 @@
 				</dd>
 				<dt class="xs2">
 					<!--{if helper_access::check_module('share')}-->
-					<a href="home.php?mod=spacecp&ac=share&type=blog&id=$blog[blogid]&handlekey=lsbloghk_{$blog[blogid]}" id="a_share_$blog[blogid]" onclick="showWindow(this.id, this.href, 'get', 0);" class="oshr xs1 xw0">{lang share}</a>
+					<a href="home.php?mod=spacecp&ac=share&type=blog&id=$blog['blogid']&handlekey=lsbloghk_{$blog['blogid']}" id="a_share_$blog['blogid']" class="oshr xs1 xw0 dialog">{lang share}</a>
 					<!--{/if}-->
-					<a href="home.php?mod=space&uid=$blog[uid]&do=blog&id=$blog[blogid]" target="_blank">$blog[subject]</a>
+					<a href="home.php?mod=space&uid=$blog['uid']&do=blog&id=$blog['blogid']" target="_blank">$blog['subject']</a>
 				</dt>
 				<dd>
-					<a href="home.php?mod=space&uid=$blog[uid]" target="_blank">$blog[username]</a> <span class="xg1">$blog[dateline]</span>
+					<a href="home.php?mod=space&uid=$blog['uid']" target="_blank">$blog['username']</a> <span class="xg1">$blog['dateline']</span>
 				</dd>
 				<dd class="cl">
 					$blog[message]
 				</dd>
 				<dd class="xg1">
 					<!--{if $_GET[view] == 'heats'}-->{lang views} $blog[hot]
-					<!--{elseif $_GET[view] == 'replies'}--><a href="home.php?mod=space&uid=$blog[uid]&do=blog&id=$blog[blogid]#comment" target="_blank">{lang comment} $blog[replynum]</a>
-					<!--{elseif $_GET[view] == 'views'}-->{lang ranklist_thread_view} $blog[viewnum]
-					<!--{elseif $_GET[view] == 'sharetimes'}-->{lang ranklist_thread_share} $blog[sharetimes]
-					<!--{elseif $_GET[view] == 'favtimes'}-->{lang ranklist_thread_favorite} $blog[favtimes]
-					<!--{else}-->$clicks[$_GET[view]][name] $blog['click'.$_GET[view]]<!--{/if}-->
+					<!--{elseif $_GET[view] == 'replies'}--><a href="home.php?mod=space&uid=$blog['uid']&do=blog&id=$blog['blogid']#comment" target="_blank">{lang comment} $blog['replynum']</a>
+					<!--{elseif $_GET[view] == 'views'}-->{lang ranklist_thread_view} $blog['viewnum']
+					<!--{elseif $_GET[view] == 'sharetimes'}-->{lang ranklist_thread_share} $blog['sharetimes']
+					<!--{elseif $_GET[view] == 'favtimes'}-->{lang ranklist_thread_favorite} $blog['favtimes']
+					<!--{else}-->$clicks[$_GET['view']]['name'] $blog['click'.$_GET['view']]<!--{/if}-->
 				</dd>
 			</dl>
 		<!--{/loop}-->

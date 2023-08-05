@@ -1,7 +1,6 @@
 <!--{template common/header}-->
 <!--{if empty($_GET['showratetip'])}-->
-
-<!--{if $_GET[action] == 'rate'}-->
+<!--{if $_GET['action'] == 'rate'}-->
 <div class="tip loginbox loginpop p5" id="floatlayout_topicadmin">
 	<form id="rateform" method="post" autocomplete="off" action="forum.php?mod=misc&action=rate&ratesubmit=yes&infloat=yes&inajax=1">
 		<input type="hidden" name="formhash" value="{FORMHASH}" />
@@ -56,7 +55,6 @@
 		<button name="ratesubmit" type="submit" value="true" class="pn pnc formdialog"><span>{lang confirms}</span></button>
 	</form>
 </div>
-
 <!--{elseif $_GET['action'] == 'removerate'}-->
 <div class="tip loginbox loginpop p5" id="floatlayout_topicadmin">
 	<form id="rateform" method="post" autocomplete="off" action="forum.php?mod=misc&action=removerate&ratesubmit=yes&infloat=yes&inajax=1">
@@ -108,14 +106,13 @@
 	</form>
 </div>
 <!--{/if}-->
-
 <!--{else}-->
 <div class="tip loginbox loginpop p5" id="floatlayout_topicadmin">
 	<h2 class="log_tit" id="return_rate"><a href="javascript:;" onclick="popup.close();"><span class="icon_close y">&nbsp;</span></a>{lang board_message}</h2>
 		<div class="alert_right">
 			<p>{lang push_succeed}</p>
 			<p class="alert_btnleft">
-				<a href="javascript:;" class="xi1" onclick="hideWindow('$_GET[handlekey]');showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_GET[tid]&pid=$_GET[pid]', 'get', -1);return false;">{lang click_here}</a> {lang rate_thread}
+				<a href="javascript:;" class="xi1 dialog">{lang click_here}</a> {lang rate_thread}
 			</p>
 		</div>
 	<button onclick="popup.close();" id="closebtn" class="pn pnc" type="button" fwin="rate"><strong>{lang close}</strong></button>

@@ -40,12 +40,12 @@ nav ul ul a>div { flex: 0 1 100%; overflow: hidden; text-overflow: ellipsis; whi
 .st-d #navbtn>div { background:linear-gradient(0deg, #999999 25%, transparent 25%) bottom; background-size: 8px 8px;}
 .currentloca { display: flex; height: 50px; padding: 0 20px; align-items: center; color: #000; }
 .st-d .currentloca { color: #999; }
-.currentloca a { display: block; position: relative; width: 18px; height: 18px; border-radius: 9px; color: transparent; background-color: #2b7acd; overflow: hidden; text-indent: 1000px; }
-.st-d .currentloca a { background-color: #ccc; }
-.currentloca a::before, .currentloca a::after { content: ""; background: #fff; position: absolute; }
-.st-d .currentloca a::before, .st-d .currentloca a::after { background: #0a0a0a; }
-.currentloca a::before { width: 8px; height: 2px; top: 8px; left: 5px; }
-.currentloca a::after { width: 2px; height: 8px; top: 5px; left: 8px; }
+.currentloca a.custommenu_addto { display: block; position: relative; width: 18px; height: 18px; border-radius: 9px; color: transparent; background-color: #2b7acd; overflow: hidden; text-indent: 1000px; }
+.st-d .currentloca a.custommenu_addto { background-color: #ccc; }
+.currentloca a.custommenu_addto::before, .currentloca a.custommenu_addto::after { content: ""; background: #fff; position: absolute; }
+.st-d .currentloca a.custommenu_addto::before, .st-d .currentloca a.custommenu_addto::after { background: #0a0a0a; }
+.currentloca a.custommenu_addto::before { width: 8px; height: 2px; top: 8px; left: 5px; }
+.currentloca a.custommenu_addto::after { width: 2px; height: 8px; top: 5px; left: 8px; }
 .uinfo { height: 50px; display: flex; padding: 0 20px; justify-content: space-between; }
 #topmenu { display: none; align-items: center; }
 #topmenu li { padding-right: 5px; }
@@ -71,7 +71,7 @@ button::-moz-focus-inner { border: none; padding: 0; }
 #frameuinfo .btnlink:hover svg { fill: #2b7acd; }
 .st-d #frameuinfo .btnlink:hover svg { fill: #999; }
 .mainhd form { display: flex; justify-content: flex-end; align-items: center; flex-grow: 1; }
-.mainhd form input.txt { background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3e%3cpath fill='%23444' d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3e%3c/svg%3e") no-repeat right 50%; color: #222; border: 1px solid #999; cursor: text; border-radius: 4px; position: relative; padding: 4px 8px; height: 28px; width: 150px; margin-left: 12px; box-shadow: none; transition: all 0.3s ease; transition-property: width, border-color, box-shadow; }
+.mainhd form input.txt { background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3e%3cpath fill='%23444' d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3e%3c/svg%3e") no-repeat right 50%; color: #222; border: 1px solid #999; cursor: text; border-radius: 4px; position: relative; padding: 4px 8px; height: 18px; width: 150px; margin-left: 12px; box-shadow: none; transition: all 0.3s ease; transition-property: width, border-color, box-shadow; }
 .st-d .mainhd form input.txt { color:#fff;}
 .mainhd form input.txt:focus { outline: 0; border-color: #2b7acd; box-shadow: 0 0 3px 2px rgba(43, 122, 205, 0.4); }
 .st-d .mainhd form input.txt:focus { border-color: #999;}
@@ -96,7 +96,7 @@ button::-moz-focus-inner { border: none; padding: 0; }
 	.widelayout #frameuinfo>p.greet { max-width: 190px; }
 	.oldlayout #topmenu, .widelayout #topmenu { display: flex; }
 	.oldlayout .mainhd form, .widelayout .mainhd form { flex-grow: 0; order: 1; padding-right: 20px; }
-	.oldlayout .mainhd form input.txt { background-color: #fff; background-size: 18px; height: 24px; padding: 2px 8px; }
+	.oldlayout .mainhd form input.txt { background-color: #fff; background-size: 18px; height: 18px; padding: 2px 8px; }
 	.st-d .oldlayout .mainhd form input.txt { background-color: #000;}
 	.widelayout .mainhd form input.txt { width: 24px; cursor: pointer; padding: 4px 0; border-color: transparent; color: transparent; }
 	.widelayout .mainhd form input.txt:focus { color: #222; width: 150px; cursor: text; padding: 4px 8px; border-color: #2b7acd; }

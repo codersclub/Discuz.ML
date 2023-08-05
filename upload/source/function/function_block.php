@@ -426,7 +426,7 @@ function block_template($bid) {
 								} else {
 									$image->Thumb($replacevalue, $thumbpath, $block['picwidth'], $block['picheight'], 2);
 									if(file_exists($_G['setting']['attachdir'].'./'.$thumbpath)) {
-										if(ftpperm(fileext($thumbpath), filesize($_G['setting']['attachdir'].'./'.$thumbpath)) && $ftp->upload($_G['setting']['attachurl'].'/'.$thumbpath, $thumbpath)) {
+										if(ftpperm(fileext($thumbpath), filesize($_G['setting']['attachdir'].'./'.$thumbpath)) && $ftp->upload($_G['setting']['attachdir'].'/'.$thumbpath, $thumbpath)) {
 /*vot*/											$picflag = 1; //The picflag identifier in the common_block_pic table (0 local, 1 remote)
 											$_G['block_makethumb'] = true;
 											@unlink($_G['setting']['attachdir'].'./'.$thumbpath);
