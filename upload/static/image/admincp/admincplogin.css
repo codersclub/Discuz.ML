@@ -142,9 +142,6 @@ body.st-d {
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 	margin-bottom: 10px;
 }
-.loginbox .btn {
-	font-size: 24px !important;
-}
 .st-d .loginbox img {
 	filter: grayscale(1);
 }
