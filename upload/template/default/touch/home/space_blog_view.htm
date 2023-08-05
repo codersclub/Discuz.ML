@@ -47,13 +47,13 @@
 		<div class="threadlist_foot cl">
 			<ul>
 			<!--{if helper_access::check_module('favorite')}-->
-				<li><a href="home.php?mod=spacecp&ac=favorite&type=blog&id=$blog[blogid]&spaceuid=$blog[uid]&handlekey=favoritebloghk_{$blog[blogid]}" id="a_favorite" class="dialog">{lang favorite}</a></li>
+				<li><a href="home.php?mod=spacecp&ac=favorite&type=blog&id=$blog['blogid']&spaceuid=$blog[uid]&handlekey=favoritebloghk_{$blog['blogid']}" id="a_favorite" class="dialog">{lang favorite}</a></li>
 			<!--{/if}-->
-			<!--{if helper_access::check_module('share')}--><li><a href="home.php?mod=spacecp&ac=share&type=blog&id=$blog[blogid]&handlekey=sharebloghk_{$blog[blogid]}" id="a_share" class="dialog">{lang share}</a></li><!--{/if}-->
-			<!--{if helper_access::check_module('friend')}--><li><a href="misc.php?mod=invite&action=blog&id=$blog[blogid]" id="a_invite" class="dialog">{lang invite}</a></li><!--{/if}-->
+			<!--{if helper_access::check_module('share')}--><li><a href="home.php?mod=spacecp&ac=share&type=blog&id=$blog['blogid']&handlekey=sharebloghk_{$blog['blogid']}" id="a_share" class="dialog">{lang share}</a></li><!--{/if}-->
+			<!--{if helper_access::check_module('friend')}--><li><a href="misc.php?mod=invite&action=blog&id=$blog['blogid']" id="a_invite" class="dialog">{lang invite}</a></li><!--{/if}-->
 			<!--{if $_G[uid] == $blog[uid] || checkperm('manageblog')}-->
-				<li><a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=edit">{lang edit}</a></li>
-				<li><a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=delete&handlekey=delbloghk_{$blog[blogid]}" id="blog_delete_$blog[blogid]" class="dialog">{lang delete}</a></li>
+				<li><a href="home.php?mod=spacecp&ac=blog&blogid=$blog['blogid']&op=edit">{lang edit}</a></li>
+				<li><a href="home.php?mod=spacecp&ac=blog&blogid=$blog['blogid']&op=delete&handlekey=delbloghk_{$blog['blogid']}" id="blog_delete_$blog['blogid']" class="dialog">{lang delete}</a></li>
 			<!--{/if}-->
 			</ul>
 		</div>
@@ -87,7 +87,7 @@
 			</li>
 		</ul>
 			<input type="hidden" name="formhash" value="{FORMHASH}" />
-			<input type="hidden" name="referer" value="home.php?mod=space&uid=$blog[uid]&do=$do&id=$id" />
+			<input type="hidden" name="referer" value="home.php?mod=space&uid=$blog['uid']&do=$do&id=$id" />
 			<input type="hidden" name="id" value="$id" />
 			<input type="hidden" name="idtype" value="blogid" />
 			<input type="hidden" name="handlekey" value="qcblog_{$id}" />
@@ -95,11 +95,10 @@
 			<input type="hidden" name="quickcomment" value="true" />
 			<span id="return_qcblog_{$id}"></span>
 	</div>
-	<div class="post_btn"><button type="submit" name="commentsubmit_btn"value="true" id="commentsubmit_btn" class="pn"{if !$_G[uid]&&!$_G['group']['allowcomment']} onclick="showWindow(this.id, this.form.action);return false;"{/if}><strong>{lang comment}</strong></button></div>
+	<div class="post_btn"><button type="submit" name="commentsubmit_btn"value="true" id="commentsubmit_btn" class="pn{if !$_G['uid'] && !$_G['group']['allowcomment']} formdialog{/if}"><strong>{lang comment}</strong></button></div>
 	</form>
 	<!--{/if}-->
 	
 	<!--{if $multi}--><div class="pgs cl mbm">$multi</div><!--{/if}-->
 </div>
-
 <!--{template common/footer}-->

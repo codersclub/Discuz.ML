@@ -36,73 +36,78 @@ class Core {
 	const Type_ApisMethod = 3;
 
 	public static function RequestWit($class, $func, $param, $type = self::Type_StaticMethod) {
-		if (!function_exists('curl_init') || !function_exists('curl_exec')) {
-			throw new Exception('CURL is not enabled');
-		}
+		try {
+			if(!function_exists('curl_init') || !function_exists('curl_exec')) {
+				throw new Exception('CURL is not enabled');
+			}
 
-		$baseConf = self::GetSetting();
-		if ($baseConf) {
-			if (empty($baseConf['witUid'])) {
-				throw new Exception('witUid is not exists, check conf/config.ini');
+			$baseConf = self::GetSetting();
+			if($baseConf) {
+				if(empty($baseConf['witUid'])) {
+					throw new Exception('witUid is not exists, check conf/config.ini');
+				}
+				if(empty($baseConf['witPid'])) {
+					throw new Exception('witPid is not exists, check conf/config.ini');
+				}
+				if(empty($baseConf['witSecretId'])) {
+					throw new Exception('witSecretId is not exists, check conf/config.ini');
+				}
+				if(empty($baseConf['witSecretKey'])) {
+					throw new Exception('witSecretKey is not exists, check conf/config.ini');
+				}
+			} else {
+				$secretId = substr(time(), 0, 7);
+				$secretKey = md5($secretId);
+				$baseConf = array(
+					'witUid' => "0",
+					'witSecretId' => $secretId,
+					'witSecretKey' => $secretKey,
+					'witPid' => "0",
+					'ver' => 0,
+				);
 			}
-			if (empty($baseConf['witPid'])) {
-				throw new Exception('witPid is not exists, check conf/config.ini');
-			}
-			if (empty($baseConf['witSecretId'])) {
-				throw new Exception('witSecretId is not exists, check conf/config.ini');
-			}
-			if (empty($baseConf['witSecretKey'])) {
-				throw new Exception('witSecretKey is not exists, check conf/config.ini');
-			}
-		} else {
-			$secretId = substr(time(), 0, 7);
-			$secretKey = md5($secretId);
-			$baseConf = array(
-				'witUid' => "0",
-				'witSecretId' => $secretId,
-				'witSecretKey' => $secretKey,
-				'witPid' => "0",
-				'ver' => 0,
+
+			$requestBody = array(
+				'witUid' => $baseConf['witUid'],
+				'witPid' => $baseConf['witPid'],
+				'class' => $class,
+				'func' => $func,
+				'param' => $param,
+				'type' => $type,
 			);
-		}
+			$requestBody['t'] = time();
+			$requestBody['sign'] = self::_getSign($baseConf['witSecretId'], $baseConf['witSecretKey'], $requestBody);
 
-		$requestBody = array(
-			'witUid' => $baseConf['witUid'],
-			'witPid' => $baseConf['witPid'],
-			'class' => $class,
-			'func' => $func,
-			'param' => $param,
-			'type' => $type,
-		);
-		$requestBody['t'] = time();
-		$requestBody['sign'] = self::_getSign($baseConf['witSecretId'], $baseConf['witSecretKey'], $requestBody);
-
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, self::WitApiURL);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($requestBody));
-		$response = curl_exec($ch);
-		if (!$response) {
-			throw new Exception($class . '::' . $func . '() response error');
-		}
-		$responseBody = json_decode($response, true);
-		if (!$responseBody) {
-			throw new Exception($class . '::' . $func . '() response error');
-		}
-		if ($func == 'Discuz_GetConf') {
-			if ($responseBody['errCode']) {
-				self::SetSetting(array());
-				return array();
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, self::WitApiURL);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($requestBody));
+			$response = curl_exec($ch);
+			if(!$response) {
+				throw new Exception($class.'::'.$func.'() response error');
 			}
-			if (empty($baseConf['witUid']) || empty($baseConf['ver']) ||
-				!empty($responseBody['data']['ver']) && $responseBody['data']['ver'] > $baseConf['ver']) {
-				self::SetSetting($responseBody['data']);
+			$responseBody = json_decode($response, true);
+			if(!$responseBody) {
+				throw new Exception($class.'::'.$func.'() response error');
 			}
-		}
-		if ($responseBody['errCode']) {
-			throw new Exception($class . '::' . $func . '() response ' . $responseBody['message'], $responseBody['errCode']);
+			if($func == 'Discuz_GetConf') {
+				if($responseBody['errCode']) {
+					self::SetSetting(array());
+					return array();
+				}
+				if(empty($baseConf['witUid']) || empty($baseConf['ver']) ||
+					!empty($responseBody['data']['ver']) && $responseBody['data']['ver'] > $baseConf['ver']) {
+					self::SetSetting($responseBody['data']);
+				}
+			}
+			if($responseBody['errCode']) {
+				throw new Exception($class.'::'.$func.'() response '.$responseBody['message'], $responseBody['errCode']);
+			}
+		} catch(Exception $e) {
+			writelog('witframe', $e->getCode().': '.$e->getMessage());
+			return array();
 		}
 		return $responseBody['data'];
 	}

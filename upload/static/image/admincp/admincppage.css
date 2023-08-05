@@ -232,7 +232,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.statoff{ text-indent:-9999px; background:url(bg_repno.gif) no-repeat -250px -347px; }
 	.rowform{ width:306px; overflow:auto; }
 		.tb2 .rowform{ padding-left:20px; }
-		.rowform .txt, .rowform textarea{ margin-right:10px; width:250px; }
+		.rowform .txt, .rowform textarea{ margin-right:10px; width:234px; }
 		.rowform select{ margin-right:10px; width:256px; }
 		.rowform .radio{ margin-top:-2px !important; *margin-top:0 !important; *margin-top:-2px; }
 		.rowform li{ overflow:hidden; float:left; margin-right:10px; white-space:nowrap; cursor:pointer; }
@@ -269,7 +269,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 	.lastnode, .lastboard{ padding-left:55px; background:url(bg_repno.gif) no-repeat -240px -600px; }
 	.childboard{ padding-left:110px; background:url(bg_repno.gif) no-repeat -185px -550px; }
 	.lastchildboard{ padding-left:110px; background:url(bg_repno.gif) no-repeat -185px -600px; }
-	.boardattr{ position:absolute; left:450px; width: 45px; margin-top:-24px !important; color:#999; }
+	.boardattr{ position:absolute; left:500px; width: 45px; margin-top:-22px !important; color:#999; }
 
 	/* pick window */
 	.colorwd{ float:left; width:40px; height:30px; border-color:#ccc #666 #666 #ccc; }
@@ -339,7 +339,7 @@ textarea {font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 /* link */
 .addtr{ padding-left:17px; line-height:25px; background:url(bg_repno.gif) no-repeat 0 1px; *background:url(bg_repno.gif) no-repeat 0 0; color:#F60; }
 .act{ margin:0 5px; text-decoration:underline; }
-.addchildboard, .deleterow { margin-right: 5px; padding-left:17px; line-height:25px; *line-height: 16px; background:url(bg_repno.gif) no-repeat 0 -596px; color:#FFF; zoom: 1; }
+.addchildboard, .deleterow { margin-right: 5px; padding-left:17px; line-height:25px; *line-height: 16px; background:url(bg_repno.gif) no-repeat 0 -597px; color:#FFF; zoom: 1; }
 	.deleterow { padding-left: 12px; background: url(close.gif) no-repeat 0 50%; }
 	.addchildboard:hover, .deleterow:hover { text-decoration:none; color:#F60 !important; }
 .switch{ color:#09C; }

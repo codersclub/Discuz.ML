@@ -2,7 +2,7 @@
 <div class="header cl">
 	<div class="mz"><a href="javascript:history.back();"><i class="dm-c-left"></i></a></div>
 	<h2><!--{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}--></h2>
-	<div class="my"><a href="forum.php?mod=post&action=newthread&fid={$_G['fid']}" title="{lang send_threads}"><i class="dm-edit"></i></a></div>
+	<div class="my"><a href="forum.php?mod=post&action=newthread&fid={$_G['fid']}"><i class="dm-edit"></i></a></div>
 </div>
 <!--{hook/forumdisplay_top_mobile}-->
 <div class="forumdisplay-top cl">
@@ -24,7 +24,7 @@
 			<li class="flex{if $_GET['filter'] == 'lastpost'} mon{/if}"><a href="forum.php?mod=forumdisplay&fid=$_G['fid']&filter=lastpost&orderby=lastpost$forumdisplayadd['lastpost']{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}">{lang latest}</a></li>
 			<li class="flex{if $_GET['filter'] == 'heat'} mon{/if}"><a href="forum.php?mod=forumdisplay&fid=$_G['fid']&filter=heat&orderby=heats$forumdisplayadd['heat']{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}">{lang order_heats}</a></li>
 			<li class="flex{if $_GET['filter'] == 'hot'} mon{/if}"><a href="forum.php?mod=forumdisplay&fid=$_G['fid']&filter=hot">{lang hot_thread}</a></li>
-			<li class="flex{if $_GET['filter'] == 'digest'} mon{/if}"><a href="forum.php?mod=forumdisplay&fid=$_G['fid']&filter=digest&digest=1$forumdisplayadd['digest']{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}">{lang digest_posts}</a></li>			
+			<li class="flex{if $_GET['filter'] == 'digest'} mon{/if}"><a href="forum.php?mod=forumdisplay&fid=$_G['fid']&filter=digest&digest=1$forumdisplayadd['digest']{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}">{lang digest_posts}</a></li>
 		</ul>
 		</div>
 	</div>

@@ -91,7 +91,7 @@
 						<select name="readperm" id="readperm" class="sort_sel">
 							<option value="">{lang unlimited}</option>
 							<!--{loop $_G['cache']['groupreadaccess'] $val}-->
-								<option value="$val[readaccess]" title="{lang readperm}: $val[readaccess]"{if $thread['readperm'] == $val[readaccess]} selected="selected"{/if}>$val[grouptitle]</option>
+								<option value="$val[readaccess]"{if $thread['readperm'] == $val['readaccess']} selected="selected"{/if}>$val['grouptitle']</option>
 							<!--{/loop}-->
 							<option value="255"{if $thread['readperm'] == 255} selected="selected"{/if}>{lang highest_right}</option>
 						</select>

@@ -33,9 +33,9 @@
 			<!--{if $isactivitymaster}-->
 			<div class="flex-3 xs1">
 				<span class="z">
-				<!--{if $apply[verified] == 1}-->
-					<i class="fico-valid fc-v vm" title="{lang activity_allow_join}"></i>{lang activity_allow_join}
-				<!--{elseif $apply[verified] == 2}-->
+				<!--{if $apply['verified'] == 1}-->
+					<i class="fico-valid fc-v vm"></i>{lang activity_allow_join}
+				<!--{elseif $apply['verified'] == 2}-->
 					{lang activity_do_replenish}
 				<!--{else}-->
 					{lang activity_cant_audit}

@@ -7,7 +7,7 @@
 	<!--{else}-->	
 	<!--{if ($_G['setting']['mobile']['forum']['index'] && $_GET['forumlist'] != 1) || !$_G['setting']['mobile']['forum']['index']}-->
 		<div class="header cl">
-			<div class="mzlogo"><a title="$_G['setting']['bbname']" href="javascript:;">{$_G['style']['touchlogo']}</a></div>
+			<div class="mzlogo"><a href="javascript:;">{$_G['style']['touchlogo']}</a></div>
 			<div class="myss"><a href="search.php?mod=forum"><i class="dm-search"></i>{lang mobsearchtxt}</a></div>
 		</div>
 	<!--{else}-->
@@ -80,7 +80,7 @@
 					<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
 						<!--{eval $thread['tid']=$thread['closed'];}-->
 					<!--{/if}-->
-					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if} title="$thread['oldsubject']"><span class="mybk">$thread['dateline']</span><span class="mico"></span>{$thread['oldsubject']}</a></li>
+					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if}><span class="mybk">$thread['dateline']</span><span class="mico"></span>{$thread['oldsubject']}</a></li>
 					<!--{/loop}-->
 					</ul>
 				</div>
@@ -90,7 +90,7 @@
 					<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
 						<!--{eval $thread['tid']=$thread['closed'];}-->
 					<!--{/if}-->				
-					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if} title="$thread['oldsubject']"><span class="mybk">$thread['replies'] {lang reply}</span><span class="mico"></span>{$thread['oldsubject']}</a></li>
+					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if}><span class="mybk">$thread['replies'] {lang reply}</span><span class="mico"></span>{$thread['oldsubject']}</a></li>
 					<!--{/loop}-->
 					</ul>
 				</div>
@@ -101,7 +101,7 @@
 						<!--{eval $thread['tid']=$thread['closed'];}-->
 					<!--{/if}-->
 					<!--{eval $i++;}-->
-					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if} title="$thread['oldsubject']"><span class="mybk">$thread['views'] {lang mobrenqi}</span><span class="mnum">$i</span>{$thread['oldsubject']}</a></li>
+					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if}><span class="mybk">$thread['views'] {lang mobrenqi}</span><span class="mnum">$i</span>{$thread['oldsubject']}</a></li>
 					<!--{/loop}-->
 					</ul>
 				</div>
@@ -111,7 +111,7 @@
 					<!--{if !$thread['forumstick'] && $thread['closed'] > 1 && ($thread['isgroup'] == 1 || $thread['fid'] != $_G['fid'])}-->
 						<!--{eval $thread['tid']=$thread['closed'];}-->
 					<!--{/if}-->
-					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if} title="$thread['oldsubject']"><span class="mybk">$thread['author']</span><span class="mico"></span>{$thread['oldsubject']}</a></li>
+					<li><a href="forum.php?mod=viewthread&tid=$thread['tid']"{if $thread['highlight']} $thread['highlight']{/if}><span class="mybk">$thread['author']</span><span class="mico"></span>{$thread['oldsubject']}</a></li>
 					<!--{/loop}-->
 					</ul>
 				</div>

@@ -449,6 +449,7 @@ Modified by Valery Votintsev, codersclub.org
 			.fl_g dt { font-weight: 700; }
 /*vot*/	.fl_row { vertical-align: top; }
 	.fl_row td { border-top: 1px dashed {COMMONBORDER}; }
+	.fl_icn img, .fl_icn svg , .fl_icn_g img, .fl_icn_g svg { vertical-align: middle; }
 
 /* Group Category List */
 	.flt {}

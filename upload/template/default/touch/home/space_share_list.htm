@@ -8,9 +8,9 @@
 
 <div id="ct" class="cl">
 	<div class="dhnv flex-box cl" style="border-top: 0;">
-		<a href="home.php?mod=space&do=share&view=we" class="flex{if $actives[we]} mon{/if}"{if !$_G['uid']} onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes&referer='+encodeURIComponent(this.href))"{/if}>{lang friend_share}</a>
-		<a href="home.php?mod=space&do=share&view=me" class="flex{if $actives[me]} mon{/if}"{if !$_G['uid']} onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes&referer='+encodeURIComponent(this.href))"{/if}>{lang my_share}</a>
-		<a href="home.php?mod=space&do=share&view=all" class="flex{if $actives[all]} mon{/if}">{lang view_all}</a>
+		<a href="{if !$_G['uid']}member.php?mod=logging&action=login{else}home.php?mod=space&do=share&view=we{/if}" class="flex{if $actives['we']} mon{/if}{if !$_G['uid']} dialog{/if}">{lang friend_share}</a>
+		<a href="{if !$_G['uid']}member.php?mod=logging&action=login{else}home.php?mod=space&do=share&view=me{/if}" class="flex{if $actives['me']} mon{/if}{if !$_G['uid']} dialog{/if}">{lang my_share}</a>
+		<a href="home.php?mod=space&do=share&view=all" class="flex{if $actives['all']} mon{/if}">{lang view_all}</a>
 	</div>
 
 	<div class="bodybox p10 cl">

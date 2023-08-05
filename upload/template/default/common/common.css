@@ -104,7 +104,7 @@ Note on the CSS Hack:
 	:focus { outline-color: {MENUBGCOLOR}; }
 	label { cursor: pointer; }
 	/* Eliminate the img baseline problem caused by modifying DOCTYPE to HTML5 */
-	img, svg { vertical-align: middle; }
+	img.boardlogo, img.user_avatar, .slideimage img { vertical-align: middle; }
 /*
 	Name:			mod_float
 	Level:			Global
