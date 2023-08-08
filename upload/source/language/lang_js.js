@@ -456,7 +456,7 @@ var lng = {
 	'upload_completed'	: '上传完成.',//'Upload completed.',
 	'upload_error'		: '上传错误：',//'Upload Error: ',
 	'config_error'		: '配置错误',//'Configuration Error',
-	'server_error'		: '服务器（IO）错误'，//'Server (IO) Error',
+	'server_error'		: '服务器（IO）错误',//'Server (IO) Error',
 	'security_error'	: '安全错误',//'Security Error',
 	'upload_limit_exceed'	: '超过上传限制。',//'Upload limit exceeded.',
 	'file_not_found'	: '找不到文件。',//'File not found.',
