@@ -90,7 +90,7 @@ function fileQueued(file) {
 
 		}
 		if(createQueue) {
-/*vot*/			progress.setStatus(lang['wait_please']);
+/*vot*/			progress.setStatus(lng['wait_please']);
 		} else {
 			this.cancelUpload(file.id);
 			progress.setCancelled();
