@@ -379,7 +379,7 @@ if($_G['forum_thread']['special'] == 2) {
 }
 
 $onlyauthoradd = $threadplughtml = '';
-
+$postarr = array();
 $maxposition = 0;
 if(empty($_GET['viewpid'])) {
 	if(!in_array($_G['forum_thread']['special'], array(2,3,5))) {
