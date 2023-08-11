@@ -28,7 +28,6 @@ class control extends pluginbase {
 		$this->checkfiles('model/', '\.php|\.htm');
 		$this->checkfiles('lib/', '\.php|\.htm');
 		$this->checkfiles('plugin/', '\.php|\.htm|\.xml');
-		$this->checkfiles('upgrade/', '\.php');
 		$this->checkfiles('images/', '\..+?');
 		$this->checkfiles('js/', '\.js|\.htm');
 		$this->checkfiles('release/', '\.php');

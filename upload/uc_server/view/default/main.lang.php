@@ -3,8 +3,8 @@
 $lang = array(
 
 	'other' => '其他',
-	'app_connent_ok' => '通信成功 ',
-	'app_connent_false' => '通信失败',
+	'app_connect_ok' => '通信成功 ',
+	'app_connect_false' => '通信失败',
 
 	'note_deleteuser' => '删除用户',
 	'note_renameuser' => '重命名用户',

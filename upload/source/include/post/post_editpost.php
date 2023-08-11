@@ -89,7 +89,7 @@ if(!submitcheck('editsubmit')) {
 	}
 	if($htmloncheck) {
 		$editor['editormode'] = 0;
-		$editor['allowswitcheditor'] = 0;
+		$editor['allowswitcheditor'] = 1;
 	}
 	$showthreadsorts = ($thread['sortid'] || !empty($sortid)) && $isfirstpost;
 	$sortid = empty($sortid) ? $thread['sortid'] : $sortid;
