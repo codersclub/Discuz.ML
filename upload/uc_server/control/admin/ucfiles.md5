@@ -4,7 +4,7 @@
 911c5a7ae779951fd20b880edb3f1209 *api/dbbak.php
 d41d8cd98f00b204e9800998ecf8427e *api/index.htm
 0ee893fc567b995a7c8e13e86d7e8992 *control/admin/admin.php
-38b655d74b36b5690bce559ab6e7e3d2 *control/admin/app.php
+0942fd82578cd67d050f274a545963ea *control/admin/app.php
 de28f7f5888d1821996d71d00bd24284 *control/admin/badword.php
 72a4339c80c4a1dea4a2e644fa783e53 *control/admin/cache.php
 81037b70fa4e87d076cd3514afb66158 *control/admin/credit.php
@@ -198,7 +198,7 @@ e314d562d7d50483608cf82c9b652201 *model/user.php
 cf43247858d5382d58bcc1dca88c219e *model/var.php
 cdc453e23980b4f7f894a3b15042a76c *model/version.php
 d41d8cd98f00b204e9800998ecf8427e *plugin/filecheck/index.htm
-d92952173d26e94481bceb4c90804d45 *plugin/filecheck/plugin.php
+497de42fe416946ddf59cf32e878f1ef *plugin/filecheck/plugin.php
 5593d5353980bfe3e99c0a2d94735b3c *plugin/filecheck/plugin.xml
 5259f76ce41387e0218eb54c38a616c9 *plugin/filecheck/plugin_filecheck.htm
 d41d8cd98f00b204e9800998ecf8427e *plugin/index.htm
@@ -240,7 +240,7 @@ b5a4f84b23fdefbc19ec2b02169ad626 *view/default/header_ajax.htm
 ca56e94572c998edbca29d67661b95fa *view/default/header_client.htm
 7215ee9c7d9dc229d2921a40e899ec5f *view/default/index.htm
 274805cda6095fcd056fcec96203e662 *view/default/lang.inc.php
-4de688514cd4908403ac6dac1cccef23 *view/default/main.lang.php
+0651b7e9455824e78eab386cbca6d22a *view/default/main.lang.php
 998b620c83be4e7caff9311f767327ae *view/default/message.htm
 ef6b499f7eada56ecf60d2607272727e *view/default/messages.lang.php
 7819252a557b50879b0e80396013683d *view/default/message_client.htm
