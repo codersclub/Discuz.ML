@@ -4,7 +4,7 @@ Editor CSS file for Discuz! X
 https://www.discuz.vip
 -- Modified by Valery Votintsev
 */
-/*vot*/ .edt { border: 1px solid; border-color: #999 #CCC #CCC #999; /*min-width: 830px;*/ }
+.edt { border: 1px solid; border-color: #999 #CCC #CCC #999; }
 	.edt .bar { padding: 4px; height: 44px; border-bottom: 1px solid #DDD; background: {COMMONBG}; }
 		.edt .cst { background: {COMMONBG}; border-bottom: 1px solid #DDD; }
 		.edt .cst.nbb { border-bottom: none !important; }
@@ -84,8 +84,6 @@ https://www.discuz.vip
 		.b2r #e_code	{ background-position: -120px -20px; }
 	#e_quote		{ background-position: -163px -80px; }
 		.b2r #e_quote	{ background-position: -140px -20px; }
-/*vot*/	#e_paste		{ background-position: -203px -80px; }
-/*vot*/		.b2r #e_paste	{ background-position: -40px -60px; }
 	#e_pasteword		{ background-position: -60px -60px; }
 	#e_downremoteimg	{ background-position: -80px -60px; }
 
@@ -110,10 +108,11 @@ https://www.discuz.vip
 
 	#e_switcher input{ margin-right: 4px; vertical-align: middle; }
 /*vot*/ #e_fullswitcher { background:transparent url({IMGDIR}/expand.png) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
-/*vot*/ #e_backswitcher { background:transparent url({IMGDIR}/shrink.png) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
+/*vot*/ #e_fullswitcher.full { background:transparent url({IMGDIR}/shrink.png) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
+
 /*vot*/ #e_simple { background:transparent url({IMGDIR}/simple.gif) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
-/*vot*/ #e_advanced { background:transparent url({IMGDIR}/advanced.gif) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
-/*vot*/ a#e_fullswitcher:hover, a#e_backswitcher:hover, a#e_advanced:hover, a#e_simple:hover { border: 1px solid #09C; }
+/*vot*/ .simpleedt #e_simple { background:transparent url({IMGDIR}/advanced.gif) no-repeat 2px 2px; width: 16px; height: 16px; padding: 2px; border: 1px solid {SPECIALBORDER}; text-indent: -9999px; }
+/*vot*/ a#e_fullswitcher:hover, a#e_simple:hover { border: 1px solid #09C; }
 
 	#e_beginning { background-position: -246px -120px;}
 		.b2r #e_beginning { background-position: -260px -78px; }

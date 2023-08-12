@@ -63,19 +63,11 @@ function initEditor() {
 		if(buttons[i].id.indexOf(editorid + '_') != -1) {
 			buttons[i].href = 'javascript:;';
 			if(buttons[i].id.substr(buttons[i].id.indexOf('_') + 1) == 'fullswitcher') {
-//vot				buttons[i].innerHTML = !editorisfull ? lng['full_screen'] : lng['restore_size'];
-//vot				buttons[i].onmouseover = function(e) {setEditorTip(editorisfull ? lng['restore_size_edit'] : lng['full_screen_edit']);};
-				buttons[i].onclick = function(e) {editorfull();doane();}
-			} else if(buttons[i].id.substr(buttons[i].id.indexOf('_') + 1) == 'backswitcher') {
-//vot				buttons[i].innerHTML = !editorisfull ? lng['full_screen'] : lng['restore_size'];
-//vot				buttons[i].onmouseover = function(e) {setEditorTip(editorisfull ? lng['restore_size_edit'] : lng['full_screen_edit']);};
-//alert('backswitcher');
+/*vot*/				buttons[i].innerHTML = !editorisfull ? lng['full_screen'] : lng['restore_size'];
+/*vot*/				buttons[i].onmouseover = function(e) {setEditorTip(editorisfull ? lng['restore_size_edit'] : lng['full_screen_edit']);};
 				buttons[i].onclick = function(e) {editorfull();doane();}
 			} else if(buttons[i].id.substr(buttons[i].id.indexOf('_') + 1) == 'simple') {
 /*vot*/				buttons[i].innerHTML = !simplodemode ? lng['general'] : lng['simple'];
-				buttons[i].onclick = function(e) {editorsimple();doane();}
-			} else if(buttons[i].id.substr(buttons[i].id.indexOf('_') + 1) == 'advanced') {
-//vot				buttons[i].innerHTML = !simplodemode ? lng['general'] : lng['simple'];
 				buttons[i].onclick = function(e) {editorsimple();doane();}
 			} else {
 				_attachEvent(buttons[i], 'mouseover', function(e) {setEditorTip(BROWSER.ie ? window.event.srcElement.title : e.target.title);});
@@ -108,21 +100,6 @@ function initEditor() {
 		};
 		$(editorid + '_fullswitcher').className = 'xg1';
 	}
-/*vot*/	if(editorisfull) {
-/*vot*/	  $(editorid + '_fullswitcher').style.display = 'none';
-/*vot*/	  $(editorid + '_backswitcher').style.display = 'block';
-/*vot*/	} else {
-/*vot*/	  $(editorid + '_fullswitcher').style.display = 'block';
-/*vot*/	  $(editorid + '_backswitcher').style.display = 'none';
-/*vot*/	}
-/*vot*/	if(simplodemode) {
-/*vot*/	  $(editorid + '_simple').style.display = 'none';
-/*vot*/	  $(editorid + '_advanced').style.display = 'block';
-/*vot*/	} else {
-/*vot*/	  $(editorid + '_simple').style.display = 'block';
-/*vot*/	  $(editorid + '_advanced').style.display = 'none';
-/*vot*/	}
-
 	if($(editorid + '_svdsecond') && savedatat === null) {
 		savedatac = savedataInterval;
 		autosave = !getcookie('editorautosave_' + editorid) || getcookie('editorautosave_' + editorid) == 1 ? 1 : 0;
@@ -321,11 +298,8 @@ function editorfull(op) {
 			$(editorid + '_resize').style.display = 'none';
 		}
 		window.onresize = function() { editorfull(1); };
-///*vot*/ $(editorid + '_fullswitcher').style.visibility = 'visible';
-///*vot*/ $(editorid + '_backswitcher').style.visibility = 'hidden';
-/*vot*/	$(editorid + '_fullswitcher').style.display = 'none';
-/*vot*/	$(editorid + '_backswitcher').style.display = 'block';
 		editorisfull = 1;
+/*vot*/		$(editorid + '_fullswitcher').className = 'full';
 	} else {
 		if(savesimplodemode) {
 			editorsimple();
@@ -344,13 +318,11 @@ function editorfull(op) {
 			$(editorid + '_resize').style.display = '';
 		}
 		editorisfull = 0;
+/*vot*/		$(editorid + '_fullswitcher').className = '';
 		editorcontrolpos();
-//vot $(editorid + '_fullswitcher').style.visibility = 'hidden';
-//vot $(editorid + '_backswitcher').style.visibility = 'visible';
-/*vot*/	$(editorid + '_fullswitcher').style.display = 'block';
-/*vot*/	$(editorid + '_backswitcher').style.display = 'none';
 	}
-//vot	$(editorid + '_fullswitcher').innerHTML = editorisfull ? lng['back'] : lng['full_screen'];
+/*vot*/	$(editorid + '_fullswitcher').innerHTML = editorisfull ? lng['back'] : lng['full_screen'];
+/*vot*/	$(editorid + '_fullswitcher').title = editorisfull ? lng['back'] : lng['full_screen'];
 	initesbar();
 }
 
@@ -365,8 +337,6 @@ function editorsimple() {
 			$(editorid + '_switcher').style.display = 'none';
 		}
 		$(editorid + '_adv_s3').className = 'b2r esbs';
-/*vot*/	$(editorid + '_simple').style.display = 'none';
-/*vot*/	$(editorid + '_advanced').style.display = 'block';
 		simplodemode = 1;
 	} else {
 		v = '';
@@ -378,8 +348,6 @@ function editorsimple() {
 			$(editorid + '_switcher').style.display = '';
 		}
 		$(editorid + '_adv_s3').className = 'b2r esb';
-/*vot*/	$(editorid + '_simple').style.display = 'block';
-/*vot*/	$(editorid + '_advanced').style.display = 'none';
 		simplodemode = 0;
 	}
 	setcookie('editormode_' + editorid, simplodemode ? 1 : -1, 2592000);
