@@ -425,10 +425,15 @@
 		if(typeof geo !== 'undefined' && geo.errmsg === '' && geo.loc) {
 			postlocation = geo.longitude + '|' + geo.latitude + '|' + geo.loc;
 		}
+		var myform = document.getElementById('postform');
+		var formdata = new FormData(myform);
 		$.ajax({
 			type:'POST',
 			url:form.attr('action') + '&geoloc=' + postlocation + '&handlekey='+form.attr('id')+'&inajax=1',
-			data:form.serialize(),
+			data:formdata,
+			cache:false,
+			contentType:false,
+			processData:false,
 			dataType:'xml'
 		})
 		.success(function(s) {
