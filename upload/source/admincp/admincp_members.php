@@ -1792,7 +1792,7 @@ EOF;
 			$update = false;
 			$groupidnew = $member['groupid'];
 			$adminidnew = $member['adminid'];
-			if(in_array('avatar', $_GET['clear'])) {
+			if(is_array($_GET['clear']) && in_array('avatar', $_GET['clear'])) {
 				$setarr['avatarstatus'] = 0;
 				loaducenter();
 				uc_user_deleteavatar($member['uid']);
