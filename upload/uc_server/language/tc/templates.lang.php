@@ -536,6 +536,5 @@ $languages = array(
 	'envstatus_ok' => '您當前系統環境適合當前版本的 UCenter {$envstatus[\'version\']} 。',
 
 //Added by Valery Votintsev, codersclub.org
-	'view_ml_new_version'		=> '查看最新的多語言版本',//'View Latest International Version',
 	'home_dev_international'	=> '多語種版本',//'Multilingual Version',
 );

@@ -270,6 +270,6 @@ $lang = array(
 	'??'	=> '未知',
 	'LAN'	=> '局域网',
 	'LOC'	=> '本地主机',
-	'BAD'	=> '无效的 IP 地址',//'Invalid',
+	'BAD'	=> '无效的 IP 地址',//'Invalid IP',
 	'ERR'	=> '读取 IP 错误',//'Error reading IP',
 );
