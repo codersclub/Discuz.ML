@@ -223,7 +223,7 @@ class db_driver_mysqli
 	}
 
 	function begin_transaction() {
-/*vot*/	if (v_compare(PHP_VERSION, '5.5') < 0) {
+		if (PHP_VERSION < '5.5') {
 			return $this->curlink->autocommit(false);
 		}
 		return $this->curlink->begin_transaction();
@@ -231,7 +231,7 @@ class db_driver_mysqli
 
 	function commit() {
 		$cr = $this->curlink->commit();
-/*vot*/	if (v_compare(PHP_VERSION, '5.5') < 0) {
+		if (PHP_VERSION < '5.5') {
 			$this->curlink->autocommit(true);
 		}
 		return $cr;
@@ -239,7 +239,7 @@ class db_driver_mysqli
 
 	function rollback() {
 		$rr = $this->curlink->rollback();
-/*vot*/	if (v_compare(PHP_VERSION, '5.5') < 0) {
+		if (PHP_VERSION < '5.5') {
 			$this->curlink->autocommit(true);
 		}
 		return $rr;
