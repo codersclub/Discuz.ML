@@ -196,7 +196,7 @@ Note on the CSS Hack:
 	/* Page header */ .ph { font-size: 20px; }
 	/* Main title */ .mt { padding: 10px 0; font-size: 16px; }
 
-/*vot*/ /* vertical line within a section */	.pipe { margin: 0 2px; color: #CCC; }
+/*vot*/ /* vertical line within a section */ .pipe { margin: 0 5px; color: #CCC; }
 
 /* Text attributes: size, color, thickness */
 /*
@@ -208,7 +208,7 @@ Note on the CSS Hack:
 */
 	.xs0 { font-family: {SMFONT}; font-size: {SMFONTSIZE}; -webkit-text-size-adjust: none; }
 	.xs1 { font-size: 12px !important; }
-/*vot*/	.xs2 { font-size: 12px !important; }
+	.xs2 { font-size: 14px !important; }
 	.xs3 { font-size: 16px !important; }
 /*
 	Name:			mod_text_gray_level
@@ -558,7 +558,7 @@ Note on the CSS Hack:
 	#custominfo.mtn { margin-bottom: -5px; }
 
 /* Message alert_win - altw */
-/*vot*/.altw { width: 400px; }
+.altw { width: 350px; }
 	.altw .fltc { margin-bottom: 0; padding: 8px; }
 		.alert_right, .alert_error, .alert_info { padding: 6px 0 6px 58px; min-height: 40px; height: auto !important; height: 40px; line-height: 160%; font-size: 14px; position: relative; }
 			.alert_right:before, .alert_error:before, .alert_info:before { display: block; position: absolute; left: 6px; height: 38px; width: 38px; font-family: dzicon; font-size: 38px; line-height: 38px; }
@@ -608,7 +608,7 @@ Note on the CSS Hack:
 		#toptb a { float: left; padding: 0 4px; height: 28px; }
 		#toptb a.showmenu { padding-right: 15px; }
 		#toptb a.hover { background-color: #FFF; }
-/*vot*/		#toptb .pipe { float: left; /* display: none; */}
+		#toptb .pipe { float: left; display: none; }
 /*vot*/		#toptb img { vertical-align: middle; }
 
 	#hd { border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} }
@@ -808,7 +808,7 @@ Note on the CSS Hack:
 /* Statistics */
 .tns { padding: 10px 0; }
 	.tns table { width: 100%; }
-/*Anish*/	.tns th, .tns td { text-align: center; font-size: 9px; vertical-align: top; }
+/*Anish*/	.tns th, .tns td { text-align: center; font-size: 12px; vertical-align: top; }
 		.sd .tns th, .sd .tns td { width: 110px !important; }
 		.tns th { border-right: 1px solid #CCC; }
 		.tns th p, .tns td p { font-size: 14px; margin: 0; }
@@ -851,7 +851,7 @@ Note on the CSS Hack:
 	.tb_s { margin-top: 0; line-height: 26px; }
 
 	/* Similar to the menu of the Tab */
-/*vot*/ .tbmu { padding: 10px; border-bottom: 1px dashed {COMMONBORDER}; }
+.tbmu { padding: 8px 10px 8px 0; border-bottom: 1px dashed {COMMONBORDER}; }
 	.tbmu a { color: {HIGHLIGHTLINK}; }
 	.tbmu .a { color: {LINK}; font-weight: 700; }
 	/* Emphasised Tab for information prompts */
@@ -875,7 +875,7 @@ Note on the CSS Hack:
 	/* Check Ads */ .a_t { margin-bottom: 10px; }
 		.a_t table { width: 100%; }
 		.a_t td { padding: 4px 15px; border: 1px solid {COMMONBORDER}; }
-	/* Post ads */ .a_pr { float: right; overflow: hidden; width: 120px; }
+	/* Post ads */ .a_pr { float: right; overflow: hidden; }
 		.a_pt, .a_pb { background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='11'%3e%3cpath fill='%239a11ff' d='M0 0v11h16V0zM6 3l2 2v3H7V7H5v1H4V5zM6 4.4L5 5.4v0.6h2V5.4zM9 3h3l1 1v3l-1 1H9zM10 4v3h2V4z'/%3e%3c/svg%3e") no-repeat 0 50%; margin-bottom: 6px; padding-left: 20px; zoom: 1; }
 	/* Floating ads */ .a_fl, .a_fr { float: right; position: fixed; top: 350px; z-index: 100; }
 		.a_fl { left: 0; }
@@ -907,7 +907,7 @@ Note on the CSS Hack:
 	.xl label, .xl label a { color: #C00; }
 	.xl1 li { height: 1.5em; overflow: hidden; }
 		.xl1_elp { float: left; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/*vot*/	.xl2 li { /*float: left;*/ margin: 2px 0; padding: 0; /*width: 50%;*/ height: 1.5em; overflow: hidden; }
+	.xl2 li { float: left; margin: 2px 0; padding: 0; width: 50%; height: 1.5em; overflow: hidden; }
 	.xl ol, ol.xl { line-height: 21px; counter-reset: xlol; }
 		.xl ol li, ol.xl li { background: none; height: 21px; }
 		.xl ol li:before, ol.xl li:before { display: inline-block; width: 16px; height: 16px; line-height: 16px; margin: 2px 4px 3px 0; color: #FFF; background: #A0C8EA; border-radius: 8px; text-align: center; counter-increment: xlol; content: counter(xlol); }
@@ -973,7 +973,7 @@ Note on the CSS Hack:
 
 /* Application list */
 	.appl ul { margin: 3px 0; }
-	.appl li { display: block; height: 28px; line-height: 28px; white-space: nowrap; word-wrap: normal; font-size: 12px; text-overflow: ellipsis; overflow: hidden; }
+	.appl li { display: block; height: 28px; line-height: 28px; white-space: nowrap; word-wrap: normal; font-size: 14px; text-overflow: ellipsis; overflow: hidden; }
 	.appl li a { text-decoration: none !important; }
 	.appl li a i:before { color: {MENUBGCOLOR}; }
 	.appl img { margin: 0 5px 0 0; vertical-align: middle; }
@@ -1015,12 +1015,12 @@ Note on the CSS Hack:
 	Explain:		Links
 	Last Modify:	lushnis
 */
-/*vot*/	.lk img { float: left; margin-right: 5px; margin-bottom: 5px; }
+	.lk img { float: left; margin-right: 5px; margin-bottom: 5px; width: 88px; height: 31px; }
 	.lk p { color: {MIDTEXT}; }
-/*vot*/	.lk .m li { clear: left; padding: 0 0 10px; }
-/*vot*/		.lk .m img { display: inline; margin-top: 4px; margin-top: 1px; }
-/*vot*/	.lk .x li { float: left; margin-right: 5px; width: auto; height: 1.5em; overflow: hidden; }
-/*vot*/	.lk_logo .lk_content {}
+	.lk .m li { clear: left; padding: 0 0 10px 98px; }
+		.lk .m img { display: inline; margin-left: -98px; }
+	.lk .x li { float: left; margin-right: 5px; width: 93px; height: 1.5em; overflow: hidden; }
+	.lk_logo .lk_content { float: left; }
 
 /* ---------------- Other function-specific blocks ------------------ */
 /* Simple Editor */
@@ -1043,8 +1043,8 @@ Note on the CSS Hack:
 /* Smiles */
 .sllt { padding: 10px 5px 5px !important; }
 	.sllt td { padding: 8px; border: none; cursor: pointer; }
-/*vot*/	.sllt_p { border-top: 1px solid gray; text-align: right; padding: 4px 0; }
-/*vot*/		.sllt_p a { margin-right: 5px; color: #069; text-decoration: underline; border: 1px solid gray; }
+	.sllt_p { text-align: right; }
+		.sllt_p a { margin-right: 5px; color: #069; text-decoration: underline; }
 	.sl_pv { margin-top: 5px; padding: 8px; background: #FAFAFA; border: 1px solid #CCC; }
 
 /*
@@ -1056,6 +1056,7 @@ Note on the CSS Hack:
 	#diy-tg { float: right; margin: 5px 1px 5px 5px; padding: 0 !important; width: 48px; height: 16px !important; border: 1px solid #EE831F; border-radius: 2px; background: #FBF5E4; overflow: hidden; font-weight: normal; line-height: 16px; text-align: center; }
 	#diy-tg:hover { text-decoration: none; }
 		#diy-tg_menu { position: absolute; margin: -2px 0 0 0; padding: 6px 0; width: 72px; height: 48px; line-height: 24px; border: 1px solid #EE831F; border-top: 0; border-radius: 2px 0px 2px 2px; background: #FBF5E4 no-repeat; text-align: center; background-image: linear-gradient(90deg, #EE831F 33%, #FBF5E4 33%); background-size: 100% 1px; }
+/*vot*/		#diy-tg_menu { width: auto; height: auto; text-align: left;}
 			#diy-tg_menu a { float: none !important; }
 
 /*
@@ -1072,7 +1073,8 @@ Note on the CSS Hack:
 	#sslct_menu { padding: 6px 10px 10px; }
 		 .sslct_btn { float: left; margin: 4px 4px 0 0; width: 12px; height: 12px; border: 1px solid {COMMONBORDER}; cursor: pointer; }
 			.sslct_btn i { float: left; display: inline; margin: 1px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
-	#toptb a.switchblind{ width: 10px; background-image: none; text-indent: -9999px; }
+/*vot	#toptb a.switchblind{ width: 10px; background-image: none; text-indent: -9999px; }*/
+	.switchblind:before { content: "\f106"; }
 /* pop-up menu and pop-up window */
 	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 2px 4px 4px rgba(0,0,0,0.2); }
 		.p_pof .p_pop { padding: 0; border: none; box-shadow: none; }
@@ -1252,7 +1254,7 @@ Note on the CSS Hack:
 		.rfm .rq {}
 		.rfm th, .rfm td { padding: 10px 2px; vertical-align: top; line-height: 24px; }
 			.rfm .tipwide { padding-top: 0; }
-/*vot*/		.rfm th { padding-right: 10px; width: 10em; text-align: right; }
+		.rfm th { padding-right: 10px; width: 10em; text-align: right; }
 		.rfm .px { width: 220px; }
 		.rfm .p_tip { position: absolute; z-index: 2; display: none; padding-left: 10px; width: 390px; background: {WRAPBG}; color: {MIDTEXT}; font-style: normal; }
 		.rfm .p_chk { position: absolute; z-index: 1; padding-left: 10px; width: 390px; color: red; font-weight: 700; font-family: {FONT}; }
@@ -1342,7 +1344,7 @@ Note on the CSS Hack:
 
 /* Greeting by Pony */
 	.poke { margin-bottom: 10px; }
-/*vot*/		.poke li { float: left; margin: 0 1% 5px 0; width: 32%; height: 22px; white-space: nowrap; overflow: hidden; }
+		.poke li { float: left; margin: 0 1% 5px 0; width: 32%; height: 22px; }
 		.poke img { vertical-align: middle; }
 
 /* Common data list: datatable by michael */
@@ -1403,9 +1405,8 @@ Note on the CSS Hack:
 /* Action buttons */
 .bac {margin: 0; padding: 0; width: 70px; height: 30px;line-height: 30px; color: {LINK}; overflow: hidden; text-decoration: none; background: url({IMGDIR}/pg_arw.png) no-repeat 0 0; text-align: center; text-indent: -7px; display: block;}
 
-/*vot*/ #psd, appl { width: 146px; }
 #psd .bn .mbn input, #postbox input { margin-right: 4px; }
-/*vot*/ #postbox .mbn, #psd .mbn { /*height: 1.6em;*/ line-height: 1.6em; }
+#postbox .mbn, #psd .mbn { height: 1.6em; line-height: 1.6em; }
 
 /* Prompt for the reward points and other popup tips */
 .popupcredit {}
@@ -1563,7 +1564,7 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; line
 	body#space .block { margin: 0 5px 10px; }
 .temp {margin:1px;}
 /* Re-definition of frame */
-/*vot*/	#ct .frame { margin: 0; border: none; overflow: hidden; }
+	#ct .frame { margin: 0; border: none; }
 	.bx { border: none; }
 		.bx .frame-1-1-1 { background: transparent url({IMGDIR}/vline2.png) repeat-y 320px 0; }
 		.bx .frame-2-1 { background: transparent url({IMGDIR}/vline.png) repeat-y 645px 0; }
@@ -1665,7 +1666,7 @@ a.progressCancel { display: block; float: right; width: 14px; height: 14px; line
 .cl_block_bm .dxb_bc { margin: 0 !important;}
 
 /* Side of the call */
-	/* Vote */
+	/* Polls */
 	.b_poll dt { padding-left: 20px; background: url({IMGDIR}/pollsmall.gif) no-repeat 0 9px; }
 	.b_poll dd li { padding: 0 0 4px 20px; }
 		.b_poll dd li .pc { float: left; margin: 4px 0 0 -20px; }
@@ -1753,7 +1754,7 @@ DIY image is not loaded when the Hide Slide
 .patch { width: 300px; }
 	.patch .bm { border-color: #F26C4F; background: #FFF; }
 	.patch .allfixed { border-color: #6C3; }
-/*vot*/	.patch .bm_h { border: solid #FFF; border-width: 1px 1px 0; background: #F26C4F; padding: 0; }
+	.patch .bm_h { border: solid #FFF; border-width: 1px 1px 0; background: #F26C4F; }
 		.patch .allfixed .bm_h { background: #6C3; }
 		.patch h2, .patch .bm_h .y { color: #FFF; }
 	.patch table { table-layout: fixed; }

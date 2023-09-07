@@ -59,7 +59,7 @@
 			<div class="wp">
 				<div class="z">
 					<!--{loop $_G['setting']['topnavs'][0] $nav}-->
-<!--vot-->					<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><span class="pipe">|</span><!--{/if}-->
+<!--vot-->					<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav[code]}{$nav[navname]}</a><!--{/if}-->
 					<!--{/loop}-->
 					<!--{hook/global_cpnav_extra1}-->
 				</div>
@@ -69,14 +69,14 @@
 			<!--{if $_G[config][language_horizontal]}-->
 				<!--{loop $_G[config][languages] $lng $lngarray}-->
 				<a href="javascript:;" onclick="setlang('$lng')" title="{$lngarray[name]}/{$lngarray[title]}" class="language_icon<!--{if $_G[language]==$lng}--> active<!--{/if}-->"
-					><img src="{$_G[siteroot]}source/language/{$lng}/{$lngarray[icon]}"/></a>
+					><img src="{$_G[siteroot]}source/language/<!--{if $lng !== 'sc'}-->{$lng}/<!--{/if}-->{$lngarray[icon]}"/></a>
 				<!--{/loop}-->
 			<!--{else}-->
 				<a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="{lang change_language_title}">{lang change_language}<img class="flag" src="{LANGURL}/{$_G[langicon]}"/></a>
 				<div id="lslct_menu" class="cl p_pop" style="display: none; width:120px;">
 				<!--{loop $_G[config][languages] $lng $lngarray}-->
 				<a href="javascript:;" onclick="setlang('$lng')" title="{$lngarray[title]}">
-					<img src="{$_G[siteroot]}source/language/{$lng}/{$lngarray[icon]}"/> {$lngarray[name]}
+					<img src="{$_G[siteroot]}source/language/<!--{if $lng !== 'sc'}-->{$lng}/<!--{/if}-->{$lngarray[icon]}"/> {$lngarray[name]}
 				</a>
 				<!--{/loop}-->
 				</div>
@@ -85,17 +85,15 @@
 			<!--{/if}-->
 			<!-- /vot Multi-Lingual -->
 
-<!--vot-->				<a id="switchblind" href="javascript:;" onclick="toggleBlind(this)" title="{lang switch_blind}" class="switchblind"><img src="{IMGDIR}/switch_blind.png"></a>
-<!--vot-->				<span class="pipe">|</span>
+					<a id="switchblind" href="javascript:;" onclick="toggleBlind(this)" title="{lang switch_blind}" class="switchblind"></a>
 					<!--{hook/global_cpnav_extra2}-->
 					<!--{loop $_G['setting']['topnavs'][1] $nav}-->
-<!--vot-->					<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav['code']}{$nav['navname']}</a><span class="pipe">|</span><!--{/if}-->
+<!--vot-->					<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav['code']}{$nav['navname']}</a><!--{/if}-->
 					<!--{/loop}-->
 					<!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
-<!--vot-->					<a href="javascript:;" onclick="widthauto(this)" title="<!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}-->"><img src="{IMGDIR}/<!--{if widthauto()}-->shrink<!--{else}-->expand<!--{/if}-->.png"></a>
-<!--vot-->					<span class="pipe">|</span>
+<!--vot-->					<a href="javascript:;" id="switchwidth" onclick="widthauto(this)" title="{if widthauto()}{lang switch_narrow}{else}{lang switch_wide}{/if}" class="switchwidth"><img src="{IMGDIR}/<!--{if widthauto()}-->shrink<!--{else}-->expand<!--{/if}-->.png"></a>
 					<!--{/if}-->
-<!--vot-->				<!--{if !empty($_G['style']['extstyle'])}--><a id="sslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});" title="{lang changestyle_title}">{lang changestyle}<img src="{IMGDIR}/style_switch.png"></a><!--{/if}-->
+<!--vot-->				<!--{if !empty($_G['style']['extstyle'])}--><a id="sslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});" title="{lang changestyle}">{lang changestyle}</a><!--{/if}-->
 					<!--{if check_diy_perm($topic)}-->
 						$diynav
 					<!--{/if}-->
@@ -123,11 +121,11 @@
 				<!--{/if}-->
 			</ul>
 			<!--{/if}-->
-<!--vot-->		<!--{if !empty($_G['style']['extstyle'])}-->
+			<!--{if $_G['uid'] && !empty($_G['style']['extstyle'])}-->
 				<div id="sslct_menu" class="cl p_pop" style="display: none;">
-<!--vot-->				<!--{if !$_G[style][defaultextstyle]}--><a class="sslct_btn" onclick="extstyle('')"><i></i>{lang default}</a><!--{/if}-->
+<!--vot-->				<!--{if !$_G[style][defaultextstyle]}--><span class="sslct_btn" onclick="extstyle('')" title="{lang default}"><i></i>{lang default}</span><!--{/if}-->
 					<!--{loop $_G['style']['extstyle'] $extstyle}-->
-<!--vot-->					<a class="sslct_btn" onclick="extstyle('$extstyle[0]')"><i style='background:$extstyle[2]'></i>$extstyle[1]</a>
+<!--vot-->					<span class="sslct_btn" onclick="extstyle('$extstyle[0]')" title="$extstyle[1]"><i style='background:$extstyle[2]'></i>$extstyle[1]</span>
 					<!--{/loop}-->
 				</div>
 			<!--{/if}-->

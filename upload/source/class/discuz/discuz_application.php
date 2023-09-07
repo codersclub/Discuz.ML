@@ -213,6 +213,7 @@ class discuz_application extends discuz_base{
 
 /*vot*/		$_G['siteurl'] = str_replace("\\", '/', $_G['siteurl']);
 /*vot*/		$_G['siteroot'] = str_replace("\\", '/', $_G['siteroot']);
+/*vot*/		define('SITE_ROOT', $_G['siteroot']);
 
 		$this->var = & $_G;
 
