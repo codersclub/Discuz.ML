@@ -571,14 +571,14 @@ function lang($file, $langvar = null, $vars = array(), $default = null) {
 	if($path != 'plugin') {
 		$key = $path == '' ? $file : $path.'_'.$file;
 		if(!isset($_G['lang'][$key])) {
-/*vot*/			$loadfile = DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/'.($path == '' ? '' : $path.'/').'lang_'.$file.'.php';
+/*vot*/			$loadfile = LANGPATH.'/'.($path == '' ? '' : $path.'/').'lang_'.$file.'.php';
 			if(file_exists($loadfile)) {
 				include $loadfile;
 			}
 			$_G['lang'][$key] = (array)$lang;
 		}
 		if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
-/*vot*/			include DISCUZ_ROOT.'./source/language/'.DISCUZ_LANG.'/touch/lang_template.php';
+/*vot*/			include LANGPATH.'/touch/lang_template.php';
 			$_G['lang'][$key] = array_merge((array)$_G['lang'][$key], (array)$lang);
 		}
 		if($file != 'error' && !isset($_G['cache']['pluginlanguage_system'])) {

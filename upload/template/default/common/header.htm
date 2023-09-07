@@ -72,7 +72,7 @@
 					><img src="{$_G[siteroot]}source/language/{$lng}/{$lngarray[icon]}"/></a>
 				<!--{/loop}-->
 			<!--{else}-->
-				<a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="{lang change_language_title}">{lang change_language}<img class="flag" src="{$_G[langurl]}{$_G[langicon]}"/></a>
+				<a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="{lang change_language_title}">{lang change_language}<img class="flag" src="{LANGURL}/{$_G[langicon]}"/></a>
 				<div id="lslct_menu" class="cl p_pop" style="display: none; width:120px;">
 				<!--{loop $_G[config][languages] $lng $lngarray}-->
 				<a href="javascript:;" onclick="setlang('$lng')" title="{$lngarray[title]}">

@@ -344,16 +344,22 @@ class discuz_application extends discuz_base{
 
 		// set new language variables
 		$this->var['language']  = $lng;
-		$this->var['langpath']  = DISCUZ_ROOT . 'source/language/'.$lng . '/';
-		$this->var['langurl']   = $this->var['siteroot'] . 'source/language/'.$lng . '/';
+		$this->var['langpath']  = DISCUZ_ROOT . 'source/language'; // Default SC lang
+		$this->var['langurl']   = $this->var['siteroot'] . 'source/language'; // Default SC lang
+		if($lng !== 'sc') { // Other non-default languages
+			$this->var['langpath']  = DISCUZ_ROOT . 'source/language/'.$lng;
+			$this->var['langurl']   = $this->var['siteroot'] . 'source/language/'.$lng;
+		}
 		$this->var['langicon']  = $this->var['config']['languages'][$lng]['icon'];
 		$this->var['langname']  = $this->var['config']['languages'][$lng]['name'];
 		$this->var['langtitle'] = $this->var['config']['languages'][$lng]['title'];
 		$this->var['langdir']   = strtolower($this->var['config']['languages'][$lng]['dir']);
 
-		// define LANGUAGE RTL Suffix
-		define('RTLSUFFIX', $this->var['langdir'] == 'rtl' ? '_rtl' : '');
+		// define LANGUAGE URL, PATH and RTL Suffix
 /*vot*/		define('LANGURL', $this->var['langurl']);
+/*vot*/		define('LANGPATH', $this->var['langpath']);
+/*vot*/		define('LANGDIR', $this->var['langdir']);
+/*vot*/		define('RTLSUFFIX', $this->var['langdir'] == 'rtl' ? '_rtl' : '');
 
 
 		// set jspath (for include *.js)
