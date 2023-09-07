@@ -59,7 +59,7 @@ echo <<<EOT
 <link rel="stylesheet" href="{$staticurl}image/admincp/minireset.css?{$_G['style']['verhash']}" type="text/css" media="all" />
 <link rel="stylesheet" href="{$staticurl}image/admincp/admincpframe{$rtl_suffix}.css?{$_G['style']['verhash']}" type="text/css" media="all" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-<script src="{$_G['langurl']}lang_js.js?{$_G['style']['verhash']}" type="text/javascript"></script>
+<script src="{LANGURL}/lang_js.js?{$_G['style']['verhash']}" type="text/javascript"></script>
 
 <script src="{$_G['setting']['jspath']}common.js?{$_G['style']['verhash']}" type="text/javascript"></script>
 </head>

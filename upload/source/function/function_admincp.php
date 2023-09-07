@@ -337,6 +337,8 @@ function cpheader() {
 	$basescript = ADMINSCRIPT;
 /*vot*/	$rtl_suffix = RTLSUFFIX;
 /*vot*/	$DISCUZ_LANG = DISCUZ_LANG;
+/*vot*/	$LANGURL = LANGURL;
+/*vot*/	$LANGDIR = LANGDIR;
 
 /*vot*/	echo <<<EOT
 
@@ -351,12 +353,12 @@ function cpheader() {
 <link href="{$staticurl}image/admincp/minireset.css?{$_G['style']['verhash']}" rel="stylesheet" />
 <link href="{$staticurl}image/admincp/admincppage{$rtl_suffix}.css?{$_G['style']['verhash']}" rel="stylesheet" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-<script type="text/javascript" src="{$_G['langurl']}lang_js.js?{$VERHASH}"></script>
+<script type="text/javascript" src="{LANGURL}/lang_js.js?{$VERHASH}"></script>
 </head>
 <body>
 <script type="text/JavaScript">
 var admincpfilename = '$basescript', IMGDIR = '$IMGDIR', STYLEID = '$STYLEID', VERHASH = '$VERHASH', IN_ADMINCP = true, ISFRAME = $frame, STATICURL='static/', SITEURL = '{$_G['siteurl']}', JSPATH = '{$_G['setting']['jspath']}';
-/*vot*/ var LANG = '{$DISCUZ_LANG}', LANGURL = '{$_G[langurl]}', LANGDIR = '{$_G[langdir]}', RTLSUFFIX = '$rtl_suffix';
+/*vot*/ var LANG = '{$DISCUZ_LANG}', LANGURL = '{$LANGURL}', LANGDIR = '{$LANGDIR}', RTLSUFFIX = '$rtl_suffix';
 </script>
 <script src="{$_G['setting']['jspath']}common.js?{$_G['style']['verhash']}" type="text/javascript"></script>
 <script src="{$_G['setting']['jspath']}admincp.js?{$_G['style']['verhash']}" type="text/javascript"></script>
