@@ -2406,15 +2406,23 @@ function settings_localize() {
 	}
 }
 
-//---------------------------------------------------
-/*vot*//* Compare 2 string versions */
-/* Usage:
-   if(v_compare($mysql_version, "4.1") > 0) {
-     echo '$mysql_version(' . $mysql_version . ') > 4.1', "\n";
-   }
-*/
-function v_compare($version1='', $version2='') {
-    $version1 = preg_replace('/[^\d\.].*$/', '', $version1);
-    $version2 = preg_replace('/[^\d\.].*$/', '', $version2);
-    return version_compare($version1, $version2);
+/**
+ * Show debug info
+ * @param $data
+ * @param string $name
+ */
+function dump($data, $name = '') {
+    $buf = var_export($data, true);
+
+    $buf = str_replace('\\r', '', $buf);
+    $buf = preg_replace('/\=\>\s*\n\s*array/s', '=> array', $buf);
+
+    echo '<pre>';
+
+    if ($name) {
+        echo $name, '=';
+    }
+
+    echo $buf;
+    echo "</pre>\n";
 }

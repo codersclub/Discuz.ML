@@ -155,8 +155,7 @@ function env_check(&$env_items) {
 		} elseif($key == 'curl') {
 			if(function_exists('curl_init') && function_exists('curl_version')){
 				$v = curl_version();
-/*vot*/				$env_items[$key]['version'] = $v['version'];
-/*vot*/				$env_items[$key]['current'] = 'enable';
+				$env_items[$key]['current'] = 'enable'.' '.$v['version'];
 			}else{
 				$env_items[$key]['current'] = 'disable';
 			}
@@ -228,7 +227,7 @@ function show_env_result(&$env_items, &$dirfile_items, &$func_items, &$filesock_
 			$env_str .= "<td>".lang($key)."</td>\n";
 			$env_str .= "<td class=\"padleft\">".lang($item['r'])."</td>\n";
 			$env_str .= "<td class=\"padleft\">".lang($item['b'])."</td>\n";
-/*vot*/			$env_str .= ($status ? "<td class=\"w pdleft1\">" : "<td class=\"nw pdleft1\">").lang($item['current']). (isset($item['version']) ? $item['version'] : '') . "</td>\n";
+			$env_str .= ($status ? "<td class=\"w pdleft1\">" : "<td class=\"nw pdleft1\">").lang($item['current'])."</td>\n";
 			$env_str .= "</tr>\n";
 		}
 	}
@@ -1816,7 +1815,7 @@ function install_uc_server() {
 
 	uc_write_config($config, ROOT_PATH.'./uc_server/data/config.inc.php', $password);
 
-//vot	@unlink(ROOT_PATH.'./uc_server/install/index.php');
+	@unlink(ROOT_PATH.'./uc_server/install/index.php');
 	@unlink(ROOT_PATH.'./uc_server/data/cache/settings.php');
 	@touch(ROOT_PATH.'./uc_server/data/upgrade.lock');
 	@touch(ROOT_PATH.'./uc_server/data/install.lock');
@@ -2434,19 +2433,6 @@ EOT;
 EOT;
 	show_footer();
 
-}
-
-/**
- * vot: Compare 2 string versions
- * Usage:
- *  if(v_compare($mysql_version, "4.1") > 0) {
- *    echo '$mysql_version(' . $mysql_version . ') > 4.1', "\n";
- *  }
- */
-function v_compare($version1='', $version2='') {
-    $version1 = preg_replace('/[^\d\.].*$/', '', $version1);
-    $version2 = preg_replace('/[^\d\.].*$/', '', $version2);
-    return version_compare($version1, $version2);
 }
 
 /**
