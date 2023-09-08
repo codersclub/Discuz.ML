@@ -2019,10 +2019,12 @@ function toggleBlind(dom) {
 	if(dom) {
 		if(loadUserdata('is_blindman')) {
 			saveUserdata('is_blindman', '');
-/*vot*/			dom.title = lng['blind_disable'];
+/*vot*/			dom.title = lng['blind_enable'];
+/*vot*/			removeClass(dom, 'active');
 		} else {
 			saveUserdata('is_blindman', '1');
-/*vot*/			dom.title = lng['blind_enable'];
+/*vot*/			dom.title = lng['blind_disable'];
+/*vot*/			addClass(dom, 'active');
 		}
 	}
 }
@@ -2032,8 +2034,10 @@ function checkBlind() {
 	if(dom) {
 		if(loadUserdata('is_blindman')) {
 /*vot*/			dom.title = lng['blind_disable'];
+/*vot*/			addClass(dom, 'active');
 		} else {
 /*vot*/			dom.title = lng['blind_enable'];
+/*vot*/			removeClass(dom, 'active');
 		}
 	}
 }
