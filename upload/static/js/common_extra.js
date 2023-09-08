@@ -1096,7 +1096,7 @@ function _extstyle(css) {
 }
 
 function _widthauto(obj) {
-///*vot*/	var strs = [lng['wide_screen'], lng['narrow_screen']];
+/*vot*/	var strs = [lng['wide_screen'], lng['narrow_screen']];
 	if($('css_widthauto')) {
 		CSSLOADED['widthauto'] = 1;
 	}
@@ -1108,14 +1108,14 @@ function _widthauto(obj) {
 		}
 		HTMLNODE.className += ' widthauto';
 		setcookie('widthauto', 1, 86400 * 30);
-/*vot*/		obj.innerHTML = '<img src="' +SITEURL+IMGDIR+ '/shrink.png" title="' + lng['narrow_screen'] + '">';
-/*vot*/		obj.title = lng['narrow_screen'];
+		obj.innerHTML = strs[1];
+		obj.title = strs[1];
 	} else {
 		$('css_widthauto').disabled = true;
 		HTMLNODE.className = HTMLNODE.className.replace(' widthauto', '');
 		setcookie('widthauto', -1, 86400 * 30);
-/*vot*/		obj.innerHTML = '<img src="' +SITEURL+IMGDIR+ '/expand.png" title="' + lng['wide_screen'] + '">';
-/*vot*/		obj.title = lng['wide_screen'];
+		obj.innerHTML = strs[0];
+		obj.title = strs[0];
 	}
 	hideMenu();
 }

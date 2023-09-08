@@ -91,7 +91,7 @@
 <!--vot-->					<!--{if is_array($nav) && $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->{$nav['code']}{$nav['navname']}</a><!--{/if}-->
 					<!--{/loop}-->
 					<!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
-<!--vot-->					<a href="javascript:;" id="switchwidth" onclick="widthauto(this)" title="{if widthauto()}{lang switch_narrow}{else}{lang switch_wide}{/if}" class="switchwidth"><img src="{IMGDIR}/<!--{if widthauto()}-->shrink<!--{else}-->expand<!--{/if}-->.png"></a>
+<!--vot-->					<a href="javascript:;" id="switchwidth" onclick="widthauto(this)" title="{if widthauto()}{lang switch_narrow}{else}{lang switch_wide}{/if}" class="switchwidth"></a>
 					<!--{/if}-->
 <!--vot-->				<!--{if !empty($_G['style']['extstyle'])}--><a id="sslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});" title="{lang changestyle}">{lang changestyle}</a><!--{/if}-->
 					<!--{if check_diy_perm($topic)}-->
