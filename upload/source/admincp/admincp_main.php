@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_main.php 36284 2016-12-12 00:47:50Z nemohou $
- *	Modified by Valery Votintsev, http://discuz.ml
+ *	Modified by Valery Votintsev, http://codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -45,6 +45,7 @@ foreach($_G['config']['languages'] AS $lng => $lngarray) {
       	</a>'."\n";
 }
 /*vot*/	$rtl_suffix = RTLSUFFIX;
+/*vot*/	$LANGURL = LANGURL;
 
 echo <<<EOT
 <!DOCTYPE html>
@@ -59,7 +60,7 @@ echo <<<EOT
 <link rel="stylesheet" href="{$staticurl}image/admincp/minireset.css?{$_G['style']['verhash']}" type="text/css" media="all" />
 <link rel="stylesheet" href="{$staticurl}image/admincp/admincpframe{$rtl_suffix}.css?{$_G['style']['verhash']}" type="text/css" media="all" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-<script src="{LANGURL}/lang_js.js?{$_G['style']['verhash']}" type="text/javascript"></script>
+<script src="{$LANGURL}/lang_js.js?{$_G['style']['verhash']}" type="text/javascript"></script>
 
 <script src="{$_G['setting']['jspath']}common.js?{$_G['style']['verhash']}" type="text/javascript"></script>
 </head>
