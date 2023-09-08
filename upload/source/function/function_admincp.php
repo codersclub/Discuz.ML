@@ -353,7 +353,7 @@ function cpheader() {
 <link href="{$staticurl}image/admincp/minireset.css?{$_G['style']['verhash']}" rel="stylesheet" />
 <link href="{$staticurl}image/admincp/admincppage{$rtl_suffix}.css?{$_G['style']['verhash']}" rel="stylesheet" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
-<script type="text/javascript" src="{LANGURL}/lang_js.js?{$VERHASH}"></script>
+<script type="text/javascript" src="{$LANGURL}/lang_js.js?{$VERHASH}"></script>
 </head>
 <body>
 <script type="text/JavaScript">
