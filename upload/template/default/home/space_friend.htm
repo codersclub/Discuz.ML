@@ -204,12 +204,12 @@
 <!--vot-->										<a href="home.php?mod=spacecp&ac=follow&op={if $value['follow']}del{else}add{/if}&fuid=$value[uid]&hash={FORMHASH}&from=a_followmod_" id="a_followmod_$key" onclick="showWindow('followmod', this.href, 'get', 0)"><!--{if $value['follow']}-->{lang follow_del}<!--{else}-->{lang follow_add}<!--{/if}--></a>
 											<!--{/if}-->
 											<!--{if $value[uid] != $_G['uid'] && $value[username] != ''}-->
-<!--vot-->											<span class="pipe">|</span><a href="javascript:;" id="interaction_$value[uid]" onclick="showMenu(this.id);" title="{lang interactive}"><img src="{STATICURL}image/common/personal.png"/></a>
+											<span class="pipe">|</span><a href="javascript:;" id="interaction_$value[uid]" onmouseover="showMenu(this.id);" class="showmenu">{lang interactive}</a>
 											<!--{/if}-->
 											<!--{if !$value[isfriend] && $value[username] != ''}-->
-<!--vot-->										<span class="pipe">|</span><a href="home.php?mod=spacecp&ac=friend&op=add&uid=$value[uid]&handlekey=adduserhk_{$value[uid]}" id="a_friend_$key" onclick="showWindow(this.id, this.href, 'get', 0);" title="{lang add_friend}"><img src="{STATICURL}image/common/user_add.gif"/></a>
+											<span class="pipe">|</span><a href="home.php?mod=spacecp&ac=friend&op=add&uid=$value[uid]&handlekey=adduserhk_{$value[uid]}" id="a_friend_$key" onclick="showWindow(this.id, this.href, 'get', 0);" title="{lang add_friend}">{lang add_friend}</a>
 											<!--{elseif !in_array($_GET['view'], array('blacklist', 'visitor', 'trace', 'online'))}-->
-<!--vot-->										<span class="pipe">|</span><a href="javascript:;" id="opfrd_$value[uid]" onclick="showMenu(this.id);" title="{lang manage}"><img src="{STATICURL}image/common/manage.png"/></a>
+											<span class="pipe">|</span><a href="javascript:;" id="opfrd_$value[uid]" onmouseover="showMenu(this.id);" class="showmenu">{lang manage}</a>
 											<!--{/if}-->
 										</div>
 										<!--{if $value[isfriend] && !in_array($_GET['view'], array('blacklist', 'visitor', 'trace', 'online'))}-->
