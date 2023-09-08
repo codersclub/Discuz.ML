@@ -329,7 +329,7 @@ function editorfull(op) {
 function editorsimple() {
 	if($(editorid + '_body').className == 'edt') {
 		v = 'none';
-/*vot*/		$(editorid + '_simple').innerHTML = lng['simple'];
+/*vot*/		$(editorid + '_simple').title = lng['simple'];
 		$(editorid + '_body').className = 'edt simpleedt';
 		$(editorid + '_adv_s1').className = 'b2r';
 		$(editorid + '_adv_s2').className = 'b2r nbl';
@@ -340,7 +340,7 @@ function editorsimple() {
 		simplodemode = 1;
 	} else {
 		v = '';
-/*vot*/		$(editorid + '_simple').innerHTML = lng['general'];
+/*vot*/		$(editorid + '_simple').title = lng['general'];
 		$(editorid + '_body').className = 'edt';
 		$(editorid + '_adv_s1').className = 'b1r';
 		$(editorid + '_adv_s2').className = 'b2r nbr nbl';
