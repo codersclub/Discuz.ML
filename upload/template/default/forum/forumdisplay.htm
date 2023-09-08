@@ -46,16 +46,16 @@
 
 						<!--{if $_G['forum']['ismoderator']}-->
 						<!--{if $_G['forum']['recyclebin']}-->
-<!--vot-->						<span class="pipe">|</span><a href="{if $_G['adminid'] == 1}admin.php?mod=forum&action=recyclebin&frames=yes{elseif $_G['forum']['ismoderator']}forum.php?mod=modcp&action=recyclebin&fid=$_G[fid]{/if}" class="fa_bin" target="_blank" title="{lang forum_recyclebin}"></a>
+							<span class="pipe">|</span><a href="{if $_G['adminid'] == 1}admin.php?mod=forum&action=recyclebin&frames=yes{elseif $_G['forum']['ismoderator']}forum.php?mod=modcp&action=recyclebin&fid=$_G[fid]{/if}" class="fa_bin" target="_blank">{lang forum_recyclebin}</a>
 						<!--{/if}-->
 						<!--{if $_G['forum']['ismoderator'] && !$_GET['archiveid']}-->
-<!--vot-->						<span class="pipe">|</span>
+							<span class="pipe">|</span><strong>
 							<!--{if $_G['forum']['status'] != 3}-->
-<!--vot-->							<a href="forum.php?mod=modcp&fid=$_G[fid]" class="fa_mng" title="{lang modcp}"></a>
+								<a href="forum.php?mod=modcp&fid=$_G[fid]">{lang modcp}</a>
 							<!--{else}-->
-<!--vot-->							<a href="forum.php?mod=group&action=manage&fid=$_G[fid]" class="fa_mng" title="{lang modcp}"></a>
+								<a href="forum.php?mod=group&action=manage&fid=$_G[fid]">{lang modcp}</a>
 							<!--{/if}-->
-<!--vot-->
+							</strong>
 						<!--{/if}-->
 						<!--{hook/forumdisplay_modlink}-->
 						<!--{/if}-->
