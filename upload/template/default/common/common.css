@@ -1070,9 +1070,10 @@ Note on the CSS Hack:
 	#toptb a#sslct:hover, .switchwidth:hover, #toptb a.switchblind:hover { color: #888; text-decoration: none; }
 	.switchwidth:before { content: "\f106"; }
 	#sslct:before { content: "\f107"; }
-	#sslct_menu { padding: 6px 10px 10px; }
-		 .sslct_btn { float: left; margin: 4px 4px 0 0; width: 12px; height: 12px; border: 1px solid {COMMONBORDER}; cursor: pointer; }
-			.sslct_btn i { float: left; display: inline; margin: 1px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
+/*vot*/	#sslct_menu { padding: 0; }
+/*vot*/		.sslct_btn { display: block; float: none; padding: 0 4px; border-bottom: 1px solid {COMMONBORDER}; cursor: pointer; }
+/*vot*/			.sslct_btn i { float: left; display: inline; margin: 2px 4px 0 0; width: 14px; height: 14px; background: #2E80D1; overflow: hidden; font-style: normal; }
+/*vot*/		 .sslct_btn:hover { background: #E5EDF2; }
 /*vot	#toptb a.switchblind{ width: 10px; background-image: none; text-indent: -9999px; }*/
 	.switchblind:before { content: "\f115"; }
 	.switchblind.active:before { content: "\f116"; }
