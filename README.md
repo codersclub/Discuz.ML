@@ -174,7 +174,7 @@ Users who use the release version, check the readme.html file in the installatio
  
 [Discuz! X official Git](https://gitee.com/Discuz/DiscuzX), Simplified Chinese UTF8 version
 
-[Click to see how to submit code to Chinese project](https://gitee.com/Discuz/DiscuzX/wikis/%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81% E5%88%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE?sort_id=3466289)
+[Click to see how to submit code to Chinese project](https://gitee.com/Discuz/DiscuzX/wikis/%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%88%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE?sort_id=3466289)
 
 [Download Discuz! X Chinese versions](https://gitee.com/Discuz/DiscuzX/attach_files)
 
