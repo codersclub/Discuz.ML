@@ -1074,7 +1074,9 @@ Note on the CSS Hack:
 		 .sslct_btn { float: left; margin: 4px 4px 0 0; width: 12px; height: 12px; border: 1px solid {COMMONBORDER}; cursor: pointer; }
 			.sslct_btn i { float: left; display: inline; margin: 1px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
 /*vot	#toptb a.switchblind{ width: 10px; background-image: none; text-indent: -9999px; }*/
-	.switchblind:before { content: "\f106"; }
+	.switchblind:before { content: "\f115"; }
+	.switchblind.active:before { content: "\f116"; }
+
 /* pop-up menu and pop-up window */
 	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 2px 4px 4px rgba(0,0,0,0.2); }
 		.p_pof .p_pop { padding: 0; border: none; box-shadow: none; }
