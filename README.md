@@ -172,22 +172,19 @@ Users who use the release version, check the readme.html file in the installatio
 
 ### Chinese Related Sites
  
-[Discuz! X official Git](https://gitee.com/Discuz/DiscuzX), Simplified Chinese UTF8 version
-
-[Click to see how to submit code to Chinese project](https://gitee.com/Discuz/DiscuzX/wikis/%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%88%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE?sort_id=3466289)
-
-[Download Discuz! X Chinese versions](https://gitee.com/Discuz/DiscuzX/attach_files)
-
-[Discuz! X Official Site](https://www.discuz.vip/)
-
-[Discuz! App Center](https://addon.dismall.com/)
-
-[Discuz! Open Platform](https://open.dismall.com/)
-
-[Discuz! Development Documentation](https://open.dismall.com/?ac=document&page=dev)
+- [Discuz! X official Git](https://gitee.com/Discuz/DiscuzX), Simplified Chinese UTF8 version
+- [Click to see how to submit code to Chinese project](https://gitee.com/Discuz/DiscuzX/wikis/%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%88%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE?sort_id=3466289)
+- [Download Discuz! X Chinese versions](https://gitee.com/Discuz/DiscuzX/attach_files)
+- [Discuz! X Official Site](https://www.discuz.vip/)
+- [Discuz! App Center](https://addon.dismall.com/)
+- [Discuz! Open Platform](https://open.dismall.com/)
+- [Discuz! Development Documentation](https://open.dismall.com/?ac=document&page=dev)
 
 
 ### Pay attention:
+- Discuz.ML repository has been switched to the v3.5ML branch as default on Sep 08, 2023.
+  The main branch (v3.4ML) no longer accepts PRs, please submit new PRs to v3.5ML.
 - Chinese repository has been switched to the X3.5 branch as default on May 21, 2023.
   The master branch (x3.4) no longer accepts PRs, please submit new PRs to X3.5.
+
 
