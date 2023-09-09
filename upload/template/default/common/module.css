@@ -634,7 +634,7 @@ Modified by Valery Votintsev, codersclub.org
 			.tl .ts th, .tl .ts td { padding: 3px 0; border-bottom-color: {COMMONBORDER}; background: {COMMONBG}; }
 	.tl .th { margin-top: 1px; padding: 0 10px; border-bottom: 1px solid {COMMONBORDER}; background: {COMMONBG}; }
 		.tl .th table { border: none; }
-		.tl .th td, .tl .th th { height: 20px; border: none; vertical-align: baseline; }
+/*vot*/		.tl .th td, .tl .th th { height: 20px; border: none; vertical-align: baseline; border-left: 1px solid #CDCDCD; padding: 5px; }
 	.tl .tf { padding: 3px 0; }
 		.tf .showmenu:hover { border-color: {SPECIALBORDER}; }
 		
