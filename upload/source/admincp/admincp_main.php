@@ -40,8 +40,10 @@ $oldlayout = empty($_G['cookie']['admincp_leftlayout']) ? ' class="oldlayout"' :
 $change_language = cplang('change_language');
 $lang_list='';
 foreach($_G['config']['languages'] AS $lng => $lngarray) {
-  $lang_list .= '	<a href="javascript:;" onclick="setlang(\''.$lng.'\')" title="'.$lngarray['title'].'">
-	<img src="'.$_G[siteroot].'source/language/'.$lng.'/'.$lngarray['icon'].'"/> '.$lngarray['name'].'
+$icon = $_G[siteroot].'source/language/'.($lng=='sc'?'':$lng.'/').$lngarray['icon'];
+$active = $_G['language'] == $lng ? 'style="font-weight:bold; background-color:#DFD;"' : '';
+  $lang_list .= '	<a href="javascript:;" '.$active.' onclick="setlang(\''.$lng.'\')" title="'.$lngarray['title'].'">
+	<img src="'.$icon.'"/> '.$lngarray['name'].'
       	</a>'."\n";
 }
 /*vot*/	$rtl_suffix = RTLSUFFIX;
@@ -112,6 +114,19 @@ echo <<<EOT
 			<div id="navbtn"><div></div></div>
 			<div class="currentloca" id="admincpnav"></div>
 			<form name="search" method="post" autocomplete="off" action="$basescript?action=search" target="main">
+EOT;
+
+//vot Multi-Lingual Icon
+if($_G['config']['enable_multilingual']) {
+  $icon = $_G[siteroot].'source/language/'.($lng=='sc'?'':$lng.'/').$lngarray['icon'];
+  $icon = $_G[langurl] . '/' . $_G[langicon];
+  echo <<<EOT
+       <!-- vot Multi-Lingual -->
+       $change_language:&nbsp;<a id="lslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'lslct','pos':'34!'})});" title="$change_language"><img class="flag" src="{$icon}"/></a>
+EOT;
+}
+
+echo <<<EOT
 				<input type="text" name="keywords" value="" class="txt" required>
 				<button type="submit" name="searchsubmit" value="yes" class="btn"></button>
 			</form>
@@ -138,7 +153,7 @@ echo <<<EOT
 			</ul>
 				<div id="frameuinfo">
 					{$useravt}
-					<p class="greet">$header_welcome, $cpadmingroup <em>{$_G['member']['username']}</em> <a href="$basescript?action=logout" target="_top">$header_logout</a></p>
+					<p class="greet">$cpadmingroup <em>{$_G['member']['username']}</em> <a href="$basescript?action=logout" target="_top">$header_logout</a></p>
 					<p class="btnlink"><a href="index.php" target="_blank" title="$header_bbs"><svg width="24" height="24">
 						<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
 					</svg></a></p>

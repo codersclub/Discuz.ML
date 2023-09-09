@@ -49,7 +49,7 @@ nav ul ul a>div { flex: 0 1 100%; overflow: hidden; text-overflow: ellipsis; whi
 .uinfo { height: 50px; display: flex; padding: 0 20px; justify-content: space-between; }
 #topmenu { display: none; align-items: center; }
 #topmenu li { padding-right: 5px; }
-#topmenu button { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; padding: 8px 15px; background: none; color: #666; border: 0; border-radius: 6px; font-weight: 700; cursor: pointer; }
+#topmenu button { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; padding: 8px 8px; background: none; color: #666; border: 0; border-radius: 6px; font-weight: 700; cursor: pointer; }
 #topmenu button:hover { background: #efefef; }
 .st-d #topmenu button:hover { background: #282828; }
 #topmenu button.active { background: #d0e5fb; color: #123254; }
@@ -112,7 +112,7 @@ button::-moz-focus-inner { border: none; padding: 0; }
 	.oldlayout #topmenu li { padding-right: 2px; }
 	.oldlayout #frameuinfo>p.greet { max-width: 180px; }
 	.widelayout #frameuinfo>p.greet { max-width: 160px; }
-	.oldlayout #topmenu button { padding: 8px 10px; }
+	.oldlayout #topmenu button { padding: 8px 8px; }
 	.widelayout #topmenu button { padding: 8px 5px; }
 	.widelayout .mainhd form input.txt:focus { width: 120px; }
 }
@@ -214,3 +214,13 @@ button::-moz-focus-inner { border: none; padding: 0; }
 	background: #2b7acd;
 	color: #fff;
 }
+
+/*vot*/
+/* pop-up menu and pop-up window */
+.p_pop {line-height: 18px; padding: 4px; border: 1px solid #999; min-width: 60px; border-color: #333; background: #FFF; box-shadow: 1px 2px 2px rgba(0,0,0,0.3); }
+	.p_pop a { position: relative; display: block; text-align:left; padding: 3px 5px; border: 0; border-bottom: 1px solid #CCF; white-space: nowrap; }
+	.p_pop a, .p_pop a:link { text-decoration: none; color: #6189B8; }
+	.p_pop a:hover { background-color: #E5EDF2; }
+.st-d .p_pop {background: #181818; }
+.st-d .p_pop a {background: #181818; border-bottom: 1px solid #333; }
+.st-d .p_pop a:hover {background: #333; }
