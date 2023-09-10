@@ -158,7 +158,7 @@ Class discuz_upload{
 	public static function get_target_dir($type, $extid = '', $check_exists = true, $subdir = '', $dirtype = 1) {
 
 		$dir = $subdir1 = $subdir2 = '';
-		// $dirtype == 0 表示不需要子目录
+		// $dirtype == 0 Indicates no need for subdirectories
 		if($dirtype == 1) {
 			if($type == 'group' || $type == 'common') {
 				$dir = $subdir1 = substr(md5($extid), 0, 2).'/';

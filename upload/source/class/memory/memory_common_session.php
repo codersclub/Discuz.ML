@@ -47,8 +47,8 @@ LUA;
 	/*
 	 * In memory, set operations are performed based on the following SortedSets
 	 * 		idx_invisible_$invisible: SortedSet, member is sid, score is lastactivity
-	 * 		idx_uid_group_0: uid=0 with SortedSet, member is sid, score is lastactivity，
-	 * 		idx_uid_group_1: uid>0 with SortedSet, member is sid, score is lastactivity，
+	 * 		idx_uid_group_0: uid=0 with SortedSet, member is sid, score is lastactivity
+	 * 		idx_uid_group_1: uid>0 with SortedSet, member is sid, score is lastactivity
 	 * 		idx_lastactivity: SortedSet, member is sid, score is lastactivity
 	 */
 	public function fetch_member($ismember = 0, $invisible = 0, $start = 0, $limit = 0) {
