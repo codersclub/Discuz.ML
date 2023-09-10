@@ -115,7 +115,7 @@ if(!submitcheck('modsubmit')) {
 		$forumselect = forumselect(FALSE, 0, $threadlist[$_G['tid']]['fid'], $_G['adminid']==1 ? TRUE : FALSE);
 		$typeselect = typeselect($single ? $threadlist[$_G['tid']]['typeid'] : 0);
 	} elseif($_GET['optgroup'] == 4 && $single) {
-		empty($threadlist[$_G['tid']]['closed']) ? $closecheck[0] = 'checked="checked"' : $closecheck[1] = 'checked="checked"';
+		!empty($threadlist[$_G['tid']]['closed']) ? $closecheck[0] = 'checked="checked"' : $closecheck[1] = 'checked="checked"';
 		if($threadlist[$_G['tid']]['closed']) {
 			$expirationclose = get_expiration($_G['tid'], 'ECL');
 		}
