@@ -21,7 +21,7 @@ Reference [scheme-change-without-data-loss.sql](https://gitee.com/oldhuhu/Discuz
   * Added port number records where IP addresses are recorded;
   * In the pre_common_banned table, two VARBINARY(16) fields, upperip and lowerip, are added to record the maximum and minimum banned ranges of IP addresses
   * Change some fields to "big", such as INT to BIGINT, TEXT to MEDIUMTEXT, etc.
-  * In order to support IPv6, all IP1/IP2/IP3/IP4 field definitions are removed, refer to [scheme-change-drop-columns.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/ scheme-change-drop-columns.sql)
+  * In order to support IPv6, all IP1/IP2/IP3/IP4 field definitions are removed, refer to [scheme-change-drop-columns.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-drop-columns.sql)
 
 ##### 1.2 In order to support InnoDB related changes
 
@@ -42,9 +42,9 @@ $_config['db']['common']['engine'] = 'innodb';
 
 ##### 1.3 Changes to support utf8mb4
 
-For the MyISAM engine, due to the 1000-byte index length limit, some indexes need to be redefined, refer to [scheme-change-myisam-utf8mb4.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/ master/scheme/scheme-change-myisam-utf8mb4.sql)
+For the MyISAM engine, due to the 1000-byte index length limit, some indexes need to be redefined, refer to [scheme-change-myisam-utf8mb4.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-myisam-utf8mb4.sql)
 
-Whether it is InnoDB or MyISAM, all tables use utf8mb4 encoding and utf8mb4_unicode_ci, refer to [scheme-change-charset.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-charset .sql)
+Whether it is InnoDB or MyISAM, all tables use utf8mb4 encoding and utf8mb4_unicode_ci, refer to [scheme-change-charset.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-charset.sql)
 
 
 #### 2. IP related changes
@@ -160,7 +160,7 @@ Just write your request at our forum.
 ### Installation and upgrade tutorial
 Users who use the release version, check the readme.html file in the installation package.
 
-[Upgrade tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%8D%87% E7%BA%A7%E6%96%B9%E6%B3%95?sort_id=9978)
+[Upgrade tutorial](https://gitee.com/Discuz/DiscuzX/wikis/%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95?sort_id=9978)
 
 !!!ToDo: Translate the Upgrade tutorial!!!
 
