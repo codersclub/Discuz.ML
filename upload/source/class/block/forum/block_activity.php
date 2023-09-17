@@ -279,7 +279,7 @@ class block_activity extends discuz_block {
 			$sqlfrom .= " $joinmethod JOIN `".DB::table('forum_forumrecommend')."` fc ON fc.tid=tr.tid";
 		}
 		$sqlfield = $highlight ? ', t.highlight' : '';
-		$query = DB::query("SELECT a.*, t.tid, t.subject, t.authorid, t.author$sqlfield
+		$query = DB::query("SELECT a.*, t.tid, t.subject, t.authorid, t.author, t.posttableid$sqlfield
 			FROM ".DB::table('forum_activity')." a $sqlfrom $where
 			ORDER BY $orderby
 			LIMIT $startrow,$items;"
