@@ -9,6 +9,11 @@
 				<!--{if $_G[setting][transferstatus] && $_G['group']['allowtransfer']}--><li class="swiper-slide<!--{if $_GET['op'] == 'transfer'}--> mon<!--{/if}-->"><a href="home.php?mod=spacecp&ac=credit&op=transfer">{lang transfer_credits}</a></li><!--{/if}-->
 				<!--{if $_G[setting][exchangestatus]}--><li class="swiper-slide<!--{if $_GET['op'] == 'exchange'}--> mon<!--{/if}-->"><a href="home.php?mod=spacecp&ac=credit&op=exchange">{lang exchange_credits}</a></li><!--{/if}-->
 				<li class="swiper-slide<!--{if $_GET['op'] == 'rule'}--> mon<!--{/if}-->"><a href="home.php?mod=spacecp&ac=credit&op=rule">{lang credit_rule}</a></li>
+				<!--{if !empty($_G['setting']['plugins']['spacecp_credit'])}-->
+					<!--{loop $_G['setting']['plugins']['spacecp_credit'] $id $module}-->
+						<!--{if in_array($module['adminid'], array(0, -1)) || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}--><li class="swiper-slide{if $_GET[id] == $id} mon{/if}"><a href="home.php?mod=spacecp&ac=plugin&op=credit&id=$id">$module[name]</a></li><!--{/if}-->
+					<!--{/loop}-->
+				<!--{/if}-->
 			</ul>
 		</div>
 	</div>
