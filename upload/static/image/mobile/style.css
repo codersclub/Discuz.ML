@@ -572,6 +572,8 @@ select {-moz-appearance:none;}
 .magic_log_list .dt { background: var(--dz-BG-0); border-top: 1px solid var(--dz-BOR-ed); }
 .magic_log_list .dt th, .magic_log_list .dt td { padding: 11px 10px 9px 10px; height: 24px; line-height: 24px; font-size: 13px; overflow: hidden; }
 .medal_tip_box ul { padding: 12px 15px; }
+.medal_tip_box ul input.px.p_fre{ text-align:center;}
+.medal_tip_box ul p {margin: 2px 0;line-height: 22px;overflow: hidden;}
 .medal_tip_box ul li { display: flex; position: relative; line-height: 22px; padding: 8px 12px; background: var(--dz-BG-0); font-size: 15px; overflow: hidden; }
 .medal_tip_box ul li span {display: flex; flex-shrink: 0; margin-right: 15px; color: var(--dz-FC-999);}
 .medal_tip_input { display: flex; width: 100%; color: var(--dz-FC-333); border-bottom: 1px solid var(--dz-BOR-ed); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -765,7 +767,7 @@ a.flw_readfull {color: var(--dz-BG-2);}
 .threadlist_imgs1 li img {width:100%;height:100%;object-fit:cover;position:absolute}
 .threadlist_imgs2 li {width:49.45%}
 .threadlist_imgs2 li:nth-child(2n) {margin-right:0}
-.threadlist_foot {padding:5px 0 15px;height:22px;line-height:22px;font-size:13px}
+.threadlist_foot {padding:5px 0 15px;min-height:22px;line-height:22px;font-size:13px}
 .threadlist_foot li {float:left;background-color:var(--dz-BG-5);padding:0 10px;margin:2px 10px 2px 0px;color:var(--dz-FC-aaa);border-radius:4px}
 .threadlist_foot li i {float:left;font-size:14px;margin-right:3px;color:var(--dz-FC-ccc)}
 .threadlist_foot li.mr {float:right;margin-right:0;padding:0;background:none;color:var(--dz-FC-color)}
@@ -857,9 +859,11 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 .myinfo_list_ico li {float:left;width:50%;box-sizing:border-box}
 .myinfo_list_ico li a {display:block;background-color:var(--dz-BG-body);margin:5px;padding:10px;height:26px;line-height:26px;font-size:14px;overflow:hidden;border-radius:6px}
 .myinfo_list_ico li a i {float:left;width:26px;height:26px;line-height:26px;font-size:14px;text-align:center;margin-right:8px;background-color:var(--dz-BG-4);color:var(--dz-FC-fff);overflow:hidden;border-radius:50%}
-.myinfo_list_ico li:nth-child(2) a i {background-color:var(--dz-BG-2)}
-.myinfo_list_ico li:nth-child(3) a i {background-color:var(--dz-BG-3)}
-.myinfo_list_ico li:nth-child(4) a i {background-color:var(--dz-BG-color)}
+.myinfo_list_ico li:nth-child(5n-4) a i {background-color:var(--dz-BG-4)}
+.myinfo_list_ico li:nth-child(5n-3) a i {background-color:var(--dz-BG-2)}
+.myinfo_list_ico li:nth-child(5n-2) a i {background-color:var(--dz-BG-3)}
+.myinfo_list_ico li:nth-child(5n-1) a i {background-color:var(--dz-BG-color)}
+.myinfo_list_ico li:nth-child(5n) a i {background-color:var(--dz-BG-n)}
 .myinfo_list_ico li a em {color:var(--dz-BG-2);font-size:12px;margin-left:8px}
 .btn_exit, .btn_admincp {padding:5px 15px;overflow:hidden}
 .btn_exit .pn {display:block;background-color:var(--dz-BG-2);color:var(--dz-FC-fff)}
@@ -946,8 +950,8 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 .post_attlist li .minput .price {width: inherit;}
 
 /*----- 帖子内容页 -----*/
-.quote {padding:8px 10px;margin:8px 0;background-color:var(--dz-BG-5);font-size:14px;border-radius:4px}
-.quote a {color:var(--dz-BG-3)}
+.quote, .showhide, .locked {padding:8px 10px;margin:8px 0;background-color:var(--dz-BG-5);font-size:14px;border-radius:4px}
+.quote a, .showhide a, .locked a {color:var(--dz-BG-3)}
 .viewthread {background-color:var(--dz-BG-0);overflow:hidden}
 .viewthread .view_tit {padding:15px 15px 0;line-height:30px;font-size:20px;font-weight:400}
 .viewthread .view_tit span {font-size:12px;color:var(--dz-BG-2)}
