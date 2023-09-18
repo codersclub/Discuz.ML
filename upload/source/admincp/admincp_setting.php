@@ -2587,20 +2587,20 @@ EOT;
 //vot		if(!is_array($setting['langlist'])) {
 //vot			$setting['langlist'] = array();
 //vot		}
-/*vot*/		foreach($langlist as $id => $lang) {
+/*vot*/		foreach($langlist as $id => $lng) {
 /*vot*/			$enable = 1;
 //vot						Enable      Order           Id              Flag            Name  Title Direction       Actions
 /*vot*/			showtablerow('', array('width="1"', 'class="td25"', 'class="td25"', 'class="td25"', '',   '',   'class="td25"', ''), array(
 /*vot*/				"<input class=\"checkbox\" type=\"checkbox\" name=\"settingnew[langlist][$i][available]\" value=\"1\" ".($enable ? 'checked' : '')." />",
-/*vot*/				"<input type=\"text\" class=\"txt\" size=\"3\" name=\"settingnew[langlist][$i][order]\" value=\"{$lang['order']}\">",
+/*vot*/				"<input type=\"text\" class=\"txt\" size=\"3\" name=\"settingnew[langlist][$i][order]\" value=\"{$lng['order']}\">",
 /*vot*/				"<input type=\"text\" class=\"txt\" size=\"16\" name=\"settingnew[langlist][$i][id]\" value=\"{$id}\">",
-/*vot*/				"<input type=\"text\" class=\"txt\" size=\"16\" name=\"settingnew[langlist][$i][icon]\" value=\"{$lang['icon']}\">",
-/*vot*/				"<input type=\"text\" class=\"txt\" size=\"66\" name=\"settingnew[langlist][$i][name]\" value=\"{$lang['name']}\">",
-/*vot*/				"<input type=\"text\" class=\"txt\" size=\"66\" name=\"settingnew[langlist][$i][title]\" value=\"{$lang['title']}\">",
-/*vot*/				"<input type=\"text\" class=\"txt\" size=\"16\" name=\"settingnew[langlist][$i][dir]\" value=\"{$lang['dir']}\">",
-/*vot*/				"<img src=\"static/image/admincp/edit.png\" title=\"".cplang('edit')."\" />
+/*vot*/				"<input type=\"text\" class=\"txt\" size=\"16\" name=\"settingnew[langlist][$i][icon]\" value=\"{$lng['icon']}\">",
+/*vot*/				"<input type=\"text\" class=\"txt\" size=\"66\" name=\"settingnew[langlist][$i][name]\" value=\"{$lng['name']}\">",
+/*vot*/				"<input type=\"text\" class=\"txt\" size=\"66\" name=\"settingnew[langlist][$i][title]\" value=\"{$lng['title']}\">",
+/*vot*/				"<input type=\"text\" class=\"txt\" size=\"16\" name=\"settingnew[langlist][$i][dir]\" value=\"{$lng['dir']}\">",
+/*vot*/				"<i class=\"fico-edit fic8 fc-n\" title=\"".cplang('edit')."\"></i>
 <!--vot-->			<span class=\"pipe\"></span>
-<!--vot-->			<img src=\"static/image/admincp/delete.gif\" title=\"".cplang('delete')."\" />",
+<!--vot-->			<i class=\"fico-remove fic8 fc-i\" title=\"".cplang('delete')."\"></i>",
 /*vot*/			));
 /*vot*/		}
 /*vot*/		showtablefooter();
