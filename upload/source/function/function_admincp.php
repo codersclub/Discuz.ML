@@ -352,6 +352,7 @@ function cpheader() {
 <meta name="color-scheme" content="light dark">
 <link href="{$staticurl}image/admincp/minireset.css?{$_G['style']['verhash']}" rel="stylesheet" />
 <link href="{$staticurl}image/admincp/admincppage{$rtl_suffix}.css?{$_G['style']['verhash']}" rel="stylesheet" />
+<!--vot--><link rel="stylesheet" href='{$staticurl}image/admincp/dzicon.css' type="text/css" />
 <!-- Multi-Lingual Javascript Support by Valery Votintsev  -->
 <script type="text/javascript" src="{$LANGURL}/lang_js.js?{$VERHASH}"></script>
 </head>
