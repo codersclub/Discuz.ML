@@ -208,7 +208,7 @@ class block_trade extends discuz_block {
 			$sqlfrom .= " $joinmethod JOIN `".DB::table('forum_forumrecommend')."` fc ON fc.tid=tr.tid";
 		}
 		$sqlfield = $highlight ? ', t.highlight' : '';
-		$query = DB::query("SELECT tr.pid, tr.tid, tr.aid, tr.price, tr.credit, tr.subject, tr.totalitems, tr.seller, tr.sellerid$sqlfield
+		$query = DB::query("SELECT tr.pid, tr.tid, tr.aid, tr.price, tr.credit, tr.subject, tr.totalitems, tr.seller, tr.sellerid, t.posttableid$sqlfield
 			FROM ".DB::table('forum_trade')." tr $sqlfrom $where
 			ORDER BY tr.$orderby DESC
 			LIMIT $startrow,$items;"
