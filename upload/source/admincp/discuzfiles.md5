@@ -146,7 +146,7 @@ fc90500126d80b2958fe486ee313d4ff *source/admincp/admincp_usergroups.php
 7215ee9c7d9dc229d2921a40e899ec5f *source/admincp/index.htm
 d41d8cd98f00b204e9800998ecf8427e *source/admincp/moderate/index.htm
 f3e3ffd8f7b1f93f16909d06c1b7a41e *source/admincp/moderate/moderate_article.php
-e1185cf34fd125f3f6837edfef2334a4 *source/admincp/moderate/moderate_blog.php
+d59ee7863d3e6c245f07efbafb1fbbf1 *source/admincp/moderate/moderate_blog.php
 234b53685806cbfa0e5f2772dab3c19b *source/admincp/moderate/moderate_comment.php
 f7539d09db63efea8f6601e8109c95d4 *source/admincp/moderate/moderate_doing.php
 363df176111face1c6d3e6e2bc294404 *source/admincp/moderate/moderate_member.php
@@ -714,7 +714,7 @@ e869b486b45691f3b91d8bbd1110cb3b *source/class/task/task_post.php
 e534fae39aacc20719a601755fbf2a24 *source/class/task/task_profile.php
 7f772c1a5310364a598c1fefa93956e2 *source/class/task/task_promotion.php
 cf8eb71c8fddc3fe78ca21c4f254a90f *source/class/task/task_secmobile.php
-371aca591733f4d9a43dc7375f814b9e *source/discuz_version.php
+3a109990f2b4f889d9e8d1b48ab75a0b *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 2659e8f40c06e5e419ecfb3bf6d2d55a *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -1803,7 +1803,7 @@ f06f5bfc35c23cc45638c82698715ea2 *static/image/common/rushreply_s.png
 316381ee5bdcb15214312c4ddff03ed1 *static/image/common/rwd2.gif
 cd5b0229fc581ae44d6d9517967bd01d *static/image/common/r_b_resize.png
 109888833d79c8557cdbd4370b4a4990 *static/image/common/scf.gif
-e619a381b11184c28e12b6c199d075d7 *static/image/common/scrolltop.png
+3fc81acfecf7c130f1468134bcb91006 *static/image/common/scrolltop.png
 49c15b7cd656a125e0345c0eab282ada *static/image/common/se.gif
 685b4100fbea4e0d73fcfeb9483e88c8 *static/image/common/search.gif
 e6143549a48fc886baa3b5578eb3093e *static/image/common/search.png
@@ -1814,7 +1814,7 @@ a8b8f3b24cb4d22e732119e4faf6e5f7 *static/image/common/searchbar_rtl.png
 57fa79714e28bdbfff2601a511c780a6 *static/image/common/security.gif
 f00c3e23a93c0b4ff8de08bd00fc8bb9 *static/image/common/security.png
 dffbab8e38208ace16e4a2084cad9eea *static/image/common/settop.png
-6f11da08a2ecaccd85487003b3695692 *static/image/common/share_btn.png
+cdfb4a1a6f43044e9891afc473fadb97 *static/image/common/share_btn.png
 7776c492dfabe57b9238607774dad805 *static/image/common/share_img.png
 ad83d5020b09178a28e3d002556e5401 *static/image/common/shrink.png
 51e6e245dca6a72a54d7592cf75328f9 *static/image/common/side.png
@@ -1835,8 +1835,8 @@ a2075b49baacb4adffa6cebe931359ea *static/image/common/star_level3.gif
 64337453800dbb67728cf0cd0cd32397 *static/image/common/style_switch.png
 3d91814f0de228913f525e034453d778 *static/image/common/swfupload.swf
 7cbeef88c0061bbc96be7ac1c094c4ab *static/image/common/switch_blind.png
-78cd307357ae22a376ccda899d2fd57c *static/image/common/switch_style.png
-e223f548c6b313e1f52f66965d155aac *static/image/common/switch_width.png
+7d54736953f243760d0400ac70886c64 *static/image/common/switch_style.png
+3d6c92d1f17a5ac59e9de89a1486d280 *static/image/common/switch_width.png
 063bc84ca00e2b81491a7832a585ae5b *static/image/common/systempm.png
 a21e7fb78fef86c0678b6a3b83d36386 *static/image/common/tag.gif
 f14ca9248fec60123721a2dcd6838a3f *static/image/common/taobao.gif
@@ -3321,7 +3321,7 @@ f67b461df3eb9447f7523d74903fd4af *template/default/forum/topicadmin_getip.htm
 166502ad8532f07bb76bdce9d38ba3d3 *template/default/forum/usertag.htm
 2104db9a9184334544643f7f86bc9ecc *template/default/forum/viewthread.htm
 731b0e1b8ae878801406f29afe001a3b *template/default/forum/viewthread_activity.htm
-0b7b76bd6ce47dce01a4311800cd5ee5 *template/default/forum/viewthread_album.htm
+d02ec604efdd8e1cf6678ab7f6c5195d *template/default/forum/viewthread_album.htm
 4c4cece96cb41b0cc008db45cb8b9d27 *template/default/forum/viewthread_debate.htm
 0b55922f4312d3d98ae0d59cfd0c3f5d *template/default/forum/viewthread_fastpost.htm
 3b4aad5e6e5e389719e7aef26dec4e7b *template/default/forum/viewthread_from_node.htm
