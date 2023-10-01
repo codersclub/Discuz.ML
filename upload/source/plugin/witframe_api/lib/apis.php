@@ -15,13 +15,13 @@ class Apis {
 		if (!preg_match('/^[A-Z]\w+$/', $plugin) ||
 			!preg_match('/^\w+$/', $identifier) ||
 			!preg_match('/^\w+$/', $interface)) {
-			throw new Exception('plugin identifier is invalid', Wit_Const::Error_API_Identifier_Invalid);
+			throw new Exception('plugin identifier is invalid', -1);
 		}
 
 		if (!$action) {
 			$action = 'index';
 		} elseif (!preg_match('/^\w+$/', $action)) {
-			throw new Exception('plugin identifier is invalid', Wit_Const::Error_API_Identifier_Invalid);
+			throw new Exception('plugin identifier is invalid', -1);
 		}
 
 		return Core::RequestWit(__CLASS__, $name, $arguments, Core::Type_ApisMethod);

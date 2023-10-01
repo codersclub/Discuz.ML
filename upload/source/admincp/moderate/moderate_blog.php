@@ -84,7 +84,7 @@ if(!submitcheck('modsubmit') && !$_GET['fast']) {
 			$censor->check($blog['message']);
 		}
 		$blog_censor_words = $censor->words_found;
-		if(count($post_censor_words) > 3) {
+		if(count($blog_censor_words) > 3) {
 			$blog_censor_words = array_slice($blog_censor_words, 0, 3);
 		}
 		$blog['censorwords'] = implode(', ', $blog_censor_words);
