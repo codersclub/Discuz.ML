@@ -4,7 +4,7 @@
 <!--{if !$nofooter}-->
 <div class="foot_height"></div>
 <div class="foot flex-box">
-	<a href="index.php" class="flex{if strpos($_SERVER['REQUEST_URI'], $_G['setting']['defaultindex']) || strpos($_SERVER['REQUEST_URI'], 'index.php')} mon{/if}">
+	<a href="index.php" class="flex{if (strpos($_SERVER['REQUEST_URI'], $_G['setting']['defaultindex']) && strpos('forum.php', $_G['setting']['defaultindex']) === false) || strpos($_SERVER['REQUEST_URI'], 'index.php') || (strpos('forum.php', $_G['setting']['defaultindex']) === 0 && $_G['basescript'] == 'forum' && $_GET['mod'] != 'find')} mon{/if}">
 		<span class="foot-ico"><em class="ma"></em></span>
 		<span class="foot-txt">{lang mobhome}</span>
 	</a>
@@ -13,8 +13,7 @@
 		<span class="foot-ico"><em class="mb"></em></span>
 		<span class="foot-txt">{$_G['setting']['navs'][2]['navname']}</span>
 	</a>
-	<!--{/if}-->
-	<!--{if strpos('forum.php', $_G['setting']['defaultindex']) === 0}-->
+	<!--{elseif strpos('forum.php', $_G['setting']['defaultindex']) === 0}-->
 		<!--{if helper_access::check_module('portal')}-->
 		<a href="portal.php" class="flex{if $_G['basescript'] == 'portal'} mon{/if}">
 			<span class="foot-ico"><em class="mb"></em></span>
