@@ -169,7 +169,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 		}
 		foreach($_G['cache']['forums'] as $fid => $forum) {
 			if($forum['type'] != 'group' && $forum['status'] > 0 && !$forum['viewperm'] && !$forum['havepassword']) {
-				$fids[] = $fid;
+				$fids[$fid] = $fid;
 			}
 		}
 		if(empty($fids)) {

@@ -34,7 +34,7 @@ $lang = array
 	'post_edit_regexp' => '/^\[i=s\] 本帖最后由 .*? 于 .*? 编辑 \[\/i\]\n\n/s',
 	'post_edithtml' => '[i=s] 本帖最后由 {editor} 于 {edittime} 编辑 [/i]<br /><br />',
 	'post_edithtml_regexp' => '/^\[i=s\] 本帖最后由 .*? 于 .*? 编辑 \[\/i\]&lt;br \/&gt;&lt;br \/&gt;/s',
-	'post_editnobbcode' => '[ 本帖最后由 {editor} 于 {edittime} 编辑 ]\n\n',
+	'post_editnobbcode' => "[ 本帖最后由 {editor} 于 {edittime} 编辑 ]\n\n",
 	'post_editnobbcode_regexp' => '/^\[ 本帖最后由 .*? 于 .*? 编辑 \]\n\n/s',
 	'post_reply' => '回复',
 	'post_thread' => '的帖子',
