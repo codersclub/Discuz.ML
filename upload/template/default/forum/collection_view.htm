@@ -213,7 +213,7 @@
 										<!--{if $thread['authorid'] && $thread['author']}-->
 											<a href="home.php?mod=space&uid=$thread[authorid]" c="1">$thread[author]</a>
 										<!--{else}-->
-											{lang anonymous}
+											{$_G['setting']['anonymoustext']}
 										<!--{/if}-->
 									</cite>
 									<em class="xi1">$thread[dateline]</em>

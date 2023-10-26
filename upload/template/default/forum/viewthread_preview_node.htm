@@ -27,7 +27,7 @@
 				<!--{hook/viewthread_postheader $postcount}-->
 				<em id="author_$post[pid]"> {lang poston}</em>
 			<!--{elseif $post['authorid'] && $post['username'] && $post['anonymous']}-->
-				{lang anonymous}
+				{$_G['setting']['anonymoustext']}
 				<!--{hook/viewthread_postheader $postcount}-->
 				<em id="author_$post[pid]"> {lang poston}</em>
 			<!--{elseif !$post['authorid'] && !$post['username']}-->

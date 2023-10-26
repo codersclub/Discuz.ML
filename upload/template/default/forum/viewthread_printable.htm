@@ -21,7 +21,7 @@ h1 { font-size: 24px; margin-bottom: 20px; color: #999; }
 <script type="text/javascript">var zoomstatus = 0;var aimgcount = new Array();</script>
 <!--{loop $postlist $post}-->
 	<hr noshade size="2" width="100%" color="#808080">
-	<b>{lang author}: </b><!--{if $post['author'] && !$post['anonymous']}-->$post[author]<!--{else}-->{lang anonymous}<!--{/if}-->&nbsp; &nbsp; <b>{lang time}: </b>$post[dateline]
+	<b>{lang author}: </b><!--{if $post['author'] && !$post['anonymous']}-->$post[author]<!--{else}-->{$_G['setting']['anonymoustext']}<!--{/if}-->&nbsp; &nbsp; <b>{lang time}: </b>$post[dateline]
 	<br />
 	<!--{if $_G['adminid'] != 1 && $_G['setting']['bannedmessages'] && (($post['authorid'] && !$userinfo[$post[authorid]]['username']) || ($userinfo[$post[authorid]]['groupid'] == 4 || $userinfo[$post[authorid]]['groupid'] == 5))}-->
 		{lang message_banned}

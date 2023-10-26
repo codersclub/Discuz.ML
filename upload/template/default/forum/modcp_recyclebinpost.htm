@@ -92,7 +92,7 @@
 									<!--{if $post['authorid'] && $post['author']}-->
 										<a href="home.php?mod=space&uid=$post[authorid]" target="_blank">$post[author]</a>
 									<!--{else}-->
-										<a href="home.php?mod=space&uid=$post[authorid]" target="_blank">{lang anonymous}</a>
+										<a href="home.php?mod=space&uid=$post[authorid]" target="_blank">{$_G['setting']['anonymoustext']}</a>
 									<!--{/if}-->
 								</td>
 								<!--{if $_G['forum']['ismoderator'] && $_G['group']['allowviewip']}-->
