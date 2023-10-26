@@ -106,9 +106,19 @@
 			<li class="list">
 				<!--{hook/forumdisplay_thread_mobile $key}-->
 				<div class="threadlist_top cl">
+					<!--{if $thread['authorid'] && $thread['author']}-->
 					<a href="home.php?mod=space&uid={$thread['authorid']}" class="mimg"><img src="<!--{avatar($thread['authorid'], 'middle', true)}-->"></a>
+					<!--{else}-->
+					<a href="javascript:;" class="mimg"><img src="<!--{avatar(0, 'middle', true)}-->" /></a>
+					<!--{/if}-->
 					<div class="muser">
-						<h3><a href="home.php?mod=space&uid={$thread['authorid']}" class="mmc">{$thread['author']}</a></h3>
+						<h3>
+							<!--{if $thread['authorid'] && $thread['author']}-->
+								<a href="home.php?mod=space&uid={$thread['authorid']}" class="mmc">{$thread['author']}</a>
+							<!--{else}-->
+								{$_G['setting']['anonymoustext']}
+							<!--{/if}-->
+						</h3>
 						<span class="mtime">{$thread['dateline']}</span>
 					</div>
 				</div>
