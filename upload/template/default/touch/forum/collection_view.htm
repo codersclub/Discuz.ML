@@ -88,7 +88,7 @@
                     </div>
                     </a>
                     <div class="threadlist_mes cl">
-                        <span><!--{if $thread['lastposter']}-->$thread[lastposter]<!--{else}-->{lang anonymous}<!--{/if}--></span>
+                        <span><!--{if $thread['lastposter']}-->$thread[lastposter]<!--{else}-->{$_G['setting']['anonymoustext']}<!--{/if}--></span>
                         <span>$thread[lastpost]</span>				
                     </div>
                     <div class="threadlist_foot cl">

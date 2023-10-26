@@ -24,7 +24,7 @@
 						<!--{if !$post['authorid']}-->
 						<a href="javascript:;">{lang guest} <em>$post['useip']{if $post['port']}:$post['port']{/if}</em></a>
 						<!--{elseif $post['authorid'] && $post['username'] && $post['anonymous']}-->
-						<!--{if $_G['forum']['ismoderator']}--><a href="home.php?mod=space&uid=$post['authorid']" target="_blank">{lang anonymous}</a><!--{else}-->{lang anonymous}<!--{/if}-->
+						<!--{if $_G['forum']['ismoderator']}--><a href="home.php?mod=space&uid=$post['authorid']" target="_blank">{$_G['setting']['anonymoustext']}</a><!--{else}-->{$_G['setting']['anonymoustext']}<!--{/if}-->
 						<!--{else}-->
 						$post['author'] <em>{lang member_deleted}</em>
 						<!--{/if}-->

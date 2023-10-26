@@ -41,7 +41,7 @@
 										<!--{if $value['fields']['authorid'] && $value['fields']['author']}-->
 											<a href="home.php?mod=space&uid=$value[authorid]" c="1">$value['fields'][author]</a>
 										<!--{else}-->
-											{lang anonymous}
+											{$_G['setting']['anonymoustext']}
 										<!--{/if}-->
 									</cite>
 									<em><span>$value['fields']['dateline']</span></em>

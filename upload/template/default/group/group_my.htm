@@ -77,7 +77,7 @@
 								<em>$thread[views]</em>
 							</td>
 							<td class="by">
-								<cite><!--{if $thread['lastposter']}--><a href="home.php?mod=space&username=$thread[lastposter]">$thread[lastposter]</a><!--{else}-->{lang anonymous}<!--{/if}--></cite>
+								<cite><!--{if $thread['lastposter']}--><a href="home.php?mod=space&username=$thread[lastposter]">$thread[lastposter]</a><!--{else}-->{$_G['setting']['anonymoustext']}<!--{/if}--></cite>
 								<em><a href="forum.php?mod=viewthread&tid=$tid&page={echo max(1, $thread[pages]);}">$thread[lastpost]</a></em>
 							</td>
 						</tr>
@@ -125,7 +125,7 @@
 								<em>$thread[views]</em>
 							</td>
 							<td class="by">
-								<cite><!--{if $thread['lastposter']}--><a href="home.php?mod=space&username=$thread[lastposter]">$thread[lastposter]</a><!--{else}-->{lang anonymous}<!--{/if}--></cite>
+								<cite><!--{if $thread['lastposter']}--><a href="home.php?mod=space&username=$thread[lastposter]">$thread[lastposter]</a><!--{else}-->{$_G['setting']['anonymoustext']}<!--{/if}--></cite>
 								<em><a href="forum.php?mod=viewthread&tid=$tid&page={echo max(1, $thread[pages]);}">$thread[lastpost]</a></em>
 							</td>
 						</tr>

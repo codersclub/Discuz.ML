@@ -44,9 +44,9 @@
 					<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">$_G[forum_thread][author]</a>
 					<!--{else}-->
 						<!--{if $_G['forum']['ismoderator']}-->
-							<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">{lang anonymous}</a>
+							<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">{$_G['setting']['anonymoustext']}</a>
 						<!--{else}-->
-							{lang anonymous}
+							{$_G['setting']['anonymoustext']}
 						<!--{/if}-->
 					<!--{/if}-->
 					<span class="pipe">|</span>

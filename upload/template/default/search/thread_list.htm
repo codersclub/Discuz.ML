@@ -32,7 +32,7 @@
 							<!--{if $thread['authorid'] && $thread['author']}-->
 								<a href="home.php?mod=space&uid=$thread[authorid]" target="_blank">$thread[author]</a>
 							<!--{else}-->
-								<!--{if $_G['forum']['ismoderator']}--><a href="home.php?mod=space&uid=$thread[authorid]" target="_blank">{lang anonymous}</a><!--{else}-->{lang anonymous}<!--{/if}-->
+								<!--{if $_G['forum']['ismoderator']}--><a href="home.php?mod=space&uid=$thread[authorid]" target="_blank">{$_G['setting']['anonymoustext']}</a><!--{else}-->{$_G['setting']['anonymoustext']}<!--{/if}-->
 							<!--{/if}-->
 						</span>
 						 -
