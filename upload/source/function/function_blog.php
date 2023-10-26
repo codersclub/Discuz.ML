@@ -315,6 +315,8 @@ function checkhtml($html) {
 }
 
 function blog_bbcode($message) {
+	require_once libfile('function/discuzcode');
+	$message = preg_replace_callback("/\[media=([\w%,]+)\]\s*([^\[\<\r\n]+?)\s*\[\/media\]/i", 'discuzcode_callback_parsemedia_12', $message);
 	$message = preg_replace_callback("/\[flash\=?(media|real|mp3)*\](.+?)\[\/flash\]/i", 'blog_bbcode_callback_blog_flash_21', $message);
 	return $message;
 }
