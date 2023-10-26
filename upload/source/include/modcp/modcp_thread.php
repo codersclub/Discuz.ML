@@ -206,8 +206,8 @@ if($op == 'post') {
 				$key = $keys[$post['pid']];
 				unset($result['pids'][$key]);
 			}
-			$result['pids'] = implode(',', $result['pids']);
 			$result['count'] = count($result['pids']);
+			$result['pids'] = implode(',', $result['pids']);
 			$modsession->set($cachekey, $result, true);
 			unset($result);
 		}
@@ -219,7 +219,7 @@ if($op == 'post') {
 			foreach($pidsdelete as $fid => $pids) {
 				foreach($pids as $pid) {
 					if(!$tidsdelete[$pid]) {
-						$deletedposts = deletepost($pid, 'pid', !getgpc('nocredit'), $posttableid, $forums[$fid]['recyclebin']);
+						$deletedposts = deletepost(array($pid), 'pid', !getgpc('nocredit'), $posttableid, $forums[$fid]['recyclebin']);
 						updatemodlog($pids_tids[$pid], 'DLP');
 					} else {
 						$deletedthreads = deletethread(array($tidsdelete[$pid]), false, !getgpc('nocredit'), $forums[$fid]['recyclebin']);
