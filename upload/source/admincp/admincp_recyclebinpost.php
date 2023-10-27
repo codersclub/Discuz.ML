@@ -123,7 +123,7 @@ EOT;
 	showsetting('recyclebinpost_search_author', 'authors', $authors, 'text');
 	showsetting('recyclebinpost_search_keyword', 'keywords', $keywords, 'text');
 	showsetting('recyclebin_search_post_time', array('pstarttime', 'pendtime'), array($pstarttime, $pendtime), 'daterange');
-	showsetting('postsplit', '', '', getposttableselect());
+	showsetting('postsplit', '', '', getposttableselect_admin());
 	if($secStatus){
         showsetting('recyclebin_search_security_thread', 'security', $security, 'radio');
 	}
