@@ -1343,7 +1343,7 @@ function checkformulaperm($formula) {
 	);
 }
 
-function getposttableselect() {
+function getposttableselect_admin() {
 	global $_G;
 
 	loadcache('posttable_info');
