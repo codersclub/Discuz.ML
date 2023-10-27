@@ -32,7 +32,7 @@ if(!submitcheck('modsubmit') && !$_GET['fast']) {
 		$dateline_options .= "<option value=\"$v\" $selected>".cplang("dateline_$v");
 	}
 
-	$posttableselect = getposttableselect();
+	$posttableselect = getposttableselect_admin();
 
 	shownav('topic', $lang['moderate_replies']);
 	showsubmenu('nav_moderate_posts', $submenu);
