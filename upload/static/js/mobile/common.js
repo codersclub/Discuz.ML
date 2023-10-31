@@ -948,3 +948,7 @@ function setCopy(text, msg) {
 		popup.open('复制失败', 'alerts');
 	}
 }
+
+function copycode(obj) {
+	setCopy(obj.textContent, '代码已复制到剪贴板');
+}
