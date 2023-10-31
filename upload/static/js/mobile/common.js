@@ -943,9 +943,13 @@ function setCopy(text, msg) {
 				popup.open(msg, 'alert');
 			}
 		} else {
-/*vot*/			popup.open(lng['copy_failed'], 'alerts');
+/*vot*/			popup.open(lng['copy_failed'], 'alert');
 		}
 	} else {
-/*vot*/		popup.open(lng['copy_failed'], 'alerts');
+/*vot*/		popup.open(lng['copy_failed'], 'alert');
 	}
+}
+
+function copycode(obj) {
+/*vot*/	setCopy(obj.textContent, lng['code_clipboard']);
 }
