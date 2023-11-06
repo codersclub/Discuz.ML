@@ -942,9 +942,13 @@ function setCopy(text, msg) {
 				popup.open(msg, 'alert');
 			}
 		} else {
-			popup.open('复制失败', 'alerts');
+			popup.open('复制失败', 'alert');
 		}
 	} else {
-		popup.open('复制失败', 'alerts');
+		popup.open('复制失败', 'alert');
 	}
+}
+
+function copycode(obj) {
+	setCopy(obj.textContent, '代码已复制到剪贴板');
 }

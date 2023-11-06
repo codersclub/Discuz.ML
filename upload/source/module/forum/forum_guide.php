@@ -132,7 +132,7 @@ loadcache('stamps');
 $currentview[$view] = 'class="xw1 a"';
 
 $navigation = $view != 'index' ? ' <em>&rsaquo;</em> <a href="forum.php?mod=guide&view='.$view.'">'.$lang['guide_'.$view].'</a>' : '';
-include template('forum/guide');
+include template('diy:forum/guide');
 
 function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 	global $_G;
