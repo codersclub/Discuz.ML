@@ -249,7 +249,7 @@ if($op == 'replies') {
 				if($post['authorid'] && $post['authorid'] != $_G['uid']) {
 					$pmlist[] = array(
 						'act' => $_GET['reason'] ? 'modreplies_delete_reason' : 'modreplies_delete',
-						'notevar' => array('reason' => dhtmlspecialchars($_GET['reason']), 'post' => messagecutstr($post['message'], 30)),
+						'notevar' => array('modusername' => ($_G['setting']['moduser_public'] ? $_G['username'] : ''), 'reason' => dhtmlspecialchars($_GET['reason']), 'post' => messagecutstr($post['message'], 30)),
 						'authorid' => $post['authorid'],
 					);
 				}
@@ -333,7 +333,7 @@ if($op == 'replies') {
 				if($post['authorid'] && $post['authorid'] != $_G['uid']) {
 					$pmlist[] = array(
 						'act' => 'modreplies_validate',
-						'notevar' => array('reason' => dhtmlspecialchars($_GET['reason']), 'pid' => $post['pid'], 'tid' => $post['tid'], 'post' => messagecutstr($post['message'], 30), 'from_id' => 0, 'from_idtype' => 'modreplies'),
+						'notevar' => array('modusername' => ($_G['setting']['moduser_public'] ? $_G['username'] : ''), 'reason' => dhtmlspecialchars($_GET['reason']), 'pid' => $post['pid'], 'tid' => $post['tid'], 'post' => messagecutstr($post['message'], 30), 'from_id' => 0, 'from_idtype' => 'modreplies'),
 						'authorid' => $post['authorid'],
 					);
 				}
