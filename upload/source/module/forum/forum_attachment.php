@@ -285,32 +285,34 @@ if($isimage) {
 
 dheader('Content-Length: '.$filesize);
 
-$xsendfile = getglobal('config/download/xsendfile');
-if(!empty($xsendfile)) {
-	$type = intval($xsendfile['type']);
-	if($isimage){
-		$type = 0;
+if(!$attach['remote']) {
+	$xsendfile = getglobal('config/download/xsendfile');
+	if(!empty($xsendfile)) {
+		$type = intval($xsendfile['type']);
+		if($isimage){
+			$type = 0;
+		}
+		$cmd = '';
+		switch ($type) {
+			case 1: $cmd = 'X-Accel-Redirect'; $url = $xsendfile['dir'].$attach['attachment']; break;
+			case 2: $cmd = $_SERVER['SERVER_SOFTWARE'] <'lighttpd/1.5' ? 'X-LIGHTTPD-send-file' : 'X-Sendfile'; $url = $filename; break;
+			case 3: $cmd = 'X-Sendfile'; $url = $filename; break;
+		}
+		if($cmd) {
+			dheader("$cmd: $url");
+			exit();
+		}
 	}
-	$cmd = '';
-	switch ($type) {
-		case 1: $cmd = 'X-Accel-Redirect'; $url = $xsendfile['dir'].$attach['attachment']; break;
-		case 2: $cmd = $_SERVER['SERVER_SOFTWARE'] <'lighttpd/1.5' ? 'X-LIGHTTPD-send-file' : 'X-Sendfile'; $url = $filename; break;
-		case 3: $cmd = 'X-Sendfile'; $url = $filename; break;
-	}
-	if($cmd) {
-		dheader("$cmd: $url");
-		exit();
-	}
-}
 
 // If readmod = 1 or 4, then support Range
-if (($readmod == 4) || ($readmod == 1)) {
-	dheader('Accept-Ranges: bytes');
-	if($has_range_header) {
-		$rangesize = ($range_end - $range_start) >= 0 ?  ($range_end - $range_start) + 1 : 0;
-		dheader('Content-Length: '.$rangesize);
-		dheader('HTTP/1.1 206 Partial Content');
-		dheader('Content-Range: bytes '.$range_start.'-'.$range_end.'/'.($filesize));
+	if (($readmod == 4) || ($readmod == 1)) {
+		dheader('Accept-Ranges: bytes');
+		if($has_range_header) {
+			$rangesize = ($range_end - $range_start) >= 0 ?  ($range_end - $range_start) + 1 : 0;
+			dheader('Content-Length: '.$rangesize);
+			dheader('HTTP/1.1 206 Partial Content');
+			dheader('Content-Range: bytes '.$range_start.'-'.$range_end.'/'.($filesize));
+		}
 	}
 }
 
