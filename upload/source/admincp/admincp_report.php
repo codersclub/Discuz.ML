@@ -175,7 +175,7 @@ if($operation == 'newreport') {
 	foreach($users as $uid => $member) {
 		$username = trim($member['username']);
 		if(empty($username) || empty($uid)) continue;
-		$checked = in_array($uid, $report_receive['adminuser']) ? 'checked' : '';
+		$checked = is_array($report_receive['adminuser']) && in_array($uid, $report_receive['adminuser']) ? 'checked' : '';
 		showtablerow('style="height:20px;width:50px;"', array('class="td25"'), array(
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"adminuser[]\" value=\"$uid\" $checked>",
 			"<a href=\"home.php?mod=space&uid=$uid\" target=\"_blank\">$username</a>"
@@ -187,7 +187,7 @@ if($operation == 'newreport') {
 	foreach($supmoderator as $uid => $username) {
 		$username = trim($username);
 		if(empty($username) || empty($uid)) continue;
-		$checked = in_array($uid, $report_receive['supmoderator']) ? 'checked' : '';
+		$checked = is_array($report_receive['supmoderator']) && in_array($uid, $report_receive['supmoderator']) ? 'checked' : '';
 		showtablerow('style="height:20px;width:50px;"', array('class="td25"'), array(
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"supmoderator[]\" value=\"$uid]\" $checked>",
 			"<a href=\"home.php?mod=space&uid=$uid\" target=\"_blank\">$username</a>"
