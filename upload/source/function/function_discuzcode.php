@@ -153,9 +153,9 @@ function discuzcode($message, $smileyoff = false, $bbcodeoff = false, $htmlon = 
 			'<ul type="A" class="litype_3">', '<li>', '<li>', '</ul>', '<blockquote>', '</blockquote>', '</span>'
 			), preg_replace(array(
 			"/\[color=([#\w]+?)\]/i",
-			"/\[color=((rgb|rgba)\([\d\s,]+?\))\]/i",
+			"/\[color=((rgb|rgba)\([\d\s\.,]+?\))\]/i",
 			"/\[backcolor=([#\w]+?)\]/i",
-			"/\[backcolor=((rgb|rgba)\([\d\s,]+?\))\]/i",
+			"/\[backcolor=((rgb|rgba)\([\d\s\.,]+?\))\]/i",
 			"/\[size=(\d{1,2}?)\]/i",
 			"/\[size=(\d{1,2}(\.\d{1,5})?(px|pt)+?)\]/i",
 			"/\[size=(\d+(\.\d+)?(px|pt)+?)\]/i",
