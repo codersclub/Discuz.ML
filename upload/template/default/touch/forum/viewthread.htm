@@ -395,7 +395,9 @@
 			<!--{hook/viewthread_postfooter_mobile $postcount}-->
 			</ul>
 		</div>
-   </div>
+	</div>
+	<!--{hook/viewthread_postbottom_mobile $postcount}-->
+	<!--{eval $postcount++;}-->
 	<!--{if $post['first']}-->
 		<div class="discuz_x cl"></div>
 		<div class="txtlist cl">
@@ -419,8 +421,6 @@
 		<div class="view_reply cl"><i class="dm-sofa"></i>{lang mobnoreply}</div>
 		<!--{/if}-->
 	<!--{/if}-->
-	<!--{hook/viewthread_postbottom_mobile $postcount}-->
-	<!--{eval $postcount++;}-->
 	<!--{/loop}-->
 </div>
 $multipage
