@@ -209,7 +209,7 @@
 					<!--{elseif $post['status'] & 1}-->
 						<div class="quote">{lang admin_message_single_banned}</div>
 					<!--{/if}-->
-					<!--{if $_G['forum_thread']['price'] > 0 && $_G['forum_thread']['special'] == 0}-->
+					<!--{if $post['first'] && $_G['forum_thread']['price'] > 0 && $_G['forum_thread']['special'] == 0}-->
 						{lang pay_threads}: <strong>$_G['forum_thread']['price'] {$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]]['unit']}{$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]]['title']} </strong> <a href="forum.php?mod=misc&action=viewpayments&tid=$_G['tid']" >{lang pay_view}</a>
 					<!--{/if}-->
 					<!--{if $post['first'] && $threadsort && $threadsortshow}-->
