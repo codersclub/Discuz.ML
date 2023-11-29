@@ -451,7 +451,7 @@
 			url:'forum.php?mod=ajax&action=deleteattach&inajax=yes&aids[]=' + obj.attr('aid') + (obj.attr('up') == 1 ? '&tid={$postinfo['tid']}&pid={$postinfo['pid']}&formhash={FORMHASH}' : ''),
 		})
 		.success(function(s) {
-			obj.parent().remove();
+			obj.closest('li').remove();
 		})
 		.error(function() {
 			popup.open('{lang networkerror}', 'alert');
