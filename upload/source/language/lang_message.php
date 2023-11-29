@@ -1023,6 +1023,7 @@ $lang = array (
   'diy_template_extension_invalid' => '模板文件扩展名不正确',
   'diy_template_noexist' => '模板文件不存在',
   'topic_title_cannot_be_empty' => '抱歉，专题名称不能为空',
+  'topic_has_on_template' => '没有找到专题模板',
   'topic_name_duplicated' => '抱歉，专题静态化名称不能重复',
   'topic_created_failed' => '抱歉，创建专题失败',
   'comment_comment_noexist' => '抱歉，要评论的文章不存在',
