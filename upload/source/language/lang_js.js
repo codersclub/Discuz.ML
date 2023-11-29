@@ -4,7 +4,7 @@
 
 	Javascript Language variables
 
-	$Id: lang_js.js by Valery Votintsev, codersclub.org, discuz.ml
+	$Id: lang_js.js by Valery Votintsev, codersclub.org
 
 */
 
