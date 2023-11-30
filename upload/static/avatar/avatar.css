@@ -1286,14 +1286,17 @@ body .ui-tooltip {
     position: absolute;
     right: 60px;
     top: 190px;
+	background:url(avatar_finishbutton.gif) no-repeat;
 }
 .finishbutton{
     width: 92px;
     height: 33px;
-		padding: 2px;
+	padding: 2px;
     position:absolute;
     right:0;
     top:0;
+    opacity: 0;
+    filter:alpha(opacity=0);
     cursor:pointer;
 /*vot*/ text-align: center;
 /*vot*/ font-size: 120%;
@@ -1306,9 +1309,26 @@ body .ui-tooltip {
 /*vot*/ margin-top: -13px;
     border-width: 0px;
 }
-#avatarextra {
-    display: inline-block;
-    font-size: 120%;
-    padding-top: 30px;
-    margin-top: 50px;
+
+@media only screen and (max-width:600px){
+	#avatarfileselector {
+		background-position: center;
+	}
+	#avataradjuster{
+		overflow: hidden;
+		height: 228px;
+	}
+	#avataradjuster2, #avatardisplayer {
+		position: relative;
+		display: none;
+	}
+	.backfileselectiondiv, .backfileselection, .saveAvatardiv, .saveAvatar {
+		position:relative; float:left; top:unset;
+	}
+	.finishbuttondiv {
+		top:360px;
+	}
+	.saveAvatar, .backfileselection {
+		opacity: 1; width:100%;height: auto;
+	}
 }

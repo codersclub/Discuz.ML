@@ -1,0 +1,55 @@
+<!--{template common/header}-->
+	<!--{subtemplate home/spacecp_header}-->
+	<div class="bodybox p10 cl">
+		<!--{hook/spacecp_avatar_top_mobile}-->
+		<script type="text/javascript">
+			function saveUserdata(name, data) {
+				try {
+					if (window.localStorage) {
+						localStorage.setItem('Discuz_' + name, data);
+					} else if (window.sessionStorage) {
+						sessionStorage.setItem('Discuz_' + name, data);
+					}
+				} catch (e) {
+					if (BROWSER.ie) {
+						if (data.length < 54889) {
+							with (document.documentElement) {
+								setAttribute("value", data);
+								save('Discuz_' + name);
+							}
+						}
+					}
+				}
+				setcookie('clearUserdata', '', -1);
+			}
+			function loadUserdata(name) {
+				console.log(window.localStorage);
+				if (window.localStorage) {
+					return localStorage.getItem('Discuz_' + name);
+				} else if (window.sessionStorage) {
+					return sessionStorage.getItem('Discuz_' + name);
+				} else if (BROWSER.ie) {
+					with (document.documentElement) {
+						load('Discuz_' + name);
+						return getAttribute("value");
+					}
+				}
+			}
+			function updateavatar() {
+				window.location.href = document.location.href.replace('&reload=1', '') + '&reload=1';
+			}
+			<!--{if !$reload}-->
+			saveUserdata('avatar_redirect', document.referrer);
+			<!--{/if}-->
+		</script>
+		<div class="tbms mt10 mb10 cl">
+			{lang setting_avatar_message}
+		</div>
+			<form id="avatarform" enctype="multipart/form-data" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=avatar&ref">
+				<!--{template home/spacecp_avatar_body}-->
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+			</form>
+			<!--{hook/spacecp_avatar_bottom}-->
+	</div>
+</div>
+<!--{template common/footer}-->
