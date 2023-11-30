@@ -1306,3 +1306,26 @@ body .ui-tooltip {
     margin-top: -8px;
     border-width: 0px;
 }
+
+@media only screen and (max-width:600px){
+	#avatarfileselector {
+		background-position: center;
+	}
+	#avataradjuster{
+		overflow: hidden;
+		height: 228px;
+	}
+	#avataradjuster2, #avatardisplayer {
+		position: relative;
+		display: none;
+	}
+	.backfileselectiondiv, .backfileselection, .saveAvatardiv, .saveAvatar {
+		position:relative; float:left; top:unset;
+	}
+	.finishbuttondiv {
+		top:360px;
+	}
+	.saveAvatar, .backfileselection {
+		opacity: 1; width:100%;height: auto;
+	}
+}

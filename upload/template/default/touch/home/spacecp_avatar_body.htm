@@ -1,0 +1,43 @@
+<div id="avatardesigner">
+	<div id="avatarfileselector">
+		<input type="file" name="Filedata" id="avatarfile" accept="image/*" />
+	</div>
+	<div id="avataradjuster">
+		<div style="display:none;"><img id="avatarimage" style="visibility: hidden;display:none;" /></div>
+		<canvas id="avatarcanvas" style="position: absolute; top: 0px; left: 0px;"></canvas>
+		<div id="widgetparent" style="position: absolute; left: 0px; top: 0px;">
+		</div>
+	</div>
+	<div id="avatardisplayer">
+		<canvas id="avatardisplaycanvas"></canvas>
+		
+		<div class="finishbuttondiv">
+				<input type="button" value="{lang finished}" class="finishbutton" onclick="location.reload(true);" />
+		</div>
+	</div>
+</div>
+<div id="avataradjuster2">
+		<div class="mt10 cl">
+				<input type="button" id="backfileselection" name="backfileselection" class="backfileselection pn btn_pn_red" value="{lang back}" />
+		</div>
+		<div class="mt10 cl">
+			<input type="submit" id="avconfirm" name="confirm" value="{lang confirms}" class="saveAvatar pn btn_pn_green" style="" />
+		</div>
+		<input type="hidden" id="avatar1" name="avatar1" />
+		<input type="hidden" id="avatar2" name="avatar2" />
+		<input type="hidden" id="avatar3" name="avatar3" />
+</div>
+<script src="{STATICURL}js/mobile/jquery.min.js?{VERHASH}"></script>
+
+<script type="text/javascript">
+	var data = "{echo implode(",", $uc_avatarflash);}".split(',');
+</script>
+<link rel="stylesheet" href="{STATICURL}avatar/avatar.css?{VERHASH}" />
+<script src="{STATICURL}avatar/jquery-ui.min.js?{VERHASH}"></script>
+<script src="{STATICURL}avatar/hammer.min.js"></script>
+<script src="{STATICURL}avatar/iscroll-zoom.min.js"></script>
+<script src="{STATICURL}avatar/lrz.all.bundle.js?{VERHASH}"></script>
+<script src="{STATICURL}avatar/jquery.photoClip.min.js"></script>
+<script src="{STATICURL}avatar/avatar_mobile.js?{VERHASH}"></script>
+<iframe name="uploadframe" id="uploadframe" style="display: none;"></iframe>
+<iframe name="rectframe" id="rectframe" style="display: none;"></iframe>
