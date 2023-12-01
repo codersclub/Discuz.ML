@@ -747,7 +747,7 @@ a.flw_readfull {color: var(--dz-BG-2);}
 .threadlist li.list a {display:block}
 .threadlist_top {height:38px;padding:12px 0 10px}
 .threadlist_top .mimg {float:left;margin-right:8px}
-.threadlist_top .mimg img {float:left;width:38px;line-height:38px;border-radius:50%}
+.threadlist_top .mimg img {float:left;width:38px;height:38px;border-radius:50%}
 .threadlist_top .muser h3 {margin-top:2px;height:20px;line-height:20px}
 .threadlist_top .muser h3 .mmc {font-size:15px}
 .threadlist_top .muser .mtime {display:block;height:18px;line-height:18px;font-size:12px;color:var(--dz-FC-ccc)}
@@ -1084,7 +1084,7 @@ body.pg_logging, body.pg_register {background-color:var(--dz-BG-0)}
 .home_feed_item li:first-child .home_feed_time span,.home_feed_item li:first-child .home_feed_time:after{display:none}
 .home_feed_ecs{padding:0px 10px 40px 60px;position:relative}
 .home_feed_ecs .mimg {position: absolute;float:left;margin-right:8px;top:10px;left:10px}
-.home_feed_ecs .mimg img {float:left;width:38px;line-height:38px;border-radius:50%}
+.home_feed_ecs .mimg img {float:left;width:38px;height:38px;border-radius:50%}
 .home_feed_c{border-bottom:1px dashed var(--dz-BOR-ed)}
 .home_feed_c .delete_bt{float:right;margin:-3px -1px 0px 10px;position:static}
 .home_feed_item{padding:0px 0px 1px;color:var(--dz-FC-777);overflow:hidden}
