@@ -5,7 +5,7 @@ https://www.discuz.vip
 */
 /*Popup Calendar*/
 #calendar { padding: 5px; text-align: left; border: 1px solid {DROPMENUBORDER}; background: {WRAPBG}; margin-bottom: 0.8em; box-shadow: 2px 4px 4px rgba(0,0,0,0.2); }
-	#calendar td { padding: 2px; font-weight: 700; }
+	#calendar td { padding: 7px; font-weight: 700; text-align: revert-layer; }
 	#calendar_week td { height: 2em; line-height: 2em; border-bottom: 1px solid {SPECIALBORDER};}
 		#calendar_week a { color: {HIGHLIGHTLINK}; }
 	#hourminute td {padding: 4px 2px; border-top: 1px solid {SPECIALBORDER};}
