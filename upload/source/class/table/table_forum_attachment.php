@@ -114,8 +114,8 @@ class table_forum_attachment extends discuz_table
 		}
 		$sql .= $sizeless ? " AND a.filesize>'$sizeless'" : '';
 		$sql .= $sizemore ? " AND a.filesize<'$sizemore' " : '';
-		$sql .= $dlcountless ? " AND ai.downloads<'$dlcountless'" : '';
-		$sql .= $dlcountmore ? " AND ai.downloads>'$dlcountmore'" : '';
+		$sql .= $dlcountless ? " AND ai.downloads>'$dlcountless'" : '';
+		$sql .= $dlcountmore ? " AND ai.downloads<'$dlcountmore'" : '';
 		$sql .= $daysold ? " AND a.dateline<'".(TIMESTAMP - intval($daysold) * 86400)."'" : '';
 		if($count) {
 			return DB::result_first("SELECT COUNT(*)
