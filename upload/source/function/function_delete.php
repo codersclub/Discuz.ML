@@ -864,10 +864,11 @@ function deletearticle($aids, $istrash = true) {
 		foreach($article as $key => $value) {
 			if($istrash) {
 				$trasharr[] = array('aid' => $value['aid'], 'content'=>serialize($value));
-			} elseif($value['pic']) {
-				pic_delete($value['pic'], 'portal', $value['thumb'], $value['remote']);
-				$attachaid[] = $value['aid'];
-				if($value['madehtml'] && $value['htmldir'] && $value['htmlname']) {
+			} else {
+				if($value['pic']) {
+					pic_delete($value['pic'], 'portal', $value['thumb'], $value['remote']);
+				}
+				if($value['htmlmade'] && $value['htmldir'] && $value['htmlname']) {
 					deletehtml(DISCUZ_ROOT.'/'.$value['htmldir'].$value['htmlname'], $value['contents']);
 				}
 			}
