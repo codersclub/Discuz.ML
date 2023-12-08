@@ -25,7 +25,7 @@ var calendarrecall = null;
 function loadcalendar() {
 	s = '';
 	s += '<div id="calendar" style="display:none; position:absolute; z-index:100000;" onclick="doane(event)">';
-	s += '<div style="width: 210px;"><table cellspacing="0" cellpadding="0" width="100%" style="text-align: center;">';
+	s += '<div style="width: 260px;"><table cellspacing="0" cellpadding="0" width="100%" style="text-align: center;">';
 /*vot*/	s += '<tr align="center" id="calendar_week"><td><a href="javascript:;" onclick="refreshcalendar(yy, mm-1)" title="'+lng['prev_month']+'">&laquo;</a></td><td colspan="5" style="text-align: center"><a href="javascript:;" onclick="showdiv(\'year\');doane(event)" class="dropmenu" title="'+lng['select_year']+'" id="year"></a>&nbsp; - &nbsp;<a id="month" class="dropmenu" title="'+lng['select_month']+'" href="javascript:;" onclick="showdiv(\'month\');doane(event)"></a></td><td><a href="javascript:;" onclick="refreshcalendar(yy, mm+1)" title="'+lng['next_month']+'">&raquo;</a></td></tr>';
 /*vot*/	s += '<tr id="calendar_header"><td>'+lng['wday0']+'</td><td>'+lng['wday1']+'</td><td>'+lng['wday2']+'</td><td>'+lng['wday3']+'</td><td>'+lng['wday4']+'</td><td>'+lng['wday5']+'</td><td>'+lng['wday6']+'</td></tr>';
 	for(var i = 0; i < 6; i++) {
@@ -34,8 +34,8 @@ function loadcalendar() {
 			s += "<td id=d" + (i * 7 + j) + " height=\"19\">0</td>";
 		s += "</tr>";
 	}
-/*vot*/	s += '<tr id="hourminute" class="pns"><td colspan="4" align="left"><input type="text" size="1" value="" id="hour" class="px vm" style="width: 16px;margin-right: 5px;" onKeyUp=\'this.value=this.value > 23 ? 23 : zerofill(this.value);controlid.value=controlid.value.replace(/\\d+(\:\\d+)/ig, this.value+"$1")\'> '+lng['hours']+' ';
-/*vot*/	s += '<span id="fullhourselector"><input type="text" size="1" value="" id="minute" class="px vm" style="width: 16px;margin: 0px 5px;" onKeyUp=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'> '+lng['minutes']+'</span>';
+/*vot*/	s += '<tr id="hourminute" class="pns"><td colspan="4" align="left"><input type="text" size="1" value="" id="hour" class="px vm" style="width: 40px;margin-right: 5px;" onKeyUp=\'this.value=this.value > 23 ? 23 : zerofill(this.value);controlid.value=controlid.value.replace(/\\d+(\:\\d+)/ig, this.value+"$1")\'> '+lng['hours']+' ';
+/*vot*/	s += '<span id="fullhourselector"><input type="text" size="1" value="" id="minute" class="px vm" style="width: 40px;margin: 0px 5px;" onKeyUp=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'> '+lng['minutes']+'</span>';
 /*vot*/	s += '<span id="halfhourselector"><select id="minutehalfhourly" onchange=\'this.value=this.value > 59 ? 59 : zerofill(this.value);controlid.value=controlid.value.replace(/(\\d+\:)\\d+/ig, "$1"+this.value)\'><option value="00">00</option><option value="30">30</option></select> '+lng['minutes']+'</span>';
 /*vot*/	s += '</td><td align="right" colspan="3"><button class="pn" onclick="confirmcalendar();"><em>'+lng['ok']+'</em></button></td></tr>';
 	s += '</table></div></div>';

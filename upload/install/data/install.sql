@@ -2425,7 +2425,7 @@ CREATE TABLE pre_forum_forum (
   catforumcolumns int(11) unsigned NOT NULL DEFAULT '0',
   threadcaches tinyint(1) NOT NULL DEFAULT '0',
   alloweditpost tinyint(1) NOT NULL DEFAULT '1',
-  `simple` tinyint(1) NOT NULL DEFAULT '0',
+  `simple` smallint(6) NOT NULL DEFAULT '0',
   modworks tinyint(1) NOT NULL DEFAULT '0',
   allowglobalstick tinyint(1) NOT NULL DEFAULT '1',
   `level` int(11) NOT NULL DEFAULT '0',
