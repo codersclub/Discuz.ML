@@ -8,7 +8,7 @@
 			{$space['username']} - <!--{if $_GET['type'] == 'reply'}-->{lang mobta}{lang reply}<!--{elseif $_GET['type'] == 'postcomment'}-->{lang mobta}{lang post_comment}<!--{else}-->{lang mobta}{lang mobthread}<!--{/if}-->
 		<!--{/if}-->
 	</h2>
-	<div class="my"><a href="<!--{if $_G['setting']['mobile']['mobilehotthread']}--><!--{if !empty($_G['setting']['grid']['showgrid'])}-->forum.php<!--{else}-->forum.php?mod=guide&view=newthread<!--{/if}--><!--{else}-->forum.php?forumlist=1<!--{/if}-->"><i class="dm-house"></i></a></div>
+	<div class="my"><a href="index.php"><i class="dm-house"></i></a></div>
 </div>
 <!--{if $list}-->
 	<!--{eval $threadlist_data = get_attach($list);}-->
