@@ -2,7 +2,7 @@
 <div class="header cl">
 	<div class="mz"><a href="javascript:history.back();"><i class="dm-c-left"></i></a></div>
 	<h2><!--{if empty($_G['setting']['sessionclose']) && $a_actives['onlinemember']}-->{lang online_member}<!--{elseif $a_actives['visitor']}-->{lang my_visitor}<!--{elseif $a_actives['trace']}-->{lang my_trace}<!--{else}-->{lang my_friends}<!--{/if}--></h2>
-	<div class="my"><a href="<!--{if $_G['setting']['mobile']['mobilehotthread']}--><!--{if !empty($_G['setting']['grid']['showgrid'])}-->forum.php<!--{else}-->forum.php?mod=guide&view=newthread<!--{/if}--><!--{else}-->forum.php?forumlist=1<!--{/if}-->"><i class="dm-house"></i></a></div>
+	<div class="my"><a href="index.php"><i class="dm-house"></i></a></div>
 </div>
 <div class="dhnv flex-box cl">
 	<a href="home.php?mod=space&do=friend" class="flex<!--{if $a_actives['me']}--> mon<!--{/if}-->">{lang my_friends}</a>
