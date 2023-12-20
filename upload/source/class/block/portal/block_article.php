@@ -123,6 +123,8 @@ class block_article extends discuz_block {
 				'avatar_big' => array('name' => lang('blockclass', 'blockclass_article_field_avatar_big'), 'formtype' => 'text', 'datatype' => 'string'),
 				'url' => array('name' => lang('blockclass', 'blockclass_article_field_url'), 'formtype' => 'text', 'datatype' => 'string'),
 				'title' => array('name' => lang('blockclass', 'blockclass_article_field_title'), 'formtype' => 'title', 'datatype' => 'title'),
+				'fromurl' => array('name' => lang('blockclass', 'blockclass_article_field_fromurl'), 'formtype' => 'text', 'datatype' => 'string'),
+				'from' => array('name' => lang('blockclass', 'blockclass_article_field_from'), 'formtype' => 'title', 'datatype' => 'title'),
 				'pic' => array('name' => lang('blockclass', 'blockclass_article_field_pic'), 'formtype' => 'pic', 'datatype' => 'pic'),
 				'summary' => array('name' => lang('blockclass', 'blockclass_article_field_summary'), 'formtype' => 'summary', 'datatype' => 'summary'),
 				'dateline' => array('name' => lang('blockclass', 'blockclass_article_field_dateline'), 'formtype' => 'date', 'datatype' => 'date'),
@@ -315,6 +317,8 @@ class block_article extends discuz_block {
 					'dateline'=>$data['dateline'],
 					'caturl'=> $_G['cache']['portalcategory'][$data['catid']]['caturl'],
 					'catname' => $_G['cache']['portalcategory'][$data['catid']]['catname'],
+					'fromurl'=> $data['fromurl'],
+					'from' => $data['from'],
 					'articles' => $_G['cache']['portalcategory'][$data['catid']]['articles'],
 					'viewnum' => intval($data['viewnum']),
 					'commentnum' => intval($data['commentnum'])
