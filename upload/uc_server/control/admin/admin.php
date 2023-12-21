@@ -106,7 +106,7 @@ class control extends adminbase {
 		$ppp  = 15;
 		$totalnum = $this->db->result_first("SELECT COUNT(*) FROM ".UC_DBTABLEPRE."admins");
 		$start = $this->page_get_start($page, $ppp, $totalnum);
-		$userlist = $this->db->fetch_all("SELECT a.*,m.* FROM ".UC_DBTABLEPRE."admins a LEFT JOIN ".UC_DBTABLEPRE."members m USING(uid) LIMIT $start, $ppp");
+		$userlist = $this->db->fetch_all("SELECT m.*,a.* FROM ".UC_DBTABLEPRE."admins a LEFT JOIN ".UC_DBTABLEPRE."members m USING(uid) LIMIT $start, $ppp");
 		$multipage = $this->page($totalnum, $ppp, $page, UC_ADMINSCRIPT.'?m=admin&a=admin');
 		if($userlist) {
 			foreach($userlist as $key => $user) {
