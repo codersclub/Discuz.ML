@@ -101,7 +101,7 @@ if($_GET['op'] == 'base') {
 		$return_url = $_G['siteurl'] . 'home.php?mod=spacecp&ac=credit&op=base';
 		$pay_url = payment::create_order(
 			'payment_credit',
-			$_G['setting']['bbname'].' - '.$_G['member']['username'].' - '.lang('forum/misc', 'credit_payment'),
+			$_G['setting']['bbname'].' - '.lang('forum/misc', 'credit_payment'),
 			trim(lang('forum/misc', 'credit_forum_payment') . ' ' . $credits['title'] . ' ' . $amount . ' ' . $credits['unit']),
 			$price * 100,
 			$return_url,
