@@ -2730,7 +2730,7 @@ EOT;
 				unset($settingnew['report_reward']);
 			}
 			if($settingnew['report_reward']['min'] == $settingnew['report_reward']['max']) {
-				$settingnew['report_reward'] = array('min' => '', 'max' => '');
+				$settingnew['report_reward'] = array('min' => 0, 'max' => 0);
 			}
 			$settingnew['report_reward'] = serialize($settingnew['report_reward']);
 		}
