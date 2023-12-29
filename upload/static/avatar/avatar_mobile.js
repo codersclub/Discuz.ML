@@ -241,17 +241,17 @@ function rectAvatarDone(res) {
     }
 }
 var clipArea = new PhotoClip("#widgetparent", {
-    size: [200, 200], // 截取框的宽和高组成的数组。默认值为[260,260]
-    outputSize: [200, 200], // 输出图像的宽和高组成的数组。默认值为[0,0]，表示输出图像原始大小
-    outputType: "jpg", // 指定输出图片的类型，可选 "jpg" 和 "png" 两种种类型，默认为 "jpg"
-    file: "#avatarfile", // 上传图片的<input type="file">控件的选择器或者DOM对象
-    //view: "#avatarimage", // 显示截取后图像的容器的选择器或者DOM对象
-    ok: "#avconfirm", // 确认截图按钮的选择器或者DOM对象
-	loadStart: function(file) {// 开始加载的回调函数。this指向 fileReader 对象，并将正在加载的 file 对象作为参数传入
+    size: [200, 200], // Array consisting of the width and height of the interception box. The default value is [260,260]
+    outputSize: [200, 200], // Output an array consisting of the width and height of the image. The default value is [0,0], which means the original size of the output image
+    outputType: "jpg", // Specify the type of output image, there are two types available: "jpg" and "png", the default is "jpg"
+    file: "#avatarfile", // The selector or DOM object of the <input type="file"> control for uploading images
+    //view: "#avatarimage", // The selector or DOM object of the container that displays the captured image
+    ok: "#avconfirm", // Confirm the selector or DOM object of the screenshot button
+	loadStart: function(file) {// Callback function to start loading. this points to the fileReader object, and the file object being loaded is passed in as a parameter
 	},
-	loadComplete: function() {// 加载完成的回调函数。this指向图片对象，并将图片地址作为参数传入
+	loadComplete: function() {// Callback function for loading completion. this points to the image object, and the image address is passed in as a parameter
 	},
-	loadError: function(msg) {// 加载失败的回调函数。this指向 fileReader 对象，并将错误事件的 msg 对象作为参数传入
+	loadError: function(msg) {// Callback function for loading failure. this points to the fileReader object, and the msg object of the error event is passed in as a parameter
 	},
 	done: function(dataURL) {
 		imagesAjax(dataURL);
@@ -259,7 +259,7 @@ var clipArea = new PhotoClip("#widgetparent", {
 	fail: function(msg) {
 		//popup.open(msg, 'alert');
 	},
-    //clipFinish: function(dataURL) {}, // 裁剪完成的回调函数。this指向图片对象，会将裁剪出的图像数据DataURL作为参数传入
+    //clipFinish: function(dataURL) {}, // Callback function when cropping is completed. This points to the image object, and the cropped image data DataURL will be passed in as a parameter.
 });
 
 function imagesAjax(src) {
