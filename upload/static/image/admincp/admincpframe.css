@@ -12,7 +12,7 @@ nav>ul::-webkit-scrollbar { width: 10px; background-color: #92bbe8; border-radiu
 nav>ul::-webkit-scrollbar-thumb { background-color: #2b7acd; border: 1px solid #92bbe8; border-radius: 5px; }
 .st-d nav>ul::-webkit-scrollbar { background-color: #999; }
 .st-d nav>ul::-webkit-scrollbar-thumb { background-color: #181818; border: 1px solid #0a0a0a;}
-nav>ul a { display: flex; padding: 0 18px 0 30px; color: rgba(255, 255, 255, 0.8); height: 40px; align-items: center; text-decoration: none; }
+/*vot*/nav>ul a { display: flex; padding: 0 10px 0 10px; color: rgba(255, 255, 255, 0.8); height: 40px; align-items: center; text-decoration: none; }
 nav>ul a:hover { background-color: #2464a8; color: #fff; }
 nav>ul a.active { background-color: #2870bd; color: #fff; }
 .st-d nav>ul a:hover{ background-color: #181818; color: #999; }
