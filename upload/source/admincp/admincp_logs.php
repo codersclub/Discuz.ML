@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_logs.php 29236 2012-03-30 05:34:47Z chenmengshu $
- *	Modified by Valery Votintsev, discuz.ml
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_blog.php 32130 2012-11-14 09:20:40Z zhengqingpeng $
- *	Modified by Valery Votintsev, discuz.ml
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

@@ -6,7 +6,7 @@
 
 	$Id: misc_stat.php 31889 2012-10-22 03:27:56Z liulanbo $
 
-        Modified by Valery Votintsev, discuz.ml
+        Modified by Valery Votintsev, codersclub.org
 */
 
 if(!defined('IN_DISCUZ')) {

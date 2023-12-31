@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_pic.php 28299 2012-02-27 08:48:36Z svn_project_zhangjie $
- *	Modified by Valery Votintsev, discuz.ml
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

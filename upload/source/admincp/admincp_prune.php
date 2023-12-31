@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_prune.php 29900 2012-05-02 08:17:44Z liulanbo $
- *	Modified by Valery Votintsev, discuz.ml
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

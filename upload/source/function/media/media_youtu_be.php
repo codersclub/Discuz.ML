@@ -1,7 +1,7 @@
 <?php
 //------------------------------------------------------------------
 // Discuz YOUTO.BE video support
-// Written by Valery Votintsev, discuz.ml
+// Written by Valery Votintsev, codersclub.org
 //------------------------------------------------------------------
 
 if(!defined('IN_DISCUZ')) {

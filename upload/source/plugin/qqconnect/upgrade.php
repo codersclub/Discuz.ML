@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: upgrade.php 33545 2013-07-04 07:06:27Z nemohou $
- *	Modified by Valery Votintsev, discuz.ml
+ *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {

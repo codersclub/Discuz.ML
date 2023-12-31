@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: table_forum_post.php 30080 2012-05-09 08:19:20Z liulanbo $
- *      Modified by Valery Votintsev, http://discuz.ml
+ *      Modified by Valery Votintsev, http://codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
