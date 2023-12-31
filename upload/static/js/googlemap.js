@@ -1,6 +1,6 @@
 /*
 	Google Maps javascript support
-	by Valery Votintsev, http://discuz.ml, codersclub.org
+	by Valery Votintsev, http://codersclub.org
 	for
 	[Discuz!] (C)2001-2099 Comsenz Inc.
 */

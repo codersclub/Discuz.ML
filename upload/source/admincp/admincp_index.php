@@ -566,7 +566,7 @@ function show_forever_thanks() {
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array(cplang('home_dev_skins'), $devSkinsStr));
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array(cplang('home_dev_thanks'), $devThanksStr));
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team tm"'), array(cplang('home_dev_links'), '
-<!--vot-->	<a href="http://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML discussion</a>,&nbsp;
+<!--vot-->	<a href="https://codersclub.org/discuzx/" class="lightlink2" target="_blank">Discuz!ML discussion</a>,&nbsp;
 <!--vot-->	<a href="https://github.com/codersclub/Discuz.ML" class="lightlink2" target="_blank">Discuz!ML Git</a>,&nbsp;
 	<a href="https://code.dismall.com/" class="lightlink2" target="_blank">'.cplang('discuz_git').'</a>,&nbsp;
 	<a href="https://www.discuz.vip/" class="lightlink2" target="_blank">'.cplang('discussion_area').'</a>, &nbsp;

@@ -5,7 +5,7 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: dbbak.php 17033 2008-12-04 02:24:03Z zhaoxiongfei $
-*		Modified by Valery Votintsev, http://discuz.ml
+	Modified by Valery Votintsev, http://codersclub.org
 */
 
 error_reporting(0);

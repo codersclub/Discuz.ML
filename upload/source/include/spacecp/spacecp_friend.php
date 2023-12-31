@@ -5,7 +5,7 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: spacecp_friend.php 36272 2016-11-23 06:35:37Z nemohou $
- *      Modified by Valery Votintsev, http://discuz.ml
+ *      Modified by Valery Votintsev, http://codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
