@@ -9,7 +9,7 @@ if(!defined('IN_DISCUZ')) {
 $checkurl = array('vlog.xuite.net/play');
 
 function media_xuite($url, $width, $height) {
-	if(preg_match("/^http:\/\/vlog.xuite.net\/play\/(.*?)/i", $url, $matches)) {
+	if(preg_match("/^https?:\/\/vlog.xuite.net\/play\/(.*?)/i", $url, $matches)) {
 		$vid = $matches[1];
 		$str = file_get_contents($url, false, $ctx);
 		preg_match("/\"og:video\" content=\"(.+?)\"/i", $str, $video);
@@ -19,7 +19,7 @@ function media_xuite($url, $width, $height) {
 				$imgurl = trim($image[1]);
 			}
 		}
-	    $iframe = 'http://vlog.xuite.net/play/'.$vid;
+	    $iframe = 'https://vlog.xuite.net/play/'.$vid;
 	}
 	return array($flv, $iframe, $url, $imgurl);
 }

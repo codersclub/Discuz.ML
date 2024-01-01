@@ -81,7 +81,7 @@ function sendmail($toemail, $subject, $message = '', $from = '') {
 
 	$email_subject = '=?'.CHARSET.'?B?'.base64_encode(preg_replace("/[\r|\n]/", '', '['.$_G['setting']['sitename'].'] '.$subject)).'?=';
 	$email_message = chunk_split(base64_encode(str_replace("\n", "\r\n", str_replace("\r", "\n", str_replace("\r\n", "\n", str_replace("\n\r", "\r", $message))))));
-	$host = parse_url('http://'.$_SERVER['HTTP_HOST'], PHP_URL_HOST);
+	$host = parse_url('https://'.$_SERVER['HTTP_HOST'], PHP_URL_HOST);
 	$version = $_G['setting']['version'];
 	if($_G['setting']['mail']['mailsend'] == 1) {
 		$maildelimiter = $_G['setting']['mail']['maildelimiter'] == 1 ? "\r\n" : ($_G['setting']['mail']['maildelimiter'] == 2 ? "\r" : "\n");

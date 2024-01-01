@@ -69,6 +69,7 @@ class discuz_application extends discuz_base{
 	}
 
 	public function init() {
+//session_start();
 		if(!$this->initated) {
 			$this->_init_db();
 			$this->_init_setting();

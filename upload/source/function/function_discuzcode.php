@@ -380,11 +380,11 @@ function parseurl($url, $text, $scheme) {
 		if(strlen($url) > $length) {
 			$text = substr($url, 0, intval($length * 0.5)).' ... '.substr($url, - intval($length * 0.3));
 		}
-		return '<a href="'.(substr(strtolower($url), 0, 4) == 'www.' ? 'http://'.$url : $url).'" target="_blank">'.$text.'</a>';
+		return '<a href="'.(substr(strtolower($url), 0, 4) == 'www.' ? 'https://'.$url : $url).'" target="_blank">'.$text.'</a>';
 	} else {
 		$url = substr($url, 1);
 		if(substr(strtolower($url), 0, 4) == 'www.') {
-			$url = 'http://'.$url;
+			$url = 'https://'.$url;
 		}
 		$url = !$scheme ? $_G['siteurl'].$url : $url;
 		return '<a href="'.$url.'" target="_blank">'.$text.'</a>';
@@ -550,7 +550,7 @@ function parsemedia($params, $url) {
 function bbcodeurl($url, $tags) {
 	if(!preg_match("/<.+?>/s", $url)) {
 		if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $url) && !preg_match('/^data\//', $url)) {
-			$url = 'http://'.$url;
+			$url = 'https://'.$url;
 		}
 		return str_replace(array('submit', 'member.php?mod=logging'), array('', ''), str_replace('{url}', addslashes($url), $tags));
 	} else {

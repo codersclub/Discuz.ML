@@ -13,7 +13,7 @@ function media_youku($url, $width, $height) {
 		$flv = 'https://player.youku.com/player.php/sid/'.$params[0].'/v.swf';
 		$iframe = 'https://player.youku.com/embed/'.$params[0];
 		if(!$width && !$height) {
-			$api = 'http://v.youku.com/player/getPlayList/VideoIDS/'.$params[0];
+			$api = 'https://v.youku.com/player/getPlayList/VideoIDS/'.$params[0];
 			$str = stripslashes(dfsockopen($api));
 			if(!empty($str) && preg_match("/\"logo\":\"(.+?)\"/i", $str, $image)) {
 				$url = substr($image[1], 0, strrpos($image[1], '/')+1);

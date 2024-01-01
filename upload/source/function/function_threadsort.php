@@ -713,7 +713,7 @@ function threadsort_validator($sortoption, $pid) {
 		if($_G['forum_checkoption'][$var]['type'] == 'checkbox') {
 			$sortoption[$var] = $sortoption[$var] ? implode("\t", $sortoption[$var]) : '';
 		} elseif($_G['forum_checkoption'][$var]['type'] == 'url') {
-			$sortoption[$var] = $sortoption[$var] ? (substr(strtolower($sortoption[$var]), 0, 4) == 'www.' ? 'http://'.$sortoption[$var] : $sortoption[$var]) : '';
+			$sortoption[$var] = $sortoption[$var] ? (substr(strtolower($sortoption[$var]), 0, 4) == 'www.' ? 'https://'.$sortoption[$var] : $sortoption[$var]) : '';
 		}
 
 		if($_G['forum_checkoption'][$var]['type'] == 'image') {

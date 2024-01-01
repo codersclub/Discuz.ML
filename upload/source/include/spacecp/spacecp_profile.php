@@ -150,7 +150,7 @@ if(submitcheck('profilesubmit')) {
 			}
 		} elseif($key == 'site') {
 			if(!in_array(strtolower(substr($value, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $value) && !preg_match('/^data\//', $value)) {
-				$value = 'http://'.$value;
+				$value = 'https://'.$value;
 			}
 		}
 		if($field['formtype'] == 'file') {

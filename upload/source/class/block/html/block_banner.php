@@ -27,7 +27,7 @@ class block_banner extends commonblock_html {
 			'pic' => array(
 				'title' => 'banner_pic',
 				'type' => 'mfile',
-				'default' => 'http://'
+				'default' => 'https://'
 			),
 			'url' => array(
 				'title' => 'banner_url',
