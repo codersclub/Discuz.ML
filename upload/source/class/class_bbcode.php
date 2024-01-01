@@ -107,7 +107,7 @@ class bbcode {
 		global $_G;
 
 		if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://'))) {
-			$url = isset($_G['siteurl']) && !empty($_G['siteurl']) ? $_G['siteurl'].$url : 'http://'.$url;
+/*vot*/			$url = isset($_G['siteurl']) && !empty($_G['siteurl']) ? $_G['siteurl'].$url : 'https://'.$url;
 		}
 		$url = addslashes($url);
 		return "<img src=\"$url\" class=\"vm\">";

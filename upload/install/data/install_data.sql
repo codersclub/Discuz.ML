@@ -59,7 +59,7 @@ INSERT INTO pre_common_cron VALUES ('19','1','system','Count today hot posts','c
 INSERT INTO pre_common_cron VALUES ('20','1','system','Update Forum Last Post (related to Waterproof wall)','cron_security_cleanup_lastpost.php','1269746623','1269792000','-1','-1','7','0');
 INSERT INTO pre_common_cron VALUES ('21','1','system','Weekly SMS log archive','cron_smslog_daily.php','1269746639','1269792000','-1','-1','03','0');
 
-INSERT INTO pre_common_friendlink VALUES ('1','0','Official Discuz! Forum','http://www.discuz.vip/','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
+INSERT INTO pre_common_friendlink VALUES ('1','0','Official Discuz! Forum','https://www.discuz.vip/','Provide the latest Discuz! Product news, software downloads and technical exchanges','static/image/common/logo_88_31.gif','2');
 INSERT INTO pre_common_friendlink VALUES ('2','4','Discuz!X Application Center','https://addon.dismall.com/','','','2');
 
 INSERT INTO pre_common_member_profile_setting VALUES('realname', 1, 0, 0, 'Real Name', '', 0, 0, 0, 0, 0, 0, 1, 'text', 0, '', '');
@@ -1121,6 +1121,6 @@ INSERT INTO `pre_common_admincp_perm` (`cpgroupid`, `perm`) VALUES (5, 'verify_v
 INSERT INTO `pre_forum_threadprofile` (`id`, `name`, `template`, `global`) VALUES (1, 'Default layout', 'a:2:{s:4:\"left\";s:399:\"{numbercard}\r\n{groupicon}<p>{*}</p>{/groupicon}\r\n{authortitle}<p><em>{*}</em></p>{/authortitle}\r\n{customstatus}<p class=\"xg1\">{*}</p>{/customstatus}\r\n{star}<p>{*}</p>{/star}\r\n{upgradeprogress}<p>{*}</p>{/upgradeprogress}\r\n<dl class=\"pil cl\">\r\n\t<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\r\n{medal}<p class=\"md_ctrl\">{*}</p>{/medal}\r\n<dl class=\"pil cl\">{baseinfo=field_qq,0}</dl>\";s:3:\"top\";s:82:\"<dl class=\"cl\">\r\n<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\";}', 1);
 
 -- added by vot
--- INSERT INTO pre_forum_bbcode VALUES ('5','1','icq','bb_icq.gif','<a href=\"http://www.icq.com/msgrd?V=1&Uin={1}&amp;Site=[Discuz!]&amp;Menu=yes\" target=\"_blank\"><img src=\"http://www.icq.com/pa?p=1:{1}:1\" border=\"0\"></a>','[icq]688888[/icq]','Show ICQ online status. Click to this icon for chat with this member','1','Please enter a ICQ number to show online status:','1','21','1	2	3	12	13	14	15	16	17	18	19');
+-- INSERT INTO pre_forum_bbcode VALUES ('5','1','icq','bb_icq.gif','<a href=\"https://www.icq.com/msgrd?V=1&Uin={1}&amp;Site=[Discuz!]&amp;Menu=yes\" target=\"_blank\"><img src=\"https://www.icq.com/pa?p=1:{1}:1\" border=\"0\"></a>','[icq]688888[/icq]','Show ICQ online status. Click to this icon for chat with this member','1','Please enter a ICQ number to show online status:','1','21','1	2	3	12	13	14	15	16	17	18	19');
 
 

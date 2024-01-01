@@ -319,11 +319,11 @@ function fparseurl($url, $text, $scheme) {
 		if(strlen($url) > $length) {
 			$text = substr($url, 0, intval($length * 0.5)).' ... '.substr($url, - intval($length * 0.3));
 		}
-		$html = '<a href="'.(substr(strtolower($url), 0, 4) == 'www.' ? 'http://'.$url : $url).'" target="_blank">'.$text.'</a>';
+		$html = '<a href="'.(substr(strtolower($url), 0, 4) == 'www.' ? 'https://'.$url : $url).'" target="_blank">'.$text.'</a>';
 	} else {
 		$url = substr($url, 1);
 		if(substr(strtolower($url), 0, 4) == 'www.') {
-			$url = 'http://'.$url;
+			$url = 'https://'.$url;
 		}
 		$url = !$scheme ? $_G['siteurl'].$url : $url;
 		$atclass = substr(strtolower($text), 0, 1) == '@' ? ' class="xi2" ' : '';

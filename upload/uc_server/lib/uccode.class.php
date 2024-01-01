@@ -105,11 +105,11 @@ class uccode {
 			if(strlen($url) > $length) {
 				$text = substr($url, 0, intval($length * 0.5)).' ... '.substr($url, - intval($length * 0.3));
 			}
-			return '<a href="'.(substr(strtolower($url), 0, 4) == 'www.' ? 'http://'.$url : $url).'" target="_blank">'.$text.'</a>';
+			return '<a href="'.(substr(strtolower($url), 0, 4) == 'www.' ? 'https://'.$url : $url).'" target="_blank">'.$text.'</a>';
 		} else {
 			$url = substr($url, 1);
 			if(substr(strtolower($url), 0, 4) == 'www.') {
-				$url = 'http://'.$url;
+				$url = 'https://'.$url;
 			}
 			return '<a href="'.$url.'" target="_blank">'.$text.'</a>';
 		}
@@ -128,7 +128,7 @@ class uccode {
 	function bbcodeurl($url, $tags) {
 		if(!preg_match("/<.+?>/s", $url)) {
 			if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://'))) {
-				$url = 'http://'.$url;
+				$url = 'https://'.$url;
 			}
 			return str_replace(array('submit', 'logging.php'), array('', ''), sprintf($tags, $url, addslashes($url)));
 		} else {

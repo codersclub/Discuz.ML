@@ -276,7 +276,7 @@ if($_GET['op'] == 'delete') {
 			$_G['refer'] = 'home.php?mod=space&uid='.$_G['uid'].'&do=share&view=me';
 			$type = 'link';
 			$_GET['op'] = 'link';
-			$linkdefault = 'http://';
+			$linkdefault = 'https://';
 			$generaldefault = '';
 			break;
 	}
