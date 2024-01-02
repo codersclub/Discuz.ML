@@ -25,7 +25,7 @@ class control extends adminbase {
 	}
 
 	function onls() {
-		$logdir = UC_ROOT.'data/logs/';
+/*vot*/		$logdir = UC_ROOT.'/data/logs/';
 		$dir = opendir($logdir);
 		$logs = $loglist = array();
 		while($entry = readdir($dir)) {

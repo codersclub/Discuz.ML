@@ -24,11 +24,11 @@ if(defined('UC_SERVER_VERSION')) {
 
 define('INSTALL_LANG', 'EN_UTF8');
 
-define('CONFIG', ROOT_PATH.'./data/config.inc.php');
+/*vot*/define('CONFIG', ROOT_PATH.'/data/config.inc.php');
 
-$sqlfile = ROOT_PATH.'./install/uc.sql';
+/*vot*/$sqlfile = ROOT_PATH.'/install/uc.sql';
 
-$lockfile = ROOT_PATH.'./data/install.lock';
+/*vot*/$lockfile = ROOT_PATH.'/data/install.lock';
 
 define('CHARSET', 'utf-8');
 define('DBCHARSET', 'utf8mb4');

@@ -53,10 +53,10 @@ class control extends adminbase {
 		$this->view->assign('pms', $pms);
 		$this->view->assign('iframe', getgpc('iframe', 'G'));
 
-		if(@file_exists(constant('UC_ROOT').'./install/index.php') && !constant('UC_DEBUG')) {
-			@unlink(constant('UC_ROOT').'./install/index.php');
-			if(@file_exists(constant('UC_ROOT').'./install/index.php')) {
-				exit('Please delete ./install/index.php via FTP!');
+/*vot*/		if(@file_exists(UC_ROOT.'/install/index.php') && !constant('UC_DEBUG')) {
+//vot			@unlink(constant('UC_ROOT').'/install/index.php');
+/*vot*/			if(@file_exists(UC_ROOT.'/install/index.php')) {
+/*vot*/				echo 'Please delete ./install/index.php via FTP!';
 			}
 		}
 
@@ -176,9 +176,9 @@ class control extends adminbase {
 
 	function _get_uc_info() {
 		$update = array('uniqueid' => UC_SITEID, 'version' => UC_SERVER_VERSION, 'release' => UC_SERVER_RELEASE, 'php' => PHP_VERSION, 'mysql' => $this->db->version(), 'charset' => UC_CHARSET);
-		$updatetime = @filemtime(UC_ROOT.'./data/updatetime.lock');
+/*vot*/		$updatetime = @filemtime(UC_ROOT.'/data/updatetime.lock');
 		if(empty($updatetime) || ($this->time - $updatetime > 3600 * 4)) {
-			@touch(UC_ROOT.'./data/updatetime.lock');
+/*vot*/			@touch(UC_ROOT.'/data/updatetime.lock');
 			$update['members'] = $this->_get_uc_members();
 			$update['friends'] = $this->_get_uc_friends();
 			$apps = $this->_get_uc_apps();

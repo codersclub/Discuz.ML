@@ -10,6 +10,14 @@
 
 !defined('IN_UC') && exit('Access Denied');
 
+//------------------------------------------------------------------
+//vot Define UC Language !!!
+//vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
+/*vot*/	define('UC_LANG',UC_DEFAULT_LANG);
+/*vot*/	define('RTLSUFFIX',UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
+/*vot*/ require UC_ROOT . '/lib/function.inc.php';
+//------------------------------------------------------------------
+
 class base {
 
 	var $sid;
@@ -30,7 +38,7 @@ class base {
 	}
 
 	function base() {
-		require_once UC_ROOT.'./model/var.php';
+/*vot*/		require_once UC_ROOT.'/model/var.php';
 		base_var::bind($this);
 		if(empty($this->time)) {
 			$this->init_var();
@@ -51,11 +59,11 @@ class base {
 
 		$this->onlineip = $_SERVER['REMOTE_ADDR'];
 		if (!defined('UC_ONLYREMOTEADDR') || (defined('UC_ONLYREMOTEADDR') && !constant('UC_ONLYREMOTEADDR'))) {
-			require_once UC_ROOT.'./lib/ucip.class.php';
+/*vot*/			require_once UC_ROOT.'/lib/ucip.class.php';
 			if(defined('UC_IPGETTER') && !empty(constant('UC_IPGETTER'))) {
 				$s = defined('UC_IPGETTER_'.strtoupper(constant('UC_IPGETTER'))) ? (is_string(constant('UC_IPGETTER_'.strtoupper(constant('UC_IPGETTER')))) ? unserialize(constant('UC_IPGETTER_'.strtoupper(constant('UC_IPGETTER')))) : constant('UC_IPGETTER_'.strtoupper(constant('UC_IPGETTER')))) : array();
 				$c = 'ucip_getter_'.strtolower(constant('UC_IPGETTER'));
-				require_once UC_ROOT.'./lib/'.$c.'.class.php';
+/*vot*/				require_once UC_ROOT.'/lib/'.$c.'.class.php';
 				$r = $c::get($s);
 				$this->onlineip = ucip::validate_ip($r) ? $r : $this->onlineip;
 			} else if (isset($_SERVER['HTTP_CLIENT_IP']) && ucip::validate_ip($_SERVER['HTTP_CLIENT_IP'])) {
@@ -73,7 +81,7 @@ class base {
 		define('FORMHASH', $this->formhash());
 		$_GET['page'] =  max(1, intval(getgpc('page')));
 
-/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/main.lang.php';
+/*vot*/		include_once UC_ROOT.'/language/'.UC_LANG.'/main.lang.php';
 		$this->lang = &$lang;
 	}
 
@@ -110,7 +118,7 @@ class base {
 	}
 
 	function init_db() {
-		require_once UC_ROOT.'lib/dbi.class.php';
+/*vot*/		require_once UC_ROOT.'/lib/dbi.class.php';
 		$this->db = new ucserver_db();
 		$this->db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, UC_DBCHARSET, UC_DBCONNECT, UC_DBTABLEPRE);
 	}
@@ -134,7 +142,7 @@ class base {
 
 	function init_template() {
 		$charset = UC_CHARSET;
-		require_once UC_ROOT.'lib/template.class.php';
+/*vot*/		require_once UC_ROOT.'/lib/template.class.php';
 		$this->view = new template();
 		$this->view->assign('dbhistories', $this->db->histories);
 		$this->view->assign('charset', $charset);
@@ -277,10 +285,10 @@ class base {
 		$base = $base ? $base : $this;
 		if(empty($_ENV[$model])) {
 			$release = !$release ? RELEASE_ROOT : $release;
-			if(file_exists(UC_ROOT.$release."model/$model.php")) {
-				require_once UC_ROOT.$release."model/$model.php";
+/*vot*/			if(file_exists(UC_ROOT.'/'.$release."model/$model.php")) {
+/*vot*/				require_once UC_ROOT.'/'.$release."model/$model.php";
 			} else {
-				require_once UC_ROOT."model/$model.php";
+/*vot*/				require_once UC_ROOT."/model/$model.php";
 			}
 			$modelname = $model.'model';
 			$_ENV[$model] = new $modelname($base);
@@ -306,7 +314,7 @@ class base {
 	}
 
 	function message($message, $redirect = '', $type = 0, $vars = array()) {
-/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/messages.lang.php';
+/*vot*/		include_once UC_ROOT.'/language/'.UC_LANG.'/messages.lang.php';
 		if(isset($lang[$message])) {
 			$message = $lang[$message] ? str_replace(array_keys($vars), array_values($vars), $lang[$message]) : $message;
 		}
@@ -376,7 +384,7 @@ class base {
 
 	function &cache($cachefile) {
 		if(!isset($this->_CACHE[$cachefile])) {
-			$cachepath = UC_DATADIR.'./cache/'.$cachefile.'.php';
+/*vot*/			$cachepath = UC_DATADIR.'/cache/'.$cachefile.'.php';
 			if(!file_exists($cachepath)) {
 				$this->load('cache');
 				$_ENV['cache']->updatedata($cachefile);
@@ -404,20 +412,20 @@ class base {
 	}
 
 	function serialize($s, $htmlon = 0) {
-		if(file_exists(UC_ROOT.RELEASE_ROOT.'./lib/xml.class.php')) {
-			include_once UC_ROOT.RELEASE_ROOT.'./lib/xml.class.php';
+/*vot*/		if(file_exists(UC_ROOT.'/'.RELEASE_ROOT.'./lib/xml.class.php')) {
+/*vot*/			include_once UC_ROOT.'/'.RELEASE_ROOT.'./lib/xml.class.php';
 		} else {
-			include_once UC_ROOT.'./lib/xml.class.php';
+/*vot*/			include_once UC_ROOT.'/lib/xml.class.php';
 		}
 
 		return xml_serialize($s, $htmlon);
 	}
 
 	function unserialize($s) {
-		if(file_exists(UC_ROOT.RELEASE_ROOT.'./lib/xml.class.php')) {
-			include_once UC_ROOT.RELEASE_ROOT.'./lib/xml.class.php';
+/*vot*/		if(file_exists(UC_ROOT.'/'.RELEASE_ROOT.'./lib/xml.class.php')) {
+/*vot*/			include_once UC_ROOT.'/'.RELEASE_ROOT.'./lib/xml.class.php';
 		} else {
-			include_once UC_ROOT.'./lib/xml.class.php';
+/*vot*/			include_once UC_ROOT.'/lib/xml.class.php';
 		}
 
 		return xml_unserialize($s);

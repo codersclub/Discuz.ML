@@ -76,7 +76,7 @@ class adminbase extends base {
 
 	function writelog($action, $extra = '') {
 		$log = dhtmlspecialchars($this->user['username']."\t".$this->onlineip."\t".$this->time."\t$action\t$extra");
-		$logfile = UC_ROOT.'./data/logs/'.gmdate('Ym', $this->time).'.php';
+/*vot*/		$logfile = UC_ROOT.'/data/logs/'.gmdate('Ym', $this->time).'.php';
 		if(@filesize($logfile) > 2048000) {
 			PHP_VERSION < '4.2.0' && mt_srand((double)microtime() * 1000000);
 			$hash = '';
@@ -84,13 +84,13 @@ class adminbase extends base {
 			for($i = 0; $i < 4; $i++) {
 				$hash .= $chars[mt_rand(0, 61)];
 			}
-			@rename($logfile, UC_ROOT.'./data/logs/'.gmdate('Ym', $this->time).'_'.$hash.'.php');
+/*vot*/			@rename($logfile, UC_ROOT.'/data/logs/'.gmdate('Ym', $this->time).'_'.$hash.'.php');
 		}
 		file_put_contents($logfile, "<?PHP exit;?>\t".str_replace(array('<?', '?>', '<?php'), '', $log)."\n", FILE_APPEND);
 	}
 
 	function fetch_plugins() {
-		$plugindir = UC_ROOT.'./plugin';
+/*vot*/		$plugindir = UC_ROOT.'/plugin';
 		$d = opendir($plugindir);
 		while($f = readdir($d)) {
 			if($f != '.' && $f != '..' && is_dir($plugindir.'/'.$f)) {

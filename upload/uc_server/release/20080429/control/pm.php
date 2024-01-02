@@ -27,7 +27,7 @@ class pmcontrol extends base {
 		$more = $this->input('more');
 		$result = $_ENV['pm']->check_newpm($this->user['uid'], $more);
 		if($more == 3) {
-			require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/			require_once UC_ROOT.'/lib/uccode.class.php';
 			$this->uccode = new uccode();
 			$result['lastmsg'] = $this->uccode->complie($result['lastmsg']);
 		}
@@ -130,7 +130,7 @@ class pmcontrol extends base {
  		$type = $this->input('type');
  		$pm = $_ENV['pm']->get_pmnode_by_pmid($this->user['uid'], $pmid, $type);
  		if($pm) {
-	 	 	require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/	 	 	require_once UC_ROOT.'/lib/uccode.class.php';
 			$this->uccode = new uccode();
 			$pm['message'] = $this->uccode->complie($pm['message']);
 			return $pm;
@@ -151,7 +151,7 @@ class pmcontrol extends base {
 	 		$pms = $_ENV['pm']->get_pm_by_pmid($this->user['uid'], $pmid);
 	 	}
 
- 	 	require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/	 	require_once UC_ROOT.'/lib/uccode.class.php';
 		$this->uccode = new uccode();
 		$status = FALSE;
 		foreach($pms as $key => $pm) {

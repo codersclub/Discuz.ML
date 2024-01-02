@@ -47,7 +47,7 @@ class pmcontrol extends base {
 				return array('newpm' => $newpm, 'newprivatepm' => $newprvpm, 'newchatpm' => $newchatpm);
 			} else {
 				$lastpm = $_ENV['pm']->lastpm($uid);
-				require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/				require_once UC_ROOT.'/lib/uccode.class.php';
 				$this->uccode = new uccode();
 				$lastpm['lastsummary'] = $this->uccode->complie($lastpm['lastsummary']);
 				return array('newpm' => $newpm, 'newprivatepm' => $newprvpm, 'newchatpm' => $newchatpm, 'lastdate' => $lastpm['lastdateline'], 'lastmsgfromid' => $lastpm['lastauthorid'], 'lastmsgfrom' => $lastpm['lastauthorusername'], 'lastmsg' => $lastpm['lastsummary']);
@@ -268,7 +268,7 @@ class pmcontrol extends base {
 			$pms = $_ENV['pm']->getpmbyplid($this->user['uid'], $plid, $starttime, $endtime, $start, $ppp, $type);
 		}
 
- 	 	require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/	 	require_once UC_ROOT.'/lib/uccode.class.php';
 		$this->uccode = new uccode();
 		if($pms) {
 			foreach($pms as $key => $pm) {
@@ -300,7 +300,7 @@ class pmcontrol extends base {
 		$type = 0;
 		$pms = $_ENV['pm']->getpmbypmid($this->user['uid'], $pmid);
 
- 	 	require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/	 	require_once UC_ROOT.'/lib/uccode.class.php';
 		$this->uccode = new uccode();
 		if($pms) {
 			foreach($pms as $key => $pm) {

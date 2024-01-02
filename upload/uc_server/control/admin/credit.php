@@ -128,7 +128,7 @@ class control extends adminbase {
 			if(!$stepapp) {
 				$_CACHE['credits'] = array();
 			} else {
-				include UC_DATADIR.'cache/credits.php';
+/*vot*/				include UC_DATADIR.'/cache/credits.php';
 			}
 			if($app = $this->cache['apps'][$appid]) {
 				$url = $_ENV['note']->get_url_code('getcreditsettings', '', $appid);
@@ -150,7 +150,7 @@ class control extends adminbase {
 					$s = "<?php\r\n";
 					$s .= '$_CACHE[\'credits\'] = '.var_export($_CACHE['credits'], TRUE).";\r\n";
 					$s .= "\r\n?>";
-					file_put_contents(UC_DATADIR.'cache/credits.php', $s, LOCK_EX);
+/*vot*/					file_put_contents(UC_DATADIR.'/cache/credits.php', $s, LOCK_EX);
 				}
 				header('location: '.UC_API.'/'.UC_ADMINSCRIPT.'?m=credit&a=sync&step=0&stepapp='.$stepapp.'&sid='.$this->view->sid);
 			} else {
@@ -159,7 +159,7 @@ class control extends adminbase {
 			exit();
 		}
 
-		include_once UC_DATADIR.'cache/credits.php';
+/*vot*/		include_once UC_DATADIR.'/cache/credits.php';
 		$credits = $_CACHE['credits'];
 		$this->set_setting('credits', $credits, TRUE);
 		$this->load('cache');
@@ -197,10 +197,10 @@ class control extends adminbase {
 
 	function sync_unserialize($s, $release_root) {
 		if(!function_exists('xml_unserialize')) {
-			if($release_root && file_exists(UC_ROOT.$release_root.'./lib/xml.class.php')) {
-				include UC_ROOT.$release_root.'./lib/xml.class.php';
+/*vot*/			if($release_root && file_exists(UC_ROOT.'/'.$release_root.'./lib/xml.class.php')) {
+/*vot*/				include UC_ROOT.'/'.$release_root.'./lib/xml.class.php';
 			} else {
-				include UC_ROOT.'./lib/xml.class.php';
+/*vot*/				include UC_ROOT.'/lib/xml.class.php';
 			}
 		}
 

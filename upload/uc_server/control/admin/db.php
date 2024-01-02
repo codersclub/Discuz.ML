@@ -44,8 +44,8 @@ class control extends adminbase {
 			}
 
 			$baklist = array();
-			if(is_dir(UC_ROOT.'./data/backup/')) {
-				$dir = dir(UC_ROOT.'./data/backup/');
+/*vot*/			if(is_dir(UC_ROOT.'/data/backup/')) {
+/*vot*/				$dir = dir(UC_ROOT.'/data/backup/');
 				while($entry = $dir->read()) {
 					$file = './data/backup/'.$entry;
 					if(is_dir($file) && preg_match("/backup_(\d+)_\w+/i", $file, $match)) {
@@ -92,7 +92,7 @@ class control extends adminbase {
 	}
 
 	function onoperate() {
-		require_once UC_ROOT.'lib/xml.class.php';
+/*vot*/		require_once UC_ROOT.'/lib/xml.class.php';
 		$nexturl = getgpc('nexturl');
 		$appid = intval(getgpc('appid'));
 		$type = getgpc('t') == 'import' ? 'import' : 'export';
@@ -147,7 +147,7 @@ class control extends adminbase {
 	}
 
 	function ondelete() {
-		require_once UC_ROOT.'lib/xml.class.php';
+/*vot*/		require_once UC_ROOT.'/lib/xml.class.php';
 		$appid = intval(getgpc('appid'));
 		$backupdir = getgpc('backupdir');
 		$app = $this->cache['apps'][$appid];
@@ -186,7 +186,7 @@ class control extends adminbase {
 	}
 
 	function _parent_js($extid, $message, $vars = array()) {
-/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/messages.lang.php';
+/*vot*/		include_once UC_ROOT.'/language/'.UC_LANG.'/messages.lang.php';
 
  		if(isset($lang[$message])) {
  			$message = $lang[$message] ? str_replace(array_keys($vars), array_values($vars), $lang[$message]) : $message;

@@ -8,17 +8,17 @@
 */
 
 define("IN_UC", TRUE);
-define('UC_ROOT', realpath('..').'/');
+/*vot*/define('UC_ROOT', str_replace('\\','/', realpath('..')));
 
 $version_old = 'UCenter 1.0';
 $version_new = 'UCenter 1.5';
-$lock_file = UC_ROOT.'./data/upgrade.lock';
+/*vot*/$lock_file = UC_ROOT.'/data/upgrade.lock';
 
-require UC_ROOT.'./data/config.inc.php';
+/*vot*/require UC_ROOT.'/data/config.inc.php';
 if(function_exists("mysql_connect")) {
-	require UC_ROOT.'./lib/db.class.php';
+/*vot*/	require UC_ROOT.'/lib/db.class.php';
 } else {
-	require UC_ROOT.'./lib/dbi.class.php';
+/*vot*/	require UC_ROOT.'/lib/dbi.class.php';
 }
 error_reporting(7);
 @set_magic_quotes_runtime(0);
@@ -103,19 +103,19 @@ if(!$action) {
 
 } elseif($action == 'db') {
 
-	@touch(UC_ROOT.'./data/install.lock');
-	@unlink(UC_ROOT.'./install/index.php');
+/*vot*/	@touch(UC_ROOT.'/data/install.lock');
+/*vot*/	@unlink(UC_ROOT.'/install/index.php');
 
 	$db = new db;
 	$db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, UC_DBCHARSET);
 
 	runquery($sql);
-	dir_clear(UC_ROOT.'./data/view');
-	dir_clear(UC_ROOT.'./data/cache');
-	if(is_dir(UC_ROOT.'./plugin/setting')) {
-		dir_clear(UC_ROOT.'./plugin/setting');
-		@unlink(UC_ROOT.'./plugin/setting/index.htm');
-		@rmdir(UC_ROOT.'./plugin/setting');
+/*vot*/	dir_clear(UC_ROOT.'/data/view');
+/*vot*/	dir_clear(UC_ROOT.'/data/cache');
+/*vot*/	if(is_dir(UC_ROOT.'/plugin/setting')) {
+/*vot*/		dir_clear(UC_ROOT.'/plugin/setting');
+/*vot*/		@unlink(UC_ROOT.'/plugin/setting/index.htm');
+/*vot*/		@rmdir(UC_ROOT.'/plugin/setting');
 	}
 
 	//note 升级uc_applications.viewprourl
@@ -177,7 +177,7 @@ if(!$action) {
 
 } elseif($action == 'upgsecques') {
 
-	$lock_file = UC_ROOT.'./data/upgsecques.lock';
+/*vot*/	$lock_file = UC_ROOT.'/data/upgsecques.lock';
 	if(file_exists($lock_file)) {
 		showheader();
 		showerror('升级被锁定，应该是已经升级过了安全提问，如果已经恢复数据请手动删除<br />'.str_replace(UC_ROOT, '', $lock_file).'<br />之后再来刷新页面');
@@ -197,7 +197,7 @@ if(!$action) {
 		}
 	}
 
-	if(!is_dir(UC_ROOT.'./data/upgsecques')) {
+/*vot*/	if(!is_dir(UC_ROOT.'/data/upgsecques')) {
 		showheader();
 		showerror('请先将论坛下 ./forumdata/upgsecques 目录上传到UCenter 目录 ./data/ 下，之后<a href="javascript:location.reload();" target="_self">刷新此页面</a>');
 	}
@@ -205,7 +205,7 @@ if(!$action) {
 	$num = $num ? intval($num) : 1;
 	$random = getgpc('random');
 	if(empty($random)) {
-		$dir = UC_ROOT.'./data/upgsecques';
+/*vot*/		$dir = UC_ROOT.'/data/upgsecques';
 		$directory = dir($dir);
 		while($entry = $directory->read()) {
 			if(preg_match('/^secques_(\w+)_\d+/', $entry, $match)) {
@@ -215,10 +215,10 @@ if(!$action) {
 		$random = $match[1];
 	};
 
-	$dump_file = UC_ROOT.'./data/upgsecques/secques_'.$random.'_'.$num.'.sql';
+/*vot*/	$dump_file = UC_ROOT.'/data/upgsecques/secques_'.$random.'_'.$num.'.sql';
 	if(!file_exists($dump_file)) {//note 升级完毕
 		@touch($lock_file);
-		dir_clear(UC_ROOT.'./data/upgsecques');
+/*vot*/		dir_clear(UC_ROOT.'/data/upgsecques');
 		setcookie('uc_authcode', '');
 		showheader();
 		echo '安全提问升级完成，感谢您使用本程序';

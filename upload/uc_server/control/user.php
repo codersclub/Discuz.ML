@@ -374,7 +374,7 @@ class usercontrol extends base {
 		$imgtype = array(1 => '.gif', 2 => '.jpg', 3 => '.png');
 		$filetype = $imgtype[$type];
 		if(!$filetype) $filetype = '.jpg';
-		$tmpavatar = UC_DATADIR.'./tmp/upload'.$uid.$filetype;
+/*vot*/		$tmpavatar = UC_DATADIR.'/tmp/upload'.$uid.$filetype;
 		file_exists($tmpavatar) && @unlink($tmpavatar);
 		if(@copy($_FILES['Filedata']['tmp_name'], $tmpavatar) || @move_uploaded_file($_FILES['Filedata']['tmp_name'], $tmpavatar)) {
 			@unlink($_FILES['Filedata']['tmp_name']);
@@ -407,15 +407,15 @@ class usercontrol extends base {
 		}
 		$home = $this->get_home($uid);
 		if(!defined('UC_UPAVTDIR')) {
-			define('UC_UPAVTDIR', UC_DATADIR.'./avatar/');
+			define('UC_UPAVTDIR', UC_DATADIR.'/avatar');
 		}
-		if(!is_dir(UC_UPAVTDIR.$home)) {
+		if(!is_dir(UC_UPAVTDIR.'/'.$home)) {
 			$this->set_home($uid, UC_UPAVTDIR);
 		}
 		$avatartype = getgpc('avatartype', 'G') == 'real' ? 'real' : 'virtual';
-		$bigavatarfile = UC_UPAVTDIR.$this->get_avatar($uid, 'big', $avatartype);
-		$middleavatarfile = UC_UPAVTDIR.$this->get_avatar($uid, 'middle', $avatartype);
-		$smallavatarfile = UC_UPAVTDIR.$this->get_avatar($uid, 'small', $avatartype);
+		$bigavatarfile = UC_UPAVTDIR.'/'.$this->get_avatar($uid, 'big', $avatartype);
+		$middleavatarfile = UC_UPAVTDIR.'/'.$this->get_avatar($uid, 'middle', $avatartype);
+		$smallavatarfile = UC_UPAVTDIR.'/'.$this->get_avatar($uid, 'small', $avatartype);
 		$bigavatar = $this->flashdata_decode(getgpc('avatar1', 'P'));
 		$middleavatar = $this->flashdata_decode(getgpc('avatar2', 'P'));
 		$smallavatar = $this->flashdata_decode(getgpc('avatar3', 'P'));
@@ -455,7 +455,7 @@ class usercontrol extends base {
 			}
 		}else{
 			$filetype = '.jpg';
-			@unlink(UC_DATADIR.'./tmp/upload'.$uid.$filetype);
+/*vot*/			@unlink(UC_DATADIR.'/tmp/upload'.$uid.$filetype);
 			if($success) {
 				return '<?xml version="1.0" ?><root><face success="1"/></root>';
 			} else {
