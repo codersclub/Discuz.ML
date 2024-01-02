@@ -8,7 +8,7 @@
 	Modified by Valery Votintsev, codersclub.org
 */
 
-error_reporting(0);
+error_reporting(E_ALL);
 
 $mtime = explode(' ', microtime());
 $starttime = $mtime[1] + $mtime[0];

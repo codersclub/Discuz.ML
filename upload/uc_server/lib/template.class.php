@@ -70,8 +70,8 @@ class template {
 		if($this->force || !file_exists($this->objfile) || @filemtime($this->objfile) < filemtime($this->tplfile)) {
 			if(empty($this->language)) {
 				@include $this->langfile;
-				if(is_array($languages)) {
-					$this->languages += $languages;
+/*vot*/				if(is_array($lang)) {
+					$this->languages += $lang;
 				}
 			}
 			$this->complie();
