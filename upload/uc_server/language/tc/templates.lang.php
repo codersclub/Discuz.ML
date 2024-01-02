@@ -1,6 +1,6 @@
 <?php
 
-$languages = array(
+$lang = array(
 	'title'=>'標題',
 	'return'=>'返回',
 	'dateline'=>'時間',
