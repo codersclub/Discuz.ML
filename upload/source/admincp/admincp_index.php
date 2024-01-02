@@ -559,6 +559,10 @@ function show_forever_thanks() {
 	showboxheader('home_dev', 'fixpadding', 'id="home_dev"');
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array($copyRightMessage[0], '<span class="bold">'.$copyRightMessage[1].'</span>'));
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array($copyRightMessage[2], '<span class="bold">'.$copyRightMessage[3].'</span>'));
+
+	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array('Multilingual Version', '<span class="bold">Valery Votintsev, <a href="https://codersclub.org/discuzx/">codersclub.org</a></span>'));
+
+
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array(cplang('contributors'), $gitTeamStr));
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array('', '<a href="https://gitee.com/Discuz/DiscuzX/contributors" class="lightlink2" target="_blank">'.cplang('contributors_see').'</a>'));
 	showboxrow('', array('class="dcol d-1 lineheight"', 'class="dcol lineheight team"'), array(cplang('home_dev_manager'), '<a href="https://discuz.dismall.com/home.php?mod=space&uid=1" class="lightlink2 smallfont" target="_blank">'.cplang('dev_manager').'</a>'));
