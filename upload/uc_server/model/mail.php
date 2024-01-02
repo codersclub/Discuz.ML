@@ -123,7 +123,7 @@ class mailmodel {
 		if(empty($mail)) return;
 		$mail['email_to'] = $mail['email_to'] ? $mail['email_to'] : $mail['username'].'<'.$mail['email'].'>';
 		$mail_setting = $this->base->settings;
-		return include UC_ROOT.'lib/sendmail.inc.php';
+/*vot*/		return include UC_ROOT.'/lib/sendmail.inc.php';
 	}
 
 	function _get_mail() {

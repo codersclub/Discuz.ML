@@ -67,7 +67,7 @@ class control extends adminbase {
 				$seccodehidden = urldecode(getgpc('seccodehidden', 'P'));
 				$seccode = strtoupper(getgpc('seccode', 'P'));
 				$seccodehidden = $this->authcode($seccodehidden, 'DECODE', $authkey);
-				require UC_ROOT.'./lib/seccode.class.php';
+/*vot*/				require UC_ROOT.'/lib/seccode.class.php';
 				if(!seccode::seccode_check($seccodehidden, $seccode)) {
 					$errorcode = UC_LOGIN_ERROR_SECCODE;
 				} else {
@@ -169,7 +169,7 @@ class control extends adminbase {
 
 	function onls() {
 
-/*vot*/		include_once UC_ROOT.'language/'.UC_LANG.'/admin.lang.php';
+/*vot*/		include_once UC_ROOT.'/language/'.UC_LANG.'/admin.lang.php';
 
 		$status = 0;
 		if(!empty($_POST['addname']) && $this->submitcheck()) {

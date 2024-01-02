@@ -28,7 +28,7 @@ class control extends pluginbase {
 	function _replacemykey() {
 		$oldmykey = UC_MYKEY;
 		$newmykey = $this->generate_key();
-		$configfile = UC_ROOT.'./data/config.inc.php';
+/*vot*/		$configfile = UC_ROOT.'/data/config.inc.php';
 		if(!is_writable($configfile)) {
 			return false;
 		}

@@ -17,9 +17,9 @@ $apptype = strtolower($apptype);
 
 define('IN_COMSENZ', TRUE);
 if($apptype == 'discuzx') {
-	define('ROOT_PATH', dirname(__FILE__).'/../../');
+/*vot*/	define('ROOT_PATH', dirname(__FILE__).'/../..');
 } else {
-	define('ROOT_PATH', dirname(__FILE__).'/../');
+/*vot*/	define('ROOT_PATH', dirname(__FILE__).'/..');
 }
 define('EXPLOR_SUCCESS', 0);
 define('IMPORT_SUCCESS', 0);
@@ -38,18 +38,18 @@ $sizelimit = 2000;
 $usehex = true;
 
 if($apptype == 'discuz') {
-	require ROOT_PATH.'./config.inc.php';
+/*vot*/	require ROOT_PATH.'/config.inc.php';
 } elseif($apptype == 'uchome' || $apptype == 'supesite' || $apptype == 'supev') {
-	require ROOT_PATH.'./config.php';
+/*vot*/	require ROOT_PATH.'/config.php';
 } elseif($apptype == 'ucenter') {
-	require ROOT_PATH.'./data/config.inc.php';
+/*vot*/	require ROOT_PATH.'/data/config.inc.php';
 } elseif($apptype == 'ecmall') {
-	require ROOT_PATH.'./data/inc.config.php';
+/*vot*/	require ROOT_PATH.'/data/inc.config.php';
 } elseif($apptype == 'ecshop') {
-	require ROOT_PATH.'./data/config.php';
+/*vot*/	require ROOT_PATH.'/data/config.php';
 } elseif($apptype == 'discuzx') {
-	require ROOT_PATH.'./config/config_global.php';
-	require ROOT_PATH.'./config/config_ucenter.php';
+/*vot*/	require ROOT_PATH.'/config/config_global.php';
+/*vot*/	require ROOT_PATH.'/config/config_ucenter.php';
 } else {
 	api_msg('db_api_no_match', $apptype);
 }
@@ -199,33 +199,33 @@ $db = new dbstuffi();
 $version = '';
 if($apptype == 'discuz') {
 
-	define('BACKUP_DIR', ROOT_PATH.'forumdata/');
+/*vot*/	define('BACKUP_DIR', ROOT_PATH.'/forumdata');
 	$tablepre = $tablepre;
 	if(empty($dbcharset)) {
 		$dbcharset = in_array(strtolower($charset), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', $charset) : '';
 	}
 	$db->connect($dbhost, $dbuser, $dbpw, $dbname, $dbcharset, $pconnect, $tablepre);
 	define('IN_DISCUZ', true);
-	include ROOT_PATH.'discuz_version.php';
+/*vot*/	include ROOT_PATH.'/discuz_version.php';
 	$version = DISCUZ_VERSION;
 
 } elseif($apptype == 'uchome' || $apptype == 'supesite') {
 
-	define('BACKUP_DIR', ROOT_PATH.'./data/');
+/*vot*/	define('BACKUP_DIR', ROOT_PATH.'/data');
 	$tablepre = $_SC['tablepre'];
 	$dbcharset = $_SC['dbcharset'];
 	$db->connect($_SC['dbhost'], $_SC['dbuser'], $_SC['dbpw'], $_SC['dbname'], $dbcharset, $_SC['pconnect'], $tablepre);
 
 } elseif($apptype == 'ucenter') {
 
-	define('BACKUP_DIR', ROOT_PATH.'./data/backup/');
+/*vot*/	define('BACKUP_DIR', ROOT_PATH.'/data/backup');
 	$tablepre = UC_DBTABLEPRE;
 	$dbcharset = UC_DBCHARSET;
 	$db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, $dbcharset, UC_DBCONNECT, $tablepre);
 
 } elseif($apptype == 'ecmall') {
 
-	define('BACKUP_DIR', ROOT_PATH.'./data/backup/');
+/*vot*/	define('BACKUP_DIR', ROOT_PATH.'/data/backup');
 	$tablepre = DB_PREFIX;
 	$dbcharset = strtolower(str_replace('-', '', strstr(LANG, '-')));
 	$cfg = parse_url(DB_CONFIG);
@@ -241,7 +241,7 @@ if($apptype == 'discuz') {
 
 } elseif($apptype == 'supev') {
 
-	define('BACKUP_DIR', ROOT_PATH.'data/backup/');
+/*vot*/	define('BACKUP_DIR', ROOT_PATH.'/data/backup');
 	$tablepre = $tablepre;
 	if(empty($dbcharset)) {
 		$dbcharset = in_array(strtolower($_config['output']['charset']), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', CHARSET) : '';
@@ -250,21 +250,21 @@ if($apptype == 'discuz') {
 
 } elseif($apptype == 'ecshop') {
 
-	define('BACKUP_DIR', ROOT_PATH.'data/backup/');
+/*vot*/	define('BACKUP_DIR', ROOT_PATH.'/data/backup');
 	$tablepre = $prefix;
 	$dbcharset = 'utf8';
 	$db->connect($db_host, $db_user, $db_pass, $db_name, $dbcharset, 0, $tablepre);
 
 } elseif($apptype == 'discuzx') {
 
-	define('BACKUP_DIR', ROOT_PATH.'data/');
+/*vot*/	define('BACKUP_DIR', ROOT_PATH.'/data');
 	extract($_config['db']['1']);
 	if(empty($dbcharset)) {
 		$dbcharset = in_array(strtolower(CHARSET), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', $_config['output']['charset']) : '';
 	}
 	$db->connect($dbhost, $dbuser, $dbpw, $dbname, $dbcharset, $pconnect, $tablepre);
 	define('IN_DISCUZ', true);
-	include ROOT_PATH.'source/discuz_version.php';
+/*vot*/	include ROOT_PATH.'/source/discuz_version.php';
 	$version = DISCUZ_VERSION;
 
 }
@@ -312,14 +312,14 @@ if($get['method'] == 'export') {
 
 	if(!isset($get['sqlpath']) || empty($get['sqlpath'])) {
 		$get['sqlpath'] = 'backup_'.date('ymd', $timestamp).'_'.random(6);
-		if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
-			api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
+/*vot*/		if(!mkdir(BACKUP_DIR.'/'.$get['sqlpath'], 0777)) {
+/*vot*/			api_msg('mkdir_error', 'make dir error: '.BACKUP_DIR.'/'.$get['sqlpath']);
 		}
 	} else {
 		$get['sqlpath'] = str_replace(array('/', '\\', '.', "'"), '', $get['sqlpath']);
-		if(!is_dir(BACKUP_DIR.'./'.$get['sqlpath'])) {
-			if(!mkdir(BACKUP_DIR.'./'.$get['sqlpath'], 0777)) {
-				api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'./'.$get['sqlpath']);
+/*vot*/		if(!is_dir(BACKUP_DIR.'/'.$get['sqlpath'])) {
+/*vot*/			if(!mkdir(BACKUP_DIR.'/'.$get['sqlpath'], 0777)) {
+/*vot*/				api_msg('mkdir_error', 'make dir error:'.BACKUP_DIR.'/'.$get['sqlpath']);
 			}
 		}
 	}
@@ -346,7 +346,7 @@ if($get['method'] == 'export') {
 	}
 
 	!$complete && $get['tableid']--;
-	$dumpfile = BACKUP_DIR.$get['sqlpath'].'/'.$get['backupfilename'].'-'.$get['volume'].'.sql';
+/*vot*/	$dumpfile = BACKUP_DIR.'/'.$get['sqlpath'].'/'.$get['backupfilename'].'-'.$get['volume'].'.sql';
 	if(trim($sqldump)) {
 		$sqldump = "$idstring".
 			"# <?php exit();?>\n".
@@ -368,7 +368,7 @@ if($get['method'] == 'export') {
 			auto_next($get, $dumpfile);
 		}
 	} else {
-		@touch(BACKUP_DIR.$get['sqlpath'].'/index.htm');
+/*vot*/		@touch(BACKUP_DIR.'/'.$get['sqlpath'].'/index.htm');
 		api_msg('explor_success', 'explor_success');
 	}
 
@@ -385,15 +385,15 @@ if($get['method'] == 'export') {
 
 	$get['volume']++;
 	$next_dumpfile = preg_replace('/^(\d+)\_(\w+)\-(\d+)\.sql$/', '\\1_\\2-'.$get['volume'].'.sql', $get['dumpfile']);
-	if(!is_file(BACKUP_DIR.$get['sqlpath'].'/'.$get['dumpfile'])) {
-		if(is_file(BACKUP_DIR.$get['sqlpath'].'/'.$next_dumpfile)) {
+/*vot*/	if(!is_file(BACKUP_DIR.'/'.$get['sqlpath'].'/'.$get['dumpfile'])) {
+/*vot*/		if(is_file(BACKUP_DIR.'/'.$get['sqlpath'].'/'.$next_dumpfile)) {
 			api_msg('bak_file_lose', $get['dumpfile']);
 		} else {
 			api_msg('import_success', 'import_success');
 		}
 	}
 
-	$sqldump = file_get_contents(BACKUP_DIR.$get['sqlpath'].'/'.$get['dumpfile']);
+/*vot*/	$sqldump = file_get_contents(BACKUP_DIR.'/'.$get['sqlpath'].'/'.$get['dumpfile']);
 	$sqlquery = splitsql($sqldump);
 	unset($sqldump);
 
@@ -410,11 +410,11 @@ if($get['method'] == 'export') {
 
 	$cur_file = $get['dumpfile'];
 	$get['dumpfile'] = $next_dumpfile;
-	auto_next($get, BACKUP_DIR.$get['sqlpath'].'/'.$cur_file);
+/*vot*/	auto_next($get, BACKUP_DIR.'/'.$get['sqlpath'].'/'.$cur_file);
 
 } elseif($get['method'] == 'ping') {
 
-	if($get['dir'] && is_dir(BACKUP_DIR.$get['dir'])) {
+/*vot*/	if($get['dir'] && is_dir(BACKUP_DIR.'/'.$get['dir'])) {
 		echo "1";exit;
 	} else {
 		echo "-1";exit;
@@ -425,7 +425,7 @@ if($get['method'] == 'export') {
 	$str = "<root>\n";
 	$directory = dir(BACKUP_DIR);
 	while($entry = $directory->read()) {
-		$filename = BACKUP_DIR.$entry;
+/*vot*/		$filename = BACKUP_DIR.'/'.$entry;
 		if(is_dir($filename) && preg_match('/^backup_(\d+)_\w+$/', $entry, $match)) {
 			$str .= "\t<dir>\n";
 			$str .= "\t\t<dirname>$filename</dirname>\n";
@@ -442,14 +442,14 @@ if($get['method'] == 'export') {
 } elseif($get['method'] == 'view') {
 
 	$sqlpath = trim($get['sqlpath']);
-	if(empty($sqlpath) || !is_dir(BACKUP_DIR.$sqlpath)) {
+/*vot*/	if(empty($sqlpath) || !is_dir(BACKUP_DIR.'/'.$sqlpath)) {
 		api_msg('dir_no_exists', $sqlpath);
 	}
 
 	$str = "<root>\n";
-	$directory = dir(BACKUP_DIR.$sqlpath);
+/*vot*/	$directory = dir(BACKUP_DIR.'/'.$sqlpath);
 	while($entry = $directory->read()) {
-		$filename = BACKUP_DIR.$sqlpath.'/'.$entry;
+/*vot*/		$filename = BACKUP_DIR.'/'.$sqlpath.'/'.$entry;
 		if(is_file($filename) && preg_match('/\d+_\w+\-(\d+).sql$/', $filename, $match)) {
 			$str .= "\t<file>\n";
 			$str .= "\t\t<file_name>$match[0]</file_name>\n";
@@ -469,18 +469,18 @@ if($get['method'] == 'export') {
 } elseif($get['method'] == 'delete') {
 
 	$sqlpath = trim($get['sqlpath']);
-	if(empty($sqlpath) || !is_dir(BACKUP_DIR.$sqlpath) || !preg_match('/^backup_(\d+)_\w+$/', $get['sqlpath'])) {
+/*vot*/	if(empty($sqlpath) || !is_dir(BACKUP_DIR.'/'.$sqlpath) || !preg_match('/^backup_(\d+)_\w+$/', $get['sqlpath'])) {
 		api_msg('dir_no_exists', $sqlpath);
 	}
-	$directory = dir(BACKUP_DIR.$sqlpath);
+/*vot*/	$directory = dir(BACKUP_DIR.'/'.$sqlpath);
 	while($entry = $directory->read()) {
-		$filename = BACKUP_DIR.$sqlpath.'/'.$entry;
+/*vot*/		$filename = BACKUP_DIR.'/'.$sqlpath.'/'.$entry;
 		if(is_file($filename) && preg_match('/^\d+_\w+\-(\d+).sql$/', $entry) && !@unlink($filename)) {
 			api_msg('delete_dumpfile_error', $filename);
 		}
 	}
 	$directory->close();
-	@rmdir(BACKUP_DIR.$sqlpath);
+/*vot*/	@rmdir(BACKUP_DIR.'/'.$sqlpath);
 	api_msg('delete_sqlpath_success', 'delete_sqlpath_success');
 
 }
@@ -524,16 +524,16 @@ function splitsql($sql) {
 }
 
 function get_dumpfile_by_path($path) {
-	if(empty($path) || !is_dir(BACKUP_DIR.$path)) {
+/*vot*/	if(empty($path) || !is_dir(BACKUP_DIR.'/'.$path)) {
 		api_msg('sqlpath_null_noexists', $path);
 	}
-	$directory = dir(BACKUP_DIR.$path);
+/*vot*/	$directory = dir(BACKUP_DIR.'/'.$path);
 	while($entry = $directory->read()) {
-		$filename = BACKUP_DIR.$path.'/'.$entry;
+/*vot*/		$filename = BACKUP_DIR.'/'.$path.'/'.$entry;
 		if(is_file($filename)) {
 			if(preg_match('/^\d+\_\w+\-\d+\.sql$/', $entry)) {
 				$file_bakfile = preg_replace('/^(\d+)\_(\w+)\-(\d+)\.sql$/', '\\1_\\2-1.sql', $entry);
-				if(is_file(BACKUP_DIR.$path.'/'.$file_bakfile)) {
+/*vot*/				if(is_file(BACKUP_DIR.'/'.$path.'/'.$file_bakfile)) {
 					return $file_bakfile;
 				} else {
 					api_msg('sqlpath_nomatch_bakfile', $path);
@@ -802,7 +802,7 @@ function is_https() {
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	// The server port number is a bottom-up judgment
+	// The server port number is the last place to check
 	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}

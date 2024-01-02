@@ -8,17 +8,17 @@
 */
 
 define("IN_UC", TRUE);
-define('UC_ROOT', realpath('..').'/');
+/*vot*/define('UC_ROOT', str_replace('\\','/', realpath('..')));
 
 $version_old = 'UCenter 1.5.2';
 $version_new = 'UCenter 1.6.0';
-$lock_file = UC_ROOT.'./data/upgrade.lock';
+/*vot*/$lock_file = UC_ROOT.'/data/upgrade.lock';
 
-require UC_ROOT.'./data/config.inc.php';
+/*vot*/require UC_ROOT.'/data/config.inc.php';
 if(function_exists("mysql_connect")) {
-	require UC_ROOT.'./lib/db.class.php';
+/*vot*/	require UC_ROOT.'/lib/db.class.php';
 } else {
-	require UC_ROOT.'./lib/dbi.class.php';
+/*vot*/	require UC_ROOT.'/lib/dbi.class.php';
 }
 error_reporting(0);
 @set_magic_quotes_runtime(0);
@@ -225,19 +225,19 @@ if(!$action) {
 } elseif($action == 'db') {
 
 
-	@touch(UC_ROOT.'./data/install.lock');
-	@unlink(UC_ROOT.'./install/index.php');
+/*vot*/	@touch(UC_ROOT.'/data/install.lock');
+/*vot*/	@unlink(UC_ROOT.'/install/index.php');
 
 	$db = new ucserver_db();
 	$db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, UC_DBCHARSET);
 
 	runquery($sql);
-	dir_clear(UC_ROOT.'./data/view');
-	dir_clear(UC_ROOT.'./data/cache');
-	if(is_dir(UC_ROOT.'./plugin/setting')) {
-		dir_clear(UC_ROOT.'./plugin/setting');
-		@unlink(UC_ROOT.'./plugin/setting/index.htm');
-		@rmdir(UC_ROOT.'./plugin/setting');
+/*vot*/	dir_clear(UC_ROOT.'/data/view');
+/*vot*/	dir_clear(UC_ROOT.'/data/cache');
+/*vot*/	if(is_dir(UC_ROOT.'/plugin/setting')) {
+/*vot*/		dir_clear(UC_ROOT.'/plugin/setting');
+/*vot*/		@unlink(UC_ROOT.'/plugin/setting/index.htm');
+/*vot*/		@rmdir(UC_ROOT.'/plugin/setting');
 	}
 
 	header("Location: upgrade3.php?action=pm&forward=".urlencode($forward));
@@ -386,7 +386,7 @@ if(!$action) {
 function removecode($str, $length) {
 	static $uccode = null;
 	if($uccode === null) {
-		require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/		require_once UC_ROOT.'/lib/uccode.class.php';
 		$uccode = new uccode();
 	}
 	$str = $uccode->complie($str);

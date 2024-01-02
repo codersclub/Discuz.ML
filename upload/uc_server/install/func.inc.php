@@ -96,8 +96,8 @@ function dirfile_check(&$dirfile_items) {
 	foreach($dirfile_items as $key => $item) {
 		$item_path = $item['path'];
 		if($item['type'] == 'dir') {
-			if(!dir_writeable(ROOT_PATH.$item_path)) {
-				if(is_dir(ROOT_PATH.$item_path)) {
+/*vot*/			if(!dir_writeable(ROOT_PATH.'/'.$item_path)) {
+/*vot*/				if(is_dir(ROOT_PATH.'/'.$item_path)) {
 					$dirfile_items[$key]['status'] = 0;
 					$dirfile_items[$key]['current'] = '+r';
 				} else {
@@ -109,8 +109,8 @@ function dirfile_check(&$dirfile_items) {
 				$dirfile_items[$key]['current'] = '+r+w';
 			}
 		} else {
-			if(file_exists(ROOT_PATH.$item_path)) {
-				if(is_writable(ROOT_PATH.$item_path)) {
+/*vot*/			if(file_exists(ROOT_PATH.'/'.$item_path)) {
+/*vot*/				if(is_writable(ROOT_PATH.'/'.$item_path)) {
 					$dirfile_items[$key]['status'] = 1;
 					$dirfile_items[$key]['current'] = '+r+w';
 				} else {
@@ -118,7 +118,7 @@ function dirfile_check(&$dirfile_items) {
 					$dirfile_items[$key]['current'] = '+r';
 				}
 			} else {
-				if(dir_writeable(dirname(ROOT_PATH.$item_path))) {
+/*vot*/				if(dir_writeable(dirname(ROOT_PATH.'/'.$item_path))) {
 					$dirfile_items[$key]['status'] = 1;
 					$dirfile_items[$key]['current'] = '+r+w';
 				} else {
@@ -1124,8 +1124,8 @@ function lang($lang_key, $force = true) {
 
 function check_adminuser($username, $password, $email) {
 
-	@include ROOT_PATH.'./config.inc.php';
-	include ROOT_PATH.'./uc_client/client.php';
+/*vot*/	@include ROOT_PATH.'/config.inc.php';
+/*vot*/	include ROOT_PATH.'/uc_client/client.php';
 	$error = '';
 	$uid = uc_user_register($username, $password, $email);
 	/*vot comments:

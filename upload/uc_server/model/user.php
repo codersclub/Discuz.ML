@@ -236,16 +236,16 @@ class usermodel {
 
 	function delete_useravatar($uidsarr) {
 		if(!defined('UC_DELAVTDIR')) {
-			define('UC_DELAVTDIR', UC_DATADIR.'./avatar/');
+/*vot*/			define('UC_DELAVTDIR', UC_DATADIR.'/avatar');
 		}
 		$uidsarr = (array)$uidsarr;
 		foreach((array)$uidsarr as $uid) {
-			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'big', 'real')) && unlink($avatar_file);
-			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'middle', 'real')) && unlink($avatar_file);
-			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'small', 'real')) && unlink($avatar_file);
-			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'big')) && unlink($avatar_file);
-			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'middle')) && unlink($avatar_file);
-			file_exists($avatar_file = UC_DELAVTDIR.$this->base->get_avatar($uid, 'small')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.'/'.$this->base->get_avatar($uid, 'big', 'real')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.'/'.$this->base->get_avatar($uid, 'middle', 'real')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.'/'.$this->base->get_avatar($uid, 'small', 'real')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.'/'.$this->base->get_avatar($uid, 'big')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.'/'.$this->base->get_avatar($uid, 'middle')) && unlink($avatar_file);
+			file_exists($avatar_file = UC_DELAVTDIR.'/'.$this->base->get_avatar($uid, 'small')) && unlink($avatar_file);
 		}
 	}
 
@@ -395,9 +395,9 @@ class usermodel {
 			return password_verify($password, $hash);
 		} else if(strlen($salt) == 6) {
 			return hash_equals($hash, md5(md5($password).$salt));
-		} else if(strlen($salt) > 6 && strlen($salt) < 20 && file_exists(UC_ROOT . "lib/uc_password_$salt.class.php")) {
+/*vot*/		} else if(strlen($salt) > 6 && strlen($salt) < 20 && file_exists(UC_ROOT . "/lib/uc_password_$salt.class.php")) {
 			$classname = "uc_password_$salt";
-			include(UC_ROOT . "lib/uc_password_$salt.class.php");
+/*vot*/			include(UC_ROOT . "/lib/uc_password_$salt.class.php");
 			return $classname::verify_password($password, $hash);
 		}
 		return false;
@@ -415,7 +415,7 @@ class usermodel {
 	}
 
 	function reset_founderpw($newpw, $reconfkey = 1) {
-		$configfile = UC_ROOT.'./data/config.inc.php';
+/*vot*/		$configfile = UC_ROOT.'/data/config.inc.php';
 		if(!is_writable($configfile)) {
 			return -4;
 		} else {

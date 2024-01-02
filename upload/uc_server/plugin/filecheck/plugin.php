@@ -13,7 +13,7 @@ class control extends pluginbase {
 
 	function onindex() {
 
-		if(!$ucfiles = @file(UC_ROOT.'./control/admin/ucfiles.md5')) {
+/*vot*/		if(!$ucfiles = @file(UC_ROOT.'/control/admin/ucfiles.md5')) {
 			$this->message('file_check_failed');
 		}
 
@@ -105,7 +105,7 @@ class control extends pluginbase {
 	}
 
 	function checkfiles($currentdir, $ext = '', $sub = 1, $skip = '') {
-		$dir = @opendir(UC_ROOT.$currentdir);
+/*vot*/		$dir = @opendir(UC_ROOT.'/'.$currentdir);
 		$exts = '/('.$ext.')$/i';
 		$skips = explode(',', $skip);
 

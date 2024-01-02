@@ -36,8 +36,8 @@ class pluginbase extends adminbase {
 		$this->view->assign('plugin', $this->plugin);
 		$this->view->assign('plugins', $this->plugins);
 		$this->view->languages = $this->plugin['lang'];
-		$this->view->tpldir = UC_ROOT.'./plugin/'.$a;
-		$this->view->objdir = UC_DATADIR.'./view';
+/*vot*/		$this->view->tpldir = UC_ROOT.'/plugin/'.$a;
+/*vot*/		$this->view->objdir = UC_DATADIR.'/view';
 	}
 
 	function _call($a, $arg) {
@@ -56,7 +56,7 @@ $do = getgpc('do');
 if(!preg_match("/^[\w]{1,64}$/", $a)) {
 	exit('Argument Invalid');
 }
-if(!@require_once UC_ROOT."./plugin/$a/plugin.php") {
+/*vot*/if(!@require_once UC_ROOT."/plugin/$a/plugin.php") {
 	exit('Plugin not found');
 }
 

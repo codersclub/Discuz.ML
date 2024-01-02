@@ -35,7 +35,7 @@ class tagmodel {
 
 	function updatedata($appid, $data) {
 		$appid = intval($appid);
-		include_once UC_ROOT.'lib/xml.class.php';
+/*vot*/		include_once UC_ROOT.'/lib/xml.class.php';
 		$data = xml_unserialize($data);
 		$this->base->load('app');
 		$data[0] = addslashes($data[0]);

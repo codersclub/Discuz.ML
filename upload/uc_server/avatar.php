@@ -10,6 +10,8 @@
 
 error_reporting(0);
 
+/*vot*/ define('UC_ROOT', str_replace('\\','/',dirname(__FILE__)));
+
 _get_script_url();
 define('UC_API', (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/')));
 // In the non-independent mode, if you want to set an independent domain name for the avatar service (such as CDN and other services), you can configure UC_AVTURL here (no / at the end)
@@ -25,7 +27,7 @@ $check = isset($_GET['check_file_exists']) ? $_GET['check_file_exists'] : '';
 $ts = isset($_GET['ts']) ? $_GET['ts'] : '';
 
 $avatar = get_avatar($uid, $size, $type);
-$avatar_file = dirname(__FILE__).'/data/avatar/'.$avatar;
+/*vot*/$avatar_file = UC_ROOT.'/data/avatar/'.$avatar;
 if(file_exists($avatar_file)) {
 	if($check) {
 		echo 1;
@@ -39,7 +41,7 @@ if(file_exists($avatar_file)) {
 	}
 	$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
 	$avatar_url = 'noavatar.svg';
-	$avatar_file = dirname(__FILE__).'/data/avatar/'.$avatar_url;
+/*vot*/	$avatar_file = UC_ROOT.'/data/avatar/'.$avatar_url;
 }
 
 if(empty($random)) {
@@ -106,7 +108,7 @@ function is_https() {
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	// The server port number is a bottom-up judgment
+	// The server port number is the last place to check
 	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}

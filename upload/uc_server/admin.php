@@ -14,10 +14,10 @@ $mtime = explode(' ', microtime());
 $starttime = $mtime[1] + $mtime[0];
 
 define('IN_UC', TRUE);
-/*vot*/ define('UC_ROOT', str_replace('\\','/',__DIR__).'/');
+/*vot*/ define('UC_ROOT', str_replace('\\','/',__DIR__));
 define('UC_ADMINSCRIPT', basename(__FILE__));
 define('UC_API', (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/')));
-define('UC_DATADIR', UC_ROOT.'data/');
+define('UC_DATADIR', UC_ROOT.'/data');
 define('UC_DATAURL', UC_API.'/data');
 unset($_ENV, $HTTP_GET_VARS, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, $HTTP_SERVER_VARS, $HTTP_ENV_VARS);
 
@@ -28,10 +28,10 @@ $_SERVER	= daddslashes($_SERVER);
 $_FILES		= daddslashes($_FILES);
 $_REQUEST	= daddslashes($_REQUEST, 1, TRUE);
 
-require UC_ROOT.'./release/release.php';
-require UC_DATADIR.'config.inc.php';
-require UC_ROOT.'model/base.php';
-require UC_ROOT.'model/admin.php';
+require UC_ROOT.'/release/release.php';
+require UC_DATADIR.'/config.inc.php';
+require UC_ROOT.'/model/base.php';
+require UC_ROOT.'/model/admin.php';
 if(!defined('UC_KEY') || !UC_KEY) {
 	exit('This UCenter Server has been disabled.');
 }
@@ -46,7 +46,7 @@ define('RELEASE_ROOT', '');
 header('Content-Type: text/html; charset='.constant('UC_CHARSET'));
 
 if(in_array($m, array('admin', 'app', 'badword', 'cache', 'db', 'domain', 'frame', 'log', 'note', 'feed', 'mail', 'setting', 'user', 'credit', 'seccode', 'tool', 'plugin', 'pm'))) {
-	include UC_ROOT."control/admin/$m.php";
+/*vot*/	include UC_ROOT."/control/admin/$m.php";
 	$control = new control();
 	$method = 'on'.$a;
 	if(method_exists($control, $method) && $a[0] != '_') {

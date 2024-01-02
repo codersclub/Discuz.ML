@@ -11,22 +11,22 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
 
 define('IN_COMSENZ', TRUE);
-define('ROOT_PATH', dirname(__FILE__).'/../');
+/*vot*/define('ROOT_PATH', dirname(dirname(__FILE__)));
 
-require ROOT_PATH.'./release/release.php';
-require ROOT_PATH.'./install/var.inc.php';
+/*vot*/require ROOT_PATH.'/release/release.php';
+/*vot*/require ROOT_PATH.'/install/var.inc.php';
 
 //------------------------------------------------------------------
 //vot Define UC Language !!!
 //vot	!!!! ToDo: Add Language detection by Cookie/Input !!!!!!!!!!!!!!!
 /*vot*/	define('UC_LANG', UC_DEFAULT_LANG);
 /*vot*/	define('RTLSUFFIX', UC_DEFAULT_DIR == 'rtl' ? '_rtl' : '');
-/*vot*/ require ROOT_PATH . './language/' . UC_LANG . '/lang.inc.php';
+/*vot*//*vot*/ require ROOT_PATH . '/language/' . UC_LANG . '/lang.inc.php';
 
-require ROOT_PATH.'./install/dbi.class.php';// MySQLi Only, Git new
-require ROOT_PATH.'./install/func.inc.php';
+/*vot*/require ROOT_PATH.'/install/dbi.class.php';// MySQLi Only, Git new
+/*vot*/require ROOT_PATH.'/install/func.inc.php';
 
-file_exists(ROOT_PATH.'./install/extvar.inc.php') && require ROOT_PATH.'./install/extvar.inc.php';
+/*vot*/file_exists(ROOT_PATH.'/install/extvar.inc.php') && require ROOT_PATH.'/install/extvar.inc.php';
 
 $view_off = getgpc('view_off');
 
@@ -182,7 +182,7 @@ if($method == 'show_license') {
 } elseif($method == 'ext_info') {
 
 	@touch($lockfile);
-	@touch(ROOT_PATH.'./data/upgrade.lock');
+/*vot*/	@touch(ROOT_PATH.'/data/upgrade.lock');
 	if(VIEW_OFF) {
 		show_msg('ext_info_succ');
 	} else {
@@ -194,12 +194,12 @@ if($method == 'show_license') {
 
 	}
 
-	@unlink(ROOT_PATH.'./install/index.php'); // Delete UCenter installation file, Git added
+//vot	@unlink(ROOT_PATH.'/install/index.php'); // Delete UCenter installation file, Git added
 
 } elseif($method == 'install_check') {
 
 	if(file_exists($lockfile)) {
-		@touch(ROOT_PATH.'./data/upgrade.lock');
+/*vot*/		@touch(ROOT_PATH.'/data/upgrade.lock');
 		show_msg('installstate_succ');
 	} else {
 		show_msg('lock_file_not_touch', $lockfile, 0);

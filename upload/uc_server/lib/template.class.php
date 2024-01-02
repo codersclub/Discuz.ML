@@ -40,10 +40,10 @@ class template {
 
 	function template() {
 		ob_start();
-		$this->defaulttpldir = UC_ROOT.'./view/default';
-		$this->tpldir = UC_ROOT.'./view/default';
-		$this->objdir = UC_DATADIR.'./view';
-/*vot*/		$this->langfile = UC_ROOT . 'language/' . UC_LANG . '/templates.lang.php';
+/*vot*/		$this->defaulttpldir = UC_ROOT.'/view/default';
+/*vot*/		$this->tpldir = UC_ROOT.'/view/default';
+/*vot*/		$this->objdir = UC_DATADIR.'/view';
+/*vot*/		$this->langfile = UC_ROOT . '/language/' . UC_LANG . '/templates.lang.php';
 		if (version_compare(PHP_VERSION, '5') == -1) {
 			register_shutdown_function(array(&$this, '__destruct'));
 		}

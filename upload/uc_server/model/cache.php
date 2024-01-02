@@ -39,7 +39,7 @@ class cachemodel {
 					$s .= '$_CACHE[\''.$m.'\'] = '.var_export($this->$method(), TRUE).";\r\n";
 				}
 				$s .= "\r\n?>";
-				file_put_contents(UC_DATADIR."./cache/$cachefile.php", $s, LOCK_EX);
+/*vot*/				file_put_contents(UC_DATADIR."/cache/$cachefile.php", $s, LOCK_EX);
 			}
 		} else {
 			foreach((array)$this->map as $file => $modules) {
@@ -49,16 +49,16 @@ class cachemodel {
 					$s .= '$_CACHE[\''.$m.'\'] = '.var_export($this->$method(), TRUE).";\r\n";
 				}
 				$s .= "\r\n?>";
-				file_put_contents(UC_DATADIR."./cache/$file.php", $s, LOCK_EX);
+/*vot*/				file_put_contents(UC_DATADIR."/cache/$file.php", $s, LOCK_EX);
 			}
 		}
 	}
 
 	function updatetpl() {
-		$tpl = dir(UC_DATADIR.'view');
+/*vot*/		$tpl = dir(UC_DATADIR.'/view');
 		while($entry = $tpl->read()) {
 			if(preg_match("/\.php$/", $entry)) {
-				@unlink(UC_DATADIR.'view/'.$entry);
+/*vot*/				@unlink(UC_DATADIR.'/view/'.$entry);
 			}
 		}
 		$tpl->close();

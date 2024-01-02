@@ -27,7 +27,7 @@ class control extends base {
 		@header("Cache-Control: no-store, private, post-check=0, pre-check=0, max-age=0", FALSE);
 		@header("Pragma: no-cache");
 
-		include_once UC_ROOT.'lib/seccode.class.php';
+/*vot*/		include_once UC_ROOT.'/lib/seccode.class.php';
 		$code = new seccode();
 		$code->code = $seccode;
 		$code->type = 0;
@@ -41,8 +41,8 @@ class control extends base {
 		$code->size = 0;
 		$code->shadow = 1;
 		$code->animator = 0;
-		$code->fontpath = UC_ROOT.'images/fonts/';
-		$code->datapath = UC_ROOT.'images/';
+/*vot*/		$code->fontpath = UC_ROOT.'/images/fonts/';
+/*vot*/		$code->datapath = UC_ROOT.'/images/';
 		$code->includepath = '';
 		$code->display();
 	}

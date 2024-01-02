@@ -810,7 +810,7 @@ class pmmodel {
 	function removecode($str, $length) {
 		static $uccode = null;
 		if($uccode === null) {
-			require_once UC_ROOT.'lib/uccode.class.php';
+/*vot*/			require_once UC_ROOT.'/lib/uccode.class.php';
 			$uccode = new uccode();
 		}
 		$str = $uccode->complie($str);

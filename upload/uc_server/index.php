@@ -14,10 +14,10 @@ $mtime = explode(' ', microtime());
 $starttime = $mtime[1] + $mtime[0];
 
 define('IN_UC', TRUE);
-define('UC_ROOT', dirname(__FILE__).'/');
+/*vot*/ define('UC_ROOT', str_replace('\\','/',dirname(__FILE__)));
 /*vot*/ if(!isset($_SERVER['HTTPS'])) {$_SERVER['HTTPS'] = '';}
 define('UC_API', (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/')));
-define('UC_DATADIR', UC_ROOT.'data/');
+/*vot*/define('UC_DATADIR', UC_ROOT.'/data');
 define('UC_DATAURL', UC_API.'/data');
 unset($_ENV, $HTTP_GET_VARS, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, $HTTP_SERVER_VARS, $HTTP_ENV_VARS);
 
@@ -28,7 +28,7 @@ $_SERVER	= daddslashes($_SERVER);
 $_FILES		= daddslashes($_FILES);
 $_REQUEST	= daddslashes($_REQUEST, 1, TRUE);
 
-require UC_ROOT.'./release/release.php';
+/*vot*/require UC_ROOT.'/release/release.php';
 if(!@include UC_DATADIR.'config.inc.php') {
 	exit('The file <b>data/config.inc.php</b> does not exist, perhaps because of UCenter has not been installed, <a href="install/index.php"><b>Please click here to install it.</b></a>.');
 }
@@ -45,18 +45,18 @@ if(empty($m) && empty($a)) {
 
 define('RELEASE_ROOT', '');
 
-if(file_exists(UC_ROOT.RELEASE_ROOT.'model/base.php')) {
-	require UC_ROOT.RELEASE_ROOT.'model/base.php';
+/*vot*/if(file_exists(UC_ROOT.'/'.RELEASE_ROOT.'model/base.php')) {
+/*vot*/	require UC_ROOT.'/'.RELEASE_ROOT.'model/base.php';
 } else {
-	require UC_ROOT.'model/base.php';
+/*vot*/	require UC_ROOT.'/model/base.php';
 }
 
 if(in_array($m, array('app', 'frame', 'user', 'pm', 'pm_client', 'tag', 'feed', 'friend', 'domain', 'credit', 'mail', 'version', 'seccode'))) {
 
-	if(file_exists(UC_ROOT.RELEASE_ROOT."control/$m.php")) {
-		include UC_ROOT.RELEASE_ROOT."control/$m.php";
+/*vot*/	if(file_exists(UC_ROOT.'/'.RELEASE_ROOT."control/$m.php")) {
+/*vot*/		include UC_ROOT.'/'.RELEASE_ROOT."control/$m.php";
 	} else {
-		include UC_ROOT."control/$m.php";
+/*vot*/		include UC_ROOT."/control/$m.php";
 	}
 
 	$classname = $m.'control';
@@ -161,7 +161,7 @@ function is_https() {
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	// The server port number is a bottom-up judgment
+	// The server port number is the last place to check
 	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}

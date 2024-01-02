@@ -24,9 +24,9 @@ class pluginmodel {
 	}
 
 	function get_plugins() {
-		include_once UC_ROOT.'./lib/xml.class.php';
+/*vot*/		include_once UC_ROOT.'/lib/xml.class.php';
 		$arr = array();
-		$dir = UC_ROOT.'./plugin';
+/*vot*/		$dir = UC_ROOT.'/plugin';
 		$d = opendir($dir);
 		while($f = readdir($d)) {
 			if($f != '.' && $f != '..' && $f != '.svn' && is_dir($dir.'/'.$f)) {
@@ -42,13 +42,13 @@ class pluginmodel {
 	}
 
 	function get_plugin($pluginname) {
-		$f = file_get_contents(UC_ROOT."./plugin/$pluginname/plugin.xml");
-		include_once UC_ROOT.'./lib/xml.class.php';
+/*vot*/		$f = file_get_contents(UC_ROOT."/plugin/$pluginname/plugin.xml");
+/*vot*/		include_once UC_ROOT.'/lib/xml.class.php';
 		return xml_unserialize($f);
 	}
 
 	function get_plugin_by_name($pluginname) {
-		$dir = UC_ROOT.'./plugin';
+/*vot*/		$dir = UC_ROOT.'/plugin';
 		$s = file_get_contents($dir.'/'.$pluginname.'/plugin.xml');
 		return xml_unserialize($s, TRUE);
 	}
@@ -68,7 +68,7 @@ class pluginmodel {
 	}
 
 	function cert_get_file() {
-		return UC_ROOT.'./data/tmp/ucenter_'.substr(md5(UC_KEY), 0, 16).'.cert';
+/*vot*/		return UC_ROOT.'/data/tmp/ucenter_'.substr(md5(UC_KEY), 0, 16).'.cert';
 	}
 
 	function cert_dump_encode($arr, $life = 0) {
