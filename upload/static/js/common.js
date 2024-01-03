@@ -2331,15 +2331,11 @@ if(BROWSER.ie) {
 
 //vot: MultiLingual support
 function setlang(lang) {
-	var url = document.location.href;
-	var anchorpos = url.indexOf('#');
-	var anchor = '';
-	if(anchorpos != -1) {
-		anchor = url.substr(anchorpos);
-		url = url.substr(0, anchorpos);
-	}
-	url += (url.indexOf('?') != -1) ? '&' : '?';
-	url += 'language='+lang;
-	url += anchor;
-	document.location.href=url;
+	var origin = document.location.origin;
+	var url = document.location.pathname;
+	var hash = document.location.hash;
+	var params = new URLSearchParams(document.location.search)
+	params.set('language', lang);
+	url = origin + url + '?' + params.toString() + hash;
+	document.location.href = url;
 }

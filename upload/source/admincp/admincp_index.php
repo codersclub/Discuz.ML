@@ -14,14 +14,14 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $sensitivedirs = array('./', './uc_server/', './ucenter/');
 
-foreach ($sensitivedirs as $sdir) {
-	if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php') && !DISCUZ_DEBUG) {
-		@unlink(DISCUZ_ROOT.$sdir.'install/index.php');
-		if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php')) {
-			dexit('Please delete '.$sdir.'install/index.php via FTP!');
-		}
-	}
-}
+//vot foreach ($sensitivedirs as $sdir) {
+//vot	if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php') && !DISCUZ_DEBUG) {
+//vot		@unlink(DISCUZ_ROOT.$sdir.'install/index.php');
+//vot		if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php')) {
+//vot			dexit('Please delete '.$sdir.'install/index.php via FTP!');
+//vot		}
+//vot	}
+//vot }
 
 @include_once DISCUZ_ROOT.'./source/discuz_version.php';
 require_once libfile('function/attachment');
