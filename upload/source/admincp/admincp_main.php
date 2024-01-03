@@ -16,6 +16,7 @@ lang('admincp_menu');
 
 $extra = cpurl('url');
 $extra = $extra && getgpc('action') ? $extra : 'action=index';
+///*vot*/$extra .= getgpc('language') ? '&language='.DISCUZ_LANG : '';
 $charset = CHARSET;
 $title = cplang('admincp_title');
 $header_welcome = cplang('header_welcome');
@@ -69,7 +70,6 @@ echo <<<EOT
 <body>
 <div id="append_parent"></div>
 $shownotice
-
       <!-- vot Multi-Lingual -->
       <div id="lslct_menu" class="cl p_pop" style="position:fixed;display: none; width:120px;">
       $lang_list

@@ -372,6 +372,15 @@ if(ISFRAME && !parent.document.getElementById('leftmenu') && !parent.parent.docu
 <div class="container" id="cpcontainer">
 EOT;
 
+foreach ($sensitivedirs as $sdir) {
+//vot	if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php') && !DISCUZ_DEBUG) {
+//vot		@unlink(DISCUZ_ROOT.$sdir.'install/index.php');
+		if(@file_exists(DISCUZ_ROOT.$sdir.'install/index.php')) {
+			echo '<span class="error">Please delete '.$sdir.'install/index.php via FTP!' . "</span><br>\n";
+		}
+//vot	}
+}
+
 	if(empty($_G['inajax'])) {
 		register_shutdown_function('cpfooter');
 	}
