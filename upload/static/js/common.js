@@ -305,7 +305,7 @@ function Ajax(recvType, waitId) {
 				aj.resultHandle(aj.XMLHttpRequest.responseText, aj);
 			} else if(aj.recvType == 'XML') {
 				if(!aj.XMLHttpRequest.responseXML || !aj.XMLHttpRequest.responseXML.lastChild || aj.XMLHttpRequest.responseXML.lastChild.localName == 'parsererror') {
-/*vot*/					aj.resultHandle('<a href="' + aj.targetUrl + '" target="_blank" style="color:red">'+lng['int_error']+'</a>' , aj);
+					aj.resultHandle('' , aj);
 				} else {
 					aj.resultHandle(aj.XMLHttpRequest.responseXML.lastChild.firstChild.nodeValue, aj);
 				}
@@ -1166,7 +1166,7 @@ function showDialog(msg, mode, t, func, cover, funccancel, leftmsg, confirmtxt, 
 	}
 	var s = hidedom + '<table cellpadding="0" cellspacing="0" class="fwin"><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="m_l">&nbsp;&nbsp;</td><td class="m_c"><h3 class="flb"><em>';
 /*vot*/	s += t ? t : lng['reminder'];
-/*vot*/	s += '</em><span><a href="javascript:;" id="fwin_dialog_close" class="flbc" onclick="hideMenu(\'' + menuid + '\', \'dialog\')" title="'+lng['close']+'">' /*+lng['close']*/ +'</a></span></h3>';
+/*vot*/	s += '</em><span><a href="javascript:;" id="fwin_dialog_close" class="flbc" onclick="hideMenu(\'' + menuid + '\', \'dialog\')" title="'+lng['close']+'"></a></span></h3>';
 	if(mode == 'info') {
 		s += msg ? msg : '';
 	} else {
@@ -1226,7 +1226,7 @@ function showWindow(k, url, mode, cache, menuv) {
 			ajaxpost(url, 'fwin_content_' + k, '', '', '', function() {initMenu();show();});
 		}
 		if(parseInt(BROWSER.ie) != 6) {
-			loadingst = setTimeout(function() {showDialog('', 'info', '<div class="loadicon"></div> '+lng['wait_please'])}, 500);
+/*vot*/			loadingst = setTimeout(function() {showDialog('', 'info', '<div class="loadicon"></div> '+lng['wait_please'])}, 500);
 		}
 	};
 	var initMenu = function() {
@@ -2034,10 +2034,8 @@ function checkBlind() {
 	if(dom) {
 		if(loadUserdata('is_blindman')) {
 /*vot*/			dom.title = lng['blind_disable'];
-/*vot*/			addClass(dom, 'active');
 		} else {
 /*vot*/			dom.title = lng['blind_enable'];
-/*vot*/			removeClass(dom, 'active');
 		}
 	}
 }
@@ -2334,7 +2332,7 @@ function setlang(lang) {
 	var origin = document.location.origin;
 	var url = document.location.pathname;
 	var hash = document.location.hash;
-	var params = new URLSearchParams(document.location.search)
+	var params = new URLSearchParams(document.location.search);
 	params.set('language', lang);
 	url = origin + url + '?' + params.toString() + hash;
 	document.location.href = url;

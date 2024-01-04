@@ -69,7 +69,6 @@ class discuz_application extends discuz_base{
 	}
 
 	public function init() {
-//session_start();
 		if(!$this->initated) {
 			$this->_init_db();
 			$this->_init_setting();
@@ -331,6 +330,7 @@ class discuz_application extends discuz_base{
 /*vot*/		} elseif(preg_match('/^zh[-_]cn$/i', $lng)) {
 /*vot*/			$lng = 'sc';
 /*vot*/		}
+
 		// Set language to default if no language detected
 		if(!$lng) {
 			$lng = $default_lang;
