@@ -41,5 +41,12 @@ if (is_array($cron_publish_ids) && count($cron_publish_ids) > 0) {
 		savecache('cronpublish', $cron_publish_ids);
 	}
 }
+if (!is_array($cron_publish_ids)) {
+	$cron_publish_try = dunserialize($cron_publish_ids);
+	if (!is_array($cron_publish_try)) {
+		$cron_publish_try = array();
+	}
+	savecache('cronpublish', $cron_publish_try);
+}
 
 ?>

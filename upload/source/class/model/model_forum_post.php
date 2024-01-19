@@ -368,7 +368,6 @@ class model_forum_post extends discuz_model {
 				if (!$this->param['cronpublish'] && in_array($this->thread['tid'], $cron_publish_ids) || $this->param['modnewthreads']) {
 					$this->param['threadupdatearr']['dateline'] = $publishdate = TIMESTAMP;
 					unset($cron_publish_ids[$this->thread['tid']]);
-					$cron_publish_ids = serialize($cron_publish_ids);
 					savecache('cronpublish', $cron_publish_ids);
 				} elseif ($this->param['cronpublish'] && $this->param['cronpublishdate']) {
 					$this->param['threadupdatearr']['dateline'] = $publishdate = strtotime($this->param['cronpublishdate']);
