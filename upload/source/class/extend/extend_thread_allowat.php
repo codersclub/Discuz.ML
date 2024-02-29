@@ -41,7 +41,7 @@ class extend_thread_allowat extends extend_thread_base {
 			}
 			if($this->atlist) {
 				foreach($this->atlist as $atuid => $atusername) {
-					$atsearch[] = "/@".str_replace('/', '\/', preg_quote($atusername))." /i";
+					$atsearch[] = "/@".preg_quote($atusername, '/')." /i";
 					$atreplace[] = "[url=home.php?mod=space&uid=$atuid]@{$atusername}[/url] ";
 				}
 				$this->param['message'] = preg_replace($atsearch, $atreplace, $parameters['message'].' ', 1);
@@ -102,7 +102,7 @@ class extend_thread_allowat extends extend_thread_base {
 			}
 			if($this->atlist) {
 				foreach($this->atlist as $atuid => $atusername) {
-					$atsearch[] = "/@$atusername /i";
+					$atsearch[] = "/@".preg_quote($atusername, '/')." /i";
 					$atreplace[] = "[url=home.php?mod=space&uid=$atuid]@{$atusername}[/url] ";
 				}
 				$this->param['message'] = preg_replace($atsearch, $atreplace, $parameters['message'].' ', 1);
@@ -161,7 +161,7 @@ class extend_thread_allowat extends extend_thread_base {
 				}
 				if($this->atlist) {
 					foreach($this->atlist as $atuid => $atusername) {
-						$atsearch[] = "/@$atusername /i";
+						$atsearch[] = "/@".preg_quote($atusername, '/')." /i";
 						$atreplace[] = "[url=home.php?mod=space&uid=$atuid]@{$atusername}[/url] ";
 					}
 					$this->param['message'] = preg_replace($atsearch, $atreplace, $parameters['message'].' ', 1);
