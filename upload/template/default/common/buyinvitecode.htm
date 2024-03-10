@@ -23,7 +23,7 @@
 				</div>
 			<!--{else}-->
 				<div class="bm_h bbs">
-					<h3 class="xs2">{lang invitecode_buycode}</h3>
+					<h3 class="xs2">{lang invitecode_buycode}<span><!--{if !empty($_GET['infloat'])}--><a href="javascript:;" class="flbc" title="{lang close}"></a><!--{/if}--></span></h3>
 				</div>
 				<div class="bm_c">
 					<form id="confirmform" class="postbox" method="post" autocomplete="off" action="misc.php?mod=buyinvitecode" onsubmit="ajaxpost(this.id, 'return_addfundsform');return false;">
