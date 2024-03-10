@@ -160,6 +160,10 @@ class table_forum_post extends discuz_table
 		return DB::result_first('SELECT pid FROM %t WHERE tid=%d AND authorid=%d LIMIT 1', array(self::get_tablename('tid:'.$tid), $tid, $authorid));
 	}
 
+	public function fetch_all_pid_by_tid($tid, $invisible = null) {
+		return DB::fetch_all('SELECT pid FROM %t WHERE tid=%d'.($invisible !== null ? ' AND '.DB::field('invisible', $invisible) : ''), array(self::get_tablename('tid:'.$tid), $tid), $this->_pk);
+	}
+
 	public function fetch_pid_by_tid_clientip($tid, $clientip) {
 		return DB::result_first('SELECT pid FROM %t WHERE tid=%d AND authorid=0 AND useip=%s LIMIT 1', array(self::get_tablename('tid:'.$tid), $tid, $clientip));
 	}
