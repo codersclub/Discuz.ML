@@ -327,21 +327,6 @@ function blockFavorite(bid){
 	}
 }
 
-function strLenCalc(obj, checklen, maxlen) {
-	var v = obj.value, charlen = 0, maxlen = !maxlen ? 200 : maxlen, curlen = maxlen, len = strlen(v);
-//vot	for(var i = 0; i < v.length; i++) {
-//vot		if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
-//vot			curlen -= charset == 'utf-8' ? 2 : 1;
-//vot		}
-//vot	}
-	if(curlen >= len) {
-		$(checklen).innerHTML = curlen - len;
-	} else {
-//vot		obj.value = mb_cutstr(v, maxlen, 0);
-/*vot*/		obj.value = obj.value.substr(v, maxlen);
-	}
-}
-
 function check_itemdata_lentgh(form) {
 	if(form.title && (!strLenCalc(form.title, "titlechk", form.title.getAttribute('_maxlength')) || !form.title.value)) {
 		form.title.focus();
