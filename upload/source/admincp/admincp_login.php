@@ -143,7 +143,7 @@ EOT;
 	}
 	echo '<input type="password" name="admin_password" placeholder="'.$lang['login_password'].'" autocomplete="off"'.($isguest ? '' : 'autofocus').'>';
 	echo <<<EOT
-		<p onclick="document.querySelectorAll('.loginqa').forEach(vf=>{vf.className=''});this.style.display='none';"><span></span>{$lang['security_question']}</p>
+		<p onclick="document.querySelectorAll('.loginqa').forEach(vf=>{vf.className=''});this.style.display='none';"><span tabindex="0" onkeydown="window.event.key!='Tab'&&this.parentNode.click()"></span>{$lang['security_question']}</p>
 		<select id="questionid" name="admin_questionid" class="loginqa">
 			$forcesecques
 			<option value="1">{$lang['security_question_1']}</option>
