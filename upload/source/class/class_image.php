@@ -393,7 +393,7 @@ class image {
 					$im->readImage(realpath($this->target));
 					$im->setImageCompressionQuality($this->param['thumbquality']);
 					$im->thumbnailImage($this->param['thumbwidth'], $this->param['thumbheight']);
-					$im->resizeImage($this->param['thumbwidth'], $this->param['thumbheight']);
+					$im->resizeImage($this->param['thumbwidth'], $this->param['thumbheight'], imagick::FILTER_LANCZOS, 1, true);
 					$im->setGravity(imagick::GRAVITY_CENTER );
 					$im->extentImage($this->param['thumbwidth'], $this->param['thumbheight'], 0, 0);
 
