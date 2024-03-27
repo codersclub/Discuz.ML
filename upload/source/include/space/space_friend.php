@@ -239,7 +239,8 @@ if($fuids) {
 	if($list) {
 		$fieldhome = C::t('common_member_field_home')->fetch_all($fuids);
 		foreach(C::t('common_member')->fetch_all($fuids) as $uid => $value) {
-			$value = array_merge($value, $fieldhome[$uid]);
+			$fieldhome_value = is_array($fieldhome[$uid]) ? $fieldhome[$uid] : array();
+			$value = array_merge($value, $fieldhome_value);
 			$value['isfriend'] = $uid==$space['uid'] || $_G["home_friend_".$space['uid'].'_'.$uid] ? 1 : 0;
 			if(empty($list[$uid])) $list[$uid] = array();
 			$list[$uid] = array_merge($list[$uid], $value);

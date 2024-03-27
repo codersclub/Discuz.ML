@@ -64,7 +64,7 @@ function getexif($img) {
 		exif_lang('FileType')		=>	$imgtype[$exif['FILE']['FileType']],
 		exif_lang('MimeType')		=>	$exif['FILE']['MimeType'],
 		exif_lang('FileSize')		=>	$exif['FILE']['FileSize'],
-		exif_lang('FileDateTime')			=>	date("Y-m-d H:i:s",$exif['FILE']['FileDateTime']),
+		exif_lang('FileDateTime')			=>	empty($exif['FILE']['FileDateTime'])?'':date("Y-m-d H:i:s",$exif['FILE']['FileDateTime']),
 		exif_lang('ImageDescription')		=>	$exif['IFD0']['ImageDescription'],
 		exif_lang('Make')			=>	$exif['IFD0']['Make'],
 		exif_lang('Model')			=>	$exif['IFD0']['Model'],
