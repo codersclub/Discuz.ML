@@ -32,7 +32,7 @@ $lang = array
 	'db_config_db_not_found' => '数据库配置错误，请仔细检查 config_global.php 文件',
 	'system_init_ok' => '网站系统初始化完成，请<a href="index.php">点击这里</a>进入',
 	'backtrace' => '运行信息',
-	'error_end_message' => '<a href="https://{host}">{host}</a> 已经将此出错信息详细记录, 由此给您带来的访问不便我们深感歉意',
+	'error_end_message' => '<a href="http://{host}">{host}</a> 已经将此出错信息详细记录, 由此给您带来的访问不便我们深感歉意',
 	'suggestion_user' => '如果您是用户，建议您尝试刷新页面、关闭所有浏览器窗口重新进行操作。如果无法解决，建议您完整截图本页面并保存，随后向站点管理员反馈此问题',
 	'suggestion_plugin' => '如果您是站点管理员，建议您尝试在管理中心关闭 <a href="admin.php?action=plugins&frames=yes" class="guess" target="_blank">{guess}</a> 插件并 <a href="admin.php?action=tools&operation=updatecache&frames=yes" class="guess" target="_blank">更新缓存</a> 。如关闭插件后问题解决，建议您凭完整截图联系插件供应方获得帮助',
 	'suggestion' => '如果您是站点管理员，建议您尝试在管理中心 <a href="admin.php?action=tools&operation=updatecache&frames=yes" target="_blank">更新缓存</a> ，或凭完整截图通过 <a href="https://www.dismall.com/" target="_blank">官方论坛</a> 寻求帮助。如果您确定是程序自身Bug，您也可直接 <a href="https://gitee.com/discuz/DiscuzX/issues" target="_blank">提交Issue</a> 给我们',
