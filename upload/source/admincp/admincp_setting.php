@@ -1959,7 +1959,8 @@ EOT;
 		$timezone_lang = cplang('setting_datetime_timezone');
 		$timezone_select = "<select name='global_timeoffset' onchange=\"if(this.value !== '')$('settingnew[timeoffset]').value=this.value;\">";
 		foreach($timezone_lang AS $key => $val) {
-			$timezone_select .= "<option value='$key' ".($setting['timeoffset'] == $key ? 'selected="selected"' : '').">".cutstr($val, 34, '..')."</option>";
+//vot			$timezone_select .= "<option value='$key' ".($setting['timeoffset'] == $key ? 'selected="selected"' : '').">".cutstr($val, 34, '..')."</option>";
+			$timezone_select .= "<option value='$key' ".($setting['timeoffset'] == $key ? 'selected="selected"' : '').">".$val."</option>";
 		}
 		$timezone_select .= "</select>";
 		$timezone_select .= "<br><br><input id=\"settingnew[timeoffset]\" type=\"text\" class=\"txt\" value=\"".$setting['timeoffset']."\" name=\"settingnew[timeoffset]\">";
