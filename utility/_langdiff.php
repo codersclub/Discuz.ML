@@ -15,7 +15,7 @@
 //error_reporting(E_ALL);
 
 // Script Version
-$version = '2.3';
+$version = '2.4';
 
 // Discuz Root Directory
 define('DISCUZ_ROOT', str_replace('\\', '/', dirname(__FILE__)));
@@ -85,15 +85,15 @@ Rewritten by <a href="http://codersclub.org/discuzx/?1">Valery Votintsev</a>
   <input type="submit">
 </form>
 
+Base directory: <b><?= $dz_dir?></b>
+<br>
+<br>
+
 <?php
 
 if($fromlang && $tolang) {
 
 ?>
-
-Base directory: <b><?= $dz_dir?></b>
-<br>
-<br>
 
 <table align="center" border="1">
   <tr>
@@ -134,15 +134,11 @@ UCenter directory: <b><?= $uc_dir?></b>
 
 All Done.
 
-<?php
-}
-
-exit;
-
-?>
+<? } ?>
 
 </body>
 </html>
+
 
 <?php
 
@@ -152,11 +148,11 @@ function lfile2array($f) {
   $o = file($f);
   foreach($o as &$r) {
     $r = trim($r);
-    if (strpos($r, '=>')!==false) $r=trim(substr($r, 0, strpos($r, "=>")));
+    if (strpos($r, '=>')!==false) $r=trim(substr($r, 0, strpos($r, '=>')));
     else $r="";
   }
   foreach ($o as $k=>$v) {
-    if ($v=="") unset ($o[$k]);
+    if ($v=='') unset ($o[$k]);
   }
   return $o;
 }
@@ -366,7 +362,7 @@ function error($s='') {
 
 function htmlspecialarray($var) {
 //    return array_map("htmlspecialchars", $myArray, array(ENT_QUOTES, 'UTF-8'));
-    return array_map("htmlspecialchars", $myArray, [ENT_QUOTES], ['UTF-8']);
+    return array_map("htmlspecialchars", $var, [ENT_QUOTES], ['UTF-8']);
 }
 
 //----------------------------------------------------------
