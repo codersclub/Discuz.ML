@@ -268,7 +268,7 @@ class ip {
 			return false;
 		}
 
-		if($_G['setting']['ipaccess'] && self::checkaccess($ip, $_G['setting']['ipaccess'])) {
+		if($_G['setting']['ipaccess'] && !self::checkaccess($ip, $_G['setting']['ipaccess'])) {
 			return true;
 		}
 
