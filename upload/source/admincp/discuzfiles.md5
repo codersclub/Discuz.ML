@@ -46,7 +46,7 @@ ee5ed6e1356204e1d024f8b5cd8a7eb6 *config/config_ucenter_default.php
 6e4fbf3939402cf67a6c00367382988b *./crossdomain.xml
 cba7beb32835268b64190bc95a4ba48c *./data
 d41d8cd98f00b204e9800998ecf8427e *data/index.htm
-8d8a3b691dc72160ad8d1b726936bda4 *data/ipdata/GeoLite2-Country.mmdb
+6589d96b75925a3209f16c536703ef4b *data/ipdata/GeoLite2-Country.mmdb
 7215ee9c7d9dc229d2921a40e899ec5f *data/ipdata/index.htm
 79da57ff3e78fd0dffa638c8144582ef *data/ipdata/ipv6wry.dat
 b21eeb904d9bcb604ed682343661bcc2 *data/ipdata/tinyipdata.dat
@@ -123,7 +123,7 @@ cd45161311f858bc5902b6226ef8ec9e *source/admincp/admincp_remoderate.php
 2af3de12d6100c4edd218c050244b6ea *source/admincp/admincp_report.php
 f61a6aa405596154a17bdb921e6bb545 *source/admincp/admincp_runtests.php
 71e88bb2880c9ba3f72365ceeb2ffb6a *source/admincp/admincp_search.php
-01555b2ce9e5b8bbdb7624834053f852 *source/admincp/admincp_setting.php
+9a7cd3cdde840a5b6a9db095e57a531e *source/admincp/admincp_setting.php
 b30e24e42117227852a4260822ca3eef *source/admincp/admincp_share.php
 bf7d84534154b364b28677763691e16a *source/admincp/admincp_smilies.php
 ca4ff11eb0fd127c7ed1989aba1c7392 *source/admincp/admincp_smsgw.php
@@ -290,7 +290,7 @@ d76589ca4bec46200e5986a7986ffce4 *source/class/class_card.php
 24f8ee96b263a0c408fc0d4ed8ac1a73 *source/class/class_filesock.php
 7b16b61fc7944da8881b9d6867d75e53 *source/class/class_gifmerge.php
 022db043f886e7354f92e1a583a289fc *source/class/class_image.php
-da8e339a6f5de66da3b167e0721bc0e8 *source/class/class_ip.php
+a165e80520c847ccf082ac68b0ddaeb4 *source/class/class_ip.php
 98e3d538f468fe74656650fc79af6f07 *source/class/class_member.php
 cc48b684f0227c31b99407d500b1d7ea *source/class/class_membersearch.php
 f586ad9557c88be3630b8263da72ec19 *source/class/class_optimizer.php
@@ -714,7 +714,7 @@ e869b486b45691f3b91d8bbd1110cb3b *source/class/task/task_post.php
 e534fae39aacc20719a601755fbf2a24 *source/class/task/task_profile.php
 7f772c1a5310364a598c1fefa93956e2 *source/class/task/task_promotion.php
 cf8eb71c8fddc3fe78ca21c4f254a90f *source/class/task/task_secmobile.php
-3a109990f2b4f889d9e8d1b48ab75a0b *source/discuz_version.php
+80002d7a6a40e68d0f36829f02b2419c *source/discuz_version.php
 8d583a87b95d0226538632a5eae66429 *source/function/cache/cache_admingroups.php
 2659e8f40c06e5e419ecfb3bf6d2d55a *source/function/cache/cache_advs.php
 c2ed12ab185274b06d67e7ec03867f1e *source/function/cache/cache_albumcategory.php
@@ -4126,4 +4126,4 @@ c40c95219ebaafcfac4ff55b83774997 *uc_server/view/default/pm_view.htm
 d1f35b2a8fa2730cc5b19b820503daf0 *uc_server/view/default/templates.lang.php
 42fa0f40e601b24e3dbdd91ac05ce696 *uc_server/view/default/user_avatar.htm
 7215ee9c7d9dc229d2921a40e899ec5f *uc_server/view/index.htm
-50ae4b5ec634a295a307b76ad5681eb2 *./_langdiff.php
+8bc7a793ec592067d6abe636e7f72b4c *./_langdiff.php
