@@ -32,7 +32,7 @@ $multi = '';
 
 $_GET['income'] = intval($_GET['income']);
 $incomeactives = array($_GET['income'] => ' selected="selected"');
-$optypes = lang('spacecp', 'logs_credit_update_INDEX');
+$optypes = array_merge(lang('spacecp', 'logs_credit_update_INDEX'), lang('spacecp', 'logs_credit_update_SYS_INDEX'));
 $endunixstr = $beginunixstr = 0;
 if($_GET['starttime']) {
 	$beginunixstr = strtotime($_GET['starttime']);
@@ -114,7 +114,6 @@ if($_GET['suboperation'] == 'creditrulelog') {
 		}
 		$otherinfo = getotherinfo($aids, $pids, $tids, $taskids, $uids);
 	}
-
 
 }
 

@@ -25,7 +25,7 @@
 	<!--{hook/viewthread_posttop_mobile $postcount}-->
 	<div class="plc cl" id="pid$post['pid']">
 		<div class="avatar"><img src="<!--{if !$post['authorid'] || $post['anonymous']}--><!--{avatar(0, 'small', true)}--><!--{else}--><!--{avatar($post['authorid'], 'small', true)}--><!--{/if}-->" /></div>
-		<div class="display pi<!--{if $post['first']}--> pione<!--{/if}-->" href="#replybtn_$post['pid']">
+		<div class="display pi<!--{if $post['first']}--> pione<!--{/if}-->">
 			<ul class="authi">
 				<li class="mtit">
 					<span class="y">
@@ -266,11 +266,6 @@
 				<!--{/if}-->
 			<!--{/if}-->
 			<!--{/if}-->
-			<!--{if $_G['uid'] && $allowpostreply && !$post['first']}-->
-			<div id="replybtn_$post['pid']" class="replybtn" display="true">
-				<a class="button" href="forum.php?mod=post&action=reply&fid={$_G['fid']}&tid={$_G['tid']}&repquote={$post['pid']}&extra={$_GET['extra']}&page={$page}">{lang reply}</a>
-			</div>
-			<!--{/if}-->
 			<!--{if $post['first']}-->
 			<!--{/if}-->
 			<div id="comment_$post['pid']">
@@ -372,11 +367,14 @@
 		</div>
 		<div class="threadlist_foot cl">
 			<ul>
+			<!--{if $_G['uid'] && $allowpostreply && !$post['first']}-->
+				<li><a href="forum.php?mod=post&action=reply&fid={$_G['fid']}&tid={$_G['tid']}&repquote={$post['pid']}&extra={$_GET['extra']}&page={$page}"><i class="dm-chat-s"></i>{lang reply}</a></li>
+			<!--{/if}-->
 			<!--{if $_G['group']['raterange'] && $post['authorid']}-->
 				<li><a href="forum.php?mod=misc&action=rate&tid={$_G['tid']}&pid={$post['pid']}" class="dialog"><i class="dm-heart"></i>{lang rate}</a></li>
 			<!--{/if}-->
 			<!--{if $post['invisible'] == 0}-->
-				<!--{if $allowpostreply && $post['allowcomment'] && (!$thread['closed'] || $_G['forum']['ismoderator'])}--><li><a href="forum.php?mod=misc&action=comment&tid={$post['tid']}&pid={$post['pid']}&extra={$_GET['extra']}&page={$page}{if $_G['forum_thread']['special'] == 127}&special={$specialextra}{/if}" class="dialog"><i class="dm-chat-s"></i>{lang comments}</a></li><!--{/if}-->
+				<!--{if $allowpostreply && $post['allowcomment'] && (!$thread['closed'] || $_G['forum']['ismoderator'])}--><li><a href="forum.php?mod=misc&action=comment&tid={$post['tid']}&pid={$post['pid']}&extra={$_GET['extra']}&page={$page}{if $_G['forum_thread']['special'] == 127}&special={$specialextra}{/if}" class="dialog"><i class="dm-chat-t"></i>{lang comments}</a></li><!--{/if}-->
 			<!--{/if}-->
 			<!--{if !$_G['forum_thread']['special'] && !$rushreply && !$hiddenreplies && $_G['setting']['repliesrank'] && !$post['first'] && !($post['isWater'] && $_G['setting']['filterednovote'])}-->
 				<li><a href="forum.php?mod=misc&action=postreview&do=support&tid={$_G['tid']}&pid={$post['pid']}&hash={FORMHASH}" class="dialog"><i class="dm-c-up"></i>{lang support_reply} <span id="review_support_{$post['pid']}">{$post['postreview']['support']}</span></a></li>

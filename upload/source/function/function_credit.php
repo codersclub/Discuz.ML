@@ -216,7 +216,8 @@ function makecreditlog($log, $otherinfo=array()) {
 		case 'BGR':
 			$log['opinfo'] = '<a href="forum.php?mod=forumdisplay&fid='.$log['relatedid'].'" target="_blank">'.lang('spacecp', 'buildgroup').'</a>';
 			break;
-
+		default:
+			$log['opinfo'] = !empty($log['title']) ? $log['title'] : '';
 	}
 	return $log;
 }
