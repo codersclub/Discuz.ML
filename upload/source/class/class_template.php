@@ -253,7 +253,7 @@ class template {
 				}
 
 				if(defined('IN_MOBILE')) {
-					foreach(lang('mobile/template') as $k => $v) {
+					foreach(lang('touch/template') as $k => $v) {
 						$this->language['inner'][$k] = $v;
 					}
 				}
