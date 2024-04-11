@@ -348,7 +348,7 @@ SEARCH;
 
 } elseif($operation == 'credit') {
 	include_once libfile('function/credit');
-	$operationlist = array('TRC', 'RTC', 'RAC', 'MRC', 'TFR', 'RCV', 'CEC', 'ECU', 'SAC', 'BAC', 'PRC', 'RSC', 'STC', 'BTC', 'AFD', 'UGP', 'RPC', 'ACC', 'RCT', 'RCA', 'RCB', 'CDC', 'RKC', 'BME', 'RPR', 'RPZ');
+	$operationlist = array('TRC', 'RTC', 'RAC', 'MRC', 'TFR', 'RCV', 'CEC', 'ECU', 'SAC', 'BAC', 'PRC', 'RSC', 'STC', 'BTC', 'AFD', 'UGP', 'RPC', 'ACC', 'RCT', 'RCA', 'RCB', 'CDC', 'RKC', 'BME', 'RPR', 'RPZ', 'RUL', 'INV');
 
 	$rdata = array(
 		'task' => array('TRC'),
@@ -523,7 +523,7 @@ SEARCH;
 				}
 			}
 		}
-		$related = '';
+		$related = $rtype = '';
 		if(in_array($log['operation'], $rdata['task'])) {
 			$rtype = 'task';
 			$related = '<a href="home.php?mod=task&do=view&id='.$log['relatedid'].'" target="_blank">'.cplang('logs_task_id').':'.$log['relatedid'].'</a>';
@@ -560,7 +560,7 @@ SEARCH;
 			$log['operation'] ? $log['optype'] : $log['title'],
 			$log['update'],
 			$log['operation'] ? $log['opinfo'] : $log['text'],
-			$related.'&nbsp;&nbsp;<a href="'.ADMINSCRIPT.'?action=logs&operation=credit&srch_rtype='.$rtype.'&srch_rid='.$log['relatedid'].'" target="_blank">'.cplang('sameinfo').'</a>',
+			$related.($log['relatedid'] ? '&nbsp;&nbsp;<a href="'.ADMINSCRIPT.'?action=logs&operation=credit&srch_rtype='.$rtype.'&srch_rid='.$log['relatedid'].'" target="_blank">'.cplang('sameinfo').'</a>' : ''),
 		));
 	}
 

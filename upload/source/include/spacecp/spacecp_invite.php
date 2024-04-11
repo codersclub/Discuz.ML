@@ -148,8 +148,10 @@ if(submitcheck('emailinvite')) {
 
 	if($havecode) {
 		require_once libfile('class/credit');
+		require_once libfile('function/credit');
 		$creditobj = new credit();
-		$creditobj->updatemembercount(array($creditkey=>0-$allcredit), $_G['uid']);
+		credit_log($_G['uid'], 'INV', $_G['uid'], array($creditkey => 0-$allcredit));
+		$creditobj->updatemembercount(array($creditkey => 0-$allcredit), $_G['uid']);
 	}
 	showmessage('do_success', $baseurl, array('deduction' => $allcredit, 'dateline' => $dateline), array('showdialog'=>1, 'showmsg' => true, 'closetime' => true, 'return' => false));
 }
