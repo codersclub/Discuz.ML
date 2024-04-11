@@ -515,6 +515,7 @@ EOF;
 
 	shownav('user', 'nav_members_verify');
 	$vid = $_GET['vid'] < 8 ? intval($_GET['vid']) : 0;
+	showsubmenu($lang['members_verify'].'-verify'.$vid);
 	$verifyarr = $_G['setting']['verify'][$vid];
 	if(!submitcheck('verifysubmit')) {
 		if($vid == 7) {
