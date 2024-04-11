@@ -231,6 +231,8 @@ class credit {
 			}
 		}
 		if($updatecredit || $this->extrasql) {
+			require_once libfile('function/credit');
+			credit_log($uids, 'RUL', $rule['rid'], $creditarr, $rule['rulename'].($fid ? '(fid:'.$fid.')' : ''));
 			$this->updatemembercount($creditarr, $uids, is_array($uids) ? false : true, $this->coef > 0 ? urldecode($rule['rulenameuni']) : '');
 		}
 	}

@@ -191,24 +191,24 @@
 										<!--{if (is_array($extgroupids) && in_array($groupid, $extgroupids)) || $groupid == $_G['groupid']}-->
 											<!--{if $groupid != $_G['groupid']}-->
 												<!--{if !$group[noswitch]}-->
-													<a href="home.php?mod=spacecp&ac=usergroup&do=switch&groupid=$groupid&handlekey=switchgrouphk" class="xw1 xi2 dialog">{lang memcp_usergroups_set_main}</a>
+													<a href="home.php?mod=spacecp&ac=usergroup&do=switch&groupid=$groupid&handlekey=switchgrouphk" class="xw1 xi2">{lang memcp_usergroups_set_main}</a>
 												<!--{/if}-->
 												<!--{if !$group['maingroup']}-->
 													<!--{if $_G['cache']['usergroups'][$groupid]['pubtype'] == 'buy'}-->
-														<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2 dialog">{lang renew}</a>
+														<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2">{lang renew}</a>
 													<!--{/if}-->
-													<a href="home.php?mod=spacecp&ac=usergroup&do=exit&groupid=$groupid&handlekey=exitgrouphk" class="xw1 xi2 dialog">{lang memcp_usergroups_exit}</a>
+													<a href="home.php?mod=spacecp&ac=usergroup&do=exit&groupid=$groupid&handlekey=exitgrouphk" class="xw1 xi2">{lang memcp_usergroups_exit}</a>
 												<!--{/if}-->
 											<!--{else}-->
 												<!--{if $_G['cache']['usergroups'][$groupid]['pubtype'] == 'buy'}-->
-													<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2 dialog">{lang renew}</a>
+													<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2">{lang renew}</a>
 												<!--{/if}-->
 												{lang main_usergroup}
 											<!--{/if}-->
 										<!--{elseif $_G['cache']['usergroups'][$groupid]['pubtype'] == 'free'}-->
-											<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2 dialog">{lang free_buy}</a>
+											<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2">{lang free_buy}</a>
 										<!--{elseif $_G['cache']['usergroups'][$groupid]['pubtype'] == 'buy'}-->
-											<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2 dialog">{lang memcp_usergroups_buy}</a>
+											<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$groupid&handlekey=buygrouphk" class="xw1 xi2">{lang memcp_usergroups_buy}</a>
 										<!--{/if}-->
 									</td>
 								</tr>
@@ -303,16 +303,16 @@
 										<!--{/if}-->
 									<!--{/if}-->
 									<!--{if isset($publicgroup[$group['groupid']]) && $group['groupid'] != $_G['groupid'] && $publicgroup[$group['groupid']]['allowsetmain']}-->
-										<a href="home.php?mod=spacecp&ac=usergroup&do=switch&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=switchgrouphk" class="xw1 xi2 dialog">{lang memcp_usergroups_set_main}</a>
+										<a href="home.php?mod=spacecp&ac=usergroup&do=switch&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=switchgrouphk" class="xw1 xi2">{lang memcp_usergroups_set_main}</a>
 									<!--{/if}-->
 									<!--{if (is_array($extgroupids) && in_array($group['groupid'], $extgroupids)) && $switchmaingroup && $group['grouptype'] == 'special' && $group['groupid'] != $_G['groupid']}-->
 										<!--{if $_G['cache']['usergroups'][$group['groupid']]['pubtype'] == 'buy'}-->
-											<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=buygrouphk" class="xw1 xi2 dialog">{lang renew}</a>
+											<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=buygrouphk" class="xw1 xi2">{lang renew}</a>
 										<!--{/if}-->
-										<a href="home.php?mod=spacecp&ac=usergroup&do=exit&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=exitgrouphk" class="xw1 xi2 dialog">{lang memcp_usergroups_exit}</a>
+										<a href="home.php?mod=spacecp&ac=usergroup&do=exit&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=exitgrouphk" class="xw1 xi2">{lang memcp_usergroups_exit}</a>
 									<!--{/if}-->
 									<!--{if $group['grouptype']=='special' && $group['groupid'] != $_G['groupid'] && array_key_exists($group['groupid'], $publicgroup) && !$publicgroup[$group['groupid']]['allowsetmain']}-->
-										<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=buygrouphk" class="xw1 xi2 dialog">{lang memcp_usergroups_buy}</a>
+										<a href="home.php?mod=spacecp&ac=usergroup&do=buy&groupid=$group['groupid']&gid=$_GET['gid']&handlekey=buygrouphk" class="xw1 xi2">{lang memcp_usergroups_buy}</a>
 									<!--{/if}-->
 									<!--{if isset($groupterms['ext']) && is_array($groupterms['ext']) && array_key_exists($group['groupid'], $groupterms['ext'])}-->
 										<span class="notice">{lang memcp_usergroups_timelimit}: <!--{date($groupterms['ext'][$group['groupid']])}--></span>
