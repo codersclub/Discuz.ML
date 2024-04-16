@@ -35,7 +35,7 @@ class table_common_banned extends discuz_table
 	}
 
 	public function fetch_all_order_dateline() {
-		return DB::fetch_all('SELECT * FROM %t ORDER BY dateline', array($this->_table));
+		return DB::fetch_all('SELECT * FROM %t ORDER BY dateline DESC', array($this->_table));
 	}
 
 	public function fetch_all($ids = array(), $force_from_db = false) {
