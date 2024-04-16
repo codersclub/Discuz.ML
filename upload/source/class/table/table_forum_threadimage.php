@@ -39,7 +39,14 @@ class table_forum_threadimage extends discuz_table
 	public function fetch_all_order_by_tid($start = 0, $limit = 0) {
 		return DB::fetch_all('SELECT * FROM %t ORDER BY tid DESC '.DB::limit($start, $limit), array($this->_table), 'tid');
 	}
-
+	public function fetch_all_order_by_tid_for_guide($start = 0, $limit = 0, $fids = 0) {
+		$tidsql = '';
+		$fids = dintval($fids, true);
+		if($fids) {
+			$tidsql = is_array($fids) && $fids ? ' AND t.fid IN('.dimplode($fids).')' : ' AND t.fid='.$fids;
+		}
+		return DB::fetch_all('SELECT i.* FROM %t i LEFT JOIN %t t ON i.tid = t.tid WHERE 1 %i ORDER BY i.tid DESC '.DB::limit($start, $limit), array($this->_table, 'forum_thread', $tidsql), 'tid');
+	}
 }
 
 ?>
