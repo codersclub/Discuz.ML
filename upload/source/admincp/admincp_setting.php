@@ -1327,6 +1327,15 @@ EOF;
 		$setting['guide'] = dunserialize($setting['guide']);
 		showtableheader('', 'nobottom', 'id="guide"'.($_GET['anchor'] != 'guide' ? ' style="display: none"' : ''));
 		showsetting('setting_functions_heatthread_guidelimit', 'settingnew[heatthread][guidelimit]', $setting['heatthread']['guidelimit'], 'text');
+		$indexarray = array(
+			array('index', $lang['setting_functions_guide_index_index']),
+			array('newthread', $lang['setting_functions_guide_index_newthread']),
+			array('new', $lang['setting_functions_guide_index_new']),
+			array('hot', $lang['setting_functions_guide_index_hot']),
+			array('digest', $lang['setting_functions_guide_index_digest']),
+			array('sofa', $lang['setting_functions_guide_index_sofa'])
+		);
+		showsetting('setting_functions_guide_index', array('settingnew[guide][index]', $indexarray), $setting['guide']['index'], 'select');
 		$dtarray = array(
 			array(604800, $lang['7_day']),
 			array(1209600, $lang['14_day']),

@@ -18,8 +18,10 @@ if(!$_G['setting']['guidestatus']) {
 $view = $_GET['view'];
 loadcache('forum_guide');
 require_once libfile('function/forumlist');
+$setting_guide = dunserialize($_G['setting']['guide']);
+$setting_guide['index'] = $setting_guide['index'] ? $setting_guide['index'] : 'hot';
 if(!in_array($view, array('hot', 'digest', 'new', 'my', 'newthread', 'sofa', 'index'))) {
-	$view = 'hot';
+	$view = $setting_guide['index'];
 }
 $lang = lang('forum/template');
 $navtitle = $lang['guide'].'-'.$lang['guide_'.$view];
