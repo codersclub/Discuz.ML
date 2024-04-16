@@ -156,7 +156,7 @@ if($_G['setting']['grid']['showgrid']) {
 		if($_G['setting']['grid']['gridtype']) {
 			$grids['digest'] = C::t('forum_thread')->fetch_all_for_guide('digest', 0, array(), 3, 0, 0, 10, $_G['setting']['grid']['fids']);
 		} else {
-			$images = C::t('forum_threadimage')->fetch_all_order_by_tid(10);
+			$images = C::t('forum_threadimage')->fetch_all_order_by_tid_for_guide(10, 0, $_G['setting']['grid']['fids']);
 			foreach($images as $key => $value) {
 				$tids[$value['tid']] = $value['tid'];
 			}
