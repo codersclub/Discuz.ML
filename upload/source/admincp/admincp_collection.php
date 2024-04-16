@@ -236,7 +236,7 @@ if($operation == 'comment') {
 			}
 			$rCollection = $_GET['ctidorder'][$rCtid];
 		}
-		$collectionrecommend['ctids'] = removeNonExistsCollection($collectionrecommend['ctids']);
+		$collectionrecommend['ctids'] = is_array($collectionrecommend['ctids']) ? removeNonExistsCollection($collectionrecommend['ctids']) : array();
 		$collectionrecommend['autorecommend'] = intval($_GET['settingnew']['autorecommend']);
 		$collectionrecommend['adminrecommend'] = count($collectionrecommend['ctids']);
 		asort($collectionrecommend['ctids']);

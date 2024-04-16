@@ -253,6 +253,7 @@ class model_forum_thread extends discuz_model
 				}
 
 				$subject = str_replace("\t", ' ', $this->param['subject']);
+				$subject = cutstr($subject, 80);
 				$lastpost = "$this->tid\t".$subject."\t".TIMESTAMP."\t$author";
 				C::t('forum_forum')->update($this->forum['fid'], array('lastpost' => $lastpost));
 				C::t('forum_forum')->update_forum_counter($this->forum['fid'], 1, 1, 1);
