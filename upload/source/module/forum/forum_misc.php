@@ -742,7 +742,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 		require_once libfile('function/discuzcode');
 		$sqlvalues = $comma = '';
 		$sqlreason = censor(trim($_GET['reason']));
-		$sqlreason = cutstr(dhtmlspecialchars($sqlreason), 40, '.');
+		$sqlreason = cutstr(dhtmlspecialchars($sqlreason), 40);
 		foreach($creditsarray as $id => $addcredits) {
 			$insertarr = array(
 				'pid' => $_GET['pid'],
