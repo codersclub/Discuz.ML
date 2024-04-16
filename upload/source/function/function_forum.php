@@ -943,6 +943,7 @@ function threadpubsave($tid, $passapproval = false) {
 	}
 
 	$subject = str_replace("\t", ' ', $thread['subject']);
+	$subject = cutstr($subject, 80);
 	$lastpost = $thread['tid']."\t".$subject."\t".$thread['lastpost']."\t".$thread['lastposter'];
 	C::t('forum_forum')->update($_G['fid'], array('lastpost' => $lastpost));
 	C::t('forum_forum')->update_forum_counter($thread['fid'], 1, $posts, $posts, $modworksql);
