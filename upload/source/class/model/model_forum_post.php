@@ -254,7 +254,8 @@ class model_forum_post extends discuz_model {
 					updategroupcreditlog($this->forum['fid'], $this->member['uid']);
 				}
 
-				$lastpost = $this->thread['tid']."\t".$this->thread['subject']."\t".getglobal('timestamp')."\t".$author;
+				$subject = cutstr($this->thread['subject'], 80);
+				$lastpost = $this->thread['tid']."\t".$subject."\t".getglobal('timestamp')."\t".$author;
 				C::t('forum_forum')->update($this->forum['fid'], array('lastpost' => $lastpost));
 				C::t('forum_forum')->update_forum_counter($this->forum['fid'], 0, 1, 1);
 				if($this->forum['type'] == 'sub') {
@@ -517,7 +518,8 @@ class model_forum_post extends discuz_model {
 		$this->forum['lastpost'] = explode("\t", $this->forum['lastpost']);
 
 		if($this->post['dateline'] == $this->forum['lastpost'][2] && ($this->post['author'] == $this->forum['lastpost'][3] || ($this->forum['lastpost'][3] == '' && $this->post['anonymous']))) {
-			$lastpost = $this->thread['tid']."\t".($isfirstpost ? $this->param['subject'] : $this->thread['subject'])."\t".$this->post['dateline']."\t".($this->param['isanonymous'] ? '' : $this->post['author']);
+			$subject = $isfirstpost ? cutstr($this->param['subject'], 80) : cutstr($this->thread['subject'], 80);
+			$lastpost = $this->thread['tid']."\t".$subject."\t".$this->post['dateline']."\t".($this->param['isanonymous'] ? '' : $this->post['author']);
 			C::t('forum_forum')->update($this->forum['fid'], array('lastpost' => $lastpost));
 
 		}
