@@ -124,7 +124,7 @@ class block_article extends discuz_block {
 				'url' => array('name' => lang('blockclass', 'blockclass_article_field_url'), 'formtype' => 'text', 'datatype' => 'string'),
 				'title' => array('name' => lang('blockclass', 'blockclass_article_field_title'), 'formtype' => 'title', 'datatype' => 'title'),
 				'fromurl' => array('name' => lang('blockclass', 'blockclass_article_field_fromurl'), 'formtype' => 'text', 'datatype' => 'string'),
-				'from' => array('name' => lang('blockclass', 'blockclass_article_field_from'), 'formtype' => 'title', 'datatype' => 'title'),
+				'from' => array('name' => lang('blockclass', 'blockclass_article_field_from'), 'formtype' => 'text', 'datatype' => 'string'),
 				'pic' => array('name' => lang('blockclass', 'blockclass_article_field_pic'), 'formtype' => 'pic', 'datatype' => 'pic'),
 				'summary' => array('name' => lang('blockclass', 'blockclass_article_field_summary'), 'formtype' => 'summary', 'datatype' => 'summary'),
 				'dateline' => array('name' => lang('blockclass', 'blockclass_article_field_dateline'), 'formtype' => 'date', 'datatype' => 'date'),
