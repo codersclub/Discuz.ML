@@ -1843,16 +1843,20 @@ function navShow(id) {
 }
 
 function strLenCalc(obj, checklen, maxlen) {
-	var v = obj.value, charlen = 0, maxlen = !maxlen ? 200 : maxlen, curlen = maxlen, len = strlen(v);
+	var v = obj.value, charlen = 0, maxlen = !maxlen ? 200 : maxlen, curlen = 0, len = strlen(v);
 	for(var i = 0; i < v.length; i++) {
 		if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
-			curlen -= charset == 'utf-8' ? 2 : 1;
+			curlen += 2;
+		} else {
+			curlen += 1;
 		}
 	}
-	if(curlen >= len) {
-		$(checklen).innerHTML = curlen - len;
+	if(curlen <= maxlen) {
+		$(checklen).innerHTML = maxlen - curlen;
+		return true;
 	} else {
 		obj.value = mb_cutstr(v, maxlen, 0);
+		return false;
 	}
 }
 
