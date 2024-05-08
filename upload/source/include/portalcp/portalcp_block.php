@@ -558,19 +558,12 @@ if($op == 'block') {
 			$result = pic_upload($_FILES['pic'], 'portal');
 			$item['pic'] = 'portal/'.$result['pic'];
 			$item['picflag'] = $result['remote'] ? '2' : '1';
-			if($_G['setting']['ftp']['on'] == 2) {
-				$item['picflag'] = 0;
-				$item['pic'] = $_G['setting']['attachurl'].$item['pic'];
-			}
 			$item['makethumb'] = 0;
 			$item['thumbpath'] = '';
 			$thumbdata = array('bid' => $block['bid'], 'itemid' => $item['itemid'], 'pic' => $item['pic'], 'picflag' => $result['remote'], 'type' => '1');
 			C::t('common_block_pic')->insert($thumbdata);
 		} elseif($_POST['pic']) {
 			$pic = dhtmlspecialchars($_POST['pic']);
-			if($_G['setting']['ftp']['on'] == 2 && !preg_match('/^https?:\/\//is', $pic)) {
-				$pic = $_G['setting']['attachurl'].$pic;
-			}
 			$urls = parse_url($pic);
 			if(!empty($urls['scheme']) && !empty($urls['host'])) {
 				$item['picflag'] = '0';
