@@ -45,8 +45,9 @@ body { padding-top: 170px; }
 					#controlcontent li.module-attachment span { background-position: 0 -240px; }
 					#controlcontent li.module-blog span { background-position: 0 -60px; }
 					#controlcontent li.module-doing span { background-position: -80px -60px; }
+	#contentblockclass #contentblockclass_nav { max-height: 30px; overflow-x: auto;}
 	#contentblockclass ul li { float: none; margin: 0; }
-	#contentblockclass ol { overflow: hidden; margin-bottom: 10px; padding-left: 45px; height: 60px; background: url({STATICURL}image/diy/module-html.png) no-repeat 5px 0; }
+	#contentblockclass ol { overflow-x: auto; margin-bottom: 10px; padding-left: 45px; height: 60px; background: url({STATICURL}image/diy/module-html.png) no-repeat 5px 0; }
 		#contentblockclass ol li { float: left; margin-right: 2px; }
 		#contentblockclass li.module-html ol { border: none; background-image: url({STATICURL}image/diy/module-html.png); }
 		#contentblockclass li.module-forum ol { background-image: url({STATICURL}image/diy/module-forum.png); }

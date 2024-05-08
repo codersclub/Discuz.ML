@@ -13,6 +13,9 @@ if(!defined('IN_DISCUZ')) {
 
 function block_script($blockclass, $script) {
 	global $_G;
+	if(!isset($_G['cache']['blockindex'])) {
+		loadcache('blockindex');
+	}
 	$arr = explode('_', $blockclass);
 	$dirname = $arr[0];
 	$xmlid = null;
@@ -20,12 +23,14 @@ function block_script($blockclass, $script) {
 		$xmlid = intval($arr[1]);
 	}
 	$var = "blockscript_{$dirname}_{$script}";
-	$script = 'block_'.$script;
+	$class = 'block_'.$script;
 	if(!isset($_G[$var]) || $xmlid) {
-		if(@include_once libfile($script, 'class/block/'.$dirname)) {
-			$_G[$var] = $xmlid ?  new $script($xmlid) : new $script();
-		} else {
-			$_G[$var] = false;
+		$_G[$var] = false;
+		if(!empty($pathindex = $_G['cache']['blockindex']['sub'][$blockclass.'.'.$script]) &&
+			!empty($path = $_G['cache']['blockindex']['path'][$pathindex]) && (@include_once $path.$class.'.php')) {
+			$_G[$var] = $xmlid ? new $class($xmlid) : new $class();
+		} elseif(@include_once libfile($class, 'class/block/'.$dirname)) {
+			$_G[$var] = $xmlid ? new $class($xmlid) : new $class();
 		}
 	}
 	return $_G[$var];
@@ -133,7 +138,17 @@ function block_fetch_content($bid, $isjscall=false, $forceupdate=false) {
 		return;
 	}
 
-	if($forceupdate) {
+	if(substr($block['blockclass'], -5) == '_real') {
+		$block = empty($_G['block'][$bid]) ? array() : $_G['block'][$bid];
+		if($block) {
+			$obj = block_script($block['blockclass'], $block['script']);
+			if(is_object($obj)) {
+				$return = $obj->getdata(array(), $block['param']);
+				$block['summary'] = &$return['html'];
+				$allowmem = false;
+			}
+		}
+	} elseif($forceupdate) {
 		block_updatecache($bid, true);
 		$block = $_G['block'][$bid];
 	} elseif($block['cachetime'] > 0 && $_G['timestamp'] - $block['dateline'] > $block['cachetime']) {
@@ -740,12 +755,16 @@ function block_thumbpath($block, $item) {
 
 function block_getclass($classname, $getstyle=false) {
 	global $_G;
-	if(!isset($_G['cache']['blockclass'])) {
-		loadcache('blockclass');
+	if(!isset($_G['cache']['blockclass']) || !isset($_G['cache']['blockindex'])) {
+		loadcache(array('blockclass', 'blockindex'));
 	}
 	$theclass = array();
-	list($c1, $c2) = explode('_', $classname);
-	if(is_array($_G['cache']['blockclass']) && isset($_G['cache']['blockclass'][$c1]['subs'][$classname])) {
+	if(isset($_G['cache']['blockindex']['class'][$classname])) {
+		$c1 = $_G['cache']['blockindex']['class'][$classname];
+	} else {
+		list($c1, $c2) = explode('_', $classname);
+	}
+	if($c1 && is_array($_G['cache']['blockclass']) && isset($_G['cache']['blockclass'][$c1]['subs'][$classname])) {
 		$theclass = $_G['cache']['blockclass'][$c1]['subs'][$classname];
 		if($getstyle && !isset($theclass['style'])) {
 			foreach(C::t('common_block_style')->fetch_all_by_blockclass($classname) as $value) {
@@ -887,7 +906,7 @@ function block_getstyle($styleids = array()) {
 
 function blockclass_cache() {
 	global $_G;
-	$data = $dirs = $styles = $dataconvert = array();
+	$data = $dirs = $styles = $dataconvert = $dataindex = array();
 	$dir = DISCUZ_ROOT.'/source/class/block/';
 	$dh = opendir($dir);
 	while(($filename=readdir($dh))) {
@@ -896,6 +915,15 @@ function blockclass_cache() {
 		}
 	}
 	ksort($dirs);
+	if(!empty($_G['setting']['plugins']['available'])) {
+		foreach($_G['setting']['plugins']['available'] as $key) {
+			$dir = './source/plugin/'.$key.'/block';
+			if(!file_exists($dir) || !file_exists($dir.'/blockclass.php')) {
+				continue;
+			}
+			$dirs[$key] = $dir.'/';
+		}
+	}
 	foreach($dirs as $name=>$dir) {
 		$blockclass = $blockconvert = array();
 		if(file_exists($dir.'blockclass.php')) {
@@ -948,6 +976,8 @@ function blockclass_cache() {
 					}
 				}
 			}
+			$pathindex = md5($dir);
+			$dataindex['path'][$pathindex] = $dir;
 			foreach($infos as $info) {
 				if($info['name'] && is_array($info['blockclass']) && $info['blockclass'][0] && $info['blockclass'][1]) {
 					list($key, $title) = $info['blockclass'];
@@ -959,10 +989,12 @@ function blockclass_cache() {
 							'script' => array()
 						);
 					}
+					$dataindex['class'][$key] = $name;
 					$blockclass['subs'][$key]['script'][$scriptname] = $info['name'];
 					if(!isset($blockconvert[$key]) && !empty($fieldsconvert)) {
 						$blockconvert[$key] = $fieldsconvert;
 					}
+					$dataindex['sub'][$key.'.'.$scriptname] = $pathindex;
 				}
 			}
 		}
@@ -1003,6 +1035,7 @@ function blockclass_cache() {
 	}
 	savecache('blockclass', $data);
 	savecache('blockconvert', $dataconvert);
+	savecache('blockindex', $dataindex);
 }
 
 function block_parse_template($str_template, &$arr) {
