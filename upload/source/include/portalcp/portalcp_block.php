@@ -67,8 +67,9 @@ $_GET['script'] = !empty($_GET['script']) && isset($theclass['script'][$_GET['sc
 		: (!empty($block['script']) ? $block['script'] : key($theclass['script']));
 
 $blocktype = (!empty($_GET['blocktype']) || !empty($block['blocktype'])) ? 1 : 0;
-$nocachetime = in_array($_GET['script'], array('blank', 'line', 'banner', 'vedio', 'google')) ? true : false;
-$is_htmlblock = ($_GET['classname'] == 'html_html') ? 1 : 0;
+$isrealtime = substr($_GET['classname'], -5) == '_real';
+$nocachetime = in_array($_GET['script'], array('blank', 'line', 'banner', 'vedio', 'google')) || $isrealtime ? true : false;
+$is_htmlblock = ($_GET['classname'] == 'html_html') || $isrealtime ? 1 : 0;
 $showhtmltip = false;
 if($op == 'data' && $is_htmlblock) {
 	$op = 'block';
@@ -196,7 +197,7 @@ if($op == 'block') {
 		showmessage('do_success', 'portal.php?mod=portalcp&ac=block&op=block&bid='.$bid, array('bid'=>$bid, 'eleid'=> $_GET['eleid']));
 	}
 
-	loadcache('blockconvert');
+	loadcache(array('blockconvert', 'blockindex'));
 	$block['script'] = isset($block['script']) ? $block['script'] : $_GET['script'];
 
 	if($block['blockclass'] == 'html_html' && $block['script'] == 'blank'){
@@ -220,8 +221,8 @@ if($op == 'block') {
 	$blockclassname = '';
 	$blockclass = $block['blockclass'] ? $block['blockclass'] : $_GET['classname'];
 	$arr = explode('_', $blockclass);
-	if(count($arr) == 2) {
-		$blockclassname = is_array($_G['cache']['blockclass'][$arr[0]]['subs'][$blockclass]) ? $_G['cache']['blockclass'][$arr[0]]['subs'][$blockclass]['name'] : '';
+	if(count($arr) >= 2) {
+		$blockclassname = !empty($_G['cache']['blockclass'][$_G['cache']['blockindex']['class'][$blockclass]]['name']) ? $_G['cache']['blockclass'][$_G['cache']['blockindex']['class'][$blockclass]]['name'] : '';
 	}
 	$blockclassname = empty($blockclassname) ? $blockclass : $blockclassname;
 
