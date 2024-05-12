@@ -144,7 +144,7 @@ function imagelist($attach, $firstpost = 0) {
 				<dd>
 					<!--{if !$guestviewthumb}-->
 						<p class="mbn">
-							<a href="forum.php?mod=attachment{$is_archive}&aid=$aidencode&nothumb=yes" {if (!$_G['setting']['hideattachtips'] || ($firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid']))) && $_GET['from'] != 'preview'}onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" id="aid$attach[aid]"{/if} class="xw1" target="_blank">$attach[filename]</a>
+							<a href="forum.php?mod=attachment{$is_archive}&aid=$aidencode&nothumb=yes" {if (!$_G['setting']['hideattachtips'] || ($firstpost && $_G['fid'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid']))) && $_GET['from'] != 'preview'}onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" id="aid$attach[aid]"{/if} class="xw1" target="_blank">$attach[filename]</a>
 							<em class="xg1">($attach[attachsize]<!--{if !$_G['setting']['hideattachdown']}-->, {lang downloads}: $attach['downloads']<!--{/if}-->)</em>
 						</p>
 						<div class="tip tip_4" id="aid$attach[aid]_menu" style="display: none" disautofocus="true">
@@ -154,7 +154,7 @@ function imagelist($attach, $firstpost = 0) {
 									<!--{if helper_access::check_module('album')}-->
 										&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_$attach[aid]" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=$attach[aid]&amp;handlekey=savephoto_$attach[aid]">{lang save_to_album}</a>
 									<!--{/if}-->
-									<!--{if $firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
+									<!--{if $firstpost && $_G['fid'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
 										&nbsp;<a href="forum.php?mod=ajax&action=setthreadcover&aid=$attach[aid]&fid=$_G[fid]" onclick="showWindow('setcover{$attach[aid]}', this.href)">{lang set_cover}</a>
 									<!--{/if}-->
 								</p>
@@ -255,9 +255,9 @@ function attachinpost($attach, $post) {
 					</div>
 				<!--{else}-->
 					<!--{if $_G['setting']['thumbstatus'] && $attach['thumb']}-->
-						<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} style="cursor:pointer" id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" onclick="zoom(this, this.getAttribute('zoomfile'), 0, 0, '{$_G[setting][showexif]}')" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode{else}{$attach[url]}$attachthumb{/if}" inpost="1"{if (!$_G['setting']['hideattachtips'] || ($firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid']))) && $_GET['from'] != 'preview'} onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
+						<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} style="cursor:pointer" id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" onclick="zoom(this, this.getAttribute('zoomfile'), 0, 0, '{$_G[setting][showexif]}')" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode{else}{$attach[url]}$attachthumb{/if}" inpost="1"{if (!$_G['setting']['hideattachtips'] || ($firstpost && $_G['fid'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid']))) && $_GET['from'] != 'preview'} onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
 					<!--{else}-->
-						<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes{else}{$attach[url]}$attach[attachment]{/if}" $widthcode inpost="1"{if (!$_G['setting']['hideattachtips'] || ($firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid']))) && $_GET['from'] != 'preview'} onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
+						<img{if $attach['price'] && $_G['forum_attachmentdown'] && $_G['uid'] != $attach['uid']} class="attprice"{/if} id="aimg_$attach[aid]" aid="$attach[aid]" src="{STATICURL}image/common/none.gif" zoomfile="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes&nothumb=yes{else}{$attach[url]}$attach[attachment]{/if}" file="{if $attach[refcheck]}forum.php?mod=attachment{$is_archive}&aid=$aidencode&noupdate=yes{else}{$attach[url]}$attach[attachment]{/if}" $widthcode inpost="1"{if (!$_G['setting']['hideattachtips'] || ($firstpost && $_G['fid'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid']))) && $_GET['from'] != 'preview'} onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})"{/if} />
 					<!--{/if}-->
 				<!--{/if}-->
 			<div class="tip tip_4 aimg_tip" id="aimg_$attach[aid]_menu" style="position: absolute; display: none" disautofocus="true">
@@ -268,7 +268,7 @@ function attachinpost($attach, $post) {
 						<!--{if helper_access::check_module('album')}-->
 							&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_$attach[aid]" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=$attach[aid]&amp;handlekey=savephoto_$attach[aid]">{lang save_to_album}</a>
 						<!--{/if}-->
-						<!--{if $firstpost && $_G['fid'] && $_G['forum']['picstyle'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
+						<!--{if $firstpost && $_G['fid'] && ($_G['forum']['ismoderator'] || $_G['uid'] == $attach['uid'])}-->
 							&nbsp;<a href="forum.php?mod=ajax&action=setthreadcover&aid=$attach[aid]&fid=$_G[fid]" onclick="showWindow('setcover{$attach[aid]}', this.href)">{lang set_cover}</a>
 						<!--{/if}-->
 					</p>

@@ -35,9 +35,7 @@ class extend_thread_image extends extend_thread_base {
 
 		$values = array('fid' => $fid, 'tid' => $tid, 'pid' => $pid, 'coverimg' => '');
 		$param = array();
-		if($this->forum['picstyle']) {
-			setthreadcover($pid, 0, $threadimageaid);
-		}
+		setthreadcover($pid, 0, $threadimageaid);
 
 		if($threadimageaid) {
 			if(!$threadimage) {
@@ -100,12 +98,10 @@ class extend_thread_image extends extend_thread_base {
 				$this->param['threadimageaid'] = $this->param['threadimage']['aid'];
 			}
 
-			if($this->forum['picstyle']) {
-				if(empty($this->thread['cover'])) {
-					setthreadcover($this->post['pid'], 0, $this->param['threadimageaid']);
-				} else {
-					setthreadcover($this->post['pid'], $this->thread['tid'], 0, 1);
-				}
+			if(empty($this->thread['cover'])) {
+				setthreadcover($this->post['pid'], 0, $this->param['threadimageaid']);
+			} else {
+				setthreadcover($this->post['pid'], $this->thread['tid'], 0, 1);
 			}
 
 			if($this->param['threadimageaid']) {
