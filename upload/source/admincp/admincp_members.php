@@ -2850,7 +2850,6 @@ EOF;
 		unset($list['resideprovince']);
 		unset($list['residedist']);
 		unset($list['residecommunity']);
-		unset($list['idcardtype']);
 
 		if(!submitcheck('ordersubmit')) {
 			$_GET['anchor'] = in_array($_GET['action'], array('members', 'setting')) ? $_GET['action'] : 'members';
