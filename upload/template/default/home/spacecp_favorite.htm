@@ -24,7 +24,14 @@
 	</form>
 	<!--{if $_G[inajax] && $_GET[type]!='view'}-->
 	<script type="text/javascript">
+		function favorite_delete(favid) {
+			var el = $('fav_' + favid);
+			if(el) {
+				el.style.display = "none";
+			}
+		}
 		function succeedhandle_$_GET[handlekey](url, msg, values) {
+			favorite_delete(values['favid']);
 			hideWindow('$_GET[handlekey]');
 		}
 	</script>
@@ -50,6 +57,12 @@
 	</form>
 	<!--{if $_G[inajax]}-->
 	<script type="text/javascript">
+		function favorite_delete(favid) {
+			var el = $('fav_' + favid);
+			if(el) {
+				el.style.display = "none";
+			}
+		}
 		function succeedhandle_$_GET[handlekey](url, msg, values) {
 			favorite_delete(values['favid']);            
 			hideWindow('$_GET[handlekey]');
