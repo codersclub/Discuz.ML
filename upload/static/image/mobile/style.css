@@ -496,6 +496,7 @@ select {-moz-appearance:none;}
 .medallist .mg_tit span { display: block;height: 18px;line-height: 18px;font-size: 12px;color: var(--dz-FC-999);}
 .medallist .mg_tit span .xi1 { font-size: 14px;}
 .medallist .medal_msg {margin-bottom: 5px;margin-left: 32px;line-height: 22px;font-size: 14px;color: var(--dz-FC-999);}
+.medallist .medal_btn_large {position: absolute;top: 15px;right: 13px; text-align: center;}
 .medallist .medal_btn { position: absolute;top: 20px;right: 13px;height: 30px;line-height: 30px;background-color: var(--dz-BG-color);font-size: 12px;border-radius: 3px;text-align: center;}
 .medallist .medal_btn span {color: var(--dz-FC-fff);padding: 0 12px;}
 .medallist .medal_btn span.hui {display:block;background: var(--dz-BG-5); color: var(--dz-FC-999);}
