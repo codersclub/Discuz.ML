@@ -3381,7 +3381,7 @@ $lang = array
 	'styles_edit_tpl' => '匹配模板',
 	'styles_edit_tpl_comment' => '与本套界面风格相匹配的模板名称',
 	'styles_edit_logo' => '站点 Logo {BOARDIMG},{BOARDLOGO}',
-	'styles_edit_logo_comment' => '可以上传图片，或者直接填写图片文件名(按论坛根目录、扩展图片目录、界面基础图片目录识别图片路径）',
+	'styles_edit_logo_comment' => '可以上传图片，或者直接填写图片文件名(按论坛根目录、扩展图片目录、界面基础图片目录识别图片路径）<br/>如果需要为指定模块导航设置自定义Logo，可前往 <a href="'.ADMINSCRIPT.'?action=nav&operation=headernav&frames=yes" target="_blank" style="color: #09C;">界面 - 导航设置 - 导航编辑</a> 功能中进行设置。',
 	'styles_edit_searchlogo' => '搜索 Logo {SEARCHIMG},{SEARCHLOGO}',
 	'styles_edit_touchlogo' => '手机版 Logo {TOUCHIMG},{TOUCHLOGO}',
 	'styles_edit_imgdir' => '界面基础图片目录 {IMGDIR}',
