@@ -155,6 +155,9 @@ if($_GET['op'] == 'delete') {
 		$selectgroupstyle = '';
 		if($blog['target_ids']) {
 			$names = array();
+			if(!is_array($blog['target_ids'])){
+				$blog['target_ids'] = explode(",", $blog['target_ids']);
+			}
 			foreach(C::t('common_member')->fetch_all($blog['target_ids']) as $uid => $value) {
 				$names[$uid] = $value['username'];
 			}
