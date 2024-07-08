@@ -30,7 +30,7 @@
 			<li><em><!--{if $user['isfounder'] || $user['allowadminnote']}--><a href="{UC_ADMINSCRIPT}?m=note&a=ls">{lang note_fail_apps}</a><!--{else}-->{lang note_fail_apps}<!--{/if}-->:</em>		
 			<!--{loop $errornotes $appid $error}-->
 				$applist[$appid][name]&nbsp;
-			<!--{/loop}-->
+			<!--{/loop}--></li>
 		<!--{/if}-->
 	</ul>
 
