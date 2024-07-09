@@ -389,7 +389,7 @@ function show_sysinfo() {
 	));
 	showboxrow('', array('class="dcol lineheight d-14"', 'class="dcol lineheight d-1"'), array(
 		cplang('home_environment'),
-		PHP_OS.' / PHP v'.PHP_VERSION
+		PHP_OS.'('.PHP_OS_FAMILY.') / PHP '.PHP_VERSION.(PHP_ZTS ? ' TS' : '').(PHP_DEBUG ? ' DEBUG' : '').' / '.PHP_SAPI
 	));
 	showboxrow('', array('class="dcol lineheight d-14"', 'class="dcol lineheight d-1"'), array(
 		cplang('home_serversoftware'),
