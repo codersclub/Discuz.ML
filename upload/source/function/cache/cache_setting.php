@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: cache_setting.php 36353 2017-01-17 07:19:28Z nemohou $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -199,8 +198,6 @@ function build_cache_setting() {
 
 	include_once DISCUZ_ROOT.'./source/discuz_version.php';
 	$_G['setting']['version'] = $data['version'] = DISCUZ_VERSION;
-/*vot*/	$_G['setting']['release'] = $data['release'] = DISCUZ_RELEASE;
-/*vot*/	$_G['setting']['ml_revision'] = $data['ml_revision'] = DISCUZ_ML_REVISION;
 
 	$data['sitemessage']['time'] = !empty($data['sitemessage']['time']) ? $data['sitemessage']['time'] * 1000 : 0;
 	foreach (array('register', 'login', 'newthread', 'reply') as $type) {
@@ -567,13 +564,6 @@ function get_cachedata_setting_plugin($method = '') {
 			$data['plugins']['version'][$plugin['identifier']] = $plugin['version'];
 		}
 		$plugin['directory'] = $plugin['directory'].((!empty($plugin['directory']) && substr($plugin['directory'], -1) != '/') ? '/' : '');
-		if(!isplugindir($plugin['directory'])) {
-			if(ispluginkey($plugin['identifier'])) {
-				$plugin['directory'] = $plugin['identifier'].'/';
-			} else {
-				continue;
-			}
-		}
 		if(is_array($plugin['modules'])) {
 			unset($plugin['modules']['extra']);
 			foreach($plugin['modules'] as $k => $module) {
@@ -807,30 +797,16 @@ function get_cachedata_mainnav() {
 			$nav['available'] = 0;
 		}
 		$nav['style'] = parsehighlight($nav['highlight']);
-/*vot*/		$data['navs'][$id]['id'] = $nav['identifier'];
 		$data['navs'][$id]['navname'] = $nav['name'];
-/*vot*/		$nav['name'] .= ($nav['identifier'] == 5 && $nav['type'] == 0 ? '<b class="icon_down"></b>' : '');
 		$data['navs'][$id]['filename'] = $nav['url'];
 		$data['navs'][$id]['available'] = $nav['available'];
 		$nav['name'] = $nav['name'].($nav['title'] ? '<span>'.$nav['title'].'</span>' : '');
-//--------------------------------
-//vot Get All Sub-navigation links
-/*vot*/		$subindex = 0;
-/*vot*/		$subnavs = array();
+		$subnavs = '';
 		foreach(C::t('common_nav')->fetch_all_subnav($nav['id']) as $subnav) {
 			$item = "<a href=\"{$subnav['url']}\" hidefocus=\"true\" ".($subnav['title'] ? "title=\"{$subnav['title']}\" " : '').($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']).">{$subnav['name']}</a>";
 			$liparam = !$nav['subtype'] || !$nav['subcols'] ? '' : ' style="width:'.sprintf('%1.1f', (1 / $nav['subcols']) * 100).'%"';
-//vot				$subnavs .= '<li'.$liparam.'>'.$item.'</li>';
-
-/*vot*/				$subnavs[$subindex] = $subnav;
-/*vot*/				$extra = " hidefocus=\"true\" ".($subnav['target'] == 1 ? "target=\"_blank\" " : '').parsehighlight($subnav['highlight']);
-
-//				$subnavs[$subindex]['title'] = $title; // Translate this!,
-				$subnavs[$subindex]['extra'] = $extra;
-				$subnavs[$subindex]['liparam'] = $liparam;
-
-/*vot*/				$subindex++;
-/*vot*/			}
+			$subnavs .= '<li'.$liparam.'>'.$item.'</li>';
+		}
 		list($navid) = explode('.', basename($nav['url']));
 		if($nav['type'] || $navid == 'misc' || $nav['identifier'] == 6) {
 			if($nav['type'] == 4) {
@@ -853,8 +829,7 @@ function get_cachedata_mainnav() {
 				$data['subnavs'][$navid] = $subnavs;
 			} else {
 				$onmouseover = 'showMenu({\'ctrlid\':this.id,\'ctrlclass\':\'hover\',\'duration\':2})';
-//vot				$data['menunavs'][] = '<ul class="p_pop h_pop" id="'.$navid.'_menu" style="display: none">'.$subnavs.'</ul>';
-/*vot*/				$data['menunavs'][$navid] = $subnavs;
+				$data['menunavs'][] = '<ul class="p_pop h_pop" id="'.$navid.'_menu" style="display: none">'.$subnavs.'</ul>';
 			}
 		}
 		if($nav['identifier'] == 6 && $nav['type'] == 0) {
@@ -898,9 +873,9 @@ function get_cachedata_mainnav() {
 
 		$data['navs'][$id]['navid'] = $navid;
 		$data['navs'][$id]['level'] = $nav['level'];
-/*vot*/		$data['navs'][$id]['nav'] = "id=\"$navid\" ".($onmouseover ? 'onmouseover="'.$onmouseover.'"' : '')."><a href=\"$nav[url]\" hidefocus=\"true\" ".($nav['title'] ? "title=\"$nav[title]\" " : '').($nav['target'] == 1 ? "target=\"_blank\" " : '')." $nav[style]";
+		$data['navs'][$id]['nav'] = "id=\"$navid\" ".($onmouseover ? 'onmouseover="'.$onmouseover.'"' : '')."><a href=\"$nav[url]\" hidefocus=\"true\" ".($nav['title'] ? "title=\"$nav[title]\" " : '').($nav['target'] == 1 ? "target=\"_blank\" " : '')." $nav[style]>$nav[name]".($nav['identifier'] == 5 && $nav['type'] == 0 ? '<b class="icon_down"></b>' : '')."</a";
 	}
-//vot	$data['menunavs'] = implode('', $data['menunavs']);
+	$data['menunavs'] = implode('', $data['menunavs']);
 
 	return array($data['navs'], $data['subnavs'], $data['menunavs'], $data['navmns'], $data['navmn'], $data['navdms'], $data['navlogos']);
 
@@ -925,7 +900,7 @@ function get_cachedata_footernav() {
 				}
 			}
 		}
-/*vot*/		$nav['code'] = '<a href="'.$nav['url'].'"'.($nav['title'] ? ' title="'.$nav['title'].'"' : '').($nav['target'] == 1 ? ' target="_blank"' : '').' '.parsehighlight($nav['highlight']).$nav['extra'].'>';
+		$nav['code'] = '<a href="'.$nav['url'].'"'.($nav['title'] ? ' title="'.$nav['title'].'"' : '').($nav['target'] == 1 ? ' target="_blank"' : '').' '.parsehighlight($nav['highlight']).$nav['extra'].'>'.$nav['name'].'</a>';
 		$id = $nav['type'] == 0 ? $nav['identifier'] : 100 + $nav['id'];
 		$data['footernavs'][$id] = array('available' => $nav['available'], 'navname' => $nav['name'], 'code' => $nav['code'], 'type' => $nav['type'], 'level' => $nav['level'], 'id' => $nav['identifier']);
 	}
@@ -1015,7 +990,7 @@ function get_cachedata_spacenavs() {
 			$nav['code'] = '</ul><hr class="da" /><ul>';
 		}
 		$id = $nav['type'] == 0  ? $nav['identifier'] : 100 + $nav['id'];
-/*vot*/		$data['spacenavs'][$id] = array('available' => $nav['available'], 'navname' => $nav['name'], 'code' => $nav['code'], 'level' => $nav['level'], 'id' => $nav['identifier']);
+		$data['spacenavs'][$id] = array('available' => $nav['available'], 'navname' => $nav['name'], 'code' => $nav['code'], 'level' => $nav['level']);
 	}
 	return $data['spacenavs'];
 }
@@ -1036,9 +1011,9 @@ function get_cachedata_mynavs() {
 			$navicon = preg_match('/^(https?:)?\/\//i', $navicon) ? $navicon : $_G['siteurl'].$navicon;
 			$nav['icon'] = ' style="background-image:url('.$navicon.') !important"';
 		}
-/*vot*/		$nav['code'] = '<a href="'.$nav['url'].'"'.($nav['title'] ? ' title="'.$nav['title'].'"' : '').($nav['target'] == 1 ? ' target="_blank"' : '').$nav['icon'].'>';
+		$nav['code'] = '<a href="'.$nav['url'].'"'.($nav['title'] ? ' title="'.$nav['title'].'"' : '').($nav['target'] == 1 ? ' target="_blank"' : '').$nav['icon'].'>'.$nav['name'].'</a>';
 		$id = $nav['type'] == 0 ? $nav['identifier'] : 100 + $nav['id'];
-/*vot*/		$data['mynavs'][$id] = array('available' => $nav['available'], 'navname' => $nav['name'], 'code' => $nav['code'], 'level' => $nav['level'], 'id' => $nav['identifier']);
+		$data['mynavs'][$id] = array('available' => $nav['available'], 'navname' => $nav['name'], 'code' => $nav['code'], 'level' => $nav['level']);
 	}
 	return $data['mynavs'];
 }
@@ -1058,7 +1033,7 @@ function get_cachedata_topnav() {
 				$nav['extra'] = ' onclick="addFavorite(this.href, \''.addslashes($_G['setting']['bbname']).'\');return false;"';
 			}
 		}
-/*vot*/		$nav['code'] = '<a href="'.$nav['url'].'"'.($nav['title'] ? ' title="'.$nav['title'].'"' : '').($nav['target'] == 1 ? ' target="_blank"' : '').' '.parsehighlight($nav['highlight']).$nav['extra'].'>';
+		$nav['code'] = '<a href="'.$nav['url'].'"'.($nav['title'] ? ' title="'.$nav['title'].'"' : '').($nav['target'] == 1 ? ' target="_blank"' : '').' '.parsehighlight($nav['highlight']).$nav['extra'].'>'.$nav['name'].'</a>';
 		$id = $nav['type'] == 0 ? $nav['identifier'] : 100 + $nav['id'];
 		$data['topnavs'][$nav['subtype']][$id] = array('available' => $nav['available'], 'navname' => $nav['name'], 'code' => $nav['code'], 'type' => $nav['type'], 'level' => $nav['level'], 'id' => $nav['identifier']);
 	}
@@ -1185,3 +1160,4 @@ function parsehighlight($highlight) {
 	return $style;
 }
 
+?>
