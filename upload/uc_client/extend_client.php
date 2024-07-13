@@ -128,8 +128,8 @@ class uc_note_handler {
 		} else {
 			$avtpath = str_replace('..', '', UC_AVTPATH);
 		}
-		$avatarfile = realpath(DISCUZ_ROOT.$avtpath).'./'.$dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
-		if(file_exists($avatar_file)) {
+		$avatarfile = realpath(DISCUZ_ROOT.$avtpath).'/'.$dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
+		if(file_exists($avatarfile)) {
 			return API_RETURN_SUCCEED;
 		} else {
 			return API_RETURN_FAILED;

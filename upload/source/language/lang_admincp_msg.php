@@ -647,6 +647,7 @@ $lang = array (
   'usertag_add_error' => '添加失败，用户或标签错误，请重新填写',
 
   'members_verify_add_user_succeed' => '认证用户添加完成',
+  'members_verify_add_user_failure' => '认证用户添加失败',
   'members_verify_update_title_error' => '认证启用时认证名称不能为空修改',
   'members_verify_title_invalid' => '您没有为启用的认证设置认证名称',
 
