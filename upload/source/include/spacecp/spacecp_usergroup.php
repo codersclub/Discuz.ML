@@ -211,7 +211,10 @@ if(in_array($do, array('buy', 'exit'))) {
 						}
 					}
 				}
-				$groupids = array_merge(array($_G['groupid']), explode("\t", $_G['member']['extgroupids']));
+				$groupids = array($_G['groupid']);
+				if(!empty($_G['member']['extgroupids'])) {
+					$groupids = array_merge($groupids, explode("\t", $_G['member']['extgroupids']));
+				}
 				$forumperm[$forum['fid']][$perm] = preg_match("/(^|\t)(".implode('|', $groupids).")(\t|$)/", $forum[$perm]) ? 1 : 0;
 			} else {
 				$forumperm[$forum['fid']][$perm] = $defaultperm[$_G['groupid'] != 7 ? 1 : 0][$perm];
