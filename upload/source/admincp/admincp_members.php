@@ -1824,6 +1824,8 @@ EOF;
 			$crimeaction = 'crime_banstatus';
 			$noticekey = 'member_ban_status';
 			$from_idtype = 'banstatus';
+		} else{
+			$crimeaction = 'members_ban_none';
 		}
 		if($crimeaction) {
 			crime('recordaction', $member['uid'], $crimeaction, lang('forum/misc', 'crime_reason', array('reason' => $reason)));
