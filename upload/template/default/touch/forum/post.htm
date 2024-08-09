@@ -441,6 +441,17 @@
 			var btn = $('#postsubmit');
 			if (btn.attr('disable') === 'true' && obj.val().length > 0){
 				btn.attr('disable','false');
+				btn.removeClass('btn_pn_grey').addClass('btn_pn_blue');
+			}
+		});
+	});
+	$(document).ready(function(){
+		$('body').on('input', 'input[name="secanswer"]', function(){
+		var obj = $(this);
+			var btn = $('#postsubmit');
+			if (btn.attr('disable') === 'true' && obj.val().length > 0){
+				btn.attr('disable','false');
+				btn.removeClass('btn_pn_grey').addClass('btn_pn_blue');
 			}
 		});
 	});
