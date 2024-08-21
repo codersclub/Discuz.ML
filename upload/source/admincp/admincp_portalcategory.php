@@ -1075,11 +1075,11 @@ function getparentviewprimaltplname($catid) {
 	if(empty($catid)) {
 		return $tpl;
 	}
-	$cat = $_G['cache']['portalcategroy'][$catid];
+	$cat = $_G['cache']['portalcategory'][$catid];
 	if(!empty($cat['upid']['articleprimaltplname'])) {
 		$tpl = $cat['upid']['articleprimaltplname'];
 	} else {
-		$cat = $_G['cache']['portalcategroy'][$cat['upid']];
+		$cat = $_G['cache']['portalcategory'][$cat['upid']];
 		if($cat && $cat['articleprimaltplname']) {
 			$tpl = $cat['articleprimaltplname'];
 		}
