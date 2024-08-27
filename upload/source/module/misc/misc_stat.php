@@ -508,6 +508,9 @@ function getstatvars_forumstat($fid) {
 		$statvars['logs'] = $logs;
 
 		$mindate = C::t('forum_statlog')->fetch_min_logdate_by_fid($fid);
+		if(!$mindate) {
+			return $statvars;
+		}
 		list($minyear, $minmonth, $minday) = explode('-', $mindate);
 		$minmonth = $minyear . '-' . $minmonth;
 		$month = $minmonth;
