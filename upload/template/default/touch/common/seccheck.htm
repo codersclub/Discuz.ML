@@ -2,20 +2,33 @@
 	$sechash = 'S'.random(4);
 	$sectpl = !empty($sectpl) ? explode("<sec>", $sectpl) : array('<br />',': ','<br />','');	
 }
-<!--{if $secqaacheck}-->
-<!--{eval
-	$message = '';
-	$question = make_secqaa();
-	$secqaa = lang('core', 'secqaa_tips').$question;
-}-->
-<!--{/if}-->
 <!--{if $sectpl}-->
 	<!--{if $secqaacheck}-->
-		<li class="sec_txt">
-			{lang secqaa}:
-			<span class="xg2">$secqaa</span>
-			<input name="secqaahash" type="hidden" value="$sechash" />
-			<input name="secanswer" id="secqaaverify_$sechash" type="text" class="txt" />
+		<script type="text/javascript">
+			//Todo: 抽函数到文件中
+			var seccheck_tpl = new Array();
+			var seccheck_modid = new Array();
+			function updatesecqaa(idhash, tpl) {
+				if(document.getElementById('secqaa_' + idhash)) {
+					if(tpl) {
+						seccheck_tpl[idhash] = tpl;
+					}
+					var id = 'seqaajs_' + idhash;
+					var src = 'misc.php?mod=secqaa&action=update&idhash=' + idhash + '&' + Math.random();
+					if(document.getElementById(id)) {
+						document.getElementsByTagName('head')[0].appendChild(document.getElementById(id));
+					}
+					var scriptNode = document.createElement("script");
+					scriptNode.type = "text/javascript";
+					scriptNode.id = id;
+					scriptNode.src = src;
+					document.getElementsByTagName('head')[0].appendChild(scriptNode);
+				}
+			}
+		</script>
+		<li class="sec_code vm">
+			<span id="secqaa_$sechash" class="flex-box"></span>
+			<script type="text/javascript" reload="1">updatesecqaa('$sechash', '$sectpl');</script>
 		</li>
 	<!--{/if}-->
 	<!--{if $seccodecheck}-->
@@ -48,7 +61,6 @@
 			}
 		</script>
 		<li class="sec_code vm">
-			<input name="seccodehash" type="hidden" value="$sechash" />
 			<span id="seccode_c$sechash" class="flex-box"></span>
 			<script type="text/javascript" reload="1">updateseccode('c$sechash', '$sectpl', '{$_G['basescript']}::{CURMODULE}');</script>
 		</li>
