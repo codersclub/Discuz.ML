@@ -916,9 +916,9 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 		.t_f ul { margin-left: 14px; }
 			.t_f li { margin-left: 2em; }
 			.t_f ul li { list-style-type: disc; }
-				ul.litype_1 li { list-style-type: decimal; }
-				ul.litype_2 li { list-style-type: lower-alpha; }
-				ul.litype_3 li { list-style-type: upper-alpha; }
+				ul.litype_1>li { list-style-type: decimal; }
+				ul.litype_2>li { list-style-type: lower-alpha; }
+				ul.litype_3>li { list-style-type: upper-alpha; }
 		.t_f i { font-style: italic; }
 		.sign { overflow: hidden; margin-bottom: 10px; padding-top: 16px; border-top: 1px dashed #CCC; line-height: 1.6em; }
 			.sign::before { content: "SIGNATURE"; float: left; margin-top: -20px; margin-left: -8px; color: #7FCCE5; transform: scale(0.8); letter-spacing: 2px; }
