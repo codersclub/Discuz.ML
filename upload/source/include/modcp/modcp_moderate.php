@@ -131,7 +131,7 @@ if($op == 'members') {
 			$member_status = C::t('common_member_status')->fetch_all($uids, false, 0);
 		}
 		foreach($member_validate as $uid => $member) {
-			$member = array_merge($member, $common_member[$uid], $member_status[$uid]);
+			$member = array_merge($member, (array)$common_member[$uid], (array)$member_status[$uid]);
 			if($member['groupid'] != 8 && !in_array($member['freeze'], array(-1, 2))) {
 				$vuids[] = $member['uid'];
 				continue;
