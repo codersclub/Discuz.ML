@@ -113,9 +113,22 @@ unset($menu);
 $headers = "'".implode("','", array_keys($topmenu))."'";
 $useravt = avatar(getglobal('uid'), 'middle', array('class' => 'avt'));
 
+$sitevip = '';
+if(isfounder() && $_G['setting']['siteuniqueid']) {
+	$sitevip = base64_encode($_G['setting']['siteuniqueid']);
+	$sitevip = '<div id="_siteVip" style="margin-right: 5px"></div><script>
+	_attachEvent(window, \'load\', function () {
+		var _as = document.createElement("script");
+		_as.src = "https://addon.dismall.com/api/sitevip/?'.$sitevip.'";
+		var _s = document.getElementsByTagName("script")[0];
+		_s.parentNode.insertBefore(_as, _s);
+	}, document);</script>';
+}
+
 echo <<<EOT
 			</ul>
 				<div id="frameuinfo">
+					{$sitevip}
 					{$useravt}
 					<p class="greet">$header_welcome, $cpadmingroup <em>{$_G['member']['username']}</em> <a href="$basescript?action=logout" target="_top">$header_logout</a></p>
 					<p class="btnlink"><a href="index.php" target="_blank" title="$header_bbs"><svg width="24" height="24">
