@@ -119,7 +119,6 @@ $menu['topic'] = array(
 
 $menu['user'] = array(
 	array('menu_members_edit', 'members_search'),
-	array('menu_members_add', 'members_add'),
 	array('menu_members_profile', 'members_profile'),
 	array('menu_members_stat', 'members_stat'),
 	array('menu_members_newsletter', 'members_newsletter'),

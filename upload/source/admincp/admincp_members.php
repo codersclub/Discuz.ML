@@ -59,6 +59,7 @@ if($operation == 'search') {
 			array('search', 'members&operation=search', 1),
 			array('clean', 'members&operation=clean', 0),
 			array('nav_repeat', 'members&operation=repeat', 0),
+			array('add', 'members&operation=add', 0),
 		));
 		showtips('members_admin_tips');
 		if(!empty($_GET['vid']) && ($_GET['vid'] > 0 && $_GET['vid'] < 8)) {
@@ -383,6 +384,7 @@ EOF;
 			array('search', 'members&operation=search', 0),
 			array('clean', 'members&operation=clean', 0),
 			array('nav_repeat', 'members&operation=repeat', 1),
+			array('add', 'members&operation=add', 0),
 		));
 
 		showformheader("members&operation=repeat");
@@ -496,6 +498,7 @@ EOF;
 			array('search', 'members&operation=search', 0),
 			array('clean', 'members&operation=clean', 1),
 			array('nav_repeat', 'members&operation=repeat', 0),
+			array('add', 'members&operation=add', 0),
 		));
 
 		showsearchform('clean');
@@ -1104,10 +1107,15 @@ EOF;
 			($groupselect['specialadmin'] ? '<optgroup label="'.$lang['usergroups_specialadmin'].'">'.$groupselect['specialadmin'].'</optgroup>' : '').
 			'<optgroup label="'.$lang['usergroups_system'].'">'.$groupselect['system'].'</optgroup>';
 		/*search={"nav_members_add":"action=members&operation=add"}*/
-		shownav('user', 'nav_members_add');
-		showsubmenu('members_add');
+		shownav('user', 'nav_members');
+		showsubmenu('nav_members', array(
+			array('search', 'members&operation=search', 0),
+			array('clean', 'members&operation=clean', 0),
+			array('nav_repeat', 'members&operation=repeat', 0),
+			array('add', 'members&operation=add', 1),
+		));
 		showformheader('members&operation=add');
-		showtableheader();
+		showtableheader('members_add');
 		showsetting('username', 'newusername', '', 'text');
 		showsetting('password', 'newpassword', '', 'text');
 		showsetting('email', 'newemail', '', 'text');
