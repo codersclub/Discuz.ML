@@ -148,14 +148,13 @@ if(!submitcheck('modsubmit')) {
 	$tidsarr = array_keys($threadlist);
 	$moderatetids = dimplode($tidsarr);
 	$reason = checkreasonpm();
-	$stampstatus = 0;
 	$stampaction = 'SPA';
 	if(empty($operations)) {
 		showmessage('admin_nonexistence');
 	} else {
 		$images = array();
 		foreach($operations as $operation) {
-
+			$stampstatus = 0;
 			$updatemodlog = TRUE;
 			if($operation == 'stick') {
 				$sticklevel = intval($_GET['sticklevel']);
