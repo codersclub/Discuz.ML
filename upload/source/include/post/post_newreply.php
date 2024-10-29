@@ -48,6 +48,8 @@ if(empty($thread)) {
 	showmessage('thread_nonexistence');
 } elseif($thread['price'] > 0 && $thread['special'] == 0 && !$_G['uid']) {
 	showmessage('group_nopermission', NULL, array('grouptitle' => $_G['group']['grouptitle']), array('login' => 1));
+} elseif($thread['readperm'] && $thread['readperm'] > $_G['group']['readaccess']){  //readperm verify
+	showmessagenoperm('replyperm', $_G['forum']['fid']);
 }
 
 checklowerlimit('reply', 0, 1, $_G['forum']['fid']);
