@@ -168,17 +168,16 @@ function _ajaxmenu(ctrlObj, timeout, cache, duration, pos, recall, idclass, cont
 		} else {
 			func();
 		}
-	} else {
-		menu = document.createElement('div');
-		menu.id = menuid;
-		menu.style.display = 'none';
-		menu.className = idclass;
-		menu.innerHTML = '<div class="' + contentclass + '" id="' + menuid + '_content"></div>';
-		$('append_parent').appendChild(menu);
-		var url = (!isUndefined(ctrlObj.attributes['shref']) ? ctrlObj.attributes['shref'].value : (!isUndefined(ctrlObj.href) ? ctrlObj.href : ctrlObj.attributes['href'].value));
-		url += (url.indexOf('?') != -1 ? '&' :'?') + 'ajaxmenu=1';
-		ajaxget(url, menuid + '_content', 'ajaxwaitid', '', '', func);
 	}
+	menu = document.createElement('div');
+	menu.id = menuid;
+	menu.style.display = 'none';
+	menu.className = idclass;
+	menu.innerHTML = '<div class="' + contentclass + '" id="' + menuid + '_content"></div>';
+	$('append_parent').appendChild(menu);
+	var url = (!isUndefined(ctrlObj.attributes['shref']) ? ctrlObj.attributes['shref'].value : (!isUndefined(ctrlObj.href) ? ctrlObj.href : ctrlObj.attributes['href'].value));
+	url += (url.indexOf('?') != -1 ? '&' :'?') + 'ajaxmenu=1';
+	ajaxget(url, menuid + '_content', 'ajaxwaitid', '', '', func);
 	doane();
 }
 
