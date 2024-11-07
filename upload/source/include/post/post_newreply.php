@@ -48,7 +48,7 @@ if(empty($thread)) {
 	showmessage('thread_nonexistence');
 } elseif($thread['price'] > 0 && $thread['special'] == 0 && !$_G['uid']) {
 	showmessage('group_nopermission', NULL, array('grouptitle' => $_G['group']['grouptitle']), array('login' => 1));
-} elseif($thread['readperm'] && $thread['readperm'] > $_G['group']['readaccess']){  //readperm verify
+} elseif($thread['readperm'] && $thread['readperm'] > $_G['group']['readaccess'] && $thread['authorid'] != $_G['uid']){  //readperm verify, thread poster excluded
 	showmessagenoperm('replyperm', $_G['forum']['fid']);
 }
 
