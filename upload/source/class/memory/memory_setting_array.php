@@ -63,7 +63,14 @@ class memory_setting_array implements ArrayAccess {
 		if (!$this->can_lazy) { // 不支持lazy load的时候，直接加载整个数据
 			$this->array = memory('get', self::SETTING_KEY);
 			foreach ($this->array as $key => $value) {
-				if ($value) $this->array[$key] = dunserialize($value);
+				// 检查值是否有效，避免处理 null 和空字符串
+				if ($value !== null && $value !== '') {
+					$unserializedValue = dunserialize($value);
+					// 检查反序列化是否成功
+					if ($unserializedValue !== false) {
+						$this->array[$key] = $unserializedValue; // 仅在成功时赋值
+					}
+				}
 			}
 		}
 	}
@@ -122,7 +129,7 @@ class memory_setting_array implements ArrayAccess {
 			}
 			memory('hmset', self::SETTING_KEY, $newdata);
 		} else {
-			memory('set', $data);
+			memory('set', self::SETTING_KEY, $data);//memcached不支持key为array
 		}
 	}
 
