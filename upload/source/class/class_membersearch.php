@@ -244,7 +244,7 @@ class membersearch {
 		if($range_low !== null) {
 			$wheres[] = "$field >= '$range_low'";
 		}
-		if($range_high !== null && $range_high > $range_low) {
+		if($range_high !== null && $range_high >= $range_low) {
 			$wheres[] = "$field <= '$range_high'";
 		}
 		if($wheres) {
