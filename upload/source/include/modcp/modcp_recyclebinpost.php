@@ -155,6 +155,7 @@ if($_G['fid'] && $_G['forum']['ismoderator'] && !empty($modforums['recyclebins']
 		foreach($postlist as $key => $post) {
 			$post['modthreadkey'] = modauthkey($post['tid']);
 			$post['message'] = discuzcode($post['message'], $post['smileyoff'], $post['bbcodeoff'], sprintf('%00b', $post['htmlon']), $_G['forum']['allowsmilies'], $_G['forum']['allowbbcode'], $_G['forum']['allowimgcode'], $_G['forum']['allowhtml']);
+            $post['message'] = preg_replace('/<a[^>]*>(.*?)<\/a>/i', '$1', $post['message']); //去除bbcode解析后的所有a标签，避免嵌套导致无法跳转的bug
 			$post['dateline'] = dgmdate($post['dateline'], 'Y-m-d H:i:s');
 			$postlist[$key] = $post;
 		}
