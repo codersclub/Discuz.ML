@@ -1314,7 +1314,7 @@ function hookscriptoutput($tplfile) {
 	hookscript('global', 'global');
 	$_G['hookscriptoutput'] = true;
 	if(defined('CURMODULE')) {
-		$param = array('template' => $tplfile, 'message' => getglobal('hookscriptmessage'), 'values' => getglobal('hookscriptmessage'));
+		$param = array('template' => $tplfile, 'message' => getglobal('hookscriptmessage'), 'values' => getglobal('hookscriptvalues'));
 		hookscript(CURMODULE, $_G['basescript'], 'outputfuncs', $param);
 	}
 }

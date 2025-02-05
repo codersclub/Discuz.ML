@@ -98,6 +98,7 @@ body:
       label: 相关版本
       description: 请在填写时注意产品版本维护策略，不在产品版本维护期限内的产品不对任何问题(含高危安全问题)做处理。
       options:
+        - X5.0 
         - X3.5
         - X3.4 (仅安全问题)
     validations:

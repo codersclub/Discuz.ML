@@ -102,6 +102,20 @@ class table_home_follow_feed extends discuz_table
 		return $delnum;
 	}
 
+	public function delete_by_uid_tid($uid, $tid) { //delete feed while deleting thread
+		$condition = array();
+		$delnum = 0;
+		if($uid && $tid) {
+			$condition = array();
+
+			$condition[] = DB::field('uid', $uid);
+			$condition[] = DB::field('tid', $tid);
+
+			$delnum = DB::delete($this->_table, implode(' AND ', $condition));
+		}
+		return $delnum;
+	}
+
 	public function get_ids() {
 		return $this->_ids;
 	}

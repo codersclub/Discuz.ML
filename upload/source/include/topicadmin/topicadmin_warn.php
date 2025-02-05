@@ -79,7 +79,7 @@ if(!submitcheck('modsubmit')) {
 	foreach($posts as $k => $post) {
 		if($warned && !($post['status'] & 2)) {
 			C::t('forum_post')->increase_status_by_pid('tid:'.$_G['tid'], $post['pid'], 2, '|', true);
-			$reason = cutstr(dhtmlspecialchars($_GET['reason']), 40);
+			$reason = dhtmlspecialchars($_GET['reason']);
 			C::t('forum_warning')->insert(array(
 				'pid' => $post['pid'],
 				'operatorid' => $_G['uid'],

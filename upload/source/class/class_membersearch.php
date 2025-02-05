@@ -5,7 +5,6 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: class_membersearch.php 33687 2013-08-02 01:46:22Z nemohou $
- *	Modified by Valery Votintsev, codersclub.org
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -17,129 +16,41 @@ class membersearch {
 	function __construct(){}
 
 	function getfield($fieldid='') {
-/*vot*/		static $fields = array(
-			'uid'=>'member',
-			'username'=>'member',
-			'groupid'=>'member',
-			'medalid'=>'medal',
-			'tagid'=>'tag',
-			'idtype'=>'tag',
-			'email'=>'member',
-			'credits'=>'member',
-			'regdate'=>'member',
-			'status'=>'member',
-			'freeze'=>'member',
-			'emailstatus'=>'member',
-			'avatarstatus'=>'member',
-			'conisbind'=>'member',
-			'uin' => 'black',
-			'sid'=>'session',
-			'extcredits1'=>'count',
-			'extcredits2'=>'count',
-			'extcredits3'=>'count',
-			'extcredits4'=>'count',
-			'extcredits5'=>'count',
-			'extcredits6'=>'count',
-			'extcredits7'=>'count',
-			'extcredits8'=>'count',
-			'posts'=>'count',
-			'friends'=>'count',
-			'oltime'=>'count',
-			'fid' => 'groupuser',
-			'level' => 'groupuser',
-			'verify1' => 'verify',
-			'verify2' => 'verify',
-			'verify3' => 'verify',
-			'verify4' => 'verify',
-			'verify5' => 'verify',
-			'verify6' => 'verify',
-			'regip'=>'status',
-			'lastip'=>'status',
-			'lastvisit'=>'status',
-			'lastpost' => 'status',
-			'realname'=>'profile',
-			'birthyear'=>'profile',
-			'birthmonth'=>'profile',
-			'birthday'=>'profile',
-			'gender'=>'profile',
-			'constellation'=>'profile',
-			'zodiac'=>'profile',
-			'telephone'=>'profile',
-			'mobile'=>'profile',
-			'idcardtype'=>'profile',
-			'idcard'=>'profile',
-			'address'=>'profile',
-			'zipcode'=>'profile',
-			'nationality'=>'profile',
-			'birthcountry'=>'profile',
-			'birthprovince'=>'profile',
-			'birthcity'=>'profile',
-			'residecountry'=>'profile',
-			'resideprovince'=>'profile',
-			'residecity'=>'profile',
-			'residedist'=>'profile',
-			'residecommunity'=>'profile',
-			'residesuite'=>'profile',
-			'graduateschool'=>'profile',
-			'education'=>'profile',
-			'occupation'=>'profile',
-			'company'=>'profile',
-			'position'=>'profile',
-			'revenue'=>'profile',
-			'affectivestatus'=>'profile',
-			'lookingfor'=>'profile',
-			'bloodtype'=>'profile',
-			'height'=>'profile',
-			'weight'=>'profile',
-			'alipay'=>'profile',
-			'icq'=>'profile',
-			'qq'=>'profile',
-			'yahoo'=>'profile',
-			'msn'=>'profile',
-			'taobao'=>'profile',
-			'site'=>'profile',
-			'bio'=>'profile',
-			'interest'=>'profile',
-			'field1'=>'profile',
-			'field2'=>'profile',
-			'field3'=>'profile',
-			'field4'=>'profile',
-			'field5'=>'profile',
-			'field6'=>'profile',
-			'field7'=>'profile',
-			'field8'=>'profile',
-			'token' => 'token');
+		static $fields = array(
+			'uid'=>'member', 'username'=>'member', 'groupid'=>'member', 'medalid'=>'medal','tagid'=>'tag','idtype'=>'tag',
+			'email'=>'member', 'credits'=>'member', 'regdate'=>'member',
+			'status'=>'member', 'freeze'=>'member', 'emailstatus'=>'member', 'avatarstatus'=>'member',
+			'conisbind'=>'member','uin' => 'black','sid'=>'session',
+			'extcredits1'=>'count', 'extcredits2'=>'count', 'extcredits3'=>'count', 'extcredits4'=>'count',
+			'extcredits5'=>'count',	'extcredits6'=>'count', 'extcredits7'=>'count', 'extcredits8'=>'count',
+			'posts'=>'count','threads'=>'count','friends'=>'count','oltime'=>'count',
+			'fid' => 'groupuser', 'level' => 'groupuser',
+			'verify1' => 'verify', 'verify2' => 'verify', 'verify3' => 'verify', 'verify4' => 'verify', 'verify5' => 'verify', 'verify6' => 'verify',
+			'regip'=>'status', 'lastip'=>'status', 'lastvisit'=>'status', 'lastpost' => 'status', 'realname'=>'profile',
+			'birthyear'=>'profile', 'birthmonth'=>'profile', 'birthday'=>'profile', 'gender'=>'profile',
+			'constellation'=>'profile', 'zodiac'=>'profile', 'telephone'=>'profile', 'mobile'=>'profile',
+			'idcardtype'=>'profile', 'idcard'=>'profile', 'address'=>'profile', 'zipcode'=>'profile', 'nationality'=>'profile',
+			'birthcountry'=>'profile', 'birthprovince'=>'profile', 'birthcity'=>'profile', 'residecountry'=>'profile', 'resideprovince'=>'profile',
+			'residecity'=>'profile', 'residedist'=>'profile', 'residecommunity'=>'profile',
+			'residesuite'=>'profile', 'graduateschool'=>'profile', 'education'=>'profile',
+			'occupation'=>'profile', 'company'=>'profile', 'position'=>'profile', 'revenue'=>'profile',
+			'affectivestatus'=>'profile', 'lookingfor'=>'profile', 'bloodtype'=>'profile',
+			'height'=>'profile', 'weight'=>'profile', 'alipay'=>'profile', 'icq'=>'profile',
+			'qq'=>'profile', 'yahoo'=>'profile', 'msn'=>'profile', 'taobao'=>'profile', 'site'=>'profile',
+			'bio'=>'profile', 'interest'=>'profile', 'field1'=>'profile', 'field2'=>'profile',
+			'field3'=>'profile', 'field4'=>'profile', 'field5'=>'profile', 'field6'=>'profile',
+			'field7'=>'profile', 'field8'=>'profile', 'token' => 'token');
 		return $fieldid ? $fields[$fieldid] : $fields;
 	}
 
 	function gettype($fieldid) {
-/*vot*/		static $types = array(
-			'uid'=>'int',
-			'groupid'=>'int',
-			'medalid'=>'int',
-			'tagid'=>'int',
-			'credits'=>'int',
-			'status'=>'int',
-			'freeze'=>'int',
-			'emailstatus'=>'int',
-			'avatarstatus'=>'int',
-			'extcredits1'=>'int',
-			'extcredits2'=>'int',
-			'extcredits3'=>'int',
-			'extcredits4'=>'int',
-			'extcredits5'=>'int',
-			'extcredits6'=>'int',
-			'extcredits7'=>'int',
-			'extcredits8'=>'int',
-			'posts'=>'int',
-			'friends'=>'int',
-			'birthyear'=>'int',
-			'birthmonth'=>'int',
-			'birthday'=>'int',
-			'gender'=>'int',
-			'uin'=>'int',
-			'sid'=>'noempty',
-			'token' => 'noempty'
+		static $types = array(
+			'uid'=>'int', 'groupid'=>'int', 'medalid'=>'int', 'tagid'=>'int', 'credits'=>'int',
+			'status'=>'int', 'freeze'=>'int', 'emailstatus'=>'int', 'avatarstatus'=>'int',
+			'extcredits1'=>'int', 'extcredits2'=>'int', 'extcredits3'=>'int', 'extcredits4'=>'int',
+			'extcredits5'=>'int', 'extcredits6'=>'int', 'extcredits7'=>'int', 'extcredits8'=>'int',
+			'posts'=>'int', 'threads'=>'int', 'friends'=>'int', 'birthyear'=>'int', 'birthmonth'=>'int', 'birthday'=>'int', 'gender'=>'int',
+			'uin'=>'int', 'sid'=>'noempty', 'token' => 'noempty'
 			);
 		return $types[$fieldid] ? $types[$fieldid] : 'string';
 	}
@@ -333,7 +244,7 @@ class membersearch {
 		if($range_low !== null) {
 			$wheres[] = "$field >= '$range_low'";
 		}
-		if($range_high !== null && $range_high > $range_low) {
+		if($range_high !== null && $range_high >= $range_low) {
 			$wheres[] = "$field <= '$range_high'";
 		}
 		if($wheres) {

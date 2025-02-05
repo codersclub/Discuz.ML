@@ -60,6 +60,7 @@ if($operation == 'search') {
 			array('search', 'members&operation=search', 1),
 			array('clean', 'members&operation=clean', 0),
 			array('nav_repeat', 'members&operation=repeat', 0),
+			array('add', 'members&operation=add', 0),
 		));
 		showtips('members_admin_tips');
 		if(!empty($_GET['vid']) && ($_GET['vid'] > 0 && $_GET['vid'] < 8)) {
@@ -110,6 +111,7 @@ EOF;
 						($_G['setting']['connect']['allow'] && $member['conisbind'] ? '<img class="vmiddle" src="'.STATICURL.'image/common/connect_qq.gif" /> ' : '')."<a href=\"home.php?mod=space&uid={$member['uid']}\" target=\"_blank\">{$member['username']}</a>",
 						$member['credits'],
 						$member['posts'],
+						$member['threads'],
 						$usergroups[$member['adminid']]['grouptitle'],
 						$usergroups[$member['groupid']]['grouptitle'].$lockshow.$freezeshow,
 						"<a href=\"".ADMINSCRIPT."?action=members&operation=group&uid={$member['uid']}\" class=\"act\">{$lang['usergroup']}</a><a href=\"".ADMINSCRIPT."?action=members&operation=access&uid={$member['uid']}\" class=\"act\">{$lang['members_access']}</a>".
@@ -149,7 +151,7 @@ EOF;
 		showtableheader();
 
 		if($membernum) {
-			showsubtitle(array('', 'username', 'credits', 'posts', 'admingroup', 'usergroup', ''));
+			showsubtitle(array('', 'username', 'credits', 'posts', 'threadsnum', 'admingroup', 'usergroup', ''));
 			echo $members;
 			$condition_str = str_replace('&tablename=master', '', $condition_str);
 			$unarchive = isset($_GET['tablename']) && $_GET['tablename'] == 'archive' ? '<input type="submit" class="btn" id="submit_unarchivesubmit" name="unarchivesubmit" onclick="document.cpform.action=\''.ADMINSCRIPT.'?action=members&operation=unarchive'.$condition_str.'\';document.cpform.submit();" value="'.cplang('unarchive').'">' : '';
@@ -431,6 +433,7 @@ EOF;
 			array('search', 'members&operation=search', 0),
 			array('clean', 'members&operation=clean', 0),
 			array('nav_repeat', 'members&operation=repeat', 1),
+			array('add', 'members&operation=add', 0),
 		));
 
 		showformheader("members&operation=repeat");
@@ -505,6 +508,7 @@ EOF;
 					"<a href=\"home.php?mod=space&uid={$member['uid']}\" target=\"_blank\">{$member['username']}</a>",
 					$member['credits'],
 					$member['posts'],
+					$member['threads'],
 					$usergroups[$member['adminid']]['grouptitle'],
 					$usergroups[$member['groupid']]['grouptitle'],
 					"<a href=\"".ADMINSCRIPT."?action=members&operation=group&uid={$member['uid']}\" class=\"act\">{$lang['usergroup']}</a><a href=\"".ADMINSCRIPT."?action=members&operation=access&uid={$member['uid']}\" class=\"act\">{$lang['members_access']}</a>".
@@ -526,7 +530,7 @@ EOF;
 			}
 		}
 		showtableheader(cplang('members_search_result', array('membernum' => $membernum)).'<a href="'.ADMINSCRIPT.'?action=members&operation=repeat" class="act lightlink normal">'.cplang('research').'</a>'.$searchadd);
-		showsubtitle(array('', 'username', 'credits', 'posts', 'admingroup', 'usergroup', ''));
+		showsubtitle(array('', 'username', 'credits', 'posts', 'threadsnum', 'admingroup', 'usergroup', ''));
 		echo $members;
 		showtablerow('', array('class="td25"', 'class="lineheight" colspan="7"'), array('', cplang('members_admin_comment')));
 		showsubmit('submit', 'submit', '<input type="checkbox" name="chkall" onclick="checkAll(\'prefix\', this.form, \'uidarray\')" class="checkbox">'.cplang('del'), '', $multipage);
@@ -544,6 +548,7 @@ EOF;
 			array('search', 'members&operation=search', 0),
 			array('clean', 'members&operation=clean', 1),
 			array('nav_repeat', 'members&operation=repeat', 0),
+			array('add', 'members&operation=add', 0),
 		));
 
 		showsearchform('clean');
@@ -1152,10 +1157,15 @@ EOF;
 			($groupselect['specialadmin'] ? '<optgroup label="'.$lang['usergroups_specialadmin'].'">'.$groupselect['specialadmin'].'</optgroup>' : '').
 			'<optgroup label="'.$lang['usergroups_system'].'">'.$groupselect['system'].'</optgroup>';
 		/*search={"nav_members_add":"action=members&operation=add"}*/
-		shownav('user', 'nav_members_add');
-		showsubmenu('members_add');
+		shownav('user', 'nav_members');
+		showsubmenu('nav_members', array(
+			array('search', 'members&operation=search', 0),
+			array('clean', 'members&operation=clean', 0),
+			array('nav_repeat', 'members&operation=repeat', 0),
+			array('add', 'members&operation=add', 1),
+		));
 		showformheader('members&operation=add');
-		showtableheader();
+		showtableheader('members_add');
 		showsetting('username', 'newusername', '', 'text');
 		showsetting('password', 'newpassword', '', 'text');
 		showsetting('email', 'newemail', '', 'text');
@@ -3221,6 +3231,7 @@ function showsearchform($operation = '') {
 
 	showsetting('members_search_friendsrange', array('friends_low', 'friends_high'), array($_GET['friends_low'], $_GET['friends_high']), 'range');
 	showsetting('members_search_postsrange', array('posts_low', 'posts_high'), array($_GET['posts_low'], $_GET['posts_high']), 'range');
+	showsetting('members_search_threadsrange', array('threads_low', 'threads_high'), array($_GET['threads_low'], $_GET['threads_high']), 'range');
 	showsetting('members_search_regip', 'regip', $_GET['regip'], 'text');
 	showsetting('members_search_lastip', 'lastip', $_GET['lastip'], 'text');
 	showsetting('members_search_oltimerange', array('oltime_low', 'oltime_high'), array($_GET['oltime_low'], $_GET['oltime_high']), 'range');
