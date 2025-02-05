@@ -100,7 +100,8 @@ function build_cache_setting() {
 	$data['buyusergroupexists'] = C::t('common_usergroup')->buyusergroup_exists();
 
 	if($data['srchhotkeywords']) {
-		$data['srchhotkeywords'] = explode("\n", $data['srchhotkeywords']);
+		$data['srchhotkeywords'] = explode("\n", str_replace("\r",'',$data['srchhotkeywords']));
+		$data['srchhotkeywords'] = array_filter($data['srchhotkeywords']);
 	}
 
 	if($data['search']) {
