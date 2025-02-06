@@ -1049,7 +1049,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 
 	include template('forum/viewthread_mod');
 
-} elseif($_GET['action'] == 'bestanswer' && $_G['tid'] && $_GET['pid'] && submitcheck('bestanswersubmit')) {
+} elseif($_GET['action'] == 'bestanswer' && $_G['tid'] && $_GET['pid'] && submitcheck('bestanswersubmit',true)) {
 
 	$forward = 'forum.php?mod=viewthread&tid='.$_G['tid'].($_GET['from'] ? '&from='.$_GET['from'] : '');
 	$post = C::t('forum_post')->fetch_post('tid:'.$_G['tid'], $_GET['pid'], false);

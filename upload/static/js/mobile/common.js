@@ -951,3 +951,7 @@ function setCopy(text, msg) {
 function copycode(obj) {
 	setCopy(obj.textContent, '代码已复制到剪贴板');
 }
+
+function setanswer(tid, pid, from, formhash){
+	popup.open('您确认要把该回复选为“最佳答案”吗？','confirm','forum.php?mod=misc&action=bestanswer&tid=' + tid + '&pid=' + pid + '&from=' + from + '&bestanswersubmit=yes&formhash='+formhash)
+}
