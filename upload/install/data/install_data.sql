@@ -314,7 +314,7 @@ INSERT INTO pre_common_setting VALUES ('ec_mincredits','0');
 INSERT INTO pre_common_setting VALUES ('ec_ratio','0');
 INSERT INTO pre_common_setting VALUES ('editedby','1');
 INSERT INTO pre_common_setting VALUES ('editoroptions','6');
-INSERT INTO pre_common_setting VALUES ('editperdel', '1');
+INSERT INTO pre_common_setting VALUES ('editperdel', '0');
 INSERT INTO pre_common_setting VALUES ('edittimelimit','');
 INSERT INTO pre_common_setting VALUES ('exchangemincredits','100');
 INSERT INTO pre_common_setting VALUES ('extcredits','');
