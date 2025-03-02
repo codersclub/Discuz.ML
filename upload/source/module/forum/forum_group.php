@@ -223,7 +223,7 @@ if($action == 'index') {
 
 } elseif($action == 'join') {
 	if(!submitcheck('groupjoin')) {
-		dheader('location: '.$_G['siteurl']."forum.php?mod=forumdisplay&fid={$_G['fid']}&extra=join");
+		dheader('location: '.$_G['siteurl']."forum.php?mod=group&fid={$_G['fid']}&extra=join");
 	}
 	$inviteuid = 0;
 	$membermaximum = $_G['current_grouplevel']['specialswitch']['membermaximum'];
