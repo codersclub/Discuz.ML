@@ -819,7 +819,7 @@ function convertunusedattach($aid, $tid, $pid) {
 function updateattachtid($idtype, $ids, $oldtid, $newtid) {
 		foreach(C::t('forum_attachment_n')->fetch_all_by_id('tid:'.$oldtid, $idtype, $ids) as $attach) {
 			$attach['tid'] = $newtid;
-			C::t('forum_attachment_n')->insert_attachment('tid:'.$newtid, $attach);
+			C::t('forum_attachment_n')->insert_attachment('tid:'.$newtid, $attach, false, true);
 		}
 		C::t('forum_attachment_n')->delete_by_id('tid:'.$oldtid, $idtype, $ids);
 	C::t('forum_attachment')->update_by_id($idtype, $ids, $newtid);
