@@ -151,7 +151,7 @@ if($_GET['action'] == 'paysucceed') {
 				if($alog >= $_G['setting']['maxincperthread']) {
 					$updateauthor = 0;
 				} else {
-					$authorEarn = min($_G['setting']['maxincperthread'] - $alog['credit'], $prices[$aid][1]);
+					$authorEarn = min($_G['setting']['maxincperthread'] - $alog, $prices[$aid][1]);
 				}
 			}
 			if($updateauthor) {
@@ -984,7 +984,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 			if($log >= $_G['setting']['maxincperthread']) {
 				$updateauthor = false;
 			} else {
-				$authorEarn = min($_G['setting']['maxincperthread'] - $log['credit'], $thread['netprice']);
+				$authorEarn = min($_G['setting']['maxincperthread'] - $log, $thread['netprice']);
 			}
 		}
 		if($updateauthor) {
@@ -1050,7 +1050,7 @@ if($_GET['action'] == 'votepoll' && submitcheck('pollsubmit', 1)) {
 
 	include template('forum/viewthread_mod');
 
-} elseif($_GET['action'] == 'bestanswer' && $_G['tid'] && $_GET['pid'] && submitcheck('bestanswersubmit')) {
+} elseif($_GET['action'] == 'bestanswer' && $_G['tid'] && $_GET['pid'] && submitcheck('bestanswersubmit',true)) {
 
 	$forward = 'forum.php?mod=viewthread&tid='.$_G['tid'].($_GET['from'] ? '&from='.$_GET['from'] : '');
 	$post = C::t('forum_post')->fetch_post('tid:'.$_G['tid'], $_GET['pid'], false);

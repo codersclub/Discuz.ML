@@ -952,3 +952,7 @@ function setCopy(text, msg) {
 function copycode(obj) {
 /*vot*/	setCopy(obj.textContent, lng['code_clipboard']);
 }
+
+function setanswer(tid, pid, from, formhash){
+	popup.open('您确认要把该回复选为“最佳答案”吗？','confirm','forum.php?mod=misc&action=bestanswer&tid=' + tid + '&pid=' + pid + '&from=' + from + '&bestanswersubmit=yes&formhash='+formhash)
+}

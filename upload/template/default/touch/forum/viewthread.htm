@@ -390,6 +390,9 @@
 					<!--{/if}-->
 				<!--{/if}-->
 			<!--{/if}-->
+			<!--{if $_G['forum_thread']['special'] == 3 && ($_G['forum']['ismoderator'] && (!$_G['setting']['rewardexpiration'] || $_G['setting']['rewardexpiration'] > 0 && ($_G[timestamp] - $_G['forum_thread']['dateline']) / 86400 > $_G['setting']['rewardexpiration']) || $_G['forum_thread']['authorid'] == $_G['uid']) && $post['authorid'] != $_G['forum_thread']['authorid'] && $post['first'] == 0 && $_G['uid'] != $post['authorid'] && $_G['forum_thread']['price'] > 0}-->
+				<li><a href="javascript:;" onclick="setanswer($post['tid'], $post['pid'], '{$_GET['from']}','{$_G['formhash']}')"><i class="dm-tag"></i>{lang reward_set_bestanswer}</a></li>
+			<!--{/if}-->
 			<!--{hook/viewthread_postfooter_mobile $postcount}-->
 			</ul>
 		</div>
