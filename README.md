@@ -15,17 +15,17 @@ Under both engines, the database no longer supports utf8 encoding, but instead s
 
 ##### 1.1 Changes to the database table structure:
 
-Reference [scheme-change-without-data-loss.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-without-data-loss.sql)
+Reference [scheme-change-without-data-loss.sql](./scheme/scheme-change-without-data-loss.sql)
 
   * Modified all IP addresses to varchar(45) type;
   * Added port number records where IP addresses are recorded;
   * In the pre_common_banned table, two VARBINARY(16) fields, upperip and lowerip, are added to record the maximum and minimum banned ranges of IP addresses
   * Change some fields to "big", such as INT to BIGINT, TEXT to MEDIUMTEXT, etc.
-  * In order to support IPv6, all IP1/IP2/IP3/IP4 field definitions are removed, refer to [scheme-change-drop-columns.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-drop-columns.sql)
+  * In order to support IPv6, all IP1/IP2/IP3/IP4 field definitions are removed, refer to [scheme-change-drop-columns.sql](./scheme/scheme-change-drop-columns.sql)
 
 ##### 1.2 In order to support InnoDB related changes
 
-For the InnoDB database engine, the following changes will be made, refer to [scheme-change-innodb.sql](https://gitee.com/oldhuhu/DiscuzX34235/blob/master/scheme/scheme-change-innodb.sql)
+For the InnoDB database engine, the following changes will be made, refer to [scheme-change-innodb.sql](./scheme/scheme-change-innodb.sql)
   * To support InnoDB, an index is added to the table pre_common_member_grouppm
   * In order to support InnoDB, in the table pre_forum_post, the auto_increment attribute of position is canceled
 
@@ -139,8 +139,9 @@ Due to the functional limitations of memcached, the above enhancements are not v
 
 #### 6. Minimum operating environment requirements
 
-**Security Tips: We strongly recommend that you use software such as operating systems, web servers, PHP, databases, and memory caches that are still within the support period of the development team. Software beyond the support period may bring unknown security risks to your site . **
-**Performance tip: When MySQL< 5.7 or MariaDB < 10.2, InnoDB performance drops more severely, so sites running on production systems should upgrade to MySQL >= 5.7 or MariaDB >= 10.2 to avoid this problem. **
+**Security Tips:** We strongly recommend that you use software such as operating systems, web servers, PHP, databases, and memory caches that are still within the support period of the development team. Software beyond the support period may bring unknown security risks to your site .
+
+**Performance tips:** When MySQL < 5.7 or MariaDB < 10.2, InnoDB performance drops more severely, so sites running on production systems should upgrade to MySQL >= 5.7 or MariaDB >= 10.2 to avoid this problem.
 
 | Software Name | Minimum Requirements | Recommended Version | Other Matters |
 | ------- | ---------- | ----------- | --------------------------------------------------------------------- |
@@ -149,11 +150,12 @@ Due to the functional limitations of memcached, the above enhancements are not v
 
 
 ### screenshot
-![System Information](./readme/screenshot.png "System Information Screenshot")
+![System Information](./readme/screenshot.jpg "System Information Screenshot")
 
 ### **Assisted Installation**
 
-To make it easier for webmasters to build websites based on Discuz! ML, [Codersclub Team](https://codersclub.org/discuzx/) provides an installation of Discuz! ML for webmasters.
+To make it easier for webmasters to build websites based on Discuz! ML,
+[Codersclub Team](https://codersclub.org/discuzx/) provides an installation of Discuz! ML for webmasters.
 Just write your request at our forum.
 
 
