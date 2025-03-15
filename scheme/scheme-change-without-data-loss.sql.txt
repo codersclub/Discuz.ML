@@ -1,0 +1,657 @@
+ALTER TABLE pre_common_admincp_session 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_common_banned 
+    ADD COLUMN ip VARCHAR(45) NOT NULL DEFAULT '' AFTER id, 
+    ADD COLUMN upperip VARBINARY(16) NOT NULL DEFAULT 0x0 AFTER ip,
+    ADD COLUMN lowerip VARBINARY(16) NOT NULL DEFAULT 0x0 AFTER ip, 
+    ADD INDEX iprange (lowerip, upperip);
+
+ALTER TABLE pre_common_block
+    MODIFY COLUMN picwidth mediumint(8) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN picheight mediumint(8) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_card 
+    MODIFY COLUMN `status` tinyint(3) unsigned NOT NULL DEFAULT '1';
+
+ALTER TABLE pre_common_credit_log 
+    MODIFY COLUMN logid INT(11) unsigned NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE pre_common_district 
+    MODIFY COLUMN usetype tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_failedip 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '',
+    MODIFY COLUMN count tinyint(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_failedlogin 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '',
+    MODIFY COLUMN count tinyint(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_invite 
+    MODIFY COLUMN email varchar(255) NOT NULL DEFAULT '',
+    MODIFY COLUMN inviteip VARCHAR(45) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_common_magiclog 
+    MODIFY COLUMN credit tinyint(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_mailcron 
+    MODIFY COLUMN email varchar(255) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_common_member 
+    MODIFY COLUMN email varchar(255) NOT NULL DEFAULT '',
+    ADD COLUMN `secmobile` varchar(12) NOT NULL DEFAULT '' AFTER `password`,
+    ADD COLUMN `secmobicc` varchar(3) NOT NULL DEFAULT '' AFTER `password`,
+    ADD COLUMN `secmobilestatus` tinyint(1) NOT NULL DEFAULT '0' AFTER avatarstatus,
+    ADD KEY secmobile (`secmobile`, `secmobicc`);
+
+UPDATE pre_common_member 
+    SET `email` = replace('email', 'null.null', 'm.invalid');
+
+ALTER TABLE pre_common_member_action_log 
+    MODIFY COLUMN id INT(11) unsigned NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE pre_common_member_field_forum   
+    MODIFY COLUMN authstr varchar(255) NOT NULL DEFAULT '',
+    MODIFY COLUMN customshow tinyint(3) unsigned NOT NULL DEFAULT '26';
+
+ALTER TABLE pre_common_member_field_home   
+    ADD COLUMN allowasfollow tinyint(1) NOT NULL DEFAULT '1' AFTER addfriend,
+    ADD COLUMN allowasfriend tinyint(1) NOT NULL DEFAULT '1' AFTER addfriend;
+
+ALTER TABLE pre_common_member_profile   
+    ADD COLUMN birthcountry varchar(255) NOT NULL DEFAULT '' AFTER nationality,
+    ADD COLUMN residecountry varchar(255) NOT NULL DEFAULT '' AFTER birthcommunity;
+
+CREATE TABLE pre_common_member_profile_history (
+    hid int(11) unsigned NOT NULL AUTO_INCREMENT,
+    uid int(11) unsigned NOT NULL,
+    realname varchar(255) NOT NULL DEFAULT '',
+    gender tinyint(1) NOT NULL DEFAULT '0',
+    birthyear smallint(6) unsigned NOT NULL DEFAULT '0',
+    birthmonth tinyint(3) unsigned NOT NULL DEFAULT '0',
+    birthday tinyint(3) unsigned NOT NULL DEFAULT '0',
+    constellation varchar(255) NOT NULL DEFAULT '',
+    zodiac varchar(255) NOT NULL DEFAULT '',
+    telephone varchar(255) NOT NULL DEFAULT '',
+    mobile varchar(255) NOT NULL DEFAULT '',
+    idcardtype varchar(255) NOT NULL DEFAULT '',
+    idcard varchar(255) NOT NULL DEFAULT '',
+    address varchar(255) NOT NULL DEFAULT '',
+    zipcode varchar(255) NOT NULL DEFAULT '',
+    nationality varchar(255) NOT NULL DEFAULT '',
+    birthcountry varchar(255) NOT NULL DEFAULT '',
+    birthprovince varchar(255) NOT NULL DEFAULT '',
+    birthcity varchar(255) NOT NULL DEFAULT '',
+    birthdist varchar(255) NOT NULL DEFAULT '',
+    birthcommunity varchar(255) NOT NULL DEFAULT '',
+    residecountry varchar(255) NOT NULL DEFAULT '',
+    resideprovince varchar(255) NOT NULL DEFAULT '',
+    residecity varchar(255) NOT NULL DEFAULT '',
+    residedist varchar(255) NOT NULL DEFAULT '',
+    residecommunity varchar(255) NOT NULL DEFAULT '',
+    residesuite varchar(255) NOT NULL DEFAULT '',
+    graduateschool varchar(255) NOT NULL DEFAULT '',
+    company varchar(255) NOT NULL DEFAULT '',
+    education varchar(255) NOT NULL DEFAULT '',
+    occupation varchar(255) NOT NULL DEFAULT '',
+    position varchar(255) NOT NULL DEFAULT '',
+    revenue varchar(255) NOT NULL DEFAULT '',
+    affectivestatus varchar(255) NOT NULL DEFAULT '',
+    lookingfor varchar(255) NOT NULL DEFAULT '',
+    bloodtype varchar(255) NOT NULL DEFAULT '',
+    height varchar(255) NOT NULL DEFAULT '',
+    weight varchar(255) NOT NULL DEFAULT '',
+    alipay varchar(255) NOT NULL DEFAULT '',
+    icq varchar(255) NOT NULL DEFAULT '',
+    qq varchar(255) NOT NULL DEFAULT '',
+    yahoo varchar(255) NOT NULL DEFAULT '',
+    msn varchar(255) NOT NULL DEFAULT '',
+    taobao varchar(255) NOT NULL DEFAULT '',
+    site varchar(255) NOT NULL DEFAULT '',
+    bio text NOT NULL,
+    interest text NOT NULL,
+    field1 text NOT NULL,
+    field2 text NOT NULL,
+    field3 text NOT NULL,
+    field4 text NOT NULL,
+    field5 text NOT NULL,
+    field6 text NOT NULL,
+    field7 text NOT NULL,
+    field8 text NOT NULL,
+    dateline int(11) unsigned NOT NULL DEFAULT '0',
+    PRIMARY KEY (hid)
+) ENGINE=InnoDB;
+
+ALTER TABLE pre_common_member_status
+    MODIFY COLUMN regip VARCHAR(45) NOT NULL DEFAULT '',
+    MODIFY COLUMN lastip VARCHAR(45) NOT NULL DEFAULT '',
+    ADD COLUMN regport SMALLINT(6) unsigned NOT NULL DEFAULT '0' AFTER lastip;
+
+ALTER TABLE pre_common_plugin 
+    MODIFY COLUMN adminid tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_regip 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_common_remote_port 
+    MODIFY COLUMN useip VARCHAR(45) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_common_searchindex 
+    MODIFY COLUMN useip VARCHAR(45) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_common_secquestion 
+    MODIFY COLUMN `type` tinyint(3) unsigned NOT NULL;
+
+ALTER TABLE pre_common_session 
+    ADD COLUMN ip VARCHAR(45) NOT NULL DEFAULT '' AFTER sid,
+    MODIFY COLUMN `action` tinyint(3) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_task
+    ADD COLUMN exclusivetaskid int(11) unsigned NOT NULL DEFAULT '0' AFTER relatedtaskid,
+    MODIFY COLUMN applicants INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN achievers INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_usergroup 
+    ADD COLUMN allowfollow tinyint(1) NOT NULL DEFAULT '0' AFTER allowmailinvite;
+
+ALTER TABLE pre_common_usergroup_field 
+    ADD COLUMN allowsavenum int(11) unsigned NOT NULL DEFAULT '0' AFTER allowat,
+    ADD COLUMN allowsavereply tinyint(1) NOT NULL DEFAULT '1' AFTER allowat,
+    ADD COLUMN allowsave tinyint(1) NOT NULL DEFAULT '1' AFTER allowat,
+    ADD COLUMN allowviewprofile tinyint(1) NOT NULL DEFAULT '0' AFTER allowavatarupload,
+    MODIFY COLUMN edittimelimit INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN allowmagics tinyint(3) unsigned NOT NULL,
+    MODIFY COLUMN tradestick tinyint(3) unsigned NOT NULL,
+    MODIFY COLUMN exempt tinyint(3) unsigned NOT NULL,
+    MODIFY COLUMN allowrecommend tinyint(3) unsigned NOT NULL DEFAULT '1'
+    MODIFY COLUMN allowbuildgroup tinyint(3) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN allowgroupdirectpost tinyint(3) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN allowgroupposturl tinyint(3) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN allowfollowcollection tinyint(3) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN forcelogin tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_common_visit 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '';
+
+CREATE TABLE pre_common_payment_order (
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `out_biz_no` varchar(64) NOT NULL,
+    `type` varchar(255) NOT NULL,
+    `type_name` varchar(255) DEFAULT NULL,
+    `uid` int(11) unsigned NOT NULL DEFAULT 0,
+    `amount` int(11) unsigned NOT NULL,
+    `amount_fee` int(11) unsigned NOT NULL,
+    `subject` varchar(255) NOT NULL,
+    `description` varchar(255) DEFAULT NULL,
+    `expire_time` int(11) unsigned NOT NULL,
+    `status` tinyint(1) NOT NULL,
+    `return_url` varchar(255) DEFAULT NULL,
+    `data` text DEFAULT NULL,
+    `clientip` varchar(255) NOT NULL DEFAULT '',
+    `remoteport` smallint(6) unsigned NOT NULL DEFAULT 0,
+    `dateline` int(11) unsigned NOT NULL,
+    `trade_no` varchar(255) DEFAULT NULL,
+    `channel` varchar(255) DEFAULT NULL,
+    `payment_time` int(11) unsigned DEFAULT NULL,
+    `callback_status` tinyint(1) DEFAULT 0,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`out_biz_no`),
+    KEY (`uid`),
+    KEY (`type`),
+    KEY (`status`)
+) ENGINE=InnoDB;
+
+CREATE TABLE pre_common_payment_refund (
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `order_id` int(11) unsigned NOT NULL,
+    `out_biz_no` varchar(64) NOT NULL,
+    `amount` int(11) unsigned NOT NULL,
+    `description` varchar(255)    NOT NULL,
+    `status` tinyint(1) NOT NULL,
+    `error` varchar(255) DEFAULT NULL,
+    `refund_time` int(11) DEFAULT NULL,
+    `clientip` varchar(255) NOT NULL DEFAULT '',
+    `remoteport` smallint(6) unsigned NOT NULL DEFAULT 0,
+    `dateline` int(11) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`out_biz_no`),
+    INDEX (`order_id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE pre_common_payment_transfer (
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `uid` int(11) unsigned NOT NULL,
+    `out_biz_no` varchar(64) NOT NULL,
+    `amount` int(11) unsigned NOT NULL,
+    `subject` varchar(255) NOT NULL,
+    `description` varchar(255) DEFAULT NULL,
+    `realname` varchar(255) NOT NULL,
+    `account` varchar(255) NOT NULL,
+    `channel` varchar(255) DEFAULT NULL,
+    `status` tinyint(3) unsigned NOT NULL,
+    `error` varchar(255) DEFAULT NULL,
+    `trade_no` varchar(255) DEFAULT NULL,
+    `trade_time` int(11) unsigned DEFAULT NULL,
+    `clientip` varchar(255) NOT NULL DEFAULT '',
+    `remoteport` smallint(6) unsigned NOT NULL DEFAULT 0,
+    `dateline` int(11) unsigned NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`out_biz_no`),
+    KEY (`uid`),
+    KEY (`status`)
+) ENGINE=InnoDB;
+
+CREATE TABLE pre_common_smsgw (
+    `smsgwid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `available` tinyint(1) NOT NULL DEFAULT '0',
+    `type` int(11) NOT NULL DEFAULT '0',
+    `order` int(11) NOT NULL DEFAULT '0',
+    `name` varchar(255) NOT NULL DEFAULT '',
+    `class` varchar(255) NOT NULL DEFAULT '0',
+    `sendrule` text NOT NULL DEFAULT '',
+    `parameters` text NOT NULL DEFAULT '',
+    PRIMARY KEY (smsgwid)
+) ENGINE=InnoDB;
+
+CREATE TABLE pre_common_smslog (
+    `smslogid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `uid` int(11) unsigned NOT NULL,
+    `smstype` int(11) NOT NULL DEFAULT '0',
+    `svctype` int(11) NOT NULL DEFAULT '0',
+    `smsgw` int(11) NOT NULL DEFAULT '0',
+    `status` int(11) NOT NULL DEFAULT '0',
+    `verify` int(11) NOT NULL DEFAULT '0',
+    `secmobicc` varchar(3) NOT NULL DEFAULT '',
+    `secmobile` varchar(12) NOT NULL DEFAULT '',
+    `ip` varchar(45) NOT NULL DEFAULT '',
+    `port` smallint(6) unsigned NOT NULL DEFAULT '0',
+    `content` text NOT NULL DEFAULT '',
+    `dateline` int(11) unsigned NOT NULL DEFAULT '0',
+    PRIMARY KEY (`smslogid`),
+    KEY dateline (`secmobicc`, `secmobile`, `dateline`),
+    KEY uid (uid)
+) ENGINE=InnoDB;
+
+CREATE TABLE pre_common_smslog_archive (
+    `smslogid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `uid` int(11) unsigned NOT NULL,
+    `smstype` int(11) NOT NULL DEFAULT '0',
+    `svctype` int(11) NOT NULL DEFAULT '0',
+    `smsgw` int(11) NOT NULL DEFAULT '0',
+    `status` int(11) NOT NULL DEFAULT '0',
+    `verify` int(11) NOT NULL DEFAULT '0',
+    `secmobicc` varchar(3) NOT NULL DEFAULT '',
+    `secmobile` varchar(12) NOT NULL DEFAULT '',
+    `ip` varchar(45) NOT NULL DEFAULT '',
+    `port` smallint(6) unsigned NOT NULL DEFAULT '0',
+    `content` text NOT NULL DEFAULT '',
+    `dateline` int(11) unsigned NOT NULL DEFAULT '0',
+    PRIMARY KEY (`smslogid`)
+) ENGINE=InnoDB;
+
+ALTER TABLE pre_connect_feedlog 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_connect_tthreadlog 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_activity 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_activityapply 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_attachment 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL AUTO_INCREMENT,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN tableid tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_attachment_0 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_1 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_2 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_3 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_4 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_5 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_6 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_7 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_8 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_9 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_attachment_exif 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL;
+
+ALTER TABLE pre_forum_attachment_unused 
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_bbcode 
+    MODIFY COLUMN params tinyint(3) unsigned NOT NULL DEFAULT '1';
+
+ALTER TABLE pre_forum_collection 
+    MODIFY COLUMN lastsubject varchar(255) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_forum_collectioncomment 
+    MODIFY COLUMN useip VARCHAR(45) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_forum_collectionteamworker 
+    MODIFY COLUMN lastvisit INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_collectionthread 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_debate 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_debatepost 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_filter_post 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_forumfield 
+    MODIFY COLUMN livetid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_forumrecommend 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN `subject` varchar(255) NOT NULL,
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_groupcreditslog 
+    MODIFY COLUMN logdate INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_hotreply_member 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_medal 
+    MODIFY COLUMN credit tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_memberrecommend 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL;
+
+ALTER TABLE pre_forum_newthread 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_order 
+    MODIFY COLUMN email varchar(255) NOT NULL DEFAULT '';
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '',
+    ADD COLUMN `port` SMALLINT(6) unsigned NOT NULL DEFAULT '0' AFTER ip;
+
+ALTER TABLE pre_forum_poll 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_polloption 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_polloption_image 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN width mediumint(8) unsigned NOT NULL DEFAULT '0',
+    ADD COLUMN height mediumint(8) unsigned NOT NULL DEFAULT '0'
+    AFTER width;
+
+ALTER TABLE pre_forum_pollvoter 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_post 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN `subject` varchar(255) NOT NULL,
+    MODIFY COLUMN useip VARCHAR(45) NOT NULL DEFAULT '',
+    MODIFY COLUMN position INT(11) unsigned NOT NULL,
+    ADD COLUMN repid int(11) unsigned NOT NULL DEFAULT '0' AFTER tid,
+    ADD COLUMN premsg text NOT NULL AFTER dateline,
+    ADD COLUMN updateuid int(11) unsigned NOT NULL DEFAULT '0' AFTER dateline,
+    ADD COLUMN lastupdate int(11) unsigned NOT NULL DEFAULT '0' AFTER dateline;
+
+ALTER TABLE pre_forum_post_location 
+    MODIFY COLUMN tid INT(11) unsigned DEFAULT '0';
+
+ALTER TABLE pre_forum_postcache
+    MODIFY COLUMN `comment` MEDIUMTEXT NOT NULL,
+    MODIFY COLUMN rate MEDIUMTEXT NOT NULL;
+
+ALTER TABLE pre_forum_postcomment 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN useip VARCHAR(45) NOT NULL DEFAULT '';
+
+CREATE TABLE pre_forum_post_history (
+    id int(11) unsigned NOT NULL,
+    pid int(11) unsigned NOT NULL,
+    dateline int(11) unsigned NOT NULL,
+    `subject` varchar(255) NOT NULL DEFAULT '',
+    message mediumtext NOT NULL,
+    PRIMARY KEY (id),
+    KEY pid (pid,dateline)
+) ENGINE=InnoDB;
+
+ALTER TABLE pre_forum_poststick 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL;
+
+ALTER TABLE pre_forum_promotion 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '',
+    ADD COLUMN `port` SMALLINT(6) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_ratelog  
+    MODIFY COLUMN extcredits tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_relatedthread 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_replycredit 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN extcredits INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN `times` INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN membertimes INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_rsscache 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN `subject` varchar(255) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_forum_sofa 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_thread 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL AUTO_INCREMENT,
+    MODIFY COLUMN `subject` varchar(255) NOT NULL DEFAULT '',
+    MODIFY COLUMN maxposition INT(11) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN replycredit INT(11) NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadaddviews 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadclosed 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threaddisablepos 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadhidelog 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadhot 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadimage 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadmod 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadpartake 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadpreview 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_threadrush 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_trade 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN aid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN quality tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_tradelog 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL,
+    MODIFY COLUMN paytype tinyint(3) unsigned NOT NULL DEFAULT '0',
+    MODIFY COLUMN quality tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_forum_typeoptionvar 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_home_blog 
+    MODIFY COLUMN `subject` varchar(255) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_home_comment 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_home_docomment 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '',
+    ADD COLUMN `port` SMALLINT(6) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_home_doing 
+    MODIFY COLUMN ip VARCHAR(45) NOT NULL DEFAULT '',
+    MODIFY COLUMN `status` tinyint(3) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_home_follow_feed 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_home_follow_feed_archiver 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_home_notification 
+    MODIFY COLUMN id BIGINT(20) unsigned NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE pre_portal_rsscache 
+    MODIFY COLUMN `subject` varchar(255) NOT NULL DEFAULT '';
+
+ALTER TABLE pre_security_evilpost 
+    MODIFY COLUMN tid INT(11) unsigned NOT NULL DEFAULT '0';
+
+ALTER TABLE pre_ucenter_applications 
+    MODIFY COLUMN ip varchar(45) NOT NULL default '';
+
+ALTER TABLE pre_ucenter_members 
+    MODIFY COLUMN `password` varchar(255) NOT NULL DEFAULT '',
+    MODIFY COLUMN regip varchar(45) NOT NULL DEFAULT '',
+    MODIFY COLUMN salt varchar(20) NOT NULL DEFAULT '',
+    MODIFY COLUMN email varchar(255) NOT NULL DEFAULT '',
+    ADD COLUMN `secmobile` varchar(12) NOT NULL DEFAULT '' AFTER `password`,
+    ADD COLUMN `secmobicc` varchar(3) NOT NULL DEFAULT '' AFTER `password`,
+    ADD KEY secmobile (`secmobile`, `secmobicc`);
+
+UPDATE pre_ucenter_members
+    SET `email` = replace('email', 'null.null', 'm.invalid');
+
+CREATE TABLE pre_ucenter_memberlogs (
+    lid int(11) unsigned NOT NULL AUTO_INCREMENT,
+    uid int(11) unsigned NOT NULL,
+    action varchar(32) NOT NULL DEFAULT '',
+    extra varchar(255) NOT NULL DEFAULT '',
+    PRIMARY KEY(lid)
+) ENGINE=InnoDB;
+
+ALTER TABLE pre_ucenter_domains 
+    MODIFY COLUMN ip varchar(45) NOT NULL default '';
+
+ALTER TABLE pre_ucenter_failedlogins 
+    MODIFY COLUMN ip varchar(45) NOT NULL default '',
+    MODIFY COLUMN count tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_protectedmembers 
+    MODIFY COLUMN appid tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_lists 
+    MODIFY COLUMN pmtype tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_0 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_1 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_2 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_3 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_4 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_5 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_6 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_7 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_8 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';
+
+ALTER TABLE pre_ucenter_pm_messages_9 
+    MODIFY COLUMN delstatus tinyint(3) unsigned NOT NULL default '0';

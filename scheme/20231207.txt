@@ -1,0 +1,3 @@
+ALTER TABLE pre_forum_forum
+    MODIFY COLUMN `simple` smallint(6) NOT NULL DEFAULT '0';
+
