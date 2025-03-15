@@ -7,6 +7,7 @@
  *      Background search index generation tool
  *      Must be executed in the forum root directory
  *      Modified by Valery Votintsev, discuz.ml
+ *      Updated by jaideejung007, discuzthai.com (Compatible with PHP 7.4+ and Discuz! X3.5)
  */
 
 error_reporting(E_ALL);
@@ -28,11 +29,11 @@ include './source/function/function_forum.php';
 include './source/function/function_admincp.php';
 include './source/function/function_cache.php';
 
-$discuz = & discuz_core::instance();
+$discuz = discuz_core::instance();
 $discuz->init();
 
 $admincp = new discuz_admincp();
-$admincp->core  = & $discuz;
+$admincp->core = $discuz;
 $admincp->init();
 
 $admincpdir = 'source/admincp/';
@@ -54,9 +55,12 @@ include $admincpdir.'admincp_menu.php';
 foreach($menu as $topmenu => $leftmenu) {
 	foreach($leftmenu as $item) {
 		list($action, $operation, $do) = explode('_', $item[1]);
-		$indexdata[] = array('index' => array(
+		$index_item = array(
 			$menulang[$item[0]] => 'action='.$action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '')
-		), 'text' => array($menulang[$item[0]]));
+		);
+		if (!array_key_exists('', $index_item) && !in_array('action=', array_values($index_item))) {
+			$indexdata[] = array('index' => $index_item, 'text' => array($menulang[$item[0]]));
+		}
 	}
 }
 
@@ -65,11 +69,16 @@ $langi = '|'.implode('|', array_keys($lang)).'|';
 $dir = opendir($admincpdir);
 while($entry = readdir($dir)) {
 	if($entry != '.' && $entry != '..' && preg_match('/^admincp\_/', $entry)) {
-
-		$adminfile = $admincpdir.$entry;		
+		$adminfile = $admincpdir.$entry;
 		$data = file_get_contents($adminfile);
 		$data = preg_replace('/\/\/.+?\r/', '', $data);
-		$data = preg_replace('/\/\*(.+?)\*\//se', "clearnote('\\1')", $data);
+		$data = preg_replace_callback(
+			'/\/\*(.+?)\*\//s',
+			function($matches) {
+				return clearnote($matches[1]);
+			},
+			$data
+		);
 
 		preg_match_all('#/\*search=\s*(\{.+?\})\s*\*/(.+?)/\*search\*/#is', $data, $search);
 		if($search) {
@@ -81,7 +90,7 @@ while($entry = readdir($dir)) {
 				foreach($titles as $title => $url) {
 					$titlekey = strip_tags(isset($lang[$title]) ? $lang[$title] : iconv('UTF-8', 'GBK', $title));
 					$titlesnew[$titlekey] = $url;
-					if($titlekey{0} != '_') {
+					if($titlekey[0] != '_') {
 						$titletext[] = $titlekey;
 					}
 				}
@@ -103,13 +112,37 @@ while($entry = readdir($dir)) {
 							}
 						}
 					}
-					$indexdata[] = array('index' => $titlesnew, 'text' => $l);
+					$is_empty_index = array_key_exists('', $titlesnew) && $titlesnew[''] === 'action=';
+					$is_null_text = (count($l) === 1 && $l[0] === null);
+					if (!($is_empty_index && $is_null_text)) {
+						$indexdata[] = array('index' => $titlesnew, 'text' => $l);
+					}
 				}
 			}
 		}
-
 	}
 }
+
+// Custom function to generate array output with tabs as specified
+function array_to_string($array) {
+	$result = '';
+	foreach ($array as $key => $value) {
+		$result .= "\t" . var_export($key, true) . " =>\n"; // Level 1: 1 tab
+		$result .= "\t" . "array (\n"; // Level 2: 1 tab
+		foreach ($value as $sub_key => $sub_value) {
+			$result .= "\t\t" . var_export($sub_key, true) . " =>\n"; // Level 3: 2 tab
+			$result .= "\t\t" . "array (\n"; // Level 4: 2 tab
+			foreach ($sub_value as $inner_key => $inner_value) {
+				$result .= "\t\t\t" . var_export($inner_key, true) . ' => ' . var_export($inner_value, true) . ",\n"; // Level 4: 3 tab
+			}
+			$result .= "\t\t" . "),\n";
+		}
+		$result .= "\t" . "),\n";
+	}
+	return $result;
+}
+
+$array_string = array_to_string($indexdata);
 
 $return = '<?php
 
@@ -122,7 +155,8 @@ $return = '<?php
  *	This file is automatically generate
  */
 
-$lang = '.var_export($indexdata, 1).';
+$lang = array (
+' . $array_string . ');
 
 ?>';
 
